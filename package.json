@@ -1,0 +1,24 @@
+{
+  "name": "dota2-user",
+  "version": "1.0.0",
+  "description": "Exposes a simple API for interacting with the Dota 2 game coordinator",
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itsjfx/node-dota2-user.git"
+  },
+  "keywords": [
+    "dota2",
+    "dota",
+    "steam"
+  ],
+  "author": "jfx",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/itsjfx/node-dota2-user/issues"
+  },
+  "homepage": "https://github.com/itsjfx/node-dota2-user#readme"
+}
