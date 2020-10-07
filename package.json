@@ -1,10 +1,13 @@
 {
   "name": "dota2-user",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Exposes a simple API for interacting with the Dota 2 game coordinator",
   "main": "./lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "generate-protos": "node scripts/generate-protos.js"
+  },
+  "engines": {
+    "node": ">=8.0.0"
   },
   "repository": {
     "type": "git",
@@ -20,5 +23,9 @@
   "bugs": {
     "url": "https://github.com/itsjfx/node-dota2-user/issues"
   },
-  "homepage": "https://github.com/itsjfx/node-dota2-user#readme"
+  "homepage": "https://github.com/itsjfx/node-dota2-user#readme",
+  "dependencies": {
+    "bytebuffer": "^5.0.1",
+    "protobufjs": "^6.10.1"
+  }
 }
