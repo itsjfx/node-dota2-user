@@ -2,15 +2,15 @@
 
 [![npm version](https://img.shields.io/npm/v/dota2-user.svg)](https://npmjs.com/package/dota2-user)
 
-This module provides a very flexible interface for interacting with the Dota 2 Game Coordinator. It's designed to work with a node-steam-user SteamUser instance.
+This module provides a very flexible interface for interacting with the Dota 2 Game Coordinator. It's designed to work with a `node-steam-user` SteamUser instance.
 
 This module is based off the codebases of [node-globaloffensive](https://github.com/doctormckay/node-globaloffensive), [node-tf2](https://github.com/doctormckay/node-tf2) and [node-steam-user](https://github.com/doctormckay/node-steam-user). The Dota 2 functionality is based off [node-dota2](https://github.com/Arcana/node-dota2/).
 
-*This module is not affiliated with those listed above.*
+*This module is not affiliated with any listed above.*
 
 **You will need node-steam-user v4.2.0 or later and Node.js v8 or later to use node-dota2-user.**
 
-# This project
+## This project
 
 My goal is to structure the codebase similar to `node-steam-user`'s component-based approach to ensure maintainability. Although I'm basing the GC communication off `node-globaloffensive`, there's changes here and there that I've adopted to make development easier (namely in how messages are sent to the GC, and the project structure).
 
@@ -18,7 +18,7 @@ As much as I think `node-dota2` is a great module for Dota 2, the lack of mainta
 
 In the projects current state, it only supports connecting to Dota 2 GC (sending and receiving a Hello). Development is going to take a lot of time since Dota 2 has so many messages and possible features, but I'll continue incrementally adding features. Despite the lack of features, there is enough base behaviour in the project to accomplish anything with the Dota 2 GC.
 
-# Setup
+## Setup
 
 First, install it from npm:
 
