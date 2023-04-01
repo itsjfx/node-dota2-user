@@ -27,5 +27,12 @@
   "dependencies": {
     "bytebuffer": "^5.0.1",
     "protobufjs": "^6.10.1"
+  },
+  "peerDependencies": {
+    "steam-user": ">=4.2.0 < 5"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "@types/steam-user": "^4.26.1"
   }
 }
