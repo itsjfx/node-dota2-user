@@ -1,4 +1,5 @@
-const Dota2User = require('../index.js');
+// @ts-nocheck
+import { Dota2User } from '../Dota2User.js';
 let handlers = Dota2User.prototype._handlers;
 
 const INITIAL_HELLO_DELAY = 500;
@@ -9,14 +10,14 @@ const EXPONENTIAL_HELLO_BACKOFF_MAX = 60000;
  * @private
  */
 Dota2User.prototype._connect = function() {
-    if (!this._isInDota2 || this._helloTimer) {
-        this.emit('debug', "Not trying to connect due to " + (!this._isInDota2 ? "not in Dota 2" : "has helloTimer"));
+    if (!this._inDota2 || this._helloTimer) {
+        this.emit('debug', "Not trying to connect due to " + (!this._inDota2 ? "not in Dota 2" : "has helloTimer"));
         return; // We're not in Dota 2 or we're already trying to connect
     }
 
     let sendHello = () => {
-        if (!this._isInDota2 || this.haveGCSession) {
-            this.emit('debug', "Not sending hello because " + (!this._isInDota2 ? "we're no longer in Dota 2" : "we have a session"));
+        if (!this._inDota2 || this.haveGCSession) {
+            this.emit('debug', "Not sending hello because " + (!this._inDota2 ? "we're no longer in Dota 2" : "we have a session"));
             this._clearHelloTimer();
             return;
         }
@@ -38,10 +39,10 @@ Dota2User.prototype._handleAppQuit = function(emitDisconnectEvent) {
     this._clearHelloTimer();
 
     if (this.haveGCSession && emitDisconnectEvent) {
-        this.emit('disconnectedFromGC', Dota2User.GCConnectionStatus.NO_SESSION);
+        this.emit('disconnectedFromGC', "2"); // Dota2User.GCConnectionStatus.NO_SESSION);
     }
 
-    this._isInDota2 = false;
+    this._inDota2 = false;
     this.haveGCSession = false;
 };
 
@@ -60,7 +61,7 @@ Dota2User.prototype._clearHelloTimer = function() {
 handlers[Dota2User.Protos.EGCBaseClientMsg.k_EMsgGCClientWelcome] = function(message) {
     // Handle caches
 
-    this.inventory = this.inventory || [];
+    // this.inventory = this.inventory || [];
     this.emit('debug', "GC connection established");
     this.haveGCSession = true;
     this._clearHelloTimer();
