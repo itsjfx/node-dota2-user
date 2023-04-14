@@ -26,7 +26,7 @@
   "homepage": "https://github.com/itsjfx/node-dota2-user#readme",
   "dependencies": {
     "bytebuffer": "^5.0.1",
-    "protobufjs": "^6.10.1"
+    "ts-proto": "^1.146.0"
   },
   "peerDependencies": {
     "steam-user": ">=4.2.0 < 5"
