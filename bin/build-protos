@@ -2,7 +2,6 @@
 
 set -eu -o pipefail
 
-echo "$0" "$(dirname "$0")"
 cd "$(dirname "$0")/../"
 
 # TODO: xargs
