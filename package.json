@@ -26,12 +26,14 @@
   "homepage": "https://github.com/itsjfx/node-dota2-user#readme",
   "dependencies": {
     "bytebuffer": "^5.0.1",
+    "debug": "^4.3.4",
     "ts-proto": "^1.146.0"
   },
   "peerDependencies": {
     "steam-user": ">=4.2.0 < 5"
   },
   "devDependencies": {
+    "@types/debug": "^4.1.7",
     "@types/node": "^18.15.11",
     "@types/steam-user": "^4.26.1",
     "ts-node": "^10.9.1",

@@ -10,14 +10,14 @@ const EXPONENTIAL_HELLO_BACKOFF_MAX = 60000;
  * @private
  */
 Dota2User.prototype._connect = function() {
-    if (!this._inDota2 || this._helloTimer) {
-        this.emit('debug', "Not trying to connect due to " + (!this._inDota2 ? "not in Dota 2" : "has helloTimer"));
+    if (!this.inDota2 || this._helloTimer) {
+        this.emit('debug', "Not trying to connect due to " + (!this.inDota2 ? "not in Dota 2" : "has helloTimer"));
         return; // We're not in Dota 2 or we're already trying to connect
     }
 
     let sendHello = () => {
-        if (!this._inDota2 || this.haveGCSession) {
-            this.emit('debug', "Not sending hello because " + (!this._inDota2 ? "we're no longer in Dota 2" : "we have a session"));
+        if (!this.inDota2 || this.haveGCSession) {
+            this.emit('debug', "Not sending hello because " + (!this.inDota2 ? "we're no longer in Dota 2" : "we have a session"));
             this._clearHelloTimer();
             return;
         }
@@ -58,12 +58,3 @@ Dota2User.prototype._clearHelloTimer = function() {
 };
 
 // Handlers
-handlers[Dota2User.Protos.EGCBaseClientMsg.k_EMsgGCClientWelcome] = function(message) {
-    // Handle caches
-
-    // this.inventory = this.inventory || [];
-    this.emit('debug', "GC connection established");
-    this.haveGCSession = true;
-    this._clearHelloTimer();
-    this.emit('connectedToGC');
-};

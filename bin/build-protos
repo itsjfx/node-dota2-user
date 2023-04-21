@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 set -eu -o pipefail
 
 cd "$(dirname "$0")/../"
@@ -10,5 +9,6 @@ for file in ./protobufs/*.proto; do
         --proto_path=./protobufs \
         --plugin=./node_modules/.bin/protoc-gen-ts_proto \
         --ts_proto_out=src/protobufs/ \
+        --ts_proto_opt=outputServices=generic-definitions,outputServices=default,env=node,outputSchema=true,esModuleInterop=true,forceLong=string \
         "$file"
 done
