@@ -81,7 +81,7 @@ export class Dota2User extends EventEmitter {
             this._handleAppQuit(true);
         });
 
-        this.router.on(EGCBaseClientMsg.k_EMsgGCClientWelcome.toString(), (message) => {
+        this.router.on(EGCBaseClientMsg.k_EMsgGCClientWelcome, (message) => {
             // Handle caches
 
             // this.inventory = this.inventory || [];
