@@ -48,6 +48,190 @@ export enum ESteamDatagramMsgID {
   k_ESteamDatagramMsg_RelayToRelayPingReply = 34,
 }
 
+export function eSteamDatagramMsgIDFromJSON(object: any): ESteamDatagramMsgID {
+  switch (object) {
+    case 0:
+    case "k_ESteamDatagramMsg_Invalid":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_Invalid;
+    case 1:
+    case "k_ESteamDatagramMsg_RouterPingRequest":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_RouterPingRequest;
+    case 2:
+    case "k_ESteamDatagramMsg_RouterPingReply":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_RouterPingReply;
+    case 3:
+    case "k_ESteamDatagramMsg_GameserverPingRequest":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_GameserverPingRequest;
+    case 5:
+    case "k_ESteamDatagramMsg_GameserverSessionRequest":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_GameserverSessionRequest;
+    case 6:
+    case "k_ESteamDatagramMsg_GameserverSessionEstablished":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_GameserverSessionEstablished;
+    case 7:
+    case "k_ESteamDatagramMsg_NoSession":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_NoSession;
+    case 8:
+    case "k_ESteamDatagramMsg_Diagnostic":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_Diagnostic;
+    case 9:
+    case "k_ESteamDatagramMsg_DataClientToRouter":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_DataClientToRouter;
+    case 10:
+    case "k_ESteamDatagramMsg_DataRouterToServer":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_DataRouterToServer;
+    case 11:
+    case "k_ESteamDatagramMsg_DataServerToRouter":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_DataServerToRouter;
+    case 12:
+    case "k_ESteamDatagramMsg_DataRouterToClient":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_DataRouterToClient;
+    case 13:
+    case "k_ESteamDatagramMsg_Stats":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_Stats;
+    case 14:
+    case "k_ESteamDatagramMsg_ClientPingSampleRequest":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_ClientPingSampleRequest;
+    case 15:
+    case "k_ESteamDatagramMsg_ClientPingSampleReply":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_ClientPingSampleReply;
+    case 16:
+    case "k_ESteamDatagramMsg_ClientToRouterSwitchedPrimary":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_ClientToRouterSwitchedPrimary;
+    case 17:
+    case "k_ESteamDatagramMsg_RelayHealth":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_RelayHealth;
+    case 18:
+    case "k_ESteamDatagramMsg_ConnectRequest":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_ConnectRequest;
+    case 19:
+    case "k_ESteamDatagramMsg_ConnectOK":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_ConnectOK;
+    case 20:
+    case "k_ESteamDatagramMsg_ConnectionClosed":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_ConnectionClosed;
+    case 21:
+    case "k_ESteamDatagramMsg_NoConnection":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_NoConnection;
+    case 22:
+    case "k_ESteamDatagramMsg_TicketDecryptRequest":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_TicketDecryptRequest;
+    case 23:
+    case "k_ESteamDatagramMsg_TicketDecryptReply":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_TicketDecryptReply;
+    case 24:
+    case "k_ESteamDatagramMsg_P2PSessionRequest":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_P2PSessionRequest;
+    case 25:
+    case "k_ESteamDatagramMsg_P2PSessionEstablished":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_P2PSessionEstablished;
+    case 26:
+    case "k_ESteamDatagramMsg_P2PStatsClient":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_P2PStatsClient;
+    case 27:
+    case "k_ESteamDatagramMsg_P2PStatsRelay":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_P2PStatsRelay;
+    case 28:
+    case "k_ESteamDatagramMsg_P2PBadRoute":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_P2PBadRoute;
+    case 29:
+    case "k_ESteamDatagramMsg_GameserverPingReply":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_GameserverPingReply;
+    case 30:
+    case "k_ESteamDatagramMsg_LegacyGameserverRegistration":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_LegacyGameserverRegistration;
+    case 31:
+    case "k_ESteamDatagramMsg_SetSecondaryAddressRequest":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_SetSecondaryAddressRequest;
+    case 32:
+    case "k_ESteamDatagramMsg_SetSecondaryAddressResult":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_SetSecondaryAddressResult;
+    case 33:
+    case "k_ESteamDatagramMsg_RelayToRelayPingRequest":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_RelayToRelayPingRequest;
+    case 34:
+    case "k_ESteamDatagramMsg_RelayToRelayPingReply":
+      return ESteamDatagramMsgID.k_ESteamDatagramMsg_RelayToRelayPingReply;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ESteamDatagramMsgID");
+  }
+}
+
+export function eSteamDatagramMsgIDToJSON(object: ESteamDatagramMsgID): string {
+  switch (object) {
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_Invalid:
+      return "k_ESteamDatagramMsg_Invalid";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_RouterPingRequest:
+      return "k_ESteamDatagramMsg_RouterPingRequest";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_RouterPingReply:
+      return "k_ESteamDatagramMsg_RouterPingReply";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_GameserverPingRequest:
+      return "k_ESteamDatagramMsg_GameserverPingRequest";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_GameserverSessionRequest:
+      return "k_ESteamDatagramMsg_GameserverSessionRequest";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_GameserverSessionEstablished:
+      return "k_ESteamDatagramMsg_GameserverSessionEstablished";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_NoSession:
+      return "k_ESteamDatagramMsg_NoSession";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_Diagnostic:
+      return "k_ESteamDatagramMsg_Diagnostic";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_DataClientToRouter:
+      return "k_ESteamDatagramMsg_DataClientToRouter";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_DataRouterToServer:
+      return "k_ESteamDatagramMsg_DataRouterToServer";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_DataServerToRouter:
+      return "k_ESteamDatagramMsg_DataServerToRouter";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_DataRouterToClient:
+      return "k_ESteamDatagramMsg_DataRouterToClient";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_Stats:
+      return "k_ESteamDatagramMsg_Stats";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_ClientPingSampleRequest:
+      return "k_ESteamDatagramMsg_ClientPingSampleRequest";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_ClientPingSampleReply:
+      return "k_ESteamDatagramMsg_ClientPingSampleReply";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_ClientToRouterSwitchedPrimary:
+      return "k_ESteamDatagramMsg_ClientToRouterSwitchedPrimary";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_RelayHealth:
+      return "k_ESteamDatagramMsg_RelayHealth";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_ConnectRequest:
+      return "k_ESteamDatagramMsg_ConnectRequest";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_ConnectOK:
+      return "k_ESteamDatagramMsg_ConnectOK";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_ConnectionClosed:
+      return "k_ESteamDatagramMsg_ConnectionClosed";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_NoConnection:
+      return "k_ESteamDatagramMsg_NoConnection";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_TicketDecryptRequest:
+      return "k_ESteamDatagramMsg_TicketDecryptRequest";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_TicketDecryptReply:
+      return "k_ESteamDatagramMsg_TicketDecryptReply";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_P2PSessionRequest:
+      return "k_ESteamDatagramMsg_P2PSessionRequest";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_P2PSessionEstablished:
+      return "k_ESteamDatagramMsg_P2PSessionEstablished";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_P2PStatsClient:
+      return "k_ESteamDatagramMsg_P2PStatsClient";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_P2PStatsRelay:
+      return "k_ESteamDatagramMsg_P2PStatsRelay";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_P2PBadRoute:
+      return "k_ESteamDatagramMsg_P2PBadRoute";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_GameserverPingReply:
+      return "k_ESteamDatagramMsg_GameserverPingReply";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_LegacyGameserverRegistration:
+      return "k_ESteamDatagramMsg_LegacyGameserverRegistration";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_SetSecondaryAddressRequest:
+      return "k_ESteamDatagramMsg_SetSecondaryAddressRequest";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_SetSecondaryAddressResult:
+      return "k_ESteamDatagramMsg_SetSecondaryAddressResult";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_RelayToRelayPingRequest:
+      return "k_ESteamDatagramMsg_RelayToRelayPingRequest";
+    case ESteamDatagramMsgID.k_ESteamDatagramMsg_RelayToRelayPingReply:
+      return "k_ESteamDatagramMsg_RelayToRelayPingReply";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ESteamDatagramMsgID");
+  }
+}
+
 export interface CMsgSteamNetworkingIPAddress {
   v4: number;
   v6: Buffer;
@@ -83,6 +267,34 @@ export enum CMsgSteamDatagramRouterPingReply_Flags {
   FLAG_MAYBE_MORE_ALT_ADDRESSES = 2,
 }
 
+export function cMsgSteamDatagramRouterPingReply_FlagsFromJSON(object: any): CMsgSteamDatagramRouterPingReply_Flags {
+  switch (object) {
+    case 1:
+    case "FLAG_MAYBE_MORE_DATA_CENTERS":
+      return CMsgSteamDatagramRouterPingReply_Flags.FLAG_MAYBE_MORE_DATA_CENTERS;
+    case 2:
+    case "FLAG_MAYBE_MORE_ALT_ADDRESSES":
+      return CMsgSteamDatagramRouterPingReply_Flags.FLAG_MAYBE_MORE_ALT_ADDRESSES;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgSteamDatagramRouterPingReply_Flags",
+      );
+  }
+}
+
+export function cMsgSteamDatagramRouterPingReply_FlagsToJSON(object: CMsgSteamDatagramRouterPingReply_Flags): string {
+  switch (object) {
+    case CMsgSteamDatagramRouterPingReply_Flags.FLAG_MAYBE_MORE_DATA_CENTERS:
+      return "FLAG_MAYBE_MORE_DATA_CENTERS";
+    case CMsgSteamDatagramRouterPingReply_Flags.FLAG_MAYBE_MORE_ALT_ADDRESSES:
+      return "FLAG_MAYBE_MORE_ALT_ADDRESSES";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgSteamDatagramRouterPingReply_Flags",
+      );
+  }
+}
+
 export interface CMsgSteamDatagramRouterPingReply_RouteException {
   dataCenterId: number;
   flags: number;
@@ -100,6 +312,38 @@ export interface CMsgSteamDatagramRouterPingReply_AltAddress {
 export enum CMsgSteamDatagramRouterPingReply_AltAddress_Protocol {
   DefaultProtocol = 0,
   NetworkNext = 1,
+}
+
+export function cMsgSteamDatagramRouterPingReply_AltAddress_ProtocolFromJSON(
+  object: any,
+): CMsgSteamDatagramRouterPingReply_AltAddress_Protocol {
+  switch (object) {
+    case 0:
+    case "DefaultProtocol":
+      return CMsgSteamDatagramRouterPingReply_AltAddress_Protocol.DefaultProtocol;
+    case 1:
+    case "NetworkNext":
+      return CMsgSteamDatagramRouterPingReply_AltAddress_Protocol.NetworkNext;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgSteamDatagramRouterPingReply_AltAddress_Protocol",
+      );
+  }
+}
+
+export function cMsgSteamDatagramRouterPingReply_AltAddress_ProtocolToJSON(
+  object: CMsgSteamDatagramRouterPingReply_AltAddress_Protocol,
+): string {
+  switch (object) {
+    case CMsgSteamDatagramRouterPingReply_AltAddress_Protocol.DefaultProtocol:
+      return "DefaultProtocol";
+    case CMsgSteamDatagramRouterPingReply_AltAddress_Protocol.NetworkNext:
+      return "NetworkNext";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgSteamDatagramRouterPingReply_AltAddress_Protocol",
+      );
+  }
 }
 
 export interface CMsgSteamDatagramGameserverPingRequestBody {
@@ -290,6 +534,43 @@ export enum CMsgSteamDatagramConnectionClosed_ERelayMode {
   ClosedByPeer = 2,
 }
 
+export function cMsgSteamDatagramConnectionClosed_ERelayModeFromJSON(
+  object: any,
+): CMsgSteamDatagramConnectionClosed_ERelayMode {
+  switch (object) {
+    case 0:
+    case "None":
+      return CMsgSteamDatagramConnectionClosed_ERelayMode.None;
+    case 1:
+    case "EndToEnd":
+      return CMsgSteamDatagramConnectionClosed_ERelayMode.EndToEnd;
+    case 2:
+    case "ClosedByPeer":
+      return CMsgSteamDatagramConnectionClosed_ERelayMode.ClosedByPeer;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgSteamDatagramConnectionClosed_ERelayMode",
+      );
+  }
+}
+
+export function cMsgSteamDatagramConnectionClosed_ERelayModeToJSON(
+  object: CMsgSteamDatagramConnectionClosed_ERelayMode,
+): string {
+  switch (object) {
+    case CMsgSteamDatagramConnectionClosed_ERelayMode.None:
+      return "None";
+    case CMsgSteamDatagramConnectionClosed_ERelayMode.EndToEnd:
+      return "EndToEnd";
+    case CMsgSteamDatagramConnectionClosed_ERelayMode.ClosedByPeer:
+      return "ClosedByPeer";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgSteamDatagramConnectionClosed_ERelayMode",
+      );
+  }
+}
+
 export interface CMsgSteamDatagramNoConnection {
   toConnectionId: number;
   fromConnectionId: number;
@@ -349,6 +630,48 @@ export enum CMsgSteamDatagramConnectionStatsClientToRouter_Flags {
   NOT_PRIMARY_SESSION = 8,
 }
 
+export function cMsgSteamDatagramConnectionStatsClientToRouter_FlagsFromJSON(
+  object: any,
+): CMsgSteamDatagramConnectionStatsClientToRouter_Flags {
+  switch (object) {
+    case 1:
+    case "ACK_REQUEST_RELAY":
+      return CMsgSteamDatagramConnectionStatsClientToRouter_Flags.ACK_REQUEST_RELAY;
+    case 2:
+    case "ACK_REQUEST_E2E":
+      return CMsgSteamDatagramConnectionStatsClientToRouter_Flags.ACK_REQUEST_E2E;
+    case 4:
+    case "ACK_REQUEST_IMMEDIATE":
+      return CMsgSteamDatagramConnectionStatsClientToRouter_Flags.ACK_REQUEST_IMMEDIATE;
+    case 8:
+    case "NOT_PRIMARY_SESSION":
+      return CMsgSteamDatagramConnectionStatsClientToRouter_Flags.NOT_PRIMARY_SESSION;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgSteamDatagramConnectionStatsClientToRouter_Flags",
+      );
+  }
+}
+
+export function cMsgSteamDatagramConnectionStatsClientToRouter_FlagsToJSON(
+  object: CMsgSteamDatagramConnectionStatsClientToRouter_Flags,
+): string {
+  switch (object) {
+    case CMsgSteamDatagramConnectionStatsClientToRouter_Flags.ACK_REQUEST_RELAY:
+      return "ACK_REQUEST_RELAY";
+    case CMsgSteamDatagramConnectionStatsClientToRouter_Flags.ACK_REQUEST_E2E:
+      return "ACK_REQUEST_E2E";
+    case CMsgSteamDatagramConnectionStatsClientToRouter_Flags.ACK_REQUEST_IMMEDIATE:
+      return "ACK_REQUEST_IMMEDIATE";
+    case CMsgSteamDatagramConnectionStatsClientToRouter_Flags.NOT_PRIMARY_SESSION:
+      return "NOT_PRIMARY_SESSION";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgSteamDatagramConnectionStatsClientToRouter_Flags",
+      );
+  }
+}
+
 export interface CMsgSteamDatagramConnectionStatsRouterToClient {
   qualityRelay: CMsgSteamDatagramConnectionQuality | undefined;
   qualityE2e: CMsgSteamDatagramConnectionQuality | undefined;
@@ -368,6 +691,43 @@ export enum CMsgSteamDatagramConnectionStatsRouterToClient_Flags {
   ACK_REQUEST_RELAY = 1,
   ACK_REQUEST_E2E = 2,
   ACK_REQUEST_IMMEDIATE = 4,
+}
+
+export function cMsgSteamDatagramConnectionStatsRouterToClient_FlagsFromJSON(
+  object: any,
+): CMsgSteamDatagramConnectionStatsRouterToClient_Flags {
+  switch (object) {
+    case 1:
+    case "ACK_REQUEST_RELAY":
+      return CMsgSteamDatagramConnectionStatsRouterToClient_Flags.ACK_REQUEST_RELAY;
+    case 2:
+    case "ACK_REQUEST_E2E":
+      return CMsgSteamDatagramConnectionStatsRouterToClient_Flags.ACK_REQUEST_E2E;
+    case 4:
+    case "ACK_REQUEST_IMMEDIATE":
+      return CMsgSteamDatagramConnectionStatsRouterToClient_Flags.ACK_REQUEST_IMMEDIATE;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgSteamDatagramConnectionStatsRouterToClient_Flags",
+      );
+  }
+}
+
+export function cMsgSteamDatagramConnectionStatsRouterToClient_FlagsToJSON(
+  object: CMsgSteamDatagramConnectionStatsRouterToClient_Flags,
+): string {
+  switch (object) {
+    case CMsgSteamDatagramConnectionStatsRouterToClient_Flags.ACK_REQUEST_RELAY:
+      return "ACK_REQUEST_RELAY";
+    case CMsgSteamDatagramConnectionStatsRouterToClient_Flags.ACK_REQUEST_E2E:
+      return "ACK_REQUEST_E2E";
+    case CMsgSteamDatagramConnectionStatsRouterToClient_Flags.ACK_REQUEST_IMMEDIATE:
+      return "ACK_REQUEST_IMMEDIATE";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgSteamDatagramConnectionStatsRouterToClient_Flags",
+      );
+  }
 }
 
 export interface CMsgSteamDatagramConnectionStatsRouterToServer {
@@ -392,6 +752,43 @@ export enum CMsgSteamDatagramConnectionStatsRouterToServer_Flags {
   ACK_REQUEST_IMMEDIATE = 4,
 }
 
+export function cMsgSteamDatagramConnectionStatsRouterToServer_FlagsFromJSON(
+  object: any,
+): CMsgSteamDatagramConnectionStatsRouterToServer_Flags {
+  switch (object) {
+    case 1:
+    case "ACK_REQUEST_RELAY":
+      return CMsgSteamDatagramConnectionStatsRouterToServer_Flags.ACK_REQUEST_RELAY;
+    case 2:
+    case "ACK_REQUEST_E2E":
+      return CMsgSteamDatagramConnectionStatsRouterToServer_Flags.ACK_REQUEST_E2E;
+    case 4:
+    case "ACK_REQUEST_IMMEDIATE":
+      return CMsgSteamDatagramConnectionStatsRouterToServer_Flags.ACK_REQUEST_IMMEDIATE;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgSteamDatagramConnectionStatsRouterToServer_Flags",
+      );
+  }
+}
+
+export function cMsgSteamDatagramConnectionStatsRouterToServer_FlagsToJSON(
+  object: CMsgSteamDatagramConnectionStatsRouterToServer_Flags,
+): string {
+  switch (object) {
+    case CMsgSteamDatagramConnectionStatsRouterToServer_Flags.ACK_REQUEST_RELAY:
+      return "ACK_REQUEST_RELAY";
+    case CMsgSteamDatagramConnectionStatsRouterToServer_Flags.ACK_REQUEST_E2E:
+      return "ACK_REQUEST_E2E";
+    case CMsgSteamDatagramConnectionStatsRouterToServer_Flags.ACK_REQUEST_IMMEDIATE:
+      return "ACK_REQUEST_IMMEDIATE";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgSteamDatagramConnectionStatsRouterToServer_Flags",
+      );
+  }
+}
+
 export interface CMsgSteamDatagramConnectionStatsServerToRouter {
   qualityRelay: CMsgSteamDatagramConnectionQuality | undefined;
   qualityE2e: CMsgSteamDatagramConnectionQuality | undefined;
@@ -409,6 +806,43 @@ export enum CMsgSteamDatagramConnectionStatsServerToRouter_Flags {
   ACK_REQUEST_RELAY = 1,
   ACK_REQUEST_E2E = 2,
   ACK_REQUEST_IMMEDIATE = 4,
+}
+
+export function cMsgSteamDatagramConnectionStatsServerToRouter_FlagsFromJSON(
+  object: any,
+): CMsgSteamDatagramConnectionStatsServerToRouter_Flags {
+  switch (object) {
+    case 1:
+    case "ACK_REQUEST_RELAY":
+      return CMsgSteamDatagramConnectionStatsServerToRouter_Flags.ACK_REQUEST_RELAY;
+    case 2:
+    case "ACK_REQUEST_E2E":
+      return CMsgSteamDatagramConnectionStatsServerToRouter_Flags.ACK_REQUEST_E2E;
+    case 4:
+    case "ACK_REQUEST_IMMEDIATE":
+      return CMsgSteamDatagramConnectionStatsServerToRouter_Flags.ACK_REQUEST_IMMEDIATE;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgSteamDatagramConnectionStatsServerToRouter_Flags",
+      );
+  }
+}
+
+export function cMsgSteamDatagramConnectionStatsServerToRouter_FlagsToJSON(
+  object: CMsgSteamDatagramConnectionStatsServerToRouter_Flags,
+): string {
+  switch (object) {
+    case CMsgSteamDatagramConnectionStatsServerToRouter_Flags.ACK_REQUEST_RELAY:
+      return "ACK_REQUEST_RELAY";
+    case CMsgSteamDatagramConnectionStatsServerToRouter_Flags.ACK_REQUEST_E2E:
+      return "ACK_REQUEST_E2E";
+    case CMsgSteamDatagramConnectionStatsServerToRouter_Flags.ACK_REQUEST_IMMEDIATE:
+      return "ACK_REQUEST_IMMEDIATE";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgSteamDatagramConnectionStatsServerToRouter_Flags",
+      );
+  }
 }
 
 export interface CMsgSteamDatagramP2PSessionRequestBody {
@@ -468,6 +902,53 @@ export enum CMsgSteamDatagramConnectionStatsP2PClientToRouter_Flags {
   NOT_PRIMARY_TRANSPORT_E2E = 16,
 }
 
+export function cMsgSteamDatagramConnectionStatsP2PClientToRouter_FlagsFromJSON(
+  object: any,
+): CMsgSteamDatagramConnectionStatsP2PClientToRouter_Flags {
+  switch (object) {
+    case 1:
+    case "ACK_REQUEST_RELAY":
+      return CMsgSteamDatagramConnectionStatsP2PClientToRouter_Flags.ACK_REQUEST_RELAY;
+    case 2:
+    case "ACK_REQUEST_E2E":
+      return CMsgSteamDatagramConnectionStatsP2PClientToRouter_Flags.ACK_REQUEST_E2E;
+    case 4:
+    case "ACK_REQUEST_IMMEDIATE":
+      return CMsgSteamDatagramConnectionStatsP2PClientToRouter_Flags.ACK_REQUEST_IMMEDIATE;
+    case 8:
+    case "NOT_PRIMARY_SESSION":
+      return CMsgSteamDatagramConnectionStatsP2PClientToRouter_Flags.NOT_PRIMARY_SESSION;
+    case 16:
+    case "NOT_PRIMARY_TRANSPORT_E2E":
+      return CMsgSteamDatagramConnectionStatsP2PClientToRouter_Flags.NOT_PRIMARY_TRANSPORT_E2E;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgSteamDatagramConnectionStatsP2PClientToRouter_Flags",
+      );
+  }
+}
+
+export function cMsgSteamDatagramConnectionStatsP2PClientToRouter_FlagsToJSON(
+  object: CMsgSteamDatagramConnectionStatsP2PClientToRouter_Flags,
+): string {
+  switch (object) {
+    case CMsgSteamDatagramConnectionStatsP2PClientToRouter_Flags.ACK_REQUEST_RELAY:
+      return "ACK_REQUEST_RELAY";
+    case CMsgSteamDatagramConnectionStatsP2PClientToRouter_Flags.ACK_REQUEST_E2E:
+      return "ACK_REQUEST_E2E";
+    case CMsgSteamDatagramConnectionStatsP2PClientToRouter_Flags.ACK_REQUEST_IMMEDIATE:
+      return "ACK_REQUEST_IMMEDIATE";
+    case CMsgSteamDatagramConnectionStatsP2PClientToRouter_Flags.NOT_PRIMARY_SESSION:
+      return "NOT_PRIMARY_SESSION";
+    case CMsgSteamDatagramConnectionStatsP2PClientToRouter_Flags.NOT_PRIMARY_TRANSPORT_E2E:
+      return "NOT_PRIMARY_TRANSPORT_E2E";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgSteamDatagramConnectionStatsP2PClientToRouter_Flags",
+      );
+  }
+}
+
 export interface CMsgSteamDatagramConnectionStatsP2PRouterToClient {
   qualityRelay: CMsgSteamDatagramConnectionQuality | undefined;
   qualityE2e: CMsgSteamDatagramConnectionQuality | undefined;
@@ -491,6 +972,48 @@ export enum CMsgSteamDatagramConnectionStatsP2PRouterToClient_Flags {
   ACK_REQUEST_E2E = 2,
   ACK_REQUEST_IMMEDIATE = 4,
   NOT_PRIMARY_TRANSPORT_E2E = 16,
+}
+
+export function cMsgSteamDatagramConnectionStatsP2PRouterToClient_FlagsFromJSON(
+  object: any,
+): CMsgSteamDatagramConnectionStatsP2PRouterToClient_Flags {
+  switch (object) {
+    case 1:
+    case "ACK_REQUEST_RELAY":
+      return CMsgSteamDatagramConnectionStatsP2PRouterToClient_Flags.ACK_REQUEST_RELAY;
+    case 2:
+    case "ACK_REQUEST_E2E":
+      return CMsgSteamDatagramConnectionStatsP2PRouterToClient_Flags.ACK_REQUEST_E2E;
+    case 4:
+    case "ACK_REQUEST_IMMEDIATE":
+      return CMsgSteamDatagramConnectionStatsP2PRouterToClient_Flags.ACK_REQUEST_IMMEDIATE;
+    case 16:
+    case "NOT_PRIMARY_TRANSPORT_E2E":
+      return CMsgSteamDatagramConnectionStatsP2PRouterToClient_Flags.NOT_PRIMARY_TRANSPORT_E2E;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgSteamDatagramConnectionStatsP2PRouterToClient_Flags",
+      );
+  }
+}
+
+export function cMsgSteamDatagramConnectionStatsP2PRouterToClient_FlagsToJSON(
+  object: CMsgSteamDatagramConnectionStatsP2PRouterToClient_Flags,
+): string {
+  switch (object) {
+    case CMsgSteamDatagramConnectionStatsP2PRouterToClient_Flags.ACK_REQUEST_RELAY:
+      return "ACK_REQUEST_RELAY";
+    case CMsgSteamDatagramConnectionStatsP2PRouterToClient_Flags.ACK_REQUEST_E2E:
+      return "ACK_REQUEST_E2E";
+    case CMsgSteamDatagramConnectionStatsP2PRouterToClient_Flags.ACK_REQUEST_IMMEDIATE:
+      return "ACK_REQUEST_IMMEDIATE";
+    case CMsgSteamDatagramConnectionStatsP2PRouterToClient_Flags.NOT_PRIMARY_TRANSPORT_E2E:
+      return "NOT_PRIMARY_TRANSPORT_E2E";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgSteamDatagramConnectionStatsP2PRouterToClient_Flags",
+      );
+  }
 }
 
 export interface CMsgSteamDatagramP2PBadRouteRouterToClient {
@@ -578,6 +1101,20 @@ export const CMsgSteamNetworkingIPAddress = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamNetworkingIPAddress {
+    return {
+      v4: isSet(object.v4) ? Number(object.v4) : 0,
+      v6: isSet(object.v6) ? Buffer.from(bytesFromBase64(object.v6)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CMsgSteamNetworkingIPAddress): unknown {
+    const obj: any = {};
+    message.v4 !== undefined && (obj.v4 = Math.round(message.v4));
+    message.v6 !== undefined && (obj.v6 = base64FromBytes(message.v6 !== undefined ? message.v6 : Buffer.alloc(0)));
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamDatagramSignedMessageGeneric(): CMsgSteamDatagramSignedMessageGeneric {
@@ -643,6 +1180,28 @@ export const CMsgSteamDatagramSignedMessageGeneric = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamDatagramSignedMessageGeneric {
+    return {
+      cert: isSet(object.cert) ? CMsgSteamDatagramCertificateSigned.fromJSON(object.cert) : undefined,
+      signedData: isSet(object.signedData) ? Buffer.from(bytesFromBase64(object.signedData)) : Buffer.alloc(0),
+      signature: isSet(object.signature) ? Buffer.from(bytesFromBase64(object.signature)) : Buffer.alloc(0),
+      dummyPad: isSet(object.dummyPad) ? Buffer.from(bytesFromBase64(object.dummyPad)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramSignedMessageGeneric): unknown {
+    const obj: any = {};
+    message.cert !== undefined &&
+      (obj.cert = message.cert ? CMsgSteamDatagramCertificateSigned.toJSON(message.cert) : undefined);
+    message.signedData !== undefined &&
+      (obj.signedData = base64FromBytes(message.signedData !== undefined ? message.signedData : Buffer.alloc(0)));
+    message.signature !== undefined &&
+      (obj.signature = base64FromBytes(message.signature !== undefined ? message.signature : Buffer.alloc(0)));
+    message.dummyPad !== undefined &&
+      (obj.dummyPad = base64FromBytes(message.dummyPad !== undefined ? message.dummyPad : Buffer.alloc(0)));
+    return obj;
   },
 };
 
@@ -880,6 +1439,87 @@ export const CMsgSteamDatagramRouterPingReply = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramRouterPingReply {
+    return {
+      clientTimestamp: isSet(object.clientTimestamp) ? Number(object.clientTimestamp) : 0,
+      latencyDatacenterIds: Array.isArray(object?.latencyDatacenterIds)
+        ? object.latencyDatacenterIds.map((e: any) => Number(e))
+        : [],
+      latencyPingMs: Array.isArray(object?.latencyPingMs) ? object.latencyPingMs.map((e: any) => Number(e)) : [],
+      latencyDatacenterIdsP2p: Array.isArray(object?.latencyDatacenterIdsP2p)
+        ? object.latencyDatacenterIdsP2p.map((e: any) => Number(e))
+        : [],
+      latencyPingMsP2p: Array.isArray(object?.latencyPingMsP2p)
+        ? object.latencyPingMsP2p.map((e: any) => Number(e))
+        : [],
+      yourPublicIp: isSet(object.yourPublicIp) ? Number(object.yourPublicIp) : 0,
+      yourPublicPort: isSet(object.yourPublicPort) ? Number(object.yourPublicPort) : 0,
+      serverTime: isSet(object.serverTime) ? Number(object.serverTime) : 0,
+      challenge: isSet(object.challenge) ? String(object.challenge) : "0",
+      secondsUntilShutdown: isSet(object.secondsUntilShutdown) ? Number(object.secondsUntilShutdown) : 0,
+      clientCookie: isSet(object.clientCookie) ? Number(object.clientCookie) : 0,
+      scoringPenaltyRelayCluster: isSet(object.scoringPenaltyRelayCluster)
+        ? Number(object.scoringPenaltyRelayCluster)
+        : 0,
+      flags: isSet(object.flags) ? Number(object.flags) : 0,
+      routeExceptions: Array.isArray(object?.routeExceptions)
+        ? object.routeExceptions.map((e: any) => CMsgSteamDatagramRouterPingReply_RouteException.fromJSON(e))
+        : [],
+      altAddresses: Array.isArray(object?.altAddresses)
+        ? object.altAddresses.map((e: any) => CMsgSteamDatagramRouterPingReply_AltAddress.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramRouterPingReply): unknown {
+    const obj: any = {};
+    message.clientTimestamp !== undefined && (obj.clientTimestamp = Math.round(message.clientTimestamp));
+    if (message.latencyDatacenterIds) {
+      obj.latencyDatacenterIds = message.latencyDatacenterIds.map((e) => Math.round(e));
+    } else {
+      obj.latencyDatacenterIds = [];
+    }
+    if (message.latencyPingMs) {
+      obj.latencyPingMs = message.latencyPingMs.map((e) => Math.round(e));
+    } else {
+      obj.latencyPingMs = [];
+    }
+    if (message.latencyDatacenterIdsP2p) {
+      obj.latencyDatacenterIdsP2p = message.latencyDatacenterIdsP2p.map((e) => Math.round(e));
+    } else {
+      obj.latencyDatacenterIdsP2p = [];
+    }
+    if (message.latencyPingMsP2p) {
+      obj.latencyPingMsP2p = message.latencyPingMsP2p.map((e) => Math.round(e));
+    } else {
+      obj.latencyPingMsP2p = [];
+    }
+    message.yourPublicIp !== undefined && (obj.yourPublicIp = Math.round(message.yourPublicIp));
+    message.yourPublicPort !== undefined && (obj.yourPublicPort = Math.round(message.yourPublicPort));
+    message.serverTime !== undefined && (obj.serverTime = Math.round(message.serverTime));
+    message.challenge !== undefined && (obj.challenge = message.challenge);
+    message.secondsUntilShutdown !== undefined && (obj.secondsUntilShutdown = Math.round(message.secondsUntilShutdown));
+    message.clientCookie !== undefined && (obj.clientCookie = Math.round(message.clientCookie));
+    message.scoringPenaltyRelayCluster !== undefined &&
+      (obj.scoringPenaltyRelayCluster = Math.round(message.scoringPenaltyRelayCluster));
+    message.flags !== undefined && (obj.flags = Math.round(message.flags));
+    if (message.routeExceptions) {
+      obj.routeExceptions = message.routeExceptions.map((e) =>
+        e ? CMsgSteamDatagramRouterPingReply_RouteException.toJSON(e) : undefined
+      );
+    } else {
+      obj.routeExceptions = [];
+    }
+    if (message.altAddresses) {
+      obj.altAddresses = message.altAddresses.map((e) =>
+        e ? CMsgSteamDatagramRouterPingReply_AltAddress.toJSON(e) : undefined
+      );
+    } else {
+      obj.altAddresses = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamDatagramRouterPingReply_RouteException(): CMsgSteamDatagramRouterPingReply_RouteException {
@@ -938,6 +1578,22 @@ export const CMsgSteamDatagramRouterPingReply_RouteException = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamDatagramRouterPingReply_RouteException {
+    return {
+      dataCenterId: isSet(object.dataCenterId) ? Number(object.dataCenterId) : 0,
+      flags: isSet(object.flags) ? Number(object.flags) : 0,
+      penalty: isSet(object.penalty) ? Number(object.penalty) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramRouterPingReply_RouteException): unknown {
+    const obj: any = {};
+    message.dataCenterId !== undefined && (obj.dataCenterId = Math.round(message.dataCenterId));
+    message.flags !== undefined && (obj.flags = Math.round(message.flags));
+    message.penalty !== undefined && (obj.penalty = Math.round(message.penalty));
+    return obj;
   },
 };
 
@@ -1014,6 +1670,29 @@ export const CMsgSteamDatagramRouterPingReply_AltAddress = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamDatagramRouterPingReply_AltAddress {
+    return {
+      ipv4: isSet(object.ipv4) ? Number(object.ipv4) : 0,
+      port: isSet(object.port) ? Number(object.port) : 0,
+      penalty: isSet(object.penalty) ? Number(object.penalty) : 0,
+      protocol: isSet(object.protocol)
+        ? cMsgSteamDatagramRouterPingReply_AltAddress_ProtocolFromJSON(object.protocol)
+        : 0,
+      id: isSet(object.id) ? String(object.id) : "",
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramRouterPingReply_AltAddress): unknown {
+    const obj: any = {};
+    message.ipv4 !== undefined && (obj.ipv4 = Math.round(message.ipv4));
+    message.port !== undefined && (obj.port = Math.round(message.port));
+    message.penalty !== undefined && (obj.penalty = Math.round(message.penalty));
+    message.protocol !== undefined &&
+      (obj.protocol = cMsgSteamDatagramRouterPingReply_AltAddress_ProtocolToJSON(message.protocol));
+    message.id !== undefined && (obj.id = message.id);
+    return obj;
   },
 };
 
@@ -1118,6 +1797,36 @@ export const CMsgSteamDatagramGameserverPingRequestBody = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamDatagramGameserverPingRequestBody {
+    return {
+      relayPopid: isSet(object.relayPopid) ? Number(object.relayPopid) : 0,
+      yourPublicIp: isSet(object.yourPublicIp) ? CMsgSteamNetworkingIPAddress.fromJSON(object.yourPublicIp) : undefined,
+      yourPublicPort: isSet(object.yourPublicPort) ? Number(object.yourPublicPort) : 0,
+      relayUnixTime: isSet(object.relayUnixTime) ? String(object.relayUnixTime) : "0",
+      routingSecret: isSet(object.routingSecret) ? String(object.routingSecret) : "0",
+      myIps: Array.isArray(object?.myIps) ? object.myIps.map((e: any) => CMsgSteamNetworkingIPAddress.fromJSON(e)) : [],
+      echo: isSet(object.echo) ? Buffer.from(bytesFromBase64(object.echo)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramGameserverPingRequestBody): unknown {
+    const obj: any = {};
+    message.relayPopid !== undefined && (obj.relayPopid = Math.round(message.relayPopid));
+    message.yourPublicIp !== undefined &&
+      (obj.yourPublicIp = message.yourPublicIp ? CMsgSteamNetworkingIPAddress.toJSON(message.yourPublicIp) : undefined);
+    message.yourPublicPort !== undefined && (obj.yourPublicPort = Math.round(message.yourPublicPort));
+    message.relayUnixTime !== undefined && (obj.relayUnixTime = message.relayUnixTime);
+    message.routingSecret !== undefined && (obj.routingSecret = message.routingSecret);
+    if (message.myIps) {
+      obj.myIps = message.myIps.map((e) => e ? CMsgSteamNetworkingIPAddress.toJSON(e) : undefined);
+    } else {
+      obj.myIps = [];
+    }
+    message.echo !== undefined &&
+      (obj.echo = base64FromBytes(message.echo !== undefined ? message.echo : Buffer.alloc(0)));
+    return obj;
   },
 };
 
@@ -1247,6 +1956,39 @@ export const CMsgSteamDatagramGameserverPingRequestEnvelope = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamDatagramGameserverPingRequestEnvelope {
+    return {
+      cert: isSet(object.cert) ? CMsgSteamDatagramCertificateSigned.fromJSON(object.cert) : undefined,
+      signedData: isSet(object.signedData) ? Buffer.from(bytesFromBase64(object.signedData)) : Buffer.alloc(0),
+      signature: isSet(object.signature) ? Buffer.from(bytesFromBase64(object.signature)) : Buffer.alloc(0),
+      legacyYourPublicIp: isSet(object.legacyYourPublicIp) ? Number(object.legacyYourPublicIp) : 0,
+      legacyYourPublicPort: isSet(object.legacyYourPublicPort) ? Number(object.legacyYourPublicPort) : 0,
+      legacyRelayUnixTime: isSet(object.legacyRelayUnixTime) ? Number(object.legacyRelayUnixTime) : 0,
+      legacyChallenge: isSet(object.legacyChallenge) ? String(object.legacyChallenge) : "0",
+      legacyRouterTimestamp: isSet(object.legacyRouterTimestamp) ? Number(object.legacyRouterTimestamp) : 0,
+      dummyPad: isSet(object.dummyPad) ? Buffer.from(bytesFromBase64(object.dummyPad)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramGameserverPingRequestEnvelope): unknown {
+    const obj: any = {};
+    message.cert !== undefined &&
+      (obj.cert = message.cert ? CMsgSteamDatagramCertificateSigned.toJSON(message.cert) : undefined);
+    message.signedData !== undefined &&
+      (obj.signedData = base64FromBytes(message.signedData !== undefined ? message.signedData : Buffer.alloc(0)));
+    message.signature !== undefined &&
+      (obj.signature = base64FromBytes(message.signature !== undefined ? message.signature : Buffer.alloc(0)));
+    message.legacyYourPublicIp !== undefined && (obj.legacyYourPublicIp = Math.round(message.legacyYourPublicIp));
+    message.legacyYourPublicPort !== undefined && (obj.legacyYourPublicPort = Math.round(message.legacyYourPublicPort));
+    message.legacyRelayUnixTime !== undefined && (obj.legacyRelayUnixTime = Math.round(message.legacyRelayUnixTime));
+    message.legacyChallenge !== undefined && (obj.legacyChallenge = message.legacyChallenge);
+    message.legacyRouterTimestamp !== undefined &&
+      (obj.legacyRouterTimestamp = Math.round(message.legacyRouterTimestamp));
+    message.dummyPad !== undefined &&
+      (obj.dummyPad = base64FromBytes(message.dummyPad !== undefined ? message.dummyPad : Buffer.alloc(0)));
+    return obj;
   },
 };
 
@@ -1385,6 +2127,38 @@ export const CMsgSteamDatagramGameserverPingReplyData = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramGameserverPingReplyData {
+    return {
+      echoRelayUnixTime: isSet(object.echoRelayUnixTime) ? Number(object.echoRelayUnixTime) : 0,
+      echo: isSet(object.echo) ? Buffer.from(bytesFromBase64(object.echo)) : Buffer.alloc(0),
+      legacyChallenge: isSet(object.legacyChallenge) ? String(object.legacyChallenge) : "0",
+      legacyRouterTimestamp: isSet(object.legacyRouterTimestamp) ? Number(object.legacyRouterTimestamp) : 0,
+      dataCenterId: isSet(object.dataCenterId) ? Number(object.dataCenterId) : 0,
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      protocolVersion: isSet(object.protocolVersion) ? Number(object.protocolVersion) : 0,
+      build: isSet(object.build) ? String(object.build) : "",
+      networkConfigVersion: isSet(object.networkConfigVersion) ? String(object.networkConfigVersion) : "0",
+      myUnixTime: isSet(object.myUnixTime) ? Number(object.myUnixTime) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramGameserverPingReplyData): unknown {
+    const obj: any = {};
+    message.echoRelayUnixTime !== undefined && (obj.echoRelayUnixTime = Math.round(message.echoRelayUnixTime));
+    message.echo !== undefined &&
+      (obj.echo = base64FromBytes(message.echo !== undefined ? message.echo : Buffer.alloc(0)));
+    message.legacyChallenge !== undefined && (obj.legacyChallenge = message.legacyChallenge);
+    message.legacyRouterTimestamp !== undefined &&
+      (obj.legacyRouterTimestamp = Math.round(message.legacyRouterTimestamp));
+    message.dataCenterId !== undefined && (obj.dataCenterId = Math.round(message.dataCenterId));
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    message.protocolVersion !== undefined && (obj.protocolVersion = Math.round(message.protocolVersion));
+    message.build !== undefined && (obj.build = message.build);
+    message.networkConfigVersion !== undefined && (obj.networkConfigVersion = message.networkConfigVersion);
+    message.myUnixTime !== undefined && (obj.myUnixTime = Math.round(message.myUnixTime));
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamDatagramNoSessionRelayToClient(): CMsgSteamDatagramNoSessionRelayToClient {
@@ -1478,6 +2252,28 @@ export const CMsgSteamDatagramNoSessionRelayToClient = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramNoSessionRelayToClient {
+    return {
+      connectionId: isSet(object.connectionId) ? Number(object.connectionId) : 0,
+      yourPublicIp: isSet(object.yourPublicIp) ? Number(object.yourPublicIp) : 0,
+      yourPublicPort: isSet(object.yourPublicPort) ? Number(object.yourPublicPort) : 0,
+      serverTime: isSet(object.serverTime) ? Number(object.serverTime) : 0,
+      challenge: isSet(object.challenge) ? String(object.challenge) : "0",
+      secondsUntilShutdown: isSet(object.secondsUntilShutdown) ? Number(object.secondsUntilShutdown) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramNoSessionRelayToClient): unknown {
+    const obj: any = {};
+    message.connectionId !== undefined && (obj.connectionId = Math.round(message.connectionId));
+    message.yourPublicIp !== undefined && (obj.yourPublicIp = Math.round(message.yourPublicIp));
+    message.yourPublicPort !== undefined && (obj.yourPublicPort = Math.round(message.yourPublicPort));
+    message.serverTime !== undefined && (obj.serverTime = Math.round(message.serverTime));
+    message.challenge !== undefined && (obj.challenge = message.challenge);
+    message.secondsUntilShutdown !== undefined && (obj.secondsUntilShutdown = Math.round(message.secondsUntilShutdown));
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamDatagramNoSessionRelayToPeer(): CMsgSteamDatagramNoSessionRelayToPeer {
@@ -1544,6 +2340,24 @@ export const CMsgSteamDatagramNoSessionRelayToPeer = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramNoSessionRelayToPeer {
+    return {
+      legacyRelaySessionId: isSet(object.legacyRelaySessionId) ? Number(object.legacyRelaySessionId) : 0,
+      fromRelaySessionId: isSet(object.fromRelaySessionId) ? Number(object.fromRelaySessionId) : 0,
+      fromConnectionId: isSet(object.fromConnectionId) ? Number(object.fromConnectionId) : 0,
+      kludgePad: isSet(object.kludgePad) ? String(object.kludgePad) : "0",
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramNoSessionRelayToPeer): unknown {
+    const obj: any = {};
+    message.legacyRelaySessionId !== undefined && (obj.legacyRelaySessionId = Math.round(message.legacyRelaySessionId));
+    message.fromRelaySessionId !== undefined && (obj.fromRelaySessionId = Math.round(message.fromRelaySessionId));
+    message.fromConnectionId !== undefined && (obj.fromConnectionId = Math.round(message.fromConnectionId));
+    message.kludgePad !== undefined && (obj.kludgePad = message.kludgePad);
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamDatagramClientPingSampleRequest(): CMsgSteamDatagramClientPingSampleRequest {
@@ -1579,6 +2393,16 @@ export const CMsgSteamDatagramClientPingSampleRequest = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamDatagramClientPingSampleRequest {
+    return { connectionId: isSet(object.connectionId) ? Number(object.connectionId) : 0 };
+  },
+
+  toJSON(message: CMsgSteamDatagramClientPingSampleRequest): unknown {
+    const obj: any = {};
+    message.connectionId !== undefined && (obj.connectionId = Math.round(message.connectionId));
+    return obj;
   },
 };
 
@@ -1647,6 +2471,38 @@ export const CMsgSteamDatagramClientPingSampleReply = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamDatagramClientPingSampleReply {
+    return {
+      connectionId: isSet(object.connectionId) ? Number(object.connectionId) : 0,
+      overrideActive: isSet(object.overrideActive) ? Boolean(object.overrideActive) : false,
+      pops: Array.isArray(object?.pops)
+        ? object.pops.map((e: any) => CMsgSteamDatagramClientPingSampleReply_POP.fromJSON(e))
+        : [],
+      legacyDataCenters: Array.isArray(object?.legacyDataCenters)
+        ? object.legacyDataCenters.map((e: any) => CMsgSteamDatagramClientPingSampleReply_LegacyDataCenter.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramClientPingSampleReply): unknown {
+    const obj: any = {};
+    message.connectionId !== undefined && (obj.connectionId = Math.round(message.connectionId));
+    message.overrideActive !== undefined && (obj.overrideActive = message.overrideActive);
+    if (message.pops) {
+      obj.pops = message.pops.map((e) => e ? CMsgSteamDatagramClientPingSampleReply_POP.toJSON(e) : undefined);
+    } else {
+      obj.pops = [];
+    }
+    if (message.legacyDataCenters) {
+      obj.legacyDataCenters = message.legacyDataCenters.map((e) =>
+        e ? CMsgSteamDatagramClientPingSampleReply_LegacyDataCenter.toJSON(e) : undefined
+      );
+    } else {
+      obj.legacyDataCenters = [];
+    }
+    return obj;
   },
 };
 
@@ -1853,6 +2709,57 @@ export const CMsgSteamDatagramClientPingSampleReply_POP = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramClientPingSampleReply_POP {
+    return {
+      popId: isSet(object.popId) ? Number(object.popId) : 0,
+      defaultFrontPingMs: isSet(object.defaultFrontPingMs) ? Number(object.defaultFrontPingMs) : 0,
+      clusterPenalty: isSet(object.clusterPenalty) ? Number(object.clusterPenalty) : 0,
+      altAddresses: Array.isArray(object?.altAddresses)
+        ? object.altAddresses.map((e: any) => CMsgSteamDatagramClientPingSampleReply_POP_AltAddress.fromJSON(e))
+        : [],
+      defaultE2ePingMs: isSet(object.defaultE2ePingMs) ? Number(object.defaultE2ePingMs) : 0,
+      defaultE2eScore: isSet(object.defaultE2eScore) ? Number(object.defaultE2eScore) : 0,
+      p2pViaPeerRelayPopId: isSet(object.p2pViaPeerRelayPopId) ? Number(object.p2pViaPeerRelayPopId) : 0,
+      bestDcPingMs: isSet(object.bestDcPingMs) ? Number(object.bestDcPingMs) : 0,
+      bestDcScore: isSet(object.bestDcScore) ? Number(object.bestDcScore) : 0,
+      bestDcViaRelayPopId: isSet(object.bestDcViaRelayPopId) ? Number(object.bestDcViaRelayPopId) : 0,
+      defaultDcPingMs: isSet(object.defaultDcPingMs) ? Number(object.defaultDcPingMs) : 0,
+      defaultDcScore: isSet(object.defaultDcScore) ? Number(object.defaultDcScore) : 0,
+      defaultDcViaRelayPopId: isSet(object.defaultDcViaRelayPopId) ? Number(object.defaultDcViaRelayPopId) : 0,
+      testDcPingMs: isSet(object.testDcPingMs) ? Number(object.testDcPingMs) : 0,
+      testDcScore: isSet(object.testDcScore) ? Number(object.testDcScore) : 0,
+      testDcViaRelayPopId: isSet(object.testDcViaRelayPopId) ? Number(object.testDcViaRelayPopId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramClientPingSampleReply_POP): unknown {
+    const obj: any = {};
+    message.popId !== undefined && (obj.popId = Math.round(message.popId));
+    message.defaultFrontPingMs !== undefined && (obj.defaultFrontPingMs = Math.round(message.defaultFrontPingMs));
+    message.clusterPenalty !== undefined && (obj.clusterPenalty = Math.round(message.clusterPenalty));
+    if (message.altAddresses) {
+      obj.altAddresses = message.altAddresses.map((e) =>
+        e ? CMsgSteamDatagramClientPingSampleReply_POP_AltAddress.toJSON(e) : undefined
+      );
+    } else {
+      obj.altAddresses = [];
+    }
+    message.defaultE2ePingMs !== undefined && (obj.defaultE2ePingMs = Math.round(message.defaultE2ePingMs));
+    message.defaultE2eScore !== undefined && (obj.defaultE2eScore = Math.round(message.defaultE2eScore));
+    message.p2pViaPeerRelayPopId !== undefined && (obj.p2pViaPeerRelayPopId = Math.round(message.p2pViaPeerRelayPopId));
+    message.bestDcPingMs !== undefined && (obj.bestDcPingMs = Math.round(message.bestDcPingMs));
+    message.bestDcScore !== undefined && (obj.bestDcScore = Math.round(message.bestDcScore));
+    message.bestDcViaRelayPopId !== undefined && (obj.bestDcViaRelayPopId = Math.round(message.bestDcViaRelayPopId));
+    message.defaultDcPingMs !== undefined && (obj.defaultDcPingMs = Math.round(message.defaultDcPingMs));
+    message.defaultDcScore !== undefined && (obj.defaultDcScore = Math.round(message.defaultDcScore));
+    message.defaultDcViaRelayPopId !== undefined &&
+      (obj.defaultDcViaRelayPopId = Math.round(message.defaultDcViaRelayPopId));
+    message.testDcPingMs !== undefined && (obj.testDcPingMs = Math.round(message.testDcPingMs));
+    message.testDcScore !== undefined && (obj.testDcScore = Math.round(message.testDcScore));
+    message.testDcViaRelayPopId !== undefined && (obj.testDcViaRelayPopId = Math.round(message.testDcViaRelayPopId));
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamDatagramClientPingSampleReply_POP_AltAddress(): CMsgSteamDatagramClientPingSampleReply_POP_AltAddress {
@@ -1912,6 +2819,22 @@ export const CMsgSteamDatagramClientPingSampleReply_POP_AltAddress = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramClientPingSampleReply_POP_AltAddress {
+    return {
+      id: isSet(object.id) ? String(object.id) : "",
+      frontPingMs: isSet(object.frontPingMs) ? Number(object.frontPingMs) : 0,
+      penalty: isSet(object.penalty) ? Number(object.penalty) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramClientPingSampleReply_POP_AltAddress): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+    message.frontPingMs !== undefined && (obj.frontPingMs = Math.round(message.frontPingMs));
+    message.penalty !== undefined && (obj.penalty = Math.round(message.penalty));
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamDatagramClientPingSampleReply_LegacyDataCenter(): CMsgSteamDatagramClientPingSampleReply_LegacyDataCenter {
@@ -1970,6 +2893,22 @@ export const CMsgSteamDatagramClientPingSampleReply_LegacyDataCenter = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamDatagramClientPingSampleReply_LegacyDataCenter {
+    return {
+      dataCenterId: isSet(object.dataCenterId) ? Number(object.dataCenterId) : 0,
+      bestDcViaRelayPopId: isSet(object.bestDcViaRelayPopId) ? Number(object.bestDcViaRelayPopId) : 0,
+      bestDcPingMs: isSet(object.bestDcPingMs) ? Number(object.bestDcPingMs) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramClientPingSampleReply_LegacyDataCenter): unknown {
+    const obj: any = {};
+    message.dataCenterId !== undefined && (obj.dataCenterId = Math.round(message.dataCenterId));
+    message.bestDcViaRelayPopId !== undefined && (obj.bestDcViaRelayPopId = Math.round(message.bestDcViaRelayPopId));
+    message.bestDcPingMs !== undefined && (obj.bestDcPingMs = Math.round(message.bestDcPingMs));
+    return obj;
   },
 };
 
@@ -2137,6 +3076,57 @@ export const CMsgSteamDatagramClientSwitchedPrimary = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramClientSwitchedPrimary {
+    return {
+      connectionId: isSet(object.connectionId) ? Number(object.connectionId) : 0,
+      fromIp: isSet(object.fromIp) ? Number(object.fromIp) : 0,
+      fromPort: isSet(object.fromPort) ? Number(object.fromPort) : 0,
+      fromRouterCluster: isSet(object.fromRouterCluster) ? Number(object.fromRouterCluster) : 0,
+      fromActiveTime: isSet(object.fromActiveTime) ? Number(object.fromActiveTime) : 0,
+      fromActivePacketsRecv: isSet(object.fromActivePacketsRecv) ? Number(object.fromActivePacketsRecv) : 0,
+      fromDroppedReason: isSet(object.fromDroppedReason) ? String(object.fromDroppedReason) : "",
+      gapMs: isSet(object.gapMs) ? Number(object.gapMs) : 0,
+      fromQualityNow: isSet(object.fromQualityNow)
+        ? CMsgSteamDatagramClientSwitchedPrimary_RouterQuality.fromJSON(object.fromQualityNow)
+        : undefined,
+      toQualityNow: isSet(object.toQualityNow)
+        ? CMsgSteamDatagramClientSwitchedPrimary_RouterQuality.fromJSON(object.toQualityNow)
+        : undefined,
+      fromQualityThen: isSet(object.fromQualityThen)
+        ? CMsgSteamDatagramClientSwitchedPrimary_RouterQuality.fromJSON(object.fromQualityThen)
+        : undefined,
+      toQualityThen: isSet(object.toQualityThen)
+        ? CMsgSteamDatagramClientSwitchedPrimary_RouterQuality.fromJSON(object.toQualityThen)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramClientSwitchedPrimary): unknown {
+    const obj: any = {};
+    message.connectionId !== undefined && (obj.connectionId = Math.round(message.connectionId));
+    message.fromIp !== undefined && (obj.fromIp = Math.round(message.fromIp));
+    message.fromPort !== undefined && (obj.fromPort = Math.round(message.fromPort));
+    message.fromRouterCluster !== undefined && (obj.fromRouterCluster = Math.round(message.fromRouterCluster));
+    message.fromActiveTime !== undefined && (obj.fromActiveTime = Math.round(message.fromActiveTime));
+    message.fromActivePacketsRecv !== undefined &&
+      (obj.fromActivePacketsRecv = Math.round(message.fromActivePacketsRecv));
+    message.fromDroppedReason !== undefined && (obj.fromDroppedReason = message.fromDroppedReason);
+    message.gapMs !== undefined && (obj.gapMs = Math.round(message.gapMs));
+    message.fromQualityNow !== undefined && (obj.fromQualityNow = message.fromQualityNow
+      ? CMsgSteamDatagramClientSwitchedPrimary_RouterQuality.toJSON(message.fromQualityNow)
+      : undefined);
+    message.toQualityNow !== undefined && (obj.toQualityNow = message.toQualityNow
+      ? CMsgSteamDatagramClientSwitchedPrimary_RouterQuality.toJSON(message.toQualityNow)
+      : undefined);
+    message.fromQualityThen !== undefined && (obj.fromQualityThen = message.fromQualityThen
+      ? CMsgSteamDatagramClientSwitchedPrimary_RouterQuality.toJSON(message.fromQualityThen)
+      : undefined);
+    message.toQualityThen !== undefined && (obj.toQualityThen = message.toQualityThen
+      ? CMsgSteamDatagramClientSwitchedPrimary_RouterQuality.toJSON(message.toQualityThen)
+      : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamDatagramClientSwitchedPrimary_RouterQuality(): CMsgSteamDatagramClientSwitchedPrimary_RouterQuality {
@@ -2205,6 +3195,24 @@ export const CMsgSteamDatagramClientSwitchedPrimary_RouterQuality = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamDatagramClientSwitchedPrimary_RouterQuality {
+    return {
+      score: isSet(object.score) ? Number(object.score) : 0,
+      frontPing: isSet(object.frontPing) ? Number(object.frontPing) : 0,
+      backPing: isSet(object.backPing) ? Number(object.backPing) : 0,
+      secondsUntilDown: isSet(object.secondsUntilDown) ? Number(object.secondsUntilDown) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramClientSwitchedPrimary_RouterQuality): unknown {
+    const obj: any = {};
+    message.score !== undefined && (obj.score = Math.round(message.score));
+    message.frontPing !== undefined && (obj.frontPing = Math.round(message.frontPing));
+    message.backPing !== undefined && (obj.backPing = Math.round(message.backPing));
+    message.secondsUntilDown !== undefined && (obj.secondsUntilDown = Math.round(message.secondsUntilDown));
+    return obj;
   },
 };
 
@@ -2332,6 +3340,37 @@ export const CMsgSteamDatagramConnectRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramConnectRequest {
+    return {
+      connectionId: isSet(object.connectionId) ? Number(object.connectionId) : 0,
+      myTimestamp: isSet(object.myTimestamp) ? String(object.myTimestamp) : "0",
+      pingEstMs: isSet(object.pingEstMs) ? Number(object.pingEstMs) : 0,
+      virtualPort: isSet(object.virtualPort) ? Number(object.virtualPort) : 0,
+      gameserverRelaySessionId: isSet(object.gameserverRelaySessionId) ? Number(object.gameserverRelaySessionId) : 0,
+      crypt: isSet(object.crypt) ? CMsgSteamDatagramSessionCryptInfoSigned.fromJSON(object.crypt) : undefined,
+      cert: isSet(object.cert) ? CMsgSteamDatagramCertificateSigned.fromJSON(object.cert) : undefined,
+      routingSecret: isSet(object.routingSecret) ? String(object.routingSecret) : "0",
+      legacyClientSteamId: isSet(object.legacyClientSteamId) ? String(object.legacyClientSteamId) : "0",
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramConnectRequest): unknown {
+    const obj: any = {};
+    message.connectionId !== undefined && (obj.connectionId = Math.round(message.connectionId));
+    message.myTimestamp !== undefined && (obj.myTimestamp = message.myTimestamp);
+    message.pingEstMs !== undefined && (obj.pingEstMs = Math.round(message.pingEstMs));
+    message.virtualPort !== undefined && (obj.virtualPort = Math.round(message.virtualPort));
+    message.gameserverRelaySessionId !== undefined &&
+      (obj.gameserverRelaySessionId = Math.round(message.gameserverRelaySessionId));
+    message.crypt !== undefined &&
+      (obj.crypt = message.crypt ? CMsgSteamDatagramSessionCryptInfoSigned.toJSON(message.crypt) : undefined);
+    message.cert !== undefined &&
+      (obj.cert = message.cert ? CMsgSteamDatagramCertificateSigned.toJSON(message.cert) : undefined);
+    message.routingSecret !== undefined && (obj.routingSecret = message.routingSecret);
+    message.legacyClientSteamId !== undefined && (obj.legacyClientSteamId = message.legacyClientSteamId);
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamDatagramConnectOK(): CMsgSteamDatagramConnectOK {
@@ -2435,6 +3474,33 @@ export const CMsgSteamDatagramConnectOK = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamDatagramConnectOK {
+    return {
+      clientConnectionId: isSet(object.clientConnectionId) ? Number(object.clientConnectionId) : 0,
+      serverConnectionId: isSet(object.serverConnectionId) ? Number(object.serverConnectionId) : 0,
+      yourTimestamp: isSet(object.yourTimestamp) ? String(object.yourTimestamp) : "0",
+      delayTimeUsec: isSet(object.delayTimeUsec) ? Number(object.delayTimeUsec) : 0,
+      gameserverRelaySessionId: isSet(object.gameserverRelaySessionId) ? Number(object.gameserverRelaySessionId) : 0,
+      crypt: isSet(object.crypt) ? CMsgSteamDatagramSessionCryptInfoSigned.fromJSON(object.crypt) : undefined,
+      cert: isSet(object.cert) ? CMsgSteamDatagramCertificateSigned.fromJSON(object.cert) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramConnectOK): unknown {
+    const obj: any = {};
+    message.clientConnectionId !== undefined && (obj.clientConnectionId = Math.round(message.clientConnectionId));
+    message.serverConnectionId !== undefined && (obj.serverConnectionId = Math.round(message.serverConnectionId));
+    message.yourTimestamp !== undefined && (obj.yourTimestamp = message.yourTimestamp);
+    message.delayTimeUsec !== undefined && (obj.delayTimeUsec = Math.round(message.delayTimeUsec));
+    message.gameserverRelaySessionId !== undefined &&
+      (obj.gameserverRelaySessionId = Math.round(message.gameserverRelaySessionId));
+    message.crypt !== undefined &&
+      (obj.crypt = message.crypt ? CMsgSteamDatagramSessionCryptInfoSigned.toJSON(message.crypt) : undefined);
+    message.cert !== undefined &&
+      (obj.cert = message.cert ? CMsgSteamDatagramCertificateSigned.toJSON(message.cert) : undefined);
+    return obj;
   },
 };
 
@@ -2628,6 +3694,48 @@ export const CMsgSteamNetworkingP2PSDRRoutingSummary = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamNetworkingP2PSDRRoutingSummary {
+    return {
+      initialPing: isSet(object.initialPing) ? Number(object.initialPing) : 0,
+      initialPingFrontLocal: isSet(object.initialPingFrontLocal) ? Number(object.initialPingFrontLocal) : 0,
+      initialPingFrontRemote: isSet(object.initialPingFrontRemote) ? Number(object.initialPingFrontRemote) : 0,
+      initialScore: isSet(object.initialScore) ? Number(object.initialScore) : 0,
+      initialPopLocal: isSet(object.initialPopLocal) ? Number(object.initialPopLocal) : 0,
+      initialPopRemote: isSet(object.initialPopRemote) ? Number(object.initialPopRemote) : 0,
+      bestPing: isSet(object.bestPing) ? Number(object.bestPing) : 0,
+      bestPingFrontLocal: isSet(object.bestPingFrontLocal) ? Number(object.bestPingFrontLocal) : 0,
+      bestPingFrontRemote: isSet(object.bestPingFrontRemote) ? Number(object.bestPingFrontRemote) : 0,
+      bestScore: isSet(object.bestScore) ? Number(object.bestScore) : 0,
+      bestPopLocal: isSet(object.bestPopLocal) ? Number(object.bestPopLocal) : 0,
+      bestPopRemote: isSet(object.bestPopRemote) ? Number(object.bestPopRemote) : 0,
+      bestTime: isSet(object.bestTime) ? Number(object.bestTime) : 0,
+      negotiationMs: isSet(object.negotiationMs) ? Number(object.negotiationMs) : 0,
+      selectedSeconds: isSet(object.selectedSeconds) ? Number(object.selectedSeconds) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamNetworkingP2PSDRRoutingSummary): unknown {
+    const obj: any = {};
+    message.initialPing !== undefined && (obj.initialPing = Math.round(message.initialPing));
+    message.initialPingFrontLocal !== undefined &&
+      (obj.initialPingFrontLocal = Math.round(message.initialPingFrontLocal));
+    message.initialPingFrontRemote !== undefined &&
+      (obj.initialPingFrontRemote = Math.round(message.initialPingFrontRemote));
+    message.initialScore !== undefined && (obj.initialScore = Math.round(message.initialScore));
+    message.initialPopLocal !== undefined && (obj.initialPopLocal = Math.round(message.initialPopLocal));
+    message.initialPopRemote !== undefined && (obj.initialPopRemote = Math.round(message.initialPopRemote));
+    message.bestPing !== undefined && (obj.bestPing = Math.round(message.bestPing));
+    message.bestPingFrontLocal !== undefined && (obj.bestPingFrontLocal = Math.round(message.bestPingFrontLocal));
+    message.bestPingFrontRemote !== undefined && (obj.bestPingFrontRemote = Math.round(message.bestPingFrontRemote));
+    message.bestScore !== undefined && (obj.bestScore = Math.round(message.bestScore));
+    message.bestPopLocal !== undefined && (obj.bestPopLocal = Math.round(message.bestPopLocal));
+    message.bestPopRemote !== undefined && (obj.bestPopRemote = Math.round(message.bestPopRemote));
+    message.bestTime !== undefined && (obj.bestTime = Math.round(message.bestTime));
+    message.negotiationMs !== undefined && (obj.negotiationMs = Math.round(message.negotiationMs));
+    message.selectedSeconds !== undefined && (obj.selectedSeconds = Math.round(message.selectedSeconds));
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamDatagramP2PRoutingSummary(): CMsgSteamDatagramP2PRoutingSummary {
@@ -2673,6 +3781,22 @@ export const CMsgSteamDatagramP2PRoutingSummary = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamDatagramP2PRoutingSummary {
+    return {
+      ice: isSet(object.ice) ? CMsgSteamNetworkingICESessionSummary.fromJSON(object.ice) : undefined,
+      sdr: isSet(object.sdr) ? CMsgSteamNetworkingP2PSDRRoutingSummary.fromJSON(object.sdr) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramP2PRoutingSummary): unknown {
+    const obj: any = {};
+    message.ice !== undefined &&
+      (obj.ice = message.ice ? CMsgSteamNetworkingICESessionSummary.toJSON(message.ice) : undefined);
+    message.sdr !== undefined &&
+      (obj.sdr = message.sdr ? CMsgSteamNetworkingP2PSDRRoutingSummary.toJSON(message.sdr) : undefined);
+    return obj;
   },
 };
 
@@ -2911,6 +4035,77 @@ export const CMsgSteamDatagramConnectionClosed = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramConnectionClosed {
+    return {
+      toConnectionId: isSet(object.toConnectionId) ? Number(object.toConnectionId) : 0,
+      fromConnectionId: isSet(object.fromConnectionId) ? Number(object.fromConnectionId) : 0,
+      fromIdentityString: isSet(object.fromIdentityString) ? String(object.fromIdentityString) : "",
+      legacyFromIdentityBinary: isSet(object.legacyFromIdentityBinary)
+        ? CMsgSteamNetworkingIdentityLegacyBinary.fromJSON(object.legacyFromIdentityBinary)
+        : undefined,
+      legacyFromSteamId: isSet(object.legacyFromSteamId) ? String(object.legacyFromSteamId) : "0",
+      legacyGameserverRelaySessionId: isSet(object.legacyGameserverRelaySessionId)
+        ? Number(object.legacyGameserverRelaySessionId)
+        : 0,
+      toRelaySessionId: isSet(object.toRelaySessionId) ? Number(object.toRelaySessionId) : 0,
+      fromRelaySessionId: isSet(object.fromRelaySessionId) ? Number(object.fromRelaySessionId) : 0,
+      forwardTargetRelayRoutingToken: isSet(object.forwardTargetRelayRoutingToken)
+        ? Buffer.from(bytesFromBase64(object.forwardTargetRelayRoutingToken))
+        : Buffer.alloc(0),
+      forwardTargetRevision: isSet(object.forwardTargetRevision) ? Number(object.forwardTargetRevision) : 0,
+      relayMode: isSet(object.relayMode) ? cMsgSteamDatagramConnectionClosed_ERelayModeFromJSON(object.relayMode) : 0,
+      debug: isSet(object.debug) ? String(object.debug) : "",
+      reasonCode: isSet(object.reasonCode) ? Number(object.reasonCode) : 0,
+      routingSecret: isSet(object.routingSecret) ? String(object.routingSecret) : "0",
+      notPrimarySession: isSet(object.notPrimarySession) ? Boolean(object.notPrimarySession) : false,
+      notPrimaryTransport: isSet(object.notPrimaryTransport) ? Boolean(object.notPrimaryTransport) : false,
+      qualityRelay: isSet(object.qualityRelay)
+        ? CMsgSteamDatagramConnectionQuality.fromJSON(object.qualityRelay)
+        : undefined,
+      qualityE2e: isSet(object.qualityE2e) ? CMsgSteamDatagramConnectionQuality.fromJSON(object.qualityE2e) : undefined,
+      p2pRoutingSummary: isSet(object.p2pRoutingSummary)
+        ? CMsgSteamDatagramP2PRoutingSummary.fromJSON(object.p2pRoutingSummary)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramConnectionClosed): unknown {
+    const obj: any = {};
+    message.toConnectionId !== undefined && (obj.toConnectionId = Math.round(message.toConnectionId));
+    message.fromConnectionId !== undefined && (obj.fromConnectionId = Math.round(message.fromConnectionId));
+    message.fromIdentityString !== undefined && (obj.fromIdentityString = message.fromIdentityString);
+    message.legacyFromIdentityBinary !== undefined && (obj.legacyFromIdentityBinary = message.legacyFromIdentityBinary
+      ? CMsgSteamNetworkingIdentityLegacyBinary.toJSON(message.legacyFromIdentityBinary)
+      : undefined);
+    message.legacyFromSteamId !== undefined && (obj.legacyFromSteamId = message.legacyFromSteamId);
+    message.legacyGameserverRelaySessionId !== undefined &&
+      (obj.legacyGameserverRelaySessionId = Math.round(message.legacyGameserverRelaySessionId));
+    message.toRelaySessionId !== undefined && (obj.toRelaySessionId = Math.round(message.toRelaySessionId));
+    message.fromRelaySessionId !== undefined && (obj.fromRelaySessionId = Math.round(message.fromRelaySessionId));
+    message.forwardTargetRelayRoutingToken !== undefined &&
+      (obj.forwardTargetRelayRoutingToken = base64FromBytes(
+        message.forwardTargetRelayRoutingToken !== undefined ? message.forwardTargetRelayRoutingToken : Buffer.alloc(0),
+      ));
+    message.forwardTargetRevision !== undefined &&
+      (obj.forwardTargetRevision = Math.round(message.forwardTargetRevision));
+    message.relayMode !== undefined &&
+      (obj.relayMode = cMsgSteamDatagramConnectionClosed_ERelayModeToJSON(message.relayMode));
+    message.debug !== undefined && (obj.debug = message.debug);
+    message.reasonCode !== undefined && (obj.reasonCode = Math.round(message.reasonCode));
+    message.routingSecret !== undefined && (obj.routingSecret = message.routingSecret);
+    message.notPrimarySession !== undefined && (obj.notPrimarySession = message.notPrimarySession);
+    message.notPrimaryTransport !== undefined && (obj.notPrimaryTransport = message.notPrimaryTransport);
+    message.qualityRelay !== undefined && (obj.qualityRelay = message.qualityRelay
+      ? CMsgSteamDatagramConnectionQuality.toJSON(message.qualityRelay)
+      : undefined);
+    message.qualityE2e !== undefined &&
+      (obj.qualityE2e = message.qualityE2e ? CMsgSteamDatagramConnectionQuality.toJSON(message.qualityE2e) : undefined);
+    message.p2pRoutingSummary !== undefined && (obj.p2pRoutingSummary = message.p2pRoutingSummary
+      ? CMsgSteamDatagramP2PRoutingSummary.toJSON(message.p2pRoutingSummary)
+      : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamDatagramNoConnection(): CMsgSteamDatagramNoConnection {
@@ -3103,6 +4298,58 @@ export const CMsgSteamDatagramNoConnection = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramNoConnection {
+    return {
+      toConnectionId: isSet(object.toConnectionId) ? Number(object.toConnectionId) : 0,
+      fromConnectionId: isSet(object.fromConnectionId) ? Number(object.fromConnectionId) : 0,
+      legacyGameserverRelaySessionId: isSet(object.legacyGameserverRelaySessionId)
+        ? Number(object.legacyGameserverRelaySessionId)
+        : 0,
+      toRelaySessionId: isSet(object.toRelaySessionId) ? Number(object.toRelaySessionId) : 0,
+      fromRelaySessionId: isSet(object.fromRelaySessionId) ? Number(object.fromRelaySessionId) : 0,
+      fromIdentityString: isSet(object.fromIdentityString) ? String(object.fromIdentityString) : "",
+      legacyFromSteamId: isSet(object.legacyFromSteamId) ? String(object.legacyFromSteamId) : "0",
+      endToEnd: isSet(object.endToEnd) ? Boolean(object.endToEnd) : false,
+      notPrimarySession: isSet(object.notPrimarySession) ? Boolean(object.notPrimarySession) : false,
+      notPrimaryTransport: isSet(object.notPrimaryTransport) ? Boolean(object.notPrimaryTransport) : false,
+      qualityRelay: isSet(object.qualityRelay)
+        ? CMsgSteamDatagramConnectionQuality.fromJSON(object.qualityRelay)
+        : undefined,
+      qualityE2e: isSet(object.qualityE2e) ? CMsgSteamDatagramConnectionQuality.fromJSON(object.qualityE2e) : undefined,
+      p2pRoutingSummary: isSet(object.p2pRoutingSummary)
+        ? CMsgSteamDatagramP2PRoutingSummary.fromJSON(object.p2pRoutingSummary)
+        : undefined,
+      routingSecret: isSet(object.routingSecret) ? String(object.routingSecret) : "0",
+      dummyPad: isSet(object.dummyPad) ? Number(object.dummyPad) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramNoConnection): unknown {
+    const obj: any = {};
+    message.toConnectionId !== undefined && (obj.toConnectionId = Math.round(message.toConnectionId));
+    message.fromConnectionId !== undefined && (obj.fromConnectionId = Math.round(message.fromConnectionId));
+    message.legacyGameserverRelaySessionId !== undefined &&
+      (obj.legacyGameserverRelaySessionId = Math.round(message.legacyGameserverRelaySessionId));
+    message.toRelaySessionId !== undefined && (obj.toRelaySessionId = Math.round(message.toRelaySessionId));
+    message.fromRelaySessionId !== undefined && (obj.fromRelaySessionId = Math.round(message.fromRelaySessionId));
+    message.fromIdentityString !== undefined && (obj.fromIdentityString = message.fromIdentityString);
+    message.legacyFromSteamId !== undefined && (obj.legacyFromSteamId = message.legacyFromSteamId);
+    message.endToEnd !== undefined && (obj.endToEnd = message.endToEnd);
+    message.notPrimarySession !== undefined && (obj.notPrimarySession = message.notPrimarySession);
+    message.notPrimaryTransport !== undefined && (obj.notPrimaryTransport = message.notPrimaryTransport);
+    message.qualityRelay !== undefined && (obj.qualityRelay = message.qualityRelay
+      ? CMsgSteamDatagramConnectionQuality.toJSON(message.qualityRelay)
+      : undefined);
+    message.qualityE2e !== undefined &&
+      (obj.qualityE2e = message.qualityE2e ? CMsgSteamDatagramConnectionQuality.toJSON(message.qualityE2e) : undefined);
+    message.p2pRoutingSummary !== undefined && (obj.p2pRoutingSummary = message.p2pRoutingSummary
+      ? CMsgSteamDatagramP2PRoutingSummary.toJSON(message.p2pRoutingSummary)
+      : undefined);
+    message.routingSecret !== undefined && (obj.routingSecret = message.routingSecret);
+    message.dummyPad !== undefined && (obj.dummyPad = Math.round(message.dummyPad));
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamDatagramGameserverSessionRequest(): CMsgSteamDatagramGameserverSessionRequest {
@@ -3251,6 +4498,43 @@ export const CMsgSteamDatagramGameserverSessionRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramGameserverSessionRequest {
+    return {
+      ticket: isSet(object.ticket) ? Buffer.from(bytesFromBase64(object.ticket)) : Buffer.alloc(0),
+      challengeTime: isSet(object.challengeTime) ? Number(object.challengeTime) : 0,
+      challenge: isSet(object.challenge) ? String(object.challenge) : "0",
+      clientConnectionId: isSet(object.clientConnectionId) ? Number(object.clientConnectionId) : 0,
+      serverConnectionId: isSet(object.serverConnectionId) ? Number(object.serverConnectionId) : 0,
+      networkConfigVersion: isSet(object.networkConfigVersion) ? String(object.networkConfigVersion) : "0",
+      protocolVersion: isSet(object.protocolVersion) ? Number(object.protocolVersion) : 0,
+      platform: isSet(object.platform) ? String(object.platform) : "",
+      build: isSet(object.build) ? String(object.build) : "",
+      devGameserverIdentity: isSet(object.devGameserverIdentity) ? String(object.devGameserverIdentity) : "",
+      devClientCert: isSet(object.devClientCert)
+        ? CMsgSteamDatagramCertificateSigned.fromJSON(object.devClientCert)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramGameserverSessionRequest): unknown {
+    const obj: any = {};
+    message.ticket !== undefined &&
+      (obj.ticket = base64FromBytes(message.ticket !== undefined ? message.ticket : Buffer.alloc(0)));
+    message.challengeTime !== undefined && (obj.challengeTime = Math.round(message.challengeTime));
+    message.challenge !== undefined && (obj.challenge = message.challenge);
+    message.clientConnectionId !== undefined && (obj.clientConnectionId = Math.round(message.clientConnectionId));
+    message.serverConnectionId !== undefined && (obj.serverConnectionId = Math.round(message.serverConnectionId));
+    message.networkConfigVersion !== undefined && (obj.networkConfigVersion = message.networkConfigVersion);
+    message.protocolVersion !== undefined && (obj.protocolVersion = Math.round(message.protocolVersion));
+    message.platform !== undefined && (obj.platform = message.platform);
+    message.build !== undefined && (obj.build = message.build);
+    message.devGameserverIdentity !== undefined && (obj.devGameserverIdentity = message.devGameserverIdentity);
+    message.devClientCert !== undefined && (obj.devClientCert = message.devClientCert
+      ? CMsgSteamDatagramCertificateSigned.toJSON(message.devClientCert)
+      : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamDatagramGameserverSessionEstablished(): CMsgSteamDatagramGameserverSessionEstablished {
@@ -3343,6 +4627,33 @@ export const CMsgSteamDatagramGameserverSessionEstablished = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamDatagramGameserverSessionEstablished {
+    return {
+      connectionId: isSet(object.connectionId) ? Number(object.connectionId) : 0,
+      gameserverIdentityString: isSet(object.gameserverIdentityString) ? String(object.gameserverIdentityString) : "",
+      secondsUntilShutdown: isSet(object.secondsUntilShutdown) ? Number(object.secondsUntilShutdown) : 0,
+      seqNumR2c: isSet(object.seqNumR2c) ? Number(object.seqNumR2c) : 0,
+      dummyLegacyIdentityBinary: isSet(object.dummyLegacyIdentityBinary)
+        ? Buffer.from(bytesFromBase64(object.dummyLegacyIdentityBinary))
+        : Buffer.alloc(0),
+      legacyGameserverSteamid: isSet(object.legacyGameserverSteamid) ? String(object.legacyGameserverSteamid) : "0",
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramGameserverSessionEstablished): unknown {
+    const obj: any = {};
+    message.connectionId !== undefined && (obj.connectionId = Math.round(message.connectionId));
+    message.gameserverIdentityString !== undefined && (obj.gameserverIdentityString = message.gameserverIdentityString);
+    message.secondsUntilShutdown !== undefined && (obj.secondsUntilShutdown = Math.round(message.secondsUntilShutdown));
+    message.seqNumR2c !== undefined && (obj.seqNumR2c = Math.round(message.seqNumR2c));
+    message.dummyLegacyIdentityBinary !== undefined &&
+      (obj.dummyLegacyIdentityBinary = base64FromBytes(
+        message.dummyLegacyIdentityBinary !== undefined ? message.dummyLegacyIdentityBinary : Buffer.alloc(0),
+      ));
+    message.legacyGameserverSteamid !== undefined && (obj.legacyGameserverSteamid = message.legacyGameserverSteamid);
+    return obj;
   },
 };
 
@@ -3483,6 +4794,45 @@ export const CMsgSteamDatagramConnectionStatsClientToRouter = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamDatagramConnectionStatsClientToRouter {
+    return {
+      qualityRelay: isSet(object.qualityRelay)
+        ? CMsgSteamDatagramConnectionQuality.fromJSON(object.qualityRelay)
+        : undefined,
+      qualityE2e: isSet(object.qualityE2e) ? CMsgSteamDatagramConnectionQuality.fromJSON(object.qualityE2e) : undefined,
+      ackRelay: Array.isArray(object?.ackRelay) ? object.ackRelay.map((e: any) => Number(e)) : [],
+      legacyAckE2e: Array.isArray(object?.legacyAckE2e) ? object.legacyAckE2e.map((e: any) => Number(e)) : [],
+      flags: isSet(object.flags) ? Number(object.flags) : 0,
+      clientConnectionId: isSet(object.clientConnectionId) ? Number(object.clientConnectionId) : 0,
+      seqNumC2r: isSet(object.seqNumC2r) ? Number(object.seqNumC2r) : 0,
+      seqNumE2e: isSet(object.seqNumE2e) ? Number(object.seqNumE2e) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramConnectionStatsClientToRouter): unknown {
+    const obj: any = {};
+    message.qualityRelay !== undefined && (obj.qualityRelay = message.qualityRelay
+      ? CMsgSteamDatagramConnectionQuality.toJSON(message.qualityRelay)
+      : undefined);
+    message.qualityE2e !== undefined &&
+      (obj.qualityE2e = message.qualityE2e ? CMsgSteamDatagramConnectionQuality.toJSON(message.qualityE2e) : undefined);
+    if (message.ackRelay) {
+      obj.ackRelay = message.ackRelay.map((e) => Math.round(e));
+    } else {
+      obj.ackRelay = [];
+    }
+    if (message.legacyAckE2e) {
+      obj.legacyAckE2e = message.legacyAckE2e.map((e) => Math.round(e));
+    } else {
+      obj.legacyAckE2e = [];
+    }
+    message.flags !== undefined && (obj.flags = Math.round(message.flags));
+    message.clientConnectionId !== undefined && (obj.clientConnectionId = Math.round(message.clientConnectionId));
+    message.seqNumC2r !== undefined && (obj.seqNumC2r = Math.round(message.seqNumC2r));
+    message.seqNumE2e !== undefined && (obj.seqNumE2e = Math.round(message.seqNumE2e));
+    return obj;
   },
 };
 
@@ -3667,6 +5017,56 @@ export const CMsgSteamDatagramConnectionStatsRouterToClient = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamDatagramConnectionStatsRouterToClient {
+    return {
+      qualityRelay: isSet(object.qualityRelay)
+        ? CMsgSteamDatagramConnectionQuality.fromJSON(object.qualityRelay)
+        : undefined,
+      qualityE2e: isSet(object.qualityE2e) ? CMsgSteamDatagramConnectionQuality.fromJSON(object.qualityE2e) : undefined,
+      secondsUntilShutdown: isSet(object.secondsUntilShutdown) ? Number(object.secondsUntilShutdown) : 0,
+      migrateRequestIp: isSet(object.migrateRequestIp) ? Number(object.migrateRequestIp) : 0,
+      migrateRequestPort: isSet(object.migrateRequestPort) ? Number(object.migrateRequestPort) : 0,
+      scoringPenaltyRelayCluster: isSet(object.scoringPenaltyRelayCluster)
+        ? Number(object.scoringPenaltyRelayCluster)
+        : 0,
+      ackRelay: Array.isArray(object?.ackRelay) ? object.ackRelay.map((e: any) => Number(e)) : [],
+      legacyAckE2e: Array.isArray(object?.legacyAckE2e) ? object.legacyAckE2e.map((e: any) => Number(e)) : [],
+      flags: isSet(object.flags) ? Number(object.flags) : 0,
+      clientConnectionId: isSet(object.clientConnectionId) ? Number(object.clientConnectionId) : 0,
+      seqNumR2c: isSet(object.seqNumR2c) ? Number(object.seqNumR2c) : 0,
+      seqNumE2e: isSet(object.seqNumE2e) ? Number(object.seqNumE2e) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramConnectionStatsRouterToClient): unknown {
+    const obj: any = {};
+    message.qualityRelay !== undefined && (obj.qualityRelay = message.qualityRelay
+      ? CMsgSteamDatagramConnectionQuality.toJSON(message.qualityRelay)
+      : undefined);
+    message.qualityE2e !== undefined &&
+      (obj.qualityE2e = message.qualityE2e ? CMsgSteamDatagramConnectionQuality.toJSON(message.qualityE2e) : undefined);
+    message.secondsUntilShutdown !== undefined && (obj.secondsUntilShutdown = Math.round(message.secondsUntilShutdown));
+    message.migrateRequestIp !== undefined && (obj.migrateRequestIp = Math.round(message.migrateRequestIp));
+    message.migrateRequestPort !== undefined && (obj.migrateRequestPort = Math.round(message.migrateRequestPort));
+    message.scoringPenaltyRelayCluster !== undefined &&
+      (obj.scoringPenaltyRelayCluster = Math.round(message.scoringPenaltyRelayCluster));
+    if (message.ackRelay) {
+      obj.ackRelay = message.ackRelay.map((e) => Math.round(e));
+    } else {
+      obj.ackRelay = [];
+    }
+    if (message.legacyAckE2e) {
+      obj.legacyAckE2e = message.legacyAckE2e.map((e) => Math.round(e));
+    } else {
+      obj.legacyAckE2e = [];
+    }
+    message.flags !== undefined && (obj.flags = Math.round(message.flags));
+    message.clientConnectionId !== undefined && (obj.clientConnectionId = Math.round(message.clientConnectionId));
+    message.seqNumR2c !== undefined && (obj.seqNumR2c = Math.round(message.seqNumR2c));
+    message.seqNumE2e !== undefined && (obj.seqNumE2e = Math.round(message.seqNumE2e));
+    return obj;
   },
 };
 
@@ -3863,6 +5263,55 @@ export const CMsgSteamDatagramConnectionStatsRouterToServer = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramConnectionStatsRouterToServer {
+    return {
+      qualityRelay: isSet(object.qualityRelay)
+        ? CMsgSteamDatagramConnectionQuality.fromJSON(object.qualityRelay)
+        : undefined,
+      qualityE2e: isSet(object.qualityE2e) ? CMsgSteamDatagramConnectionQuality.fromJSON(object.qualityE2e) : undefined,
+      ackRelay: Array.isArray(object?.ackRelay) ? object.ackRelay.map((e: any) => Number(e)) : [],
+      legacyAckE2e: Array.isArray(object?.legacyAckE2e) ? object.legacyAckE2e.map((e: any) => Number(e)) : [],
+      flags: isSet(object.flags) ? Number(object.flags) : 0,
+      seqNumR2s: isSet(object.seqNumR2s) ? Number(object.seqNumR2s) : 0,
+      seqNumE2e: isSet(object.seqNumE2e) ? Number(object.seqNumE2e) : 0,
+      clientIdentityString: isSet(object.clientIdentityString) ? String(object.clientIdentityString) : "",
+      legacyClientSteamId: isSet(object.legacyClientSteamId) ? String(object.legacyClientSteamId) : "0",
+      relaySessionId: isSet(object.relaySessionId) ? Number(object.relaySessionId) : 0,
+      clientConnectionId: isSet(object.clientConnectionId) ? Number(object.clientConnectionId) : 0,
+      serverConnectionId: isSet(object.serverConnectionId) ? Number(object.serverConnectionId) : 0,
+      routingSecret: isSet(object.routingSecret) ? String(object.routingSecret) : "0",
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramConnectionStatsRouterToServer): unknown {
+    const obj: any = {};
+    message.qualityRelay !== undefined && (obj.qualityRelay = message.qualityRelay
+      ? CMsgSteamDatagramConnectionQuality.toJSON(message.qualityRelay)
+      : undefined);
+    message.qualityE2e !== undefined &&
+      (obj.qualityE2e = message.qualityE2e ? CMsgSteamDatagramConnectionQuality.toJSON(message.qualityE2e) : undefined);
+    if (message.ackRelay) {
+      obj.ackRelay = message.ackRelay.map((e) => Math.round(e));
+    } else {
+      obj.ackRelay = [];
+    }
+    if (message.legacyAckE2e) {
+      obj.legacyAckE2e = message.legacyAckE2e.map((e) => Math.round(e));
+    } else {
+      obj.legacyAckE2e = [];
+    }
+    message.flags !== undefined && (obj.flags = Math.round(message.flags));
+    message.seqNumR2s !== undefined && (obj.seqNumR2s = Math.round(message.seqNumR2s));
+    message.seqNumE2e !== undefined && (obj.seqNumE2e = Math.round(message.seqNumE2e));
+    message.clientIdentityString !== undefined && (obj.clientIdentityString = message.clientIdentityString);
+    message.legacyClientSteamId !== undefined && (obj.legacyClientSteamId = message.legacyClientSteamId);
+    message.relaySessionId !== undefined && (obj.relaySessionId = Math.round(message.relaySessionId));
+    message.clientConnectionId !== undefined && (obj.clientConnectionId = Math.round(message.clientConnectionId));
+    message.serverConnectionId !== undefined && (obj.serverConnectionId = Math.round(message.serverConnectionId));
+    message.routingSecret !== undefined && (obj.routingSecret = message.routingSecret);
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamDatagramConnectionStatsServerToRouter(): CMsgSteamDatagramConnectionStatsServerToRouter {
@@ -4024,6 +5473,49 @@ export const CMsgSteamDatagramConnectionStatsServerToRouter = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamDatagramConnectionStatsServerToRouter {
+    return {
+      qualityRelay: isSet(object.qualityRelay)
+        ? CMsgSteamDatagramConnectionQuality.fromJSON(object.qualityRelay)
+        : undefined,
+      qualityE2e: isSet(object.qualityE2e) ? CMsgSteamDatagramConnectionQuality.fromJSON(object.qualityE2e) : undefined,
+      ackRelay: Array.isArray(object?.ackRelay) ? object.ackRelay.map((e: any) => Number(e)) : [],
+      legacyAckE2e: Array.isArray(object?.legacyAckE2e) ? object.legacyAckE2e.map((e: any) => Number(e)) : [],
+      flags: isSet(object.flags) ? Number(object.flags) : 0,
+      seqNumS2r: isSet(object.seqNumS2r) ? Number(object.seqNumS2r) : 0,
+      seqNumE2e: isSet(object.seqNumE2e) ? Number(object.seqNumE2e) : 0,
+      relaySessionId: isSet(object.relaySessionId) ? Number(object.relaySessionId) : 0,
+      clientConnectionId: isSet(object.clientConnectionId) ? Number(object.clientConnectionId) : 0,
+      serverConnectionId: isSet(object.serverConnectionId) ? Number(object.serverConnectionId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramConnectionStatsServerToRouter): unknown {
+    const obj: any = {};
+    message.qualityRelay !== undefined && (obj.qualityRelay = message.qualityRelay
+      ? CMsgSteamDatagramConnectionQuality.toJSON(message.qualityRelay)
+      : undefined);
+    message.qualityE2e !== undefined &&
+      (obj.qualityE2e = message.qualityE2e ? CMsgSteamDatagramConnectionQuality.toJSON(message.qualityE2e) : undefined);
+    if (message.ackRelay) {
+      obj.ackRelay = message.ackRelay.map((e) => Math.round(e));
+    } else {
+      obj.ackRelay = [];
+    }
+    if (message.legacyAckE2e) {
+      obj.legacyAckE2e = message.legacyAckE2e.map((e) => Math.round(e));
+    } else {
+      obj.legacyAckE2e = [];
+    }
+    message.flags !== undefined && (obj.flags = Math.round(message.flags));
+    message.seqNumS2r !== undefined && (obj.seqNumS2r = Math.round(message.seqNumS2r));
+    message.seqNumE2e !== undefined && (obj.seqNumE2e = Math.round(message.seqNumE2e));
+    message.relaySessionId !== undefined && (obj.relaySessionId = Math.round(message.relaySessionId));
+    message.clientConnectionId !== undefined && (obj.clientConnectionId = Math.round(message.clientConnectionId));
+    message.serverConnectionId !== undefined && (obj.serverConnectionId = Math.round(message.serverConnectionId));
+    return obj;
   },
 };
 
@@ -4195,6 +5687,53 @@ export const CMsgSteamDatagramP2PSessionRequestBody = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramP2PSessionRequestBody {
+    return {
+      challengeTime: isSet(object.challengeTime) ? Number(object.challengeTime) : 0,
+      challenge: isSet(object.challenge) ? String(object.challenge) : "0",
+      clientConnectionId: isSet(object.clientConnectionId) ? Number(object.clientConnectionId) : 0,
+      legacyPeerSteamId: isSet(object.legacyPeerSteamId) ? String(object.legacyPeerSteamId) : "0",
+      peerIdentityString: isSet(object.peerIdentityString) ? String(object.peerIdentityString) : "",
+      peerConnectionId: isSet(object.peerConnectionId) ? Number(object.peerConnectionId) : 0,
+      encryptedData: isSet(object.encryptedData) ? Buffer.from(bytesFromBase64(object.encryptedData)) : Buffer.alloc(0),
+      encryptionYourPublicKeyLeadByte: isSet(object.encryptionYourPublicKeyLeadByte)
+        ? Number(object.encryptionYourPublicKeyLeadByte)
+        : 0,
+      encryptionMyEphemeralPublicKey: isSet(object.encryptionMyEphemeralPublicKey)
+        ? Buffer.from(bytesFromBase64(object.encryptionMyEphemeralPublicKey))
+        : Buffer.alloc(0),
+      protocolVersion: isSet(object.protocolVersion) ? Number(object.protocolVersion) : 0,
+      networkConfigVersion: isSet(object.networkConfigVersion) ? String(object.networkConfigVersion) : "0",
+      platform: isSet(object.platform) ? String(object.platform) : "",
+      build: isSet(object.build) ? String(object.build) : "",
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramP2PSessionRequestBody): unknown {
+    const obj: any = {};
+    message.challengeTime !== undefined && (obj.challengeTime = Math.round(message.challengeTime));
+    message.challenge !== undefined && (obj.challenge = message.challenge);
+    message.clientConnectionId !== undefined && (obj.clientConnectionId = Math.round(message.clientConnectionId));
+    message.legacyPeerSteamId !== undefined && (obj.legacyPeerSteamId = message.legacyPeerSteamId);
+    message.peerIdentityString !== undefined && (obj.peerIdentityString = message.peerIdentityString);
+    message.peerConnectionId !== undefined && (obj.peerConnectionId = Math.round(message.peerConnectionId));
+    message.encryptedData !== undefined &&
+      (obj.encryptedData = base64FromBytes(
+        message.encryptedData !== undefined ? message.encryptedData : Buffer.alloc(0),
+      ));
+    message.encryptionYourPublicKeyLeadByte !== undefined &&
+      (obj.encryptionYourPublicKeyLeadByte = Math.round(message.encryptionYourPublicKeyLeadByte));
+    message.encryptionMyEphemeralPublicKey !== undefined &&
+      (obj.encryptionMyEphemeralPublicKey = base64FromBytes(
+        message.encryptionMyEphemeralPublicKey !== undefined ? message.encryptionMyEphemeralPublicKey : Buffer.alloc(0),
+      ));
+    message.protocolVersion !== undefined && (obj.protocolVersion = Math.round(message.protocolVersion));
+    message.networkConfigVersion !== undefined && (obj.networkConfigVersion = message.networkConfigVersion);
+    message.platform !== undefined && (obj.platform = message.platform);
+    message.build !== undefined && (obj.build = message.build);
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamDatagramP2PSessionRequestBody_EncryptedData(): CMsgSteamDatagramP2PSessionRequestBody_EncryptedData {
@@ -4233,6 +5772,16 @@ export const CMsgSteamDatagramP2PSessionRequestBody_EncryptedData = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamDatagramP2PSessionRequestBody_EncryptedData {
+    return { peerIdentityString: isSet(object.peerIdentityString) ? String(object.peerIdentityString) : "" };
+  },
+
+  toJSON(message: CMsgSteamDatagramP2PSessionRequestBody_EncryptedData): unknown {
+    const obj: any = {};
+    message.peerIdentityString !== undefined && (obj.peerIdentityString = message.peerIdentityString);
+    return obj;
   },
 };
 
@@ -4289,6 +5838,25 @@ export const CMsgSteamDatagramP2PSessionRequest = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamDatagramP2PSessionRequest {
+    return {
+      cert: isSet(object.cert) ? CMsgSteamDatagramCertificateSigned.fromJSON(object.cert) : undefined,
+      body: isSet(object.body) ? Buffer.from(bytesFromBase64(object.body)) : Buffer.alloc(0),
+      signature: isSet(object.signature) ? Buffer.from(bytesFromBase64(object.signature)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramP2PSessionRequest): unknown {
+    const obj: any = {};
+    message.cert !== undefined &&
+      (obj.cert = message.cert ? CMsgSteamDatagramCertificateSigned.toJSON(message.cert) : undefined);
+    message.body !== undefined &&
+      (obj.body = base64FromBytes(message.body !== undefined ? message.body : Buffer.alloc(0)));
+    message.signature !== undefined &&
+      (obj.signature = base64FromBytes(message.signature !== undefined ? message.signature : Buffer.alloc(0)));
+    return obj;
   },
 };
 
@@ -4355,6 +5923,29 @@ export const CMsgSteamDatagramP2PSessionEstablished = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamDatagramP2PSessionEstablished {
+    return {
+      connectionId: isSet(object.connectionId) ? Number(object.connectionId) : 0,
+      secondsUntilShutdown: isSet(object.secondsUntilShutdown) ? Number(object.secondsUntilShutdown) : 0,
+      relayRoutingToken: isSet(object.relayRoutingToken)
+        ? Buffer.from(bytesFromBase64(object.relayRoutingToken))
+        : Buffer.alloc(0),
+      seqNumR2c: isSet(object.seqNumR2c) ? Number(object.seqNumR2c) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramP2PSessionEstablished): unknown {
+    const obj: any = {};
+    message.connectionId !== undefined && (obj.connectionId = Math.round(message.connectionId));
+    message.secondsUntilShutdown !== undefined && (obj.secondsUntilShutdown = Math.round(message.secondsUntilShutdown));
+    message.relayRoutingToken !== undefined &&
+      (obj.relayRoutingToken = base64FromBytes(
+        message.relayRoutingToken !== undefined ? message.relayRoutingToken : Buffer.alloc(0),
+      ));
+    message.seqNumR2c !== undefined && (obj.seqNumR2c = Math.round(message.seqNumR2c));
+    return obj;
   },
 };
 
@@ -4550,6 +6141,67 @@ export const CMsgSteamDatagramConnectionStatsP2PClientToRouter = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamDatagramConnectionStatsP2PClientToRouter {
+    return {
+      qualityRelay: isSet(object.qualityRelay)
+        ? CMsgSteamDatagramConnectionQuality.fromJSON(object.qualityRelay)
+        : undefined,
+      qualityE2e: isSet(object.qualityE2e) ? CMsgSteamDatagramConnectionQuality.fromJSON(object.qualityE2e) : undefined,
+      p2pRoutingSummary: isSet(object.p2pRoutingSummary)
+        ? CMsgSteamDatagramP2PRoutingSummary.fromJSON(object.p2pRoutingSummary)
+        : undefined,
+      ackRelay: Array.isArray(object?.ackRelay) ? object.ackRelay.map((e: any) => Number(e)) : [],
+      legacyAckE2e: Array.isArray(object?.legacyAckE2e) ? object.legacyAckE2e.map((e: any) => Number(e)) : [],
+      flags: isSet(object.flags) ? Number(object.flags) : 0,
+      forwardTargetRelayRoutingToken: isSet(object.forwardTargetRelayRoutingToken)
+        ? Buffer.from(bytesFromBase64(object.forwardTargetRelayRoutingToken))
+        : Buffer.alloc(0),
+      forwardTargetRevision: isSet(object.forwardTargetRevision) ? Number(object.forwardTargetRevision) : 0,
+      routes: isSet(object.routes) ? Buffer.from(bytesFromBase64(object.routes)) : Buffer.alloc(0),
+      ackPeerRoutesRevision: isSet(object.ackPeerRoutesRevision) ? Number(object.ackPeerRoutesRevision) : 0,
+      connectionId: isSet(object.connectionId) ? Number(object.connectionId) : 0,
+      seqNumC2r: isSet(object.seqNumC2r) ? Number(object.seqNumC2r) : 0,
+      seqNumE2e: isSet(object.seqNumE2e) ? Number(object.seqNumE2e) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramConnectionStatsP2PClientToRouter): unknown {
+    const obj: any = {};
+    message.qualityRelay !== undefined && (obj.qualityRelay = message.qualityRelay
+      ? CMsgSteamDatagramConnectionQuality.toJSON(message.qualityRelay)
+      : undefined);
+    message.qualityE2e !== undefined &&
+      (obj.qualityE2e = message.qualityE2e ? CMsgSteamDatagramConnectionQuality.toJSON(message.qualityE2e) : undefined);
+    message.p2pRoutingSummary !== undefined && (obj.p2pRoutingSummary = message.p2pRoutingSummary
+      ? CMsgSteamDatagramP2PRoutingSummary.toJSON(message.p2pRoutingSummary)
+      : undefined);
+    if (message.ackRelay) {
+      obj.ackRelay = message.ackRelay.map((e) => Math.round(e));
+    } else {
+      obj.ackRelay = [];
+    }
+    if (message.legacyAckE2e) {
+      obj.legacyAckE2e = message.legacyAckE2e.map((e) => Math.round(e));
+    } else {
+      obj.legacyAckE2e = [];
+    }
+    message.flags !== undefined && (obj.flags = Math.round(message.flags));
+    message.forwardTargetRelayRoutingToken !== undefined &&
+      (obj.forwardTargetRelayRoutingToken = base64FromBytes(
+        message.forwardTargetRelayRoutingToken !== undefined ? message.forwardTargetRelayRoutingToken : Buffer.alloc(0),
+      ));
+    message.forwardTargetRevision !== undefined &&
+      (obj.forwardTargetRevision = Math.round(message.forwardTargetRevision));
+    message.routes !== undefined &&
+      (obj.routes = base64FromBytes(message.routes !== undefined ? message.routes : Buffer.alloc(0)));
+    message.ackPeerRoutesRevision !== undefined &&
+      (obj.ackPeerRoutesRevision = Math.round(message.ackPeerRoutesRevision));
+    message.connectionId !== undefined && (obj.connectionId = Math.round(message.connectionId));
+    message.seqNumC2r !== undefined && (obj.seqNumC2r = Math.round(message.seqNumC2r));
+    message.seqNumE2e !== undefined && (obj.seqNumE2e = Math.round(message.seqNumE2e));
+    return obj;
   },
 };
 
@@ -4768,6 +6420,65 @@ export const CMsgSteamDatagramConnectionStatsP2PRouterToClient = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramConnectionStatsP2PRouterToClient {
+    return {
+      qualityRelay: isSet(object.qualityRelay)
+        ? CMsgSteamDatagramConnectionQuality.fromJSON(object.qualityRelay)
+        : undefined,
+      qualityE2e: isSet(object.qualityE2e) ? CMsgSteamDatagramConnectionQuality.fromJSON(object.qualityE2e) : undefined,
+      secondsUntilShutdown: isSet(object.secondsUntilShutdown) ? Number(object.secondsUntilShutdown) : 0,
+      migrateRequestIp: isSet(object.migrateRequestIp) ? Number(object.migrateRequestIp) : 0,
+      migrateRequestPort: isSet(object.migrateRequestPort) ? Number(object.migrateRequestPort) : 0,
+      scoringPenaltyRelayCluster: isSet(object.scoringPenaltyRelayCluster)
+        ? Number(object.scoringPenaltyRelayCluster)
+        : 0,
+      ackRelay: Array.isArray(object?.ackRelay) ? object.ackRelay.map((e: any) => Number(e)) : [],
+      legacyAckE2e: Array.isArray(object?.legacyAckE2e) ? object.legacyAckE2e.map((e: any) => Number(e)) : [],
+      flags: isSet(object.flags) ? Number(object.flags) : 0,
+      ackForwardTargetRevision: isSet(object.ackForwardTargetRevision) ? Number(object.ackForwardTargetRevision) : 0,
+      routes: isSet(object.routes) ? Buffer.from(bytesFromBase64(object.routes)) : Buffer.alloc(0),
+      ackPeerRoutesRevision: isSet(object.ackPeerRoutesRevision) ? Number(object.ackPeerRoutesRevision) : 0,
+      connectionId: isSet(object.connectionId) ? Number(object.connectionId) : 0,
+      seqNumR2c: isSet(object.seqNumR2c) ? Number(object.seqNumR2c) : 0,
+      seqNumE2e: isSet(object.seqNumE2e) ? Number(object.seqNumE2e) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramConnectionStatsP2PRouterToClient): unknown {
+    const obj: any = {};
+    message.qualityRelay !== undefined && (obj.qualityRelay = message.qualityRelay
+      ? CMsgSteamDatagramConnectionQuality.toJSON(message.qualityRelay)
+      : undefined);
+    message.qualityE2e !== undefined &&
+      (obj.qualityE2e = message.qualityE2e ? CMsgSteamDatagramConnectionQuality.toJSON(message.qualityE2e) : undefined);
+    message.secondsUntilShutdown !== undefined && (obj.secondsUntilShutdown = Math.round(message.secondsUntilShutdown));
+    message.migrateRequestIp !== undefined && (obj.migrateRequestIp = Math.round(message.migrateRequestIp));
+    message.migrateRequestPort !== undefined && (obj.migrateRequestPort = Math.round(message.migrateRequestPort));
+    message.scoringPenaltyRelayCluster !== undefined &&
+      (obj.scoringPenaltyRelayCluster = Math.round(message.scoringPenaltyRelayCluster));
+    if (message.ackRelay) {
+      obj.ackRelay = message.ackRelay.map((e) => Math.round(e));
+    } else {
+      obj.ackRelay = [];
+    }
+    if (message.legacyAckE2e) {
+      obj.legacyAckE2e = message.legacyAckE2e.map((e) => Math.round(e));
+    } else {
+      obj.legacyAckE2e = [];
+    }
+    message.flags !== undefined && (obj.flags = Math.round(message.flags));
+    message.ackForwardTargetRevision !== undefined &&
+      (obj.ackForwardTargetRevision = Math.round(message.ackForwardTargetRevision));
+    message.routes !== undefined &&
+      (obj.routes = base64FromBytes(message.routes !== undefined ? message.routes : Buffer.alloc(0)));
+    message.ackPeerRoutesRevision !== undefined &&
+      (obj.ackPeerRoutesRevision = Math.round(message.ackPeerRoutesRevision));
+    message.connectionId !== undefined && (obj.connectionId = Math.round(message.connectionId));
+    message.seqNumR2c !== undefined && (obj.seqNumR2c = Math.round(message.seqNumR2c));
+    message.seqNumE2e !== undefined && (obj.seqNumE2e = Math.round(message.seqNumE2e));
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamDatagramP2PBadRouteRouterToClient(): CMsgSteamDatagramP2PBadRouteRouterToClient {
@@ -4834,6 +6545,30 @@ export const CMsgSteamDatagramP2PBadRouteRouterToClient = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramP2PBadRouteRouterToClient {
+    return {
+      connectionId: isSet(object.connectionId) ? Number(object.connectionId) : 0,
+      failedRelayRoutingToken: isSet(object.failedRelayRoutingToken)
+        ? Buffer.from(bytesFromBase64(object.failedRelayRoutingToken))
+        : Buffer.alloc(0),
+      ackForwardTargetRevision: isSet(object.ackForwardTargetRevision) ? Number(object.ackForwardTargetRevision) : 0,
+      kludgePad: isSet(object.kludgePad) ? String(object.kludgePad) : "0",
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramP2PBadRouteRouterToClient): unknown {
+    const obj: any = {};
+    message.connectionId !== undefined && (obj.connectionId = Math.round(message.connectionId));
+    message.failedRelayRoutingToken !== undefined &&
+      (obj.failedRelayRoutingToken = base64FromBytes(
+        message.failedRelayRoutingToken !== undefined ? message.failedRelayRoutingToken : Buffer.alloc(0),
+      ));
+    message.ackForwardTargetRevision !== undefined &&
+      (obj.ackForwardTargetRevision = Math.round(message.ackForwardTargetRevision));
+    message.kludgePad !== undefined && (obj.kludgePad = message.kludgePad);
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamDatagramP2PRoutes(): CMsgSteamDatagramP2PRoutes {
@@ -4889,6 +6624,36 @@ export const CMsgSteamDatagramP2PRoutes = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamDatagramP2PRoutes {
+    return {
+      relayClusters: Array.isArray(object?.relayClusters)
+        ? object.relayClusters.map((e: any) => CMsgSteamDatagramP2PRoutes_RelayCluster.fromJSON(e))
+        : [],
+      routes: Array.isArray(object?.routes)
+        ? object.routes.map((e: any) => CMsgSteamDatagramP2PRoutes_Route.fromJSON(e))
+        : [],
+      revision: isSet(object.revision) ? Number(object.revision) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramP2PRoutes): unknown {
+    const obj: any = {};
+    if (message.relayClusters) {
+      obj.relayClusters = message.relayClusters.map((e) =>
+        e ? CMsgSteamDatagramP2PRoutes_RelayCluster.toJSON(e) : undefined
+      );
+    } else {
+      obj.relayClusters = [];
+    }
+    if (message.routes) {
+      obj.routes = message.routes.map((e) => e ? CMsgSteamDatagramP2PRoutes_Route.toJSON(e) : undefined);
+    } else {
+      obj.routes = [];
+    }
+    message.revision !== undefined && (obj.revision = Math.round(message.revision));
+    return obj;
   },
 };
 
@@ -4956,6 +6721,29 @@ export const CMsgSteamDatagramP2PRoutes_RelayCluster = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramP2PRoutes_RelayCluster {
+    return {
+      popId: isSet(object.popId) ? Number(object.popId) : 0,
+      pingMs: isSet(object.pingMs) ? Number(object.pingMs) : 0,
+      scorePenalty: isSet(object.scorePenalty) ? Number(object.scorePenalty) : 0,
+      sessionRelayRoutingToken: isSet(object.sessionRelayRoutingToken)
+        ? Buffer.from(bytesFromBase64(object.sessionRelayRoutingToken))
+        : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramP2PRoutes_RelayCluster): unknown {
+    const obj: any = {};
+    message.popId !== undefined && (obj.popId = Math.round(message.popId));
+    message.pingMs !== undefined && (obj.pingMs = Math.round(message.pingMs));
+    message.scorePenalty !== undefined && (obj.scorePenalty = Math.round(message.scorePenalty));
+    message.sessionRelayRoutingToken !== undefined &&
+      (obj.sessionRelayRoutingToken = base64FromBytes(
+        message.sessionRelayRoutingToken !== undefined ? message.sessionRelayRoutingToken : Buffer.alloc(0),
+      ));
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamDatagramP2PRoutes_Route(): CMsgSteamDatagramP2PRoutes_Route {
@@ -5021,6 +6809,24 @@ export const CMsgSteamDatagramP2PRoutes_Route = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamDatagramP2PRoutes_Route {
+    return {
+      myPopId: isSet(object.myPopId) ? Number(object.myPopId) : 0,
+      yourPopId: isSet(object.yourPopId) ? Number(object.yourPopId) : 0,
+      legacyScore: isSet(object.legacyScore) ? Number(object.legacyScore) : 0,
+      interiorScore: isSet(object.interiorScore) ? Number(object.interiorScore) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramP2PRoutes_Route): unknown {
+    const obj: any = {};
+    message.myPopId !== undefined && (obj.myPopId = Math.round(message.myPopId));
+    message.yourPopId !== undefined && (obj.yourPopId = Math.round(message.yourPopId));
+    message.legacyScore !== undefined && (obj.legacyScore = Math.round(message.legacyScore));
+    message.interiorScore !== undefined && (obj.interiorScore = Math.round(message.interiorScore));
+    return obj;
   },
 };
 
@@ -5115,6 +6921,29 @@ export const CMsgSteamDatagramSetSecondaryAddressRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramSetSecondaryAddressRequest {
+    return {
+      clientMainIp: isSet(object.clientMainIp) ? Number(object.clientMainIp) : 0,
+      clientMainPort: isSet(object.clientMainPort) ? Number(object.clientMainPort) : 0,
+      clientConnectionId: isSet(object.clientConnectionId) ? Number(object.clientConnectionId) : 0,
+      clientIdentity: isSet(object.clientIdentity) ? String(object.clientIdentity) : "",
+      requestSendDuplication: isSet(object.requestSendDuplication) ? Boolean(object.requestSendDuplication) : false,
+      kludgePad: isSet(object.kludgePad) ? Buffer.from(bytesFromBase64(object.kludgePad)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramSetSecondaryAddressRequest): unknown {
+    const obj: any = {};
+    message.clientMainIp !== undefined && (obj.clientMainIp = Math.round(message.clientMainIp));
+    message.clientMainPort !== undefined && (obj.clientMainPort = Math.round(message.clientMainPort));
+    message.clientConnectionId !== undefined && (obj.clientConnectionId = Math.round(message.clientConnectionId));
+    message.clientIdentity !== undefined && (obj.clientIdentity = message.clientIdentity);
+    message.requestSendDuplication !== undefined && (obj.requestSendDuplication = message.requestSendDuplication);
+    message.kludgePad !== undefined &&
+      (obj.kludgePad = base64FromBytes(message.kludgePad !== undefined ? message.kludgePad : Buffer.alloc(0)));
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamDatagramSetSecondaryAddressResult(): CMsgSteamDatagramSetSecondaryAddressResult {
@@ -5161,7 +6990,65 @@ export const CMsgSteamDatagramSetSecondaryAddressResult = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramSetSecondaryAddressResult {
+    return {
+      success: isSet(object.success) ? Boolean(object.success) : false,
+      message: isSet(object.message) ? String(object.message) : "",
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramSetSecondaryAddressResult): unknown {
+    const obj: any = {};
+    message.success !== undefined && (obj.success = message.success);
+    message.message !== undefined && (obj.message = message.message);
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if (tsProtoGlobalThis.Buffer) {
+    return Uint8Array.from(tsProtoGlobalThis.Buffer.from(b64, "base64"));
+  } else {
+    const bin = tsProtoGlobalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if (tsProtoGlobalThis.Buffer) {
+    return tsProtoGlobalThis.Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(String.fromCharCode(byte));
+    });
+    return tsProtoGlobalThis.btoa(bin.join(""));
+  }
+}
 
 function longToString(long: Long) {
   return long.toString();
@@ -5170,4 +7057,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

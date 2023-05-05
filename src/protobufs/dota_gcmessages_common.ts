@@ -4,16 +4,52 @@ import _m0 from "protobufjs/minimal";
 import {
   CMsgPendingEventAward,
   DOTAGameMode,
+  dOTAGameModeFromJSON,
+  dOTAGameModeToJSON,
   dotaGcTeam,
+  dotaGcTeamFromJSON,
+  dotaGcTeamToJSON,
   EEvent,
+  eEventFromJSON,
+  eEventToJSON,
   ELeaguePhase,
+  eLeaguePhaseFromJSON,
+  eLeaguePhaseToJSON,
   ELeagueRegion,
+  eLeagueRegionFromJSON,
+  eLeagueRegionToJSON,
   EMatchOutcome,
+  eMatchOutcomeFromJSON,
+  eMatchOutcomeToJSON,
 } from "./dota_shared_enums";
 
 export enum ESpecialPingValue {
   k_ESpecialPingValue_NoData = 16382,
   k_ESpecialPingValue_Failed = 16383,
+}
+
+export function eSpecialPingValueFromJSON(object: any): ESpecialPingValue {
+  switch (object) {
+    case 16382:
+    case "k_ESpecialPingValue_NoData":
+      return ESpecialPingValue.k_ESpecialPingValue_NoData;
+    case 16383:
+    case "k_ESpecialPingValue_Failed":
+      return ESpecialPingValue.k_ESpecialPingValue_Failed;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ESpecialPingValue");
+  }
+}
+
+export function eSpecialPingValueToJSON(object: ESpecialPingValue): string {
+  switch (object) {
+    case ESpecialPingValue.k_ESpecialPingValue_NoData:
+      return "k_ESpecialPingValue_NoData";
+    case ESpecialPingValue.k_ESpecialPingValue_Failed:
+      return "k_ESpecialPingValue_Failed";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ESpecialPingValue");
+  }
 }
 
 export enum EDOTAGCSessionNeed {
@@ -33,10 +69,129 @@ export enum EDOTAGCSessionNeed {
   k_EDOTAGCSessionNeed_GameServerLocalUpload = 204,
 }
 
+export function eDOTAGCSessionNeedFromJSON(object: any): EDOTAGCSessionNeed {
+  switch (object) {
+    case 0:
+    case "k_EDOTAGCSessionNeed_Unknown":
+      return EDOTAGCSessionNeed.k_EDOTAGCSessionNeed_Unknown;
+    case 100:
+    case "k_EDOTAGCSessionNeed_UserNoSessionNeeded":
+      return EDOTAGCSessionNeed.k_EDOTAGCSessionNeed_UserNoSessionNeeded;
+    case 101:
+    case "k_EDOTAGCSessionNeed_UserInOnlineGame":
+      return EDOTAGCSessionNeed.k_EDOTAGCSessionNeed_UserInOnlineGame;
+    case 102:
+    case "k_EDOTAGCSessionNeed_UserInLocalGame":
+      return EDOTAGCSessionNeed.k_EDOTAGCSessionNeed_UserInLocalGame;
+    case 103:
+    case "k_EDOTAGCSessionNeed_UserInUIWasConnected":
+      return EDOTAGCSessionNeed.k_EDOTAGCSessionNeed_UserInUIWasConnected;
+    case 104:
+    case "k_EDOTAGCSessionNeed_UserInUINeverConnected":
+      return EDOTAGCSessionNeed.k_EDOTAGCSessionNeed_UserInUINeverConnected;
+    case 105:
+    case "k_EDOTAGCSessionNeed_UserTutorials":
+      return EDOTAGCSessionNeed.k_EDOTAGCSessionNeed_UserTutorials;
+    case 106:
+    case "k_EDOTAGCSessionNeed_UserInUIWasConnectedIdle":
+      return EDOTAGCSessionNeed.k_EDOTAGCSessionNeed_UserInUIWasConnectedIdle;
+    case 107:
+    case "k_EDOTAGCSessionNeed_UserInUINeverConnectedIdle":
+      return EDOTAGCSessionNeed.k_EDOTAGCSessionNeed_UserInUINeverConnectedIdle;
+    case 200:
+    case "k_EDOTAGCSessionNeed_GameServerOnline":
+      return EDOTAGCSessionNeed.k_EDOTAGCSessionNeed_GameServerOnline;
+    case 201:
+    case "k_EDOTAGCSessionNeed_GameServerLocal":
+      return EDOTAGCSessionNeed.k_EDOTAGCSessionNeed_GameServerLocal;
+    case 202:
+    case "k_EDOTAGCSessionNeed_GameServerIdle":
+      return EDOTAGCSessionNeed.k_EDOTAGCSessionNeed_GameServerIdle;
+    case 203:
+    case "k_EDOTAGCSessionNeed_GameServerRelay":
+      return EDOTAGCSessionNeed.k_EDOTAGCSessionNeed_GameServerRelay;
+    case 204:
+    case "k_EDOTAGCSessionNeed_GameServerLocalUpload":
+      return EDOTAGCSessionNeed.k_EDOTAGCSessionNeed_GameServerLocalUpload;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EDOTAGCSessionNeed");
+  }
+}
+
+export function eDOTAGCSessionNeedToJSON(object: EDOTAGCSessionNeed): string {
+  switch (object) {
+    case EDOTAGCSessionNeed.k_EDOTAGCSessionNeed_Unknown:
+      return "k_EDOTAGCSessionNeed_Unknown";
+    case EDOTAGCSessionNeed.k_EDOTAGCSessionNeed_UserNoSessionNeeded:
+      return "k_EDOTAGCSessionNeed_UserNoSessionNeeded";
+    case EDOTAGCSessionNeed.k_EDOTAGCSessionNeed_UserInOnlineGame:
+      return "k_EDOTAGCSessionNeed_UserInOnlineGame";
+    case EDOTAGCSessionNeed.k_EDOTAGCSessionNeed_UserInLocalGame:
+      return "k_EDOTAGCSessionNeed_UserInLocalGame";
+    case EDOTAGCSessionNeed.k_EDOTAGCSessionNeed_UserInUIWasConnected:
+      return "k_EDOTAGCSessionNeed_UserInUIWasConnected";
+    case EDOTAGCSessionNeed.k_EDOTAGCSessionNeed_UserInUINeverConnected:
+      return "k_EDOTAGCSessionNeed_UserInUINeverConnected";
+    case EDOTAGCSessionNeed.k_EDOTAGCSessionNeed_UserTutorials:
+      return "k_EDOTAGCSessionNeed_UserTutorials";
+    case EDOTAGCSessionNeed.k_EDOTAGCSessionNeed_UserInUIWasConnectedIdle:
+      return "k_EDOTAGCSessionNeed_UserInUIWasConnectedIdle";
+    case EDOTAGCSessionNeed.k_EDOTAGCSessionNeed_UserInUINeverConnectedIdle:
+      return "k_EDOTAGCSessionNeed_UserInUINeverConnectedIdle";
+    case EDOTAGCSessionNeed.k_EDOTAGCSessionNeed_GameServerOnline:
+      return "k_EDOTAGCSessionNeed_GameServerOnline";
+    case EDOTAGCSessionNeed.k_EDOTAGCSessionNeed_GameServerLocal:
+      return "k_EDOTAGCSessionNeed_GameServerLocal";
+    case EDOTAGCSessionNeed.k_EDOTAGCSessionNeed_GameServerIdle:
+      return "k_EDOTAGCSessionNeed_GameServerIdle";
+    case EDOTAGCSessionNeed.k_EDOTAGCSessionNeed_GameServerRelay:
+      return "k_EDOTAGCSessionNeed_GameServerRelay";
+    case EDOTAGCSessionNeed.k_EDOTAGCSessionNeed_GameServerLocalUpload:
+      return "k_EDOTAGCSessionNeed_GameServerLocalUpload";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EDOTAGCSessionNeed");
+  }
+}
+
 export enum EDOTAMatchPlayerTimeCustomStat {
   k_EDOTA_MatchPlayerTimeCustomStat_HPRegenUnderT1Towers = 1,
   k_EDOTA_MatchPlayerTimeCustomStat_MagicDamageReducedWithNewFormula_Absolute = 2,
   k_EDOTA_MatchPlayerTimeCustomStat_MagicDamageReducedWithNewFormula_PercentOfTotalHP = 3,
+}
+
+export function eDOTAMatchPlayerTimeCustomStatFromJSON(object: any): EDOTAMatchPlayerTimeCustomStat {
+  switch (object) {
+    case 1:
+    case "k_EDOTA_MatchPlayerTimeCustomStat_HPRegenUnderT1Towers":
+      return EDOTAMatchPlayerTimeCustomStat.k_EDOTA_MatchPlayerTimeCustomStat_HPRegenUnderT1Towers;
+    case 2:
+    case "k_EDOTA_MatchPlayerTimeCustomStat_MagicDamageReducedWithNewFormula_Absolute":
+      return EDOTAMatchPlayerTimeCustomStat.k_EDOTA_MatchPlayerTimeCustomStat_MagicDamageReducedWithNewFormula_Absolute;
+    case 3:
+    case "k_EDOTA_MatchPlayerTimeCustomStat_MagicDamageReducedWithNewFormula_PercentOfTotalHP":
+      return EDOTAMatchPlayerTimeCustomStat
+        .k_EDOTA_MatchPlayerTimeCustomStat_MagicDamageReducedWithNewFormula_PercentOfTotalHP;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum EDOTAMatchPlayerTimeCustomStat",
+      );
+  }
+}
+
+export function eDOTAMatchPlayerTimeCustomStatToJSON(object: EDOTAMatchPlayerTimeCustomStat): string {
+  switch (object) {
+    case EDOTAMatchPlayerTimeCustomStat.k_EDOTA_MatchPlayerTimeCustomStat_HPRegenUnderT1Towers:
+      return "k_EDOTA_MatchPlayerTimeCustomStat_HPRegenUnderT1Towers";
+    case EDOTAMatchPlayerTimeCustomStat.k_EDOTA_MatchPlayerTimeCustomStat_MagicDamageReducedWithNewFormula_Absolute:
+      return "k_EDOTA_MatchPlayerTimeCustomStat_MagicDamageReducedWithNewFormula_Absolute";
+    case EDOTAMatchPlayerTimeCustomStat
+      .k_EDOTA_MatchPlayerTimeCustomStat_MagicDamageReducedWithNewFormula_PercentOfTotalHP:
+      return "k_EDOTA_MatchPlayerTimeCustomStat_MagicDamageReducedWithNewFormula_PercentOfTotalHP";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum EDOTAMatchPlayerTimeCustomStat",
+      );
+  }
 }
 
 export enum DOTATournamentEvents {
@@ -54,6 +209,80 @@ export enum DOTATournamentEvents {
   TE_BLACK_HOLE = 11,
 }
 
+export function dOTATournamentEventsFromJSON(object: any): DOTATournamentEvents {
+  switch (object) {
+    case 0:
+    case "TE_FIRST_BLOOD":
+      return DOTATournamentEvents.TE_FIRST_BLOOD;
+    case 1:
+    case "TE_GAME_END":
+      return DOTATournamentEvents.TE_GAME_END;
+    case 2:
+    case "TE_MULTI_KILL":
+      return DOTATournamentEvents.TE_MULTI_KILL;
+    case 3:
+    case "TE_HERO_DENY":
+      return DOTATournamentEvents.TE_HERO_DENY;
+    case 4:
+    case "TE_AEGIS_DENY":
+      return DOTATournamentEvents.TE_AEGIS_DENY;
+    case 5:
+    case "TE_AEGIS_STOLEN":
+      return DOTATournamentEvents.TE_AEGIS_STOLEN;
+    case 6:
+    case "TE_GODLIKE":
+      return DOTATournamentEvents.TE_GODLIKE;
+    case 7:
+    case "TE_COURIER_KILL":
+      return DOTATournamentEvents.TE_COURIER_KILL;
+    case 8:
+    case "TE_ECHOSLAM":
+      return DOTATournamentEvents.TE_ECHOSLAM;
+    case 9:
+    case "TE_RAPIER":
+      return DOTATournamentEvents.TE_RAPIER;
+    case 10:
+    case "TE_EARLY_ROSHAN":
+      return DOTATournamentEvents.TE_EARLY_ROSHAN;
+    case 11:
+    case "TE_BLACK_HOLE":
+      return DOTATournamentEvents.TE_BLACK_HOLE;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum DOTATournamentEvents");
+  }
+}
+
+export function dOTATournamentEventsToJSON(object: DOTATournamentEvents): string {
+  switch (object) {
+    case DOTATournamentEvents.TE_FIRST_BLOOD:
+      return "TE_FIRST_BLOOD";
+    case DOTATournamentEvents.TE_GAME_END:
+      return "TE_GAME_END";
+    case DOTATournamentEvents.TE_MULTI_KILL:
+      return "TE_MULTI_KILL";
+    case DOTATournamentEvents.TE_HERO_DENY:
+      return "TE_HERO_DENY";
+    case DOTATournamentEvents.TE_AEGIS_DENY:
+      return "TE_AEGIS_DENY";
+    case DOTATournamentEvents.TE_AEGIS_STOLEN:
+      return "TE_AEGIS_STOLEN";
+    case DOTATournamentEvents.TE_GODLIKE:
+      return "TE_GODLIKE";
+    case DOTATournamentEvents.TE_COURIER_KILL:
+      return "TE_COURIER_KILL";
+    case DOTATournamentEvents.TE_ECHOSLAM:
+      return "TE_ECHOSLAM";
+    case DOTATournamentEvents.TE_RAPIER:
+      return "TE_RAPIER";
+    case DOTATournamentEvents.TE_EARLY_ROSHAN:
+      return "TE_EARLY_ROSHAN";
+    case DOTATournamentEvents.TE_BLACK_HOLE:
+      return "TE_BLACK_HOLE";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum DOTATournamentEvents");
+  }
+}
+
 export enum EBroadcastTimelineEvent {
   EBroadcastTimelineEvent_MatchStarted = 1,
   EBroadcastTimelineEvent_GameStateChanged = 2,
@@ -66,10 +295,98 @@ export enum EBroadcastTimelineEvent {
   EBroadcastTimelineEvent_FirstBlood = 9,
 }
 
+export function eBroadcastTimelineEventFromJSON(object: any): EBroadcastTimelineEvent {
+  switch (object) {
+    case 1:
+    case "EBroadcastTimelineEvent_MatchStarted":
+      return EBroadcastTimelineEvent.EBroadcastTimelineEvent_MatchStarted;
+    case 2:
+    case "EBroadcastTimelineEvent_GameStateChanged":
+      return EBroadcastTimelineEvent.EBroadcastTimelineEvent_GameStateChanged;
+    case 3:
+    case "EBroadcastTimelineEvent_TowerDeath":
+      return EBroadcastTimelineEvent.EBroadcastTimelineEvent_TowerDeath;
+    case 4:
+    case "EBroadcastTimelineEvent_BarracksDeath":
+      return EBroadcastTimelineEvent.EBroadcastTimelineEvent_BarracksDeath;
+    case 5:
+    case "EBroadcastTimelineEvent_AncientDeath":
+      return EBroadcastTimelineEvent.EBroadcastTimelineEvent_AncientDeath;
+    case 6:
+    case "EBroadcastTimelineEvent_RoshanDeath":
+      return EBroadcastTimelineEvent.EBroadcastTimelineEvent_RoshanDeath;
+    case 7:
+    case "EBroadcastTimelineEvent_HeroDeath":
+      return EBroadcastTimelineEvent.EBroadcastTimelineEvent_HeroDeath;
+    case 8:
+    case "EBroadcastTimelineEvent_TeamFight":
+      return EBroadcastTimelineEvent.EBroadcastTimelineEvent_TeamFight;
+    case 9:
+    case "EBroadcastTimelineEvent_FirstBlood":
+      return EBroadcastTimelineEvent.EBroadcastTimelineEvent_FirstBlood;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EBroadcastTimelineEvent");
+  }
+}
+
+export function eBroadcastTimelineEventToJSON(object: EBroadcastTimelineEvent): string {
+  switch (object) {
+    case EBroadcastTimelineEvent.EBroadcastTimelineEvent_MatchStarted:
+      return "EBroadcastTimelineEvent_MatchStarted";
+    case EBroadcastTimelineEvent.EBroadcastTimelineEvent_GameStateChanged:
+      return "EBroadcastTimelineEvent_GameStateChanged";
+    case EBroadcastTimelineEvent.EBroadcastTimelineEvent_TowerDeath:
+      return "EBroadcastTimelineEvent_TowerDeath";
+    case EBroadcastTimelineEvent.EBroadcastTimelineEvent_BarracksDeath:
+      return "EBroadcastTimelineEvent_BarracksDeath";
+    case EBroadcastTimelineEvent.EBroadcastTimelineEvent_AncientDeath:
+      return "EBroadcastTimelineEvent_AncientDeath";
+    case EBroadcastTimelineEvent.EBroadcastTimelineEvent_RoshanDeath:
+      return "EBroadcastTimelineEvent_RoshanDeath";
+    case EBroadcastTimelineEvent.EBroadcastTimelineEvent_HeroDeath:
+      return "EBroadcastTimelineEvent_HeroDeath";
+    case EBroadcastTimelineEvent.EBroadcastTimelineEvent_TeamFight:
+      return "EBroadcastTimelineEvent_TeamFight";
+    case EBroadcastTimelineEvent.EBroadcastTimelineEvent_FirstBlood:
+      return "EBroadcastTimelineEvent_FirstBlood";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EBroadcastTimelineEvent");
+  }
+}
+
 export enum ECustomGameWhitelistState {
   CUSTOM_GAME_WHITELIST_STATE_UNKNOWN = 0,
   CUSTOM_GAME_WHITELIST_STATE_APPROVED = 1,
   CUSTOM_GAME_WHITELIST_STATE_REJECTED = 2,
+}
+
+export function eCustomGameWhitelistStateFromJSON(object: any): ECustomGameWhitelistState {
+  switch (object) {
+    case 0:
+    case "CUSTOM_GAME_WHITELIST_STATE_UNKNOWN":
+      return ECustomGameWhitelistState.CUSTOM_GAME_WHITELIST_STATE_UNKNOWN;
+    case 1:
+    case "CUSTOM_GAME_WHITELIST_STATE_APPROVED":
+      return ECustomGameWhitelistState.CUSTOM_GAME_WHITELIST_STATE_APPROVED;
+    case 2:
+    case "CUSTOM_GAME_WHITELIST_STATE_REJECTED":
+      return ECustomGameWhitelistState.CUSTOM_GAME_WHITELIST_STATE_REJECTED;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ECustomGameWhitelistState");
+  }
+}
+
+export function eCustomGameWhitelistStateToJSON(object: ECustomGameWhitelistState): string {
+  switch (object) {
+    case ECustomGameWhitelistState.CUSTOM_GAME_WHITELIST_STATE_UNKNOWN:
+      return "CUSTOM_GAME_WHITELIST_STATE_UNKNOWN";
+    case ECustomGameWhitelistState.CUSTOM_GAME_WHITELIST_STATE_APPROVED:
+      return "CUSTOM_GAME_WHITELIST_STATE_APPROVED";
+    case ECustomGameWhitelistState.CUSTOM_GAME_WHITELIST_STATE_REJECTED:
+      return "CUSTOM_GAME_WHITELIST_STATE_REJECTED";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ECustomGameWhitelistState");
+  }
 }
 
 export enum EDOTATriviaQuestionCategory {
@@ -93,6 +410,110 @@ export enum EDOTATriviaQuestionCategory {
   k_EDOTATriviaQuestionCategory_Dynamic_ItemBuild = 100,
 }
 
+export function eDOTATriviaQuestionCategoryFromJSON(object: any): EDOTATriviaQuestionCategory {
+  switch (object) {
+    case 0:
+    case "k_EDOTATriviaQuestionCategory_AbilityIcon":
+      return EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_AbilityIcon;
+    case 1:
+    case "k_EDOTATriviaQuestionCategory_AbilityCooldown":
+      return EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_AbilityCooldown;
+    case 2:
+    case "k_EDOTATriviaQuestionCategory_HeroAttributes":
+      return EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_HeroAttributes;
+    case 3:
+    case "k_EDOTATriviaQuestionCategory_HeroMovementSpeed":
+      return EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_HeroMovementSpeed;
+    case 4:
+    case "k_EDOTATriviaQuestionCategory_TalentTree":
+      return EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_TalentTree;
+    case 5:
+    case "k_EDOTATriviaQuestionCategory_HeroStats":
+      return EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_HeroStats;
+    case 6:
+    case "k_EDOTATriviaQuestionCategory_ItemPrice":
+      return EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_ItemPrice;
+    case 7:
+    case "k_EDOTATriviaQuestionCategory_AbilitySound":
+      return EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_AbilitySound;
+    case 8:
+    case "k_EDOTATriviaQuestionCategory_InvokerSpells":
+      return EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_InvokerSpells;
+    case 9:
+    case "k_EDOTATriviaQuestionCategory_AbilityManaCost":
+      return EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_AbilityManaCost;
+    case 10:
+    case "k_EDOTATriviaQuestionCategory_HeroAttackSound":
+      return EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_HeroAttackSound;
+    case 11:
+    case "k_EDOTATriviaQuestionCategory_AbilityName":
+      return EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_AbilityName;
+    case 12:
+    case "k_EDOTATriviaQuestionCategory_ItemComponents":
+      return EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_ItemComponents;
+    case 13:
+    case "k_EDOTATriviaQuestionCategory_ItemLore":
+      return EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_ItemLore;
+    case 14:
+    case "k_EDOTATriviaQuestionCategory_ItemPassives":
+      return EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_ItemPassives;
+    case 15:
+    case "k_EDOTATriviaQuestionCategory_STATIC_QUESTIONS_END":
+      return EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_STATIC_QUESTIONS_END;
+    case 99:
+    case "k_EDOTATriviaQuestionCategory_DYNAMIC_QUESTIONS_START":
+      return EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_DYNAMIC_QUESTIONS_START;
+    case 100:
+    case "k_EDOTATriviaQuestionCategory_Dynamic_ItemBuild":
+      return EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_Dynamic_ItemBuild;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EDOTATriviaQuestionCategory");
+  }
+}
+
+export function eDOTATriviaQuestionCategoryToJSON(object: EDOTATriviaQuestionCategory): string {
+  switch (object) {
+    case EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_AbilityIcon:
+      return "k_EDOTATriviaQuestionCategory_AbilityIcon";
+    case EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_AbilityCooldown:
+      return "k_EDOTATriviaQuestionCategory_AbilityCooldown";
+    case EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_HeroAttributes:
+      return "k_EDOTATriviaQuestionCategory_HeroAttributes";
+    case EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_HeroMovementSpeed:
+      return "k_EDOTATriviaQuestionCategory_HeroMovementSpeed";
+    case EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_TalentTree:
+      return "k_EDOTATriviaQuestionCategory_TalentTree";
+    case EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_HeroStats:
+      return "k_EDOTATriviaQuestionCategory_HeroStats";
+    case EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_ItemPrice:
+      return "k_EDOTATriviaQuestionCategory_ItemPrice";
+    case EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_AbilitySound:
+      return "k_EDOTATriviaQuestionCategory_AbilitySound";
+    case EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_InvokerSpells:
+      return "k_EDOTATriviaQuestionCategory_InvokerSpells";
+    case EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_AbilityManaCost:
+      return "k_EDOTATriviaQuestionCategory_AbilityManaCost";
+    case EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_HeroAttackSound:
+      return "k_EDOTATriviaQuestionCategory_HeroAttackSound";
+    case EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_AbilityName:
+      return "k_EDOTATriviaQuestionCategory_AbilityName";
+    case EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_ItemComponents:
+      return "k_EDOTATriviaQuestionCategory_ItemComponents";
+    case EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_ItemLore:
+      return "k_EDOTATriviaQuestionCategory_ItemLore";
+    case EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_ItemPassives:
+      return "k_EDOTATriviaQuestionCategory_ItemPassives";
+    case EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_STATIC_QUESTIONS_END:
+      return "k_EDOTATriviaQuestionCategory_STATIC_QUESTIONS_END";
+    case EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_DYNAMIC_QUESTIONS_START:
+      return "k_EDOTATriviaQuestionCategory_DYNAMIC_QUESTIONS_START";
+    case EDOTATriviaQuestionCategory.k_EDOTATriviaQuestionCategory_Dynamic_ItemBuild:
+      return "k_EDOTATriviaQuestionCategory_Dynamic_ItemBuild";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EDOTATriviaQuestionCategory");
+  }
+}
+
 export enum EOverwatchConviction {
   k_EOverwatchConviction_None = 0,
   k_EOverwatchConviction_NotGuilty = 1,
@@ -100,10 +521,73 @@ export enum EOverwatchConviction {
   k_EOverwatchConviction_Guilty = 3,
 }
 
+export function eOverwatchConvictionFromJSON(object: any): EOverwatchConviction {
+  switch (object) {
+    case 0:
+    case "k_EOverwatchConviction_None":
+      return EOverwatchConviction.k_EOverwatchConviction_None;
+    case 1:
+    case "k_EOverwatchConviction_NotGuilty":
+      return EOverwatchConviction.k_EOverwatchConviction_NotGuilty;
+    case 2:
+    case "k_EOverwatchConviction_GuiltUnclear":
+      return EOverwatchConviction.k_EOverwatchConviction_GuiltUnclear;
+    case 3:
+    case "k_EOverwatchConviction_Guilty":
+      return EOverwatchConviction.k_EOverwatchConviction_Guilty;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EOverwatchConviction");
+  }
+}
+
+export function eOverwatchConvictionToJSON(object: EOverwatchConviction): string {
+  switch (object) {
+    case EOverwatchConviction.k_EOverwatchConviction_None:
+      return "k_EOverwatchConviction_None";
+    case EOverwatchConviction.k_EOverwatchConviction_NotGuilty:
+      return "k_EOverwatchConviction_NotGuilty";
+    case EOverwatchConviction.k_EOverwatchConviction_GuiltUnclear:
+      return "k_EOverwatchConviction_GuiltUnclear";
+    case EOverwatchConviction.k_EOverwatchConviction_Guilty:
+      return "k_EOverwatchConviction_Guilty";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EOverwatchConviction");
+  }
+}
+
 export enum EHeroRelicRarity {
   HERO_RELIC_RARITY_INVALID = -1,
   HERO_RELIC_RARITY_COMMON = 0,
   HERO_RELIC_RARITY_RARE = 1,
+}
+
+export function eHeroRelicRarityFromJSON(object: any): EHeroRelicRarity {
+  switch (object) {
+    case -1:
+    case "HERO_RELIC_RARITY_INVALID":
+      return EHeroRelicRarity.HERO_RELIC_RARITY_INVALID;
+    case 0:
+    case "HERO_RELIC_RARITY_COMMON":
+      return EHeroRelicRarity.HERO_RELIC_RARITY_COMMON;
+    case 1:
+    case "HERO_RELIC_RARITY_RARE":
+      return EHeroRelicRarity.HERO_RELIC_RARITY_RARE;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EHeroRelicRarity");
+  }
+}
+
+export function eHeroRelicRarityToJSON(object: EHeroRelicRarity): string {
+  switch (object) {
+    case EHeroRelicRarity.HERO_RELIC_RARITY_INVALID:
+      return "HERO_RELIC_RARITY_INVALID";
+    case EHeroRelicRarity.HERO_RELIC_RARITY_COMMON:
+      return "HERO_RELIC_RARITY_COMMON";
+    case EHeroRelicRarity.HERO_RELIC_RARITY_RARE:
+      return "HERO_RELIC_RARITY_RARE";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EHeroRelicRarity");
+  }
 }
 
 export enum EStickerbookAuditAction {
@@ -114,10 +598,78 @@ export enum EStickerbookAuditAction {
   STICKERBOOK_AUDIT_HERO_STICKER = 4,
 }
 
+export function eStickerbookAuditActionFromJSON(object: any): EStickerbookAuditAction {
+  switch (object) {
+    case 0:
+    case "STICKERBOOK_AUDIT_CREATE_PAGE":
+      return EStickerbookAuditAction.STICKERBOOK_AUDIT_CREATE_PAGE;
+    case 1:
+    case "STICKERBOOK_AUDIT_DELETE_PAGE":
+      return EStickerbookAuditAction.STICKERBOOK_AUDIT_DELETE_PAGE;
+    case 2:
+    case "STICKERBOOK_AUDIT_STICK_STICKERS":
+      return EStickerbookAuditAction.STICKERBOOK_AUDIT_STICK_STICKERS;
+    case 3:
+    case "STICKERBOOK_AUDIT_REPLACE_STICKERS":
+      return EStickerbookAuditAction.STICKERBOOK_AUDIT_REPLACE_STICKERS;
+    case 4:
+    case "STICKERBOOK_AUDIT_HERO_STICKER":
+      return EStickerbookAuditAction.STICKERBOOK_AUDIT_HERO_STICKER;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EStickerbookAuditAction");
+  }
+}
+
+export function eStickerbookAuditActionToJSON(object: EStickerbookAuditAction): string {
+  switch (object) {
+    case EStickerbookAuditAction.STICKERBOOK_AUDIT_CREATE_PAGE:
+      return "STICKERBOOK_AUDIT_CREATE_PAGE";
+    case EStickerbookAuditAction.STICKERBOOK_AUDIT_DELETE_PAGE:
+      return "STICKERBOOK_AUDIT_DELETE_PAGE";
+    case EStickerbookAuditAction.STICKERBOOK_AUDIT_STICK_STICKERS:
+      return "STICKERBOOK_AUDIT_STICK_STICKERS";
+    case EStickerbookAuditAction.STICKERBOOK_AUDIT_REPLACE_STICKERS:
+      return "STICKERBOOK_AUDIT_REPLACE_STICKERS";
+    case EStickerbookAuditAction.STICKERBOOK_AUDIT_HERO_STICKER:
+      return "STICKERBOOK_AUDIT_HERO_STICKER";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EStickerbookAuditAction");
+  }
+}
+
 export enum EStickerbookPageType {
   STICKER_PAGE_GENERIC = 0,
   STICKER_PAGE_TEAM = 1,
   STICKER_PAGE_TALENT = 2,
+}
+
+export function eStickerbookPageTypeFromJSON(object: any): EStickerbookPageType {
+  switch (object) {
+    case 0:
+    case "STICKER_PAGE_GENERIC":
+      return EStickerbookPageType.STICKER_PAGE_GENERIC;
+    case 1:
+    case "STICKER_PAGE_TEAM":
+      return EStickerbookPageType.STICKER_PAGE_TEAM;
+    case 2:
+    case "STICKER_PAGE_TALENT":
+      return EStickerbookPageType.STICKER_PAGE_TALENT;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EStickerbookPageType");
+  }
+}
+
+export function eStickerbookPageTypeToJSON(object: EStickerbookPageType): string {
+  switch (object) {
+    case EStickerbookPageType.STICKER_PAGE_GENERIC:
+      return "STICKER_PAGE_GENERIC";
+    case EStickerbookPageType.STICKER_PAGE_TEAM:
+      return "STICKER_PAGE_TEAM";
+    case EStickerbookPageType.STICKER_PAGE_TALENT:
+      return "STICKER_PAGE_TALENT";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EStickerbookPageType");
+  }
 }
 
 export interface CSODOTAGameAccountClient {
@@ -390,6 +942,50 @@ export enum CMsgDOTAProfileCard_EStatID {
   k_eStat_GamesMVP = 8,
 }
 
+export function cMsgDOTAProfileCard_EStatIDFromJSON(object: any): CMsgDOTAProfileCard_EStatID {
+  switch (object) {
+    case 3:
+    case "k_eStat_Wins":
+      return CMsgDOTAProfileCard_EStatID.k_eStat_Wins;
+    case 4:
+    case "k_eStat_Commends":
+      return CMsgDOTAProfileCard_EStatID.k_eStat_Commends;
+    case 5:
+    case "k_eStat_GamesPlayed":
+      return CMsgDOTAProfileCard_EStatID.k_eStat_GamesPlayed;
+    case 6:
+    case "k_eStat_FirstMatchDate":
+      return CMsgDOTAProfileCard_EStatID.k_eStat_FirstMatchDate;
+    case 7:
+    case "k_eStat_PreviousSeasonRank":
+      return CMsgDOTAProfileCard_EStatID.k_eStat_PreviousSeasonRank;
+    case 8:
+    case "k_eStat_GamesMVP":
+      return CMsgDOTAProfileCard_EStatID.k_eStat_GamesMVP;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum CMsgDOTAProfileCard_EStatID");
+  }
+}
+
+export function cMsgDOTAProfileCard_EStatIDToJSON(object: CMsgDOTAProfileCard_EStatID): string {
+  switch (object) {
+    case CMsgDOTAProfileCard_EStatID.k_eStat_Wins:
+      return "k_eStat_Wins";
+    case CMsgDOTAProfileCard_EStatID.k_eStat_Commends:
+      return "k_eStat_Commends";
+    case CMsgDOTAProfileCard_EStatID.k_eStat_GamesPlayed:
+      return "k_eStat_GamesPlayed";
+    case CMsgDOTAProfileCard_EStatID.k_eStat_FirstMatchDate:
+      return "k_eStat_FirstMatchDate";
+    case CMsgDOTAProfileCard_EStatID.k_eStat_PreviousSeasonRank:
+      return "k_eStat_PreviousSeasonRank";
+    case CMsgDOTAProfileCard_EStatID.k_eStat_GamesMVP:
+      return "k_eStat_GamesMVP";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum CMsgDOTAProfileCard_EStatID");
+  }
+}
+
 export interface CMsgDOTAProfileCard_Slot {
   slotId: number;
   trophy: CMsgDOTAProfileCard_Slot_Trophy | undefined;
@@ -465,6 +1061,53 @@ export enum CMsgGCRerollPlayerChallengeResponse_EResult {
   eResult_NotFound = 2,
   eResult_CantReroll = 3,
   eResult_ServerError = 4,
+}
+
+export function cMsgGCRerollPlayerChallengeResponse_EResultFromJSON(
+  object: any,
+): CMsgGCRerollPlayerChallengeResponse_EResult {
+  switch (object) {
+    case 0:
+    case "eResult_Success":
+      return CMsgGCRerollPlayerChallengeResponse_EResult.eResult_Success;
+    case 1:
+    case "eResult_Dropped":
+      return CMsgGCRerollPlayerChallengeResponse_EResult.eResult_Dropped;
+    case 2:
+    case "eResult_NotFound":
+      return CMsgGCRerollPlayerChallengeResponse_EResult.eResult_NotFound;
+    case 3:
+    case "eResult_CantReroll":
+      return CMsgGCRerollPlayerChallengeResponse_EResult.eResult_CantReroll;
+    case 4:
+    case "eResult_ServerError":
+      return CMsgGCRerollPlayerChallengeResponse_EResult.eResult_ServerError;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgGCRerollPlayerChallengeResponse_EResult",
+      );
+  }
+}
+
+export function cMsgGCRerollPlayerChallengeResponse_EResultToJSON(
+  object: CMsgGCRerollPlayerChallengeResponse_EResult,
+): string {
+  switch (object) {
+    case CMsgGCRerollPlayerChallengeResponse_EResult.eResult_Success:
+      return "eResult_Success";
+    case CMsgGCRerollPlayerChallengeResponse_EResult.eResult_Dropped:
+      return "eResult_Dropped";
+    case CMsgGCRerollPlayerChallengeResponse_EResult.eResult_NotFound:
+      return "eResult_NotFound";
+    case CMsgGCRerollPlayerChallengeResponse_EResult.eResult_CantReroll:
+      return "eResult_CantReroll";
+    case CMsgGCRerollPlayerChallengeResponse_EResult.eResult_ServerError:
+      return "eResult_ServerError";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgGCRerollPlayerChallengeResponse_EResult",
+      );
+  }
 }
 
 export interface CMsgGCTopCustomGamesList {
@@ -637,6 +1280,48 @@ export enum CMsgDOTARealtimeGameStats_GraphData_eStat {
   XPEarned = 3,
 }
 
+export function cMsgDOTARealtimeGameStats_GraphData_eStatFromJSON(
+  object: any,
+): CMsgDOTARealtimeGameStats_GraphData_eStat {
+  switch (object) {
+    case 0:
+    case "CreepGoldEarned":
+      return CMsgDOTARealtimeGameStats_GraphData_eStat.CreepGoldEarned;
+    case 1:
+    case "KillGoldEarned":
+      return CMsgDOTARealtimeGameStats_GraphData_eStat.KillGoldEarned;
+    case 2:
+    case "DeathAndBuybackGoldLost":
+      return CMsgDOTARealtimeGameStats_GraphData_eStat.DeathAndBuybackGoldLost;
+    case 3:
+    case "XPEarned":
+      return CMsgDOTARealtimeGameStats_GraphData_eStat.XPEarned;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDOTARealtimeGameStats_GraphData_eStat",
+      );
+  }
+}
+
+export function cMsgDOTARealtimeGameStats_GraphData_eStatToJSON(
+  object: CMsgDOTARealtimeGameStats_GraphData_eStat,
+): string {
+  switch (object) {
+    case CMsgDOTARealtimeGameStats_GraphData_eStat.CreepGoldEarned:
+      return "CreepGoldEarned";
+    case CMsgDOTARealtimeGameStats_GraphData_eStat.KillGoldEarned:
+      return "KillGoldEarned";
+    case CMsgDOTARealtimeGameStats_GraphData_eStat.DeathAndBuybackGoldLost:
+      return "DeathAndBuybackGoldLost";
+    case CMsgDOTARealtimeGameStats_GraphData_eStat.XPEarned:
+      return "XPEarned";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDOTARealtimeGameStats_GraphData_eStat",
+      );
+  }
+}
+
 export enum CMsgDOTARealtimeGameStats_GraphData_eLocation {
   BotLane = 0,
   MidLane = 1,
@@ -644,6 +1329,58 @@ export enum CMsgDOTARealtimeGameStats_GraphData_eLocation {
   Jungle = 3,
   Ancients = 4,
   Other = 5,
+}
+
+export function cMsgDOTARealtimeGameStats_GraphData_eLocationFromJSON(
+  object: any,
+): CMsgDOTARealtimeGameStats_GraphData_eLocation {
+  switch (object) {
+    case 0:
+    case "BotLane":
+      return CMsgDOTARealtimeGameStats_GraphData_eLocation.BotLane;
+    case 1:
+    case "MidLane":
+      return CMsgDOTARealtimeGameStats_GraphData_eLocation.MidLane;
+    case 2:
+    case "TopLane":
+      return CMsgDOTARealtimeGameStats_GraphData_eLocation.TopLane;
+    case 3:
+    case "Jungle":
+      return CMsgDOTARealtimeGameStats_GraphData_eLocation.Jungle;
+    case 4:
+    case "Ancients":
+      return CMsgDOTARealtimeGameStats_GraphData_eLocation.Ancients;
+    case 5:
+    case "Other":
+      return CMsgDOTARealtimeGameStats_GraphData_eLocation.Other;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDOTARealtimeGameStats_GraphData_eLocation",
+      );
+  }
+}
+
+export function cMsgDOTARealtimeGameStats_GraphData_eLocationToJSON(
+  object: CMsgDOTARealtimeGameStats_GraphData_eLocation,
+): string {
+  switch (object) {
+    case CMsgDOTARealtimeGameStats_GraphData_eLocation.BotLane:
+      return "BotLane";
+    case CMsgDOTARealtimeGameStats_GraphData_eLocation.MidLane:
+      return "MidLane";
+    case CMsgDOTARealtimeGameStats_GraphData_eLocation.TopLane:
+      return "TopLane";
+    case CMsgDOTARealtimeGameStats_GraphData_eLocation.Jungle:
+      return "Jungle";
+    case CMsgDOTARealtimeGameStats_GraphData_eLocation.Ancients:
+      return "Ancients";
+    case CMsgDOTARealtimeGameStats_GraphData_eLocation.Other:
+      return "Other";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDOTARealtimeGameStats_GraphData_eLocation",
+      );
+  }
 }
 
 export interface CMsgDOTARealtimeGameStats_GraphData_LocationStats {
@@ -783,6 +1520,34 @@ export enum CMsgInGamePrediction_ERawValueTypeT {
   Time = 1,
 }
 
+export function cMsgInGamePrediction_ERawValueTypeTFromJSON(object: any): CMsgInGamePrediction_ERawValueTypeT {
+  switch (object) {
+    case 0:
+    case "Number":
+      return CMsgInGamePrediction_ERawValueTypeT.Number;
+    case 1:
+    case "Time":
+      return CMsgInGamePrediction_ERawValueTypeT.Time;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgInGamePrediction_ERawValueTypeT",
+      );
+  }
+}
+
+export function cMsgInGamePrediction_ERawValueTypeTToJSON(object: CMsgInGamePrediction_ERawValueTypeT): string {
+  switch (object) {
+    case CMsgInGamePrediction_ERawValueTypeT.Number:
+      return "Number";
+    case CMsgInGamePrediction_ERawValueTypeT.Time:
+      return "Time";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgInGamePrediction_ERawValueTypeT",
+      );
+  }
+}
+
 export enum CMsgInGamePrediction_EPredictionType {
   Generic = 0,
   Hero = 1,
@@ -791,6 +1556,59 @@ export enum CMsgInGamePrediction_EPredictionType {
   Special = 4,
   YesNo = 5,
   QualifiersTeam = 6,
+}
+
+export function cMsgInGamePrediction_EPredictionTypeFromJSON(object: any): CMsgInGamePrediction_EPredictionType {
+  switch (object) {
+    case 0:
+    case "Generic":
+      return CMsgInGamePrediction_EPredictionType.Generic;
+    case 1:
+    case "Hero":
+      return CMsgInGamePrediction_EPredictionType.Hero;
+    case 2:
+    case "Team":
+      return CMsgInGamePrediction_EPredictionType.Team;
+    case 3:
+    case "Player":
+      return CMsgInGamePrediction_EPredictionType.Player;
+    case 4:
+    case "Special":
+      return CMsgInGamePrediction_EPredictionType.Special;
+    case 5:
+    case "YesNo":
+      return CMsgInGamePrediction_EPredictionType.YesNo;
+    case 6:
+    case "QualifiersTeam":
+      return CMsgInGamePrediction_EPredictionType.QualifiersTeam;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgInGamePrediction_EPredictionType",
+      );
+  }
+}
+
+export function cMsgInGamePrediction_EPredictionTypeToJSON(object: CMsgInGamePrediction_EPredictionType): string {
+  switch (object) {
+    case CMsgInGamePrediction_EPredictionType.Generic:
+      return "Generic";
+    case CMsgInGamePrediction_EPredictionType.Hero:
+      return "Hero";
+    case CMsgInGamePrediction_EPredictionType.Team:
+      return "Team";
+    case CMsgInGamePrediction_EPredictionType.Player:
+      return "Player";
+    case CMsgInGamePrediction_EPredictionType.Special:
+      return "Special";
+    case CMsgInGamePrediction_EPredictionType.YesNo:
+      return "YesNo";
+    case CMsgInGamePrediction_EPredictionType.QualifiersTeam:
+      return "QualifiersTeam";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgInGamePrediction_EPredictionType",
+      );
+  }
 }
 
 export enum CMsgInGamePrediction_EResolutionTypeT {
@@ -805,11 +1623,116 @@ export enum CMsgInGamePrediction_EResolutionTypeT {
   MinTeamSumToPassQuery = 8,
 }
 
+export function cMsgInGamePrediction_EResolutionTypeTFromJSON(object: any): CMsgInGamePrediction_EResolutionTypeT {
+  switch (object) {
+    case 0:
+    case "InvalidQuery":
+      return CMsgInGamePrediction_EResolutionTypeT.InvalidQuery;
+    case 1:
+    case "FirstToPassQuery":
+      return CMsgInGamePrediction_EResolutionTypeT.FirstToPassQuery;
+    case 2:
+    case "LastToPassQuery":
+      return CMsgInGamePrediction_EResolutionTypeT.LastToPassQuery;
+    case 3:
+    case "LastRemainingQuery":
+      return CMsgInGamePrediction_EResolutionTypeT.LastRemainingQuery;
+    case 4:
+    case "MaxToPassQuery":
+      return CMsgInGamePrediction_EResolutionTypeT.MaxToPassQuery;
+    case 5:
+    case "MinToPassQuery":
+      return CMsgInGamePrediction_EResolutionTypeT.MinToPassQuery;
+    case 6:
+    case "SumQuery":
+      return CMsgInGamePrediction_EResolutionTypeT.SumQuery;
+    case 7:
+    case "MaxTeamSumToPassQuery":
+      return CMsgInGamePrediction_EResolutionTypeT.MaxTeamSumToPassQuery;
+    case 8:
+    case "MinTeamSumToPassQuery":
+      return CMsgInGamePrediction_EResolutionTypeT.MinTeamSumToPassQuery;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgInGamePrediction_EResolutionTypeT",
+      );
+  }
+}
+
+export function cMsgInGamePrediction_EResolutionTypeTToJSON(object: CMsgInGamePrediction_EResolutionTypeT): string {
+  switch (object) {
+    case CMsgInGamePrediction_EResolutionTypeT.InvalidQuery:
+      return "InvalidQuery";
+    case CMsgInGamePrediction_EResolutionTypeT.FirstToPassQuery:
+      return "FirstToPassQuery";
+    case CMsgInGamePrediction_EResolutionTypeT.LastToPassQuery:
+      return "LastToPassQuery";
+    case CMsgInGamePrediction_EResolutionTypeT.LastRemainingQuery:
+      return "LastRemainingQuery";
+    case CMsgInGamePrediction_EResolutionTypeT.MaxToPassQuery:
+      return "MaxToPassQuery";
+    case CMsgInGamePrediction_EResolutionTypeT.MinToPassQuery:
+      return "MinToPassQuery";
+    case CMsgInGamePrediction_EResolutionTypeT.SumQuery:
+      return "SumQuery";
+    case CMsgInGamePrediction_EResolutionTypeT.MaxTeamSumToPassQuery:
+      return "MaxTeamSumToPassQuery";
+    case CMsgInGamePrediction_EResolutionTypeT.MinTeamSumToPassQuery:
+      return "MinTeamSumToPassQuery";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgInGamePrediction_EResolutionTypeT",
+      );
+  }
+}
+
 export enum CMsgInGamePrediction_ERandomSelectionGroupT {
   EarlyGame = 0,
   MidGame = 1,
   LateGame = 2,
   Count = 3,
+}
+
+export function cMsgInGamePrediction_ERandomSelectionGroupTFromJSON(
+  object: any,
+): CMsgInGamePrediction_ERandomSelectionGroupT {
+  switch (object) {
+    case 0:
+    case "EarlyGame":
+      return CMsgInGamePrediction_ERandomSelectionGroupT.EarlyGame;
+    case 1:
+    case "MidGame":
+      return CMsgInGamePrediction_ERandomSelectionGroupT.MidGame;
+    case 2:
+    case "LateGame":
+      return CMsgInGamePrediction_ERandomSelectionGroupT.LateGame;
+    case 3:
+    case "Count":
+      return CMsgInGamePrediction_ERandomSelectionGroupT.Count;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgInGamePrediction_ERandomSelectionGroupT",
+      );
+  }
+}
+
+export function cMsgInGamePrediction_ERandomSelectionGroupTToJSON(
+  object: CMsgInGamePrediction_ERandomSelectionGroupT,
+): string {
+  switch (object) {
+    case CMsgInGamePrediction_ERandomSelectionGroupT.EarlyGame:
+      return "EarlyGame";
+    case CMsgInGamePrediction_ERandomSelectionGroupT.MidGame:
+      return "MidGame";
+    case CMsgInGamePrediction_ERandomSelectionGroupT.LateGame:
+      return "LateGame";
+    case CMsgInGamePrediction_ERandomSelectionGroupT.Count:
+      return "Count";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgInGamePrediction_ERandomSelectionGroupT",
+      );
+  }
 }
 
 export interface CMsgInGamePrediction_QueryKeyValues {
@@ -856,6 +1779,68 @@ export enum CMsgDOTASeasonPredictions_Prediction_EPredictionType {
   LastChanceTeam = 7,
 }
 
+export function cMsgDOTASeasonPredictions_Prediction_EPredictionTypeFromJSON(
+  object: any,
+): CMsgDOTASeasonPredictions_Prediction_EPredictionType {
+  switch (object) {
+    case 0:
+    case "Generic":
+      return CMsgDOTASeasonPredictions_Prediction_EPredictionType.Generic;
+    case 1:
+    case "Hero":
+      return CMsgDOTASeasonPredictions_Prediction_EPredictionType.Hero;
+    case 2:
+    case "Team":
+      return CMsgDOTASeasonPredictions_Prediction_EPredictionType.Team;
+    case 3:
+    case "Player":
+      return CMsgDOTASeasonPredictions_Prediction_EPredictionType.Player;
+    case 4:
+    case "Special":
+      return CMsgDOTASeasonPredictions_Prediction_EPredictionType.Special;
+    case 5:
+    case "YesNo":
+      return CMsgDOTASeasonPredictions_Prediction_EPredictionType.YesNo;
+    case 6:
+    case "QualifiersTeam":
+      return CMsgDOTASeasonPredictions_Prediction_EPredictionType.QualifiersTeam;
+    case 7:
+    case "LastChanceTeam":
+      return CMsgDOTASeasonPredictions_Prediction_EPredictionType.LastChanceTeam;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDOTASeasonPredictions_Prediction_EPredictionType",
+      );
+  }
+}
+
+export function cMsgDOTASeasonPredictions_Prediction_EPredictionTypeToJSON(
+  object: CMsgDOTASeasonPredictions_Prediction_EPredictionType,
+): string {
+  switch (object) {
+    case CMsgDOTASeasonPredictions_Prediction_EPredictionType.Generic:
+      return "Generic";
+    case CMsgDOTASeasonPredictions_Prediction_EPredictionType.Hero:
+      return "Hero";
+    case CMsgDOTASeasonPredictions_Prediction_EPredictionType.Team:
+      return "Team";
+    case CMsgDOTASeasonPredictions_Prediction_EPredictionType.Player:
+      return "Player";
+    case CMsgDOTASeasonPredictions_Prediction_EPredictionType.Special:
+      return "Special";
+    case CMsgDOTASeasonPredictions_Prediction_EPredictionType.YesNo:
+      return "YesNo";
+    case CMsgDOTASeasonPredictions_Prediction_EPredictionType.QualifiersTeam:
+      return "QualifiersTeam";
+    case CMsgDOTASeasonPredictions_Prediction_EPredictionType.LastChanceTeam:
+      return "LastChanceTeam";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDOTASeasonPredictions_Prediction_EPredictionType",
+      );
+  }
+}
+
 export enum CMsgDOTASeasonPredictions_Prediction_EAnswerType {
   SingleInt = 0,
   SingleFloat = 1,
@@ -865,6 +1850,68 @@ export enum CMsgDOTASeasonPredictions_Prediction_EAnswerType {
   SingleTime = 5,
   MultipleTime = 6,
   NoAnswer = 7,
+}
+
+export function cMsgDOTASeasonPredictions_Prediction_EAnswerTypeFromJSON(
+  object: any,
+): CMsgDOTASeasonPredictions_Prediction_EAnswerType {
+  switch (object) {
+    case 0:
+    case "SingleInt":
+      return CMsgDOTASeasonPredictions_Prediction_EAnswerType.SingleInt;
+    case 1:
+    case "SingleFloat":
+      return CMsgDOTASeasonPredictions_Prediction_EAnswerType.SingleFloat;
+    case 2:
+    case "MultipleInt":
+      return CMsgDOTASeasonPredictions_Prediction_EAnswerType.MultipleInt;
+    case 3:
+    case "MultipleFloat":
+      return CMsgDOTASeasonPredictions_Prediction_EAnswerType.MultipleFloat;
+    case 4:
+    case "AnswerTeam":
+      return CMsgDOTASeasonPredictions_Prediction_EAnswerType.AnswerTeam;
+    case 5:
+    case "SingleTime":
+      return CMsgDOTASeasonPredictions_Prediction_EAnswerType.SingleTime;
+    case 6:
+    case "MultipleTime":
+      return CMsgDOTASeasonPredictions_Prediction_EAnswerType.MultipleTime;
+    case 7:
+    case "NoAnswer":
+      return CMsgDOTASeasonPredictions_Prediction_EAnswerType.NoAnswer;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDOTASeasonPredictions_Prediction_EAnswerType",
+      );
+  }
+}
+
+export function cMsgDOTASeasonPredictions_Prediction_EAnswerTypeToJSON(
+  object: CMsgDOTASeasonPredictions_Prediction_EAnswerType,
+): string {
+  switch (object) {
+    case CMsgDOTASeasonPredictions_Prediction_EAnswerType.SingleInt:
+      return "SingleInt";
+    case CMsgDOTASeasonPredictions_Prediction_EAnswerType.SingleFloat:
+      return "SingleFloat";
+    case CMsgDOTASeasonPredictions_Prediction_EAnswerType.MultipleInt:
+      return "MultipleInt";
+    case CMsgDOTASeasonPredictions_Prediction_EAnswerType.MultipleFloat:
+      return "MultipleFloat";
+    case CMsgDOTASeasonPredictions_Prediction_EAnswerType.AnswerTeam:
+      return "AnswerTeam";
+    case CMsgDOTASeasonPredictions_Prediction_EAnswerType.SingleTime:
+      return "SingleTime";
+    case CMsgDOTASeasonPredictions_Prediction_EAnswerType.MultipleTime:
+      return "MultipleTime";
+    case CMsgDOTASeasonPredictions_Prediction_EAnswerType.NoAnswer:
+      return "NoAnswer";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDOTASeasonPredictions_Prediction_EAnswerType",
+      );
+  }
 }
 
 export interface CMsgDOTASeasonPredictions_Prediction_Answers {
@@ -953,6 +2000,35 @@ export enum CMsgDOTAMatch_ReplayState {
   REPLAY_EXPIRED = 2,
 }
 
+export function cMsgDOTAMatch_ReplayStateFromJSON(object: any): CMsgDOTAMatch_ReplayState {
+  switch (object) {
+    case 0:
+    case "REPLAY_AVAILABLE":
+      return CMsgDOTAMatch_ReplayState.REPLAY_AVAILABLE;
+    case 1:
+    case "REPLAY_NOT_RECORDED":
+      return CMsgDOTAMatch_ReplayState.REPLAY_NOT_RECORDED;
+    case 2:
+    case "REPLAY_EXPIRED":
+      return CMsgDOTAMatch_ReplayState.REPLAY_EXPIRED;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum CMsgDOTAMatch_ReplayState");
+  }
+}
+
+export function cMsgDOTAMatch_ReplayStateToJSON(object: CMsgDOTAMatch_ReplayState): string {
+  switch (object) {
+    case CMsgDOTAMatch_ReplayState.REPLAY_AVAILABLE:
+      return "REPLAY_AVAILABLE";
+    case CMsgDOTAMatch_ReplayState.REPLAY_NOT_RECORDED:
+      return "REPLAY_NOT_RECORDED";
+    case CMsgDOTAMatch_ReplayState.REPLAY_EXPIRED:
+      return "REPLAY_EXPIRED";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum CMsgDOTAMatch_ReplayState");
+  }
+}
+
 export interface CMsgDOTAMatch_Player {
   accountId: number;
   playerSlot: number;
@@ -1033,6 +2109,39 @@ export enum CMsgDOTAMatch_Player_HeroDamageType {
   HERO_DAMAGE_PHYSICAL = 0,
   HERO_DAMAGE_MAGICAL = 1,
   HERO_DAMAGE_PURE = 2,
+}
+
+export function cMsgDOTAMatch_Player_HeroDamageTypeFromJSON(object: any): CMsgDOTAMatch_Player_HeroDamageType {
+  switch (object) {
+    case 0:
+    case "HERO_DAMAGE_PHYSICAL":
+      return CMsgDOTAMatch_Player_HeroDamageType.HERO_DAMAGE_PHYSICAL;
+    case 1:
+    case "HERO_DAMAGE_MAGICAL":
+      return CMsgDOTAMatch_Player_HeroDamageType.HERO_DAMAGE_MAGICAL;
+    case 2:
+    case "HERO_DAMAGE_PURE":
+      return CMsgDOTAMatch_Player_HeroDamageType.HERO_DAMAGE_PURE;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDOTAMatch_Player_HeroDamageType",
+      );
+  }
+}
+
+export function cMsgDOTAMatch_Player_HeroDamageTypeToJSON(object: CMsgDOTAMatch_Player_HeroDamageType): string {
+  switch (object) {
+    case CMsgDOTAMatch_Player_HeroDamageType.HERO_DAMAGE_PHYSICAL:
+      return "HERO_DAMAGE_PHYSICAL";
+    case CMsgDOTAMatch_Player_HeroDamageType.HERO_DAMAGE_MAGICAL:
+      return "HERO_DAMAGE_MAGICAL";
+    case CMsgDOTAMatch_Player_HeroDamageType.HERO_DAMAGE_PURE:
+      return "HERO_DAMAGE_PURE";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDOTAMatch_Player_HeroDamageType",
+      );
+  }
 }
 
 export interface CMsgDOTAMatch_Player_CustomGameData {
@@ -1330,6 +2439,50 @@ export enum CMsgServerToGCRequestPlayerRecentAccomplishmentsResponse_EResponse {
   k_eSuccess = 1,
   k_eTooBusy = 2,
   k_eDisabled = 3,
+}
+
+export function cMsgServerToGCRequestPlayerRecentAccomplishmentsResponse_EResponseFromJSON(
+  object: any,
+): CMsgServerToGCRequestPlayerRecentAccomplishmentsResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgServerToGCRequestPlayerRecentAccomplishmentsResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgServerToGCRequestPlayerRecentAccomplishmentsResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eTooBusy":
+      return CMsgServerToGCRequestPlayerRecentAccomplishmentsResponse_EResponse.k_eTooBusy;
+    case 3:
+    case "k_eDisabled":
+      return CMsgServerToGCRequestPlayerRecentAccomplishmentsResponse_EResponse.k_eDisabled;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object +
+          " for enum CMsgServerToGCRequestPlayerRecentAccomplishmentsResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgServerToGCRequestPlayerRecentAccomplishmentsResponse_EResponseToJSON(
+  object: CMsgServerToGCRequestPlayerRecentAccomplishmentsResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgServerToGCRequestPlayerRecentAccomplishmentsResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgServerToGCRequestPlayerRecentAccomplishmentsResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgServerToGCRequestPlayerRecentAccomplishmentsResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgServerToGCRequestPlayerRecentAccomplishmentsResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object +
+          " for enum CMsgServerToGCRequestPlayerRecentAccomplishmentsResponse_EResponse",
+      );
+  }
 }
 
 export interface CMsgArcanaVoteMatchVotes {
@@ -2287,6 +3440,177 @@ export const CSODOTAGameAccountClient = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSODOTAGameAccountClient {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      wins: isSet(object.wins) ? Number(object.wins) : 0,
+      losses: isSet(object.losses) ? Number(object.losses) : 0,
+      xp: isSet(object.xp) ? Number(object.xp) : 0,
+      level: isSet(object.level) ? Number(object.level) : 0,
+      initialSkill: isSet(object.initialSkill) ? Number(object.initialSkill) : 0,
+      leaverCount: isSet(object.leaverCount) ? Number(object.leaverCount) : 0,
+      secondaryLeaverCount: isSet(object.secondaryLeaverCount) ? Number(object.secondaryLeaverCount) : 0,
+      lowPriorityUntilDate: isSet(object.lowPriorityUntilDate) ? Number(object.lowPriorityUntilDate) : 0,
+      preventTextChatUntilDate: isSet(object.preventTextChatUntilDate) ? Number(object.preventTextChatUntilDate) : 0,
+      preventVoiceUntilDate: isSet(object.preventVoiceUntilDate) ? Number(object.preventVoiceUntilDate) : 0,
+      preventPublicTextChatUntilDate: isSet(object.preventPublicTextChatUntilDate)
+        ? Number(object.preventPublicTextChatUntilDate)
+        : 0,
+      preventNewPlayerChatUntilDate: isSet(object.preventNewPlayerChatUntilDate)
+        ? Number(object.preventNewPlayerChatUntilDate)
+        : 0,
+      lastAbandonedGameDate: isSet(object.lastAbandonedGameDate) ? Number(object.lastAbandonedGameDate) : 0,
+      lastSecondaryAbandonedGameDate: isSet(object.lastSecondaryAbandonedGameDate)
+        ? Number(object.lastSecondaryAbandonedGameDate)
+        : 0,
+      leaverPenaltyCount: isSet(object.leaverPenaltyCount) ? Number(object.leaverPenaltyCount) : 0,
+      completedGameStreak: isSet(object.completedGameStreak) ? Number(object.completedGameStreak) : 0,
+      accountDisabledUntilDate: isSet(object.accountDisabledUntilDate) ? Number(object.accountDisabledUntilDate) : 0,
+      accountDisabledCount: isSet(object.accountDisabledCount) ? Number(object.accountDisabledCount) : 0,
+      matchDisabledUntilDate: isSet(object.matchDisabledUntilDate) ? Number(object.matchDisabledUntilDate) : 0,
+      matchDisabledCount: isSet(object.matchDisabledCount) ? Number(object.matchDisabledCount) : 0,
+      shutdownlawterminatetimestamp: isSet(object.shutdownlawterminatetimestamp)
+        ? Number(object.shutdownlawterminatetimestamp)
+        : 0,
+      lowPriorityGamesRemaining: isSet(object.lowPriorityGamesRemaining) ? Number(object.lowPriorityGamesRemaining) : 0,
+      recruitmentLevel: isSet(object.recruitmentLevel) ? Number(object.recruitmentLevel) : 0,
+      hasNewNotifications: isSet(object.hasNewNotifications) ? Boolean(object.hasNewNotifications) : false,
+      isLeagueAdmin: isSet(object.isLeagueAdmin) ? Boolean(object.isLeagueAdmin) : false,
+      casualGamesPlayed: isSet(object.casualGamesPlayed) ? Number(object.casualGamesPlayed) : 0,
+      soloCompetitiveGamesPlayed: isSet(object.soloCompetitiveGamesPlayed)
+        ? Number(object.soloCompetitiveGamesPlayed)
+        : 0,
+      partyCompetitiveGamesPlayed: isSet(object.partyCompetitiveGamesPlayed)
+        ? Number(object.partyCompetitiveGamesPlayed)
+        : 0,
+      casual1v1GamesPlayed: isSet(object.casual1v1GamesPlayed) ? Number(object.casual1v1GamesPlayed) : 0,
+      currAllHeroChallengeId: isSet(object.currAllHeroChallengeId) ? Number(object.currAllHeroChallengeId) : 0,
+      playTimePoints: isSet(object.playTimePoints) ? Number(object.playTimePoints) : 0,
+      accountFlags: isSet(object.accountFlags) ? Number(object.accountFlags) : 0,
+      playTimeLevel: isSet(object.playTimeLevel) ? Number(object.playTimeLevel) : 0,
+      playerBehaviorSeqNumLastReport: isSet(object.playerBehaviorSeqNumLastReport)
+        ? Number(object.playerBehaviorSeqNumLastReport)
+        : 0,
+      playerBehaviorScoreLastReport: isSet(object.playerBehaviorScoreLastReport)
+        ? Number(object.playerBehaviorScoreLastReport)
+        : 0,
+      playerBehaviorReportOldData: isSet(object.playerBehaviorReportOldData)
+        ? Boolean(object.playerBehaviorReportOldData)
+        : false,
+      tourneySkillLevel: isSet(object.tourneySkillLevel) ? Number(object.tourneySkillLevel) : 0,
+      tourneyRecentParticipationDate: isSet(object.tourneyRecentParticipationDate)
+        ? Number(object.tourneyRecentParticipationDate)
+        : 0,
+      anchoredPhoneNumberId: isSet(object.anchoredPhoneNumberId) ? String(object.anchoredPhoneNumberId) : "0",
+      rankedMatchmakingBanUntilDate: isSet(object.rankedMatchmakingBanUntilDate)
+        ? Number(object.rankedMatchmakingBanUntilDate)
+        : 0,
+      recentGameTime1: isSet(object.recentGameTime1) ? Number(object.recentGameTime1) : 0,
+      recentGameTime2: isSet(object.recentGameTime2) ? Number(object.recentGameTime2) : 0,
+      recentGameTime3: isSet(object.recentGameTime3) ? Number(object.recentGameTime3) : 0,
+      favoriteTeamPacked: isSet(object.favoriteTeamPacked) ? String(object.favoriteTeamPacked) : "0",
+      recentReportTime: isSet(object.recentReportTime) ? Number(object.recentReportTime) : 0,
+      customGameDisabledUntilDate: isSet(object.customGameDisabledUntilDate)
+        ? Number(object.customGameDisabledUntilDate)
+        : 0,
+      recentWinTime1: isSet(object.recentWinTime1) ? Number(object.recentWinTime1) : 0,
+      recentWinTime2: isSet(object.recentWinTime2) ? Number(object.recentWinTime2) : 0,
+      recentWinTime3: isSet(object.recentWinTime3) ? Number(object.recentWinTime3) : 0,
+      coachRating: isSet(object.coachRating) ? Number(object.coachRating) : 0,
+      queuePoints: isSet(object.queuePoints) ? Number(object.queuePoints) : 0,
+      roleHandicaps: Array.isArray(object?.roleHandicaps)
+        ? object.roleHandicaps.map((e: any) => CSODOTAGameAccountClient_RoleHandicap.fromJSON(e))
+        : [],
+      eventModeRecentTime: isSet(object.eventModeRecentTime) ? Number(object.eventModeRecentTime) : 0,
+      mmrRecalibrationTime: isSet(object.mmrRecalibrationTime) ? Number(object.mmrRecalibrationTime) : 0,
+    };
+  },
+
+  toJSON(message: CSODOTAGameAccountClient): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.wins !== undefined && (obj.wins = Math.round(message.wins));
+    message.losses !== undefined && (obj.losses = Math.round(message.losses));
+    message.xp !== undefined && (obj.xp = Math.round(message.xp));
+    message.level !== undefined && (obj.level = Math.round(message.level));
+    message.initialSkill !== undefined && (obj.initialSkill = Math.round(message.initialSkill));
+    message.leaverCount !== undefined && (obj.leaverCount = Math.round(message.leaverCount));
+    message.secondaryLeaverCount !== undefined && (obj.secondaryLeaverCount = Math.round(message.secondaryLeaverCount));
+    message.lowPriorityUntilDate !== undefined && (obj.lowPriorityUntilDate = Math.round(message.lowPriorityUntilDate));
+    message.preventTextChatUntilDate !== undefined &&
+      (obj.preventTextChatUntilDate = Math.round(message.preventTextChatUntilDate));
+    message.preventVoiceUntilDate !== undefined &&
+      (obj.preventVoiceUntilDate = Math.round(message.preventVoiceUntilDate));
+    message.preventPublicTextChatUntilDate !== undefined &&
+      (obj.preventPublicTextChatUntilDate = Math.round(message.preventPublicTextChatUntilDate));
+    message.preventNewPlayerChatUntilDate !== undefined &&
+      (obj.preventNewPlayerChatUntilDate = Math.round(message.preventNewPlayerChatUntilDate));
+    message.lastAbandonedGameDate !== undefined &&
+      (obj.lastAbandonedGameDate = Math.round(message.lastAbandonedGameDate));
+    message.lastSecondaryAbandonedGameDate !== undefined &&
+      (obj.lastSecondaryAbandonedGameDate = Math.round(message.lastSecondaryAbandonedGameDate));
+    message.leaverPenaltyCount !== undefined && (obj.leaverPenaltyCount = Math.round(message.leaverPenaltyCount));
+    message.completedGameStreak !== undefined && (obj.completedGameStreak = Math.round(message.completedGameStreak));
+    message.accountDisabledUntilDate !== undefined &&
+      (obj.accountDisabledUntilDate = Math.round(message.accountDisabledUntilDate));
+    message.accountDisabledCount !== undefined && (obj.accountDisabledCount = Math.round(message.accountDisabledCount));
+    message.matchDisabledUntilDate !== undefined &&
+      (obj.matchDisabledUntilDate = Math.round(message.matchDisabledUntilDate));
+    message.matchDisabledCount !== undefined && (obj.matchDisabledCount = Math.round(message.matchDisabledCount));
+    message.shutdownlawterminatetimestamp !== undefined &&
+      (obj.shutdownlawterminatetimestamp = Math.round(message.shutdownlawterminatetimestamp));
+    message.lowPriorityGamesRemaining !== undefined &&
+      (obj.lowPriorityGamesRemaining = Math.round(message.lowPriorityGamesRemaining));
+    message.recruitmentLevel !== undefined && (obj.recruitmentLevel = Math.round(message.recruitmentLevel));
+    message.hasNewNotifications !== undefined && (obj.hasNewNotifications = message.hasNewNotifications);
+    message.isLeagueAdmin !== undefined && (obj.isLeagueAdmin = message.isLeagueAdmin);
+    message.casualGamesPlayed !== undefined && (obj.casualGamesPlayed = Math.round(message.casualGamesPlayed));
+    message.soloCompetitiveGamesPlayed !== undefined &&
+      (obj.soloCompetitiveGamesPlayed = Math.round(message.soloCompetitiveGamesPlayed));
+    message.partyCompetitiveGamesPlayed !== undefined &&
+      (obj.partyCompetitiveGamesPlayed = Math.round(message.partyCompetitiveGamesPlayed));
+    message.casual1v1GamesPlayed !== undefined && (obj.casual1v1GamesPlayed = Math.round(message.casual1v1GamesPlayed));
+    message.currAllHeroChallengeId !== undefined &&
+      (obj.currAllHeroChallengeId = Math.round(message.currAllHeroChallengeId));
+    message.playTimePoints !== undefined && (obj.playTimePoints = Math.round(message.playTimePoints));
+    message.accountFlags !== undefined && (obj.accountFlags = Math.round(message.accountFlags));
+    message.playTimeLevel !== undefined && (obj.playTimeLevel = Math.round(message.playTimeLevel));
+    message.playerBehaviorSeqNumLastReport !== undefined &&
+      (obj.playerBehaviorSeqNumLastReport = Math.round(message.playerBehaviorSeqNumLastReport));
+    message.playerBehaviorScoreLastReport !== undefined &&
+      (obj.playerBehaviorScoreLastReport = Math.round(message.playerBehaviorScoreLastReport));
+    message.playerBehaviorReportOldData !== undefined &&
+      (obj.playerBehaviorReportOldData = message.playerBehaviorReportOldData);
+    message.tourneySkillLevel !== undefined && (obj.tourneySkillLevel = Math.round(message.tourneySkillLevel));
+    message.tourneyRecentParticipationDate !== undefined &&
+      (obj.tourneyRecentParticipationDate = Math.round(message.tourneyRecentParticipationDate));
+    message.anchoredPhoneNumberId !== undefined && (obj.anchoredPhoneNumberId = message.anchoredPhoneNumberId);
+    message.rankedMatchmakingBanUntilDate !== undefined &&
+      (obj.rankedMatchmakingBanUntilDate = Math.round(message.rankedMatchmakingBanUntilDate));
+    message.recentGameTime1 !== undefined && (obj.recentGameTime1 = Math.round(message.recentGameTime1));
+    message.recentGameTime2 !== undefined && (obj.recentGameTime2 = Math.round(message.recentGameTime2));
+    message.recentGameTime3 !== undefined && (obj.recentGameTime3 = Math.round(message.recentGameTime3));
+    message.favoriteTeamPacked !== undefined && (obj.favoriteTeamPacked = message.favoriteTeamPacked);
+    message.recentReportTime !== undefined && (obj.recentReportTime = Math.round(message.recentReportTime));
+    message.customGameDisabledUntilDate !== undefined &&
+      (obj.customGameDisabledUntilDate = Math.round(message.customGameDisabledUntilDate));
+    message.recentWinTime1 !== undefined && (obj.recentWinTime1 = Math.round(message.recentWinTime1));
+    message.recentWinTime2 !== undefined && (obj.recentWinTime2 = Math.round(message.recentWinTime2));
+    message.recentWinTime3 !== undefined && (obj.recentWinTime3 = Math.round(message.recentWinTime3));
+    message.coachRating !== undefined && (obj.coachRating = Math.round(message.coachRating));
+    message.queuePoints !== undefined && (obj.queuePoints = Math.round(message.queuePoints));
+    if (message.roleHandicaps) {
+      obj.roleHandicaps = message.roleHandicaps.map((e) =>
+        e ? CSODOTAGameAccountClient_RoleHandicap.toJSON(e) : undefined
+      );
+    } else {
+      obj.roleHandicaps = [];
+    }
+    message.eventModeRecentTime !== undefined && (obj.eventModeRecentTime = Math.round(message.eventModeRecentTime));
+    message.mmrRecalibrationTime !== undefined && (obj.mmrRecalibrationTime = Math.round(message.mmrRecalibrationTime));
+    return obj;
+  },
 };
 
 function createBaseCSODOTAGameAccountClient_RoleHandicap(): CSODOTAGameAccountClient_RoleHandicap {
@@ -2332,6 +3656,20 @@ export const CSODOTAGameAccountClient_RoleHandicap = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSODOTAGameAccountClient_RoleHandicap {
+    return {
+      role: isSet(object.role) ? Number(object.role) : 0,
+      handicap: isSet(object.handicap) ? Number(object.handicap) : 0,
+    };
+  },
+
+  toJSON(message: CSODOTAGameAccountClient_RoleHandicap): unknown {
+    const obj: any = {};
+    message.role !== undefined && (obj.role = Math.round(message.role));
+    message.handicap !== undefined && (obj.handicap = message.handicap);
+    return obj;
   },
 };
 
@@ -2448,6 +3786,32 @@ export const CSODOTAGameAccountPlus = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSODOTAGameAccountPlus {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      originalStartDate: isSet(object.originalStartDate) ? Number(object.originalStartDate) : 0,
+      plusFlags: isSet(object.plusFlags) ? Number(object.plusFlags) : 0,
+      plusStatus: isSet(object.plusStatus) ? Number(object.plusStatus) : 0,
+      prepaidTimeStart: isSet(object.prepaidTimeStart) ? Number(object.prepaidTimeStart) : 0,
+      prepaidTimeBalance: isSet(object.prepaidTimeBalance) ? Number(object.prepaidTimeBalance) : 0,
+      nextPaymentDate: isSet(object.nextPaymentDate) ? Number(object.nextPaymentDate) : 0,
+      steamAgreementId: isSet(object.steamAgreementId) ? String(object.steamAgreementId) : "0",
+    };
+  },
+
+  toJSON(message: CSODOTAGameAccountPlus): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.originalStartDate !== undefined && (obj.originalStartDate = Math.round(message.originalStartDate));
+    message.plusFlags !== undefined && (obj.plusFlags = Math.round(message.plusFlags));
+    message.plusStatus !== undefined && (obj.plusStatus = Math.round(message.plusStatus));
+    message.prepaidTimeStart !== undefined && (obj.prepaidTimeStart = Math.round(message.prepaidTimeStart));
+    message.prepaidTimeBalance !== undefined && (obj.prepaidTimeBalance = Math.round(message.prepaidTimeBalance));
+    message.nextPaymentDate !== undefined && (obj.nextPaymentDate = Math.round(message.nextPaymentDate));
+    message.steamAgreementId !== undefined && (obj.steamAgreementId = message.steamAgreementId);
+    return obj;
+  },
 };
 
 function createBaseCMsgLobbyFeaturedGamemodeProgress(): CMsgLobbyFeaturedGamemodeProgress {
@@ -2483,6 +3847,26 @@ export const CMsgLobbyFeaturedGamemodeProgress = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgLobbyFeaturedGamemodeProgress {
+    return {
+      accounts: Array.isArray(object?.accounts)
+        ? object.accounts.map((e: any) => CMsgLobbyFeaturedGamemodeProgress_AccountProgress.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgLobbyFeaturedGamemodeProgress): unknown {
+    const obj: any = {};
+    if (message.accounts) {
+      obj.accounts = message.accounts.map((e) =>
+        e ? CMsgLobbyFeaturedGamemodeProgress_AccountProgress.toJSON(e) : undefined
+      );
+    } else {
+      obj.accounts = [];
+    }
+    return obj;
   },
 };
 
@@ -2542,6 +3926,22 @@ export const CMsgLobbyFeaturedGamemodeProgress_AccountProgress = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgLobbyFeaturedGamemodeProgress_AccountProgress {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      currentValue: isSet(object.currentValue) ? Number(object.currentValue) : 0,
+      maxValue: isSet(object.maxValue) ? Number(object.maxValue) : 0,
+    };
+  },
+
+  toJSON(message: CMsgLobbyFeaturedGamemodeProgress_AccountProgress): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.currentValue !== undefined && (obj.currentValue = Math.round(message.currentValue));
+    message.maxValue !== undefined && (obj.maxValue = Math.round(message.maxValue));
+    return obj;
   },
 };
 
@@ -2669,6 +4069,34 @@ export const CMsgBattleCupVictory = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgBattleCupVictory {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      winDate: isSet(object.winDate) ? Number(object.winDate) : 0,
+      validUntil: isSet(object.validUntil) ? Number(object.validUntil) : 0,
+      skillLevel: isSet(object.skillLevel) ? Number(object.skillLevel) : 0,
+      tournamentId: isSet(object.tournamentId) ? Number(object.tournamentId) : 0,
+      divisionId: isSet(object.divisionId) ? Number(object.divisionId) : 0,
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      streak: isSet(object.streak) ? Number(object.streak) : 0,
+      trophyId: isSet(object.trophyId) ? Number(object.trophyId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgBattleCupVictory): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.winDate !== undefined && (obj.winDate = Math.round(message.winDate));
+    message.validUntil !== undefined && (obj.validUntil = Math.round(message.validUntil));
+    message.skillLevel !== undefined && (obj.skillLevel = Math.round(message.skillLevel));
+    message.tournamentId !== undefined && (obj.tournamentId = Math.round(message.tournamentId));
+    message.divisionId !== undefined && (obj.divisionId = Math.round(message.divisionId));
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    message.streak !== undefined && (obj.streak = Math.round(message.streak));
+    message.trophyId !== undefined && (obj.trophyId = Math.round(message.trophyId));
+    return obj;
+  },
 };
 
 function createBaseCMsgLobbyBattleCupVictoryList(): CMsgLobbyBattleCupVictoryList {
@@ -2705,6 +4133,22 @@ export const CMsgLobbyBattleCupVictoryList = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgLobbyBattleCupVictoryList {
+    return {
+      winners: Array.isArray(object?.winners) ? object.winners.map((e: any) => CMsgBattleCupVictory.fromJSON(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgLobbyBattleCupVictoryList): unknown {
+    const obj: any = {};
+    if (message.winners) {
+      obj.winners = message.winners.map((e) => e ? CMsgBattleCupVictory.toJSON(e) : undefined);
+    } else {
+      obj.winners = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTABroadcastNotification(): CMsgDOTABroadcastNotification {
@@ -2740,6 +4184,16 @@ export const CMsgDOTABroadcastNotification = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTABroadcastNotification {
+    return { message: isSet(object.message) ? String(object.message) : "" };
+  },
+
+  toJSON(message: CMsgDOTABroadcastNotification): unknown {
+    const obj: any = {};
+    message.message !== undefined && (obj.message = message.message);
+    return obj;
   },
 };
 
@@ -2878,6 +4332,40 @@ export const CProtoItemHeroStatue = {
     }
     return message;
   },
+
+  fromJSON(object: any): CProtoItemHeroStatue {
+    return {
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      statusEffectIndex: isSet(object.statusEffectIndex) ? Number(object.statusEffectIndex) : 0,
+      sequenceName: isSet(object.sequenceName) ? String(object.sequenceName) : "",
+      cycle: isSet(object.cycle) ? Number(object.cycle) : 0,
+      wearable: Array.isArray(object?.wearable) ? object.wearable.map((e: any) => Number(e)) : [],
+      inscription: isSet(object.inscription) ? String(object.inscription) : "",
+      style: Array.isArray(object?.style) ? object.style.map((e: any) => Number(e)) : [],
+      tournamentDrop: isSet(object.tournamentDrop) ? Boolean(object.tournamentDrop) : false,
+    };
+  },
+
+  toJSON(message: CProtoItemHeroStatue): unknown {
+    const obj: any = {};
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.statusEffectIndex !== undefined && (obj.statusEffectIndex = Math.round(message.statusEffectIndex));
+    message.sequenceName !== undefined && (obj.sequenceName = message.sequenceName);
+    message.cycle !== undefined && (obj.cycle = message.cycle);
+    if (message.wearable) {
+      obj.wearable = message.wearable.map((e) => Math.round(e));
+    } else {
+      obj.wearable = [];
+    }
+    message.inscription !== undefined && (obj.inscription = message.inscription);
+    if (message.style) {
+      obj.style = message.style.map((e) => Math.round(e));
+    } else {
+      obj.style = [];
+    }
+    message.tournamentDrop !== undefined && (obj.tournamentDrop = message.tournamentDrop);
+    return obj;
+  },
 };
 
 function createBaseCMatchPlayerAbilityUpgrade(): CMatchPlayerAbilityUpgrade {
@@ -2924,6 +4412,20 @@ export const CMatchPlayerAbilityUpgrade = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMatchPlayerAbilityUpgrade {
+    return {
+      ability: isSet(object.ability) ? Number(object.ability) : 0,
+      time: isSet(object.time) ? Number(object.time) : 0,
+    };
+  },
+
+  toJSON(message: CMatchPlayerAbilityUpgrade): unknown {
+    const obj: any = {};
+    message.ability !== undefined && (obj.ability = Math.round(message.ability));
+    message.time !== undefined && (obj.time = Math.round(message.time));
+    return obj;
+  },
 };
 
 function createBaseCMatchPlayerTimedCustomStat(): CMatchPlayerTimedCustomStat {
@@ -2969,6 +4471,20 @@ export const CMatchPlayerTimedCustomStat = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMatchPlayerTimedCustomStat {
+    return {
+      stat: isSet(object.stat) ? eDOTAMatchPlayerTimeCustomStatFromJSON(object.stat) : 1,
+      value: isSet(object.value) ? Number(object.value) : 0,
+    };
+  },
+
+  toJSON(message: CMatchPlayerTimedCustomStat): unknown {
+    const obj: any = {};
+    message.stat !== undefined && (obj.stat = eDOTAMatchPlayerTimeCustomStatToJSON(message.stat));
+    message.value !== undefined && (obj.value = message.value);
+    return obj;
   },
 };
 
@@ -3404,6 +4920,98 @@ export const CMatchPlayerTimedStats = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMatchPlayerTimedStats {
+    return {
+      time: isSet(object.time) ? Number(object.time) : 0,
+      kills: isSet(object.kills) ? Number(object.kills) : 0,
+      deaths: isSet(object.deaths) ? Number(object.deaths) : 0,
+      assists: isSet(object.assists) ? Number(object.assists) : 0,
+      netWorth: isSet(object.netWorth) ? Number(object.netWorth) : 0,
+      xp: isSet(object.xp) ? Number(object.xp) : 0,
+      lastHits: isSet(object.lastHits) ? Number(object.lastHits) : 0,
+      denies: isSet(object.denies) ? Number(object.denies) : 0,
+      bountyRuneGold: isSet(object.bountyRuneGold) ? Number(object.bountyRuneGold) : 0,
+      rangeCreepUpgradeGold: isSet(object.rangeCreepUpgradeGold) ? Number(object.rangeCreepUpgradeGold) : 0,
+      observerWardsDewarded: isSet(object.observerWardsDewarded) ? Number(object.observerWardsDewarded) : 0,
+      reliableGoldEarned: isSet(object.reliableGoldEarned) ? Number(object.reliableGoldEarned) : 0,
+      goldLossPrevented: isSet(object.goldLossPrevented) ? Number(object.goldLossPrevented) : 0,
+      heroKillGold: isSet(object.heroKillGold) ? Number(object.heroKillGold) : 0,
+      creepKillGold: isSet(object.creepKillGold) ? Number(object.creepKillGold) : 0,
+      buildingGold: isSet(object.buildingGold) ? Number(object.buildingGold) : 0,
+      otherGold: isSet(object.otherGold) ? Number(object.otherGold) : 0,
+      comebackGold: isSet(object.comebackGold) ? Number(object.comebackGold) : 0,
+      experimentalGold: isSet(object.experimentalGold) ? Number(object.experimentalGold) : 0,
+      experimental2Gold: isSet(object.experimental2Gold) ? Number(object.experimental2Gold) : 0,
+      creepDenyGold: isSet(object.creepDenyGold) ? Number(object.creepDenyGold) : 0,
+      tpScrollsPurchased1: isSet(object.tpScrollsPurchased1) ? Number(object.tpScrollsPurchased1) : 0,
+      tpScrollsPurchased2: isSet(object.tpScrollsPurchased2) ? Number(object.tpScrollsPurchased2) : 0,
+      tpScrollsPurchased3: isSet(object.tpScrollsPurchased3) ? Number(object.tpScrollsPurchased3) : 0,
+      tpScrollsPurchased4: isSet(object.tpScrollsPurchased4) ? Number(object.tpScrollsPurchased4) : 0,
+      tpScrollsPurchased5: isSet(object.tpScrollsPurchased5) ? Number(object.tpScrollsPurchased5) : 0,
+      neutralGold: isSet(object.neutralGold) ? Number(object.neutralGold) : 0,
+      courierGold: isSet(object.courierGold) ? Number(object.courierGold) : 0,
+      roshanGold: isSet(object.roshanGold) ? Number(object.roshanGold) : 0,
+      incomeGold: isSet(object.incomeGold) ? Number(object.incomeGold) : 0,
+      itemValue: isSet(object.itemValue) ? Number(object.itemValue) : 0,
+      supportGoldSpent: isSet(object.supportGoldSpent) ? Number(object.supportGoldSpent) : 0,
+      campsStacked: isSet(object.campsStacked) ? Number(object.campsStacked) : 0,
+      wardsPlaced: isSet(object.wardsPlaced) ? Number(object.wardsPlaced) : 0,
+      tripleKills: isSet(object.tripleKills) ? Number(object.tripleKills) : 0,
+      rampages: isSet(object.rampages) ? Number(object.rampages) : 0,
+      customStats: Array.isArray(object?.customStats)
+        ? object.customStats.map((e: any) => CMatchPlayerTimedCustomStat.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMatchPlayerTimedStats): unknown {
+    const obj: any = {};
+    message.time !== undefined && (obj.time = Math.round(message.time));
+    message.kills !== undefined && (obj.kills = Math.round(message.kills));
+    message.deaths !== undefined && (obj.deaths = Math.round(message.deaths));
+    message.assists !== undefined && (obj.assists = Math.round(message.assists));
+    message.netWorth !== undefined && (obj.netWorth = Math.round(message.netWorth));
+    message.xp !== undefined && (obj.xp = Math.round(message.xp));
+    message.lastHits !== undefined && (obj.lastHits = Math.round(message.lastHits));
+    message.denies !== undefined && (obj.denies = Math.round(message.denies));
+    message.bountyRuneGold !== undefined && (obj.bountyRuneGold = Math.round(message.bountyRuneGold));
+    message.rangeCreepUpgradeGold !== undefined &&
+      (obj.rangeCreepUpgradeGold = Math.round(message.rangeCreepUpgradeGold));
+    message.observerWardsDewarded !== undefined &&
+      (obj.observerWardsDewarded = Math.round(message.observerWardsDewarded));
+    message.reliableGoldEarned !== undefined && (obj.reliableGoldEarned = Math.round(message.reliableGoldEarned));
+    message.goldLossPrevented !== undefined && (obj.goldLossPrevented = Math.round(message.goldLossPrevented));
+    message.heroKillGold !== undefined && (obj.heroKillGold = Math.round(message.heroKillGold));
+    message.creepKillGold !== undefined && (obj.creepKillGold = Math.round(message.creepKillGold));
+    message.buildingGold !== undefined && (obj.buildingGold = Math.round(message.buildingGold));
+    message.otherGold !== undefined && (obj.otherGold = Math.round(message.otherGold));
+    message.comebackGold !== undefined && (obj.comebackGold = Math.round(message.comebackGold));
+    message.experimentalGold !== undefined && (obj.experimentalGold = Math.round(message.experimentalGold));
+    message.experimental2Gold !== undefined && (obj.experimental2Gold = Math.round(message.experimental2Gold));
+    message.creepDenyGold !== undefined && (obj.creepDenyGold = Math.round(message.creepDenyGold));
+    message.tpScrollsPurchased1 !== undefined && (obj.tpScrollsPurchased1 = Math.round(message.tpScrollsPurchased1));
+    message.tpScrollsPurchased2 !== undefined && (obj.tpScrollsPurchased2 = Math.round(message.tpScrollsPurchased2));
+    message.tpScrollsPurchased3 !== undefined && (obj.tpScrollsPurchased3 = Math.round(message.tpScrollsPurchased3));
+    message.tpScrollsPurchased4 !== undefined && (obj.tpScrollsPurchased4 = Math.round(message.tpScrollsPurchased4));
+    message.tpScrollsPurchased5 !== undefined && (obj.tpScrollsPurchased5 = Math.round(message.tpScrollsPurchased5));
+    message.neutralGold !== undefined && (obj.neutralGold = Math.round(message.neutralGold));
+    message.courierGold !== undefined && (obj.courierGold = Math.round(message.courierGold));
+    message.roshanGold !== undefined && (obj.roshanGold = Math.round(message.roshanGold));
+    message.incomeGold !== undefined && (obj.incomeGold = Math.round(message.incomeGold));
+    message.itemValue !== undefined && (obj.itemValue = Math.round(message.itemValue));
+    message.supportGoldSpent !== undefined && (obj.supportGoldSpent = Math.round(message.supportGoldSpent));
+    message.campsStacked !== undefined && (obj.campsStacked = Math.round(message.campsStacked));
+    message.wardsPlaced !== undefined && (obj.wardsPlaced = Math.round(message.wardsPlaced));
+    message.tripleKills !== undefined && (obj.tripleKills = Math.round(message.tripleKills));
+    message.rampages !== undefined && (obj.rampages = Math.round(message.rampages));
+    if (message.customStats) {
+      obj.customStats = message.customStats.map((e) => e ? CMatchPlayerTimedCustomStat.toJSON(e) : undefined);
+    } else {
+      obj.customStats = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMatchTeamTimedStats(): CMatchTeamTimedStats {
@@ -3480,6 +5088,26 @@ export const CMatchTeamTimedStats = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMatchTeamTimedStats {
+    return {
+      time: isSet(object.time) ? Number(object.time) : 0,
+      enemyTowersKilled: isSet(object.enemyTowersKilled) ? Number(object.enemyTowersKilled) : 0,
+      enemyBarracksKilled: isSet(object.enemyBarracksKilled) ? Number(object.enemyBarracksKilled) : 0,
+      enemyTowersStatus: isSet(object.enemyTowersStatus) ? Number(object.enemyTowersStatus) : 0,
+      enemyBarracksStatus: isSet(object.enemyBarracksStatus) ? Number(object.enemyBarracksStatus) : 0,
+    };
+  },
+
+  toJSON(message: CMatchTeamTimedStats): unknown {
+    const obj: any = {};
+    message.time !== undefined && (obj.time = Math.round(message.time));
+    message.enemyTowersKilled !== undefined && (obj.enemyTowersKilled = Math.round(message.enemyTowersKilled));
+    message.enemyBarracksKilled !== undefined && (obj.enemyBarracksKilled = Math.round(message.enemyBarracksKilled));
+    message.enemyTowersStatus !== undefined && (obj.enemyTowersStatus = Math.round(message.enemyTowersStatus));
+    message.enemyBarracksStatus !== undefined && (obj.enemyBarracksStatus = Math.round(message.enemyBarracksStatus));
+    return obj;
+  },
 };
 
 function createBaseCMatchAdditionalUnitInventory(): CMatchAdditionalUnitInventory {
@@ -3537,6 +5165,24 @@ export const CMatchAdditionalUnitInventory = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMatchAdditionalUnitInventory {
+    return {
+      unitName: isSet(object.unitName) ? String(object.unitName) : "",
+      items: Array.isArray(object?.items) ? object.items.map((e: any) => Number(e)) : [],
+    };
+  },
+
+  toJSON(message: CMatchAdditionalUnitInventory): unknown {
+    const obj: any = {};
+    message.unitName !== undefined && (obj.unitName = message.unitName);
+    if (message.items) {
+      obj.items = message.items.map((e) => Math.round(e));
+    } else {
+      obj.items = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMatchPlayerPermanentBuff(): CMatchPlayerPermanentBuff {
@@ -3593,6 +5239,22 @@ export const CMatchPlayerPermanentBuff = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMatchPlayerPermanentBuff {
+    return {
+      permanentBuff: isSet(object.permanentBuff) ? Number(object.permanentBuff) : 0,
+      stackCount: isSet(object.stackCount) ? Number(object.stackCount) : 0,
+      grantTime: isSet(object.grantTime) ? Number(object.grantTime) : 0,
+    };
+  },
+
+  toJSON(message: CMatchPlayerPermanentBuff): unknown {
+    const obj: any = {};
+    message.permanentBuff !== undefined && (obj.permanentBuff = Math.round(message.permanentBuff));
+    message.stackCount !== undefined && (obj.stackCount = Math.round(message.stackCount));
+    message.grantTime !== undefined && (obj.grantTime = Math.round(message.grantTime));
+    return obj;
+  },
 };
 
 function createBaseCMatchHeroSelectEvent(): CMatchHeroSelectEvent {
@@ -3648,6 +5310,22 @@ export const CMatchHeroSelectEvent = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMatchHeroSelectEvent {
+    return {
+      isPick: isSet(object.isPick) ? Boolean(object.isPick) : false,
+      team: isSet(object.team) ? Number(object.team) : 0,
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+    };
+  },
+
+  toJSON(message: CMatchHeroSelectEvent): unknown {
+    const obj: any = {};
+    message.isPick !== undefined && (obj.isPick = message.isPick);
+    message.team !== undefined && (obj.team = Math.round(message.team));
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    return obj;
   },
 };
 
@@ -3775,6 +5453,34 @@ export const CMatchClip = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMatchClip {
+    return {
+      matchId: isSet(object.matchId) ? String(object.matchId) : "0",
+      playerAccountId: isSet(object.playerAccountId) ? Number(object.playerAccountId) : 0,
+      gameTimeSeconds: isSet(object.gameTimeSeconds) ? Number(object.gameTimeSeconds) : 0,
+      durationSeconds: isSet(object.durationSeconds) ? Number(object.durationSeconds) : 0,
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      abilityId: isSet(object.abilityId) ? Number(object.abilityId) : 0,
+      cameraMode: isSet(object.cameraMode) ? Number(object.cameraMode) : 0,
+      comment: isSet(object.comment) ? String(object.comment) : "",
+    };
+  },
+
+  toJSON(message: CMatchClip): unknown {
+    const obj: any = {};
+    message.matchId !== undefined && (obj.matchId = message.matchId);
+    message.playerAccountId !== undefined && (obj.playerAccountId = Math.round(message.playerAccountId));
+    message.gameTimeSeconds !== undefined && (obj.gameTimeSeconds = Math.round(message.gameTimeSeconds));
+    message.durationSeconds !== undefined && (obj.durationSeconds = Math.round(message.durationSeconds));
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.abilityId !== undefined && (obj.abilityId = Math.round(message.abilityId));
+    message.cameraMode !== undefined && (obj.cameraMode = Math.round(message.cameraMode));
+    message.comment !== undefined && (obj.comment = message.comment);
+    return obj;
+  },
 };
 
 function createBaseCPartySearchClientParty(): CPartySearchClientParty {
@@ -3842,6 +5548,26 @@ export const CPartySearchClientParty = {
     }
     return message;
   },
+
+  fromJSON(object: any): CPartySearchClientParty {
+    return {
+      partyId: isSet(object.partyId) ? String(object.partyId) : "0",
+      beaconType: isSet(object.beaconType) ? Number(object.beaconType) : 0,
+      partyMembers: Array.isArray(object?.partyMembers) ? object.partyMembers.map((e: any) => Number(e)) : [],
+    };
+  },
+
+  toJSON(message: CPartySearchClientParty): unknown {
+    const obj: any = {};
+    message.partyId !== undefined && (obj.partyId = message.partyId);
+    message.beaconType !== undefined && (obj.beaconType = Math.round(message.beaconType));
+    if (message.partyMembers) {
+      obj.partyMembers = message.partyMembers.map((e) => Math.round(e));
+    } else {
+      obj.partyMembers = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTAHasItemQuery(): CMsgDOTAHasItemQuery {
@@ -3888,6 +5614,20 @@ export const CMsgDOTAHasItemQuery = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTAHasItemQuery {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      itemId: isSet(object.itemId) ? String(object.itemId) : "0",
+    };
+  },
+
+  toJSON(message: CMsgDOTAHasItemQuery): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.itemId !== undefined && (obj.itemId = message.itemId);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTAHasItemResponse(): CMsgDOTAHasItemResponse {
@@ -3923,6 +5663,16 @@ export const CMsgDOTAHasItemResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAHasItemResponse {
+    return { hasItem: isSet(object.hasItem) ? Boolean(object.hasItem) : false };
+  },
+
+  toJSON(message: CMsgDOTAHasItemResponse): unknown {
+    const obj: any = {};
+    message.hasItem !== undefined && (obj.hasItem = message.hasItem);
+    return obj;
   },
 };
 
@@ -3991,6 +5741,28 @@ export const CMsgGCGetPlayerCardItemInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCGetPlayerCardItemInfo {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      playerCardItemIds: Array.isArray(object?.playerCardItemIds)
+        ? object.playerCardItemIds.map((e: any) => String(e))
+        : [],
+      allForEvent: isSet(object.allForEvent) ? Number(object.allForEvent) : 0,
+    };
+  },
+
+  toJSON(message: CMsgGCGetPlayerCardItemInfo): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    if (message.playerCardItemIds) {
+      obj.playerCardItemIds = message.playerCardItemIds.map((e) => e);
+    } else {
+      obj.playerCardItemIds = [];
+    }
+    message.allForEvent !== undefined && (obj.allForEvent = Math.round(message.allForEvent));
+    return obj;
+  },
 };
 
 function createBaseCMsgGCGetPlayerCardItemInfoResponse(): CMsgGCGetPlayerCardItemInfoResponse {
@@ -4028,6 +5800,26 @@ export const CMsgGCGetPlayerCardItemInfoResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCGetPlayerCardItemInfoResponse {
+    return {
+      playerCardInfos: Array.isArray(object?.playerCardInfos)
+        ? object.playerCardInfos.map((e: any) => CMsgGCGetPlayerCardItemInfoResponse_PlayerCardInfo.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgGCGetPlayerCardItemInfoResponse): unknown {
+    const obj: any = {};
+    if (message.playerCardInfos) {
+      obj.playerCardInfos = message.playerCardInfos.map((e) =>
+        e ? CMsgGCGetPlayerCardItemInfoResponse_PlayerCardInfo.toJSON(e) : undefined
+      );
+    } else {
+      obj.playerCardInfos = [];
+    }
+    return obj;
   },
 };
 
@@ -4088,6 +5880,22 @@ export const CMsgGCGetPlayerCardItemInfoResponse_PlayerCardInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCGetPlayerCardItemInfoResponse_PlayerCardInfo {
+    return {
+      playerCardItemId: isSet(object.playerCardItemId) ? String(object.playerCardItemId) : "0",
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      packedBonuses: isSet(object.packedBonuses) ? String(object.packedBonuses) : "0",
+    };
+  },
+
+  toJSON(message: CMsgGCGetPlayerCardItemInfoResponse_PlayerCardInfo): unknown {
+    const obj: any = {};
+    message.playerCardItemId !== undefined && (obj.playerCardItemId = message.playerCardItemId);
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.packedBonuses !== undefined && (obj.packedBonuses = message.packedBonuses);
+    return obj;
+  },
 };
 
 function createBaseCSODOTAMapLocationState(): CSODOTAMapLocationState {
@@ -4144,6 +5952,22 @@ export const CSODOTAMapLocationState = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSODOTAMapLocationState {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      locationId: isSet(object.locationId) ? Number(object.locationId) : 0,
+      completed: isSet(object.completed) ? Boolean(object.completed) : false,
+    };
+  },
+
+  toJSON(message: CSODOTAMapLocationState): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.locationId !== undefined && (obj.locationId = Math.round(message.locationId));
+    message.completed !== undefined && (obj.completed = message.completed);
+    return obj;
+  },
 };
 
 function createBaseCMsgLeagueAdminList(): CMsgLeagueAdminList {
@@ -4190,6 +6014,20 @@ export const CMsgLeagueAdminList = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgLeagueAdminList {
+    return { accountIds: Array.isArray(object?.accountIds) ? object.accountIds.map((e: any) => Number(e)) : [] };
+  },
+
+  toJSON(message: CMsgLeagueAdminList): unknown {
+    const obj: any = {};
+    if (message.accountIds) {
+      obj.accountIds = message.accountIds.map((e) => Math.round(e));
+    } else {
+      obj.accountIds = [];
+    }
+    return obj;
   },
 };
 
@@ -4383,6 +6221,55 @@ export const CMsgDOTAProfileCard = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTAProfileCard {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      slots: Array.isArray(object?.slots) ? object.slots.map((e: any) => CMsgDOTAProfileCard_Slot.fromJSON(e)) : [],
+      badgePoints: isSet(object.badgePoints) ? Number(object.badgePoints) : 0,
+      eventPoints: isSet(object.eventPoints) ? Number(object.eventPoints) : 0,
+      eventId: isSet(object.eventId) ? Number(object.eventId) : 0,
+      recentBattleCupVictory: isSet(object.recentBattleCupVictory)
+        ? CMsgBattleCupVictory.fromJSON(object.recentBattleCupVictory)
+        : undefined,
+      rankTier: isSet(object.rankTier) ? Number(object.rankTier) : 0,
+      leaderboardRank: isSet(object.leaderboardRank) ? Number(object.leaderboardRank) : 0,
+      isPlusSubscriber: isSet(object.isPlusSubscriber) ? Boolean(object.isPlusSubscriber) : false,
+      plusOriginalStartDate: isSet(object.plusOriginalStartDate) ? Number(object.plusOriginalStartDate) : 0,
+      rankTierScore: isSet(object.rankTierScore) ? Number(object.rankTierScore) : 0,
+      leaderboardRankCore: isSet(object.leaderboardRankCore) ? Number(object.leaderboardRankCore) : 0,
+      title: isSet(object.title) ? Number(object.title) : 0,
+      favoriteTeamPacked: isSet(object.favoriteTeamPacked) ? String(object.favoriteTeamPacked) : "0",
+      lifetimeGames: isSet(object.lifetimeGames) ? Number(object.lifetimeGames) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTAProfileCard): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    if (message.slots) {
+      obj.slots = message.slots.map((e) => e ? CMsgDOTAProfileCard_Slot.toJSON(e) : undefined);
+    } else {
+      obj.slots = [];
+    }
+    message.badgePoints !== undefined && (obj.badgePoints = Math.round(message.badgePoints));
+    message.eventPoints !== undefined && (obj.eventPoints = Math.round(message.eventPoints));
+    message.eventId !== undefined && (obj.eventId = Math.round(message.eventId));
+    message.recentBattleCupVictory !== undefined && (obj.recentBattleCupVictory = message.recentBattleCupVictory
+      ? CMsgBattleCupVictory.toJSON(message.recentBattleCupVictory)
+      : undefined);
+    message.rankTier !== undefined && (obj.rankTier = Math.round(message.rankTier));
+    message.leaderboardRank !== undefined && (obj.leaderboardRank = Math.round(message.leaderboardRank));
+    message.isPlusSubscriber !== undefined && (obj.isPlusSubscriber = message.isPlusSubscriber);
+    message.plusOriginalStartDate !== undefined &&
+      (obj.plusOriginalStartDate = Math.round(message.plusOriginalStartDate));
+    message.rankTierScore !== undefined && (obj.rankTierScore = Math.round(message.rankTierScore));
+    message.leaderboardRankCore !== undefined && (obj.leaderboardRankCore = Math.round(message.leaderboardRankCore));
+    message.title !== undefined && (obj.title = Math.round(message.title));
+    message.favoriteTeamPacked !== undefined && (obj.favoriteTeamPacked = message.favoriteTeamPacked);
+    message.lifetimeGames !== undefined && (obj.lifetimeGames = Math.round(message.lifetimeGames));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTAProfileCard_Slot(): CMsgDOTAProfileCard_Slot {
@@ -4487,6 +6374,36 @@ export const CMsgDOTAProfileCard_Slot = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTAProfileCard_Slot {
+    return {
+      slotId: isSet(object.slotId) ? Number(object.slotId) : 0,
+      trophy: isSet(object.trophy) ? CMsgDOTAProfileCard_Slot_Trophy.fromJSON(object.trophy) : undefined,
+      stat: isSet(object.stat) ? CMsgDOTAProfileCard_Slot_Stat.fromJSON(object.stat) : undefined,
+      item: isSet(object.item) ? CMsgDOTAProfileCard_Slot_Item.fromJSON(object.item) : undefined,
+      hero: isSet(object.hero) ? CMsgDOTAProfileCard_Slot_Hero.fromJSON(object.hero) : undefined,
+      emoticon: isSet(object.emoticon) ? CMsgDOTAProfileCard_Slot_Emoticon.fromJSON(object.emoticon) : undefined,
+      team: isSet(object.team) ? CMsgDOTAProfileCard_Slot_Team.fromJSON(object.team) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgDOTAProfileCard_Slot): unknown {
+    const obj: any = {};
+    message.slotId !== undefined && (obj.slotId = Math.round(message.slotId));
+    message.trophy !== undefined &&
+      (obj.trophy = message.trophy ? CMsgDOTAProfileCard_Slot_Trophy.toJSON(message.trophy) : undefined);
+    message.stat !== undefined &&
+      (obj.stat = message.stat ? CMsgDOTAProfileCard_Slot_Stat.toJSON(message.stat) : undefined);
+    message.item !== undefined &&
+      (obj.item = message.item ? CMsgDOTAProfileCard_Slot_Item.toJSON(message.item) : undefined);
+    message.hero !== undefined &&
+      (obj.hero = message.hero ? CMsgDOTAProfileCard_Slot_Hero.toJSON(message.hero) : undefined);
+    message.emoticon !== undefined &&
+      (obj.emoticon = message.emoticon ? CMsgDOTAProfileCard_Slot_Emoticon.toJSON(message.emoticon) : undefined);
+    message.team !== undefined &&
+      (obj.team = message.team ? CMsgDOTAProfileCard_Slot_Team.toJSON(message.team) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTAProfileCard_Slot_Trophy(): CMsgDOTAProfileCard_Slot_Trophy {
@@ -4532,6 +6449,20 @@ export const CMsgDOTAProfileCard_Slot_Trophy = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAProfileCard_Slot_Trophy {
+    return {
+      trophyId: isSet(object.trophyId) ? Number(object.trophyId) : 0,
+      trophyScore: isSet(object.trophyScore) ? Number(object.trophyScore) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTAProfileCard_Slot_Trophy): unknown {
+    const obj: any = {};
+    message.trophyId !== undefined && (obj.trophyId = Math.round(message.trophyId));
+    message.trophyScore !== undefined && (obj.trophyScore = Math.round(message.trophyScore));
+    return obj;
   },
 };
 
@@ -4579,6 +6510,20 @@ export const CMsgDOTAProfileCard_Slot_Stat = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTAProfileCard_Slot_Stat {
+    return {
+      statId: isSet(object.statId) ? cMsgDOTAProfileCard_EStatIDFromJSON(object.statId) : 3,
+      statScore: isSet(object.statScore) ? Number(object.statScore) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTAProfileCard_Slot_Stat): unknown {
+    const obj: any = {};
+    message.statId !== undefined && (obj.statId = cMsgDOTAProfileCard_EStatIDToJSON(message.statId));
+    message.statScore !== undefined && (obj.statScore = Math.round(message.statScore));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTAProfileCard_Slot_Item(): CMsgDOTAProfileCard_Slot_Item {
@@ -4624,6 +6569,25 @@ export const CMsgDOTAProfileCard_Slot_Item = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAProfileCard_Slot_Item {
+    return {
+      serializedItem: isSet(object.serializedItem)
+        ? Buffer.from(bytesFromBase64(object.serializedItem))
+        : Buffer.alloc(0),
+      itemId: isSet(object.itemId) ? String(object.itemId) : "0",
+    };
+  },
+
+  toJSON(message: CMsgDOTAProfileCard_Slot_Item): unknown {
+    const obj: any = {};
+    message.serializedItem !== undefined &&
+      (obj.serializedItem = base64FromBytes(
+        message.serializedItem !== undefined ? message.serializedItem : Buffer.alloc(0),
+      ));
+    message.itemId !== undefined && (obj.itemId = message.itemId);
+    return obj;
   },
 };
 
@@ -4681,6 +6645,22 @@ export const CMsgDOTAProfileCard_Slot_Hero = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTAProfileCard_Slot_Hero {
+    return {
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      heroWins: isSet(object.heroWins) ? Number(object.heroWins) : 0,
+      heroLosses: isSet(object.heroLosses) ? Number(object.heroLosses) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTAProfileCard_Slot_Hero): unknown {
+    const obj: any = {};
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.heroWins !== undefined && (obj.heroWins = Math.round(message.heroWins));
+    message.heroLosses !== undefined && (obj.heroLosses = Math.round(message.heroLosses));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTAProfileCard_Slot_Emoticon(): CMsgDOTAProfileCard_Slot_Emoticon {
@@ -4717,6 +6697,16 @@ export const CMsgDOTAProfileCard_Slot_Emoticon = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTAProfileCard_Slot_Emoticon {
+    return { emoticonId: isSet(object.emoticonId) ? Number(object.emoticonId) : 0 };
+  },
+
+  toJSON(message: CMsgDOTAProfileCard_Slot_Emoticon): unknown {
+    const obj: any = {};
+    message.emoticonId !== undefined && (obj.emoticonId = Math.round(message.emoticonId));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTAProfileCard_Slot_Team(): CMsgDOTAProfileCard_Slot_Team {
@@ -4752,6 +6742,16 @@ export const CMsgDOTAProfileCard_Slot_Team = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAProfileCard_Slot_Team {
+    return { teamId: isSet(object.teamId) ? Number(object.teamId) : 0 };
+  },
+
+  toJSON(message: CMsgDOTAProfileCard_Slot_Team): unknown {
+    const obj: any = {};
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    return obj;
   },
 };
 
@@ -4967,6 +6967,50 @@ export const CSODOTAPlayerChallenge = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSODOTAPlayerChallenge {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      eventId: isSet(object.eventId) ? Number(object.eventId) : 0,
+      slotId: isSet(object.slotId) ? Number(object.slotId) : 0,
+      intParam0: isSet(object.intParam0) ? Number(object.intParam0) : 0,
+      intParam1: isSet(object.intParam1) ? Number(object.intParam1) : 0,
+      createdTime: isSet(object.createdTime) ? Number(object.createdTime) : 0,
+      completed: isSet(object.completed) ? Number(object.completed) : 0,
+      sequenceId: isSet(object.sequenceId) ? Number(object.sequenceId) : 0,
+      challengeTier: isSet(object.challengeTier) ? Number(object.challengeTier) : 0,
+      flags: isSet(object.flags) ? Number(object.flags) : 0,
+      attempts: isSet(object.attempts) ? Number(object.attempts) : 0,
+      completeLimit: isSet(object.completeLimit) ? Number(object.completeLimit) : 0,
+      questRank: isSet(object.questRank) ? Number(object.questRank) : 0,
+      maxQuestRank: isSet(object.maxQuestRank) ? Number(object.maxQuestRank) : 0,
+      instanceId: isSet(object.instanceId) ? Number(object.instanceId) : 0,
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      templateId: isSet(object.templateId) ? Number(object.templateId) : 0,
+    };
+  },
+
+  toJSON(message: CSODOTAPlayerChallenge): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.eventId !== undefined && (obj.eventId = Math.round(message.eventId));
+    message.slotId !== undefined && (obj.slotId = Math.round(message.slotId));
+    message.intParam0 !== undefined && (obj.intParam0 = Math.round(message.intParam0));
+    message.intParam1 !== undefined && (obj.intParam1 = Math.round(message.intParam1));
+    message.createdTime !== undefined && (obj.createdTime = Math.round(message.createdTime));
+    message.completed !== undefined && (obj.completed = Math.round(message.completed));
+    message.sequenceId !== undefined && (obj.sequenceId = Math.round(message.sequenceId));
+    message.challengeTier !== undefined && (obj.challengeTier = Math.round(message.challengeTier));
+    message.flags !== undefined && (obj.flags = Math.round(message.flags));
+    message.attempts !== undefined && (obj.attempts = Math.round(message.attempts));
+    message.completeLimit !== undefined && (obj.completeLimit = Math.round(message.completeLimit));
+    message.questRank !== undefined && (obj.questRank = Math.round(message.questRank));
+    message.maxQuestRank !== undefined && (obj.maxQuestRank = Math.round(message.maxQuestRank));
+    message.instanceId !== undefined && (obj.instanceId = Math.round(message.instanceId));
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.templateId !== undefined && (obj.templateId = Math.round(message.templateId));
+    return obj;
+  },
 };
 
 function createBaseCMsgClientToGCRerollPlayerChallenge(): CMsgClientToGCRerollPlayerChallenge {
@@ -5023,6 +7067,22 @@ export const CMsgClientToGCRerollPlayerChallenge = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientToGCRerollPlayerChallenge {
+    return {
+      eventId: isSet(object.eventId) ? eEventFromJSON(object.eventId) : 0,
+      sequenceId: isSet(object.sequenceId) ? Number(object.sequenceId) : 0,
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCRerollPlayerChallenge): unknown {
+    const obj: any = {};
+    message.eventId !== undefined && (obj.eventId = eEventToJSON(message.eventId));
+    message.sequenceId !== undefined && (obj.sequenceId = Math.round(message.sequenceId));
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    return obj;
+  },
 };
 
 function createBaseCMsgGCRerollPlayerChallengeResponse(): CMsgGCRerollPlayerChallengeResponse {
@@ -5058,6 +7118,16 @@ export const CMsgGCRerollPlayerChallengeResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCRerollPlayerChallengeResponse {
+    return { result: isSet(object.result) ? cMsgGCRerollPlayerChallengeResponse_EResultFromJSON(object.result) : 0 };
+  },
+
+  toJSON(message: CMsgGCRerollPlayerChallengeResponse): unknown {
+    const obj: any = {};
+    message.result !== undefined && (obj.result = cMsgGCRerollPlayerChallengeResponse_EResultToJSON(message.result));
+    return obj;
   },
 };
 
@@ -5115,6 +7185,24 @@ export const CMsgGCTopCustomGamesList = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCTopCustomGamesList {
+    return {
+      topCustomGames: Array.isArray(object?.topCustomGames) ? object.topCustomGames.map((e: any) => String(e)) : [],
+      gameOfTheDay: isSet(object.gameOfTheDay) ? String(object.gameOfTheDay) : "0",
+    };
+  },
+
+  toJSON(message: CMsgGCTopCustomGamesList): unknown {
+    const obj: any = {};
+    if (message.topCustomGames) {
+      obj.topCustomGames = message.topCustomGames.map((e) => e);
+    } else {
+      obj.topCustomGames = [];
+    }
+    message.gameOfTheDay !== undefined && (obj.gameOfTheDay = message.gameOfTheDay);
+    return obj;
   },
 };
 
@@ -5191,6 +7279,40 @@ export const CMsgDOTARealtimeGameStats = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTARealtimeGameStats {
+    return {
+      match: isSet(object.match) ? CMsgDOTARealtimeGameStats_MatchDetails.fromJSON(object.match) : undefined,
+      teams: Array.isArray(object?.teams)
+        ? object.teams.map((e: any) => CMsgDOTARealtimeGameStats_TeamDetails.fromJSON(e))
+        : [],
+      buildings: Array.isArray(object?.buildings)
+        ? object.buildings.map((e: any) => CMsgDOTARealtimeGameStats_BuildingDetails.fromJSON(e))
+        : [],
+      graphData: isSet(object.graphData) ? CMsgDOTARealtimeGameStats_GraphData.fromJSON(object.graphData) : undefined,
+      deltaFrame: isSet(object.deltaFrame) ? Boolean(object.deltaFrame) : false,
+    };
+  },
+
+  toJSON(message: CMsgDOTARealtimeGameStats): unknown {
+    const obj: any = {};
+    message.match !== undefined &&
+      (obj.match = message.match ? CMsgDOTARealtimeGameStats_MatchDetails.toJSON(message.match) : undefined);
+    if (message.teams) {
+      obj.teams = message.teams.map((e) => e ? CMsgDOTARealtimeGameStats_TeamDetails.toJSON(e) : undefined);
+    } else {
+      obj.teams = [];
+    }
+    if (message.buildings) {
+      obj.buildings = message.buildings.map((e) => e ? CMsgDOTARealtimeGameStats_BuildingDetails.toJSON(e) : undefined);
+    } else {
+      obj.buildings = [];
+    }
+    message.graphData !== undefined &&
+      (obj.graphData = message.graphData ? CMsgDOTARealtimeGameStats_GraphData.toJSON(message.graphData) : undefined);
+    message.deltaFrame !== undefined && (obj.deltaFrame = message.deltaFrame);
+    return obj;
   },
 };
 
@@ -5340,6 +7462,44 @@ export const CMsgDOTARealtimeGameStats_TeamDetails = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTARealtimeGameStats_TeamDetails {
+    return {
+      teamNumber: isSet(object.teamNumber) ? Number(object.teamNumber) : 0,
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      teamName: isSet(object.teamName) ? String(object.teamName) : "",
+      teamLogo: isSet(object.teamLogo) ? String(object.teamLogo) : "0",
+      teamTag: isSet(object.teamTag) ? String(object.teamTag) : "",
+      score: isSet(object.score) ? Number(object.score) : 0,
+      netWorth: isSet(object.netWorth) ? Number(object.netWorth) : 0,
+      players: Array.isArray(object?.players)
+        ? object.players.map((e: any) => CMsgDOTARealtimeGameStats_PlayerDetails.fromJSON(e))
+        : [],
+      onlyTeam: isSet(object.onlyTeam) ? Boolean(object.onlyTeam) : false,
+      cheers: isSet(object.cheers) ? Number(object.cheers) : 0,
+      teamLogoUrl: isSet(object.teamLogoUrl) ? String(object.teamLogoUrl) : "",
+    };
+  },
+
+  toJSON(message: CMsgDOTARealtimeGameStats_TeamDetails): unknown {
+    const obj: any = {};
+    message.teamNumber !== undefined && (obj.teamNumber = Math.round(message.teamNumber));
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    message.teamName !== undefined && (obj.teamName = message.teamName);
+    message.teamLogo !== undefined && (obj.teamLogo = message.teamLogo);
+    message.teamTag !== undefined && (obj.teamTag = message.teamTag);
+    message.score !== undefined && (obj.score = Math.round(message.score));
+    message.netWorth !== undefined && (obj.netWorth = Math.round(message.netWorth));
+    if (message.players) {
+      obj.players = message.players.map((e) => e ? CMsgDOTARealtimeGameStats_PlayerDetails.toJSON(e) : undefined);
+    } else {
+      obj.players = [];
+    }
+    message.onlyTeam !== undefined && (obj.onlyTeam = message.onlyTeam);
+    message.cheers !== undefined && (obj.cheers = Math.round(message.cheers));
+    message.teamLogoUrl !== undefined && (obj.teamLogoUrl = message.teamLogoUrl);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTARealtimeGameStats_ItemDetails(): CMsgDOTARealtimeGameStats_ItemDetails {
@@ -5415,6 +7575,26 @@ export const CMsgDOTARealtimeGameStats_ItemDetails = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTARealtimeGameStats_ItemDetails {
+    return {
+      itemAbilityId: isSet(object.itemAbilityId) ? Number(object.itemAbilityId) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      time: isSet(object.time) ? Number(object.time) : 0,
+      sold: isSet(object.sold) ? Boolean(object.sold) : false,
+      stackcount: isSet(object.stackcount) ? Number(object.stackcount) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTARealtimeGameStats_ItemDetails): unknown {
+    const obj: any = {};
+    message.itemAbilityId !== undefined && (obj.itemAbilityId = Math.round(message.itemAbilityId));
+    message.name !== undefined && (obj.name = message.name);
+    message.time !== undefined && (obj.time = Math.round(message.time));
+    message.sold !== undefined && (obj.sold = message.sold);
+    message.stackcount !== undefined && (obj.stackcount = Math.round(message.stackcount));
+    return obj;
   },
 };
 
@@ -5492,6 +7672,26 @@ export const CMsgDOTARealtimeGameStats_AbilityDetails = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTARealtimeGameStats_AbilityDetails {
+    return {
+      id: isSet(object.id) ? Number(object.id) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      level: isSet(object.level) ? Number(object.level) : 0,
+      cooldown: isSet(object.cooldown) ? Number(object.cooldown) : 0,
+      cooldownMax: isSet(object.cooldownMax) ? Number(object.cooldownMax) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTARealtimeGameStats_AbilityDetails): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = Math.round(message.id));
+    message.name !== undefined && (obj.name = message.name);
+    message.level !== undefined && (obj.level = Math.round(message.level));
+    message.cooldown !== undefined && (obj.cooldown = message.cooldown);
+    message.cooldownMax !== undefined && (obj.cooldownMax = message.cooldownMax);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTARealtimeGameStats_HeroToHeroStats(): CMsgDOTARealtimeGameStats_HeroToHeroStats {
@@ -5548,6 +7748,22 @@ export const CMsgDOTARealtimeGameStats_HeroToHeroStats = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTARealtimeGameStats_HeroToHeroStats {
+    return {
+      victimid: isSet(object.victimid) ? Number(object.victimid) : 0,
+      kills: isSet(object.kills) ? Number(object.kills) : 0,
+      assists: isSet(object.assists) ? Number(object.assists) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTARealtimeGameStats_HeroToHeroStats): unknown {
+    const obj: any = {};
+    message.victimid !== undefined && (obj.victimid = Math.round(message.victimid));
+    message.kills !== undefined && (obj.kills = Math.round(message.kills));
+    message.assists !== undefined && (obj.assists = Math.round(message.assists));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTARealtimeGameStats_AbilityList(): CMsgDOTARealtimeGameStats_AbilityList {
@@ -5594,6 +7810,20 @@ export const CMsgDOTARealtimeGameStats_AbilityList = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTARealtimeGameStats_AbilityList {
+    return { id: Array.isArray(object?.id) ? object.id.map((e: any) => Number(e)) : [] };
+  },
+
+  toJSON(message: CMsgDOTARealtimeGameStats_AbilityList): unknown {
+    const obj: any = {};
+    if (message.id) {
+      obj.id = message.id.map((e) => Math.round(e));
+    } else {
+      obj.id = [];
+    }
+    return obj;
   },
 };
 
@@ -6161,6 +8391,154 @@ export const CMsgDOTARealtimeGameStats_PlayerDetails = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTARealtimeGameStats_PlayerDetails {
+    return {
+      accountid: isSet(object.accountid) ? Number(object.accountid) : 0,
+      playerid: isSet(object.playerid) ? Number(object.playerid) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      team: isSet(object.team) ? Number(object.team) : 0,
+      heroid: isSet(object.heroid) ? Number(object.heroid) : 0,
+      healthpoints: isSet(object.healthpoints) ? Number(object.healthpoints) : 0,
+      maxhealthpoints: isSet(object.maxhealthpoints) ? Number(object.maxhealthpoints) : 0,
+      healthregenrate: isSet(object.healthregenrate) ? Number(object.healthregenrate) : 0,
+      manapoints: isSet(object.manapoints) ? Number(object.manapoints) : 0,
+      maxmanapoints: isSet(object.maxmanapoints) ? Number(object.maxmanapoints) : 0,
+      manaregenrate: isSet(object.manaregenrate) ? Number(object.manaregenrate) : 0,
+      baseStrength: isSet(object.baseStrength) ? Number(object.baseStrength) : 0,
+      baseAgility: isSet(object.baseAgility) ? Number(object.baseAgility) : 0,
+      baseIntelligence: isSet(object.baseIntelligence) ? Number(object.baseIntelligence) : 0,
+      baseArmor: isSet(object.baseArmor) ? Number(object.baseArmor) : 0,
+      baseMovespeed: isSet(object.baseMovespeed) ? Number(object.baseMovespeed) : 0,
+      baseDamage: isSet(object.baseDamage) ? Number(object.baseDamage) : 0,
+      strength: isSet(object.strength) ? Number(object.strength) : 0,
+      agility: isSet(object.agility) ? Number(object.agility) : 0,
+      intelligence: isSet(object.intelligence) ? Number(object.intelligence) : 0,
+      armor: isSet(object.armor) ? Number(object.armor) : 0,
+      movespeed: isSet(object.movespeed) ? Number(object.movespeed) : 0,
+      damage: isSet(object.damage) ? Number(object.damage) : 0,
+      heroDamage: isSet(object.heroDamage) ? Number(object.heroDamage) : 0,
+      towerDamage: isSet(object.towerDamage) ? Number(object.towerDamage) : 0,
+      abilities: Array.isArray(object?.abilities)
+        ? object.abilities.map((e: any) => CMsgDOTARealtimeGameStats_AbilityDetails.fromJSON(e))
+        : [],
+      level: isSet(object.level) ? Number(object.level) : 0,
+      killCount: isSet(object.killCount) ? Number(object.killCount) : 0,
+      deathCount: isSet(object.deathCount) ? Number(object.deathCount) : 0,
+      assistsCount: isSet(object.assistsCount) ? Number(object.assistsCount) : 0,
+      deniesCount: isSet(object.deniesCount) ? Number(object.deniesCount) : 0,
+      lhCount: isSet(object.lhCount) ? Number(object.lhCount) : 0,
+      heroHealing: isSet(object.heroHealing) ? Number(object.heroHealing) : 0,
+      goldPerMin: isSet(object.goldPerMin) ? Number(object.goldPerMin) : 0,
+      xpPerMin: isSet(object.xpPerMin) ? Number(object.xpPerMin) : 0,
+      netGold: isSet(object.netGold) ? Number(object.netGold) : 0,
+      gold: isSet(object.gold) ? Number(object.gold) : 0,
+      x: isSet(object.x) ? Number(object.x) : 0,
+      y: isSet(object.y) ? Number(object.y) : 0,
+      respawnTime: isSet(object.respawnTime) ? Number(object.respawnTime) : 0,
+      ultimateCooldown: isSet(object.ultimateCooldown) ? Number(object.ultimateCooldown) : 0,
+      hasBuyback: isSet(object.hasBuyback) ? Boolean(object.hasBuyback) : false,
+      items: Array.isArray(object?.items)
+        ? object.items.map((e: any) => CMsgDOTARealtimeGameStats_ItemDetails.fromJSON(e))
+        : [],
+      stashitems: Array.isArray(object?.stashitems)
+        ? object.stashitems.map((e: any) => CMsgDOTARealtimeGameStats_ItemDetails.fromJSON(e))
+        : [],
+      itemshoppinglist: Array.isArray(object?.itemshoppinglist)
+        ? object.itemshoppinglist.map((e: any) => CMsgDOTARealtimeGameStats_ItemDetails.fromJSON(e))
+        : [],
+      levelpoints: Array.isArray(object?.levelpoints)
+        ? object.levelpoints.map((e: any) => CMsgDOTARealtimeGameStats_AbilityList.fromJSON(e))
+        : [],
+      heroToHeroStats: Array.isArray(object?.heroToHeroStats)
+        ? object.heroToHeroStats.map((e: any) => CMsgDOTARealtimeGameStats_HeroToHeroStats.fromJSON(e))
+        : [],
+      hasUltimate: isSet(object.hasUltimate) ? Boolean(object.hasUltimate) : false,
+      hasUltimateMana: isSet(object.hasUltimateMana) ? Boolean(object.hasUltimateMana) : false,
+    };
+  },
+
+  toJSON(message: CMsgDOTARealtimeGameStats_PlayerDetails): unknown {
+    const obj: any = {};
+    message.accountid !== undefined && (obj.accountid = Math.round(message.accountid));
+    message.playerid !== undefined && (obj.playerid = Math.round(message.playerid));
+    message.name !== undefined && (obj.name = message.name);
+    message.team !== undefined && (obj.team = Math.round(message.team));
+    message.heroid !== undefined && (obj.heroid = Math.round(message.heroid));
+    message.healthpoints !== undefined && (obj.healthpoints = Math.round(message.healthpoints));
+    message.maxhealthpoints !== undefined && (obj.maxhealthpoints = Math.round(message.maxhealthpoints));
+    message.healthregenrate !== undefined && (obj.healthregenrate = message.healthregenrate);
+    message.manapoints !== undefined && (obj.manapoints = Math.round(message.manapoints));
+    message.maxmanapoints !== undefined && (obj.maxmanapoints = Math.round(message.maxmanapoints));
+    message.manaregenrate !== undefined && (obj.manaregenrate = message.manaregenrate);
+    message.baseStrength !== undefined && (obj.baseStrength = Math.round(message.baseStrength));
+    message.baseAgility !== undefined && (obj.baseAgility = Math.round(message.baseAgility));
+    message.baseIntelligence !== undefined && (obj.baseIntelligence = Math.round(message.baseIntelligence));
+    message.baseArmor !== undefined && (obj.baseArmor = Math.round(message.baseArmor));
+    message.baseMovespeed !== undefined && (obj.baseMovespeed = Math.round(message.baseMovespeed));
+    message.baseDamage !== undefined && (obj.baseDamage = Math.round(message.baseDamage));
+    message.strength !== undefined && (obj.strength = Math.round(message.strength));
+    message.agility !== undefined && (obj.agility = Math.round(message.agility));
+    message.intelligence !== undefined && (obj.intelligence = Math.round(message.intelligence));
+    message.armor !== undefined && (obj.armor = Math.round(message.armor));
+    message.movespeed !== undefined && (obj.movespeed = Math.round(message.movespeed));
+    message.damage !== undefined && (obj.damage = Math.round(message.damage));
+    message.heroDamage !== undefined && (obj.heroDamage = Math.round(message.heroDamage));
+    message.towerDamage !== undefined && (obj.towerDamage = Math.round(message.towerDamage));
+    if (message.abilities) {
+      obj.abilities = message.abilities.map((e) => e ? CMsgDOTARealtimeGameStats_AbilityDetails.toJSON(e) : undefined);
+    } else {
+      obj.abilities = [];
+    }
+    message.level !== undefined && (obj.level = Math.round(message.level));
+    message.killCount !== undefined && (obj.killCount = Math.round(message.killCount));
+    message.deathCount !== undefined && (obj.deathCount = Math.round(message.deathCount));
+    message.assistsCount !== undefined && (obj.assistsCount = Math.round(message.assistsCount));
+    message.deniesCount !== undefined && (obj.deniesCount = Math.round(message.deniesCount));
+    message.lhCount !== undefined && (obj.lhCount = Math.round(message.lhCount));
+    message.heroHealing !== undefined && (obj.heroHealing = Math.round(message.heroHealing));
+    message.goldPerMin !== undefined && (obj.goldPerMin = Math.round(message.goldPerMin));
+    message.xpPerMin !== undefined && (obj.xpPerMin = Math.round(message.xpPerMin));
+    message.netGold !== undefined && (obj.netGold = Math.round(message.netGold));
+    message.gold !== undefined && (obj.gold = Math.round(message.gold));
+    message.x !== undefined && (obj.x = message.x);
+    message.y !== undefined && (obj.y = message.y);
+    message.respawnTime !== undefined && (obj.respawnTime = Math.round(message.respawnTime));
+    message.ultimateCooldown !== undefined && (obj.ultimateCooldown = Math.round(message.ultimateCooldown));
+    message.hasBuyback !== undefined && (obj.hasBuyback = message.hasBuyback);
+    if (message.items) {
+      obj.items = message.items.map((e) => e ? CMsgDOTARealtimeGameStats_ItemDetails.toJSON(e) : undefined);
+    } else {
+      obj.items = [];
+    }
+    if (message.stashitems) {
+      obj.stashitems = message.stashitems.map((e) => e ? CMsgDOTARealtimeGameStats_ItemDetails.toJSON(e) : undefined);
+    } else {
+      obj.stashitems = [];
+    }
+    if (message.itemshoppinglist) {
+      obj.itemshoppinglist = message.itemshoppinglist.map((e) =>
+        e ? CMsgDOTARealtimeGameStats_ItemDetails.toJSON(e) : undefined
+      );
+    } else {
+      obj.itemshoppinglist = [];
+    }
+    if (message.levelpoints) {
+      obj.levelpoints = message.levelpoints.map((e) => e ? CMsgDOTARealtimeGameStats_AbilityList.toJSON(e) : undefined);
+    } else {
+      obj.levelpoints = [];
+    }
+    if (message.heroToHeroStats) {
+      obj.heroToHeroStats = message.heroToHeroStats.map((e) =>
+        e ? CMsgDOTARealtimeGameStats_HeroToHeroStats.toJSON(e) : undefined
+      );
+    } else {
+      obj.heroToHeroStats = [];
+    }
+    message.hasUltimate !== undefined && (obj.hasUltimate = message.hasUltimate);
+    message.hasUltimateMana !== undefined && (obj.hasUltimateMana = message.hasUltimateMana);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTARealtimeGameStats_BuildingDetails(): CMsgDOTARealtimeGameStats_BuildingDetails {
@@ -6267,6 +8645,32 @@ export const CMsgDOTARealtimeGameStats_BuildingDetails = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTARealtimeGameStats_BuildingDetails {
+    return {
+      team: isSet(object.team) ? Number(object.team) : 0,
+      heading: isSet(object.heading) ? Number(object.heading) : 0,
+      lane: isSet(object.lane) ? Number(object.lane) : 0,
+      tier: isSet(object.tier) ? Number(object.tier) : 0,
+      type: isSet(object.type) ? Number(object.type) : 0,
+      x: isSet(object.x) ? Number(object.x) : 0,
+      y: isSet(object.y) ? Number(object.y) : 0,
+      destroyed: isSet(object.destroyed) ? Boolean(object.destroyed) : false,
+    };
+  },
+
+  toJSON(message: CMsgDOTARealtimeGameStats_BuildingDetails): unknown {
+    const obj: any = {};
+    message.team !== undefined && (obj.team = Math.round(message.team));
+    message.heading !== undefined && (obj.heading = message.heading);
+    message.lane !== undefined && (obj.lane = Math.round(message.lane));
+    message.tier !== undefined && (obj.tier = Math.round(message.tier));
+    message.type !== undefined && (obj.type = Math.round(message.type));
+    message.x !== undefined && (obj.x = message.x);
+    message.y !== undefined && (obj.y = message.y);
+    message.destroyed !== undefined && (obj.destroyed = message.destroyed);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTARealtimeGameStats_KillDetails(): CMsgDOTARealtimeGameStats_KillDetails {
@@ -6323,6 +8727,22 @@ export const CMsgDOTARealtimeGameStats_KillDetails = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTARealtimeGameStats_KillDetails {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      deathTime: isSet(object.deathTime) ? Number(object.deathTime) : 0,
+      killerPlayerId: isSet(object.killerPlayerId) ? Number(object.killerPlayerId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTARealtimeGameStats_KillDetails): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.deathTime !== undefined && (obj.deathTime = Math.round(message.deathTime));
+    message.killerPlayerId !== undefined && (obj.killerPlayerId = Math.round(message.killerPlayerId));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTARealtimeGameStats_BroadcasterDetails(): CMsgDOTARealtimeGameStats_BroadcasterDetails {
@@ -6358,6 +8778,16 @@ export const CMsgDOTARealtimeGameStats_BroadcasterDetails = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTARealtimeGameStats_BroadcasterDetails {
+    return { playerId: isSet(object.playerId) ? Number(object.playerId) : 0 };
+  },
+
+  toJSON(message: CMsgDOTARealtimeGameStats_BroadcasterDetails): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    return obj;
   },
 };
 
@@ -6404,6 +8834,17 @@ export const CMsgDOTARealtimeGameStats_PickBanDetails = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTARealtimeGameStats_PickBanDetails {
+    return { hero: isSet(object.hero) ? Number(object.hero) : 0, team: isSet(object.team) ? Number(object.team) : 0 };
+  },
+
+  toJSON(message: CMsgDOTARealtimeGameStats_PickBanDetails): unknown {
+    const obj: any = {};
+    message.hero !== undefined && (obj.hero = Math.round(message.hero));
+    message.team !== undefined && (obj.team = Math.round(message.team));
+    return obj;
   },
 };
 
@@ -6652,6 +9093,82 @@ export const CMsgDOTARealtimeGameStats_MatchDetails = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTARealtimeGameStats_MatchDetails {
+    return {
+      serverSteamId: isSet(object.serverSteamId) ? String(object.serverSteamId) : "0",
+      matchId: isSet(object.matchId) ? String(object.matchId) : "0",
+      timestamp: isSet(object.timestamp) ? Number(object.timestamp) : 0,
+      timeOfDay: isSet(object.timeOfDay) ? Number(object.timeOfDay) : 0,
+      isNightstalkerNight: isSet(object.isNightstalkerNight) ? Boolean(object.isNightstalkerNight) : false,
+      gameTime: isSet(object.gameTime) ? Number(object.gameTime) : 0,
+      gameState: isSet(object.gameState) ? Number(object.gameState) : 0,
+      teamidRadiant: isSet(object.teamidRadiant) ? Number(object.teamidRadiant) : 0,
+      teamidDire: isSet(object.teamidDire) ? Number(object.teamidDire) : 0,
+      picks: Array.isArray(object?.picks)
+        ? object.picks.map((e: any) => CMsgDOTARealtimeGameStats_PickBanDetails.fromJSON(e))
+        : [],
+      bans: Array.isArray(object?.bans)
+        ? object.bans.map((e: any) => CMsgDOTARealtimeGameStats_PickBanDetails.fromJSON(e))
+        : [],
+      kills: Array.isArray(object?.kills)
+        ? object.kills.map((e: any) => CMsgDOTARealtimeGameStats_KillDetails.fromJSON(e))
+        : [],
+      broadcasters: Array.isArray(object?.broadcasters)
+        ? object.broadcasters.map((e: any) => CMsgDOTARealtimeGameStats_BroadcasterDetails.fromJSON(e))
+        : [],
+      gameMode: isSet(object.gameMode) ? Number(object.gameMode) : 0,
+      leagueId: isSet(object.leagueId) ? Number(object.leagueId) : 0,
+      leagueNodeId: isSet(object.leagueNodeId) ? Number(object.leagueNodeId) : 0,
+      singleTeam: isSet(object.singleTeam) ? Boolean(object.singleTeam) : false,
+      cheersPeak: isSet(object.cheersPeak) ? Number(object.cheersPeak) : 0,
+      lobbyType: isSet(object.lobbyType) ? Number(object.lobbyType) : 0,
+      startTimestamp: isSet(object.startTimestamp) ? Number(object.startTimestamp) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTARealtimeGameStats_MatchDetails): unknown {
+    const obj: any = {};
+    message.serverSteamId !== undefined && (obj.serverSteamId = message.serverSteamId);
+    message.matchId !== undefined && (obj.matchId = message.matchId);
+    message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
+    message.timeOfDay !== undefined && (obj.timeOfDay = message.timeOfDay);
+    message.isNightstalkerNight !== undefined && (obj.isNightstalkerNight = message.isNightstalkerNight);
+    message.gameTime !== undefined && (obj.gameTime = Math.round(message.gameTime));
+    message.gameState !== undefined && (obj.gameState = Math.round(message.gameState));
+    message.teamidRadiant !== undefined && (obj.teamidRadiant = Math.round(message.teamidRadiant));
+    message.teamidDire !== undefined && (obj.teamidDire = Math.round(message.teamidDire));
+    if (message.picks) {
+      obj.picks = message.picks.map((e) => e ? CMsgDOTARealtimeGameStats_PickBanDetails.toJSON(e) : undefined);
+    } else {
+      obj.picks = [];
+    }
+    if (message.bans) {
+      obj.bans = message.bans.map((e) => e ? CMsgDOTARealtimeGameStats_PickBanDetails.toJSON(e) : undefined);
+    } else {
+      obj.bans = [];
+    }
+    if (message.kills) {
+      obj.kills = message.kills.map((e) => e ? CMsgDOTARealtimeGameStats_KillDetails.toJSON(e) : undefined);
+    } else {
+      obj.kills = [];
+    }
+    if (message.broadcasters) {
+      obj.broadcasters = message.broadcasters.map((e) =>
+        e ? CMsgDOTARealtimeGameStats_BroadcasterDetails.toJSON(e) : undefined
+      );
+    } else {
+      obj.broadcasters = [];
+    }
+    message.gameMode !== undefined && (obj.gameMode = Math.round(message.gameMode));
+    message.leagueId !== undefined && (obj.leagueId = Math.round(message.leagueId));
+    message.leagueNodeId !== undefined && (obj.leagueNodeId = Math.round(message.leagueNodeId));
+    message.singleTeam !== undefined && (obj.singleTeam = message.singleTeam);
+    message.cheersPeak !== undefined && (obj.cheersPeak = Math.round(message.cheersPeak));
+    message.lobbyType !== undefined && (obj.lobbyType = Math.round(message.lobbyType));
+    message.startTimestamp !== undefined && (obj.startTimestamp = Math.round(message.startTimestamp));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTARealtimeGameStats_GraphData(): CMsgDOTARealtimeGameStats_GraphData {
@@ -6795,6 +9312,56 @@ export const CMsgDOTARealtimeGameStats_GraphData = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTARealtimeGameStats_GraphData {
+    return {
+      graphGold: Array.isArray(object?.graphGold) ? object.graphGold.map((e: any) => Number(e)) : [],
+      graphXp: Array.isArray(object?.graphXp) ? object.graphXp.map((e: any) => Number(e)) : [],
+      graphKill: Array.isArray(object?.graphKill) ? object.graphKill.map((e: any) => Number(e)) : [],
+      graphTower: Array.isArray(object?.graphTower) ? object.graphTower.map((e: any) => Number(e)) : [],
+      graphRax: Array.isArray(object?.graphRax) ? object.graphRax.map((e: any) => Number(e)) : [],
+      teamLocStats: Array.isArray(object?.teamLocStats)
+        ? object.teamLocStats.map((e: any) => CMsgDOTARealtimeGameStats_GraphData_TeamLocationStats.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTARealtimeGameStats_GraphData): unknown {
+    const obj: any = {};
+    if (message.graphGold) {
+      obj.graphGold = message.graphGold.map((e) => Math.round(e));
+    } else {
+      obj.graphGold = [];
+    }
+    if (message.graphXp) {
+      obj.graphXp = message.graphXp.map((e) => Math.round(e));
+    } else {
+      obj.graphXp = [];
+    }
+    if (message.graphKill) {
+      obj.graphKill = message.graphKill.map((e) => Math.round(e));
+    } else {
+      obj.graphKill = [];
+    }
+    if (message.graphTower) {
+      obj.graphTower = message.graphTower.map((e) => Math.round(e));
+    } else {
+      obj.graphTower = [];
+    }
+    if (message.graphRax) {
+      obj.graphRax = message.graphRax.map((e) => Math.round(e));
+    } else {
+      obj.graphRax = [];
+    }
+    if (message.teamLocStats) {
+      obj.teamLocStats = message.teamLocStats.map((e) =>
+        e ? CMsgDOTARealtimeGameStats_GraphData_TeamLocationStats.toJSON(e) : undefined
+      );
+    } else {
+      obj.teamLocStats = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTARealtimeGameStats_GraphData_LocationStats(): CMsgDOTARealtimeGameStats_GraphData_LocationStats {
@@ -6845,6 +9412,20 @@ export const CMsgDOTARealtimeGameStats_GraphData_LocationStats = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTARealtimeGameStats_GraphData_LocationStats {
+    return { stats: Array.isArray(object?.stats) ? object.stats.map((e: any) => Number(e)) : [] };
+  },
+
+  toJSON(message: CMsgDOTARealtimeGameStats_GraphData_LocationStats): unknown {
+    const obj: any = {};
+    if (message.stats) {
+      obj.stats = message.stats.map((e) => Math.round(e));
+    } else {
+      obj.stats = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTARealtimeGameStats_GraphData_TeamLocationStats(): CMsgDOTARealtimeGameStats_GraphData_TeamLocationStats {
@@ -6883,6 +9464,26 @@ export const CMsgDOTARealtimeGameStats_GraphData_TeamLocationStats = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTARealtimeGameStats_GraphData_TeamLocationStats {
+    return {
+      locStats: Array.isArray(object?.locStats)
+        ? object.locStats.map((e: any) => CMsgDOTARealtimeGameStats_GraphData_LocationStats.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTARealtimeGameStats_GraphData_TeamLocationStats): unknown {
+    const obj: any = {};
+    if (message.locStats) {
+      obj.locStats = message.locStats.map((e) =>
+        e ? CMsgDOTARealtimeGameStats_GraphData_LocationStats.toJSON(e) : undefined
+      );
+    } else {
+      obj.locStats = [];
+    }
+    return obj;
   },
 };
 
@@ -6959,6 +9560,45 @@ export const CMsgDOTARealtimeGameStatsTerse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTARealtimeGameStatsTerse {
+    return {
+      match: isSet(object.match) ? CMsgDOTARealtimeGameStatsTerse_MatchDetails.fromJSON(object.match) : undefined,
+      teams: Array.isArray(object?.teams)
+        ? object.teams.map((e: any) => CMsgDOTARealtimeGameStatsTerse_TeamDetails.fromJSON(e))
+        : [],
+      buildings: Array.isArray(object?.buildings)
+        ? object.buildings.map((e: any) => CMsgDOTARealtimeGameStatsTerse_BuildingDetails.fromJSON(e))
+        : [],
+      graphData: isSet(object.graphData)
+        ? CMsgDOTARealtimeGameStatsTerse_GraphData.fromJSON(object.graphData)
+        : undefined,
+      deltaFrame: isSet(object.deltaFrame) ? Boolean(object.deltaFrame) : false,
+    };
+  },
+
+  toJSON(message: CMsgDOTARealtimeGameStatsTerse): unknown {
+    const obj: any = {};
+    message.match !== undefined &&
+      (obj.match = message.match ? CMsgDOTARealtimeGameStatsTerse_MatchDetails.toJSON(message.match) : undefined);
+    if (message.teams) {
+      obj.teams = message.teams.map((e) => e ? CMsgDOTARealtimeGameStatsTerse_TeamDetails.toJSON(e) : undefined);
+    } else {
+      obj.teams = [];
+    }
+    if (message.buildings) {
+      obj.buildings = message.buildings.map((e) =>
+        e ? CMsgDOTARealtimeGameStatsTerse_BuildingDetails.toJSON(e) : undefined
+      );
+    } else {
+      obj.buildings = [];
+    }
+    message.graphData !== undefined && (obj.graphData = message.graphData
+      ? CMsgDOTARealtimeGameStatsTerse_GraphData.toJSON(message.graphData)
+      : undefined);
+    message.deltaFrame !== undefined && (obj.deltaFrame = message.deltaFrame);
+    return obj;
   },
 };
 
@@ -7085,6 +9725,40 @@ export const CMsgDOTARealtimeGameStatsTerse_TeamDetails = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTARealtimeGameStatsTerse_TeamDetails {
+    return {
+      teamNumber: isSet(object.teamNumber) ? Number(object.teamNumber) : 0,
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      teamName: isSet(object.teamName) ? String(object.teamName) : "",
+      teamTag: isSet(object.teamTag) ? String(object.teamTag) : "",
+      teamLogo: isSet(object.teamLogo) ? String(object.teamLogo) : "0",
+      score: isSet(object.score) ? Number(object.score) : 0,
+      netWorth: isSet(object.netWorth) ? Number(object.netWorth) : 0,
+      teamLogoUrl: isSet(object.teamLogoUrl) ? String(object.teamLogoUrl) : "",
+      players: Array.isArray(object?.players)
+        ? object.players.map((e: any) => CMsgDOTARealtimeGameStatsTerse_PlayerDetails.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTARealtimeGameStatsTerse_TeamDetails): unknown {
+    const obj: any = {};
+    message.teamNumber !== undefined && (obj.teamNumber = Math.round(message.teamNumber));
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    message.teamName !== undefined && (obj.teamName = message.teamName);
+    message.teamTag !== undefined && (obj.teamTag = message.teamTag);
+    message.teamLogo !== undefined && (obj.teamLogo = message.teamLogo);
+    message.score !== undefined && (obj.score = Math.round(message.score));
+    message.netWorth !== undefined && (obj.netWorth = Math.round(message.netWorth));
+    message.teamLogoUrl !== undefined && (obj.teamLogoUrl = message.teamLogoUrl);
+    if (message.players) {
+      obj.players = message.players.map((e) => e ? CMsgDOTARealtimeGameStatsTerse_PlayerDetails.toJSON(e) : undefined);
+    } else {
+      obj.players = [];
+    }
+    return obj;
   },
 };
 
@@ -7322,6 +9996,60 @@ export const CMsgDOTARealtimeGameStatsTerse_PlayerDetails = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTARealtimeGameStatsTerse_PlayerDetails {
+    return {
+      accountid: isSet(object.accountid) ? Number(object.accountid) : 0,
+      playerid: isSet(object.playerid) ? Number(object.playerid) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      team: isSet(object.team) ? Number(object.team) : 0,
+      heroid: isSet(object.heroid) ? Number(object.heroid) : 0,
+      level: isSet(object.level) ? Number(object.level) : 0,
+      killCount: isSet(object.killCount) ? Number(object.killCount) : 0,
+      deathCount: isSet(object.deathCount) ? Number(object.deathCount) : 0,
+      assistsCount: isSet(object.assistsCount) ? Number(object.assistsCount) : 0,
+      deniesCount: isSet(object.deniesCount) ? Number(object.deniesCount) : 0,
+      lhCount: isSet(object.lhCount) ? Number(object.lhCount) : 0,
+      gold: isSet(object.gold) ? Number(object.gold) : 0,
+      x: isSet(object.x) ? Number(object.x) : 0,
+      y: isSet(object.y) ? Number(object.y) : 0,
+      netWorth: isSet(object.netWorth) ? Number(object.netWorth) : 0,
+      abilities: Array.isArray(object?.abilities)
+        ? object.abilities.map((e: any) => Number(e))
+        : [],
+      items: Array.isArray(object?.items) ? object.items.map((e: any) => Number(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTARealtimeGameStatsTerse_PlayerDetails): unknown {
+    const obj: any = {};
+    message.accountid !== undefined && (obj.accountid = Math.round(message.accountid));
+    message.playerid !== undefined && (obj.playerid = Math.round(message.playerid));
+    message.name !== undefined && (obj.name = message.name);
+    message.team !== undefined && (obj.team = Math.round(message.team));
+    message.heroid !== undefined && (obj.heroid = Math.round(message.heroid));
+    message.level !== undefined && (obj.level = Math.round(message.level));
+    message.killCount !== undefined && (obj.killCount = Math.round(message.killCount));
+    message.deathCount !== undefined && (obj.deathCount = Math.round(message.deathCount));
+    message.assistsCount !== undefined && (obj.assistsCount = Math.round(message.assistsCount));
+    message.deniesCount !== undefined && (obj.deniesCount = Math.round(message.deniesCount));
+    message.lhCount !== undefined && (obj.lhCount = Math.round(message.lhCount));
+    message.gold !== undefined && (obj.gold = Math.round(message.gold));
+    message.x !== undefined && (obj.x = message.x);
+    message.y !== undefined && (obj.y = message.y);
+    message.netWorth !== undefined && (obj.netWorth = Math.round(message.netWorth));
+    if (message.abilities) {
+      obj.abilities = message.abilities.map((e) => Math.round(e));
+    } else {
+      obj.abilities = [];
+    }
+    if (message.items) {
+      obj.items = message.items.map((e) => Math.round(e));
+    } else {
+      obj.items = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTARealtimeGameStatsTerse_BuildingDetails(): CMsgDOTARealtimeGameStatsTerse_BuildingDetails {
@@ -7431,6 +10159,32 @@ export const CMsgDOTARealtimeGameStatsTerse_BuildingDetails = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTARealtimeGameStatsTerse_BuildingDetails {
+    return {
+      team: isSet(object.team) ? Number(object.team) : 0,
+      heading: isSet(object.heading) ? Number(object.heading) : 0,
+      type: isSet(object.type) ? Number(object.type) : 0,
+      lane: isSet(object.lane) ? Number(object.lane) : 0,
+      tier: isSet(object.tier) ? Number(object.tier) : 0,
+      x: isSet(object.x) ? Number(object.x) : 0,
+      y: isSet(object.y) ? Number(object.y) : 0,
+      destroyed: isSet(object.destroyed) ? Boolean(object.destroyed) : false,
+    };
+  },
+
+  toJSON(message: CMsgDOTARealtimeGameStatsTerse_BuildingDetails): unknown {
+    const obj: any = {};
+    message.team !== undefined && (obj.team = Math.round(message.team));
+    message.heading !== undefined && (obj.heading = message.heading);
+    message.type !== undefined && (obj.type = Math.round(message.type));
+    message.lane !== undefined && (obj.lane = Math.round(message.lane));
+    message.tier !== undefined && (obj.tier = Math.round(message.tier));
+    message.x !== undefined && (obj.x = message.x);
+    message.y !== undefined && (obj.y = message.y);
+    message.destroyed !== undefined && (obj.destroyed = message.destroyed);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTARealtimeGameStatsTerse_PickBanDetails(): CMsgDOTARealtimeGameStatsTerse_PickBanDetails {
@@ -7476,6 +10230,17 @@ export const CMsgDOTARealtimeGameStatsTerse_PickBanDetails = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTARealtimeGameStatsTerse_PickBanDetails {
+    return { hero: isSet(object.hero) ? Number(object.hero) : 0, team: isSet(object.team) ? Number(object.team) : 0 };
+  },
+
+  toJSON(message: CMsgDOTARealtimeGameStatsTerse_PickBanDetails): unknown {
+    const obj: any = {};
+    message.hero !== undefined && (obj.hero = Math.round(message.hero));
+    message.team !== undefined && (obj.team = Math.round(message.team));
+    return obj;
   },
 };
 
@@ -7658,6 +10423,60 @@ export const CMsgDOTARealtimeGameStatsTerse_MatchDetails = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTARealtimeGameStatsTerse_MatchDetails {
+    return {
+      serverSteamId: isSet(object.serverSteamId) ? String(object.serverSteamId) : "0",
+      matchId: isSet(object.matchId) ? String(object.matchId) : "0",
+      timestamp: isSet(object.timestamp) ? Number(object.timestamp) : 0,
+      gameTime: isSet(object.gameTime) ? Number(object.gameTime) : 0,
+      steamBroadcasterAccountIds: Array.isArray(object?.steamBroadcasterAccountIds)
+        ? object.steamBroadcasterAccountIds.map((e: any) => Number(e))
+        : [],
+      gameMode: isSet(object.gameMode) ? Number(object.gameMode) : 0,
+      leagueId: isSet(object.leagueId) ? Number(object.leagueId) : 0,
+      leagueNodeId: isSet(object.leagueNodeId) ? Number(object.leagueNodeId) : 0,
+      gameState: isSet(object.gameState) ? Number(object.gameState) : 0,
+      picks: Array.isArray(object?.picks)
+        ? object.picks.map((e: any) => CMsgDOTARealtimeGameStatsTerse_PickBanDetails.fromJSON(e))
+        : [],
+      bans: Array.isArray(object?.bans)
+        ? object.bans.map((e: any) => CMsgDOTARealtimeGameStatsTerse_PickBanDetails.fromJSON(e))
+        : [],
+      lobbyType: isSet(object.lobbyType) ? Number(object.lobbyType) : 0,
+      startTimestamp: isSet(object.startTimestamp) ? Number(object.startTimestamp) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTARealtimeGameStatsTerse_MatchDetails): unknown {
+    const obj: any = {};
+    message.serverSteamId !== undefined && (obj.serverSteamId = message.serverSteamId);
+    message.matchId !== undefined && (obj.matchId = message.matchId);
+    message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
+    message.gameTime !== undefined && (obj.gameTime = Math.round(message.gameTime));
+    if (message.steamBroadcasterAccountIds) {
+      obj.steamBroadcasterAccountIds = message.steamBroadcasterAccountIds.map((e) => Math.round(e));
+    } else {
+      obj.steamBroadcasterAccountIds = [];
+    }
+    message.gameMode !== undefined && (obj.gameMode = Math.round(message.gameMode));
+    message.leagueId !== undefined && (obj.leagueId = Math.round(message.leagueId));
+    message.leagueNodeId !== undefined && (obj.leagueNodeId = Math.round(message.leagueNodeId));
+    message.gameState !== undefined && (obj.gameState = Math.round(message.gameState));
+    if (message.picks) {
+      obj.picks = message.picks.map((e) => e ? CMsgDOTARealtimeGameStatsTerse_PickBanDetails.toJSON(e) : undefined);
+    } else {
+      obj.picks = [];
+    }
+    if (message.bans) {
+      obj.bans = message.bans.map((e) => e ? CMsgDOTARealtimeGameStatsTerse_PickBanDetails.toJSON(e) : undefined);
+    } else {
+      obj.bans = [];
+    }
+    message.lobbyType !== undefined && (obj.lobbyType = Math.round(message.lobbyType));
+    message.startTimestamp !== undefined && (obj.startTimestamp = Math.round(message.startTimestamp));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTARealtimeGameStatsTerse_GraphData(): CMsgDOTARealtimeGameStatsTerse_GraphData {
@@ -7704,6 +10523,20 @@ export const CMsgDOTARealtimeGameStatsTerse_GraphData = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTARealtimeGameStatsTerse_GraphData {
+    return { graphGold: Array.isArray(object?.graphGold) ? object.graphGold.map((e: any) => Number(e)) : [] };
+  },
+
+  toJSON(message: CMsgDOTARealtimeGameStatsTerse_GraphData): unknown {
+    const obj: any = {};
+    if (message.graphGold) {
+      obj.graphGold = message.graphGold.map((e) => Math.round(e));
+    } else {
+      obj.graphGold = [];
+    }
+    return obj;
   },
 };
 
@@ -7771,6 +10604,24 @@ export const CMsgDOTABroadcastTimelineEvent = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTABroadcastTimelineEvent {
+    return {
+      event: isSet(object.event) ? eBroadcastTimelineEventFromJSON(object.event) : 1,
+      timestamp: isSet(object.timestamp) ? Number(object.timestamp) : 0,
+      data: isSet(object.data) ? Number(object.data) : 0,
+      stringData: isSet(object.stringData) ? String(object.stringData) : "",
+    };
+  },
+
+  toJSON(message: CMsgDOTABroadcastTimelineEvent): unknown {
+    const obj: any = {};
+    message.event !== undefined && (obj.event = eBroadcastTimelineEventToJSON(message.event));
+    message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
+    message.data !== undefined && (obj.data = Math.round(message.data));
+    message.stringData !== undefined && (obj.stringData = message.stringData);
+    return obj;
+  },
 };
 
 function createBaseCMsgGCToClientMatchGroupsVersion(): CMsgGCToClientMatchGroupsVersion {
@@ -7806,6 +10657,16 @@ export const CMsgGCToClientMatchGroupsVersion = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCToClientMatchGroupsVersion {
+    return { matchgroupsVersion: isSet(object.matchgroupsVersion) ? Number(object.matchgroupsVersion) : 0 };
+  },
+
+  toJSON(message: CMsgGCToClientMatchGroupsVersion): unknown {
+    const obj: any = {};
+    message.matchgroupsVersion !== undefined && (obj.matchgroupsVersion = Math.round(message.matchgroupsVersion));
+    return obj;
   },
 };
 
@@ -7944,6 +10805,36 @@ export const CMsgDOTASDOHeroStatsHistory = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTASDOHeroStatsHistory {
+    return {
+      matchId: isSet(object.matchId) ? String(object.matchId) : "0",
+      gameMode: isSet(object.gameMode) ? Number(object.gameMode) : 0,
+      lobbyType: isSet(object.lobbyType) ? Number(object.lobbyType) : 0,
+      startTime: isSet(object.startTime) ? Number(object.startTime) : 0,
+      won: isSet(object.won) ? Boolean(object.won) : false,
+      gpm: isSet(object.gpm) ? Number(object.gpm) : 0,
+      xpm: isSet(object.xpm) ? Number(object.xpm) : 0,
+      kills: isSet(object.kills) ? Number(object.kills) : 0,
+      deaths: isSet(object.deaths) ? Number(object.deaths) : 0,
+      assists: isSet(object.assists) ? Number(object.assists) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTASDOHeroStatsHistory): unknown {
+    const obj: any = {};
+    message.matchId !== undefined && (obj.matchId = message.matchId);
+    message.gameMode !== undefined && (obj.gameMode = Math.round(message.gameMode));
+    message.lobbyType !== undefined && (obj.lobbyType = Math.round(message.lobbyType));
+    message.startTime !== undefined && (obj.startTime = Math.round(message.startTime));
+    message.won !== undefined && (obj.won = message.won);
+    message.gpm !== undefined && (obj.gpm = Math.round(message.gpm));
+    message.xpm !== undefined && (obj.xpm = Math.round(message.xpm));
+    message.kills !== undefined && (obj.kills = Math.round(message.kills));
+    message.deaths !== undefined && (obj.deaths = Math.round(message.deaths));
+    message.assists !== undefined && (obj.assists = Math.round(message.assists));
+    return obj;
+  },
 };
 
 function createBaseCMsgPredictionChoice(): CMsgPredictionChoice {
@@ -8009,6 +10900,24 @@ export const CMsgPredictionChoice = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgPredictionChoice {
+    return {
+      value: isSet(object.value) ? Number(object.value) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      minRawValue: isSet(object.minRawValue) ? Number(object.minRawValue) : 0,
+      maxRawValue: isSet(object.maxRawValue) ? Number(object.maxRawValue) : 0,
+    };
+  },
+
+  toJSON(message: CMsgPredictionChoice): unknown {
+    const obj: any = {};
+    message.value !== undefined && (obj.value = Math.round(message.value));
+    message.name !== undefined && (obj.name = message.name);
+    message.minRawValue !== undefined && (obj.minRawValue = Math.round(message.minRawValue));
+    message.maxRawValue !== undefined && (obj.maxRawValue = Math.round(message.maxRawValue));
+    return obj;
   },
 };
 
@@ -8191,6 +11100,62 @@ export const CMsgInGamePrediction = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgInGamePrediction {
+    return {
+      id: isSet(object.id) ? Number(object.id) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      type: isSet(object.type) ? cMsgInGamePrediction_EPredictionTypeFromJSON(object.type) : 0,
+      group: isSet(object.group) ? cMsgInGamePrediction_ERandomSelectionGroupTFromJSON(object.group) : 0,
+      question: isSet(object.question) ? String(object.question) : "",
+      choices: Array.isArray(object?.choices) ? object.choices.map((e: any) => CMsgPredictionChoice.fromJSON(e)) : [],
+      requiredHeroes: Array.isArray(object?.requiredHeroes) ? object.requiredHeroes.map((e: any) => String(e)) : [],
+      queryName: isSet(object.queryName) ? String(object.queryName) : "",
+      queryValues: Array.isArray(object?.queryValues)
+        ? object.queryValues.map((e: any) => CMsgInGamePrediction_QueryKeyValues.fromJSON(e))
+        : [],
+      answerResolutionType: isSet(object.answerResolutionType)
+        ? cMsgInGamePrediction_EResolutionTypeTFromJSON(object.answerResolutionType)
+        : 0,
+      pointsToGrant: isSet(object.pointsToGrant) ? Number(object.pointsToGrant) : 0,
+      rewardAction: isSet(object.rewardAction) ? Number(object.rewardAction) : 0,
+      debugForceSelection: isSet(object.debugForceSelection) ? Number(object.debugForceSelection) : 0,
+      rawValueType: isSet(object.rawValueType) ? cMsgInGamePrediction_ERawValueTypeTFromJSON(object.rawValueType) : 0,
+    };
+  },
+
+  toJSON(message: CMsgInGamePrediction): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = Math.round(message.id));
+    message.name !== undefined && (obj.name = message.name);
+    message.type !== undefined && (obj.type = cMsgInGamePrediction_EPredictionTypeToJSON(message.type));
+    message.group !== undefined && (obj.group = cMsgInGamePrediction_ERandomSelectionGroupTToJSON(message.group));
+    message.question !== undefined && (obj.question = message.question);
+    if (message.choices) {
+      obj.choices = message.choices.map((e) => e ? CMsgPredictionChoice.toJSON(e) : undefined);
+    } else {
+      obj.choices = [];
+    }
+    if (message.requiredHeroes) {
+      obj.requiredHeroes = message.requiredHeroes.map((e) => e);
+    } else {
+      obj.requiredHeroes = [];
+    }
+    message.queryName !== undefined && (obj.queryName = message.queryName);
+    if (message.queryValues) {
+      obj.queryValues = message.queryValues.map((e) => e ? CMsgInGamePrediction_QueryKeyValues.toJSON(e) : undefined);
+    } else {
+      obj.queryValues = [];
+    }
+    message.answerResolutionType !== undefined &&
+      (obj.answerResolutionType = cMsgInGamePrediction_EResolutionTypeTToJSON(message.answerResolutionType));
+    message.pointsToGrant !== undefined && (obj.pointsToGrant = Math.round(message.pointsToGrant));
+    message.rewardAction !== undefined && (obj.rewardAction = Math.round(message.rewardAction));
+    message.debugForceSelection !== undefined && (obj.debugForceSelection = Math.round(message.debugForceSelection));
+    message.rawValueType !== undefined &&
+      (obj.rawValueType = cMsgInGamePrediction_ERawValueTypeTToJSON(message.rawValueType));
+    return obj;
+  },
 };
 
 function createBaseCMsgInGamePrediction_QueryKeyValues(): CMsgInGamePrediction_QueryKeyValues {
@@ -8236,6 +11201,20 @@ export const CMsgInGamePrediction_QueryKeyValues = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgInGamePrediction_QueryKeyValues {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      value: isSet(object.value) ? String(object.value) : "",
+    };
+  },
+
+  toJSON(message: CMsgInGamePrediction_QueryKeyValues): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.value !== undefined && (obj.value = message.value);
+    return obj;
   },
 };
 
@@ -8307,6 +11286,42 @@ export const CMsgDOTASeasonPredictions = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTASeasonPredictions {
+    return {
+      predictions: Array.isArray(object?.predictions)
+        ? object.predictions.map((e: any) => CMsgDOTASeasonPredictions_Prediction.fromJSON(e))
+        : [],
+      inGamePredictions: Array.isArray(object?.inGamePredictions)
+        ? object.inGamePredictions.map((e: any) => CMsgInGamePrediction.fromJSON(e))
+        : [],
+      inGamePredictionCountPerGame: isSet(object.inGamePredictionCountPerGame)
+        ? Number(object.inGamePredictionCountPerGame)
+        : 0,
+      inGamePredictionVotingPeriodMinutes: isSet(object.inGamePredictionVotingPeriodMinutes)
+        ? Number(object.inGamePredictionVotingPeriodMinutes)
+        : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTASeasonPredictions): unknown {
+    const obj: any = {};
+    if (message.predictions) {
+      obj.predictions = message.predictions.map((e) => e ? CMsgDOTASeasonPredictions_Prediction.toJSON(e) : undefined);
+    } else {
+      obj.predictions = [];
+    }
+    if (message.inGamePredictions) {
+      obj.inGamePredictions = message.inGamePredictions.map((e) => e ? CMsgInGamePrediction.toJSON(e) : undefined);
+    } else {
+      obj.inGamePredictions = [];
+    }
+    message.inGamePredictionCountPerGame !== undefined &&
+      (obj.inGamePredictionCountPerGame = Math.round(message.inGamePredictionCountPerGame));
+    message.inGamePredictionVotingPeriodMinutes !== undefined &&
+      (obj.inGamePredictionVotingPeriodMinutes = Math.round(message.inGamePredictionVotingPeriodMinutes));
+    return obj;
   },
 };
 
@@ -8544,6 +11559,71 @@ export const CMsgDOTASeasonPredictions_Prediction = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTASeasonPredictions_Prediction {
+    return {
+      type: isSet(object.type) ? cMsgDOTASeasonPredictions_Prediction_EPredictionTypeFromJSON(object.type) : 0,
+      question: isSet(object.question) ? String(object.question) : "",
+      choices: Array.isArray(object?.choices) ? object.choices.map((e: any) => CMsgPredictionChoice.fromJSON(e)) : [],
+      selectionId: isSet(object.selectionId) ? Number(object.selectionId) : 0,
+      startDate: isSet(object.startDate) ? Number(object.startDate) : 0,
+      lockDate: isSet(object.lockDate) ? Number(object.lockDate) : 0,
+      reward: isSet(object.reward) ? Number(object.reward) : 0,
+      answerType: isSet(object.answerType)
+        ? cMsgDOTASeasonPredictions_Prediction_EAnswerTypeFromJSON(object.answerType)
+        : 0,
+      answerId: isSet(object.answerId) ? Number(object.answerId) : 0,
+      answers: Array.isArray(object?.answers)
+        ? object.answers.map((e: any) => CMsgDOTASeasonPredictions_Prediction_Answers.fromJSON(e))
+        : [],
+      queryName: isSet(object.queryName) ? String(object.queryName) : "",
+      lockOnSelectionId: isSet(object.lockOnSelectionId) ? Number(object.lockOnSelectionId) : 0,
+      lockOnSelectionValue: isSet(object.lockOnSelectionValue) ? Number(object.lockOnSelectionValue) : 0,
+      lockOnSelectionSet: isSet(object.lockOnSelectionSet) ? Boolean(object.lockOnSelectionSet) : false,
+      useAnswerValueRanges: isSet(object.useAnswerValueRanges) ? Boolean(object.useAnswerValueRanges) : false,
+      region: isSet(object.region) ? eLeagueRegionFromJSON(object.region) : 0,
+      phases: Array.isArray(object?.phases)
+        ? object.phases.map((e: any) => eLeaguePhaseFromJSON(e))
+        : [],
+      rewardEvent: isSet(object.rewardEvent) ? eEventFromJSON(object.rewardEvent) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTASeasonPredictions_Prediction): unknown {
+    const obj: any = {};
+    message.type !== undefined && (obj.type = cMsgDOTASeasonPredictions_Prediction_EPredictionTypeToJSON(message.type));
+    message.question !== undefined && (obj.question = message.question);
+    if (message.choices) {
+      obj.choices = message.choices.map((e) => e ? CMsgPredictionChoice.toJSON(e) : undefined);
+    } else {
+      obj.choices = [];
+    }
+    message.selectionId !== undefined && (obj.selectionId = Math.round(message.selectionId));
+    message.startDate !== undefined && (obj.startDate = Math.round(message.startDate));
+    message.lockDate !== undefined && (obj.lockDate = Math.round(message.lockDate));
+    message.reward !== undefined && (obj.reward = Math.round(message.reward));
+    message.answerType !== undefined &&
+      (obj.answerType = cMsgDOTASeasonPredictions_Prediction_EAnswerTypeToJSON(message.answerType));
+    message.answerId !== undefined && (obj.answerId = Math.round(message.answerId));
+    if (message.answers) {
+      obj.answers = message.answers.map((e) => e ? CMsgDOTASeasonPredictions_Prediction_Answers.toJSON(e) : undefined);
+    } else {
+      obj.answers = [];
+    }
+    message.queryName !== undefined && (obj.queryName = message.queryName);
+    message.lockOnSelectionId !== undefined && (obj.lockOnSelectionId = Math.round(message.lockOnSelectionId));
+    message.lockOnSelectionValue !== undefined && (obj.lockOnSelectionValue = Math.round(message.lockOnSelectionValue));
+    message.lockOnSelectionSet !== undefined && (obj.lockOnSelectionSet = message.lockOnSelectionSet);
+    message.useAnswerValueRanges !== undefined && (obj.useAnswerValueRanges = message.useAnswerValueRanges);
+    message.region !== undefined && (obj.region = eLeagueRegionToJSON(message.region));
+    if (message.phases) {
+      obj.phases = message.phases.map((e) => eLeaguePhaseToJSON(e));
+    } else {
+      obj.phases = [];
+    }
+    message.rewardEvent !== undefined && (obj.rewardEvent = eEventToJSON(message.rewardEvent));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTASeasonPredictions_Prediction_Answers(): CMsgDOTASeasonPredictions_Prediction_Answers {
@@ -8580,6 +11660,16 @@ export const CMsgDOTASeasonPredictions_Prediction_Answers = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTASeasonPredictions_Prediction_Answers {
+    return { answerId: isSet(object.answerId) ? Number(object.answerId) : 0 };
+  },
+
+  toJSON(message: CMsgDOTASeasonPredictions_Prediction_Answers): unknown {
+    const obj: any = {};
+    message.answerId !== undefined && (obj.answerId = Math.round(message.answerId));
+    return obj;
+  },
 };
 
 function createBaseCMsgAvailablePredictions(): CMsgAvailablePredictions {
@@ -8615,6 +11705,26 @@ export const CMsgAvailablePredictions = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgAvailablePredictions {
+    return {
+      matchPredictions: Array.isArray(object?.matchPredictions)
+        ? object.matchPredictions.map((e: any) => CMsgAvailablePredictions_MatchPrediction.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgAvailablePredictions): unknown {
+    const obj: any = {};
+    if (message.matchPredictions) {
+      obj.matchPredictions = message.matchPredictions.map((e) =>
+        e ? CMsgAvailablePredictions_MatchPrediction.toJSON(e) : undefined
+      );
+    } else {
+      obj.matchPredictions = [];
+    }
+    return obj;
   },
 };
 
@@ -8662,6 +11772,26 @@ export const CMsgAvailablePredictions_MatchPrediction = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgAvailablePredictions_MatchPrediction {
+    return {
+      matchId: isSet(object.matchId) ? String(object.matchId) : "0",
+      predictions: Array.isArray(object?.predictions)
+        ? object.predictions.map((e: any) => CMsgInGamePrediction.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgAvailablePredictions_MatchPrediction): unknown {
+    const obj: any = {};
+    message.matchId !== undefined && (obj.matchId = message.matchId);
+    if (message.predictions) {
+      obj.predictions = message.predictions.map((e) => e ? CMsgInGamePrediction.toJSON(e) : undefined);
+    } else {
+      obj.predictions = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgLeagueWatchedGames(): CMsgLeagueWatchedGames {
@@ -8697,6 +11827,24 @@ export const CMsgLeagueWatchedGames = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgLeagueWatchedGames {
+    return {
+      leagues: Array.isArray(object?.leagues)
+        ? object.leagues.map((e: any) => CMsgLeagueWatchedGames_League.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgLeagueWatchedGames): unknown {
+    const obj: any = {};
+    if (message.leagues) {
+      obj.leagues = message.leagues.map((e) => e ? CMsgLeagueWatchedGames_League.toJSON(e) : undefined);
+    } else {
+      obj.leagues = [];
+    }
+    return obj;
   },
 };
 
@@ -8755,6 +11903,24 @@ export const CMsgLeagueWatchedGames_Series = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgLeagueWatchedGames_Series {
+    return {
+      nodeId: isSet(object.nodeId) ? Number(object.nodeId) : 0,
+      game: Array.isArray(object?.game) ? object.game.map((e: any) => Number(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgLeagueWatchedGames_Series): unknown {
+    const obj: any = {};
+    message.nodeId !== undefined && (obj.nodeId = Math.round(message.nodeId));
+    if (message.game) {
+      obj.game = message.game.map((e) => Math.round(e));
+    } else {
+      obj.game = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgLeagueWatchedGames_League(): CMsgLeagueWatchedGames_League {
@@ -8800,6 +11966,26 @@ export const CMsgLeagueWatchedGames_League = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgLeagueWatchedGames_League {
+    return {
+      leagueId: isSet(object.leagueId) ? Number(object.leagueId) : 0,
+      series: Array.isArray(object?.series)
+        ? object.series.map((e: any) => CMsgLeagueWatchedGames_Series.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgLeagueWatchedGames_League): unknown {
+    const obj: any = {};
+    message.leagueId !== undefined && (obj.leagueId = Math.round(message.leagueId));
+    if (message.series) {
+      obj.series = message.series.map((e) => e ? CMsgLeagueWatchedGames_Series.toJSON(e) : undefined);
+    } else {
+      obj.series = [];
+    }
+    return obj;
   },
 };
 
@@ -9399,6 +12585,150 @@ export const CMsgDOTAMatch = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAMatch {
+    return {
+      duration: isSet(object.duration) ? Number(object.duration) : 0,
+      starttime: isSet(object.starttime) ? Number(object.starttime) : 0,
+      players: Array.isArray(object?.players) ? object.players.map((e: any) => CMsgDOTAMatch_Player.fromJSON(e)) : [],
+      matchId: isSet(object.matchId) ? String(object.matchId) : "0",
+      towerStatus: Array.isArray(object?.towerStatus) ? object.towerStatus.map((e: any) => Number(e)) : [],
+      barracksStatus: Array.isArray(object?.barracksStatus) ? object.barracksStatus.map((e: any) => Number(e)) : [],
+      cluster: isSet(object.cluster) ? Number(object.cluster) : 0,
+      firstBloodTime: isSet(object.firstBloodTime) ? Number(object.firstBloodTime) : 0,
+      replaySalt: isSet(object.replaySalt) ? Number(object.replaySalt) : 0,
+      serverIp: isSet(object.serverIp) ? Number(object.serverIp) : 0,
+      serverPort: isSet(object.serverPort) ? Number(object.serverPort) : 0,
+      lobbyType: isSet(object.lobbyType) ? Number(object.lobbyType) : 0,
+      humanPlayers: isSet(object.humanPlayers) ? Number(object.humanPlayers) : 0,
+      averageSkill: isSet(object.averageSkill) ? Number(object.averageSkill) : 0,
+      gameBalance: isSet(object.gameBalance) ? Number(object.gameBalance) : 0,
+      radiantTeamId: isSet(object.radiantTeamId) ? Number(object.radiantTeamId) : 0,
+      direTeamId: isSet(object.direTeamId) ? Number(object.direTeamId) : 0,
+      leagueid: isSet(object.leagueid) ? Number(object.leagueid) : 0,
+      radiantTeamName: isSet(object.radiantTeamName) ? String(object.radiantTeamName) : "",
+      direTeamName: isSet(object.direTeamName) ? String(object.direTeamName) : "",
+      radiantTeamLogo: isSet(object.radiantTeamLogo) ? String(object.radiantTeamLogo) : "0",
+      direTeamLogo: isSet(object.direTeamLogo) ? String(object.direTeamLogo) : "0",
+      radiantTeamLogoUrl: isSet(object.radiantTeamLogoUrl) ? String(object.radiantTeamLogoUrl) : "",
+      direTeamLogoUrl: isSet(object.direTeamLogoUrl) ? String(object.direTeamLogoUrl) : "",
+      radiantTeamComplete: isSet(object.radiantTeamComplete) ? Number(object.radiantTeamComplete) : 0,
+      direTeamComplete: isSet(object.direTeamComplete) ? Number(object.direTeamComplete) : 0,
+      positiveVotes: isSet(object.positiveVotes) ? Number(object.positiveVotes) : 0,
+      negativeVotes: isSet(object.negativeVotes) ? Number(object.negativeVotes) : 0,
+      gameMode: isSet(object.gameMode) ? dOTAGameModeFromJSON(object.gameMode) : 0,
+      picksBans: Array.isArray(object?.picksBans)
+        ? object.picksBans.map((e: any) => CMatchHeroSelectEvent.fromJSON(e))
+        : [],
+      matchSeqNum: isSet(object.matchSeqNum) ? String(object.matchSeqNum) : "0",
+      replayState: isSet(object.replayState) ? cMsgDOTAMatch_ReplayStateFromJSON(object.replayState) : 0,
+      radiantGuildId: isSet(object.radiantGuildId) ? Number(object.radiantGuildId) : 0,
+      direGuildId: isSet(object.direGuildId) ? Number(object.direGuildId) : 0,
+      radiantTeamTag: isSet(object.radiantTeamTag) ? String(object.radiantTeamTag) : "",
+      direTeamTag: isSet(object.direTeamTag) ? String(object.direTeamTag) : "",
+      seriesId: isSet(object.seriesId) ? Number(object.seriesId) : 0,
+      seriesType: isSet(object.seriesType) ? Number(object.seriesType) : 0,
+      broadcasterChannels: Array.isArray(object?.broadcasterChannels)
+        ? object.broadcasterChannels.map((e: any) => CMsgDOTAMatch_BroadcasterChannel.fromJSON(e))
+        : [],
+      engine: isSet(object.engine) ? Number(object.engine) : 0,
+      customGameData: isSet(object.customGameData)
+        ? CMsgDOTAMatch_CustomGameData.fromJSON(object.customGameData)
+        : undefined,
+      matchFlags: isSet(object.matchFlags) ? Number(object.matchFlags) : 0,
+      privateMetadataKey: isSet(object.privateMetadataKey) ? Number(object.privateMetadataKey) : 0,
+      radiantTeamScore: isSet(object.radiantTeamScore) ? Number(object.radiantTeamScore) : 0,
+      direTeamScore: isSet(object.direTeamScore) ? Number(object.direTeamScore) : 0,
+      matchOutcome: isSet(object.matchOutcome) ? eMatchOutcomeFromJSON(object.matchOutcome) : 0,
+      tournamentId: isSet(object.tournamentId) ? Number(object.tournamentId) : 0,
+      tournamentRound: isSet(object.tournamentRound) ? Number(object.tournamentRound) : 0,
+      preGameDuration: isSet(object.preGameDuration) ? Number(object.preGameDuration) : 0,
+      coaches: Array.isArray(object?.coaches) ? object.coaches.map((e: any) => CMsgDOTAMatch_Coach.fromJSON(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTAMatch): unknown {
+    const obj: any = {};
+    message.duration !== undefined && (obj.duration = Math.round(message.duration));
+    message.starttime !== undefined && (obj.starttime = Math.round(message.starttime));
+    if (message.players) {
+      obj.players = message.players.map((e) => e ? CMsgDOTAMatch_Player.toJSON(e) : undefined);
+    } else {
+      obj.players = [];
+    }
+    message.matchId !== undefined && (obj.matchId = message.matchId);
+    if (message.towerStatus) {
+      obj.towerStatus = message.towerStatus.map((e) => Math.round(e));
+    } else {
+      obj.towerStatus = [];
+    }
+    if (message.barracksStatus) {
+      obj.barracksStatus = message.barracksStatus.map((e) => Math.round(e));
+    } else {
+      obj.barracksStatus = [];
+    }
+    message.cluster !== undefined && (obj.cluster = Math.round(message.cluster));
+    message.firstBloodTime !== undefined && (obj.firstBloodTime = Math.round(message.firstBloodTime));
+    message.replaySalt !== undefined && (obj.replaySalt = Math.round(message.replaySalt));
+    message.serverIp !== undefined && (obj.serverIp = Math.round(message.serverIp));
+    message.serverPort !== undefined && (obj.serverPort = Math.round(message.serverPort));
+    message.lobbyType !== undefined && (obj.lobbyType = Math.round(message.lobbyType));
+    message.humanPlayers !== undefined && (obj.humanPlayers = Math.round(message.humanPlayers));
+    message.averageSkill !== undefined && (obj.averageSkill = Math.round(message.averageSkill));
+    message.gameBalance !== undefined && (obj.gameBalance = message.gameBalance);
+    message.radiantTeamId !== undefined && (obj.radiantTeamId = Math.round(message.radiantTeamId));
+    message.direTeamId !== undefined && (obj.direTeamId = Math.round(message.direTeamId));
+    message.leagueid !== undefined && (obj.leagueid = Math.round(message.leagueid));
+    message.radiantTeamName !== undefined && (obj.radiantTeamName = message.radiantTeamName);
+    message.direTeamName !== undefined && (obj.direTeamName = message.direTeamName);
+    message.radiantTeamLogo !== undefined && (obj.radiantTeamLogo = message.radiantTeamLogo);
+    message.direTeamLogo !== undefined && (obj.direTeamLogo = message.direTeamLogo);
+    message.radiantTeamLogoUrl !== undefined && (obj.radiantTeamLogoUrl = message.radiantTeamLogoUrl);
+    message.direTeamLogoUrl !== undefined && (obj.direTeamLogoUrl = message.direTeamLogoUrl);
+    message.radiantTeamComplete !== undefined && (obj.radiantTeamComplete = Math.round(message.radiantTeamComplete));
+    message.direTeamComplete !== undefined && (obj.direTeamComplete = Math.round(message.direTeamComplete));
+    message.positiveVotes !== undefined && (obj.positiveVotes = Math.round(message.positiveVotes));
+    message.negativeVotes !== undefined && (obj.negativeVotes = Math.round(message.negativeVotes));
+    message.gameMode !== undefined && (obj.gameMode = dOTAGameModeToJSON(message.gameMode));
+    if (message.picksBans) {
+      obj.picksBans = message.picksBans.map((e) => e ? CMatchHeroSelectEvent.toJSON(e) : undefined);
+    } else {
+      obj.picksBans = [];
+    }
+    message.matchSeqNum !== undefined && (obj.matchSeqNum = message.matchSeqNum);
+    message.replayState !== undefined && (obj.replayState = cMsgDOTAMatch_ReplayStateToJSON(message.replayState));
+    message.radiantGuildId !== undefined && (obj.radiantGuildId = Math.round(message.radiantGuildId));
+    message.direGuildId !== undefined && (obj.direGuildId = Math.round(message.direGuildId));
+    message.radiantTeamTag !== undefined && (obj.radiantTeamTag = message.radiantTeamTag);
+    message.direTeamTag !== undefined && (obj.direTeamTag = message.direTeamTag);
+    message.seriesId !== undefined && (obj.seriesId = Math.round(message.seriesId));
+    message.seriesType !== undefined && (obj.seriesType = Math.round(message.seriesType));
+    if (message.broadcasterChannels) {
+      obj.broadcasterChannels = message.broadcasterChannels.map((e) =>
+        e ? CMsgDOTAMatch_BroadcasterChannel.toJSON(e) : undefined
+      );
+    } else {
+      obj.broadcasterChannels = [];
+    }
+    message.engine !== undefined && (obj.engine = Math.round(message.engine));
+    message.customGameData !== undefined && (obj.customGameData = message.customGameData
+      ? CMsgDOTAMatch_CustomGameData.toJSON(message.customGameData)
+      : undefined);
+    message.matchFlags !== undefined && (obj.matchFlags = Math.round(message.matchFlags));
+    message.privateMetadataKey !== undefined && (obj.privateMetadataKey = Math.round(message.privateMetadataKey));
+    message.radiantTeamScore !== undefined && (obj.radiantTeamScore = Math.round(message.radiantTeamScore));
+    message.direTeamScore !== undefined && (obj.direTeamScore = Math.round(message.direTeamScore));
+    message.matchOutcome !== undefined && (obj.matchOutcome = eMatchOutcomeToJSON(message.matchOutcome));
+    message.tournamentId !== undefined && (obj.tournamentId = Math.round(message.tournamentId));
+    message.tournamentRound !== undefined && (obj.tournamentRound = Math.round(message.tournamentRound));
+    message.preGameDuration !== undefined && (obj.preGameDuration = Math.round(message.preGameDuration));
+    if (message.coaches) {
+      obj.coaches = message.coaches.map((e) => e ? CMsgDOTAMatch_Coach.toJSON(e) : undefined);
+    } else {
+      obj.coaches = [];
+    }
+    return obj;
   },
 };
 
@@ -10230,6 +13560,207 @@ export const CMsgDOTAMatch_Player = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTAMatch_Player {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      playerSlot: isSet(object.playerSlot) ? Number(object.playerSlot) : 0,
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      item0: isSet(object.item0) ? Number(object.item0) : 0,
+      item1: isSet(object.item1) ? Number(object.item1) : 0,
+      item2: isSet(object.item2) ? Number(object.item2) : 0,
+      item3: isSet(object.item3) ? Number(object.item3) : 0,
+      item4: isSet(object.item4) ? Number(object.item4) : 0,
+      item5: isSet(object.item5) ? Number(object.item5) : 0,
+      item6: isSet(object.item6) ? Number(object.item6) : 0,
+      item7: isSet(object.item7) ? Number(object.item7) : 0,
+      item8: isSet(object.item8) ? Number(object.item8) : 0,
+      item9: isSet(object.item9) ? Number(object.item9) : 0,
+      expectedTeamContribution: isSet(object.expectedTeamContribution) ? Number(object.expectedTeamContribution) : 0,
+      scaledMetric: isSet(object.scaledMetric) ? Number(object.scaledMetric) : 0,
+      previousRank: isSet(object.previousRank) ? Number(object.previousRank) : 0,
+      rankChange: isSet(object.rankChange) ? Number(object.rankChange) : 0,
+      mmrType: isSet(object.mmrType) ? Number(object.mmrType) : 0,
+      kills: isSet(object.kills) ? Number(object.kills) : 0,
+      deaths: isSet(object.deaths) ? Number(object.deaths) : 0,
+      assists: isSet(object.assists) ? Number(object.assists) : 0,
+      leaverStatus: isSet(object.leaverStatus) ? Number(object.leaverStatus) : 0,
+      gold: isSet(object.gold) ? Number(object.gold) : 0,
+      lastHits: isSet(object.lastHits) ? Number(object.lastHits) : 0,
+      denies: isSet(object.denies) ? Number(object.denies) : 0,
+      goldPerMin: isSet(object.goldPerMin) ? Number(object.goldPerMin) : 0,
+      xpPerMin: isSet(object.xpPerMin) ? Number(object.xpPerMin) : 0,
+      goldSpent: isSet(object.goldSpent) ? Number(object.goldSpent) : 0,
+      heroDamage: isSet(object.heroDamage) ? Number(object.heroDamage) : 0,
+      towerDamage: isSet(object.towerDamage) ? Number(object.towerDamage) : 0,
+      heroHealing: isSet(object.heroHealing) ? Number(object.heroHealing) : 0,
+      level: isSet(object.level) ? Number(object.level) : 0,
+      timeLastSeen: isSet(object.timeLastSeen) ? Number(object.timeLastSeen) : 0,
+      playerName: isSet(object.playerName) ? String(object.playerName) : "",
+      supportAbilityValue: isSet(object.supportAbilityValue) ? Number(object.supportAbilityValue) : 0,
+      feedingDetected: isSet(object.feedingDetected) ? Boolean(object.feedingDetected) : false,
+      searchRank: isSet(object.searchRank) ? Number(object.searchRank) : 0,
+      searchRankUncertainty: isSet(object.searchRankUncertainty) ? Number(object.searchRankUncertainty) : 0,
+      rankUncertaintyChange: isSet(object.rankUncertaintyChange) ? Number(object.rankUncertaintyChange) : 0,
+      heroPlayCount: isSet(object.heroPlayCount) ? Number(object.heroPlayCount) : 0,
+      partyId: isSet(object.partyId) ? String(object.partyId) : "0",
+      scaledHeroDamage: isSet(object.scaledHeroDamage) ? Number(object.scaledHeroDamage) : 0,
+      scaledTowerDamage: isSet(object.scaledTowerDamage) ? Number(object.scaledTowerDamage) : 0,
+      scaledHeroHealing: isSet(object.scaledHeroHealing) ? Number(object.scaledHeroHealing) : 0,
+      scaledKills: isSet(object.scaledKills) ? Number(object.scaledKills) : 0,
+      scaledDeaths: isSet(object.scaledDeaths) ? Number(object.scaledDeaths) : 0,
+      scaledAssists: isSet(object.scaledAssists) ? Number(object.scaledAssists) : 0,
+      claimedFarmGold: isSet(object.claimedFarmGold) ? Number(object.claimedFarmGold) : 0,
+      supportGold: isSet(object.supportGold) ? Number(object.supportGold) : 0,
+      claimedDenies: isSet(object.claimedDenies) ? Number(object.claimedDenies) : 0,
+      claimedMisses: isSet(object.claimedMisses) ? Number(object.claimedMisses) : 0,
+      misses: isSet(object.misses) ? Number(object.misses) : 0,
+      abilityUpgrades: Array.isArray(object?.abilityUpgrades)
+        ? object.abilityUpgrades.map((e: any) => CMatchPlayerAbilityUpgrade.fromJSON(e))
+        : [],
+      additionalUnitsInventory: Array.isArray(object?.additionalUnitsInventory)
+        ? object.additionalUnitsInventory.map((e: any) => CMatchAdditionalUnitInventory.fromJSON(e))
+        : [],
+      permanentBuffs: Array.isArray(object?.permanentBuffs)
+        ? object.permanentBuffs.map((e: any) => CMatchPlayerPermanentBuff.fromJSON(e))
+        : [],
+      proName: isSet(object.proName) ? String(object.proName) : "",
+      realName: isSet(object.realName) ? String(object.realName) : "",
+      customGameData: isSet(object.customGameData)
+        ? CMsgDOTAMatch_Player_CustomGameData.fromJSON(object.customGameData)
+        : undefined,
+      activePlusSubscription: isSet(object.activePlusSubscription) ? Boolean(object.activePlusSubscription) : false,
+      netWorth: isSet(object.netWorth) ? Number(object.netWorth) : 0,
+      botDifficulty: isSet(object.botDifficulty) ? Number(object.botDifficulty) : 0,
+      heroPickOrder: isSet(object.heroPickOrder) ? Number(object.heroPickOrder) : 0,
+      heroWasRandomed: isSet(object.heroWasRandomed) ? Boolean(object.heroWasRandomed) : false,
+      heroWasDotaPlusSuggestion: isSet(object.heroWasDotaPlusSuggestion)
+        ? Boolean(object.heroWasDotaPlusSuggestion)
+        : false,
+      heroDamageReceived: Array.isArray(object?.heroDamageReceived)
+        ? object.heroDamageReceived.map((e: any) => CMsgDOTAMatch_Player_HeroDamageReceived.fromJSON(e))
+        : [],
+      heroDamageDealt: Array.isArray(object?.heroDamageDealt)
+        ? object.heroDamageDealt.map((e: any) => CMsgDOTAMatch_Player_HeroDamageReceived.fromJSON(e))
+        : [],
+      secondsDead: isSet(object.secondsDead) ? Number(object.secondsDead) : 0,
+      goldLostToDeath: isSet(object.goldLostToDeath) ? Number(object.goldLostToDeath) : 0,
+      laneSelectionFlags: isSet(object.laneSelectionFlags) ? Number(object.laneSelectionFlags) : 0,
+      bountyRunes: isSet(object.bountyRunes) ? Number(object.bountyRunes) : 0,
+      outpostsCaptured: isSet(object.outpostsCaptured) ? Number(object.outpostsCaptured) : 0,
+      teamNumber: isSet(object.teamNumber) ? dotaGcTeamFromJSON(object.teamNumber) : 0,
+      teamSlot: isSet(object.teamSlot) ? Number(object.teamSlot) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTAMatch_Player): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.playerSlot !== undefined && (obj.playerSlot = Math.round(message.playerSlot));
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.item0 !== undefined && (obj.item0 = Math.round(message.item0));
+    message.item1 !== undefined && (obj.item1 = Math.round(message.item1));
+    message.item2 !== undefined && (obj.item2 = Math.round(message.item2));
+    message.item3 !== undefined && (obj.item3 = Math.round(message.item3));
+    message.item4 !== undefined && (obj.item4 = Math.round(message.item4));
+    message.item5 !== undefined && (obj.item5 = Math.round(message.item5));
+    message.item6 !== undefined && (obj.item6 = Math.round(message.item6));
+    message.item7 !== undefined && (obj.item7 = Math.round(message.item7));
+    message.item8 !== undefined && (obj.item8 = Math.round(message.item8));
+    message.item9 !== undefined && (obj.item9 = Math.round(message.item9));
+    message.expectedTeamContribution !== undefined && (obj.expectedTeamContribution = message.expectedTeamContribution);
+    message.scaledMetric !== undefined && (obj.scaledMetric = message.scaledMetric);
+    message.previousRank !== undefined && (obj.previousRank = Math.round(message.previousRank));
+    message.rankChange !== undefined && (obj.rankChange = Math.round(message.rankChange));
+    message.mmrType !== undefined && (obj.mmrType = Math.round(message.mmrType));
+    message.kills !== undefined && (obj.kills = Math.round(message.kills));
+    message.deaths !== undefined && (obj.deaths = Math.round(message.deaths));
+    message.assists !== undefined && (obj.assists = Math.round(message.assists));
+    message.leaverStatus !== undefined && (obj.leaverStatus = Math.round(message.leaverStatus));
+    message.gold !== undefined && (obj.gold = Math.round(message.gold));
+    message.lastHits !== undefined && (obj.lastHits = Math.round(message.lastHits));
+    message.denies !== undefined && (obj.denies = Math.round(message.denies));
+    message.goldPerMin !== undefined && (obj.goldPerMin = Math.round(message.goldPerMin));
+    message.xpPerMin !== undefined && (obj.xpPerMin = Math.round(message.xpPerMin));
+    message.goldSpent !== undefined && (obj.goldSpent = Math.round(message.goldSpent));
+    message.heroDamage !== undefined && (obj.heroDamage = Math.round(message.heroDamage));
+    message.towerDamage !== undefined && (obj.towerDamage = Math.round(message.towerDamage));
+    message.heroHealing !== undefined && (obj.heroHealing = Math.round(message.heroHealing));
+    message.level !== undefined && (obj.level = Math.round(message.level));
+    message.timeLastSeen !== undefined && (obj.timeLastSeen = Math.round(message.timeLastSeen));
+    message.playerName !== undefined && (obj.playerName = message.playerName);
+    message.supportAbilityValue !== undefined && (obj.supportAbilityValue = Math.round(message.supportAbilityValue));
+    message.feedingDetected !== undefined && (obj.feedingDetected = message.feedingDetected);
+    message.searchRank !== undefined && (obj.searchRank = Math.round(message.searchRank));
+    message.searchRankUncertainty !== undefined &&
+      (obj.searchRankUncertainty = Math.round(message.searchRankUncertainty));
+    message.rankUncertaintyChange !== undefined &&
+      (obj.rankUncertaintyChange = Math.round(message.rankUncertaintyChange));
+    message.heroPlayCount !== undefined && (obj.heroPlayCount = Math.round(message.heroPlayCount));
+    message.partyId !== undefined && (obj.partyId = message.partyId);
+    message.scaledHeroDamage !== undefined && (obj.scaledHeroDamage = Math.round(message.scaledHeroDamage));
+    message.scaledTowerDamage !== undefined && (obj.scaledTowerDamage = Math.round(message.scaledTowerDamage));
+    message.scaledHeroHealing !== undefined && (obj.scaledHeroHealing = Math.round(message.scaledHeroHealing));
+    message.scaledKills !== undefined && (obj.scaledKills = message.scaledKills);
+    message.scaledDeaths !== undefined && (obj.scaledDeaths = message.scaledDeaths);
+    message.scaledAssists !== undefined && (obj.scaledAssists = message.scaledAssists);
+    message.claimedFarmGold !== undefined && (obj.claimedFarmGold = Math.round(message.claimedFarmGold));
+    message.supportGold !== undefined && (obj.supportGold = Math.round(message.supportGold));
+    message.claimedDenies !== undefined && (obj.claimedDenies = Math.round(message.claimedDenies));
+    message.claimedMisses !== undefined && (obj.claimedMisses = Math.round(message.claimedMisses));
+    message.misses !== undefined && (obj.misses = Math.round(message.misses));
+    if (message.abilityUpgrades) {
+      obj.abilityUpgrades = message.abilityUpgrades.map((e) => e ? CMatchPlayerAbilityUpgrade.toJSON(e) : undefined);
+    } else {
+      obj.abilityUpgrades = [];
+    }
+    if (message.additionalUnitsInventory) {
+      obj.additionalUnitsInventory = message.additionalUnitsInventory.map((e) =>
+        e ? CMatchAdditionalUnitInventory.toJSON(e) : undefined
+      );
+    } else {
+      obj.additionalUnitsInventory = [];
+    }
+    if (message.permanentBuffs) {
+      obj.permanentBuffs = message.permanentBuffs.map((e) => e ? CMatchPlayerPermanentBuff.toJSON(e) : undefined);
+    } else {
+      obj.permanentBuffs = [];
+    }
+    message.proName !== undefined && (obj.proName = message.proName);
+    message.realName !== undefined && (obj.realName = message.realName);
+    message.customGameData !== undefined && (obj.customGameData = message.customGameData
+      ? CMsgDOTAMatch_Player_CustomGameData.toJSON(message.customGameData)
+      : undefined);
+    message.activePlusSubscription !== undefined && (obj.activePlusSubscription = message.activePlusSubscription);
+    message.netWorth !== undefined && (obj.netWorth = Math.round(message.netWorth));
+    message.botDifficulty !== undefined && (obj.botDifficulty = Math.round(message.botDifficulty));
+    message.heroPickOrder !== undefined && (obj.heroPickOrder = Math.round(message.heroPickOrder));
+    message.heroWasRandomed !== undefined && (obj.heroWasRandomed = message.heroWasRandomed);
+    message.heroWasDotaPlusSuggestion !== undefined &&
+      (obj.heroWasDotaPlusSuggestion = message.heroWasDotaPlusSuggestion);
+    if (message.heroDamageReceived) {
+      obj.heroDamageReceived = message.heroDamageReceived.map((e) =>
+        e ? CMsgDOTAMatch_Player_HeroDamageReceived.toJSON(e) : undefined
+      );
+    } else {
+      obj.heroDamageReceived = [];
+    }
+    if (message.heroDamageDealt) {
+      obj.heroDamageDealt = message.heroDamageDealt.map((e) =>
+        e ? CMsgDOTAMatch_Player_HeroDamageReceived.toJSON(e) : undefined
+      );
+    } else {
+      obj.heroDamageDealt = [];
+    }
+    message.secondsDead !== undefined && (obj.secondsDead = Math.round(message.secondsDead));
+    message.goldLostToDeath !== undefined && (obj.goldLostToDeath = Math.round(message.goldLostToDeath));
+    message.laneSelectionFlags !== undefined && (obj.laneSelectionFlags = Math.round(message.laneSelectionFlags));
+    message.bountyRunes !== undefined && (obj.bountyRunes = Math.round(message.bountyRunes));
+    message.outpostsCaptured !== undefined && (obj.outpostsCaptured = Math.round(message.outpostsCaptured));
+    message.teamNumber !== undefined && (obj.teamNumber = dotaGcTeamToJSON(message.teamNumber));
+    message.teamSlot !== undefined && (obj.teamSlot = Math.round(message.teamSlot));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTAMatch_Player_CustomGameData(): CMsgDOTAMatch_Player_CustomGameData {
@@ -10275,6 +13806,20 @@ export const CMsgDOTAMatch_Player_CustomGameData = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAMatch_Player_CustomGameData {
+    return {
+      dotaTeam: isSet(object.dotaTeam) ? Number(object.dotaTeam) : 0,
+      winner: isSet(object.winner) ? Boolean(object.winner) : false,
+    };
+  },
+
+  toJSON(message: CMsgDOTAMatch_Player_CustomGameData): unknown {
+    const obj: any = {};
+    message.dotaTeam !== undefined && (obj.dotaTeam = Math.round(message.dotaTeam));
+    message.winner !== undefined && (obj.winner = message.winner);
+    return obj;
   },
 };
 
@@ -10332,6 +13877,23 @@ export const CMsgDOTAMatch_Player_HeroDamageReceived = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTAMatch_Player_HeroDamageReceived {
+    return {
+      preReduction: isSet(object.preReduction) ? Number(object.preReduction) : 0,
+      postReduction: isSet(object.postReduction) ? Number(object.postReduction) : 0,
+      damageType: isSet(object.damageType) ? cMsgDOTAMatch_Player_HeroDamageTypeFromJSON(object.damageType) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTAMatch_Player_HeroDamageReceived): unknown {
+    const obj: any = {};
+    message.preReduction !== undefined && (obj.preReduction = Math.round(message.preReduction));
+    message.postReduction !== undefined && (obj.postReduction = Math.round(message.postReduction));
+    message.damageType !== undefined &&
+      (obj.damageType = cMsgDOTAMatch_Player_HeroDamageTypeToJSON(message.damageType));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTAMatch_BroadcasterInfo(): CMsgDOTAMatch_BroadcasterInfo {
@@ -10377,6 +13939,20 @@ export const CMsgDOTAMatch_BroadcasterInfo = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAMatch_BroadcasterInfo {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+    };
+  },
+
+  toJSON(message: CMsgDOTAMatch_BroadcasterInfo): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.name !== undefined && (obj.name = message.name);
+    return obj;
   },
 };
 
@@ -10443,6 +14019,32 @@ export const CMsgDOTAMatch_BroadcasterChannel = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAMatch_BroadcasterChannel {
+    return {
+      countryCode: isSet(object.countryCode) ? String(object.countryCode) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      broadcasterInfos: Array.isArray(object?.broadcasterInfos)
+        ? object.broadcasterInfos.map((e: any) => CMsgDOTAMatch_BroadcasterInfo.fromJSON(e))
+        : [],
+      languageCode: isSet(object.languageCode) ? String(object.languageCode) : "",
+    };
+  },
+
+  toJSON(message: CMsgDOTAMatch_BroadcasterChannel): unknown {
+    const obj: any = {};
+    message.countryCode !== undefined && (obj.countryCode = message.countryCode);
+    message.description !== undefined && (obj.description = message.description);
+    if (message.broadcasterInfos) {
+      obj.broadcasterInfos = message.broadcasterInfos.map((e) =>
+        e ? CMsgDOTAMatch_BroadcasterInfo.toJSON(e) : undefined
+      );
+    } else {
+      obj.broadcasterInfos = [];
+    }
+    message.languageCode !== undefined && (obj.languageCode = message.languageCode);
+    return obj;
   },
 };
 
@@ -10530,6 +14132,28 @@ export const CMsgDOTAMatch_Coach = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTAMatch_Coach {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      coachName: isSet(object.coachName) ? String(object.coachName) : "",
+      coachRating: isSet(object.coachRating) ? Number(object.coachRating) : 0,
+      coachTeam: isSet(object.coachTeam) ? Number(object.coachTeam) : 0,
+      coachPartyId: isSet(object.coachPartyId) ? String(object.coachPartyId) : "0",
+      isPrivateCoach: isSet(object.isPrivateCoach) ? Boolean(object.isPrivateCoach) : false,
+    };
+  },
+
+  toJSON(message: CMsgDOTAMatch_Coach): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.coachName !== undefined && (obj.coachName = message.coachName);
+    message.coachRating !== undefined && (obj.coachRating = Math.round(message.coachRating));
+    message.coachTeam !== undefined && (obj.coachTeam = Math.round(message.coachTeam));
+    message.coachPartyId !== undefined && (obj.coachPartyId = message.coachPartyId);
+    message.isPrivateCoach !== undefined && (obj.isPrivateCoach = message.isPrivateCoach);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTAMatch_CustomGameData(): CMsgDOTAMatch_CustomGameData {
@@ -10575,6 +14199,20 @@ export const CMsgDOTAMatch_CustomGameData = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAMatch_CustomGameData {
+    return {
+      customGameId: isSet(object.customGameId) ? String(object.customGameId) : "0",
+      mapName: isSet(object.mapName) ? String(object.mapName) : "",
+    };
+  },
+
+  toJSON(message: CMsgDOTAMatch_CustomGameData): unknown {
+    const obj: any = {};
+    message.customGameId !== undefined && (obj.customGameId = message.customGameId);
+    message.mapName !== undefined && (obj.mapName = message.mapName);
+    return obj;
   },
 };
 
@@ -10622,6 +14260,26 @@ export const CMsgPlayerCard = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgPlayerCard {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      statModifier: Array.isArray(object?.statModifier)
+        ? object.statModifier.map((e: any) => CMsgPlayerCard_StatModifier.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgPlayerCard): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    if (message.statModifier) {
+      obj.statModifier = message.statModifier.map((e) => e ? CMsgPlayerCard_StatModifier.toJSON(e) : undefined);
+    } else {
+      obj.statModifier = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgPlayerCard_StatModifier(): CMsgPlayerCard_StatModifier {
@@ -10667,6 +14325,20 @@ export const CMsgPlayerCard_StatModifier = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgPlayerCard_StatModifier {
+    return {
+      stat: isSet(object.stat) ? Number(object.stat) : 0,
+      value: isSet(object.value) ? Number(object.value) : 0,
+    };
+  },
+
+  toJSON(message: CMsgPlayerCard_StatModifier): unknown {
+    const obj: any = {};
+    message.stat !== undefined && (obj.stat = Math.round(message.stat));
+    message.value !== undefined && (obj.value = Math.round(message.value));
+    return obj;
   },
 };
 
@@ -10915,6 +14587,56 @@ export const CMsgDOTAFantasyPlayerStats = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTAFantasyPlayerStats {
+    return {
+      playerAccountId: isSet(object.playerAccountId) ? Number(object.playerAccountId) : 0,
+      matchId: isSet(object.matchId) ? String(object.matchId) : "0",
+      matchCompleted: isSet(object.matchCompleted) ? Boolean(object.matchCompleted) : false,
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      leagueId: isSet(object.leagueId) ? Number(object.leagueId) : 0,
+      delay: isSet(object.delay) ? Number(object.delay) : 0,
+      seriesId: isSet(object.seriesId) ? Number(object.seriesId) : 0,
+      seriesType: isSet(object.seriesType) ? Number(object.seriesType) : 0,
+      kills: isSet(object.kills) ? Number(object.kills) : 0,
+      deaths: isSet(object.deaths) ? Number(object.deaths) : 0,
+      cs: isSet(object.cs) ? Number(object.cs) : 0,
+      gpm: isSet(object.gpm) ? Number(object.gpm) : 0,
+      towerKills: isSet(object.towerKills) ? Number(object.towerKills) : 0,
+      roshanKills: isSet(object.roshanKills) ? Number(object.roshanKills) : 0,
+      teamfightParticipation: isSet(object.teamfightParticipation) ? Number(object.teamfightParticipation) : 0,
+      wardsPlaced: isSet(object.wardsPlaced) ? Number(object.wardsPlaced) : 0,
+      campsStacked: isSet(object.campsStacked) ? Number(object.campsStacked) : 0,
+      runesGrabbed: isSet(object.runesGrabbed) ? Number(object.runesGrabbed) : 0,
+      firstBlood: isSet(object.firstBlood) ? Number(object.firstBlood) : 0,
+      stuns: isSet(object.stuns) ? Number(object.stuns) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTAFantasyPlayerStats): unknown {
+    const obj: any = {};
+    message.playerAccountId !== undefined && (obj.playerAccountId = Math.round(message.playerAccountId));
+    message.matchId !== undefined && (obj.matchId = message.matchId);
+    message.matchCompleted !== undefined && (obj.matchCompleted = message.matchCompleted);
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    message.leagueId !== undefined && (obj.leagueId = Math.round(message.leagueId));
+    message.delay !== undefined && (obj.delay = Math.round(message.delay));
+    message.seriesId !== undefined && (obj.seriesId = Math.round(message.seriesId));
+    message.seriesType !== undefined && (obj.seriesType = Math.round(message.seriesType));
+    message.kills !== undefined && (obj.kills = Math.round(message.kills));
+    message.deaths !== undefined && (obj.deaths = Math.round(message.deaths));
+    message.cs !== undefined && (obj.cs = Math.round(message.cs));
+    message.gpm !== undefined && (obj.gpm = message.gpm);
+    message.towerKills !== undefined && (obj.towerKills = Math.round(message.towerKills));
+    message.roshanKills !== undefined && (obj.roshanKills = Math.round(message.roshanKills));
+    message.teamfightParticipation !== undefined && (obj.teamfightParticipation = message.teamfightParticipation);
+    message.wardsPlaced !== undefined && (obj.wardsPlaced = Math.round(message.wardsPlaced));
+    message.campsStacked !== undefined && (obj.campsStacked = Math.round(message.campsStacked));
+    message.runesGrabbed !== undefined && (obj.runesGrabbed = Math.round(message.runesGrabbed));
+    message.firstBlood !== undefined && (obj.firstBlood = Math.round(message.firstBlood));
+    message.stuns !== undefined && (obj.stuns = message.stuns);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTAFantasyPlayerMatchStats(): CMsgDOTAFantasyPlayerMatchStats {
@@ -10950,6 +14672,24 @@ export const CMsgDOTAFantasyPlayerMatchStats = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAFantasyPlayerMatchStats {
+    return {
+      matches: Array.isArray(object?.matches)
+        ? object.matches.map((e: any) => CMsgDOTAFantasyPlayerStats.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTAFantasyPlayerMatchStats): unknown {
+    const obj: any = {};
+    if (message.matches) {
+      obj.matches = message.matches.map((e) => e ? CMsgDOTAFantasyPlayerStats.toJSON(e) : undefined);
+    } else {
+      obj.matches = [];
+    }
+    return obj;
   },
 };
 
@@ -11132,6 +14872,50 @@ export const CMsgDOTABotDebugInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTABotDebugInfo {
+    return {
+      bots: Array.isArray(object?.bots) ? object.bots.map((e: any) => CMsgDOTABotDebugInfo_Bot.fromJSON(e)) : [],
+      desirePushLaneTop: isSet(object.desirePushLaneTop) ? Number(object.desirePushLaneTop) : 0,
+      desirePushLaneMid: isSet(object.desirePushLaneMid) ? Number(object.desirePushLaneMid) : 0,
+      desirePushLaneBot: isSet(object.desirePushLaneBot) ? Number(object.desirePushLaneBot) : 0,
+      desireDefendLaneTop: isSet(object.desireDefendLaneTop) ? Number(object.desireDefendLaneTop) : 0,
+      desireDefendLaneMid: isSet(object.desireDefendLaneMid) ? Number(object.desireDefendLaneMid) : 0,
+      desireDefendLaneBot: isSet(object.desireDefendLaneBot) ? Number(object.desireDefendLaneBot) : 0,
+      desireFarmLaneTop: isSet(object.desireFarmLaneTop) ? Number(object.desireFarmLaneTop) : 0,
+      desireFarmLaneMid: isSet(object.desireFarmLaneMid) ? Number(object.desireFarmLaneMid) : 0,
+      desireFarmLaneBot: isSet(object.desireFarmLaneBot) ? Number(object.desireFarmLaneBot) : 0,
+      desireFarmRoshan: isSet(object.desireFarmRoshan) ? Number(object.desireFarmRoshan) : 0,
+      executionTime: isSet(object.executionTime) ? Number(object.executionTime) : 0,
+      runeStatus: Array.isArray(object?.runeStatus) ? object.runeStatus.map((e: any) => Number(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTABotDebugInfo): unknown {
+    const obj: any = {};
+    if (message.bots) {
+      obj.bots = message.bots.map((e) => e ? CMsgDOTABotDebugInfo_Bot.toJSON(e) : undefined);
+    } else {
+      obj.bots = [];
+    }
+    message.desirePushLaneTop !== undefined && (obj.desirePushLaneTop = message.desirePushLaneTop);
+    message.desirePushLaneMid !== undefined && (obj.desirePushLaneMid = message.desirePushLaneMid);
+    message.desirePushLaneBot !== undefined && (obj.desirePushLaneBot = message.desirePushLaneBot);
+    message.desireDefendLaneTop !== undefined && (obj.desireDefendLaneTop = message.desireDefendLaneTop);
+    message.desireDefendLaneMid !== undefined && (obj.desireDefendLaneMid = message.desireDefendLaneMid);
+    message.desireDefendLaneBot !== undefined && (obj.desireDefendLaneBot = message.desireDefendLaneBot);
+    message.desireFarmLaneTop !== undefined && (obj.desireFarmLaneTop = message.desireFarmLaneTop);
+    message.desireFarmLaneMid !== undefined && (obj.desireFarmLaneMid = message.desireFarmLaneMid);
+    message.desireFarmLaneBot !== undefined && (obj.desireFarmLaneBot = message.desireFarmLaneBot);
+    message.desireFarmRoshan !== undefined && (obj.desireFarmRoshan = message.desireFarmRoshan);
+    message.executionTime !== undefined && (obj.executionTime = message.executionTime);
+    if (message.runeStatus) {
+      obj.runeStatus = message.runeStatus.map((e) => Math.round(e));
+    } else {
+      obj.runeStatus = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTABotDebugInfo_Bot(): CMsgDOTABotDebugInfo_Bot {
@@ -11291,6 +15075,47 @@ export const CMsgDOTABotDebugInfo_Bot = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTABotDebugInfo_Bot {
+    return {
+      playerOwnerId: isSet(object.playerOwnerId) ? Number(object.playerOwnerId) : 0,
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      difficulty: isSet(object.difficulty) ? Number(object.difficulty) : 0,
+      powerCurrent: isSet(object.powerCurrent) ? Number(object.powerCurrent) : 0,
+      powerMax: isSet(object.powerMax) ? Number(object.powerMax) : 0,
+      moveTargetX: isSet(object.moveTargetX) ? Number(object.moveTargetX) : 0,
+      moveTargetY: isSet(object.moveTargetY) ? Number(object.moveTargetY) : 0,
+      moveTargetZ: isSet(object.moveTargetZ) ? Number(object.moveTargetZ) : 0,
+      activeModeId: isSet(object.activeModeId) ? Number(object.activeModeId) : 0,
+      executionTime: isSet(object.executionTime) ? Number(object.executionTime) : 0,
+      modes: Array.isArray(object?.modes)
+        ? object.modes.map((e: any) => CMsgDOTABotDebugInfo_Bot_Mode.fromJSON(e))
+        : [],
+      action: isSet(object.action) ? CMsgDOTABotDebugInfo_Bot_Action.fromJSON(object.action) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgDOTABotDebugInfo_Bot): unknown {
+    const obj: any = {};
+    message.playerOwnerId !== undefined && (obj.playerOwnerId = Math.round(message.playerOwnerId));
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.difficulty !== undefined && (obj.difficulty = Math.round(message.difficulty));
+    message.powerCurrent !== undefined && (obj.powerCurrent = Math.round(message.powerCurrent));
+    message.powerMax !== undefined && (obj.powerMax = Math.round(message.powerMax));
+    message.moveTargetX !== undefined && (obj.moveTargetX = Math.round(message.moveTargetX));
+    message.moveTargetY !== undefined && (obj.moveTargetY = Math.round(message.moveTargetY));
+    message.moveTargetZ !== undefined && (obj.moveTargetZ = Math.round(message.moveTargetZ));
+    message.activeModeId !== undefined && (obj.activeModeId = Math.round(message.activeModeId));
+    message.executionTime !== undefined && (obj.executionTime = message.executionTime);
+    if (message.modes) {
+      obj.modes = message.modes.map((e) => e ? CMsgDOTABotDebugInfo_Bot_Mode.toJSON(e) : undefined);
+    } else {
+      obj.modes = [];
+    }
+    message.action !== undefined &&
+      (obj.action = message.action ? CMsgDOTABotDebugInfo_Bot_Action.toJSON(message.action) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTABotDebugInfo_Bot_Mode(): CMsgDOTABotDebugInfo_Bot_Mode {
@@ -11377,6 +15202,28 @@ export const CMsgDOTABotDebugInfo_Bot_Mode = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTABotDebugInfo_Bot_Mode {
+    return {
+      modeId: isSet(object.modeId) ? Number(object.modeId) : 0,
+      desire: isSet(object.desire) ? Number(object.desire) : 0,
+      targetEntity: isSet(object.targetEntity) ? Number(object.targetEntity) : 0,
+      targetX: isSet(object.targetX) ? Number(object.targetX) : 0,
+      targetY: isSet(object.targetY) ? Number(object.targetY) : 0,
+      targetZ: isSet(object.targetZ) ? Number(object.targetZ) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTABotDebugInfo_Bot_Mode): unknown {
+    const obj: any = {};
+    message.modeId !== undefined && (obj.modeId = Math.round(message.modeId));
+    message.desire !== undefined && (obj.desire = message.desire);
+    message.targetEntity !== undefined && (obj.targetEntity = Math.round(message.targetEntity));
+    message.targetX !== undefined && (obj.targetX = Math.round(message.targetX));
+    message.targetY !== undefined && (obj.targetY = Math.round(message.targetY));
+    message.targetZ !== undefined && (obj.targetZ = Math.round(message.targetZ));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTABotDebugInfo_Bot_Action(): CMsgDOTABotDebugInfo_Bot_Action {
@@ -11422,6 +15269,20 @@ export const CMsgDOTABotDebugInfo_Bot_Action = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTABotDebugInfo_Bot_Action {
+    return {
+      actionId: isSet(object.actionId) ? Number(object.actionId) : 0,
+      actionTarget: isSet(object.actionTarget) ? String(object.actionTarget) : "",
+    };
+  },
+
+  toJSON(message: CMsgDOTABotDebugInfo_Bot_Action): unknown {
+    const obj: any = {};
+    message.actionId !== undefined && (obj.actionId = Math.round(message.actionId));
+    message.actionTarget !== undefined && (obj.actionTarget = message.actionTarget);
+    return obj;
   },
 };
 
@@ -11478,6 +15339,22 @@ export const CMsgSuccessfulHero = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSuccessfulHero {
+    return {
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      winPercent: isSet(object.winPercent) ? Number(object.winPercent) : 0,
+      longestStreak: isSet(object.longestStreak) ? Number(object.longestStreak) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSuccessfulHero): unknown {
+    const obj: any = {};
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.winPercent !== undefined && (obj.winPercent = message.winPercent);
+    message.longestStreak !== undefined && (obj.longestStreak = Math.round(message.longestStreak));
+    return obj;
   },
 };
 
@@ -11627,6 +15504,38 @@ export const CMsgRecentMatchInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgRecentMatchInfo {
+    return {
+      matchId: isSet(object.matchId) ? String(object.matchId) : "0",
+      gameMode: isSet(object.gameMode) ? dOTAGameModeFromJSON(object.gameMode) : 0,
+      kills: isSet(object.kills) ? Number(object.kills) : 0,
+      deaths: isSet(object.deaths) ? Number(object.deaths) : 0,
+      assists: isSet(object.assists) ? Number(object.assists) : 0,
+      duration: isSet(object.duration) ? Number(object.duration) : 0,
+      playerSlot: isSet(object.playerSlot) ? Number(object.playerSlot) : 0,
+      matchOutcome: isSet(object.matchOutcome) ? eMatchOutcomeFromJSON(object.matchOutcome) : 0,
+      timestamp: isSet(object.timestamp) ? Number(object.timestamp) : 0,
+      lobbyType: isSet(object.lobbyType) ? Number(object.lobbyType) : 0,
+      teamNumber: isSet(object.teamNumber) ? Number(object.teamNumber) : 0,
+    };
+  },
+
+  toJSON(message: CMsgRecentMatchInfo): unknown {
+    const obj: any = {};
+    message.matchId !== undefined && (obj.matchId = message.matchId);
+    message.gameMode !== undefined && (obj.gameMode = dOTAGameModeToJSON(message.gameMode));
+    message.kills !== undefined && (obj.kills = Math.round(message.kills));
+    message.deaths !== undefined && (obj.deaths = Math.round(message.deaths));
+    message.assists !== undefined && (obj.assists = Math.round(message.assists));
+    message.duration !== undefined && (obj.duration = Math.round(message.duration));
+    message.playerSlot !== undefined && (obj.playerSlot = Math.round(message.playerSlot));
+    message.matchOutcome !== undefined && (obj.matchOutcome = eMatchOutcomeToJSON(message.matchOutcome));
+    message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
+    message.lobbyType !== undefined && (obj.lobbyType = Math.round(message.lobbyType));
+    message.teamNumber !== undefined && (obj.teamNumber = Math.round(message.teamNumber));
+    return obj;
+  },
 };
 
 function createBaseCMsgMatchTips(): CMsgMatchTips {
@@ -11662,6 +15571,22 @@ export const CMsgMatchTips = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgMatchTips {
+    return {
+      tips: Array.isArray(object?.tips) ? object.tips.map((e: any) => CMsgMatchTips_SingleTip.fromJSON(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgMatchTips): unknown {
+    const obj: any = {};
+    if (message.tips) {
+      obj.tips = message.tips.map((e) => e ? CMsgMatchTips_SingleTip.toJSON(e) : undefined);
+    } else {
+      obj.tips = [];
+    }
+    return obj;
   },
 };
 
@@ -11728,6 +15653,24 @@ export const CMsgMatchTips_SingleTip = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgMatchTips_SingleTip {
+    return {
+      sourceAccountId: isSet(object.sourceAccountId) ? Number(object.sourceAccountId) : 0,
+      targetAccountId: isSet(object.targetAccountId) ? Number(object.targetAccountId) : 0,
+      tipAmount: isSet(object.tipAmount) ? Number(object.tipAmount) : 0,
+      eventId: isSet(object.eventId) ? eEventFromJSON(object.eventId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgMatchTips_SingleTip): unknown {
+    const obj: any = {};
+    message.sourceAccountId !== undefined && (obj.sourceAccountId = Math.round(message.sourceAccountId));
+    message.targetAccountId !== undefined && (obj.targetAccountId = Math.round(message.targetAccountId));
+    message.tipAmount !== undefined && (obj.tipAmount = Math.round(message.tipAmount));
+    message.eventId !== undefined && (obj.eventId = eEventToJSON(message.eventId));
+    return obj;
   },
 };
 
@@ -11865,6 +15808,43 @@ export const CMsgDOTAMatchMinimal = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAMatchMinimal {
+    return {
+      matchId: isSet(object.matchId) ? String(object.matchId) : "0",
+      startTime: isSet(object.startTime) ? Number(object.startTime) : 0,
+      duration: isSet(object.duration) ? Number(object.duration) : 0,
+      gameMode: isSet(object.gameMode) ? dOTAGameModeFromJSON(object.gameMode) : 0,
+      players: Array.isArray(object?.players)
+        ? object.players.map((e: any) => CMsgDOTAMatchMinimal_Player.fromJSON(e))
+        : [],
+      tourney: isSet(object.tourney) ? CMsgDOTAMatchMinimal_Tourney.fromJSON(object.tourney) : undefined,
+      matchOutcome: isSet(object.matchOutcome) ? eMatchOutcomeFromJSON(object.matchOutcome) : 0,
+      radiantScore: isSet(object.radiantScore) ? Number(object.radiantScore) : 0,
+      direScore: isSet(object.direScore) ? Number(object.direScore) : 0,
+      lobbyType: isSet(object.lobbyType) ? Number(object.lobbyType) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTAMatchMinimal): unknown {
+    const obj: any = {};
+    message.matchId !== undefined && (obj.matchId = message.matchId);
+    message.startTime !== undefined && (obj.startTime = Math.round(message.startTime));
+    message.duration !== undefined && (obj.duration = Math.round(message.duration));
+    message.gameMode !== undefined && (obj.gameMode = dOTAGameModeToJSON(message.gameMode));
+    if (message.players) {
+      obj.players = message.players.map((e) => e ? CMsgDOTAMatchMinimal_Player.toJSON(e) : undefined);
+    } else {
+      obj.players = [];
+    }
+    message.tourney !== undefined &&
+      (obj.tourney = message.tourney ? CMsgDOTAMatchMinimal_Tourney.toJSON(message.tourney) : undefined);
+    message.matchOutcome !== undefined && (obj.matchOutcome = eMatchOutcomeToJSON(message.matchOutcome));
+    message.radiantScore !== undefined && (obj.radiantScore = Math.round(message.radiantScore));
+    message.direScore !== undefined && (obj.direScore = Math.round(message.direScore));
+    message.lobbyType !== undefined && (obj.lobbyType = Math.round(message.lobbyType));
+    return obj;
   },
 };
 
@@ -12013,6 +15993,40 @@ export const CMsgDOTAMatchMinimal_Player = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAMatchMinimal_Player {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      kills: isSet(object.kills) ? Number(object.kills) : 0,
+      deaths: isSet(object.deaths) ? Number(object.deaths) : 0,
+      assists: isSet(object.assists) ? Number(object.assists) : 0,
+      items: Array.isArray(object?.items) ? object.items.map((e: any) => Number(e)) : [],
+      playerSlot: isSet(object.playerSlot) ? Number(object.playerSlot) : 0,
+      proName: isSet(object.proName) ? String(object.proName) : "",
+      level: isSet(object.level) ? Number(object.level) : 0,
+      teamNumber: isSet(object.teamNumber) ? dotaGcTeamFromJSON(object.teamNumber) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTAMatchMinimal_Player): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.kills !== undefined && (obj.kills = Math.round(message.kills));
+    message.deaths !== undefined && (obj.deaths = Math.round(message.deaths));
+    message.assists !== undefined && (obj.assists = Math.round(message.assists));
+    if (message.items) {
+      obj.items = message.items.map((e) => Math.round(e));
+    } else {
+      obj.items = [];
+    }
+    message.playerSlot !== undefined && (obj.playerSlot = Math.round(message.playerSlot));
+    message.proName !== undefined && (obj.proName = message.proName);
+    message.level !== undefined && (obj.level = Math.round(message.level));
+    message.teamNumber !== undefined && (obj.teamNumber = dotaGcTeamToJSON(message.teamNumber));
+    return obj;
   },
 };
 
@@ -12206,6 +16220,54 @@ export const CMsgDOTAMatchMinimal_Tourney = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTAMatchMinimal_Tourney {
+    return {
+      leagueId: isSet(object.leagueId) ? Number(object.leagueId) : 0,
+      seriesType: isSet(object.seriesType) ? Number(object.seriesType) : 0,
+      seriesGame: isSet(object.seriesGame) ? Number(object.seriesGame) : 0,
+      weekendTourneyTournamentId: isSet(object.weekendTourneyTournamentId)
+        ? Number(object.weekendTourneyTournamentId)
+        : 0,
+      weekendTourneySeasonTrophyId: isSet(object.weekendTourneySeasonTrophyId)
+        ? Number(object.weekendTourneySeasonTrophyId)
+        : 0,
+      weekendTourneyDivision: isSet(object.weekendTourneyDivision) ? Number(object.weekendTourneyDivision) : 0,
+      weekendTourneySkillLevel: isSet(object.weekendTourneySkillLevel) ? Number(object.weekendTourneySkillLevel) : 0,
+      radiantTeamId: isSet(object.radiantTeamId) ? Number(object.radiantTeamId) : 0,
+      radiantTeamName: isSet(object.radiantTeamName) ? String(object.radiantTeamName) : "",
+      radiantTeamLogo: isSet(object.radiantTeamLogo) ? String(object.radiantTeamLogo) : "0",
+      radiantTeamLogoUrl: isSet(object.radiantTeamLogoUrl) ? String(object.radiantTeamLogoUrl) : "",
+      direTeamId: isSet(object.direTeamId) ? Number(object.direTeamId) : 0,
+      direTeamName: isSet(object.direTeamName) ? String(object.direTeamName) : "",
+      direTeamLogo: isSet(object.direTeamLogo) ? String(object.direTeamLogo) : "0",
+      direTeamLogoUrl: isSet(object.direTeamLogoUrl) ? String(object.direTeamLogoUrl) : "",
+    };
+  },
+
+  toJSON(message: CMsgDOTAMatchMinimal_Tourney): unknown {
+    const obj: any = {};
+    message.leagueId !== undefined && (obj.leagueId = Math.round(message.leagueId));
+    message.seriesType !== undefined && (obj.seriesType = Math.round(message.seriesType));
+    message.seriesGame !== undefined && (obj.seriesGame = Math.round(message.seriesGame));
+    message.weekendTourneyTournamentId !== undefined &&
+      (obj.weekendTourneyTournamentId = Math.round(message.weekendTourneyTournamentId));
+    message.weekendTourneySeasonTrophyId !== undefined &&
+      (obj.weekendTourneySeasonTrophyId = Math.round(message.weekendTourneySeasonTrophyId));
+    message.weekendTourneyDivision !== undefined &&
+      (obj.weekendTourneyDivision = Math.round(message.weekendTourneyDivision));
+    message.weekendTourneySkillLevel !== undefined &&
+      (obj.weekendTourneySkillLevel = Math.round(message.weekendTourneySkillLevel));
+    message.radiantTeamId !== undefined && (obj.radiantTeamId = Math.round(message.radiantTeamId));
+    message.radiantTeamName !== undefined && (obj.radiantTeamName = message.radiantTeamName);
+    message.radiantTeamLogo !== undefined && (obj.radiantTeamLogo = message.radiantTeamLogo);
+    message.radiantTeamLogoUrl !== undefined && (obj.radiantTeamLogoUrl = message.radiantTeamLogoUrl);
+    message.direTeamId !== undefined && (obj.direTeamId = Math.round(message.direTeamId));
+    message.direTeamName !== undefined && (obj.direTeamName = message.direTeamName);
+    message.direTeamLogo !== undefined && (obj.direTeamLogo = message.direTeamLogo);
+    message.direTeamLogoUrl !== undefined && (obj.direTeamLogoUrl = message.direTeamLogoUrl);
+    return obj;
+  },
 };
 
 function createBaseCMsgConsumableUsage(): CMsgConsumableUsage {
@@ -12252,6 +16314,20 @@ export const CMsgConsumableUsage = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgConsumableUsage {
+    return {
+      itemDef: isSet(object.itemDef) ? Number(object.itemDef) : 0,
+      quantityChange: isSet(object.quantityChange) ? Number(object.quantityChange) : 0,
+    };
+  },
+
+  toJSON(message: CMsgConsumableUsage): unknown {
+    const obj: any = {};
+    message.itemDef !== undefined && (obj.itemDef = Math.round(message.itemDef));
+    message.quantityChange !== undefined && (obj.quantityChange = Math.round(message.quantityChange));
+    return obj;
+  },
 };
 
 function createBaseCMsgMatchConsumableUsage(): CMsgMatchConsumableUsage {
@@ -12287,6 +16363,26 @@ export const CMsgMatchConsumableUsage = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgMatchConsumableUsage {
+    return {
+      playerConsumablesUsed: Array.isArray(object?.playerConsumablesUsed)
+        ? object.playerConsumablesUsed.map((e: any) => CMsgMatchConsumableUsage_PlayerUsage.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgMatchConsumableUsage): unknown {
+    const obj: any = {};
+    if (message.playerConsumablesUsed) {
+      obj.playerConsumablesUsed = message.playerConsumablesUsed.map((e) =>
+        e ? CMsgMatchConsumableUsage_PlayerUsage.toJSON(e) : undefined
+      );
+    } else {
+      obj.playerConsumablesUsed = [];
+    }
+    return obj;
   },
 };
 
@@ -12334,6 +16430,26 @@ export const CMsgMatchConsumableUsage_PlayerUsage = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgMatchConsumableUsage_PlayerUsage {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      consumablesUsed: Array.isArray(object?.consumablesUsed)
+        ? object.consumablesUsed.map((e: any) => CMsgConsumableUsage.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgMatchConsumableUsage_PlayerUsage): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    if (message.consumablesUsed) {
+      obj.consumablesUsed = message.consumablesUsed.map((e) => e ? CMsgConsumableUsage.toJSON(e) : undefined);
+    } else {
+      obj.consumablesUsed = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgMatchEventActionGrants(): CMsgMatchEventActionGrants {
@@ -12369,6 +16485,26 @@ export const CMsgMatchEventActionGrants = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgMatchEventActionGrants {
+    return {
+      playerGrants: Array.isArray(object?.playerGrants)
+        ? object.playerGrants.map((e: any) => CMsgMatchEventActionGrants_PlayerGrants.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgMatchEventActionGrants): unknown {
+    const obj: any = {};
+    if (message.playerGrants) {
+      obj.playerGrants = message.playerGrants.map((e) =>
+        e ? CMsgMatchEventActionGrants_PlayerGrants.toJSON(e) : undefined
+      );
+    } else {
+      obj.playerGrants = [];
+    }
+    return obj;
   },
 };
 
@@ -12415,6 +16551,26 @@ export const CMsgMatchEventActionGrants_PlayerGrants = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgMatchEventActionGrants_PlayerGrants {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      actionsGranted: Array.isArray(object?.actionsGranted)
+        ? object.actionsGranted.map((e: any) => CMsgPendingEventAward.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgMatchEventActionGrants_PlayerGrants): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    if (message.actionsGranted) {
+      obj.actionsGranted = message.actionsGranted.map((e) => e ? CMsgPendingEventAward.toJSON(e) : undefined);
+    } else {
+      obj.actionsGranted = [];
+    }
+    return obj;
   },
 };
 
@@ -12483,6 +16639,28 @@ export const CMsgCustomGameWhitelist = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgCustomGameWhitelist {
+    return {
+      version: isSet(object.version) ? Number(object.version) : 0,
+      customGamesWhitelist: Array.isArray(object?.customGamesWhitelist)
+        ? object.customGamesWhitelist.map((e: any) => String(e))
+        : [],
+      disableWhitelist: isSet(object.disableWhitelist) ? Boolean(object.disableWhitelist) : false,
+    };
+  },
+
+  toJSON(message: CMsgCustomGameWhitelist): unknown {
+    const obj: any = {};
+    message.version !== undefined && (obj.version = Math.round(message.version));
+    if (message.customGamesWhitelist) {
+      obj.customGamesWhitelist = message.customGamesWhitelist.map((e) => e);
+    } else {
+      obj.customGamesWhitelist = [];
+    }
+    message.disableWhitelist !== undefined && (obj.disableWhitelist = message.disableWhitelist);
+    return obj;
+  },
 };
 
 function createBaseCMsgCustomGameWhitelistForEdit(): CMsgCustomGameWhitelistForEdit {
@@ -12518,6 +16696,26 @@ export const CMsgCustomGameWhitelistForEdit = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgCustomGameWhitelistForEdit {
+    return {
+      whitelistEntries: Array.isArray(object?.whitelistEntries)
+        ? object.whitelistEntries.map((e: any) => CMsgCustomGameWhitelistForEdit_WhitelistEntry.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgCustomGameWhitelistForEdit): unknown {
+    const obj: any = {};
+    if (message.whitelistEntries) {
+      obj.whitelistEntries = message.whitelistEntries.map((e) =>
+        e ? CMsgCustomGameWhitelistForEdit_WhitelistEntry.toJSON(e) : undefined
+      );
+    } else {
+      obj.whitelistEntries = [];
+    }
+    return obj;
   },
 };
 
@@ -12564,6 +16762,21 @@ export const CMsgCustomGameWhitelistForEdit_WhitelistEntry = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgCustomGameWhitelistForEdit_WhitelistEntry {
+    return {
+      customGameId: isSet(object.customGameId) ? String(object.customGameId) : "0",
+      whitelistState: isSet(object.whitelistState) ? eCustomGameWhitelistStateFromJSON(object.whitelistState) : 0,
+    };
+  },
+
+  toJSON(message: CMsgCustomGameWhitelistForEdit_WhitelistEntry): unknown {
+    const obj: any = {};
+    message.customGameId !== undefined && (obj.customGameId = message.customGameId);
+    message.whitelistState !== undefined &&
+      (obj.whitelistState = eCustomGameWhitelistStateToJSON(message.whitelistState));
+    return obj;
   },
 };
 
@@ -12671,6 +16884,32 @@ export const CMsgPlayerRecentMatchInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgPlayerRecentMatchInfo {
+    return {
+      matchId: isSet(object.matchId) ? String(object.matchId) : "0",
+      timestamp: isSet(object.timestamp) ? Number(object.timestamp) : 0,
+      duration: isSet(object.duration) ? Number(object.duration) : 0,
+      win: isSet(object.win) ? Boolean(object.win) : false,
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      kills: isSet(object.kills) ? Number(object.kills) : 0,
+      deaths: isSet(object.deaths) ? Number(object.deaths) : 0,
+      assists: isSet(object.assists) ? Number(object.assists) : 0,
+    };
+  },
+
+  toJSON(message: CMsgPlayerRecentMatchInfo): unknown {
+    const obj: any = {};
+    message.matchId !== undefined && (obj.matchId = message.matchId);
+    message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
+    message.duration !== undefined && (obj.duration = Math.round(message.duration));
+    message.win !== undefined && (obj.win = message.win);
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.kills !== undefined && (obj.kills = Math.round(message.kills));
+    message.deaths !== undefined && (obj.deaths = Math.round(message.deaths));
+    message.assists !== undefined && (obj.assists = Math.round(message.assists));
+    return obj;
+  },
 };
 
 function createBaseCMsgPlayerMatchRecord(): CMsgPlayerMatchRecord {
@@ -12716,6 +16955,20 @@ export const CMsgPlayerMatchRecord = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgPlayerMatchRecord {
+    return {
+      wins: isSet(object.wins) ? Number(object.wins) : 0,
+      losses: isSet(object.losses) ? Number(object.losses) : 0,
+    };
+  },
+
+  toJSON(message: CMsgPlayerMatchRecord): unknown {
+    const obj: any = {};
+    message.wins !== undefined && (obj.wins = Math.round(message.wins));
+    message.losses !== undefined && (obj.losses = Math.round(message.losses));
+    return obj;
   },
 };
 
@@ -12763,6 +17016,20 @@ export const CMsgPlayerRecentMatchOutcomes = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgPlayerRecentMatchOutcomes {
+    return {
+      outcomes: isSet(object.outcomes) ? Number(object.outcomes) : 0,
+      matchCount: isSet(object.matchCount) ? Number(object.matchCount) : 0,
+    };
+  },
+
+  toJSON(message: CMsgPlayerRecentMatchOutcomes): unknown {
+    const obj: any = {};
+    message.outcomes !== undefined && (obj.outcomes = Math.round(message.outcomes));
+    message.matchCount !== undefined && (obj.matchCount = Math.round(message.matchCount));
+    return obj;
+  },
 };
 
 function createBaseCMsgPlayerRecentCommends(): CMsgPlayerRecentCommends {
@@ -12808,6 +17075,20 @@ export const CMsgPlayerRecentCommends = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgPlayerRecentCommends {
+    return {
+      commends: isSet(object.commends) ? Number(object.commends) : 0,
+      matchCount: isSet(object.matchCount) ? Number(object.matchCount) : 0,
+    };
+  },
+
+  toJSON(message: CMsgPlayerRecentCommends): unknown {
+    const obj: any = {};
+    message.commends !== undefined && (obj.commends = Math.round(message.commends));
+    message.matchCount !== undefined && (obj.matchCount = Math.round(message.matchCount));
+    return obj;
   },
 };
 
@@ -12924,6 +17205,44 @@ export const CMsgPlayerRecentAccomplishments = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgPlayerRecentAccomplishments {
+    return {
+      recentOutcomes: isSet(object.recentOutcomes)
+        ? CMsgPlayerRecentMatchOutcomes.fromJSON(object.recentOutcomes)
+        : undefined,
+      totalRecord: isSet(object.totalRecord) ? CMsgPlayerMatchRecord.fromJSON(object.totalRecord) : undefined,
+      predictionStreak: isSet(object.predictionStreak) ? Number(object.predictionStreak) : 0,
+      plusPredictionStreak: isSet(object.plusPredictionStreak) ? Number(object.plusPredictionStreak) : 0,
+      recentCommends: isSet(object.recentCommends)
+        ? CMsgPlayerRecentCommends.fromJSON(object.recentCommends)
+        : undefined,
+      firstMatchTimestamp: isSet(object.firstMatchTimestamp) ? Number(object.firstMatchTimestamp) : 0,
+      lastMatch: isSet(object.lastMatch) ? CMsgPlayerRecentMatchInfo.fromJSON(object.lastMatch) : undefined,
+      recentMvps: isSet(object.recentMvps) ? CMsgPlayerRecentMatchOutcomes.fromJSON(object.recentMvps) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgPlayerRecentAccomplishments): unknown {
+    const obj: any = {};
+    message.recentOutcomes !== undefined && (obj.recentOutcomes = message.recentOutcomes
+      ? CMsgPlayerRecentMatchOutcomes.toJSON(message.recentOutcomes)
+      : undefined);
+    message.totalRecord !== undefined &&
+      (obj.totalRecord = message.totalRecord ? CMsgPlayerMatchRecord.toJSON(message.totalRecord) : undefined);
+    message.predictionStreak !== undefined && (obj.predictionStreak = Math.round(message.predictionStreak));
+    message.plusPredictionStreak !== undefined && (obj.plusPredictionStreak = Math.round(message.plusPredictionStreak));
+    message.recentCommends !== undefined &&
+      (obj.recentCommends = message.recentCommends
+        ? CMsgPlayerRecentCommends.toJSON(message.recentCommends)
+        : undefined);
+    message.firstMatchTimestamp !== undefined && (obj.firstMatchTimestamp = Math.round(message.firstMatchTimestamp));
+    message.lastMatch !== undefined &&
+      (obj.lastMatch = message.lastMatch ? CMsgPlayerRecentMatchInfo.toJSON(message.lastMatch) : undefined);
+    message.recentMvps !== undefined &&
+      (obj.recentMvps = message.recentMvps ? CMsgPlayerRecentMatchOutcomes.toJSON(message.recentMvps) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgPlayerHeroRecentAccomplishments(): CMsgPlayerHeroRecentAccomplishments {
@@ -12980,6 +17299,28 @@ export const CMsgPlayerHeroRecentAccomplishments = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgPlayerHeroRecentAccomplishments {
+    return {
+      recentOutcomes: isSet(object.recentOutcomes)
+        ? CMsgPlayerRecentMatchOutcomes.fromJSON(object.recentOutcomes)
+        : undefined,
+      totalRecord: isSet(object.totalRecord) ? CMsgPlayerMatchRecord.fromJSON(object.totalRecord) : undefined,
+      lastMatch: isSet(object.lastMatch) ? CMsgPlayerRecentMatchInfo.fromJSON(object.lastMatch) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgPlayerHeroRecentAccomplishments): unknown {
+    const obj: any = {};
+    message.recentOutcomes !== undefined && (obj.recentOutcomes = message.recentOutcomes
+      ? CMsgPlayerRecentMatchOutcomes.toJSON(message.recentOutcomes)
+      : undefined);
+    message.totalRecord !== undefined &&
+      (obj.totalRecord = message.totalRecord ? CMsgPlayerMatchRecord.toJSON(message.totalRecord) : undefined);
+    message.lastMatch !== undefined &&
+      (obj.lastMatch = message.lastMatch ? CMsgPlayerRecentMatchInfo.toJSON(message.lastMatch) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgRecentAccomplishments(): CMsgRecentAccomplishments {
@@ -13025,6 +17366,28 @@ export const CMsgRecentAccomplishments = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgRecentAccomplishments {
+    return {
+      playerAccomplishments: isSet(object.playerAccomplishments)
+        ? CMsgPlayerRecentAccomplishments.fromJSON(object.playerAccomplishments)
+        : undefined,
+      heroAccomplishments: isSet(object.heroAccomplishments)
+        ? CMsgPlayerHeroRecentAccomplishments.fromJSON(object.heroAccomplishments)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CMsgRecentAccomplishments): unknown {
+    const obj: any = {};
+    message.playerAccomplishments !== undefined && (obj.playerAccomplishments = message.playerAccomplishments
+      ? CMsgPlayerRecentAccomplishments.toJSON(message.playerAccomplishments)
+      : undefined);
+    message.heroAccomplishments !== undefined && (obj.heroAccomplishments = message.heroAccomplishments
+      ? CMsgPlayerHeroRecentAccomplishments.toJSON(message.heroAccomplishments)
+      : undefined);
+    return obj;
   },
 };
 
@@ -13075,6 +17438,20 @@ export const CMsgServerToGCRequestPlayerRecentAccomplishments = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgServerToGCRequestPlayerRecentAccomplishments {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgServerToGCRequestPlayerRecentAccomplishments): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    return obj;
+  },
 };
 
 function createBaseCMsgServerToGCRequestPlayerRecentAccomplishmentsResponse(): CMsgServerToGCRequestPlayerRecentAccomplishmentsResponse {
@@ -13123,6 +17500,27 @@ export const CMsgServerToGCRequestPlayerRecentAccomplishmentsResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgServerToGCRequestPlayerRecentAccomplishmentsResponse {
+    return {
+      result: isSet(object.result)
+        ? cMsgServerToGCRequestPlayerRecentAccomplishmentsResponse_EResponseFromJSON(object.result)
+        : 0,
+      playerAccomplishments: isSet(object.playerAccomplishments)
+        ? CMsgRecentAccomplishments.fromJSON(object.playerAccomplishments)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CMsgServerToGCRequestPlayerRecentAccomplishmentsResponse): unknown {
+    const obj: any = {};
+    message.result !== undefined &&
+      (obj.result = cMsgServerToGCRequestPlayerRecentAccomplishmentsResponse_EResponseToJSON(message.result));
+    message.playerAccomplishments !== undefined && (obj.playerAccomplishments = message.playerAccomplishments
+      ? CMsgRecentAccomplishments.toJSON(message.playerAccomplishments)
+      : undefined);
+    return obj;
   },
 };
 
@@ -13179,6 +17577,22 @@ export const CMsgArcanaVoteMatchVotes = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgArcanaVoteMatchVotes {
+    return {
+      matchId: isSet(object.matchId) ? Number(object.matchId) : 0,
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      voteCount: isSet(object.voteCount) ? Number(object.voteCount) : 0,
+    };
+  },
+
+  toJSON(message: CMsgArcanaVoteMatchVotes): unknown {
+    const obj: any = {};
+    message.matchId !== undefined && (obj.matchId = Math.round(message.matchId));
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.voteCount !== undefined && (obj.voteCount = Math.round(message.voteCount));
+    return obj;
   },
 };
 
@@ -13246,6 +17660,24 @@ export const CMsgGCtoGCAssociatedExploiterAccountInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCtoGCAssociatedExploiterAccountInfo {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      numMatchesToSearch: isSet(object.numMatchesToSearch) ? Number(object.numMatchesToSearch) : 0,
+      minSharedMatchCount: isSet(object.minSharedMatchCount) ? Number(object.minSharedMatchCount) : 0,
+      numAdditionalPlayers: isSet(object.numAdditionalPlayers) ? Number(object.numAdditionalPlayers) : 0,
+    };
+  },
+
+  toJSON(message: CMsgGCtoGCAssociatedExploiterAccountInfo): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.numMatchesToSearch !== undefined && (obj.numMatchesToSearch = Math.round(message.numMatchesToSearch));
+    message.minSharedMatchCount !== undefined && (obj.minSharedMatchCount = Math.round(message.minSharedMatchCount));
+    message.numAdditionalPlayers !== undefined && (obj.numAdditionalPlayers = Math.round(message.numAdditionalPlayers));
+    return obj;
+  },
 };
 
 function createBaseCMsgGCtoGCAssociatedExploiterAccountInfoResponse(): CMsgGCtoGCAssociatedExploiterAccountInfoResponse {
@@ -13286,6 +17718,26 @@ export const CMsgGCtoGCAssociatedExploiterAccountInfoResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCtoGCAssociatedExploiterAccountInfoResponse {
+    return {
+      accounts: Array.isArray(object?.accounts)
+        ? object.accounts.map((e: any) => CMsgGCtoGCAssociatedExploiterAccountInfoResponse_Account.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgGCtoGCAssociatedExploiterAccountInfoResponse): unknown {
+    const obj: any = {};
+    if (message.accounts) {
+      obj.accounts = message.accounts.map((e) =>
+        e ? CMsgGCtoGCAssociatedExploiterAccountInfoResponse_Account.toJSON(e) : undefined
+      );
+    } else {
+      obj.accounts = [];
+    }
+    return obj;
   },
 };
 
@@ -13394,6 +17846,30 @@ export const CMsgGCtoGCAssociatedExploiterAccountInfoResponse_Account = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCtoGCAssociatedExploiterAccountInfoResponse_Account {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      numCommonMatches: isSet(object.numCommonMatches) ? Number(object.numCommonMatches) : 0,
+      earliestCommonMatch: isSet(object.earliestCommonMatch) ? Number(object.earliestCommonMatch) : 0,
+      latestCommonMatch: isSet(object.latestCommonMatch) ? Number(object.latestCommonMatch) : 0,
+      generation: isSet(object.generation) ? Number(object.generation) : 0,
+      persona: isSet(object.persona) ? String(object.persona) : "",
+      alreadyBanned: isSet(object.alreadyBanned) ? Boolean(object.alreadyBanned) : false,
+    };
+  },
+
+  toJSON(message: CMsgGCtoGCAssociatedExploiterAccountInfoResponse_Account): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.numCommonMatches !== undefined && (obj.numCommonMatches = Math.round(message.numCommonMatches));
+    message.earliestCommonMatch !== undefined && (obj.earliestCommonMatch = Math.round(message.earliestCommonMatch));
+    message.latestCommonMatch !== undefined && (obj.latestCommonMatch = Math.round(message.latestCommonMatch));
+    message.generation !== undefined && (obj.generation = Math.round(message.generation));
+    message.persona !== undefined && (obj.persona = message.persona);
+    message.alreadyBanned !== undefined && (obj.alreadyBanned = message.alreadyBanned);
+    return obj;
+  },
 };
 
 function createBaseCMsgPullTabsData(): CMsgPullTabsData {
@@ -13449,6 +17925,32 @@ export const CMsgPullTabsData = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgPullTabsData {
+    return {
+      slots: Array.isArray(object?.slots) ? object.slots.map((e: any) => CMsgPullTabsData_Slot.fromJSON(e)) : [],
+      jackpots: Array.isArray(object?.jackpots)
+        ? object.jackpots.map((e: any) => CMsgPullTabsData_Jackpot.fromJSON(e))
+        : [],
+      lastBoard: isSet(object.lastBoard) ? Number(object.lastBoard) : 0,
+    };
+  },
+
+  toJSON(message: CMsgPullTabsData): unknown {
+    const obj: any = {};
+    if (message.slots) {
+      obj.slots = message.slots.map((e) => e ? CMsgPullTabsData_Slot.toJSON(e) : undefined);
+    } else {
+      obj.slots = [];
+    }
+    if (message.jackpots) {
+      obj.jackpots = message.jackpots.map((e) => e ? CMsgPullTabsData_Jackpot.toJSON(e) : undefined);
+    } else {
+      obj.jackpots = [];
+    }
+    message.lastBoard !== undefined && (obj.lastBoard = Math.round(message.lastBoard));
+    return obj;
   },
 };
 
@@ -13526,6 +18028,26 @@ export const CMsgPullTabsData_Slot = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgPullTabsData_Slot {
+    return {
+      eventId: isSet(object.eventId) ? Number(object.eventId) : 0,
+      boardId: isSet(object.boardId) ? Number(object.boardId) : 0,
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      actionId: isSet(object.actionId) ? Number(object.actionId) : 0,
+      redeemed: isSet(object.redeemed) ? Boolean(object.redeemed) : false,
+    };
+  },
+
+  toJSON(message: CMsgPullTabsData_Slot): unknown {
+    const obj: any = {};
+    message.eventId !== undefined && (obj.eventId = Math.round(message.eventId));
+    message.boardId !== undefined && (obj.boardId = Math.round(message.boardId));
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.actionId !== undefined && (obj.actionId = Math.round(message.actionId));
+    message.redeemed !== undefined && (obj.redeemed = message.redeemed);
+    return obj;
+  },
 };
 
 function createBaseCMsgPullTabsData_Jackpot(): CMsgPullTabsData_Jackpot {
@@ -13581,6 +18103,22 @@ export const CMsgPullTabsData_Jackpot = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgPullTabsData_Jackpot {
+    return {
+      boardId: isSet(object.boardId) ? Number(object.boardId) : 0,
+      actionId: isSet(object.actionId) ? Number(object.actionId) : 0,
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgPullTabsData_Jackpot): unknown {
+    const obj: any = {};
+    message.boardId !== undefined && (obj.boardId = Math.round(message.boardId));
+    message.actionId !== undefined && (obj.actionId = Math.round(message.actionId));
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    return obj;
   },
 };
 
@@ -13658,6 +18196,38 @@ export const CMsgUnderDraftData = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgUnderDraftData {
+    return {
+      benchSlots: Array.isArray(object?.benchSlots)
+        ? object.benchSlots.map((e: any) => CMsgUnderDraftData_BenchSlot.fromJSON(e))
+        : [],
+      shopSlots: Array.isArray(object?.shopSlots)
+        ? object.shopSlots.map((e: any) => CMsgUnderDraftData_ShopSlot.fromJSON(e))
+        : [],
+      gold: isSet(object.gold) ? Number(object.gold) : 0,
+      totalGold: isSet(object.totalGold) ? Number(object.totalGold) : 0,
+      notRestorable: isSet(object.notRestorable) ? Boolean(object.notRestorable) : false,
+    };
+  },
+
+  toJSON(message: CMsgUnderDraftData): unknown {
+    const obj: any = {};
+    if (message.benchSlots) {
+      obj.benchSlots = message.benchSlots.map((e) => e ? CMsgUnderDraftData_BenchSlot.toJSON(e) : undefined);
+    } else {
+      obj.benchSlots = [];
+    }
+    if (message.shopSlots) {
+      obj.shopSlots = message.shopSlots.map((e) => e ? CMsgUnderDraftData_ShopSlot.toJSON(e) : undefined);
+    } else {
+      obj.shopSlots = [];
+    }
+    message.gold !== undefined && (obj.gold = Math.round(message.gold));
+    message.totalGold !== undefined && (obj.totalGold = Math.round(message.totalGold));
+    message.notRestorable !== undefined && (obj.notRestorable = message.notRestorable);
+    return obj;
+  },
 };
 
 function createBaseCMsgUnderDraftData_BenchSlot(): CMsgUnderDraftData_BenchSlot {
@@ -13714,6 +18284,22 @@ export const CMsgUnderDraftData_BenchSlot = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgUnderDraftData_BenchSlot {
+    return {
+      slotId: isSet(object.slotId) ? Number(object.slotId) : 0,
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      stars: isSet(object.stars) ? Number(object.stars) : 0,
+    };
+  },
+
+  toJSON(message: CMsgUnderDraftData_BenchSlot): unknown {
+    const obj: any = {};
+    message.slotId !== undefined && (obj.slotId = Math.round(message.slotId));
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.stars !== undefined && (obj.stars = Math.round(message.stars));
+    return obj;
+  },
 };
 
 function createBaseCMsgUnderDraftData_ShopSlot(): CMsgUnderDraftData_ShopSlot {
@@ -13769,6 +18355,22 @@ export const CMsgUnderDraftData_ShopSlot = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgUnderDraftData_ShopSlot {
+    return {
+      slotId: isSet(object.slotId) ? Number(object.slotId) : 0,
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      isSpecialReward: isSet(object.isSpecialReward) ? Boolean(object.isSpecialReward) : false,
+    };
+  },
+
+  toJSON(message: CMsgUnderDraftData_ShopSlot): unknown {
+    const obj: any = {};
+    message.slotId !== undefined && (obj.slotId = Math.round(message.slotId));
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.isSpecialReward !== undefined && (obj.isSpecialReward = message.isSpecialReward);
+    return obj;
   },
 };
 
@@ -13847,6 +18449,30 @@ export const CMsgPlayerTitleData = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgPlayerTitleData {
+    return {
+      title: Array.isArray(object?.title) ? object.title.map((e: any) => Number(e)) : [],
+      eventId: Array.isArray(object?.eventId) ? object.eventId.map((e: any) => Number(e)) : [],
+      active: isSet(object.active) ? Number(object.active) : 0,
+    };
+  },
+
+  toJSON(message: CMsgPlayerTitleData): unknown {
+    const obj: any = {};
+    if (message.title) {
+      obj.title = message.title.map((e) => Math.round(e));
+    } else {
+      obj.title = [];
+    }
+    if (message.eventId) {
+      obj.eventId = message.eventId.map((e) => Math.round(e));
+    } else {
+      obj.eventId = [];
+    }
+    message.active !== undefined && (obj.active = Math.round(message.active));
+    return obj;
   },
 };
 
@@ -13934,6 +18560,32 @@ export const CMsgDOTATriviaQuestion = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTATriviaQuestion {
+    return {
+      questionId: isSet(object.questionId) ? Number(object.questionId) : 0,
+      category: isSet(object.category) ? eDOTATriviaQuestionCategoryFromJSON(object.category) : 0,
+      timestamp: isSet(object.timestamp) ? Number(object.timestamp) : 0,
+      questionValue: isSet(object.questionValue) ? String(object.questionValue) : "",
+      answerValues: Array.isArray(object?.answerValues) ? object.answerValues.map((e: any) => String(e)) : [],
+      correctAnswerIndex: isSet(object.correctAnswerIndex) ? Number(object.correctAnswerIndex) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTATriviaQuestion): unknown {
+    const obj: any = {};
+    message.questionId !== undefined && (obj.questionId = Math.round(message.questionId));
+    message.category !== undefined && (obj.category = eDOTATriviaQuestionCategoryToJSON(message.category));
+    message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
+    message.questionValue !== undefined && (obj.questionValue = message.questionValue);
+    if (message.answerValues) {
+      obj.answerValues = message.answerValues.map((e) => e);
+    } else {
+      obj.answerValues = [];
+    }
+    message.correctAnswerIndex !== undefined && (obj.correctAnswerIndex = Math.round(message.correctAnswerIndex));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTATriviaQuestionAnswersSummary(): CMsgDOTATriviaQuestionAnswersSummary {
@@ -13991,6 +18643,24 @@ export const CMsgDOTATriviaQuestionAnswersSummary = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTATriviaQuestionAnswersSummary {
+    return {
+      summaryAvailable: isSet(object.summaryAvailable) ? Boolean(object.summaryAvailable) : false,
+      pickedCount: Array.isArray(object?.pickedCount) ? object.pickedCount.map((e: any) => Number(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTATriviaQuestionAnswersSummary): unknown {
+    const obj: any = {};
+    message.summaryAvailable !== undefined && (obj.summaryAvailable = message.summaryAvailable);
+    if (message.pickedCount) {
+      obj.pickedCount = message.pickedCount.map((e) => Math.round(e));
+    } else {
+      obj.pickedCount = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgGameDataSpecialValueBonus(): CMsgGameDataSpecialValueBonus {
@@ -14046,6 +18716,22 @@ export const CMsgGameDataSpecialValueBonus = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGameDataSpecialValueBonus {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      value: isSet(object.value) ? Number(object.value) : 0,
+      operation: isSet(object.operation) ? Number(object.operation) : 0,
+    };
+  },
+
+  toJSON(message: CMsgGameDataSpecialValueBonus): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.value !== undefined && (obj.value = message.value);
+    message.operation !== undefined && (obj.operation = Math.round(message.operation));
+    return obj;
   },
 };
 
@@ -14133,6 +18819,36 @@ export const CMsgGameDataSpecialValues = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGameDataSpecialValues {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      valuesFloat: Array.isArray(object?.valuesFloat) ? object.valuesFloat.map((e: any) => Number(e)) : [],
+      isPercentage: isSet(object.isPercentage) ? Boolean(object.isPercentage) : false,
+      headingLoc: isSet(object.headingLoc) ? String(object.headingLoc) : "",
+      bonuses: Array.isArray(object?.bonuses)
+        ? object.bonuses.map((e: any) => CMsgGameDataSpecialValueBonus.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgGameDataSpecialValues): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    if (message.valuesFloat) {
+      obj.valuesFloat = message.valuesFloat.map((e) => e);
+    } else {
+      obj.valuesFloat = [];
+    }
+    message.isPercentage !== undefined && (obj.isPercentage = message.isPercentage);
+    message.headingLoc !== undefined && (obj.headingLoc = message.headingLoc);
+    if (message.bonuses) {
+      obj.bonuses = message.bonuses.map((e) => e ? CMsgGameDataSpecialValueBonus.toJSON(e) : undefined);
+    } else {
+      obj.bonuses = [];
+    }
+    return obj;
   },
 };
 
@@ -14678,6 +19394,141 @@ export const CMsgGameDataAbilityOrItem = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGameDataAbilityOrItem {
+    return {
+      id: isSet(object.id) ? Number(object.id) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      nameLoc: isSet(object.nameLoc) ? String(object.nameLoc) : "",
+      descLoc: isSet(object.descLoc) ? String(object.descLoc) : "",
+      loreLoc: isSet(object.loreLoc) ? String(object.loreLoc) : "",
+      notesLoc: Array.isArray(object?.notesLoc) ? object.notesLoc.map((e: any) => String(e)) : [],
+      shardLoc: isSet(object.shardLoc) ? String(object.shardLoc) : "",
+      scepterLoc: isSet(object.scepterLoc) ? String(object.scepterLoc) : "",
+      type: isSet(object.type) ? Number(object.type) : 0,
+      behavior: isSet(object.behavior) ? String(object.behavior) : "0",
+      targetTeam: isSet(object.targetTeam) ? Number(object.targetTeam) : 0,
+      targetType: isSet(object.targetType) ? Number(object.targetType) : 0,
+      flags: isSet(object.flags) ? Number(object.flags) : 0,
+      damage: isSet(object.damage) ? Number(object.damage) : 0,
+      immunity: isSet(object.immunity) ? Number(object.immunity) : 0,
+      dispellable: isSet(object.dispellable) ? Number(object.dispellable) : 0,
+      maxLevel: isSet(object.maxLevel) ? Number(object.maxLevel) : 0,
+      castRanges: Array.isArray(object?.castRanges) ? object.castRanges.map((e: any) => Number(e)) : [],
+      castPoints: Array.isArray(object?.castPoints) ? object.castPoints.map((e: any) => Number(e)) : [],
+      channelTimes: Array.isArray(object?.channelTimes) ? object.channelTimes.map((e: any) => Number(e)) : [],
+      cooldowns: Array.isArray(object?.cooldowns) ? object.cooldowns.map((e: any) => Number(e)) : [],
+      durations: Array.isArray(object?.durations) ? object.durations.map((e: any) => Number(e)) : [],
+      damages: Array.isArray(object?.damages) ? object.damages.map((e: any) => Number(e)) : [],
+      manaCosts: Array.isArray(object?.manaCosts) ? object.manaCosts.map((e: any) => Number(e)) : [],
+      goldCosts: Array.isArray(object?.goldCosts) ? object.goldCosts.map((e: any) => Number(e)) : [],
+      healthCosts: Array.isArray(object?.healthCosts) ? object.healthCosts.map((e: any) => Number(e)) : [],
+      specialValues: Array.isArray(object?.specialValues)
+        ? object.specialValues.map((e: any) => CMsgGameDataSpecialValues.fromJSON(e))
+        : [],
+      isItem: isSet(object.isItem) ? Boolean(object.isItem) : false,
+      abilityHasScepter: isSet(object.abilityHasScepter) ? Boolean(object.abilityHasScepter) : false,
+      abilityHasShard: isSet(object.abilityHasShard) ? Boolean(object.abilityHasShard) : false,
+      abilityIsGrantedByScepter: isSet(object.abilityIsGrantedByScepter)
+        ? Boolean(object.abilityIsGrantedByScepter)
+        : false,
+      abilityIsGrantedByShard: isSet(object.abilityIsGrantedByShard) ? Boolean(object.abilityIsGrantedByShard) : false,
+      itemCost: isSet(object.itemCost) ? Number(object.itemCost) : 0,
+      itemInitialCharges: isSet(object.itemInitialCharges) ? Number(object.itemInitialCharges) : 0,
+      itemNeutralTier: isSet(object.itemNeutralTier) ? Number(object.itemNeutralTier) : 0,
+      itemStockMax: isSet(object.itemStockMax) ? Number(object.itemStockMax) : 0,
+      itemStockTime: isSet(object.itemStockTime) ? Number(object.itemStockTime) : 0,
+      itemQuality: isSet(object.itemQuality) ? Number(object.itemQuality) : 0,
+    };
+  },
+
+  toJSON(message: CMsgGameDataAbilityOrItem): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = Math.round(message.id));
+    message.name !== undefined && (obj.name = message.name);
+    message.nameLoc !== undefined && (obj.nameLoc = message.nameLoc);
+    message.descLoc !== undefined && (obj.descLoc = message.descLoc);
+    message.loreLoc !== undefined && (obj.loreLoc = message.loreLoc);
+    if (message.notesLoc) {
+      obj.notesLoc = message.notesLoc.map((e) => e);
+    } else {
+      obj.notesLoc = [];
+    }
+    message.shardLoc !== undefined && (obj.shardLoc = message.shardLoc);
+    message.scepterLoc !== undefined && (obj.scepterLoc = message.scepterLoc);
+    message.type !== undefined && (obj.type = Math.round(message.type));
+    message.behavior !== undefined && (obj.behavior = message.behavior);
+    message.targetTeam !== undefined && (obj.targetTeam = Math.round(message.targetTeam));
+    message.targetType !== undefined && (obj.targetType = Math.round(message.targetType));
+    message.flags !== undefined && (obj.flags = Math.round(message.flags));
+    message.damage !== undefined && (obj.damage = Math.round(message.damage));
+    message.immunity !== undefined && (obj.immunity = Math.round(message.immunity));
+    message.dispellable !== undefined && (obj.dispellable = Math.round(message.dispellable));
+    message.maxLevel !== undefined && (obj.maxLevel = Math.round(message.maxLevel));
+    if (message.castRanges) {
+      obj.castRanges = message.castRanges.map((e) => Math.round(e));
+    } else {
+      obj.castRanges = [];
+    }
+    if (message.castPoints) {
+      obj.castPoints = message.castPoints.map((e) => e);
+    } else {
+      obj.castPoints = [];
+    }
+    if (message.channelTimes) {
+      obj.channelTimes = message.channelTimes.map((e) => e);
+    } else {
+      obj.channelTimes = [];
+    }
+    if (message.cooldowns) {
+      obj.cooldowns = message.cooldowns.map((e) => e);
+    } else {
+      obj.cooldowns = [];
+    }
+    if (message.durations) {
+      obj.durations = message.durations.map((e) => e);
+    } else {
+      obj.durations = [];
+    }
+    if (message.damages) {
+      obj.damages = message.damages.map((e) => Math.round(e));
+    } else {
+      obj.damages = [];
+    }
+    if (message.manaCosts) {
+      obj.manaCosts = message.manaCosts.map((e) => Math.round(e));
+    } else {
+      obj.manaCosts = [];
+    }
+    if (message.goldCosts) {
+      obj.goldCosts = message.goldCosts.map((e) => Math.round(e));
+    } else {
+      obj.goldCosts = [];
+    }
+    if (message.healthCosts) {
+      obj.healthCosts = message.healthCosts.map((e) => Math.round(e));
+    } else {
+      obj.healthCosts = [];
+    }
+    if (message.specialValues) {
+      obj.specialValues = message.specialValues.map((e) => e ? CMsgGameDataSpecialValues.toJSON(e) : undefined);
+    } else {
+      obj.specialValues = [];
+    }
+    message.isItem !== undefined && (obj.isItem = message.isItem);
+    message.abilityHasScepter !== undefined && (obj.abilityHasScepter = message.abilityHasScepter);
+    message.abilityHasShard !== undefined && (obj.abilityHasShard = message.abilityHasShard);
+    message.abilityIsGrantedByScepter !== undefined &&
+      (obj.abilityIsGrantedByScepter = message.abilityIsGrantedByScepter);
+    message.abilityIsGrantedByShard !== undefined && (obj.abilityIsGrantedByShard = message.abilityIsGrantedByShard);
+    message.itemCost !== undefined && (obj.itemCost = Math.round(message.itemCost));
+    message.itemInitialCharges !== undefined && (obj.itemInitialCharges = Math.round(message.itemInitialCharges));
+    message.itemNeutralTier !== undefined && (obj.itemNeutralTier = Math.round(message.itemNeutralTier));
+    message.itemStockMax !== undefined && (obj.itemStockMax = Math.round(message.itemStockMax));
+    message.itemStockTime !== undefined && (obj.itemStockTime = message.itemStockTime);
+    message.itemQuality !== undefined && (obj.itemQuality = Math.round(message.itemQuality));
+    return obj;
+  },
 };
 
 function createBaseCMsgGameDataHero(): CMsgGameDataHero {
@@ -15090,6 +19941,100 @@ export const CMsgGameDataHero = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGameDataHero {
+    return {
+      id: isSet(object.id) ? Number(object.id) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      orderId: isSet(object.orderId) ? Number(object.orderId) : 0,
+      nameLoc: isSet(object.nameLoc) ? String(object.nameLoc) : "",
+      bioLoc: isSet(object.bioLoc) ? String(object.bioLoc) : "",
+      hypeLoc: isSet(object.hypeLoc) ? String(object.hypeLoc) : "",
+      npeDescLoc: isSet(object.npeDescLoc) ? String(object.npeDescLoc) : "",
+      strBase: isSet(object.strBase) ? Number(object.strBase) : 0,
+      strGain: isSet(object.strGain) ? Number(object.strGain) : 0,
+      agiBase: isSet(object.agiBase) ? Number(object.agiBase) : 0,
+      agiGain: isSet(object.agiGain) ? Number(object.agiGain) : 0,
+      intBase: isSet(object.intBase) ? Number(object.intBase) : 0,
+      intGain: isSet(object.intGain) ? Number(object.intGain) : 0,
+      primaryAttr: isSet(object.primaryAttr) ? Number(object.primaryAttr) : 0,
+      complexity: isSet(object.complexity) ? Number(object.complexity) : 0,
+      attackCapability: isSet(object.attackCapability) ? Number(object.attackCapability) : 0,
+      roleLevels: Array.isArray(object?.roleLevels) ? object.roleLevels.map((e: any) => Number(e)) : [],
+      damageMin: isSet(object.damageMin) ? Number(object.damageMin) : 0,
+      damageMax: isSet(object.damageMax) ? Number(object.damageMax) : 0,
+      attackRate: isSet(object.attackRate) ? Number(object.attackRate) : 0,
+      attackRange: isSet(object.attackRange) ? Number(object.attackRange) : 0,
+      projectileSpeed: isSet(object.projectileSpeed) ? Number(object.projectileSpeed) : 0,
+      armor: isSet(object.armor) ? Number(object.armor) : 0,
+      magicResistance: isSet(object.magicResistance) ? Number(object.magicResistance) : 0,
+      movementSpeed: isSet(object.movementSpeed) ? Number(object.movementSpeed) : 0,
+      turnRate: isSet(object.turnRate) ? Number(object.turnRate) : 0,
+      sightRangeDay: isSet(object.sightRangeDay) ? Number(object.sightRangeDay) : 0,
+      sightRangeNight: isSet(object.sightRangeNight) ? Number(object.sightRangeNight) : 0,
+      maxHealth: isSet(object.maxHealth) ? Number(object.maxHealth) : 0,
+      healthRegen: isSet(object.healthRegen) ? Number(object.healthRegen) : 0,
+      maxMana: isSet(object.maxMana) ? Number(object.maxMana) : 0,
+      manaRegen: isSet(object.manaRegen) ? Number(object.manaRegen) : 0,
+      abilities: Array.isArray(object?.abilities)
+        ? object.abilities.map((e: any) => CMsgGameDataAbilityOrItem.fromJSON(e))
+        : [],
+      talents: Array.isArray(object?.talents)
+        ? object.talents.map((e: any) => CMsgGameDataAbilityOrItem.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgGameDataHero): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = Math.round(message.id));
+    message.name !== undefined && (obj.name = message.name);
+    message.orderId !== undefined && (obj.orderId = Math.round(message.orderId));
+    message.nameLoc !== undefined && (obj.nameLoc = message.nameLoc);
+    message.bioLoc !== undefined && (obj.bioLoc = message.bioLoc);
+    message.hypeLoc !== undefined && (obj.hypeLoc = message.hypeLoc);
+    message.npeDescLoc !== undefined && (obj.npeDescLoc = message.npeDescLoc);
+    message.strBase !== undefined && (obj.strBase = Math.round(message.strBase));
+    message.strGain !== undefined && (obj.strGain = message.strGain);
+    message.agiBase !== undefined && (obj.agiBase = Math.round(message.agiBase));
+    message.agiGain !== undefined && (obj.agiGain = message.agiGain);
+    message.intBase !== undefined && (obj.intBase = Math.round(message.intBase));
+    message.intGain !== undefined && (obj.intGain = message.intGain);
+    message.primaryAttr !== undefined && (obj.primaryAttr = Math.round(message.primaryAttr));
+    message.complexity !== undefined && (obj.complexity = Math.round(message.complexity));
+    message.attackCapability !== undefined && (obj.attackCapability = Math.round(message.attackCapability));
+    if (message.roleLevels) {
+      obj.roleLevels = message.roleLevels.map((e) => Math.round(e));
+    } else {
+      obj.roleLevels = [];
+    }
+    message.damageMin !== undefined && (obj.damageMin = Math.round(message.damageMin));
+    message.damageMax !== undefined && (obj.damageMax = Math.round(message.damageMax));
+    message.attackRate !== undefined && (obj.attackRate = message.attackRate);
+    message.attackRange !== undefined && (obj.attackRange = Math.round(message.attackRange));
+    message.projectileSpeed !== undefined && (obj.projectileSpeed = Math.round(message.projectileSpeed));
+    message.armor !== undefined && (obj.armor = message.armor);
+    message.magicResistance !== undefined && (obj.magicResistance = Math.round(message.magicResistance));
+    message.movementSpeed !== undefined && (obj.movementSpeed = Math.round(message.movementSpeed));
+    message.turnRate !== undefined && (obj.turnRate = message.turnRate);
+    message.sightRangeDay !== undefined && (obj.sightRangeDay = Math.round(message.sightRangeDay));
+    message.sightRangeNight !== undefined && (obj.sightRangeNight = Math.round(message.sightRangeNight));
+    message.maxHealth !== undefined && (obj.maxHealth = Math.round(message.maxHealth));
+    message.healthRegen !== undefined && (obj.healthRegen = message.healthRegen);
+    message.maxMana !== undefined && (obj.maxMana = Math.round(message.maxMana));
+    message.manaRegen !== undefined && (obj.manaRegen = message.manaRegen);
+    if (message.abilities) {
+      obj.abilities = message.abilities.map((e) => e ? CMsgGameDataAbilityOrItem.toJSON(e) : undefined);
+    } else {
+      obj.abilities = [];
+    }
+    if (message.talents) {
+      obj.talents = message.talents.map((e) => e ? CMsgGameDataAbilityOrItem.toJSON(e) : undefined);
+    } else {
+      obj.talents = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgGameDataAbilities(): CMsgGameDataAbilities {
@@ -15125,6 +20070,24 @@ export const CMsgGameDataAbilities = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGameDataAbilities {
+    return {
+      abilities: Array.isArray(object?.abilities)
+        ? object.abilities.map((e: any) => CMsgGameDataAbilityOrItem.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgGameDataAbilities): unknown {
+    const obj: any = {};
+    if (message.abilities) {
+      obj.abilities = message.abilities.map((e) => e ? CMsgGameDataAbilityOrItem.toJSON(e) : undefined);
+    } else {
+      obj.abilities = [];
+    }
+    return obj;
   },
 };
 
@@ -15162,6 +20125,22 @@ export const CMsgGameDataItems = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGameDataItems {
+    return {
+      items: Array.isArray(object?.items) ? object.items.map((e: any) => CMsgGameDataAbilityOrItem.fromJSON(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgGameDataItems): unknown {
+    const obj: any = {};
+    if (message.items) {
+      obj.items = message.items.map((e) => e ? CMsgGameDataAbilityOrItem.toJSON(e) : undefined);
+    } else {
+      obj.items = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgGameDataHeroes(): CMsgGameDataHeroes {
@@ -15198,6 +20177,20 @@ export const CMsgGameDataHeroes = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGameDataHeroes {
+    return { heroes: Array.isArray(object?.heroes) ? object.heroes.map((e: any) => CMsgGameDataHero.fromJSON(e)) : [] };
+  },
+
+  toJSON(message: CMsgGameDataHeroes): unknown {
+    const obj: any = {};
+    if (message.heroes) {
+      obj.heroes = message.heroes.map((e) => e ? CMsgGameDataHero.toJSON(e) : undefined);
+    } else {
+      obj.heroes = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgGameDataHeroList(): CMsgGameDataHeroList {
@@ -15233,6 +20226,24 @@ export const CMsgGameDataHeroList = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGameDataHeroList {
+    return {
+      heroes: Array.isArray(object?.heroes)
+        ? object.heroes.map((e: any) => CMsgGameDataHeroList_HeroInfo.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgGameDataHeroList): unknown {
+    const obj: any = {};
+    if (message.heroes) {
+      obj.heroes = message.heroes.map((e) => e ? CMsgGameDataHeroList_HeroInfo.toJSON(e) : undefined);
+    } else {
+      obj.heroes = [];
+    }
+    return obj;
   },
 };
 
@@ -15320,6 +20331,28 @@ export const CMsgGameDataHeroList_HeroInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGameDataHeroList_HeroInfo {
+    return {
+      id: isSet(object.id) ? Number(object.id) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      nameLoc: isSet(object.nameLoc) ? String(object.nameLoc) : "",
+      nameEnglishLoc: isSet(object.nameEnglishLoc) ? String(object.nameEnglishLoc) : "",
+      primaryAttr: isSet(object.primaryAttr) ? Number(object.primaryAttr) : 0,
+      complexity: isSet(object.complexity) ? Number(object.complexity) : 0,
+    };
+  },
+
+  toJSON(message: CMsgGameDataHeroList_HeroInfo): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = Math.round(message.id));
+    message.name !== undefined && (obj.name = message.name);
+    message.nameLoc !== undefined && (obj.nameLoc = message.nameLoc);
+    message.nameEnglishLoc !== undefined && (obj.nameEnglishLoc = message.nameEnglishLoc);
+    message.primaryAttr !== undefined && (obj.primaryAttr = Math.round(message.primaryAttr));
+    message.complexity !== undefined && (obj.complexity = Math.round(message.complexity));
+    return obj;
+  },
 };
 
 function createBaseCMsgGameDataItemAbilityList(): CMsgGameDataItemAbilityList {
@@ -15355,6 +20388,26 @@ export const CMsgGameDataItemAbilityList = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGameDataItemAbilityList {
+    return {
+      itemabilities: Array.isArray(object?.itemabilities)
+        ? object.itemabilities.map((e: any) => CMsgGameDataItemAbilityList_ItemAbilityInfo.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgGameDataItemAbilityList): unknown {
+    const obj: any = {};
+    if (message.itemabilities) {
+      obj.itemabilities = message.itemabilities.map((e) =>
+        e ? CMsgGameDataItemAbilityList_ItemAbilityInfo.toJSON(e) : undefined
+      );
+    } else {
+      obj.itemabilities = [];
+    }
+    return obj;
   },
 };
 
@@ -15432,6 +20485,26 @@ export const CMsgGameDataItemAbilityList_ItemAbilityInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGameDataItemAbilityList_ItemAbilityInfo {
+    return {
+      id: isSet(object.id) ? Number(object.id) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      nameLoc: isSet(object.nameLoc) ? String(object.nameLoc) : "",
+      nameEnglishLoc: isSet(object.nameEnglishLoc) ? String(object.nameEnglishLoc) : "",
+      neutralItemTier: isSet(object.neutralItemTier) ? Number(object.neutralItemTier) : 0,
+    };
+  },
+
+  toJSON(message: CMsgGameDataItemAbilityList_ItemAbilityInfo): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = Math.round(message.id));
+    message.name !== undefined && (obj.name = message.name);
+    message.nameLoc !== undefined && (obj.nameLoc = message.nameLoc);
+    message.nameEnglishLoc !== undefined && (obj.nameEnglishLoc = message.nameEnglishLoc);
+    message.neutralItemTier !== undefined && (obj.neutralItemTier = Math.round(message.neutralItemTier));
+    return obj;
+  },
 };
 
 function createBaseCMsgLobbyAbilityDraftData(): CMsgLobbyAbilityDraftData {
@@ -15467,6 +20540,16 @@ export const CMsgLobbyAbilityDraftData = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgLobbyAbilityDraftData {
+    return { shuffleDraftOrder: isSet(object.shuffleDraftOrder) ? Boolean(object.shuffleDraftOrder) : false };
+  },
+
+  toJSON(message: CMsgLobbyAbilityDraftData): unknown {
+    const obj: any = {};
+    message.shuffleDraftOrder !== undefined && (obj.shuffleDraftOrder = message.shuffleDraftOrder);
+    return obj;
   },
 };
 
@@ -15583,6 +20666,32 @@ export const CSOEconItemDropRateBonus = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSOEconItemDropRateBonus {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      expirationDate: isSet(object.expirationDate) ? Number(object.expirationDate) : 0,
+      bonus: isSet(object.bonus) ? Number(object.bonus) : 0,
+      bonusCount: isSet(object.bonusCount) ? Number(object.bonusCount) : 0,
+      itemId: isSet(object.itemId) ? String(object.itemId) : "0",
+      defIndex: isSet(object.defIndex) ? Number(object.defIndex) : 0,
+      secondsLeft: isSet(object.secondsLeft) ? Number(object.secondsLeft) : 0,
+      boosterType: isSet(object.boosterType) ? Number(object.boosterType) : 0,
+    };
+  },
+
+  toJSON(message: CSOEconItemDropRateBonus): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.expirationDate !== undefined && (obj.expirationDate = Math.round(message.expirationDate));
+    message.bonus !== undefined && (obj.bonus = message.bonus);
+    message.bonusCount !== undefined && (obj.bonusCount = Math.round(message.bonusCount));
+    message.itemId !== undefined && (obj.itemId = message.itemId);
+    message.defIndex !== undefined && (obj.defIndex = Math.round(message.defIndex));
+    message.secondsLeft !== undefined && (obj.secondsLeft = Math.round(message.secondsLeft));
+    message.boosterType !== undefined && (obj.boosterType = Math.round(message.boosterType));
+    return obj;
+  },
 };
 
 function createBaseCSOEconItemTournamentPassport(): CSOEconItemTournamentPassport {
@@ -15697,6 +20806,32 @@ export const CSOEconItemTournamentPassport = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSOEconItemTournamentPassport {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      leagueId: isSet(object.leagueId) ? Number(object.leagueId) : 0,
+      itemId: isSet(object.itemId) ? String(object.itemId) : "0",
+      originalPurchaserId: isSet(object.originalPurchaserId) ? Number(object.originalPurchaserId) : 0,
+      passportsBought: isSet(object.passportsBought) ? Number(object.passportsBought) : 0,
+      version: isSet(object.version) ? Number(object.version) : 0,
+      defIndex: isSet(object.defIndex) ? Number(object.defIndex) : 0,
+      rewardFlags: isSet(object.rewardFlags) ? Number(object.rewardFlags) : 0,
+    };
+  },
+
+  toJSON(message: CSOEconItemTournamentPassport): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.leagueId !== undefined && (obj.leagueId = Math.round(message.leagueId));
+    message.itemId !== undefined && (obj.itemId = message.itemId);
+    message.originalPurchaserId !== undefined && (obj.originalPurchaserId = Math.round(message.originalPurchaserId));
+    message.passportsBought !== undefined && (obj.passportsBought = Math.round(message.passportsBought));
+    message.version !== undefined && (obj.version = Math.round(message.version));
+    message.defIndex !== undefined && (obj.defIndex = Math.round(message.defIndex));
+    message.rewardFlags !== undefined && (obj.rewardFlags = Math.round(message.rewardFlags));
+    return obj;
   },
 };
 
@@ -15835,6 +20970,36 @@ export const CMsgStickerbookSticker = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgStickerbookSticker {
+    return {
+      itemDefId: isSet(object.itemDefId) ? Number(object.itemDefId) : 0,
+      stickerNum: isSet(object.stickerNum) ? Number(object.stickerNum) : 0,
+      quality: isSet(object.quality) ? Number(object.quality) : 0,
+      positionX: isSet(object.positionX) ? Number(object.positionX) : 0,
+      positionY: isSet(object.positionY) ? Number(object.positionY) : 0,
+      positionZ: isSet(object.positionZ) ? Number(object.positionZ) : 0,
+      rotation: isSet(object.rotation) ? Number(object.rotation) : 0,
+      scale: isSet(object.scale) ? Number(object.scale) : 0,
+      sourceItemId: isSet(object.sourceItemId) ? String(object.sourceItemId) : "0",
+      depthBias: isSet(object.depthBias) ? Number(object.depthBias) : 0,
+    };
+  },
+
+  toJSON(message: CMsgStickerbookSticker): unknown {
+    const obj: any = {};
+    message.itemDefId !== undefined && (obj.itemDefId = Math.round(message.itemDefId));
+    message.stickerNum !== undefined && (obj.stickerNum = Math.round(message.stickerNum));
+    message.quality !== undefined && (obj.quality = Math.round(message.quality));
+    message.positionX !== undefined && (obj.positionX = message.positionX);
+    message.positionY !== undefined && (obj.positionY = message.positionY);
+    message.positionZ !== undefined && (obj.positionZ = message.positionZ);
+    message.rotation !== undefined && (obj.rotation = message.rotation);
+    message.scale !== undefined && (obj.scale = message.scale);
+    message.sourceItemId !== undefined && (obj.sourceItemId = message.sourceItemId);
+    message.depthBias !== undefined && (obj.depthBias = Math.round(message.depthBias));
+    return obj;
+  },
 };
 
 function createBaseCMsgStickerbookPage(): CMsgStickerbookPage {
@@ -15911,6 +21076,32 @@ export const CMsgStickerbookPage = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgStickerbookPage {
+    return {
+      pageNum: isSet(object.pageNum) ? Number(object.pageNum) : 0,
+      eventId: isSet(object.eventId) ? eEventFromJSON(object.eventId) : 0,
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      stickers: Array.isArray(object?.stickers)
+        ? object.stickers.map((e: any) => CMsgStickerbookSticker.fromJSON(e))
+        : [],
+      pageType: isSet(object.pageType) ? eStickerbookPageTypeFromJSON(object.pageType) : 0,
+    };
+  },
+
+  toJSON(message: CMsgStickerbookPage): unknown {
+    const obj: any = {};
+    message.pageNum !== undefined && (obj.pageNum = Math.round(message.pageNum));
+    message.eventId !== undefined && (obj.eventId = eEventToJSON(message.eventId));
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    if (message.stickers) {
+      obj.stickers = message.stickers.map((e) => e ? CMsgStickerbookSticker.toJSON(e) : undefined);
+    } else {
+      obj.stickers = [];
+    }
+    message.pageType !== undefined && (obj.pageType = eStickerbookPageTypeToJSON(message.pageType));
+    return obj;
+  },
 };
 
 function createBaseCMsgStickerbookTeamPageOrderSequence(): CMsgStickerbookTeamPageOrderSequence {
@@ -15957,6 +21148,20 @@ export const CMsgStickerbookTeamPageOrderSequence = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgStickerbookTeamPageOrderSequence {
+    return { pageNumbers: Array.isArray(object?.pageNumbers) ? object.pageNumbers.map((e: any) => Number(e)) : [] };
+  },
+
+  toJSON(message: CMsgStickerbookTeamPageOrderSequence): unknown {
+    const obj: any = {};
+    if (message.pageNumbers) {
+      obj.pageNumbers = message.pageNumbers.map((e) => Math.round(e));
+    } else {
+      obj.pageNumbers = [];
+    }
+    return obj;
   },
 };
 
@@ -16013,6 +21218,30 @@ export const CMsgStickerbook = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgStickerbook {
+    return {
+      pages: Array.isArray(object?.pages) ? object.pages.map((e: any) => CMsgStickerbookPage.fromJSON(e)) : [],
+      teamPageOrderSequence: isSet(object.teamPageOrderSequence)
+        ? CMsgStickerbookTeamPageOrderSequence.fromJSON(object.teamPageOrderSequence)
+        : undefined,
+      favoritePageNum: isSet(object.favoritePageNum) ? Number(object.favoritePageNum) : 0,
+    };
+  },
+
+  toJSON(message: CMsgStickerbook): unknown {
+    const obj: any = {};
+    if (message.pages) {
+      obj.pages = message.pages.map((e) => e ? CMsgStickerbookPage.toJSON(e) : undefined);
+    } else {
+      obj.pages = [];
+    }
+    message.teamPageOrderSequence !== undefined && (obj.teamPageOrderSequence = message.teamPageOrderSequence
+      ? CMsgStickerbookTeamPageOrderSequence.toJSON(message.teamPageOrderSequence)
+      : undefined);
+    message.favoritePageNum !== undefined && (obj.favoritePageNum = Math.round(message.favoritePageNum));
+    return obj;
   },
 };
 
@@ -16080,6 +21309,24 @@ export const CMsgStickerHero = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgStickerHero {
+    return {
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      itemDefId: isSet(object.itemDefId) ? Number(object.itemDefId) : 0,
+      quality: isSet(object.quality) ? Number(object.quality) : 0,
+      sourceItemId: isSet(object.sourceItemId) ? String(object.sourceItemId) : "0",
+    };
+  },
+
+  toJSON(message: CMsgStickerHero): unknown {
+    const obj: any = {};
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.itemDefId !== undefined && (obj.itemDefId = Math.round(message.itemDefId));
+    message.quality !== undefined && (obj.quality = Math.round(message.quality));
+    message.sourceItemId !== undefined && (obj.sourceItemId = message.sourceItemId);
+    return obj;
+  },
 };
 
 function createBaseCMsgStickerHeroes(): CMsgStickerHeroes {
@@ -16115,6 +21362,20 @@ export const CMsgStickerHeroes = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgStickerHeroes {
+    return { heroes: Array.isArray(object?.heroes) ? object.heroes.map((e: any) => CMsgStickerHero.fromJSON(e)) : [] };
+  },
+
+  toJSON(message: CMsgStickerHeroes): unknown {
+    const obj: any = {};
+    if (message.heroes) {
+      obj.heroes = message.heroes.map((e) => e ? CMsgStickerHero.toJSON(e) : undefined);
+    } else {
+      obj.heroes = [];
+    }
+    return obj;
   },
 };
 
@@ -16172,6 +21433,22 @@ export const CMsgHeroRoleStats = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgHeroRoleStats {
+    return {
+      laneSelectionFlags: isSet(object.laneSelectionFlags) ? Number(object.laneSelectionFlags) : 0,
+      matchCount: isSet(object.matchCount) ? Number(object.matchCount) : 0,
+      winCount: isSet(object.winCount) ? Number(object.winCount) : 0,
+    };
+  },
+
+  toJSON(message: CMsgHeroRoleStats): unknown {
+    const obj: any = {};
+    message.laneSelectionFlags !== undefined && (obj.laneSelectionFlags = Math.round(message.laneSelectionFlags));
+    message.matchCount !== undefined && (obj.matchCount = Math.round(message.matchCount));
+    message.winCount !== undefined && (obj.winCount = Math.round(message.winCount));
+    return obj;
+  },
 };
 
 function createBaseCMsgHeroRoleHeroStats(): CMsgHeroRoleHeroStats {
@@ -16218,6 +21495,26 @@ export const CMsgHeroRoleHeroStats = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgHeroRoleHeroStats {
+    return {
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      roleStats: Array.isArray(object?.roleStats)
+        ? object.roleStats.map((e: any) => CMsgHeroRoleStats.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgHeroRoleHeroStats): unknown {
+    const obj: any = {};
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    if (message.roleStats) {
+      obj.roleStats = message.roleStats.map((e) => e ? CMsgHeroRoleStats.toJSON(e) : undefined);
+    } else {
+      obj.roleStats = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgHeroRoleRankStats(): CMsgHeroRoleRankStats {
@@ -16263,6 +21560,26 @@ export const CMsgHeroRoleRankStats = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgHeroRoleRankStats {
+    return {
+      rankTier: isSet(object.rankTier) ? Number(object.rankTier) : 0,
+      heroStats: Array.isArray(object?.heroStats)
+        ? object.heroStats.map((e: any) => CMsgHeroRoleHeroStats.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgHeroRoleRankStats): unknown {
+    const obj: any = {};
+    message.rankTier !== undefined && (obj.rankTier = Math.round(message.rankTier));
+    if (message.heroStats) {
+      obj.heroStats = message.heroStats.map((e) => e ? CMsgHeroRoleHeroStats.toJSON(e) : undefined);
+    } else {
+      obj.heroStats = [];
+    }
+    return obj;
   },
 };
 
@@ -16319,6 +21636,28 @@ export const CMsgHeroRoleAllRanksStats = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgHeroRoleAllRanksStats {
+    return {
+      startTimestamp: isSet(object.startTimestamp) ? Number(object.startTimestamp) : 0,
+      endTimestamp: isSet(object.endTimestamp) ? Number(object.endTimestamp) : 0,
+      rankStats: Array.isArray(object?.rankStats)
+        ? object.rankStats.map((e: any) => CMsgHeroRoleRankStats.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgHeroRoleAllRanksStats): unknown {
+    const obj: any = {};
+    message.startTimestamp !== undefined && (obj.startTimestamp = Math.round(message.startTimestamp));
+    message.endTimestamp !== undefined && (obj.endTimestamp = Math.round(message.endTimestamp));
+    if (message.rankStats) {
+      obj.rankStats = message.rankStats.map((e) => e ? CMsgHeroRoleRankStats.toJSON(e) : undefined);
+    } else {
+      obj.rankStats = [];
+    }
+    return obj;
   },
 };
 
@@ -16457,6 +21796,36 @@ export const CMsgMapStatsSnapshot = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgMapStatsSnapshot {
+    return {
+      timestamp: isSet(object.timestamp) ? Number(object.timestamp) : 0,
+      famangosGained: isSet(object.famangosGained) ? String(object.famangosGained) : "0",
+      wisdomRunesGained: isSet(object.wisdomRunesGained) ? String(object.wisdomRunesGained) : "0",
+      roshanKillsDay: isSet(object.roshanKillsDay) ? String(object.roshanKillsDay) : "0",
+      roshanKillsNight: isSet(object.roshanKillsNight) ? String(object.roshanKillsNight) : "0",
+      portalsUsed: isSet(object.portalsUsed) ? String(object.portalsUsed) : "0",
+      lanternsLit: isSet(object.lanternsLit) ? String(object.lanternsLit) : "0",
+      minibossKills: isSet(object.minibossKills) ? String(object.minibossKills) : "0",
+      outpostsCaptured: isSet(object.outpostsCaptured) ? String(object.outpostsCaptured) : "0",
+      shieldRunesGained: isSet(object.shieldRunesGained) ? String(object.shieldRunesGained) : "0",
+    };
+  },
+
+  toJSON(message: CMsgMapStatsSnapshot): unknown {
+    const obj: any = {};
+    message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
+    message.famangosGained !== undefined && (obj.famangosGained = message.famangosGained);
+    message.wisdomRunesGained !== undefined && (obj.wisdomRunesGained = message.wisdomRunesGained);
+    message.roshanKillsDay !== undefined && (obj.roshanKillsDay = message.roshanKillsDay);
+    message.roshanKillsNight !== undefined && (obj.roshanKillsNight = message.roshanKillsNight);
+    message.portalsUsed !== undefined && (obj.portalsUsed = message.portalsUsed);
+    message.lanternsLit !== undefined && (obj.lanternsLit = message.lanternsLit);
+    message.minibossKills !== undefined && (obj.minibossKills = message.minibossKills);
+    message.outpostsCaptured !== undefined && (obj.outpostsCaptured = message.outpostsCaptured);
+    message.shieldRunesGained !== undefined && (obj.shieldRunesGained = message.shieldRunesGained);
+    return obj;
+  },
 };
 
 function createBaseCMsgGlobalMapStats(): CMsgGlobalMapStats {
@@ -16513,7 +21882,70 @@ export const CMsgGlobalMapStats = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGlobalMapStats {
+    return {
+      current: isSet(object.current) ? CMsgMapStatsSnapshot.fromJSON(object.current) : undefined,
+      windowStart: isSet(object.windowStart) ? CMsgMapStatsSnapshot.fromJSON(object.windowStart) : undefined,
+      windowEnd: isSet(object.windowEnd) ? CMsgMapStatsSnapshot.fromJSON(object.windowEnd) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgGlobalMapStats): unknown {
+    const obj: any = {};
+    message.current !== undefined &&
+      (obj.current = message.current ? CMsgMapStatsSnapshot.toJSON(message.current) : undefined);
+    message.windowStart !== undefined &&
+      (obj.windowStart = message.windowStart ? CMsgMapStatsSnapshot.toJSON(message.windowStart) : undefined);
+    message.windowEnd !== undefined &&
+      (obj.windowEnd = message.windowEnd ? CMsgMapStatsSnapshot.toJSON(message.windowEnd) : undefined);
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if (tsProtoGlobalThis.Buffer) {
+    return Uint8Array.from(tsProtoGlobalThis.Buffer.from(b64, "base64"));
+  } else {
+    const bin = tsProtoGlobalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if (tsProtoGlobalThis.Buffer) {
+    return tsProtoGlobalThis.Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(String.fromCharCode(byte));
+    });
+    return tsProtoGlobalThis.btoa(bin.join(""));
+  }
+}
 
 function longToString(long: Long) {
   return long.toString();
@@ -16522,4 +21954,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

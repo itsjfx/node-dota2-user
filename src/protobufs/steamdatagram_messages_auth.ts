@@ -232,6 +232,71 @@ export const CMsgSteamDatagramRelayAuthTicket = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramRelayAuthTicket {
+    return {
+      timeExpiry: isSet(object.timeExpiry) ? Number(object.timeExpiry) : 0,
+      authorizedClientIdentityString: isSet(object.authorizedClientIdentityString)
+        ? String(object.authorizedClientIdentityString)
+        : "",
+      gameserverIdentityString: isSet(object.gameserverIdentityString) ? String(object.gameserverIdentityString) : "",
+      authorizedPublicIp: isSet(object.authorizedPublicIp) ? Number(object.authorizedPublicIp) : 0,
+      gameserverAddress: isSet(object.gameserverAddress)
+        ? Buffer.from(bytesFromBase64(object.gameserverAddress))
+        : Buffer.alloc(0),
+      appId: isSet(object.appId) ? Number(object.appId) : 0,
+      virtualPort: isSet(object.virtualPort) ? Number(object.virtualPort) : 0,
+      extraFields: Array.isArray(object?.extraFields)
+        ? object.extraFields.map((e: any) => CMsgSteamDatagramRelayAuthTicket_ExtraField.fromJSON(e))
+        : [],
+      legacyAuthorizedSteamId: isSet(object.legacyAuthorizedSteamId) ? String(object.legacyAuthorizedSteamId) : "0",
+      legacyGameserverSteamId: isSet(object.legacyGameserverSteamId) ? String(object.legacyGameserverSteamId) : "0",
+      legacyGameserverPopId: isSet(object.legacyGameserverPopId) ? Number(object.legacyGameserverPopId) : 0,
+      legacyAuthorizedClientIdentityBinary: isSet(object.legacyAuthorizedClientIdentityBinary)
+        ? Buffer.from(bytesFromBase64(object.legacyAuthorizedClientIdentityBinary))
+        : Buffer.alloc(0),
+      legacyGameserverIdentityBinary: isSet(object.legacyGameserverIdentityBinary)
+        ? Buffer.from(bytesFromBase64(object.legacyGameserverIdentityBinary))
+        : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramRelayAuthTicket): unknown {
+    const obj: any = {};
+    message.timeExpiry !== undefined && (obj.timeExpiry = Math.round(message.timeExpiry));
+    message.authorizedClientIdentityString !== undefined &&
+      (obj.authorizedClientIdentityString = message.authorizedClientIdentityString);
+    message.gameserverIdentityString !== undefined && (obj.gameserverIdentityString = message.gameserverIdentityString);
+    message.authorizedPublicIp !== undefined && (obj.authorizedPublicIp = Math.round(message.authorizedPublicIp));
+    message.gameserverAddress !== undefined &&
+      (obj.gameserverAddress = base64FromBytes(
+        message.gameserverAddress !== undefined ? message.gameserverAddress : Buffer.alloc(0),
+      ));
+    message.appId !== undefined && (obj.appId = Math.round(message.appId));
+    message.virtualPort !== undefined && (obj.virtualPort = Math.round(message.virtualPort));
+    if (message.extraFields) {
+      obj.extraFields = message.extraFields.map((e) =>
+        e ? CMsgSteamDatagramRelayAuthTicket_ExtraField.toJSON(e) : undefined
+      );
+    } else {
+      obj.extraFields = [];
+    }
+    message.legacyAuthorizedSteamId !== undefined && (obj.legacyAuthorizedSteamId = message.legacyAuthorizedSteamId);
+    message.legacyGameserverSteamId !== undefined && (obj.legacyGameserverSteamId = message.legacyGameserverSteamId);
+    message.legacyGameserverPopId !== undefined &&
+      (obj.legacyGameserverPopId = Math.round(message.legacyGameserverPopId));
+    message.legacyAuthorizedClientIdentityBinary !== undefined &&
+      (obj.legacyAuthorizedClientIdentityBinary = base64FromBytes(
+        message.legacyAuthorizedClientIdentityBinary !== undefined
+          ? message.legacyAuthorizedClientIdentityBinary
+          : Buffer.alloc(0),
+      ));
+    message.legacyGameserverIdentityBinary !== undefined &&
+      (obj.legacyGameserverIdentityBinary = base64FromBytes(
+        message.legacyGameserverIdentityBinary !== undefined ? message.legacyGameserverIdentityBinary : Buffer.alloc(0),
+      ));
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamDatagramRelayAuthTicket_ExtraField(): CMsgSteamDatagramRelayAuthTicket_ExtraField {
@@ -297,6 +362,24 @@ export const CMsgSteamDatagramRelayAuthTicket_ExtraField = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamDatagramRelayAuthTicket_ExtraField {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      stringValue: isSet(object.stringValue) ? String(object.stringValue) : "",
+      int64Value: isSet(object.int64Value) ? String(object.int64Value) : "0",
+      fixed64Value: isSet(object.fixed64Value) ? String(object.fixed64Value) : "0",
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramRelayAuthTicket_ExtraField): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.stringValue !== undefined && (obj.stringValue = message.stringValue);
+    message.int64Value !== undefined && (obj.int64Value = message.int64Value);
+    message.fixed64Value !== undefined && (obj.fixed64Value = message.fixed64Value);
+    return obj;
   },
 };
 
@@ -374,6 +457,34 @@ export const CMsgSteamDatagramSignedRelayAuthTicket = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramSignedRelayAuthTicket {
+    return {
+      reservedDoNotUse: isSet(object.reservedDoNotUse) ? String(object.reservedDoNotUse) : "0",
+      ticket: isSet(object.ticket) ? Buffer.from(bytesFromBase64(object.ticket)) : Buffer.alloc(0),
+      signature: isSet(object.signature) ? Buffer.from(bytesFromBase64(object.signature)) : Buffer.alloc(0),
+      keyId: isSet(object.keyId) ? String(object.keyId) : "0",
+      certs: Array.isArray(object?.certs)
+        ? object.certs.map((e: any) => CMsgSteamDatagramCertificateSigned.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramSignedRelayAuthTicket): unknown {
+    const obj: any = {};
+    message.reservedDoNotUse !== undefined && (obj.reservedDoNotUse = message.reservedDoNotUse);
+    message.ticket !== undefined &&
+      (obj.ticket = base64FromBytes(message.ticket !== undefined ? message.ticket : Buffer.alloc(0)));
+    message.signature !== undefined &&
+      (obj.signature = base64FromBytes(message.signature !== undefined ? message.signature : Buffer.alloc(0)));
+    message.keyId !== undefined && (obj.keyId = message.keyId);
+    if (message.certs) {
+      obj.certs = message.certs.map((e) => e ? CMsgSteamDatagramCertificateSigned.toJSON(e) : undefined);
+    } else {
+      obj.certs = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamDatagramCachedCredentialsForApp(): CMsgSteamDatagramCachedCredentialsForApp {
@@ -429,6 +540,30 @@ export const CMsgSteamDatagramCachedCredentialsForApp = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamDatagramCachedCredentialsForApp {
+    return {
+      privateKey: isSet(object.privateKey) ? Buffer.from(bytesFromBase64(object.privateKey)) : Buffer.alloc(0),
+      cert: isSet(object.cert) ? Buffer.from(bytesFromBase64(object.cert)) : Buffer.alloc(0),
+      relayTickets: Array.isArray(object?.relayTickets)
+        ? object.relayTickets.map((e: any) => Buffer.from(bytesFromBase64(e)))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramCachedCredentialsForApp): unknown {
+    const obj: any = {};
+    message.privateKey !== undefined &&
+      (obj.privateKey = base64FromBytes(message.privateKey !== undefined ? message.privateKey : Buffer.alloc(0)));
+    message.cert !== undefined &&
+      (obj.cert = base64FromBytes(message.cert !== undefined ? message.cert : Buffer.alloc(0)));
+    if (message.relayTickets) {
+      obj.relayTickets = message.relayTickets.map((e) => base64FromBytes(e !== undefined ? e : Buffer.alloc(0)));
+    } else {
+      obj.relayTickets = [];
+    }
+    return obj;
   },
 };
 
@@ -534,6 +669,37 @@ export const CMsgSteamDatagramGameCoordinatorServerLogin = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramGameCoordinatorServerLogin {
+    return {
+      timeGenerated: isSet(object.timeGenerated) ? Number(object.timeGenerated) : 0,
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      routing: isSet(object.routing) ? Buffer.from(bytesFromBase64(object.routing)) : Buffer.alloc(0),
+      appdata: isSet(object.appdata) ? Buffer.from(bytesFromBase64(object.appdata)) : Buffer.alloc(0),
+      legacyIdentityBinary: isSet(object.legacyIdentityBinary)
+        ? Buffer.from(bytesFromBase64(object.legacyIdentityBinary))
+        : Buffer.alloc(0),
+      identityString: isSet(object.identityString) ? String(object.identityString) : "",
+      dummySteamId: isSet(object.dummySteamId) ? String(object.dummySteamId) : "0",
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramGameCoordinatorServerLogin): unknown {
+    const obj: any = {};
+    message.timeGenerated !== undefined && (obj.timeGenerated = Math.round(message.timeGenerated));
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    message.routing !== undefined &&
+      (obj.routing = base64FromBytes(message.routing !== undefined ? message.routing : Buffer.alloc(0)));
+    message.appdata !== undefined &&
+      (obj.appdata = base64FromBytes(message.appdata !== undefined ? message.appdata : Buffer.alloc(0)));
+    message.legacyIdentityBinary !== undefined &&
+      (obj.legacyIdentityBinary = base64FromBytes(
+        message.legacyIdentityBinary !== undefined ? message.legacyIdentityBinary : Buffer.alloc(0),
+      ));
+    message.identityString !== undefined && (obj.identityString = message.identityString);
+    message.dummySteamId !== undefined && (obj.dummySteamId = message.dummySteamId);
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamDatagramSignedGameCoordinatorServerLogin(): CMsgSteamDatagramSignedGameCoordinatorServerLogin {
@@ -592,6 +758,25 @@ export const CMsgSteamDatagramSignedGameCoordinatorServerLogin = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamDatagramSignedGameCoordinatorServerLogin {
+    return {
+      cert: isSet(object.cert) ? CMsgSteamDatagramCertificateSigned.fromJSON(object.cert) : undefined,
+      login: isSet(object.login) ? Buffer.from(bytesFromBase64(object.login)) : Buffer.alloc(0),
+      signature: isSet(object.signature) ? Buffer.from(bytesFromBase64(object.signature)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramSignedGameCoordinatorServerLogin): unknown {
+    const obj: any = {};
+    message.cert !== undefined &&
+      (obj.cert = message.cert ? CMsgSteamDatagramCertificateSigned.toJSON(message.cert) : undefined);
+    message.login !== undefined &&
+      (obj.login = base64FromBytes(message.login !== undefined ? message.login : Buffer.alloc(0)));
+    message.signature !== undefined &&
+      (obj.signature = base64FromBytes(message.signature !== undefined ? message.signature : Buffer.alloc(0)));
+    return obj;
   },
 };
 
@@ -669,7 +854,72 @@ export const CMsgSteamDatagramHostedServerAddressPlaintext = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramHostedServerAddressPlaintext {
+    return {
+      ipv4: isSet(object.ipv4) ? Number(object.ipv4) : 0,
+      ipv6: isSet(object.ipv6) ? Buffer.from(bytesFromBase64(object.ipv6)) : Buffer.alloc(0),
+      port: isSet(object.port) ? Number(object.port) : 0,
+      routingSecret: isSet(object.routingSecret) ? String(object.routingSecret) : "0",
+      protocolVersion: isSet(object.protocolVersion) ? Number(object.protocolVersion) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramHostedServerAddressPlaintext): unknown {
+    const obj: any = {};
+    message.ipv4 !== undefined && (obj.ipv4 = Math.round(message.ipv4));
+    message.ipv6 !== undefined &&
+      (obj.ipv6 = base64FromBytes(message.ipv6 !== undefined ? message.ipv6 : Buffer.alloc(0)));
+    message.port !== undefined && (obj.port = Math.round(message.port));
+    message.routingSecret !== undefined && (obj.routingSecret = message.routingSecret);
+    message.protocolVersion !== undefined && (obj.protocolVersion = Math.round(message.protocolVersion));
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if (tsProtoGlobalThis.Buffer) {
+    return Uint8Array.from(tsProtoGlobalThis.Buffer.from(b64, "base64"));
+  } else {
+    const bin = tsProtoGlobalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if (tsProtoGlobalThis.Buffer) {
+    return tsProtoGlobalThis.Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(String.fromCharCode(byte));
+    });
+    return tsProtoGlobalThis.btoa(bin.join(""));
+  }
+}
 
 function longToString(long: Long) {
   return long.toString();
@@ -678,4 +928,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

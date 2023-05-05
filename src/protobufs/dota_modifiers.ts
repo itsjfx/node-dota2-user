@@ -7,6 +7,30 @@ export enum dotaModifierEntryType {
   DOTA_MODIFIER_ENTRY_TYPE_REMOVED = 2,
 }
 
+export function dotaModifierEntryTypeFromJSON(object: any): dotaModifierEntryType {
+  switch (object) {
+    case 1:
+    case "DOTA_MODIFIER_ENTRY_TYPE_ACTIVE":
+      return dotaModifierEntryType.DOTA_MODIFIER_ENTRY_TYPE_ACTIVE;
+    case 2:
+    case "DOTA_MODIFIER_ENTRY_TYPE_REMOVED":
+      return dotaModifierEntryType.DOTA_MODIFIER_ENTRY_TYPE_REMOVED;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum dotaModifierEntryType");
+  }
+}
+
+export function dotaModifierEntryTypeToJSON(object: dotaModifierEntryType): string {
+  switch (object) {
+    case dotaModifierEntryType.DOTA_MODIFIER_ENTRY_TYPE_ACTIVE:
+      return "DOTA_MODIFIER_ENTRY_TYPE_ACTIVE";
+    case dotaModifierEntryType.DOTA_MODIFIER_ENTRY_TYPE_REMOVED:
+      return "DOTA_MODIFIER_ENTRY_TYPE_REMOVED";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum dotaModifierEntryType");
+  }
+}
+
 export interface CDOTAModifierBuffTableEntry {
   entryType: dotaModifierEntryType;
   parent: number;
@@ -496,6 +520,92 @@ export const CDOTAModifierBuffTableEntry = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAModifierBuffTableEntry {
+    return {
+      entryType: isSet(object.entryType) ? dotaModifierEntryTypeFromJSON(object.entryType) : 1,
+      parent: isSet(object.parent) ? Number(object.parent) : 0,
+      index: isSet(object.index) ? Number(object.index) : 0,
+      serialNum: isSet(object.serialNum) ? Number(object.serialNum) : 0,
+      modifierClass: isSet(object.modifierClass) ? Number(object.modifierClass) : 0,
+      abilityLevel: isSet(object.abilityLevel) ? Number(object.abilityLevel) : 0,
+      stackCount: isSet(object.stackCount) ? Number(object.stackCount) : 0,
+      creationTime: isSet(object.creationTime) ? Number(object.creationTime) : 0,
+      duration: isSet(object.duration) ? Number(object.duration) : 0,
+      caster: isSet(object.caster) ? Number(object.caster) : 0,
+      ability: isSet(object.ability) ? Number(object.ability) : 0,
+      armor: isSet(object.armor) ? Number(object.armor) : 0,
+      fadeTime: isSet(object.fadeTime) ? Number(object.fadeTime) : 0,
+      subtle: isSet(object.subtle) ? Boolean(object.subtle) : false,
+      channelTime: isSet(object.channelTime) ? Number(object.channelTime) : 0,
+      vStart: isSet(object.vStart) ? CMsgVector.fromJSON(object.vStart) : undefined,
+      vEnd: isSet(object.vEnd) ? CMsgVector.fromJSON(object.vEnd) : undefined,
+      portalLoopAppear: isSet(object.portalLoopAppear) ? String(object.portalLoopAppear) : "",
+      portalLoopDisappear: isSet(object.portalLoopDisappear) ? String(object.portalLoopDisappear) : "",
+      heroLoopAppear: isSet(object.heroLoopAppear) ? String(object.heroLoopAppear) : "",
+      heroLoopDisappear: isSet(object.heroLoopDisappear) ? String(object.heroLoopDisappear) : "",
+      movementSpeed: isSet(object.movementSpeed) ? Number(object.movementSpeed) : 0,
+      aura: isSet(object.aura) ? Boolean(object.aura) : false,
+      activity: isSet(object.activity) ? Number(object.activity) : 0,
+      damage: isSet(object.damage) ? Number(object.damage) : 0,
+      range: isSet(object.range) ? Number(object.range) : 0,
+      ddModifierIndex: isSet(object.ddModifierIndex) ? Number(object.ddModifierIndex) : 0,
+      ddAbilityId: isSet(object.ddAbilityId) ? Number(object.ddAbilityId) : 0,
+      illusionLabel: isSet(object.illusionLabel) ? String(object.illusionLabel) : "",
+      active: isSet(object.active) ? Boolean(object.active) : false,
+      playerIds: isSet(object.playerIds) ? String(object.playerIds) : "",
+      luaName: isSet(object.luaName) ? String(object.luaName) : "",
+      attackSpeed: isSet(object.attackSpeed) ? Number(object.attackSpeed) : 0,
+      auraOwner: isSet(object.auraOwner) ? Number(object.auraOwner) : 0,
+      bonusAllStats: isSet(object.bonusAllStats) ? Number(object.bonusAllStats) : 0,
+      bonusHealth: isSet(object.bonusHealth) ? Number(object.bonusHealth) : 0,
+      bonusMana: isSet(object.bonusMana) ? Number(object.bonusMana) : 0,
+      customEntity: isSet(object.customEntity) ? Number(object.customEntity) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAModifierBuffTableEntry): unknown {
+    const obj: any = {};
+    message.entryType !== undefined && (obj.entryType = dotaModifierEntryTypeToJSON(message.entryType));
+    message.parent !== undefined && (obj.parent = Math.round(message.parent));
+    message.index !== undefined && (obj.index = Math.round(message.index));
+    message.serialNum !== undefined && (obj.serialNum = Math.round(message.serialNum));
+    message.modifierClass !== undefined && (obj.modifierClass = Math.round(message.modifierClass));
+    message.abilityLevel !== undefined && (obj.abilityLevel = Math.round(message.abilityLevel));
+    message.stackCount !== undefined && (obj.stackCount = Math.round(message.stackCount));
+    message.creationTime !== undefined && (obj.creationTime = message.creationTime);
+    message.duration !== undefined && (obj.duration = message.duration);
+    message.caster !== undefined && (obj.caster = Math.round(message.caster));
+    message.ability !== undefined && (obj.ability = Math.round(message.ability));
+    message.armor !== undefined && (obj.armor = Math.round(message.armor));
+    message.fadeTime !== undefined && (obj.fadeTime = message.fadeTime);
+    message.subtle !== undefined && (obj.subtle = message.subtle);
+    message.channelTime !== undefined && (obj.channelTime = message.channelTime);
+    message.vStart !== undefined && (obj.vStart = message.vStart ? CMsgVector.toJSON(message.vStart) : undefined);
+    message.vEnd !== undefined && (obj.vEnd = message.vEnd ? CMsgVector.toJSON(message.vEnd) : undefined);
+    message.portalLoopAppear !== undefined && (obj.portalLoopAppear = message.portalLoopAppear);
+    message.portalLoopDisappear !== undefined && (obj.portalLoopDisappear = message.portalLoopDisappear);
+    message.heroLoopAppear !== undefined && (obj.heroLoopAppear = message.heroLoopAppear);
+    message.heroLoopDisappear !== undefined && (obj.heroLoopDisappear = message.heroLoopDisappear);
+    message.movementSpeed !== undefined && (obj.movementSpeed = Math.round(message.movementSpeed));
+    message.aura !== undefined && (obj.aura = message.aura);
+    message.activity !== undefined && (obj.activity = Math.round(message.activity));
+    message.damage !== undefined && (obj.damage = Math.round(message.damage));
+    message.range !== undefined && (obj.range = Math.round(message.range));
+    message.ddModifierIndex !== undefined && (obj.ddModifierIndex = Math.round(message.ddModifierIndex));
+    message.ddAbilityId !== undefined && (obj.ddAbilityId = Math.round(message.ddAbilityId));
+    message.illusionLabel !== undefined && (obj.illusionLabel = message.illusionLabel);
+    message.active !== undefined && (obj.active = message.active);
+    message.playerIds !== undefined && (obj.playerIds = message.playerIds);
+    message.luaName !== undefined && (obj.luaName = message.luaName);
+    message.attackSpeed !== undefined && (obj.attackSpeed = Math.round(message.attackSpeed));
+    message.auraOwner !== undefined && (obj.auraOwner = Math.round(message.auraOwner));
+    message.bonusAllStats !== undefined && (obj.bonusAllStats = Math.round(message.bonusAllStats));
+    message.bonusHealth !== undefined && (obj.bonusHealth = Math.round(message.bonusHealth));
+    message.bonusMana !== undefined && (obj.bonusMana = Math.round(message.bonusMana));
+    message.customEntity !== undefined && (obj.customEntity = Math.round(message.customEntity));
+    return obj;
+  },
 };
 
 function createBaseCDOTALuaModifierEntry(): CDOTALuaModifierEntry {
@@ -542,4 +652,41 @@ export const CDOTALuaModifierEntry = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTALuaModifierEntry {
+    return {
+      modifierType: isSet(object.modifierType) ? Number(object.modifierType) : 0,
+      modifierFilename: isSet(object.modifierFilename) ? String(object.modifierFilename) : "",
+    };
+  },
+
+  toJSON(message: CDOTALuaModifierEntry): unknown {
+    const obj: any = {};
+    message.modifierType !== undefined && (obj.modifierType = Math.round(message.modifierType));
+    message.modifierFilename !== undefined && (obj.modifierFilename = message.modifierFilename);
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
+}

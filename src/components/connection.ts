@@ -1,6 +1,5 @@
-// @ts-nocheck
 import { Dota2User } from '../Dota2User.js';
-let handlers = Dota2User.prototype._handlers;
+import { EGCBaseClientMsg } from '../generated-protobufs';
 
 const INITIAL_HELLO_DELAY = 500;
 const DEFAULT_HELLO_DELAY = 1000;
@@ -22,7 +21,7 @@ Dota2User.prototype._connect = function() {
             return;
         }
 
-        this._send(Dota2User.Protos.EGCBaseClientMsg.k_EMsgGCClientHello, {});
+        this.send(EGCBaseClientMsg.k_EMsgGCClientHello, {});
         this._helloTimerMs = Math.min(EXPONENTIAL_HELLO_BACKOFF_MAX, (this._helloTimerMs || DEFAULT_HELLO_DELAY) * 2); // exponential backoff, max 60 seconds
         this._helloTimer = setTimeout(sendHello, this._helloTimerMs);
         this.emit('debug', "Sending hello, setting timer for next attempt to " + this._helloTimerMs + " ms");

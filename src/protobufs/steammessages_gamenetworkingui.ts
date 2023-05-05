@@ -65,6 +65,15 @@ export const CGameNetworkingUIGlobalState = {
     }
     return message;
   },
+
+  fromJSON(_: any): CGameNetworkingUIGlobalState {
+    return {};
+  },
+
+  toJSON(_: CGameNetworkingUIGlobalState): unknown {
+    const obj: any = {};
+    return obj;
+  },
 };
 
 function createBaseCGameNetworkingUIConnectionState(): CGameNetworkingUIConnectionState {
@@ -389,6 +398,100 @@ export const CGameNetworkingUIConnectionState = {
     }
     return message;
   },
+
+  fromJSON(object: any): CGameNetworkingUIConnectionState {
+    return {
+      connectionKey: isSet(object.connectionKey) ? String(object.connectionKey) : "",
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      connectionIdLocal: isSet(object.connectionIdLocal) ? Number(object.connectionIdLocal) : 0,
+      identityLocal: isSet(object.identityLocal) ? String(object.identityLocal) : "",
+      identityRemote: isSet(object.identityRemote) ? String(object.identityRemote) : "",
+      connectionState: isSet(object.connectionState) ? Number(object.connectionState) : 0,
+      startTime: isSet(object.startTime) ? Number(object.startTime) : 0,
+      closeTime: isSet(object.closeTime) ? Number(object.closeTime) : 0,
+      closeReason: isSet(object.closeReason) ? Number(object.closeReason) : 0,
+      closeMessage: isSet(object.closeMessage) ? String(object.closeMessage) : "",
+      statusLocToken: isSet(object.statusLocToken) ? String(object.statusLocToken) : "",
+      transportKind: isSet(object.transportKind) ? Number(object.transportKind) : 0,
+      sdrpopidLocal: isSet(object.sdrpopidLocal) ? String(object.sdrpopidLocal) : "",
+      sdrpopidRemote: isSet(object.sdrpopidRemote) ? String(object.sdrpopidRemote) : "",
+      addressRemote: isSet(object.addressRemote) ? String(object.addressRemote) : "",
+      p2pRouting: isSet(object.p2pRouting) ? CMsgSteamDatagramP2PRoutingSummary.fromJSON(object.p2pRouting) : undefined,
+      pingInterior: isSet(object.pingInterior) ? Number(object.pingInterior) : 0,
+      pingRemoteFront: isSet(object.pingRemoteFront) ? Number(object.pingRemoteFront) : 0,
+      pingDefaultInternetRoute: isSet(object.pingDefaultInternetRoute) ? Number(object.pingDefaultInternetRoute) : 0,
+      e2eQualityLocal: isSet(object.e2eQualityLocal)
+        ? CMsgSteamDatagramConnectionQuality.fromJSON(object.e2eQualityLocal)
+        : undefined,
+      e2eQualityRemote: isSet(object.e2eQualityRemote)
+        ? CMsgSteamDatagramConnectionQuality.fromJSON(object.e2eQualityRemote)
+        : undefined,
+      e2eQualityRemoteInstantaneousTime: isSet(object.e2eQualityRemoteInstantaneousTime)
+        ? String(object.e2eQualityRemoteInstantaneousTime)
+        : "0",
+      e2eQualityRemoteLifetimeTime: isSet(object.e2eQualityRemoteLifetimeTime)
+        ? String(object.e2eQualityRemoteLifetimeTime)
+        : "0",
+      frontQualityLocal: isSet(object.frontQualityLocal)
+        ? CMsgSteamDatagramConnectionQuality.fromJSON(object.frontQualityLocal)
+        : undefined,
+      frontQualityRemote: isSet(object.frontQualityRemote)
+        ? CMsgSteamDatagramConnectionQuality.fromJSON(object.frontQualityRemote)
+        : undefined,
+      frontQualityRemoteInstantaneousTime: isSet(object.frontQualityRemoteInstantaneousTime)
+        ? String(object.frontQualityRemoteInstantaneousTime)
+        : "0",
+      frontQualityRemoteLifetimeTime: isSet(object.frontQualityRemoteLifetimeTime)
+        ? String(object.frontQualityRemoteLifetimeTime)
+        : "0",
+    };
+  },
+
+  toJSON(message: CGameNetworkingUIConnectionState): unknown {
+    const obj: any = {};
+    message.connectionKey !== undefined && (obj.connectionKey = message.connectionKey);
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    message.connectionIdLocal !== undefined && (obj.connectionIdLocal = Math.round(message.connectionIdLocal));
+    message.identityLocal !== undefined && (obj.identityLocal = message.identityLocal);
+    message.identityRemote !== undefined && (obj.identityRemote = message.identityRemote);
+    message.connectionState !== undefined && (obj.connectionState = Math.round(message.connectionState));
+    message.startTime !== undefined && (obj.startTime = Math.round(message.startTime));
+    message.closeTime !== undefined && (obj.closeTime = Math.round(message.closeTime));
+    message.closeReason !== undefined && (obj.closeReason = Math.round(message.closeReason));
+    message.closeMessage !== undefined && (obj.closeMessage = message.closeMessage);
+    message.statusLocToken !== undefined && (obj.statusLocToken = message.statusLocToken);
+    message.transportKind !== undefined && (obj.transportKind = Math.round(message.transportKind));
+    message.sdrpopidLocal !== undefined && (obj.sdrpopidLocal = message.sdrpopidLocal);
+    message.sdrpopidRemote !== undefined && (obj.sdrpopidRemote = message.sdrpopidRemote);
+    message.addressRemote !== undefined && (obj.addressRemote = message.addressRemote);
+    message.p2pRouting !== undefined &&
+      (obj.p2pRouting = message.p2pRouting ? CMsgSteamDatagramP2PRoutingSummary.toJSON(message.p2pRouting) : undefined);
+    message.pingInterior !== undefined && (obj.pingInterior = Math.round(message.pingInterior));
+    message.pingRemoteFront !== undefined && (obj.pingRemoteFront = Math.round(message.pingRemoteFront));
+    message.pingDefaultInternetRoute !== undefined &&
+      (obj.pingDefaultInternetRoute = Math.round(message.pingDefaultInternetRoute));
+    message.e2eQualityLocal !== undefined && (obj.e2eQualityLocal = message.e2eQualityLocal
+      ? CMsgSteamDatagramConnectionQuality.toJSON(message.e2eQualityLocal)
+      : undefined);
+    message.e2eQualityRemote !== undefined && (obj.e2eQualityRemote = message.e2eQualityRemote
+      ? CMsgSteamDatagramConnectionQuality.toJSON(message.e2eQualityRemote)
+      : undefined);
+    message.e2eQualityRemoteInstantaneousTime !== undefined &&
+      (obj.e2eQualityRemoteInstantaneousTime = message.e2eQualityRemoteInstantaneousTime);
+    message.e2eQualityRemoteLifetimeTime !== undefined &&
+      (obj.e2eQualityRemoteLifetimeTime = message.e2eQualityRemoteLifetimeTime);
+    message.frontQualityLocal !== undefined && (obj.frontQualityLocal = message.frontQualityLocal
+      ? CMsgSteamDatagramConnectionQuality.toJSON(message.frontQualityLocal)
+      : undefined);
+    message.frontQualityRemote !== undefined && (obj.frontQualityRemote = message.frontQualityRemote
+      ? CMsgSteamDatagramConnectionQuality.toJSON(message.frontQualityRemote)
+      : undefined);
+    message.frontQualityRemoteInstantaneousTime !== undefined &&
+      (obj.frontQualityRemoteInstantaneousTime = message.frontQualityRemoteInstantaneousTime);
+    message.frontQualityRemoteLifetimeTime !== undefined &&
+      (obj.frontQualityRemoteLifetimeTime = message.frontQualityRemoteLifetimeTime);
+    return obj;
+  },
 };
 
 function createBaseCGameNetworkingUIMessage(): CGameNetworkingUIMessage {
@@ -425,6 +528,26 @@ export const CGameNetworkingUIMessage = {
     }
     return message;
   },
+
+  fromJSON(object: any): CGameNetworkingUIMessage {
+    return {
+      connectionState: Array.isArray(object?.connectionState)
+        ? object.connectionState.map((e: any) => CGameNetworkingUIConnectionState.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CGameNetworkingUIMessage): unknown {
+    const obj: any = {};
+    if (message.connectionState) {
+      obj.connectionState = message.connectionState.map((e) =>
+        e ? CGameNetworkingUIConnectionState.toJSON(e) : undefined
+      );
+    } else {
+      obj.connectionState = [];
+    }
+    return obj;
+  },
 };
 
 function longToString(long: Long) {
@@ -434,4 +557,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

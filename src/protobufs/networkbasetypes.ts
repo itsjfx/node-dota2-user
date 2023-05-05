@@ -1,7 +1,11 @@
 /* eslint-disable */
 import Long from "long";
 import _m0 from "protobufjs/minimal";
-import { ENetworkDisconnectionReason } from "./network_connection";
+import {
+  ENetworkDisconnectionReason,
+  eNetworkDisconnectionReasonFromJSON,
+  eNetworkDisconnectionReasonToJSON,
+} from "./network_connection";
 
 export enum SignonStateT {
   SIGNONSTATE_NONE = 0,
@@ -12,6 +16,60 @@ export enum SignonStateT {
   SIGNONSTATE_SPAWN = 5,
   SIGNONSTATE_FULL = 6,
   SIGNONSTATE_CHANGELEVEL = 7,
+}
+
+export function signonStateTFromJSON(object: any): SignonStateT {
+  switch (object) {
+    case 0:
+    case "SIGNONSTATE_NONE":
+      return SignonStateT.SIGNONSTATE_NONE;
+    case 1:
+    case "SIGNONSTATE_CHALLENGE":
+      return SignonStateT.SIGNONSTATE_CHALLENGE;
+    case 2:
+    case "SIGNONSTATE_CONNECTED":
+      return SignonStateT.SIGNONSTATE_CONNECTED;
+    case 3:
+    case "SIGNONSTATE_NEW":
+      return SignonStateT.SIGNONSTATE_NEW;
+    case 4:
+    case "SIGNONSTATE_PRESPAWN":
+      return SignonStateT.SIGNONSTATE_PRESPAWN;
+    case 5:
+    case "SIGNONSTATE_SPAWN":
+      return SignonStateT.SIGNONSTATE_SPAWN;
+    case 6:
+    case "SIGNONSTATE_FULL":
+      return SignonStateT.SIGNONSTATE_FULL;
+    case 7:
+    case "SIGNONSTATE_CHANGELEVEL":
+      return SignonStateT.SIGNONSTATE_CHANGELEVEL;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum SignonStateT");
+  }
+}
+
+export function signonStateTToJSON(object: SignonStateT): string {
+  switch (object) {
+    case SignonStateT.SIGNONSTATE_NONE:
+      return "SIGNONSTATE_NONE";
+    case SignonStateT.SIGNONSTATE_CHALLENGE:
+      return "SIGNONSTATE_CHALLENGE";
+    case SignonStateT.SIGNONSTATE_CONNECTED:
+      return "SIGNONSTATE_CONNECTED";
+    case SignonStateT.SIGNONSTATE_NEW:
+      return "SIGNONSTATE_NEW";
+    case SignonStateT.SIGNONSTATE_PRESPAWN:
+      return "SIGNONSTATE_PRESPAWN";
+    case SignonStateT.SIGNONSTATE_SPAWN:
+      return "SIGNONSTATE_SPAWN";
+    case SignonStateT.SIGNONSTATE_FULL:
+      return "SIGNONSTATE_FULL";
+    case SignonStateT.SIGNONSTATE_CHANGELEVEL:
+      return "SIGNONSTATE_CHANGELEVEL";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum SignonStateT");
+  }
 }
 
 export enum NETMessages {
@@ -30,6 +88,85 @@ export enum NETMessages {
   net_DebugOverlay = 15,
 }
 
+export function nETMessagesFromJSON(object: any): NETMessages {
+  switch (object) {
+    case 0:
+    case "net_NOP":
+      return NETMessages.net_NOP;
+    case 1:
+    case "net_Disconnect":
+      return NETMessages.net_Disconnect;
+    case 3:
+    case "net_SplitScreenUser":
+      return NETMessages.net_SplitScreenUser;
+    case 4:
+    case "net_Tick":
+      return NETMessages.net_Tick;
+    case 5:
+    case "net_StringCmd":
+      return NETMessages.net_StringCmd;
+    case 6:
+    case "net_SetConVar":
+      return NETMessages.net_SetConVar;
+    case 7:
+    case "net_SignonState":
+      return NETMessages.net_SignonState;
+    case 8:
+    case "net_SpawnGroup_Load":
+      return NETMessages.net_SpawnGroup_Load;
+    case 9:
+    case "net_SpawnGroup_ManifestUpdate":
+      return NETMessages.net_SpawnGroup_ManifestUpdate;
+    case 11:
+    case "net_SpawnGroup_SetCreationTick":
+      return NETMessages.net_SpawnGroup_SetCreationTick;
+    case 12:
+    case "net_SpawnGroup_Unload":
+      return NETMessages.net_SpawnGroup_Unload;
+    case 13:
+    case "net_SpawnGroup_LoadCompleted":
+      return NETMessages.net_SpawnGroup_LoadCompleted;
+    case 15:
+    case "net_DebugOverlay":
+      return NETMessages.net_DebugOverlay;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum NETMessages");
+  }
+}
+
+export function nETMessagesToJSON(object: NETMessages): string {
+  switch (object) {
+    case NETMessages.net_NOP:
+      return "net_NOP";
+    case NETMessages.net_Disconnect:
+      return "net_Disconnect";
+    case NETMessages.net_SplitScreenUser:
+      return "net_SplitScreenUser";
+    case NETMessages.net_Tick:
+      return "net_Tick";
+    case NETMessages.net_StringCmd:
+      return "net_StringCmd";
+    case NETMessages.net_SetConVar:
+      return "net_SetConVar";
+    case NETMessages.net_SignonState:
+      return "net_SignonState";
+    case NETMessages.net_SpawnGroup_Load:
+      return "net_SpawnGroup_Load";
+    case NETMessages.net_SpawnGroup_ManifestUpdate:
+      return "net_SpawnGroup_ManifestUpdate";
+    case NETMessages.net_SpawnGroup_SetCreationTick:
+      return "net_SpawnGroup_SetCreationTick";
+    case NETMessages.net_SpawnGroup_Unload:
+      return "net_SpawnGroup_Unload";
+    case NETMessages.net_SpawnGroup_LoadCompleted:
+      return "net_SpawnGroup_LoadCompleted";
+    case NETMessages.net_DebugOverlay:
+      return "net_DebugOverlay";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum NETMessages");
+  }
+}
+
 export enum SpawnGroupFlagsT {
   SPAWN_GROUP_LOAD_ENTITIES_FROM_SAVE = 1,
   SPAWN_GROUP_DONT_SPAWN_ENTITIES = 2,
@@ -39,6 +176,60 @@ export enum SpawnGroupFlagsT {
   SPAWN_GROUP_BLOCK_UNTIL_LOADED = 64,
   SPAWN_GROUP_LOAD_STREAMING_DATA = 128,
   SPAWN_GROUP_CREATE_NEW_SCENE_WORLD = 256,
+}
+
+export function spawnGroupFlagsTFromJSON(object: any): SpawnGroupFlagsT {
+  switch (object) {
+    case 1:
+    case "SPAWN_GROUP_LOAD_ENTITIES_FROM_SAVE":
+      return SpawnGroupFlagsT.SPAWN_GROUP_LOAD_ENTITIES_FROM_SAVE;
+    case 2:
+    case "SPAWN_GROUP_DONT_SPAWN_ENTITIES":
+      return SpawnGroupFlagsT.SPAWN_GROUP_DONT_SPAWN_ENTITIES;
+    case 4:
+    case "SPAWN_GROUP_SYNCHRONOUS_SPAWN":
+      return SpawnGroupFlagsT.SPAWN_GROUP_SYNCHRONOUS_SPAWN;
+    case 8:
+    case "SPAWN_GROUP_IS_INITIAL_SPAWN_GROUP":
+      return SpawnGroupFlagsT.SPAWN_GROUP_IS_INITIAL_SPAWN_GROUP;
+    case 16:
+    case "SPAWN_GROUP_CREATE_CLIENT_ONLY_ENTITIES":
+      return SpawnGroupFlagsT.SPAWN_GROUP_CREATE_CLIENT_ONLY_ENTITIES;
+    case 64:
+    case "SPAWN_GROUP_BLOCK_UNTIL_LOADED":
+      return SpawnGroupFlagsT.SPAWN_GROUP_BLOCK_UNTIL_LOADED;
+    case 128:
+    case "SPAWN_GROUP_LOAD_STREAMING_DATA":
+      return SpawnGroupFlagsT.SPAWN_GROUP_LOAD_STREAMING_DATA;
+    case 256:
+    case "SPAWN_GROUP_CREATE_NEW_SCENE_WORLD":
+      return SpawnGroupFlagsT.SPAWN_GROUP_CREATE_NEW_SCENE_WORLD;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum SpawnGroupFlagsT");
+  }
+}
+
+export function spawnGroupFlagsTToJSON(object: SpawnGroupFlagsT): string {
+  switch (object) {
+    case SpawnGroupFlagsT.SPAWN_GROUP_LOAD_ENTITIES_FROM_SAVE:
+      return "SPAWN_GROUP_LOAD_ENTITIES_FROM_SAVE";
+    case SpawnGroupFlagsT.SPAWN_GROUP_DONT_SPAWN_ENTITIES:
+      return "SPAWN_GROUP_DONT_SPAWN_ENTITIES";
+    case SpawnGroupFlagsT.SPAWN_GROUP_SYNCHRONOUS_SPAWN:
+      return "SPAWN_GROUP_SYNCHRONOUS_SPAWN";
+    case SpawnGroupFlagsT.SPAWN_GROUP_IS_INITIAL_SPAWN_GROUP:
+      return "SPAWN_GROUP_IS_INITIAL_SPAWN_GROUP";
+    case SpawnGroupFlagsT.SPAWN_GROUP_CREATE_CLIENT_ONLY_ENTITIES:
+      return "SPAWN_GROUP_CREATE_CLIENT_ONLY_ENTITIES";
+    case SpawnGroupFlagsT.SPAWN_GROUP_BLOCK_UNTIL_LOADED:
+      return "SPAWN_GROUP_BLOCK_UNTIL_LOADED";
+    case SpawnGroupFlagsT.SPAWN_GROUP_LOAD_STREAMING_DATA:
+      return "SPAWN_GROUP_LOAD_STREAMING_DATA";
+    case SpawnGroupFlagsT.SPAWN_GROUP_CREATE_NEW_SCENE_WORLD:
+      return "SPAWN_GROUP_CREATE_NEW_SCENE_WORLD";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum SpawnGroupFlagsT");
+  }
 }
 
 export interface CMsgVector {
@@ -309,6 +500,24 @@ export const CMsgVector = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgVector {
+    return {
+      x: isSet(object.x) ? Number(object.x) : 0,
+      y: isSet(object.y) ? Number(object.y) : 0,
+      z: isSet(object.z) ? Number(object.z) : 0,
+      w: isSet(object.w) ? Number(object.w) : 0,
+    };
+  },
+
+  toJSON(message: CMsgVector): unknown {
+    const obj: any = {};
+    message.x !== undefined && (obj.x = message.x);
+    message.y !== undefined && (obj.y = message.y);
+    message.z !== undefined && (obj.z = message.z);
+    message.w !== undefined && (obj.w = message.w);
+    return obj;
+  },
 };
 
 function createBaseCMsgVector2D(): CMsgVector2D {
@@ -354,6 +563,17 @@ export const CMsgVector2D = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgVector2D {
+    return { x: isSet(object.x) ? Number(object.x) : 0, y: isSet(object.y) ? Number(object.y) : 0 };
+  },
+
+  toJSON(message: CMsgVector2D): unknown {
+    const obj: any = {};
+    message.x !== undefined && (obj.x = message.x);
+    message.y !== undefined && (obj.y = message.y);
+    return obj;
   },
 };
 
@@ -410,6 +630,22 @@ export const CMsgQAngle = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgQAngle {
+    return {
+      x: isSet(object.x) ? Number(object.x) : 0,
+      y: isSet(object.y) ? Number(object.y) : 0,
+      z: isSet(object.z) ? Number(object.z) : 0,
+    };
+  },
+
+  toJSON(message: CMsgQAngle): unknown {
+    const obj: any = {};
+    message.x !== undefined && (obj.x = message.x);
+    message.y !== undefined && (obj.y = message.y);
+    message.z !== undefined && (obj.z = message.z);
+    return obj;
   },
 };
 
@@ -477,6 +713,24 @@ export const CMsgQuaternion = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgQuaternion {
+    return {
+      x: isSet(object.x) ? Number(object.x) : 0,
+      y: isSet(object.y) ? Number(object.y) : 0,
+      z: isSet(object.z) ? Number(object.z) : 0,
+      w: isSet(object.w) ? Number(object.w) : 0,
+    };
+  },
+
+  toJSON(message: CMsgQuaternion): unknown {
+    const obj: any = {};
+    message.x !== undefined && (obj.x = message.x);
+    message.y !== undefined && (obj.y = message.y);
+    message.z !== undefined && (obj.z = message.z);
+    message.w !== undefined && (obj.w = message.w);
+    return obj;
+  },
 };
 
 function createBaseCMsgTransform(): CMsgTransform {
@@ -532,6 +786,24 @@ export const CMsgTransform = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgTransform {
+    return {
+      position: isSet(object.position) ? CMsgVector.fromJSON(object.position) : undefined,
+      scale: isSet(object.scale) ? Number(object.scale) : 0,
+      orientation: isSet(object.orientation) ? CMsgQuaternion.fromJSON(object.orientation) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgTransform): unknown {
+    const obj: any = {};
+    message.position !== undefined &&
+      (obj.position = message.position ? CMsgVector.toJSON(message.position) : undefined);
+    message.scale !== undefined && (obj.scale = message.scale);
+    message.orientation !== undefined &&
+      (obj.orientation = message.orientation ? CMsgQuaternion.toJSON(message.orientation) : undefined);
+    return obj;
   },
 };
 
@@ -598,6 +870,24 @@ export const CMsgRGBA = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgRGBA {
+    return {
+      r: isSet(object.r) ? Number(object.r) : 0,
+      g: isSet(object.g) ? Number(object.g) : 0,
+      b: isSet(object.b) ? Number(object.b) : 0,
+      a: isSet(object.a) ? Number(object.a) : 0,
+    };
+  },
+
+  toJSON(message: CMsgRGBA): unknown {
+    const obj: any = {};
+    message.r !== undefined && (obj.r = Math.round(message.r));
+    message.g !== undefined && (obj.g = Math.round(message.g));
+    message.b !== undefined && (obj.b = Math.round(message.b));
+    message.a !== undefined && (obj.a = Math.round(message.a));
+    return obj;
   },
 };
 
@@ -685,6 +975,28 @@ export const CMsgPlayerInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgPlayerInfo {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      xuid: isSet(object.xuid) ? String(object.xuid) : "0",
+      userid: isSet(object.userid) ? Number(object.userid) : 0,
+      steamid: isSet(object.steamid) ? String(object.steamid) : "0",
+      fakeplayer: isSet(object.fakeplayer) ? Boolean(object.fakeplayer) : false,
+      ishltv: isSet(object.ishltv) ? Boolean(object.ishltv) : false,
+    };
+  },
+
+  toJSON(message: CMsgPlayerInfo): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.xuid !== undefined && (obj.xuid = message.xuid);
+    message.userid !== undefined && (obj.userid = Math.round(message.userid));
+    message.steamid !== undefined && (obj.steamid = message.steamid);
+    message.fakeplayer !== undefined && (obj.fakeplayer = message.fakeplayer);
+    message.ishltv !== undefined && (obj.ishltv = message.ishltv);
+    return obj;
+  },
 };
 
 function createBaseCEntityMsg(): CEntityMsg {
@@ -721,6 +1033,16 @@ export const CEntityMsg = {
     }
     return message;
   },
+
+  fromJSON(object: any): CEntityMsg {
+    return { targetEntity: isSet(object.targetEntity) ? Number(object.targetEntity) : 0 };
+  },
+
+  toJSON(message: CEntityMsg): unknown {
+    const obj: any = {};
+    message.targetEntity !== undefined && (obj.targetEntity = Math.round(message.targetEntity));
+    return obj;
+  },
 };
 
 function createBaseCMsgCVars(): CMsgCVars {
@@ -756,6 +1078,20 @@ export const CMsgCVars = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgCVars {
+    return { cvars: Array.isArray(object?.cvars) ? object.cvars.map((e: any) => CMsgCVars_CVar.fromJSON(e)) : [] };
+  },
+
+  toJSON(message: CMsgCVars): unknown {
+    const obj: any = {};
+    if (message.cvars) {
+      obj.cvars = message.cvars.map((e) => e ? CMsgCVars_CVar.toJSON(e) : undefined);
+    } else {
+      obj.cvars = [];
+    }
+    return obj;
   },
 };
 
@@ -803,6 +1139,20 @@ export const CMsgCVars_CVar = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgCVars_CVar {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      value: isSet(object.value) ? String(object.value) : "",
+    };
+  },
+
+  toJSON(message: CMsgCVars_CVar): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.value !== undefined && (obj.value = message.value);
+    return obj;
+  },
 };
 
 function createBaseCNETMsgNOP(): CNETMsgNOP {
@@ -828,6 +1178,15 @@ export const CNETMsgNOP = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CNETMsgNOP {
+    return {};
+  },
+
+  toJSON(_: CNETMsgNOP): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -865,6 +1224,16 @@ export const CNETMsgSplitScreenUser = {
     }
     return message;
   },
+
+  fromJSON(object: any): CNETMsgSplitScreenUser {
+    return { slot: isSet(object.slot) ? Number(object.slot) : 0 };
+  },
+
+  toJSON(message: CNETMsgSplitScreenUser): unknown {
+    const obj: any = {};
+    message.slot !== undefined && (obj.slot = Math.round(message.slot));
+    return obj;
+  },
 };
 
 function createBaseCNETMsgDisconnect(): CNETMsgDisconnect {
@@ -900,6 +1269,16 @@ export const CNETMsgDisconnect = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CNETMsgDisconnect {
+    return { reason: isSet(object.reason) ? eNetworkDisconnectionReasonFromJSON(object.reason) : 0 };
+  },
+
+  toJSON(message: CNETMsgDisconnect): unknown {
+    const obj: any = {};
+    message.reason !== undefined && (obj.reason = eNetworkDisconnectionReasonToJSON(message.reason));
+    return obj;
   },
 };
 
@@ -1027,6 +1406,42 @@ export const CNETMsgTick = {
     }
     return message;
   },
+
+  fromJSON(object: any): CNETMsgTick {
+    return {
+      tick: isSet(object.tick) ? Number(object.tick) : 0,
+      hostFrametime: isSet(object.hostFrametime) ? Number(object.hostFrametime) : 0,
+      hostFrametimeStdDeviation: isSet(object.hostFrametimeStdDeviation) ? Number(object.hostFrametimeStdDeviation) : 0,
+      hostComputationtime: isSet(object.hostComputationtime) ? Number(object.hostComputationtime) : 0,
+      hostComputationtimeStdDeviation: isSet(object.hostComputationtimeStdDeviation)
+        ? Number(object.hostComputationtimeStdDeviation)
+        : 0,
+      hostFramestarttimeStdDeviation: isSet(object.hostFramestarttimeStdDeviation)
+        ? Number(object.hostFramestarttimeStdDeviation)
+        : 0,
+      hostLoss: isSet(object.hostLoss) ? Number(object.hostLoss) : 0,
+      hostUnfilteredFrametime: isSet(object.hostUnfilteredFrametime) ? Number(object.hostUnfilteredFrametime) : 0,
+      hltvReplayFlags: isSet(object.hltvReplayFlags) ? Number(object.hltvReplayFlags) : 0,
+    };
+  },
+
+  toJSON(message: CNETMsgTick): unknown {
+    const obj: any = {};
+    message.tick !== undefined && (obj.tick = Math.round(message.tick));
+    message.hostFrametime !== undefined && (obj.hostFrametime = Math.round(message.hostFrametime));
+    message.hostFrametimeStdDeviation !== undefined &&
+      (obj.hostFrametimeStdDeviation = Math.round(message.hostFrametimeStdDeviation));
+    message.hostComputationtime !== undefined && (obj.hostComputationtime = Math.round(message.hostComputationtime));
+    message.hostComputationtimeStdDeviation !== undefined &&
+      (obj.hostComputationtimeStdDeviation = Math.round(message.hostComputationtimeStdDeviation));
+    message.hostFramestarttimeStdDeviation !== undefined &&
+      (obj.hostFramestarttimeStdDeviation = Math.round(message.hostFramestarttimeStdDeviation));
+    message.hostLoss !== undefined && (obj.hostLoss = Math.round(message.hostLoss));
+    message.hostUnfilteredFrametime !== undefined &&
+      (obj.hostUnfilteredFrametime = Math.round(message.hostUnfilteredFrametime));
+    message.hltvReplayFlags !== undefined && (obj.hltvReplayFlags = Math.round(message.hltvReplayFlags));
+    return obj;
+  },
 };
 
 function createBaseCNETMsgStringCmd(): CNETMsgStringCmd {
@@ -1063,6 +1478,16 @@ export const CNETMsgStringCmd = {
     }
     return message;
   },
+
+  fromJSON(object: any): CNETMsgStringCmd {
+    return { command: isSet(object.command) ? String(object.command) : "" };
+  },
+
+  toJSON(message: CNETMsgStringCmd): unknown {
+    const obj: any = {};
+    message.command !== undefined && (obj.command = message.command);
+    return obj;
+  },
 };
 
 function createBaseCNETMsgSetConVar(): CNETMsgSetConVar {
@@ -1098,6 +1523,16 @@ export const CNETMsgSetConVar = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CNETMsgSetConVar {
+    return { convars: isSet(object.convars) ? CMsgCVars.fromJSON(object.convars) : undefined };
+  },
+
+  toJSON(message: CNETMsgSetConVar): unknown {
+    const obj: any = {};
+    message.convars !== undefined && (obj.convars = message.convars ? CMsgCVars.toJSON(message.convars) : undefined);
+    return obj;
   },
 };
 
@@ -1185,6 +1620,34 @@ export const CNETMsgSignonState = {
     }
     return message;
   },
+
+  fromJSON(object: any): CNETMsgSignonState {
+    return {
+      signonState: isSet(object.signonState) ? signonStateTFromJSON(object.signonState) : 0,
+      spawnCount: isSet(object.spawnCount) ? Number(object.spawnCount) : 0,
+      numServerPlayers: isSet(object.numServerPlayers) ? Number(object.numServerPlayers) : 0,
+      playersNetworkids: Array.isArray(object?.playersNetworkids)
+        ? object.playersNetworkids.map((e: any) => String(e))
+        : [],
+      mapName: isSet(object.mapName) ? String(object.mapName) : "",
+      addons: isSet(object.addons) ? String(object.addons) : "",
+    };
+  },
+
+  toJSON(message: CNETMsgSignonState): unknown {
+    const obj: any = {};
+    message.signonState !== undefined && (obj.signonState = signonStateTToJSON(message.signonState));
+    message.spawnCount !== undefined && (obj.spawnCount = Math.round(message.spawnCount));
+    message.numServerPlayers !== undefined && (obj.numServerPlayers = Math.round(message.numServerPlayers));
+    if (message.playersNetworkids) {
+      obj.playersNetworkids = message.playersNetworkids.map((e) => e);
+    } else {
+      obj.playersNetworkids = [];
+    }
+    message.mapName !== undefined && (obj.mapName = message.mapName);
+    message.addons !== undefined && (obj.addons = message.addons);
+    return obj;
+  },
 };
 
 function createBaseCSVCMsgGameEvent(): CSVCMsgGameEvent {
@@ -1240,6 +1703,26 @@ export const CSVCMsgGameEvent = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSVCMsgGameEvent {
+    return {
+      eventName: isSet(object.eventName) ? String(object.eventName) : "",
+      eventid: isSet(object.eventid) ? Number(object.eventid) : 0,
+      keys: Array.isArray(object?.keys) ? object.keys.map((e: any) => CSVCMsgGameEvent_keyT.fromJSON(e)) : [],
+    };
+  },
+
+  toJSON(message: CSVCMsgGameEvent): unknown {
+    const obj: any = {};
+    message.eventName !== undefined && (obj.eventName = message.eventName);
+    message.eventid !== undefined && (obj.eventid = Math.round(message.eventid));
+    if (message.keys) {
+      obj.keys = message.keys.map((e) => e ? CSVCMsgGameEvent_keyT.toJSON(e) : undefined);
+    } else {
+      obj.keys = [];
+    }
+    return obj;
   },
 };
 
@@ -1347,6 +1830,32 @@ export const CSVCMsgGameEvent_keyT = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSVCMsgGameEvent_keyT {
+    return {
+      type: isSet(object.type) ? Number(object.type) : 0,
+      valString: isSet(object.valString) ? String(object.valString) : "",
+      valFloat: isSet(object.valFloat) ? Number(object.valFloat) : 0,
+      valLong: isSet(object.valLong) ? Number(object.valLong) : 0,
+      valShort: isSet(object.valShort) ? Number(object.valShort) : 0,
+      valByte: isSet(object.valByte) ? Number(object.valByte) : 0,
+      valBool: isSet(object.valBool) ? Boolean(object.valBool) : false,
+      valUint64: isSet(object.valUint64) ? String(object.valUint64) : "0",
+    };
+  },
+
+  toJSON(message: CSVCMsgGameEvent_keyT): unknown {
+    const obj: any = {};
+    message.type !== undefined && (obj.type = Math.round(message.type));
+    message.valString !== undefined && (obj.valString = message.valString);
+    message.valFloat !== undefined && (obj.valFloat = message.valFloat);
+    message.valLong !== undefined && (obj.valLong = Math.round(message.valLong));
+    message.valShort !== undefined && (obj.valShort = Math.round(message.valShort));
+    message.valByte !== undefined && (obj.valByte = Math.round(message.valByte));
+    message.valBool !== undefined && (obj.valBool = message.valBool);
+    message.valUint64 !== undefined && (obj.valUint64 = message.valUint64);
+    return obj;
+  },
 };
 
 function createBaseCSVCMsgListGameEvents(): CSVCMsgListGameEvents {
@@ -1382,6 +1891,24 @@ export const CSVCMsgListGameEvents = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSVCMsgListGameEvents {
+    return {
+      events: Array.isArray(object?.events)
+        ? object.events.map((e: any) => CSVCMsgListGameEvents_eventT.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CSVCMsgListGameEvents): unknown {
+    const obj: any = {};
+    if (message.events) {
+      obj.events = message.events.map((e) => e ? CSVCMsgListGameEvents_eventT.toJSON(e) : undefined);
+    } else {
+      obj.events = [];
+    }
+    return obj;
   },
 };
 
@@ -1428,6 +1955,20 @@ export const CSVCMsgListGameEvents_eventT = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSVCMsgListGameEvents_eventT {
+    return {
+      tick: isSet(object.tick) ? Number(object.tick) : 0,
+      event: isSet(object.event) ? CSVCMsgGameEvent.fromJSON(object.event) : undefined,
+    };
+  },
+
+  toJSON(message: CSVCMsgListGameEvents_eventT): unknown {
+    const obj: any = {};
+    message.tick !== undefined && (obj.tick = Math.round(message.tick));
+    message.event !== undefined && (obj.event = message.event ? CSVCMsgGameEvent.toJSON(message.event) : undefined);
+    return obj;
   },
 };
 
@@ -1676,6 +2217,65 @@ export const CNETMsgSpawnGroupLoad = {
     }
     return message;
   },
+
+  fromJSON(object: any): CNETMsgSpawnGroupLoad {
+    return {
+      worldname: isSet(object.worldname) ? String(object.worldname) : "",
+      entitylumpname: isSet(object.entitylumpname) ? String(object.entitylumpname) : "",
+      entityfiltername: isSet(object.entityfiltername) ? String(object.entityfiltername) : "",
+      spawngrouphandle: isSet(object.spawngrouphandle) ? Number(object.spawngrouphandle) : 0,
+      spawngroupownerhandle: isSet(object.spawngroupownerhandle) ? Number(object.spawngroupownerhandle) : 0,
+      worldOffsetPos: isSet(object.worldOffsetPos) ? CMsgVector.fromJSON(object.worldOffsetPos) : undefined,
+      worldOffsetAngle: isSet(object.worldOffsetAngle) ? CMsgQAngle.fromJSON(object.worldOffsetAngle) : undefined,
+      spawngroupmanifest: isSet(object.spawngroupmanifest)
+        ? Buffer.from(bytesFromBase64(object.spawngroupmanifest))
+        : Buffer.alloc(0),
+      flags: isSet(object.flags) ? Number(object.flags) : 0,
+      tickcount: isSet(object.tickcount) ? Number(object.tickcount) : 0,
+      manifestincomplete: isSet(object.manifestincomplete) ? Boolean(object.manifestincomplete) : false,
+      localnamefixup: isSet(object.localnamefixup) ? String(object.localnamefixup) : "",
+      parentnamefixup: isSet(object.parentnamefixup) ? String(object.parentnamefixup) : "",
+      manifestloadpriority: isSet(object.manifestloadpriority) ? Number(object.manifestloadpriority) : 0,
+      worldgroupid: isSet(object.worldgroupid) ? Number(object.worldgroupid) : 0,
+      creationsequence: isSet(object.creationsequence) ? Number(object.creationsequence) : 0,
+      savegamefilename: isSet(object.savegamefilename) ? String(object.savegamefilename) : "",
+      spawngroupparenthandle: isSet(object.spawngroupparenthandle) ? Number(object.spawngroupparenthandle) : 0,
+      leveltransition: isSet(object.leveltransition) ? Boolean(object.leveltransition) : false,
+      worldgroupname: isSet(object.worldgroupname) ? String(object.worldgroupname) : "",
+    };
+  },
+
+  toJSON(message: CNETMsgSpawnGroupLoad): unknown {
+    const obj: any = {};
+    message.worldname !== undefined && (obj.worldname = message.worldname);
+    message.entitylumpname !== undefined && (obj.entitylumpname = message.entitylumpname);
+    message.entityfiltername !== undefined && (obj.entityfiltername = message.entityfiltername);
+    message.spawngrouphandle !== undefined && (obj.spawngrouphandle = Math.round(message.spawngrouphandle));
+    message.spawngroupownerhandle !== undefined &&
+      (obj.spawngroupownerhandle = Math.round(message.spawngroupownerhandle));
+    message.worldOffsetPos !== undefined &&
+      (obj.worldOffsetPos = message.worldOffsetPos ? CMsgVector.toJSON(message.worldOffsetPos) : undefined);
+    message.worldOffsetAngle !== undefined &&
+      (obj.worldOffsetAngle = message.worldOffsetAngle ? CMsgQAngle.toJSON(message.worldOffsetAngle) : undefined);
+    message.spawngroupmanifest !== undefined &&
+      (obj.spawngroupmanifest = base64FromBytes(
+        message.spawngroupmanifest !== undefined ? message.spawngroupmanifest : Buffer.alloc(0),
+      ));
+    message.flags !== undefined && (obj.flags = Math.round(message.flags));
+    message.tickcount !== undefined && (obj.tickcount = Math.round(message.tickcount));
+    message.manifestincomplete !== undefined && (obj.manifestincomplete = message.manifestincomplete);
+    message.localnamefixup !== undefined && (obj.localnamefixup = message.localnamefixup);
+    message.parentnamefixup !== undefined && (obj.parentnamefixup = message.parentnamefixup);
+    message.manifestloadpriority !== undefined && (obj.manifestloadpriority = Math.round(message.manifestloadpriority));
+    message.worldgroupid !== undefined && (obj.worldgroupid = Math.round(message.worldgroupid));
+    message.creationsequence !== undefined && (obj.creationsequence = Math.round(message.creationsequence));
+    message.savegamefilename !== undefined && (obj.savegamefilename = message.savegamefilename);
+    message.spawngroupparenthandle !== undefined &&
+      (obj.spawngroupparenthandle = Math.round(message.spawngroupparenthandle));
+    message.leveltransition !== undefined && (obj.leveltransition = message.leveltransition);
+    message.worldgroupname !== undefined && (obj.worldgroupname = message.worldgroupname);
+    return obj;
+  },
 };
 
 function createBaseCNETMsgSpawnGroupManifestUpdate(): CNETMsgSpawnGroupManifestUpdate {
@@ -1731,6 +2331,27 @@ export const CNETMsgSpawnGroupManifestUpdate = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CNETMsgSpawnGroupManifestUpdate {
+    return {
+      spawngrouphandle: isSet(object.spawngrouphandle) ? Number(object.spawngrouphandle) : 0,
+      spawngroupmanifest: isSet(object.spawngroupmanifest)
+        ? Buffer.from(bytesFromBase64(object.spawngroupmanifest))
+        : Buffer.alloc(0),
+      manifestincomplete: isSet(object.manifestincomplete) ? Boolean(object.manifestincomplete) : false,
+    };
+  },
+
+  toJSON(message: CNETMsgSpawnGroupManifestUpdate): unknown {
+    const obj: any = {};
+    message.spawngrouphandle !== undefined && (obj.spawngrouphandle = Math.round(message.spawngrouphandle));
+    message.spawngroupmanifest !== undefined &&
+      (obj.spawngroupmanifest = base64FromBytes(
+        message.spawngroupmanifest !== undefined ? message.spawngroupmanifest : Buffer.alloc(0),
+      ));
+    message.manifestincomplete !== undefined && (obj.manifestincomplete = message.manifestincomplete);
+    return obj;
   },
 };
 
@@ -1788,6 +2409,22 @@ export const CNETMsgSpawnGroupSetCreationTick = {
     }
     return message;
   },
+
+  fromJSON(object: any): CNETMsgSpawnGroupSetCreationTick {
+    return {
+      spawngrouphandle: isSet(object.spawngrouphandle) ? Number(object.spawngrouphandle) : 0,
+      tickcount: isSet(object.tickcount) ? Number(object.tickcount) : 0,
+      creationsequence: isSet(object.creationsequence) ? Number(object.creationsequence) : 0,
+    };
+  },
+
+  toJSON(message: CNETMsgSpawnGroupSetCreationTick): unknown {
+    const obj: any = {};
+    message.spawngrouphandle !== undefined && (obj.spawngrouphandle = Math.round(message.spawngrouphandle));
+    message.tickcount !== undefined && (obj.tickcount = Math.round(message.tickcount));
+    message.creationsequence !== undefined && (obj.creationsequence = Math.round(message.creationsequence));
+    return obj;
+  },
 };
 
 function createBaseCNETMsgSpawnGroupUnload(): CNETMsgSpawnGroupUnload {
@@ -1844,6 +2481,22 @@ export const CNETMsgSpawnGroupUnload = {
     }
     return message;
   },
+
+  fromJSON(object: any): CNETMsgSpawnGroupUnload {
+    return {
+      spawngrouphandle: isSet(object.spawngrouphandle) ? Number(object.spawngrouphandle) : 0,
+      flags: isSet(object.flags) ? Number(object.flags) : 0,
+      tickcount: isSet(object.tickcount) ? Number(object.tickcount) : 0,
+    };
+  },
+
+  toJSON(message: CNETMsgSpawnGroupUnload): unknown {
+    const obj: any = {};
+    message.spawngrouphandle !== undefined && (obj.spawngrouphandle = Math.round(message.spawngrouphandle));
+    message.flags !== undefined && (obj.flags = Math.round(message.flags));
+    message.tickcount !== undefined && (obj.tickcount = Math.round(message.tickcount));
+    return obj;
+  },
 };
 
 function createBaseCNETMsgSpawnGroupLoadCompleted(): CNETMsgSpawnGroupLoadCompleted {
@@ -1879,6 +2532,16 @@ export const CNETMsgSpawnGroupLoadCompleted = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CNETMsgSpawnGroupLoadCompleted {
+    return { spawngrouphandle: isSet(object.spawngrouphandle) ? Number(object.spawngrouphandle) : 0 };
+  },
+
+  toJSON(message: CNETMsgSpawnGroupLoadCompleted): unknown {
+    const obj: any = {};
+    message.spawngrouphandle !== undefined && (obj.spawngrouphandle = Math.round(message.spawngrouphandle));
+    return obj;
   },
 };
 
@@ -2116,6 +2779,55 @@ export const CSVCMsgGameSessionConfiguration = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSVCMsgGameSessionConfiguration {
+    return {
+      isMultiplayer: isSet(object.isMultiplayer) ? Boolean(object.isMultiplayer) : false,
+      isLoadsavegame: isSet(object.isLoadsavegame) ? Boolean(object.isLoadsavegame) : false,
+      isBackgroundMap: isSet(object.isBackgroundMap) ? Boolean(object.isBackgroundMap) : false,
+      isHeadless: isSet(object.isHeadless) ? Boolean(object.isHeadless) : false,
+      minClientLimit: isSet(object.minClientLimit) ? Number(object.minClientLimit) : 0,
+      maxClientLimit: isSet(object.maxClientLimit) ? Number(object.maxClientLimit) : 0,
+      maxClients: isSet(object.maxClients) ? Number(object.maxClients) : 0,
+      tickInterval: isSet(object.tickInterval) ? Number(object.tickInterval) : 0,
+      hostname: isSet(object.hostname) ? String(object.hostname) : "",
+      savegamename: isSet(object.savegamename) ? String(object.savegamename) : "",
+      s1Mapname: isSet(object.s1Mapname) ? String(object.s1Mapname) : "",
+      gamemode: isSet(object.gamemode) ? String(object.gamemode) : "",
+      serverIpAddress: isSet(object.serverIpAddress) ? String(object.serverIpAddress) : "",
+      data: isSet(object.data) ? Buffer.from(bytesFromBase64(object.data)) : Buffer.alloc(0),
+      isLocalonly: isSet(object.isLocalonly) ? Boolean(object.isLocalonly) : false,
+      noSteamServer: isSet(object.noSteamServer) ? Boolean(object.noSteamServer) : false,
+      isTransition: isSet(object.isTransition) ? Boolean(object.isTransition) : false,
+      previouslevel: isSet(object.previouslevel) ? String(object.previouslevel) : "",
+      landmarkname: isSet(object.landmarkname) ? String(object.landmarkname) : "",
+    };
+  },
+
+  toJSON(message: CSVCMsgGameSessionConfiguration): unknown {
+    const obj: any = {};
+    message.isMultiplayer !== undefined && (obj.isMultiplayer = message.isMultiplayer);
+    message.isLoadsavegame !== undefined && (obj.isLoadsavegame = message.isLoadsavegame);
+    message.isBackgroundMap !== undefined && (obj.isBackgroundMap = message.isBackgroundMap);
+    message.isHeadless !== undefined && (obj.isHeadless = message.isHeadless);
+    message.minClientLimit !== undefined && (obj.minClientLimit = Math.round(message.minClientLimit));
+    message.maxClientLimit !== undefined && (obj.maxClientLimit = Math.round(message.maxClientLimit));
+    message.maxClients !== undefined && (obj.maxClients = Math.round(message.maxClients));
+    message.tickInterval !== undefined && (obj.tickInterval = Math.round(message.tickInterval));
+    message.hostname !== undefined && (obj.hostname = message.hostname);
+    message.savegamename !== undefined && (obj.savegamename = message.savegamename);
+    message.s1Mapname !== undefined && (obj.s1Mapname = message.s1Mapname);
+    message.gamemode !== undefined && (obj.gamemode = message.gamemode);
+    message.serverIpAddress !== undefined && (obj.serverIpAddress = message.serverIpAddress);
+    message.data !== undefined &&
+      (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
+    message.isLocalonly !== undefined && (obj.isLocalonly = message.isLocalonly);
+    message.noSteamServer !== undefined && (obj.noSteamServer = message.noSteamServer);
+    message.isTransition !== undefined && (obj.isTransition = message.isTransition);
+    message.previouslevel !== undefined && (obj.previouslevel = message.previouslevel);
+    message.landmarkname !== undefined && (obj.landmarkname = message.landmarkname);
+    return obj;
+  },
 };
 
 function createBaseCNETMsgDebugOverlay(): CNETMsgDebugOverlay {
@@ -2266,7 +2978,105 @@ export const CNETMsgDebugOverlay = {
     }
     return message;
   },
+
+  fromJSON(object: any): CNETMsgDebugOverlay {
+    return {
+      etype: isSet(object.etype) ? Number(object.etype) : 0,
+      vectors: Array.isArray(object?.vectors) ? object.vectors.map((e: any) => CMsgVector.fromJSON(e)) : [],
+      colors: Array.isArray(object?.colors) ? object.colors.map((e: any) => CMsgRGBA.fromJSON(e)) : [],
+      dimensions: Array.isArray(object?.dimensions) ? object.dimensions.map((e: any) => Number(e)) : [],
+      times: Array.isArray(object?.times) ? object.times.map((e: any) => Number(e)) : [],
+      bools: Array.isArray(object?.bools) ? object.bools.map((e: any) => Boolean(e)) : [],
+      uint64s: Array.isArray(object?.uint64s) ? object.uint64s.map((e: any) => String(e)) : [],
+      strings: Array.isArray(object?.strings) ? object.strings.map((e: any) => String(e)) : [],
+    };
+  },
+
+  toJSON(message: CNETMsgDebugOverlay): unknown {
+    const obj: any = {};
+    message.etype !== undefined && (obj.etype = Math.round(message.etype));
+    if (message.vectors) {
+      obj.vectors = message.vectors.map((e) => e ? CMsgVector.toJSON(e) : undefined);
+    } else {
+      obj.vectors = [];
+    }
+    if (message.colors) {
+      obj.colors = message.colors.map((e) => e ? CMsgRGBA.toJSON(e) : undefined);
+    } else {
+      obj.colors = [];
+    }
+    if (message.dimensions) {
+      obj.dimensions = message.dimensions.map((e) => e);
+    } else {
+      obj.dimensions = [];
+    }
+    if (message.times) {
+      obj.times = message.times.map((e) => e);
+    } else {
+      obj.times = [];
+    }
+    if (message.bools) {
+      obj.bools = message.bools.map((e) => e);
+    } else {
+      obj.bools = [];
+    }
+    if (message.uint64s) {
+      obj.uint64s = message.uint64s.map((e) => e);
+    } else {
+      obj.uint64s = [];
+    }
+    if (message.strings) {
+      obj.strings = message.strings.map((e) => e);
+    } else {
+      obj.strings = [];
+    }
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if (tsProtoGlobalThis.Buffer) {
+    return Uint8Array.from(tsProtoGlobalThis.Buffer.from(b64, "base64"));
+  } else {
+    const bin = tsProtoGlobalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if (tsProtoGlobalThis.Buffer) {
+    return tsProtoGlobalThis.Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(String.fromCharCode(byte));
+    });
+    return tsProtoGlobalThis.btoa(bin.join(""));
+  }
+}
 
 function longToString(long: Long) {
   return long.toString();
@@ -2275,4 +3085,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

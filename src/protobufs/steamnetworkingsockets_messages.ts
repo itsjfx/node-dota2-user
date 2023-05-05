@@ -9,6 +9,39 @@ export enum ESteamNetworkingSocketsCipher {
   k_ESteamNetworkingSocketsCipher_AES_256_GCM = 2,
 }
 
+export function eSteamNetworkingSocketsCipherFromJSON(object: any): ESteamNetworkingSocketsCipher {
+  switch (object) {
+    case 0:
+    case "k_ESteamNetworkingSocketsCipher_INVALID":
+      return ESteamNetworkingSocketsCipher.k_ESteamNetworkingSocketsCipher_INVALID;
+    case 1:
+    case "k_ESteamNetworkingSocketsCipher_NULL":
+      return ESteamNetworkingSocketsCipher.k_ESteamNetworkingSocketsCipher_NULL;
+    case 2:
+    case "k_ESteamNetworkingSocketsCipher_AES_256_GCM":
+      return ESteamNetworkingSocketsCipher.k_ESteamNetworkingSocketsCipher_AES_256_GCM;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum ESteamNetworkingSocketsCipher",
+      );
+  }
+}
+
+export function eSteamNetworkingSocketsCipherToJSON(object: ESteamNetworkingSocketsCipher): string {
+  switch (object) {
+    case ESteamNetworkingSocketsCipher.k_ESteamNetworkingSocketsCipher_INVALID:
+      return "k_ESteamNetworkingSocketsCipher_INVALID";
+    case ESteamNetworkingSocketsCipher.k_ESteamNetworkingSocketsCipher_NULL:
+      return "k_ESteamNetworkingSocketsCipher_NULL";
+    case ESteamNetworkingSocketsCipher.k_ESteamNetworkingSocketsCipher_AES_256_GCM:
+      return "k_ESteamNetworkingSocketsCipher_AES_256_GCM";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum ESteamNetworkingSocketsCipher",
+      );
+  }
+}
+
 export interface CMsgSteamDatagramSessionCryptInfo {
   keyType: CMsgSteamDatagramSessionCryptInfo_EKeyType;
   keyData: Buffer;
@@ -20,6 +53,38 @@ export interface CMsgSteamDatagramSessionCryptInfo {
 export enum CMsgSteamDatagramSessionCryptInfo_EKeyType {
   INVALID = 0,
   CURVE25519 = 1,
+}
+
+export function cMsgSteamDatagramSessionCryptInfo_EKeyTypeFromJSON(
+  object: any,
+): CMsgSteamDatagramSessionCryptInfo_EKeyType {
+  switch (object) {
+    case 0:
+    case "INVALID":
+      return CMsgSteamDatagramSessionCryptInfo_EKeyType.INVALID;
+    case 1:
+    case "CURVE25519":
+      return CMsgSteamDatagramSessionCryptInfo_EKeyType.CURVE25519;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgSteamDatagramSessionCryptInfo_EKeyType",
+      );
+  }
+}
+
+export function cMsgSteamDatagramSessionCryptInfo_EKeyTypeToJSON(
+  object: CMsgSteamDatagramSessionCryptInfo_EKeyType,
+): string {
+  switch (object) {
+    case CMsgSteamDatagramSessionCryptInfo_EKeyType.INVALID:
+      return "INVALID";
+    case CMsgSteamDatagramSessionCryptInfo_EKeyType.CURVE25519:
+      return "CURVE25519";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgSteamDatagramSessionCryptInfo_EKeyType",
+      );
+  }
 }
 
 export interface CMsgSteamDatagramSessionCryptInfoSigned {
@@ -288,6 +353,33 @@ export const CMsgSteamDatagramSessionCryptInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramSessionCryptInfo {
+    return {
+      keyType: isSet(object.keyType) ? cMsgSteamDatagramSessionCryptInfo_EKeyTypeFromJSON(object.keyType) : 0,
+      keyData: isSet(object.keyData) ? Buffer.from(bytesFromBase64(object.keyData)) : Buffer.alloc(0),
+      nonce: isSet(object.nonce) ? String(object.nonce) : "0",
+      protocolVersion: isSet(object.protocolVersion) ? Number(object.protocolVersion) : 0,
+      ciphers: Array.isArray(object?.ciphers)
+        ? object.ciphers.map((e: any) => eSteamNetworkingSocketsCipherFromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramSessionCryptInfo): unknown {
+    const obj: any = {};
+    message.keyType !== undefined && (obj.keyType = cMsgSteamDatagramSessionCryptInfo_EKeyTypeToJSON(message.keyType));
+    message.keyData !== undefined &&
+      (obj.keyData = base64FromBytes(message.keyData !== undefined ? message.keyData : Buffer.alloc(0)));
+    message.nonce !== undefined && (obj.nonce = message.nonce);
+    message.protocolVersion !== undefined && (obj.protocolVersion = Math.round(message.protocolVersion));
+    if (message.ciphers) {
+      obj.ciphers = message.ciphers.map((e) => eSteamNetworkingSocketsCipherToJSON(e));
+    } else {
+      obj.ciphers = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamDatagramSessionCryptInfoSigned(): CMsgSteamDatagramSessionCryptInfoSigned {
@@ -334,6 +426,22 @@ export const CMsgSteamDatagramSessionCryptInfoSigned = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramSessionCryptInfoSigned {
+    return {
+      info: isSet(object.info) ? Buffer.from(bytesFromBase64(object.info)) : Buffer.alloc(0),
+      signature: isSet(object.signature) ? Buffer.from(bytesFromBase64(object.signature)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramSessionCryptInfoSigned): unknown {
+    const obj: any = {};
+    message.info !== undefined &&
+      (obj.info = base64FromBytes(message.info !== undefined ? message.info : Buffer.alloc(0)));
+    message.signature !== undefined &&
+      (obj.signature = base64FromBytes(message.signature !== undefined ? message.signature : Buffer.alloc(0)));
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamDatagramDiagnostic(): CMsgSteamDatagramDiagnostic {
@@ -379,6 +487,20 @@ export const CMsgSteamDatagramDiagnostic = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamDatagramDiagnostic {
+    return {
+      severity: isSet(object.severity) ? Number(object.severity) : 0,
+      text: isSet(object.text) ? String(object.text) : "",
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramDiagnostic): unknown {
+    const obj: any = {};
+    message.severity !== undefined && (obj.severity = Math.round(message.severity));
+    message.text !== undefined && (obj.text = message.text);
+    return obj;
   },
 };
 
@@ -494,6 +616,33 @@ export const CMsgSteamDatagramLinkInstantaneousStats = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamDatagramLinkInstantaneousStats {
+    return {
+      outPacketsPerSecX10: isSet(object.outPacketsPerSecX10) ? Number(object.outPacketsPerSecX10) : 0,
+      outBytesPerSec: isSet(object.outBytesPerSec) ? Number(object.outBytesPerSec) : 0,
+      inPacketsPerSecX10: isSet(object.inPacketsPerSecX10) ? Number(object.inPacketsPerSecX10) : 0,
+      inBytesPerSec: isSet(object.inBytesPerSec) ? Number(object.inBytesPerSec) : 0,
+      pingMs: isSet(object.pingMs) ? Number(object.pingMs) : 0,
+      packetsDroppedPct: isSet(object.packetsDroppedPct) ? Number(object.packetsDroppedPct) : 0,
+      packetsWeirdSequencePct: isSet(object.packetsWeirdSequencePct) ? Number(object.packetsWeirdSequencePct) : 0,
+      peakJitterUsec: isSet(object.peakJitterUsec) ? Number(object.peakJitterUsec) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramLinkInstantaneousStats): unknown {
+    const obj: any = {};
+    message.outPacketsPerSecX10 !== undefined && (obj.outPacketsPerSecX10 = Math.round(message.outPacketsPerSecX10));
+    message.outBytesPerSec !== undefined && (obj.outBytesPerSec = Math.round(message.outBytesPerSec));
+    message.inPacketsPerSecX10 !== undefined && (obj.inPacketsPerSecX10 = Math.round(message.inPacketsPerSecX10));
+    message.inBytesPerSec !== undefined && (obj.inBytesPerSec = Math.round(message.inBytesPerSec));
+    message.pingMs !== undefined && (obj.pingMs = Math.round(message.pingMs));
+    message.packetsDroppedPct !== undefined && (obj.packetsDroppedPct = Math.round(message.packetsDroppedPct));
+    message.packetsWeirdSequencePct !== undefined &&
+      (obj.packetsWeirdSequencePct = Math.round(message.packetsWeirdSequencePct));
+    message.peakJitterUsec !== undefined && (obj.peakJitterUsec = Math.round(message.peakJitterUsec));
+    return obj;
   },
 };
 
@@ -1358,6 +1507,177 @@ export const CMsgSteamDatagramLinkLifetimeStats = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramLinkLifetimeStats {
+    return {
+      connectedSeconds: isSet(object.connectedSeconds) ? Number(object.connectedSeconds) : 0,
+      packetsSent: isSet(object.packetsSent) ? String(object.packetsSent) : "0",
+      kbSent: isSet(object.kbSent) ? String(object.kbSent) : "0",
+      packetsRecv: isSet(object.packetsRecv) ? String(object.packetsRecv) : "0",
+      kbRecv: isSet(object.kbRecv) ? String(object.kbRecv) : "0",
+      packetsRecvSequenced: isSet(object.packetsRecvSequenced) ? String(object.packetsRecvSequenced) : "0",
+      packetsRecvDropped: isSet(object.packetsRecvDropped) ? String(object.packetsRecvDropped) : "0",
+      packetsRecvOutOfOrder: isSet(object.packetsRecvOutOfOrder) ? String(object.packetsRecvOutOfOrder) : "0",
+      packetsRecvDuplicate: isSet(object.packetsRecvDuplicate) ? String(object.packetsRecvDuplicate) : "0",
+      packetsRecvLurch: isSet(object.packetsRecvLurch) ? String(object.packetsRecvLurch) : "0",
+      multipathPacketsRecvSequenced: Array.isArray(object?.multipathPacketsRecvSequenced)
+        ? object.multipathPacketsRecvSequenced.map((e: any) => String(e))
+        : [],
+      multipathPacketsRecvLater: Array.isArray(object?.multipathPacketsRecvLater)
+        ? object.multipathPacketsRecvLater.map((e: any) => String(e))
+        : [],
+      multipathSendEnabled: isSet(object.multipathSendEnabled) ? Number(object.multipathSendEnabled) : 0,
+      qualityHistogram100: isSet(object.qualityHistogram100) ? Number(object.qualityHistogram100) : 0,
+      qualityHistogram99: isSet(object.qualityHistogram99) ? Number(object.qualityHistogram99) : 0,
+      qualityHistogram97: isSet(object.qualityHistogram97) ? Number(object.qualityHistogram97) : 0,
+      qualityHistogram95: isSet(object.qualityHistogram95) ? Number(object.qualityHistogram95) : 0,
+      qualityHistogram90: isSet(object.qualityHistogram90) ? Number(object.qualityHistogram90) : 0,
+      qualityHistogram75: isSet(object.qualityHistogram75) ? Number(object.qualityHistogram75) : 0,
+      qualityHistogram50: isSet(object.qualityHistogram50) ? Number(object.qualityHistogram50) : 0,
+      qualityHistogram1: isSet(object.qualityHistogram1) ? Number(object.qualityHistogram1) : 0,
+      qualityHistogramDead: isSet(object.qualityHistogramDead) ? Number(object.qualityHistogramDead) : 0,
+      qualityNtile2nd: isSet(object.qualityNtile2nd) ? Number(object.qualityNtile2nd) : 0,
+      qualityNtile5th: isSet(object.qualityNtile5th) ? Number(object.qualityNtile5th) : 0,
+      qualityNtile25th: isSet(object.qualityNtile25th) ? Number(object.qualityNtile25th) : 0,
+      qualityNtile50th: isSet(object.qualityNtile50th) ? Number(object.qualityNtile50th) : 0,
+      pingHistogram25: isSet(object.pingHistogram25) ? Number(object.pingHistogram25) : 0,
+      pingHistogram50: isSet(object.pingHistogram50) ? Number(object.pingHistogram50) : 0,
+      pingHistogram75: isSet(object.pingHistogram75) ? Number(object.pingHistogram75) : 0,
+      pingHistogram100: isSet(object.pingHistogram100) ? Number(object.pingHistogram100) : 0,
+      pingHistogram125: isSet(object.pingHistogram125) ? Number(object.pingHistogram125) : 0,
+      pingHistogram150: isSet(object.pingHistogram150) ? Number(object.pingHistogram150) : 0,
+      pingHistogram200: isSet(object.pingHistogram200) ? Number(object.pingHistogram200) : 0,
+      pingHistogram300: isSet(object.pingHistogram300) ? Number(object.pingHistogram300) : 0,
+      pingHistogramMax: isSet(object.pingHistogramMax) ? Number(object.pingHistogramMax) : 0,
+      pingNtile5th: isSet(object.pingNtile5th) ? Number(object.pingNtile5th) : 0,
+      pingNtile50th: isSet(object.pingNtile50th) ? Number(object.pingNtile50th) : 0,
+      pingNtile75th: isSet(object.pingNtile75th) ? Number(object.pingNtile75th) : 0,
+      pingNtile95th: isSet(object.pingNtile95th) ? Number(object.pingNtile95th) : 0,
+      pingNtile98th: isSet(object.pingNtile98th) ? Number(object.pingNtile98th) : 0,
+      jitterHistogramNegligible: isSet(object.jitterHistogramNegligible) ? Number(object.jitterHistogramNegligible) : 0,
+      jitterHistogram1: isSet(object.jitterHistogram1) ? Number(object.jitterHistogram1) : 0,
+      jitterHistogram2: isSet(object.jitterHistogram2) ? Number(object.jitterHistogram2) : 0,
+      jitterHistogram5: isSet(object.jitterHistogram5) ? Number(object.jitterHistogram5) : 0,
+      jitterHistogram10: isSet(object.jitterHistogram10) ? Number(object.jitterHistogram10) : 0,
+      jitterHistogram20: isSet(object.jitterHistogram20) ? Number(object.jitterHistogram20) : 0,
+      txspeedMax: isSet(object.txspeedMax) ? Number(object.txspeedMax) : 0,
+      txspeedHistogram16: isSet(object.txspeedHistogram16) ? Number(object.txspeedHistogram16) : 0,
+      txspeedHistogram32: isSet(object.txspeedHistogram32) ? Number(object.txspeedHistogram32) : 0,
+      txspeedHistogram64: isSet(object.txspeedHistogram64) ? Number(object.txspeedHistogram64) : 0,
+      txspeedHistogram128: isSet(object.txspeedHistogram128) ? Number(object.txspeedHistogram128) : 0,
+      txspeedHistogram256: isSet(object.txspeedHistogram256) ? Number(object.txspeedHistogram256) : 0,
+      txspeedHistogram512: isSet(object.txspeedHistogram512) ? Number(object.txspeedHistogram512) : 0,
+      txspeedHistogram1024: isSet(object.txspeedHistogram1024) ? Number(object.txspeedHistogram1024) : 0,
+      txspeedHistogramMax: isSet(object.txspeedHistogramMax) ? Number(object.txspeedHistogramMax) : 0,
+      txspeedNtile5th: isSet(object.txspeedNtile5th) ? Number(object.txspeedNtile5th) : 0,
+      txspeedNtile50th: isSet(object.txspeedNtile50th) ? Number(object.txspeedNtile50th) : 0,
+      txspeedNtile75th: isSet(object.txspeedNtile75th) ? Number(object.txspeedNtile75th) : 0,
+      txspeedNtile95th: isSet(object.txspeedNtile95th) ? Number(object.txspeedNtile95th) : 0,
+      txspeedNtile98th: isSet(object.txspeedNtile98th) ? Number(object.txspeedNtile98th) : 0,
+      rxspeedMax: isSet(object.rxspeedMax) ? Number(object.rxspeedMax) : 0,
+      rxspeedHistogram16: isSet(object.rxspeedHistogram16) ? Number(object.rxspeedHistogram16) : 0,
+      rxspeedHistogram32: isSet(object.rxspeedHistogram32) ? Number(object.rxspeedHistogram32) : 0,
+      rxspeedHistogram64: isSet(object.rxspeedHistogram64) ? Number(object.rxspeedHistogram64) : 0,
+      rxspeedHistogram128: isSet(object.rxspeedHistogram128) ? Number(object.rxspeedHistogram128) : 0,
+      rxspeedHistogram256: isSet(object.rxspeedHistogram256) ? Number(object.rxspeedHistogram256) : 0,
+      rxspeedHistogram512: isSet(object.rxspeedHistogram512) ? Number(object.rxspeedHistogram512) : 0,
+      rxspeedHistogram1024: isSet(object.rxspeedHistogram1024) ? Number(object.rxspeedHistogram1024) : 0,
+      rxspeedHistogramMax: isSet(object.rxspeedHistogramMax) ? Number(object.rxspeedHistogramMax) : 0,
+      rxspeedNtile5th: isSet(object.rxspeedNtile5th) ? Number(object.rxspeedNtile5th) : 0,
+      rxspeedNtile50th: isSet(object.rxspeedNtile50th) ? Number(object.rxspeedNtile50th) : 0,
+      rxspeedNtile75th: isSet(object.rxspeedNtile75th) ? Number(object.rxspeedNtile75th) : 0,
+      rxspeedNtile95th: isSet(object.rxspeedNtile95th) ? Number(object.rxspeedNtile95th) : 0,
+      rxspeedNtile98th: isSet(object.rxspeedNtile98th) ? Number(object.rxspeedNtile98th) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramLinkLifetimeStats): unknown {
+    const obj: any = {};
+    message.connectedSeconds !== undefined && (obj.connectedSeconds = Math.round(message.connectedSeconds));
+    message.packetsSent !== undefined && (obj.packetsSent = message.packetsSent);
+    message.kbSent !== undefined && (obj.kbSent = message.kbSent);
+    message.packetsRecv !== undefined && (obj.packetsRecv = message.packetsRecv);
+    message.kbRecv !== undefined && (obj.kbRecv = message.kbRecv);
+    message.packetsRecvSequenced !== undefined && (obj.packetsRecvSequenced = message.packetsRecvSequenced);
+    message.packetsRecvDropped !== undefined && (obj.packetsRecvDropped = message.packetsRecvDropped);
+    message.packetsRecvOutOfOrder !== undefined && (obj.packetsRecvOutOfOrder = message.packetsRecvOutOfOrder);
+    message.packetsRecvDuplicate !== undefined && (obj.packetsRecvDuplicate = message.packetsRecvDuplicate);
+    message.packetsRecvLurch !== undefined && (obj.packetsRecvLurch = message.packetsRecvLurch);
+    if (message.multipathPacketsRecvSequenced) {
+      obj.multipathPacketsRecvSequenced = message.multipathPacketsRecvSequenced.map((e) => e);
+    } else {
+      obj.multipathPacketsRecvSequenced = [];
+    }
+    if (message.multipathPacketsRecvLater) {
+      obj.multipathPacketsRecvLater = message.multipathPacketsRecvLater.map((e) => e);
+    } else {
+      obj.multipathPacketsRecvLater = [];
+    }
+    message.multipathSendEnabled !== undefined && (obj.multipathSendEnabled = Math.round(message.multipathSendEnabled));
+    message.qualityHistogram100 !== undefined && (obj.qualityHistogram100 = Math.round(message.qualityHistogram100));
+    message.qualityHistogram99 !== undefined && (obj.qualityHistogram99 = Math.round(message.qualityHistogram99));
+    message.qualityHistogram97 !== undefined && (obj.qualityHistogram97 = Math.round(message.qualityHistogram97));
+    message.qualityHistogram95 !== undefined && (obj.qualityHistogram95 = Math.round(message.qualityHistogram95));
+    message.qualityHistogram90 !== undefined && (obj.qualityHistogram90 = Math.round(message.qualityHistogram90));
+    message.qualityHistogram75 !== undefined && (obj.qualityHistogram75 = Math.round(message.qualityHistogram75));
+    message.qualityHistogram50 !== undefined && (obj.qualityHistogram50 = Math.round(message.qualityHistogram50));
+    message.qualityHistogram1 !== undefined && (obj.qualityHistogram1 = Math.round(message.qualityHistogram1));
+    message.qualityHistogramDead !== undefined && (obj.qualityHistogramDead = Math.round(message.qualityHistogramDead));
+    message.qualityNtile2nd !== undefined && (obj.qualityNtile2nd = Math.round(message.qualityNtile2nd));
+    message.qualityNtile5th !== undefined && (obj.qualityNtile5th = Math.round(message.qualityNtile5th));
+    message.qualityNtile25th !== undefined && (obj.qualityNtile25th = Math.round(message.qualityNtile25th));
+    message.qualityNtile50th !== undefined && (obj.qualityNtile50th = Math.round(message.qualityNtile50th));
+    message.pingHistogram25 !== undefined && (obj.pingHistogram25 = Math.round(message.pingHistogram25));
+    message.pingHistogram50 !== undefined && (obj.pingHistogram50 = Math.round(message.pingHistogram50));
+    message.pingHistogram75 !== undefined && (obj.pingHistogram75 = Math.round(message.pingHistogram75));
+    message.pingHistogram100 !== undefined && (obj.pingHistogram100 = Math.round(message.pingHistogram100));
+    message.pingHistogram125 !== undefined && (obj.pingHistogram125 = Math.round(message.pingHistogram125));
+    message.pingHistogram150 !== undefined && (obj.pingHistogram150 = Math.round(message.pingHistogram150));
+    message.pingHistogram200 !== undefined && (obj.pingHistogram200 = Math.round(message.pingHistogram200));
+    message.pingHistogram300 !== undefined && (obj.pingHistogram300 = Math.round(message.pingHistogram300));
+    message.pingHistogramMax !== undefined && (obj.pingHistogramMax = Math.round(message.pingHistogramMax));
+    message.pingNtile5th !== undefined && (obj.pingNtile5th = Math.round(message.pingNtile5th));
+    message.pingNtile50th !== undefined && (obj.pingNtile50th = Math.round(message.pingNtile50th));
+    message.pingNtile75th !== undefined && (obj.pingNtile75th = Math.round(message.pingNtile75th));
+    message.pingNtile95th !== undefined && (obj.pingNtile95th = Math.round(message.pingNtile95th));
+    message.pingNtile98th !== undefined && (obj.pingNtile98th = Math.round(message.pingNtile98th));
+    message.jitterHistogramNegligible !== undefined &&
+      (obj.jitterHistogramNegligible = Math.round(message.jitterHistogramNegligible));
+    message.jitterHistogram1 !== undefined && (obj.jitterHistogram1 = Math.round(message.jitterHistogram1));
+    message.jitterHistogram2 !== undefined && (obj.jitterHistogram2 = Math.round(message.jitterHistogram2));
+    message.jitterHistogram5 !== undefined && (obj.jitterHistogram5 = Math.round(message.jitterHistogram5));
+    message.jitterHistogram10 !== undefined && (obj.jitterHistogram10 = Math.round(message.jitterHistogram10));
+    message.jitterHistogram20 !== undefined && (obj.jitterHistogram20 = Math.round(message.jitterHistogram20));
+    message.txspeedMax !== undefined && (obj.txspeedMax = Math.round(message.txspeedMax));
+    message.txspeedHistogram16 !== undefined && (obj.txspeedHistogram16 = Math.round(message.txspeedHistogram16));
+    message.txspeedHistogram32 !== undefined && (obj.txspeedHistogram32 = Math.round(message.txspeedHistogram32));
+    message.txspeedHistogram64 !== undefined && (obj.txspeedHistogram64 = Math.round(message.txspeedHistogram64));
+    message.txspeedHistogram128 !== undefined && (obj.txspeedHistogram128 = Math.round(message.txspeedHistogram128));
+    message.txspeedHistogram256 !== undefined && (obj.txspeedHistogram256 = Math.round(message.txspeedHistogram256));
+    message.txspeedHistogram512 !== undefined && (obj.txspeedHistogram512 = Math.round(message.txspeedHistogram512));
+    message.txspeedHistogram1024 !== undefined && (obj.txspeedHistogram1024 = Math.round(message.txspeedHistogram1024));
+    message.txspeedHistogramMax !== undefined && (obj.txspeedHistogramMax = Math.round(message.txspeedHistogramMax));
+    message.txspeedNtile5th !== undefined && (obj.txspeedNtile5th = Math.round(message.txspeedNtile5th));
+    message.txspeedNtile50th !== undefined && (obj.txspeedNtile50th = Math.round(message.txspeedNtile50th));
+    message.txspeedNtile75th !== undefined && (obj.txspeedNtile75th = Math.round(message.txspeedNtile75th));
+    message.txspeedNtile95th !== undefined && (obj.txspeedNtile95th = Math.round(message.txspeedNtile95th));
+    message.txspeedNtile98th !== undefined && (obj.txspeedNtile98th = Math.round(message.txspeedNtile98th));
+    message.rxspeedMax !== undefined && (obj.rxspeedMax = Math.round(message.rxspeedMax));
+    message.rxspeedHistogram16 !== undefined && (obj.rxspeedHistogram16 = Math.round(message.rxspeedHistogram16));
+    message.rxspeedHistogram32 !== undefined && (obj.rxspeedHistogram32 = Math.round(message.rxspeedHistogram32));
+    message.rxspeedHistogram64 !== undefined && (obj.rxspeedHistogram64 = Math.round(message.rxspeedHistogram64));
+    message.rxspeedHistogram128 !== undefined && (obj.rxspeedHistogram128 = Math.round(message.rxspeedHistogram128));
+    message.rxspeedHistogram256 !== undefined && (obj.rxspeedHistogram256 = Math.round(message.rxspeedHistogram256));
+    message.rxspeedHistogram512 !== undefined && (obj.rxspeedHistogram512 = Math.round(message.rxspeedHistogram512));
+    message.rxspeedHistogram1024 !== undefined && (obj.rxspeedHistogram1024 = Math.round(message.rxspeedHistogram1024));
+    message.rxspeedHistogramMax !== undefined && (obj.rxspeedHistogramMax = Math.round(message.rxspeedHistogramMax));
+    message.rxspeedNtile5th !== undefined && (obj.rxspeedNtile5th = Math.round(message.rxspeedNtile5th));
+    message.rxspeedNtile50th !== undefined && (obj.rxspeedNtile50th = Math.round(message.rxspeedNtile50th));
+    message.rxspeedNtile75th !== undefined && (obj.rxspeedNtile75th = Math.round(message.rxspeedNtile75th));
+    message.rxspeedNtile95th !== undefined && (obj.rxspeedNtile95th = Math.round(message.rxspeedNtile95th));
+    message.rxspeedNtile98th !== undefined && (obj.rxspeedNtile98th = Math.round(message.rxspeedNtile98th));
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamDatagramConnectionQuality(): CMsgSteamDatagramConnectionQuality {
@@ -1404,6 +1724,25 @@ export const CMsgSteamDatagramConnectionQuality = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramConnectionQuality {
+    return {
+      instantaneous: isSet(object.instantaneous)
+        ? CMsgSteamDatagramLinkInstantaneousStats.fromJSON(object.instantaneous)
+        : undefined,
+      lifetime: isSet(object.lifetime) ? CMsgSteamDatagramLinkLifetimeStats.fromJSON(object.lifetime) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramConnectionQuality): unknown {
+    const obj: any = {};
+    message.instantaneous !== undefined && (obj.instantaneous = message.instantaneous
+      ? CMsgSteamDatagramLinkInstantaneousStats.toJSON(message.instantaneous)
+      : undefined);
+    message.lifetime !== undefined &&
+      (obj.lifetime = message.lifetime ? CMsgSteamDatagramLinkLifetimeStats.toJSON(message.lifetime) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgICECandidate(): CMsgICECandidate {
@@ -1439,6 +1778,16 @@ export const CMsgICECandidate = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgICECandidate {
+    return { candidate: isSet(object.candidate) ? String(object.candidate) : "" };
+  },
+
+  toJSON(message: CMsgICECandidate): unknown {
+    const obj: any = {};
+    message.candidate !== undefined && (obj.candidate = message.candidate);
+    return obj;
   },
 };
 
@@ -1486,6 +1835,21 @@ export const CMsgICERendezvous = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgICERendezvous {
+    return {
+      auth: isSet(object.auth) ? CMsgICERendezvous_Auth.fromJSON(object.auth) : undefined,
+      addCandidate: isSet(object.addCandidate) ? CMsgICECandidate.fromJSON(object.addCandidate) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgICERendezvous): unknown {
+    const obj: any = {};
+    message.auth !== undefined && (obj.auth = message.auth ? CMsgICERendezvous_Auth.toJSON(message.auth) : undefined);
+    message.addCandidate !== undefined &&
+      (obj.addCandidate = message.addCandidate ? CMsgICECandidate.toJSON(message.addCandidate) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgICERendezvous_Auth(): CMsgICERendezvous_Auth {
@@ -1521,6 +1885,16 @@ export const CMsgICERendezvous_Auth = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgICERendezvous_Auth {
+    return { pwdFrag: isSet(object.pwdFrag) ? String(object.pwdFrag) : "" };
+  },
+
+  toJSON(message: CMsgICERendezvous_Auth): unknown {
+    const obj: any = {};
+    message.pwdFrag !== undefined && (obj.pwdFrag = message.pwdFrag);
+    return obj;
   },
 };
 
@@ -1719,6 +2093,81 @@ export const CMsgSteamNetworkingP2PRendezvous = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamNetworkingP2PRendezvous {
+    return {
+      fromIdentity: isSet(object.fromIdentity) ? String(object.fromIdentity) : "",
+      fromConnectionId: isSet(object.fromConnectionId) ? Number(object.fromConnectionId) : 0,
+      toIdentity: isSet(object.toIdentity) ? String(object.toIdentity) : "",
+      toConnectionId: isSet(object.toConnectionId) ? Number(object.toConnectionId) : 0,
+      sdrRoutes: isSet(object.sdrRoutes) ? Buffer.from(bytesFromBase64(object.sdrRoutes)) : Buffer.alloc(0),
+      ackPeerRoutesRevision: isSet(object.ackPeerRoutesRevision) ? Number(object.ackPeerRoutesRevision) : 0,
+      iceEnabled: isSet(object.iceEnabled) ? Boolean(object.iceEnabled) : false,
+      hostedServerTicket: isSet(object.hostedServerTicket)
+        ? Buffer.from(bytesFromBase64(object.hostedServerTicket))
+        : Buffer.alloc(0),
+      connectRequest: isSet(object.connectRequest)
+        ? CMsgSteamNetworkingP2PRendezvous_ConnectRequest.fromJSON(object.connectRequest)
+        : undefined,
+      connectOk: isSet(object.connectOk)
+        ? CMsgSteamNetworkingP2PRendezvous_ConnectOK.fromJSON(object.connectOk)
+        : undefined,
+      connectionClosed: isSet(object.connectionClosed)
+        ? CMsgSteamNetworkingP2PRendezvous_ConnectionClosed.fromJSON(object.connectionClosed)
+        : undefined,
+      ackReliableMsg: isSet(object.ackReliableMsg) ? Number(object.ackReliableMsg) : 0,
+      firstReliableMsg: isSet(object.firstReliableMsg) ? Number(object.firstReliableMsg) : 0,
+      reliableMessages: Array.isArray(object?.reliableMessages)
+        ? object.reliableMessages.map((e: any) => CMsgSteamNetworkingP2PRendezvous_ReliableMessage.fromJSON(e))
+        : [],
+      applicationMessages: Array.isArray(object?.applicationMessages)
+        ? object.applicationMessages.map((e: any) => CMsgSteamNetworkingP2PRendezvous_ApplicationMessage.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgSteamNetworkingP2PRendezvous): unknown {
+    const obj: any = {};
+    message.fromIdentity !== undefined && (obj.fromIdentity = message.fromIdentity);
+    message.fromConnectionId !== undefined && (obj.fromConnectionId = Math.round(message.fromConnectionId));
+    message.toIdentity !== undefined && (obj.toIdentity = message.toIdentity);
+    message.toConnectionId !== undefined && (obj.toConnectionId = Math.round(message.toConnectionId));
+    message.sdrRoutes !== undefined &&
+      (obj.sdrRoutes = base64FromBytes(message.sdrRoutes !== undefined ? message.sdrRoutes : Buffer.alloc(0)));
+    message.ackPeerRoutesRevision !== undefined &&
+      (obj.ackPeerRoutesRevision = Math.round(message.ackPeerRoutesRevision));
+    message.iceEnabled !== undefined && (obj.iceEnabled = message.iceEnabled);
+    message.hostedServerTicket !== undefined &&
+      (obj.hostedServerTicket = base64FromBytes(
+        message.hostedServerTicket !== undefined ? message.hostedServerTicket : Buffer.alloc(0),
+      ));
+    message.connectRequest !== undefined && (obj.connectRequest = message.connectRequest
+      ? CMsgSteamNetworkingP2PRendezvous_ConnectRequest.toJSON(message.connectRequest)
+      : undefined);
+    message.connectOk !== undefined && (obj.connectOk = message.connectOk
+      ? CMsgSteamNetworkingP2PRendezvous_ConnectOK.toJSON(message.connectOk)
+      : undefined);
+    message.connectionClosed !== undefined && (obj.connectionClosed = message.connectionClosed
+      ? CMsgSteamNetworkingP2PRendezvous_ConnectionClosed.toJSON(message.connectionClosed)
+      : undefined);
+    message.ackReliableMsg !== undefined && (obj.ackReliableMsg = Math.round(message.ackReliableMsg));
+    message.firstReliableMsg !== undefined && (obj.firstReliableMsg = Math.round(message.firstReliableMsg));
+    if (message.reliableMessages) {
+      obj.reliableMessages = message.reliableMessages.map((e) =>
+        e ? CMsgSteamNetworkingP2PRendezvous_ReliableMessage.toJSON(e) : undefined
+      );
+    } else {
+      obj.reliableMessages = [];
+    }
+    if (message.applicationMessages) {
+      obj.applicationMessages = message.applicationMessages.map((e) =>
+        e ? CMsgSteamNetworkingP2PRendezvous_ApplicationMessage.toJSON(e) : undefined
+      );
+    } else {
+      obj.applicationMessages = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamNetworkingP2PRendezvous_ConnectRequest(): CMsgSteamNetworkingP2PRendezvous_ConnectRequest {
@@ -1798,6 +2247,28 @@ export const CMsgSteamNetworkingP2PRendezvous_ConnectRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamNetworkingP2PRendezvous_ConnectRequest {
+    return {
+      crypt: isSet(object.crypt) ? CMsgSteamDatagramSessionCryptInfoSigned.fromJSON(object.crypt) : undefined,
+      cert: isSet(object.cert) ? CMsgSteamDatagramCertificateSigned.fromJSON(object.cert) : undefined,
+      toVirtualPort: isSet(object.toVirtualPort) ? Number(object.toVirtualPort) : 0,
+      fromVirtualPort: isSet(object.fromVirtualPort) ? Number(object.fromVirtualPort) : 0,
+      fromFakeip: isSet(object.fromFakeip) ? String(object.fromFakeip) : "",
+    };
+  },
+
+  toJSON(message: CMsgSteamNetworkingP2PRendezvous_ConnectRequest): unknown {
+    const obj: any = {};
+    message.crypt !== undefined &&
+      (obj.crypt = message.crypt ? CMsgSteamDatagramSessionCryptInfoSigned.toJSON(message.crypt) : undefined);
+    message.cert !== undefined &&
+      (obj.cert = message.cert ? CMsgSteamDatagramCertificateSigned.toJSON(message.cert) : undefined);
+    message.toVirtualPort !== undefined && (obj.toVirtualPort = Math.round(message.toVirtualPort));
+    message.fromVirtualPort !== undefined && (obj.fromVirtualPort = Math.round(message.fromVirtualPort));
+    message.fromFakeip !== undefined && (obj.fromFakeip = message.fromFakeip);
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamNetworkingP2PRendezvous_ConnectOK(): CMsgSteamNetworkingP2PRendezvous_ConnectOK {
@@ -1843,6 +2314,22 @@ export const CMsgSteamNetworkingP2PRendezvous_ConnectOK = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamNetworkingP2PRendezvous_ConnectOK {
+    return {
+      crypt: isSet(object.crypt) ? CMsgSteamDatagramSessionCryptInfoSigned.fromJSON(object.crypt) : undefined,
+      cert: isSet(object.cert) ? CMsgSteamDatagramCertificateSigned.fromJSON(object.cert) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgSteamNetworkingP2PRendezvous_ConnectOK): unknown {
+    const obj: any = {};
+    message.crypt !== undefined &&
+      (obj.crypt = message.crypt ? CMsgSteamDatagramSessionCryptInfoSigned.toJSON(message.crypt) : undefined);
+    message.cert !== undefined &&
+      (obj.cert = message.cert ? CMsgSteamDatagramCertificateSigned.toJSON(message.cert) : undefined);
+    return obj;
   },
 };
 
@@ -1893,6 +2380,20 @@ export const CMsgSteamNetworkingP2PRendezvous_ConnectionClosed = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamNetworkingP2PRendezvous_ConnectionClosed {
+    return {
+      debug: isSet(object.debug) ? String(object.debug) : "",
+      reasonCode: isSet(object.reasonCode) ? Number(object.reasonCode) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamNetworkingP2PRendezvous_ConnectionClosed): unknown {
+    const obj: any = {};
+    message.debug !== undefined && (obj.debug = message.debug);
+    message.reasonCode !== undefined && (obj.reasonCode = Math.round(message.reasonCode));
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamNetworkingP2PRendezvous_ReliableMessage(): CMsgSteamNetworkingP2PRendezvous_ReliableMessage {
@@ -1931,6 +2432,16 @@ export const CMsgSteamNetworkingP2PRendezvous_ReliableMessage = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamNetworkingP2PRendezvous_ReliableMessage {
+    return { ice: isSet(object.ice) ? CMsgICERendezvous.fromJSON(object.ice) : undefined };
+  },
+
+  toJSON(message: CMsgSteamNetworkingP2PRendezvous_ReliableMessage): unknown {
+    const obj: any = {};
+    message.ice !== undefined && (obj.ice = message.ice ? CMsgICERendezvous.toJSON(message.ice) : undefined);
+    return obj;
   },
 };
 
@@ -2000,6 +2511,25 @@ export const CMsgSteamNetworkingP2PRendezvous_ApplicationMessage = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamNetworkingP2PRendezvous_ApplicationMessage {
+    return {
+      data: isSet(object.data) ? Buffer.from(bytesFromBase64(object.data)) : Buffer.alloc(0),
+      msgNum: isSet(object.msgNum) ? String(object.msgNum) : "0",
+      flags: isSet(object.flags) ? Number(object.flags) : 0,
+      laneIdx: isSet(object.laneIdx) ? Number(object.laneIdx) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamNetworkingP2PRendezvous_ApplicationMessage): unknown {
+    const obj: any = {};
+    message.data !== undefined &&
+      (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
+    message.msgNum !== undefined && (obj.msgNum = message.msgNum);
+    message.flags !== undefined && (obj.flags = Math.round(message.flags));
+    message.laneIdx !== undefined && (obj.laneIdx = Math.round(message.laneIdx));
+    return obj;
   },
 };
 
@@ -2193,7 +2723,94 @@ export const CMsgSteamNetworkingICESessionSummary = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamNetworkingICESessionSummary {
+    return {
+      failureReasonCode: isSet(object.failureReasonCode) ? Number(object.failureReasonCode) : 0,
+      localCandidateTypes: isSet(object.localCandidateTypes) ? Number(object.localCandidateTypes) : 0,
+      remoteCandidateTypes: isSet(object.remoteCandidateTypes) ? Number(object.remoteCandidateTypes) : 0,
+      initialRouteKind: isSet(object.initialRouteKind) ? Number(object.initialRouteKind) : 0,
+      initialPing: isSet(object.initialPing) ? Number(object.initialPing) : 0,
+      initialScore: isSet(object.initialScore) ? Number(object.initialScore) : 0,
+      negotiationMs: isSet(object.negotiationMs) ? Number(object.negotiationMs) : 0,
+      bestRouteKind: isSet(object.bestRouteKind) ? Number(object.bestRouteKind) : 0,
+      bestPing: isSet(object.bestPing) ? Number(object.bestPing) : 0,
+      bestScore: isSet(object.bestScore) ? Number(object.bestScore) : 0,
+      bestTime: isSet(object.bestTime) ? Number(object.bestTime) : 0,
+      selectedSeconds: isSet(object.selectedSeconds) ? Number(object.selectedSeconds) : 0,
+      userSettings: isSet(object.userSettings) ? Number(object.userSettings) : 0,
+      iceEnableVar: isSet(object.iceEnableVar) ? Number(object.iceEnableVar) : 0,
+      localCandidateTypesAllowed: isSet(object.localCandidateTypesAllowed)
+        ? Number(object.localCandidateTypesAllowed)
+        : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamNetworkingICESessionSummary): unknown {
+    const obj: any = {};
+    message.failureReasonCode !== undefined && (obj.failureReasonCode = Math.round(message.failureReasonCode));
+    message.localCandidateTypes !== undefined && (obj.localCandidateTypes = Math.round(message.localCandidateTypes));
+    message.remoteCandidateTypes !== undefined && (obj.remoteCandidateTypes = Math.round(message.remoteCandidateTypes));
+    message.initialRouteKind !== undefined && (obj.initialRouteKind = Math.round(message.initialRouteKind));
+    message.initialPing !== undefined && (obj.initialPing = Math.round(message.initialPing));
+    message.initialScore !== undefined && (obj.initialScore = Math.round(message.initialScore));
+    message.negotiationMs !== undefined && (obj.negotiationMs = Math.round(message.negotiationMs));
+    message.bestRouteKind !== undefined && (obj.bestRouteKind = Math.round(message.bestRouteKind));
+    message.bestPing !== undefined && (obj.bestPing = Math.round(message.bestPing));
+    message.bestScore !== undefined && (obj.bestScore = Math.round(message.bestScore));
+    message.bestTime !== undefined && (obj.bestTime = Math.round(message.bestTime));
+    message.selectedSeconds !== undefined && (obj.selectedSeconds = Math.round(message.selectedSeconds));
+    message.userSettings !== undefined && (obj.userSettings = Math.round(message.userSettings));
+    message.iceEnableVar !== undefined && (obj.iceEnableVar = Math.round(message.iceEnableVar));
+    message.localCandidateTypesAllowed !== undefined &&
+      (obj.localCandidateTypesAllowed = Math.round(message.localCandidateTypesAllowed));
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if (tsProtoGlobalThis.Buffer) {
+    return Uint8Array.from(tsProtoGlobalThis.Buffer.from(b64, "base64"));
+  } else {
+    const bin = tsProtoGlobalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if (tsProtoGlobalThis.Buffer) {
+    return tsProtoGlobalThis.Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(String.fromCharCode(byte));
+    });
+    return tsProtoGlobalThis.btoa(bin.join(""));
+  }
+}
 
 function longToString(long: Long) {
   return long.toString();
@@ -2202,4 +2819,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

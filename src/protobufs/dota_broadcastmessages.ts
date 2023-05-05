@@ -7,6 +7,30 @@ export enum EDotaBroadcastMessages {
   DOTA_BM_LANLobbyReply = 2,
 }
 
+export function eDotaBroadcastMessagesFromJSON(object: any): EDotaBroadcastMessages {
+  switch (object) {
+    case 1:
+    case "DOTA_BM_LANLobbyRequest":
+      return EDotaBroadcastMessages.DOTA_BM_LANLobbyRequest;
+    case 2:
+    case "DOTA_BM_LANLobbyReply":
+      return EDotaBroadcastMessages.DOTA_BM_LANLobbyReply;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EDotaBroadcastMessages");
+  }
+}
+
+export function eDotaBroadcastMessagesToJSON(object: EDotaBroadcastMessages): string {
+  switch (object) {
+    case EDotaBroadcastMessages.DOTA_BM_LANLobbyRequest:
+      return "DOTA_BM_LANLobbyRequest";
+    case EDotaBroadcastMessages.DOTA_BM_LANLobbyReply:
+      return "DOTA_BM_LANLobbyReply";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EDotaBroadcastMessages");
+  }
+}
+
 export interface CDOTABroadcastMsg {
   type: EDotaBroadcastMessages;
   msg: Buffer;
@@ -76,6 +100,20 @@ export const CDOTABroadcastMsg = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTABroadcastMsg {
+    return {
+      type: isSet(object.type) ? eDotaBroadcastMessagesFromJSON(object.type) : 1,
+      msg: isSet(object.msg) ? Buffer.from(bytesFromBase64(object.msg)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CDOTABroadcastMsg): unknown {
+    const obj: any = {};
+    message.type !== undefined && (obj.type = eDotaBroadcastMessagesToJSON(message.type));
+    message.msg !== undefined && (obj.msg = base64FromBytes(message.msg !== undefined ? message.msg : Buffer.alloc(0)));
+    return obj;
+  },
 };
 
 function createBaseCDOTABroadcastMsgLANLobbyRequest(): CDOTABroadcastMsgLANLobbyRequest {
@@ -101,6 +139,15 @@ export const CDOTABroadcastMsgLANLobbyRequest = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CDOTABroadcastMsgLANLobbyRequest {
+    return {};
+  },
+
+  toJSON(_: CDOTABroadcastMsgLANLobbyRequest): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -228,6 +275,40 @@ export const CDOTABroadcastMsgLANLobbyReply = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTABroadcastMsgLANLobbyReply {
+    return {
+      id: isSet(object.id) ? String(object.id) : "0",
+      tournamentId: isSet(object.tournamentId) ? Number(object.tournamentId) : 0,
+      tournamentGameId: isSet(object.tournamentGameId) ? Number(object.tournamentGameId) : 0,
+      members: Array.isArray(object?.members)
+        ? object.members.map((e: any) => CDOTABroadcastMsgLANLobbyReply_CLobbyMember.fromJSON(e))
+        : [],
+      requiresPassKey: isSet(object.requiresPassKey) ? Boolean(object.requiresPassKey) : false,
+      leaderAccountId: isSet(object.leaderAccountId) ? Number(object.leaderAccountId) : 0,
+      gameMode: isSet(object.gameMode) ? Number(object.gameMode) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      players: isSet(object.players) ? Number(object.players) : 0,
+    };
+  },
+
+  toJSON(message: CDOTABroadcastMsgLANLobbyReply): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+    message.tournamentId !== undefined && (obj.tournamentId = Math.round(message.tournamentId));
+    message.tournamentGameId !== undefined && (obj.tournamentGameId = Math.round(message.tournamentGameId));
+    if (message.members) {
+      obj.members = message.members.map((e) => e ? CDOTABroadcastMsgLANLobbyReply_CLobbyMember.toJSON(e) : undefined);
+    } else {
+      obj.members = [];
+    }
+    message.requiresPassKey !== undefined && (obj.requiresPassKey = message.requiresPassKey);
+    message.leaderAccountId !== undefined && (obj.leaderAccountId = Math.round(message.leaderAccountId));
+    message.gameMode !== undefined && (obj.gameMode = Math.round(message.gameMode));
+    message.name !== undefined && (obj.name = message.name);
+    message.players !== undefined && (obj.players = Math.round(message.players));
+    return obj;
+  },
 };
 
 function createBaseCDOTABroadcastMsgLANLobbyReply_CLobbyMember(): CDOTABroadcastMsgLANLobbyReply_CLobbyMember {
@@ -274,7 +355,65 @@ export const CDOTABroadcastMsgLANLobbyReply_CLobbyMember = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTABroadcastMsgLANLobbyReply_CLobbyMember {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      playerName: isSet(object.playerName) ? String(object.playerName) : "",
+    };
+  },
+
+  toJSON(message: CDOTABroadcastMsgLANLobbyReply_CLobbyMember): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.playerName !== undefined && (obj.playerName = message.playerName);
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if (tsProtoGlobalThis.Buffer) {
+    return Uint8Array.from(tsProtoGlobalThis.Buffer.from(b64, "base64"));
+  } else {
+    const bin = tsProtoGlobalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if (tsProtoGlobalThis.Buffer) {
+    return tsProtoGlobalThis.Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(String.fromCharCode(byte));
+    });
+    return tsProtoGlobalThis.btoa(bin.join(""));
+  }
+}
 
 function longToString(long: Long) {
   return long.toString();
@@ -283,4 +422,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

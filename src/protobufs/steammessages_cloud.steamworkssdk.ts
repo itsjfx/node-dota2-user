@@ -83,6 +83,16 @@ export const CCloudGetUploadServerInfoRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CCloudGetUploadServerInfoRequest {
+    return { appid: isSet(object.appid) ? Number(object.appid) : 0 };
+  },
+
+  toJSON(message: CCloudGetUploadServerInfoRequest): unknown {
+    const obj: any = {};
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    return obj;
+  },
 };
 
 function createBaseCCloudGetUploadServerInfoResponse(): CCloudGetUploadServerInfoResponse {
@@ -118,6 +128,16 @@ export const CCloudGetUploadServerInfoResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CCloudGetUploadServerInfoResponse {
+    return { serverUrl: isSet(object.serverUrl) ? String(object.serverUrl) : "" };
+  },
+
+  toJSON(message: CCloudGetUploadServerInfoResponse): unknown {
+    const obj: any = {};
+    message.serverUrl !== undefined && (obj.serverUrl = message.serverUrl);
+    return obj;
   },
 };
 
@@ -164,6 +184,20 @@ export const CCloudGetFileDetailsRequest = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CCloudGetFileDetailsRequest {
+    return {
+      ugcid: isSet(object.ugcid) ? String(object.ugcid) : "0",
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+    };
+  },
+
+  toJSON(message: CCloudGetFileDetailsRequest): unknown {
+    const obj: any = {};
+    message.ugcid !== undefined && (obj.ugcid = message.ugcid);
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    return obj;
   },
 };
 
@@ -261,6 +295,30 @@ export const CCloudUserFile = {
     }
     return message;
   },
+
+  fromJSON(object: any): CCloudUserFile {
+    return {
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      ugcid: isSet(object.ugcid) ? String(object.ugcid) : "0",
+      filename: isSet(object.filename) ? String(object.filename) : "",
+      timestamp: isSet(object.timestamp) ? String(object.timestamp) : "0",
+      fileSize: isSet(object.fileSize) ? Number(object.fileSize) : 0,
+      url: isSet(object.url) ? String(object.url) : "",
+      steamidCreator: isSet(object.steamidCreator) ? String(object.steamidCreator) : "0",
+    };
+  },
+
+  toJSON(message: CCloudUserFile): unknown {
+    const obj: any = {};
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    message.ugcid !== undefined && (obj.ugcid = message.ugcid);
+    message.filename !== undefined && (obj.filename = message.filename);
+    message.timestamp !== undefined && (obj.timestamp = message.timestamp);
+    message.fileSize !== undefined && (obj.fileSize = Math.round(message.fileSize));
+    message.url !== undefined && (obj.url = message.url);
+    message.steamidCreator !== undefined && (obj.steamidCreator = message.steamidCreator);
+    return obj;
+  },
 };
 
 function createBaseCCloudGetFileDetailsResponse(): CCloudGetFileDetailsResponse {
@@ -296,6 +354,17 @@ export const CCloudGetFileDetailsResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CCloudGetFileDetailsResponse {
+    return { details: isSet(object.details) ? CCloudUserFile.fromJSON(object.details) : undefined };
+  },
+
+  toJSON(message: CCloudGetFileDetailsResponse): unknown {
+    const obj: any = {};
+    message.details !== undefined &&
+      (obj.details = message.details ? CCloudUserFile.toJSON(message.details) : undefined);
+    return obj;
   },
 };
 
@@ -363,6 +432,24 @@ export const CCloudEnumerateUserFilesRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CCloudEnumerateUserFilesRequest {
+    return {
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      extendedDetails: isSet(object.extendedDetails) ? Boolean(object.extendedDetails) : false,
+      count: isSet(object.count) ? Number(object.count) : 0,
+      startIndex: isSet(object.startIndex) ? Number(object.startIndex) : 0,
+    };
+  },
+
+  toJSON(message: CCloudEnumerateUserFilesRequest): unknown {
+    const obj: any = {};
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    message.extendedDetails !== undefined && (obj.extendedDetails = message.extendedDetails);
+    message.count !== undefined && (obj.count = Math.round(message.count));
+    message.startIndex !== undefined && (obj.startIndex = Math.round(message.startIndex));
+    return obj;
+  },
 };
 
 function createBaseCCloudEnumerateUserFilesResponse(): CCloudEnumerateUserFilesResponse {
@@ -408,6 +495,24 @@ export const CCloudEnumerateUserFilesResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CCloudEnumerateUserFilesResponse {
+    return {
+      files: Array.isArray(object?.files) ? object.files.map((e: any) => CCloudUserFile.fromJSON(e)) : [],
+      totalFiles: isSet(object.totalFiles) ? Number(object.totalFiles) : 0,
+    };
+  },
+
+  toJSON(message: CCloudEnumerateUserFilesResponse): unknown {
+    const obj: any = {};
+    if (message.files) {
+      obj.files = message.files.map((e) => e ? CCloudUserFile.toJSON(e) : undefined);
+    } else {
+      obj.files = [];
+    }
+    message.totalFiles !== undefined && (obj.totalFiles = Math.round(message.totalFiles));
+    return obj;
   },
 };
 
@@ -455,6 +560,20 @@ export const CCloudDeleteRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CCloudDeleteRequest {
+    return {
+      filename: isSet(object.filename) ? String(object.filename) : "",
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+    };
+  },
+
+  toJSON(message: CCloudDeleteRequest): unknown {
+    const obj: any = {};
+    message.filename !== undefined && (obj.filename = message.filename);
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    return obj;
+  },
 };
 
 function createBaseCCloudDeleteResponse(): CCloudDeleteResponse {
@@ -480,6 +599,15 @@ export const CCloudDeleteResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CCloudDeleteResponse {
+    return {};
+  },
+
+  toJSON(_: CCloudDeleteResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -537,4 +665,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

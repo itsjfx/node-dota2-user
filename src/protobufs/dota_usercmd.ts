@@ -151,4 +151,42 @@ export const CDota2UserCmdPB = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDota2UserCmdPB {
+    return {
+      base: isSet(object.base) ? CBaseUserCmdPB.fromJSON(object.base) : undefined,
+      spectatorQueryUnitEntindex: isSet(object.spectatorQueryUnitEntindex)
+        ? Number(object.spectatorQueryUnitEntindex)
+        : 0,
+      crosshairtrace: isSet(object.crosshairtrace) ? CMsgVector.fromJSON(object.crosshairtrace) : undefined,
+      camerapositionX: isSet(object.camerapositionX) ? Number(object.camerapositionX) : 0,
+      camerapositionY: isSet(object.camerapositionY) ? Number(object.camerapositionY) : 0,
+      clickbehavior: isSet(object.clickbehavior) ? Number(object.clickbehavior) : 0,
+      statspanel: isSet(object.statspanel) ? Number(object.statspanel) : 0,
+      shoppanel: isSet(object.shoppanel) ? Number(object.shoppanel) : 0,
+      statsDropdown: isSet(object.statsDropdown) ? Number(object.statsDropdown) : 0,
+      statsDropdownSort: isSet(object.statsDropdownSort) ? Number(object.statsDropdownSort) : 0,
+    };
+  },
+
+  toJSON(message: CDota2UserCmdPB): unknown {
+    const obj: any = {};
+    message.base !== undefined && (obj.base = message.base ? CBaseUserCmdPB.toJSON(message.base) : undefined);
+    message.spectatorQueryUnitEntindex !== undefined &&
+      (obj.spectatorQueryUnitEntindex = Math.round(message.spectatorQueryUnitEntindex));
+    message.crosshairtrace !== undefined &&
+      (obj.crosshairtrace = message.crosshairtrace ? CMsgVector.toJSON(message.crosshairtrace) : undefined);
+    message.camerapositionX !== undefined && (obj.camerapositionX = Math.round(message.camerapositionX));
+    message.camerapositionY !== undefined && (obj.camerapositionY = Math.round(message.camerapositionY));
+    message.clickbehavior !== undefined && (obj.clickbehavior = Math.round(message.clickbehavior));
+    message.statspanel !== undefined && (obj.statspanel = Math.round(message.statspanel));
+    message.shoppanel !== undefined && (obj.shoppanel = Math.round(message.shoppanel));
+    message.statsDropdown !== undefined && (obj.statsDropdown = Math.round(message.statsDropdown));
+    message.statsDropdownSort !== undefined && (obj.statsDropdownSort = Math.round(message.statsDropdownSort));
+    return obj;
+  },
 };
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
+}

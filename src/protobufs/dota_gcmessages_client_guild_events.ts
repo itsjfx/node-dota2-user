@@ -1,7 +1,7 @@
 /* eslint-disable */
 import Long from "long";
 import _m0 from "protobufjs/minimal";
-import { EEvent } from "./dota_shared_enums";
+import { EEvent, eEventFromJSON, eEventToJSON } from "./dota_shared_enums";
 
 export enum EGuildEventAuditAction {
   k_EGuildEventAuditAction_Invalid = 0,
@@ -13,6 +13,65 @@ export enum EGuildEventAuditAction {
   k_EGuildEventAuditAction_CompleteMatch_Loser = 6,
   k_EGuildEventAuditAction_WeeklyLeaderboard = 7,
   k_EGuildEventAuditAction_ManualGrant = 8,
+}
+
+export function eGuildEventAuditActionFromJSON(object: any): EGuildEventAuditAction {
+  switch (object) {
+    case 0:
+    case "k_EGuildEventAuditAction_Invalid":
+      return EGuildEventAuditAction.k_EGuildEventAuditAction_Invalid;
+    case 1:
+    case "k_EGuildEventAuditAction_DevGrant":
+      return EGuildEventAuditAction.k_EGuildEventAuditAction_DevGrant;
+    case 2:
+    case "k_EGuildEventAuditAction_CompleteContract":
+      return EGuildEventAuditAction.k_EGuildEventAuditAction_CompleteContract;
+    case 3:
+    case "k_EGuildEventAuditAction_CompleteChallenge":
+      return EGuildEventAuditAction.k_EGuildEventAuditAction_CompleteChallenge;
+    case 4:
+    case "k_EGuildEventAuditAction_CompleteMatch_Winner":
+      return EGuildEventAuditAction.k_EGuildEventAuditAction_CompleteMatch_Winner;
+    case 5:
+    case "k_EGuildEventAuditAction_ChallengeProgress":
+      return EGuildEventAuditAction.k_EGuildEventAuditAction_ChallengeProgress;
+    case 6:
+    case "k_EGuildEventAuditAction_CompleteMatch_Loser":
+      return EGuildEventAuditAction.k_EGuildEventAuditAction_CompleteMatch_Loser;
+    case 7:
+    case "k_EGuildEventAuditAction_WeeklyLeaderboard":
+      return EGuildEventAuditAction.k_EGuildEventAuditAction_WeeklyLeaderboard;
+    case 8:
+    case "k_EGuildEventAuditAction_ManualGrant":
+      return EGuildEventAuditAction.k_EGuildEventAuditAction_ManualGrant;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EGuildEventAuditAction");
+  }
+}
+
+export function eGuildEventAuditActionToJSON(object: EGuildEventAuditAction): string {
+  switch (object) {
+    case EGuildEventAuditAction.k_EGuildEventAuditAction_Invalid:
+      return "k_EGuildEventAuditAction_Invalid";
+    case EGuildEventAuditAction.k_EGuildEventAuditAction_DevGrant:
+      return "k_EGuildEventAuditAction_DevGrant";
+    case EGuildEventAuditAction.k_EGuildEventAuditAction_CompleteContract:
+      return "k_EGuildEventAuditAction_CompleteContract";
+    case EGuildEventAuditAction.k_EGuildEventAuditAction_CompleteChallenge:
+      return "k_EGuildEventAuditAction_CompleteChallenge";
+    case EGuildEventAuditAction.k_EGuildEventAuditAction_CompleteMatch_Winner:
+      return "k_EGuildEventAuditAction_CompleteMatch_Winner";
+    case EGuildEventAuditAction.k_EGuildEventAuditAction_ChallengeProgress:
+      return "k_EGuildEventAuditAction_ChallengeProgress";
+    case EGuildEventAuditAction.k_EGuildEventAuditAction_CompleteMatch_Loser:
+      return "k_EGuildEventAuditAction_CompleteMatch_Loser";
+    case EGuildEventAuditAction.k_EGuildEventAuditAction_WeeklyLeaderboard:
+      return "k_EGuildEventAuditAction_WeeklyLeaderboard";
+    case EGuildEventAuditAction.k_EGuildEventAuditAction_ManualGrant:
+      return "k_EGuildEventAuditAction_ManualGrant";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EGuildEventAuditAction");
+  }
 }
 
 export interface CMsgGuildContract {
@@ -81,6 +140,73 @@ export enum CMsgClientToGCRequestAccountGuildEventDataResponse_EResponse {
   k_eInvalidGuildEvent = 8,
 }
 
+export function cMsgClientToGCRequestAccountGuildEventDataResponse_EResponseFromJSON(
+  object: any,
+): CMsgClientToGCRequestAccountGuildEventDataResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgClientToGCRequestAccountGuildEventDataResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgClientToGCRequestAccountGuildEventDataResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eTooBusy":
+      return CMsgClientToGCRequestAccountGuildEventDataResponse_EResponse.k_eTooBusy;
+    case 3:
+    case "k_eDisabled":
+      return CMsgClientToGCRequestAccountGuildEventDataResponse_EResponse.k_eDisabled;
+    case 4:
+    case "k_eTimeout":
+      return CMsgClientToGCRequestAccountGuildEventDataResponse_EResponse.k_eTimeout;
+    case 5:
+    case "k_eInvalidEvent":
+      return CMsgClientToGCRequestAccountGuildEventDataResponse_EResponse.k_eInvalidEvent;
+    case 6:
+    case "k_eInvalidGuild":
+      return CMsgClientToGCRequestAccountGuildEventDataResponse_EResponse.k_eInvalidGuild;
+    case 7:
+    case "k_eNotMember":
+      return CMsgClientToGCRequestAccountGuildEventDataResponse_EResponse.k_eNotMember;
+    case 8:
+    case "k_eInvalidGuildEvent":
+      return CMsgClientToGCRequestAccountGuildEventDataResponse_EResponse.k_eInvalidGuildEvent;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCRequestAccountGuildEventDataResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgClientToGCRequestAccountGuildEventDataResponse_EResponseToJSON(
+  object: CMsgClientToGCRequestAccountGuildEventDataResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgClientToGCRequestAccountGuildEventDataResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgClientToGCRequestAccountGuildEventDataResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgClientToGCRequestAccountGuildEventDataResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgClientToGCRequestAccountGuildEventDataResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    case CMsgClientToGCRequestAccountGuildEventDataResponse_EResponse.k_eTimeout:
+      return "k_eTimeout";
+    case CMsgClientToGCRequestAccountGuildEventDataResponse_EResponse.k_eInvalidEvent:
+      return "k_eInvalidEvent";
+    case CMsgClientToGCRequestAccountGuildEventDataResponse_EResponse.k_eInvalidGuild:
+      return "k_eInvalidGuild";
+    case CMsgClientToGCRequestAccountGuildEventDataResponse_EResponse.k_eNotMember:
+      return "k_eNotMember";
+    case CMsgClientToGCRequestAccountGuildEventDataResponse_EResponse.k_eInvalidGuildEvent:
+      return "k_eInvalidGuildEvent";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCRequestAccountGuildEventDataResponse_EResponse",
+      );
+  }
+}
+
 export interface CMsgGCToClientAccountGuildEventDataUpdated {
   guildId: number;
   eventId: EEvent;
@@ -110,6 +236,73 @@ export enum CMsgClientToGCRequestActiveGuildContractsResponse_EResponse {
   k_eInvalidGuild = 6,
   k_eNotMember = 7,
   k_eInvalidGuildEvent = 8,
+}
+
+export function cMsgClientToGCRequestActiveGuildContractsResponse_EResponseFromJSON(
+  object: any,
+): CMsgClientToGCRequestActiveGuildContractsResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgClientToGCRequestActiveGuildContractsResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgClientToGCRequestActiveGuildContractsResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eTooBusy":
+      return CMsgClientToGCRequestActiveGuildContractsResponse_EResponse.k_eTooBusy;
+    case 3:
+    case "k_eDisabled":
+      return CMsgClientToGCRequestActiveGuildContractsResponse_EResponse.k_eDisabled;
+    case 4:
+    case "k_eTimeout":
+      return CMsgClientToGCRequestActiveGuildContractsResponse_EResponse.k_eTimeout;
+    case 5:
+    case "k_eInvalidEvent":
+      return CMsgClientToGCRequestActiveGuildContractsResponse_EResponse.k_eInvalidEvent;
+    case 6:
+    case "k_eInvalidGuild":
+      return CMsgClientToGCRequestActiveGuildContractsResponse_EResponse.k_eInvalidGuild;
+    case 7:
+    case "k_eNotMember":
+      return CMsgClientToGCRequestActiveGuildContractsResponse_EResponse.k_eNotMember;
+    case 8:
+    case "k_eInvalidGuildEvent":
+      return CMsgClientToGCRequestActiveGuildContractsResponse_EResponse.k_eInvalidGuildEvent;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCRequestActiveGuildContractsResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgClientToGCRequestActiveGuildContractsResponse_EResponseToJSON(
+  object: CMsgClientToGCRequestActiveGuildContractsResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgClientToGCRequestActiveGuildContractsResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgClientToGCRequestActiveGuildContractsResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgClientToGCRequestActiveGuildContractsResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgClientToGCRequestActiveGuildContractsResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    case CMsgClientToGCRequestActiveGuildContractsResponse_EResponse.k_eTimeout:
+      return "k_eTimeout";
+    case CMsgClientToGCRequestActiveGuildContractsResponse_EResponse.k_eInvalidEvent:
+      return "k_eInvalidEvent";
+    case CMsgClientToGCRequestActiveGuildContractsResponse_EResponse.k_eInvalidGuild:
+      return "k_eInvalidGuild";
+    case CMsgClientToGCRequestActiveGuildContractsResponse_EResponse.k_eNotMember:
+      return "k_eNotMember";
+    case CMsgClientToGCRequestActiveGuildContractsResponse_EResponse.k_eInvalidGuildEvent:
+      return "k_eInvalidGuildEvent";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCRequestActiveGuildContractsResponse_EResponse",
+      );
+  }
 }
 
 export interface CMsgGCToClientActiveGuildContractsUpdated {
@@ -148,6 +341,113 @@ export enum CMsgClientToGCSelectGuildContractResponse_EResponse {
   k_eContractSlotLockedDotaPlus = 16,
 }
 
+export function cMsgClientToGCSelectGuildContractResponse_EResponseFromJSON(
+  object: any,
+): CMsgClientToGCSelectGuildContractResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgClientToGCSelectGuildContractResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgClientToGCSelectGuildContractResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eTooBusy":
+      return CMsgClientToGCSelectGuildContractResponse_EResponse.k_eTooBusy;
+    case 3:
+    case "k_eDisabled":
+      return CMsgClientToGCSelectGuildContractResponse_EResponse.k_eDisabled;
+    case 4:
+    case "k_eTimeout":
+      return CMsgClientToGCSelectGuildContractResponse_EResponse.k_eTimeout;
+    case 5:
+    case "k_eInvalidEvent":
+      return CMsgClientToGCSelectGuildContractResponse_EResponse.k_eInvalidEvent;
+    case 6:
+    case "k_eInvalidGuild":
+      return CMsgClientToGCSelectGuildContractResponse_EResponse.k_eInvalidGuild;
+    case 7:
+    case "k_eNotMember":
+      return CMsgClientToGCSelectGuildContractResponse_EResponse.k_eNotMember;
+    case 8:
+    case "k_eInvalidGuildEvent":
+      return CMsgClientToGCSelectGuildContractResponse_EResponse.k_eInvalidGuildEvent;
+    case 9:
+    case "k_eInvalidContractID":
+      return CMsgClientToGCSelectGuildContractResponse_EResponse.k_eInvalidContractID;
+    case 10:
+    case "k_eAlreadyAssigned":
+      return CMsgClientToGCSelectGuildContractResponse_EResponse.k_eAlreadyAssigned;
+    case 11:
+    case "k_eInvalidContractSlot":
+      return CMsgClientToGCSelectGuildContractResponse_EResponse.k_eInvalidContractSlot;
+    case 12:
+    case "k_eContractSlotLockedGuild":
+      return CMsgClientToGCSelectGuildContractResponse_EResponse.k_eContractSlotLockedGuild;
+    case 13:
+    case "k_eContractSlotCooldown":
+      return CMsgClientToGCSelectGuildContractResponse_EResponse.k_eContractSlotCooldown;
+    case 14:
+    case "k_eContractDuplicate":
+      return CMsgClientToGCSelectGuildContractResponse_EResponse.k_eContractDuplicate;
+    case 15:
+    case "k_eContractSlotTimeError":
+      return CMsgClientToGCSelectGuildContractResponse_EResponse.k_eContractSlotTimeError;
+    case 16:
+    case "k_eContractSlotLockedDotaPlus":
+      return CMsgClientToGCSelectGuildContractResponse_EResponse.k_eContractSlotLockedDotaPlus;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCSelectGuildContractResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgClientToGCSelectGuildContractResponse_EResponseToJSON(
+  object: CMsgClientToGCSelectGuildContractResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgClientToGCSelectGuildContractResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgClientToGCSelectGuildContractResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgClientToGCSelectGuildContractResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgClientToGCSelectGuildContractResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    case CMsgClientToGCSelectGuildContractResponse_EResponse.k_eTimeout:
+      return "k_eTimeout";
+    case CMsgClientToGCSelectGuildContractResponse_EResponse.k_eInvalidEvent:
+      return "k_eInvalidEvent";
+    case CMsgClientToGCSelectGuildContractResponse_EResponse.k_eInvalidGuild:
+      return "k_eInvalidGuild";
+    case CMsgClientToGCSelectGuildContractResponse_EResponse.k_eNotMember:
+      return "k_eNotMember";
+    case CMsgClientToGCSelectGuildContractResponse_EResponse.k_eInvalidGuildEvent:
+      return "k_eInvalidGuildEvent";
+    case CMsgClientToGCSelectGuildContractResponse_EResponse.k_eInvalidContractID:
+      return "k_eInvalidContractID";
+    case CMsgClientToGCSelectGuildContractResponse_EResponse.k_eAlreadyAssigned:
+      return "k_eAlreadyAssigned";
+    case CMsgClientToGCSelectGuildContractResponse_EResponse.k_eInvalidContractSlot:
+      return "k_eInvalidContractSlot";
+    case CMsgClientToGCSelectGuildContractResponse_EResponse.k_eContractSlotLockedGuild:
+      return "k_eContractSlotLockedGuild";
+    case CMsgClientToGCSelectGuildContractResponse_EResponse.k_eContractSlotCooldown:
+      return "k_eContractSlotCooldown";
+    case CMsgClientToGCSelectGuildContractResponse_EResponse.k_eContractDuplicate:
+      return "k_eContractDuplicate";
+    case CMsgClientToGCSelectGuildContractResponse_EResponse.k_eContractSlotTimeError:
+      return "k_eContractSlotTimeError";
+    case CMsgClientToGCSelectGuildContractResponse_EResponse.k_eContractSlotLockedDotaPlus:
+      return "k_eContractSlotLockedDotaPlus";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCSelectGuildContractResponse_EResponse",
+      );
+  }
+}
+
 export interface CMsgClientToGCRequestActiveGuildChallenge {
   guildId: number;
   eventId: EEvent;
@@ -168,6 +468,73 @@ export enum CMsgClientToGCRequestActiveGuildChallengeResponse_EResponse {
   k_eInvalidGuild = 6,
   k_eNotMember = 7,
   k_eInvalidGuildEvent = 8,
+}
+
+export function cMsgClientToGCRequestActiveGuildChallengeResponse_EResponseFromJSON(
+  object: any,
+): CMsgClientToGCRequestActiveGuildChallengeResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgClientToGCRequestActiveGuildChallengeResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgClientToGCRequestActiveGuildChallengeResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eTooBusy":
+      return CMsgClientToGCRequestActiveGuildChallengeResponse_EResponse.k_eTooBusy;
+    case 3:
+    case "k_eDisabled":
+      return CMsgClientToGCRequestActiveGuildChallengeResponse_EResponse.k_eDisabled;
+    case 4:
+    case "k_eTimeout":
+      return CMsgClientToGCRequestActiveGuildChallengeResponse_EResponse.k_eTimeout;
+    case 5:
+    case "k_eInvalidEvent":
+      return CMsgClientToGCRequestActiveGuildChallengeResponse_EResponse.k_eInvalidEvent;
+    case 6:
+    case "k_eInvalidGuild":
+      return CMsgClientToGCRequestActiveGuildChallengeResponse_EResponse.k_eInvalidGuild;
+    case 7:
+    case "k_eNotMember":
+      return CMsgClientToGCRequestActiveGuildChallengeResponse_EResponse.k_eNotMember;
+    case 8:
+    case "k_eInvalidGuildEvent":
+      return CMsgClientToGCRequestActiveGuildChallengeResponse_EResponse.k_eInvalidGuildEvent;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCRequestActiveGuildChallengeResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgClientToGCRequestActiveGuildChallengeResponse_EResponseToJSON(
+  object: CMsgClientToGCRequestActiveGuildChallengeResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgClientToGCRequestActiveGuildChallengeResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgClientToGCRequestActiveGuildChallengeResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgClientToGCRequestActiveGuildChallengeResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgClientToGCRequestActiveGuildChallengeResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    case CMsgClientToGCRequestActiveGuildChallengeResponse_EResponse.k_eTimeout:
+      return "k_eTimeout";
+    case CMsgClientToGCRequestActiveGuildChallengeResponse_EResponse.k_eInvalidEvent:
+      return "k_eInvalidEvent";
+    case CMsgClientToGCRequestActiveGuildChallengeResponse_EResponse.k_eInvalidGuild:
+      return "k_eInvalidGuild";
+    case CMsgClientToGCRequestActiveGuildChallengeResponse_EResponse.k_eNotMember:
+      return "k_eNotMember";
+    case CMsgClientToGCRequestActiveGuildChallengeResponse_EResponse.k_eInvalidGuildEvent:
+      return "k_eInvalidGuildEvent";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCRequestActiveGuildChallengeResponse_EResponse",
+      );
+  }
 }
 
 export interface CMsgGCToClientActiveGuildChallengeUpdated {
@@ -196,6 +563,73 @@ export enum CMsgClientToGCRequestGuildEventMembersResponse_EResponse {
   k_eInvalidGuild = 6,
   k_eNotMember = 7,
   k_eInvalidGuildEvent = 8,
+}
+
+export function cMsgClientToGCRequestGuildEventMembersResponse_EResponseFromJSON(
+  object: any,
+): CMsgClientToGCRequestGuildEventMembersResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgClientToGCRequestGuildEventMembersResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgClientToGCRequestGuildEventMembersResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eTooBusy":
+      return CMsgClientToGCRequestGuildEventMembersResponse_EResponse.k_eTooBusy;
+    case 3:
+    case "k_eDisabled":
+      return CMsgClientToGCRequestGuildEventMembersResponse_EResponse.k_eDisabled;
+    case 4:
+    case "k_eTimeout":
+      return CMsgClientToGCRequestGuildEventMembersResponse_EResponse.k_eTimeout;
+    case 5:
+    case "k_eInvalidEvent":
+      return CMsgClientToGCRequestGuildEventMembersResponse_EResponse.k_eInvalidEvent;
+    case 6:
+    case "k_eInvalidGuild":
+      return CMsgClientToGCRequestGuildEventMembersResponse_EResponse.k_eInvalidGuild;
+    case 7:
+    case "k_eNotMember":
+      return CMsgClientToGCRequestGuildEventMembersResponse_EResponse.k_eNotMember;
+    case 8:
+    case "k_eInvalidGuildEvent":
+      return CMsgClientToGCRequestGuildEventMembersResponse_EResponse.k_eInvalidGuildEvent;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCRequestGuildEventMembersResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgClientToGCRequestGuildEventMembersResponse_EResponseToJSON(
+  object: CMsgClientToGCRequestGuildEventMembersResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgClientToGCRequestGuildEventMembersResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgClientToGCRequestGuildEventMembersResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgClientToGCRequestGuildEventMembersResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgClientToGCRequestGuildEventMembersResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    case CMsgClientToGCRequestGuildEventMembersResponse_EResponse.k_eTimeout:
+      return "k_eTimeout";
+    case CMsgClientToGCRequestGuildEventMembersResponse_EResponse.k_eInvalidEvent:
+      return "k_eInvalidEvent";
+    case CMsgClientToGCRequestGuildEventMembersResponse_EResponse.k_eInvalidGuild:
+      return "k_eInvalidGuild";
+    case CMsgClientToGCRequestGuildEventMembersResponse_EResponse.k_eNotMember:
+      return "k_eNotMember";
+    case CMsgClientToGCRequestGuildEventMembersResponse_EResponse.k_eInvalidGuildEvent:
+      return "k_eInvalidGuildEvent";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCRequestGuildEventMembersResponse_EResponse",
+      );
+  }
 }
 
 export interface CMsgGuildLeaderboardCombinedResponse {
@@ -231,6 +665,83 @@ export enum CMsgClientToGCClaimLeaderboardRewardsResponse_EResponse {
   k_eInvalidGuildEvent = 8,
   k_eDoesNotQualify = 9,
   k_eAlreadyClaimed = 10,
+}
+
+export function cMsgClientToGCClaimLeaderboardRewardsResponse_EResponseFromJSON(
+  object: any,
+): CMsgClientToGCClaimLeaderboardRewardsResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgClientToGCClaimLeaderboardRewardsResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgClientToGCClaimLeaderboardRewardsResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eTooBusy":
+      return CMsgClientToGCClaimLeaderboardRewardsResponse_EResponse.k_eTooBusy;
+    case 3:
+    case "k_eDisabled":
+      return CMsgClientToGCClaimLeaderboardRewardsResponse_EResponse.k_eDisabled;
+    case 4:
+    case "k_eTimeout":
+      return CMsgClientToGCClaimLeaderboardRewardsResponse_EResponse.k_eTimeout;
+    case 5:
+    case "k_eInvalidEvent":
+      return CMsgClientToGCClaimLeaderboardRewardsResponse_EResponse.k_eInvalidEvent;
+    case 6:
+    case "k_eInvalidGuild":
+      return CMsgClientToGCClaimLeaderboardRewardsResponse_EResponse.k_eInvalidGuild;
+    case 7:
+    case "k_eNotMember":
+      return CMsgClientToGCClaimLeaderboardRewardsResponse_EResponse.k_eNotMember;
+    case 8:
+    case "k_eInvalidGuildEvent":
+      return CMsgClientToGCClaimLeaderboardRewardsResponse_EResponse.k_eInvalidGuildEvent;
+    case 9:
+    case "k_eDoesNotQualify":
+      return CMsgClientToGCClaimLeaderboardRewardsResponse_EResponse.k_eDoesNotQualify;
+    case 10:
+    case "k_eAlreadyClaimed":
+      return CMsgClientToGCClaimLeaderboardRewardsResponse_EResponse.k_eAlreadyClaimed;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCClaimLeaderboardRewardsResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgClientToGCClaimLeaderboardRewardsResponse_EResponseToJSON(
+  object: CMsgClientToGCClaimLeaderboardRewardsResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgClientToGCClaimLeaderboardRewardsResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgClientToGCClaimLeaderboardRewardsResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgClientToGCClaimLeaderboardRewardsResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgClientToGCClaimLeaderboardRewardsResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    case CMsgClientToGCClaimLeaderboardRewardsResponse_EResponse.k_eTimeout:
+      return "k_eTimeout";
+    case CMsgClientToGCClaimLeaderboardRewardsResponse_EResponse.k_eInvalidEvent:
+      return "k_eInvalidEvent";
+    case CMsgClientToGCClaimLeaderboardRewardsResponse_EResponse.k_eInvalidGuild:
+      return "k_eInvalidGuild";
+    case CMsgClientToGCClaimLeaderboardRewardsResponse_EResponse.k_eNotMember:
+      return "k_eNotMember";
+    case CMsgClientToGCClaimLeaderboardRewardsResponse_EResponse.k_eInvalidGuildEvent:
+      return "k_eInvalidGuildEvent";
+    case CMsgClientToGCClaimLeaderboardRewardsResponse_EResponse.k_eDoesNotQualify:
+      return "k_eDoesNotQualify";
+    case CMsgClientToGCClaimLeaderboardRewardsResponse_EResponse.k_eAlreadyClaimed:
+      return "k_eAlreadyClaimed";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCClaimLeaderboardRewardsResponse_EResponse",
+      );
+  }
 }
 
 function createBaseCMsgGuildContract(): CMsgGuildContract {
@@ -324,6 +835,28 @@ export const CMsgGuildContract = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGuildContract {
+    return {
+      contractId: isSet(object.contractId) ? String(object.contractId) : "0",
+      challengeInstanceId: isSet(object.challengeInstanceId) ? Number(object.challengeInstanceId) : 0,
+      challengeParameter: isSet(object.challengeParameter) ? Number(object.challengeParameter) : 0,
+      challengeTimestamp: isSet(object.challengeTimestamp) ? Number(object.challengeTimestamp) : 0,
+      assignedAccountId: isSet(object.assignedAccountId) ? Number(object.assignedAccountId) : 0,
+      contractFlags: isSet(object.contractFlags) ? Number(object.contractFlags) : 0,
+    };
+  },
+
+  toJSON(message: CMsgGuildContract): unknown {
+    const obj: any = {};
+    message.contractId !== undefined && (obj.contractId = message.contractId);
+    message.challengeInstanceId !== undefined && (obj.challengeInstanceId = Math.round(message.challengeInstanceId));
+    message.challengeParameter !== undefined && (obj.challengeParameter = Math.round(message.challengeParameter));
+    message.challengeTimestamp !== undefined && (obj.challengeTimestamp = Math.round(message.challengeTimestamp));
+    message.assignedAccountId !== undefined && (obj.assignedAccountId = Math.round(message.assignedAccountId));
+    message.contractFlags !== undefined && (obj.contractFlags = Math.round(message.contractFlags));
+    return obj;
+  },
 };
 
 function createBaseCMsgGuildContractSlot(): CMsgGuildContractSlot {
@@ -359,6 +892,17 @@ export const CMsgGuildContractSlot = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGuildContractSlot {
+    return { contract: isSet(object.contract) ? CMsgGuildContract.fromJSON(object.contract) : undefined };
+  },
+
+  toJSON(message: CMsgGuildContractSlot): unknown {
+    const obj: any = {};
+    message.contract !== undefined &&
+      (obj.contract = message.contract ? CMsgGuildContract.toJSON(message.contract) : undefined);
+    return obj;
   },
 };
 
@@ -486,6 +1030,50 @@ export const CMsgAccountGuildEventData = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgAccountGuildEventData {
+    return {
+      guildPoints: isSet(object.guildPoints) ? Number(object.guildPoints) : 0,
+      contractsRefreshedTimestamp: isSet(object.contractsRefreshedTimestamp)
+        ? Number(object.contractsRefreshedTimestamp)
+        : 0,
+      contractSlots: Array.isArray(object?.contractSlots)
+        ? object.contractSlots.map((e: any) => CMsgGuildContractSlot.fromJSON(e))
+        : [],
+      completedChallengeCount: isSet(object.completedChallengeCount) ? Number(object.completedChallengeCount) : 0,
+      challengesRefreshTimestamp: isSet(object.challengesRefreshTimestamp)
+        ? Number(object.challengesRefreshTimestamp)
+        : 0,
+      guildWeeklyPercentile: isSet(object.guildWeeklyPercentile) ? Number(object.guildWeeklyPercentile) : 0,
+      guildWeeklyLastTimestamp: isSet(object.guildWeeklyLastTimestamp) ? Number(object.guildWeeklyLastTimestamp) : 0,
+      lastWeeklyClaimTime: isSet(object.lastWeeklyClaimTime) ? Number(object.lastWeeklyClaimTime) : 0,
+      guildCurrentPercentile: isSet(object.guildCurrentPercentile) ? Number(object.guildCurrentPercentile) : 0,
+    };
+  },
+
+  toJSON(message: CMsgAccountGuildEventData): unknown {
+    const obj: any = {};
+    message.guildPoints !== undefined && (obj.guildPoints = Math.round(message.guildPoints));
+    message.contractsRefreshedTimestamp !== undefined &&
+      (obj.contractsRefreshedTimestamp = Math.round(message.contractsRefreshedTimestamp));
+    if (message.contractSlots) {
+      obj.contractSlots = message.contractSlots.map((e) => e ? CMsgGuildContractSlot.toJSON(e) : undefined);
+    } else {
+      obj.contractSlots = [];
+    }
+    message.completedChallengeCount !== undefined &&
+      (obj.completedChallengeCount = Math.round(message.completedChallengeCount));
+    message.challengesRefreshTimestamp !== undefined &&
+      (obj.challengesRefreshTimestamp = Math.round(message.challengesRefreshTimestamp));
+    message.guildWeeklyPercentile !== undefined &&
+      (obj.guildWeeklyPercentile = Math.round(message.guildWeeklyPercentile));
+    message.guildWeeklyLastTimestamp !== undefined &&
+      (obj.guildWeeklyLastTimestamp = Math.round(message.guildWeeklyLastTimestamp));
+    message.lastWeeklyClaimTime !== undefined && (obj.lastWeeklyClaimTime = Math.round(message.lastWeeklyClaimTime));
+    message.guildCurrentPercentile !== undefined &&
+      (obj.guildCurrentPercentile = Math.round(message.guildCurrentPercentile));
+    return obj;
+  },
 };
 
 function createBaseCMsgGuildActiveContracts(): CMsgGuildActiveContracts {
@@ -531,6 +1119,29 @@ export const CMsgGuildActiveContracts = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGuildActiveContracts {
+    return {
+      contractsRefreshedTimestamp: isSet(object.contractsRefreshedTimestamp)
+        ? Number(object.contractsRefreshedTimestamp)
+        : 0,
+      contracts: Array.isArray(object?.contracts)
+        ? object.contracts.map((e: any) => CMsgGuildContract.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgGuildActiveContracts): unknown {
+    const obj: any = {};
+    message.contractsRefreshedTimestamp !== undefined &&
+      (obj.contractsRefreshedTimestamp = Math.round(message.contractsRefreshedTimestamp));
+    if (message.contracts) {
+      obj.contracts = message.contracts.map((e) => e ? CMsgGuildContract.toJSON(e) : undefined);
+    } else {
+      obj.contracts = [];
+    }
+    return obj;
   },
 };
 
@@ -614,6 +1225,26 @@ export const CMsgGuildChallenge = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGuildChallenge {
+    return {
+      challengeInstanceId: isSet(object.challengeInstanceId) ? Number(object.challengeInstanceId) : 0,
+      challengeParameter: isSet(object.challengeParameter) ? Number(object.challengeParameter) : 0,
+      challengeTimestamp: isSet(object.challengeTimestamp) ? Number(object.challengeTimestamp) : 0,
+      challengeProgress: isSet(object.challengeProgress) ? Number(object.challengeProgress) : 0,
+      challengeFlags: isSet(object.challengeFlags) ? Number(object.challengeFlags) : 0,
+    };
+  },
+
+  toJSON(message: CMsgGuildChallenge): unknown {
+    const obj: any = {};
+    message.challengeInstanceId !== undefined && (obj.challengeInstanceId = Math.round(message.challengeInstanceId));
+    message.challengeParameter !== undefined && (obj.challengeParameter = Math.round(message.challengeParameter));
+    message.challengeTimestamp !== undefined && (obj.challengeTimestamp = Math.round(message.challengeTimestamp));
+    message.challengeProgress !== undefined && (obj.challengeProgress = Math.round(message.challengeProgress));
+    message.challengeFlags !== undefined && (obj.challengeFlags = Math.round(message.challengeFlags));
+    return obj;
+  },
 };
 
 function createBaseCMsgGuildEventMember(): CMsgGuildEventMember {
@@ -660,6 +1291,20 @@ export const CMsgGuildEventMember = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGuildEventMember {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      guildPointsEarned: isSet(object.guildPointsEarned) ? Number(object.guildPointsEarned) : 0,
+    };
+  },
+
+  toJSON(message: CMsgGuildEventMember): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.guildPointsEarned !== undefined && (obj.guildPointsEarned = Math.round(message.guildPointsEarned));
+    return obj;
+  },
 };
 
 function createBaseCMsgClientToGCRequestAccountGuildEventData(): CMsgClientToGCRequestAccountGuildEventData {
@@ -705,6 +1350,20 @@ export const CMsgClientToGCRequestAccountGuildEventData = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCRequestAccountGuildEventData {
+    return {
+      guildId: isSet(object.guildId) ? Number(object.guildId) : 0,
+      eventId: isSet(object.eventId) ? eEventFromJSON(object.eventId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCRequestAccountGuildEventData): unknown {
+    const obj: any = {};
+    message.guildId !== undefined && (obj.guildId = Math.round(message.guildId));
+    message.eventId !== undefined && (obj.eventId = eEventToJSON(message.eventId));
+    return obj;
   },
 };
 
@@ -764,6 +1423,26 @@ export const CMsgClientToGCRequestAccountGuildEventDataResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCRequestAccountGuildEventDataResponse {
+    return {
+      result: isSet(object.result)
+        ? cMsgClientToGCRequestAccountGuildEventDataResponse_EResponseFromJSON(object.result)
+        : 0,
+      eventId: isSet(object.eventId) ? eEventFromJSON(object.eventId) : 0,
+      eventData: isSet(object.eventData) ? CMsgAccountGuildEventData.fromJSON(object.eventData) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCRequestAccountGuildEventDataResponse): unknown {
+    const obj: any = {};
+    message.result !== undefined &&
+      (obj.result = cMsgClientToGCRequestAccountGuildEventDataResponse_EResponseToJSON(message.result));
+    message.eventId !== undefined && (obj.eventId = eEventToJSON(message.eventId));
+    message.eventData !== undefined &&
+      (obj.eventData = message.eventData ? CMsgAccountGuildEventData.toJSON(message.eventData) : undefined);
+    return obj;
   },
 };
 
@@ -841,6 +1520,30 @@ export const CMsgGCToClientAccountGuildEventDataUpdated = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCToClientAccountGuildEventDataUpdated {
+    return {
+      guildId: isSet(object.guildId) ? Number(object.guildId) : 0,
+      eventId: isSet(object.eventId) ? eEventFromJSON(object.eventId) : 0,
+      updateFlags: isSet(object.updateFlags) ? Number(object.updateFlags) : 0,
+      guildEventData: isSet(object.guildEventData)
+        ? CMsgAccountGuildEventData.fromJSON(object.guildEventData)
+        : undefined,
+      contractsUpdated: isSet(object.contractsUpdated) ? Boolean(object.contractsUpdated) : false,
+    };
+  },
+
+  toJSON(message: CMsgGCToClientAccountGuildEventDataUpdated): unknown {
+    const obj: any = {};
+    message.guildId !== undefined && (obj.guildId = Math.round(message.guildId));
+    message.eventId !== undefined && (obj.eventId = eEventToJSON(message.eventId));
+    message.updateFlags !== undefined && (obj.updateFlags = Math.round(message.updateFlags));
+    message.guildEventData !== undefined && (obj.guildEventData = message.guildEventData
+      ? CMsgAccountGuildEventData.toJSON(message.guildEventData)
+      : undefined);
+    message.contractsUpdated !== undefined && (obj.contractsUpdated = message.contractsUpdated);
+    return obj;
+  },
 };
 
 function createBaseCMsgClientToGCRequestActiveGuildContracts(): CMsgClientToGCRequestActiveGuildContracts {
@@ -886,6 +1589,20 @@ export const CMsgClientToGCRequestActiveGuildContracts = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCRequestActiveGuildContracts {
+    return {
+      guildId: isSet(object.guildId) ? Number(object.guildId) : 0,
+      eventId: isSet(object.eventId) ? eEventFromJSON(object.eventId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCRequestActiveGuildContracts): unknown {
+    const obj: any = {};
+    message.guildId !== undefined && (obj.guildId = Math.round(message.guildId));
+    message.eventId !== undefined && (obj.eventId = eEventToJSON(message.eventId));
+    return obj;
   },
 };
 
@@ -946,6 +1663,34 @@ export const CMsgClientToGCRequestActiveGuildContractsResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientToGCRequestActiveGuildContractsResponse {
+    return {
+      result: isSet(object.result)
+        ? cMsgClientToGCRequestActiveGuildContractsResponse_EResponseFromJSON(object.result)
+        : 0,
+      activeContracts: isSet(object.activeContracts)
+        ? CMsgGuildActiveContracts.fromJSON(object.activeContracts)
+        : undefined,
+      activeChallenges: isSet(object.activeChallenges)
+        ? CMsgGuildChallenge.fromJSON(object.activeChallenges)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCRequestActiveGuildContractsResponse): unknown {
+    const obj: any = {};
+    message.result !== undefined &&
+      (obj.result = cMsgClientToGCRequestActiveGuildContractsResponse_EResponseToJSON(message.result));
+    message.activeContracts !== undefined && (obj.activeContracts = message.activeContracts
+      ? CMsgGuildActiveContracts.toJSON(message.activeContracts)
+      : undefined);
+    message.activeChallenges !== undefined &&
+      (obj.activeChallenges = message.activeChallenges
+        ? CMsgGuildChallenge.toJSON(message.activeChallenges)
+        : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgGCToClientActiveGuildContractsUpdated(): CMsgGCToClientActiveGuildContractsUpdated {
@@ -991,6 +1736,20 @@ export const CMsgGCToClientActiveGuildContractsUpdated = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCToClientActiveGuildContractsUpdated {
+    return {
+      guildId: isSet(object.guildId) ? Number(object.guildId) : 0,
+      eventId: isSet(object.eventId) ? eEventFromJSON(object.eventId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgGCToClientActiveGuildContractsUpdated): unknown {
+    const obj: any = {};
+    message.guildId !== undefined && (obj.guildId = Math.round(message.guildId));
+    message.eventId !== undefined && (obj.eventId = eEventToJSON(message.eventId));
+    return obj;
   },
 };
 
@@ -1058,6 +1817,24 @@ export const CMsgClientToGCSelectGuildContract = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientToGCSelectGuildContract {
+    return {
+      guildId: isSet(object.guildId) ? Number(object.guildId) : 0,
+      eventId: isSet(object.eventId) ? eEventFromJSON(object.eventId) : 0,
+      contractId: isSet(object.contractId) ? String(object.contractId) : "0",
+      contractSlot: isSet(object.contractSlot) ? Number(object.contractSlot) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCSelectGuildContract): unknown {
+    const obj: any = {};
+    message.guildId !== undefined && (obj.guildId = Math.round(message.guildId));
+    message.eventId !== undefined && (obj.eventId = eEventToJSON(message.eventId));
+    message.contractId !== undefined && (obj.contractId = message.contractId);
+    message.contractSlot !== undefined && (obj.contractSlot = Math.round(message.contractSlot));
+    return obj;
+  },
 };
 
 function createBaseCMsgClientToGCSelectGuildContractResponse(): CMsgClientToGCSelectGuildContractResponse {
@@ -1093,6 +1870,19 @@ export const CMsgClientToGCSelectGuildContractResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCSelectGuildContractResponse {
+    return {
+      result: isSet(object.result) ? cMsgClientToGCSelectGuildContractResponse_EResponseFromJSON(object.result) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCSelectGuildContractResponse): unknown {
+    const obj: any = {};
+    message.result !== undefined &&
+      (obj.result = cMsgClientToGCSelectGuildContractResponse_EResponseToJSON(message.result));
+    return obj;
   },
 };
 
@@ -1139,6 +1929,20 @@ export const CMsgClientToGCRequestActiveGuildChallenge = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCRequestActiveGuildChallenge {
+    return {
+      guildId: isSet(object.guildId) ? Number(object.guildId) : 0,
+      eventId: isSet(object.eventId) ? eEventFromJSON(object.eventId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCRequestActiveGuildChallenge): unknown {
+    const obj: any = {};
+    message.guildId !== undefined && (obj.guildId = Math.round(message.guildId));
+    message.eventId !== undefined && (obj.eventId = eEventToJSON(message.eventId));
+    return obj;
   },
 };
 
@@ -1188,6 +1992,24 @@ export const CMsgClientToGCRequestActiveGuildChallengeResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCRequestActiveGuildChallengeResponse {
+    return {
+      result: isSet(object.result)
+        ? cMsgClientToGCRequestActiveGuildChallengeResponse_EResponseFromJSON(object.result)
+        : 0,
+      activeChallenge: isSet(object.activeChallenge) ? CMsgGuildChallenge.fromJSON(object.activeChallenge) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCRequestActiveGuildChallengeResponse): unknown {
+    const obj: any = {};
+    message.result !== undefined &&
+      (obj.result = cMsgClientToGCRequestActiveGuildChallengeResponse_EResponseToJSON(message.result));
+    message.activeChallenge !== undefined &&
+      (obj.activeChallenge = message.activeChallenge ? CMsgGuildChallenge.toJSON(message.activeChallenge) : undefined);
+    return obj;
   },
 };
 
@@ -1245,6 +2067,23 @@ export const CMsgGCToClientActiveGuildChallengeUpdated = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCToClientActiveGuildChallengeUpdated {
+    return {
+      guildId: isSet(object.guildId) ? Number(object.guildId) : 0,
+      eventId: isSet(object.eventId) ? eEventFromJSON(object.eventId) : 0,
+      activeChallenge: isSet(object.activeChallenge) ? CMsgGuildChallenge.fromJSON(object.activeChallenge) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgGCToClientActiveGuildChallengeUpdated): unknown {
+    const obj: any = {};
+    message.guildId !== undefined && (obj.guildId = Math.round(message.guildId));
+    message.eventId !== undefined && (obj.eventId = eEventToJSON(message.eventId));
+    message.activeChallenge !== undefined &&
+      (obj.activeChallenge = message.activeChallenge ? CMsgGuildChallenge.toJSON(message.activeChallenge) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgClientToGCRequestGuildEventMembers(): CMsgClientToGCRequestGuildEventMembers {
@@ -1290,6 +2129,20 @@ export const CMsgClientToGCRequestGuildEventMembers = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCRequestGuildEventMembers {
+    return {
+      guildId: isSet(object.guildId) ? Number(object.guildId) : 0,
+      eventId: isSet(object.eventId) ? eEventFromJSON(object.eventId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCRequestGuildEventMembers): unknown {
+    const obj: any = {};
+    message.guildId !== undefined && (obj.guildId = Math.round(message.guildId));
+    message.eventId !== undefined && (obj.eventId = eEventToJSON(message.eventId));
+    return obj;
   },
 };
 
@@ -1339,6 +2192,27 @@ export const CMsgClientToGCRequestGuildEventMembersResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCRequestGuildEventMembersResponse {
+    return {
+      result: isSet(object.result)
+        ? cMsgClientToGCRequestGuildEventMembersResponse_EResponseFromJSON(object.result)
+        : 0,
+      members: Array.isArray(object?.members) ? object.members.map((e: any) => CMsgGuildEventMember.fromJSON(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgClientToGCRequestGuildEventMembersResponse): unknown {
+    const obj: any = {};
+    message.result !== undefined &&
+      (obj.result = cMsgClientToGCRequestGuildEventMembersResponse_EResponseToJSON(message.result));
+    if (message.members) {
+      obj.members = message.members.map((e) => e ? CMsgGuildEventMember.toJSON(e) : undefined);
+    } else {
+      obj.members = [];
+    }
+    return obj;
   },
 };
 
@@ -1510,6 +2384,56 @@ export const CMsgGuildLeaderboardCombinedResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGuildLeaderboardCombinedResponse {
+    return {
+      eventId: isSet(object.eventId) ? eEventFromJSON(object.eventId) : 0,
+      region: isSet(object.region) ? Number(object.region) : 0,
+      lastUpdated: isSet(object.lastUpdated) ? Number(object.lastUpdated) : 0,
+      guildId: Array.isArray(object?.guildId) ? object.guildId.map((e: any) => Number(e)) : [],
+      rank: Array.isArray(object?.rank) ? object.rank.map((e: any) => Number(e)) : [],
+      currentPercentile: Array.isArray(object?.currentPercentile)
+        ? object.currentPercentile.map((e: any) => Number(e))
+        : [],
+      weeklyPercentile: Array.isArray(object?.weeklyPercentile)
+        ? object.weeklyPercentile.map((e: any) => Number(e))
+        : [],
+      points: Array.isArray(object?.points) ? object.points.map((e: any) => Number(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgGuildLeaderboardCombinedResponse): unknown {
+    const obj: any = {};
+    message.eventId !== undefined && (obj.eventId = eEventToJSON(message.eventId));
+    message.region !== undefined && (obj.region = Math.round(message.region));
+    message.lastUpdated !== undefined && (obj.lastUpdated = Math.round(message.lastUpdated));
+    if (message.guildId) {
+      obj.guildId = message.guildId.map((e) => Math.round(e));
+    } else {
+      obj.guildId = [];
+    }
+    if (message.rank) {
+      obj.rank = message.rank.map((e) => Math.round(e));
+    } else {
+      obj.rank = [];
+    }
+    if (message.currentPercentile) {
+      obj.currentPercentile = message.currentPercentile.map((e) => Math.round(e));
+    } else {
+      obj.currentPercentile = [];
+    }
+    if (message.weeklyPercentile) {
+      obj.weeklyPercentile = message.weeklyPercentile.map((e) => Math.round(e));
+    } else {
+      obj.weeklyPercentile = [];
+    }
+    if (message.points) {
+      obj.points = message.points.map((e) => Math.round(e));
+    } else {
+      obj.points = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgClientToGCClaimLeaderboardRewards(): CMsgClientToGCClaimLeaderboardRewards {
@@ -1555,6 +2479,20 @@ export const CMsgClientToGCClaimLeaderboardRewards = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCClaimLeaderboardRewards {
+    return {
+      guildId: isSet(object.guildId) ? Number(object.guildId) : 0,
+      eventId: isSet(object.eventId) ? eEventFromJSON(object.eventId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCClaimLeaderboardRewards): unknown {
+    const obj: any = {};
+    message.guildId !== undefined && (obj.guildId = Math.round(message.guildId));
+    message.eventId !== undefined && (obj.eventId = eEventToJSON(message.eventId));
+    return obj;
   },
 };
 
@@ -1602,7 +2540,41 @@ export const CMsgClientToGCClaimLeaderboardRewardsResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientToGCClaimLeaderboardRewardsResponse {
+    return {
+      result: isSet(object.result) ? cMsgClientToGCClaimLeaderboardRewardsResponse_EResponseFromJSON(object.result) : 0,
+      eventPoints: isSet(object.eventPoints) ? Number(object.eventPoints) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCClaimLeaderboardRewardsResponse): unknown {
+    const obj: any = {};
+    message.result !== undefined &&
+      (obj.result = cMsgClientToGCClaimLeaderboardRewardsResponse_EResponseToJSON(message.result));
+    message.eventPoints !== undefined && (obj.eventPoints = Math.round(message.eventPoints));
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
 
 function longToString(long: Long) {
   return long.toString();
@@ -1611,4 +2583,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

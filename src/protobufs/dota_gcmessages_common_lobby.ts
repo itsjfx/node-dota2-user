@@ -5,23 +5,80 @@ import {
   CDOTASaveGame,
   CMsgPendingEventAward,
   DOTABotDifficulty,
+  dOTABotDifficultyFromJSON,
+  dOTABotDifficultyToJSON,
   dotaCmPick,
+  dotaCmPickFromJSON,
+  dotaCmPickToJSON,
   DOTAGameState,
+  dOTAGameStateFromJSON,
+  dOTAGameStateToJSON,
   dotaGcTeam,
+  dotaGcTeamFromJSON,
+  dotaGcTeamToJSON,
   DOTALeaverStatusT,
+  dOTALeaverStatusTFromJSON,
+  dOTALeaverStatusTToJSON,
   DOTALobbyVisibility,
+  dOTALobbyVisibilityFromJSON,
+  dOTALobbyVisibilityToJSON,
   DOTASelectionPriorityChoice,
+  dOTASelectionPriorityChoiceFromJSON,
+  dOTASelectionPriorityChoiceToJSON,
   DOTASelectionPriorityRules,
+  dOTASelectionPriorityRulesFromJSON,
+  dOTASelectionPriorityRulesToJSON,
   EDOTAMMRBoostType,
+  eDOTAMMRBoostTypeFromJSON,
+  eDOTAMMRBoostTypeToJSON,
   EEvent,
+  eEventFromJSON,
+  eEventToJSON,
   EMatchOutcome,
+  eMatchOutcomeFromJSON,
+  eMatchOutcomeToJSON,
   MatchType,
+  matchTypeFromJSON,
+  matchTypeToJSON,
 } from "./dota_shared_enums";
 
 export enum ELobbyMemberCoachRequestState {
   k_eLobbyMemberCoachRequestState_None = 0,
   k_eLobbyMemberCoachRequestState_Accepted = 1,
   k_eLobbyMemberCoachRequestState_Rejected = 2,
+}
+
+export function eLobbyMemberCoachRequestStateFromJSON(object: any): ELobbyMemberCoachRequestState {
+  switch (object) {
+    case 0:
+    case "k_eLobbyMemberCoachRequestState_None":
+      return ELobbyMemberCoachRequestState.k_eLobbyMemberCoachRequestState_None;
+    case 1:
+    case "k_eLobbyMemberCoachRequestState_Accepted":
+      return ELobbyMemberCoachRequestState.k_eLobbyMemberCoachRequestState_Accepted;
+    case 2:
+    case "k_eLobbyMemberCoachRequestState_Rejected":
+      return ELobbyMemberCoachRequestState.k_eLobbyMemberCoachRequestState_Rejected;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum ELobbyMemberCoachRequestState",
+      );
+  }
+}
+
+export function eLobbyMemberCoachRequestStateToJSON(object: ELobbyMemberCoachRequestState): string {
+  switch (object) {
+    case ELobbyMemberCoachRequestState.k_eLobbyMemberCoachRequestState_None:
+      return "k_eLobbyMemberCoachRequestState_None";
+    case ELobbyMemberCoachRequestState.k_eLobbyMemberCoachRequestState_Accepted:
+      return "k_eLobbyMemberCoachRequestState_Accepted";
+    case ELobbyMemberCoachRequestState.k_eLobbyMemberCoachRequestState_Rejected:
+      return "k_eLobbyMemberCoachRequestState_Rejected";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum ELobbyMemberCoachRequestState",
+      );
+  }
 }
 
 export enum LobbyDotaTVDelay {
@@ -31,10 +88,73 @@ export enum LobbyDotaTVDelay {
   LobbyDotaTV_900 = 3,
 }
 
+export function lobbyDotaTVDelayFromJSON(object: any): LobbyDotaTVDelay {
+  switch (object) {
+    case 0:
+    case "LobbyDotaTV_10":
+      return LobbyDotaTVDelay.LobbyDotaTV_10;
+    case 1:
+    case "LobbyDotaTV_120":
+      return LobbyDotaTVDelay.LobbyDotaTV_120;
+    case 2:
+    case "LobbyDotaTV_300":
+      return LobbyDotaTVDelay.LobbyDotaTV_300;
+    case 3:
+    case "LobbyDotaTV_900":
+      return LobbyDotaTVDelay.LobbyDotaTV_900;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum LobbyDotaTVDelay");
+  }
+}
+
+export function lobbyDotaTVDelayToJSON(object: LobbyDotaTVDelay): string {
+  switch (object) {
+    case LobbyDotaTVDelay.LobbyDotaTV_10:
+      return "LobbyDotaTV_10";
+    case LobbyDotaTVDelay.LobbyDotaTV_120:
+      return "LobbyDotaTV_120";
+    case LobbyDotaTVDelay.LobbyDotaTV_300:
+      return "LobbyDotaTV_300";
+    case LobbyDotaTVDelay.LobbyDotaTV_900:
+      return "LobbyDotaTV_900";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum LobbyDotaTVDelay");
+  }
+}
+
 export enum LobbyDotaPauseSetting {
   LobbyDotaPauseSetting_Unlimited = 0,
   LobbyDotaPauseSetting_Limited = 1,
   LobbyDotaPauseSetting_Disabled = 2,
+}
+
+export function lobbyDotaPauseSettingFromJSON(object: any): LobbyDotaPauseSetting {
+  switch (object) {
+    case 0:
+    case "LobbyDotaPauseSetting_Unlimited":
+      return LobbyDotaPauseSetting.LobbyDotaPauseSetting_Unlimited;
+    case 1:
+    case "LobbyDotaPauseSetting_Limited":
+      return LobbyDotaPauseSetting.LobbyDotaPauseSetting_Limited;
+    case 2:
+    case "LobbyDotaPauseSetting_Disabled":
+      return LobbyDotaPauseSetting.LobbyDotaPauseSetting_Disabled;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum LobbyDotaPauseSetting");
+  }
+}
+
+export function lobbyDotaPauseSettingToJSON(object: LobbyDotaPauseSetting): string {
+  switch (object) {
+    case LobbyDotaPauseSetting.LobbyDotaPauseSetting_Unlimited:
+      return "LobbyDotaPauseSetting_Unlimited";
+    case LobbyDotaPauseSetting.LobbyDotaPauseSetting_Limited:
+      return "LobbyDotaPauseSetting_Limited";
+    case LobbyDotaPauseSetting.LobbyDotaPauseSetting_Disabled:
+      return "LobbyDotaPauseSetting_Disabled";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum LobbyDotaPauseSetting");
+  }
 }
 
 export interface CMsgLobbyCoachFriendRequest {
@@ -325,6 +445,55 @@ export enum CSODOTALobby_State {
   SERVERASSIGN = 6,
 }
 
+export function cSODOTALobby_StateFromJSON(object: any): CSODOTALobby_State {
+  switch (object) {
+    case 0:
+    case "UI":
+      return CSODOTALobby_State.UI;
+    case 4:
+    case "READYUP":
+      return CSODOTALobby_State.READYUP;
+    case 1:
+    case "SERVERSETUP":
+      return CSODOTALobby_State.SERVERSETUP;
+    case 2:
+    case "RUN":
+      return CSODOTALobby_State.RUN;
+    case 3:
+    case "POSTGAME":
+      return CSODOTALobby_State.POSTGAME;
+    case 5:
+    case "NOTREADY":
+      return CSODOTALobby_State.NOTREADY;
+    case 6:
+    case "SERVERASSIGN":
+      return CSODOTALobby_State.SERVERASSIGN;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum CSODOTALobby_State");
+  }
+}
+
+export function cSODOTALobby_StateToJSON(object: CSODOTALobby_State): string {
+  switch (object) {
+    case CSODOTALobby_State.UI:
+      return "UI";
+    case CSODOTALobby_State.READYUP:
+      return "READYUP";
+    case CSODOTALobby_State.SERVERSETUP:
+      return "SERVERSETUP";
+    case CSODOTALobby_State.RUN:
+      return "RUN";
+    case CSODOTALobby_State.POSTGAME:
+      return "POSTGAME";
+    case CSODOTALobby_State.NOTREADY:
+      return "NOTREADY";
+    case CSODOTALobby_State.SERVERASSIGN:
+      return "SERVERASSIGN";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum CSODOTALobby_State");
+  }
+}
+
 export enum CSODOTALobby_LobbyType {
   INVALID = -1,
   CASUAL_MATCH = 0,
@@ -337,6 +506,75 @@ export enum CSODOTALobby_LobbyType {
   EVENT_MATCH = 12,
   NEW_PLAYER_POOL = 14,
   FEATURED_GAMEMODE = 15,
+}
+
+export function cSODOTALobby_LobbyTypeFromJSON(object: any): CSODOTALobby_LobbyType {
+  switch (object) {
+    case -1:
+    case "INVALID":
+      return CSODOTALobby_LobbyType.INVALID;
+    case 0:
+    case "CASUAL_MATCH":
+      return CSODOTALobby_LobbyType.CASUAL_MATCH;
+    case 1:
+    case "PRACTICE":
+      return CSODOTALobby_LobbyType.PRACTICE;
+    case 4:
+    case "COOP_BOT_MATCH":
+      return CSODOTALobby_LobbyType.COOP_BOT_MATCH;
+    case 7:
+    case "COMPETITIVE_MATCH":
+      return CSODOTALobby_LobbyType.COMPETITIVE_MATCH;
+    case 9:
+    case "WEEKEND_TOURNEY":
+      return CSODOTALobby_LobbyType.WEEKEND_TOURNEY;
+    case 10:
+    case "LOCAL_BOT_MATCH":
+      return CSODOTALobby_LobbyType.LOCAL_BOT_MATCH;
+    case 11:
+    case "SPECTATOR":
+      return CSODOTALobby_LobbyType.SPECTATOR;
+    case 12:
+    case "EVENT_MATCH":
+      return CSODOTALobby_LobbyType.EVENT_MATCH;
+    case 14:
+    case "NEW_PLAYER_POOL":
+      return CSODOTALobby_LobbyType.NEW_PLAYER_POOL;
+    case 15:
+    case "FEATURED_GAMEMODE":
+      return CSODOTALobby_LobbyType.FEATURED_GAMEMODE;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum CSODOTALobby_LobbyType");
+  }
+}
+
+export function cSODOTALobby_LobbyTypeToJSON(object: CSODOTALobby_LobbyType): string {
+  switch (object) {
+    case CSODOTALobby_LobbyType.INVALID:
+      return "INVALID";
+    case CSODOTALobby_LobbyType.CASUAL_MATCH:
+      return "CASUAL_MATCH";
+    case CSODOTALobby_LobbyType.PRACTICE:
+      return "PRACTICE";
+    case CSODOTALobby_LobbyType.COOP_BOT_MATCH:
+      return "COOP_BOT_MATCH";
+    case CSODOTALobby_LobbyType.COMPETITIVE_MATCH:
+      return "COMPETITIVE_MATCH";
+    case CSODOTALobby_LobbyType.WEEKEND_TOURNEY:
+      return "WEEKEND_TOURNEY";
+    case CSODOTALobby_LobbyType.LOCAL_BOT_MATCH:
+      return "LOCAL_BOT_MATCH";
+    case CSODOTALobby_LobbyType.SPECTATOR:
+      return "SPECTATOR";
+    case CSODOTALobby_LobbyType.EVENT_MATCH:
+      return "EVENT_MATCH";
+    case CSODOTALobby_LobbyType.NEW_PLAYER_POOL:
+      return "NEW_PLAYER_POOL";
+    case CSODOTALobby_LobbyType.FEATURED_GAMEMODE:
+      return "FEATURED_GAMEMODE";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum CSODOTALobby_LobbyType");
+  }
 }
 
 export interface CSODOTALobby_CExtraMsg {
@@ -459,6 +697,23 @@ export const CMsgLobbyCoachFriendRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgLobbyCoachFriendRequest {
+    return {
+      coachAccountId: isSet(object.coachAccountId) ? Number(object.coachAccountId) : 0,
+      playerAccountId: isSet(object.playerAccountId) ? Number(object.playerAccountId) : 0,
+      requestState: isSet(object.requestState) ? eLobbyMemberCoachRequestStateFromJSON(object.requestState) : 0,
+    };
+  },
+
+  toJSON(message: CMsgLobbyCoachFriendRequest): unknown {
+    const obj: any = {};
+    message.coachAccountId !== undefined && (obj.coachAccountId = Math.round(message.coachAccountId));
+    message.playerAccountId !== undefined && (obj.playerAccountId = Math.round(message.playerAccountId));
+    message.requestState !== undefined &&
+      (obj.requestState = eLobbyMemberCoachRequestStateToJSON(message.requestState));
+    return obj;
+  },
 };
 
 function createBaseCMsgLobbyPlayerPlusSubscriptionData(): CMsgLobbyPlayerPlusSubscriptionData {
@@ -494,6 +749,26 @@ export const CMsgLobbyPlayerPlusSubscriptionData = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgLobbyPlayerPlusSubscriptionData {
+    return {
+      heroBadges: Array.isArray(object?.heroBadges)
+        ? object.heroBadges.map((e: any) => CMsgLobbyPlayerPlusSubscriptionData_HeroBadge.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgLobbyPlayerPlusSubscriptionData): unknown {
+    const obj: any = {};
+    if (message.heroBadges) {
+      obj.heroBadges = message.heroBadges.map((e) =>
+        e ? CMsgLobbyPlayerPlusSubscriptionData_HeroBadge.toJSON(e) : undefined
+      );
+    } else {
+      obj.heroBadges = [];
+    }
+    return obj;
   },
 };
 
@@ -541,6 +816,20 @@ export const CMsgLobbyPlayerPlusSubscriptionData_HeroBadge = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgLobbyPlayerPlusSubscriptionData_HeroBadge {
+    return {
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      heroBadgeXp: isSet(object.heroBadgeXp) ? Number(object.heroBadgeXp) : 0,
+    };
+  },
+
+  toJSON(message: CMsgLobbyPlayerPlusSubscriptionData_HeroBadge): unknown {
+    const obj: any = {};
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.heroBadgeXp !== undefined && (obj.heroBadgeXp = Math.round(message.heroBadgeXp));
+    return obj;
+  },
 };
 
 function createBaseCMsgLobbyEventPoints(): CMsgLobbyEventPoints {
@@ -586,6 +875,28 @@ export const CMsgLobbyEventPoints = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgLobbyEventPoints {
+    return {
+      eventId: isSet(object.eventId) ? Number(object.eventId) : 0,
+      accountPoints: Array.isArray(object?.accountPoints)
+        ? object.accountPoints.map((e: any) => CMsgLobbyEventPoints_AccountPoints.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgLobbyEventPoints): unknown {
+    const obj: any = {};
+    message.eventId !== undefined && (obj.eventId = Math.round(message.eventId));
+    if (message.accountPoints) {
+      obj.accountPoints = message.accountPoints.map((e) =>
+        e ? CMsgLobbyEventPoints_AccountPoints.toJSON(e) : undefined
+      );
+    } else {
+      obj.accountPoints = [];
+    }
+    return obj;
   },
 };
 
@@ -643,6 +954,22 @@ export const CMsgLobbyEventPoints_PeriodicResourceData = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgLobbyEventPoints_PeriodicResourceData {
+    return {
+      periodicResourceId: isSet(object.periodicResourceId) ? Number(object.periodicResourceId) : 0,
+      remaining: isSet(object.remaining) ? Number(object.remaining) : 0,
+      max: isSet(object.max) ? Number(object.max) : 0,
+    };
+  },
+
+  toJSON(message: CMsgLobbyEventPoints_PeriodicResourceData): unknown {
+    const obj: any = {};
+    message.periodicResourceId !== undefined && (obj.periodicResourceId = Math.round(message.periodicResourceId));
+    message.remaining !== undefined && (obj.remaining = Math.round(message.remaining));
+    message.max !== undefined && (obj.max = Math.round(message.max));
+    return obj;
+  },
 };
 
 function createBaseCMsgLobbyEventPoints_NetworkedEventAction(): CMsgLobbyEventPoints_NetworkedEventAction {
@@ -688,6 +1015,20 @@ export const CMsgLobbyEventPoints_NetworkedEventAction = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgLobbyEventPoints_NetworkedEventAction {
+    return {
+      actionId: isSet(object.actionId) ? Number(object.actionId) : 0,
+      timesGranted: isSet(object.timesGranted) ? Number(object.timesGranted) : 0,
+    };
+  },
+
+  toJSON(message: CMsgLobbyEventPoints_NetworkedEventAction): unknown {
+    const obj: any = {};
+    message.actionId !== undefined && (obj.actionId = Math.round(message.actionId));
+    message.timesGranted !== undefined && (obj.timesGranted = Math.round(message.timesGranted));
+    return obj;
   },
 };
 
@@ -850,6 +1191,64 @@ export const CMsgLobbyEventPoints_AccountPoints = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgLobbyEventPoints_AccountPoints {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      normalPoints: isSet(object.normalPoints) ? Number(object.normalPoints) : 0,
+      premiumPoints: isSet(object.premiumPoints) ? Number(object.premiumPoints) : 0,
+      owned: isSet(object.owned) ? Boolean(object.owned) : false,
+      activeEffectsMask: isSet(object.activeEffectsMask) ? String(object.activeEffectsMask) : "0",
+      wagerStreak: isSet(object.wagerStreak) ? Number(object.wagerStreak) : 0,
+      eventGameCustomActions: Array.isArray(object?.eventGameCustomActions)
+        ? object.eventGameCustomActions.map((e: any) => CMsgLobbyEventPoints_NetworkedEventAction.fromJSON(e))
+        : [],
+      tipAmountIndex: isSet(object.tipAmountIndex) ? Number(object.tipAmountIndex) : 0,
+      activeEventSeasonId: isSet(object.activeEventSeasonId) ? Number(object.activeEventSeasonId) : 0,
+      teleportFxLevel: isSet(object.teleportFxLevel) ? Number(object.teleportFxLevel) : 0,
+      networkedEventActions: Array.isArray(object?.networkedEventActions)
+        ? object.networkedEventActions.map((e: any) => CMsgLobbyEventPoints_NetworkedEventAction.fromJSON(e))
+        : [],
+      periodicResources: Array.isArray(object?.periodicResources)
+        ? object.periodicResources.map((e: any) => CMsgLobbyEventPoints_PeriodicResourceData.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgLobbyEventPoints_AccountPoints): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.normalPoints !== undefined && (obj.normalPoints = Math.round(message.normalPoints));
+    message.premiumPoints !== undefined && (obj.premiumPoints = Math.round(message.premiumPoints));
+    message.owned !== undefined && (obj.owned = message.owned);
+    message.activeEffectsMask !== undefined && (obj.activeEffectsMask = message.activeEffectsMask);
+    message.wagerStreak !== undefined && (obj.wagerStreak = Math.round(message.wagerStreak));
+    if (message.eventGameCustomActions) {
+      obj.eventGameCustomActions = message.eventGameCustomActions.map((e) =>
+        e ? CMsgLobbyEventPoints_NetworkedEventAction.toJSON(e) : undefined
+      );
+    } else {
+      obj.eventGameCustomActions = [];
+    }
+    message.tipAmountIndex !== undefined && (obj.tipAmountIndex = Math.round(message.tipAmountIndex));
+    message.activeEventSeasonId !== undefined && (obj.activeEventSeasonId = Math.round(message.activeEventSeasonId));
+    message.teleportFxLevel !== undefined && (obj.teleportFxLevel = Math.round(message.teleportFxLevel));
+    if (message.networkedEventActions) {
+      obj.networkedEventActions = message.networkedEventActions.map((e) =>
+        e ? CMsgLobbyEventPoints_NetworkedEventAction.toJSON(e) : undefined
+      );
+    } else {
+      obj.networkedEventActions = [];
+    }
+    if (message.periodicResources) {
+      obj.periodicResources = message.periodicResources.map((e) =>
+        e ? CMsgLobbyEventPoints_PeriodicResourceData.toJSON(e) : undefined
+      );
+    } else {
+      obj.periodicResources = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgLobbyEventGameData(): CMsgLobbyEventGameData {
@@ -895,6 +1294,20 @@ export const CMsgLobbyEventGameData = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgLobbyEventGameData {
+    return {
+      gameSeed: isSet(object.gameSeed) ? Number(object.gameSeed) : 0,
+      eventWindowStartTime: isSet(object.eventWindowStartTime) ? Number(object.eventWindowStartTime) : 0,
+    };
+  },
+
+  toJSON(message: CMsgLobbyEventGameData): unknown {
+    const obj: any = {};
+    message.gameSeed !== undefined && (obj.gameSeed = Math.round(message.gameSeed));
+    message.eventWindowStartTime !== undefined && (obj.eventWindowStartTime = Math.round(message.eventWindowStartTime));
+    return obj;
   },
 };
 
@@ -1011,6 +1424,38 @@ export const CSODOTALobbyInvite = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSODOTALobbyInvite {
+    return {
+      groupId: isSet(object.groupId) ? String(object.groupId) : "0",
+      senderId: isSet(object.senderId) ? String(object.senderId) : "0",
+      senderName: isSet(object.senderName) ? String(object.senderName) : "",
+      members: Array.isArray(object?.members)
+        ? object.members.map((e: any) => CSODOTALobbyInvite_LobbyMember.fromJSON(e))
+        : [],
+      customGameId: isSet(object.customGameId) ? String(object.customGameId) : "0",
+      inviteGid: isSet(object.inviteGid) ? String(object.inviteGid) : "0",
+      customGameCrc: isSet(object.customGameCrc) ? String(object.customGameCrc) : "0",
+      customGameTimestamp: isSet(object.customGameTimestamp) ? Number(object.customGameTimestamp) : 0,
+    };
+  },
+
+  toJSON(message: CSODOTALobbyInvite): unknown {
+    const obj: any = {};
+    message.groupId !== undefined && (obj.groupId = message.groupId);
+    message.senderId !== undefined && (obj.senderId = message.senderId);
+    message.senderName !== undefined && (obj.senderName = message.senderName);
+    if (message.members) {
+      obj.members = message.members.map((e) => e ? CSODOTALobbyInvite_LobbyMember.toJSON(e) : undefined);
+    } else {
+      obj.members = [];
+    }
+    message.customGameId !== undefined && (obj.customGameId = message.customGameId);
+    message.inviteGid !== undefined && (obj.inviteGid = message.inviteGid);
+    message.customGameCrc !== undefined && (obj.customGameCrc = message.customGameCrc);
+    message.customGameTimestamp !== undefined && (obj.customGameTimestamp = Math.round(message.customGameTimestamp));
+    return obj;
+  },
 };
 
 function createBaseCSODOTALobbyInvite_LobbyMember(): CSODOTALobbyInvite_LobbyMember {
@@ -1056,6 +1501,20 @@ export const CSODOTALobbyInvite_LobbyMember = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSODOTALobbyInvite_LobbyMember {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      steamId: isSet(object.steamId) ? String(object.steamId) : "0",
+    };
+  },
+
+  toJSON(message: CSODOTALobbyInvite_LobbyMember): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.steamId !== undefined && (obj.steamId = message.steamId);
+    return obj;
   },
 };
 
@@ -1590,6 +2049,141 @@ export const CSODOTALobbyMember = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSODOTALobbyMember {
+    return {
+      id: isSet(object.id) ? String(object.id) : "0",
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      team: isSet(object.team) ? dotaGcTeamFromJSON(object.team) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      slot: isSet(object.slot) ? Number(object.slot) : 0,
+      partyId: isSet(object.partyId) ? String(object.partyId) : "0",
+      metaLevel: isSet(object.metaLevel) ? Number(object.metaLevel) : 0,
+      metaXp: isSet(object.metaXp) ? Number(object.metaXp) : 0,
+      metaXpAwarded: isSet(object.metaXpAwarded) ? Number(object.metaXpAwarded) : 0,
+      leaverStatus: isSet(object.leaverStatus) ? dOTALeaverStatusTFromJSON(object.leaverStatus) : 0,
+      leaverActions: isSet(object.leaverActions) ? Number(object.leaverActions) : 0,
+      channel: isSet(object.channel) ? Number(object.channel) : 0,
+      disabledHeroId: Array.isArray(object?.disabledHeroId) ? object.disabledHeroId.map((e: any) => Number(e)) : [],
+      enabledHeroId: Array.isArray(object?.enabledHeroId) ? object.enabledHeroId.map((e: any) => Number(e)) : [],
+      coachTeam: isSet(object.coachTeam) ? dotaGcTeamFromJSON(object.coachTeam) : 0,
+      coachedAccountIds: Array.isArray(object?.coachedAccountIds)
+        ? object.coachedAccountIds.map((e: any) => Number(e))
+        : [],
+      coachRating: isSet(object.coachRating) ? Number(object.coachRating) : 0,
+      pwrdCyberCafeId: isSet(object.pwrdCyberCafeId) ? Number(object.pwrdCyberCafeId) : 0,
+      pwrdCyberCafeName: isSet(object.pwrdCyberCafeName) ? String(object.pwrdCyberCafeName) : "",
+      disabledRandomHeroBits: Array.isArray(object?.disabledRandomHeroBits)
+        ? object.disabledRandomHeroBits.map((e: any) => Number(e))
+        : [],
+      rankChange: isSet(object.rankChange) ? Number(object.rankChange) : 0,
+      cameraman: isSet(object.cameraman) ? Boolean(object.cameraman) : false,
+      customGameProductIds: Array.isArray(object?.customGameProductIds)
+        ? object.customGameProductIds.map((e: any) => Number(e))
+        : [],
+      searchMatchType: isSet(object.searchMatchType) ? matchTypeFromJSON(object.searchMatchType) : 0,
+      favoriteTeamPacked: isSet(object.favoriteTeamPacked) ? String(object.favoriteTeamPacked) : "0",
+      isPlusSubscriber: isSet(object.isPlusSubscriber) ? Boolean(object.isPlusSubscriber) : false,
+      laneSelectionFlags: isSet(object.laneSelectionFlags) ? Number(object.laneSelectionFlags) : 0,
+      canEarnRewards: isSet(object.canEarnRewards) ? Boolean(object.canEarnRewards) : false,
+      liveSpectatorTeam: isSet(object.liveSpectatorTeam) ? dotaGcTeamFromJSON(object.liveSpectatorTeam) : 0,
+      wasMvpLastGame: isSet(object.wasMvpLastGame) ? Boolean(object.wasMvpLastGame) : false,
+      pendingAwards: Array.isArray(object?.pendingAwards)
+        ? object.pendingAwards.map((e: any) => CMsgPendingEventAward.fromJSON(e))
+        : [],
+      pendingAwardsOnVictory: Array.isArray(object?.pendingAwardsOnVictory)
+        ? object.pendingAwardsOnVictory.map((e: any) => CMsgPendingEventAward.fromJSON(e))
+        : [],
+      rankMmrBoostType: isSet(object.rankMmrBoostType) ? eDOTAMMRBoostTypeFromJSON(object.rankMmrBoostType) : 0,
+      queuePointAdjustment: isSet(object.queuePointAdjustment) ? Number(object.queuePointAdjustment) : 0,
+      rankTier: isSet(object.rankTier) ? Number(object.rankTier) : 0,
+      title: isSet(object.title) ? Number(object.title) : 0,
+      guildId: isSet(object.guildId) ? Number(object.guildId) : 0,
+      reportsAvailable: isSet(object.reportsAvailable) ? Number(object.reportsAvailable) : 0,
+      isSteamChina: isSet(object.isSteamChina) ? Boolean(object.isSteamChina) : false,
+      liveSpectatorAccountId: isSet(object.liveSpectatorAccountId) ? Number(object.liveSpectatorAccountId) : 0,
+      commsReportsAvailable: isSet(object.commsReportsAvailable) ? Number(object.commsReportsAvailable) : 0,
+    };
+  },
+
+  toJSON(message: CSODOTALobbyMember): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.team !== undefined && (obj.team = dotaGcTeamToJSON(message.team));
+    message.name !== undefined && (obj.name = message.name);
+    message.slot !== undefined && (obj.slot = Math.round(message.slot));
+    message.partyId !== undefined && (obj.partyId = message.partyId);
+    message.metaLevel !== undefined && (obj.metaLevel = Math.round(message.metaLevel));
+    message.metaXp !== undefined && (obj.metaXp = Math.round(message.metaXp));
+    message.metaXpAwarded !== undefined && (obj.metaXpAwarded = Math.round(message.metaXpAwarded));
+    message.leaverStatus !== undefined && (obj.leaverStatus = dOTALeaverStatusTToJSON(message.leaverStatus));
+    message.leaverActions !== undefined && (obj.leaverActions = Math.round(message.leaverActions));
+    message.channel !== undefined && (obj.channel = Math.round(message.channel));
+    if (message.disabledHeroId) {
+      obj.disabledHeroId = message.disabledHeroId.map((e) => Math.round(e));
+    } else {
+      obj.disabledHeroId = [];
+    }
+    if (message.enabledHeroId) {
+      obj.enabledHeroId = message.enabledHeroId.map((e) => Math.round(e));
+    } else {
+      obj.enabledHeroId = [];
+    }
+    message.coachTeam !== undefined && (obj.coachTeam = dotaGcTeamToJSON(message.coachTeam));
+    if (message.coachedAccountIds) {
+      obj.coachedAccountIds = message.coachedAccountIds.map((e) => Math.round(e));
+    } else {
+      obj.coachedAccountIds = [];
+    }
+    message.coachRating !== undefined && (obj.coachRating = Math.round(message.coachRating));
+    message.pwrdCyberCafeId !== undefined && (obj.pwrdCyberCafeId = Math.round(message.pwrdCyberCafeId));
+    message.pwrdCyberCafeName !== undefined && (obj.pwrdCyberCafeName = message.pwrdCyberCafeName);
+    if (message.disabledRandomHeroBits) {
+      obj.disabledRandomHeroBits = message.disabledRandomHeroBits.map((e) => Math.round(e));
+    } else {
+      obj.disabledRandomHeroBits = [];
+    }
+    message.rankChange !== undefined && (obj.rankChange = Math.round(message.rankChange));
+    message.cameraman !== undefined && (obj.cameraman = message.cameraman);
+    if (message.customGameProductIds) {
+      obj.customGameProductIds = message.customGameProductIds.map((e) => Math.round(e));
+    } else {
+      obj.customGameProductIds = [];
+    }
+    message.searchMatchType !== undefined && (obj.searchMatchType = matchTypeToJSON(message.searchMatchType));
+    message.favoriteTeamPacked !== undefined && (obj.favoriteTeamPacked = message.favoriteTeamPacked);
+    message.isPlusSubscriber !== undefined && (obj.isPlusSubscriber = message.isPlusSubscriber);
+    message.laneSelectionFlags !== undefined && (obj.laneSelectionFlags = Math.round(message.laneSelectionFlags));
+    message.canEarnRewards !== undefined && (obj.canEarnRewards = message.canEarnRewards);
+    message.liveSpectatorTeam !== undefined && (obj.liveSpectatorTeam = dotaGcTeamToJSON(message.liveSpectatorTeam));
+    message.wasMvpLastGame !== undefined && (obj.wasMvpLastGame = message.wasMvpLastGame);
+    if (message.pendingAwards) {
+      obj.pendingAwards = message.pendingAwards.map((e) => e ? CMsgPendingEventAward.toJSON(e) : undefined);
+    } else {
+      obj.pendingAwards = [];
+    }
+    if (message.pendingAwardsOnVictory) {
+      obj.pendingAwardsOnVictory = message.pendingAwardsOnVictory.map((e) =>
+        e ? CMsgPendingEventAward.toJSON(e) : undefined
+      );
+    } else {
+      obj.pendingAwardsOnVictory = [];
+    }
+    message.rankMmrBoostType !== undefined &&
+      (obj.rankMmrBoostType = eDOTAMMRBoostTypeToJSON(message.rankMmrBoostType));
+    message.queuePointAdjustment !== undefined && (obj.queuePointAdjustment = Math.round(message.queuePointAdjustment));
+    message.rankTier !== undefined && (obj.rankTier = Math.round(message.rankTier));
+    message.title !== undefined && (obj.title = Math.round(message.title));
+    message.guildId !== undefined && (obj.guildId = Math.round(message.guildId));
+    message.reportsAvailable !== undefined && (obj.reportsAvailable = Math.round(message.reportsAvailable));
+    message.isSteamChina !== undefined && (obj.isSteamChina = message.isSteamChina);
+    message.liveSpectatorAccountId !== undefined &&
+      (obj.liveSpectatorAccountId = Math.round(message.liveSpectatorAccountId));
+    message.commsReportsAvailable !== undefined &&
+      (obj.commsReportsAvailable = Math.round(message.commsReportsAvailable));
+    return obj;
+  },
 };
 
 function createBaseCSODOTAServerLobbyMember(): CSODOTAServerLobbyMember {
@@ -1615,6 +2209,15 @@ export const CSODOTAServerLobbyMember = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CSODOTAServerLobbyMember {
+    return {};
+  },
+
+  toJSON(_: CSODOTAServerLobbyMember): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -1642,6 +2245,15 @@ export const CSODOTAStaticLobbyMember = {
     }
     return message;
   },
+
+  fromJSON(_: any): CSODOTAStaticLobbyMember {
+    return {};
+  },
+
+  toJSON(_: CSODOTAStaticLobbyMember): unknown {
+    const obj: any = {};
+    return obj;
+  },
 };
 
 function createBaseCSODOTAServerStaticLobbyMember(): CSODOTAServerStaticLobbyMember {
@@ -1667,6 +2279,15 @@ export const CSODOTAServerStaticLobbyMember = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CSODOTAServerStaticLobbyMember {
+    return {};
+  },
+
+  toJSON(_: CSODOTAServerStaticLobbyMember): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -1849,6 +2470,47 @@ export const CLobbyTeamDetails = {
     }
     return message;
   },
+
+  fromJSON(object: any): CLobbyTeamDetails {
+    return {
+      teamName: isSet(object.teamName) ? String(object.teamName) : "",
+      teamTag: isSet(object.teamTag) ? String(object.teamTag) : "",
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      teamLogo: isSet(object.teamLogo) ? String(object.teamLogo) : "0",
+      teamBaseLogo: isSet(object.teamBaseLogo) ? String(object.teamBaseLogo) : "0",
+      teamBannerLogo: isSet(object.teamBannerLogo) ? String(object.teamBannerLogo) : "0",
+      teamComplete: isSet(object.teamComplete) ? Boolean(object.teamComplete) : false,
+      rank: isSet(object.rank) ? Number(object.rank) : 0,
+      rankChange: isSet(object.rankChange) ? Number(object.rankChange) : 0,
+      isHomeTeam: isSet(object.isHomeTeam) ? Boolean(object.isHomeTeam) : false,
+      isChallengeMatch: isSet(object.isChallengeMatch) ? Boolean(object.isChallengeMatch) : false,
+      challengeMatchTokenAccount: isSet(object.challengeMatchTokenAccount)
+        ? String(object.challengeMatchTokenAccount)
+        : "0",
+      teamLogoUrl: isSet(object.teamLogoUrl) ? String(object.teamLogoUrl) : "",
+      teamAbbreviation: isSet(object.teamAbbreviation) ? String(object.teamAbbreviation) : "",
+    };
+  },
+
+  toJSON(message: CLobbyTeamDetails): unknown {
+    const obj: any = {};
+    message.teamName !== undefined && (obj.teamName = message.teamName);
+    message.teamTag !== undefined && (obj.teamTag = message.teamTag);
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    message.teamLogo !== undefined && (obj.teamLogo = message.teamLogo);
+    message.teamBaseLogo !== undefined && (obj.teamBaseLogo = message.teamBaseLogo);
+    message.teamBannerLogo !== undefined && (obj.teamBannerLogo = message.teamBannerLogo);
+    message.teamComplete !== undefined && (obj.teamComplete = message.teamComplete);
+    message.rank !== undefined && (obj.rank = Math.round(message.rank));
+    message.rankChange !== undefined && (obj.rankChange = Math.round(message.rankChange));
+    message.isHomeTeam !== undefined && (obj.isHomeTeam = message.isHomeTeam);
+    message.isChallengeMatch !== undefined && (obj.isChallengeMatch = message.isChallengeMatch);
+    message.challengeMatchTokenAccount !== undefined &&
+      (obj.challengeMatchTokenAccount = message.challengeMatchTokenAccount);
+    message.teamLogoUrl !== undefined && (obj.teamLogoUrl = message.teamLogoUrl);
+    message.teamAbbreviation !== undefined && (obj.teamAbbreviation = message.teamAbbreviation);
+    return obj;
+  },
 };
 
 function createBaseCLobbyGuildDetails(): CLobbyGuildDetails {
@@ -1997,6 +2659,39 @@ export const CLobbyGuildDetails = {
     }
     return message;
   },
+
+  fromJSON(object: any): CLobbyGuildDetails {
+    return {
+      guildId: isSet(object.guildId) ? Number(object.guildId) : 0,
+      guildPrimaryColor: isSet(object.guildPrimaryColor) ? Number(object.guildPrimaryColor) : 0,
+      guildSecondaryColor: isSet(object.guildSecondaryColor) ? Number(object.guildSecondaryColor) : 0,
+      guildPattern: isSet(object.guildPattern) ? Number(object.guildPattern) : 0,
+      guildLogo: isSet(object.guildLogo) ? String(object.guildLogo) : "0",
+      guildPoints: isSet(object.guildPoints) ? Number(object.guildPoints) : 0,
+      guildEvent: isSet(object.guildEvent) ? Number(object.guildEvent) : 0,
+      guildFlags: isSet(object.guildFlags) ? Number(object.guildFlags) : 0,
+      teamForGuild: isSet(object.teamForGuild) ? dotaGcTeamFromJSON(object.teamForGuild) : 0,
+      guildTag: isSet(object.guildTag) ? String(object.guildTag) : "",
+      guildWeeklyPercentile: isSet(object.guildWeeklyPercentile) ? Number(object.guildWeeklyPercentile) : 0,
+    };
+  },
+
+  toJSON(message: CLobbyGuildDetails): unknown {
+    const obj: any = {};
+    message.guildId !== undefined && (obj.guildId = Math.round(message.guildId));
+    message.guildPrimaryColor !== undefined && (obj.guildPrimaryColor = Math.round(message.guildPrimaryColor));
+    message.guildSecondaryColor !== undefined && (obj.guildSecondaryColor = Math.round(message.guildSecondaryColor));
+    message.guildPattern !== undefined && (obj.guildPattern = Math.round(message.guildPattern));
+    message.guildLogo !== undefined && (obj.guildLogo = message.guildLogo);
+    message.guildPoints !== undefined && (obj.guildPoints = Math.round(message.guildPoints));
+    message.guildEvent !== undefined && (obj.guildEvent = Math.round(message.guildEvent));
+    message.guildFlags !== undefined && (obj.guildFlags = Math.round(message.guildFlags));
+    message.teamForGuild !== undefined && (obj.teamForGuild = dotaGcTeamToJSON(message.teamForGuild));
+    message.guildTag !== undefined && (obj.guildTag = message.guildTag);
+    message.guildWeeklyPercentile !== undefined &&
+      (obj.guildWeeklyPercentile = Math.round(message.guildWeeklyPercentile));
+    return obj;
+  },
 };
 
 function createBaseCLobbyTimedRewardDetails(): CLobbyTimedRewardDetails {
@@ -2073,6 +2768,26 @@ export const CLobbyTimedRewardDetails = {
     }
     return message;
   },
+
+  fromJSON(object: any): CLobbyTimedRewardDetails {
+    return {
+      itemDefIndex: isSet(object.itemDefIndex) ? Number(object.itemDefIndex) : 0,
+      isSupplyCrate: isSet(object.isSupplyCrate) ? Boolean(object.isSupplyCrate) : false,
+      isTimedDrop: isSet(object.isTimedDrop) ? Boolean(object.isTimedDrop) : false,
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      origin: isSet(object.origin) ? Number(object.origin) : 0,
+    };
+  },
+
+  toJSON(message: CLobbyTimedRewardDetails): unknown {
+    const obj: any = {};
+    message.itemDefIndex !== undefined && (obj.itemDefIndex = Math.round(message.itemDefIndex));
+    message.isSupplyCrate !== undefined && (obj.isSupplyCrate = message.isSupplyCrate);
+    message.isTimedDrop !== undefined && (obj.isTimedDrop = message.isTimedDrop);
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.origin !== undefined && (obj.origin = Math.round(message.origin));
+    return obj;
+  },
 };
 
 function createBaseCLobbyBroadcastChannelInfo(): CLobbyBroadcastChannelInfo {
@@ -2138,6 +2853,24 @@ export const CLobbyBroadcastChannelInfo = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CLobbyBroadcastChannelInfo {
+    return {
+      channelId: isSet(object.channelId) ? Number(object.channelId) : 0,
+      countryCode: isSet(object.countryCode) ? String(object.countryCode) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      languageCode: isSet(object.languageCode) ? String(object.languageCode) : "",
+    };
+  },
+
+  toJSON(message: CLobbyBroadcastChannelInfo): unknown {
+    const obj: any = {};
+    message.channelId !== undefined && (obj.channelId = Math.round(message.channelId));
+    message.countryCode !== undefined && (obj.countryCode = message.countryCode);
+    message.description !== undefined && (obj.description = message.description);
+    message.languageCode !== undefined && (obj.languageCode = message.languageCode);
+    return obj;
   },
 };
 
@@ -2264,6 +2997,40 @@ export const CLobbyGuildChallenge = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CLobbyGuildChallenge {
+    return {
+      guildId: isSet(object.guildId) ? Number(object.guildId) : 0,
+      eventId: isSet(object.eventId) ? eEventFromJSON(object.eventId) : 0,
+      challengeInstanceId: isSet(object.challengeInstanceId) ? Number(object.challengeInstanceId) : 0,
+      challengeParameter: isSet(object.challengeParameter) ? Number(object.challengeParameter) : 0,
+      challengeTimestamp: isSet(object.challengeTimestamp) ? Number(object.challengeTimestamp) : 0,
+      challengePeriodSerial: isSet(object.challengePeriodSerial) ? Number(object.challengePeriodSerial) : 0,
+      challengeProgressAtStart: isSet(object.challengeProgressAtStart) ? Number(object.challengeProgressAtStart) : 0,
+      eligibleAccountIds: Array.isArray(object?.eligibleAccountIds)
+        ? object.eligibleAccountIds.map((e: any) => Number(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CLobbyGuildChallenge): unknown {
+    const obj: any = {};
+    message.guildId !== undefined && (obj.guildId = Math.round(message.guildId));
+    message.eventId !== undefined && (obj.eventId = eEventToJSON(message.eventId));
+    message.challengeInstanceId !== undefined && (obj.challengeInstanceId = Math.round(message.challengeInstanceId));
+    message.challengeParameter !== undefined && (obj.challengeParameter = Math.round(message.challengeParameter));
+    message.challengeTimestamp !== undefined && (obj.challengeTimestamp = Math.round(message.challengeTimestamp));
+    message.challengePeriodSerial !== undefined &&
+      (obj.challengePeriodSerial = Math.round(message.challengePeriodSerial));
+    message.challengeProgressAtStart !== undefined &&
+      (obj.challengeProgressAtStart = Math.round(message.challengeProgressAtStart));
+    if (message.eligibleAccountIds) {
+      obj.eligibleAccountIds = message.eligibleAccountIds.map((e) => Math.round(e));
+    } else {
+      obj.eligibleAccountIds = [];
+    }
+    return obj;
   },
 };
 
@@ -3458,6 +4225,362 @@ export const CSODOTALobby = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSODOTALobby {
+    return {
+      lobbyId: isSet(object.lobbyId) ? String(object.lobbyId) : "0",
+      allMembers: Array.isArray(object?.allMembers)
+        ? object.allMembers.map((e: any) => CSODOTALobbyMember.fromJSON(e))
+        : [],
+      memberIndices: Array.isArray(object?.memberIndices) ? object.memberIndices.map((e: any) => Number(e)) : [],
+      leftMemberIndices: Array.isArray(object?.leftMemberIndices)
+        ? object.leftMemberIndices.map((e: any) => Number(e))
+        : [],
+      freeMemberIndices: Array.isArray(object?.freeMemberIndices)
+        ? object.freeMemberIndices.map((e: any) => Number(e))
+        : [],
+      leaderId: isSet(object.leaderId) ? String(object.leaderId) : "0",
+      serverId: isSet(object.serverId) ? String(object.serverId) : "0",
+      gameMode: isSet(object.gameMode) ? Number(object.gameMode) : 0,
+      pendingInvites: Array.isArray(object?.pendingInvites) ? object.pendingInvites.map((e: any) => String(e)) : [],
+      state: isSet(object.state) ? cSODOTALobby_StateFromJSON(object.state) : 0,
+      connect: isSet(object.connect) ? String(object.connect) : "",
+      lobbyType: isSet(object.lobbyType) ? cSODOTALobby_LobbyTypeFromJSON(object.lobbyType) : 0,
+      allowCheats: isSet(object.allowCheats) ? Boolean(object.allowCheats) : false,
+      fillWithBots: isSet(object.fillWithBots) ? Boolean(object.fillWithBots) : false,
+      introMode: isSet(object.introMode) ? Boolean(object.introMode) : false,
+      gameName: isSet(object.gameName) ? String(object.gameName) : "",
+      teamDetails: Array.isArray(object?.teamDetails)
+        ? object.teamDetails.map((e: any) => CLobbyTeamDetails.fromJSON(e))
+        : [],
+      tutorialLesson: isSet(object.tutorialLesson) ? Number(object.tutorialLesson) : 0,
+      tournamentId: isSet(object.tournamentId) ? Number(object.tournamentId) : 0,
+      tournamentGameId: isSet(object.tournamentGameId) ? Number(object.tournamentGameId) : 0,
+      serverRegion: isSet(object.serverRegion) ? Number(object.serverRegion) : 0,
+      gameState: isSet(object.gameState) ? dOTAGameStateFromJSON(object.gameState) : 0,
+      numSpectators: isSet(object.numSpectators) ? Number(object.numSpectators) : 0,
+      matchgroup: isSet(object.matchgroup) ? Number(object.matchgroup) : 0,
+      cmPick: isSet(object.cmPick) ? dotaCmPickFromJSON(object.cmPick) : 0,
+      matchId: isSet(object.matchId) ? String(object.matchId) : "0",
+      allowSpectating: isSet(object.allowSpectating) ? Boolean(object.allowSpectating) : false,
+      botDifficultyRadiant: isSet(object.botDifficultyRadiant)
+        ? dOTABotDifficultyFromJSON(object.botDifficultyRadiant)
+        : 0,
+      timedRewardDetails: Array.isArray(object?.timedRewardDetails)
+        ? object.timedRewardDetails.map((e: any) => CLobbyTimedRewardDetails.fromJSON(e))
+        : [],
+      passKey: isSet(object.passKey) ? String(object.passKey) : "",
+      leagueid: isSet(object.leagueid) ? Number(object.leagueid) : 0,
+      penaltyLevelRadiant: isSet(object.penaltyLevelRadiant) ? Number(object.penaltyLevelRadiant) : 0,
+      penaltyLevelDire: isSet(object.penaltyLevelDire) ? Number(object.penaltyLevelDire) : 0,
+      loadGameId: isSet(object.loadGameId) ? Number(object.loadGameId) : 0,
+      seriesType: isSet(object.seriesType) ? Number(object.seriesType) : 0,
+      radiantSeriesWins: isSet(object.radiantSeriesWins) ? Number(object.radiantSeriesWins) : 0,
+      direSeriesWins: isSet(object.direSeriesWins) ? Number(object.direSeriesWins) : 0,
+      lootGenerated: isSet(object.lootGenerated) ? Number(object.lootGenerated) : 0,
+      lootAwarded: isSet(object.lootAwarded) ? Number(object.lootAwarded) : 0,
+      allchat: isSet(object.allchat) ? Boolean(object.allchat) : false,
+      dotaTvDelay: isSet(object.dotaTvDelay) ? lobbyDotaTVDelayFromJSON(object.dotaTvDelay) : 0,
+      customGameMode: isSet(object.customGameMode) ? String(object.customGameMode) : "",
+      customMapName: isSet(object.customMapName) ? String(object.customMapName) : "",
+      customDifficulty: isSet(object.customDifficulty) ? Number(object.customDifficulty) : 0,
+      lan: isSet(object.lan) ? Boolean(object.lan) : false,
+      broadcastChannelInfo: Array.isArray(object?.broadcastChannelInfo)
+        ? object.broadcastChannelInfo.map((e: any) => CLobbyBroadcastChannelInfo.fromJSON(e))
+        : [],
+      firstLeaverAccountid: isSet(object.firstLeaverAccountid) ? Number(object.firstLeaverAccountid) : 0,
+      seriesId: isSet(object.seriesId) ? Number(object.seriesId) : 0,
+      lowPriority: isSet(object.lowPriority) ? Boolean(object.lowPriority) : false,
+      extraMessages: Array.isArray(object?.extraMessages)
+        ? object.extraMessages.map((e: any) => CSODOTALobby_CExtraMsg.fromJSON(e))
+        : [],
+      saveGame: isSet(object.saveGame) ? CDOTASaveGame.fromJSON(object.saveGame) : undefined,
+      firstBloodHappened: isSet(object.firstBloodHappened) ? Boolean(object.firstBloodHappened) : false,
+      matchOutcome: isSet(object.matchOutcome) ? eMatchOutcomeFromJSON(object.matchOutcome) : 0,
+      massDisconnect: isSet(object.massDisconnect) ? Boolean(object.massDisconnect) : false,
+      customGameId: isSet(object.customGameId) ? String(object.customGameId) : "0",
+      customMinPlayers: isSet(object.customMinPlayers) ? Number(object.customMinPlayers) : 0,
+      customMaxPlayers: isSet(object.customMaxPlayers) ? Number(object.customMaxPlayers) : 0,
+      visibility: isSet(object.visibility) ? dOTALobbyVisibilityFromJSON(object.visibility) : 0,
+      customGameCrc: isSet(object.customGameCrc) ? String(object.customGameCrc) : "0",
+      customGameAutoCreatedLobby: isSet(object.customGameAutoCreatedLobby)
+        ? Boolean(object.customGameAutoCreatedLobby)
+        : false,
+      customGameTimestamp: isSet(object.customGameTimestamp) ? Number(object.customGameTimestamp) : 0,
+      previousSeriesMatches: Array.isArray(object?.previousSeriesMatches)
+        ? object.previousSeriesMatches.map((e: any) => String(e))
+        : [],
+      previousMatchOverride: isSet(object.previousMatchOverride) ? String(object.previousMatchOverride) : "0",
+      gameStartTime: isSet(object.gameStartTime) ? Number(object.gameStartTime) : 0,
+      pauseSetting: isSet(object.pauseSetting) ? lobbyDotaPauseSettingFromJSON(object.pauseSetting) : 0,
+      weekendTourneyDivisionId: isSet(object.weekendTourneyDivisionId) ? Number(object.weekendTourneyDivisionId) : 0,
+      weekendTourneySkillLevel: isSet(object.weekendTourneySkillLevel) ? Number(object.weekendTourneySkillLevel) : 0,
+      weekendTourneyBracketRound: isSet(object.weekendTourneyBracketRound)
+        ? Number(object.weekendTourneyBracketRound)
+        : 0,
+      botDifficultyDire: isSet(object.botDifficultyDire) ? dOTABotDifficultyFromJSON(object.botDifficultyDire) : 0,
+      botRadiant: isSet(object.botRadiant) ? String(object.botRadiant) : "0",
+      botDire: isSet(object.botDire) ? String(object.botDire) : "0",
+      eventProgressionEnabled: Array.isArray(object?.eventProgressionEnabled)
+        ? object.eventProgressionEnabled.map((e: any) => eEventFromJSON(e))
+        : [],
+      selectionPriorityRules: isSet(object.selectionPriorityRules)
+        ? dOTASelectionPriorityRulesFromJSON(object.selectionPriorityRules)
+        : 0,
+      seriesPreviousSelectionPriorityTeamId: isSet(object.seriesPreviousSelectionPriorityTeamId)
+        ? Number(object.seriesPreviousSelectionPriorityTeamId)
+        : 0,
+      seriesCurrentSelectionPriorityTeamId: isSet(object.seriesCurrentSelectionPriorityTeamId)
+        ? Number(object.seriesCurrentSelectionPriorityTeamId)
+        : 0,
+      seriesCurrentPriorityTeamChoice: isSet(object.seriesCurrentPriorityTeamChoice)
+        ? dOTASelectionPriorityChoiceFromJSON(object.seriesCurrentPriorityTeamChoice)
+        : 0,
+      seriesCurrentNonPriorityTeamChoice: isSet(object.seriesCurrentNonPriorityTeamChoice)
+        ? dOTASelectionPriorityChoiceFromJSON(object.seriesCurrentNonPriorityTeamChoice)
+        : 0,
+      seriesCurrentSelectionPriorityUsedCoinToss: isSet(object.seriesCurrentSelectionPriorityUsedCoinToss)
+        ? Boolean(object.seriesCurrentSelectionPriorityUsedCoinToss)
+        : false,
+      currentPrimaryEvent: isSet(object.currentPrimaryEvent) ? eEventFromJSON(object.currentPrimaryEvent) : 0,
+      emergencyDisabledHeroIds: Array.isArray(object?.emergencyDisabledHeroIds)
+        ? object.emergencyDisabledHeroIds.map((e: any) => Number(e))
+        : [],
+      customGamePrivateKey: isSet(object.customGamePrivateKey) ? String(object.customGamePrivateKey) : "0",
+      customGamePenalties: isSet(object.customGamePenalties) ? Boolean(object.customGamePenalties) : false,
+      lanHostPingLocation: isSet(object.lanHostPingLocation) ? String(object.lanHostPingLocation) : "",
+      leagueNodeId: isSet(object.leagueNodeId) ? Number(object.leagueNodeId) : 0,
+      matchDuration: isSet(object.matchDuration) ? Number(object.matchDuration) : 0,
+      leaguePhase: isSet(object.leaguePhase) ? Number(object.leaguePhase) : 0,
+      recordDetailedStats: isSet(object.recordDetailedStats) ? Boolean(object.recordDetailedStats) : false,
+      experimentalGameplayEnabled: isSet(object.experimentalGameplayEnabled)
+        ? Boolean(object.experimentalGameplayEnabled)
+        : false,
+      guildChallenges: Array.isArray(object?.guildChallenges)
+        ? object.guildChallenges.map((e: any) => CLobbyGuildChallenge.fromJSON(e))
+        : [],
+      guildDetails: Array.isArray(object?.guildDetails)
+        ? object.guildDetails.map((e: any) => CLobbyGuildDetails.fromJSON(e))
+        : [],
+      lobbyEventPoints: Array.isArray(object?.lobbyEventPoints)
+        ? object.lobbyEventPoints.map((e: any) => CMsgLobbyEventPoints.fromJSON(e))
+        : [],
+      requestedHeroIds: Array.isArray(object?.requestedHeroIds)
+        ? object.requestedHeroIds.map((e: any) => Number(e))
+        : [],
+      coachFriendRequests: Array.isArray(object?.coachFriendRequests)
+        ? object.coachFriendRequests.map((e: any) => CMsgLobbyCoachFriendRequest.fromJSON(e))
+        : [],
+      isInSteamChina: isSet(object.isInSteamChina) ? Boolean(object.isInSteamChina) : false,
+      withScenarioSave: isSet(object.withScenarioSave) ? Boolean(object.withScenarioSave) : false,
+      lobbyCreationTime: isSet(object.lobbyCreationTime) ? Number(object.lobbyCreationTime) : 0,
+      eventGameDefinition: isSet(object.eventGameDefinition) ? String(object.eventGameDefinition) : "",
+      extraStartupMessages: Array.isArray(object?.extraStartupMessages)
+        ? object.extraStartupMessages.map((e: any) => CSODOTALobby_CExtraMsg.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CSODOTALobby): unknown {
+    const obj: any = {};
+    message.lobbyId !== undefined && (obj.lobbyId = message.lobbyId);
+    if (message.allMembers) {
+      obj.allMembers = message.allMembers.map((e) => e ? CSODOTALobbyMember.toJSON(e) : undefined);
+    } else {
+      obj.allMembers = [];
+    }
+    if (message.memberIndices) {
+      obj.memberIndices = message.memberIndices.map((e) => Math.round(e));
+    } else {
+      obj.memberIndices = [];
+    }
+    if (message.leftMemberIndices) {
+      obj.leftMemberIndices = message.leftMemberIndices.map((e) => Math.round(e));
+    } else {
+      obj.leftMemberIndices = [];
+    }
+    if (message.freeMemberIndices) {
+      obj.freeMemberIndices = message.freeMemberIndices.map((e) => Math.round(e));
+    } else {
+      obj.freeMemberIndices = [];
+    }
+    message.leaderId !== undefined && (obj.leaderId = message.leaderId);
+    message.serverId !== undefined && (obj.serverId = message.serverId);
+    message.gameMode !== undefined && (obj.gameMode = Math.round(message.gameMode));
+    if (message.pendingInvites) {
+      obj.pendingInvites = message.pendingInvites.map((e) => e);
+    } else {
+      obj.pendingInvites = [];
+    }
+    message.state !== undefined && (obj.state = cSODOTALobby_StateToJSON(message.state));
+    message.connect !== undefined && (obj.connect = message.connect);
+    message.lobbyType !== undefined && (obj.lobbyType = cSODOTALobby_LobbyTypeToJSON(message.lobbyType));
+    message.allowCheats !== undefined && (obj.allowCheats = message.allowCheats);
+    message.fillWithBots !== undefined && (obj.fillWithBots = message.fillWithBots);
+    message.introMode !== undefined && (obj.introMode = message.introMode);
+    message.gameName !== undefined && (obj.gameName = message.gameName);
+    if (message.teamDetails) {
+      obj.teamDetails = message.teamDetails.map((e) => e ? CLobbyTeamDetails.toJSON(e) : undefined);
+    } else {
+      obj.teamDetails = [];
+    }
+    message.tutorialLesson !== undefined && (obj.tutorialLesson = Math.round(message.tutorialLesson));
+    message.tournamentId !== undefined && (obj.tournamentId = Math.round(message.tournamentId));
+    message.tournamentGameId !== undefined && (obj.tournamentGameId = Math.round(message.tournamentGameId));
+    message.serverRegion !== undefined && (obj.serverRegion = Math.round(message.serverRegion));
+    message.gameState !== undefined && (obj.gameState = dOTAGameStateToJSON(message.gameState));
+    message.numSpectators !== undefined && (obj.numSpectators = Math.round(message.numSpectators));
+    message.matchgroup !== undefined && (obj.matchgroup = Math.round(message.matchgroup));
+    message.cmPick !== undefined && (obj.cmPick = dotaCmPickToJSON(message.cmPick));
+    message.matchId !== undefined && (obj.matchId = message.matchId);
+    message.allowSpectating !== undefined && (obj.allowSpectating = message.allowSpectating);
+    message.botDifficultyRadiant !== undefined &&
+      (obj.botDifficultyRadiant = dOTABotDifficultyToJSON(message.botDifficultyRadiant));
+    if (message.timedRewardDetails) {
+      obj.timedRewardDetails = message.timedRewardDetails.map((e) =>
+        e ? CLobbyTimedRewardDetails.toJSON(e) : undefined
+      );
+    } else {
+      obj.timedRewardDetails = [];
+    }
+    message.passKey !== undefined && (obj.passKey = message.passKey);
+    message.leagueid !== undefined && (obj.leagueid = Math.round(message.leagueid));
+    message.penaltyLevelRadiant !== undefined && (obj.penaltyLevelRadiant = Math.round(message.penaltyLevelRadiant));
+    message.penaltyLevelDire !== undefined && (obj.penaltyLevelDire = Math.round(message.penaltyLevelDire));
+    message.loadGameId !== undefined && (obj.loadGameId = Math.round(message.loadGameId));
+    message.seriesType !== undefined && (obj.seriesType = Math.round(message.seriesType));
+    message.radiantSeriesWins !== undefined && (obj.radiantSeriesWins = Math.round(message.radiantSeriesWins));
+    message.direSeriesWins !== undefined && (obj.direSeriesWins = Math.round(message.direSeriesWins));
+    message.lootGenerated !== undefined && (obj.lootGenerated = Math.round(message.lootGenerated));
+    message.lootAwarded !== undefined && (obj.lootAwarded = Math.round(message.lootAwarded));
+    message.allchat !== undefined && (obj.allchat = message.allchat);
+    message.dotaTvDelay !== undefined && (obj.dotaTvDelay = lobbyDotaTVDelayToJSON(message.dotaTvDelay));
+    message.customGameMode !== undefined && (obj.customGameMode = message.customGameMode);
+    message.customMapName !== undefined && (obj.customMapName = message.customMapName);
+    message.customDifficulty !== undefined && (obj.customDifficulty = Math.round(message.customDifficulty));
+    message.lan !== undefined && (obj.lan = message.lan);
+    if (message.broadcastChannelInfo) {
+      obj.broadcastChannelInfo = message.broadcastChannelInfo.map((e) =>
+        e ? CLobbyBroadcastChannelInfo.toJSON(e) : undefined
+      );
+    } else {
+      obj.broadcastChannelInfo = [];
+    }
+    message.firstLeaverAccountid !== undefined && (obj.firstLeaverAccountid = Math.round(message.firstLeaverAccountid));
+    message.seriesId !== undefined && (obj.seriesId = Math.round(message.seriesId));
+    message.lowPriority !== undefined && (obj.lowPriority = message.lowPriority);
+    if (message.extraMessages) {
+      obj.extraMessages = message.extraMessages.map((e) => e ? CSODOTALobby_CExtraMsg.toJSON(e) : undefined);
+    } else {
+      obj.extraMessages = [];
+    }
+    message.saveGame !== undefined &&
+      (obj.saveGame = message.saveGame ? CDOTASaveGame.toJSON(message.saveGame) : undefined);
+    message.firstBloodHappened !== undefined && (obj.firstBloodHappened = message.firstBloodHappened);
+    message.matchOutcome !== undefined && (obj.matchOutcome = eMatchOutcomeToJSON(message.matchOutcome));
+    message.massDisconnect !== undefined && (obj.massDisconnect = message.massDisconnect);
+    message.customGameId !== undefined && (obj.customGameId = message.customGameId);
+    message.customMinPlayers !== undefined && (obj.customMinPlayers = Math.round(message.customMinPlayers));
+    message.customMaxPlayers !== undefined && (obj.customMaxPlayers = Math.round(message.customMaxPlayers));
+    message.visibility !== undefined && (obj.visibility = dOTALobbyVisibilityToJSON(message.visibility));
+    message.customGameCrc !== undefined && (obj.customGameCrc = message.customGameCrc);
+    message.customGameAutoCreatedLobby !== undefined &&
+      (obj.customGameAutoCreatedLobby = message.customGameAutoCreatedLobby);
+    message.customGameTimestamp !== undefined && (obj.customGameTimestamp = Math.round(message.customGameTimestamp));
+    if (message.previousSeriesMatches) {
+      obj.previousSeriesMatches = message.previousSeriesMatches.map((e) => e);
+    } else {
+      obj.previousSeriesMatches = [];
+    }
+    message.previousMatchOverride !== undefined && (obj.previousMatchOverride = message.previousMatchOverride);
+    message.gameStartTime !== undefined && (obj.gameStartTime = Math.round(message.gameStartTime));
+    message.pauseSetting !== undefined && (obj.pauseSetting = lobbyDotaPauseSettingToJSON(message.pauseSetting));
+    message.weekendTourneyDivisionId !== undefined &&
+      (obj.weekendTourneyDivisionId = Math.round(message.weekendTourneyDivisionId));
+    message.weekendTourneySkillLevel !== undefined &&
+      (obj.weekendTourneySkillLevel = Math.round(message.weekendTourneySkillLevel));
+    message.weekendTourneyBracketRound !== undefined &&
+      (obj.weekendTourneyBracketRound = Math.round(message.weekendTourneyBracketRound));
+    message.botDifficultyDire !== undefined &&
+      (obj.botDifficultyDire = dOTABotDifficultyToJSON(message.botDifficultyDire));
+    message.botRadiant !== undefined && (obj.botRadiant = message.botRadiant);
+    message.botDire !== undefined && (obj.botDire = message.botDire);
+    if (message.eventProgressionEnabled) {
+      obj.eventProgressionEnabled = message.eventProgressionEnabled.map((e) => eEventToJSON(e));
+    } else {
+      obj.eventProgressionEnabled = [];
+    }
+    message.selectionPriorityRules !== undefined &&
+      (obj.selectionPriorityRules = dOTASelectionPriorityRulesToJSON(message.selectionPriorityRules));
+    message.seriesPreviousSelectionPriorityTeamId !== undefined &&
+      (obj.seriesPreviousSelectionPriorityTeamId = Math.round(message.seriesPreviousSelectionPriorityTeamId));
+    message.seriesCurrentSelectionPriorityTeamId !== undefined &&
+      (obj.seriesCurrentSelectionPriorityTeamId = Math.round(message.seriesCurrentSelectionPriorityTeamId));
+    message.seriesCurrentPriorityTeamChoice !== undefined &&
+      (obj.seriesCurrentPriorityTeamChoice = dOTASelectionPriorityChoiceToJSON(
+        message.seriesCurrentPriorityTeamChoice,
+      ));
+    message.seriesCurrentNonPriorityTeamChoice !== undefined &&
+      (obj.seriesCurrentNonPriorityTeamChoice = dOTASelectionPriorityChoiceToJSON(
+        message.seriesCurrentNonPriorityTeamChoice,
+      ));
+    message.seriesCurrentSelectionPriorityUsedCoinToss !== undefined &&
+      (obj.seriesCurrentSelectionPriorityUsedCoinToss = message.seriesCurrentSelectionPriorityUsedCoinToss);
+    message.currentPrimaryEvent !== undefined && (obj.currentPrimaryEvent = eEventToJSON(message.currentPrimaryEvent));
+    if (message.emergencyDisabledHeroIds) {
+      obj.emergencyDisabledHeroIds = message.emergencyDisabledHeroIds.map((e) => Math.round(e));
+    } else {
+      obj.emergencyDisabledHeroIds = [];
+    }
+    message.customGamePrivateKey !== undefined && (obj.customGamePrivateKey = message.customGamePrivateKey);
+    message.customGamePenalties !== undefined && (obj.customGamePenalties = message.customGamePenalties);
+    message.lanHostPingLocation !== undefined && (obj.lanHostPingLocation = message.lanHostPingLocation);
+    message.leagueNodeId !== undefined && (obj.leagueNodeId = Math.round(message.leagueNodeId));
+    message.matchDuration !== undefined && (obj.matchDuration = Math.round(message.matchDuration));
+    message.leaguePhase !== undefined && (obj.leaguePhase = Math.round(message.leaguePhase));
+    message.recordDetailedStats !== undefined && (obj.recordDetailedStats = message.recordDetailedStats);
+    message.experimentalGameplayEnabled !== undefined &&
+      (obj.experimentalGameplayEnabled = message.experimentalGameplayEnabled);
+    if (message.guildChallenges) {
+      obj.guildChallenges = message.guildChallenges.map((e) => e ? CLobbyGuildChallenge.toJSON(e) : undefined);
+    } else {
+      obj.guildChallenges = [];
+    }
+    if (message.guildDetails) {
+      obj.guildDetails = message.guildDetails.map((e) => e ? CLobbyGuildDetails.toJSON(e) : undefined);
+    } else {
+      obj.guildDetails = [];
+    }
+    if (message.lobbyEventPoints) {
+      obj.lobbyEventPoints = message.lobbyEventPoints.map((e) => e ? CMsgLobbyEventPoints.toJSON(e) : undefined);
+    } else {
+      obj.lobbyEventPoints = [];
+    }
+    if (message.requestedHeroIds) {
+      obj.requestedHeroIds = message.requestedHeroIds.map((e) => Math.round(e));
+    } else {
+      obj.requestedHeroIds = [];
+    }
+    if (message.coachFriendRequests) {
+      obj.coachFriendRequests = message.coachFriendRequests.map((e) =>
+        e ? CMsgLobbyCoachFriendRequest.toJSON(e) : undefined
+      );
+    } else {
+      obj.coachFriendRequests = [];
+    }
+    message.isInSteamChina !== undefined && (obj.isInSteamChina = message.isInSteamChina);
+    message.withScenarioSave !== undefined && (obj.withScenarioSave = message.withScenarioSave);
+    message.lobbyCreationTime !== undefined && (obj.lobbyCreationTime = Math.round(message.lobbyCreationTime));
+    message.eventGameDefinition !== undefined && (obj.eventGameDefinition = message.eventGameDefinition);
+    if (message.extraStartupMessages) {
+      obj.extraStartupMessages = message.extraStartupMessages.map((e) =>
+        e ? CSODOTALobby_CExtraMsg.toJSON(e) : undefined
+      );
+    } else {
+      obj.extraStartupMessages = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCSODOTALobby_CExtraMsg(): CSODOTALobby_CExtraMsg {
@@ -3504,6 +4627,21 @@ export const CSODOTALobby_CExtraMsg = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSODOTALobby_CExtraMsg {
+    return {
+      id: isSet(object.id) ? Number(object.id) : 0,
+      contents: isSet(object.contents) ? Buffer.from(bytesFromBase64(object.contents)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CSODOTALobby_CExtraMsg): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = Math.round(message.id));
+    message.contents !== undefined &&
+      (obj.contents = base64FromBytes(message.contents !== undefined ? message.contents : Buffer.alloc(0)));
+    return obj;
+  },
 };
 
 function createBaseCSODOTAServerLobby(): CSODOTAServerLobby {
@@ -3539,6 +4677,24 @@ export const CSODOTAServerLobby = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSODOTAServerLobby {
+    return {
+      allMembers: Array.isArray(object?.allMembers)
+        ? object.allMembers.map((e: any) => CSODOTAServerLobbyMember.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CSODOTAServerLobby): unknown {
+    const obj: any = {};
+    if (message.allMembers) {
+      obj.allMembers = message.allMembers.map((e) => e ? CSODOTAServerLobbyMember.toJSON(e) : undefined);
+    } else {
+      obj.allMembers = [];
+    }
+    return obj;
   },
 };
 
@@ -3586,6 +4742,26 @@ export const CSODOTAStaticLobby = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSODOTAStaticLobby {
+    return {
+      allMembers: Array.isArray(object?.allMembers)
+        ? object.allMembers.map((e: any) => CSODOTAStaticLobbyMember.fromJSON(e))
+        : [],
+      isPlayerDraft: isSet(object.isPlayerDraft) ? Boolean(object.isPlayerDraft) : false,
+    };
+  },
+
+  toJSON(message: CSODOTAStaticLobby): unknown {
+    const obj: any = {};
+    if (message.allMembers) {
+      obj.allMembers = message.allMembers.map((e) => e ? CSODOTAStaticLobbyMember.toJSON(e) : undefined);
+    } else {
+      obj.allMembers = [];
+    }
+    message.isPlayerDraft !== undefined && (obj.isPlayerDraft = message.isPlayerDraft);
+    return obj;
+  },
 };
 
 function createBaseCSODOTAServerStaticLobby(): CSODOTAServerStaticLobby {
@@ -3621,6 +4797,24 @@ export const CSODOTAServerStaticLobby = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSODOTAServerStaticLobby {
+    return {
+      allMembers: Array.isArray(object?.allMembers)
+        ? object.allMembers.map((e: any) => CSODOTAServerStaticLobbyMember.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CSODOTAServerStaticLobby): unknown {
+    const obj: any = {};
+    if (message.allMembers) {
+      obj.allMembers = message.allMembers.map((e) => e ? CSODOTAServerStaticLobbyMember.toJSON(e) : undefined);
+    } else {
+      obj.allMembers = [];
+    }
+    return obj;
   },
 };
 
@@ -3692,6 +4886,45 @@ export const CMsgAdditionalLobbyStartupAccountData = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgAdditionalLobbyStartupAccountData {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      plusData: isSet(object.plusData) ? CMsgLobbyPlayerPlusSubscriptionData.fromJSON(object.plusData) : undefined,
+      unlockedChatWheelMessageRanges: Array.isArray(object?.unlockedChatWheelMessageRanges)
+        ? object.unlockedChatWheelMessageRanges.map((e: any) =>
+          CMsgAdditionalLobbyStartupAccountData_ChatWheelMessageRange.fromJSON(e)
+        )
+        : [],
+      unlockedPingWheelMessageRanges: Array.isArray(object?.unlockedPingWheelMessageRanges)
+        ? object.unlockedPingWheelMessageRanges.map((e: any) =>
+          CMsgAdditionalLobbyStartupAccountData_PingWheelMessageRange.fromJSON(e)
+        )
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgAdditionalLobbyStartupAccountData): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.plusData !== undefined &&
+      (obj.plusData = message.plusData ? CMsgLobbyPlayerPlusSubscriptionData.toJSON(message.plusData) : undefined);
+    if (message.unlockedChatWheelMessageRanges) {
+      obj.unlockedChatWheelMessageRanges = message.unlockedChatWheelMessageRanges.map((e) =>
+        e ? CMsgAdditionalLobbyStartupAccountData_ChatWheelMessageRange.toJSON(e) : undefined
+      );
+    } else {
+      obj.unlockedChatWheelMessageRanges = [];
+    }
+    if (message.unlockedPingWheelMessageRanges) {
+      obj.unlockedPingWheelMessageRanges = message.unlockedPingWheelMessageRanges.map((e) =>
+        e ? CMsgAdditionalLobbyStartupAccountData_PingWheelMessageRange.toJSON(e) : undefined
+      );
+    } else {
+      obj.unlockedPingWheelMessageRanges = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgAdditionalLobbyStartupAccountData_ChatWheelMessageRange(): CMsgAdditionalLobbyStartupAccountData_ChatWheelMessageRange {
@@ -3740,6 +4973,20 @@ export const CMsgAdditionalLobbyStartupAccountData_ChatWheelMessageRange = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgAdditionalLobbyStartupAccountData_ChatWheelMessageRange {
+    return {
+      messageIdStart: isSet(object.messageIdStart) ? Number(object.messageIdStart) : 0,
+      messageIdEnd: isSet(object.messageIdEnd) ? Number(object.messageIdEnd) : 0,
+    };
+  },
+
+  toJSON(message: CMsgAdditionalLobbyStartupAccountData_ChatWheelMessageRange): unknown {
+    const obj: any = {};
+    message.messageIdStart !== undefined && (obj.messageIdStart = Math.round(message.messageIdStart));
+    message.messageIdEnd !== undefined && (obj.messageIdEnd = Math.round(message.messageIdEnd));
+    return obj;
   },
 };
 
@@ -3790,6 +5037,20 @@ export const CMsgAdditionalLobbyStartupAccountData_PingWheelMessageRange = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgAdditionalLobbyStartupAccountData_PingWheelMessageRange {
+    return {
+      messageIdStart: isSet(object.messageIdStart) ? Number(object.messageIdStart) : 0,
+      messageIdEnd: isSet(object.messageIdEnd) ? Number(object.messageIdEnd) : 0,
+    };
+  },
+
+  toJSON(message: CMsgAdditionalLobbyStartupAccountData_PingWheelMessageRange): unknown {
+    const obj: any = {};
+    message.messageIdStart !== undefined && (obj.messageIdStart = Math.round(message.messageIdStart));
+    message.messageIdEnd !== undefined && (obj.messageIdEnd = Math.round(message.messageIdEnd));
+    return obj;
+  },
 };
 
 function createBaseCMsgLobbyInitializationComplete(): CMsgLobbyInitializationComplete {
@@ -3815,6 +5076,15 @@ export const CMsgLobbyInitializationComplete = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CMsgLobbyInitializationComplete {
+    return {};
+  },
+
+  toJSON(_: CMsgLobbyInitializationComplete): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -3851,6 +5121,16 @@ export const CMsgLobbyPlaytestDetails = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgLobbyPlaytestDetails {
+    return { json: isSet(object.json) ? String(object.json) : "" };
+  },
+
+  toJSON(message: CMsgLobbyPlaytestDetails): unknown {
+    const obj: any = {};
+    message.json !== undefined && (obj.json = message.json);
+    return obj;
   },
 };
 
@@ -3978,6 +5258,35 @@ export const CMsgLocalServerGuildData = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgLocalServerGuildData {
+    return {
+      guildId: isSet(object.guildId) ? Number(object.guildId) : 0,
+      eventId: isSet(object.eventId) ? eEventFromJSON(object.eventId) : 0,
+      guildPoints: isSet(object.guildPoints) ? Number(object.guildPoints) : 0,
+      guildLogo: isSet(object.guildLogo) ? String(object.guildLogo) : "0",
+      guildPrimaryColor: isSet(object.guildPrimaryColor) ? Number(object.guildPrimaryColor) : 0,
+      guildSecondaryColor: isSet(object.guildSecondaryColor) ? Number(object.guildSecondaryColor) : 0,
+      guildPattern: isSet(object.guildPattern) ? Number(object.guildPattern) : 0,
+      guildFlags: isSet(object.guildFlags) ? Number(object.guildFlags) : 0,
+      guildWeeklyPercentile: isSet(object.guildWeeklyPercentile) ? Number(object.guildWeeklyPercentile) : 0,
+    };
+  },
+
+  toJSON(message: CMsgLocalServerGuildData): unknown {
+    const obj: any = {};
+    message.guildId !== undefined && (obj.guildId = Math.round(message.guildId));
+    message.eventId !== undefined && (obj.eventId = eEventToJSON(message.eventId));
+    message.guildPoints !== undefined && (obj.guildPoints = Math.round(message.guildPoints));
+    message.guildLogo !== undefined && (obj.guildLogo = message.guildLogo);
+    message.guildPrimaryColor !== undefined && (obj.guildPrimaryColor = Math.round(message.guildPrimaryColor));
+    message.guildSecondaryColor !== undefined && (obj.guildSecondaryColor = Math.round(message.guildSecondaryColor));
+    message.guildPattern !== undefined && (obj.guildPattern = Math.round(message.guildPattern));
+    message.guildFlags !== undefined && (obj.guildFlags = Math.round(message.guildFlags));
+    message.guildWeeklyPercentile !== undefined &&
+      (obj.guildWeeklyPercentile = Math.round(message.guildWeeklyPercentile));
+    return obj;
+  },
 };
 
 function createBaseCMsgLocalServerFakeLobbyData(): CMsgLocalServerFakeLobbyData {
@@ -4104,7 +5413,90 @@ export const CMsgLocalServerFakeLobbyData = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgLocalServerFakeLobbyData {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      eventPoints: Array.isArray(object?.eventPoints)
+        ? object.eventPoints.map((e: any) => CMsgLobbyEventPoints.fromJSON(e))
+        : [],
+      isPlusSubscriber: isSet(object.isPlusSubscriber) ? Boolean(object.isPlusSubscriber) : false,
+      primaryEventId: isSet(object.primaryEventId) ? Number(object.primaryEventId) : 0,
+      favoriteTeam: isSet(object.favoriteTeam) ? Number(object.favoriteTeam) : 0,
+      favoriteTeamQuality: isSet(object.favoriteTeamQuality) ? Number(object.favoriteTeamQuality) : 0,
+      guildInfo: isSet(object.guildInfo) ? CMsgLocalServerGuildData.fromJSON(object.guildInfo) : undefined,
+      teleportFxLevel: isSet(object.teleportFxLevel) ? Number(object.teleportFxLevel) : 0,
+      additionalData: isSet(object.additionalData)
+        ? CMsgAdditionalLobbyStartupAccountData.fromJSON(object.additionalData)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CMsgLocalServerFakeLobbyData): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    if (message.eventPoints) {
+      obj.eventPoints = message.eventPoints.map((e) => e ? CMsgLobbyEventPoints.toJSON(e) : undefined);
+    } else {
+      obj.eventPoints = [];
+    }
+    message.isPlusSubscriber !== undefined && (obj.isPlusSubscriber = message.isPlusSubscriber);
+    message.primaryEventId !== undefined && (obj.primaryEventId = Math.round(message.primaryEventId));
+    message.favoriteTeam !== undefined && (obj.favoriteTeam = Math.round(message.favoriteTeam));
+    message.favoriteTeamQuality !== undefined && (obj.favoriteTeamQuality = Math.round(message.favoriteTeamQuality));
+    message.guildInfo !== undefined &&
+      (obj.guildInfo = message.guildInfo ? CMsgLocalServerGuildData.toJSON(message.guildInfo) : undefined);
+    message.teleportFxLevel !== undefined && (obj.teleportFxLevel = Math.round(message.teleportFxLevel));
+    message.additionalData !== undefined && (obj.additionalData = message.additionalData
+      ? CMsgAdditionalLobbyStartupAccountData.toJSON(message.additionalData)
+      : undefined);
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if (tsProtoGlobalThis.Buffer) {
+    return Uint8Array.from(tsProtoGlobalThis.Buffer.from(b64, "base64"));
+  } else {
+    const bin = tsProtoGlobalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if (tsProtoGlobalThis.Buffer) {
+    return tsProtoGlobalThis.Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(String.fromCharCode(byte));
+    });
+    return tsProtoGlobalThis.btoa(bin.join(""));
+  }
+}
 
 function longToString(long: Long) {
   return long.toString();
@@ -4113,4 +5505,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

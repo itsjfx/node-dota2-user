@@ -23,6 +23,105 @@ export enum CLCMessages {
   clc_HltvReplay = 36,
 }
 
+export function cLCMessagesFromJSON(object: any): CLCMessages {
+  switch (object) {
+    case 20:
+    case "clc_ClientInfo":
+      return CLCMessages.clc_ClientInfo;
+    case 21:
+    case "clc_Move":
+      return CLCMessages.clc_Move;
+    case 22:
+    case "clc_VoiceData":
+      return CLCMessages.clc_VoiceData;
+    case 23:
+    case "clc_BaselineAck":
+      return CLCMessages.clc_BaselineAck;
+    case 24:
+    case "clc_ListenEvents":
+      return CLCMessages.clc_ListenEvents;
+    case 25:
+    case "clc_RespondCvarValue":
+      return CLCMessages.clc_RespondCvarValue;
+    case 26:
+    case "clc_FileCRCCheck":
+      return CLCMessages.clc_FileCRCCheck;
+    case 27:
+    case "clc_LoadingProgress":
+      return CLCMessages.clc_LoadingProgress;
+    case 28:
+    case "clc_SplitPlayerConnect":
+      return CLCMessages.clc_SplitPlayerConnect;
+    case 29:
+    case "clc_ClientMessage":
+      return CLCMessages.clc_ClientMessage;
+    case 30:
+    case "clc_SplitPlayerDisconnect":
+      return CLCMessages.clc_SplitPlayerDisconnect;
+    case 31:
+    case "clc_ServerStatus":
+      return CLCMessages.clc_ServerStatus;
+    case 32:
+    case "clc_ServerPing":
+      return CLCMessages.clc_ServerPing;
+    case 33:
+    case "clc_RequestPause":
+      return CLCMessages.clc_RequestPause;
+    case 34:
+    case "clc_CmdKeyValues":
+      return CLCMessages.clc_CmdKeyValues;
+    case 35:
+    case "clc_RconServerDetails":
+      return CLCMessages.clc_RconServerDetails;
+    case 36:
+    case "clc_HltvReplay":
+      return CLCMessages.clc_HltvReplay;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum CLCMessages");
+  }
+}
+
+export function cLCMessagesToJSON(object: CLCMessages): string {
+  switch (object) {
+    case CLCMessages.clc_ClientInfo:
+      return "clc_ClientInfo";
+    case CLCMessages.clc_Move:
+      return "clc_Move";
+    case CLCMessages.clc_VoiceData:
+      return "clc_VoiceData";
+    case CLCMessages.clc_BaselineAck:
+      return "clc_BaselineAck";
+    case CLCMessages.clc_ListenEvents:
+      return "clc_ListenEvents";
+    case CLCMessages.clc_RespondCvarValue:
+      return "clc_RespondCvarValue";
+    case CLCMessages.clc_FileCRCCheck:
+      return "clc_FileCRCCheck";
+    case CLCMessages.clc_LoadingProgress:
+      return "clc_LoadingProgress";
+    case CLCMessages.clc_SplitPlayerConnect:
+      return "clc_SplitPlayerConnect";
+    case CLCMessages.clc_ClientMessage:
+      return "clc_ClientMessage";
+    case CLCMessages.clc_SplitPlayerDisconnect:
+      return "clc_SplitPlayerDisconnect";
+    case CLCMessages.clc_ServerStatus:
+      return "clc_ServerStatus";
+    case CLCMessages.clc_ServerPing:
+      return "clc_ServerPing";
+    case CLCMessages.clc_RequestPause:
+      return "clc_RequestPause";
+    case CLCMessages.clc_CmdKeyValues:
+      return "clc_CmdKeyValues";
+    case CLCMessages.clc_RconServerDetails:
+      return "clc_RconServerDetails";
+    case CLCMessages.clc_HltvReplay:
+      return "clc_HltvReplay";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum CLCMessages");
+  }
+}
+
 export enum SVCMessages {
   svc_ServerInfo = 40,
   svc_FlattenedSerializer = 41,
@@ -56,9 +155,197 @@ export enum SVCMessages {
   svc_HltvFixupOperatorStatus = 75,
 }
 
+export function sVCMessagesFromJSON(object: any): SVCMessages {
+  switch (object) {
+    case 40:
+    case "svc_ServerInfo":
+      return SVCMessages.svc_ServerInfo;
+    case 41:
+    case "svc_FlattenedSerializer":
+      return SVCMessages.svc_FlattenedSerializer;
+    case 42:
+    case "svc_ClassInfo":
+      return SVCMessages.svc_ClassInfo;
+    case 43:
+    case "svc_SetPause":
+      return SVCMessages.svc_SetPause;
+    case 44:
+    case "svc_CreateStringTable":
+      return SVCMessages.svc_CreateStringTable;
+    case 45:
+    case "svc_UpdateStringTable":
+      return SVCMessages.svc_UpdateStringTable;
+    case 46:
+    case "svc_VoiceInit":
+      return SVCMessages.svc_VoiceInit;
+    case 47:
+    case "svc_VoiceData":
+      return SVCMessages.svc_VoiceData;
+    case 48:
+    case "svc_Print":
+      return SVCMessages.svc_Print;
+    case 49:
+    case "svc_Sounds":
+      return SVCMessages.svc_Sounds;
+    case 50:
+    case "svc_SetView":
+      return SVCMessages.svc_SetView;
+    case 51:
+    case "svc_ClearAllStringTables":
+      return SVCMessages.svc_ClearAllStringTables;
+    case 52:
+    case "svc_CmdKeyValues":
+      return SVCMessages.svc_CmdKeyValues;
+    case 53:
+    case "svc_BSPDecal":
+      return SVCMessages.svc_BSPDecal;
+    case 54:
+    case "svc_SplitScreen":
+      return SVCMessages.svc_SplitScreen;
+    case 55:
+    case "svc_PacketEntities":
+      return SVCMessages.svc_PacketEntities;
+    case 56:
+    case "svc_Prefetch":
+      return SVCMessages.svc_Prefetch;
+    case 57:
+    case "svc_Menu":
+      return SVCMessages.svc_Menu;
+    case 58:
+    case "svc_GetCvarValue":
+      return SVCMessages.svc_GetCvarValue;
+    case 59:
+    case "svc_StopSound":
+      return SVCMessages.svc_StopSound;
+    case 60:
+    case "svc_PeerList":
+      return SVCMessages.svc_PeerList;
+    case 61:
+    case "svc_PacketReliable":
+      return SVCMessages.svc_PacketReliable;
+    case 62:
+    case "svc_HLTVStatus":
+      return SVCMessages.svc_HLTVStatus;
+    case 63:
+    case "svc_ServerSteamID":
+      return SVCMessages.svc_ServerSteamID;
+    case 70:
+    case "svc_FullFrameSplit":
+      return SVCMessages.svc_FullFrameSplit;
+    case 71:
+    case "svc_RconServerDetails":
+      return SVCMessages.svc_RconServerDetails;
+    case 72:
+    case "svc_UserMessage":
+      return SVCMessages.svc_UserMessage;
+    case 73:
+    case "svc_HltvReplay":
+      return SVCMessages.svc_HltvReplay;
+    case 74:
+    case "svc_Broadcast_Command":
+      return SVCMessages.svc_Broadcast_Command;
+    case 75:
+    case "svc_HltvFixupOperatorStatus":
+      return SVCMessages.svc_HltvFixupOperatorStatus;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum SVCMessages");
+  }
+}
+
+export function sVCMessagesToJSON(object: SVCMessages): string {
+  switch (object) {
+    case SVCMessages.svc_ServerInfo:
+      return "svc_ServerInfo";
+    case SVCMessages.svc_FlattenedSerializer:
+      return "svc_FlattenedSerializer";
+    case SVCMessages.svc_ClassInfo:
+      return "svc_ClassInfo";
+    case SVCMessages.svc_SetPause:
+      return "svc_SetPause";
+    case SVCMessages.svc_CreateStringTable:
+      return "svc_CreateStringTable";
+    case SVCMessages.svc_UpdateStringTable:
+      return "svc_UpdateStringTable";
+    case SVCMessages.svc_VoiceInit:
+      return "svc_VoiceInit";
+    case SVCMessages.svc_VoiceData:
+      return "svc_VoiceData";
+    case SVCMessages.svc_Print:
+      return "svc_Print";
+    case SVCMessages.svc_Sounds:
+      return "svc_Sounds";
+    case SVCMessages.svc_SetView:
+      return "svc_SetView";
+    case SVCMessages.svc_ClearAllStringTables:
+      return "svc_ClearAllStringTables";
+    case SVCMessages.svc_CmdKeyValues:
+      return "svc_CmdKeyValues";
+    case SVCMessages.svc_BSPDecal:
+      return "svc_BSPDecal";
+    case SVCMessages.svc_SplitScreen:
+      return "svc_SplitScreen";
+    case SVCMessages.svc_PacketEntities:
+      return "svc_PacketEntities";
+    case SVCMessages.svc_Prefetch:
+      return "svc_Prefetch";
+    case SVCMessages.svc_Menu:
+      return "svc_Menu";
+    case SVCMessages.svc_GetCvarValue:
+      return "svc_GetCvarValue";
+    case SVCMessages.svc_StopSound:
+      return "svc_StopSound";
+    case SVCMessages.svc_PeerList:
+      return "svc_PeerList";
+    case SVCMessages.svc_PacketReliable:
+      return "svc_PacketReliable";
+    case SVCMessages.svc_HLTVStatus:
+      return "svc_HLTVStatus";
+    case SVCMessages.svc_ServerSteamID:
+      return "svc_ServerSteamID";
+    case SVCMessages.svc_FullFrameSplit:
+      return "svc_FullFrameSplit";
+    case SVCMessages.svc_RconServerDetails:
+      return "svc_RconServerDetails";
+    case SVCMessages.svc_UserMessage:
+      return "svc_UserMessage";
+    case SVCMessages.svc_HltvReplay:
+      return "svc_HltvReplay";
+    case SVCMessages.svc_Broadcast_Command:
+      return "svc_Broadcast_Command";
+    case SVCMessages.svc_HltvFixupOperatorStatus:
+      return "svc_HltvFixupOperatorStatus";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum SVCMessages");
+  }
+}
+
 export enum VoiceDataFormatT {
   VOICEDATA_FORMAT_STEAM = 0,
   VOICEDATA_FORMAT_ENGINE = 1,
+}
+
+export function voiceDataFormatTFromJSON(object: any): VoiceDataFormatT {
+  switch (object) {
+    case 0:
+    case "VOICEDATA_FORMAT_STEAM":
+      return VoiceDataFormatT.VOICEDATA_FORMAT_STEAM;
+    case 1:
+    case "VOICEDATA_FORMAT_ENGINE":
+      return VoiceDataFormatT.VOICEDATA_FORMAT_ENGINE;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum VoiceDataFormatT");
+  }
+}
+
+export function voiceDataFormatTToJSON(object: VoiceDataFormatT): string {
+  switch (object) {
+    case VoiceDataFormatT.VOICEDATA_FORMAT_STEAM:
+      return "VOICEDATA_FORMAT_STEAM";
+    case VoiceDataFormatT.VOICEDATA_FORMAT_ENGINE:
+      return "VOICEDATA_FORMAT_ENGINE";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum VoiceDataFormatT");
+  }
 }
 
 export enum RequestPauseT {
@@ -67,8 +354,56 @@ export enum RequestPauseT {
   RP_TOGGLEPAUSE = 2,
 }
 
+export function requestPauseTFromJSON(object: any): RequestPauseT {
+  switch (object) {
+    case 0:
+    case "RP_PAUSE":
+      return RequestPauseT.RP_PAUSE;
+    case 1:
+    case "RP_UNPAUSE":
+      return RequestPauseT.RP_UNPAUSE;
+    case 2:
+    case "RP_TOGGLEPAUSE":
+      return RequestPauseT.RP_TOGGLEPAUSE;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum RequestPauseT");
+  }
+}
+
+export function requestPauseTToJSON(object: RequestPauseT): string {
+  switch (object) {
+    case RequestPauseT.RP_PAUSE:
+      return "RP_PAUSE";
+    case RequestPauseT.RP_UNPAUSE:
+      return "RP_UNPAUSE";
+    case RequestPauseT.RP_TOGGLEPAUSE:
+      return "RP_TOGGLEPAUSE";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum RequestPauseT");
+  }
+}
+
 export enum PrefetchType {
   PFT_SOUND = 0,
+}
+
+export function prefetchTypeFromJSON(object: any): PrefetchType {
+  switch (object) {
+    case 0:
+    case "PFT_SOUND":
+      return PrefetchType.PFT_SOUND;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum PrefetchType");
+  }
+}
+
+export function prefetchTypeToJSON(object: PrefetchType): string {
+  switch (object) {
+    case PrefetchType.PFT_SOUND:
+      return "PFT_SOUND";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum PrefetchType");
+  }
 }
 
 export enum ESplitScreenMessageType {
@@ -76,11 +411,69 @@ export enum ESplitScreenMessageType {
   MSG_SPLITSCREEN_REMOVEUSER = 1,
 }
 
+export function eSplitScreenMessageTypeFromJSON(object: any): ESplitScreenMessageType {
+  switch (object) {
+    case 0:
+    case "MSG_SPLITSCREEN_ADDUSER":
+      return ESplitScreenMessageType.MSG_SPLITSCREEN_ADDUSER;
+    case 1:
+    case "MSG_SPLITSCREEN_REMOVEUSER":
+      return ESplitScreenMessageType.MSG_SPLITSCREEN_REMOVEUSER;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ESplitScreenMessageType");
+  }
+}
+
+export function eSplitScreenMessageTypeToJSON(object: ESplitScreenMessageType): string {
+  switch (object) {
+    case ESplitScreenMessageType.MSG_SPLITSCREEN_ADDUSER:
+      return "MSG_SPLITSCREEN_ADDUSER";
+    case ESplitScreenMessageType.MSG_SPLITSCREEN_REMOVEUSER:
+      return "MSG_SPLITSCREEN_REMOVEUSER";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ESplitScreenMessageType");
+  }
+}
+
 export enum EQueryCvarValueStatus {
   eQueryCvarValueStatus_ValueIntact = 0,
   eQueryCvarValueStatus_CvarNotFound = 1,
   eQueryCvarValueStatus_NotACvar = 2,
   eQueryCvarValueStatus_CvarProtected = 3,
+}
+
+export function eQueryCvarValueStatusFromJSON(object: any): EQueryCvarValueStatus {
+  switch (object) {
+    case 0:
+    case "eQueryCvarValueStatus_ValueIntact":
+      return EQueryCvarValueStatus.eQueryCvarValueStatus_ValueIntact;
+    case 1:
+    case "eQueryCvarValueStatus_CvarNotFound":
+      return EQueryCvarValueStatus.eQueryCvarValueStatus_CvarNotFound;
+    case 2:
+    case "eQueryCvarValueStatus_NotACvar":
+      return EQueryCvarValueStatus.eQueryCvarValueStatus_NotACvar;
+    case 3:
+    case "eQueryCvarValueStatus_CvarProtected":
+      return EQueryCvarValueStatus.eQueryCvarValueStatus_CvarProtected;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EQueryCvarValueStatus");
+  }
+}
+
+export function eQueryCvarValueStatusToJSON(object: EQueryCvarValueStatus): string {
+  switch (object) {
+    case EQueryCvarValueStatus.eQueryCvarValueStatus_ValueIntact:
+      return "eQueryCvarValueStatus_ValueIntact";
+    case EQueryCvarValueStatus.eQueryCvarValueStatus_CvarNotFound:
+      return "eQueryCvarValueStatus_CvarNotFound";
+    case EQueryCvarValueStatus.eQueryCvarValueStatus_NotACvar:
+      return "eQueryCvarValueStatus_NotACvar";
+    case EQueryCvarValueStatus.eQueryCvarValueStatus_CvarProtected:
+      return "eQueryCvarValueStatus_CvarProtected";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EQueryCvarValueStatus");
+  }
 }
 
 export enum dialogType {
@@ -91,8 +484,66 @@ export enum dialogType {
   DIALOG_ASKCONNECT = 4,
 }
 
+export function dialogTypeFromJSON(object: any): dialogType {
+  switch (object) {
+    case 0:
+    case "DIALOG_MSG":
+      return dialogType.DIALOG_MSG;
+    case 1:
+    case "DIALOG_MENU":
+      return dialogType.DIALOG_MENU;
+    case 2:
+    case "DIALOG_TEXT":
+      return dialogType.DIALOG_TEXT;
+    case 3:
+    case "DIALOG_ENTRY":
+      return dialogType.DIALOG_ENTRY;
+    case 4:
+    case "DIALOG_ASKCONNECT":
+      return dialogType.DIALOG_ASKCONNECT;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum dialogType");
+  }
+}
+
+export function dialogTypeToJSON(object: dialogType): string {
+  switch (object) {
+    case dialogType.DIALOG_MSG:
+      return "DIALOG_MSG";
+    case dialogType.DIALOG_MENU:
+      return "DIALOG_MENU";
+    case dialogType.DIALOG_TEXT:
+      return "DIALOG_TEXT";
+    case dialogType.DIALOG_ENTRY:
+      return "DIALOG_ENTRY";
+    case dialogType.DIALOG_ASKCONNECT:
+      return "DIALOG_ASKCONNECT";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum dialogType");
+  }
+}
+
 export enum SVCMessagesLowFrequency {
   svc_dummy = 600,
+}
+
+export function sVCMessagesLowFrequencyFromJSON(object: any): SVCMessagesLowFrequency {
+  switch (object) {
+    case 600:
+    case "svc_dummy":
+      return SVCMessagesLowFrequency.svc_dummy;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum SVCMessagesLowFrequency");
+  }
+}
+
+export function sVCMessagesLowFrequencyToJSON(object: SVCMessagesLowFrequency): string {
+  switch (object) {
+    case SVCMessagesLowFrequency.svc_dummy:
+      return "svc_dummy";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum SVCMessagesLowFrequency");
+  }
 }
 
 export enum BidirectionalMessages {
@@ -101,9 +552,66 @@ export enum BidirectionalMessages {
   bi_GameEvent = 18,
 }
 
+export function bidirectionalMessagesFromJSON(object: any): BidirectionalMessages {
+  switch (object) {
+    case 16:
+    case "bi_RebroadcastGameEvent":
+      return BidirectionalMessages.bi_RebroadcastGameEvent;
+    case 17:
+    case "bi_RebroadcastSource":
+      return BidirectionalMessages.bi_RebroadcastSource;
+    case 18:
+    case "bi_GameEvent":
+      return BidirectionalMessages.bi_GameEvent;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum BidirectionalMessages");
+  }
+}
+
+export function bidirectionalMessagesToJSON(object: BidirectionalMessages): string {
+  switch (object) {
+    case BidirectionalMessages.bi_RebroadcastGameEvent:
+      return "bi_RebroadcastGameEvent";
+    case BidirectionalMessages.bi_RebroadcastSource:
+      return "bi_RebroadcastSource";
+    case BidirectionalMessages.bi_GameEvent:
+      return "bi_GameEvent";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum BidirectionalMessages");
+  }
+}
+
 export enum BidirectionalMessagesLowFrequency {
   bi_RelayInfo = 700,
   bi_RelayPacket = 701,
+}
+
+export function bidirectionalMessagesLowFrequencyFromJSON(object: any): BidirectionalMessagesLowFrequency {
+  switch (object) {
+    case 700:
+    case "bi_RelayInfo":
+      return BidirectionalMessagesLowFrequency.bi_RelayInfo;
+    case 701:
+    case "bi_RelayPacket":
+      return BidirectionalMessagesLowFrequency.bi_RelayPacket;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum BidirectionalMessagesLowFrequency",
+      );
+  }
+}
+
+export function bidirectionalMessagesLowFrequencyToJSON(object: BidirectionalMessagesLowFrequency): string {
+  switch (object) {
+    case BidirectionalMessagesLowFrequency.bi_RelayInfo:
+      return "bi_RelayInfo";
+    case BidirectionalMessagesLowFrequency.bi_RelayPacket:
+      return "bi_RelayPacket";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum BidirectionalMessagesLowFrequency",
+      );
+  }
 }
 
 export enum ReplayEventTypeT {
@@ -112,6 +620,45 @@ export enum ReplayEventTypeT {
   REPLAY_EVENT_GENERIC = 2,
   REPLAY_EVENT_STUCK_NEED_FULL_UPDATE = 3,
   REPLAY_EVENT_VICTORY = 4,
+}
+
+export function replayEventTypeTFromJSON(object: any): ReplayEventTypeT {
+  switch (object) {
+    case 0:
+    case "REPLAY_EVENT_CANCEL":
+      return ReplayEventTypeT.REPLAY_EVENT_CANCEL;
+    case 1:
+    case "REPLAY_EVENT_DEATH":
+      return ReplayEventTypeT.REPLAY_EVENT_DEATH;
+    case 2:
+    case "REPLAY_EVENT_GENERIC":
+      return ReplayEventTypeT.REPLAY_EVENT_GENERIC;
+    case 3:
+    case "REPLAY_EVENT_STUCK_NEED_FULL_UPDATE":
+      return ReplayEventTypeT.REPLAY_EVENT_STUCK_NEED_FULL_UPDATE;
+    case 4:
+    case "REPLAY_EVENT_VICTORY":
+      return ReplayEventTypeT.REPLAY_EVENT_VICTORY;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ReplayEventTypeT");
+  }
+}
+
+export function replayEventTypeTToJSON(object: ReplayEventTypeT): string {
+  switch (object) {
+    case ReplayEventTypeT.REPLAY_EVENT_CANCEL:
+      return "REPLAY_EVENT_CANCEL";
+    case ReplayEventTypeT.REPLAY_EVENT_DEATH:
+      return "REPLAY_EVENT_DEATH";
+    case ReplayEventTypeT.REPLAY_EVENT_GENERIC:
+      return "REPLAY_EVENT_GENERIC";
+    case ReplayEventTypeT.REPLAY_EVENT_STUCK_NEED_FULL_UPDATE:
+      return "REPLAY_EVENT_STUCK_NEED_FULL_UPDATE";
+    case ReplayEventTypeT.REPLAY_EVENT_VICTORY:
+      return "REPLAY_EVENT_VICTORY";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ReplayEventTypeT");
+  }
 }
 
 export interface CCLCMsgClientInfo {
@@ -673,6 +1220,26 @@ export const CCLCMsgClientInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CCLCMsgClientInfo {
+    return {
+      sendTableCrc: isSet(object.sendTableCrc) ? Number(object.sendTableCrc) : 0,
+      serverCount: isSet(object.serverCount) ? Number(object.serverCount) : 0,
+      isHltv: isSet(object.isHltv) ? Boolean(object.isHltv) : false,
+      friendsId: isSet(object.friendsId) ? Number(object.friendsId) : 0,
+      friendsName: isSet(object.friendsName) ? String(object.friendsName) : "",
+    };
+  },
+
+  toJSON(message: CCLCMsgClientInfo): unknown {
+    const obj: any = {};
+    message.sendTableCrc !== undefined && (obj.sendTableCrc = Math.round(message.sendTableCrc));
+    message.serverCount !== undefined && (obj.serverCount = Math.round(message.serverCount));
+    message.isHltv !== undefined && (obj.isHltv = message.isHltv);
+    message.friendsId !== undefined && (obj.friendsId = Math.round(message.friendsId));
+    message.friendsName !== undefined && (obj.friendsName = message.friendsName);
+    return obj;
+  },
 };
 
 function createBaseCCLCMsgMove(): CCLCMsgMove {
@@ -728,6 +1295,23 @@ export const CCLCMsgMove = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CCLCMsgMove {
+    return {
+      data: isSet(object.data) ? Buffer.from(bytesFromBase64(object.data)) : Buffer.alloc(0),
+      commandNumber: isSet(object.commandNumber) ? Number(object.commandNumber) : 0,
+      numCommands: isSet(object.numCommands) ? Number(object.numCommands) : 0,
+    };
+  },
+
+  toJSON(message: CCLCMsgMove): unknown {
+    const obj: any = {};
+    message.data !== undefined &&
+      (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
+    message.commandNumber !== undefined && (obj.commandNumber = Math.round(message.commandNumber));
+    message.numCommands !== undefined && (obj.numCommands = Math.round(message.numCommands));
+    return obj;
   },
 };
 
@@ -822,6 +1406,30 @@ export const CMsgVoiceAudio = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgVoiceAudio {
+    return {
+      format: isSet(object.format) ? voiceDataFormatTFromJSON(object.format) : 0,
+      voiceData: isSet(object.voiceData) ? Buffer.from(bytesFromBase64(object.voiceData)) : Buffer.alloc(0),
+      sequenceBytes: isSet(object.sequenceBytes) ? Number(object.sequenceBytes) : 0,
+      sectionNumber: isSet(object.sectionNumber) ? Number(object.sectionNumber) : 0,
+      sampleRate: isSet(object.sampleRate) ? Number(object.sampleRate) : 0,
+      uncompressedSampleOffset: isSet(object.uncompressedSampleOffset) ? Number(object.uncompressedSampleOffset) : 0,
+    };
+  },
+
+  toJSON(message: CMsgVoiceAudio): unknown {
+    const obj: any = {};
+    message.format !== undefined && (obj.format = voiceDataFormatTToJSON(message.format));
+    message.voiceData !== undefined &&
+      (obj.voiceData = base64FromBytes(message.voiceData !== undefined ? message.voiceData : Buffer.alloc(0)));
+    message.sequenceBytes !== undefined && (obj.sequenceBytes = Math.round(message.sequenceBytes));
+    message.sectionNumber !== undefined && (obj.sectionNumber = Math.round(message.sectionNumber));
+    message.sampleRate !== undefined && (obj.sampleRate = Math.round(message.sampleRate));
+    message.uncompressedSampleOffset !== undefined &&
+      (obj.uncompressedSampleOffset = Math.round(message.uncompressedSampleOffset));
+    return obj;
+  },
 };
 
 function createBaseCCLCMsgVoiceData(): CCLCMsgVoiceData {
@@ -878,6 +1486,22 @@ export const CCLCMsgVoiceData = {
     }
     return message;
   },
+
+  fromJSON(object: any): CCLCMsgVoiceData {
+    return {
+      audio: isSet(object.audio) ? CMsgVoiceAudio.fromJSON(object.audio) : undefined,
+      xuid: isSet(object.xuid) ? String(object.xuid) : "0",
+      tick: isSet(object.tick) ? Number(object.tick) : 0,
+    };
+  },
+
+  toJSON(message: CCLCMsgVoiceData): unknown {
+    const obj: any = {};
+    message.audio !== undefined && (obj.audio = message.audio ? CMsgVoiceAudio.toJSON(message.audio) : undefined);
+    message.xuid !== undefined && (obj.xuid = message.xuid);
+    message.tick !== undefined && (obj.tick = Math.round(message.tick));
+    return obj;
+  },
 };
 
 function createBaseCCLCMsgBaselineAck(): CCLCMsgBaselineAck {
@@ -923,6 +1547,20 @@ export const CCLCMsgBaselineAck = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CCLCMsgBaselineAck {
+    return {
+      baselineTick: isSet(object.baselineTick) ? Number(object.baselineTick) : 0,
+      baselineNr: isSet(object.baselineNr) ? Number(object.baselineNr) : 0,
+    };
+  },
+
+  toJSON(message: CCLCMsgBaselineAck): unknown {
+    const obj: any = {};
+    message.baselineTick !== undefined && (obj.baselineTick = Math.round(message.baselineTick));
+    message.baselineNr !== undefined && (obj.baselineNr = Math.round(message.baselineNr));
+    return obj;
   },
 };
 
@@ -970,6 +1608,20 @@ export const CCLCMsgListenEvents = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CCLCMsgListenEvents {
+    return { eventMask: Array.isArray(object?.eventMask) ? object.eventMask.map((e: any) => Number(e)) : [] };
+  },
+
+  toJSON(message: CCLCMsgListenEvents): unknown {
+    const obj: any = {};
+    if (message.eventMask) {
+      obj.eventMask = message.eventMask.map((e) => Math.round(e));
+    } else {
+      obj.eventMask = [];
+    }
+    return obj;
   },
 };
 
@@ -1036,6 +1688,24 @@ export const CCLCMsgRespondCvarValue = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CCLCMsgRespondCvarValue {
+    return {
+      cookie: isSet(object.cookie) ? Number(object.cookie) : 0,
+      statusCode: isSet(object.statusCode) ? Number(object.statusCode) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      value: isSet(object.value) ? String(object.value) : "",
+    };
+  },
+
+  toJSON(message: CCLCMsgRespondCvarValue): unknown {
+    const obj: any = {};
+    message.cookie !== undefined && (obj.cookie = Math.round(message.cookie));
+    message.statusCode !== undefined && (obj.statusCode = Math.round(message.statusCode));
+    message.name !== undefined && (obj.name = message.name);
+    message.value !== undefined && (obj.value = message.value);
+    return obj;
   },
 };
 
@@ -1113,6 +1783,26 @@ export const CCLCMsgFileCRCCheck = {
     }
     return message;
   },
+
+  fromJSON(object: any): CCLCMsgFileCRCCheck {
+    return {
+      codePath: isSet(object.codePath) ? Number(object.codePath) : 0,
+      path: isSet(object.path) ? String(object.path) : "",
+      codeFilename: isSet(object.codeFilename) ? Number(object.codeFilename) : 0,
+      filename: isSet(object.filename) ? String(object.filename) : "",
+      crc: isSet(object.crc) ? Number(object.crc) : 0,
+    };
+  },
+
+  toJSON(message: CCLCMsgFileCRCCheck): unknown {
+    const obj: any = {};
+    message.codePath !== undefined && (obj.codePath = Math.round(message.codePath));
+    message.path !== undefined && (obj.path = message.path);
+    message.codeFilename !== undefined && (obj.codeFilename = Math.round(message.codeFilename));
+    message.filename !== undefined && (obj.filename = message.filename);
+    message.crc !== undefined && (obj.crc = Math.round(message.crc));
+    return obj;
+  },
 };
 
 function createBaseCCLCMsgLoadingProgress(): CCLCMsgLoadingProgress {
@@ -1149,6 +1839,16 @@ export const CCLCMsgLoadingProgress = {
     }
     return message;
   },
+
+  fromJSON(object: any): CCLCMsgLoadingProgress {
+    return { progress: isSet(object.progress) ? Number(object.progress) : 0 };
+  },
+
+  toJSON(message: CCLCMsgLoadingProgress): unknown {
+    const obj: any = {};
+    message.progress !== undefined && (obj.progress = Math.round(message.progress));
+    return obj;
+  },
 };
 
 function createBaseCCLCMsgSplitPlayerConnect(): CCLCMsgSplitPlayerConnect {
@@ -1184,6 +1884,16 @@ export const CCLCMsgSplitPlayerConnect = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CCLCMsgSplitPlayerConnect {
+    return { playername: isSet(object.playername) ? String(object.playername) : "" };
+  },
+
+  toJSON(message: CCLCMsgSplitPlayerConnect): unknown {
+    const obj: any = {};
+    message.playername !== undefined && (obj.playername = message.playername);
+    return obj;
   },
 };
 
@@ -1231,6 +1941,21 @@ export const CCLCMsgClientMessage = {
     }
     return message;
   },
+
+  fromJSON(object: any): CCLCMsgClientMessage {
+    return {
+      msgType: isSet(object.msgType) ? Number(object.msgType) : 0,
+      data: isSet(object.data) ? Buffer.from(bytesFromBase64(object.data)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CCLCMsgClientMessage): unknown {
+    const obj: any = {};
+    message.msgType !== undefined && (obj.msgType = Math.round(message.msgType));
+    message.data !== undefined &&
+      (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
+    return obj;
+  },
 };
 
 function createBaseCCLCMsgSplitPlayerDisconnect(): CCLCMsgSplitPlayerDisconnect {
@@ -1266,6 +1991,16 @@ export const CCLCMsgSplitPlayerDisconnect = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CCLCMsgSplitPlayerDisconnect {
+    return { slot: isSet(object.slot) ? Number(object.slot) : 0 };
+  },
+
+  toJSON(message: CCLCMsgSplitPlayerDisconnect): unknown {
+    const obj: any = {};
+    message.slot !== undefined && (obj.slot = Math.round(message.slot));
+    return obj;
   },
 };
 
@@ -1303,6 +2038,16 @@ export const CCLCMsgServerStatus = {
     }
     return message;
   },
+
+  fromJSON(object: any): CCLCMsgServerStatus {
+    return { simplified: isSet(object.simplified) ? Boolean(object.simplified) : false };
+  },
+
+  toJSON(message: CCLCMsgServerStatus): unknown {
+    const obj: any = {};
+    message.simplified !== undefined && (obj.simplified = message.simplified);
+    return obj;
+  },
 };
 
 function createBaseCCLCMsgServerPing(): CCLCMsgServerPing {
@@ -1328,6 +2073,15 @@ export const CCLCMsgServerPing = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CCLCMsgServerPing {
+    return {};
+  },
+
+  toJSON(_: CCLCMsgServerPing): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -1375,6 +2129,20 @@ export const CCLCMsgRequestPause = {
     }
     return message;
   },
+
+  fromJSON(object: any): CCLCMsgRequestPause {
+    return {
+      pauseType: isSet(object.pauseType) ? requestPauseTFromJSON(object.pauseType) : 0,
+      pauseGroup: isSet(object.pauseGroup) ? Number(object.pauseGroup) : 0,
+    };
+  },
+
+  toJSON(message: CCLCMsgRequestPause): unknown {
+    const obj: any = {};
+    message.pauseType !== undefined && (obj.pauseType = requestPauseTToJSON(message.pauseType));
+    message.pauseGroup !== undefined && (obj.pauseGroup = Math.round(message.pauseGroup));
+    return obj;
+  },
 };
 
 function createBaseCCLCMsgCmdKeyValues(): CCLCMsgCmdKeyValues {
@@ -1411,6 +2179,17 @@ export const CCLCMsgCmdKeyValues = {
     }
     return message;
   },
+
+  fromJSON(object: any): CCLCMsgCmdKeyValues {
+    return { data: isSet(object.data) ? Buffer.from(bytesFromBase64(object.data)) : Buffer.alloc(0) };
+  },
+
+  toJSON(message: CCLCMsgCmdKeyValues): unknown {
+    const obj: any = {};
+    message.data !== undefined &&
+      (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
+    return obj;
+  },
 };
 
 function createBaseCCLCMsgRconServerDetails(): CCLCMsgRconServerDetails {
@@ -1446,6 +2225,17 @@ export const CCLCMsgRconServerDetails = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CCLCMsgRconServerDetails {
+    return { token: isSet(object.token) ? Buffer.from(bytesFromBase64(object.token)) : Buffer.alloc(0) };
+  },
+
+  toJSON(message: CCLCMsgRconServerDetails): unknown {
+    const obj: any = {};
+    message.token !== undefined &&
+      (obj.token = base64FromBytes(message.token !== undefined ? message.token : Buffer.alloc(0)));
+    return obj;
   },
 };
 
@@ -1650,6 +2440,57 @@ export const CSVCMsgServerInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSVCMsgServerInfo {
+    return {
+      protocol: isSet(object.protocol) ? Number(object.protocol) : 0,
+      serverCount: isSet(object.serverCount) ? Number(object.serverCount) : 0,
+      isDedicated: isSet(object.isDedicated) ? Boolean(object.isDedicated) : false,
+      isHltv: isSet(object.isHltv) ? Boolean(object.isHltv) : false,
+      cOs: isSet(object.cOs) ? Number(object.cOs) : 0,
+      maxClients: isSet(object.maxClients) ? Number(object.maxClients) : 0,
+      maxClasses: isSet(object.maxClasses) ? Number(object.maxClasses) : 0,
+      playerSlot: isSet(object.playerSlot) ? Number(object.playerSlot) : 0,
+      tickInterval: isSet(object.tickInterval) ? Number(object.tickInterval) : 0,
+      gameDir: isSet(object.gameDir) ? String(object.gameDir) : "",
+      mapName: isSet(object.mapName) ? String(object.mapName) : "",
+      skyName: isSet(object.skyName) ? String(object.skyName) : "",
+      hostName: isSet(object.hostName) ? String(object.hostName) : "",
+      addonName: isSet(object.addonName) ? String(object.addonName) : "",
+      gameSessionConfig: isSet(object.gameSessionConfig)
+        ? CSVCMsgGameSessionConfiguration.fromJSON(object.gameSessionConfig)
+        : undefined,
+      gameSessionManifest: isSet(object.gameSessionManifest)
+        ? Buffer.from(bytesFromBase64(object.gameSessionManifest))
+        : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CSVCMsgServerInfo): unknown {
+    const obj: any = {};
+    message.protocol !== undefined && (obj.protocol = Math.round(message.protocol));
+    message.serverCount !== undefined && (obj.serverCount = Math.round(message.serverCount));
+    message.isDedicated !== undefined && (obj.isDedicated = message.isDedicated);
+    message.isHltv !== undefined && (obj.isHltv = message.isHltv);
+    message.cOs !== undefined && (obj.cOs = Math.round(message.cOs));
+    message.maxClients !== undefined && (obj.maxClients = Math.round(message.maxClients));
+    message.maxClasses !== undefined && (obj.maxClasses = Math.round(message.maxClasses));
+    message.playerSlot !== undefined && (obj.playerSlot = Math.round(message.playerSlot));
+    message.tickInterval !== undefined && (obj.tickInterval = message.tickInterval);
+    message.gameDir !== undefined && (obj.gameDir = message.gameDir);
+    message.mapName !== undefined && (obj.mapName = message.mapName);
+    message.skyName !== undefined && (obj.skyName = message.skyName);
+    message.hostName !== undefined && (obj.hostName = message.hostName);
+    message.addonName !== undefined && (obj.addonName = message.addonName);
+    message.gameSessionConfig !== undefined && (obj.gameSessionConfig = message.gameSessionConfig
+      ? CSVCMsgGameSessionConfiguration.toJSON(message.gameSessionConfig)
+      : undefined);
+    message.gameSessionManifest !== undefined &&
+      (obj.gameSessionManifest = base64FromBytes(
+        message.gameSessionManifest !== undefined ? message.gameSessionManifest : Buffer.alloc(0),
+      ));
+    return obj;
+  },
 };
 
 function createBaseCSVCMsgClassInfo(): CSVCMsgClassInfo {
@@ -1695,6 +2536,26 @@ export const CSVCMsgClassInfo = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSVCMsgClassInfo {
+    return {
+      createOnClient: isSet(object.createOnClient) ? Boolean(object.createOnClient) : false,
+      classes: Array.isArray(object?.classes)
+        ? object.classes.map((e: any) => CSVCMsgClassInfo_classT.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CSVCMsgClassInfo): unknown {
+    const obj: any = {};
+    message.createOnClient !== undefined && (obj.createOnClient = message.createOnClient);
+    if (message.classes) {
+      obj.classes = message.classes.map((e) => e ? CSVCMsgClassInfo_classT.toJSON(e) : undefined);
+    } else {
+      obj.classes = [];
+    }
+    return obj;
   },
 };
 
@@ -1752,6 +2613,22 @@ export const CSVCMsgClassInfo_classT = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSVCMsgClassInfo_classT {
+    return {
+      classId: isSet(object.classId) ? Number(object.classId) : 0,
+      dataTableName: isSet(object.dataTableName) ? String(object.dataTableName) : "",
+      className: isSet(object.className) ? String(object.className) : "",
+    };
+  },
+
+  toJSON(message: CSVCMsgClassInfo_classT): unknown {
+    const obj: any = {};
+    message.classId !== undefined && (obj.classId = Math.round(message.classId));
+    message.dataTableName !== undefined && (obj.dataTableName = message.dataTableName);
+    message.className !== undefined && (obj.className = message.className);
+    return obj;
+  },
 };
 
 function createBaseCSVCMsgSetPause(): CSVCMsgSetPause {
@@ -1787,6 +2664,16 @@ export const CSVCMsgSetPause = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSVCMsgSetPause {
+    return { paused: isSet(object.paused) ? Boolean(object.paused) : false };
+  },
+
+  toJSON(message: CSVCMsgSetPause): unknown {
+    const obj: any = {};
+    message.paused !== undefined && (obj.paused = message.paused);
+    return obj;
   },
 };
 
@@ -1844,6 +2731,22 @@ export const CSVCMsgVoiceInit = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSVCMsgVoiceInit {
+    return {
+      quality: isSet(object.quality) ? Number(object.quality) : 0,
+      codec: isSet(object.codec) ? String(object.codec) : "",
+      version: isSet(object.version) ? Number(object.version) : 0,
+    };
+  },
+
+  toJSON(message: CSVCMsgVoiceInit): unknown {
+    const obj: any = {};
+    message.quality !== undefined && (obj.quality = Math.round(message.quality));
+    message.codec !== undefined && (obj.codec = message.codec);
+    message.version !== undefined && (obj.version = Math.round(message.version));
+    return obj;
+  },
 };
 
 function createBaseCSVCMsgPrint(): CSVCMsgPrint {
@@ -1879,6 +2782,16 @@ export const CSVCMsgPrint = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSVCMsgPrint {
+    return { text: isSet(object.text) ? String(object.text) : "" };
+  },
+
+  toJSON(message: CSVCMsgPrint): unknown {
+    const obj: any = {};
+    message.text !== undefined && (obj.text = message.text);
+    return obj;
   },
 };
 
@@ -1925,6 +2838,24 @@ export const CSVCMsgSounds = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSVCMsgSounds {
+    return {
+      reliableSound: isSet(object.reliableSound) ? Boolean(object.reliableSound) : false,
+      sounds: Array.isArray(object?.sounds) ? object.sounds.map((e: any) => CSVCMsgSounds_sounddataT.fromJSON(e)) : [],
+    };
+  },
+
+  toJSON(message: CSVCMsgSounds): unknown {
+    const obj: any = {};
+    message.reliableSound !== undefined && (obj.reliableSound = message.reliableSound);
+    if (message.sounds) {
+      obj.sounds = message.sounds.map((e) => e ? CSVCMsgSounds_sounddataT.toJSON(e) : undefined);
+    } else {
+      obj.sounds = [];
+    }
+    return obj;
   },
 };
 
@@ -2162,6 +3093,54 @@ export const CSVCMsgSounds_sounddataT = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSVCMsgSounds_sounddataT {
+    return {
+      originX: isSet(object.originX) ? Number(object.originX) : 0,
+      originY: isSet(object.originY) ? Number(object.originY) : 0,
+      originZ: isSet(object.originZ) ? Number(object.originZ) : 0,
+      volume: isSet(object.volume) ? Number(object.volume) : 0,
+      delayValue: isSet(object.delayValue) ? Number(object.delayValue) : 0,
+      sequenceNumber: isSet(object.sequenceNumber) ? Number(object.sequenceNumber) : 0,
+      entityIndex: isSet(object.entityIndex) ? Number(object.entityIndex) : 0,
+      channel: isSet(object.channel) ? Number(object.channel) : 0,
+      pitch: isSet(object.pitch) ? Number(object.pitch) : 0,
+      flags: isSet(object.flags) ? Number(object.flags) : 0,
+      soundNum: isSet(object.soundNum) ? Number(object.soundNum) : 0,
+      soundNumHandle: isSet(object.soundNumHandle) ? Number(object.soundNumHandle) : 0,
+      speakerEntity: isSet(object.speakerEntity) ? Number(object.speakerEntity) : 0,
+      randomSeed: isSet(object.randomSeed) ? Number(object.randomSeed) : 0,
+      soundLevel: isSet(object.soundLevel) ? Number(object.soundLevel) : 0,
+      isSentence: isSet(object.isSentence) ? Boolean(object.isSentence) : false,
+      isAmbient: isSet(object.isAmbient) ? Boolean(object.isAmbient) : false,
+      guid: isSet(object.guid) ? Number(object.guid) : 0,
+      soundResourceId: isSet(object.soundResourceId) ? String(object.soundResourceId) : "0",
+    };
+  },
+
+  toJSON(message: CSVCMsgSounds_sounddataT): unknown {
+    const obj: any = {};
+    message.originX !== undefined && (obj.originX = Math.round(message.originX));
+    message.originY !== undefined && (obj.originY = Math.round(message.originY));
+    message.originZ !== undefined && (obj.originZ = Math.round(message.originZ));
+    message.volume !== undefined && (obj.volume = Math.round(message.volume));
+    message.delayValue !== undefined && (obj.delayValue = message.delayValue);
+    message.sequenceNumber !== undefined && (obj.sequenceNumber = Math.round(message.sequenceNumber));
+    message.entityIndex !== undefined && (obj.entityIndex = Math.round(message.entityIndex));
+    message.channel !== undefined && (obj.channel = Math.round(message.channel));
+    message.pitch !== undefined && (obj.pitch = Math.round(message.pitch));
+    message.flags !== undefined && (obj.flags = Math.round(message.flags));
+    message.soundNum !== undefined && (obj.soundNum = Math.round(message.soundNum));
+    message.soundNumHandle !== undefined && (obj.soundNumHandle = Math.round(message.soundNumHandle));
+    message.speakerEntity !== undefined && (obj.speakerEntity = Math.round(message.speakerEntity));
+    message.randomSeed !== undefined && (obj.randomSeed = Math.round(message.randomSeed));
+    message.soundLevel !== undefined && (obj.soundLevel = Math.round(message.soundLevel));
+    message.isSentence !== undefined && (obj.isSentence = message.isSentence);
+    message.isAmbient !== undefined && (obj.isAmbient = message.isAmbient);
+    message.guid !== undefined && (obj.guid = Math.round(message.guid));
+    message.soundResourceId !== undefined && (obj.soundResourceId = message.soundResourceId);
+    return obj;
+  },
 };
 
 function createBaseCSVCMsgPrefetch(): CSVCMsgPrefetch {
@@ -2207,6 +3186,20 @@ export const CSVCMsgPrefetch = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSVCMsgPrefetch {
+    return {
+      soundIndex: isSet(object.soundIndex) ? Number(object.soundIndex) : 0,
+      resourceType: isSet(object.resourceType) ? prefetchTypeFromJSON(object.resourceType) : 0,
+    };
+  },
+
+  toJSON(message: CSVCMsgPrefetch): unknown {
+    const obj: any = {};
+    message.soundIndex !== undefined && (obj.soundIndex = Math.round(message.soundIndex));
+    message.resourceType !== undefined && (obj.resourceType = prefetchTypeToJSON(message.resourceType));
+    return obj;
   },
 };
 
@@ -2254,6 +3247,20 @@ export const CSVCMsgSetView = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSVCMsgSetView {
+    return {
+      entityIndex: isSet(object.entityIndex) ? Number(object.entityIndex) : 0,
+      slot: isSet(object.slot) ? Number(object.slot) : 0,
+    };
+  },
+
+  toJSON(message: CSVCMsgSetView): unknown {
+    const obj: any = {};
+    message.entityIndex !== undefined && (obj.entityIndex = Math.round(message.entityIndex));
+    message.slot !== undefined && (obj.slot = Math.round(message.slot));
+    return obj;
+  },
 };
 
 function createBaseCSVCMsgFixAngle(): CSVCMsgFixAngle {
@@ -2300,6 +3307,20 @@ export const CSVCMsgFixAngle = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSVCMsgFixAngle {
+    return {
+      relative: isSet(object.relative) ? Boolean(object.relative) : false,
+      angle: isSet(object.angle) ? CMsgQAngle.fromJSON(object.angle) : undefined,
+    };
+  },
+
+  toJSON(message: CSVCMsgFixAngle): unknown {
+    const obj: any = {};
+    message.relative !== undefined && (obj.relative = message.relative);
+    message.angle !== undefined && (obj.angle = message.angle ? CMsgQAngle.toJSON(message.angle) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCSVCMsgCrosshairAngle(): CSVCMsgCrosshairAngle {
@@ -2335,6 +3356,16 @@ export const CSVCMsgCrosshairAngle = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSVCMsgCrosshairAngle {
+    return { angle: isSet(object.angle) ? CMsgQAngle.fromJSON(object.angle) : undefined };
+  },
+
+  toJSON(message: CSVCMsgCrosshairAngle): unknown {
+    const obj: any = {};
+    message.angle !== undefined && (obj.angle = message.angle ? CMsgQAngle.toJSON(message.angle) : undefined);
+    return obj;
   },
 };
 
@@ -2412,6 +3443,26 @@ export const CSVCMsgBSPDecal = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSVCMsgBSPDecal {
+    return {
+      pos: isSet(object.pos) ? CMsgVector.fromJSON(object.pos) : undefined,
+      decalTextureIndex: isSet(object.decalTextureIndex) ? Number(object.decalTextureIndex) : 0,
+      entityIndex: isSet(object.entityIndex) ? Number(object.entityIndex) : 0,
+      modelIndex: isSet(object.modelIndex) ? Number(object.modelIndex) : 0,
+      lowPriority: isSet(object.lowPriority) ? Boolean(object.lowPriority) : false,
+    };
+  },
+
+  toJSON(message: CSVCMsgBSPDecal): unknown {
+    const obj: any = {};
+    message.pos !== undefined && (obj.pos = message.pos ? CMsgVector.toJSON(message.pos) : undefined);
+    message.decalTextureIndex !== undefined && (obj.decalTextureIndex = Math.round(message.decalTextureIndex));
+    message.entityIndex !== undefined && (obj.entityIndex = Math.round(message.entityIndex));
+    message.modelIndex !== undefined && (obj.modelIndex = Math.round(message.modelIndex));
+    message.lowPriority !== undefined && (obj.lowPriority = message.lowPriority);
+    return obj;
+  },
 };
 
 function createBaseCSVCMsgSplitScreen(): CSVCMsgSplitScreen {
@@ -2468,6 +3519,22 @@ export const CSVCMsgSplitScreen = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSVCMsgSplitScreen {
+    return {
+      type: isSet(object.type) ? eSplitScreenMessageTypeFromJSON(object.type) : 0,
+      slot: isSet(object.slot) ? Number(object.slot) : 0,
+      playerIndex: isSet(object.playerIndex) ? Number(object.playerIndex) : 0,
+    };
+  },
+
+  toJSON(message: CSVCMsgSplitScreen): unknown {
+    const obj: any = {};
+    message.type !== undefined && (obj.type = eSplitScreenMessageTypeToJSON(message.type));
+    message.slot !== undefined && (obj.slot = Math.round(message.slot));
+    message.playerIndex !== undefined && (obj.playerIndex = Math.round(message.playerIndex));
+    return obj;
+  },
 };
 
 function createBaseCSVCMsgGetCvarValue(): CSVCMsgGetCvarValue {
@@ -2514,6 +3581,20 @@ export const CSVCMsgGetCvarValue = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSVCMsgGetCvarValue {
+    return {
+      cookie: isSet(object.cookie) ? Number(object.cookie) : 0,
+      cvarName: isSet(object.cvarName) ? String(object.cvarName) : "",
+    };
+  },
+
+  toJSON(message: CSVCMsgGetCvarValue): unknown {
+    const obj: any = {};
+    message.cookie !== undefined && (obj.cookie = Math.round(message.cookie));
+    message.cvarName !== undefined && (obj.cvarName = message.cvarName);
+    return obj;
+  },
 };
 
 function createBaseCSVCMsgMenu(): CSVCMsgMenu {
@@ -2559,6 +3640,23 @@ export const CSVCMsgMenu = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSVCMsgMenu {
+    return {
+      dialogType: isSet(object.dialogType) ? Number(object.dialogType) : 0,
+      menuKeyValues: isSet(object.menuKeyValues) ? Buffer.from(bytesFromBase64(object.menuKeyValues)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CSVCMsgMenu): unknown {
+    const obj: any = {};
+    message.dialogType !== undefined && (obj.dialogType = Math.round(message.dialogType));
+    message.menuKeyValues !== undefined &&
+      (obj.menuKeyValues = base64FromBytes(
+        message.menuKeyValues !== undefined ? message.menuKeyValues : Buffer.alloc(0),
+      ));
+    return obj;
   },
 };
 
@@ -2615,6 +3713,23 @@ export const CSVCMsgUserMessage = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSVCMsgUserMessage {
+    return {
+      msgType: isSet(object.msgType) ? Number(object.msgType) : 0,
+      msgData: isSet(object.msgData) ? Buffer.from(bytesFromBase64(object.msgData)) : Buffer.alloc(0),
+      passthrough: isSet(object.passthrough) ? Number(object.passthrough) : 0,
+    };
+  },
+
+  toJSON(message: CSVCMsgUserMessage): unknown {
+    const obj: any = {};
+    message.msgType !== undefined && (obj.msgType = Math.round(message.msgType));
+    message.msgData !== undefined &&
+      (obj.msgData = base64FromBytes(message.msgData !== undefined ? message.msgData : Buffer.alloc(0)));
+    message.passthrough !== undefined && (obj.passthrough = Math.round(message.passthrough));
+    return obj;
   },
 };
 
@@ -2681,6 +3796,28 @@ export const CSVCMsgSendTable = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSVCMsgSendTable {
+    return {
+      isEnd: isSet(object.isEnd) ? Boolean(object.isEnd) : false,
+      netTableName: isSet(object.netTableName) ? String(object.netTableName) : "",
+      needsDecoder: isSet(object.needsDecoder) ? Boolean(object.needsDecoder) : false,
+      props: Array.isArray(object?.props) ? object.props.map((e: any) => CSVCMsgSendTable_sendpropT.fromJSON(e)) : [],
+    };
+  },
+
+  toJSON(message: CSVCMsgSendTable): unknown {
+    const obj: any = {};
+    message.isEnd !== undefined && (obj.isEnd = message.isEnd);
+    message.netTableName !== undefined && (obj.netTableName = message.netTableName);
+    message.needsDecoder !== undefined && (obj.needsDecoder = message.needsDecoder);
+    if (message.props) {
+      obj.props = message.props.map((e) => e ? CSVCMsgSendTable_sendpropT.toJSON(e) : undefined);
+    } else {
+      obj.props = [];
+    }
+    return obj;
   },
 };
 
@@ -2808,6 +3945,34 @@ export const CSVCMsgSendTable_sendpropT = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSVCMsgSendTable_sendpropT {
+    return {
+      type: isSet(object.type) ? Number(object.type) : 0,
+      varName: isSet(object.varName) ? String(object.varName) : "",
+      flags: isSet(object.flags) ? Number(object.flags) : 0,
+      priority: isSet(object.priority) ? Number(object.priority) : 0,
+      dtName: isSet(object.dtName) ? String(object.dtName) : "",
+      numElements: isSet(object.numElements) ? Number(object.numElements) : 0,
+      lowValue: isSet(object.lowValue) ? Number(object.lowValue) : 0,
+      highValue: isSet(object.highValue) ? Number(object.highValue) : 0,
+      numBits: isSet(object.numBits) ? Number(object.numBits) : 0,
+    };
+  },
+
+  toJSON(message: CSVCMsgSendTable_sendpropT): unknown {
+    const obj: any = {};
+    message.type !== undefined && (obj.type = Math.round(message.type));
+    message.varName !== undefined && (obj.varName = message.varName);
+    message.flags !== undefined && (obj.flags = Math.round(message.flags));
+    message.priority !== undefined && (obj.priority = Math.round(message.priority));
+    message.dtName !== undefined && (obj.dtName = message.dtName);
+    message.numElements !== undefined && (obj.numElements = Math.round(message.numElements));
+    message.lowValue !== undefined && (obj.lowValue = message.lowValue);
+    message.highValue !== undefined && (obj.highValue = message.highValue);
+    message.numBits !== undefined && (obj.numBits = Math.round(message.numBits));
+    return obj;
+  },
 };
 
 function createBaseCSVCMsgGameEventList(): CSVCMsgGameEventList {
@@ -2843,6 +4008,24 @@ export const CSVCMsgGameEventList = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSVCMsgGameEventList {
+    return {
+      descriptors: Array.isArray(object?.descriptors)
+        ? object.descriptors.map((e: any) => CSVCMsgGameEventList_descriptorT.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CSVCMsgGameEventList): unknown {
+    const obj: any = {};
+    if (message.descriptors) {
+      obj.descriptors = message.descriptors.map((e) => e ? CSVCMsgGameEventList_descriptorT.toJSON(e) : undefined);
+    } else {
+      obj.descriptors = [];
+    }
+    return obj;
   },
 };
 
@@ -2889,6 +4072,17 @@ export const CSVCMsgGameEventList_keyT = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSVCMsgGameEventList_keyT {
+    return { type: isSet(object.type) ? Number(object.type) : 0, name: isSet(object.name) ? String(object.name) : "" };
+  },
+
+  toJSON(message: CSVCMsgGameEventList_keyT): unknown {
+    const obj: any = {};
+    message.type !== undefined && (obj.type = Math.round(message.type));
+    message.name !== undefined && (obj.name = message.name);
+    return obj;
   },
 };
 
@@ -2945,6 +4139,26 @@ export const CSVCMsgGameEventList_descriptorT = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSVCMsgGameEventList_descriptorT {
+    return {
+      eventid: isSet(object.eventid) ? Number(object.eventid) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      keys: Array.isArray(object?.keys) ? object.keys.map((e: any) => CSVCMsgGameEventList_keyT.fromJSON(e)) : [],
+    };
+  },
+
+  toJSON(message: CSVCMsgGameEventList_descriptorT): unknown {
+    const obj: any = {};
+    message.eventid !== undefined && (obj.eventid = Math.round(message.eventid));
+    message.name !== undefined && (obj.name = message.name);
+    if (message.keys) {
+      obj.keys = message.keys.map((e) => e ? CSVCMsgGameEventList_keyT.toJSON(e) : undefined);
+    } else {
+      obj.keys = [];
+    }
+    return obj;
   },
 };
 
@@ -3138,6 +4352,68 @@ export const CSVCMsgPacketEntities = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSVCMsgPacketEntities {
+    return {
+      maxEntries: isSet(object.maxEntries) ? Number(object.maxEntries) : 0,
+      updatedEntries: isSet(object.updatedEntries) ? Number(object.updatedEntries) : 0,
+      isDelta: isSet(object.isDelta) ? Boolean(object.isDelta) : false,
+      updateBaseline: isSet(object.updateBaseline) ? Boolean(object.updateBaseline) : false,
+      baseline: isSet(object.baseline) ? Number(object.baseline) : 0,
+      deltaFrom: isSet(object.deltaFrom) ? Number(object.deltaFrom) : 0,
+      entityData: isSet(object.entityData) ? Buffer.from(bytesFromBase64(object.entityData)) : Buffer.alloc(0),
+      pendingFullFrame: isSet(object.pendingFullFrame) ? Boolean(object.pendingFullFrame) : false,
+      activeSpawngroupHandle: isSet(object.activeSpawngroupHandle) ? Number(object.activeSpawngroupHandle) : 0,
+      maxSpawngroupCreationsequence: isSet(object.maxSpawngroupCreationsequence)
+        ? Number(object.maxSpawngroupCreationsequence)
+        : 0,
+      lastCmdNumber: isSet(object.lastCmdNumber) ? Number(object.lastCmdNumber) : 0,
+      serverTick: isSet(object.serverTick) ? Number(object.serverTick) : 0,
+      serializedEntities: isSet(object.serializedEntities)
+        ? Buffer.from(bytesFromBase64(object.serializedEntities))
+        : Buffer.alloc(0),
+      commandQueueInfo: isSet(object.commandQueueInfo)
+        ? CSVCMsgPacketEntities_commandQueueInfoT.fromJSON(object.commandQueueInfo)
+        : undefined,
+      alternateBaselines: Array.isArray(object?.alternateBaselines)
+        ? object.alternateBaselines.map((e: any) => CSVCMsgPacketEntities_alternateBaselineT.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CSVCMsgPacketEntities): unknown {
+    const obj: any = {};
+    message.maxEntries !== undefined && (obj.maxEntries = Math.round(message.maxEntries));
+    message.updatedEntries !== undefined && (obj.updatedEntries = Math.round(message.updatedEntries));
+    message.isDelta !== undefined && (obj.isDelta = message.isDelta);
+    message.updateBaseline !== undefined && (obj.updateBaseline = message.updateBaseline);
+    message.baseline !== undefined && (obj.baseline = Math.round(message.baseline));
+    message.deltaFrom !== undefined && (obj.deltaFrom = Math.round(message.deltaFrom));
+    message.entityData !== undefined &&
+      (obj.entityData = base64FromBytes(message.entityData !== undefined ? message.entityData : Buffer.alloc(0)));
+    message.pendingFullFrame !== undefined && (obj.pendingFullFrame = message.pendingFullFrame);
+    message.activeSpawngroupHandle !== undefined &&
+      (obj.activeSpawngroupHandle = Math.round(message.activeSpawngroupHandle));
+    message.maxSpawngroupCreationsequence !== undefined &&
+      (obj.maxSpawngroupCreationsequence = Math.round(message.maxSpawngroupCreationsequence));
+    message.lastCmdNumber !== undefined && (obj.lastCmdNumber = Math.round(message.lastCmdNumber));
+    message.serverTick !== undefined && (obj.serverTick = Math.round(message.serverTick));
+    message.serializedEntities !== undefined &&
+      (obj.serializedEntities = base64FromBytes(
+        message.serializedEntities !== undefined ? message.serializedEntities : Buffer.alloc(0),
+      ));
+    message.commandQueueInfo !== undefined && (obj.commandQueueInfo = message.commandQueueInfo
+      ? CSVCMsgPacketEntities_commandQueueInfoT.toJSON(message.commandQueueInfo)
+      : undefined);
+    if (message.alternateBaselines) {
+      obj.alternateBaselines = message.alternateBaselines.map((e) =>
+        e ? CSVCMsgPacketEntities_alternateBaselineT.toJSON(e) : undefined
+      );
+    } else {
+      obj.alternateBaselines = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCSVCMsgPacketEntities_commandQueueInfoT(): CSVCMsgPacketEntities_commandQueueInfoT {
@@ -3220,6 +4496,28 @@ export const CSVCMsgPacketEntities_commandQueueInfoT = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSVCMsgPacketEntities_commandQueueInfoT {
+    return {
+      commandsQueued: isSet(object.commandsQueued) ? Number(object.commandsQueued) : 0,
+      commandQueueDesiredSize: isSet(object.commandQueueDesiredSize) ? Number(object.commandQueueDesiredSize) : 0,
+      starvedCommandTicks: isSet(object.starvedCommandTicks) ? Number(object.starvedCommandTicks) : 0,
+      timeDilationPercent: isSet(object.timeDilationPercent) ? Number(object.timeDilationPercent) : 0,
+      discardedCommandTicks: isSet(object.discardedCommandTicks) ? Number(object.discardedCommandTicks) : 0,
+    };
+  },
+
+  toJSON(message: CSVCMsgPacketEntities_commandQueueInfoT): unknown {
+    const obj: any = {};
+    message.commandsQueued !== undefined && (obj.commandsQueued = Math.round(message.commandsQueued));
+    message.commandQueueDesiredSize !== undefined &&
+      (obj.commandQueueDesiredSize = Math.round(message.commandQueueDesiredSize));
+    message.starvedCommandTicks !== undefined && (obj.starvedCommandTicks = Math.round(message.starvedCommandTicks));
+    message.timeDilationPercent !== undefined && (obj.timeDilationPercent = message.timeDilationPercent);
+    message.discardedCommandTicks !== undefined &&
+      (obj.discardedCommandTicks = Math.round(message.discardedCommandTicks));
+    return obj;
+  },
 };
 
 function createBaseCSVCMsgPacketEntities_alternateBaselineT(): CSVCMsgPacketEntities_alternateBaselineT {
@@ -3265,6 +4563,20 @@ export const CSVCMsgPacketEntities_alternateBaselineT = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSVCMsgPacketEntities_alternateBaselineT {
+    return {
+      entityIndex: isSet(object.entityIndex) ? Number(object.entityIndex) : 0,
+      baselineIndex: isSet(object.baselineIndex) ? Number(object.baselineIndex) : 0,
+    };
+  },
+
+  toJSON(message: CSVCMsgPacketEntities_alternateBaselineT): unknown {
+    const obj: any = {};
+    message.entityIndex !== undefined && (obj.entityIndex = Math.round(message.entityIndex));
+    message.baselineIndex !== undefined && (obj.baselineIndex = Math.round(message.baselineIndex));
+    return obj;
   },
 };
 
@@ -3321,6 +4633,23 @@ export const CSVCMsgTempEntities = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSVCMsgTempEntities {
+    return {
+      reliable: isSet(object.reliable) ? Boolean(object.reliable) : false,
+      numEntries: isSet(object.numEntries) ? Number(object.numEntries) : 0,
+      entityData: isSet(object.entityData) ? Buffer.from(bytesFromBase64(object.entityData)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CSVCMsgTempEntities): unknown {
+    const obj: any = {};
+    message.reliable !== undefined && (obj.reliable = message.reliable);
+    message.numEntries !== undefined && (obj.numEntries = Math.round(message.numEntries));
+    message.entityData !== undefined &&
+      (obj.entityData = base64FromBytes(message.entityData !== undefined ? message.entityData : Buffer.alloc(0)));
+    return obj;
   },
 };
 
@@ -3459,6 +4788,37 @@ export const CSVCMsgCreateStringTable = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSVCMsgCreateStringTable {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      numEntries: isSet(object.numEntries) ? Number(object.numEntries) : 0,
+      userDataFixedSize: isSet(object.userDataFixedSize) ? Boolean(object.userDataFixedSize) : false,
+      userDataSize: isSet(object.userDataSize) ? Number(object.userDataSize) : 0,
+      userDataSizeBits: isSet(object.userDataSizeBits) ? Number(object.userDataSizeBits) : 0,
+      flags: isSet(object.flags) ? Number(object.flags) : 0,
+      stringData: isSet(object.stringData) ? Buffer.from(bytesFromBase64(object.stringData)) : Buffer.alloc(0),
+      uncompressedSize: isSet(object.uncompressedSize) ? Number(object.uncompressedSize) : 0,
+      dataCompressed: isSet(object.dataCompressed) ? Boolean(object.dataCompressed) : false,
+      usingVarintBitcounts: isSet(object.usingVarintBitcounts) ? Boolean(object.usingVarintBitcounts) : false,
+    };
+  },
+
+  toJSON(message: CSVCMsgCreateStringTable): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.numEntries !== undefined && (obj.numEntries = Math.round(message.numEntries));
+    message.userDataFixedSize !== undefined && (obj.userDataFixedSize = message.userDataFixedSize);
+    message.userDataSize !== undefined && (obj.userDataSize = Math.round(message.userDataSize));
+    message.userDataSizeBits !== undefined && (obj.userDataSizeBits = Math.round(message.userDataSizeBits));
+    message.flags !== undefined && (obj.flags = Math.round(message.flags));
+    message.stringData !== undefined &&
+      (obj.stringData = base64FromBytes(message.stringData !== undefined ? message.stringData : Buffer.alloc(0)));
+    message.uncompressedSize !== undefined && (obj.uncompressedSize = Math.round(message.uncompressedSize));
+    message.dataCompressed !== undefined && (obj.dataCompressed = message.dataCompressed);
+    message.usingVarintBitcounts !== undefined && (obj.usingVarintBitcounts = message.usingVarintBitcounts);
+    return obj;
+  },
 };
 
 function createBaseCSVCMsgUpdateStringTable(): CSVCMsgUpdateStringTable {
@@ -3514,6 +4874,23 @@ export const CSVCMsgUpdateStringTable = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSVCMsgUpdateStringTable {
+    return {
+      tableId: isSet(object.tableId) ? Number(object.tableId) : 0,
+      numChangedEntries: isSet(object.numChangedEntries) ? Number(object.numChangedEntries) : 0,
+      stringData: isSet(object.stringData) ? Buffer.from(bytesFromBase64(object.stringData)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CSVCMsgUpdateStringTable): unknown {
+    const obj: any = {};
+    message.tableId !== undefined && (obj.tableId = Math.round(message.tableId));
+    message.numChangedEntries !== undefined && (obj.numChangedEntries = Math.round(message.numChangedEntries));
+    message.stringData !== undefined &&
+      (obj.stringData = base64FromBytes(message.stringData !== undefined ? message.stringData : Buffer.alloc(0)));
+    return obj;
   },
 };
 
@@ -3601,6 +4978,28 @@ export const CSVCMsgVoiceData = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSVCMsgVoiceData {
+    return {
+      audio: isSet(object.audio) ? CMsgVoiceAudio.fromJSON(object.audio) : undefined,
+      client: isSet(object.client) ? Number(object.client) : 0,
+      proximity: isSet(object.proximity) ? Boolean(object.proximity) : false,
+      xuid: isSet(object.xuid) ? String(object.xuid) : "0",
+      audibleMask: isSet(object.audibleMask) ? Number(object.audibleMask) : 0,
+      tick: isSet(object.tick) ? Number(object.tick) : 0,
+    };
+  },
+
+  toJSON(message: CSVCMsgVoiceData): unknown {
+    const obj: any = {};
+    message.audio !== undefined && (obj.audio = message.audio ? CMsgVoiceAudio.toJSON(message.audio) : undefined);
+    message.client !== undefined && (obj.client = Math.round(message.client));
+    message.proximity !== undefined && (obj.proximity = message.proximity);
+    message.xuid !== undefined && (obj.xuid = message.xuid);
+    message.audibleMask !== undefined && (obj.audibleMask = Math.round(message.audibleMask));
+    message.tick !== undefined && (obj.tick = Math.round(message.tick));
+    return obj;
+  },
 };
 
 function createBaseCSVCMsgPacketReliable(): CSVCMsgPacketReliable {
@@ -3656,6 +5055,22 @@ export const CSVCMsgPacketReliable = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSVCMsgPacketReliable {
+    return {
+      tick: isSet(object.tick) ? Number(object.tick) : 0,
+      messagessize: isSet(object.messagessize) ? Number(object.messagessize) : 0,
+      state: isSet(object.state) ? Boolean(object.state) : false,
+    };
+  },
+
+  toJSON(message: CSVCMsgPacketReliable): unknown {
+    const obj: any = {};
+    message.tick !== undefined && (obj.tick = Math.round(message.tick));
+    message.messagessize !== undefined && (obj.messagessize = Math.round(message.messagessize));
+    message.state !== undefined && (obj.state = message.state);
+    return obj;
   },
 };
 
@@ -3723,6 +5138,25 @@ export const CSVCMsgFullFrameSplit = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSVCMsgFullFrameSplit {
+    return {
+      tick: isSet(object.tick) ? Number(object.tick) : 0,
+      section: isSet(object.section) ? Number(object.section) : 0,
+      total: isSet(object.total) ? Number(object.total) : 0,
+      data: isSet(object.data) ? Buffer.from(bytesFromBase64(object.data)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CSVCMsgFullFrameSplit): unknown {
+    const obj: any = {};
+    message.tick !== undefined && (obj.tick = Math.round(message.tick));
+    message.section !== undefined && (obj.section = Math.round(message.section));
+    message.total !== undefined && (obj.total = Math.round(message.total));
+    message.data !== undefined &&
+      (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
+    return obj;
+  },
 };
 
 function createBaseCSVCMsgHLTVStatus(): CSVCMsgHLTVStatus {
@@ -3789,6 +5223,24 @@ export const CSVCMsgHLTVStatus = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSVCMsgHLTVStatus {
+    return {
+      master: isSet(object.master) ? String(object.master) : "",
+      clients: isSet(object.clients) ? Number(object.clients) : 0,
+      slots: isSet(object.slots) ? Number(object.slots) : 0,
+      proxies: isSet(object.proxies) ? Number(object.proxies) : 0,
+    };
+  },
+
+  toJSON(message: CSVCMsgHLTVStatus): unknown {
+    const obj: any = {};
+    message.master !== undefined && (obj.master = message.master);
+    message.clients !== undefined && (obj.clients = Math.round(message.clients));
+    message.slots !== undefined && (obj.slots = Math.round(message.slots));
+    message.proxies !== undefined && (obj.proxies = Math.round(message.proxies));
+    return obj;
+  },
 };
 
 function createBaseCSVCMsgServerSteamID(): CSVCMsgServerSteamID {
@@ -3825,6 +5277,16 @@ export const CSVCMsgServerSteamID = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSVCMsgServerSteamID {
+    return { steamId: isSet(object.steamId) ? String(object.steamId) : "0" };
+  },
+
+  toJSON(message: CSVCMsgServerSteamID): unknown {
+    const obj: any = {};
+    message.steamId !== undefined && (obj.steamId = message.steamId);
+    return obj;
+  },
 };
 
 function createBaseCSVCMsgCmdKeyValues(): CSVCMsgCmdKeyValues {
@@ -3860,6 +5322,17 @@ export const CSVCMsgCmdKeyValues = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSVCMsgCmdKeyValues {
+    return { data: isSet(object.data) ? Buffer.from(bytesFromBase64(object.data)) : Buffer.alloc(0) };
+  },
+
+  toJSON(message: CSVCMsgCmdKeyValues): unknown {
+    const obj: any = {};
+    message.data !== undefined &&
+      (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
+    return obj;
   },
 };
 
@@ -3907,6 +5380,21 @@ export const CSVCMsgRconServerDetails = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSVCMsgRconServerDetails {
+    return {
+      token: isSet(object.token) ? Buffer.from(bytesFromBase64(object.token)) : Buffer.alloc(0),
+      details: isSet(object.details) ? String(object.details) : "",
+    };
+  },
+
+  toJSON(message: CSVCMsgRconServerDetails): unknown {
+    const obj: any = {};
+    message.token !== undefined &&
+      (obj.token = base64FromBytes(message.token !== undefined ? message.token : Buffer.alloc(0)));
+    message.details !== undefined && (obj.details = message.details);
+    return obj;
+  },
 };
 
 function createBaseCMsgIPCAddress(): CMsgIPCAddress {
@@ -3952,6 +5440,20 @@ export const CMsgIPCAddress = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgIPCAddress {
+    return {
+      computerGuid: isSet(object.computerGuid) ? String(object.computerGuid) : "0",
+      processId: isSet(object.processId) ? Number(object.processId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgIPCAddress): unknown {
+    const obj: any = {};
+    message.computerGuid !== undefined && (obj.computerGuid = message.computerGuid);
+    message.processId !== undefined && (obj.processId = Math.round(message.processId));
+    return obj;
   },
 };
 
@@ -4046,6 +5548,28 @@ export const CMsgServerPeer = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgServerPeer {
+    return {
+      playerSlot: isSet(object.playerSlot) ? Number(object.playerSlot) : 0,
+      steamid: isSet(object.steamid) ? String(object.steamid) : "0",
+      ipc: isSet(object.ipc) ? CMsgIPCAddress.fromJSON(object.ipc) : undefined,
+      theyHearYou: isSet(object.theyHearYou) ? Boolean(object.theyHearYou) : false,
+      youHearThem: isSet(object.youHearThem) ? Boolean(object.youHearThem) : false,
+      isListenserverHost: isSet(object.isListenserverHost) ? Boolean(object.isListenserverHost) : false,
+    };
+  },
+
+  toJSON(message: CMsgServerPeer): unknown {
+    const obj: any = {};
+    message.playerSlot !== undefined && (obj.playerSlot = Math.round(message.playerSlot));
+    message.steamid !== undefined && (obj.steamid = message.steamid);
+    message.ipc !== undefined && (obj.ipc = message.ipc ? CMsgIPCAddress.toJSON(message.ipc) : undefined);
+    message.theyHearYou !== undefined && (obj.theyHearYou = message.theyHearYou);
+    message.youHearThem !== undefined && (obj.youHearThem = message.youHearThem);
+    message.isListenserverHost !== undefined && (obj.isListenserverHost = message.isListenserverHost);
+    return obj;
+  },
 };
 
 function createBaseCSVCMsgPeerList(): CSVCMsgPeerList {
@@ -4082,6 +5606,20 @@ export const CSVCMsgPeerList = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSVCMsgPeerList {
+    return { peer: Array.isArray(object?.peer) ? object.peer.map((e: any) => CMsgServerPeer.fromJSON(e)) : [] };
+  },
+
+  toJSON(message: CSVCMsgPeerList): unknown {
+    const obj: any = {};
+    if (message.peer) {
+      obj.peer = message.peer.map((e) => e ? CMsgServerPeer.toJSON(e) : undefined);
+    } else {
+      obj.peer = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCSVCMsgClearAllStringTables(): CSVCMsgClearAllStringTables {
@@ -4117,6 +5655,16 @@ export const CSVCMsgClearAllStringTables = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSVCMsgClearAllStringTables {
+    return { mapname: isSet(object.mapname) ? String(object.mapname) : "" };
+  },
+
+  toJSON(message: CSVCMsgClearAllStringTables): unknown {
+    const obj: any = {};
+    message.mapname !== undefined && (obj.mapname = message.mapname);
+    return obj;
   },
 };
 
@@ -4255,6 +5803,38 @@ export const ProtoFlattenedSerializerFieldT = {
     }
     return message;
   },
+
+  fromJSON(object: any): ProtoFlattenedSerializerFieldT {
+    return {
+      varTypeSym: isSet(object.varTypeSym) ? Number(object.varTypeSym) : 0,
+      varNameSym: isSet(object.varNameSym) ? Number(object.varNameSym) : 0,
+      bitCount: isSet(object.bitCount) ? Number(object.bitCount) : 0,
+      lowValue: isSet(object.lowValue) ? Number(object.lowValue) : 0,
+      highValue: isSet(object.highValue) ? Number(object.highValue) : 0,
+      encodeFlags: isSet(object.encodeFlags) ? Number(object.encodeFlags) : 0,
+      fieldSerializerNameSym: isSet(object.fieldSerializerNameSym) ? Number(object.fieldSerializerNameSym) : 0,
+      fieldSerializerVersion: isSet(object.fieldSerializerVersion) ? Number(object.fieldSerializerVersion) : 0,
+      sendNodeSym: isSet(object.sendNodeSym) ? Number(object.sendNodeSym) : 0,
+      varEncoderSym: isSet(object.varEncoderSym) ? Number(object.varEncoderSym) : 0,
+    };
+  },
+
+  toJSON(message: ProtoFlattenedSerializerFieldT): unknown {
+    const obj: any = {};
+    message.varTypeSym !== undefined && (obj.varTypeSym = Math.round(message.varTypeSym));
+    message.varNameSym !== undefined && (obj.varNameSym = Math.round(message.varNameSym));
+    message.bitCount !== undefined && (obj.bitCount = Math.round(message.bitCount));
+    message.lowValue !== undefined && (obj.lowValue = message.lowValue);
+    message.highValue !== undefined && (obj.highValue = message.highValue);
+    message.encodeFlags !== undefined && (obj.encodeFlags = Math.round(message.encodeFlags));
+    message.fieldSerializerNameSym !== undefined &&
+      (obj.fieldSerializerNameSym = Math.round(message.fieldSerializerNameSym));
+    message.fieldSerializerVersion !== undefined &&
+      (obj.fieldSerializerVersion = Math.round(message.fieldSerializerVersion));
+    message.sendNodeSym !== undefined && (obj.sendNodeSym = Math.round(message.sendNodeSym));
+    message.varEncoderSym !== undefined && (obj.varEncoderSym = Math.round(message.varEncoderSym));
+    return obj;
+  },
 };
 
 function createBaseProtoFlattenedSerializerT(): ProtoFlattenedSerializerT {
@@ -4322,6 +5902,26 @@ export const ProtoFlattenedSerializerT = {
     }
     return message;
   },
+
+  fromJSON(object: any): ProtoFlattenedSerializerT {
+    return {
+      serializerNameSym: isSet(object.serializerNameSym) ? Number(object.serializerNameSym) : 0,
+      serializerVersion: isSet(object.serializerVersion) ? Number(object.serializerVersion) : 0,
+      fieldsIndex: Array.isArray(object?.fieldsIndex) ? object.fieldsIndex.map((e: any) => Number(e)) : [],
+    };
+  },
+
+  toJSON(message: ProtoFlattenedSerializerT): unknown {
+    const obj: any = {};
+    message.serializerNameSym !== undefined && (obj.serializerNameSym = Math.round(message.serializerNameSym));
+    message.serializerVersion !== undefined && (obj.serializerVersion = Math.round(message.serializerVersion));
+    if (message.fieldsIndex) {
+      obj.fieldsIndex = message.fieldsIndex.map((e) => Math.round(e));
+    } else {
+      obj.fieldsIndex = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCSVCMsgFlattenedSerializer(): CSVCMsgFlattenedSerializer {
@@ -4378,6 +5978,38 @@ export const CSVCMsgFlattenedSerializer = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSVCMsgFlattenedSerializer {
+    return {
+      serializers: Array.isArray(object?.serializers)
+        ? object.serializers.map((e: any) => ProtoFlattenedSerializerT.fromJSON(e))
+        : [],
+      symbols: Array.isArray(object?.symbols) ? object.symbols.map((e: any) => String(e)) : [],
+      fields: Array.isArray(object?.fields)
+        ? object.fields.map((e: any) => ProtoFlattenedSerializerFieldT.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CSVCMsgFlattenedSerializer): unknown {
+    const obj: any = {};
+    if (message.serializers) {
+      obj.serializers = message.serializers.map((e) => e ? ProtoFlattenedSerializerT.toJSON(e) : undefined);
+    } else {
+      obj.serializers = [];
+    }
+    if (message.symbols) {
+      obj.symbols = message.symbols.map((e) => e);
+    } else {
+      obj.symbols = [];
+    }
+    if (message.fields) {
+      obj.fields = message.fields.map((e) => e ? ProtoFlattenedSerializerFieldT.toJSON(e) : undefined);
+    } else {
+      obj.fields = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCSVCMsgStopSound(): CSVCMsgStopSound {
@@ -4413,6 +6045,16 @@ export const CSVCMsgStopSound = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSVCMsgStopSound {
+    return { guid: isSet(object.guid) ? Number(object.guid) : 0 };
+  },
+
+  toJSON(message: CSVCMsgStopSound): unknown {
+    const obj: any = {};
+    message.guid !== undefined && (obj.guid = Math.round(message.guid));
+    return obj;
   },
 };
 
@@ -4480,6 +6122,24 @@ export const CBidirMsgRebroadcastGameEvent = {
     }
     return message;
   },
+
+  fromJSON(object: any): CBidirMsgRebroadcastGameEvent {
+    return {
+      posttoserver: isSet(object.posttoserver) ? Boolean(object.posttoserver) : false,
+      buftype: isSet(object.buftype) ? Number(object.buftype) : 0,
+      clientbitcount: isSet(object.clientbitcount) ? Number(object.clientbitcount) : 0,
+      receivingclients: isSet(object.receivingclients) ? String(object.receivingclients) : "0",
+    };
+  },
+
+  toJSON(message: CBidirMsgRebroadcastGameEvent): unknown {
+    const obj: any = {};
+    message.posttoserver !== undefined && (obj.posttoserver = message.posttoserver);
+    message.buftype !== undefined && (obj.buftype = Math.round(message.buftype));
+    message.clientbitcount !== undefined && (obj.clientbitcount = Math.round(message.clientbitcount));
+    message.receivingclients !== undefined && (obj.receivingclients = message.receivingclients);
+    return obj;
+  },
 };
 
 function createBaseCBidirMsgRebroadcastSource(): CBidirMsgRebroadcastSource {
@@ -4515,6 +6175,16 @@ export const CBidirMsgRebroadcastSource = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CBidirMsgRebroadcastSource {
+    return { eventsource: isSet(object.eventsource) ? Number(object.eventsource) : 0 };
+  },
+
+  toJSON(message: CBidirMsgRebroadcastSource): unknown {
+    const obj: any = {};
+    message.eventsource !== undefined && (obj.eventsource = Math.round(message.eventsource));
+    return obj;
   },
 };
 
@@ -4818,6 +6488,76 @@ export const CMsgServerNetworkStats = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgServerNetworkStats {
+    return {
+      dedicated: isSet(object.dedicated) ? Boolean(object.dedicated) : false,
+      cpuUsage: isSet(object.cpuUsage) ? Number(object.cpuUsage) : 0,
+      memoryUsedMb: isSet(object.memoryUsedMb) ? Number(object.memoryUsedMb) : 0,
+      memoryFreeMb: isSet(object.memoryFreeMb) ? Number(object.memoryFreeMb) : 0,
+      uptime: isSet(object.uptime) ? Number(object.uptime) : 0,
+      spawnCount: isSet(object.spawnCount) ? Number(object.spawnCount) : 0,
+      numClients: isSet(object.numClients) ? Number(object.numClients) : 0,
+      numBots: isSet(object.numBots) ? Number(object.numBots) : 0,
+      numSpectators: isSet(object.numSpectators) ? Number(object.numSpectators) : 0,
+      numTvRelays: isSet(object.numTvRelays) ? Number(object.numTvRelays) : 0,
+      fps: isSet(object.fps) ? Number(object.fps) : 0,
+      ports: Array.isArray(object?.ports) ? object.ports.map((e: any) => CMsgServerNetworkStats_Port.fromJSON(e)) : [],
+      avgLatencyOut: isSet(object.avgLatencyOut) ? Number(object.avgLatencyOut) : 0,
+      avgLatencyIn: isSet(object.avgLatencyIn) ? Number(object.avgLatencyIn) : 0,
+      avgPacketsOut: isSet(object.avgPacketsOut) ? Number(object.avgPacketsOut) : 0,
+      avgPacketsIn: isSet(object.avgPacketsIn) ? Number(object.avgPacketsIn) : 0,
+      avgLossOut: isSet(object.avgLossOut) ? Number(object.avgLossOut) : 0,
+      avgLossIn: isSet(object.avgLossIn) ? Number(object.avgLossIn) : 0,
+      avgDataOut: isSet(object.avgDataOut) ? Number(object.avgDataOut) : 0,
+      avgDataIn: isSet(object.avgDataIn) ? Number(object.avgDataIn) : 0,
+      totalDataIn: isSet(object.totalDataIn) ? String(object.totalDataIn) : "0",
+      totalPacketsIn: isSet(object.totalPacketsIn) ? String(object.totalPacketsIn) : "0",
+      totalDataOut: isSet(object.totalDataOut) ? String(object.totalDataOut) : "0",
+      totalPacketsOut: isSet(object.totalPacketsOut) ? String(object.totalPacketsOut) : "0",
+      players: Array.isArray(object?.players)
+        ? object.players.map((e: any) => CMsgServerNetworkStats_Player.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgServerNetworkStats): unknown {
+    const obj: any = {};
+    message.dedicated !== undefined && (obj.dedicated = message.dedicated);
+    message.cpuUsage !== undefined && (obj.cpuUsage = Math.round(message.cpuUsage));
+    message.memoryUsedMb !== undefined && (obj.memoryUsedMb = Math.round(message.memoryUsedMb));
+    message.memoryFreeMb !== undefined && (obj.memoryFreeMb = Math.round(message.memoryFreeMb));
+    message.uptime !== undefined && (obj.uptime = Math.round(message.uptime));
+    message.spawnCount !== undefined && (obj.spawnCount = Math.round(message.spawnCount));
+    message.numClients !== undefined && (obj.numClients = Math.round(message.numClients));
+    message.numBots !== undefined && (obj.numBots = Math.round(message.numBots));
+    message.numSpectators !== undefined && (obj.numSpectators = Math.round(message.numSpectators));
+    message.numTvRelays !== undefined && (obj.numTvRelays = Math.round(message.numTvRelays));
+    message.fps !== undefined && (obj.fps = message.fps);
+    if (message.ports) {
+      obj.ports = message.ports.map((e) => e ? CMsgServerNetworkStats_Port.toJSON(e) : undefined);
+    } else {
+      obj.ports = [];
+    }
+    message.avgLatencyOut !== undefined && (obj.avgLatencyOut = message.avgLatencyOut);
+    message.avgLatencyIn !== undefined && (obj.avgLatencyIn = message.avgLatencyIn);
+    message.avgPacketsOut !== undefined && (obj.avgPacketsOut = message.avgPacketsOut);
+    message.avgPacketsIn !== undefined && (obj.avgPacketsIn = message.avgPacketsIn);
+    message.avgLossOut !== undefined && (obj.avgLossOut = message.avgLossOut);
+    message.avgLossIn !== undefined && (obj.avgLossIn = message.avgLossIn);
+    message.avgDataOut !== undefined && (obj.avgDataOut = message.avgDataOut);
+    message.avgDataIn !== undefined && (obj.avgDataIn = message.avgDataIn);
+    message.totalDataIn !== undefined && (obj.totalDataIn = message.totalDataIn);
+    message.totalPacketsIn !== undefined && (obj.totalPacketsIn = message.totalPacketsIn);
+    message.totalDataOut !== undefined && (obj.totalDataOut = message.totalDataOut);
+    message.totalPacketsOut !== undefined && (obj.totalPacketsOut = message.totalPacketsOut);
+    if (message.players) {
+      obj.players = message.players.map((e) => e ? CMsgServerNetworkStats_Player.toJSON(e) : undefined);
+    } else {
+      obj.players = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgServerNetworkStats_Port(): CMsgServerNetworkStats_Port {
@@ -4863,6 +6603,17 @@ export const CMsgServerNetworkStats_Port = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgServerNetworkStats_Port {
+    return { port: isSet(object.port) ? Number(object.port) : 0, name: isSet(object.name) ? String(object.name) : "" };
+  },
+
+  toJSON(message: CMsgServerNetworkStats_Port): unknown {
+    const obj: any = {};
+    message.port !== undefined && (obj.port = Math.round(message.port));
+    message.name !== undefined && (obj.name = message.name);
+    return obj;
   },
 };
 
@@ -4949,6 +6700,28 @@ export const CMsgServerNetworkStats_Player = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgServerNetworkStats_Player {
+    return {
+      steamid: isSet(object.steamid) ? String(object.steamid) : "0",
+      remoteAddr: isSet(object.remoteAddr) ? String(object.remoteAddr) : "",
+      pingStddevMs: isSet(object.pingStddevMs) ? Number(object.pingStddevMs) : 0,
+      pingAvgMs: isSet(object.pingAvgMs) ? Number(object.pingAvgMs) : 0,
+      packetLossPct: isSet(object.packetLossPct) ? Number(object.packetLossPct) : 0,
+      isBot: isSet(object.isBot) ? Boolean(object.isBot) : false,
+    };
+  },
+
+  toJSON(message: CMsgServerNetworkStats_Player): unknown {
+    const obj: any = {};
+    message.steamid !== undefined && (obj.steamid = message.steamid);
+    message.remoteAddr !== undefined && (obj.remoteAddr = message.remoteAddr);
+    message.pingStddevMs !== undefined && (obj.pingStddevMs = Math.round(message.pingStddevMs));
+    message.pingAvgMs !== undefined && (obj.pingAvgMs = Math.round(message.pingAvgMs));
+    message.packetLossPct !== undefined && (obj.packetLossPct = message.packetLossPct);
+    message.isBot !== undefined && (obj.isBot = message.isBot);
+    return obj;
   },
 };
 
@@ -5065,6 +6838,32 @@ export const CSVCMsgHltvReplay = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSVCMsgHltvReplay {
+    return {
+      delay: isSet(object.delay) ? Number(object.delay) : 0,
+      primaryTarget: isSet(object.primaryTarget) ? Number(object.primaryTarget) : 0,
+      replayStopAt: isSet(object.replayStopAt) ? Number(object.replayStopAt) : 0,
+      replayStartAt: isSet(object.replayStartAt) ? Number(object.replayStartAt) : 0,
+      replaySlowdownBegin: isSet(object.replaySlowdownBegin) ? Number(object.replaySlowdownBegin) : 0,
+      replaySlowdownEnd: isSet(object.replaySlowdownEnd) ? Number(object.replaySlowdownEnd) : 0,
+      replaySlowdownRate: isSet(object.replaySlowdownRate) ? Number(object.replaySlowdownRate) : 0,
+      reason: isSet(object.reason) ? Number(object.reason) : 0,
+    };
+  },
+
+  toJSON(message: CSVCMsgHltvReplay): unknown {
+    const obj: any = {};
+    message.delay !== undefined && (obj.delay = Math.round(message.delay));
+    message.primaryTarget !== undefined && (obj.primaryTarget = Math.round(message.primaryTarget));
+    message.replayStopAt !== undefined && (obj.replayStopAt = Math.round(message.replayStopAt));
+    message.replayStartAt !== undefined && (obj.replayStartAt = Math.round(message.replayStartAt));
+    message.replaySlowdownBegin !== undefined && (obj.replaySlowdownBegin = Math.round(message.replaySlowdownBegin));
+    message.replaySlowdownEnd !== undefined && (obj.replaySlowdownEnd = Math.round(message.replaySlowdownEnd));
+    message.replaySlowdownRate !== undefined && (obj.replaySlowdownRate = message.replaySlowdownRate);
+    message.reason !== undefined && (obj.reason = Math.round(message.reason));
+    return obj;
+  },
 };
 
 function createBaseCCLCMsgHltvReplay(): CCLCMsgHltvReplay {
@@ -5141,6 +6940,26 @@ export const CCLCMsgHltvReplay = {
     }
     return message;
   },
+
+  fromJSON(object: any): CCLCMsgHltvReplay {
+    return {
+      request: isSet(object.request) ? Number(object.request) : 0,
+      slowdownLength: isSet(object.slowdownLength) ? Number(object.slowdownLength) : 0,
+      slowdownRate: isSet(object.slowdownRate) ? Number(object.slowdownRate) : 0,
+      primaryTarget: isSet(object.primaryTarget) ? Number(object.primaryTarget) : 0,
+      eventTime: isSet(object.eventTime) ? Number(object.eventTime) : 0,
+    };
+  },
+
+  toJSON(message: CCLCMsgHltvReplay): unknown {
+    const obj: any = {};
+    message.request !== undefined && (obj.request = Math.round(message.request));
+    message.slowdownLength !== undefined && (obj.slowdownLength = message.slowdownLength);
+    message.slowdownRate !== undefined && (obj.slowdownRate = message.slowdownRate);
+    message.primaryTarget !== undefined && (obj.primaryTarget = Math.round(message.primaryTarget));
+    message.eventTime !== undefined && (obj.eventTime = message.eventTime);
+    return obj;
+  },
 };
 
 function createBaseCSVCMsgBroadcastCommand(): CSVCMsgBroadcastCommand {
@@ -5176,6 +6995,16 @@ export const CSVCMsgBroadcastCommand = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSVCMsgBroadcastCommand {
+    return { cmd: isSet(object.cmd) ? String(object.cmd) : "" };
+  },
+
+  toJSON(message: CSVCMsgBroadcastCommand): unknown {
+    const obj: any = {};
+    message.cmd !== undefined && (obj.cmd = message.cmd);
+    return obj;
   },
 };
 
@@ -5292,6 +7121,35 @@ export const CCLCMsgHltvFixupOperatorTick = {
     }
     return message;
   },
+
+  fromJSON(object: any): CCLCMsgHltvFixupOperatorTick {
+    return {
+      tick: isSet(object.tick) ? Number(object.tick) : 0,
+      propsData: isSet(object.propsData) ? Buffer.from(bytesFromBase64(object.propsData)) : Buffer.alloc(0),
+      origin: isSet(object.origin) ? CMsgVector.fromJSON(object.origin) : undefined,
+      eyeAngles: isSet(object.eyeAngles) ? CMsgQAngle.fromJSON(object.eyeAngles) : undefined,
+      observerMode: isSet(object.observerMode) ? Number(object.observerMode) : 0,
+      cameramanScoreboard: isSet(object.cameramanScoreboard) ? Boolean(object.cameramanScoreboard) : false,
+      observerTarget: isSet(object.observerTarget) ? Number(object.observerTarget) : 0,
+      viewOffset: isSet(object.viewOffset) ? CMsgVector.fromJSON(object.viewOffset) : undefined,
+    };
+  },
+
+  toJSON(message: CCLCMsgHltvFixupOperatorTick): unknown {
+    const obj: any = {};
+    message.tick !== undefined && (obj.tick = Math.round(message.tick));
+    message.propsData !== undefined &&
+      (obj.propsData = base64FromBytes(message.propsData !== undefined ? message.propsData : Buffer.alloc(0)));
+    message.origin !== undefined && (obj.origin = message.origin ? CMsgVector.toJSON(message.origin) : undefined);
+    message.eyeAngles !== undefined &&
+      (obj.eyeAngles = message.eyeAngles ? CMsgQAngle.toJSON(message.eyeAngles) : undefined);
+    message.observerMode !== undefined && (obj.observerMode = Math.round(message.observerMode));
+    message.cameramanScoreboard !== undefined && (obj.cameramanScoreboard = message.cameramanScoreboard);
+    message.observerTarget !== undefined && (obj.observerTarget = Math.round(message.observerTarget));
+    message.viewOffset !== undefined &&
+      (obj.viewOffset = message.viewOffset ? CMsgVector.toJSON(message.viewOffset) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCSVCMsgHltvFixupOperatorStatus(): CSVCMsgHltvFixupOperatorStatus {
@@ -5338,7 +7196,65 @@ export const CSVCMsgHltvFixupOperatorStatus = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSVCMsgHltvFixupOperatorStatus {
+    return {
+      mode: isSet(object.mode) ? Number(object.mode) : 0,
+      overrideOperatorName: isSet(object.overrideOperatorName) ? String(object.overrideOperatorName) : "",
+    };
+  },
+
+  toJSON(message: CSVCMsgHltvFixupOperatorStatus): unknown {
+    const obj: any = {};
+    message.mode !== undefined && (obj.mode = Math.round(message.mode));
+    message.overrideOperatorName !== undefined && (obj.overrideOperatorName = message.overrideOperatorName);
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if (tsProtoGlobalThis.Buffer) {
+    return Uint8Array.from(tsProtoGlobalThis.Buffer.from(b64, "base64"));
+  } else {
+    const bin = tsProtoGlobalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if (tsProtoGlobalThis.Buffer) {
+    return tsProtoGlobalThis.Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(String.fromCharCode(byte));
+    });
+    return tsProtoGlobalThis.btoa(bin.join(""));
+  }
+}
 
 function longToString(long: Long) {
   return long.toString();
@@ -5347,4 +7263,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

@@ -19,6 +19,50 @@ export enum ESteamNetworkingUDPMsgID {
   k_ESteamNetworkingUDPMsg_NoConnection = 37,
 }
 
+export function eSteamNetworkingUDPMsgIDFromJSON(object: any): ESteamNetworkingUDPMsgID {
+  switch (object) {
+    case 32:
+    case "k_ESteamNetworkingUDPMsg_ChallengeRequest":
+      return ESteamNetworkingUDPMsgID.k_ESteamNetworkingUDPMsg_ChallengeRequest;
+    case 33:
+    case "k_ESteamNetworkingUDPMsg_ChallengeReply":
+      return ESteamNetworkingUDPMsgID.k_ESteamNetworkingUDPMsg_ChallengeReply;
+    case 34:
+    case "k_ESteamNetworkingUDPMsg_ConnectRequest":
+      return ESteamNetworkingUDPMsgID.k_ESteamNetworkingUDPMsg_ConnectRequest;
+    case 35:
+    case "k_ESteamNetworkingUDPMsg_ConnectOK":
+      return ESteamNetworkingUDPMsgID.k_ESteamNetworkingUDPMsg_ConnectOK;
+    case 36:
+    case "k_ESteamNetworkingUDPMsg_ConnectionClosed":
+      return ESteamNetworkingUDPMsgID.k_ESteamNetworkingUDPMsg_ConnectionClosed;
+    case 37:
+    case "k_ESteamNetworkingUDPMsg_NoConnection":
+      return ESteamNetworkingUDPMsgID.k_ESteamNetworkingUDPMsg_NoConnection;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ESteamNetworkingUDPMsgID");
+  }
+}
+
+export function eSteamNetworkingUDPMsgIDToJSON(object: ESteamNetworkingUDPMsgID): string {
+  switch (object) {
+    case ESteamNetworkingUDPMsgID.k_ESteamNetworkingUDPMsg_ChallengeRequest:
+      return "k_ESteamNetworkingUDPMsg_ChallengeRequest";
+    case ESteamNetworkingUDPMsgID.k_ESteamNetworkingUDPMsg_ChallengeReply:
+      return "k_ESteamNetworkingUDPMsg_ChallengeReply";
+    case ESteamNetworkingUDPMsgID.k_ESteamNetworkingUDPMsg_ConnectRequest:
+      return "k_ESteamNetworkingUDPMsg_ConnectRequest";
+    case ESteamNetworkingUDPMsgID.k_ESteamNetworkingUDPMsg_ConnectOK:
+      return "k_ESteamNetworkingUDPMsg_ConnectOK";
+    case ESteamNetworkingUDPMsgID.k_ESteamNetworkingUDPMsg_ConnectionClosed:
+      return "k_ESteamNetworkingUDPMsg_ConnectionClosed";
+    case ESteamNetworkingUDPMsgID.k_ESteamNetworkingUDPMsg_NoConnection:
+      return "k_ESteamNetworkingUDPMsg_NoConnection";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ESteamNetworkingUDPMsgID");
+  }
+}
+
 export interface CMsgSteamSocketsUDPChallengeRequest {
   connectionId: number;
   myTimestamp: string;
@@ -80,6 +124,39 @@ export enum CMsgSteamSocketsUDPStats_Flags {
   NOT_PRIMARY_TRANSPORT_E2E = 16,
 }
 
+export function cMsgSteamSocketsUDPStats_FlagsFromJSON(object: any): CMsgSteamSocketsUDPStats_Flags {
+  switch (object) {
+    case 2:
+    case "ACK_REQUEST_E2E":
+      return CMsgSteamSocketsUDPStats_Flags.ACK_REQUEST_E2E;
+    case 4:
+    case "ACK_REQUEST_IMMEDIATE":
+      return CMsgSteamSocketsUDPStats_Flags.ACK_REQUEST_IMMEDIATE;
+    case 16:
+    case "NOT_PRIMARY_TRANSPORT_E2E":
+      return CMsgSteamSocketsUDPStats_Flags.NOT_PRIMARY_TRANSPORT_E2E;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgSteamSocketsUDPStats_Flags",
+      );
+  }
+}
+
+export function cMsgSteamSocketsUDPStats_FlagsToJSON(object: CMsgSteamSocketsUDPStats_Flags): string {
+  switch (object) {
+    case CMsgSteamSocketsUDPStats_Flags.ACK_REQUEST_E2E:
+      return "ACK_REQUEST_E2E";
+    case CMsgSteamSocketsUDPStats_Flags.ACK_REQUEST_IMMEDIATE:
+      return "ACK_REQUEST_IMMEDIATE";
+    case CMsgSteamSocketsUDPStats_Flags.NOT_PRIMARY_TRANSPORT_E2E:
+      return "NOT_PRIMARY_TRANSPORT_E2E";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgSteamSocketsUDPStats_Flags",
+      );
+  }
+}
+
 function createBaseCMsgSteamSocketsUDPChallengeRequest(): CMsgSteamSocketsUDPChallengeRequest {
   return { connectionId: 0, myTimestamp: "0", protocolVersion: 0 };
 }
@@ -133,6 +210,22 @@ export const CMsgSteamSocketsUDPChallengeRequest = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamSocketsUDPChallengeRequest {
+    return {
+      connectionId: isSet(object.connectionId) ? Number(object.connectionId) : 0,
+      myTimestamp: isSet(object.myTimestamp) ? String(object.myTimestamp) : "0",
+      protocolVersion: isSet(object.protocolVersion) ? Number(object.protocolVersion) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamSocketsUDPChallengeRequest): unknown {
+    const obj: any = {};
+    message.connectionId !== undefined && (obj.connectionId = Math.round(message.connectionId));
+    message.myTimestamp !== undefined && (obj.myTimestamp = message.myTimestamp);
+    message.protocolVersion !== undefined && (obj.protocolVersion = Math.round(message.protocolVersion));
+    return obj;
   },
 };
 
@@ -199,6 +292,24 @@ export const CMsgSteamSocketsUDPChallengeReply = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamSocketsUDPChallengeReply {
+    return {
+      connectionId: isSet(object.connectionId) ? Number(object.connectionId) : 0,
+      challenge: isSet(object.challenge) ? String(object.challenge) : "0",
+      yourTimestamp: isSet(object.yourTimestamp) ? String(object.yourTimestamp) : "0",
+      protocolVersion: isSet(object.protocolVersion) ? Number(object.protocolVersion) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamSocketsUDPChallengeReply): unknown {
+    const obj: any = {};
+    message.connectionId !== undefined && (obj.connectionId = Math.round(message.connectionId));
+    message.challenge !== undefined && (obj.challenge = message.challenge);
+    message.yourTimestamp !== undefined && (obj.yourTimestamp = message.yourTimestamp);
+    message.protocolVersion !== undefined && (obj.protocolVersion = Math.round(message.protocolVersion));
+    return obj;
   },
 };
 
@@ -337,6 +448,43 @@ export const CMsgSteamSocketsUDPConnectRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamSocketsUDPConnectRequest {
+    return {
+      clientConnectionId: isSet(object.clientConnectionId) ? Number(object.clientConnectionId) : 0,
+      challenge: isSet(object.challenge) ? String(object.challenge) : "0",
+      myTimestamp: isSet(object.myTimestamp) ? String(object.myTimestamp) : "0",
+      pingEstMs: isSet(object.pingEstMs) ? Number(object.pingEstMs) : 0,
+      crypt: isSet(object.crypt) ? CMsgSteamDatagramSessionCryptInfoSigned.fromJSON(object.crypt) : undefined,
+      cert: isSet(object.cert) ? CMsgSteamDatagramCertificateSigned.fromJSON(object.cert) : undefined,
+      legacyProtocolVersion: isSet(object.legacyProtocolVersion) ? Number(object.legacyProtocolVersion) : 0,
+      identityString: isSet(object.identityString) ? String(object.identityString) : "",
+      legacyClientSteamId: isSet(object.legacyClientSteamId) ? String(object.legacyClientSteamId) : "0",
+      legacyIdentityBinary: isSet(object.legacyIdentityBinary)
+        ? CMsgSteamNetworkingIdentityLegacyBinary.fromJSON(object.legacyIdentityBinary)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CMsgSteamSocketsUDPConnectRequest): unknown {
+    const obj: any = {};
+    message.clientConnectionId !== undefined && (obj.clientConnectionId = Math.round(message.clientConnectionId));
+    message.challenge !== undefined && (obj.challenge = message.challenge);
+    message.myTimestamp !== undefined && (obj.myTimestamp = message.myTimestamp);
+    message.pingEstMs !== undefined && (obj.pingEstMs = Math.round(message.pingEstMs));
+    message.crypt !== undefined &&
+      (obj.crypt = message.crypt ? CMsgSteamDatagramSessionCryptInfoSigned.toJSON(message.crypt) : undefined);
+    message.cert !== undefined &&
+      (obj.cert = message.cert ? CMsgSteamDatagramCertificateSigned.toJSON(message.cert) : undefined);
+    message.legacyProtocolVersion !== undefined &&
+      (obj.legacyProtocolVersion = Math.round(message.legacyProtocolVersion));
+    message.identityString !== undefined && (obj.identityString = message.identityString);
+    message.legacyClientSteamId !== undefined && (obj.legacyClientSteamId = message.legacyClientSteamId);
+    message.legacyIdentityBinary !== undefined && (obj.legacyIdentityBinary = message.legacyIdentityBinary
+      ? CMsgSteamNetworkingIdentityLegacyBinary.toJSON(message.legacyIdentityBinary)
+      : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamSocketsUDPConnectOK(): CMsgSteamSocketsUDPConnectOK {
@@ -463,6 +611,40 @@ export const CMsgSteamSocketsUDPConnectOK = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamSocketsUDPConnectOK {
+    return {
+      clientConnectionId: isSet(object.clientConnectionId) ? Number(object.clientConnectionId) : 0,
+      serverConnectionId: isSet(object.serverConnectionId) ? Number(object.serverConnectionId) : 0,
+      yourTimestamp: isSet(object.yourTimestamp) ? String(object.yourTimestamp) : "0",
+      delayTimeUsec: isSet(object.delayTimeUsec) ? Number(object.delayTimeUsec) : 0,
+      crypt: isSet(object.crypt) ? CMsgSteamDatagramSessionCryptInfoSigned.fromJSON(object.crypt) : undefined,
+      cert: isSet(object.cert) ? CMsgSteamDatagramCertificateSigned.fromJSON(object.cert) : undefined,
+      identityString: isSet(object.identityString) ? String(object.identityString) : "",
+      legacyServerSteamId: isSet(object.legacyServerSteamId) ? String(object.legacyServerSteamId) : "0",
+      legacyIdentityBinary: isSet(object.legacyIdentityBinary)
+        ? CMsgSteamNetworkingIdentityLegacyBinary.fromJSON(object.legacyIdentityBinary)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CMsgSteamSocketsUDPConnectOK): unknown {
+    const obj: any = {};
+    message.clientConnectionId !== undefined && (obj.clientConnectionId = Math.round(message.clientConnectionId));
+    message.serverConnectionId !== undefined && (obj.serverConnectionId = Math.round(message.serverConnectionId));
+    message.yourTimestamp !== undefined && (obj.yourTimestamp = message.yourTimestamp);
+    message.delayTimeUsec !== undefined && (obj.delayTimeUsec = Math.round(message.delayTimeUsec));
+    message.crypt !== undefined &&
+      (obj.crypt = message.crypt ? CMsgSteamDatagramSessionCryptInfoSigned.toJSON(message.crypt) : undefined);
+    message.cert !== undefined &&
+      (obj.cert = message.cert ? CMsgSteamDatagramCertificateSigned.toJSON(message.cert) : undefined);
+    message.identityString !== undefined && (obj.identityString = message.identityString);
+    message.legacyServerSteamId !== undefined && (obj.legacyServerSteamId = message.legacyServerSteamId);
+    message.legacyIdentityBinary !== undefined && (obj.legacyIdentityBinary = message.legacyIdentityBinary
+      ? CMsgSteamNetworkingIdentityLegacyBinary.toJSON(message.legacyIdentityBinary)
+      : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamSocketsUDPConnectionClosed(): CMsgSteamSocketsUDPConnectionClosed {
@@ -529,6 +711,24 @@ export const CMsgSteamSocketsUDPConnectionClosed = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamSocketsUDPConnectionClosed {
+    return {
+      toConnectionId: isSet(object.toConnectionId) ? Number(object.toConnectionId) : 0,
+      fromConnectionId: isSet(object.fromConnectionId) ? Number(object.fromConnectionId) : 0,
+      debug: isSet(object.debug) ? String(object.debug) : "",
+      reasonCode: isSet(object.reasonCode) ? Number(object.reasonCode) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamSocketsUDPConnectionClosed): unknown {
+    const obj: any = {};
+    message.toConnectionId !== undefined && (obj.toConnectionId = Math.round(message.toConnectionId));
+    message.fromConnectionId !== undefined && (obj.fromConnectionId = Math.round(message.fromConnectionId));
+    message.debug !== undefined && (obj.debug = message.debug);
+    message.reasonCode !== undefined && (obj.reasonCode = Math.round(message.reasonCode));
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamSocketsUDPNoConnection(): CMsgSteamSocketsUDPNoConnection {
@@ -574,6 +774,20 @@ export const CMsgSteamSocketsUDPNoConnection = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamSocketsUDPNoConnection {
+    return {
+      fromConnectionId: isSet(object.fromConnectionId) ? Number(object.fromConnectionId) : 0,
+      toConnectionId: isSet(object.toConnectionId) ? Number(object.toConnectionId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamSocketsUDPNoConnection): unknown {
+    const obj: any = {};
+    message.fromConnectionId !== undefined && (obj.fromConnectionId = Math.round(message.fromConnectionId));
+    message.toConnectionId !== undefined && (obj.toConnectionId = Math.round(message.toConnectionId));
+    return obj;
   },
 };
 
@@ -621,7 +835,41 @@ export const CMsgSteamSocketsUDPStats = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamSocketsUDPStats {
+    return {
+      stats: isSet(object.stats) ? CMsgSteamDatagramConnectionQuality.fromJSON(object.stats) : undefined,
+      flags: isSet(object.flags) ? Number(object.flags) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamSocketsUDPStats): unknown {
+    const obj: any = {};
+    message.stats !== undefined &&
+      (obj.stats = message.stats ? CMsgSteamDatagramConnectionQuality.toJSON(message.stats) : undefined);
+    message.flags !== undefined && (obj.flags = Math.round(message.flags));
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
 
 function longToString(long: Long) {
   return long.toString();
@@ -630,4 +878,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

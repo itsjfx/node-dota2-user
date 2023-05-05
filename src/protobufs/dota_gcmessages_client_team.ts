@@ -1,7 +1,14 @@
 /* eslint-disable */
 import Long from "long";
 import _m0 from "protobufjs/minimal";
-import { ELeagueRegion, FantasyRoles } from "./dota_shared_enums";
+import {
+  ELeagueRegion,
+  eLeagueRegionFromJSON,
+  eLeagueRegionToJSON,
+  FantasyRoles,
+  fantasyRolesFromJSON,
+  fantasyRolesToJSON,
+} from "./dota_shared_enums";
 
 export enum ETeamInviteResult {
   TEAM_INVITE_SUCCESS = 0,
@@ -18,6 +25,90 @@ export enum ETeamInviteResult {
   TEAM_INVITE_ERROR_INVITER_NOT_ADMIN = 11,
   TEAM_INVITE_ERROR_INCORRECT_USER_RESPONDED = 12,
   TEAM_INVITE_ERROR_UNSPECIFIED = 13,
+}
+
+export function eTeamInviteResultFromJSON(object: any): ETeamInviteResult {
+  switch (object) {
+    case 0:
+    case "TEAM_INVITE_SUCCESS":
+      return ETeamInviteResult.TEAM_INVITE_SUCCESS;
+    case 1:
+    case "TEAM_INVITE_FAILURE_INVITE_REJECTED":
+      return ETeamInviteResult.TEAM_INVITE_FAILURE_INVITE_REJECTED;
+    case 2:
+    case "TEAM_INVITE_FAILURE_INVITE_TIMEOUT":
+      return ETeamInviteResult.TEAM_INVITE_FAILURE_INVITE_TIMEOUT;
+    case 3:
+    case "TEAM_INVITE_ERROR_TEAM_AT_MEMBER_LIMIT":
+      return ETeamInviteResult.TEAM_INVITE_ERROR_TEAM_AT_MEMBER_LIMIT;
+    case 4:
+    case "TEAM_INVITE_ERROR_TEAM_LOCKED":
+      return ETeamInviteResult.TEAM_INVITE_ERROR_TEAM_LOCKED;
+    case 5:
+    case "TEAM_INVITE_ERROR_INVITEE_NOT_AVAILABLE":
+      return ETeamInviteResult.TEAM_INVITE_ERROR_INVITEE_NOT_AVAILABLE;
+    case 6:
+    case "TEAM_INVITE_ERROR_INVITEE_BUSY":
+      return ETeamInviteResult.TEAM_INVITE_ERROR_INVITEE_BUSY;
+    case 7:
+    case "TEAM_INVITE_ERROR_INVITEE_ALREADY_MEMBER":
+      return ETeamInviteResult.TEAM_INVITE_ERROR_INVITEE_ALREADY_MEMBER;
+    case 8:
+    case "TEAM_INVITE_ERROR_INVITEE_AT_TEAM_LIMIT":
+      return ETeamInviteResult.TEAM_INVITE_ERROR_INVITEE_AT_TEAM_LIMIT;
+    case 9:
+    case "TEAM_INVITE_ERROR_INVITEE_INSUFFICIENT_PLAY_TIME":
+      return ETeamInviteResult.TEAM_INVITE_ERROR_INVITEE_INSUFFICIENT_PLAY_TIME;
+    case 10:
+    case "TEAM_INVITE_ERROR_INVITER_INVALID_ACCOUNT_TYPE":
+      return ETeamInviteResult.TEAM_INVITE_ERROR_INVITER_INVALID_ACCOUNT_TYPE;
+    case 11:
+    case "TEAM_INVITE_ERROR_INVITER_NOT_ADMIN":
+      return ETeamInviteResult.TEAM_INVITE_ERROR_INVITER_NOT_ADMIN;
+    case 12:
+    case "TEAM_INVITE_ERROR_INCORRECT_USER_RESPONDED":
+      return ETeamInviteResult.TEAM_INVITE_ERROR_INCORRECT_USER_RESPONDED;
+    case 13:
+    case "TEAM_INVITE_ERROR_UNSPECIFIED":
+      return ETeamInviteResult.TEAM_INVITE_ERROR_UNSPECIFIED;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ETeamInviteResult");
+  }
+}
+
+export function eTeamInviteResultToJSON(object: ETeamInviteResult): string {
+  switch (object) {
+    case ETeamInviteResult.TEAM_INVITE_SUCCESS:
+      return "TEAM_INVITE_SUCCESS";
+    case ETeamInviteResult.TEAM_INVITE_FAILURE_INVITE_REJECTED:
+      return "TEAM_INVITE_FAILURE_INVITE_REJECTED";
+    case ETeamInviteResult.TEAM_INVITE_FAILURE_INVITE_TIMEOUT:
+      return "TEAM_INVITE_FAILURE_INVITE_TIMEOUT";
+    case ETeamInviteResult.TEAM_INVITE_ERROR_TEAM_AT_MEMBER_LIMIT:
+      return "TEAM_INVITE_ERROR_TEAM_AT_MEMBER_LIMIT";
+    case ETeamInviteResult.TEAM_INVITE_ERROR_TEAM_LOCKED:
+      return "TEAM_INVITE_ERROR_TEAM_LOCKED";
+    case ETeamInviteResult.TEAM_INVITE_ERROR_INVITEE_NOT_AVAILABLE:
+      return "TEAM_INVITE_ERROR_INVITEE_NOT_AVAILABLE";
+    case ETeamInviteResult.TEAM_INVITE_ERROR_INVITEE_BUSY:
+      return "TEAM_INVITE_ERROR_INVITEE_BUSY";
+    case ETeamInviteResult.TEAM_INVITE_ERROR_INVITEE_ALREADY_MEMBER:
+      return "TEAM_INVITE_ERROR_INVITEE_ALREADY_MEMBER";
+    case ETeamInviteResult.TEAM_INVITE_ERROR_INVITEE_AT_TEAM_LIMIT:
+      return "TEAM_INVITE_ERROR_INVITEE_AT_TEAM_LIMIT";
+    case ETeamInviteResult.TEAM_INVITE_ERROR_INVITEE_INSUFFICIENT_PLAY_TIME:
+      return "TEAM_INVITE_ERROR_INVITEE_INSUFFICIENT_PLAY_TIME";
+    case ETeamInviteResult.TEAM_INVITE_ERROR_INVITER_INVALID_ACCOUNT_TYPE:
+      return "TEAM_INVITE_ERROR_INVITER_INVALID_ACCOUNT_TYPE";
+    case ETeamInviteResult.TEAM_INVITE_ERROR_INVITER_NOT_ADMIN:
+      return "TEAM_INVITE_ERROR_INVITER_NOT_ADMIN";
+    case ETeamInviteResult.TEAM_INVITE_ERROR_INCORRECT_USER_RESPONDED:
+      return "TEAM_INVITE_ERROR_INCORRECT_USER_RESPONDED";
+    case ETeamInviteResult.TEAM_INVITE_ERROR_UNSPECIFIED:
+      return "TEAM_INVITE_ERROR_UNSPECIFIED";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ETeamInviteResult");
+  }
 }
 
 export interface CMsgDOTATeamInfo {
@@ -159,6 +250,119 @@ export enum CMsgDOTACreateTeamResponse_Result {
   INVALID_ACCOUNT_TYPE = 17,
 }
 
+export function cMsgDOTACreateTeamResponse_ResultFromJSON(object: any): CMsgDOTACreateTeamResponse_Result {
+  switch (object) {
+    case -1:
+    case "INVALID":
+      return CMsgDOTACreateTeamResponse_Result.INVALID;
+    case 0:
+    case "SUCCESS":
+      return CMsgDOTACreateTeamResponse_Result.SUCCESS;
+    case 1:
+    case "NAME_EMPTY":
+      return CMsgDOTACreateTeamResponse_Result.NAME_EMPTY;
+    case 2:
+    case "NAME_BAD_CHARACTERS":
+      return CMsgDOTACreateTeamResponse_Result.NAME_BAD_CHARACTERS;
+    case 3:
+    case "NAME_TAKEN":
+      return CMsgDOTACreateTeamResponse_Result.NAME_TAKEN;
+    case 4:
+    case "NAME_TOO_LONG":
+      return CMsgDOTACreateTeamResponse_Result.NAME_TOO_LONG;
+    case 5:
+    case "TAG_EMPTY":
+      return CMsgDOTACreateTeamResponse_Result.TAG_EMPTY;
+    case 6:
+    case "TAG_BAD_CHARACTERS":
+      return CMsgDOTACreateTeamResponse_Result.TAG_BAD_CHARACTERS;
+    case 7:
+    case "TAG_TAKEN":
+      return CMsgDOTACreateTeamResponse_Result.TAG_TAKEN;
+    case 8:
+    case "TAG_TOO_LONG":
+      return CMsgDOTACreateTeamResponse_Result.TAG_TOO_LONG;
+    case 9:
+    case "CREATOR_BUSY":
+      return CMsgDOTACreateTeamResponse_Result.CREATOR_BUSY;
+    case 10:
+    case "UNSPECIFIED_ERROR":
+      return CMsgDOTACreateTeamResponse_Result.UNSPECIFIED_ERROR;
+    case 11:
+    case "CREATOR_TEAM_LIMIT_REACHED":
+      return CMsgDOTACreateTeamResponse_Result.CREATOR_TEAM_LIMIT_REACHED;
+    case 12:
+    case "NO_LOGO":
+      return CMsgDOTACreateTeamResponse_Result.NO_LOGO;
+    case 13:
+    case "CREATOR_TEAM_CREATION_COOLDOWN":
+      return CMsgDOTACreateTeamResponse_Result.CREATOR_TEAM_CREATION_COOLDOWN;
+    case 14:
+    case "LOGO_UPLOAD_FAILED":
+      return CMsgDOTACreateTeamResponse_Result.LOGO_UPLOAD_FAILED;
+    case 15:
+    case "NAME_CHANGED_TOO_RECENTLY":
+      return CMsgDOTACreateTeamResponse_Result.NAME_CHANGED_TOO_RECENTLY;
+    case 16:
+    case "CREATOR_INSUFFICIENT_LEVEL":
+      return CMsgDOTACreateTeamResponse_Result.CREATOR_INSUFFICIENT_LEVEL;
+    case 17:
+    case "INVALID_ACCOUNT_TYPE":
+      return CMsgDOTACreateTeamResponse_Result.INVALID_ACCOUNT_TYPE;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDOTACreateTeamResponse_Result",
+      );
+  }
+}
+
+export function cMsgDOTACreateTeamResponse_ResultToJSON(object: CMsgDOTACreateTeamResponse_Result): string {
+  switch (object) {
+    case CMsgDOTACreateTeamResponse_Result.INVALID:
+      return "INVALID";
+    case CMsgDOTACreateTeamResponse_Result.SUCCESS:
+      return "SUCCESS";
+    case CMsgDOTACreateTeamResponse_Result.NAME_EMPTY:
+      return "NAME_EMPTY";
+    case CMsgDOTACreateTeamResponse_Result.NAME_BAD_CHARACTERS:
+      return "NAME_BAD_CHARACTERS";
+    case CMsgDOTACreateTeamResponse_Result.NAME_TAKEN:
+      return "NAME_TAKEN";
+    case CMsgDOTACreateTeamResponse_Result.NAME_TOO_LONG:
+      return "NAME_TOO_LONG";
+    case CMsgDOTACreateTeamResponse_Result.TAG_EMPTY:
+      return "TAG_EMPTY";
+    case CMsgDOTACreateTeamResponse_Result.TAG_BAD_CHARACTERS:
+      return "TAG_BAD_CHARACTERS";
+    case CMsgDOTACreateTeamResponse_Result.TAG_TAKEN:
+      return "TAG_TAKEN";
+    case CMsgDOTACreateTeamResponse_Result.TAG_TOO_LONG:
+      return "TAG_TOO_LONG";
+    case CMsgDOTACreateTeamResponse_Result.CREATOR_BUSY:
+      return "CREATOR_BUSY";
+    case CMsgDOTACreateTeamResponse_Result.UNSPECIFIED_ERROR:
+      return "UNSPECIFIED_ERROR";
+    case CMsgDOTACreateTeamResponse_Result.CREATOR_TEAM_LIMIT_REACHED:
+      return "CREATOR_TEAM_LIMIT_REACHED";
+    case CMsgDOTACreateTeamResponse_Result.NO_LOGO:
+      return "NO_LOGO";
+    case CMsgDOTACreateTeamResponse_Result.CREATOR_TEAM_CREATION_COOLDOWN:
+      return "CREATOR_TEAM_CREATION_COOLDOWN";
+    case CMsgDOTACreateTeamResponse_Result.LOGO_UPLOAD_FAILED:
+      return "LOGO_UPLOAD_FAILED";
+    case CMsgDOTACreateTeamResponse_Result.NAME_CHANGED_TOO_RECENTLY:
+      return "NAME_CHANGED_TOO_RECENTLY";
+    case CMsgDOTACreateTeamResponse_Result.CREATOR_INSUFFICIENT_LEVEL:
+      return "CREATOR_INSUFFICIENT_LEVEL";
+    case CMsgDOTACreateTeamResponse_Result.INVALID_ACCOUNT_TYPE:
+      return "INVALID_ACCOUNT_TYPE";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDOTACreateTeamResponse_Result",
+      );
+  }
+}
+
 export interface CMsgDOTAEditTeamDetails {
   teamId: number;
   name: string;
@@ -183,6 +387,49 @@ export enum CMsgDOTAEditTeamDetailsResponse_Result {
   FAILURE_NOT_MEMBER = 2,
   FAILURE_TEAM_LOCKED = 3,
   FAILURE_UNSPECIFIED_ERROR = 4,
+}
+
+export function cMsgDOTAEditTeamDetailsResponse_ResultFromJSON(object: any): CMsgDOTAEditTeamDetailsResponse_Result {
+  switch (object) {
+    case 0:
+    case "SUCCESS":
+      return CMsgDOTAEditTeamDetailsResponse_Result.SUCCESS;
+    case 1:
+    case "FAILURE_INVALID_ACCOUNT_TYPE":
+      return CMsgDOTAEditTeamDetailsResponse_Result.FAILURE_INVALID_ACCOUNT_TYPE;
+    case 2:
+    case "FAILURE_NOT_MEMBER":
+      return CMsgDOTAEditTeamDetailsResponse_Result.FAILURE_NOT_MEMBER;
+    case 3:
+    case "FAILURE_TEAM_LOCKED":
+      return CMsgDOTAEditTeamDetailsResponse_Result.FAILURE_TEAM_LOCKED;
+    case 4:
+    case "FAILURE_UNSPECIFIED_ERROR":
+      return CMsgDOTAEditTeamDetailsResponse_Result.FAILURE_UNSPECIFIED_ERROR;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDOTAEditTeamDetailsResponse_Result",
+      );
+  }
+}
+
+export function cMsgDOTAEditTeamDetailsResponse_ResultToJSON(object: CMsgDOTAEditTeamDetailsResponse_Result): string {
+  switch (object) {
+    case CMsgDOTAEditTeamDetailsResponse_Result.SUCCESS:
+      return "SUCCESS";
+    case CMsgDOTAEditTeamDetailsResponse_Result.FAILURE_INVALID_ACCOUNT_TYPE:
+      return "FAILURE_INVALID_ACCOUNT_TYPE";
+    case CMsgDOTAEditTeamDetailsResponse_Result.FAILURE_NOT_MEMBER:
+      return "FAILURE_NOT_MEMBER";
+    case CMsgDOTAEditTeamDetailsResponse_Result.FAILURE_TEAM_LOCKED:
+      return "FAILURE_TEAM_LOCKED";
+    case CMsgDOTAEditTeamDetailsResponse_Result.FAILURE_UNSPECIFIED_ERROR:
+      return "FAILURE_UNSPECIFIED_ERROR";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDOTAEditTeamDetailsResponse_Result",
+      );
+  }
 }
 
 export interface CMsgDOTATeamInviteInviterToGC {
@@ -235,6 +482,54 @@ export enum CMsgDOTAKickTeamMemberResponse_Result {
   FAILURE_UNSPECIFIED_ERROR = 5,
 }
 
+export function cMsgDOTAKickTeamMemberResponse_ResultFromJSON(object: any): CMsgDOTAKickTeamMemberResponse_Result {
+  switch (object) {
+    case 0:
+    case "SUCCESS":
+      return CMsgDOTAKickTeamMemberResponse_Result.SUCCESS;
+    case 1:
+    case "FAILURE_INVALID_ACCOUNT_TYPE":
+      return CMsgDOTAKickTeamMemberResponse_Result.FAILURE_INVALID_ACCOUNT_TYPE;
+    case 2:
+    case "FAILURE_KICKER_NOT_ADMIN":
+      return CMsgDOTAKickTeamMemberResponse_Result.FAILURE_KICKER_NOT_ADMIN;
+    case 3:
+    case "FAILURE_KICKEE_NOT_MEMBER":
+      return CMsgDOTAKickTeamMemberResponse_Result.FAILURE_KICKEE_NOT_MEMBER;
+    case 4:
+    case "FAILURE_TEAM_LOCKED":
+      return CMsgDOTAKickTeamMemberResponse_Result.FAILURE_TEAM_LOCKED;
+    case 5:
+    case "FAILURE_UNSPECIFIED_ERROR":
+      return CMsgDOTAKickTeamMemberResponse_Result.FAILURE_UNSPECIFIED_ERROR;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDOTAKickTeamMemberResponse_Result",
+      );
+  }
+}
+
+export function cMsgDOTAKickTeamMemberResponse_ResultToJSON(object: CMsgDOTAKickTeamMemberResponse_Result): string {
+  switch (object) {
+    case CMsgDOTAKickTeamMemberResponse_Result.SUCCESS:
+      return "SUCCESS";
+    case CMsgDOTAKickTeamMemberResponse_Result.FAILURE_INVALID_ACCOUNT_TYPE:
+      return "FAILURE_INVALID_ACCOUNT_TYPE";
+    case CMsgDOTAKickTeamMemberResponse_Result.FAILURE_KICKER_NOT_ADMIN:
+      return "FAILURE_KICKER_NOT_ADMIN";
+    case CMsgDOTAKickTeamMemberResponse_Result.FAILURE_KICKEE_NOT_MEMBER:
+      return "FAILURE_KICKEE_NOT_MEMBER";
+    case CMsgDOTAKickTeamMemberResponse_Result.FAILURE_TEAM_LOCKED:
+      return "FAILURE_TEAM_LOCKED";
+    case CMsgDOTAKickTeamMemberResponse_Result.FAILURE_UNSPECIFIED_ERROR:
+      return "FAILURE_UNSPECIFIED_ERROR";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDOTAKickTeamMemberResponse_Result",
+      );
+  }
+}
+
 export interface CMsgDOTATransferTeamAdmin {
   newAdminAccountId: number;
   teamId: number;
@@ -253,6 +548,58 @@ export enum CMsgDOTATransferTeamAdminResponse_Result {
   FAILURE_UNSPECIFIED_ERROR = 5,
 }
 
+export function cMsgDOTATransferTeamAdminResponse_ResultFromJSON(
+  object: any,
+): CMsgDOTATransferTeamAdminResponse_Result {
+  switch (object) {
+    case 0:
+    case "SUCCESS":
+      return CMsgDOTATransferTeamAdminResponse_Result.SUCCESS;
+    case 1:
+    case "FAILURE_INVALID_ACCOUNT_TYPE":
+      return CMsgDOTATransferTeamAdminResponse_Result.FAILURE_INVALID_ACCOUNT_TYPE;
+    case 2:
+    case "FAILURE_NOT_ADMIN":
+      return CMsgDOTATransferTeamAdminResponse_Result.FAILURE_NOT_ADMIN;
+    case 3:
+    case "FAILURE_SAME_ACCOUNT":
+      return CMsgDOTATransferTeamAdminResponse_Result.FAILURE_SAME_ACCOUNT;
+    case 4:
+    case "FAILURE_NOT_MEMBER":
+      return CMsgDOTATransferTeamAdminResponse_Result.FAILURE_NOT_MEMBER;
+    case 5:
+    case "FAILURE_UNSPECIFIED_ERROR":
+      return CMsgDOTATransferTeamAdminResponse_Result.FAILURE_UNSPECIFIED_ERROR;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDOTATransferTeamAdminResponse_Result",
+      );
+  }
+}
+
+export function cMsgDOTATransferTeamAdminResponse_ResultToJSON(
+  object: CMsgDOTATransferTeamAdminResponse_Result,
+): string {
+  switch (object) {
+    case CMsgDOTATransferTeamAdminResponse_Result.SUCCESS:
+      return "SUCCESS";
+    case CMsgDOTATransferTeamAdminResponse_Result.FAILURE_INVALID_ACCOUNT_TYPE:
+      return "FAILURE_INVALID_ACCOUNT_TYPE";
+    case CMsgDOTATransferTeamAdminResponse_Result.FAILURE_NOT_ADMIN:
+      return "FAILURE_NOT_ADMIN";
+    case CMsgDOTATransferTeamAdminResponse_Result.FAILURE_SAME_ACCOUNT:
+      return "FAILURE_SAME_ACCOUNT";
+    case CMsgDOTATransferTeamAdminResponse_Result.FAILURE_NOT_MEMBER:
+      return "FAILURE_NOT_MEMBER";
+    case CMsgDOTATransferTeamAdminResponse_Result.FAILURE_UNSPECIFIED_ERROR:
+      return "FAILURE_UNSPECIFIED_ERROR";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDOTATransferTeamAdminResponse_Result",
+      );
+  }
+}
+
 export interface CMsgDOTALeaveTeam {
   teamId: number;
 }
@@ -266,6 +613,44 @@ export enum CMsgDOTALeaveTeamResponse_Result {
   FAILURE_NOT_MEMBER = 1,
   FAILURE_TEAM_LOCKED = 2,
   FAILURE_UNSPECIFIED_ERROR = 3,
+}
+
+export function cMsgDOTALeaveTeamResponse_ResultFromJSON(object: any): CMsgDOTALeaveTeamResponse_Result {
+  switch (object) {
+    case 0:
+    case "SUCCESS":
+      return CMsgDOTALeaveTeamResponse_Result.SUCCESS;
+    case 1:
+    case "FAILURE_NOT_MEMBER":
+      return CMsgDOTALeaveTeamResponse_Result.FAILURE_NOT_MEMBER;
+    case 2:
+    case "FAILURE_TEAM_LOCKED":
+      return CMsgDOTALeaveTeamResponse_Result.FAILURE_TEAM_LOCKED;
+    case 3:
+    case "FAILURE_UNSPECIFIED_ERROR":
+      return CMsgDOTALeaveTeamResponse_Result.FAILURE_UNSPECIFIED_ERROR;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDOTALeaveTeamResponse_Result",
+      );
+  }
+}
+
+export function cMsgDOTALeaveTeamResponse_ResultToJSON(object: CMsgDOTALeaveTeamResponse_Result): string {
+  switch (object) {
+    case CMsgDOTALeaveTeamResponse_Result.SUCCESS:
+      return "SUCCESS";
+    case CMsgDOTALeaveTeamResponse_Result.FAILURE_NOT_MEMBER:
+      return "FAILURE_NOT_MEMBER";
+    case CMsgDOTALeaveTeamResponse_Result.FAILURE_TEAM_LOCKED:
+      return "FAILURE_TEAM_LOCKED";
+    case CMsgDOTALeaveTeamResponse_Result.FAILURE_UNSPECIFIED_ERROR:
+      return "FAILURE_UNSPECIFIED_ERROR";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDOTALeaveTeamResponse_Result",
+      );
+  }
 }
 
 export interface CMsgDOTABetaParticipation {
@@ -627,6 +1012,106 @@ export const CMsgDOTATeamInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTATeamInfo {
+    return {
+      members: Array.isArray(object?.members)
+        ? object.members.map((e: any) => CMsgDOTATeamInfo_Member.fromJSON(e))
+        : [],
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      tag: isSet(object.tag) ? String(object.tag) : "",
+      timeCreated: isSet(object.timeCreated) ? Number(object.timeCreated) : 0,
+      pro: isSet(object.pro) ? Boolean(object.pro) : false,
+      pickupTeam: isSet(object.pickupTeam) ? Boolean(object.pickupTeam) : false,
+      ugcLogo: isSet(object.ugcLogo) ? String(object.ugcLogo) : "0",
+      ugcBaseLogo: isSet(object.ugcBaseLogo) ? String(object.ugcBaseLogo) : "0",
+      ugcBannerLogo: isSet(object.ugcBannerLogo) ? String(object.ugcBannerLogo) : "0",
+      ugcSponsorLogo: isSet(object.ugcSponsorLogo) ? String(object.ugcSponsorLogo) : "0",
+      countryCode: isSet(object.countryCode) ? String(object.countryCode) : "",
+      url: isSet(object.url) ? String(object.url) : "",
+      wins: isSet(object.wins) ? Number(object.wins) : 0,
+      losses: isSet(object.losses) ? Number(object.losses) : 0,
+      gamesPlayedTotal: isSet(object.gamesPlayedTotal) ? Number(object.gamesPlayedTotal) : 0,
+      gamesPlayedMatchmaking: isSet(object.gamesPlayedMatchmaking) ? Number(object.gamesPlayedMatchmaking) : 0,
+      urlLogo: isSet(object.urlLogo) ? String(object.urlLogo) : "",
+      registeredMemberAccountIds: Array.isArray(object?.registeredMemberAccountIds)
+        ? object.registeredMemberAccountIds.map((e: any) => Number(e))
+        : [],
+      coachAccountId: isSet(object.coachAccountId) ? Number(object.coachAccountId) : 0,
+      auditEntries: Array.isArray(object?.auditEntries)
+        ? object.auditEntries.map((e: any) => CMsgDOTATeamInfo_AuditEntry.fromJSON(e))
+        : [],
+      region: isSet(object.region) ? eLeagueRegionFromJSON(object.region) : 0,
+      abbreviation: isSet(object.abbreviation) ? String(object.abbreviation) : "",
+      memberStats: Array.isArray(object?.memberStats)
+        ? object.memberStats.map((e: any) => CMsgDOTATeamInfo_MemberStats.fromJSON(e))
+        : [],
+      teamStats: isSet(object.teamStats) ? CMsgDOTATeamInfo_TeamStats.fromJSON(object.teamStats) : undefined,
+      dpcResults: Array.isArray(object?.dpcResults)
+        ? object.dpcResults.map((e: any) => CMsgDOTATeamInfo_DPCResult.fromJSON(e))
+        : [],
+      colorPrimary: isSet(object.colorPrimary) ? String(object.colorPrimary) : "",
+      colorSecondary: isSet(object.colorSecondary) ? String(object.colorSecondary) : "",
+      teamCaptain: isSet(object.teamCaptain) ? Number(object.teamCaptain) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTATeamInfo): unknown {
+    const obj: any = {};
+    if (message.members) {
+      obj.members = message.members.map((e) => e ? CMsgDOTATeamInfo_Member.toJSON(e) : undefined);
+    } else {
+      obj.members = [];
+    }
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    message.name !== undefined && (obj.name = message.name);
+    message.tag !== undefined && (obj.tag = message.tag);
+    message.timeCreated !== undefined && (obj.timeCreated = Math.round(message.timeCreated));
+    message.pro !== undefined && (obj.pro = message.pro);
+    message.pickupTeam !== undefined && (obj.pickupTeam = message.pickupTeam);
+    message.ugcLogo !== undefined && (obj.ugcLogo = message.ugcLogo);
+    message.ugcBaseLogo !== undefined && (obj.ugcBaseLogo = message.ugcBaseLogo);
+    message.ugcBannerLogo !== undefined && (obj.ugcBannerLogo = message.ugcBannerLogo);
+    message.ugcSponsorLogo !== undefined && (obj.ugcSponsorLogo = message.ugcSponsorLogo);
+    message.countryCode !== undefined && (obj.countryCode = message.countryCode);
+    message.url !== undefined && (obj.url = message.url);
+    message.wins !== undefined && (obj.wins = Math.round(message.wins));
+    message.losses !== undefined && (obj.losses = Math.round(message.losses));
+    message.gamesPlayedTotal !== undefined && (obj.gamesPlayedTotal = Math.round(message.gamesPlayedTotal));
+    message.gamesPlayedMatchmaking !== undefined &&
+      (obj.gamesPlayedMatchmaking = Math.round(message.gamesPlayedMatchmaking));
+    message.urlLogo !== undefined && (obj.urlLogo = message.urlLogo);
+    if (message.registeredMemberAccountIds) {
+      obj.registeredMemberAccountIds = message.registeredMemberAccountIds.map((e) => Math.round(e));
+    } else {
+      obj.registeredMemberAccountIds = [];
+    }
+    message.coachAccountId !== undefined && (obj.coachAccountId = Math.round(message.coachAccountId));
+    if (message.auditEntries) {
+      obj.auditEntries = message.auditEntries.map((e) => e ? CMsgDOTATeamInfo_AuditEntry.toJSON(e) : undefined);
+    } else {
+      obj.auditEntries = [];
+    }
+    message.region !== undefined && (obj.region = eLeagueRegionToJSON(message.region));
+    message.abbreviation !== undefined && (obj.abbreviation = message.abbreviation);
+    if (message.memberStats) {
+      obj.memberStats = message.memberStats.map((e) => e ? CMsgDOTATeamInfo_MemberStats.toJSON(e) : undefined);
+    } else {
+      obj.memberStats = [];
+    }
+    message.teamStats !== undefined &&
+      (obj.teamStats = message.teamStats ? CMsgDOTATeamInfo_TeamStats.toJSON(message.teamStats) : undefined);
+    if (message.dpcResults) {
+      obj.dpcResults = message.dpcResults.map((e) => e ? CMsgDOTATeamInfo_DPCResult.toJSON(e) : undefined);
+    } else {
+      obj.dpcResults = [];
+    }
+    message.colorPrimary !== undefined && (obj.colorPrimary = message.colorPrimary);
+    message.colorSecondary !== undefined && (obj.colorSecondary = message.colorSecondary);
+    message.teamCaptain !== undefined && (obj.teamCaptain = Math.round(message.teamCaptain));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTATeamInfo_HeroStats(): CMsgDOTATeamInfo_HeroStats {
@@ -743,6 +1228,34 @@ export const CMsgDOTATeamInfo_HeroStats = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTATeamInfo_HeroStats {
+    return {
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      picks: isSet(object.picks) ? Number(object.picks) : 0,
+      wins: isSet(object.wins) ? Number(object.wins) : 0,
+      bans: isSet(object.bans) ? Number(object.bans) : 0,
+      avgKills: isSet(object.avgKills) ? Number(object.avgKills) : 0,
+      avgDeaths: isSet(object.avgDeaths) ? Number(object.avgDeaths) : 0,
+      avgAssists: isSet(object.avgAssists) ? Number(object.avgAssists) : 0,
+      avgGpm: isSet(object.avgGpm) ? Number(object.avgGpm) : 0,
+      avgXpm: isSet(object.avgXpm) ? Number(object.avgXpm) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTATeamInfo_HeroStats): unknown {
+    const obj: any = {};
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.picks !== undefined && (obj.picks = Math.round(message.picks));
+    message.wins !== undefined && (obj.wins = Math.round(message.wins));
+    message.bans !== undefined && (obj.bans = Math.round(message.bans));
+    message.avgKills !== undefined && (obj.avgKills = message.avgKills);
+    message.avgDeaths !== undefined && (obj.avgDeaths = message.avgDeaths);
+    message.avgAssists !== undefined && (obj.avgAssists = message.avgAssists);
+    message.avgGpm !== undefined && (obj.avgGpm = message.avgGpm);
+    message.avgXpm !== undefined && (obj.avgXpm = message.avgXpm);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTATeamInfo_MemberStats(): CMsgDOTATeamInfo_MemberStats {
@@ -838,6 +1351,36 @@ export const CMsgDOTATeamInfo_MemberStats = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTATeamInfo_MemberStats {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      winsWithTeam: isSet(object.winsWithTeam) ? Number(object.winsWithTeam) : 0,
+      lossesWithTeam: isSet(object.lossesWithTeam) ? Number(object.lossesWithTeam) : 0,
+      topHeroes: Array.isArray(object?.topHeroes)
+        ? object.topHeroes.map((e: any) => CMsgDOTATeamInfo_HeroStats.fromJSON(e))
+        : [],
+      avgKills: isSet(object.avgKills) ? Number(object.avgKills) : 0,
+      avgDeaths: isSet(object.avgDeaths) ? Number(object.avgDeaths) : 0,
+      avgAssists: isSet(object.avgAssists) ? Number(object.avgAssists) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTATeamInfo_MemberStats): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.winsWithTeam !== undefined && (obj.winsWithTeam = Math.round(message.winsWithTeam));
+    message.lossesWithTeam !== undefined && (obj.lossesWithTeam = Math.round(message.lossesWithTeam));
+    if (message.topHeroes) {
+      obj.topHeroes = message.topHeroes.map((e) => e ? CMsgDOTATeamInfo_HeroStats.toJSON(e) : undefined);
+    } else {
+      obj.topHeroes = [];
+    }
+    message.avgKills !== undefined && (obj.avgKills = message.avgKills);
+    message.avgDeaths !== undefined && (obj.avgDeaths = message.avgDeaths);
+    message.avgAssists !== undefined && (obj.avgAssists = message.avgAssists);
+    return obj;
   },
 };
 
@@ -935,6 +1478,36 @@ export const CMsgDOTATeamInfo_TeamStats = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTATeamInfo_TeamStats {
+    return {
+      playedHeroes: Array.isArray(object?.playedHeroes)
+        ? object.playedHeroes.map((e: any) => CMsgDOTATeamInfo_HeroStats.fromJSON(e))
+        : [],
+      farming: isSet(object.farming) ? Number(object.farming) : 0,
+      fighting: isSet(object.fighting) ? Number(object.fighting) : 0,
+      versatility: isSet(object.versatility) ? Number(object.versatility) : 0,
+      avgKills: isSet(object.avgKills) ? Number(object.avgKills) : 0,
+      avgDeaths: isSet(object.avgDeaths) ? Number(object.avgDeaths) : 0,
+      avgDuration: isSet(object.avgDuration) ? Number(object.avgDuration) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTATeamInfo_TeamStats): unknown {
+    const obj: any = {};
+    if (message.playedHeroes) {
+      obj.playedHeroes = message.playedHeroes.map((e) => e ? CMsgDOTATeamInfo_HeroStats.toJSON(e) : undefined);
+    } else {
+      obj.playedHeroes = [];
+    }
+    message.farming !== undefined && (obj.farming = message.farming);
+    message.fighting !== undefined && (obj.fighting = message.fighting);
+    message.versatility !== undefined && (obj.versatility = message.versatility);
+    message.avgKills !== undefined && (obj.avgKills = message.avgKills);
+    message.avgDeaths !== undefined && (obj.avgDeaths = message.avgDeaths);
+    message.avgDuration !== undefined && (obj.avgDuration = message.avgDuration);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTATeamInfo_DPCResult(): CMsgDOTATeamInfo_DPCResult {
@@ -1010,6 +1583,26 @@ export const CMsgDOTATeamInfo_DPCResult = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTATeamInfo_DPCResult {
+    return {
+      leagueId: isSet(object.leagueId) ? Number(object.leagueId) : 0,
+      standing: isSet(object.standing) ? Number(object.standing) : 0,
+      points: isSet(object.points) ? Number(object.points) : 0,
+      earnings: isSet(object.earnings) ? Number(object.earnings) : 0,
+      timestamp: isSet(object.timestamp) ? Number(object.timestamp) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTATeamInfo_DPCResult): unknown {
+    const obj: any = {};
+    message.leagueId !== undefined && (obj.leagueId = Math.round(message.leagueId));
+    message.standing !== undefined && (obj.standing = Math.round(message.standing));
+    message.points !== undefined && (obj.points = Math.round(message.points));
+    message.earnings !== undefined && (obj.earnings = Math.round(message.earnings));
+    message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
+    return obj;
   },
 };
 
@@ -1097,6 +1690,28 @@ export const CMsgDOTATeamInfo_Member = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTATeamInfo_Member {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      timeJoined: isSet(object.timeJoined) ? Number(object.timeJoined) : 0,
+      admin: isSet(object.admin) ? Boolean(object.admin) : false,
+      proName: isSet(object.proName) ? String(object.proName) : "",
+      role: isSet(object.role) ? fantasyRolesFromJSON(object.role) : 0,
+      realName: isSet(object.realName) ? String(object.realName) : "",
+    };
+  },
+
+  toJSON(message: CMsgDOTATeamInfo_Member): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.timeJoined !== undefined && (obj.timeJoined = Math.round(message.timeJoined));
+    message.admin !== undefined && (obj.admin = message.admin);
+    message.proName !== undefined && (obj.proName = message.proName);
+    message.role !== undefined && (obj.role = fantasyRolesToJSON(message.role));
+    message.realName !== undefined && (obj.realName = message.realName);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTATeamInfo_AuditEntry(): CMsgDOTATeamInfo_AuditEntry {
@@ -1153,6 +1768,22 @@ export const CMsgDOTATeamInfo_AuditEntry = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTATeamInfo_AuditEntry {
+    return {
+      auditAction: isSet(object.auditAction) ? Number(object.auditAction) : 0,
+      timestamp: isSet(object.timestamp) ? Number(object.timestamp) : 0,
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTATeamInfo_AuditEntry): unknown {
+    const obj: any = {};
+    message.auditAction !== undefined && (obj.auditAction = Math.round(message.auditAction));
+    message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTATeamsInfo(): CMsgDOTATeamsInfo {
@@ -1199,6 +1830,24 @@ export const CMsgDOTATeamsInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTATeamsInfo {
+    return {
+      leagueId: isSet(object.leagueId) ? Number(object.leagueId) : 0,
+      teams: Array.isArray(object?.teams) ? object.teams.map((e: any) => CMsgDOTATeamInfo.fromJSON(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTATeamsInfo): unknown {
+    const obj: any = {};
+    message.leagueId !== undefined && (obj.leagueId = Math.round(message.leagueId));
+    if (message.teams) {
+      obj.teams = message.teams.map((e) => e ? CMsgDOTATeamInfo.toJSON(e) : undefined);
+    } else {
+      obj.teams = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTATeamInfoList(): CMsgDOTATeamInfoList {
@@ -1235,6 +1884,20 @@ export const CMsgDOTATeamInfoList = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTATeamInfoList {
+    return { teams: Array.isArray(object?.teams) ? object.teams.map((e: any) => CMsgDOTATeamInfo.fromJSON(e)) : [] };
+  },
+
+  toJSON(message: CMsgDOTATeamInfoList): unknown {
+    const obj: any = {};
+    if (message.teams) {
+      obj.teams = message.teams.map((e) => e ? CMsgDOTATeamInfo.toJSON(e) : undefined);
+    } else {
+      obj.teams = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTAMyTeamInfoRequest(): CMsgDOTAMyTeamInfoRequest {
@@ -1260,6 +1923,15 @@ export const CMsgDOTAMyTeamInfoRequest = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CMsgDOTAMyTeamInfoRequest {
+    return {};
+  },
+
+  toJSON(_: CMsgDOTAMyTeamInfoRequest): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -1398,6 +2070,36 @@ export const CMsgDOTACreateTeam = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTACreateTeam {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      tag: isSet(object.tag) ? String(object.tag) : "",
+      logo: isSet(object.logo) ? String(object.logo) : "0",
+      baseLogo: isSet(object.baseLogo) ? String(object.baseLogo) : "0",
+      bannerLogo: isSet(object.bannerLogo) ? String(object.bannerLogo) : "0",
+      sponsorLogo: isSet(object.sponsorLogo) ? String(object.sponsorLogo) : "0",
+      countryCode: isSet(object.countryCode) ? String(object.countryCode) : "",
+      url: isSet(object.url) ? String(object.url) : "",
+      pickupTeam: isSet(object.pickupTeam) ? Boolean(object.pickupTeam) : false,
+      abbreviation: isSet(object.abbreviation) ? String(object.abbreviation) : "",
+    };
+  },
+
+  toJSON(message: CMsgDOTACreateTeam): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.tag !== undefined && (obj.tag = message.tag);
+    message.logo !== undefined && (obj.logo = message.logo);
+    message.baseLogo !== undefined && (obj.baseLogo = message.baseLogo);
+    message.bannerLogo !== undefined && (obj.bannerLogo = message.bannerLogo);
+    message.sponsorLogo !== undefined && (obj.sponsorLogo = message.sponsorLogo);
+    message.countryCode !== undefined && (obj.countryCode = message.countryCode);
+    message.url !== undefined && (obj.url = message.url);
+    message.pickupTeam !== undefined && (obj.pickupTeam = message.pickupTeam);
+    message.abbreviation !== undefined && (obj.abbreviation = message.abbreviation);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTACreateTeamResponse(): CMsgDOTACreateTeamResponse {
@@ -1443,6 +2145,20 @@ export const CMsgDOTACreateTeamResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTACreateTeamResponse {
+    return {
+      result: isSet(object.result) ? cMsgDOTACreateTeamResponse_ResultFromJSON(object.result) : 0,
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTACreateTeamResponse): unknown {
+    const obj: any = {};
+    message.result !== undefined && (obj.result = cMsgDOTACreateTeamResponse_ResultToJSON(message.result));
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    return obj;
   },
 };
 
@@ -1592,6 +2308,38 @@ export const CMsgDOTAEditTeamDetails = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTAEditTeamDetails {
+    return {
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      tag: isSet(object.tag) ? String(object.tag) : "",
+      logo: isSet(object.logo) ? String(object.logo) : "0",
+      baseLogo: isSet(object.baseLogo) ? String(object.baseLogo) : "0",
+      bannerLogo: isSet(object.bannerLogo) ? String(object.bannerLogo) : "0",
+      sponsorLogo: isSet(object.sponsorLogo) ? String(object.sponsorLogo) : "0",
+      countryCode: isSet(object.countryCode) ? String(object.countryCode) : "",
+      url: isSet(object.url) ? String(object.url) : "",
+      inUseByParty: isSet(object.inUseByParty) ? Boolean(object.inUseByParty) : false,
+      abbreviation: isSet(object.abbreviation) ? String(object.abbreviation) : "",
+    };
+  },
+
+  toJSON(message: CMsgDOTAEditTeamDetails): unknown {
+    const obj: any = {};
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    message.name !== undefined && (obj.name = message.name);
+    message.tag !== undefined && (obj.tag = message.tag);
+    message.logo !== undefined && (obj.logo = message.logo);
+    message.baseLogo !== undefined && (obj.baseLogo = message.baseLogo);
+    message.bannerLogo !== undefined && (obj.bannerLogo = message.bannerLogo);
+    message.sponsorLogo !== undefined && (obj.sponsorLogo = message.sponsorLogo);
+    message.countryCode !== undefined && (obj.countryCode = message.countryCode);
+    message.url !== undefined && (obj.url = message.url);
+    message.inUseByParty !== undefined && (obj.inUseByParty = message.inUseByParty);
+    message.abbreviation !== undefined && (obj.abbreviation = message.abbreviation);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTAEditTeamDetailsResponse(): CMsgDOTAEditTeamDetailsResponse {
@@ -1627,6 +2375,16 @@ export const CMsgDOTAEditTeamDetailsResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAEditTeamDetailsResponse {
+    return { result: isSet(object.result) ? cMsgDOTAEditTeamDetailsResponse_ResultFromJSON(object.result) : 0 };
+  },
+
+  toJSON(message: CMsgDOTAEditTeamDetailsResponse): unknown {
+    const obj: any = {};
+    message.result !== undefined && (obj.result = cMsgDOTAEditTeamDetailsResponse_ResultToJSON(message.result));
+    return obj;
   },
 };
 
@@ -1673,6 +2431,20 @@ export const CMsgDOTATeamInviteInviterToGC = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTATeamInviteInviterToGC {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTATeamInviteInviterToGC): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    return obj;
   },
 };
 
@@ -1732,6 +2504,22 @@ export const CMsgDOTATeamInviteGCImmediateResponseToInviter = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTATeamInviteGCImmediateResponseToInviter {
+    return {
+      result: isSet(object.result) ? eTeamInviteResultFromJSON(object.result) : 0,
+      inviteeName: isSet(object.inviteeName) ? String(object.inviteeName) : "",
+      requiredPlayTime: isSet(object.requiredPlayTime) ? Number(object.requiredPlayTime) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTATeamInviteGCImmediateResponseToInviter): unknown {
+    const obj: any = {};
+    message.result !== undefined && (obj.result = eTeamInviteResultToJSON(message.result));
+    message.inviteeName !== undefined && (obj.inviteeName = message.inviteeName);
+    message.requiredPlayTime !== undefined && (obj.requiredPlayTime = Math.round(message.requiredPlayTime));
+    return obj;
   },
 };
 
@@ -1799,6 +2587,24 @@ export const CMsgDOTATeamInviteGCRequestToInvitee = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTATeamInviteGCRequestToInvitee {
+    return {
+      inviterAccountId: isSet(object.inviterAccountId) ? Number(object.inviterAccountId) : 0,
+      teamName: isSet(object.teamName) ? String(object.teamName) : "",
+      teamTag: isSet(object.teamTag) ? String(object.teamTag) : "",
+      logo: isSet(object.logo) ? String(object.logo) : "0",
+    };
+  },
+
+  toJSON(message: CMsgDOTATeamInviteGCRequestToInvitee): unknown {
+    const obj: any = {};
+    message.inviterAccountId !== undefined && (obj.inviterAccountId = Math.round(message.inviterAccountId));
+    message.teamName !== undefined && (obj.teamName = message.teamName);
+    message.teamTag !== undefined && (obj.teamTag = message.teamTag);
+    message.logo !== undefined && (obj.logo = message.logo);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTATeamInviteInviteeResponseToGC(): CMsgDOTATeamInviteInviteeResponseToGC {
@@ -1834,6 +2640,16 @@ export const CMsgDOTATeamInviteInviteeResponseToGC = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTATeamInviteInviteeResponseToGC {
+    return { result: isSet(object.result) ? eTeamInviteResultFromJSON(object.result) : 0 };
+  },
+
+  toJSON(message: CMsgDOTATeamInviteInviteeResponseToGC): unknown {
+    const obj: any = {};
+    message.result !== undefined && (obj.result = eTeamInviteResultToJSON(message.result));
+    return obj;
   },
 };
 
@@ -1881,6 +2697,20 @@ export const CMsgDOTATeamInviteGCResponseToInviter = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTATeamInviteGCResponseToInviter {
+    return {
+      result: isSet(object.result) ? eTeamInviteResultFromJSON(object.result) : 0,
+      inviteeName: isSet(object.inviteeName) ? String(object.inviteeName) : "",
+    };
+  },
+
+  toJSON(message: CMsgDOTATeamInviteGCResponseToInviter): unknown {
+    const obj: any = {};
+    message.result !== undefined && (obj.result = eTeamInviteResultToJSON(message.result));
+    message.inviteeName !== undefined && (obj.inviteeName = message.inviteeName);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTATeamInviteGCResponseToInvitee(): CMsgDOTATeamInviteGCResponseToInvitee {
@@ -1926,6 +2756,20 @@ export const CMsgDOTATeamInviteGCResponseToInvitee = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTATeamInviteGCResponseToInvitee {
+    return {
+      result: isSet(object.result) ? eTeamInviteResultFromJSON(object.result) : 0,
+      teamName: isSet(object.teamName) ? String(object.teamName) : "",
+    };
+  },
+
+  toJSON(message: CMsgDOTATeamInviteGCResponseToInvitee): unknown {
+    const obj: any = {};
+    message.result !== undefined && (obj.result = eTeamInviteResultToJSON(message.result));
+    message.teamName !== undefined && (obj.teamName = message.teamName);
+    return obj;
   },
 };
 
@@ -1973,6 +2817,20 @@ export const CMsgDOTAKickTeamMember = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTAKickTeamMember {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTAKickTeamMember): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTAKickTeamMemberResponse(): CMsgDOTAKickTeamMemberResponse {
@@ -2008,6 +2866,16 @@ export const CMsgDOTAKickTeamMemberResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAKickTeamMemberResponse {
+    return { result: isSet(object.result) ? cMsgDOTAKickTeamMemberResponse_ResultFromJSON(object.result) : 0 };
+  },
+
+  toJSON(message: CMsgDOTAKickTeamMemberResponse): unknown {
+    const obj: any = {};
+    message.result !== undefined && (obj.result = cMsgDOTAKickTeamMemberResponse_ResultToJSON(message.result));
+    return obj;
   },
 };
 
@@ -2055,6 +2923,20 @@ export const CMsgDOTATransferTeamAdmin = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTATransferTeamAdmin {
+    return {
+      newAdminAccountId: isSet(object.newAdminAccountId) ? Number(object.newAdminAccountId) : 0,
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTATransferTeamAdmin): unknown {
+    const obj: any = {};
+    message.newAdminAccountId !== undefined && (obj.newAdminAccountId = Math.round(message.newAdminAccountId));
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTATransferTeamAdminResponse(): CMsgDOTATransferTeamAdminResponse {
@@ -2090,6 +2972,16 @@ export const CMsgDOTATransferTeamAdminResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTATransferTeamAdminResponse {
+    return { result: isSet(object.result) ? cMsgDOTATransferTeamAdminResponse_ResultFromJSON(object.result) : 0 };
+  },
+
+  toJSON(message: CMsgDOTATransferTeamAdminResponse): unknown {
+    const obj: any = {};
+    message.result !== undefined && (obj.result = cMsgDOTATransferTeamAdminResponse_ResultToJSON(message.result));
+    return obj;
   },
 };
 
@@ -2127,6 +3019,16 @@ export const CMsgDOTALeaveTeam = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTALeaveTeam {
+    return { teamId: isSet(object.teamId) ? Number(object.teamId) : 0 };
+  },
+
+  toJSON(message: CMsgDOTALeaveTeam): unknown {
+    const obj: any = {};
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTALeaveTeamResponse(): CMsgDOTALeaveTeamResponse {
@@ -2162,6 +3064,16 @@ export const CMsgDOTALeaveTeamResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTALeaveTeamResponse {
+    return { result: isSet(object.result) ? cMsgDOTALeaveTeamResponse_ResultFromJSON(object.result) : 0 };
+  },
+
+  toJSON(message: CMsgDOTALeaveTeamResponse): unknown {
+    const obj: any = {};
+    message.result !== undefined && (obj.result = cMsgDOTALeaveTeamResponse_ResultToJSON(message.result));
+    return obj;
   },
 };
 
@@ -2199,7 +3111,36 @@ export const CMsgDOTABetaParticipation = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTABetaParticipation {
+    return { accessRights: isSet(object.accessRights) ? Number(object.accessRights) : 0 };
+  },
+
+  toJSON(message: CMsgDOTABetaParticipation): unknown {
+    const obj: any = {};
+    message.accessRights !== undefined && (obj.accessRights = Math.round(message.accessRights));
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
 
 function longToString(long: Long) {
   return long.toString();
@@ -2208,4 +3149,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

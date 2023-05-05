@@ -44,6 +44,16 @@ export const COAuthTokenImplicitGrantNoPromptRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): COAuthTokenImplicitGrantNoPromptRequest {
+    return { clientid: isSet(object.clientid) ? String(object.clientid) : "" };
+  },
+
+  toJSON(message: COAuthTokenImplicitGrantNoPromptRequest): unknown {
+    const obj: any = {};
+    message.clientid !== undefined && (obj.clientid = message.clientid);
+    return obj;
+  },
 };
 
 function createBaseCOAuthTokenImplicitGrantNoPromptResponse(): COAuthTokenImplicitGrantNoPromptResponse {
@@ -90,6 +100,20 @@ export const COAuthTokenImplicitGrantNoPromptResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): COAuthTokenImplicitGrantNoPromptResponse {
+    return {
+      accessToken: isSet(object.accessToken) ? String(object.accessToken) : "",
+      redirectUri: isSet(object.redirectUri) ? String(object.redirectUri) : "",
+    };
+  },
+
+  toJSON(message: COAuthTokenImplicitGrantNoPromptResponse): unknown {
+    const obj: any = {};
+    message.accessToken !== undefined && (obj.accessToken = message.accessToken);
+    message.redirectUri !== undefined && (obj.redirectUri = message.redirectUri);
+    return obj;
+  },
 };
 
 export interface OAuthToken {
@@ -117,4 +141,8 @@ export class OAuthTokenClientImpl implements OAuthToken {
 
 interface Rpc {
   request(service: string, method: string, data: Uint8Array): Promise<Uint8Array>;
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

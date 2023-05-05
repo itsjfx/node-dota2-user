@@ -53,6 +53,16 @@ export const NetMessageSplitscreenUserChanged = {
     }
     return message;
   },
+
+  fromJSON(object: any): NetMessageSplitscreenUserChanged {
+    return { slot: isSet(object.slot) ? Number(object.slot) : 0 };
+  },
+
+  toJSON(message: NetMessageSplitscreenUserChanged): unknown {
+    const obj: any = {};
+    message.slot !== undefined && (obj.slot = Math.round(message.slot));
+    return obj;
+  },
 };
 
 function createBaseNetMessageConnectionClosed(): NetMessageConnectionClosed {
@@ -88,6 +98,16 @@ export const NetMessageConnectionClosed = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): NetMessageConnectionClosed {
+    return { reason: isSet(object.reason) ? Number(object.reason) : 0 };
+  },
+
+  toJSON(message: NetMessageConnectionClosed): unknown {
+    const obj: any = {};
+    message.reason !== undefined && (obj.reason = Math.round(message.reason));
+    return obj;
   },
 };
 
@@ -125,6 +145,16 @@ export const NetMessageConnectionCrashed = {
     }
     return message;
   },
+
+  fromJSON(object: any): NetMessageConnectionCrashed {
+    return { reason: isSet(object.reason) ? Number(object.reason) : 0 };
+  },
+
+  toJSON(message: NetMessageConnectionCrashed): unknown {
+    const obj: any = {};
+    message.reason !== undefined && (obj.reason = Math.round(message.reason));
+    return obj;
+  },
 };
 
 function createBaseNetMessagePacketStart(): NetMessagePacketStart {
@@ -150,6 +180,15 @@ export const NetMessagePacketStart = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): NetMessagePacketStart {
+    return {};
+  },
+
+  toJSON(_: NetMessagePacketStart): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -177,4 +216,17 @@ export const NetMessagePacketEnd = {
     }
     return message;
   },
+
+  fromJSON(_: any): NetMessagePacketEnd {
+    return {};
+  },
+
+  toJSON(_: NetMessagePacketEnd): unknown {
+    const obj: any = {};
+    return obj;
+  },
 };
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
+}

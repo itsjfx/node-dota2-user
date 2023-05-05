@@ -2,20 +2,48 @@
 import Long from "long";
 import _m0 from "protobufjs/minimal";
 import { CMsgClientPingData } from "./base_gcmessages";
-import { EDOTAGroupMergeResult } from "./dota_client_enums";
-import { CLobbyTeamDetails, LobbyDotaPauseSetting, LobbyDotaTVDelay } from "./dota_gcmessages_common_lobby";
+import { EDOTAGroupMergeResult, eDOTAGroupMergeResultFromJSON, eDOTAGroupMergeResultToJSON } from "./dota_client_enums";
+import {
+  CLobbyTeamDetails,
+  LobbyDotaPauseSetting,
+  lobbyDotaPauseSettingFromJSON,
+  lobbyDotaPauseSettingToJSON,
+  LobbyDotaTVDelay,
+  lobbyDotaTVDelayFromJSON,
+  lobbyDotaTVDelayToJSON,
+} from "./dota_gcmessages_common_lobby";
 import {
   CDOTAClientHardwareSpecs,
   DOTABotDifficulty,
+  dOTABotDifficultyFromJSON,
+  dOTABotDifficultyToJSON,
   dotaCmPick,
+  dotaCmPickFromJSON,
+  dotaCmPickToJSON,
   DOTAGameMode,
+  dOTAGameModeFromJSON,
+  dOTAGameModeToJSON,
   dotaGcTeam,
+  dotaGcTeamFromJSON,
+  dotaGcTeamToJSON,
   DOTAJoinLobbyResult,
+  dOTAJoinLobbyResultFromJSON,
+  dOTAJoinLobbyResultToJSON,
   DOTALobbyReadyState,
+  dOTALobbyReadyStateFromJSON,
+  dOTALobbyReadyStateToJSON,
   DOTALobbyVisibility,
+  dOTALobbyVisibilityFromJSON,
+  dOTALobbyVisibilityToJSON,
   DOTASelectionPriorityRules,
+  dOTASelectionPriorityRulesFromJSON,
+  dOTASelectionPriorityRulesToJSON,
   MatchLanguages,
+  matchLanguagesFromJSON,
+  matchLanguagesToJSON,
   MatchType,
+  matchTypeFromJSON,
+  matchTypeToJSON,
 } from "./dota_shared_enums";
 
 export enum EStartFindingMatchResult {
@@ -57,6 +85,210 @@ export enum EStartFindingMatchResult {
   k_EStartFindingMatchResult_MatchmakingBusy = 132,
   k_EStartFindingMatchResult_SteamChinaBanned = 133,
   k_EStartFindingMatchResult_SteamChinaInvalidMixedParty = 134,
+}
+
+export function eStartFindingMatchResultFromJSON(object: any): EStartFindingMatchResult {
+  switch (object) {
+    case 0:
+    case "k_EStartFindingMatchResult_Invalid":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_Invalid;
+    case 1:
+    case "k_EStartFindingMatchResult_OK":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_OK;
+    case 2:
+    case "k_EStartFindingMatchResult_AlreadySearching":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_AlreadySearching;
+    case 100:
+    case "k_EStartFindingMatchResult_FailGeneric":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_FailGeneric;
+    case 101:
+    case "k_EStartFindingMatchResult_FailedIgnore":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_FailedIgnore;
+    case 102:
+    case "k_EStartFindingMatchResult_MatchmakingDisabled":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_MatchmakingDisabled;
+    case 103:
+    case "k_EStartFindingMatchResult_RegionOffline":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_RegionOffline;
+    case 104:
+    case "k_EStartFindingMatchResult_MatchmakingCooldown":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_MatchmakingCooldown;
+    case 105:
+    case "k_EStartFindingMatchResult_ClientOutOfDate":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_ClientOutOfDate;
+    case 106:
+    case "k_EStartFindingMatchResult_CompetitiveNoLowPriority":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_CompetitiveNoLowPriority;
+    case 107:
+    case "k_EStartFindingMatchResult_CompetitiveNotUnlocked":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_CompetitiveNotUnlocked;
+    case 108:
+    case "k_EStartFindingMatchResult_GameModeNotUnlocked":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_GameModeNotUnlocked;
+    case 109:
+    case "k_EStartFindingMatchResult_CompetitiveNotEnoughPlayTime":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_CompetitiveNotEnoughPlayTime;
+    case 110:
+    case "k_EStartFindingMatchResult_MissingInitialSkill":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_MissingInitialSkill;
+    case 111:
+    case "k_EStartFindingMatchResult_CompetitiveRankSpreadTooLarge":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_CompetitiveRankSpreadTooLarge;
+    case 112:
+    case "k_EStartFindingMatchResult_MemberAlreadyInLobby":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_MemberAlreadyInLobby;
+    case 113:
+    case "k_EStartFindingMatchResult_MemberNotVACVerified":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_MemberNotVACVerified;
+    case 114:
+    case "k_EStartFindingMatchResult_WeekendTourneyBadPartySize":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_WeekendTourneyBadPartySize;
+    case 115:
+    case "k_EStartFindingMatchResult_WeekendTourneyTeamBuyInTooSmall":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_WeekendTourneyTeamBuyInTooSmall;
+    case 116:
+    case "k_EStartFindingMatchResult_WeekendTourneyIndividualBuyInTooLarge":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_WeekendTourneyIndividualBuyInTooLarge;
+    case 117:
+    case "k_EStartFindingMatchResult_WeekendTourneyTeamBuyInTooLarge":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_WeekendTourneyTeamBuyInTooLarge;
+    case 118:
+    case "k_EStartFindingMatchResult_MemberMissingEventOwnership":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_MemberMissingEventOwnership;
+    case 119:
+    case "k_EStartFindingMatchResult_WeekendTourneyNotUnlocked":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_WeekendTourneyNotUnlocked;
+    case 120:
+    case "k_EStartFindingMatchResult_WeekendTourneyRecentParticipation":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_WeekendTourneyRecentParticipation;
+    case 121:
+    case "k_EStartFindingMatchResult_MemberMissingAnchoredPhoneNumber":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_MemberMissingAnchoredPhoneNumber;
+    case 122:
+    case "k_EStartFindingMatchResult_NotMemberOfClan":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_NotMemberOfClan;
+    case 123:
+    case "k_EStartFindingMatchResult_CoachesChallengeBadPartySize":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_CoachesChallengeBadPartySize;
+    case 124:
+    case "k_EStartFindingMatchResult_CoachesChallengeRequirementsNotMet":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_CoachesChallengeRequirementsNotMet;
+    case 125:
+    case "k_EStartFindingMatchResult_InvalidRoleSelections":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_InvalidRoleSelections;
+    case 126:
+    case "k_EStartFindingMatchResult_PhoneNumberDiscrepancy":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_PhoneNumberDiscrepancy;
+    case 127:
+    case "k_EStartFindingMatchResult_NoQueuePoints":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_NoQueuePoints;
+    case 128:
+    case "k_EStartFindingMatchResult_MemberMissingGauntletFlag":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_MemberMissingGauntletFlag;
+    case 129:
+    case "k_EStartFindingMatchResult_MemberGauntletTooRecent":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_MemberGauntletTooRecent;
+    case 130:
+    case "k_EStartFindingMatchResult_DifficultyNotUnlocked":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_DifficultyNotUnlocked;
+    case 131:
+    case "k_EStartFindingMatchResult_CoachesNotAllowedInParty":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_CoachesNotAllowedInParty;
+    case 132:
+    case "k_EStartFindingMatchResult_MatchmakingBusy":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_MatchmakingBusy;
+    case 133:
+    case "k_EStartFindingMatchResult_SteamChinaBanned":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_SteamChinaBanned;
+    case 134:
+    case "k_EStartFindingMatchResult_SteamChinaInvalidMixedParty":
+      return EStartFindingMatchResult.k_EStartFindingMatchResult_SteamChinaInvalidMixedParty;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EStartFindingMatchResult");
+  }
+}
+
+export function eStartFindingMatchResultToJSON(object: EStartFindingMatchResult): string {
+  switch (object) {
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_Invalid:
+      return "k_EStartFindingMatchResult_Invalid";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_OK:
+      return "k_EStartFindingMatchResult_OK";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_AlreadySearching:
+      return "k_EStartFindingMatchResult_AlreadySearching";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_FailGeneric:
+      return "k_EStartFindingMatchResult_FailGeneric";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_FailedIgnore:
+      return "k_EStartFindingMatchResult_FailedIgnore";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_MatchmakingDisabled:
+      return "k_EStartFindingMatchResult_MatchmakingDisabled";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_RegionOffline:
+      return "k_EStartFindingMatchResult_RegionOffline";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_MatchmakingCooldown:
+      return "k_EStartFindingMatchResult_MatchmakingCooldown";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_ClientOutOfDate:
+      return "k_EStartFindingMatchResult_ClientOutOfDate";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_CompetitiveNoLowPriority:
+      return "k_EStartFindingMatchResult_CompetitiveNoLowPriority";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_CompetitiveNotUnlocked:
+      return "k_EStartFindingMatchResult_CompetitiveNotUnlocked";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_GameModeNotUnlocked:
+      return "k_EStartFindingMatchResult_GameModeNotUnlocked";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_CompetitiveNotEnoughPlayTime:
+      return "k_EStartFindingMatchResult_CompetitiveNotEnoughPlayTime";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_MissingInitialSkill:
+      return "k_EStartFindingMatchResult_MissingInitialSkill";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_CompetitiveRankSpreadTooLarge:
+      return "k_EStartFindingMatchResult_CompetitiveRankSpreadTooLarge";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_MemberAlreadyInLobby:
+      return "k_EStartFindingMatchResult_MemberAlreadyInLobby";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_MemberNotVACVerified:
+      return "k_EStartFindingMatchResult_MemberNotVACVerified";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_WeekendTourneyBadPartySize:
+      return "k_EStartFindingMatchResult_WeekendTourneyBadPartySize";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_WeekendTourneyTeamBuyInTooSmall:
+      return "k_EStartFindingMatchResult_WeekendTourneyTeamBuyInTooSmall";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_WeekendTourneyIndividualBuyInTooLarge:
+      return "k_EStartFindingMatchResult_WeekendTourneyIndividualBuyInTooLarge";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_WeekendTourneyTeamBuyInTooLarge:
+      return "k_EStartFindingMatchResult_WeekendTourneyTeamBuyInTooLarge";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_MemberMissingEventOwnership:
+      return "k_EStartFindingMatchResult_MemberMissingEventOwnership";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_WeekendTourneyNotUnlocked:
+      return "k_EStartFindingMatchResult_WeekendTourneyNotUnlocked";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_WeekendTourneyRecentParticipation:
+      return "k_EStartFindingMatchResult_WeekendTourneyRecentParticipation";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_MemberMissingAnchoredPhoneNumber:
+      return "k_EStartFindingMatchResult_MemberMissingAnchoredPhoneNumber";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_NotMemberOfClan:
+      return "k_EStartFindingMatchResult_NotMemberOfClan";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_CoachesChallengeBadPartySize:
+      return "k_EStartFindingMatchResult_CoachesChallengeBadPartySize";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_CoachesChallengeRequirementsNotMet:
+      return "k_EStartFindingMatchResult_CoachesChallengeRequirementsNotMet";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_InvalidRoleSelections:
+      return "k_EStartFindingMatchResult_InvalidRoleSelections";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_PhoneNumberDiscrepancy:
+      return "k_EStartFindingMatchResult_PhoneNumberDiscrepancy";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_NoQueuePoints:
+      return "k_EStartFindingMatchResult_NoQueuePoints";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_MemberMissingGauntletFlag:
+      return "k_EStartFindingMatchResult_MemberMissingGauntletFlag";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_MemberGauntletTooRecent:
+      return "k_EStartFindingMatchResult_MemberGauntletTooRecent";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_DifficultyNotUnlocked:
+      return "k_EStartFindingMatchResult_DifficultyNotUnlocked";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_CoachesNotAllowedInParty:
+      return "k_EStartFindingMatchResult_CoachesNotAllowedInParty";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_MatchmakingBusy:
+      return "k_EStartFindingMatchResult_MatchmakingBusy";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_SteamChinaBanned:
+      return "k_EStartFindingMatchResult_SteamChinaBanned";
+    case EStartFindingMatchResult.k_EStartFindingMatchResult_SteamChinaInvalidMixedParty:
+      return "k_EStartFindingMatchResult_SteamChinaInvalidMixedParty";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EStartFindingMatchResult");
+  }
 }
 
 export interface CMsgStartFindingMatch {
@@ -725,6 +957,61 @@ export const CMsgStartFindingMatch = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgStartFindingMatch {
+    return {
+      key: isSet(object.key) ? String(object.key) : "",
+      matchgroups: isSet(object.matchgroups) ? Number(object.matchgroups) : 0,
+      clientVersion: isSet(object.clientVersion) ? Number(object.clientVersion) : 0,
+      gameModes: isSet(object.gameModes) ? Number(object.gameModes) : 0,
+      matchType: isSet(object.matchType) ? matchTypeFromJSON(object.matchType) : 0,
+      matchlanguages: isSet(object.matchlanguages) ? Number(object.matchlanguages) : 0,
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      gameLanguageEnum: isSet(object.gameLanguageEnum) ? matchLanguagesFromJSON(object.gameLanguageEnum) : 0,
+      gameLanguageName: isSet(object.gameLanguageName) ? String(object.gameLanguageName) : "",
+      pingData: isSet(object.pingData) ? CMsgClientPingData.fromJSON(object.pingData) : undefined,
+      regionSelectFlags: isSet(object.regionSelectFlags) ? Number(object.regionSelectFlags) : 0,
+      soloQueue: isSet(object.soloQueue) ? Boolean(object.soloQueue) : false,
+      steamClanAccountId: isSet(object.steamClanAccountId) ? Number(object.steamClanAccountId) : 0,
+      isChallengeMatch: isSet(object.isChallengeMatch) ? Boolean(object.isChallengeMatch) : false,
+      laneSelectionFlags: isSet(object.laneSelectionFlags) ? Number(object.laneSelectionFlags) : 0,
+      highPriorityDisabled: isSet(object.highPriorityDisabled) ? Boolean(object.highPriorityDisabled) : false,
+      disableExperimentalGameplay: isSet(object.disableExperimentalGameplay)
+        ? Boolean(object.disableExperimentalGameplay)
+        : false,
+      customGameDifficultyMask: isSet(object.customGameDifficultyMask) ? Number(object.customGameDifficultyMask) : 0,
+      botDifficultyMask: isSet(object.botDifficultyMask) ? Number(object.botDifficultyMask) : 0,
+      botScriptIndexMask: isSet(object.botScriptIndexMask) ? Number(object.botScriptIndexMask) : 0,
+    };
+  },
+
+  toJSON(message: CMsgStartFindingMatch): unknown {
+    const obj: any = {};
+    message.key !== undefined && (obj.key = message.key);
+    message.matchgroups !== undefined && (obj.matchgroups = Math.round(message.matchgroups));
+    message.clientVersion !== undefined && (obj.clientVersion = Math.round(message.clientVersion));
+    message.gameModes !== undefined && (obj.gameModes = Math.round(message.gameModes));
+    message.matchType !== undefined && (obj.matchType = matchTypeToJSON(message.matchType));
+    message.matchlanguages !== undefined && (obj.matchlanguages = Math.round(message.matchlanguages));
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    message.gameLanguageEnum !== undefined && (obj.gameLanguageEnum = matchLanguagesToJSON(message.gameLanguageEnum));
+    message.gameLanguageName !== undefined && (obj.gameLanguageName = message.gameLanguageName);
+    message.pingData !== undefined &&
+      (obj.pingData = message.pingData ? CMsgClientPingData.toJSON(message.pingData) : undefined);
+    message.regionSelectFlags !== undefined && (obj.regionSelectFlags = Math.round(message.regionSelectFlags));
+    message.soloQueue !== undefined && (obj.soloQueue = message.soloQueue);
+    message.steamClanAccountId !== undefined && (obj.steamClanAccountId = Math.round(message.steamClanAccountId));
+    message.isChallengeMatch !== undefined && (obj.isChallengeMatch = message.isChallengeMatch);
+    message.laneSelectionFlags !== undefined && (obj.laneSelectionFlags = Math.round(message.laneSelectionFlags));
+    message.highPriorityDisabled !== undefined && (obj.highPriorityDisabled = message.highPriorityDisabled);
+    message.disableExperimentalGameplay !== undefined &&
+      (obj.disableExperimentalGameplay = message.disableExperimentalGameplay);
+    message.customGameDifficultyMask !== undefined &&
+      (obj.customGameDifficultyMask = Math.round(message.customGameDifficultyMask));
+    message.botDifficultyMask !== undefined && (obj.botDifficultyMask = Math.round(message.botDifficultyMask));
+    message.botScriptIndexMask !== undefined && (obj.botScriptIndexMask = Math.round(message.botScriptIndexMask));
+    return obj;
+  },
 };
 
 function createBaseCMsgStartFindingMatchResult(): CMsgStartFindingMatchResult {
@@ -829,6 +1116,34 @@ export const CMsgStartFindingMatchResult = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgStartFindingMatchResult {
+    return {
+      legacyGenericEresult: isSet(object.legacyGenericEresult) ? Number(object.legacyGenericEresult) : 0,
+      result: isSet(object.result) ? eStartFindingMatchResultFromJSON(object.result) : 0,
+      errorToken: isSet(object.errorToken) ? String(object.errorToken) : "",
+      debugMessage: isSet(object.debugMessage) ? String(object.debugMessage) : "",
+      responsiblePartyMembers: Array.isArray(object?.responsiblePartyMembers)
+        ? object.responsiblePartyMembers.map((e: any) => String(e))
+        : [],
+      resultMetadata: isSet(object.resultMetadata) ? Number(object.resultMetadata) : 0,
+    };
+  },
+
+  toJSON(message: CMsgStartFindingMatchResult): unknown {
+    const obj: any = {};
+    message.legacyGenericEresult !== undefined && (obj.legacyGenericEresult = Math.round(message.legacyGenericEresult));
+    message.result !== undefined && (obj.result = eStartFindingMatchResultToJSON(message.result));
+    message.errorToken !== undefined && (obj.errorToken = message.errorToken);
+    message.debugMessage !== undefined && (obj.debugMessage = message.debugMessage);
+    if (message.responsiblePartyMembers) {
+      obj.responsiblePartyMembers = message.responsiblePartyMembers.map((e) => e);
+    } else {
+      obj.responsiblePartyMembers = [];
+    }
+    message.resultMetadata !== undefined && (obj.resultMetadata = Math.round(message.resultMetadata));
+    return obj;
+  },
 };
 
 function createBaseCMsgStopFindingMatch(): CMsgStopFindingMatch {
@@ -864,6 +1179,16 @@ export const CMsgStopFindingMatch = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgStopFindingMatch {
+    return { acceptCooldown: isSet(object.acceptCooldown) ? Boolean(object.acceptCooldown) : false };
+  },
+
+  toJSON(message: CMsgStopFindingMatch): unknown {
+    const obj: any = {};
+    message.acceptCooldown !== undefined && (obj.acceptCooldown = message.acceptCooldown);
+    return obj;
   },
 };
 
@@ -941,6 +1266,26 @@ export const CMsgPartyBuilderOptions = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgPartyBuilderOptions {
+    return {
+      additionalSlots: isSet(object.additionalSlots) ? Number(object.additionalSlots) : 0,
+      matchType: isSet(object.matchType) ? matchTypeFromJSON(object.matchType) : 0,
+      matchgroups: isSet(object.matchgroups) ? Number(object.matchgroups) : 0,
+      clientVersion: isSet(object.clientVersion) ? Number(object.clientVersion) : 0,
+      language: isSet(object.language) ? matchLanguagesFromJSON(object.language) : 0,
+    };
+  },
+
+  toJSON(message: CMsgPartyBuilderOptions): unknown {
+    const obj: any = {};
+    message.additionalSlots !== undefined && (obj.additionalSlots = Math.round(message.additionalSlots));
+    message.matchType !== undefined && (obj.matchType = matchTypeToJSON(message.matchType));
+    message.matchgroups !== undefined && (obj.matchgroups = Math.round(message.matchgroups));
+    message.clientVersion !== undefined && (obj.clientVersion = Math.round(message.clientVersion));
+    message.language !== undefined && (obj.language = matchLanguagesToJSON(message.language));
+    return obj;
+  },
 };
 
 function createBaseCMsgReadyUp(): CMsgReadyUp {
@@ -996,6 +1341,23 @@ export const CMsgReadyUp = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgReadyUp {
+    return {
+      state: isSet(object.state) ? dOTALobbyReadyStateFromJSON(object.state) : 0,
+      readyUpKey: isSet(object.readyUpKey) ? String(object.readyUpKey) : "0",
+      hardwareSpecs: isSet(object.hardwareSpecs) ? CDOTAClientHardwareSpecs.fromJSON(object.hardwareSpecs) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgReadyUp): unknown {
+    const obj: any = {};
+    message.state !== undefined && (obj.state = dOTALobbyReadyStateToJSON(message.state));
+    message.readyUpKey !== undefined && (obj.readyUpKey = message.readyUpKey);
+    message.hardwareSpecs !== undefined &&
+      (obj.hardwareSpecs = message.hardwareSpecs ? CDOTAClientHardwareSpecs.toJSON(message.hardwareSpecs) : undefined);
+    return obj;
   },
 };
 
@@ -1075,6 +1437,30 @@ export const CMsgReadyUpStatus = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgReadyUpStatus {
+    return {
+      lobbyId: isSet(object.lobbyId) ? String(object.lobbyId) : "0",
+      acceptedIds: Array.isArray(object?.acceptedIds) ? object.acceptedIds.map((e: any) => Number(e)) : [],
+      declinedIds: Array.isArray(object?.declinedIds) ? object.declinedIds.map((e: any) => Number(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgReadyUpStatus): unknown {
+    const obj: any = {};
+    message.lobbyId !== undefined && (obj.lobbyId = message.lobbyId);
+    if (message.acceptedIds) {
+      obj.acceptedIds = message.acceptedIds.map((e) => Math.round(e));
+    } else {
+      obj.acceptedIds = [];
+    }
+    if (message.declinedIds) {
+      obj.declinedIds = message.declinedIds.map((e) => Math.round(e));
+    } else {
+      obj.declinedIds = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgAbandonCurrentGame(): CMsgAbandonCurrentGame {
@@ -1100,6 +1486,15 @@ export const CMsgAbandonCurrentGame = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CMsgAbandonCurrentGame {
+    return {};
+  },
+
+  toJSON(_: CMsgAbandonCurrentGame): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -1146,6 +1541,21 @@ export const CMsgLobbyScenarioSave = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgLobbyScenarioSave {
+    return {
+      version: isSet(object.version) ? Number(object.version) : 0,
+      data: isSet(object.data) ? Buffer.from(bytesFromBase64(object.data)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CMsgLobbyScenarioSave): unknown {
+    const obj: any = {};
+    message.version !== undefined && (obj.version = Math.round(message.version));
+    message.data !== undefined &&
+      (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
+    return obj;
   },
 };
 
@@ -1675,6 +2085,129 @@ export const CMsgPracticeLobbySetDetails = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgPracticeLobbySetDetails {
+    return {
+      lobbyId: isSet(object.lobbyId) ? String(object.lobbyId) : "0",
+      gameName: isSet(object.gameName) ? String(object.gameName) : "",
+      teamDetails: Array.isArray(object?.teamDetails)
+        ? object.teamDetails.map((e: any) => CLobbyTeamDetails.fromJSON(e))
+        : [],
+      serverRegion: isSet(object.serverRegion) ? Number(object.serverRegion) : 0,
+      gameMode: isSet(object.gameMode) ? Number(object.gameMode) : 0,
+      cmPick: isSet(object.cmPick) ? dotaCmPickFromJSON(object.cmPick) : 0,
+      botDifficultyRadiant: isSet(object.botDifficultyRadiant)
+        ? dOTABotDifficultyFromJSON(object.botDifficultyRadiant)
+        : 0,
+      allowCheats: isSet(object.allowCheats) ? Boolean(object.allowCheats) : false,
+      fillWithBots: isSet(object.fillWithBots) ? Boolean(object.fillWithBots) : false,
+      introMode: isSet(object.introMode) ? Boolean(object.introMode) : false,
+      allowSpectating: isSet(object.allowSpectating) ? Boolean(object.allowSpectating) : false,
+      passKey: isSet(object.passKey) ? String(object.passKey) : "",
+      leagueid: isSet(object.leagueid) ? Number(object.leagueid) : 0,
+      penaltyLevelRadiant: isSet(object.penaltyLevelRadiant) ? Number(object.penaltyLevelRadiant) : 0,
+      penaltyLevelDire: isSet(object.penaltyLevelDire) ? Number(object.penaltyLevelDire) : 0,
+      loadGameId: isSet(object.loadGameId) ? Number(object.loadGameId) : 0,
+      seriesType: isSet(object.seriesType) ? Number(object.seriesType) : 0,
+      radiantSeriesWins: isSet(object.radiantSeriesWins) ? Number(object.radiantSeriesWins) : 0,
+      direSeriesWins: isSet(object.direSeriesWins) ? Number(object.direSeriesWins) : 0,
+      allchat: isSet(object.allchat) ? Boolean(object.allchat) : false,
+      dotaTvDelay: isSet(object.dotaTvDelay) ? lobbyDotaTVDelayFromJSON(object.dotaTvDelay) : 0,
+      lan: isSet(object.lan) ? Boolean(object.lan) : false,
+      customGameMode: isSet(object.customGameMode) ? String(object.customGameMode) : "",
+      customMapName: isSet(object.customMapName) ? String(object.customMapName) : "",
+      customDifficulty: isSet(object.customDifficulty) ? Number(object.customDifficulty) : 0,
+      customGameId: isSet(object.customGameId) ? String(object.customGameId) : "0",
+      customMinPlayers: isSet(object.customMinPlayers) ? Number(object.customMinPlayers) : 0,
+      customMaxPlayers: isSet(object.customMaxPlayers) ? Number(object.customMaxPlayers) : 0,
+      visibility: isSet(object.visibility) ? dOTALobbyVisibilityFromJSON(object.visibility) : 0,
+      customGameCrc: isSet(object.customGameCrc) ? String(object.customGameCrc) : "0",
+      customGameTimestamp: isSet(object.customGameTimestamp) ? Number(object.customGameTimestamp) : 0,
+      previousMatchOverride: isSet(object.previousMatchOverride) ? String(object.previousMatchOverride) : "0",
+      pauseSetting: isSet(object.pauseSetting) ? lobbyDotaPauseSettingFromJSON(object.pauseSetting) : 0,
+      botDifficultyDire: isSet(object.botDifficultyDire) ? dOTABotDifficultyFromJSON(object.botDifficultyDire) : 0,
+      botRadiant: isSet(object.botRadiant) ? String(object.botRadiant) : "0",
+      botDire: isSet(object.botDire) ? String(object.botDire) : "0",
+      selectionPriorityRules: isSet(object.selectionPriorityRules)
+        ? dOTASelectionPriorityRulesFromJSON(object.selectionPriorityRules)
+        : 0,
+      customGamePenalties: isSet(object.customGamePenalties) ? Boolean(object.customGamePenalties) : false,
+      lanHostPingLocation: isSet(object.lanHostPingLocation) ? String(object.lanHostPingLocation) : "",
+      leagueNodeId: isSet(object.leagueNodeId) ? Number(object.leagueNodeId) : 0,
+      requestedHeroIds: Array.isArray(object?.requestedHeroIds)
+        ? object.requestedHeroIds.map((e: any) => Number(e))
+        : [],
+      scenarioSave: isSet(object.scenarioSave) ? CMsgLobbyScenarioSave.fromJSON(object.scenarioSave) : undefined,
+      abilityDraftSpecificDetails: isSet(object.abilityDraftSpecificDetails)
+        ? CMsgPracticeLobbySetDetails_AbilityDraftSpecificDetails.fromJSON(object.abilityDraftSpecificDetails)
+        : undefined,
+      doPlayerDraft: isSet(object.doPlayerDraft) ? Boolean(object.doPlayerDraft) : false,
+    };
+  },
+
+  toJSON(message: CMsgPracticeLobbySetDetails): unknown {
+    const obj: any = {};
+    message.lobbyId !== undefined && (obj.lobbyId = message.lobbyId);
+    message.gameName !== undefined && (obj.gameName = message.gameName);
+    if (message.teamDetails) {
+      obj.teamDetails = message.teamDetails.map((e) => e ? CLobbyTeamDetails.toJSON(e) : undefined);
+    } else {
+      obj.teamDetails = [];
+    }
+    message.serverRegion !== undefined && (obj.serverRegion = Math.round(message.serverRegion));
+    message.gameMode !== undefined && (obj.gameMode = Math.round(message.gameMode));
+    message.cmPick !== undefined && (obj.cmPick = dotaCmPickToJSON(message.cmPick));
+    message.botDifficultyRadiant !== undefined &&
+      (obj.botDifficultyRadiant = dOTABotDifficultyToJSON(message.botDifficultyRadiant));
+    message.allowCheats !== undefined && (obj.allowCheats = message.allowCheats);
+    message.fillWithBots !== undefined && (obj.fillWithBots = message.fillWithBots);
+    message.introMode !== undefined && (obj.introMode = message.introMode);
+    message.allowSpectating !== undefined && (obj.allowSpectating = message.allowSpectating);
+    message.passKey !== undefined && (obj.passKey = message.passKey);
+    message.leagueid !== undefined && (obj.leagueid = Math.round(message.leagueid));
+    message.penaltyLevelRadiant !== undefined && (obj.penaltyLevelRadiant = Math.round(message.penaltyLevelRadiant));
+    message.penaltyLevelDire !== undefined && (obj.penaltyLevelDire = Math.round(message.penaltyLevelDire));
+    message.loadGameId !== undefined && (obj.loadGameId = Math.round(message.loadGameId));
+    message.seriesType !== undefined && (obj.seriesType = Math.round(message.seriesType));
+    message.radiantSeriesWins !== undefined && (obj.radiantSeriesWins = Math.round(message.radiantSeriesWins));
+    message.direSeriesWins !== undefined && (obj.direSeriesWins = Math.round(message.direSeriesWins));
+    message.allchat !== undefined && (obj.allchat = message.allchat);
+    message.dotaTvDelay !== undefined && (obj.dotaTvDelay = lobbyDotaTVDelayToJSON(message.dotaTvDelay));
+    message.lan !== undefined && (obj.lan = message.lan);
+    message.customGameMode !== undefined && (obj.customGameMode = message.customGameMode);
+    message.customMapName !== undefined && (obj.customMapName = message.customMapName);
+    message.customDifficulty !== undefined && (obj.customDifficulty = Math.round(message.customDifficulty));
+    message.customGameId !== undefined && (obj.customGameId = message.customGameId);
+    message.customMinPlayers !== undefined && (obj.customMinPlayers = Math.round(message.customMinPlayers));
+    message.customMaxPlayers !== undefined && (obj.customMaxPlayers = Math.round(message.customMaxPlayers));
+    message.visibility !== undefined && (obj.visibility = dOTALobbyVisibilityToJSON(message.visibility));
+    message.customGameCrc !== undefined && (obj.customGameCrc = message.customGameCrc);
+    message.customGameTimestamp !== undefined && (obj.customGameTimestamp = Math.round(message.customGameTimestamp));
+    message.previousMatchOverride !== undefined && (obj.previousMatchOverride = message.previousMatchOverride);
+    message.pauseSetting !== undefined && (obj.pauseSetting = lobbyDotaPauseSettingToJSON(message.pauseSetting));
+    message.botDifficultyDire !== undefined &&
+      (obj.botDifficultyDire = dOTABotDifficultyToJSON(message.botDifficultyDire));
+    message.botRadiant !== undefined && (obj.botRadiant = message.botRadiant);
+    message.botDire !== undefined && (obj.botDire = message.botDire);
+    message.selectionPriorityRules !== undefined &&
+      (obj.selectionPriorityRules = dOTASelectionPriorityRulesToJSON(message.selectionPriorityRules));
+    message.customGamePenalties !== undefined && (obj.customGamePenalties = message.customGamePenalties);
+    message.lanHostPingLocation !== undefined && (obj.lanHostPingLocation = message.lanHostPingLocation);
+    message.leagueNodeId !== undefined && (obj.leagueNodeId = Math.round(message.leagueNodeId));
+    if (message.requestedHeroIds) {
+      obj.requestedHeroIds = message.requestedHeroIds.map((e) => Math.round(e));
+    } else {
+      obj.requestedHeroIds = [];
+    }
+    message.scenarioSave !== undefined &&
+      (obj.scenarioSave = message.scenarioSave ? CMsgLobbyScenarioSave.toJSON(message.scenarioSave) : undefined);
+    message.abilityDraftSpecificDetails !== undefined &&
+      (obj.abilityDraftSpecificDetails = message.abilityDraftSpecificDetails
+        ? CMsgPracticeLobbySetDetails_AbilityDraftSpecificDetails.toJSON(message.abilityDraftSpecificDetails)
+        : undefined);
+    message.doPlayerDraft !== undefined && (obj.doPlayerDraft = message.doPlayerDraft);
+    return obj;
+  },
 };
 
 function createBaseCMsgPracticeLobbySetDetails_AbilityDraftSpecificDetails(): CMsgPracticeLobbySetDetails_AbilityDraftSpecificDetails {
@@ -1713,6 +2246,16 @@ export const CMsgPracticeLobbySetDetails_AbilityDraftSpecificDetails = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgPracticeLobbySetDetails_AbilityDraftSpecificDetails {
+    return { shuffleDraftOrder: isSet(object.shuffleDraftOrder) ? Boolean(object.shuffleDraftOrder) : false };
+  },
+
+  toJSON(message: CMsgPracticeLobbySetDetails_AbilityDraftSpecificDetails): unknown {
+    const obj: any = {};
+    message.shuffleDraftOrder !== undefined && (obj.shuffleDraftOrder = message.shuffleDraftOrder);
+    return obj;
   },
 };
 
@@ -1790,6 +2333,28 @@ export const CMsgPracticeLobbyCreate = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgPracticeLobbyCreate {
+    return {
+      searchKey: isSet(object.searchKey) ? String(object.searchKey) : "",
+      passKey: isSet(object.passKey) ? String(object.passKey) : "",
+      clientVersion: isSet(object.clientVersion) ? Number(object.clientVersion) : 0,
+      lobbyDetails: isSet(object.lobbyDetails) ? CMsgPracticeLobbySetDetails.fromJSON(object.lobbyDetails) : undefined,
+      saveGame: isSet(object.saveGame) ? CMsgPracticeLobbyCreate_SaveGame.fromJSON(object.saveGame) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgPracticeLobbyCreate): unknown {
+    const obj: any = {};
+    message.searchKey !== undefined && (obj.searchKey = message.searchKey);
+    message.passKey !== undefined && (obj.passKey = message.passKey);
+    message.clientVersion !== undefined && (obj.clientVersion = Math.round(message.clientVersion));
+    message.lobbyDetails !== undefined &&
+      (obj.lobbyDetails = message.lobbyDetails ? CMsgPracticeLobbySetDetails.toJSON(message.lobbyDetails) : undefined);
+    message.saveGame !== undefined &&
+      (obj.saveGame = message.saveGame ? CMsgPracticeLobbyCreate_SaveGame.toJSON(message.saveGame) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgPracticeLobbyCreate_SaveGame(): CMsgPracticeLobbyCreate_SaveGame {
@@ -1856,6 +2421,25 @@ export const CMsgPracticeLobbyCreate_SaveGame = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgPracticeLobbyCreate_SaveGame {
+    return {
+      data: isSet(object.data) ? Buffer.from(bytesFromBase64(object.data)) : Buffer.alloc(0),
+      version: isSet(object.version) ? Number(object.version) : 0,
+      steamId: isSet(object.steamId) ? String(object.steamId) : "0",
+      signature: isSet(object.signature) ? String(object.signature) : "0",
+    };
+  },
+
+  toJSON(message: CMsgPracticeLobbyCreate_SaveGame): unknown {
+    const obj: any = {};
+    message.data !== undefined &&
+      (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
+    message.version !== undefined && (obj.version = Math.round(message.version));
+    message.steamId !== undefined && (obj.steamId = message.steamId);
+    message.signature !== undefined && (obj.signature = message.signature);
+    return obj;
+  },
 };
 
 function createBaseCMsgPracticeLobbySetTeamSlot(): CMsgPracticeLobbySetTeamSlot {
@@ -1912,6 +2496,22 @@ export const CMsgPracticeLobbySetTeamSlot = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgPracticeLobbySetTeamSlot {
+    return {
+      team: isSet(object.team) ? dotaGcTeamFromJSON(object.team) : 0,
+      slot: isSet(object.slot) ? Number(object.slot) : 0,
+      botDifficulty: isSet(object.botDifficulty) ? dOTABotDifficultyFromJSON(object.botDifficulty) : 0,
+    };
+  },
+
+  toJSON(message: CMsgPracticeLobbySetTeamSlot): unknown {
+    const obj: any = {};
+    message.team !== undefined && (obj.team = dotaGcTeamToJSON(message.team));
+    message.slot !== undefined && (obj.slot = Math.round(message.slot));
+    message.botDifficulty !== undefined && (obj.botDifficulty = dOTABotDifficultyToJSON(message.botDifficulty));
+    return obj;
+  },
 };
 
 function createBaseCMsgPracticeLobbySetCoach(): CMsgPracticeLobbySetCoach {
@@ -1947,6 +2547,16 @@ export const CMsgPracticeLobbySetCoach = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgPracticeLobbySetCoach {
+    return { team: isSet(object.team) ? dotaGcTeamFromJSON(object.team) : 0 };
+  },
+
+  toJSON(message: CMsgPracticeLobbySetCoach): unknown {
+    const obj: any = {};
+    message.team !== undefined && (obj.team = dotaGcTeamToJSON(message.team));
+    return obj;
   },
 };
 
@@ -2014,6 +2624,24 @@ export const CMsgPracticeLobbyJoinBroadcastChannel = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgPracticeLobbyJoinBroadcastChannel {
+    return {
+      channel: isSet(object.channel) ? Number(object.channel) : 0,
+      preferredDescription: isSet(object.preferredDescription) ? String(object.preferredDescription) : "",
+      preferredCountryCode: isSet(object.preferredCountryCode) ? String(object.preferredCountryCode) : "",
+      preferredLanguageCode: isSet(object.preferredLanguageCode) ? String(object.preferredLanguageCode) : "",
+    };
+  },
+
+  toJSON(message: CMsgPracticeLobbyJoinBroadcastChannel): unknown {
+    const obj: any = {};
+    message.channel !== undefined && (obj.channel = Math.round(message.channel));
+    message.preferredDescription !== undefined && (obj.preferredDescription = message.preferredDescription);
+    message.preferredCountryCode !== undefined && (obj.preferredCountryCode = message.preferredCountryCode);
+    message.preferredLanguageCode !== undefined && (obj.preferredLanguageCode = message.preferredLanguageCode);
+    return obj;
+  },
 };
 
 function createBaseCMsgPracticeLobbyCloseBroadcastChannel(): CMsgPracticeLobbyCloseBroadcastChannel {
@@ -2050,6 +2678,16 @@ export const CMsgPracticeLobbyCloseBroadcastChannel = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgPracticeLobbyCloseBroadcastChannel {
+    return { channel: isSet(object.channel) ? Number(object.channel) : 0 };
+  },
+
+  toJSON(message: CMsgPracticeLobbyCloseBroadcastChannel): unknown {
+    const obj: any = {};
+    message.channel !== undefined && (obj.channel = Math.round(message.channel));
+    return obj;
+  },
 };
 
 function createBaseCMsgPracticeLobbyToggleBroadcastChannelCameramanStatus(): CMsgPracticeLobbyToggleBroadcastChannelCameramanStatus {
@@ -2078,6 +2716,15 @@ export const CMsgPracticeLobbyToggleBroadcastChannelCameramanStatus = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CMsgPracticeLobbyToggleBroadcastChannelCameramanStatus {
+    return {};
+  },
+
+  toJSON(_: CMsgPracticeLobbyToggleBroadcastChannelCameramanStatus): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -2115,6 +2762,16 @@ export const CMsgPracticeLobbyKick = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgPracticeLobbyKick {
+    return { accountId: isSet(object.accountId) ? Number(object.accountId) : 0 };
+  },
+
+  toJSON(message: CMsgPracticeLobbyKick): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    return obj;
+  },
 };
 
 function createBaseCMsgPracticeLobbyKickFromTeam(): CMsgPracticeLobbyKickFromTeam {
@@ -2151,6 +2808,16 @@ export const CMsgPracticeLobbyKickFromTeam = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgPracticeLobbyKickFromTeam {
+    return { accountId: isSet(object.accountId) ? Number(object.accountId) : 0 };
+  },
+
+  toJSON(message: CMsgPracticeLobbyKickFromTeam): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    return obj;
+  },
 };
 
 function createBaseCMsgPracticeLobbyLeave(): CMsgPracticeLobbyLeave {
@@ -2176,6 +2843,15 @@ export const CMsgPracticeLobbyLeave = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CMsgPracticeLobbyLeave {
+    return {};
+  },
+
+  toJSON(_: CMsgPracticeLobbyLeave): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -2213,6 +2889,16 @@ export const CMsgPracticeLobbyLaunch = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgPracticeLobbyLaunch {
+    return { clientVersion: isSet(object.clientVersion) ? Number(object.clientVersion) : 0 };
+  },
+
+  toJSON(message: CMsgPracticeLobbyLaunch): unknown {
+    const obj: any = {};
+    message.clientVersion !== undefined && (obj.clientVersion = Math.round(message.clientVersion));
+    return obj;
+  },
 };
 
 function createBaseCMsgApplyTeamToPracticeLobby(): CMsgApplyTeamToPracticeLobby {
@@ -2248,6 +2934,16 @@ export const CMsgApplyTeamToPracticeLobby = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgApplyTeamToPracticeLobby {
+    return { teamId: isSet(object.teamId) ? Number(object.teamId) : 0 };
+  },
+
+  toJSON(message: CMsgApplyTeamToPracticeLobby): unknown {
+    const obj: any = {};
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    return obj;
   },
 };
 
@@ -2304,6 +3000,22 @@ export const CMsgPracticeLobbyList = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgPracticeLobbyList {
+    return {
+      passKey: isSet(object.passKey) ? String(object.passKey) : "",
+      region: isSet(object.region) ? Number(object.region) : 0,
+      gameMode: isSet(object.gameMode) ? dOTAGameModeFromJSON(object.gameMode) : 0,
+    };
+  },
+
+  toJSON(message: CMsgPracticeLobbyList): unknown {
+    const obj: any = {};
+    message.passKey !== undefined && (obj.passKey = message.passKey);
+    message.region !== undefined && (obj.region = Math.round(message.region));
+    message.gameMode !== undefined && (obj.gameMode = dOTAGameModeToJSON(message.gameMode));
+    return obj;
   },
 };
 
@@ -2508,6 +3220,56 @@ export const CMsgPracticeLobbyListResponseEntry = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgPracticeLobbyListResponseEntry {
+    return {
+      id: isSet(object.id) ? String(object.id) : "0",
+      members: Array.isArray(object?.members)
+        ? object.members.map((e: any) => CMsgPracticeLobbyListResponseEntry_CLobbyMember.fromJSON(e))
+        : [],
+      requiresPassKey: isSet(object.requiresPassKey) ? Boolean(object.requiresPassKey) : false,
+      leaderAccountId: isSet(object.leaderAccountId) ? Number(object.leaderAccountId) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      customGameMode: isSet(object.customGameMode) ? String(object.customGameMode) : "",
+      gameMode: isSet(object.gameMode) ? dOTAGameModeFromJSON(object.gameMode) : 0,
+      friendPresent: isSet(object.friendPresent) ? Boolean(object.friendPresent) : false,
+      players: isSet(object.players) ? Number(object.players) : 0,
+      customMapName: isSet(object.customMapName) ? String(object.customMapName) : "",
+      maxPlayerCount: isSet(object.maxPlayerCount) ? Number(object.maxPlayerCount) : 0,
+      serverRegion: isSet(object.serverRegion) ? Number(object.serverRegion) : 0,
+      leagueId: isSet(object.leagueId) ? Number(object.leagueId) : 0,
+      lanHostPingLocation: isSet(object.lanHostPingLocation) ? String(object.lanHostPingLocation) : "",
+      minPlayerCount: isSet(object.minPlayerCount) ? Number(object.minPlayerCount) : 0,
+      penaltiesEnabled: isSet(object.penaltiesEnabled) ? Boolean(object.penaltiesEnabled) : false,
+    };
+  },
+
+  toJSON(message: CMsgPracticeLobbyListResponseEntry): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+    if (message.members) {
+      obj.members = message.members.map((e) =>
+        e ? CMsgPracticeLobbyListResponseEntry_CLobbyMember.toJSON(e) : undefined
+      );
+    } else {
+      obj.members = [];
+    }
+    message.requiresPassKey !== undefined && (obj.requiresPassKey = message.requiresPassKey);
+    message.leaderAccountId !== undefined && (obj.leaderAccountId = Math.round(message.leaderAccountId));
+    message.name !== undefined && (obj.name = message.name);
+    message.customGameMode !== undefined && (obj.customGameMode = message.customGameMode);
+    message.gameMode !== undefined && (obj.gameMode = dOTAGameModeToJSON(message.gameMode));
+    message.friendPresent !== undefined && (obj.friendPresent = message.friendPresent);
+    message.players !== undefined && (obj.players = Math.round(message.players));
+    message.customMapName !== undefined && (obj.customMapName = message.customMapName);
+    message.maxPlayerCount !== undefined && (obj.maxPlayerCount = Math.round(message.maxPlayerCount));
+    message.serverRegion !== undefined && (obj.serverRegion = Math.round(message.serverRegion));
+    message.leagueId !== undefined && (obj.leagueId = Math.round(message.leagueId));
+    message.lanHostPingLocation !== undefined && (obj.lanHostPingLocation = message.lanHostPingLocation);
+    message.minPlayerCount !== undefined && (obj.minPlayerCount = Math.round(message.minPlayerCount));
+    message.penaltiesEnabled !== undefined && (obj.penaltiesEnabled = message.penaltiesEnabled);
+    return obj;
+  },
 };
 
 function createBaseCMsgPracticeLobbyListResponseEntry_CLobbyMember(): CMsgPracticeLobbyListResponseEntry_CLobbyMember {
@@ -2557,6 +3319,20 @@ export const CMsgPracticeLobbyListResponseEntry_CLobbyMember = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgPracticeLobbyListResponseEntry_CLobbyMember {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      playerName: isSet(object.playerName) ? String(object.playerName) : "",
+    };
+  },
+
+  toJSON(message: CMsgPracticeLobbyListResponseEntry_CLobbyMember): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.playerName !== undefined && (obj.playerName = message.playerName);
+    return obj;
+  },
 };
 
 function createBaseCMsgPracticeLobbyListResponse(): CMsgPracticeLobbyListResponse {
@@ -2592,6 +3368,24 @@ export const CMsgPracticeLobbyListResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgPracticeLobbyListResponse {
+    return {
+      lobbies: Array.isArray(object?.lobbies)
+        ? object.lobbies.map((e: any) => CMsgPracticeLobbyListResponseEntry.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgPracticeLobbyListResponse): unknown {
+    const obj: any = {};
+    if (message.lobbies) {
+      obj.lobbies = message.lobbies.map((e) => e ? CMsgPracticeLobbyListResponseEntry.toJSON(e) : undefined);
+    } else {
+      obj.lobbies = [];
+    }
+    return obj;
   },
 };
 
@@ -2639,6 +3433,20 @@ export const CMsgLobbyList = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgLobbyList {
+    return {
+      serverRegion: isSet(object.serverRegion) ? Number(object.serverRegion) : 0,
+      gameMode: isSet(object.gameMode) ? dOTAGameModeFromJSON(object.gameMode) : 0,
+    };
+  },
+
+  toJSON(message: CMsgLobbyList): unknown {
+    const obj: any = {};
+    message.serverRegion !== undefined && (obj.serverRegion = Math.round(message.serverRegion));
+    message.gameMode !== undefined && (obj.gameMode = dOTAGameModeToJSON(message.gameMode));
+    return obj;
+  },
 };
 
 function createBaseCMsgLobbyListResponse(): CMsgLobbyListResponse {
@@ -2674,6 +3482,24 @@ export const CMsgLobbyListResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgLobbyListResponse {
+    return {
+      lobbies: Array.isArray(object?.lobbies)
+        ? object.lobbies.map((e: any) => CMsgPracticeLobbyListResponseEntry.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgLobbyListResponse): unknown {
+    const obj: any = {};
+    if (message.lobbies) {
+      obj.lobbies = message.lobbies.map((e) => e ? CMsgPracticeLobbyListResponseEntry.toJSON(e) : undefined);
+    } else {
+      obj.lobbies = [];
+    }
+    return obj;
   },
 };
 
@@ -2751,6 +3577,26 @@ export const CMsgPracticeLobbyJoin = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgPracticeLobbyJoin {
+    return {
+      lobbyId: isSet(object.lobbyId) ? String(object.lobbyId) : "0",
+      clientVersion: isSet(object.clientVersion) ? Number(object.clientVersion) : 0,
+      passKey: isSet(object.passKey) ? String(object.passKey) : "",
+      customGameCrc: isSet(object.customGameCrc) ? String(object.customGameCrc) : "0",
+      customGameTimestamp: isSet(object.customGameTimestamp) ? Number(object.customGameTimestamp) : 0,
+    };
+  },
+
+  toJSON(message: CMsgPracticeLobbyJoin): unknown {
+    const obj: any = {};
+    message.lobbyId !== undefined && (obj.lobbyId = message.lobbyId);
+    message.clientVersion !== undefined && (obj.clientVersion = Math.round(message.clientVersion));
+    message.passKey !== undefined && (obj.passKey = message.passKey);
+    message.customGameCrc !== undefined && (obj.customGameCrc = message.customGameCrc);
+    message.customGameTimestamp !== undefined && (obj.customGameTimestamp = Math.round(message.customGameTimestamp));
+    return obj;
+  },
 };
 
 function createBaseCMsgPracticeLobbyJoinResponse(): CMsgPracticeLobbyJoinResponse {
@@ -2786,6 +3632,16 @@ export const CMsgPracticeLobbyJoinResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgPracticeLobbyJoinResponse {
+    return { result: isSet(object.result) ? dOTAJoinLobbyResultFromJSON(object.result) : 0 };
+  },
+
+  toJSON(message: CMsgPracticeLobbyJoinResponse): unknown {
+    const obj: any = {};
+    message.result !== undefined && (obj.result = dOTAJoinLobbyResultToJSON(message.result));
+    return obj;
   },
 };
 
@@ -2834,6 +3690,20 @@ export const CMsgFriendPracticeLobbyListRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgFriendPracticeLobbyListRequest {
+    return { friends: Array.isArray(object?.friends) ? object.friends.map((e: any) => Number(e)) : [] };
+  },
+
+  toJSON(message: CMsgFriendPracticeLobbyListRequest): unknown {
+    const obj: any = {};
+    if (message.friends) {
+      obj.friends = message.friends.map((e) => Math.round(e));
+    } else {
+      obj.friends = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgFriendPracticeLobbyListResponse(): CMsgFriendPracticeLobbyListResponse {
@@ -2870,6 +3740,24 @@ export const CMsgFriendPracticeLobbyListResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgFriendPracticeLobbyListResponse {
+    return {
+      lobbies: Array.isArray(object?.lobbies)
+        ? object.lobbies.map((e: any) => CMsgPracticeLobbyListResponseEntry.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgFriendPracticeLobbyListResponse): unknown {
+    const obj: any = {};
+    if (message.lobbies) {
+      obj.lobbies = message.lobbies.map((e) => e ? CMsgPracticeLobbyListResponseEntry.toJSON(e) : undefined);
+    } else {
+      obj.lobbies = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgJoinableCustomGameModesRequest(): CMsgJoinableCustomGameModesRequest {
@@ -2905,6 +3793,16 @@ export const CMsgJoinableCustomGameModesRequest = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgJoinableCustomGameModesRequest {
+    return { serverRegion: isSet(object.serverRegion) ? Number(object.serverRegion) : 0 };
+  },
+
+  toJSON(message: CMsgJoinableCustomGameModesRequest): unknown {
+    const obj: any = {};
+    message.serverRegion !== undefined && (obj.serverRegion = Math.round(message.serverRegion));
+    return obj;
   },
 };
 
@@ -2962,6 +3860,22 @@ export const CMsgJoinableCustomGameModesResponseEntry = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgJoinableCustomGameModesResponseEntry {
+    return {
+      customGameId: isSet(object.customGameId) ? String(object.customGameId) : "0",
+      lobbyCount: isSet(object.lobbyCount) ? Number(object.lobbyCount) : 0,
+      playerCount: isSet(object.playerCount) ? Number(object.playerCount) : 0,
+    };
+  },
+
+  toJSON(message: CMsgJoinableCustomGameModesResponseEntry): unknown {
+    const obj: any = {};
+    message.customGameId !== undefined && (obj.customGameId = message.customGameId);
+    message.lobbyCount !== undefined && (obj.lobbyCount = Math.round(message.lobbyCount));
+    message.playerCount !== undefined && (obj.playerCount = Math.round(message.playerCount));
+    return obj;
+  },
 };
 
 function createBaseCMsgJoinableCustomGameModesResponse(): CMsgJoinableCustomGameModesResponse {
@@ -2997,6 +3911,24 @@ export const CMsgJoinableCustomGameModesResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgJoinableCustomGameModesResponse {
+    return {
+      gameModes: Array.isArray(object?.gameModes)
+        ? object.gameModes.map((e: any) => CMsgJoinableCustomGameModesResponseEntry.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgJoinableCustomGameModesResponse): unknown {
+    const obj: any = {};
+    if (message.gameModes) {
+      obj.gameModes = message.gameModes.map((e) => e ? CMsgJoinableCustomGameModesResponseEntry.toJSON(e) : undefined);
+    } else {
+      obj.gameModes = [];
+    }
+    return obj;
   },
 };
 
@@ -3043,6 +3975,20 @@ export const CMsgJoinableCustomLobbiesRequest = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgJoinableCustomLobbiesRequest {
+    return {
+      serverRegion: isSet(object.serverRegion) ? Number(object.serverRegion) : 0,
+      customGameId: isSet(object.customGameId) ? String(object.customGameId) : "0",
+    };
+  },
+
+  toJSON(message: CMsgJoinableCustomLobbiesRequest): unknown {
+    const obj: any = {};
+    message.serverRegion !== undefined && (obj.serverRegion = Math.round(message.serverRegion));
+    message.customGameId !== undefined && (obj.customGameId = message.customGameId);
+    return obj;
   },
 };
 
@@ -3247,6 +4193,48 @@ export const CMsgJoinableCustomLobbiesResponseEntry = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgJoinableCustomLobbiesResponseEntry {
+    return {
+      lobbyId: isSet(object.lobbyId) ? String(object.lobbyId) : "0",
+      customGameId: isSet(object.customGameId) ? String(object.customGameId) : "0",
+      lobbyName: isSet(object.lobbyName) ? String(object.lobbyName) : "",
+      memberCount: isSet(object.memberCount) ? Number(object.memberCount) : 0,
+      leaderAccountId: isSet(object.leaderAccountId) ? Number(object.leaderAccountId) : 0,
+      leaderName: isSet(object.leaderName) ? String(object.leaderName) : "",
+      customMapName: isSet(object.customMapName) ? String(object.customMapName) : "",
+      maxPlayerCount: isSet(object.maxPlayerCount) ? Number(object.maxPlayerCount) : 0,
+      serverRegion: isSet(object.serverRegion) ? Number(object.serverRegion) : 0,
+      hasPassKey: isSet(object.hasPassKey) ? Boolean(object.hasPassKey) : false,
+      lanHostPingLocation: isSet(object.lanHostPingLocation) ? String(object.lanHostPingLocation) : "",
+      lobbyCreationTime: isSet(object.lobbyCreationTime) ? Number(object.lobbyCreationTime) : 0,
+      customGameTimestamp: isSet(object.customGameTimestamp) ? Number(object.customGameTimestamp) : 0,
+      customGameCrc: isSet(object.customGameCrc) ? String(object.customGameCrc) : "0",
+      minPlayerCount: isSet(object.minPlayerCount) ? Number(object.minPlayerCount) : 0,
+      penaltiesEnabled: isSet(object.penaltiesEnabled) ? Boolean(object.penaltiesEnabled) : false,
+    };
+  },
+
+  toJSON(message: CMsgJoinableCustomLobbiesResponseEntry): unknown {
+    const obj: any = {};
+    message.lobbyId !== undefined && (obj.lobbyId = message.lobbyId);
+    message.customGameId !== undefined && (obj.customGameId = message.customGameId);
+    message.lobbyName !== undefined && (obj.lobbyName = message.lobbyName);
+    message.memberCount !== undefined && (obj.memberCount = Math.round(message.memberCount));
+    message.leaderAccountId !== undefined && (obj.leaderAccountId = Math.round(message.leaderAccountId));
+    message.leaderName !== undefined && (obj.leaderName = message.leaderName);
+    message.customMapName !== undefined && (obj.customMapName = message.customMapName);
+    message.maxPlayerCount !== undefined && (obj.maxPlayerCount = Math.round(message.maxPlayerCount));
+    message.serverRegion !== undefined && (obj.serverRegion = Math.round(message.serverRegion));
+    message.hasPassKey !== undefined && (obj.hasPassKey = message.hasPassKey);
+    message.lanHostPingLocation !== undefined && (obj.lanHostPingLocation = message.lanHostPingLocation);
+    message.lobbyCreationTime !== undefined && (obj.lobbyCreationTime = Math.round(message.lobbyCreationTime));
+    message.customGameTimestamp !== undefined && (obj.customGameTimestamp = Math.round(message.customGameTimestamp));
+    message.customGameCrc !== undefined && (obj.customGameCrc = message.customGameCrc);
+    message.minPlayerCount !== undefined && (obj.minPlayerCount = Math.round(message.minPlayerCount));
+    message.penaltiesEnabled !== undefined && (obj.penaltiesEnabled = message.penaltiesEnabled);
+    return obj;
+  },
 };
 
 function createBaseCMsgJoinableCustomLobbiesResponse(): CMsgJoinableCustomLobbiesResponse {
@@ -3282,6 +4270,24 @@ export const CMsgJoinableCustomLobbiesResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgJoinableCustomLobbiesResponse {
+    return {
+      lobbies: Array.isArray(object?.lobbies)
+        ? object.lobbies.map((e: any) => CMsgJoinableCustomLobbiesResponseEntry.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgJoinableCustomLobbiesResponse): unknown {
+    const obj: any = {};
+    if (message.lobbies) {
+      obj.lobbies = message.lobbies.map((e) => e ? CMsgJoinableCustomLobbiesResponseEntry.toJSON(e) : undefined);
+    } else {
+      obj.lobbies = [];
+    }
+    return obj;
   },
 };
 
@@ -3387,6 +4393,43 @@ export const CMsgQuickJoinCustomLobby = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgQuickJoinCustomLobby {
+    return {
+      legacyServerRegion: isSet(object.legacyServerRegion) ? Number(object.legacyServerRegion) : 0,
+      customGameId: isSet(object.customGameId) ? String(object.customGameId) : "0",
+      clientVersion: isSet(object.clientVersion) ? Number(object.clientVersion) : 0,
+      createLobbyDetails: isSet(object.createLobbyDetails)
+        ? CMsgPracticeLobbySetDetails.fromJSON(object.createLobbyDetails)
+        : undefined,
+      allowAnyMap: isSet(object.allowAnyMap) ? Boolean(object.allowAnyMap) : false,
+      legacyRegionPings: Array.isArray(object?.legacyRegionPings)
+        ? object.legacyRegionPings.map((e: any) => CMsgQuickJoinCustomLobby_LegacyRegionPing.fromJSON(e))
+        : [],
+      pingData: isSet(object.pingData) ? CMsgClientPingData.fromJSON(object.pingData) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgQuickJoinCustomLobby): unknown {
+    const obj: any = {};
+    message.legacyServerRegion !== undefined && (obj.legacyServerRegion = Math.round(message.legacyServerRegion));
+    message.customGameId !== undefined && (obj.customGameId = message.customGameId);
+    message.clientVersion !== undefined && (obj.clientVersion = Math.round(message.clientVersion));
+    message.createLobbyDetails !== undefined && (obj.createLobbyDetails = message.createLobbyDetails
+      ? CMsgPracticeLobbySetDetails.toJSON(message.createLobbyDetails)
+      : undefined);
+    message.allowAnyMap !== undefined && (obj.allowAnyMap = message.allowAnyMap);
+    if (message.legacyRegionPings) {
+      obj.legacyRegionPings = message.legacyRegionPings.map((e) =>
+        e ? CMsgQuickJoinCustomLobby_LegacyRegionPing.toJSON(e) : undefined
+      );
+    } else {
+      obj.legacyRegionPings = [];
+    }
+    message.pingData !== undefined &&
+      (obj.pingData = message.pingData ? CMsgClientPingData.toJSON(message.pingData) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgQuickJoinCustomLobby_LegacyRegionPing(): CMsgQuickJoinCustomLobby_LegacyRegionPing {
@@ -3443,6 +4486,22 @@ export const CMsgQuickJoinCustomLobby_LegacyRegionPing = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgQuickJoinCustomLobby_LegacyRegionPing {
+    return {
+      serverRegion: isSet(object.serverRegion) ? Number(object.serverRegion) : 0,
+      ping: isSet(object.ping) ? Number(object.ping) : 0,
+      regionCode: isSet(object.regionCode) ? Number(object.regionCode) : 0,
+    };
+  },
+
+  toJSON(message: CMsgQuickJoinCustomLobby_LegacyRegionPing): unknown {
+    const obj: any = {};
+    message.serverRegion !== undefined && (obj.serverRegion = Math.round(message.serverRegion));
+    message.ping !== undefined && (obj.ping = Math.round(message.ping));
+    message.regionCode !== undefined && (obj.regionCode = Math.round(message.regionCode));
+    return obj;
+  },
 };
 
 function createBaseCMsgQuickJoinCustomLobbyResponse(): CMsgQuickJoinCustomLobbyResponse {
@@ -3478,6 +4537,16 @@ export const CMsgQuickJoinCustomLobbyResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgQuickJoinCustomLobbyResponse {
+    return { result: isSet(object.result) ? dOTAJoinLobbyResultFromJSON(object.result) : 0 };
+  },
+
+  toJSON(message: CMsgQuickJoinCustomLobbyResponse): unknown {
+    const obj: any = {};
+    message.result !== undefined && (obj.result = dOTAJoinLobbyResultToJSON(message.result));
+    return obj;
   },
 };
 
@@ -3565,6 +4634,29 @@ export const CMsgBotGameCreate = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgBotGameCreate {
+    return {
+      searchKey: isSet(object.searchKey) ? String(object.searchKey) : "",
+      clientVersion: isSet(object.clientVersion) ? Number(object.clientVersion) : 0,
+      difficultyRadiant: isSet(object.difficultyRadiant) ? dOTABotDifficultyFromJSON(object.difficultyRadiant) : 0,
+      team: isSet(object.team) ? dotaGcTeamFromJSON(object.team) : 0,
+      gameMode: isSet(object.gameMode) ? Number(object.gameMode) : 0,
+      difficultyDire: isSet(object.difficultyDire) ? dOTABotDifficultyFromJSON(object.difficultyDire) : 0,
+    };
+  },
+
+  toJSON(message: CMsgBotGameCreate): unknown {
+    const obj: any = {};
+    message.searchKey !== undefined && (obj.searchKey = message.searchKey);
+    message.clientVersion !== undefined && (obj.clientVersion = Math.round(message.clientVersion));
+    message.difficultyRadiant !== undefined &&
+      (obj.difficultyRadiant = dOTABotDifficultyToJSON(message.difficultyRadiant));
+    message.team !== undefined && (obj.team = dotaGcTeamToJSON(message.team));
+    message.gameMode !== undefined && (obj.gameMode = Math.round(message.gameMode));
+    message.difficultyDire !== undefined && (obj.difficultyDire = dOTABotDifficultyToJSON(message.difficultyDire));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTAPartyMemberSetCoach(): CMsgDOTAPartyMemberSetCoach {
@@ -3601,6 +4693,16 @@ export const CMsgDOTAPartyMemberSetCoach = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTAPartyMemberSetCoach {
+    return { wantsCoach: isSet(object.wantsCoach) ? Boolean(object.wantsCoach) : false };
+  },
+
+  toJSON(message: CMsgDOTAPartyMemberSetCoach): unknown {
+    const obj: any = {};
+    message.wantsCoach !== undefined && (obj.wantsCoach = message.wantsCoach);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTASetGroupLeader(): CMsgDOTASetGroupLeader {
@@ -3636,6 +4738,16 @@ export const CMsgDOTASetGroupLeader = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTASetGroupLeader {
+    return { newLeaderSteamid: isSet(object.newLeaderSteamid) ? String(object.newLeaderSteamid) : "0" };
+  },
+
+  toJSON(message: CMsgDOTASetGroupLeader): unknown {
+    const obj: any = {};
+    message.newLeaderSteamid !== undefined && (obj.newLeaderSteamid = message.newLeaderSteamid);
+    return obj;
   },
 };
 
@@ -3705,6 +4817,28 @@ export const CMsgDOTACancelGroupInvites = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTACancelGroupInvites {
+    return {
+      invitedSteamids: Array.isArray(object?.invitedSteamids) ? object.invitedSteamids.map((e: any) => String(e)) : [],
+      invitedGroupids: Array.isArray(object?.invitedGroupids) ? object.invitedGroupids.map((e: any) => String(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTACancelGroupInvites): unknown {
+    const obj: any = {};
+    if (message.invitedSteamids) {
+      obj.invitedSteamids = message.invitedSteamids.map((e) => e);
+    } else {
+      obj.invitedSteamids = [];
+    }
+    if (message.invitedGroupids) {
+      obj.invitedGroupids = message.invitedGroupids.map((e) => e);
+    } else {
+      obj.invitedGroupids = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTASetGroupOpenStatus(): CMsgDOTASetGroupOpenStatus {
@@ -3741,6 +4875,16 @@ export const CMsgDOTASetGroupOpenStatus = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTASetGroupOpenStatus {
+    return { open: isSet(object.open) ? Boolean(object.open) : false };
+  },
+
+  toJSON(message: CMsgDOTASetGroupOpenStatus): unknown {
+    const obj: any = {};
+    message.open !== undefined && (obj.open = message.open);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTAGroupMergeInvite(): CMsgDOTAGroupMergeInvite {
@@ -3776,6 +4920,16 @@ export const CMsgDOTAGroupMergeInvite = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAGroupMergeInvite {
+    return { otherGroupId: isSet(object.otherGroupId) ? String(object.otherGroupId) : "0" };
+  },
+
+  toJSON(message: CMsgDOTAGroupMergeInvite): unknown {
+    const obj: any = {};
+    message.otherGroupId !== undefined && (obj.otherGroupId = message.otherGroupId);
+    return obj;
   },
 };
 
@@ -3823,6 +4977,20 @@ export const CMsgDOTAGroupMergeResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTAGroupMergeResponse {
+    return {
+      initiatorGroupId: isSet(object.initiatorGroupId) ? String(object.initiatorGroupId) : "0",
+      accept: isSet(object.accept) ? Boolean(object.accept) : false,
+    };
+  },
+
+  toJSON(message: CMsgDOTAGroupMergeResponse): unknown {
+    const obj: any = {};
+    message.initiatorGroupId !== undefined && (obj.initiatorGroupId = message.initiatorGroupId);
+    message.accept !== undefined && (obj.accept = message.accept);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTAGroupMergeReply(): CMsgDOTAGroupMergeReply {
@@ -3858,6 +5026,16 @@ export const CMsgDOTAGroupMergeReply = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAGroupMergeReply {
+    return { result: isSet(object.result) ? eDOTAGroupMergeResultFromJSON(object.result) : 0 };
+  },
+
+  toJSON(message: CMsgDOTAGroupMergeReply): unknown {
+    const obj: any = {};
+    message.result !== undefined && (obj.result = eDOTAGroupMergeResultToJSON(message.result));
+    return obj;
   },
 };
 
@@ -3996,6 +5174,41 @@ export const CMsgSpectatorLobbyGameDetails = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSpectatorLobbyGameDetails {
+    return {
+      language: isSet(object.language) ? Number(object.language) : 0,
+      matchId: isSet(object.matchId) ? String(object.matchId) : "0",
+      serverSteamId: isSet(object.serverSteamId) ? String(object.serverSteamId) : "0",
+      streamUrl: isSet(object.streamUrl) ? String(object.streamUrl) : "",
+      streamName: isSet(object.streamName) ? String(object.streamName) : "",
+      leagueId: isSet(object.leagueId) ? Number(object.leagueId) : 0,
+      seriesType: isSet(object.seriesType) ? Number(object.seriesType) : 0,
+      seriesGame: isSet(object.seriesGame) ? Number(object.seriesGame) : 0,
+      radiantTeam: isSet(object.radiantTeam)
+        ? CMsgSpectatorLobbyGameDetails_Team.fromJSON(object.radiantTeam)
+        : undefined,
+      direTeam: isSet(object.direTeam) ? CMsgSpectatorLobbyGameDetails_Team.fromJSON(object.direTeam) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgSpectatorLobbyGameDetails): unknown {
+    const obj: any = {};
+    message.language !== undefined && (obj.language = Math.round(message.language));
+    message.matchId !== undefined && (obj.matchId = message.matchId);
+    message.serverSteamId !== undefined && (obj.serverSteamId = message.serverSteamId);
+    message.streamUrl !== undefined && (obj.streamUrl = message.streamUrl);
+    message.streamName !== undefined && (obj.streamName = message.streamName);
+    message.leagueId !== undefined && (obj.leagueId = Math.round(message.leagueId));
+    message.seriesType !== undefined && (obj.seriesType = Math.round(message.seriesType));
+    message.seriesGame !== undefined && (obj.seriesGame = Math.round(message.seriesGame));
+    message.radiantTeam !== undefined && (obj.radiantTeam = message.radiantTeam
+      ? CMsgSpectatorLobbyGameDetails_Team.toJSON(message.radiantTeam)
+      : undefined);
+    message.direTeam !== undefined &&
+      (obj.direTeam = message.direTeam ? CMsgSpectatorLobbyGameDetails_Team.toJSON(message.direTeam) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgSpectatorLobbyGameDetails_Team(): CMsgSpectatorLobbyGameDetails_Team {
@@ -4051,6 +5264,22 @@ export const CMsgSpectatorLobbyGameDetails_Team = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSpectatorLobbyGameDetails_Team {
+    return {
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      teamName: isSet(object.teamName) ? String(object.teamName) : "",
+      teamLogo: isSet(object.teamLogo) ? String(object.teamLogo) : "0",
+    };
+  },
+
+  toJSON(message: CMsgSpectatorLobbyGameDetails_Team): unknown {
+    const obj: any = {};
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    message.teamName !== undefined && (obj.teamName = message.teamName);
+    message.teamLogo !== undefined && (obj.teamLogo = message.teamLogo);
+    return obj;
   },
 };
 
@@ -4118,6 +5347,25 @@ export const CMsgSetSpectatorLobbyDetails = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSetSpectatorLobbyDetails {
+    return {
+      lobbyId: isSet(object.lobbyId) ? String(object.lobbyId) : "0",
+      lobbyName: isSet(object.lobbyName) ? String(object.lobbyName) : "",
+      passKey: isSet(object.passKey) ? String(object.passKey) : "",
+      gameDetails: isSet(object.gameDetails) ? CMsgSpectatorLobbyGameDetails.fromJSON(object.gameDetails) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgSetSpectatorLobbyDetails): unknown {
+    const obj: any = {};
+    message.lobbyId !== undefined && (obj.lobbyId = message.lobbyId);
+    message.lobbyName !== undefined && (obj.lobbyName = message.lobbyName);
+    message.passKey !== undefined && (obj.passKey = message.passKey);
+    message.gameDetails !== undefined &&
+      (obj.gameDetails = message.gameDetails ? CMsgSpectatorLobbyGameDetails.toJSON(message.gameDetails) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgCreateSpectatorLobby(): CMsgCreateSpectatorLobby {
@@ -4164,6 +5412,21 @@ export const CMsgCreateSpectatorLobby = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgCreateSpectatorLobby {
+    return {
+      clientVersion: isSet(object.clientVersion) ? Number(object.clientVersion) : 0,
+      details: isSet(object.details) ? CMsgSetSpectatorLobbyDetails.fromJSON(object.details) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgCreateSpectatorLobby): unknown {
+    const obj: any = {};
+    message.clientVersion !== undefined && (obj.clientVersion = Math.round(message.clientVersion));
+    message.details !== undefined &&
+      (obj.details = message.details ? CMsgSetSpectatorLobbyDetails.toJSON(message.details) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgSpectatorLobbyList(): CMsgSpectatorLobbyList {
@@ -4189,6 +5452,15 @@ export const CMsgSpectatorLobbyList = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CMsgSpectatorLobbyList {
+    return {};
+  },
+
+  toJSON(_: CMsgSpectatorLobbyList): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -4225,6 +5497,24 @@ export const CMsgSpectatorLobbyListResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSpectatorLobbyListResponse {
+    return {
+      lobbies: Array.isArray(object?.lobbies)
+        ? object.lobbies.map((e: any) => CMsgSpectatorLobbyListResponse_SpectatorLobby.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgSpectatorLobbyListResponse): unknown {
+    const obj: any = {};
+    if (message.lobbies) {
+      obj.lobbies = message.lobbies.map((e) => e ? CMsgSpectatorLobbyListResponse_SpectatorLobby.toJSON(e) : undefined);
+    } else {
+      obj.lobbies = [];
+    }
+    return obj;
   },
 };
 
@@ -4319,6 +5609,29 @@ export const CMsgSpectatorLobbyListResponse_SpectatorLobby = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSpectatorLobbyListResponse_SpectatorLobby {
+    return {
+      lobbyId: isSet(object.lobbyId) ? String(object.lobbyId) : "0",
+      gameName: isSet(object.gameName) ? String(object.gameName) : "",
+      requiresPassKey: isSet(object.requiresPassKey) ? Boolean(object.requiresPassKey) : false,
+      leaderAccountId: isSet(object.leaderAccountId) ? Number(object.leaderAccountId) : 0,
+      memberCount: isSet(object.memberCount) ? Number(object.memberCount) : 0,
+      gameDetails: isSet(object.gameDetails) ? CMsgSpectatorLobbyGameDetails.fromJSON(object.gameDetails) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgSpectatorLobbyListResponse_SpectatorLobby): unknown {
+    const obj: any = {};
+    message.lobbyId !== undefined && (obj.lobbyId = message.lobbyId);
+    message.gameName !== undefined && (obj.gameName = message.gameName);
+    message.requiresPassKey !== undefined && (obj.requiresPassKey = message.requiresPassKey);
+    message.leaderAccountId !== undefined && (obj.leaderAccountId = Math.round(message.leaderAccountId));
+    message.memberCount !== undefined && (obj.memberCount = Math.round(message.memberCount));
+    message.gameDetails !== undefined &&
+      (obj.gameDetails = message.gameDetails ? CMsgSpectatorLobbyGameDetails.toJSON(message.gameDetails) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgClientToGCRequestSteamDatagramTicket(): CMsgClientToGCRequestSteamDatagramTicket {
@@ -4354,6 +5667,16 @@ export const CMsgClientToGCRequestSteamDatagramTicket = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCRequestSteamDatagramTicket {
+    return { serverSteamId: isSet(object.serverSteamId) ? String(object.serverSteamId) : "0" };
+  },
+
+  toJSON(message: CMsgClientToGCRequestSteamDatagramTicket): unknown {
+    const obj: any = {};
+    message.serverSteamId !== undefined && (obj.serverSteamId = message.serverSteamId);
+    return obj;
   },
 };
 
@@ -4403,6 +5726,25 @@ export const CMsgClientToGCRequestSteamDatagramTicketResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCRequestSteamDatagramTicketResponse {
+    return {
+      serializedTicket: isSet(object.serializedTicket)
+        ? Buffer.from(bytesFromBase64(object.serializedTicket))
+        : Buffer.alloc(0),
+      message: isSet(object.message) ? String(object.message) : "",
+    };
+  },
+
+  toJSON(message: CMsgClientToGCRequestSteamDatagramTicketResponse): unknown {
+    const obj: any = {};
+    message.serializedTicket !== undefined &&
+      (obj.serializedTicket = base64FromBytes(
+        message.serializedTicket !== undefined ? message.serializedTicket : Buffer.alloc(0),
+      ));
+    message.message !== undefined && (obj.message = message.message);
+    return obj;
   },
 };
 
@@ -4530,6 +5872,53 @@ export const CMsgGCToClientSteamDatagramTicket = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCToClientSteamDatagramTicket {
+    return {
+      legacyTimeExpiry: isSet(object.legacyTimeExpiry) ? Number(object.legacyTimeExpiry) : 0,
+      legacyAuthorizedSteamId: isSet(object.legacyAuthorizedSteamId) ? String(object.legacyAuthorizedSteamId) : "0",
+      legacyAuthorizedPublicIp: isSet(object.legacyAuthorizedPublicIp) ? Number(object.legacyAuthorizedPublicIp) : 0,
+      legacyGameserverSteamId: isSet(object.legacyGameserverSteamId) ? String(object.legacyGameserverSteamId) : "0",
+      legacyGameserverNetId: isSet(object.legacyGameserverNetId) ? String(object.legacyGameserverNetId) : "0",
+      legacySignature: isSet(object.legacySignature)
+        ? Buffer.from(bytesFromBase64(object.legacySignature))
+        : Buffer.alloc(0),
+      legacyAppId: isSet(object.legacyAppId) ? Number(object.legacyAppId) : 0,
+      legacyExtraFields: Array.isArray(object?.legacyExtraFields)
+        ? object.legacyExtraFields.map((e: any) => Buffer.from(bytesFromBase64(e)))
+        : [],
+      serializedTicket: isSet(object.serializedTicket)
+        ? Buffer.from(bytesFromBase64(object.serializedTicket))
+        : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CMsgGCToClientSteamDatagramTicket): unknown {
+    const obj: any = {};
+    message.legacyTimeExpiry !== undefined && (obj.legacyTimeExpiry = Math.round(message.legacyTimeExpiry));
+    message.legacyAuthorizedSteamId !== undefined && (obj.legacyAuthorizedSteamId = message.legacyAuthorizedSteamId);
+    message.legacyAuthorizedPublicIp !== undefined &&
+      (obj.legacyAuthorizedPublicIp = Math.round(message.legacyAuthorizedPublicIp));
+    message.legacyGameserverSteamId !== undefined && (obj.legacyGameserverSteamId = message.legacyGameserverSteamId);
+    message.legacyGameserverNetId !== undefined && (obj.legacyGameserverNetId = message.legacyGameserverNetId);
+    message.legacySignature !== undefined &&
+      (obj.legacySignature = base64FromBytes(
+        message.legacySignature !== undefined ? message.legacySignature : Buffer.alloc(0),
+      ));
+    message.legacyAppId !== undefined && (obj.legacyAppId = Math.round(message.legacyAppId));
+    if (message.legacyExtraFields) {
+      obj.legacyExtraFields = message.legacyExtraFields.map((e) =>
+        base64FromBytes(e !== undefined ? e : Buffer.alloc(0))
+      );
+    } else {
+      obj.legacyExtraFields = [];
+    }
+    message.serializedTicket !== undefined &&
+      (obj.serializedTicket = base64FromBytes(
+        message.serializedTicket !== undefined ? message.serializedTicket : Buffer.alloc(0),
+      ));
+    return obj;
+  },
 };
 
 function createBaseCMsgGCToClientRequestLaneSelection(): CMsgGCToClientRequestLaneSelection {
@@ -4555,6 +5944,15 @@ export const CMsgGCToClientRequestLaneSelection = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CMsgGCToClientRequestLaneSelection {
+    return {};
+  },
+
+  toJSON(_: CMsgGCToClientRequestLaneSelection): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -4602,6 +6000,20 @@ export const CMsgGCToClientRequestLaneSelectionResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCToClientRequestLaneSelectionResponse {
+    return {
+      laneSelectionFlags: isSet(object.laneSelectionFlags) ? Number(object.laneSelectionFlags) : 0,
+      highPriorityDisabled: isSet(object.highPriorityDisabled) ? Boolean(object.highPriorityDisabled) : false,
+    };
+  },
+
+  toJSON(message: CMsgGCToClientRequestLaneSelectionResponse): unknown {
+    const obj: any = {};
+    message.laneSelectionFlags !== undefined && (obj.laneSelectionFlags = Math.round(message.laneSelectionFlags));
+    message.highPriorityDisabled !== undefined && (obj.highPriorityDisabled = message.highPriorityDisabled);
+    return obj;
+  },
 };
 
 function createBaseCMsgGCToClientRequestMMInfo(): CMsgGCToClientRequestMMInfo {
@@ -4627,6 +6039,15 @@ export const CMsgGCToClientRequestMMInfo = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CMsgGCToClientRequestMMInfo {
+    return {};
+  },
+
+  toJSON(_: CMsgGCToClientRequestMMInfo): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -4674,7 +6095,65 @@ export const CMsgClientToGCMMInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientToGCMMInfo {
+    return {
+      laneSelectionFlags: isSet(object.laneSelectionFlags) ? Number(object.laneSelectionFlags) : 0,
+      highPriorityDisabled: isSet(object.highPriorityDisabled) ? Boolean(object.highPriorityDisabled) : false,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCMMInfo): unknown {
+    const obj: any = {};
+    message.laneSelectionFlags !== undefined && (obj.laneSelectionFlags = Math.round(message.laneSelectionFlags));
+    message.highPriorityDisabled !== undefined && (obj.highPriorityDisabled = message.highPriorityDisabled);
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if (tsProtoGlobalThis.Buffer) {
+    return Uint8Array.from(tsProtoGlobalThis.Buffer.from(b64, "base64"));
+  } else {
+    const bin = tsProtoGlobalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if (tsProtoGlobalThis.Buffer) {
+    return tsProtoGlobalThis.Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(String.fromCharCode(byte));
+    });
+    return tsProtoGlobalThis.btoa(bin.join(""));
+  }
+}
 
 function longToString(long: Long) {
   return long.toString();
@@ -4683,4 +6162,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

@@ -24,6 +24,115 @@ export enum EDemoCommands {
   DEM_IsCompressed = 64,
 }
 
+export function eDemoCommandsFromJSON(object: any): EDemoCommands {
+  switch (object) {
+    case -1:
+    case "DEM_Error":
+      return EDemoCommands.DEM_Error;
+    case 0:
+    case "DEM_Stop":
+      return EDemoCommands.DEM_Stop;
+    case 1:
+    case "DEM_FileHeader":
+      return EDemoCommands.DEM_FileHeader;
+    case 2:
+    case "DEM_FileInfo":
+      return EDemoCommands.DEM_FileInfo;
+    case 3:
+    case "DEM_SyncTick":
+      return EDemoCommands.DEM_SyncTick;
+    case 4:
+    case "DEM_SendTables":
+      return EDemoCommands.DEM_SendTables;
+    case 5:
+    case "DEM_ClassInfo":
+      return EDemoCommands.DEM_ClassInfo;
+    case 6:
+    case "DEM_StringTables":
+      return EDemoCommands.DEM_StringTables;
+    case 7:
+    case "DEM_Packet":
+      return EDemoCommands.DEM_Packet;
+    case 8:
+    case "DEM_SignonPacket":
+      return EDemoCommands.DEM_SignonPacket;
+    case 9:
+    case "DEM_ConsoleCmd":
+      return EDemoCommands.DEM_ConsoleCmd;
+    case 10:
+    case "DEM_CustomData":
+      return EDemoCommands.DEM_CustomData;
+    case 11:
+    case "DEM_CustomDataCallbacks":
+      return EDemoCommands.DEM_CustomDataCallbacks;
+    case 12:
+    case "DEM_UserCmd":
+      return EDemoCommands.DEM_UserCmd;
+    case 13:
+    case "DEM_FullPacket":
+      return EDemoCommands.DEM_FullPacket;
+    case 14:
+    case "DEM_SaveGame":
+      return EDemoCommands.DEM_SaveGame;
+    case 15:
+    case "DEM_SpawnGroups":
+      return EDemoCommands.DEM_SpawnGroups;
+    case 16:
+    case "DEM_Max":
+      return EDemoCommands.DEM_Max;
+    case 64:
+    case "DEM_IsCompressed":
+      return EDemoCommands.DEM_IsCompressed;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EDemoCommands");
+  }
+}
+
+export function eDemoCommandsToJSON(object: EDemoCommands): string {
+  switch (object) {
+    case EDemoCommands.DEM_Error:
+      return "DEM_Error";
+    case EDemoCommands.DEM_Stop:
+      return "DEM_Stop";
+    case EDemoCommands.DEM_FileHeader:
+      return "DEM_FileHeader";
+    case EDemoCommands.DEM_FileInfo:
+      return "DEM_FileInfo";
+    case EDemoCommands.DEM_SyncTick:
+      return "DEM_SyncTick";
+    case EDemoCommands.DEM_SendTables:
+      return "DEM_SendTables";
+    case EDemoCommands.DEM_ClassInfo:
+      return "DEM_ClassInfo";
+    case EDemoCommands.DEM_StringTables:
+      return "DEM_StringTables";
+    case EDemoCommands.DEM_Packet:
+      return "DEM_Packet";
+    case EDemoCommands.DEM_SignonPacket:
+      return "DEM_SignonPacket";
+    case EDemoCommands.DEM_ConsoleCmd:
+      return "DEM_ConsoleCmd";
+    case EDemoCommands.DEM_CustomData:
+      return "DEM_CustomData";
+    case EDemoCommands.DEM_CustomDataCallbacks:
+      return "DEM_CustomDataCallbacks";
+    case EDemoCommands.DEM_UserCmd:
+      return "DEM_UserCmd";
+    case EDemoCommands.DEM_FullPacket:
+      return "DEM_FullPacket";
+    case EDemoCommands.DEM_SaveGame:
+      return "DEM_SaveGame";
+    case EDemoCommands.DEM_SpawnGroups:
+      return "DEM_SpawnGroups";
+    case EDemoCommands.DEM_Max:
+      return "DEM_Max";
+    case EDemoCommands.DEM_IsCompressed:
+      return "DEM_IsCompressed";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EDemoCommands");
+  }
+}
+
 export interface CDemoFileHeader {
   demoFileStamp: string;
   networkProtocol: number;
@@ -333,6 +442,46 @@ export const CDemoFileHeader = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDemoFileHeader {
+    return {
+      demoFileStamp: isSet(object.demoFileStamp) ? String(object.demoFileStamp) : "",
+      networkProtocol: isSet(object.networkProtocol) ? Number(object.networkProtocol) : 0,
+      serverName: isSet(object.serverName) ? String(object.serverName) : "",
+      clientName: isSet(object.clientName) ? String(object.clientName) : "",
+      mapName: isSet(object.mapName) ? String(object.mapName) : "",
+      gameDirectory: isSet(object.gameDirectory) ? String(object.gameDirectory) : "",
+      fullpacketsVersion: isSet(object.fullpacketsVersion) ? Number(object.fullpacketsVersion) : 0,
+      allowClientsideEntities: isSet(object.allowClientsideEntities) ? Boolean(object.allowClientsideEntities) : false,
+      allowClientsideParticles: isSet(object.allowClientsideParticles)
+        ? Boolean(object.allowClientsideParticles)
+        : false,
+      addons: isSet(object.addons) ? String(object.addons) : "",
+      demoVersionName: isSet(object.demoVersionName) ? String(object.demoVersionName) : "",
+      demoVersionGuid: isSet(object.demoVersionGuid) ? String(object.demoVersionGuid) : "",
+      buildNum: isSet(object.buildNum) ? Number(object.buildNum) : 0,
+      game: isSet(object.game) ? String(object.game) : "",
+    };
+  },
+
+  toJSON(message: CDemoFileHeader): unknown {
+    const obj: any = {};
+    message.demoFileStamp !== undefined && (obj.demoFileStamp = message.demoFileStamp);
+    message.networkProtocol !== undefined && (obj.networkProtocol = Math.round(message.networkProtocol));
+    message.serverName !== undefined && (obj.serverName = message.serverName);
+    message.clientName !== undefined && (obj.clientName = message.clientName);
+    message.mapName !== undefined && (obj.mapName = message.mapName);
+    message.gameDirectory !== undefined && (obj.gameDirectory = message.gameDirectory);
+    message.fullpacketsVersion !== undefined && (obj.fullpacketsVersion = Math.round(message.fullpacketsVersion));
+    message.allowClientsideEntities !== undefined && (obj.allowClientsideEntities = message.allowClientsideEntities);
+    message.allowClientsideParticles !== undefined && (obj.allowClientsideParticles = message.allowClientsideParticles);
+    message.addons !== undefined && (obj.addons = message.addons);
+    message.demoVersionName !== undefined && (obj.demoVersionName = message.demoVersionName);
+    message.demoVersionGuid !== undefined && (obj.demoVersionGuid = message.demoVersionGuid);
+    message.buildNum !== undefined && (obj.buildNum = Math.round(message.buildNum));
+    message.game !== undefined && (obj.game = message.game);
+    return obj;
+  },
 };
 
 function createBaseCGameInfo(): CGameInfo {
@@ -368,6 +517,16 @@ export const CGameInfo = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CGameInfo {
+    return { dota: isSet(object.dota) ? CGameInfo_CDotaGameInfo.fromJSON(object.dota) : undefined };
+  },
+
+  toJSON(message: CGameInfo): unknown {
+    const obj: any = {};
+    message.dota !== undefined && (obj.dota = message.dota ? CGameInfo_CDotaGameInfo.toJSON(message.dota) : undefined);
+    return obj;
   },
 };
 
@@ -517,6 +676,50 @@ export const CGameInfo_CDotaGameInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CGameInfo_CDotaGameInfo {
+    return {
+      matchId: isSet(object.matchId) ? String(object.matchId) : "0",
+      gameMode: isSet(object.gameMode) ? Number(object.gameMode) : 0,
+      gameWinner: isSet(object.gameWinner) ? Number(object.gameWinner) : 0,
+      playerInfo: Array.isArray(object?.playerInfo)
+        ? object.playerInfo.map((e: any) => CGameInfo_CDotaGameInfo_CPlayerInfo.fromJSON(e))
+        : [],
+      leagueid: isSet(object.leagueid) ? Number(object.leagueid) : 0,
+      picksBans: Array.isArray(object?.picksBans)
+        ? object.picksBans.map((e: any) => CGameInfo_CDotaGameInfo_CHeroSelectEvent.fromJSON(e))
+        : [],
+      radiantTeamId: isSet(object.radiantTeamId) ? Number(object.radiantTeamId) : 0,
+      direTeamId: isSet(object.direTeamId) ? Number(object.direTeamId) : 0,
+      radiantTeamTag: isSet(object.radiantTeamTag) ? String(object.radiantTeamTag) : "",
+      direTeamTag: isSet(object.direTeamTag) ? String(object.direTeamTag) : "",
+      endTime: isSet(object.endTime) ? Number(object.endTime) : 0,
+    };
+  },
+
+  toJSON(message: CGameInfo_CDotaGameInfo): unknown {
+    const obj: any = {};
+    message.matchId !== undefined && (obj.matchId = message.matchId);
+    message.gameMode !== undefined && (obj.gameMode = Math.round(message.gameMode));
+    message.gameWinner !== undefined && (obj.gameWinner = Math.round(message.gameWinner));
+    if (message.playerInfo) {
+      obj.playerInfo = message.playerInfo.map((e) => e ? CGameInfo_CDotaGameInfo_CPlayerInfo.toJSON(e) : undefined);
+    } else {
+      obj.playerInfo = [];
+    }
+    message.leagueid !== undefined && (obj.leagueid = Math.round(message.leagueid));
+    if (message.picksBans) {
+      obj.picksBans = message.picksBans.map((e) => e ? CGameInfo_CDotaGameInfo_CHeroSelectEvent.toJSON(e) : undefined);
+    } else {
+      obj.picksBans = [];
+    }
+    message.radiantTeamId !== undefined && (obj.radiantTeamId = Math.round(message.radiantTeamId));
+    message.direTeamId !== undefined && (obj.direTeamId = Math.round(message.direTeamId));
+    message.radiantTeamTag !== undefined && (obj.radiantTeamTag = message.radiantTeamTag);
+    message.direTeamTag !== undefined && (obj.direTeamTag = message.direTeamTag);
+    message.endTime !== undefined && (obj.endTime = Math.round(message.endTime));
+    return obj;
+  },
 };
 
 function createBaseCGameInfo_CDotaGameInfo_CPlayerInfo(): CGameInfo_CDotaGameInfo_CPlayerInfo {
@@ -593,6 +796,26 @@ export const CGameInfo_CDotaGameInfo_CPlayerInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CGameInfo_CDotaGameInfo_CPlayerInfo {
+    return {
+      heroName: isSet(object.heroName) ? String(object.heroName) : "",
+      playerName: isSet(object.playerName) ? String(object.playerName) : "",
+      isFakeClient: isSet(object.isFakeClient) ? Boolean(object.isFakeClient) : false,
+      steamid: isSet(object.steamid) ? String(object.steamid) : "0",
+      gameTeam: isSet(object.gameTeam) ? Number(object.gameTeam) : 0,
+    };
+  },
+
+  toJSON(message: CGameInfo_CDotaGameInfo_CPlayerInfo): unknown {
+    const obj: any = {};
+    message.heroName !== undefined && (obj.heroName = message.heroName);
+    message.playerName !== undefined && (obj.playerName = message.playerName);
+    message.isFakeClient !== undefined && (obj.isFakeClient = message.isFakeClient);
+    message.steamid !== undefined && (obj.steamid = message.steamid);
+    message.gameTeam !== undefined && (obj.gameTeam = Math.round(message.gameTeam));
+    return obj;
+  },
 };
 
 function createBaseCGameInfo_CDotaGameInfo_CHeroSelectEvent(): CGameInfo_CDotaGameInfo_CHeroSelectEvent {
@@ -648,6 +871,22 @@ export const CGameInfo_CDotaGameInfo_CHeroSelectEvent = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CGameInfo_CDotaGameInfo_CHeroSelectEvent {
+    return {
+      isPick: isSet(object.isPick) ? Boolean(object.isPick) : false,
+      team: isSet(object.team) ? Number(object.team) : 0,
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+    };
+  },
+
+  toJSON(message: CGameInfo_CDotaGameInfo_CHeroSelectEvent): unknown {
+    const obj: any = {};
+    message.isPick !== undefined && (obj.isPick = message.isPick);
+    message.team !== undefined && (obj.team = Math.round(message.team));
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    return obj;
   },
 };
 
@@ -715,6 +954,25 @@ export const CDemoFileInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDemoFileInfo {
+    return {
+      playbackTime: isSet(object.playbackTime) ? Number(object.playbackTime) : 0,
+      playbackTicks: isSet(object.playbackTicks) ? Number(object.playbackTicks) : 0,
+      playbackFrames: isSet(object.playbackFrames) ? Number(object.playbackFrames) : 0,
+      gameInfo: isSet(object.gameInfo) ? CGameInfo.fromJSON(object.gameInfo) : undefined,
+    };
+  },
+
+  toJSON(message: CDemoFileInfo): unknown {
+    const obj: any = {};
+    message.playbackTime !== undefined && (obj.playbackTime = message.playbackTime);
+    message.playbackTicks !== undefined && (obj.playbackTicks = Math.round(message.playbackTicks));
+    message.playbackFrames !== undefined && (obj.playbackFrames = Math.round(message.playbackFrames));
+    message.gameInfo !== undefined &&
+      (obj.gameInfo = message.gameInfo ? CGameInfo.toJSON(message.gameInfo) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCDemoPacket(): CDemoPacket {
@@ -750,6 +1008,17 @@ export const CDemoPacket = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDemoPacket {
+    return { data: isSet(object.data) ? Buffer.from(bytesFromBase64(object.data)) : Buffer.alloc(0) };
+  },
+
+  toJSON(message: CDemoPacket): unknown {
+    const obj: any = {};
+    message.data !== undefined &&
+      (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
+    return obj;
   },
 };
 
@@ -796,6 +1065,21 @@ export const CDemoFullPacket = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDemoFullPacket {
+    return {
+      stringTable: isSet(object.stringTable) ? CDemoStringTables.fromJSON(object.stringTable) : undefined,
+      packet: isSet(object.packet) ? CDemoPacket.fromJSON(object.packet) : undefined,
+    };
+  },
+
+  toJSON(message: CDemoFullPacket): unknown {
+    const obj: any = {};
+    message.stringTable !== undefined &&
+      (obj.stringTable = message.stringTable ? CDemoStringTables.toJSON(message.stringTable) : undefined);
+    message.packet !== undefined && (obj.packet = message.packet ? CDemoPacket.toJSON(message.packet) : undefined);
+    return obj;
   },
 };
 
@@ -863,6 +1147,25 @@ export const CDemoSaveGame = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDemoSaveGame {
+    return {
+      data: isSet(object.data) ? Buffer.from(bytesFromBase64(object.data)) : Buffer.alloc(0),
+      steamId: isSet(object.steamId) ? String(object.steamId) : "0",
+      signature: isSet(object.signature) ? String(object.signature) : "0",
+      version: isSet(object.version) ? Number(object.version) : 0,
+    };
+  },
+
+  toJSON(message: CDemoSaveGame): unknown {
+    const obj: any = {};
+    message.data !== undefined &&
+      (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
+    message.steamId !== undefined && (obj.steamId = message.steamId);
+    message.signature !== undefined && (obj.signature = message.signature);
+    message.version !== undefined && (obj.version = Math.round(message.version));
+    return obj;
+  },
 };
 
 function createBaseCDemoSyncTick(): CDemoSyncTick {
@@ -888,6 +1191,15 @@ export const CDemoSyncTick = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CDemoSyncTick {
+    return {};
+  },
+
+  toJSON(_: CDemoSyncTick): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -925,6 +1237,16 @@ export const CDemoConsoleCmd = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDemoConsoleCmd {
+    return { cmdstring: isSet(object.cmdstring) ? String(object.cmdstring) : "" };
+  },
+
+  toJSON(message: CDemoConsoleCmd): unknown {
+    const obj: any = {};
+    message.cmdstring !== undefined && (obj.cmdstring = message.cmdstring);
+    return obj;
+  },
 };
 
 function createBaseCDemoSendTables(): CDemoSendTables {
@@ -961,6 +1283,17 @@ export const CDemoSendTables = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDemoSendTables {
+    return { data: isSet(object.data) ? Buffer.from(bytesFromBase64(object.data)) : Buffer.alloc(0) };
+  },
+
+  toJSON(message: CDemoSendTables): unknown {
+    const obj: any = {};
+    message.data !== undefined &&
+      (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
+    return obj;
+  },
 };
 
 function createBaseCDemoClassInfo(): CDemoClassInfo {
@@ -996,6 +1329,22 @@ export const CDemoClassInfo = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDemoClassInfo {
+    return {
+      classes: Array.isArray(object?.classes) ? object.classes.map((e: any) => CDemoClassInfo_classT.fromJSON(e)) : [],
+    };
+  },
+
+  toJSON(message: CDemoClassInfo): unknown {
+    const obj: any = {};
+    if (message.classes) {
+      obj.classes = message.classes.map((e) => e ? CDemoClassInfo_classT.toJSON(e) : undefined);
+    } else {
+      obj.classes = [];
+    }
+    return obj;
   },
 };
 
@@ -1053,6 +1402,22 @@ export const CDemoClassInfo_classT = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDemoClassInfo_classT {
+    return {
+      classId: isSet(object.classId) ? Number(object.classId) : 0,
+      networkName: isSet(object.networkName) ? String(object.networkName) : "",
+      tableName: isSet(object.tableName) ? String(object.tableName) : "",
+    };
+  },
+
+  toJSON(message: CDemoClassInfo_classT): unknown {
+    const obj: any = {};
+    message.classId !== undefined && (obj.classId = Math.round(message.classId));
+    message.networkName !== undefined && (obj.networkName = message.networkName);
+    message.tableName !== undefined && (obj.tableName = message.tableName);
+    return obj;
+  },
 };
 
 function createBaseCDemoCustomData(): CDemoCustomData {
@@ -1099,6 +1464,21 @@ export const CDemoCustomData = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDemoCustomData {
+    return {
+      callbackIndex: isSet(object.callbackIndex) ? Number(object.callbackIndex) : 0,
+      data: isSet(object.data) ? Buffer.from(bytesFromBase64(object.data)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CDemoCustomData): unknown {
+    const obj: any = {};
+    message.callbackIndex !== undefined && (obj.callbackIndex = Math.round(message.callbackIndex));
+    message.data !== undefined &&
+      (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
+    return obj;
+  },
 };
 
 function createBaseCDemoCustomDataCallbacks(): CDemoCustomDataCallbacks {
@@ -1135,6 +1515,20 @@ export const CDemoCustomDataCallbacks = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDemoCustomDataCallbacks {
+    return { saveId: Array.isArray(object?.saveId) ? object.saveId.map((e: any) => String(e)) : [] };
+  },
+
+  toJSON(message: CDemoCustomDataCallbacks): unknown {
+    const obj: any = {};
+    if (message.saveId) {
+      obj.saveId = message.saveId.map((e) => e);
+    } else {
+      obj.saveId = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCDemoStringTables(): CDemoStringTables {
@@ -1170,6 +1564,22 @@ export const CDemoStringTables = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDemoStringTables {
+    return {
+      tables: Array.isArray(object?.tables) ? object.tables.map((e: any) => CDemoStringTables_tableT.fromJSON(e)) : [],
+    };
+  },
+
+  toJSON(message: CDemoStringTables): unknown {
+    const obj: any = {};
+    if (message.tables) {
+      obj.tables = message.tables.map((e) => e ? CDemoStringTables_tableT.toJSON(e) : undefined);
+    } else {
+      obj.tables = [];
+    }
+    return obj;
   },
 };
 
@@ -1216,6 +1626,21 @@ export const CDemoStringTables_itemsT = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDemoStringTables_itemsT {
+    return {
+      str: isSet(object.str) ? String(object.str) : "",
+      data: isSet(object.data) ? Buffer.from(bytesFromBase64(object.data)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CDemoStringTables_itemsT): unknown {
+    const obj: any = {};
+    message.str !== undefined && (obj.str = message.str);
+    message.data !== undefined &&
+      (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
+    return obj;
   },
 };
 
@@ -1283,6 +1708,34 @@ export const CDemoStringTables_tableT = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDemoStringTables_tableT {
+    return {
+      tableName: isSet(object.tableName) ? String(object.tableName) : "",
+      items: Array.isArray(object?.items) ? object.items.map((e: any) => CDemoStringTables_itemsT.fromJSON(e)) : [],
+      itemsClientside: Array.isArray(object?.itemsClientside)
+        ? object.itemsClientside.map((e: any) => CDemoStringTables_itemsT.fromJSON(e))
+        : [],
+      tableFlags: isSet(object.tableFlags) ? Number(object.tableFlags) : 0,
+    };
+  },
+
+  toJSON(message: CDemoStringTables_tableT): unknown {
+    const obj: any = {};
+    message.tableName !== undefined && (obj.tableName = message.tableName);
+    if (message.items) {
+      obj.items = message.items.map((e) => e ? CDemoStringTables_itemsT.toJSON(e) : undefined);
+    } else {
+      obj.items = [];
+    }
+    if (message.itemsClientside) {
+      obj.itemsClientside = message.itemsClientside.map((e) => e ? CDemoStringTables_itemsT.toJSON(e) : undefined);
+    } else {
+      obj.itemsClientside = [];
+    }
+    message.tableFlags !== undefined && (obj.tableFlags = Math.round(message.tableFlags));
+    return obj;
+  },
 };
 
 function createBaseCDemoStop(): CDemoStop {
@@ -1308,6 +1761,15 @@ export const CDemoStop = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CDemoStop {
+    return {};
+  },
+
+  toJSON(_: CDemoStop): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -1355,6 +1817,21 @@ export const CDemoUserCmd = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDemoUserCmd {
+    return {
+      cmdNumber: isSet(object.cmdNumber) ? Number(object.cmdNumber) : 0,
+      data: isSet(object.data) ? Buffer.from(bytesFromBase64(object.data)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CDemoUserCmd): unknown {
+    const obj: any = {};
+    message.cmdNumber !== undefined && (obj.cmdNumber = Math.round(message.cmdNumber));
+    message.data !== undefined &&
+      (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
+    return obj;
+  },
 };
 
 function createBaseCDemoSpawnGroups(): CDemoSpawnGroups {
@@ -1391,7 +1868,65 @@ export const CDemoSpawnGroups = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDemoSpawnGroups {
+    return { msgs: Array.isArray(object?.msgs) ? object.msgs.map((e: any) => Buffer.from(bytesFromBase64(e))) : [] };
+  },
+
+  toJSON(message: CDemoSpawnGroups): unknown {
+    const obj: any = {};
+    if (message.msgs) {
+      obj.msgs = message.msgs.map((e) => base64FromBytes(e !== undefined ? e : Buffer.alloc(0)));
+    } else {
+      obj.msgs = [];
+    }
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if (tsProtoGlobalThis.Buffer) {
+    return Uint8Array.from(tsProtoGlobalThis.Buffer.from(b64, "base64"));
+  } else {
+    const bin = tsProtoGlobalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if (tsProtoGlobalThis.Buffer) {
+    return tsProtoGlobalThis.Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(String.fromCharCode(byte));
+    });
+    return tsProtoGlobalThis.btoa(bin.join(""));
+  }
+}
 
 function longToString(long: Long) {
   return long.toString();
@@ -1400,4 +1935,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

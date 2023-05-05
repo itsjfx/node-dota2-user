@@ -59,6 +59,25 @@ export const CUIFontFilePB = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUIFontFilePB {
+    return {
+      fontFileName: isSet(object.fontFileName) ? String(object.fontFileName) : "",
+      opentypeFontData: isSet(object.opentypeFontData)
+        ? Buffer.from(bytesFromBase64(object.opentypeFontData))
+        : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CUIFontFilePB): unknown {
+    const obj: any = {};
+    message.fontFileName !== undefined && (obj.fontFileName = message.fontFileName);
+    message.opentypeFontData !== undefined &&
+      (obj.opentypeFontData = base64FromBytes(
+        message.opentypeFontData !== undefined ? message.opentypeFontData : Buffer.alloc(0),
+      ));
+    return obj;
+  },
 };
 
 function createBaseCUIFontFilePackagePB(): CUIFontFilePackagePB {
@@ -105,6 +124,28 @@ export const CUIFontFilePackagePB = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUIFontFilePackagePB {
+    return {
+      packageVersion: isSet(object.packageVersion) ? Number(object.packageVersion) : 0,
+      encryptedFontFiles: Array.isArray(object?.encryptedFontFiles)
+        ? object.encryptedFontFiles.map((e: any) => CUIFontFilePackagePB_CUIEncryptedFontFilePB.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CUIFontFilePackagePB): unknown {
+    const obj: any = {};
+    message.packageVersion !== undefined && (obj.packageVersion = Math.round(message.packageVersion));
+    if (message.encryptedFontFiles) {
+      obj.encryptedFontFiles = message.encryptedFontFiles.map((e) =>
+        e ? CUIFontFilePackagePB_CUIEncryptedFontFilePB.toJSON(e) : undefined
+      );
+    } else {
+      obj.encryptedFontFiles = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCUIFontFilePackagePB_CUIEncryptedFontFilePB(): CUIFontFilePackagePB_CUIEncryptedFontFilePB {
@@ -141,4 +182,69 @@ export const CUIFontFilePackagePB_CUIEncryptedFontFilePB = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUIFontFilePackagePB_CUIEncryptedFontFilePB {
+    return {
+      encryptedContents: isSet(object.encryptedContents)
+        ? Buffer.from(bytesFromBase64(object.encryptedContents))
+        : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CUIFontFilePackagePB_CUIEncryptedFontFilePB): unknown {
+    const obj: any = {};
+    message.encryptedContents !== undefined &&
+      (obj.encryptedContents = base64FromBytes(
+        message.encryptedContents !== undefined ? message.encryptedContents : Buffer.alloc(0),
+      ));
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if (tsProtoGlobalThis.Buffer) {
+    return Uint8Array.from(tsProtoGlobalThis.Buffer.from(b64, "base64"));
+  } else {
+    const bin = tsProtoGlobalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if (tsProtoGlobalThis.Buffer) {
+    return tsProtoGlobalThis.Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(String.fromCharCode(byte));
+    });
+    return tsProtoGlobalThis.btoa(bin.join(""));
+  }
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
+}

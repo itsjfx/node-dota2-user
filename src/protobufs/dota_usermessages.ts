@@ -10,6 +10,8 @@ import {
   CDOTAMsgSendStatPopup,
   CDOTAMsgWorldLine,
   EDOTAVersusScenePlayerBehavior,
+  eDOTAVersusScenePlayerBehaviorFromJSON,
+  eDOTAVersusScenePlayerBehaviorToJSON,
   VersusSceneChatWheel,
   VersusScenePlayActivity,
   VersusScenePlaybackRate,
@@ -176,6 +178,800 @@ export enum EDotaUserMessages {
   DOTA_UM_PlayerDraftPick = 621,
 }
 
+export function eDotaUserMessagesFromJSON(object: any): EDotaUserMessages {
+  switch (object) {
+    case 464:
+    case "DOTA_UM_AddUnitToSelection":
+      return EDotaUserMessages.DOTA_UM_AddUnitToSelection;
+    case 465:
+    case "DOTA_UM_AIDebugLine":
+      return EDotaUserMessages.DOTA_UM_AIDebugLine;
+    case 466:
+    case "DOTA_UM_ChatEvent":
+      return EDotaUserMessages.DOTA_UM_ChatEvent;
+    case 467:
+    case "DOTA_UM_CombatHeroPositions":
+      return EDotaUserMessages.DOTA_UM_CombatHeroPositions;
+    case 468:
+    case "DOTA_UM_CombatLogData":
+      return EDotaUserMessages.DOTA_UM_CombatLogData;
+    case 470:
+    case "DOTA_UM_CombatLogBulkData":
+      return EDotaUserMessages.DOTA_UM_CombatLogBulkData;
+    case 471:
+    case "DOTA_UM_CreateLinearProjectile":
+      return EDotaUserMessages.DOTA_UM_CreateLinearProjectile;
+    case 472:
+    case "DOTA_UM_DestroyLinearProjectile":
+      return EDotaUserMessages.DOTA_UM_DestroyLinearProjectile;
+    case 473:
+    case "DOTA_UM_DodgeTrackingProjectiles":
+      return EDotaUserMessages.DOTA_UM_DodgeTrackingProjectiles;
+    case 474:
+    case "DOTA_UM_GlobalLightColor":
+      return EDotaUserMessages.DOTA_UM_GlobalLightColor;
+    case 475:
+    case "DOTA_UM_GlobalLightDirection":
+      return EDotaUserMessages.DOTA_UM_GlobalLightDirection;
+    case 476:
+    case "DOTA_UM_InvalidCommand":
+      return EDotaUserMessages.DOTA_UM_InvalidCommand;
+    case 477:
+    case "DOTA_UM_LocationPing":
+      return EDotaUserMessages.DOTA_UM_LocationPing;
+    case 478:
+    case "DOTA_UM_MapLine":
+      return EDotaUserMessages.DOTA_UM_MapLine;
+    case 479:
+    case "DOTA_UM_MiniKillCamInfo":
+      return EDotaUserMessages.DOTA_UM_MiniKillCamInfo;
+    case 480:
+    case "DOTA_UM_MinimapDebugPoint":
+      return EDotaUserMessages.DOTA_UM_MinimapDebugPoint;
+    case 481:
+    case "DOTA_UM_MinimapEvent":
+      return EDotaUserMessages.DOTA_UM_MinimapEvent;
+    case 482:
+    case "DOTA_UM_NevermoreRequiem":
+      return EDotaUserMessages.DOTA_UM_NevermoreRequiem;
+    case 483:
+    case "DOTA_UM_OverheadEvent":
+      return EDotaUserMessages.DOTA_UM_OverheadEvent;
+    case 484:
+    case "DOTA_UM_SetNextAutobuyItem":
+      return EDotaUserMessages.DOTA_UM_SetNextAutobuyItem;
+    case 485:
+    case "DOTA_UM_SharedCooldown":
+      return EDotaUserMessages.DOTA_UM_SharedCooldown;
+    case 486:
+    case "DOTA_UM_SpectatorPlayerClick":
+      return EDotaUserMessages.DOTA_UM_SpectatorPlayerClick;
+    case 487:
+    case "DOTA_UM_TutorialTipInfo":
+      return EDotaUserMessages.DOTA_UM_TutorialTipInfo;
+    case 488:
+    case "DOTA_UM_UnitEvent":
+      return EDotaUserMessages.DOTA_UM_UnitEvent;
+    case 489:
+    case "DOTA_UM_ParticleManager":
+      return EDotaUserMessages.DOTA_UM_ParticleManager;
+    case 490:
+    case "DOTA_UM_BotChat":
+      return EDotaUserMessages.DOTA_UM_BotChat;
+    case 491:
+    case "DOTA_UM_HudError":
+      return EDotaUserMessages.DOTA_UM_HudError;
+    case 492:
+    case "DOTA_UM_ItemPurchased":
+      return EDotaUserMessages.DOTA_UM_ItemPurchased;
+    case 493:
+    case "DOTA_UM_Ping":
+      return EDotaUserMessages.DOTA_UM_Ping;
+    case 494:
+    case "DOTA_UM_ItemFound":
+      return EDotaUserMessages.DOTA_UM_ItemFound;
+    case 495:
+    case "DOTA_UM_CharacterSpeakConcept":
+      return EDotaUserMessages.DOTA_UM_CharacterSpeakConcept;
+    case 496:
+    case "DOTA_UM_SwapVerify":
+      return EDotaUserMessages.DOTA_UM_SwapVerify;
+    case 497:
+    case "DOTA_UM_WorldLine":
+      return EDotaUserMessages.DOTA_UM_WorldLine;
+    case 498:
+    case "DOTA_UM_TournamentDrop":
+      return EDotaUserMessages.DOTA_UM_TournamentDrop;
+    case 499:
+    case "DOTA_UM_ItemAlert":
+      return EDotaUserMessages.DOTA_UM_ItemAlert;
+    case 500:
+    case "DOTA_UM_HalloweenDrops":
+      return EDotaUserMessages.DOTA_UM_HalloweenDrops;
+    case 501:
+    case "DOTA_UM_ChatWheel":
+      return EDotaUserMessages.DOTA_UM_ChatWheel;
+    case 502:
+    case "DOTA_UM_ReceivedXmasGift":
+      return EDotaUserMessages.DOTA_UM_ReceivedXmasGift;
+    case 503:
+    case "DOTA_UM_UpdateSharedContent":
+      return EDotaUserMessages.DOTA_UM_UpdateSharedContent;
+    case 504:
+    case "DOTA_UM_TutorialRequestExp":
+      return EDotaUserMessages.DOTA_UM_TutorialRequestExp;
+    case 505:
+    case "DOTA_UM_TutorialPingMinimap":
+      return EDotaUserMessages.DOTA_UM_TutorialPingMinimap;
+    case 506:
+    case "DOTA_UM_GamerulesStateChanged":
+      return EDotaUserMessages.DOTA_UM_GamerulesStateChanged;
+    case 507:
+    case "DOTA_UM_ShowSurvey":
+      return EDotaUserMessages.DOTA_UM_ShowSurvey;
+    case 508:
+    case "DOTA_UM_TutorialFade":
+      return EDotaUserMessages.DOTA_UM_TutorialFade;
+    case 509:
+    case "DOTA_UM_AddQuestLogEntry":
+      return EDotaUserMessages.DOTA_UM_AddQuestLogEntry;
+    case 510:
+    case "DOTA_UM_SendStatPopup":
+      return EDotaUserMessages.DOTA_UM_SendStatPopup;
+    case 511:
+    case "DOTA_UM_TutorialFinish":
+      return EDotaUserMessages.DOTA_UM_TutorialFinish;
+    case 512:
+    case "DOTA_UM_SendRoshanPopup":
+      return EDotaUserMessages.DOTA_UM_SendRoshanPopup;
+    case 513:
+    case "DOTA_UM_SendGenericToolTip":
+      return EDotaUserMessages.DOTA_UM_SendGenericToolTip;
+    case 514:
+    case "DOTA_UM_SendFinalGold":
+      return EDotaUserMessages.DOTA_UM_SendFinalGold;
+    case 515:
+    case "DOTA_UM_CustomMsg":
+      return EDotaUserMessages.DOTA_UM_CustomMsg;
+    case 516:
+    case "DOTA_UM_CoachHUDPing":
+      return EDotaUserMessages.DOTA_UM_CoachHUDPing;
+    case 517:
+    case "DOTA_UM_ClientLoadGridNav":
+      return EDotaUserMessages.DOTA_UM_ClientLoadGridNav;
+    case 518:
+    case "DOTA_UM_TE_Projectile":
+      return EDotaUserMessages.DOTA_UM_TE_Projectile;
+    case 519:
+    case "DOTA_UM_TE_ProjectileLoc":
+      return EDotaUserMessages.DOTA_UM_TE_ProjectileLoc;
+    case 520:
+    case "DOTA_UM_TE_DotaBloodImpact":
+      return EDotaUserMessages.DOTA_UM_TE_DotaBloodImpact;
+    case 521:
+    case "DOTA_UM_TE_UnitAnimation":
+      return EDotaUserMessages.DOTA_UM_TE_UnitAnimation;
+    case 522:
+    case "DOTA_UM_TE_UnitAnimationEnd":
+      return EDotaUserMessages.DOTA_UM_TE_UnitAnimationEnd;
+    case 523:
+    case "DOTA_UM_AbilityPing":
+      return EDotaUserMessages.DOTA_UM_AbilityPing;
+    case 524:
+    case "DOTA_UM_ShowGenericPopup":
+      return EDotaUserMessages.DOTA_UM_ShowGenericPopup;
+    case 525:
+    case "DOTA_UM_VoteStart":
+      return EDotaUserMessages.DOTA_UM_VoteStart;
+    case 526:
+    case "DOTA_UM_VoteUpdate":
+      return EDotaUserMessages.DOTA_UM_VoteUpdate;
+    case 527:
+    case "DOTA_UM_VoteEnd":
+      return EDotaUserMessages.DOTA_UM_VoteEnd;
+    case 528:
+    case "DOTA_UM_BoosterState":
+      return EDotaUserMessages.DOTA_UM_BoosterState;
+    case 529:
+    case "DOTA_UM_WillPurchaseAlert":
+      return EDotaUserMessages.DOTA_UM_WillPurchaseAlert;
+    case 530:
+    case "DOTA_UM_TutorialMinimapPosition":
+      return EDotaUserMessages.DOTA_UM_TutorialMinimapPosition;
+    case 531:
+    case "DOTA_UM_PlayerMMR":
+      return EDotaUserMessages.DOTA_UM_PlayerMMR;
+    case 532:
+    case "DOTA_UM_AbilitySteal":
+      return EDotaUserMessages.DOTA_UM_AbilitySteal;
+    case 533:
+    case "DOTA_UM_CourierKilledAlert":
+      return EDotaUserMessages.DOTA_UM_CourierKilledAlert;
+    case 534:
+    case "DOTA_UM_EnemyItemAlert":
+      return EDotaUserMessages.DOTA_UM_EnemyItemAlert;
+    case 535:
+    case "DOTA_UM_StatsMatchDetails":
+      return EDotaUserMessages.DOTA_UM_StatsMatchDetails;
+    case 536:
+    case "DOTA_UM_MiniTaunt":
+      return EDotaUserMessages.DOTA_UM_MiniTaunt;
+    case 537:
+    case "DOTA_UM_BuyBackStateAlert":
+      return EDotaUserMessages.DOTA_UM_BuyBackStateAlert;
+    case 538:
+    case "DOTA_UM_SpeechBubble":
+      return EDotaUserMessages.DOTA_UM_SpeechBubble;
+    case 539:
+    case "DOTA_UM_CustomHeaderMessage":
+      return EDotaUserMessages.DOTA_UM_CustomHeaderMessage;
+    case 540:
+    case "DOTA_UM_QuickBuyAlert":
+      return EDotaUserMessages.DOTA_UM_QuickBuyAlert;
+    case 541:
+    case "DOTA_UM_StatsHeroDetails":
+      return EDotaUserMessages.DOTA_UM_StatsHeroDetails;
+    case 542:
+    case "DOTA_UM_PredictionResult":
+      return EDotaUserMessages.DOTA_UM_PredictionResult;
+    case 543:
+    case "DOTA_UM_ModifierAlert":
+      return EDotaUserMessages.DOTA_UM_ModifierAlert;
+    case 544:
+    case "DOTA_UM_HPManaAlert":
+      return EDotaUserMessages.DOTA_UM_HPManaAlert;
+    case 545:
+    case "DOTA_UM_GlyphAlert":
+      return EDotaUserMessages.DOTA_UM_GlyphAlert;
+    case 546:
+    case "DOTA_UM_BeastChat":
+      return EDotaUserMessages.DOTA_UM_BeastChat;
+    case 547:
+    case "DOTA_UM_SpectatorPlayerUnitOrders":
+      return EDotaUserMessages.DOTA_UM_SpectatorPlayerUnitOrders;
+    case 548:
+    case "DOTA_UM_CustomHudElement_Create":
+      return EDotaUserMessages.DOTA_UM_CustomHudElement_Create;
+    case 549:
+    case "DOTA_UM_CustomHudElement_Modify":
+      return EDotaUserMessages.DOTA_UM_CustomHudElement_Modify;
+    case 550:
+    case "DOTA_UM_CustomHudElement_Destroy":
+      return EDotaUserMessages.DOTA_UM_CustomHudElement_Destroy;
+    case 551:
+    case "DOTA_UM_CompendiumState":
+      return EDotaUserMessages.DOTA_UM_CompendiumState;
+    case 552:
+    case "DOTA_UM_ProjectionAbility":
+      return EDotaUserMessages.DOTA_UM_ProjectionAbility;
+    case 553:
+    case "DOTA_UM_ProjectionEvent":
+      return EDotaUserMessages.DOTA_UM_ProjectionEvent;
+    case 554:
+    case "DOTA_UM_CombatLogDataHLTV":
+      return EDotaUserMessages.DOTA_UM_CombatLogDataHLTV;
+    case 555:
+    case "DOTA_UM_XPAlert":
+      return EDotaUserMessages.DOTA_UM_XPAlert;
+    case 556:
+    case "DOTA_UM_UpdateQuestProgress":
+      return EDotaUserMessages.DOTA_UM_UpdateQuestProgress;
+    case 557:
+    case "DOTA_UM_MatchMetadata":
+      return EDotaUserMessages.DOTA_UM_MatchMetadata;
+    case 558:
+    case "DOTA_UM_MatchDetails":
+      return EDotaUserMessages.DOTA_UM_MatchDetails;
+    case 559:
+    case "DOTA_UM_QuestStatus":
+      return EDotaUserMessages.DOTA_UM_QuestStatus;
+    case 560:
+    case "DOTA_UM_SuggestHeroPick":
+      return EDotaUserMessages.DOTA_UM_SuggestHeroPick;
+    case 561:
+    case "DOTA_UM_SuggestHeroRole":
+      return EDotaUserMessages.DOTA_UM_SuggestHeroRole;
+    case 562:
+    case "DOTA_UM_KillcamDamageTaken":
+      return EDotaUserMessages.DOTA_UM_KillcamDamageTaken;
+    case 563:
+    case "DOTA_UM_SelectPenaltyGold":
+      return EDotaUserMessages.DOTA_UM_SelectPenaltyGold;
+    case 564:
+    case "DOTA_UM_RollDiceResult":
+      return EDotaUserMessages.DOTA_UM_RollDiceResult;
+    case 565:
+    case "DOTA_UM_FlipCoinResult":
+      return EDotaUserMessages.DOTA_UM_FlipCoinResult;
+    case 566:
+    case "DOTA_UM_RequestItemSuggestions":
+      return EDotaUserMessages.DOTA_UM_RequestItemSuggestions;
+    case 567:
+    case "DOTA_UM_TeamCaptainChanged":
+      return EDotaUserMessages.DOTA_UM_TeamCaptainChanged;
+    case 568:
+    case "DOTA_UM_SendRoshanSpectatorPhase":
+      return EDotaUserMessages.DOTA_UM_SendRoshanSpectatorPhase;
+    case 569:
+    case "DOTA_UM_ChatWheelCooldown":
+      return EDotaUserMessages.DOTA_UM_ChatWheelCooldown;
+    case 570:
+    case "DOTA_UM_DismissAllStatPopups":
+      return EDotaUserMessages.DOTA_UM_DismissAllStatPopups;
+    case 571:
+    case "DOTA_UM_TE_DestroyProjectile":
+      return EDotaUserMessages.DOTA_UM_TE_DestroyProjectile;
+    case 572:
+    case "DOTA_UM_HeroRelicProgress":
+      return EDotaUserMessages.DOTA_UM_HeroRelicProgress;
+    case 573:
+    case "DOTA_UM_AbilityDraftRequestAbility":
+      return EDotaUserMessages.DOTA_UM_AbilityDraftRequestAbility;
+    case 574:
+    case "DOTA_UM_ItemSold":
+      return EDotaUserMessages.DOTA_UM_ItemSold;
+    case 575:
+    case "DOTA_UM_DamageReport":
+      return EDotaUserMessages.DOTA_UM_DamageReport;
+    case 576:
+    case "DOTA_UM_SalutePlayer":
+      return EDotaUserMessages.DOTA_UM_SalutePlayer;
+    case 577:
+    case "DOTA_UM_TipAlert":
+      return EDotaUserMessages.DOTA_UM_TipAlert;
+    case 578:
+    case "DOTA_UM_ReplaceQueryUnit":
+      return EDotaUserMessages.DOTA_UM_ReplaceQueryUnit;
+    case 579:
+    case "DOTA_UM_EmptyTeleportAlert":
+      return EDotaUserMessages.DOTA_UM_EmptyTeleportAlert;
+    case 580:
+    case "DOTA_UM_MarsArenaOfBloodAttack":
+      return EDotaUserMessages.DOTA_UM_MarsArenaOfBloodAttack;
+    case 581:
+    case "DOTA_UM_ESArcanaCombo":
+      return EDotaUserMessages.DOTA_UM_ESArcanaCombo;
+    case 582:
+    case "DOTA_UM_ESArcanaComboSummary":
+      return EDotaUserMessages.DOTA_UM_ESArcanaComboSummary;
+    case 583:
+    case "DOTA_UM_HighFiveLeftHanging":
+      return EDotaUserMessages.DOTA_UM_HighFiveLeftHanging;
+    case 584:
+    case "DOTA_UM_HighFiveCompleted":
+      return EDotaUserMessages.DOTA_UM_HighFiveCompleted;
+    case 585:
+    case "DOTA_UM_ShovelUnearth":
+      return EDotaUserMessages.DOTA_UM_ShovelUnearth;
+    case 586:
+    case "DOTA_EM_InvokerSpellCast":
+      return EDotaUserMessages.DOTA_EM_InvokerSpellCast;
+    case 587:
+    case "DOTA_UM_RadarAlert":
+      return EDotaUserMessages.DOTA_UM_RadarAlert;
+    case 588:
+    case "DOTA_UM_AllStarEvent":
+      return EDotaUserMessages.DOTA_UM_AllStarEvent;
+    case 589:
+    case "DOTA_UM_TalentTreeAlert":
+      return EDotaUserMessages.DOTA_UM_TalentTreeAlert;
+    case 590:
+    case "DOTA_UM_QueuedOrderRemoved":
+      return EDotaUserMessages.DOTA_UM_QueuedOrderRemoved;
+    case 591:
+    case "DOTA_UM_DebugChallenge":
+      return EDotaUserMessages.DOTA_UM_DebugChallenge;
+    case 592:
+    case "DOTA_UM_OMArcanaCombo":
+      return EDotaUserMessages.DOTA_UM_OMArcanaCombo;
+    case 593:
+    case "DOTA_UM_FoundNeutralItem":
+      return EDotaUserMessages.DOTA_UM_FoundNeutralItem;
+    case 594:
+    case "DOTA_UM_OutpostCaptured":
+      return EDotaUserMessages.DOTA_UM_OutpostCaptured;
+    case 595:
+    case "DOTA_UM_OutpostGrantedXP":
+      return EDotaUserMessages.DOTA_UM_OutpostGrantedXP;
+    case 596:
+    case "DOTA_UM_MoveCameraToUnit":
+      return EDotaUserMessages.DOTA_UM_MoveCameraToUnit;
+    case 597:
+    case "DOTA_UM_PauseMinigameData":
+      return EDotaUserMessages.DOTA_UM_PauseMinigameData;
+    case 598:
+    case "DOTA_UM_VersusScene_PlayerBehavior":
+      return EDotaUserMessages.DOTA_UM_VersusScene_PlayerBehavior;
+    case 600:
+    case "DOTA_UM_QoP_ArcanaSummary":
+      return EDotaUserMessages.DOTA_UM_QoP_ArcanaSummary;
+    case 601:
+    case "DOTA_UM_HotPotato_Created":
+      return EDotaUserMessages.DOTA_UM_HotPotato_Created;
+    case 602:
+    case "DOTA_UM_HotPotato_Exploded":
+      return EDotaUserMessages.DOTA_UM_HotPotato_Exploded;
+    case 603:
+    case "DOTA_UM_WK_Arcana_Progress":
+      return EDotaUserMessages.DOTA_UM_WK_Arcana_Progress;
+    case 604:
+    case "DOTA_UM_GuildChallenge_Progress":
+      return EDotaUserMessages.DOTA_UM_GuildChallenge_Progress;
+    case 605:
+    case "DOTA_UM_WRArcanaProgress":
+      return EDotaUserMessages.DOTA_UM_WRArcanaProgress;
+    case 606:
+    case "DOTA_UM_WRArcanaSummary":
+      return EDotaUserMessages.DOTA_UM_WRArcanaSummary;
+    case 607:
+    case "DOTA_UM_EmptyItemSlotAlert":
+      return EDotaUserMessages.DOTA_UM_EmptyItemSlotAlert;
+    case 608:
+    case "DOTA_UM_AghsStatusAlert":
+      return EDotaUserMessages.DOTA_UM_AghsStatusAlert;
+    case 609:
+    case "DOTA_UM_PingConfirmation":
+      return EDotaUserMessages.DOTA_UM_PingConfirmation;
+    case 610:
+    case "DOTA_UM_MutedPlayers":
+      return EDotaUserMessages.DOTA_UM_MutedPlayers;
+    case 611:
+    case "DOTA_UM_ContextualTip":
+      return EDotaUserMessages.DOTA_UM_ContextualTip;
+    case 612:
+    case "DOTA_UM_ChatMessage":
+      return EDotaUserMessages.DOTA_UM_ChatMessage;
+    case 613:
+    case "DOTA_UM_NeutralCampAlert":
+      return EDotaUserMessages.DOTA_UM_NeutralCampAlert;
+    case 614:
+    case "DOTA_UM_RockPaperScissorsStarted":
+      return EDotaUserMessages.DOTA_UM_RockPaperScissorsStarted;
+    case 615:
+    case "DOTA_UM_RockPaperScissorsFinished":
+      return EDotaUserMessages.DOTA_UM_RockPaperScissorsFinished;
+    case 616:
+    case "DOTA_UM_DuelOpponentKilled":
+      return EDotaUserMessages.DOTA_UM_DuelOpponentKilled;
+    case 617:
+    case "DOTA_UM_DuelAccepted":
+      return EDotaUserMessages.DOTA_UM_DuelAccepted;
+    case 618:
+    case "DOTA_UM_DuelRequested":
+      return EDotaUserMessages.DOTA_UM_DuelRequested;
+    case 619:
+    case "DOTA_UM_MuertaReleaseEvent_AssignedTargetKilled":
+      return EDotaUserMessages.DOTA_UM_MuertaReleaseEvent_AssignedTargetKilled;
+    case 620:
+    case "DOTA_UM_PlayerDraftSuggestPick":
+      return EDotaUserMessages.DOTA_UM_PlayerDraftSuggestPick;
+    case 621:
+    case "DOTA_UM_PlayerDraftPick":
+      return EDotaUserMessages.DOTA_UM_PlayerDraftPick;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EDotaUserMessages");
+  }
+}
+
+export function eDotaUserMessagesToJSON(object: EDotaUserMessages): string {
+  switch (object) {
+    case EDotaUserMessages.DOTA_UM_AddUnitToSelection:
+      return "DOTA_UM_AddUnitToSelection";
+    case EDotaUserMessages.DOTA_UM_AIDebugLine:
+      return "DOTA_UM_AIDebugLine";
+    case EDotaUserMessages.DOTA_UM_ChatEvent:
+      return "DOTA_UM_ChatEvent";
+    case EDotaUserMessages.DOTA_UM_CombatHeroPositions:
+      return "DOTA_UM_CombatHeroPositions";
+    case EDotaUserMessages.DOTA_UM_CombatLogData:
+      return "DOTA_UM_CombatLogData";
+    case EDotaUserMessages.DOTA_UM_CombatLogBulkData:
+      return "DOTA_UM_CombatLogBulkData";
+    case EDotaUserMessages.DOTA_UM_CreateLinearProjectile:
+      return "DOTA_UM_CreateLinearProjectile";
+    case EDotaUserMessages.DOTA_UM_DestroyLinearProjectile:
+      return "DOTA_UM_DestroyLinearProjectile";
+    case EDotaUserMessages.DOTA_UM_DodgeTrackingProjectiles:
+      return "DOTA_UM_DodgeTrackingProjectiles";
+    case EDotaUserMessages.DOTA_UM_GlobalLightColor:
+      return "DOTA_UM_GlobalLightColor";
+    case EDotaUserMessages.DOTA_UM_GlobalLightDirection:
+      return "DOTA_UM_GlobalLightDirection";
+    case EDotaUserMessages.DOTA_UM_InvalidCommand:
+      return "DOTA_UM_InvalidCommand";
+    case EDotaUserMessages.DOTA_UM_LocationPing:
+      return "DOTA_UM_LocationPing";
+    case EDotaUserMessages.DOTA_UM_MapLine:
+      return "DOTA_UM_MapLine";
+    case EDotaUserMessages.DOTA_UM_MiniKillCamInfo:
+      return "DOTA_UM_MiniKillCamInfo";
+    case EDotaUserMessages.DOTA_UM_MinimapDebugPoint:
+      return "DOTA_UM_MinimapDebugPoint";
+    case EDotaUserMessages.DOTA_UM_MinimapEvent:
+      return "DOTA_UM_MinimapEvent";
+    case EDotaUserMessages.DOTA_UM_NevermoreRequiem:
+      return "DOTA_UM_NevermoreRequiem";
+    case EDotaUserMessages.DOTA_UM_OverheadEvent:
+      return "DOTA_UM_OverheadEvent";
+    case EDotaUserMessages.DOTA_UM_SetNextAutobuyItem:
+      return "DOTA_UM_SetNextAutobuyItem";
+    case EDotaUserMessages.DOTA_UM_SharedCooldown:
+      return "DOTA_UM_SharedCooldown";
+    case EDotaUserMessages.DOTA_UM_SpectatorPlayerClick:
+      return "DOTA_UM_SpectatorPlayerClick";
+    case EDotaUserMessages.DOTA_UM_TutorialTipInfo:
+      return "DOTA_UM_TutorialTipInfo";
+    case EDotaUserMessages.DOTA_UM_UnitEvent:
+      return "DOTA_UM_UnitEvent";
+    case EDotaUserMessages.DOTA_UM_ParticleManager:
+      return "DOTA_UM_ParticleManager";
+    case EDotaUserMessages.DOTA_UM_BotChat:
+      return "DOTA_UM_BotChat";
+    case EDotaUserMessages.DOTA_UM_HudError:
+      return "DOTA_UM_HudError";
+    case EDotaUserMessages.DOTA_UM_ItemPurchased:
+      return "DOTA_UM_ItemPurchased";
+    case EDotaUserMessages.DOTA_UM_Ping:
+      return "DOTA_UM_Ping";
+    case EDotaUserMessages.DOTA_UM_ItemFound:
+      return "DOTA_UM_ItemFound";
+    case EDotaUserMessages.DOTA_UM_CharacterSpeakConcept:
+      return "DOTA_UM_CharacterSpeakConcept";
+    case EDotaUserMessages.DOTA_UM_SwapVerify:
+      return "DOTA_UM_SwapVerify";
+    case EDotaUserMessages.DOTA_UM_WorldLine:
+      return "DOTA_UM_WorldLine";
+    case EDotaUserMessages.DOTA_UM_TournamentDrop:
+      return "DOTA_UM_TournamentDrop";
+    case EDotaUserMessages.DOTA_UM_ItemAlert:
+      return "DOTA_UM_ItemAlert";
+    case EDotaUserMessages.DOTA_UM_HalloweenDrops:
+      return "DOTA_UM_HalloweenDrops";
+    case EDotaUserMessages.DOTA_UM_ChatWheel:
+      return "DOTA_UM_ChatWheel";
+    case EDotaUserMessages.DOTA_UM_ReceivedXmasGift:
+      return "DOTA_UM_ReceivedXmasGift";
+    case EDotaUserMessages.DOTA_UM_UpdateSharedContent:
+      return "DOTA_UM_UpdateSharedContent";
+    case EDotaUserMessages.DOTA_UM_TutorialRequestExp:
+      return "DOTA_UM_TutorialRequestExp";
+    case EDotaUserMessages.DOTA_UM_TutorialPingMinimap:
+      return "DOTA_UM_TutorialPingMinimap";
+    case EDotaUserMessages.DOTA_UM_GamerulesStateChanged:
+      return "DOTA_UM_GamerulesStateChanged";
+    case EDotaUserMessages.DOTA_UM_ShowSurvey:
+      return "DOTA_UM_ShowSurvey";
+    case EDotaUserMessages.DOTA_UM_TutorialFade:
+      return "DOTA_UM_TutorialFade";
+    case EDotaUserMessages.DOTA_UM_AddQuestLogEntry:
+      return "DOTA_UM_AddQuestLogEntry";
+    case EDotaUserMessages.DOTA_UM_SendStatPopup:
+      return "DOTA_UM_SendStatPopup";
+    case EDotaUserMessages.DOTA_UM_TutorialFinish:
+      return "DOTA_UM_TutorialFinish";
+    case EDotaUserMessages.DOTA_UM_SendRoshanPopup:
+      return "DOTA_UM_SendRoshanPopup";
+    case EDotaUserMessages.DOTA_UM_SendGenericToolTip:
+      return "DOTA_UM_SendGenericToolTip";
+    case EDotaUserMessages.DOTA_UM_SendFinalGold:
+      return "DOTA_UM_SendFinalGold";
+    case EDotaUserMessages.DOTA_UM_CustomMsg:
+      return "DOTA_UM_CustomMsg";
+    case EDotaUserMessages.DOTA_UM_CoachHUDPing:
+      return "DOTA_UM_CoachHUDPing";
+    case EDotaUserMessages.DOTA_UM_ClientLoadGridNav:
+      return "DOTA_UM_ClientLoadGridNav";
+    case EDotaUserMessages.DOTA_UM_TE_Projectile:
+      return "DOTA_UM_TE_Projectile";
+    case EDotaUserMessages.DOTA_UM_TE_ProjectileLoc:
+      return "DOTA_UM_TE_ProjectileLoc";
+    case EDotaUserMessages.DOTA_UM_TE_DotaBloodImpact:
+      return "DOTA_UM_TE_DotaBloodImpact";
+    case EDotaUserMessages.DOTA_UM_TE_UnitAnimation:
+      return "DOTA_UM_TE_UnitAnimation";
+    case EDotaUserMessages.DOTA_UM_TE_UnitAnimationEnd:
+      return "DOTA_UM_TE_UnitAnimationEnd";
+    case EDotaUserMessages.DOTA_UM_AbilityPing:
+      return "DOTA_UM_AbilityPing";
+    case EDotaUserMessages.DOTA_UM_ShowGenericPopup:
+      return "DOTA_UM_ShowGenericPopup";
+    case EDotaUserMessages.DOTA_UM_VoteStart:
+      return "DOTA_UM_VoteStart";
+    case EDotaUserMessages.DOTA_UM_VoteUpdate:
+      return "DOTA_UM_VoteUpdate";
+    case EDotaUserMessages.DOTA_UM_VoteEnd:
+      return "DOTA_UM_VoteEnd";
+    case EDotaUserMessages.DOTA_UM_BoosterState:
+      return "DOTA_UM_BoosterState";
+    case EDotaUserMessages.DOTA_UM_WillPurchaseAlert:
+      return "DOTA_UM_WillPurchaseAlert";
+    case EDotaUserMessages.DOTA_UM_TutorialMinimapPosition:
+      return "DOTA_UM_TutorialMinimapPosition";
+    case EDotaUserMessages.DOTA_UM_PlayerMMR:
+      return "DOTA_UM_PlayerMMR";
+    case EDotaUserMessages.DOTA_UM_AbilitySteal:
+      return "DOTA_UM_AbilitySteal";
+    case EDotaUserMessages.DOTA_UM_CourierKilledAlert:
+      return "DOTA_UM_CourierKilledAlert";
+    case EDotaUserMessages.DOTA_UM_EnemyItemAlert:
+      return "DOTA_UM_EnemyItemAlert";
+    case EDotaUserMessages.DOTA_UM_StatsMatchDetails:
+      return "DOTA_UM_StatsMatchDetails";
+    case EDotaUserMessages.DOTA_UM_MiniTaunt:
+      return "DOTA_UM_MiniTaunt";
+    case EDotaUserMessages.DOTA_UM_BuyBackStateAlert:
+      return "DOTA_UM_BuyBackStateAlert";
+    case EDotaUserMessages.DOTA_UM_SpeechBubble:
+      return "DOTA_UM_SpeechBubble";
+    case EDotaUserMessages.DOTA_UM_CustomHeaderMessage:
+      return "DOTA_UM_CustomHeaderMessage";
+    case EDotaUserMessages.DOTA_UM_QuickBuyAlert:
+      return "DOTA_UM_QuickBuyAlert";
+    case EDotaUserMessages.DOTA_UM_StatsHeroDetails:
+      return "DOTA_UM_StatsHeroDetails";
+    case EDotaUserMessages.DOTA_UM_PredictionResult:
+      return "DOTA_UM_PredictionResult";
+    case EDotaUserMessages.DOTA_UM_ModifierAlert:
+      return "DOTA_UM_ModifierAlert";
+    case EDotaUserMessages.DOTA_UM_HPManaAlert:
+      return "DOTA_UM_HPManaAlert";
+    case EDotaUserMessages.DOTA_UM_GlyphAlert:
+      return "DOTA_UM_GlyphAlert";
+    case EDotaUserMessages.DOTA_UM_BeastChat:
+      return "DOTA_UM_BeastChat";
+    case EDotaUserMessages.DOTA_UM_SpectatorPlayerUnitOrders:
+      return "DOTA_UM_SpectatorPlayerUnitOrders";
+    case EDotaUserMessages.DOTA_UM_CustomHudElement_Create:
+      return "DOTA_UM_CustomHudElement_Create";
+    case EDotaUserMessages.DOTA_UM_CustomHudElement_Modify:
+      return "DOTA_UM_CustomHudElement_Modify";
+    case EDotaUserMessages.DOTA_UM_CustomHudElement_Destroy:
+      return "DOTA_UM_CustomHudElement_Destroy";
+    case EDotaUserMessages.DOTA_UM_CompendiumState:
+      return "DOTA_UM_CompendiumState";
+    case EDotaUserMessages.DOTA_UM_ProjectionAbility:
+      return "DOTA_UM_ProjectionAbility";
+    case EDotaUserMessages.DOTA_UM_ProjectionEvent:
+      return "DOTA_UM_ProjectionEvent";
+    case EDotaUserMessages.DOTA_UM_CombatLogDataHLTV:
+      return "DOTA_UM_CombatLogDataHLTV";
+    case EDotaUserMessages.DOTA_UM_XPAlert:
+      return "DOTA_UM_XPAlert";
+    case EDotaUserMessages.DOTA_UM_UpdateQuestProgress:
+      return "DOTA_UM_UpdateQuestProgress";
+    case EDotaUserMessages.DOTA_UM_MatchMetadata:
+      return "DOTA_UM_MatchMetadata";
+    case EDotaUserMessages.DOTA_UM_MatchDetails:
+      return "DOTA_UM_MatchDetails";
+    case EDotaUserMessages.DOTA_UM_QuestStatus:
+      return "DOTA_UM_QuestStatus";
+    case EDotaUserMessages.DOTA_UM_SuggestHeroPick:
+      return "DOTA_UM_SuggestHeroPick";
+    case EDotaUserMessages.DOTA_UM_SuggestHeroRole:
+      return "DOTA_UM_SuggestHeroRole";
+    case EDotaUserMessages.DOTA_UM_KillcamDamageTaken:
+      return "DOTA_UM_KillcamDamageTaken";
+    case EDotaUserMessages.DOTA_UM_SelectPenaltyGold:
+      return "DOTA_UM_SelectPenaltyGold";
+    case EDotaUserMessages.DOTA_UM_RollDiceResult:
+      return "DOTA_UM_RollDiceResult";
+    case EDotaUserMessages.DOTA_UM_FlipCoinResult:
+      return "DOTA_UM_FlipCoinResult";
+    case EDotaUserMessages.DOTA_UM_RequestItemSuggestions:
+      return "DOTA_UM_RequestItemSuggestions";
+    case EDotaUserMessages.DOTA_UM_TeamCaptainChanged:
+      return "DOTA_UM_TeamCaptainChanged";
+    case EDotaUserMessages.DOTA_UM_SendRoshanSpectatorPhase:
+      return "DOTA_UM_SendRoshanSpectatorPhase";
+    case EDotaUserMessages.DOTA_UM_ChatWheelCooldown:
+      return "DOTA_UM_ChatWheelCooldown";
+    case EDotaUserMessages.DOTA_UM_DismissAllStatPopups:
+      return "DOTA_UM_DismissAllStatPopups";
+    case EDotaUserMessages.DOTA_UM_TE_DestroyProjectile:
+      return "DOTA_UM_TE_DestroyProjectile";
+    case EDotaUserMessages.DOTA_UM_HeroRelicProgress:
+      return "DOTA_UM_HeroRelicProgress";
+    case EDotaUserMessages.DOTA_UM_AbilityDraftRequestAbility:
+      return "DOTA_UM_AbilityDraftRequestAbility";
+    case EDotaUserMessages.DOTA_UM_ItemSold:
+      return "DOTA_UM_ItemSold";
+    case EDotaUserMessages.DOTA_UM_DamageReport:
+      return "DOTA_UM_DamageReport";
+    case EDotaUserMessages.DOTA_UM_SalutePlayer:
+      return "DOTA_UM_SalutePlayer";
+    case EDotaUserMessages.DOTA_UM_TipAlert:
+      return "DOTA_UM_TipAlert";
+    case EDotaUserMessages.DOTA_UM_ReplaceQueryUnit:
+      return "DOTA_UM_ReplaceQueryUnit";
+    case EDotaUserMessages.DOTA_UM_EmptyTeleportAlert:
+      return "DOTA_UM_EmptyTeleportAlert";
+    case EDotaUserMessages.DOTA_UM_MarsArenaOfBloodAttack:
+      return "DOTA_UM_MarsArenaOfBloodAttack";
+    case EDotaUserMessages.DOTA_UM_ESArcanaCombo:
+      return "DOTA_UM_ESArcanaCombo";
+    case EDotaUserMessages.DOTA_UM_ESArcanaComboSummary:
+      return "DOTA_UM_ESArcanaComboSummary";
+    case EDotaUserMessages.DOTA_UM_HighFiveLeftHanging:
+      return "DOTA_UM_HighFiveLeftHanging";
+    case EDotaUserMessages.DOTA_UM_HighFiveCompleted:
+      return "DOTA_UM_HighFiveCompleted";
+    case EDotaUserMessages.DOTA_UM_ShovelUnearth:
+      return "DOTA_UM_ShovelUnearth";
+    case EDotaUserMessages.DOTA_EM_InvokerSpellCast:
+      return "DOTA_EM_InvokerSpellCast";
+    case EDotaUserMessages.DOTA_UM_RadarAlert:
+      return "DOTA_UM_RadarAlert";
+    case EDotaUserMessages.DOTA_UM_AllStarEvent:
+      return "DOTA_UM_AllStarEvent";
+    case EDotaUserMessages.DOTA_UM_TalentTreeAlert:
+      return "DOTA_UM_TalentTreeAlert";
+    case EDotaUserMessages.DOTA_UM_QueuedOrderRemoved:
+      return "DOTA_UM_QueuedOrderRemoved";
+    case EDotaUserMessages.DOTA_UM_DebugChallenge:
+      return "DOTA_UM_DebugChallenge";
+    case EDotaUserMessages.DOTA_UM_OMArcanaCombo:
+      return "DOTA_UM_OMArcanaCombo";
+    case EDotaUserMessages.DOTA_UM_FoundNeutralItem:
+      return "DOTA_UM_FoundNeutralItem";
+    case EDotaUserMessages.DOTA_UM_OutpostCaptured:
+      return "DOTA_UM_OutpostCaptured";
+    case EDotaUserMessages.DOTA_UM_OutpostGrantedXP:
+      return "DOTA_UM_OutpostGrantedXP";
+    case EDotaUserMessages.DOTA_UM_MoveCameraToUnit:
+      return "DOTA_UM_MoveCameraToUnit";
+    case EDotaUserMessages.DOTA_UM_PauseMinigameData:
+      return "DOTA_UM_PauseMinigameData";
+    case EDotaUserMessages.DOTA_UM_VersusScene_PlayerBehavior:
+      return "DOTA_UM_VersusScene_PlayerBehavior";
+    case EDotaUserMessages.DOTA_UM_QoP_ArcanaSummary:
+      return "DOTA_UM_QoP_ArcanaSummary";
+    case EDotaUserMessages.DOTA_UM_HotPotato_Created:
+      return "DOTA_UM_HotPotato_Created";
+    case EDotaUserMessages.DOTA_UM_HotPotato_Exploded:
+      return "DOTA_UM_HotPotato_Exploded";
+    case EDotaUserMessages.DOTA_UM_WK_Arcana_Progress:
+      return "DOTA_UM_WK_Arcana_Progress";
+    case EDotaUserMessages.DOTA_UM_GuildChallenge_Progress:
+      return "DOTA_UM_GuildChallenge_Progress";
+    case EDotaUserMessages.DOTA_UM_WRArcanaProgress:
+      return "DOTA_UM_WRArcanaProgress";
+    case EDotaUserMessages.DOTA_UM_WRArcanaSummary:
+      return "DOTA_UM_WRArcanaSummary";
+    case EDotaUserMessages.DOTA_UM_EmptyItemSlotAlert:
+      return "DOTA_UM_EmptyItemSlotAlert";
+    case EDotaUserMessages.DOTA_UM_AghsStatusAlert:
+      return "DOTA_UM_AghsStatusAlert";
+    case EDotaUserMessages.DOTA_UM_PingConfirmation:
+      return "DOTA_UM_PingConfirmation";
+    case EDotaUserMessages.DOTA_UM_MutedPlayers:
+      return "DOTA_UM_MutedPlayers";
+    case EDotaUserMessages.DOTA_UM_ContextualTip:
+      return "DOTA_UM_ContextualTip";
+    case EDotaUserMessages.DOTA_UM_ChatMessage:
+      return "DOTA_UM_ChatMessage";
+    case EDotaUserMessages.DOTA_UM_NeutralCampAlert:
+      return "DOTA_UM_NeutralCampAlert";
+    case EDotaUserMessages.DOTA_UM_RockPaperScissorsStarted:
+      return "DOTA_UM_RockPaperScissorsStarted";
+    case EDotaUserMessages.DOTA_UM_RockPaperScissorsFinished:
+      return "DOTA_UM_RockPaperScissorsFinished";
+    case EDotaUserMessages.DOTA_UM_DuelOpponentKilled:
+      return "DOTA_UM_DuelOpponentKilled";
+    case EDotaUserMessages.DOTA_UM_DuelAccepted:
+      return "DOTA_UM_DuelAccepted";
+    case EDotaUserMessages.DOTA_UM_DuelRequested:
+      return "DOTA_UM_DuelRequested";
+    case EDotaUserMessages.DOTA_UM_MuertaReleaseEvent_AssignedTargetKilled:
+      return "DOTA_UM_MuertaReleaseEvent_AssignedTargetKilled";
+    case EDotaUserMessages.DOTA_UM_PlayerDraftSuggestPick:
+      return "DOTA_UM_PlayerDraftSuggestPick";
+    case EDotaUserMessages.DOTA_UM_PlayerDraftPick:
+      return "DOTA_UM_PlayerDraftPick";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EDotaUserMessages");
+  }
+}
+
 export enum dotaChatMessage {
   CHAT_MESSAGE_INVALID = -1,
   CHAT_MESSAGE_HERO_KILL = 0,
@@ -287,11 +1083,599 @@ export enum dotaChatMessage {
   CHAT_MESSAGE_HERO_KILL_WITH_PENGUIN = 116,
 }
 
+export function dotaChatMessageFromJSON(object: any): dotaChatMessage {
+  switch (object) {
+    case -1:
+    case "CHAT_MESSAGE_INVALID":
+      return dotaChatMessage.CHAT_MESSAGE_INVALID;
+    case 0:
+    case "CHAT_MESSAGE_HERO_KILL":
+      return dotaChatMessage.CHAT_MESSAGE_HERO_KILL;
+    case 1:
+    case "CHAT_MESSAGE_HERO_DENY":
+      return dotaChatMessage.CHAT_MESSAGE_HERO_DENY;
+    case 2:
+    case "CHAT_MESSAGE_BARRACKS_KILL":
+      return dotaChatMessage.CHAT_MESSAGE_BARRACKS_KILL;
+    case 3:
+    case "CHAT_MESSAGE_TOWER_KILL":
+      return dotaChatMessage.CHAT_MESSAGE_TOWER_KILL;
+    case 4:
+    case "CHAT_MESSAGE_TOWER_DENY":
+      return dotaChatMessage.CHAT_MESSAGE_TOWER_DENY;
+    case 5:
+    case "CHAT_MESSAGE_FIRSTBLOOD":
+      return dotaChatMessage.CHAT_MESSAGE_FIRSTBLOOD;
+    case 6:
+    case "CHAT_MESSAGE_STREAK_KILL":
+      return dotaChatMessage.CHAT_MESSAGE_STREAK_KILL;
+    case 7:
+    case "CHAT_MESSAGE_BUYBACK":
+      return dotaChatMessage.CHAT_MESSAGE_BUYBACK;
+    case 8:
+    case "CHAT_MESSAGE_AEGIS":
+      return dotaChatMessage.CHAT_MESSAGE_AEGIS;
+    case 9:
+    case "CHAT_MESSAGE_ROSHAN_KILL":
+      return dotaChatMessage.CHAT_MESSAGE_ROSHAN_KILL;
+    case 10:
+    case "CHAT_MESSAGE_COURIER_LOST":
+      return dotaChatMessage.CHAT_MESSAGE_COURIER_LOST;
+    case 11:
+    case "CHAT_MESSAGE_COURIER_RESPAWNED":
+      return dotaChatMessage.CHAT_MESSAGE_COURIER_RESPAWNED;
+    case 12:
+    case "CHAT_MESSAGE_GLYPH_USED":
+      return dotaChatMessage.CHAT_MESSAGE_GLYPH_USED;
+    case 13:
+    case "CHAT_MESSAGE_ITEM_PURCHASE":
+      return dotaChatMessage.CHAT_MESSAGE_ITEM_PURCHASE;
+    case 14:
+    case "CHAT_MESSAGE_CONNECT":
+      return dotaChatMessage.CHAT_MESSAGE_CONNECT;
+    case 15:
+    case "CHAT_MESSAGE_DISCONNECT":
+      return dotaChatMessage.CHAT_MESSAGE_DISCONNECT;
+    case 16:
+    case "CHAT_MESSAGE_DISCONNECT_WAIT_FOR_RECONNECT":
+      return dotaChatMessage.CHAT_MESSAGE_DISCONNECT_WAIT_FOR_RECONNECT;
+    case 17:
+    case "CHAT_MESSAGE_DISCONNECT_TIME_REMAINING":
+      return dotaChatMessage.CHAT_MESSAGE_DISCONNECT_TIME_REMAINING;
+    case 18:
+    case "CHAT_MESSAGE_DISCONNECT_TIME_REMAINING_PLURAL":
+      return dotaChatMessage.CHAT_MESSAGE_DISCONNECT_TIME_REMAINING_PLURAL;
+    case 19:
+    case "CHAT_MESSAGE_RECONNECT":
+      return dotaChatMessage.CHAT_MESSAGE_RECONNECT;
+    case 20:
+    case "CHAT_MESSAGE_PLAYER_LEFT":
+      return dotaChatMessage.CHAT_MESSAGE_PLAYER_LEFT;
+    case 21:
+    case "CHAT_MESSAGE_SAFE_TO_LEAVE":
+      return dotaChatMessage.CHAT_MESSAGE_SAFE_TO_LEAVE;
+    case 22:
+    case "CHAT_MESSAGE_RUNE_PICKUP":
+      return dotaChatMessage.CHAT_MESSAGE_RUNE_PICKUP;
+    case 23:
+    case "CHAT_MESSAGE_RUNE_BOTTLE":
+      return dotaChatMessage.CHAT_MESSAGE_RUNE_BOTTLE;
+    case 114:
+    case "CHAT_MESSAGE_RUNE_DENY":
+      return dotaChatMessage.CHAT_MESSAGE_RUNE_DENY;
+    case 24:
+    case "CHAT_MESSAGE_INTHEBAG":
+      return dotaChatMessage.CHAT_MESSAGE_INTHEBAG;
+    case 25:
+    case "CHAT_MESSAGE_SECRETSHOP":
+      return dotaChatMessage.CHAT_MESSAGE_SECRETSHOP;
+    case 26:
+    case "CHAT_MESSAGE_ITEM_AUTOPURCHASED":
+      return dotaChatMessage.CHAT_MESSAGE_ITEM_AUTOPURCHASED;
+    case 27:
+    case "CHAT_MESSAGE_ITEMS_COMBINED":
+      return dotaChatMessage.CHAT_MESSAGE_ITEMS_COMBINED;
+    case 28:
+    case "CHAT_MESSAGE_SUPER_CREEPS":
+      return dotaChatMessage.CHAT_MESSAGE_SUPER_CREEPS;
+    case 29:
+    case "CHAT_MESSAGE_CANT_USE_ACTION_ITEM":
+      return dotaChatMessage.CHAT_MESSAGE_CANT_USE_ACTION_ITEM;
+    case 31:
+    case "CHAT_MESSAGE_CANTPAUSE":
+      return dotaChatMessage.CHAT_MESSAGE_CANTPAUSE;
+    case 32:
+    case "CHAT_MESSAGE_NOPAUSESLEFT":
+      return dotaChatMessage.CHAT_MESSAGE_NOPAUSESLEFT;
+    case 33:
+    case "CHAT_MESSAGE_CANTPAUSEYET":
+      return dotaChatMessage.CHAT_MESSAGE_CANTPAUSEYET;
+    case 34:
+    case "CHAT_MESSAGE_PAUSED":
+      return dotaChatMessage.CHAT_MESSAGE_PAUSED;
+    case 35:
+    case "CHAT_MESSAGE_UNPAUSE_COUNTDOWN":
+      return dotaChatMessage.CHAT_MESSAGE_UNPAUSE_COUNTDOWN;
+    case 36:
+    case "CHAT_MESSAGE_UNPAUSED":
+      return dotaChatMessage.CHAT_MESSAGE_UNPAUSED;
+    case 37:
+    case "CHAT_MESSAGE_AUTO_UNPAUSED":
+      return dotaChatMessage.CHAT_MESSAGE_AUTO_UNPAUSED;
+    case 38:
+    case "CHAT_MESSAGE_YOUPAUSED":
+      return dotaChatMessage.CHAT_MESSAGE_YOUPAUSED;
+    case 39:
+    case "CHAT_MESSAGE_CANTUNPAUSETEAM":
+      return dotaChatMessage.CHAT_MESSAGE_CANTUNPAUSETEAM;
+    case 41:
+    case "CHAT_MESSAGE_VOICE_TEXT_BANNED":
+      return dotaChatMessage.CHAT_MESSAGE_VOICE_TEXT_BANNED;
+    case 42:
+    case "CHAT_MESSAGE_SPECTATORS_WATCHING_THIS_GAME":
+      return dotaChatMessage.CHAT_MESSAGE_SPECTATORS_WATCHING_THIS_GAME;
+    case 43:
+    case "CHAT_MESSAGE_REPORT_REMINDER":
+      return dotaChatMessage.CHAT_MESSAGE_REPORT_REMINDER;
+    case 44:
+    case "CHAT_MESSAGE_ECON_ITEM":
+      return dotaChatMessage.CHAT_MESSAGE_ECON_ITEM;
+    case 45:
+    case "CHAT_MESSAGE_TAUNT":
+      return dotaChatMessage.CHAT_MESSAGE_TAUNT;
+    case 46:
+    case "CHAT_MESSAGE_RANDOM":
+      return dotaChatMessage.CHAT_MESSAGE_RANDOM;
+    case 47:
+    case "CHAT_MESSAGE_RD_TURN":
+      return dotaChatMessage.CHAT_MESSAGE_RD_TURN;
+    case 49:
+    case "CHAT_MESSAGE_DROP_RATE_BONUS":
+      return dotaChatMessage.CHAT_MESSAGE_DROP_RATE_BONUS;
+    case 50:
+    case "CHAT_MESSAGE_NO_BATTLE_POINTS":
+      return dotaChatMessage.CHAT_MESSAGE_NO_BATTLE_POINTS;
+    case 51:
+    case "CHAT_MESSAGE_DENIED_AEGIS":
+      return dotaChatMessage.CHAT_MESSAGE_DENIED_AEGIS;
+    case 52:
+    case "CHAT_MESSAGE_INFORMATIONAL":
+      return dotaChatMessage.CHAT_MESSAGE_INFORMATIONAL;
+    case 53:
+    case "CHAT_MESSAGE_AEGIS_STOLEN":
+      return dotaChatMessage.CHAT_MESSAGE_AEGIS_STOLEN;
+    case 54:
+    case "CHAT_MESSAGE_ROSHAN_CANDY":
+      return dotaChatMessage.CHAT_MESSAGE_ROSHAN_CANDY;
+    case 55:
+    case "CHAT_MESSAGE_ITEM_GIFTED":
+      return dotaChatMessage.CHAT_MESSAGE_ITEM_GIFTED;
+    case 56:
+    case "CHAT_MESSAGE_HERO_KILL_WITH_GREEVIL":
+      return dotaChatMessage.CHAT_MESSAGE_HERO_KILL_WITH_GREEVIL;
+    case 57:
+    case "CHAT_MESSAGE_HOLDOUT_TOWER_DESTROYED":
+      return dotaChatMessage.CHAT_MESSAGE_HOLDOUT_TOWER_DESTROYED;
+    case 58:
+    case "CHAT_MESSAGE_HOLDOUT_WALL_DESTROYED":
+      return dotaChatMessage.CHAT_MESSAGE_HOLDOUT_WALL_DESTROYED;
+    case 59:
+    case "CHAT_MESSAGE_HOLDOUT_WALL_FINISHED":
+      return dotaChatMessage.CHAT_MESSAGE_HOLDOUT_WALL_FINISHED;
+    case 62:
+    case "CHAT_MESSAGE_PLAYER_LEFT_LIMITED_HERO":
+      return dotaChatMessage.CHAT_MESSAGE_PLAYER_LEFT_LIMITED_HERO;
+    case 63:
+    case "CHAT_MESSAGE_ABANDON_LIMITED_HERO_EXPLANATION":
+      return dotaChatMessage.CHAT_MESSAGE_ABANDON_LIMITED_HERO_EXPLANATION;
+    case 64:
+    case "CHAT_MESSAGE_DISCONNECT_LIMITED_HERO":
+      return dotaChatMessage.CHAT_MESSAGE_DISCONNECT_LIMITED_HERO;
+    case 65:
+    case "CHAT_MESSAGE_LOW_PRIORITY_COMPLETED_EXPLANATION":
+      return dotaChatMessage.CHAT_MESSAGE_LOW_PRIORITY_COMPLETED_EXPLANATION;
+    case 66:
+    case "CHAT_MESSAGE_RECRUITMENT_DROP_RATE_BONUS":
+      return dotaChatMessage.CHAT_MESSAGE_RECRUITMENT_DROP_RATE_BONUS;
+    case 67:
+    case "CHAT_MESSAGE_FROSTIVUS_SHINING_BOOSTER_ACTIVE":
+      return dotaChatMessage.CHAT_MESSAGE_FROSTIVUS_SHINING_BOOSTER_ACTIVE;
+    case 73:
+    case "CHAT_MESSAGE_PLAYER_LEFT_AFK":
+      return dotaChatMessage.CHAT_MESSAGE_PLAYER_LEFT_AFK;
+    case 74:
+    case "CHAT_MESSAGE_PLAYER_LEFT_DISCONNECTED_TOO_LONG":
+      return dotaChatMessage.CHAT_MESSAGE_PLAYER_LEFT_DISCONNECTED_TOO_LONG;
+    case 75:
+    case "CHAT_MESSAGE_PLAYER_ABANDONED":
+      return dotaChatMessage.CHAT_MESSAGE_PLAYER_ABANDONED;
+    case 76:
+    case "CHAT_MESSAGE_PLAYER_ABANDONED_AFK":
+      return dotaChatMessage.CHAT_MESSAGE_PLAYER_ABANDONED_AFK;
+    case 77:
+    case "CHAT_MESSAGE_PLAYER_ABANDONED_DISCONNECTED_TOO_LONG":
+      return dotaChatMessage.CHAT_MESSAGE_PLAYER_ABANDONED_DISCONNECTED_TOO_LONG;
+    case 78:
+    case "CHAT_MESSAGE_WILL_NOT_BE_SCORED":
+      return dotaChatMessage.CHAT_MESSAGE_WILL_NOT_BE_SCORED;
+    case 79:
+    case "CHAT_MESSAGE_WILL_NOT_BE_SCORED_RANKED":
+      return dotaChatMessage.CHAT_MESSAGE_WILL_NOT_BE_SCORED_RANKED;
+    case 80:
+    case "CHAT_MESSAGE_WILL_NOT_BE_SCORED_NETWORK":
+      return dotaChatMessage.CHAT_MESSAGE_WILL_NOT_BE_SCORED_NETWORK;
+    case 81:
+    case "CHAT_MESSAGE_WILL_NOT_BE_SCORED_NETWORK_RANKED":
+      return dotaChatMessage.CHAT_MESSAGE_WILL_NOT_BE_SCORED_NETWORK_RANKED;
+    case 82:
+    case "CHAT_MESSAGE_CAN_QUIT_WITHOUT_ABANDON":
+      return dotaChatMessage.CHAT_MESSAGE_CAN_QUIT_WITHOUT_ABANDON;
+    case 83:
+    case "CHAT_MESSAGE_RANKED_GAME_STILL_SCORED_LEAVERS_GET_LOSS":
+      return dotaChatMessage.CHAT_MESSAGE_RANKED_GAME_STILL_SCORED_LEAVERS_GET_LOSS;
+    case 84:
+    case "CHAT_MESSAGE_ABANDON_RANKED_BEFORE_FIRST_BLOOD_PARTY":
+      return dotaChatMessage.CHAT_MESSAGE_ABANDON_RANKED_BEFORE_FIRST_BLOOD_PARTY;
+    case 85:
+    case "CHAT_MESSAGE_COMPENDIUM_LEVEL":
+      return dotaChatMessage.CHAT_MESSAGE_COMPENDIUM_LEVEL;
+    case 86:
+    case "CHAT_MESSAGE_VICTORY_PREDICTION_STREAK":
+      return dotaChatMessage.CHAT_MESSAGE_VICTORY_PREDICTION_STREAK;
+    case 87:
+    case "CHAT_MESSAGE_ASSASSIN_ANNOUNCE":
+      return dotaChatMessage.CHAT_MESSAGE_ASSASSIN_ANNOUNCE;
+    case 88:
+    case "CHAT_MESSAGE_ASSASSIN_SUCCESS":
+      return dotaChatMessage.CHAT_MESSAGE_ASSASSIN_SUCCESS;
+    case 89:
+    case "CHAT_MESSAGE_ASSASSIN_DENIED":
+      return dotaChatMessage.CHAT_MESSAGE_ASSASSIN_DENIED;
+    case 90:
+    case "CHAT_MESSAGE_VICTORY_PREDICTION_SINGLE_USER_CONFIRM":
+      return dotaChatMessage.CHAT_MESSAGE_VICTORY_PREDICTION_SINGLE_USER_CONFIRM;
+    case 91:
+    case "CHAT_MESSAGE_EFFIGY_KILL":
+      return dotaChatMessage.CHAT_MESSAGE_EFFIGY_KILL;
+    case 92:
+    case "CHAT_MESSAGE_VOICE_TEXT_BANNED_OVERFLOW":
+      return dotaChatMessage.CHAT_MESSAGE_VOICE_TEXT_BANNED_OVERFLOW;
+    case 93:
+    case "CHAT_MESSAGE_YEAR_BEAST_KILLED":
+      return dotaChatMessage.CHAT_MESSAGE_YEAR_BEAST_KILLED;
+    case 94:
+    case "CHAT_MESSAGE_PAUSE_COUNTDOWN":
+      return dotaChatMessage.CHAT_MESSAGE_PAUSE_COUNTDOWN;
+    case 95:
+    case "CHAT_MESSAGE_COINS_WAGERED":
+      return dotaChatMessage.CHAT_MESSAGE_COINS_WAGERED;
+    case 96:
+    case "CHAT_MESSAGE_HERO_NOMINATED_BAN":
+      return dotaChatMessage.CHAT_MESSAGE_HERO_NOMINATED_BAN;
+    case 97:
+    case "CHAT_MESSAGE_HERO_BANNED":
+      return dotaChatMessage.CHAT_MESSAGE_HERO_BANNED;
+    case 98:
+    case "CHAT_MESSAGE_HERO_BAN_COUNT":
+      return dotaChatMessage.CHAT_MESSAGE_HERO_BAN_COUNT;
+    case 99:
+    case "CHAT_MESSAGE_RIVER_PAINTED":
+      return dotaChatMessage.CHAT_MESSAGE_RIVER_PAINTED;
+    case 100:
+    case "CHAT_MESSAGE_SCAN_USED":
+      return dotaChatMessage.CHAT_MESSAGE_SCAN_USED;
+    case 101:
+    case "CHAT_MESSAGE_SHRINE_KILLED":
+      return dotaChatMessage.CHAT_MESSAGE_SHRINE_KILLED;
+    case 102:
+    case "CHAT_MESSAGE_WAGER_TOKEN_SPENT":
+      return dotaChatMessage.CHAT_MESSAGE_WAGER_TOKEN_SPENT;
+    case 103:
+    case "CHAT_MESSAGE_RANK_WAGER":
+      return dotaChatMessage.CHAT_MESSAGE_RANK_WAGER;
+    case 104:
+    case "CHAT_MESSAGE_NEW_PLAYER_REMINDER":
+      return dotaChatMessage.CHAT_MESSAGE_NEW_PLAYER_REMINDER;
+    case 105:
+    case "CHAT_MESSAGE_OBSERVER_WARD_KILLED":
+      return dotaChatMessage.CHAT_MESSAGE_OBSERVER_WARD_KILLED;
+    case 106:
+    case "CHAT_MESSAGE_SENTRY_WARD_KILLED":
+      return dotaChatMessage.CHAT_MESSAGE_SENTRY_WARD_KILLED;
+    case 107:
+    case "CHAT_MESSAGE_ITEM_PLACED_IN_NEUTRAL_STASH":
+      return dotaChatMessage.CHAT_MESSAGE_ITEM_PLACED_IN_NEUTRAL_STASH;
+    case 108:
+    case "CHAT_MESSAGE_HERO_CHOICE_INVALID":
+      return dotaChatMessage.CHAT_MESSAGE_HERO_CHOICE_INVALID;
+    case 109:
+    case "CHAT_MESSAGE_BOUNTY":
+      return dotaChatMessage.CHAT_MESSAGE_BOUNTY;
+    case 110:
+    case "CHAT_MESSAGE_ABILITY_DRAFT_START":
+      return dotaChatMessage.CHAT_MESSAGE_ABILITY_DRAFT_START;
+    case 111:
+    case "CHAT_MESSAGE_HERO_FOUND_CANDY":
+      return dotaChatMessage.CHAT_MESSAGE_HERO_FOUND_CANDY;
+    case 112:
+    case "CHAT_MESSAGE_ABILITY_DRAFT_RANDOMED":
+      return dotaChatMessage.CHAT_MESSAGE_ABILITY_DRAFT_RANDOMED;
+    case 113:
+    case "CHAT_MESSAGE_PRIVATE_COACH_CONNECTED":
+      return dotaChatMessage.CHAT_MESSAGE_PRIVATE_COACH_CONNECTED;
+    case 115:
+    case "CHAT_MESSAGE_CANT_PAUSE_TOO_EARLY":
+      return dotaChatMessage.CHAT_MESSAGE_CANT_PAUSE_TOO_EARLY;
+    case 116:
+    case "CHAT_MESSAGE_HERO_KILL_WITH_PENGUIN":
+      return dotaChatMessage.CHAT_MESSAGE_HERO_KILL_WITH_PENGUIN;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum dotaChatMessage");
+  }
+}
+
+export function dotaChatMessageToJSON(object: dotaChatMessage): string {
+  switch (object) {
+    case dotaChatMessage.CHAT_MESSAGE_INVALID:
+      return "CHAT_MESSAGE_INVALID";
+    case dotaChatMessage.CHAT_MESSAGE_HERO_KILL:
+      return "CHAT_MESSAGE_HERO_KILL";
+    case dotaChatMessage.CHAT_MESSAGE_HERO_DENY:
+      return "CHAT_MESSAGE_HERO_DENY";
+    case dotaChatMessage.CHAT_MESSAGE_BARRACKS_KILL:
+      return "CHAT_MESSAGE_BARRACKS_KILL";
+    case dotaChatMessage.CHAT_MESSAGE_TOWER_KILL:
+      return "CHAT_MESSAGE_TOWER_KILL";
+    case dotaChatMessage.CHAT_MESSAGE_TOWER_DENY:
+      return "CHAT_MESSAGE_TOWER_DENY";
+    case dotaChatMessage.CHAT_MESSAGE_FIRSTBLOOD:
+      return "CHAT_MESSAGE_FIRSTBLOOD";
+    case dotaChatMessage.CHAT_MESSAGE_STREAK_KILL:
+      return "CHAT_MESSAGE_STREAK_KILL";
+    case dotaChatMessage.CHAT_MESSAGE_BUYBACK:
+      return "CHAT_MESSAGE_BUYBACK";
+    case dotaChatMessage.CHAT_MESSAGE_AEGIS:
+      return "CHAT_MESSAGE_AEGIS";
+    case dotaChatMessage.CHAT_MESSAGE_ROSHAN_KILL:
+      return "CHAT_MESSAGE_ROSHAN_KILL";
+    case dotaChatMessage.CHAT_MESSAGE_COURIER_LOST:
+      return "CHAT_MESSAGE_COURIER_LOST";
+    case dotaChatMessage.CHAT_MESSAGE_COURIER_RESPAWNED:
+      return "CHAT_MESSAGE_COURIER_RESPAWNED";
+    case dotaChatMessage.CHAT_MESSAGE_GLYPH_USED:
+      return "CHAT_MESSAGE_GLYPH_USED";
+    case dotaChatMessage.CHAT_MESSAGE_ITEM_PURCHASE:
+      return "CHAT_MESSAGE_ITEM_PURCHASE";
+    case dotaChatMessage.CHAT_MESSAGE_CONNECT:
+      return "CHAT_MESSAGE_CONNECT";
+    case dotaChatMessage.CHAT_MESSAGE_DISCONNECT:
+      return "CHAT_MESSAGE_DISCONNECT";
+    case dotaChatMessage.CHAT_MESSAGE_DISCONNECT_WAIT_FOR_RECONNECT:
+      return "CHAT_MESSAGE_DISCONNECT_WAIT_FOR_RECONNECT";
+    case dotaChatMessage.CHAT_MESSAGE_DISCONNECT_TIME_REMAINING:
+      return "CHAT_MESSAGE_DISCONNECT_TIME_REMAINING";
+    case dotaChatMessage.CHAT_MESSAGE_DISCONNECT_TIME_REMAINING_PLURAL:
+      return "CHAT_MESSAGE_DISCONNECT_TIME_REMAINING_PLURAL";
+    case dotaChatMessage.CHAT_MESSAGE_RECONNECT:
+      return "CHAT_MESSAGE_RECONNECT";
+    case dotaChatMessage.CHAT_MESSAGE_PLAYER_LEFT:
+      return "CHAT_MESSAGE_PLAYER_LEFT";
+    case dotaChatMessage.CHAT_MESSAGE_SAFE_TO_LEAVE:
+      return "CHAT_MESSAGE_SAFE_TO_LEAVE";
+    case dotaChatMessage.CHAT_MESSAGE_RUNE_PICKUP:
+      return "CHAT_MESSAGE_RUNE_PICKUP";
+    case dotaChatMessage.CHAT_MESSAGE_RUNE_BOTTLE:
+      return "CHAT_MESSAGE_RUNE_BOTTLE";
+    case dotaChatMessage.CHAT_MESSAGE_RUNE_DENY:
+      return "CHAT_MESSAGE_RUNE_DENY";
+    case dotaChatMessage.CHAT_MESSAGE_INTHEBAG:
+      return "CHAT_MESSAGE_INTHEBAG";
+    case dotaChatMessage.CHAT_MESSAGE_SECRETSHOP:
+      return "CHAT_MESSAGE_SECRETSHOP";
+    case dotaChatMessage.CHAT_MESSAGE_ITEM_AUTOPURCHASED:
+      return "CHAT_MESSAGE_ITEM_AUTOPURCHASED";
+    case dotaChatMessage.CHAT_MESSAGE_ITEMS_COMBINED:
+      return "CHAT_MESSAGE_ITEMS_COMBINED";
+    case dotaChatMessage.CHAT_MESSAGE_SUPER_CREEPS:
+      return "CHAT_MESSAGE_SUPER_CREEPS";
+    case dotaChatMessage.CHAT_MESSAGE_CANT_USE_ACTION_ITEM:
+      return "CHAT_MESSAGE_CANT_USE_ACTION_ITEM";
+    case dotaChatMessage.CHAT_MESSAGE_CANTPAUSE:
+      return "CHAT_MESSAGE_CANTPAUSE";
+    case dotaChatMessage.CHAT_MESSAGE_NOPAUSESLEFT:
+      return "CHAT_MESSAGE_NOPAUSESLEFT";
+    case dotaChatMessage.CHAT_MESSAGE_CANTPAUSEYET:
+      return "CHAT_MESSAGE_CANTPAUSEYET";
+    case dotaChatMessage.CHAT_MESSAGE_PAUSED:
+      return "CHAT_MESSAGE_PAUSED";
+    case dotaChatMessage.CHAT_MESSAGE_UNPAUSE_COUNTDOWN:
+      return "CHAT_MESSAGE_UNPAUSE_COUNTDOWN";
+    case dotaChatMessage.CHAT_MESSAGE_UNPAUSED:
+      return "CHAT_MESSAGE_UNPAUSED";
+    case dotaChatMessage.CHAT_MESSAGE_AUTO_UNPAUSED:
+      return "CHAT_MESSAGE_AUTO_UNPAUSED";
+    case dotaChatMessage.CHAT_MESSAGE_YOUPAUSED:
+      return "CHAT_MESSAGE_YOUPAUSED";
+    case dotaChatMessage.CHAT_MESSAGE_CANTUNPAUSETEAM:
+      return "CHAT_MESSAGE_CANTUNPAUSETEAM";
+    case dotaChatMessage.CHAT_MESSAGE_VOICE_TEXT_BANNED:
+      return "CHAT_MESSAGE_VOICE_TEXT_BANNED";
+    case dotaChatMessage.CHAT_MESSAGE_SPECTATORS_WATCHING_THIS_GAME:
+      return "CHAT_MESSAGE_SPECTATORS_WATCHING_THIS_GAME";
+    case dotaChatMessage.CHAT_MESSAGE_REPORT_REMINDER:
+      return "CHAT_MESSAGE_REPORT_REMINDER";
+    case dotaChatMessage.CHAT_MESSAGE_ECON_ITEM:
+      return "CHAT_MESSAGE_ECON_ITEM";
+    case dotaChatMessage.CHAT_MESSAGE_TAUNT:
+      return "CHAT_MESSAGE_TAUNT";
+    case dotaChatMessage.CHAT_MESSAGE_RANDOM:
+      return "CHAT_MESSAGE_RANDOM";
+    case dotaChatMessage.CHAT_MESSAGE_RD_TURN:
+      return "CHAT_MESSAGE_RD_TURN";
+    case dotaChatMessage.CHAT_MESSAGE_DROP_RATE_BONUS:
+      return "CHAT_MESSAGE_DROP_RATE_BONUS";
+    case dotaChatMessage.CHAT_MESSAGE_NO_BATTLE_POINTS:
+      return "CHAT_MESSAGE_NO_BATTLE_POINTS";
+    case dotaChatMessage.CHAT_MESSAGE_DENIED_AEGIS:
+      return "CHAT_MESSAGE_DENIED_AEGIS";
+    case dotaChatMessage.CHAT_MESSAGE_INFORMATIONAL:
+      return "CHAT_MESSAGE_INFORMATIONAL";
+    case dotaChatMessage.CHAT_MESSAGE_AEGIS_STOLEN:
+      return "CHAT_MESSAGE_AEGIS_STOLEN";
+    case dotaChatMessage.CHAT_MESSAGE_ROSHAN_CANDY:
+      return "CHAT_MESSAGE_ROSHAN_CANDY";
+    case dotaChatMessage.CHAT_MESSAGE_ITEM_GIFTED:
+      return "CHAT_MESSAGE_ITEM_GIFTED";
+    case dotaChatMessage.CHAT_MESSAGE_HERO_KILL_WITH_GREEVIL:
+      return "CHAT_MESSAGE_HERO_KILL_WITH_GREEVIL";
+    case dotaChatMessage.CHAT_MESSAGE_HOLDOUT_TOWER_DESTROYED:
+      return "CHAT_MESSAGE_HOLDOUT_TOWER_DESTROYED";
+    case dotaChatMessage.CHAT_MESSAGE_HOLDOUT_WALL_DESTROYED:
+      return "CHAT_MESSAGE_HOLDOUT_WALL_DESTROYED";
+    case dotaChatMessage.CHAT_MESSAGE_HOLDOUT_WALL_FINISHED:
+      return "CHAT_MESSAGE_HOLDOUT_WALL_FINISHED";
+    case dotaChatMessage.CHAT_MESSAGE_PLAYER_LEFT_LIMITED_HERO:
+      return "CHAT_MESSAGE_PLAYER_LEFT_LIMITED_HERO";
+    case dotaChatMessage.CHAT_MESSAGE_ABANDON_LIMITED_HERO_EXPLANATION:
+      return "CHAT_MESSAGE_ABANDON_LIMITED_HERO_EXPLANATION";
+    case dotaChatMessage.CHAT_MESSAGE_DISCONNECT_LIMITED_HERO:
+      return "CHAT_MESSAGE_DISCONNECT_LIMITED_HERO";
+    case dotaChatMessage.CHAT_MESSAGE_LOW_PRIORITY_COMPLETED_EXPLANATION:
+      return "CHAT_MESSAGE_LOW_PRIORITY_COMPLETED_EXPLANATION";
+    case dotaChatMessage.CHAT_MESSAGE_RECRUITMENT_DROP_RATE_BONUS:
+      return "CHAT_MESSAGE_RECRUITMENT_DROP_RATE_BONUS";
+    case dotaChatMessage.CHAT_MESSAGE_FROSTIVUS_SHINING_BOOSTER_ACTIVE:
+      return "CHAT_MESSAGE_FROSTIVUS_SHINING_BOOSTER_ACTIVE";
+    case dotaChatMessage.CHAT_MESSAGE_PLAYER_LEFT_AFK:
+      return "CHAT_MESSAGE_PLAYER_LEFT_AFK";
+    case dotaChatMessage.CHAT_MESSAGE_PLAYER_LEFT_DISCONNECTED_TOO_LONG:
+      return "CHAT_MESSAGE_PLAYER_LEFT_DISCONNECTED_TOO_LONG";
+    case dotaChatMessage.CHAT_MESSAGE_PLAYER_ABANDONED:
+      return "CHAT_MESSAGE_PLAYER_ABANDONED";
+    case dotaChatMessage.CHAT_MESSAGE_PLAYER_ABANDONED_AFK:
+      return "CHAT_MESSAGE_PLAYER_ABANDONED_AFK";
+    case dotaChatMessage.CHAT_MESSAGE_PLAYER_ABANDONED_DISCONNECTED_TOO_LONG:
+      return "CHAT_MESSAGE_PLAYER_ABANDONED_DISCONNECTED_TOO_LONG";
+    case dotaChatMessage.CHAT_MESSAGE_WILL_NOT_BE_SCORED:
+      return "CHAT_MESSAGE_WILL_NOT_BE_SCORED";
+    case dotaChatMessage.CHAT_MESSAGE_WILL_NOT_BE_SCORED_RANKED:
+      return "CHAT_MESSAGE_WILL_NOT_BE_SCORED_RANKED";
+    case dotaChatMessage.CHAT_MESSAGE_WILL_NOT_BE_SCORED_NETWORK:
+      return "CHAT_MESSAGE_WILL_NOT_BE_SCORED_NETWORK";
+    case dotaChatMessage.CHAT_MESSAGE_WILL_NOT_BE_SCORED_NETWORK_RANKED:
+      return "CHAT_MESSAGE_WILL_NOT_BE_SCORED_NETWORK_RANKED";
+    case dotaChatMessage.CHAT_MESSAGE_CAN_QUIT_WITHOUT_ABANDON:
+      return "CHAT_MESSAGE_CAN_QUIT_WITHOUT_ABANDON";
+    case dotaChatMessage.CHAT_MESSAGE_RANKED_GAME_STILL_SCORED_LEAVERS_GET_LOSS:
+      return "CHAT_MESSAGE_RANKED_GAME_STILL_SCORED_LEAVERS_GET_LOSS";
+    case dotaChatMessage.CHAT_MESSAGE_ABANDON_RANKED_BEFORE_FIRST_BLOOD_PARTY:
+      return "CHAT_MESSAGE_ABANDON_RANKED_BEFORE_FIRST_BLOOD_PARTY";
+    case dotaChatMessage.CHAT_MESSAGE_COMPENDIUM_LEVEL:
+      return "CHAT_MESSAGE_COMPENDIUM_LEVEL";
+    case dotaChatMessage.CHAT_MESSAGE_VICTORY_PREDICTION_STREAK:
+      return "CHAT_MESSAGE_VICTORY_PREDICTION_STREAK";
+    case dotaChatMessage.CHAT_MESSAGE_ASSASSIN_ANNOUNCE:
+      return "CHAT_MESSAGE_ASSASSIN_ANNOUNCE";
+    case dotaChatMessage.CHAT_MESSAGE_ASSASSIN_SUCCESS:
+      return "CHAT_MESSAGE_ASSASSIN_SUCCESS";
+    case dotaChatMessage.CHAT_MESSAGE_ASSASSIN_DENIED:
+      return "CHAT_MESSAGE_ASSASSIN_DENIED";
+    case dotaChatMessage.CHAT_MESSAGE_VICTORY_PREDICTION_SINGLE_USER_CONFIRM:
+      return "CHAT_MESSAGE_VICTORY_PREDICTION_SINGLE_USER_CONFIRM";
+    case dotaChatMessage.CHAT_MESSAGE_EFFIGY_KILL:
+      return "CHAT_MESSAGE_EFFIGY_KILL";
+    case dotaChatMessage.CHAT_MESSAGE_VOICE_TEXT_BANNED_OVERFLOW:
+      return "CHAT_MESSAGE_VOICE_TEXT_BANNED_OVERFLOW";
+    case dotaChatMessage.CHAT_MESSAGE_YEAR_BEAST_KILLED:
+      return "CHAT_MESSAGE_YEAR_BEAST_KILLED";
+    case dotaChatMessage.CHAT_MESSAGE_PAUSE_COUNTDOWN:
+      return "CHAT_MESSAGE_PAUSE_COUNTDOWN";
+    case dotaChatMessage.CHAT_MESSAGE_COINS_WAGERED:
+      return "CHAT_MESSAGE_COINS_WAGERED";
+    case dotaChatMessage.CHAT_MESSAGE_HERO_NOMINATED_BAN:
+      return "CHAT_MESSAGE_HERO_NOMINATED_BAN";
+    case dotaChatMessage.CHAT_MESSAGE_HERO_BANNED:
+      return "CHAT_MESSAGE_HERO_BANNED";
+    case dotaChatMessage.CHAT_MESSAGE_HERO_BAN_COUNT:
+      return "CHAT_MESSAGE_HERO_BAN_COUNT";
+    case dotaChatMessage.CHAT_MESSAGE_RIVER_PAINTED:
+      return "CHAT_MESSAGE_RIVER_PAINTED";
+    case dotaChatMessage.CHAT_MESSAGE_SCAN_USED:
+      return "CHAT_MESSAGE_SCAN_USED";
+    case dotaChatMessage.CHAT_MESSAGE_SHRINE_KILLED:
+      return "CHAT_MESSAGE_SHRINE_KILLED";
+    case dotaChatMessage.CHAT_MESSAGE_WAGER_TOKEN_SPENT:
+      return "CHAT_MESSAGE_WAGER_TOKEN_SPENT";
+    case dotaChatMessage.CHAT_MESSAGE_RANK_WAGER:
+      return "CHAT_MESSAGE_RANK_WAGER";
+    case dotaChatMessage.CHAT_MESSAGE_NEW_PLAYER_REMINDER:
+      return "CHAT_MESSAGE_NEW_PLAYER_REMINDER";
+    case dotaChatMessage.CHAT_MESSAGE_OBSERVER_WARD_KILLED:
+      return "CHAT_MESSAGE_OBSERVER_WARD_KILLED";
+    case dotaChatMessage.CHAT_MESSAGE_SENTRY_WARD_KILLED:
+      return "CHAT_MESSAGE_SENTRY_WARD_KILLED";
+    case dotaChatMessage.CHAT_MESSAGE_ITEM_PLACED_IN_NEUTRAL_STASH:
+      return "CHAT_MESSAGE_ITEM_PLACED_IN_NEUTRAL_STASH";
+    case dotaChatMessage.CHAT_MESSAGE_HERO_CHOICE_INVALID:
+      return "CHAT_MESSAGE_HERO_CHOICE_INVALID";
+    case dotaChatMessage.CHAT_MESSAGE_BOUNTY:
+      return "CHAT_MESSAGE_BOUNTY";
+    case dotaChatMessage.CHAT_MESSAGE_ABILITY_DRAFT_START:
+      return "CHAT_MESSAGE_ABILITY_DRAFT_START";
+    case dotaChatMessage.CHAT_MESSAGE_HERO_FOUND_CANDY:
+      return "CHAT_MESSAGE_HERO_FOUND_CANDY";
+    case dotaChatMessage.CHAT_MESSAGE_ABILITY_DRAFT_RANDOMED:
+      return "CHAT_MESSAGE_ABILITY_DRAFT_RANDOMED";
+    case dotaChatMessage.CHAT_MESSAGE_PRIVATE_COACH_CONNECTED:
+      return "CHAT_MESSAGE_PRIVATE_COACH_CONNECTED";
+    case dotaChatMessage.CHAT_MESSAGE_CANT_PAUSE_TOO_EARLY:
+      return "CHAT_MESSAGE_CANT_PAUSE_TOO_EARLY";
+    case dotaChatMessage.CHAT_MESSAGE_HERO_KILL_WITH_PENGUIN:
+      return "CHAT_MESSAGE_HERO_KILL_WITH_PENGUIN";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum dotaChatMessage");
+  }
+}
+
 export enum dotaNoBattlePointsReasons {
   NO_BATTLE_POINTS_WRONG_LOBBY_TYPE = 1,
   NO_BATTLE_POINTS_PRACTICE_BOTS = 2,
   NO_BATTLE_POINTS_CHEATS_ENABLED = 3,
   NO_BATTLE_POINTS_LOW_PRIORITY = 4,
+}
+
+export function dotaNoBattlePointsReasonsFromJSON(object: any): dotaNoBattlePointsReasons {
+  switch (object) {
+    case 1:
+    case "NO_BATTLE_POINTS_WRONG_LOBBY_TYPE":
+      return dotaNoBattlePointsReasons.NO_BATTLE_POINTS_WRONG_LOBBY_TYPE;
+    case 2:
+    case "NO_BATTLE_POINTS_PRACTICE_BOTS":
+      return dotaNoBattlePointsReasons.NO_BATTLE_POINTS_PRACTICE_BOTS;
+    case 3:
+    case "NO_BATTLE_POINTS_CHEATS_ENABLED":
+      return dotaNoBattlePointsReasons.NO_BATTLE_POINTS_CHEATS_ENABLED;
+    case 4:
+    case "NO_BATTLE_POINTS_LOW_PRIORITY":
+      return dotaNoBattlePointsReasons.NO_BATTLE_POINTS_LOW_PRIORITY;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum dotaNoBattlePointsReasons");
+  }
+}
+
+export function dotaNoBattlePointsReasonsToJSON(object: dotaNoBattlePointsReasons): string {
+  switch (object) {
+    case dotaNoBattlePointsReasons.NO_BATTLE_POINTS_WRONG_LOBBY_TYPE:
+      return "NO_BATTLE_POINTS_WRONG_LOBBY_TYPE";
+    case dotaNoBattlePointsReasons.NO_BATTLE_POINTS_PRACTICE_BOTS:
+      return "NO_BATTLE_POINTS_PRACTICE_BOTS";
+    case dotaNoBattlePointsReasons.NO_BATTLE_POINTS_CHEATS_ENABLED:
+      return "NO_BATTLE_POINTS_CHEATS_ENABLED";
+    case dotaNoBattlePointsReasons.NO_BATTLE_POINTS_LOW_PRIORITY:
+      return "NO_BATTLE_POINTS_LOW_PRIORITY";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum dotaNoBattlePointsReasons");
+  }
 }
 
 export enum dotaChatInformational {
@@ -300,6 +1684,45 @@ export enum dotaChatInformational {
   INFO_RANKED_REMINDER = 3,
   INFO_COOP_LOW_PRIORITY_PASSIVE_REMINDER = 4,
   INFO_CUSTOM_GAME_PENALTY_REMINDER = 5,
+}
+
+export function dotaChatInformationalFromJSON(object: any): dotaChatInformational {
+  switch (object) {
+    case 1:
+    case "INFO_COOP_BATTLE_POINTS_RULES":
+      return dotaChatInformational.INFO_COOP_BATTLE_POINTS_RULES;
+    case 2:
+    case "INFO_FROSTIVUS_ABANDON_REMINDER":
+      return dotaChatInformational.INFO_FROSTIVUS_ABANDON_REMINDER;
+    case 3:
+    case "INFO_RANKED_REMINDER":
+      return dotaChatInformational.INFO_RANKED_REMINDER;
+    case 4:
+    case "INFO_COOP_LOW_PRIORITY_PASSIVE_REMINDER":
+      return dotaChatInformational.INFO_COOP_LOW_PRIORITY_PASSIVE_REMINDER;
+    case 5:
+    case "INFO_CUSTOM_GAME_PENALTY_REMINDER":
+      return dotaChatInformational.INFO_CUSTOM_GAME_PENALTY_REMINDER;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum dotaChatInformational");
+  }
+}
+
+export function dotaChatInformationalToJSON(object: dotaChatInformational): string {
+  switch (object) {
+    case dotaChatInformational.INFO_COOP_BATTLE_POINTS_RULES:
+      return "INFO_COOP_BATTLE_POINTS_RULES";
+    case dotaChatInformational.INFO_FROSTIVUS_ABANDON_REMINDER:
+      return "INFO_FROSTIVUS_ABANDON_REMINDER";
+    case dotaChatInformational.INFO_RANKED_REMINDER:
+      return "INFO_RANKED_REMINDER";
+    case dotaChatInformational.INFO_COOP_LOW_PRIORITY_PASSIVE_REMINDER:
+      return "INFO_COOP_LOW_PRIORITY_PASSIVE_REMINDER";
+    case dotaChatInformational.INFO_CUSTOM_GAME_PENALTY_REMINDER:
+      return "INFO_CUSTOM_GAME_PENALTY_REMINDER";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum dotaChatInformational");
+  }
 }
 
 export enum dotaAbilityPingType {
@@ -321,6 +1744,100 @@ export enum dotaAbilityPingType {
   ABILITY_PING_INCOURIERBACKPACK = 16,
 }
 
+export function dotaAbilityPingTypeFromJSON(object: any): dotaAbilityPingType {
+  switch (object) {
+    case 1:
+    case "ABILITY_PING_READY":
+      return dotaAbilityPingType.ABILITY_PING_READY;
+    case 2:
+    case "ABILITY_PING_MANA":
+      return dotaAbilityPingType.ABILITY_PING_MANA;
+    case 3:
+    case "ABILITY_PING_COOLDOWN":
+      return dotaAbilityPingType.ABILITY_PING_COOLDOWN;
+    case 4:
+    case "ABILITY_PING_ENEMY":
+      return dotaAbilityPingType.ABILITY_PING_ENEMY;
+    case 5:
+    case "ABILITY_PING_UNLEARNED":
+      return dotaAbilityPingType.ABILITY_PING_UNLEARNED;
+    case 6:
+    case "ABILITY_PING_INBACKPACK":
+      return dotaAbilityPingType.ABILITY_PING_INBACKPACK;
+    case 7:
+    case "ABILITY_PING_INSTASH":
+      return dotaAbilityPingType.ABILITY_PING_INSTASH;
+    case 8:
+    case "ABILITY_PING_ONCOURIER":
+      return dotaAbilityPingType.ABILITY_PING_ONCOURIER;
+    case 9:
+    case "ABILITY_PING_ALLY":
+      return dotaAbilityPingType.ABILITY_PING_ALLY;
+    case 10:
+    case "ABILITY_PING_LEARN_READY":
+      return dotaAbilityPingType.ABILITY_PING_LEARN_READY;
+    case 11:
+    case "ABILITY_PING_WILL_LEARN":
+      return dotaAbilityPingType.ABILITY_PING_WILL_LEARN;
+    case 12:
+    case "ABILITY_PING_FUTURE_LEARN":
+      return dotaAbilityPingType.ABILITY_PING_FUTURE_LEARN;
+    case 13:
+    case "ABILITY_PING_NEUTRAL_OFFER":
+      return dotaAbilityPingType.ABILITY_PING_NEUTRAL_OFFER;
+    case 14:
+    case "ABILITY_PING_NEUTRAL_REQUEST":
+      return dotaAbilityPingType.ABILITY_PING_NEUTRAL_REQUEST;
+    case 15:
+    case "ABILITY_PING_NEUTRAL_EQUIP":
+      return dotaAbilityPingType.ABILITY_PING_NEUTRAL_EQUIP;
+    case 16:
+    case "ABILITY_PING_INCOURIERBACKPACK":
+      return dotaAbilityPingType.ABILITY_PING_INCOURIERBACKPACK;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum dotaAbilityPingType");
+  }
+}
+
+export function dotaAbilityPingTypeToJSON(object: dotaAbilityPingType): string {
+  switch (object) {
+    case dotaAbilityPingType.ABILITY_PING_READY:
+      return "ABILITY_PING_READY";
+    case dotaAbilityPingType.ABILITY_PING_MANA:
+      return "ABILITY_PING_MANA";
+    case dotaAbilityPingType.ABILITY_PING_COOLDOWN:
+      return "ABILITY_PING_COOLDOWN";
+    case dotaAbilityPingType.ABILITY_PING_ENEMY:
+      return "ABILITY_PING_ENEMY";
+    case dotaAbilityPingType.ABILITY_PING_UNLEARNED:
+      return "ABILITY_PING_UNLEARNED";
+    case dotaAbilityPingType.ABILITY_PING_INBACKPACK:
+      return "ABILITY_PING_INBACKPACK";
+    case dotaAbilityPingType.ABILITY_PING_INSTASH:
+      return "ABILITY_PING_INSTASH";
+    case dotaAbilityPingType.ABILITY_PING_ONCOURIER:
+      return "ABILITY_PING_ONCOURIER";
+    case dotaAbilityPingType.ABILITY_PING_ALLY:
+      return "ABILITY_PING_ALLY";
+    case dotaAbilityPingType.ABILITY_PING_LEARN_READY:
+      return "ABILITY_PING_LEARN_READY";
+    case dotaAbilityPingType.ABILITY_PING_WILL_LEARN:
+      return "ABILITY_PING_WILL_LEARN";
+    case dotaAbilityPingType.ABILITY_PING_FUTURE_LEARN:
+      return "ABILITY_PING_FUTURE_LEARN";
+    case dotaAbilityPingType.ABILITY_PING_NEUTRAL_OFFER:
+      return "ABILITY_PING_NEUTRAL_OFFER";
+    case dotaAbilityPingType.ABILITY_PING_NEUTRAL_REQUEST:
+      return "ABILITY_PING_NEUTRAL_REQUEST";
+    case dotaAbilityPingType.ABILITY_PING_NEUTRAL_EQUIP:
+      return "ABILITY_PING_NEUTRAL_EQUIP";
+    case dotaAbilityPingType.ABILITY_PING_INCOURIERBACKPACK:
+      return "ABILITY_PING_INCOURIERBACKPACK";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum dotaAbilityPingType");
+  }
+}
+
 export enum dotaReplayStateEvent {
   DOTA_REPLAY_STATE_EVENT_GAME_START = 1,
   DOTA_REPLAY_STATE_EVENT_STARTING_HORN = 2,
@@ -328,6 +1845,50 @@ export enum dotaReplayStateEvent {
   DOTA_REPLAY_STATE_EVENT_SHOWCASE = 4,
   DOTA_REPLAY_STATE_EVENT_POST_GAME = 5,
   DOTA_REPLAY_STATE_EVENT_WAIT_FOR_MAP = 6,
+}
+
+export function dotaReplayStateEventFromJSON(object: any): dotaReplayStateEvent {
+  switch (object) {
+    case 1:
+    case "DOTA_REPLAY_STATE_EVENT_GAME_START":
+      return dotaReplayStateEvent.DOTA_REPLAY_STATE_EVENT_GAME_START;
+    case 2:
+    case "DOTA_REPLAY_STATE_EVENT_STARTING_HORN":
+      return dotaReplayStateEvent.DOTA_REPLAY_STATE_EVENT_STARTING_HORN;
+    case 3:
+    case "DOTA_REPLAY_STATE_EVENT_FIRST_BLOOD":
+      return dotaReplayStateEvent.DOTA_REPLAY_STATE_EVENT_FIRST_BLOOD;
+    case 4:
+    case "DOTA_REPLAY_STATE_EVENT_SHOWCASE":
+      return dotaReplayStateEvent.DOTA_REPLAY_STATE_EVENT_SHOWCASE;
+    case 5:
+    case "DOTA_REPLAY_STATE_EVENT_POST_GAME":
+      return dotaReplayStateEvent.DOTA_REPLAY_STATE_EVENT_POST_GAME;
+    case 6:
+    case "DOTA_REPLAY_STATE_EVENT_WAIT_FOR_MAP":
+      return dotaReplayStateEvent.DOTA_REPLAY_STATE_EVENT_WAIT_FOR_MAP;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum dotaReplayStateEvent");
+  }
+}
+
+export function dotaReplayStateEventToJSON(object: dotaReplayStateEvent): string {
+  switch (object) {
+    case dotaReplayStateEvent.DOTA_REPLAY_STATE_EVENT_GAME_START:
+      return "DOTA_REPLAY_STATE_EVENT_GAME_START";
+    case dotaReplayStateEvent.DOTA_REPLAY_STATE_EVENT_STARTING_HORN:
+      return "DOTA_REPLAY_STATE_EVENT_STARTING_HORN";
+    case dotaReplayStateEvent.DOTA_REPLAY_STATE_EVENT_FIRST_BLOOD:
+      return "DOTA_REPLAY_STATE_EVENT_FIRST_BLOOD";
+    case dotaReplayStateEvent.DOTA_REPLAY_STATE_EVENT_SHOWCASE:
+      return "DOTA_REPLAY_STATE_EVENT_SHOWCASE";
+    case dotaReplayStateEvent.DOTA_REPLAY_STATE_EVENT_POST_GAME:
+      return "DOTA_REPLAY_STATE_EVENT_POST_GAME";
+    case dotaReplayStateEvent.DOTA_REPLAY_STATE_EVENT_WAIT_FOR_MAP:
+      return "DOTA_REPLAY_STATE_EVENT_WAIT_FOR_MAP";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum dotaReplayStateEvent");
+  }
 }
 
 export enum EDotaEntityMessages {
@@ -338,6 +1899,55 @@ export enum EDotaEntityMessages {
   DOTA_UNIT_REMOVE_ALL_GESTURES = 4,
   DOTA_UNIT_FADE_GESTURE = 6,
   DOTA_UNIT_SPEECH_CLIENTSIDE_RULES = 7,
+}
+
+export function eDotaEntityMessagesFromJSON(object: any): EDotaEntityMessages {
+  switch (object) {
+    case 0:
+    case "DOTA_UNIT_SPEECH":
+      return EDotaEntityMessages.DOTA_UNIT_SPEECH;
+    case 1:
+    case "DOTA_UNIT_SPEECH_MUTE":
+      return EDotaEntityMessages.DOTA_UNIT_SPEECH_MUTE;
+    case 2:
+    case "DOTA_UNIT_ADD_GESTURE":
+      return EDotaEntityMessages.DOTA_UNIT_ADD_GESTURE;
+    case 3:
+    case "DOTA_UNIT_REMOVE_GESTURE":
+      return EDotaEntityMessages.DOTA_UNIT_REMOVE_GESTURE;
+    case 4:
+    case "DOTA_UNIT_REMOVE_ALL_GESTURES":
+      return EDotaEntityMessages.DOTA_UNIT_REMOVE_ALL_GESTURES;
+    case 6:
+    case "DOTA_UNIT_FADE_GESTURE":
+      return EDotaEntityMessages.DOTA_UNIT_FADE_GESTURE;
+    case 7:
+    case "DOTA_UNIT_SPEECH_CLIENTSIDE_RULES":
+      return EDotaEntityMessages.DOTA_UNIT_SPEECH_CLIENTSIDE_RULES;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EDotaEntityMessages");
+  }
+}
+
+export function eDotaEntityMessagesToJSON(object: EDotaEntityMessages): string {
+  switch (object) {
+    case EDotaEntityMessages.DOTA_UNIT_SPEECH:
+      return "DOTA_UNIT_SPEECH";
+    case EDotaEntityMessages.DOTA_UNIT_SPEECH_MUTE:
+      return "DOTA_UNIT_SPEECH_MUTE";
+    case EDotaEntityMessages.DOTA_UNIT_ADD_GESTURE:
+      return "DOTA_UNIT_ADD_GESTURE";
+    case EDotaEntityMessages.DOTA_UNIT_REMOVE_GESTURE:
+      return "DOTA_UNIT_REMOVE_GESTURE";
+    case EDotaEntityMessages.DOTA_UNIT_REMOVE_ALL_GESTURES:
+      return "DOTA_UNIT_REMOVE_ALL_GESTURES";
+    case EDotaEntityMessages.DOTA_UNIT_FADE_GESTURE:
+      return "DOTA_UNIT_FADE_GESTURE";
+    case EDotaEntityMessages.DOTA_UNIT_SPEECH_CLIENTSIDE_RULES:
+      return "DOTA_UNIT_SPEECH_CLIENTSIDE_RULES";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EDotaEntityMessages");
+  }
 }
 
 export enum dotaOverheadAlert {
@@ -368,10 +1978,178 @@ export enum dotaOverheadAlert {
   OVERHEAD_ALERT_DEADLY_BLOW = 24,
 }
 
+export function dotaOverheadAlertFromJSON(object: any): dotaOverheadAlert {
+  switch (object) {
+    case 0:
+    case "OVERHEAD_ALERT_GOLD":
+      return dotaOverheadAlert.OVERHEAD_ALERT_GOLD;
+    case 1:
+    case "OVERHEAD_ALERT_DENY":
+      return dotaOverheadAlert.OVERHEAD_ALERT_DENY;
+    case 2:
+    case "OVERHEAD_ALERT_CRITICAL":
+      return dotaOverheadAlert.OVERHEAD_ALERT_CRITICAL;
+    case 3:
+    case "OVERHEAD_ALERT_XP":
+      return dotaOverheadAlert.OVERHEAD_ALERT_XP;
+    case 4:
+    case "OVERHEAD_ALERT_BONUS_SPELL_DAMAGE":
+      return dotaOverheadAlert.OVERHEAD_ALERT_BONUS_SPELL_DAMAGE;
+    case 5:
+    case "OVERHEAD_ALERT_MISS":
+      return dotaOverheadAlert.OVERHEAD_ALERT_MISS;
+    case 6:
+    case "OVERHEAD_ALERT_DAMAGE":
+      return dotaOverheadAlert.OVERHEAD_ALERT_DAMAGE;
+    case 7:
+    case "OVERHEAD_ALERT_EVADE":
+      return dotaOverheadAlert.OVERHEAD_ALERT_EVADE;
+    case 8:
+    case "OVERHEAD_ALERT_BLOCK":
+      return dotaOverheadAlert.OVERHEAD_ALERT_BLOCK;
+    case 9:
+    case "OVERHEAD_ALERT_BONUS_POISON_DAMAGE":
+      return dotaOverheadAlert.OVERHEAD_ALERT_BONUS_POISON_DAMAGE;
+    case 10:
+    case "OVERHEAD_ALERT_HEAL":
+      return dotaOverheadAlert.OVERHEAD_ALERT_HEAL;
+    case 11:
+    case "OVERHEAD_ALERT_MANA_ADD":
+      return dotaOverheadAlert.OVERHEAD_ALERT_MANA_ADD;
+    case 12:
+    case "OVERHEAD_ALERT_MANA_LOSS":
+      return dotaOverheadAlert.OVERHEAD_ALERT_MANA_LOSS;
+    case 13:
+    case "OVERHEAD_ALERT_LAST_HIT_EARLY":
+      return dotaOverheadAlert.OVERHEAD_ALERT_LAST_HIT_EARLY;
+    case 14:
+    case "OVERHEAD_ALERT_LAST_HIT_CLOSE":
+      return dotaOverheadAlert.OVERHEAD_ALERT_LAST_HIT_CLOSE;
+    case 15:
+    case "OVERHEAD_ALERT_LAST_HIT_MISS":
+      return dotaOverheadAlert.OVERHEAD_ALERT_LAST_HIT_MISS;
+    case 16:
+    case "OVERHEAD_ALERT_MAGICAL_BLOCK":
+      return dotaOverheadAlert.OVERHEAD_ALERT_MAGICAL_BLOCK;
+    case 17:
+    case "OVERHEAD_ALERT_INCOMING_DAMAGE":
+      return dotaOverheadAlert.OVERHEAD_ALERT_INCOMING_DAMAGE;
+    case 18:
+    case "OVERHEAD_ALERT_OUTGOING_DAMAGE":
+      return dotaOverheadAlert.OVERHEAD_ALERT_OUTGOING_DAMAGE;
+    case 19:
+    case "OVERHEAD_ALERT_DISABLE_RESIST":
+      return dotaOverheadAlert.OVERHEAD_ALERT_DISABLE_RESIST;
+    case 20:
+    case "OVERHEAD_ALERT_DEATH":
+      return dotaOverheadAlert.OVERHEAD_ALERT_DEATH;
+    case 21:
+    case "OVERHEAD_ALERT_BLOCKED":
+      return dotaOverheadAlert.OVERHEAD_ALERT_BLOCKED;
+    case 22:
+    case "OVERHEAD_ALERT_ITEM_RECEIVED":
+      return dotaOverheadAlert.OVERHEAD_ALERT_ITEM_RECEIVED;
+    case 23:
+    case "OVERHEAD_ALERT_SHARD":
+      return dotaOverheadAlert.OVERHEAD_ALERT_SHARD;
+    case 24:
+    case "OVERHEAD_ALERT_DEADLY_BLOW":
+      return dotaOverheadAlert.OVERHEAD_ALERT_DEADLY_BLOW;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum dotaOverheadAlert");
+  }
+}
+
+export function dotaOverheadAlertToJSON(object: dotaOverheadAlert): string {
+  switch (object) {
+    case dotaOverheadAlert.OVERHEAD_ALERT_GOLD:
+      return "OVERHEAD_ALERT_GOLD";
+    case dotaOverheadAlert.OVERHEAD_ALERT_DENY:
+      return "OVERHEAD_ALERT_DENY";
+    case dotaOverheadAlert.OVERHEAD_ALERT_CRITICAL:
+      return "OVERHEAD_ALERT_CRITICAL";
+    case dotaOverheadAlert.OVERHEAD_ALERT_XP:
+      return "OVERHEAD_ALERT_XP";
+    case dotaOverheadAlert.OVERHEAD_ALERT_BONUS_SPELL_DAMAGE:
+      return "OVERHEAD_ALERT_BONUS_SPELL_DAMAGE";
+    case dotaOverheadAlert.OVERHEAD_ALERT_MISS:
+      return "OVERHEAD_ALERT_MISS";
+    case dotaOverheadAlert.OVERHEAD_ALERT_DAMAGE:
+      return "OVERHEAD_ALERT_DAMAGE";
+    case dotaOverheadAlert.OVERHEAD_ALERT_EVADE:
+      return "OVERHEAD_ALERT_EVADE";
+    case dotaOverheadAlert.OVERHEAD_ALERT_BLOCK:
+      return "OVERHEAD_ALERT_BLOCK";
+    case dotaOverheadAlert.OVERHEAD_ALERT_BONUS_POISON_DAMAGE:
+      return "OVERHEAD_ALERT_BONUS_POISON_DAMAGE";
+    case dotaOverheadAlert.OVERHEAD_ALERT_HEAL:
+      return "OVERHEAD_ALERT_HEAL";
+    case dotaOverheadAlert.OVERHEAD_ALERT_MANA_ADD:
+      return "OVERHEAD_ALERT_MANA_ADD";
+    case dotaOverheadAlert.OVERHEAD_ALERT_MANA_LOSS:
+      return "OVERHEAD_ALERT_MANA_LOSS";
+    case dotaOverheadAlert.OVERHEAD_ALERT_LAST_HIT_EARLY:
+      return "OVERHEAD_ALERT_LAST_HIT_EARLY";
+    case dotaOverheadAlert.OVERHEAD_ALERT_LAST_HIT_CLOSE:
+      return "OVERHEAD_ALERT_LAST_HIT_CLOSE";
+    case dotaOverheadAlert.OVERHEAD_ALERT_LAST_HIT_MISS:
+      return "OVERHEAD_ALERT_LAST_HIT_MISS";
+    case dotaOverheadAlert.OVERHEAD_ALERT_MAGICAL_BLOCK:
+      return "OVERHEAD_ALERT_MAGICAL_BLOCK";
+    case dotaOverheadAlert.OVERHEAD_ALERT_INCOMING_DAMAGE:
+      return "OVERHEAD_ALERT_INCOMING_DAMAGE";
+    case dotaOverheadAlert.OVERHEAD_ALERT_OUTGOING_DAMAGE:
+      return "OVERHEAD_ALERT_OUTGOING_DAMAGE";
+    case dotaOverheadAlert.OVERHEAD_ALERT_DISABLE_RESIST:
+      return "OVERHEAD_ALERT_DISABLE_RESIST";
+    case dotaOverheadAlert.OVERHEAD_ALERT_DEATH:
+      return "OVERHEAD_ALERT_DEATH";
+    case dotaOverheadAlert.OVERHEAD_ALERT_BLOCKED:
+      return "OVERHEAD_ALERT_BLOCKED";
+    case dotaOverheadAlert.OVERHEAD_ALERT_ITEM_RECEIVED:
+      return "OVERHEAD_ALERT_ITEM_RECEIVED";
+    case dotaOverheadAlert.OVERHEAD_ALERT_SHARD:
+      return "OVERHEAD_ALERT_SHARD";
+    case dotaOverheadAlert.OVERHEAD_ALERT_DEADLY_BLOW:
+      return "OVERHEAD_ALERT_DEADLY_BLOW";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum dotaOverheadAlert");
+  }
+}
+
 export enum dotaRoshanPhase {
   k_SRSP_ROSHAN_ALIVE = 0,
   k_SRSP_ROSHAN_BASE_TIMER = 1,
   k_SRSP_ROSHAN_VISIBLE_TIMER = 2,
+}
+
+export function dotaRoshanPhaseFromJSON(object: any): dotaRoshanPhase {
+  switch (object) {
+    case 0:
+    case "k_SRSP_ROSHAN_ALIVE":
+      return dotaRoshanPhase.k_SRSP_ROSHAN_ALIVE;
+    case 1:
+    case "k_SRSP_ROSHAN_BASE_TIMER":
+      return dotaRoshanPhase.k_SRSP_ROSHAN_BASE_TIMER;
+    case 2:
+    case "k_SRSP_ROSHAN_VISIBLE_TIMER":
+      return dotaRoshanPhase.k_SRSP_ROSHAN_VISIBLE_TIMER;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum dotaRoshanPhase");
+  }
+}
+
+export function dotaRoshanPhaseToJSON(object: dotaRoshanPhase): string {
+  switch (object) {
+    case dotaRoshanPhase.k_SRSP_ROSHAN_ALIVE:
+      return "k_SRSP_ROSHAN_ALIVE";
+    case dotaRoshanPhase.k_SRSP_ROSHAN_BASE_TIMER:
+      return "k_SRSP_ROSHAN_BASE_TIMER";
+    case dotaRoshanPhase.k_SRSP_ROSHAN_VISIBLE_TIMER:
+      return "k_SRSP_ROSHAN_VISIBLE_TIMER";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum dotaRoshanPhase");
+  }
 }
 
 export enum dotaPositionCategory {
@@ -393,6 +2171,100 @@ export enum dotaPositionCategory {
   DOTA_POSITION_OTHER = 15,
 }
 
+export function dotaPositionCategoryFromJSON(object: any): dotaPositionCategory {
+  switch (object) {
+    case 0:
+    case "DOTA_POSITION_NONE":
+      return dotaPositionCategory.DOTA_POSITION_NONE;
+    case 1:
+    case "DOTA_POSITION_BOTTOM_LANE":
+      return dotaPositionCategory.DOTA_POSITION_BOTTOM_LANE;
+    case 2:
+    case "DOTA_POSITION_MID_LANE":
+      return dotaPositionCategory.DOTA_POSITION_MID_LANE;
+    case 3:
+    case "DOTA_POSITION_TOP_LANE":
+      return dotaPositionCategory.DOTA_POSITION_TOP_LANE;
+    case 4:
+    case "DOTA_POSITION_RADIANT_JUNGLE":
+      return dotaPositionCategory.DOTA_POSITION_RADIANT_JUNGLE;
+    case 5:
+    case "DOTA_POSITION_DIRE_JUNGLE":
+      return dotaPositionCategory.DOTA_POSITION_DIRE_JUNGLE;
+    case 6:
+    case "DOTA_POSITION_RADIANT_ANCIENTS":
+      return dotaPositionCategory.DOTA_POSITION_RADIANT_ANCIENTS;
+    case 7:
+    case "DOTA_POSITION_DIRE_ANCIENTS":
+      return dotaPositionCategory.DOTA_POSITION_DIRE_ANCIENTS;
+    case 8:
+    case "DOTA_POSITION_RADIANT_SECRET_SHOP":
+      return dotaPositionCategory.DOTA_POSITION_RADIANT_SECRET_SHOP;
+    case 9:
+    case "DOTA_POSITION_DIRE_SECRET_SHOP":
+      return dotaPositionCategory.DOTA_POSITION_DIRE_SECRET_SHOP;
+    case 10:
+    case "DOTA_POSITION_RIVER":
+      return dotaPositionCategory.DOTA_POSITION_RIVER;
+    case 11:
+    case "DOTA_POSITION_ROSHAN_PIT":
+      return dotaPositionCategory.DOTA_POSITION_ROSHAN_PIT;
+    case 12:
+    case "DOTA_POSITION_RADIANT_BASE":
+      return dotaPositionCategory.DOTA_POSITION_RADIANT_BASE;
+    case 13:
+    case "DOTA_POSITION_DIRE_BASE":
+      return dotaPositionCategory.DOTA_POSITION_DIRE_BASE;
+    case 14:
+    case "DOTA_POSITION_FOUNTAIN":
+      return dotaPositionCategory.DOTA_POSITION_FOUNTAIN;
+    case 15:
+    case "DOTA_POSITION_OTHER":
+      return dotaPositionCategory.DOTA_POSITION_OTHER;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum dotaPositionCategory");
+  }
+}
+
+export function dotaPositionCategoryToJSON(object: dotaPositionCategory): string {
+  switch (object) {
+    case dotaPositionCategory.DOTA_POSITION_NONE:
+      return "DOTA_POSITION_NONE";
+    case dotaPositionCategory.DOTA_POSITION_BOTTOM_LANE:
+      return "DOTA_POSITION_BOTTOM_LANE";
+    case dotaPositionCategory.DOTA_POSITION_MID_LANE:
+      return "DOTA_POSITION_MID_LANE";
+    case dotaPositionCategory.DOTA_POSITION_TOP_LANE:
+      return "DOTA_POSITION_TOP_LANE";
+    case dotaPositionCategory.DOTA_POSITION_RADIANT_JUNGLE:
+      return "DOTA_POSITION_RADIANT_JUNGLE";
+    case dotaPositionCategory.DOTA_POSITION_DIRE_JUNGLE:
+      return "DOTA_POSITION_DIRE_JUNGLE";
+    case dotaPositionCategory.DOTA_POSITION_RADIANT_ANCIENTS:
+      return "DOTA_POSITION_RADIANT_ANCIENTS";
+    case dotaPositionCategory.DOTA_POSITION_DIRE_ANCIENTS:
+      return "DOTA_POSITION_DIRE_ANCIENTS";
+    case dotaPositionCategory.DOTA_POSITION_RADIANT_SECRET_SHOP:
+      return "DOTA_POSITION_RADIANT_SECRET_SHOP";
+    case dotaPositionCategory.DOTA_POSITION_DIRE_SECRET_SHOP:
+      return "DOTA_POSITION_DIRE_SECRET_SHOP";
+    case dotaPositionCategory.DOTA_POSITION_RIVER:
+      return "DOTA_POSITION_RIVER";
+    case dotaPositionCategory.DOTA_POSITION_ROSHAN_PIT:
+      return "DOTA_POSITION_ROSHAN_PIT";
+    case dotaPositionCategory.DOTA_POSITION_RADIANT_BASE:
+      return "DOTA_POSITION_RADIANT_BASE";
+    case dotaPositionCategory.DOTA_POSITION_DIRE_BASE:
+      return "DOTA_POSITION_DIRE_BASE";
+    case dotaPositionCategory.DOTA_POSITION_FOUNTAIN:
+      return "DOTA_POSITION_FOUNTAIN";
+    case dotaPositionCategory.DOTA_POSITION_OTHER:
+      return "DOTA_POSITION_OTHER";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum dotaPositionCategory");
+  }
+}
+
 export enum dotaAbilityTargetType {
   DOTA_ABILITY_TARGET_NONE = 0,
   DOTA_ABILITY_TARGET_SELF = 1,
@@ -400,6 +2272,50 @@ export enum dotaAbilityTargetType {
   DOTA_ABILITY_TARGET_ALLY_CREEP = 3,
   DOTA_ABILITY_TARGET_ENEMY_HERO = 4,
   DOTA_ABILITY_TARGET_ENEMY_CREEP = 5,
+}
+
+export function dotaAbilityTargetTypeFromJSON(object: any): dotaAbilityTargetType {
+  switch (object) {
+    case 0:
+    case "DOTA_ABILITY_TARGET_NONE":
+      return dotaAbilityTargetType.DOTA_ABILITY_TARGET_NONE;
+    case 1:
+    case "DOTA_ABILITY_TARGET_SELF":
+      return dotaAbilityTargetType.DOTA_ABILITY_TARGET_SELF;
+    case 2:
+    case "DOTA_ABILITY_TARGET_ALLY_HERO":
+      return dotaAbilityTargetType.DOTA_ABILITY_TARGET_ALLY_HERO;
+    case 3:
+    case "DOTA_ABILITY_TARGET_ALLY_CREEP":
+      return dotaAbilityTargetType.DOTA_ABILITY_TARGET_ALLY_CREEP;
+    case 4:
+    case "DOTA_ABILITY_TARGET_ENEMY_HERO":
+      return dotaAbilityTargetType.DOTA_ABILITY_TARGET_ENEMY_HERO;
+    case 5:
+    case "DOTA_ABILITY_TARGET_ENEMY_CREEP":
+      return dotaAbilityTargetType.DOTA_ABILITY_TARGET_ENEMY_CREEP;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum dotaAbilityTargetType");
+  }
+}
+
+export function dotaAbilityTargetTypeToJSON(object: dotaAbilityTargetType): string {
+  switch (object) {
+    case dotaAbilityTargetType.DOTA_ABILITY_TARGET_NONE:
+      return "DOTA_ABILITY_TARGET_NONE";
+    case dotaAbilityTargetType.DOTA_ABILITY_TARGET_SELF:
+      return "DOTA_ABILITY_TARGET_SELF";
+    case dotaAbilityTargetType.DOTA_ABILITY_TARGET_ALLY_HERO:
+      return "DOTA_ABILITY_TARGET_ALLY_HERO";
+    case dotaAbilityTargetType.DOTA_ABILITY_TARGET_ALLY_CREEP:
+      return "DOTA_ABILITY_TARGET_ALLY_CREEP";
+    case dotaAbilityTargetType.DOTA_ABILITY_TARGET_ENEMY_HERO:
+      return "DOTA_ABILITY_TARGET_ENEMY_HERO";
+    case dotaAbilityTargetType.DOTA_ABILITY_TARGET_ENEMY_CREEP:
+      return "DOTA_ABILITY_TARGET_ENEMY_CREEP";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum dotaAbilityTargetType");
+  }
 }
 
 export enum EHeroStatType {
@@ -427,6 +2343,130 @@ export enum EHeroStatType {
   k_EHeroStatType_CullingBladeHeroBuffAverage = 2020,
 }
 
+export function eHeroStatTypeFromJSON(object: any): EHeroStatType {
+  switch (object) {
+    case 0:
+    case "k_EHeroStatType_None":
+      return EHeroStatType.k_EHeroStatType_None;
+    case 2000:
+    case "k_EHeroStatType_AxeTotalDamage":
+      return EHeroStatType.k_EHeroStatType_AxeTotalDamage;
+    case 2001:
+    case "k_EHeroStatType_BattleHungerDamage":
+      return EHeroStatType.k_EHeroStatType_BattleHungerDamage;
+    case 2002:
+    case "k_EHeroStatType_CounterHelixDamage":
+      return EHeroStatType.k_EHeroStatType_CounterHelixDamage;
+    case 2003:
+    case "k_EHeroStatType_CullingBladeDamage":
+      return EHeroStatType.k_EHeroStatType_CullingBladeDamage;
+    case 2004:
+    case "k_EHeroStatType_BerserkersCallCastCount":
+      return EHeroStatType.k_EHeroStatType_BerserkersCallCastCount;
+    case 2005:
+    case "k_EHeroStatType_BerserkersCallHeroesHitAverage":
+      return EHeroStatType.k_EHeroStatType_BerserkersCallHeroesHitAverage;
+    case 2006:
+    case "k_EHeroStatType_BerserkersCallOtherUnitsHit":
+      return EHeroStatType.k_EHeroStatType_BerserkersCallOtherUnitsHit;
+    case 2007:
+    case "k_EHeroStatType_BerserkersCallHeroAttacksTaken":
+      return EHeroStatType.k_EHeroStatType_BerserkersCallHeroAttacksTaken;
+    case 2008:
+    case "k_EHeroStatType_BerserkersCallOtherAttacksTaken":
+      return EHeroStatType.k_EHeroStatType_BerserkersCallOtherAttacksTaken;
+    case 2009:
+    case "k_EHeroStatType_BattleHungerCastCount":
+      return EHeroStatType.k_EHeroStatType_BattleHungerCastCount;
+    case 2010:
+    case "k_EHeroStatType_BattleHungerPotentialDuration":
+      return EHeroStatType.k_EHeroStatType_BattleHungerPotentialDuration;
+    case 2011:
+    case "k_EHeroStatType_BattleHungerAverageDuration":
+      return EHeroStatType.k_EHeroStatType_BattleHungerAverageDuration;
+    case 2012:
+    case "k_EHeroStatType_CounterHelixProcCount":
+      return EHeroStatType.k_EHeroStatType_CounterHelixProcCount;
+    case 2013:
+    case "k_EHeroStatType_CounterHelixHeroProcCount":
+      return EHeroStatType.k_EHeroStatType_CounterHelixHeroProcCount;
+    case 2014:
+    case "k_EHeroStatType_CounterHelixHeroesHitAverage":
+      return EHeroStatType.k_EHeroStatType_CounterHelixHeroesHitAverage;
+    case 2015:
+    case "k_EHeroStatType_CounterHelixOtherUnitsHitCount":
+      return EHeroStatType.k_EHeroStatType_CounterHelixOtherUnitsHitCount;
+    case 2016:
+    case "k_EHeroStatType_CullingBladeCastCount":
+      return EHeroStatType.k_EHeroStatType_CullingBladeCastCount;
+    case 2017:
+    case "k_EHeroStatType_CullingBladeKillCount":
+      return EHeroStatType.k_EHeroStatType_CullingBladeKillCount;
+    case 2018:
+    case "k_EHeroStatType_CullingBladeAverageHealthCulled":
+      return EHeroStatType.k_EHeroStatType_CullingBladeAverageHealthCulled;
+    case 2019:
+    case "k_EHeroStatType_CullingBladeAverageDamageAvailable":
+      return EHeroStatType.k_EHeroStatType_CullingBladeAverageDamageAvailable;
+    case 2020:
+    case "k_EHeroStatType_CullingBladeHeroBuffAverage":
+      return EHeroStatType.k_EHeroStatType_CullingBladeHeroBuffAverage;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EHeroStatType");
+  }
+}
+
+export function eHeroStatTypeToJSON(object: EHeroStatType): string {
+  switch (object) {
+    case EHeroStatType.k_EHeroStatType_None:
+      return "k_EHeroStatType_None";
+    case EHeroStatType.k_EHeroStatType_AxeTotalDamage:
+      return "k_EHeroStatType_AxeTotalDamage";
+    case EHeroStatType.k_EHeroStatType_BattleHungerDamage:
+      return "k_EHeroStatType_BattleHungerDamage";
+    case EHeroStatType.k_EHeroStatType_CounterHelixDamage:
+      return "k_EHeroStatType_CounterHelixDamage";
+    case EHeroStatType.k_EHeroStatType_CullingBladeDamage:
+      return "k_EHeroStatType_CullingBladeDamage";
+    case EHeroStatType.k_EHeroStatType_BerserkersCallCastCount:
+      return "k_EHeroStatType_BerserkersCallCastCount";
+    case EHeroStatType.k_EHeroStatType_BerserkersCallHeroesHitAverage:
+      return "k_EHeroStatType_BerserkersCallHeroesHitAverage";
+    case EHeroStatType.k_EHeroStatType_BerserkersCallOtherUnitsHit:
+      return "k_EHeroStatType_BerserkersCallOtherUnitsHit";
+    case EHeroStatType.k_EHeroStatType_BerserkersCallHeroAttacksTaken:
+      return "k_EHeroStatType_BerserkersCallHeroAttacksTaken";
+    case EHeroStatType.k_EHeroStatType_BerserkersCallOtherAttacksTaken:
+      return "k_EHeroStatType_BerserkersCallOtherAttacksTaken";
+    case EHeroStatType.k_EHeroStatType_BattleHungerCastCount:
+      return "k_EHeroStatType_BattleHungerCastCount";
+    case EHeroStatType.k_EHeroStatType_BattleHungerPotentialDuration:
+      return "k_EHeroStatType_BattleHungerPotentialDuration";
+    case EHeroStatType.k_EHeroStatType_BattleHungerAverageDuration:
+      return "k_EHeroStatType_BattleHungerAverageDuration";
+    case EHeroStatType.k_EHeroStatType_CounterHelixProcCount:
+      return "k_EHeroStatType_CounterHelixProcCount";
+    case EHeroStatType.k_EHeroStatType_CounterHelixHeroProcCount:
+      return "k_EHeroStatType_CounterHelixHeroProcCount";
+    case EHeroStatType.k_EHeroStatType_CounterHelixHeroesHitAverage:
+      return "k_EHeroStatType_CounterHelixHeroesHitAverage";
+    case EHeroStatType.k_EHeroStatType_CounterHelixOtherUnitsHitCount:
+      return "k_EHeroStatType_CounterHelixOtherUnitsHitCount";
+    case EHeroStatType.k_EHeroStatType_CullingBladeCastCount:
+      return "k_EHeroStatType_CullingBladeCastCount";
+    case EHeroStatType.k_EHeroStatType_CullingBladeKillCount:
+      return "k_EHeroStatType_CullingBladeKillCount";
+    case EHeroStatType.k_EHeroStatType_CullingBladeAverageHealthCulled:
+      return "k_EHeroStatType_CullingBladeAverageHealthCulled";
+    case EHeroStatType.k_EHeroStatType_CullingBladeAverageDamageAvailable:
+      return "k_EHeroStatType_CullingBladeAverageDamageAvailable";
+    case EHeroStatType.k_EHeroStatType_CullingBladeHeroBuffAverage:
+      return "k_EHeroStatType_CullingBladeHeroBuffAverage";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EHeroStatType");
+  }
+}
+
 export enum EPlayerVoiceListenState {
   kPVLS_None = 0,
   kPVLS_DeniedChatBanned = 1,
@@ -450,9 +2490,147 @@ export enum EPlayerVoiceListenState {
   kPVLS_AllowPrivateCoach = 74,
 }
 
+export function ePlayerVoiceListenStateFromJSON(object: any): EPlayerVoiceListenState {
+  switch (object) {
+    case 0:
+    case "kPVLS_None":
+      return EPlayerVoiceListenState.kPVLS_None;
+    case 1:
+    case "kPVLS_DeniedChatBanned":
+      return EPlayerVoiceListenState.kPVLS_DeniedChatBanned;
+    case 2:
+    case "kPVLS_DeniedPartner":
+      return EPlayerVoiceListenState.kPVLS_DeniedPartner;
+    case 3:
+    case "kPVLS_DeniedHLTVTalkerNotSpectator":
+      return EPlayerVoiceListenState.kPVLS_DeniedHLTVTalkerNotSpectator;
+    case 4:
+    case "kPVLS_DeniedHLTVNoTalkerPlayerID":
+      return EPlayerVoiceListenState.kPVLS_DeniedHLTVNoTalkerPlayerID;
+    case 5:
+    case "kPVLS_DeniedHLTVTalkerNotBroadcaster":
+      return EPlayerVoiceListenState.kPVLS_DeniedHLTVTalkerNotBroadcaster;
+    case 6:
+    case "kPVLS_DeniedTeamSpectator":
+      return EPlayerVoiceListenState.kPVLS_DeniedTeamSpectator;
+    case 8:
+    case "kPVLS_DeniedStudent":
+      return EPlayerVoiceListenState.kPVLS_DeniedStudent;
+    case 9:
+    case "kPVLS_DeniedPrivateCoach":
+      return EPlayerVoiceListenState.kPVLS_DeniedPrivateCoach;
+    case 64:
+    case "kPVLS_Denied":
+      return EPlayerVoiceListenState.kPVLS_Denied;
+    case 65:
+    case "kPVLS_AllowHLTVTalkerIsBroadcaster":
+      return EPlayerVoiceListenState.kPVLS_AllowHLTVTalkerIsBroadcaster;
+    case 66:
+    case "kPVLS_AllowCoBroadcaster":
+      return EPlayerVoiceListenState.kPVLS_AllowCoBroadcaster;
+    case 67:
+    case "kPVLS_AllowAllChat":
+      return EPlayerVoiceListenState.kPVLS_AllowAllChat;
+    case 68:
+    case "kPVLS_AllowStudentToCoach":
+      return EPlayerVoiceListenState.kPVLS_AllowStudentToCoach;
+    case 69:
+    case "kPVLS_AllowFellowStudent":
+      return EPlayerVoiceListenState.kPVLS_AllowFellowStudent;
+    case 70:
+    case "kPVLS_AllowTalkerIsCoach":
+      return EPlayerVoiceListenState.kPVLS_AllowTalkerIsCoach;
+    case 71:
+    case "kPVLS_AllowCoachHearTeam":
+      return EPlayerVoiceListenState.kPVLS_AllowCoachHearTeam;
+    case 72:
+    case "kPVLS_AllowSameTeam":
+      return EPlayerVoiceListenState.kPVLS_AllowSameTeam;
+    case 73:
+    case "kPVLS_AllowShowcase":
+      return EPlayerVoiceListenState.kPVLS_AllowShowcase;
+    case 74:
+    case "kPVLS_AllowPrivateCoach":
+      return EPlayerVoiceListenState.kPVLS_AllowPrivateCoach;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EPlayerVoiceListenState");
+  }
+}
+
+export function ePlayerVoiceListenStateToJSON(object: EPlayerVoiceListenState): string {
+  switch (object) {
+    case EPlayerVoiceListenState.kPVLS_None:
+      return "kPVLS_None";
+    case EPlayerVoiceListenState.kPVLS_DeniedChatBanned:
+      return "kPVLS_DeniedChatBanned";
+    case EPlayerVoiceListenState.kPVLS_DeniedPartner:
+      return "kPVLS_DeniedPartner";
+    case EPlayerVoiceListenState.kPVLS_DeniedHLTVTalkerNotSpectator:
+      return "kPVLS_DeniedHLTVTalkerNotSpectator";
+    case EPlayerVoiceListenState.kPVLS_DeniedHLTVNoTalkerPlayerID:
+      return "kPVLS_DeniedHLTVNoTalkerPlayerID";
+    case EPlayerVoiceListenState.kPVLS_DeniedHLTVTalkerNotBroadcaster:
+      return "kPVLS_DeniedHLTVTalkerNotBroadcaster";
+    case EPlayerVoiceListenState.kPVLS_DeniedTeamSpectator:
+      return "kPVLS_DeniedTeamSpectator";
+    case EPlayerVoiceListenState.kPVLS_DeniedStudent:
+      return "kPVLS_DeniedStudent";
+    case EPlayerVoiceListenState.kPVLS_DeniedPrivateCoach:
+      return "kPVLS_DeniedPrivateCoach";
+    case EPlayerVoiceListenState.kPVLS_Denied:
+      return "kPVLS_Denied";
+    case EPlayerVoiceListenState.kPVLS_AllowHLTVTalkerIsBroadcaster:
+      return "kPVLS_AllowHLTVTalkerIsBroadcaster";
+    case EPlayerVoiceListenState.kPVLS_AllowCoBroadcaster:
+      return "kPVLS_AllowCoBroadcaster";
+    case EPlayerVoiceListenState.kPVLS_AllowAllChat:
+      return "kPVLS_AllowAllChat";
+    case EPlayerVoiceListenState.kPVLS_AllowStudentToCoach:
+      return "kPVLS_AllowStudentToCoach";
+    case EPlayerVoiceListenState.kPVLS_AllowFellowStudent:
+      return "kPVLS_AllowFellowStudent";
+    case EPlayerVoiceListenState.kPVLS_AllowTalkerIsCoach:
+      return "kPVLS_AllowTalkerIsCoach";
+    case EPlayerVoiceListenState.kPVLS_AllowCoachHearTeam:
+      return "kPVLS_AllowCoachHearTeam";
+    case EPlayerVoiceListenState.kPVLS_AllowSameTeam:
+      return "kPVLS_AllowSameTeam";
+    case EPlayerVoiceListenState.kPVLS_AllowShowcase:
+      return "kPVLS_AllowShowcase";
+    case EPlayerVoiceListenState.kPVLS_AllowPrivateCoach:
+      return "kPVLS_AllowPrivateCoach";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EPlayerVoiceListenState");
+  }
+}
+
 export enum EProjectionEvent {
   ePE_FirstBlood = 0,
   ePE_Killstreak_godlike = 1,
+}
+
+export function eProjectionEventFromJSON(object: any): EProjectionEvent {
+  switch (object) {
+    case 0:
+    case "ePE_FirstBlood":
+      return EProjectionEvent.ePE_FirstBlood;
+    case 1:
+    case "ePE_Killstreak_godlike":
+      return EProjectionEvent.ePE_Killstreak_godlike;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EProjectionEvent");
+  }
+}
+
+export function eProjectionEventToJSON(object: EProjectionEvent): string {
+  switch (object) {
+    case EProjectionEvent.ePE_FirstBlood:
+      return "ePE_FirstBlood";
+    case EProjectionEvent.ePE_Killstreak_godlike:
+      return "ePE_Killstreak_godlike";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EProjectionEvent");
+  }
 }
 
 export interface CDOTAUserMsgAIDebugLine {
@@ -766,6 +2944,38 @@ export enum CDOTAUserMsgPredictionResult_Prediction_EResult {
   k_eResult_Destroyed = 2,
 }
 
+export function cDOTAUserMsgPredictionResult_Prediction_EResultFromJSON(
+  object: any,
+): CDOTAUserMsgPredictionResult_Prediction_EResult {
+  switch (object) {
+    case 1:
+    case "k_eResult_ItemGranted":
+      return CDOTAUserMsgPredictionResult_Prediction_EResult.k_eResult_ItemGranted;
+    case 2:
+    case "k_eResult_Destroyed":
+      return CDOTAUserMsgPredictionResult_Prediction_EResult.k_eResult_Destroyed;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CDOTAUserMsgPredictionResult_Prediction_EResult",
+      );
+  }
+}
+
+export function cDOTAUserMsgPredictionResult_Prediction_EResultToJSON(
+  object: CDOTAUserMsgPredictionResult_Prediction_EResult,
+): string {
+  switch (object) {
+    case CDOTAUserMsgPredictionResult_Prediction_EResult.k_eResult_ItemGranted:
+      return "k_eResult_ItemGranted";
+    case CDOTAUserMsgPredictionResult_Prediction_EResult.k_eResult_Destroyed:
+      return "k_eResult_Destroyed";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CDOTAUserMsgPredictionResult_Prediction_EResult",
+      );
+  }
+}
+
 export interface CDOTAResponseQuerySerialized {
   facts: CDOTAResponseQuerySerialized_Fact[];
 }
@@ -784,6 +2994,48 @@ export enum CDOTAResponseQuerySerialized_Fact_ValueType {
   STRING = 2,
   STRINGTABLE_INDEX = 3,
   INT_NUMERIC = 4,
+}
+
+export function cDOTAResponseQuerySerialized_Fact_ValueTypeFromJSON(
+  object: any,
+): CDOTAResponseQuerySerialized_Fact_ValueType {
+  switch (object) {
+    case 1:
+    case "NUMERIC":
+      return CDOTAResponseQuerySerialized_Fact_ValueType.NUMERIC;
+    case 2:
+    case "STRING":
+      return CDOTAResponseQuerySerialized_Fact_ValueType.STRING;
+    case 3:
+    case "STRINGTABLE_INDEX":
+      return CDOTAResponseQuerySerialized_Fact_ValueType.STRINGTABLE_INDEX;
+    case 4:
+    case "INT_NUMERIC":
+      return CDOTAResponseQuerySerialized_Fact_ValueType.INT_NUMERIC;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CDOTAResponseQuerySerialized_Fact_ValueType",
+      );
+  }
+}
+
+export function cDOTAResponseQuerySerialized_Fact_ValueTypeToJSON(
+  object: CDOTAResponseQuerySerialized_Fact_ValueType,
+): string {
+  switch (object) {
+    case CDOTAResponseQuerySerialized_Fact_ValueType.NUMERIC:
+      return "NUMERIC";
+    case CDOTAResponseQuerySerialized_Fact_ValueType.STRING:
+      return "STRING";
+    case CDOTAResponseQuerySerialized_Fact_ValueType.STRINGTABLE_INDEX:
+      return "STRINGTABLE_INDEX";
+    case CDOTAResponseQuerySerialized_Fact_ValueType.INT_NUMERIC:
+      return "INT_NUMERIC";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CDOTAResponseQuerySerialized_Fact_ValueType",
+      );
+  }
 }
 
 export interface CDOTASpeechMatchOnClient {
@@ -1547,6 +3799,43 @@ export enum CDOTAUserMsgGuildChallengeProgress_EChallengeType {
   k_EChallengeType_Contract = 2,
 }
 
+export function cDOTAUserMsgGuildChallengeProgress_EChallengeTypeFromJSON(
+  object: any,
+): CDOTAUserMsgGuildChallengeProgress_EChallengeType {
+  switch (object) {
+    case 0:
+    case "k_EChallengeType_Invalid":
+      return CDOTAUserMsgGuildChallengeProgress_EChallengeType.k_EChallengeType_Invalid;
+    case 1:
+    case "k_EChallengeType_Cooperative":
+      return CDOTAUserMsgGuildChallengeProgress_EChallengeType.k_EChallengeType_Cooperative;
+    case 2:
+    case "k_EChallengeType_Contract":
+      return CDOTAUserMsgGuildChallengeProgress_EChallengeType.k_EChallengeType_Contract;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CDOTAUserMsgGuildChallengeProgress_EChallengeType",
+      );
+  }
+}
+
+export function cDOTAUserMsgGuildChallengeProgress_EChallengeTypeToJSON(
+  object: CDOTAUserMsgGuildChallengeProgress_EChallengeType,
+): string {
+  switch (object) {
+    case CDOTAUserMsgGuildChallengeProgress_EChallengeType.k_EChallengeType_Invalid:
+      return "k_EChallengeType_Invalid";
+    case CDOTAUserMsgGuildChallengeProgress_EChallengeType.k_EChallengeType_Cooperative:
+      return "k_EChallengeType_Cooperative";
+    case CDOTAUserMsgGuildChallengeProgress_EChallengeType.k_EChallengeType_Contract:
+      return "k_EChallengeType_Contract";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CDOTAUserMsgGuildChallengeProgress_EChallengeType",
+      );
+  }
+}
+
 export interface CDOTAUserMsgGuildChallengeProgress_PlayerProgress {
   playerId: number;
   progress: number;
@@ -1697,6 +3986,16 @@ export const CDOTAUserMsgAIDebugLine = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgAIDebugLine {
+    return { message: isSet(object.message) ? String(object.message) : "" };
+  },
+
+  toJSON(message: CDOTAUserMsgAIDebugLine): unknown {
+    const obj: any = {};
+    message.message !== undefined && (obj.message = message.message);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgPing(): CDOTAUserMsgPing {
@@ -1743,6 +4042,17 @@ export const CDOTAUserMsgPing = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgPing {
+    return { ping: isSet(object.ping) ? Number(object.ping) : 0, loss: isSet(object.loss) ? Number(object.loss) : 0 };
+  },
+
+  toJSON(message: CDOTAUserMsgPing): unknown {
+    const obj: any = {};
+    message.ping !== undefined && (obj.ping = Math.round(message.ping));
+    message.loss !== undefined && (obj.loss = Math.round(message.loss));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgSwapVerify(): CDOTAUserMsgSwapVerify {
@@ -1778,6 +4088,16 @@ export const CDOTAUserMsgSwapVerify = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgSwapVerify {
+    return { playerId: isSet(object.playerId) ? Number(object.playerId) : 0 };
+  },
+
+  toJSON(message: CDOTAUserMsgSwapVerify): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    return obj;
   },
 };
 
@@ -1916,6 +4236,36 @@ export const CDOTAUserMsgChatEvent = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgChatEvent {
+    return {
+      type: isSet(object.type) ? dotaChatMessageFromJSON(object.type) : 0,
+      value: isSet(object.value) ? Number(object.value) : 0,
+      playerid1: isSet(object.playerid1) ? Number(object.playerid1) : 0,
+      playerid2: isSet(object.playerid2) ? Number(object.playerid2) : 0,
+      playerid3: isSet(object.playerid3) ? Number(object.playerid3) : 0,
+      playerid4: isSet(object.playerid4) ? Number(object.playerid4) : 0,
+      playerid5: isSet(object.playerid5) ? Number(object.playerid5) : 0,
+      playerid6: isSet(object.playerid6) ? Number(object.playerid6) : 0,
+      value2: isSet(object.value2) ? Number(object.value2) : 0,
+      value3: isSet(object.value3) ? Number(object.value3) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgChatEvent): unknown {
+    const obj: any = {};
+    message.type !== undefined && (obj.type = dotaChatMessageToJSON(message.type));
+    message.value !== undefined && (obj.value = Math.round(message.value));
+    message.playerid1 !== undefined && (obj.playerid1 = Math.round(message.playerid1));
+    message.playerid2 !== undefined && (obj.playerid2 = Math.round(message.playerid2));
+    message.playerid3 !== undefined && (obj.playerid3 = Math.round(message.playerid3));
+    message.playerid4 !== undefined && (obj.playerid4 = Math.round(message.playerid4));
+    message.playerid5 !== undefined && (obj.playerid5 = Math.round(message.playerid5));
+    message.playerid6 !== undefined && (obj.playerid6 = Math.round(message.playerid6));
+    message.value2 !== undefined && (obj.value2 = Math.round(message.value2));
+    message.value3 !== undefined && (obj.value3 = Math.round(message.value3));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgBotChat(): CDOTAUserMsgBotChat {
@@ -1982,6 +4332,24 @@ export const CDOTAUserMsgBotChat = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgBotChat {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      message: isSet(object.message) ? String(object.message) : "",
+      target: isSet(object.target) ? String(object.target) : "",
+      teamOnly: isSet(object.teamOnly) ? Boolean(object.teamOnly) : false,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgBotChat): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.message !== undefined && (obj.message = message.message);
+    message.target !== undefined && (obj.target = message.target);
+    message.teamOnly !== undefined && (obj.teamOnly = message.teamOnly);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgCombatHeroPositions(): CDOTAUserMsgCombatHeroPositions {
@@ -2047,6 +4415,25 @@ export const CDOTAUserMsgCombatHeroPositions = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgCombatHeroPositions {
+    return {
+      index: isSet(object.index) ? Number(object.index) : 0,
+      time: isSet(object.time) ? Number(object.time) : 0,
+      worldPos: isSet(object.worldPos) ? CMsgVector2D.fromJSON(object.worldPos) : undefined,
+      health: isSet(object.health) ? Number(object.health) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgCombatHeroPositions): unknown {
+    const obj: any = {};
+    message.index !== undefined && (obj.index = Math.round(message.index));
+    message.time !== undefined && (obj.time = Math.round(message.time));
+    message.worldPos !== undefined &&
+      (obj.worldPos = message.worldPos ? CMsgVector2D.toJSON(message.worldPos) : undefined);
+    message.health !== undefined && (obj.health = Math.round(message.health));
+    return obj;
   },
 };
 
@@ -2124,6 +4511,32 @@ export const CDOTAUserMsgCombatLogBulkData = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgCombatLogBulkData {
+    return {
+      combatEntries: Array.isArray(object?.combatEntries)
+        ? object.combatEntries.map((e: any) => CMsgDOTACombatLogEntry.fromJSON(e))
+        : [],
+      timestamp: isSet(object.timestamp) ? Number(object.timestamp) : 0,
+      duration: isSet(object.duration) ? Number(object.duration) : 0,
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      requestTime: isSet(object.requestTime) ? Number(object.requestTime) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgCombatLogBulkData): unknown {
+    const obj: any = {};
+    if (message.combatEntries) {
+      obj.combatEntries = message.combatEntries.map((e) => e ? CMsgDOTACombatLogEntry.toJSON(e) : undefined);
+    } else {
+      obj.combatEntries = [];
+    }
+    message.timestamp !== undefined && (obj.timestamp = message.timestamp);
+    message.duration !== undefined && (obj.duration = message.duration);
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.requestTime !== undefined && (obj.requestTime = message.requestTime);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgProjectileParticleCPData(): CDOTAUserMsgProjectileParticleCPData {
@@ -2170,6 +4583,20 @@ export const CDOTAUserMsgProjectileParticleCPData = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgProjectileParticleCPData {
+    return {
+      controlPoint: isSet(object.controlPoint) ? Number(object.controlPoint) : 0,
+      vector: isSet(object.vector) ? CMsgVector.fromJSON(object.vector) : undefined,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgProjectileParticleCPData): unknown {
+    const obj: any = {};
+    message.controlPoint !== undefined && (obj.controlPoint = Math.round(message.controlPoint));
+    message.vector !== undefined && (obj.vector = message.vector ? CMsgVector.toJSON(message.vector) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgMiniKillCamInfo(): CDOTAUserMsgMiniKillCamInfo {
@@ -2205,6 +4632,24 @@ export const CDOTAUserMsgMiniKillCamInfo = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgMiniKillCamInfo {
+    return {
+      attackers: Array.isArray(object?.attackers)
+        ? object.attackers.map((e: any) => CDOTAUserMsgMiniKillCamInfo_Attacker.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgMiniKillCamInfo): unknown {
+    const obj: any = {};
+    if (message.attackers) {
+      obj.attackers = message.attackers.map((e) => e ? CDOTAUserMsgMiniKillCamInfo_Attacker.toJSON(e) : undefined);
+    } else {
+      obj.attackers = [];
+    }
+    return obj;
   },
 };
 
@@ -2272,6 +4717,32 @@ export const CDOTAUserMsgMiniKillCamInfo_Attacker = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgMiniKillCamInfo_Attacker {
+    return {
+      attacker: isSet(object.attacker) ? Number(object.attacker) : 0,
+      totalDamage: isSet(object.totalDamage) ? Number(object.totalDamage) : 0,
+      abilities: Array.isArray(object?.abilities)
+        ? object.abilities.map((e: any) => CDOTAUserMsgMiniKillCamInfo_Attacker_Ability.fromJSON(e))
+        : [],
+      attackerName: isSet(object.attackerName) ? String(object.attackerName) : "",
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgMiniKillCamInfo_Attacker): unknown {
+    const obj: any = {};
+    message.attacker !== undefined && (obj.attacker = Math.round(message.attacker));
+    message.totalDamage !== undefined && (obj.totalDamage = Math.round(message.totalDamage));
+    if (message.abilities) {
+      obj.abilities = message.abilities.map((e) =>
+        e ? CDOTAUserMsgMiniKillCamInfo_Attacker_Ability.toJSON(e) : undefined
+      );
+    } else {
+      obj.abilities = [];
+    }
+    message.attackerName !== undefined && (obj.attackerName = message.attackerName);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgMiniKillCamInfo_Attacker_Ability(): CDOTAUserMsgMiniKillCamInfo_Attacker_Ability {
@@ -2317,6 +4788,20 @@ export const CDOTAUserMsgMiniKillCamInfo_Attacker_Ability = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgMiniKillCamInfo_Attacker_Ability {
+    return {
+      abilityId: isSet(object.abilityId) ? Number(object.abilityId) : 0,
+      damage: isSet(object.damage) ? Number(object.damage) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgMiniKillCamInfo_Attacker_Ability): unknown {
+    const obj: any = {};
+    message.abilityId !== undefined && (obj.abilityId = Math.round(message.abilityId));
+    message.damage !== undefined && (obj.damage = Math.round(message.damage));
+    return obj;
   },
 };
 
@@ -2364,6 +4849,20 @@ export const CDOTAUserMsgGlobalLightColor = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgGlobalLightColor {
+    return {
+      color: isSet(object.color) ? Number(object.color) : 0,
+      duration: isSet(object.duration) ? Number(object.duration) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgGlobalLightColor): unknown {
+    const obj: any = {};
+    message.color !== undefined && (obj.color = Math.round(message.color));
+    message.duration !== undefined && (obj.duration = message.duration);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgGlobalLightDirection(): CDOTAUserMsgGlobalLightDirection {
@@ -2410,6 +4909,21 @@ export const CDOTAUserMsgGlobalLightDirection = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgGlobalLightDirection {
+    return {
+      direction: isSet(object.direction) ? CMsgVector.fromJSON(object.direction) : undefined,
+      duration: isSet(object.duration) ? Number(object.duration) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgGlobalLightDirection): unknown {
+    const obj: any = {};
+    message.direction !== undefined &&
+      (obj.direction = message.direction ? CMsgVector.toJSON(message.direction) : undefined);
+    message.duration !== undefined && (obj.duration = message.duration);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgLocationPing(): CDOTAUserMsgLocationPing {
@@ -2455,6 +4969,21 @@ export const CDOTAUserMsgLocationPing = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgLocationPing {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      locationPing: isSet(object.locationPing) ? CDOTAMsgLocationPing.fromJSON(object.locationPing) : undefined,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgLocationPing): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.locationPing !== undefined &&
+      (obj.locationPing = message.locationPing ? CDOTAMsgLocationPing.toJSON(message.locationPing) : undefined);
+    return obj;
   },
 };
 
@@ -2522,6 +5051,26 @@ export const CDOTAUserMsgPingConfirmation = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgPingConfirmation {
+    return {
+      playerIdOfOriginalPinger: isSet(object.playerIdOfOriginalPinger) ? Number(object.playerIdOfOriginalPinger) : 0,
+      entityIndex: isSet(object.entityIndex) ? Number(object.entityIndex) : 0,
+      iconType: isSet(object.iconType) ? Number(object.iconType) : 0,
+      location: isSet(object.location) ? CMsgVector.fromJSON(object.location) : undefined,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgPingConfirmation): unknown {
+    const obj: any = {};
+    message.playerIdOfOriginalPinger !== undefined &&
+      (obj.playerIdOfOriginalPinger = Math.round(message.playerIdOfOriginalPinger));
+    message.entityIndex !== undefined && (obj.entityIndex = Math.round(message.entityIndex));
+    message.iconType !== undefined && (obj.iconType = Math.round(message.iconType));
+    message.location !== undefined &&
+      (obj.location = message.location ? CMsgVector.toJSON(message.location) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgItemAlert(): CDOTAUserMsgItemAlert {
@@ -2567,6 +5116,21 @@ export const CDOTAUserMsgItemAlert = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgItemAlert {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      itemAlert: isSet(object.itemAlert) ? CDOTAMsgItemAlert.fromJSON(object.itemAlert) : undefined,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgItemAlert): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.itemAlert !== undefined &&
+      (obj.itemAlert = message.itemAlert ? CDOTAMsgItemAlert.toJSON(message.itemAlert) : undefined);
+    return obj;
   },
 };
 
@@ -2683,6 +5247,32 @@ export const CDOTAUserMsgEnemyItemAlert = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgEnemyItemAlert {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      targetPlayerId: isSet(object.targetPlayerId) ? Number(object.targetPlayerId) : 0,
+      itemAbilityId: isSet(object.itemAbilityId) ? Number(object.itemAbilityId) : 0,
+      runeType: isSet(object.runeType) ? Number(object.runeType) : 0,
+      entityId: isSet(object.entityId) ? Number(object.entityId) : 0,
+      itemLevel: isSet(object.itemLevel) ? Number(object.itemLevel) : 0,
+      primaryCharges: isSet(object.primaryCharges) ? Number(object.primaryCharges) : 0,
+      secondaryCharges: isSet(object.secondaryCharges) ? Number(object.secondaryCharges) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgEnemyItemAlert): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.targetPlayerId !== undefined && (obj.targetPlayerId = Math.round(message.targetPlayerId));
+    message.itemAbilityId !== undefined && (obj.itemAbilityId = Math.round(message.itemAbilityId));
+    message.runeType !== undefined && (obj.runeType = Math.round(message.runeType));
+    message.entityId !== undefined && (obj.entityId = Math.round(message.entityId));
+    message.itemLevel !== undefined && (obj.itemLevel = Math.round(message.itemLevel));
+    message.primaryCharges !== undefined && (obj.primaryCharges = Math.round(message.primaryCharges));
+    message.secondaryCharges !== undefined && (obj.secondaryCharges = Math.round(message.secondaryCharges));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgModifierAlert(): CDOTAUserMsgModifierAlert {
@@ -2769,6 +5359,28 @@ export const CDOTAUserMsgModifierAlert = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgModifierAlert {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      className: isSet(object.className) ? String(object.className) : "",
+      stackCount: isSet(object.stackCount) ? Number(object.stackCount) : 0,
+      isDebuff: isSet(object.isDebuff) ? Boolean(object.isDebuff) : false,
+      targetEntindex: isSet(object.targetEntindex) ? Number(object.targetEntindex) : 0,
+      secondsRemaining: isSet(object.secondsRemaining) ? Number(object.secondsRemaining) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgModifierAlert): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.className !== undefined && (obj.className = message.className);
+    message.stackCount !== undefined && (obj.stackCount = Math.round(message.stackCount));
+    message.isDebuff !== undefined && (obj.isDebuff = message.isDebuff);
+    message.targetEntindex !== undefined && (obj.targetEntindex = Math.round(message.targetEntindex));
+    message.secondsRemaining !== undefined && (obj.secondsRemaining = message.secondsRemaining);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgHPManaAlert(): CDOTAUserMsgHPManaAlert {
@@ -2824,6 +5436,22 @@ export const CDOTAUserMsgHPManaAlert = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgHPManaAlert {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      targetEntindex: isSet(object.targetEntindex) ? Number(object.targetEntindex) : 0,
+      showRawValues: isSet(object.showRawValues) ? Boolean(object.showRawValues) : false,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgHPManaAlert): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.targetEntindex !== undefined && (obj.targetEntindex = Math.round(message.targetEntindex));
+    message.showRawValues !== undefined && (obj.showRawValues = message.showRawValues);
+    return obj;
   },
 };
 
@@ -2929,6 +5557,30 @@ export const CDOTAUserMsgNeutralCampAlert = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgNeutralCampAlert {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      spawnerEntindex: isSet(object.spawnerEntindex) ? Number(object.spawnerEntindex) : 0,
+      unitEntindex: isSet(object.unitEntindex) ? Number(object.unitEntindex) : 0,
+      stackCount: isSet(object.stackCount) ? Number(object.stackCount) : 0,
+      campType: isSet(object.campType) ? Number(object.campType) : 0,
+      stackRequest: isSet(object.stackRequest) ? Boolean(object.stackRequest) : false,
+      stackIntention: isSet(object.stackIntention) ? Boolean(object.stackIntention) : false,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgNeutralCampAlert): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.spawnerEntindex !== undefined && (obj.spawnerEntindex = Math.round(message.spawnerEntindex));
+    message.unitEntindex !== undefined && (obj.unitEntindex = Math.round(message.unitEntindex));
+    message.stackCount !== undefined && (obj.stackCount = Math.round(message.stackCount));
+    message.campType !== undefined && (obj.campType = Math.round(message.campType));
+    message.stackRequest !== undefined && (obj.stackRequest = message.stackRequest);
+    message.stackIntention !== undefined && (obj.stackIntention = message.stackIntention);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgGlyphAlert(): CDOTAUserMsgGlyphAlert {
@@ -2975,6 +5627,20 @@ export const CDOTAUserMsgGlyphAlert = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgGlyphAlert {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      negative: isSet(object.negative) ? Boolean(object.negative) : false,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgGlyphAlert): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.negative !== undefined && (obj.negative = message.negative);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgRadarAlert(): CDOTAUserMsgRadarAlert {
@@ -3020,6 +5686,20 @@ export const CDOTAUserMsgRadarAlert = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgRadarAlert {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      negative: isSet(object.negative) ? Boolean(object.negative) : false,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgRadarAlert): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.negative !== undefined && (obj.negative = message.negative);
+    return obj;
   },
 };
 
@@ -3087,6 +5767,24 @@ export const CDOTAUserMsgWillPurchaseAlert = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgWillPurchaseAlert {
+    return {
+      itemAbilityId: isSet(object.itemAbilityId) ? Number(object.itemAbilityId) : 0,
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      goldRemaining: isSet(object.goldRemaining) ? Number(object.goldRemaining) : 0,
+      suggestionPlayerId: isSet(object.suggestionPlayerId) ? Number(object.suggestionPlayerId) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgWillPurchaseAlert): unknown {
+    const obj: any = {};
+    message.itemAbilityId !== undefined && (obj.itemAbilityId = Math.round(message.itemAbilityId));
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.goldRemaining !== undefined && (obj.goldRemaining = Math.round(message.goldRemaining));
+    message.suggestionPlayerId !== undefined && (obj.suggestionPlayerId = Math.round(message.suggestionPlayerId));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgEmptyTeleportAlert(): CDOTAUserMsgEmptyTeleportAlert {
@@ -3142,6 +5840,22 @@ export const CDOTAUserMsgEmptyTeleportAlert = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgEmptyTeleportAlert {
+    return {
+      sourcePlayerId: isSet(object.sourcePlayerId) ? Number(object.sourcePlayerId) : 0,
+      targetPlayerId: isSet(object.targetPlayerId) ? Number(object.targetPlayerId) : 0,
+      cooldownSeconds: isSet(object.cooldownSeconds) ? Number(object.cooldownSeconds) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgEmptyTeleportAlert): unknown {
+    const obj: any = {};
+    message.sourcePlayerId !== undefined && (obj.sourcePlayerId = Math.round(message.sourcePlayerId));
+    message.targetPlayerId !== undefined && (obj.targetPlayerId = Math.round(message.targetPlayerId));
+    message.cooldownSeconds !== undefined && (obj.cooldownSeconds = Math.round(message.cooldownSeconds));
+    return obj;
   },
 };
 
@@ -3199,6 +5913,22 @@ export const CDOTAUserMsgMarsArenaOfBloodAttack = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgMarsArenaOfBloodAttack {
+    return {
+      sourceEhandle: isSet(object.sourceEhandle) ? Number(object.sourceEhandle) : 0,
+      targetEhandle: isSet(object.targetEhandle) ? Number(object.targetEhandle) : 0,
+      warriorIndex: isSet(object.warriorIndex) ? Number(object.warriorIndex) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgMarsArenaOfBloodAttack): unknown {
+    const obj: any = {};
+    message.sourceEhandle !== undefined && (obj.sourceEhandle = Math.round(message.sourceEhandle));
+    message.targetEhandle !== undefined && (obj.targetEhandle = Math.round(message.targetEhandle));
+    message.warriorIndex !== undefined && (obj.warriorIndex = Math.round(message.warriorIndex));
+    return obj;
+  },
 };
 
 function createBaseCDOTAEntityMsgInvokerSpellCast(): CDOTAEntityMsgInvokerSpellCast {
@@ -3245,6 +5975,21 @@ export const CDOTAEntityMsgInvokerSpellCast = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAEntityMsgInvokerSpellCast {
+    return {
+      entityMsg: isSet(object.entityMsg) ? CEntityMsg.fromJSON(object.entityMsg) : undefined,
+      castActivity: isSet(object.castActivity) ? Number(object.castActivity) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAEntityMsgInvokerSpellCast): unknown {
+    const obj: any = {};
+    message.entityMsg !== undefined &&
+      (obj.entityMsg = message.entityMsg ? CEntityMsg.toJSON(message.entityMsg) : undefined);
+    message.castActivity !== undefined && (obj.castActivity = Math.round(message.castActivity));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgBuyBackStateAlert(): CDOTAUserMsgBuyBackStateAlert {
@@ -3280,6 +6025,16 @@ export const CDOTAUserMsgBuyBackStateAlert = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgBuyBackStateAlert {
+    return { playerId: isSet(object.playerId) ? Number(object.playerId) : 0 };
+  },
+
+  toJSON(message: CDOTAUserMsgBuyBackStateAlert): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    return obj;
   },
 };
 
@@ -3356,6 +6111,26 @@ export const CDOTAUserMsgQuickBuyAlert = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgQuickBuyAlert {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      itemAbilityId: isSet(object.itemAbilityId) ? Number(object.itemAbilityId) : 0,
+      goldCost: isSet(object.goldCost) ? Number(object.goldCost) : 0,
+      itemCooldownSeconds: isSet(object.itemCooldownSeconds) ? Number(object.itemCooldownSeconds) : 0,
+      showBuyback: isSet(object.showBuyback) ? Boolean(object.showBuyback) : false,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgQuickBuyAlert): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.itemAbilityId !== undefined && (obj.itemAbilityId = Math.round(message.itemAbilityId));
+    message.goldCost !== undefined && (obj.goldCost = Math.round(message.goldCost));
+    message.itemCooldownSeconds !== undefined && (obj.itemCooldownSeconds = Math.round(message.itemCooldownSeconds));
+    message.showBuyback !== undefined && (obj.showBuyback = message.showBuyback);
+    return obj;
   },
 };
 
@@ -3453,6 +6228,36 @@ export const CDOTAUserMsgCourierKilledAlert = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgCourierKilledAlert {
+    return {
+      team: isSet(object.team) ? Number(object.team) : 0,
+      goldValue: isSet(object.goldValue) ? Number(object.goldValue) : 0,
+      entityHandle: isSet(object.entityHandle) ? Number(object.entityHandle) : 0,
+      timestamp: isSet(object.timestamp) ? Number(object.timestamp) : 0,
+      lostItems: Array.isArray(object?.lostItems)
+        ? object.lostItems.map((e: any) => CDOTAUserMsgCourierKilledAlert_LostItem.fromJSON(e))
+        : [],
+      killerPlayerId: isSet(object.killerPlayerId) ? Number(object.killerPlayerId) : 0,
+      owningPlayerId: isSet(object.owningPlayerId) ? Number(object.owningPlayerId) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgCourierKilledAlert): unknown {
+    const obj: any = {};
+    message.team !== undefined && (obj.team = Math.round(message.team));
+    message.goldValue !== undefined && (obj.goldValue = Math.round(message.goldValue));
+    message.entityHandle !== undefined && (obj.entityHandle = Math.round(message.entityHandle));
+    message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
+    if (message.lostItems) {
+      obj.lostItems = message.lostItems.map((e) => e ? CDOTAUserMsgCourierKilledAlert_LostItem.toJSON(e) : undefined);
+    } else {
+      obj.lostItems = [];
+    }
+    message.killerPlayerId !== undefined && (obj.killerPlayerId = Math.round(message.killerPlayerId));
+    message.owningPlayerId !== undefined && (obj.owningPlayerId = Math.round(message.owningPlayerId));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgCourierKilledAlert_LostItem(): CDOTAUserMsgCourierKilledAlert_LostItem {
@@ -3498,6 +6303,20 @@ export const CDOTAUserMsgCourierKilledAlert_LostItem = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgCourierKilledAlert_LostItem {
+    return {
+      itemAbilityId: isSet(object.itemAbilityId) ? Number(object.itemAbilityId) : 0,
+      quantity: isSet(object.quantity) ? Number(object.quantity) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgCourierKilledAlert_LostItem): unknown {
+    const obj: any = {};
+    message.itemAbilityId !== undefined && (obj.itemAbilityId = Math.round(message.itemAbilityId));
+    message.quantity !== undefined && (obj.quantity = Math.round(message.quantity));
+    return obj;
   },
 };
 
@@ -3585,6 +6404,28 @@ export const CDOTAUserMsgMinimapEvent = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgMinimapEvent {
+    return {
+      eventType: isSet(object.eventType) ? Number(object.eventType) : 0,
+      entityHandle: isSet(object.entityHandle) ? Number(object.entityHandle) : 0,
+      x: isSet(object.x) ? Number(object.x) : 0,
+      y: isSet(object.y) ? Number(object.y) : 0,
+      duration: isSet(object.duration) ? Number(object.duration) : 0,
+      targetEntityHandle: isSet(object.targetEntityHandle) ? Number(object.targetEntityHandle) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgMinimapEvent): unknown {
+    const obj: any = {};
+    message.eventType !== undefined && (obj.eventType = Math.round(message.eventType));
+    message.entityHandle !== undefined && (obj.entityHandle = Math.round(message.entityHandle));
+    message.x !== undefined && (obj.x = Math.round(message.x));
+    message.y !== undefined && (obj.y = Math.round(message.y));
+    message.duration !== undefined && (obj.duration = Math.round(message.duration));
+    message.targetEntityHandle !== undefined && (obj.targetEntityHandle = Math.round(message.targetEntityHandle));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgMapLine(): CDOTAUserMsgMapLine {
@@ -3630,6 +6471,21 @@ export const CDOTAUserMsgMapLine = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgMapLine {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      mapline: isSet(object.mapline) ? CDOTAMsgMapLine.fromJSON(object.mapline) : undefined,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgMapLine): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.mapline !== undefined &&
+      (obj.mapline = message.mapline ? CDOTAMsgMapLine.toJSON(message.mapline) : undefined);
+    return obj;
   },
 };
 
@@ -3706,6 +6562,27 @@ export const CDOTAUserMsgMinimapDebugPoint = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgMinimapDebugPoint {
+    return {
+      location: isSet(object.location) ? CMsgVector.fromJSON(object.location) : undefined,
+      color: isSet(object.color) ? Number(object.color) : 0,
+      size: isSet(object.size) ? Number(object.size) : 0,
+      duration: isSet(object.duration) ? Number(object.duration) : 0,
+      index: isSet(object.index) ? Number(object.index) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgMinimapDebugPoint): unknown {
+    const obj: any = {};
+    message.location !== undefined &&
+      (obj.location = message.location ? CMsgVector.toJSON(message.location) : undefined);
+    message.color !== undefined && (obj.color = Math.round(message.color));
+    message.size !== undefined && (obj.size = Math.round(message.size));
+    message.duration !== undefined && (obj.duration = message.duration);
+    message.index !== undefined && (obj.index = Math.round(message.index));
+    return obj;
   },
 };
 
@@ -3866,6 +6743,50 @@ export const CDOTAUserMsgCreateLinearProjectile = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgCreateLinearProjectile {
+    return {
+      origin: isSet(object.origin) ? CMsgVector.fromJSON(object.origin) : undefined,
+      velocity: isSet(object.velocity) ? CMsgVector2D.fromJSON(object.velocity) : undefined,
+      entindex: isSet(object.entindex) ? Number(object.entindex) : 0,
+      particleIndex: isSet(object.particleIndex) ? String(object.particleIndex) : "0",
+      handle: isSet(object.handle) ? Number(object.handle) : 0,
+      acceleration: isSet(object.acceleration) ? CMsgVector2D.fromJSON(object.acceleration) : undefined,
+      maxSpeed: isSet(object.maxSpeed) ? Number(object.maxSpeed) : 0,
+      fowRadius: isSet(object.fowRadius) ? Number(object.fowRadius) : 0,
+      stickyFowReveal: isSet(object.stickyFowReveal) ? Boolean(object.stickyFowReveal) : false,
+      distance: isSet(object.distance) ? Number(object.distance) : 0,
+      colorgemcolor: isSet(object.colorgemcolor) ? Number(object.colorgemcolor) : 0,
+      particleCpData: Array.isArray(object?.particleCpData)
+        ? object.particleCpData.map((e: any) => CDOTAUserMsgProjectileParticleCPData.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgCreateLinearProjectile): unknown {
+    const obj: any = {};
+    message.origin !== undefined && (obj.origin = message.origin ? CMsgVector.toJSON(message.origin) : undefined);
+    message.velocity !== undefined &&
+      (obj.velocity = message.velocity ? CMsgVector2D.toJSON(message.velocity) : undefined);
+    message.entindex !== undefined && (obj.entindex = Math.round(message.entindex));
+    message.particleIndex !== undefined && (obj.particleIndex = message.particleIndex);
+    message.handle !== undefined && (obj.handle = Math.round(message.handle));
+    message.acceleration !== undefined &&
+      (obj.acceleration = message.acceleration ? CMsgVector2D.toJSON(message.acceleration) : undefined);
+    message.maxSpeed !== undefined && (obj.maxSpeed = message.maxSpeed);
+    message.fowRadius !== undefined && (obj.fowRadius = message.fowRadius);
+    message.stickyFowReveal !== undefined && (obj.stickyFowReveal = message.stickyFowReveal);
+    message.distance !== undefined && (obj.distance = message.distance);
+    message.colorgemcolor !== undefined && (obj.colorgemcolor = Math.round(message.colorgemcolor));
+    if (message.particleCpData) {
+      obj.particleCpData = message.particleCpData.map((e) =>
+        e ? CDOTAUserMsgProjectileParticleCPData.toJSON(e) : undefined
+      );
+    } else {
+      obj.particleCpData = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgDestroyLinearProjectile(): CDOTAUserMsgDestroyLinearProjectile {
@@ -3901,6 +6822,16 @@ export const CDOTAUserMsgDestroyLinearProjectile = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgDestroyLinearProjectile {
+    return { handle: isSet(object.handle) ? Number(object.handle) : 0 };
+  },
+
+  toJSON(message: CDOTAUserMsgDestroyLinearProjectile): unknown {
+    const obj: any = {};
+    message.handle !== undefined && (obj.handle = Math.round(message.handle));
+    return obj;
   },
 };
 
@@ -3947,6 +6878,20 @@ export const CDOTAUserMsgDodgeTrackingProjectiles = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgDodgeTrackingProjectiles {
+    return {
+      entindex: isSet(object.entindex) ? Number(object.entindex) : 0,
+      attacksOnly: isSet(object.attacksOnly) ? Boolean(object.attacksOnly) : false,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgDodgeTrackingProjectiles): unknown {
+    const obj: any = {};
+    message.entindex !== undefined && (obj.entindex = Math.round(message.entindex));
+    message.attacksOnly !== undefined && (obj.attacksOnly = message.attacksOnly);
+    return obj;
   },
 };
 
@@ -4003,6 +6948,22 @@ export const CDOTAUserMsgSpectatorPlayerClick = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgSpectatorPlayerClick {
+    return {
+      entindex: isSet(object.entindex) ? Number(object.entindex) : 0,
+      orderType: isSet(object.orderType) ? Number(object.orderType) : 0,
+      targetIndex: isSet(object.targetIndex) ? Number(object.targetIndex) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgSpectatorPlayerClick): unknown {
+    const obj: any = {};
+    message.entindex !== undefined && (obj.entindex = Math.round(message.entindex));
+    message.orderType !== undefined && (obj.orderType = Math.round(message.orderType));
+    message.targetIndex !== undefined && (obj.targetIndex = Math.round(message.targetIndex));
+    return obj;
   },
 };
 
@@ -4141,6 +7102,39 @@ export const CDOTAUserMsgSpectatorPlayerUnitOrders = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgSpectatorPlayerUnitOrders {
+    return {
+      entindex: isSet(object.entindex) ? Number(object.entindex) : 0,
+      orderType: isSet(object.orderType) ? Number(object.orderType) : 0,
+      units: Array.isArray(object?.units) ? object.units.map((e: any) => Number(e)) : [],
+      targetIndex: isSet(object.targetIndex) ? Number(object.targetIndex) : 0,
+      abilityId: isSet(object.abilityId) ? Number(object.abilityId) : 0,
+      position: isSet(object.position) ? CMsgVector.fromJSON(object.position) : undefined,
+      queue: isSet(object.queue) ? Boolean(object.queue) : false,
+      sequenceNumber: isSet(object.sequenceNumber) ? Number(object.sequenceNumber) : 0,
+      flags: isSet(object.flags) ? Number(object.flags) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgSpectatorPlayerUnitOrders): unknown {
+    const obj: any = {};
+    message.entindex !== undefined && (obj.entindex = Math.round(message.entindex));
+    message.orderType !== undefined && (obj.orderType = Math.round(message.orderType));
+    if (message.units) {
+      obj.units = message.units.map((e) => Math.round(e));
+    } else {
+      obj.units = [];
+    }
+    message.targetIndex !== undefined && (obj.targetIndex = Math.round(message.targetIndex));
+    message.abilityId !== undefined && (obj.abilityId = Math.round(message.abilityId));
+    message.position !== undefined &&
+      (obj.position = message.position ? CMsgVector.toJSON(message.position) : undefined);
+    message.queue !== undefined && (obj.queue = message.queue);
+    message.sequenceNumber !== undefined && (obj.sequenceNumber = Math.round(message.sequenceNumber));
+    message.flags !== undefined && (obj.flags = Math.round(message.flags));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgNevermoreRequiem(): CDOTAUserMsgNevermoreRequiem {
@@ -4207,6 +7201,24 @@ export const CDOTAUserMsgNevermoreRequiem = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgNevermoreRequiem {
+    return {
+      entityHandle: isSet(object.entityHandle) ? Number(object.entityHandle) : 0,
+      lines: isSet(object.lines) ? Number(object.lines) : 0,
+      origin: isSet(object.origin) ? CMsgVector.fromJSON(object.origin) : undefined,
+      reverse: isSet(object.reverse) ? Boolean(object.reverse) : false,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgNevermoreRequiem): unknown {
+    const obj: any = {};
+    message.entityHandle !== undefined && (obj.entityHandle = Math.round(message.entityHandle));
+    message.lines !== undefined && (obj.lines = Math.round(message.lines));
+    message.origin !== undefined && (obj.origin = message.origin ? CMsgVector.toJSON(message.origin) : undefined);
+    message.reverse !== undefined && (obj.reverse = message.reverse);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgInvalidCommand(): CDOTAUserMsgInvalidCommand {
@@ -4253,6 +7265,20 @@ export const CDOTAUserMsgInvalidCommand = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgInvalidCommand {
+    return {
+      message: isSet(object.message) ? String(object.message) : "",
+      sequenceNumber: isSet(object.sequenceNumber) ? Number(object.sequenceNumber) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgInvalidCommand): unknown {
+    const obj: any = {};
+    message.message !== undefined && (obj.message = message.message);
+    message.sequenceNumber !== undefined && (obj.sequenceNumber = Math.round(message.sequenceNumber));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgHudError(): CDOTAUserMsgHudError {
@@ -4298,6 +7324,20 @@ export const CDOTAUserMsgHudError = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgHudError {
+    return {
+      orderId: isSet(object.orderId) ? Number(object.orderId) : 0,
+      sequenceNumber: isSet(object.sequenceNumber) ? Number(object.sequenceNumber) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgHudError): unknown {
+    const obj: any = {};
+    message.orderId !== undefined && (obj.orderId = Math.round(message.orderId));
+    message.sequenceNumber !== undefined && (obj.sequenceNumber = Math.round(message.sequenceNumber));
+    return obj;
   },
 };
 
@@ -4365,6 +7405,24 @@ export const CDOTAUserMsgSharedCooldown = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgSharedCooldown {
+    return {
+      entindex: isSet(object.entindex) ? Number(object.entindex) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      cooldown: isSet(object.cooldown) ? Number(object.cooldown) : 0,
+      nameIndex: isSet(object.nameIndex) ? Number(object.nameIndex) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgSharedCooldown): unknown {
+    const obj: any = {};
+    message.entindex !== undefined && (obj.entindex = Math.round(message.entindex));
+    message.name !== undefined && (obj.name = message.name);
+    message.cooldown !== undefined && (obj.cooldown = message.cooldown);
+    message.nameIndex !== undefined && (obj.nameIndex = Math.round(message.nameIndex));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgSetNextAutobuyItem(): CDOTAUserMsgSetNextAutobuyItem {
@@ -4400,6 +7458,16 @@ export const CDOTAUserMsgSetNextAutobuyItem = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgSetNextAutobuyItem {
+    return { name: isSet(object.name) ? String(object.name) : "" };
+  },
+
+  toJSON(message: CDOTAUserMsgSetNextAutobuyItem): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    return obj;
   },
 };
 
@@ -4479,6 +7547,30 @@ export const CDOTAUserMsgHalloweenDrops = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgHalloweenDrops {
+    return {
+      itemDefs: Array.isArray(object?.itemDefs) ? object.itemDefs.map((e: any) => Number(e)) : [],
+      playerIds: Array.isArray(object?.playerIds) ? object.playerIds.map((e: any) => Number(e)) : [],
+      prizeList: isSet(object.prizeList) ? Number(object.prizeList) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgHalloweenDrops): unknown {
+    const obj: any = {};
+    if (message.itemDefs) {
+      obj.itemDefs = message.itemDefs.map((e) => Math.round(e));
+    } else {
+      obj.itemDefs = [];
+    }
+    if (message.playerIds) {
+      obj.playerIds = message.playerIds.map((e) => Math.round(e));
+    } else {
+      obj.playerIds = [];
+    }
+    message.prizeList !== undefined && (obj.prizeList = Math.round(message.prizeList));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgPredictionResult(): CDOTAUserMsgPredictionResult {
@@ -4544,6 +7636,32 @@ export const CDOTAUserMsgPredictionResult = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgPredictionResult {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      matchId: isSet(object.matchId) ? String(object.matchId) : "0",
+      correct: isSet(object.correct) ? Boolean(object.correct) : false,
+      predictions: Array.isArray(object?.predictions)
+        ? object.predictions.map((e: any) => CDOTAUserMsgPredictionResult_Prediction.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgPredictionResult): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.matchId !== undefined && (obj.matchId = message.matchId);
+    message.correct !== undefined && (obj.correct = message.correct);
+    if (message.predictions) {
+      obj.predictions = message.predictions.map((e) =>
+        e ? CDOTAUserMsgPredictionResult_Prediction.toJSON(e) : undefined
+      );
+    } else {
+      obj.predictions = [];
+    }
+    return obj;
   },
 };
 
@@ -4632,6 +7750,31 @@ export const CDOTAUserMsgPredictionResult_Prediction = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgPredictionResult_Prediction {
+    return {
+      itemDef: isSet(object.itemDef) ? Number(object.itemDef) : 0,
+      numCorrect: isSet(object.numCorrect) ? Number(object.numCorrect) : 0,
+      numFails: isSet(object.numFails) ? Number(object.numFails) : 0,
+      result: isSet(object.result) ? cDOTAUserMsgPredictionResult_Prediction_EResultFromJSON(object.result) : 1,
+      grantedItemDefs: Array.isArray(object?.grantedItemDefs) ? object.grantedItemDefs.map((e: any) => Number(e)) : [],
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgPredictionResult_Prediction): unknown {
+    const obj: any = {};
+    message.itemDef !== undefined && (obj.itemDef = Math.round(message.itemDef));
+    message.numCorrect !== undefined && (obj.numCorrect = Math.round(message.numCorrect));
+    message.numFails !== undefined && (obj.numFails = Math.round(message.numFails));
+    message.result !== undefined &&
+      (obj.result = cDOTAUserMsgPredictionResult_Prediction_EResultToJSON(message.result));
+    if (message.grantedItemDefs) {
+      obj.grantedItemDefs = message.grantedItemDefs.map((e) => Math.round(e));
+    } else {
+      obj.grantedItemDefs = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCDOTAResponseQuerySerialized(): CDOTAResponseQuerySerialized {
@@ -4667,6 +7810,24 @@ export const CDOTAResponseQuerySerialized = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAResponseQuerySerialized {
+    return {
+      facts: Array.isArray(object?.facts)
+        ? object.facts.map((e: any) => CDOTAResponseQuerySerialized_Fact.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CDOTAResponseQuerySerialized): unknown {
+    const obj: any = {};
+    if (message.facts) {
+      obj.facts = message.facts.map((e) => e ? CDOTAResponseQuerySerialized_Fact.toJSON(e) : undefined);
+    } else {
+      obj.facts = [];
+    }
+    return obj;
   },
 };
 
@@ -4754,6 +7915,28 @@ export const CDOTAResponseQuerySerialized_Fact = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAResponseQuerySerialized_Fact {
+    return {
+      key: isSet(object.key) ? Number(object.key) : 0,
+      valtype: isSet(object.valtype) ? cDOTAResponseQuerySerialized_Fact_ValueTypeFromJSON(object.valtype) : 1,
+      valNumeric: isSet(object.valNumeric) ? Number(object.valNumeric) : 0,
+      valString: isSet(object.valString) ? String(object.valString) : "",
+      valStringtableIndex: isSet(object.valStringtableIndex) ? Number(object.valStringtableIndex) : 0,
+      valIntNumeric: isSet(object.valIntNumeric) ? Number(object.valIntNumeric) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAResponseQuerySerialized_Fact): unknown {
+    const obj: any = {};
+    message.key !== undefined && (obj.key = Math.round(message.key));
+    message.valtype !== undefined && (obj.valtype = cDOTAResponseQuerySerialized_Fact_ValueTypeToJSON(message.valtype));
+    message.valNumeric !== undefined && (obj.valNumeric = message.valNumeric);
+    message.valString !== undefined && (obj.valString = message.valString);
+    message.valStringtableIndex !== undefined && (obj.valStringtableIndex = Math.round(message.valStringtableIndex));
+    message.valIntNumeric !== undefined && (obj.valIntNumeric = Math.round(message.valIntNumeric));
+    return obj;
+  },
 };
 
 function createBaseCDOTASpeechMatchOnClient(): CDOTASpeechMatchOnClient {
@@ -4819,6 +8002,28 @@ export const CDOTASpeechMatchOnClient = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTASpeechMatchOnClient {
+    return {
+      speechConcept: isSet(object.speechConcept) ? Number(object.speechConcept) : 0,
+      recipientType: isSet(object.recipientType) ? Number(object.recipientType) : 0,
+      responsequery: isSet(object.responsequery)
+        ? CDOTAResponseQuerySerialized.fromJSON(object.responsequery)
+        : undefined,
+      randomseed: isSet(object.randomseed) ? Number(object.randomseed) : 0,
+    };
+  },
+
+  toJSON(message: CDOTASpeechMatchOnClient): unknown {
+    const obj: any = {};
+    message.speechConcept !== undefined && (obj.speechConcept = Math.round(message.speechConcept));
+    message.recipientType !== undefined && (obj.recipientType = Math.round(message.recipientType));
+    message.responsequery !== undefined && (obj.responsequery = message.responsequery
+      ? CDOTAResponseQuerySerialized.toJSON(message.responsequery)
+      : undefined);
+    message.randomseed !== undefined && (obj.randomseed = Math.round(message.randomseed));
+    return obj;
   },
 };
 
@@ -4946,6 +8151,55 @@ export const CDOTAUserMsgUnitEvent = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgUnitEvent {
+    return {
+      msgType: isSet(object.msgType) ? eDotaEntityMessagesFromJSON(object.msgType) : 0,
+      entityIndex: isSet(object.entityIndex) ? Number(object.entityIndex) : 0,
+      speech: isSet(object.speech) ? CDOTAUserMsgUnitEvent_Speech.fromJSON(object.speech) : undefined,
+      speechMute: isSet(object.speechMute) ? CDOTAUserMsgUnitEvent_SpeechMute.fromJSON(object.speechMute) : undefined,
+      addGesture: isSet(object.addGesture) ? CDOTAUserMsgUnitEvent_AddGesture.fromJSON(object.addGesture) : undefined,
+      removeGesture: isSet(object.removeGesture)
+        ? CDOTAUserMsgUnitEvent_RemoveGesture.fromJSON(object.removeGesture)
+        : undefined,
+      bloodImpact: isSet(object.bloodImpact)
+        ? CDOTAUserMsgUnitEvent_BloodImpact.fromJSON(object.bloodImpact)
+        : undefined,
+      fadeGesture: isSet(object.fadeGesture)
+        ? CDOTAUserMsgUnitEvent_FadeGesture.fromJSON(object.fadeGesture)
+        : undefined,
+      speechMatchOnClient: isSet(object.speechMatchOnClient)
+        ? CDOTASpeechMatchOnClient.fromJSON(object.speechMatchOnClient)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgUnitEvent): unknown {
+    const obj: any = {};
+    message.msgType !== undefined && (obj.msgType = eDotaEntityMessagesToJSON(message.msgType));
+    message.entityIndex !== undefined && (obj.entityIndex = Math.round(message.entityIndex));
+    message.speech !== undefined &&
+      (obj.speech = message.speech ? CDOTAUserMsgUnitEvent_Speech.toJSON(message.speech) : undefined);
+    message.speechMute !== undefined &&
+      (obj.speechMute = message.speechMute ? CDOTAUserMsgUnitEvent_SpeechMute.toJSON(message.speechMute) : undefined);
+    message.addGesture !== undefined &&
+      (obj.addGesture = message.addGesture ? CDOTAUserMsgUnitEvent_AddGesture.toJSON(message.addGesture) : undefined);
+    message.removeGesture !== undefined && (obj.removeGesture = message.removeGesture
+      ? CDOTAUserMsgUnitEvent_RemoveGesture.toJSON(message.removeGesture)
+      : undefined);
+    message.bloodImpact !== undefined &&
+      (obj.bloodImpact = message.bloodImpact
+        ? CDOTAUserMsgUnitEvent_BloodImpact.toJSON(message.bloodImpact)
+        : undefined);
+    message.fadeGesture !== undefined &&
+      (obj.fadeGesture = message.fadeGesture
+        ? CDOTAUserMsgUnitEvent_FadeGesture.toJSON(message.fadeGesture)
+        : undefined);
+    message.speechMatchOnClient !== undefined && (obj.speechMatchOnClient = message.speechMatchOnClient
+      ? CDOTASpeechMatchOnClient.toJSON(message.speechMatchOnClient)
+      : undefined);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgUnitEvent_Interval(): CDOTAUserMsgUnitEvent_Interval {
@@ -4991,6 +8245,20 @@ export const CDOTAUserMsgUnitEvent_Interval = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgUnitEvent_Interval {
+    return {
+      start: isSet(object.start) ? Number(object.start) : 0,
+      range: isSet(object.range) ? Number(object.range) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgUnitEvent_Interval): unknown {
+    const obj: any = {};
+    message.start !== undefined && (obj.start = message.start);
+    message.range !== undefined && (obj.range = message.range);
+    return obj;
   },
 };
 
@@ -5078,6 +8346,29 @@ export const CDOTAUserMsgUnitEvent_Speech = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgUnitEvent_Speech {
+    return {
+      speechConcept: isSet(object.speechConcept) ? Number(object.speechConcept) : 0,
+      response: isSet(object.response) ? String(object.response) : "",
+      recipientType: isSet(object.recipientType) ? Number(object.recipientType) : 0,
+      muteable: isSet(object.muteable) ? Boolean(object.muteable) : false,
+      predelay: isSet(object.predelay) ? CDOTAUserMsgUnitEvent_Interval.fromJSON(object.predelay) : undefined,
+      flags: isSet(object.flags) ? Number(object.flags) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgUnitEvent_Speech): unknown {
+    const obj: any = {};
+    message.speechConcept !== undefined && (obj.speechConcept = Math.round(message.speechConcept));
+    message.response !== undefined && (obj.response = message.response);
+    message.recipientType !== undefined && (obj.recipientType = Math.round(message.recipientType));
+    message.muteable !== undefined && (obj.muteable = message.muteable);
+    message.predelay !== undefined &&
+      (obj.predelay = message.predelay ? CDOTAUserMsgUnitEvent_Interval.toJSON(message.predelay) : undefined);
+    message.flags !== undefined && (obj.flags = Math.round(message.flags));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgUnitEvent_SpeechMute(): CDOTAUserMsgUnitEvent_SpeechMute {
@@ -5113,6 +8404,16 @@ export const CDOTAUserMsgUnitEvent_SpeechMute = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgUnitEvent_SpeechMute {
+    return { delay: isSet(object.delay) ? Number(object.delay) : 0 };
+  },
+
+  toJSON(message: CDOTAUserMsgUnitEvent_SpeechMute): unknown {
+    const obj: any = {};
+    message.delay !== undefined && (obj.delay = message.delay);
+    return obj;
   },
 };
 
@@ -5200,6 +8501,28 @@ export const CDOTAUserMsgUnitEvent_AddGesture = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgUnitEvent_AddGesture {
+    return {
+      activity: isSet(object.activity) ? Number(object.activity) : 0,
+      slot: isSet(object.slot) ? Number(object.slot) : 0,
+      fadeIn: isSet(object.fadeIn) ? Number(object.fadeIn) : 0,
+      fadeOut: isSet(object.fadeOut) ? Number(object.fadeOut) : 0,
+      playbackRate: isSet(object.playbackRate) ? Number(object.playbackRate) : 0,
+      sequenceVariant: isSet(object.sequenceVariant) ? Number(object.sequenceVariant) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgUnitEvent_AddGesture): unknown {
+    const obj: any = {};
+    message.activity !== undefined && (obj.activity = Math.round(message.activity));
+    message.slot !== undefined && (obj.slot = Math.round(message.slot));
+    message.fadeIn !== undefined && (obj.fadeIn = message.fadeIn);
+    message.fadeOut !== undefined && (obj.fadeOut = message.fadeOut);
+    message.playbackRate !== undefined && (obj.playbackRate = message.playbackRate);
+    message.sequenceVariant !== undefined && (obj.sequenceVariant = Math.round(message.sequenceVariant));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgUnitEvent_RemoveGesture(): CDOTAUserMsgUnitEvent_RemoveGesture {
@@ -5235,6 +8558,16 @@ export const CDOTAUserMsgUnitEvent_RemoveGesture = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgUnitEvent_RemoveGesture {
+    return { activity: isSet(object.activity) ? Number(object.activity) : 0 };
+  },
+
+  toJSON(message: CDOTAUserMsgUnitEvent_RemoveGesture): unknown {
+    const obj: any = {};
+    message.activity !== undefined && (obj.activity = Math.round(message.activity));
+    return obj;
   },
 };
 
@@ -5292,6 +8625,22 @@ export const CDOTAUserMsgUnitEvent_BloodImpact = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgUnitEvent_BloodImpact {
+    return {
+      scale: isSet(object.scale) ? Number(object.scale) : 0,
+      xNormal: isSet(object.xNormal) ? Number(object.xNormal) : 0,
+      yNormal: isSet(object.yNormal) ? Number(object.yNormal) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgUnitEvent_BloodImpact): unknown {
+    const obj: any = {};
+    message.scale !== undefined && (obj.scale = Math.round(message.scale));
+    message.xNormal !== undefined && (obj.xNormal = Math.round(message.xNormal));
+    message.yNormal !== undefined && (obj.yNormal = Math.round(message.yNormal));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgUnitEvent_FadeGesture(): CDOTAUserMsgUnitEvent_FadeGesture {
@@ -5327,6 +8676,16 @@ export const CDOTAUserMsgUnitEvent_FadeGesture = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgUnitEvent_FadeGesture {
+    return { activity: isSet(object.activity) ? Number(object.activity) : 0 };
+  },
+
+  toJSON(message: CDOTAUserMsgUnitEvent_FadeGesture): unknown {
+    const obj: any = {};
+    message.activity !== undefined && (obj.activity = Math.round(message.activity));
+    return obj;
   },
 };
 
@@ -5364,6 +8723,16 @@ export const CDOTAUserMsgItemPurchased = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgItemPurchased {
+    return { itemAbilityId: isSet(object.itemAbilityId) ? Number(object.itemAbilityId) : 0 };
+  },
+
+  toJSON(message: CDOTAUserMsgItemPurchased): unknown {
+    const obj: any = {};
+    message.itemAbilityId !== undefined && (obj.itemAbilityId = Math.round(message.itemAbilityId));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgItemSold(): CDOTAUserMsgItemSold {
@@ -5399,6 +8768,16 @@ export const CDOTAUserMsgItemSold = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgItemSold {
+    return { itemAbilityId: isSet(object.itemAbilityId) ? Number(object.itemAbilityId) : 0 };
+  },
+
+  toJSON(message: CDOTAUserMsgItemSold): unknown {
+    const obj: any = {};
+    message.itemAbilityId !== undefined && (obj.itemAbilityId = Math.round(message.itemAbilityId));
+    return obj;
   },
 };
 
@@ -5476,6 +8855,26 @@ export const CDOTAUserMsgItemFound = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgItemFound {
+    return {
+      player: isSet(object.player) ? Number(object.player) : 0,
+      quality: isSet(object.quality) ? Number(object.quality) : 0,
+      rarity: isSet(object.rarity) ? Number(object.rarity) : 0,
+      method: isSet(object.method) ? Number(object.method) : 0,
+      itemdef: isSet(object.itemdef) ? Number(object.itemdef) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgItemFound): unknown {
+    const obj: any = {};
+    message.player !== undefined && (obj.player = Math.round(message.player));
+    message.quality !== undefined && (obj.quality = Math.round(message.quality));
+    message.rarity !== undefined && (obj.rarity = Math.round(message.rarity));
+    message.method !== undefined && (obj.method = Math.round(message.method));
+    message.itemdef !== undefined && (obj.itemdef = Math.round(message.itemdef));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgOverheadEvent(): CDOTAUserMsgOverheadEvent {
@@ -5552,6 +8951,26 @@ export const CDOTAUserMsgOverheadEvent = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgOverheadEvent {
+    return {
+      messageType: isSet(object.messageType) ? dotaOverheadAlertFromJSON(object.messageType) : 0,
+      value: isSet(object.value) ? Number(object.value) : 0,
+      targetPlayerEntindex: isSet(object.targetPlayerEntindex) ? Number(object.targetPlayerEntindex) : 0,
+      targetEntindex: isSet(object.targetEntindex) ? Number(object.targetEntindex) : 0,
+      sourcePlayerEntindex: isSet(object.sourcePlayerEntindex) ? Number(object.sourcePlayerEntindex) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgOverheadEvent): unknown {
+    const obj: any = {};
+    message.messageType !== undefined && (obj.messageType = dotaOverheadAlertToJSON(message.messageType));
+    message.value !== undefined && (obj.value = Math.round(message.value));
+    message.targetPlayerEntindex !== undefined && (obj.targetPlayerEntindex = Math.round(message.targetPlayerEntindex));
+    message.targetEntindex !== undefined && (obj.targetEntindex = Math.round(message.targetEntindex));
+    message.sourcePlayerEntindex !== undefined && (obj.sourcePlayerEntindex = Math.round(message.sourcePlayerEntindex));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgTutorialTipInfo(): CDOTAUserMsgTutorialTipInfo {
@@ -5597,6 +9016,20 @@ export const CDOTAUserMsgTutorialTipInfo = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgTutorialTipInfo {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      progress: isSet(object.progress) ? Number(object.progress) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgTutorialTipInfo): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.progress !== undefined && (obj.progress = Math.round(message.progress));
+    return obj;
   },
 };
 
@@ -5664,6 +9097,24 @@ export const CDOTAUserMsgTutorialFinish = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgTutorialFinish {
+    return {
+      heading: isSet(object.heading) ? String(object.heading) : "",
+      emblem: isSet(object.emblem) ? String(object.emblem) : "",
+      body: isSet(object.body) ? String(object.body) : "",
+      success: isSet(object.success) ? Boolean(object.success) : false,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgTutorialFinish): unknown {
+    const obj: any = {};
+    message.heading !== undefined && (obj.heading = message.heading);
+    message.emblem !== undefined && (obj.emblem = message.emblem);
+    message.body !== undefined && (obj.body = message.body);
+    message.success !== undefined && (obj.success = message.success);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgTutorialMinimapPosition(): CDOTAUserMsgTutorialMinimapPosition {
@@ -5689,6 +9140,15 @@ export const CDOTAUserMsgTutorialMinimapPosition = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CDOTAUserMsgTutorialMinimapPosition {
+    return {};
+  },
+
+  toJSON(_: CDOTAUserMsgTutorialMinimapPosition): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -5756,6 +9216,24 @@ export const CDOTAUserMsgSendGenericToolTip = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgSendGenericToolTip {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      text: isSet(object.text) ? String(object.text) : "",
+      entindex: isSet(object.entindex) ? Number(object.entindex) : 0,
+      close: isSet(object.close) ? Boolean(object.close) : false,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgSendGenericToolTip): unknown {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.text !== undefined && (obj.text = message.text);
+    message.entindex !== undefined && (obj.entindex = Math.round(message.entindex));
+    message.close !== undefined && (obj.close = message.close);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgWorldLine(): CDOTAUserMsgWorldLine {
@@ -5801,6 +9279,21 @@ export const CDOTAUserMsgWorldLine = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgWorldLine {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      worldline: isSet(object.worldline) ? CDOTAMsgWorldLine.fromJSON(object.worldline) : undefined,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgWorldLine): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.worldline !== undefined &&
+      (obj.worldline = message.worldline ? CDOTAMsgWorldLine.toJSON(message.worldline) : undefined);
+    return obj;
   },
 };
 
@@ -5878,6 +9371,26 @@ export const CDOTAUserMsgChatWheel = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgChatWheel {
+    return {
+      chatMessageId: isSet(object.chatMessageId) ? Number(object.chatMessageId) : 0,
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      paramHeroId: isSet(object.paramHeroId) ? Number(object.paramHeroId) : 0,
+      emoticonId: isSet(object.emoticonId) ? Number(object.emoticonId) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgChatWheel): unknown {
+    const obj: any = {};
+    message.chatMessageId !== undefined && (obj.chatMessageId = Math.round(message.chatMessageId));
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.paramHeroId !== undefined && (obj.paramHeroId = Math.round(message.paramHeroId));
+    message.emoticonId !== undefined && (obj.emoticonId = Math.round(message.emoticonId));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgReceivedXmasGift(): CDOTAUserMsgReceivedXmasGift {
@@ -5933,6 +9446,22 @@ export const CDOTAUserMsgReceivedXmasGift = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgReceivedXmasGift {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      itemName: isSet(object.itemName) ? String(object.itemName) : "",
+      inventorySlot: isSet(object.inventorySlot) ? Number(object.inventorySlot) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgReceivedXmasGift): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.itemName !== undefined && (obj.itemName = message.itemName);
+    message.inventorySlot !== undefined && (obj.inventorySlot = Math.round(message.inventorySlot));
+    return obj;
   },
 };
 
@@ -6020,6 +9549,28 @@ export const CDOTAUserMsgShowSurvey = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgShowSurvey {
+    return {
+      surveyId: isSet(object.surveyId) ? Number(object.surveyId) : 0,
+      matchId: isSet(object.matchId) ? String(object.matchId) : "0",
+      responseStyle: isSet(object.responseStyle) ? String(object.responseStyle) : "",
+      teammateHeroId: isSet(object.teammateHeroId) ? Number(object.teammateHeroId) : 0,
+      teammateName: isSet(object.teammateName) ? String(object.teammateName) : "",
+      teammateAccountId: isSet(object.teammateAccountId) ? Number(object.teammateAccountId) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgShowSurvey): unknown {
+    const obj: any = {};
+    message.surveyId !== undefined && (obj.surveyId = Math.round(message.surveyId));
+    message.matchId !== undefined && (obj.matchId = message.matchId);
+    message.responseStyle !== undefined && (obj.responseStyle = message.responseStyle);
+    message.teammateHeroId !== undefined && (obj.teammateHeroId = Math.round(message.teammateHeroId));
+    message.teammateName !== undefined && (obj.teammateName = message.teammateName);
+    message.teammateAccountId !== undefined && (obj.teammateAccountId = Math.round(message.teammateAccountId));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgUpdateSharedContent(): CDOTAUserMsgUpdateSharedContent {
@@ -6056,6 +9607,16 @@ export const CDOTAUserMsgUpdateSharedContent = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgUpdateSharedContent {
+    return { slotType: isSet(object.slotType) ? Number(object.slotType) : 0 };
+  },
+
+  toJSON(message: CDOTAUserMsgUpdateSharedContent): unknown {
+    const obj: any = {};
+    message.slotType !== undefined && (obj.slotType = Math.round(message.slotType));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgTutorialRequestExp(): CDOTAUserMsgTutorialRequestExp {
@@ -6081,6 +9642,15 @@ export const CDOTAUserMsgTutorialRequestExp = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CDOTAUserMsgTutorialRequestExp {
+    return {};
+  },
+
+  toJSON(_: CDOTAUserMsgTutorialRequestExp): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -6117,6 +9687,16 @@ export const CDOTAUserMsgTutorialFade = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgTutorialFade {
+    return { tgtAlpha: isSet(object.tgtAlpha) ? Number(object.tgtAlpha) : 0 };
+  },
+
+  toJSON(message: CDOTAUserMsgTutorialFade): unknown {
+    const obj: any = {};
+    message.tgtAlpha !== undefined && (obj.tgtAlpha = Math.round(message.tgtAlpha));
+    return obj;
   },
 };
 
@@ -6194,6 +9774,26 @@ export const CDOTAUserMsgTutorialPingMinimap = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgTutorialPingMinimap {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      posX: isSet(object.posX) ? Number(object.posX) : 0,
+      posY: isSet(object.posY) ? Number(object.posY) : 0,
+      posZ: isSet(object.posZ) ? Number(object.posZ) : 0,
+      entityIndex: isSet(object.entityIndex) ? Number(object.entityIndex) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgTutorialPingMinimap): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.posX !== undefined && (obj.posX = message.posX);
+    message.posY !== undefined && (obj.posY = message.posY);
+    message.posZ !== undefined && (obj.posZ = message.posZ);
+    message.entityIndex !== undefined && (obj.entityIndex = Math.round(message.entityIndex));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgGamerulesStateChanged(): CDOTAUserMsgGamerulesStateChanged {
@@ -6229,6 +9829,16 @@ export const CDOTAUserMsgGamerulesStateChanged = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgGamerulesStateChanged {
+    return { state: isSet(object.state) ? Number(object.state) : 0 };
+  },
+
+  toJSON(message: CDOTAUserMsgGamerulesStateChanged): unknown {
+    const obj: any = {};
+    message.state !== undefined && (obj.state = Math.round(message.state));
+    return obj;
   },
 };
 
@@ -6276,6 +9886,20 @@ export const CDOTAUserMsgAddQuestLogEntry = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgAddQuestLogEntry {
+    return {
+      npcName: isSet(object.npcName) ? String(object.npcName) : "",
+      npcDialog: isSet(object.npcDialog) ? String(object.npcDialog) : "",
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgAddQuestLogEntry): unknown {
+    const obj: any = {};
+    message.npcName !== undefined && (obj.npcName = message.npcName);
+    message.npcDialog !== undefined && (obj.npcDialog = message.npcDialog);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgSendStatPopup(): CDOTAUserMsgSendStatPopup {
@@ -6322,6 +9946,21 @@ export const CDOTAUserMsgSendStatPopup = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgSendStatPopup {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      statpopup: isSet(object.statpopup) ? CDOTAMsgSendStatPopup.fromJSON(object.statpopup) : undefined,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgSendStatPopup): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.statpopup !== undefined &&
+      (obj.statpopup = message.statpopup ? CDOTAMsgSendStatPopup.toJSON(message.statpopup) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgDismissAllStatPopups(): CDOTAUserMsgDismissAllStatPopups {
@@ -6357,6 +9996,22 @@ export const CDOTAUserMsgDismissAllStatPopups = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgDismissAllStatPopups {
+    return {
+      dismissallmsg: isSet(object.dismissallmsg)
+        ? CDOTAMsgDismissAllStatPopups.fromJSON(object.dismissallmsg)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgDismissAllStatPopups): unknown {
+    const obj: any = {};
+    message.dismissallmsg !== undefined && (obj.dismissallmsg = message.dismissallmsg
+      ? CDOTAMsgDismissAllStatPopups.toJSON(message.dismissallmsg)
+      : undefined);
+    return obj;
   },
 };
 
@@ -6414,6 +10069,22 @@ export const CDOTAUserMsgSendRoshanSpectatorPhase = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgSendRoshanSpectatorPhase {
+    return {
+      phase: isSet(object.phase) ? dotaRoshanPhaseFromJSON(object.phase) : 0,
+      phaseStartTime: isSet(object.phaseStartTime) ? Number(object.phaseStartTime) : 0,
+      phaseLength: isSet(object.phaseLength) ? Number(object.phaseLength) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgSendRoshanSpectatorPhase): unknown {
+    const obj: any = {};
+    message.phase !== undefined && (obj.phase = dotaRoshanPhaseToJSON(message.phase));
+    message.phaseStartTime !== undefined && (obj.phaseStartTime = Math.round(message.phaseStartTime));
+    message.phaseLength !== undefined && (obj.phaseLength = Math.round(message.phaseLength));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgSendRoshanPopup(): CDOTAUserMsgSendRoshanPopup {
@@ -6459,6 +10130,20 @@ export const CDOTAUserMsgSendRoshanPopup = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgSendRoshanPopup {
+    return {
+      reclaimed: isSet(object.reclaimed) ? Boolean(object.reclaimed) : false,
+      gametime: isSet(object.gametime) ? Number(object.gametime) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgSendRoshanPopup): unknown {
+    const obj: any = {};
+    message.reclaimed !== undefined && (obj.reclaimed = message.reclaimed);
+    message.gametime !== undefined && (obj.gametime = Math.round(message.gametime));
+    return obj;
   },
 };
 
@@ -6528,6 +10213,28 @@ export const CDOTAUserMsgSendFinalGold = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgSendFinalGold {
+    return {
+      reliableGold: Array.isArray(object?.reliableGold) ? object.reliableGold.map((e: any) => Number(e)) : [],
+      unreliableGold: Array.isArray(object?.unreliableGold) ? object.unreliableGold.map((e: any) => Number(e)) : [],
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgSendFinalGold): unknown {
+    const obj: any = {};
+    if (message.reliableGold) {
+      obj.reliableGold = message.reliableGold.map((e) => Math.round(e));
+    } else {
+      obj.reliableGold = [];
+    }
+    if (message.unreliableGold) {
+      obj.unreliableGold = message.unreliableGold.map((e) => Math.round(e));
+    } else {
+      obj.unreliableGold = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgCustomMsg(): CDOTAUserMsgCustomMsg {
@@ -6584,6 +10291,22 @@ export const CDOTAUserMsgCustomMsg = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgCustomMsg {
+    return {
+      message: isSet(object.message) ? String(object.message) : "",
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      value: isSet(object.value) ? Number(object.value) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgCustomMsg): unknown {
+    const obj: any = {};
+    message.message !== undefined && (obj.message = message.message);
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.value !== undefined && (obj.value = Math.round(message.value));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgCoachHUDPing(): CDOTAUserMsgCoachHUDPing {
@@ -6630,6 +10353,21 @@ export const CDOTAUserMsgCoachHUDPing = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgCoachHUDPing {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      hudPing: isSet(object.hudPing) ? CDOTAMsgCoachHUDPing.fromJSON(object.hudPing) : undefined,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgCoachHUDPing): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.hudPing !== undefined &&
+      (obj.hudPing = message.hudPing ? CDOTAMsgCoachHUDPing.toJSON(message.hudPing) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgClientLoadGridNav(): CDOTAUserMsgClientLoadGridNav {
@@ -6655,6 +10393,15 @@ export const CDOTAUserMsgClientLoadGridNav = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CDOTAUserMsgClientLoadGridNav {
+    return {};
+  },
+
+  toJSON(_: CDOTAUserMsgClientLoadGridNav): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -6848,6 +10595,58 @@ export const CDOTAUserMsgTEProjectile = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgTEProjectile {
+    return {
+      source: isSet(object.source) ? Number(object.source) : 0,
+      target: isSet(object.target) ? Number(object.target) : 0,
+      moveSpeed: isSet(object.moveSpeed) ? Number(object.moveSpeed) : 0,
+      sourceAttachment: isSet(object.sourceAttachment) ? Number(object.sourceAttachment) : 0,
+      particleSystemHandle: isSet(object.particleSystemHandle) ? String(object.particleSystemHandle) : "0",
+      dodgeable: isSet(object.dodgeable) ? Boolean(object.dodgeable) : false,
+      isAttack: isSet(object.isAttack) ? Boolean(object.isAttack) : false,
+      expireTime: isSet(object.expireTime) ? Number(object.expireTime) : 0,
+      maximpacttime: isSet(object.maximpacttime) ? Number(object.maximpacttime) : 0,
+      colorgemcolor: isSet(object.colorgemcolor) ? Number(object.colorgemcolor) : 0,
+      launchTick: isSet(object.launchTick) ? Number(object.launchTick) : 0,
+      handle: isSet(object.handle) ? Number(object.handle) : 0,
+      targetLoc: isSet(object.targetLoc) ? CMsgVector.fromJSON(object.targetLoc) : undefined,
+      particleCpData: Array.isArray(object?.particleCpData)
+        ? object.particleCpData.map((e: any) => CDOTAUserMsgProjectileParticleCPData.fromJSON(e))
+        : [],
+      additionalParticleSystemHandle: isSet(object.additionalParticleSystemHandle)
+        ? String(object.additionalParticleSystemHandle)
+        : "0",
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgTEProjectile): unknown {
+    const obj: any = {};
+    message.source !== undefined && (obj.source = Math.round(message.source));
+    message.target !== undefined && (obj.target = Math.round(message.target));
+    message.moveSpeed !== undefined && (obj.moveSpeed = Math.round(message.moveSpeed));
+    message.sourceAttachment !== undefined && (obj.sourceAttachment = Math.round(message.sourceAttachment));
+    message.particleSystemHandle !== undefined && (obj.particleSystemHandle = message.particleSystemHandle);
+    message.dodgeable !== undefined && (obj.dodgeable = message.dodgeable);
+    message.isAttack !== undefined && (obj.isAttack = message.isAttack);
+    message.expireTime !== undefined && (obj.expireTime = message.expireTime);
+    message.maximpacttime !== undefined && (obj.maximpacttime = message.maximpacttime);
+    message.colorgemcolor !== undefined && (obj.colorgemcolor = Math.round(message.colorgemcolor));
+    message.launchTick !== undefined && (obj.launchTick = Math.round(message.launchTick));
+    message.handle !== undefined && (obj.handle = Math.round(message.handle));
+    message.targetLoc !== undefined &&
+      (obj.targetLoc = message.targetLoc ? CMsgVector.toJSON(message.targetLoc) : undefined);
+    if (message.particleCpData) {
+      obj.particleCpData = message.particleCpData.map((e) =>
+        e ? CDOTAUserMsgProjectileParticleCPData.toJSON(e) : undefined
+      );
+    } else {
+      obj.particleCpData = [];
+    }
+    message.additionalParticleSystemHandle !== undefined &&
+      (obj.additionalParticleSystemHandle = message.additionalParticleSystemHandle);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgTEProjectileLoc(): CDOTAUserMsgTEProjectileLoc {
@@ -7040,6 +10839,59 @@ export const CDOTAUserMsgTEProjectileLoc = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgTEProjectileLoc {
+    return {
+      sourceLoc: isSet(object.sourceLoc) ? CMsgVector.fromJSON(object.sourceLoc) : undefined,
+      target: isSet(object.target) ? Number(object.target) : 0,
+      moveSpeed: isSet(object.moveSpeed) ? Number(object.moveSpeed) : 0,
+      particleSystemHandle: isSet(object.particleSystemHandle) ? String(object.particleSystemHandle) : "0",
+      dodgeable: isSet(object.dodgeable) ? Boolean(object.dodgeable) : false,
+      isAttack: isSet(object.isAttack) ? Boolean(object.isAttack) : false,
+      expireTime: isSet(object.expireTime) ? Number(object.expireTime) : 0,
+      targetLoc: isSet(object.targetLoc) ? CMsgVector.fromJSON(object.targetLoc) : undefined,
+      colorgemcolor: isSet(object.colorgemcolor) ? Number(object.colorgemcolor) : 0,
+      launchTick: isSet(object.launchTick) ? Number(object.launchTick) : 0,
+      handle: isSet(object.handle) ? Number(object.handle) : 0,
+      source: isSet(object.source) ? Number(object.source) : 0,
+      sourceAttachment: isSet(object.sourceAttachment) ? Number(object.sourceAttachment) : 0,
+      particleCpData: Array.isArray(object?.particleCpData)
+        ? object.particleCpData.map((e: any) => CDOTAUserMsgProjectileParticleCPData.fromJSON(e))
+        : [],
+      additionalParticleSystemHandle: isSet(object.additionalParticleSystemHandle)
+        ? String(object.additionalParticleSystemHandle)
+        : "0",
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgTEProjectileLoc): unknown {
+    const obj: any = {};
+    message.sourceLoc !== undefined &&
+      (obj.sourceLoc = message.sourceLoc ? CMsgVector.toJSON(message.sourceLoc) : undefined);
+    message.target !== undefined && (obj.target = Math.round(message.target));
+    message.moveSpeed !== undefined && (obj.moveSpeed = Math.round(message.moveSpeed));
+    message.particleSystemHandle !== undefined && (obj.particleSystemHandle = message.particleSystemHandle);
+    message.dodgeable !== undefined && (obj.dodgeable = message.dodgeable);
+    message.isAttack !== undefined && (obj.isAttack = message.isAttack);
+    message.expireTime !== undefined && (obj.expireTime = message.expireTime);
+    message.targetLoc !== undefined &&
+      (obj.targetLoc = message.targetLoc ? CMsgVector.toJSON(message.targetLoc) : undefined);
+    message.colorgemcolor !== undefined && (obj.colorgemcolor = Math.round(message.colorgemcolor));
+    message.launchTick !== undefined && (obj.launchTick = Math.round(message.launchTick));
+    message.handle !== undefined && (obj.handle = Math.round(message.handle));
+    message.source !== undefined && (obj.source = Math.round(message.source));
+    message.sourceAttachment !== undefined && (obj.sourceAttachment = Math.round(message.sourceAttachment));
+    if (message.particleCpData) {
+      obj.particleCpData = message.particleCpData.map((e) =>
+        e ? CDOTAUserMsgProjectileParticleCPData.toJSON(e) : undefined
+      );
+    } else {
+      obj.particleCpData = [];
+    }
+    message.additionalParticleSystemHandle !== undefined &&
+      (obj.additionalParticleSystemHandle = message.additionalParticleSystemHandle);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgTEDestroyProjectile(): CDOTAUserMsgTEDestroyProjectile {
@@ -7075,6 +10927,16 @@ export const CDOTAUserMsgTEDestroyProjectile = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgTEDestroyProjectile {
+    return { handle: isSet(object.handle) ? Number(object.handle) : 0 };
+  },
+
+  toJSON(message: CDOTAUserMsgTEDestroyProjectile): unknown {
+    const obj: any = {};
+    message.handle !== undefined && (obj.handle = Math.round(message.handle));
+    return obj;
   },
 };
 
@@ -7141,6 +11003,24 @@ export const CDOTAUserMsgTEDotaBloodImpact = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgTEDotaBloodImpact {
+    return {
+      entity: isSet(object.entity) ? Number(object.entity) : 0,
+      scale: isSet(object.scale) ? Number(object.scale) : 0,
+      xnormal: isSet(object.xnormal) ? Number(object.xnormal) : 0,
+      ynormal: isSet(object.ynormal) ? Number(object.ynormal) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgTEDotaBloodImpact): unknown {
+    const obj: any = {};
+    message.entity !== undefined && (obj.entity = Math.round(message.entity));
+    message.scale !== undefined && (obj.scale = message.scale);
+    message.xnormal !== undefined && (obj.xnormal = message.xnormal);
+    message.ynormal !== undefined && (obj.ynormal = message.ynormal);
+    return obj;
   },
 };
 
@@ -7301,6 +11181,40 @@ export const CDOTAUserMsgAbilityPing = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgAbilityPing {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      abilityId: isSet(object.abilityId) ? Number(object.abilityId) : 0,
+      type: isSet(object.type) ? dotaAbilityPingTypeFromJSON(object.type) : 1,
+      cooldownSeconds: isSet(object.cooldownSeconds) ? Number(object.cooldownSeconds) : 0,
+      level: isSet(object.level) ? Number(object.level) : 0,
+      passive: isSet(object.passive) ? Boolean(object.passive) : false,
+      manaNeeded: isSet(object.manaNeeded) ? Number(object.manaNeeded) : 0,
+      entityId: isSet(object.entityId) ? Number(object.entityId) : 0,
+      primaryCharges: isSet(object.primaryCharges) ? Number(object.primaryCharges) : 0,
+      secondaryCharges: isSet(object.secondaryCharges) ? Number(object.secondaryCharges) : 0,
+      ctrlHeld: isSet(object.ctrlHeld) ? Boolean(object.ctrlHeld) : false,
+      reclaimTime: isSet(object.reclaimTime) ? Number(object.reclaimTime) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgAbilityPing): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.abilityId !== undefined && (obj.abilityId = Math.round(message.abilityId));
+    message.type !== undefined && (obj.type = dotaAbilityPingTypeToJSON(message.type));
+    message.cooldownSeconds !== undefined && (obj.cooldownSeconds = Math.round(message.cooldownSeconds));
+    message.level !== undefined && (obj.level = Math.round(message.level));
+    message.passive !== undefined && (obj.passive = message.passive);
+    message.manaNeeded !== undefined && (obj.manaNeeded = Math.round(message.manaNeeded));
+    message.entityId !== undefined && (obj.entityId = Math.round(message.entityId));
+    message.primaryCharges !== undefined && (obj.primaryCharges = Math.round(message.primaryCharges));
+    message.secondaryCharges !== undefined && (obj.secondaryCharges = Math.round(message.secondaryCharges));
+    message.ctrlHeld !== undefined && (obj.ctrlHeld = message.ctrlHeld);
+    message.reclaimTime !== undefined && (obj.reclaimTime = message.reclaimTime);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgTEUnitAnimation(): CDOTAUserMsgTEUnitAnimation {
@@ -7397,6 +11311,30 @@ export const CDOTAUserMsgTEUnitAnimation = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgTEUnitAnimation {
+    return {
+      entity: isSet(object.entity) ? Number(object.entity) : 0,
+      sequenceVariant: isSet(object.sequenceVariant) ? Number(object.sequenceVariant) : 0,
+      playbackrate: isSet(object.playbackrate) ? Number(object.playbackrate) : 0,
+      castpoint: isSet(object.castpoint) ? Number(object.castpoint) : 0,
+      type: isSet(object.type) ? Number(object.type) : 0,
+      activity: isSet(object.activity) ? Number(object.activity) : 0,
+      lagCompensationTime: isSet(object.lagCompensationTime) ? Number(object.lagCompensationTime) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgTEUnitAnimation): unknown {
+    const obj: any = {};
+    message.entity !== undefined && (obj.entity = Math.round(message.entity));
+    message.sequenceVariant !== undefined && (obj.sequenceVariant = Math.round(message.sequenceVariant));
+    message.playbackrate !== undefined && (obj.playbackrate = message.playbackrate);
+    message.castpoint !== undefined && (obj.castpoint = message.castpoint);
+    message.type !== undefined && (obj.type = Math.round(message.type));
+    message.activity !== undefined && (obj.activity = Math.round(message.activity));
+    message.lagCompensationTime !== undefined && (obj.lagCompensationTime = message.lagCompensationTime);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgTEUnitAnimationEnd(): CDOTAUserMsgTEUnitAnimationEnd {
@@ -7442,6 +11380,20 @@ export const CDOTAUserMsgTEUnitAnimationEnd = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgTEUnitAnimationEnd {
+    return {
+      entity: isSet(object.entity) ? Number(object.entity) : 0,
+      snap: isSet(object.snap) ? Boolean(object.snap) : false,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgTEUnitAnimationEnd): unknown {
+    const obj: any = {};
+    message.entity !== undefined && (obj.entity = Math.round(message.entity));
+    message.snap !== undefined && (obj.snap = message.snap);
+    return obj;
   },
 };
 
@@ -7529,6 +11481,28 @@ export const CDOTAUserMsgShowGenericPopup = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgShowGenericPopup {
+    return {
+      header: isSet(object.header) ? String(object.header) : "",
+      body: isSet(object.body) ? String(object.body) : "",
+      param1: isSet(object.param1) ? String(object.param1) : "",
+      param2: isSet(object.param2) ? String(object.param2) : "",
+      tintScreen: isSet(object.tintScreen) ? Boolean(object.tintScreen) : false,
+      showNoOtherDialogs: isSet(object.showNoOtherDialogs) ? Boolean(object.showNoOtherDialogs) : false,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgShowGenericPopup): unknown {
+    const obj: any = {};
+    message.header !== undefined && (obj.header = message.header);
+    message.body !== undefined && (obj.body = message.body);
+    message.param1 !== undefined && (obj.param1 = message.param1);
+    message.param2 !== undefined && (obj.param2 = message.param2);
+    message.tintScreen !== undefined && (obj.tintScreen = message.tintScreen);
+    message.showNoOtherDialogs !== undefined && (obj.showNoOtherDialogs = message.showNoOtherDialogs);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgVoteStart(): CDOTAUserMsgVoteStart {
@@ -7595,6 +11569,28 @@ export const CDOTAUserMsgVoteStart = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgVoteStart {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      duration: isSet(object.duration) ? Number(object.duration) : 0,
+      choiceCount: isSet(object.choiceCount) ? Number(object.choiceCount) : 0,
+      choices: Array.isArray(object?.choices) ? object.choices.map((e: any) => String(e)) : [],
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgVoteStart): unknown {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.duration !== undefined && (obj.duration = message.duration);
+    message.choiceCount !== undefined && (obj.choiceCount = Math.round(message.choiceCount));
+    if (message.choices) {
+      obj.choices = message.choices.map((e) => e);
+    } else {
+      obj.choices = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgVoteUpdate(): CDOTAUserMsgVoteUpdate {
@@ -7642,6 +11638,20 @@ export const CDOTAUserMsgVoteUpdate = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgVoteUpdate {
+    return { choiceCounts: Array.isArray(object?.choiceCounts) ? object.choiceCounts.map((e: any) => Number(e)) : [] };
+  },
+
+  toJSON(message: CDOTAUserMsgVoteUpdate): unknown {
+    const obj: any = {};
+    if (message.choiceCounts) {
+      obj.choiceCounts = message.choiceCounts.map((e) => Math.round(e));
+    } else {
+      obj.choiceCounts = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgVoteEnd(): CDOTAUserMsgVoteEnd {
@@ -7677,6 +11687,16 @@ export const CDOTAUserMsgVoteEnd = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgVoteEnd {
+    return { selectedChoice: isSet(object.selectedChoice) ? Number(object.selectedChoice) : 0 };
+  },
+
+  toJSON(message: CDOTAUserMsgVoteEnd): unknown {
+    const obj: any = {};
+    message.selectedChoice !== undefined && (obj.selectedChoice = Math.round(message.selectedChoice));
+    return obj;
   },
 };
 
@@ -7754,6 +11774,26 @@ export const CDOTAUserMsgBoosterStatePlayer = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgBoosterStatePlayer {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      bonus: isSet(object.bonus) ? Number(object.bonus) : 0,
+      eventBonus: isSet(object.eventBonus) ? Number(object.eventBonus) : 0,
+      bonusItemId: isSet(object.bonusItemId) ? Number(object.bonusItemId) : 0,
+      eventBonusItemId: isSet(object.eventBonusItemId) ? Number(object.eventBonusItemId) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgBoosterStatePlayer): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.bonus !== undefined && (obj.bonus = message.bonus);
+    message.eventBonus !== undefined && (obj.eventBonus = message.eventBonus);
+    message.bonusItemId !== undefined && (obj.bonusItemId = Math.round(message.bonusItemId));
+    message.eventBonusItemId !== undefined && (obj.eventBonusItemId = Math.round(message.eventBonusItemId));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgBoosterState(): CDOTAUserMsgBoosterState {
@@ -7789,6 +11829,24 @@ export const CDOTAUserMsgBoosterState = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgBoosterState {
+    return {
+      boostedPlayers: Array.isArray(object?.boostedPlayers)
+        ? object.boostedPlayers.map((e: any) => CDOTAUserMsgBoosterStatePlayer.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgBoosterState): unknown {
+    const obj: any = {};
+    if (message.boostedPlayers) {
+      obj.boostedPlayers = message.boostedPlayers.map((e) => e ? CDOTAUserMsgBoosterStatePlayer.toJSON(e) : undefined);
+    } else {
+      obj.boostedPlayers = [];
+    }
+    return obj;
   },
 };
 
@@ -7836,6 +11894,20 @@ export const CDOTAUserMsgPlayerMMR = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgPlayerMMR {
+    return { mmr: Array.isArray(object?.mmr) ? object.mmr.map((e: any) => Number(e)) : [] };
+  },
+
+  toJSON(message: CDOTAUserMsgPlayerMMR): unknown {
+    const obj: any = {};
+    if (message.mmr) {
+      obj.mmr = message.mmr.map((e) => Math.round(e));
+    } else {
+      obj.mmr = [];
+    }
+    return obj;
   },
 };
 
@@ -7892,6 +11964,22 @@ export const CDOTAUserMsgAbilitySteal = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgAbilitySteal {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      abilityId: isSet(object.abilityId) ? Number(object.abilityId) : 0,
+      abilityLevel: isSet(object.abilityLevel) ? Number(object.abilityLevel) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgAbilitySteal): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.abilityId !== undefined && (obj.abilityId = Math.round(message.abilityId));
+    message.abilityLevel !== undefined && (obj.abilityLevel = Math.round(message.abilityLevel));
+    return obj;
   },
 };
 
@@ -7959,6 +12047,24 @@ export const CDOTAUserMsgStatsHeroLookup = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgStatsHeroLookup {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      heroName: isSet(object.heroName) ? String(object.heroName) : "",
+      persona: isSet(object.persona) ? String(object.persona) : "",
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgStatsHeroLookup): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.heroName !== undefined && (obj.heroName = message.heroName);
+    message.persona !== undefined && (obj.persona = message.persona);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgStatsHeroPositionInfo(): CDOTAUserMsgStatsHeroPositionInfo {
@@ -8004,6 +12110,28 @@ export const CDOTAUserMsgStatsHeroPositionInfo = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgStatsHeroPositionInfo {
+    return {
+      averagePosition: isSet(object.averagePosition) ? Number(object.averagePosition) : 0,
+      positionDetails: Array.isArray(object?.positionDetails)
+        ? object.positionDetails.map((e: any) => CDOTAUserMsgStatsHeroPositionInfo_PositionPair.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgStatsHeroPositionInfo): unknown {
+    const obj: any = {};
+    message.averagePosition !== undefined && (obj.averagePosition = message.averagePosition);
+    if (message.positionDetails) {
+      obj.positionDetails = message.positionDetails.map((e) =>
+        e ? CDOTAUserMsgStatsHeroPositionInfo_PositionPair.toJSON(e) : undefined
+      );
+    } else {
+      obj.positionDetails = [];
+    }
+    return obj;
   },
 };
 
@@ -8053,6 +12181,21 @@ export const CDOTAUserMsgStatsHeroPositionInfo_PositionPair = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgStatsHeroPositionInfo_PositionPair {
+    return {
+      positionCategory: isSet(object.positionCategory) ? dotaPositionCategoryFromJSON(object.positionCategory) : 0,
+      positionCount: isSet(object.positionCount) ? Number(object.positionCount) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgStatsHeroPositionInfo_PositionPair): unknown {
+    const obj: any = {};
+    message.positionCategory !== undefined &&
+      (obj.positionCategory = dotaPositionCategoryToJSON(message.positionCategory));
+    message.positionCount !== undefined && (obj.positionCount = Math.round(message.positionCount));
+    return obj;
   },
 };
 
@@ -8279,6 +12422,62 @@ export const CDOTAUserMsgStatsHeroMinuteDetails = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgStatsHeroMinuteDetails {
+    return {
+      lastHits: isSet(object.lastHits) ? Number(object.lastHits) : 0,
+      heroKills: isSet(object.heroKills) ? Number(object.heroKills) : 0,
+      heroDamage: isSet(object.heroDamage) ? Number(object.heroDamage) : 0,
+      towerDamage: isSet(object.towerDamage) ? Number(object.towerDamage) : 0,
+      positionInfo: isSet(object.positionInfo)
+        ? CDOTAUserMsgStatsHeroPositionInfo.fromJSON(object.positionInfo)
+        : undefined,
+      totalXp: isSet(object.totalXp) ? Number(object.totalXp) : 0,
+      netWorth: isSet(object.netWorth) ? Number(object.netWorth) : 0,
+      harvestedCreepGold: isSet(object.harvestedCreepGold) ? Number(object.harvestedCreepGold) : 0,
+      claimedFarm: isSet(object.claimedFarm) ? Number(object.claimedFarm) : 0,
+      wardsPlaced: isSet(object.wardsPlaced) ? Number(object.wardsPlaced) : 0,
+      runesCollected: isSet(object.runesCollected) ? Number(object.runesCollected) : 0,
+      tpsUsed: isSet(object.tpsUsed) ? Number(object.tpsUsed) : 0,
+      manaSpent: Array.isArray(object?.manaSpent) ? object.manaSpent.map((e: any) => Number(e)) : [],
+      damageAbsorbed: Array.isArray(object?.damageAbsorbed) ? object.damageAbsorbed.map((e: any) => Number(e)) : [],
+      damageDone: Array.isArray(object?.damageDone) ? object.damageDone.map((e: any) => Number(e)) : [],
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgStatsHeroMinuteDetails): unknown {
+    const obj: any = {};
+    message.lastHits !== undefined && (obj.lastHits = Math.round(message.lastHits));
+    message.heroKills !== undefined && (obj.heroKills = Math.round(message.heroKills));
+    message.heroDamage !== undefined && (obj.heroDamage = Math.round(message.heroDamage));
+    message.towerDamage !== undefined && (obj.towerDamage = Math.round(message.towerDamage));
+    message.positionInfo !== undefined && (obj.positionInfo = message.positionInfo
+      ? CDOTAUserMsgStatsHeroPositionInfo.toJSON(message.positionInfo)
+      : undefined);
+    message.totalXp !== undefined && (obj.totalXp = Math.round(message.totalXp));
+    message.netWorth !== undefined && (obj.netWorth = Math.round(message.netWorth));
+    message.harvestedCreepGold !== undefined && (obj.harvestedCreepGold = Math.round(message.harvestedCreepGold));
+    message.claimedFarm !== undefined && (obj.claimedFarm = Math.round(message.claimedFarm));
+    message.wardsPlaced !== undefined && (obj.wardsPlaced = Math.round(message.wardsPlaced));
+    message.runesCollected !== undefined && (obj.runesCollected = Math.round(message.runesCollected));
+    message.tpsUsed !== undefined && (obj.tpsUsed = Math.round(message.tpsUsed));
+    if (message.manaSpent) {
+      obj.manaSpent = message.manaSpent.map((e) => Math.round(e));
+    } else {
+      obj.manaSpent = [];
+    }
+    if (message.damageAbsorbed) {
+      obj.damageAbsorbed = message.damageAbsorbed.map((e) => Math.round(e));
+    } else {
+      obj.damageAbsorbed = [];
+    }
+    if (message.damageDone) {
+      obj.damageDone = message.damageDone.map((e) => Math.round(e));
+    } else {
+      obj.damageDone = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgStatsTeamMinuteDetails(): CDOTAUserMsgStatsTeamMinuteDetails {
@@ -8418,6 +12617,51 @@ export const CDOTAUserMsgStatsTeamMinuteDetails = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgStatsTeamMinuteDetails {
+    return {
+      playerStats: Array.isArray(object?.playerStats)
+        ? object.playerStats.map((e: any) => CDOTAUserMsgStatsHeroMinuteDetails.fromJSON(e))
+        : [],
+      towerKills: isSet(object.towerKills) ? Number(object.towerKills) : 0,
+      barrackKills: isSet(object.barrackKills) ? Number(object.barrackKills) : 0,
+      availableLaneCreepGold: isSet(object.availableLaneCreepGold) ? Number(object.availableLaneCreepGold) : 0,
+      balanceKillValue: isSet(object.balanceKillValue) ? Number(object.balanceKillValue) : 0,
+      balanceTowerValue: isSet(object.balanceTowerValue) ? Number(object.balanceTowerValue) : 0,
+      balanceBarracksValue: isSet(object.balanceBarracksValue) ? Number(object.balanceBarracksValue) : 0,
+      balanceGoldValue: isSet(object.balanceGoldValue) ? Number(object.balanceGoldValue) : 0,
+      balanceXpValue: isSet(object.balanceXpValue) ? Number(object.balanceXpValue) : 0,
+      lanePerformance: Array.isArray(object?.lanePerformance)
+        ? object.lanePerformance.map((e: any) => CDOTAUserMsgStatsTeamMinuteDetails_LocationPerformance.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgStatsTeamMinuteDetails): unknown {
+    const obj: any = {};
+    if (message.playerStats) {
+      obj.playerStats = message.playerStats.map((e) => e ? CDOTAUserMsgStatsHeroMinuteDetails.toJSON(e) : undefined);
+    } else {
+      obj.playerStats = [];
+    }
+    message.towerKills !== undefined && (obj.towerKills = Math.round(message.towerKills));
+    message.barrackKills !== undefined && (obj.barrackKills = Math.round(message.barrackKills));
+    message.availableLaneCreepGold !== undefined &&
+      (obj.availableLaneCreepGold = Math.round(message.availableLaneCreepGold));
+    message.balanceKillValue !== undefined && (obj.balanceKillValue = Math.round(message.balanceKillValue));
+    message.balanceTowerValue !== undefined && (obj.balanceTowerValue = Math.round(message.balanceTowerValue));
+    message.balanceBarracksValue !== undefined && (obj.balanceBarracksValue = Math.round(message.balanceBarracksValue));
+    message.balanceGoldValue !== undefined && (obj.balanceGoldValue = Math.round(message.balanceGoldValue));
+    message.balanceXpValue !== undefined && (obj.balanceXpValue = Math.round(message.balanceXpValue));
+    if (message.lanePerformance) {
+      obj.lanePerformance = message.lanePerformance.map((e) =>
+        e ? CDOTAUserMsgStatsTeamMinuteDetails_LocationPerformance.toJSON(e) : undefined
+      );
+    } else {
+      obj.lanePerformance = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgStatsTeamMinuteDetails_LocationPerformance(): CDOTAUserMsgStatsTeamMinuteDetails_LocationPerformance {
@@ -8476,6 +12720,22 @@ export const CDOTAUserMsgStatsTeamMinuteDetails_LocationPerformance = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgStatsTeamMinuteDetails_LocationPerformance {
+    return {
+      locationCategory: isSet(object.locationCategory) ? Number(object.locationCategory) : 0,
+      statType: isSet(object.statType) ? Number(object.statType) : 0,
+      value: isSet(object.value) ? Number(object.value) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgStatsTeamMinuteDetails_LocationPerformance): unknown {
+    const obj: any = {};
+    message.locationCategory !== undefined && (obj.locationCategory = Math.round(message.locationCategory));
+    message.statType !== undefined && (obj.statType = Math.round(message.statType));
+    message.value !== undefined && (obj.value = Math.round(message.value));
+    return obj;
   },
 };
 
@@ -8563,6 +12823,28 @@ export const CDOTAUserMsgStatsPlayerKillShare = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgStatsPlayerKillShare {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      killSharePercent: isSet(object.killSharePercent) ? Number(object.killSharePercent) : 0,
+      playerLocX: isSet(object.playerLocX) ? Number(object.playerLocX) : 0,
+      playerLocY: isSet(object.playerLocY) ? Number(object.playerLocY) : 0,
+      healthPercent: isSet(object.healthPercent) ? Number(object.healthPercent) : 0,
+      manaPercent: isSet(object.manaPercent) ? Number(object.manaPercent) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgStatsPlayerKillShare): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.killSharePercent !== undefined && (obj.killSharePercent = message.killSharePercent);
+    message.playerLocX !== undefined && (obj.playerLocX = message.playerLocX);
+    message.playerLocY !== undefined && (obj.playerLocY = message.playerLocY);
+    message.healthPercent !== undefined && (obj.healthPercent = message.healthPercent);
+    message.manaPercent !== undefined && (obj.manaPercent = message.manaPercent);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgStatsKillDetails(): CDOTAUserMsgStatsKillDetails {
@@ -8648,6 +12930,34 @@ export const CDOTAUserMsgStatsKillDetails = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgStatsKillDetails {
+    return {
+      victimId: isSet(object.victimId) ? Number(object.victimId) : 0,
+      killShares: Array.isArray(object?.killShares)
+        ? object.killShares.map((e: any) => CDOTAUserMsgStatsPlayerKillShare.fromJSON(e))
+        : [],
+      damageToKill: isSet(object.damageToKill) ? Number(object.damageToKill) : 0,
+      effectiveHealth: isSet(object.effectiveHealth) ? Number(object.effectiveHealth) : 0,
+      deathTime: isSet(object.deathTime) ? Number(object.deathTime) : 0,
+      killerId: isSet(object.killerId) ? Number(object.killerId) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgStatsKillDetails): unknown {
+    const obj: any = {};
+    message.victimId !== undefined && (obj.victimId = Math.round(message.victimId));
+    if (message.killShares) {
+      obj.killShares = message.killShares.map((e) => e ? CDOTAUserMsgStatsPlayerKillShare.toJSON(e) : undefined);
+    } else {
+      obj.killShares = [];
+    }
+    message.damageToKill !== undefined && (obj.damageToKill = Math.round(message.damageToKill));
+    message.effectiveHealth !== undefined && (obj.effectiveHealth = Math.round(message.effectiveHealth));
+    message.deathTime !== undefined && (obj.deathTime = message.deathTime);
+    message.killerId !== undefined && (obj.killerId = Math.round(message.killerId));
+    return obj;
   },
 };
 
@@ -8736,6 +13046,66 @@ export const CDOTAUserMsgStatsMatchDetails = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgStatsMatchDetails {
+    return {
+      heroLookup: Array.isArray(object?.heroLookup)
+        ? object.heroLookup.map((e: any) => CDOTAUserMsgStatsHeroLookup.fromJSON(e))
+        : [],
+      radiantStats: Array.isArray(object?.radiantStats)
+        ? object.radiantStats.map((e: any) => CDOTAUserMsgStatsTeamMinuteDetails.fromJSON(e))
+        : [],
+      direStats: Array.isArray(object?.direStats)
+        ? object.direStats.map((e: any) => CDOTAUserMsgStatsTeamMinuteDetails.fromJSON(e))
+        : [],
+      radiantKills: Array.isArray(object?.radiantKills)
+        ? object.radiantKills.map((e: any) => CDOTAUserMsgStatsKillDetails.fromJSON(e))
+        : [],
+      direKills: Array.isArray(object?.direKills)
+        ? object.direKills.map((e: any) => CDOTAUserMsgStatsKillDetails.fromJSON(e))
+        : [],
+      fightDetails: Array.isArray(object?.fightDetails)
+        ? object.fightDetails.map((e: any) => CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightDetails.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgStatsMatchDetails): unknown {
+    const obj: any = {};
+    if (message.heroLookup) {
+      obj.heroLookup = message.heroLookup.map((e) => e ? CDOTAUserMsgStatsHeroLookup.toJSON(e) : undefined);
+    } else {
+      obj.heroLookup = [];
+    }
+    if (message.radiantStats) {
+      obj.radiantStats = message.radiantStats.map((e) => e ? CDOTAUserMsgStatsTeamMinuteDetails.toJSON(e) : undefined);
+    } else {
+      obj.radiantStats = [];
+    }
+    if (message.direStats) {
+      obj.direStats = message.direStats.map((e) => e ? CDOTAUserMsgStatsTeamMinuteDetails.toJSON(e) : undefined);
+    } else {
+      obj.direStats = [];
+    }
+    if (message.radiantKills) {
+      obj.radiantKills = message.radiantKills.map((e) => e ? CDOTAUserMsgStatsKillDetails.toJSON(e) : undefined);
+    } else {
+      obj.radiantKills = [];
+    }
+    if (message.direKills) {
+      obj.direKills = message.direKills.map((e) => e ? CDOTAUserMsgStatsKillDetails.toJSON(e) : undefined);
+    } else {
+      obj.direKills = [];
+    }
+    if (message.fightDetails) {
+      obj.fightDetails = message.fightDetails.map((e) =>
+        e ? CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightDetails.toJSON(e) : undefined
+      );
+    } else {
+      obj.fightDetails = [];
+    }
+    return obj;
   },
 };
 
@@ -8831,6 +13201,32 @@ export const CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightTeamDetails = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightTeamDetails {
+    return {
+      participants: Array.isArray(object?.participants) ? object.participants.map((e: any) => Number(e)) : [],
+      deaths: Array.isArray(object?.deaths) ? object.deaths.map((e: any) => Number(e)) : [],
+      goldDelta: isSet(object.goldDelta) ? Number(object.goldDelta) : 0,
+      xpDelta: isSet(object.xpDelta) ? Number(object.xpDelta) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightTeamDetails): unknown {
+    const obj: any = {};
+    if (message.participants) {
+      obj.participants = message.participants.map((e) => Math.round(e));
+    } else {
+      obj.participants = [];
+    }
+    if (message.deaths) {
+      obj.deaths = message.deaths.map((e) => Math.round(e));
+    } else {
+      obj.deaths = [];
+    }
+    message.goldDelta !== undefined && (obj.goldDelta = Math.round(message.goldDelta));
+    message.xpDelta !== undefined && (obj.xpDelta = Math.round(message.xpDelta));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightDetails(): CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightDetails {
@@ -8912,6 +13308,32 @@ export const CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightDetails = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightDetails {
+    return {
+      startTime: isSet(object.startTime) ? Number(object.startTime) : 0,
+      endTime: isSet(object.endTime) ? Number(object.endTime) : 0,
+      radiantFightDetails: isSet(object.radiantFightDetails)
+        ? CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightTeamDetails.fromJSON(object.radiantFightDetails)
+        : undefined,
+      direFightDetails: isSet(object.direFightDetails)
+        ? CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightTeamDetails.fromJSON(object.direFightDetails)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightDetails): unknown {
+    const obj: any = {};
+    message.startTime !== undefined && (obj.startTime = message.startTime);
+    message.endTime !== undefined && (obj.endTime = message.endTime);
+    message.radiantFightDetails !== undefined && (obj.radiantFightDetails = message.radiantFightDetails
+      ? CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightTeamDetails.toJSON(message.radiantFightDetails)
+      : undefined);
+    message.direFightDetails !== undefined && (obj.direFightDetails = message.direFightDetails
+      ? CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightTeamDetails.toJSON(message.direFightDetails)
+      : undefined);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgMiniTaunt(): CDOTAUserMsgMiniTaunt {
@@ -8948,6 +13370,16 @@ export const CDOTAUserMsgMiniTaunt = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgMiniTaunt {
+    return { tauntingPlayerId: isSet(object.tauntingPlayerId) ? Number(object.tauntingPlayerId) : 0 };
+  },
+
+  toJSON(message: CDOTAUserMsgMiniTaunt): unknown {
+    const obj: any = {};
+    message.tauntingPlayerId !== undefined && (obj.tauntingPlayerId = Math.round(message.tauntingPlayerId));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgSpeechBubble(): CDOTAUserMsgSpeechBubble {
@@ -8983,6 +13415,16 @@ export const CDOTAUserMsgSpeechBubble = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgSpeechBubble {
+    return { destroyAll: isSet(object.destroyAll) ? Boolean(object.destroyAll) : false };
+  },
+
+  toJSON(message: CDOTAUserMsgSpeechBubble): unknown {
+    const obj: any = {};
+    message.destroyAll !== undefined && (obj.destroyAll = message.destroyAll);
+    return obj;
   },
 };
 
@@ -9050,6 +13492,24 @@ export const CDOTAUserMsgCustomHeaderMessage = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgCustomHeaderMessage {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      duration: isSet(object.duration) ? Number(object.duration) : 0,
+      message: isSet(object.message) ? String(object.message) : "",
+      value: isSet(object.value) ? Number(object.value) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgCustomHeaderMessage): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.duration !== undefined && (obj.duration = message.duration);
+    message.message !== undefined && (obj.message = message.message);
+    message.value !== undefined && (obj.value = Math.round(message.value));
+    return obj;
+  },
 };
 
 function createBaseCMsgHeroAbilityStat(): CMsgHeroAbilityStat {
@@ -9106,6 +13566,22 @@ export const CMsgHeroAbilityStat = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgHeroAbilityStat {
+    return {
+      statType: isSet(object.statType) ? eHeroStatTypeFromJSON(object.statType) : 0,
+      intValue: isSet(object.intValue) ? Number(object.intValue) : 0,
+      floatValue: isSet(object.floatValue) ? Number(object.floatValue) : 0,
+    };
+  },
+
+  toJSON(message: CMsgHeroAbilityStat): unknown {
+    const obj: any = {};
+    message.statType !== undefined && (obj.statType = eHeroStatTypeToJSON(message.statType));
+    message.intValue !== undefined && (obj.intValue = Math.round(message.intValue));
+    message.floatValue !== undefined && (obj.floatValue = message.floatValue);
+    return obj;
+  },
 };
 
 function createBaseCMsgCombatAnalyzerPlayerStat(): CMsgCombatAnalyzerPlayerStat {
@@ -9152,6 +13628,26 @@ export const CMsgCombatAnalyzerPlayerStat = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgCombatAnalyzerPlayerStat {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      heroAbilityStats: Array.isArray(object?.heroAbilityStats)
+        ? object.heroAbilityStats.map((e: any) => CMsgHeroAbilityStat.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgCombatAnalyzerPlayerStat): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    if (message.heroAbilityStats) {
+      obj.heroAbilityStats = message.heroAbilityStats.map((e) => e ? CMsgHeroAbilityStat.toJSON(e) : undefined);
+    } else {
+      obj.heroAbilityStats = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgCombatAnalyzerStats(): CMsgCombatAnalyzerStats {
@@ -9197,6 +13693,26 @@ export const CMsgCombatAnalyzerStats = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgCombatAnalyzerStats {
+    return {
+      matchId: isSet(object.matchId) ? String(object.matchId) : "0",
+      playerStats: Array.isArray(object?.playerStats)
+        ? object.playerStats.map((e: any) => CMsgCombatAnalyzerPlayerStat.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgCombatAnalyzerStats): unknown {
+    const obj: any = {};
+    message.matchId !== undefined && (obj.matchId = message.matchId);
+    if (message.playerStats) {
+      obj.playerStats = message.playerStats.map((e) => e ? CMsgCombatAnalyzerPlayerStat.toJSON(e) : undefined);
+    } else {
+      obj.playerStats = [];
+    }
+    return obj;
   },
 };
 
@@ -9264,6 +13780,24 @@ export const CDOTAUserMsgBeastChat = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgBeastChat {
+    return {
+      team: isSet(object.team) ? Number(object.team) : 0,
+      format: isSet(object.format) ? String(object.format) : "",
+      message: isSet(object.message) ? String(object.message) : "",
+      target: isSet(object.target) ? String(object.target) : "",
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgBeastChat): unknown {
+    const obj: any = {};
+    message.team !== undefined && (obj.team = Math.round(message.team));
+    message.format !== undefined && (obj.format = message.format);
+    message.message !== undefined && (obj.message = message.message);
+    message.target !== undefined && (obj.target = message.target);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgCustomHudElementCreate(): CDOTAUserMsgCustomHudElementCreate {
@@ -9319,6 +13853,23 @@ export const CDOTAUserMsgCustomHudElementCreate = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgCustomHudElementCreate {
+    return {
+      elementId: isSet(object.elementId) ? String(object.elementId) : "",
+      layoutFilename: isSet(object.layoutFilename) ? String(object.layoutFilename) : "",
+      data: isSet(object.data) ? Buffer.from(bytesFromBase64(object.data)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgCustomHudElementCreate): unknown {
+    const obj: any = {};
+    message.elementId !== undefined && (obj.elementId = message.elementId);
+    message.layoutFilename !== undefined && (obj.layoutFilename = message.layoutFilename);
+    message.data !== undefined &&
+      (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
+    return obj;
   },
 };
 
@@ -9376,6 +13927,23 @@ export const CDOTAUserMsgCustomHudElementModify = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgCustomHudElementModify {
+    return {
+      elementId: isSet(object.elementId) ? String(object.elementId) : "",
+      modifyVisible: isSet(object.modifyVisible) ? Boolean(object.modifyVisible) : false,
+      data: isSet(object.data) ? Buffer.from(bytesFromBase64(object.data)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgCustomHudElementModify): unknown {
+    const obj: any = {};
+    message.elementId !== undefined && (obj.elementId = message.elementId);
+    message.modifyVisible !== undefined && (obj.modifyVisible = message.modifyVisible);
+    message.data !== undefined &&
+      (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgCustomHudElementDestroy(): CDOTAUserMsgCustomHudElementDestroy {
@@ -9411,6 +13979,16 @@ export const CDOTAUserMsgCustomHudElementDestroy = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgCustomHudElementDestroy {
+    return { elementId: isSet(object.elementId) ? String(object.elementId) : "" };
+  },
+
+  toJSON(message: CDOTAUserMsgCustomHudElementDestroy): unknown {
+    const obj: any = {};
+    message.elementId !== undefined && (obj.elementId = message.elementId);
+    return obj;
   },
 };
 
@@ -9458,6 +14036,20 @@ export const CDOTAUserMsgCompendiumStatePlayer = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgCompendiumStatePlayer {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      level: isSet(object.level) ? Number(object.level) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgCompendiumStatePlayer): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.level !== undefined && (obj.level = Math.round(message.level));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgCompendiumState(): CDOTAUserMsgCompendiumState {
@@ -9493,6 +14085,26 @@ export const CDOTAUserMsgCompendiumState = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgCompendiumState {
+    return {
+      compendiumPlayers: Array.isArray(object?.compendiumPlayers)
+        ? object.compendiumPlayers.map((e: any) => CDOTAUserMsgCompendiumStatePlayer.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgCompendiumState): unknown {
+    const obj: any = {};
+    if (message.compendiumPlayers) {
+      obj.compendiumPlayers = message.compendiumPlayers.map((e) =>
+        e ? CDOTAUserMsgCompendiumStatePlayer.toJSON(e) : undefined
+      );
+    } else {
+      obj.compendiumPlayers = [];
+    }
+    return obj;
   },
 };
 
@@ -9609,6 +14221,32 @@ export const CDOTAUserMsgProjectionAbility = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgProjectionAbility {
+    return {
+      abilityId: isSet(object.abilityId) ? Number(object.abilityId) : 0,
+      casterEntIndex: isSet(object.casterEntIndex) ? Number(object.casterEntIndex) : 0,
+      casterTeam: isSet(object.casterTeam) ? Number(object.casterTeam) : 0,
+      channelEnd: isSet(object.channelEnd) ? Boolean(object.channelEnd) : false,
+      origin: isSet(object.origin) ? CMsgVector.fromJSON(object.origin) : undefined,
+      trackCasterOnly: isSet(object.trackCasterOnly) ? Boolean(object.trackCasterOnly) : false,
+      endTime: isSet(object.endTime) ? Number(object.endTime) : 0,
+      victimEntIndex: isSet(object.victimEntIndex) ? Number(object.victimEntIndex) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgProjectionAbility): unknown {
+    const obj: any = {};
+    message.abilityId !== undefined && (obj.abilityId = Math.round(message.abilityId));
+    message.casterEntIndex !== undefined && (obj.casterEntIndex = Math.round(message.casterEntIndex));
+    message.casterTeam !== undefined && (obj.casterTeam = Math.round(message.casterTeam));
+    message.channelEnd !== undefined && (obj.channelEnd = message.channelEnd);
+    message.origin !== undefined && (obj.origin = message.origin ? CMsgVector.toJSON(message.origin) : undefined);
+    message.trackCasterOnly !== undefined && (obj.trackCasterOnly = message.trackCasterOnly);
+    message.endTime !== undefined && (obj.endTime = message.endTime);
+    message.victimEntIndex !== undefined && (obj.victimEntIndex = Math.round(message.victimEntIndex));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgProjectionEvent(): CDOTAUserMsgProjectionEvent {
@@ -9655,6 +14293,20 @@ export const CDOTAUserMsgProjectionEvent = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgProjectionEvent {
+    return {
+      eventId: isSet(object.eventId) ? eProjectionEventFromJSON(object.eventId) : 0,
+      team: isSet(object.team) ? Number(object.team) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgProjectionEvent): unknown {
+    const obj: any = {};
+    message.eventId !== undefined && (obj.eventId = eProjectionEventToJSON(message.eventId));
+    message.team !== undefined && (obj.team = Math.round(message.team));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgXPAlert(): CDOTAUserMsgXPAlert {
@@ -9700,6 +14352,20 @@ export const CDOTAUserMsgXPAlert = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgXPAlert {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      targetEntindex: isSet(object.targetEntindex) ? Number(object.targetEntindex) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgXPAlert): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.targetEntindex !== undefined && (obj.targetEntindex = Math.round(message.targetEntindex));
+    return obj;
   },
 };
 
@@ -9777,6 +14443,26 @@ export const CDOTAUserMsgTalentTreeAlert = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgTalentTreeAlert {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      targetEntindex: isSet(object.targetEntindex) ? Number(object.targetEntindex) : 0,
+      abilityId: isSet(object.abilityId) ? Number(object.abilityId) : 0,
+      slot: isSet(object.slot) ? Number(object.slot) : 0,
+      learned: isSet(object.learned) ? Boolean(object.learned) : false,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgTalentTreeAlert): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.targetEntindex !== undefined && (obj.targetEntindex = Math.round(message.targetEntindex));
+    message.abilityId !== undefined && (obj.abilityId = Math.round(message.abilityId));
+    message.slot !== undefined && (obj.slot = Math.round(message.slot));
+    message.learned !== undefined && (obj.learned = message.learned);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgUpdateQuestProgress(): CDOTAUserMsgUpdateQuestProgress {
@@ -9802,6 +14488,15 @@ export const CDOTAUserMsgUpdateQuestProgress = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CDOTAUserMsgUpdateQuestProgress {
+    return {};
+  },
+
+  toJSON(_: CDOTAUserMsgUpdateQuestProgress): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -9909,6 +14604,32 @@ export const CDOTAUserMsgQuestStatus = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgQuestStatus {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      questId: isSet(object.questId) ? Number(object.questId) : 0,
+      challengeId: isSet(object.challengeId) ? Number(object.challengeId) : 0,
+      progress: isSet(object.progress) ? Number(object.progress) : 0,
+      goal: isSet(object.goal) ? Number(object.goal) : 0,
+      query: isSet(object.query) ? Number(object.query) : 0,
+      failGametime: isSet(object.failGametime) ? Number(object.failGametime) : 0,
+      itemAbilityId: isSet(object.itemAbilityId) ? Number(object.itemAbilityId) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgQuestStatus): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.questId !== undefined && (obj.questId = Math.round(message.questId));
+    message.challengeId !== undefined && (obj.challengeId = Math.round(message.challengeId));
+    message.progress !== undefined && (obj.progress = Math.round(message.progress));
+    message.goal !== undefined && (obj.goal = Math.round(message.goal));
+    message.query !== undefined && (obj.query = Math.round(message.query));
+    message.failGametime !== undefined && (obj.failGametime = message.failGametime);
+    message.itemAbilityId !== undefined && (obj.itemAbilityId = Math.round(message.itemAbilityId));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgSuggestHeroPick(): CDOTAUserMsgSuggestHeroPick {
@@ -9965,6 +14686,22 @@ export const CDOTAUserMsgSuggestHeroPick = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgSuggestHeroPick {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      ban: isSet(object.ban) ? Boolean(object.ban) : false,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgSuggestHeroPick): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.ban !== undefined && (obj.ban = message.ban);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgSuggestHeroRole(): CDOTAUserMsgSuggestHeroRole {
@@ -10010,6 +14747,20 @@ export const CDOTAUserMsgSuggestHeroRole = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgSuggestHeroRole {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      heroRole: isSet(object.heroRole) ? String(object.heroRole) : "",
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgSuggestHeroRole): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.heroRole !== undefined && (obj.heroRole = message.heroRole);
+    return obj;
   },
 };
 
@@ -10097,6 +14848,28 @@ export const CDOTAUserMsgKillcamDamageTaken = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgKillcamDamageTaken {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      damageTaken: isSet(object.damageTaken) ? Number(object.damageTaken) : 0,
+      itemType: isSet(object.itemType) ? Number(object.itemType) : 0,
+      itemAbilityId: isSet(object.itemAbilityId) ? Number(object.itemAbilityId) : 0,
+      heroName: isSet(object.heroName) ? String(object.heroName) : "",
+      damageColor: isSet(object.damageColor) ? String(object.damageColor) : "",
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgKillcamDamageTaken): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.damageTaken !== undefined && (obj.damageTaken = Math.round(message.damageTaken));
+    message.itemType !== undefined && (obj.itemType = Math.round(message.itemType));
+    message.itemAbilityId !== undefined && (obj.itemAbilityId = Math.round(message.itemAbilityId));
+    message.heroName !== undefined && (obj.heroName = message.heroName);
+    message.damageColor !== undefined && (obj.damageColor = message.damageColor);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgSelectPenaltyGold(): CDOTAUserMsgSelectPenaltyGold {
@@ -10142,6 +14915,20 @@ export const CDOTAUserMsgSelectPenaltyGold = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgSelectPenaltyGold {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      cost: isSet(object.cost) ? Number(object.cost) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgSelectPenaltyGold): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.cost !== undefined && (obj.cost = Math.round(message.cost));
+    return obj;
   },
 };
 
@@ -10219,6 +15006,26 @@ export const CDOTAUserMsgRollDiceResult = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgRollDiceResult {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      channelType: isSet(object.channelType) ? Number(object.channelType) : 0,
+      rollMin: isSet(object.rollMin) ? Number(object.rollMin) : 0,
+      rollMax: isSet(object.rollMax) ? Number(object.rollMax) : 0,
+      result: isSet(object.result) ? Number(object.result) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgRollDiceResult): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.channelType !== undefined && (obj.channelType = Math.round(message.channelType));
+    message.rollMin !== undefined && (obj.rollMin = Math.round(message.rollMin));
+    message.rollMax !== undefined && (obj.rollMax = Math.round(message.rollMax));
+    message.result !== undefined && (obj.result = Math.round(message.result));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgFlipCoinResult(): CDOTAUserMsgFlipCoinResult {
@@ -10275,6 +15082,22 @@ export const CDOTAUserMsgFlipCoinResult = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgFlipCoinResult {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      channelType: isSet(object.channelType) ? Number(object.channelType) : 0,
+      result: isSet(object.result) ? Boolean(object.result) : false,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgFlipCoinResult): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.channelType !== undefined && (obj.channelType = Math.round(message.channelType));
+    message.result !== undefined && (obj.result = message.result);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMessageRequestItemSuggestions(): CDOTAUserMessageRequestItemSuggestions {
@@ -10310,6 +15133,16 @@ export const CDOTAUserMessageRequestItemSuggestions = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMessageRequestItemSuggestions {
+    return { playerId: isSet(object.playerId) ? Number(object.playerId) : 0 };
+  },
+
+  toJSON(message: CDOTAUserMessageRequestItemSuggestions): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    return obj;
   },
 };
 
@@ -10357,6 +15190,20 @@ export const CDOTAUserMessageTeamCaptainChanged = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMessageTeamCaptainChanged {
+    return {
+      team: isSet(object.team) ? Number(object.team) : 0,
+      captainPlayerId: isSet(object.captainPlayerId) ? Number(object.captainPlayerId) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMessageTeamCaptainChanged): unknown {
+    const obj: any = {};
+    message.team !== undefined && (obj.team = Math.round(message.team));
+    message.captainPlayerId !== undefined && (obj.captainPlayerId = Math.round(message.captainPlayerId));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgChatWheelCooldown(): CDOTAUserMsgChatWheelCooldown {
@@ -10402,6 +15249,20 @@ export const CDOTAUserMsgChatWheelCooldown = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgChatWheelCooldown {
+    return {
+      messageId: isSet(object.messageId) ? Number(object.messageId) : 0,
+      cooldownRemaining: isSet(object.cooldownRemaining) ? Number(object.cooldownRemaining) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgChatWheelCooldown): unknown {
+    const obj: any = {};
+    message.messageId !== undefined && (obj.messageId = Math.round(message.messageId));
+    message.cooldownRemaining !== undefined && (obj.cooldownRemaining = message.cooldownRemaining);
+    return obj;
   },
 };
 
@@ -10479,6 +15340,26 @@ export const CDOTAUserMsgHeroRelicProgress = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgHeroRelicProgress {
+    return {
+      heroRelicType: isSet(object.heroRelicType) ? Number(object.heroRelicType) : 0,
+      value: isSet(object.value) ? Number(object.value) : 0,
+      ehandle: isSet(object.ehandle) ? Number(object.ehandle) : 0,
+      eventId: isSet(object.eventId) ? Number(object.eventId) : 0,
+      valueDisplay: isSet(object.valueDisplay) ? Number(object.valueDisplay) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgHeroRelicProgress): unknown {
+    const obj: any = {};
+    message.heroRelicType !== undefined && (obj.heroRelicType = Math.round(message.heroRelicType));
+    message.value !== undefined && (obj.value = Math.round(message.value));
+    message.ehandle !== undefined && (obj.ehandle = Math.round(message.ehandle));
+    message.eventId !== undefined && (obj.eventId = Math.round(message.eventId));
+    message.valueDisplay !== undefined && (obj.valueDisplay = message.valueDisplay);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgAbilityDraftRequestAbility(): CDOTAUserMsgAbilityDraftRequestAbility {
@@ -10534,6 +15415,22 @@ export const CDOTAUserMsgAbilityDraftRequestAbility = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgAbilityDraftRequestAbility {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      requestedAbilityId: isSet(object.requestedAbilityId) ? Number(object.requestedAbilityId) : 0,
+      ctrlIsDown: isSet(object.ctrlIsDown) ? Boolean(object.ctrlIsDown) : false,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgAbilityDraftRequestAbility): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.requestedAbilityId !== undefined && (obj.requestedAbilityId = Math.round(message.requestedAbilityId));
+    message.ctrlIsDown !== undefined && (obj.ctrlIsDown = message.ctrlIsDown);
+    return obj;
   },
 };
 
@@ -10610,6 +15507,26 @@ export const CDOTAUserMsgDamageReport = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgDamageReport {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      targetHeroId: isSet(object.targetHeroId) ? Number(object.targetHeroId) : 0,
+      sourceHeroId: isSet(object.sourceHeroId) ? Number(object.sourceHeroId) : 0,
+      damageAmount: isSet(object.damageAmount) ? Number(object.damageAmount) : 0,
+      broadcast: isSet(object.broadcast) ? Boolean(object.broadcast) : false,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgDamageReport): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.targetHeroId !== undefined && (obj.targetHeroId = Math.round(message.targetHeroId));
+    message.sourceHeroId !== undefined && (obj.sourceHeroId = Math.round(message.sourceHeroId));
+    message.damageAmount !== undefined && (obj.damageAmount = Math.round(message.damageAmount));
+    message.broadcast !== undefined && (obj.broadcast = message.broadcast);
+    return obj;
   },
 };
 
@@ -10697,6 +15614,28 @@ export const CDOTAUserMsgSalutePlayer = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgSalutePlayer {
+    return {
+      sourcePlayerId: isSet(object.sourcePlayerId) ? Number(object.sourcePlayerId) : 0,
+      targetPlayerId: isSet(object.targetPlayerId) ? Number(object.targetPlayerId) : 0,
+      tipAmount: isSet(object.tipAmount) ? Number(object.tipAmount) : 0,
+      eventId: isSet(object.eventId) ? Number(object.eventId) : 0,
+      customTipStyle: isSet(object.customTipStyle) ? String(object.customTipStyle) : "",
+      numRecentTips: isSet(object.numRecentTips) ? Number(object.numRecentTips) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgSalutePlayer): unknown {
+    const obj: any = {};
+    message.sourcePlayerId !== undefined && (obj.sourcePlayerId = Math.round(message.sourcePlayerId));
+    message.targetPlayerId !== undefined && (obj.targetPlayerId = Math.round(message.targetPlayerId));
+    message.tipAmount !== undefined && (obj.tipAmount = Math.round(message.tipAmount));
+    message.eventId !== undefined && (obj.eventId = Math.round(message.eventId));
+    message.customTipStyle !== undefined && (obj.customTipStyle = message.customTipStyle);
+    message.numRecentTips !== undefined && (obj.numRecentTips = Math.round(message.numRecentTips));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgTipAlert(): CDOTAUserMsgTipAlert {
@@ -10742,6 +15681,20 @@ export const CDOTAUserMsgTipAlert = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgTipAlert {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      tipText: isSet(object.tipText) ? String(object.tipText) : "",
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgTipAlert): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.tipText !== undefined && (obj.tipText = message.tipText);
+    return obj;
   },
 };
 
@@ -10799,6 +15752,22 @@ export const CDOTAUserMsgReplaceQueryUnit = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgReplaceQueryUnit {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      sourceEntindex: isSet(object.sourceEntindex) ? Number(object.sourceEntindex) : 0,
+      targetEntindex: isSet(object.targetEntindex) ? Number(object.targetEntindex) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgReplaceQueryUnit): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.sourceEntindex !== undefined && (obj.sourceEntindex = Math.round(message.sourceEntindex));
+    message.targetEntindex !== undefined && (obj.targetEntindex = Math.round(message.targetEntindex));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgESArcanaCombo(): CDOTAUserMsgESArcanaCombo {
@@ -10855,6 +15824,22 @@ export const CDOTAUserMsgESArcanaCombo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgESArcanaCombo {
+    return {
+      ehandle: isSet(object.ehandle) ? Number(object.ehandle) : 0,
+      comboCount: isSet(object.comboCount) ? Number(object.comboCount) : 0,
+      arcanaLevel: isSet(object.arcanaLevel) ? Number(object.arcanaLevel) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgESArcanaCombo): unknown {
+    const obj: any = {};
+    message.ehandle !== undefined && (obj.ehandle = Math.round(message.ehandle));
+    message.comboCount !== undefined && (obj.comboCount = Math.round(message.comboCount));
+    message.arcanaLevel !== undefined && (obj.arcanaLevel = Math.round(message.arcanaLevel));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgESArcanaComboSummary(): CDOTAUserMsgESArcanaComboSummary {
@@ -10910,6 +15895,22 @@ export const CDOTAUserMsgESArcanaComboSummary = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgESArcanaComboSummary {
+    return {
+      ehandle: isSet(object.ehandle) ? Number(object.ehandle) : 0,
+      comboCount: isSet(object.comboCount) ? Number(object.comboCount) : 0,
+      damageAmount: isSet(object.damageAmount) ? Number(object.damageAmount) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgESArcanaComboSummary): unknown {
+    const obj: any = {};
+    message.ehandle !== undefined && (obj.ehandle = Math.round(message.ehandle));
+    message.comboCount !== undefined && (obj.comboCount = Math.round(message.comboCount));
+    message.damageAmount !== undefined && (obj.damageAmount = Math.round(message.damageAmount));
+    return obj;
   },
 };
 
@@ -10977,6 +15978,24 @@ export const CDOTAUserMsgOMArcanaCombo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgOMArcanaCombo {
+    return {
+      ehandle: isSet(object.ehandle) ? Number(object.ehandle) : 0,
+      multicastAmount: isSet(object.multicastAmount) ? Number(object.multicastAmount) : 0,
+      arcanaLevel: isSet(object.arcanaLevel) ? Number(object.arcanaLevel) : 0,
+      multicastChance: isSet(object.multicastChance) ? Number(object.multicastChance) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgOMArcanaCombo): unknown {
+    const obj: any = {};
+    message.ehandle !== undefined && (obj.ehandle = Math.round(message.ehandle));
+    message.multicastAmount !== undefined && (obj.multicastAmount = Math.round(message.multicastAmount));
+    message.arcanaLevel !== undefined && (obj.arcanaLevel = Math.round(message.arcanaLevel));
+    message.multicastChance !== undefined && (obj.multicastChance = Math.round(message.multicastChance));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgHighFiveCompleted(): CDOTAUserMsgHighFiveCompleted {
@@ -11043,6 +16062,24 @@ export const CDOTAUserMsgHighFiveCompleted = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgHighFiveCompleted {
+    return {
+      playerId1: isSet(object.playerId1) ? Number(object.playerId1) : 0,
+      playerId2: isSet(object.playerId2) ? Number(object.playerId2) : 0,
+      specialHighFive: isSet(object.specialHighFive) ? Boolean(object.specialHighFive) : false,
+      specialEntindex: isSet(object.specialEntindex) ? Number(object.specialEntindex) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgHighFiveCompleted): unknown {
+    const obj: any = {};
+    message.playerId1 !== undefined && (obj.playerId1 = Math.round(message.playerId1));
+    message.playerId2 !== undefined && (obj.playerId2 = Math.round(message.playerId2));
+    message.specialHighFive !== undefined && (obj.specialHighFive = message.specialHighFive);
+    message.specialEntindex !== undefined && (obj.specialEntindex = Math.round(message.specialEntindex));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgHighFiveLeftHanging(): CDOTAUserMsgHighFiveLeftHanging {
@@ -11078,6 +16115,16 @@ export const CDOTAUserMsgHighFiveLeftHanging = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgHighFiveLeftHanging {
+    return { playerId: isSet(object.playerId) ? Number(object.playerId) : 0 };
+  },
+
+  toJSON(message: CDOTAUserMsgHighFiveLeftHanging): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    return obj;
   },
 };
 
@@ -11144,6 +16191,24 @@ export const CDOTAUserMsgShovelUnearth = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgShovelUnearth {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      allChat: isSet(object.allChat) ? Boolean(object.allChat) : false,
+      locstring: isSet(object.locstring) ? String(object.locstring) : "",
+      quantity: isSet(object.quantity) ? Number(object.quantity) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgShovelUnearth): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.allChat !== undefined && (obj.allChat = message.allChat);
+    message.locstring !== undefined && (obj.locstring = message.locstring);
+    message.quantity !== undefined && (obj.quantity = Math.round(message.quantity));
+    return obj;
   },
 };
 
@@ -11221,6 +16286,34 @@ export const CDOTAUserMsgAllStarEvent = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgAllStarEvent {
+    return {
+      sourcePlayerId: isSet(object.sourcePlayerId) ? Number(object.sourcePlayerId) : 0,
+      targetPlayerId: isSet(object.targetPlayerId) ? Number(object.targetPlayerId) : 0,
+      pointAmount: isSet(object.pointAmount) ? Number(object.pointAmount) : 0,
+      eventId: isSet(object.eventId) ? Number(object.eventId) : 0,
+      playerScores: Array.isArray(object?.playerScores)
+        ? object.playerScores.map((e: any) => CDOTAUserMsgAllStarEvent_PlayerScore.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgAllStarEvent): unknown {
+    const obj: any = {};
+    message.sourcePlayerId !== undefined && (obj.sourcePlayerId = Math.round(message.sourcePlayerId));
+    message.targetPlayerId !== undefined && (obj.targetPlayerId = Math.round(message.targetPlayerId));
+    message.pointAmount !== undefined && (obj.pointAmount = Math.round(message.pointAmount));
+    message.eventId !== undefined && (obj.eventId = Math.round(message.eventId));
+    if (message.playerScores) {
+      obj.playerScores = message.playerScores.map((e) =>
+        e ? CDOTAUserMsgAllStarEvent_PlayerScore.toJSON(e) : undefined
+      );
+    } else {
+      obj.playerScores = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgAllStarEvent_PlayerScore(): CDOTAUserMsgAllStarEvent_PlayerScore {
@@ -11266,6 +16359,20 @@ export const CDOTAUserMsgAllStarEvent_PlayerScore = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgAllStarEvent_PlayerScore {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      scoreSansKda: isSet(object.scoreSansKda) ? Number(object.scoreSansKda) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgAllStarEvent_PlayerScore): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.scoreSansKda !== undefined && (obj.scoreSansKda = Math.round(message.scoreSansKda));
+    return obj;
   },
 };
 
@@ -11313,6 +16420,24 @@ export const CDOTAUserMsgQueuedOrderRemoved = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgQueuedOrderRemoved {
+    return {
+      unitOrderSequence: Array.isArray(object?.unitOrderSequence)
+        ? object.unitOrderSequence.map((e: any) => Number(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgQueuedOrderRemoved): unknown {
+    const obj: any = {};
+    if (message.unitOrderSequence) {
+      obj.unitOrderSequence = message.unitOrderSequence.map((e) => Math.round(e));
+    } else {
+      obj.unitOrderSequence = [];
+    }
+    return obj;
   },
 };
 
@@ -11418,6 +16543,30 @@ export const CDOTAUserMsgDebugChallenge = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgDebugChallenge {
+    return {
+      challengeType: isSet(object.challengeType) ? Number(object.challengeType) : 0,
+      challengeQueryId: isSet(object.challengeQueryId) ? Number(object.challengeQueryId) : 0,
+      eventId: isSet(object.eventId) ? Number(object.eventId) : 0,
+      instanceId: isSet(object.instanceId) ? Number(object.instanceId) : 0,
+      challengeVar0: isSet(object.challengeVar0) ? Number(object.challengeVar0) : 0,
+      challengeVar1: isSet(object.challengeVar1) ? Number(object.challengeVar1) : 0,
+      challengeMaxRank: isSet(object.challengeMaxRank) ? Number(object.challengeMaxRank) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgDebugChallenge): unknown {
+    const obj: any = {};
+    message.challengeType !== undefined && (obj.challengeType = Math.round(message.challengeType));
+    message.challengeQueryId !== undefined && (obj.challengeQueryId = Math.round(message.challengeQueryId));
+    message.eventId !== undefined && (obj.eventId = Math.round(message.eventId));
+    message.instanceId !== undefined && (obj.instanceId = Math.round(message.instanceId));
+    message.challengeVar0 !== undefined && (obj.challengeVar0 = Math.round(message.challengeVar0));
+    message.challengeVar1 !== undefined && (obj.challengeVar1 = Math.round(message.challengeVar1));
+    message.challengeMaxRank !== undefined && (obj.challengeMaxRank = Math.round(message.challengeMaxRank));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgFoundNeutralItem(): CDOTAUserMsgFoundNeutralItem {
@@ -11484,6 +16633,24 @@ export const CDOTAUserMsgFoundNeutralItem = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgFoundNeutralItem {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      itemAbilityId: isSet(object.itemAbilityId) ? Number(object.itemAbilityId) : 0,
+      itemTier: isSet(object.itemTier) ? Number(object.itemTier) : 0,
+      tierItemCount: isSet(object.tierItemCount) ? Number(object.tierItemCount) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgFoundNeutralItem): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.itemAbilityId !== undefined && (obj.itemAbilityId = Math.round(message.itemAbilityId));
+    message.itemTier !== undefined && (obj.itemTier = Math.round(message.itemTier));
+    message.tierItemCount !== undefined && (obj.tierItemCount = Math.round(message.tierItemCount));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgOutpostCaptured(): CDOTAUserMsgOutpostCaptured {
@@ -11529,6 +16696,20 @@ export const CDOTAUserMsgOutpostCaptured = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgOutpostCaptured {
+    return {
+      outpostEntindex: isSet(object.outpostEntindex) ? Number(object.outpostEntindex) : 0,
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgOutpostCaptured): unknown {
+    const obj: any = {};
+    message.outpostEntindex !== undefined && (obj.outpostEntindex = Math.round(message.outpostEntindex));
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    return obj;
   },
 };
 
@@ -11576,6 +16757,20 @@ export const CDOTAUserMsgOutpostGrantedXP = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgOutpostGrantedXP {
+    return {
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      xpAmount: isSet(object.xpAmount) ? Number(object.xpAmount) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgOutpostGrantedXP): unknown {
+    const obj: any = {};
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    message.xpAmount !== undefined && (obj.xpAmount = Math.round(message.xpAmount));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgMoveCameraToUnit(): CDOTAUserMsgMoveCameraToUnit {
@@ -11612,6 +16807,16 @@ export const CDOTAUserMsgMoveCameraToUnit = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgMoveCameraToUnit {
+    return { unitEhandle: isSet(object.unitEhandle) ? Number(object.unitEhandle) : 0 };
+  },
+
+  toJSON(message: CDOTAUserMsgMoveCameraToUnit): unknown {
+    const obj: any = {};
+    message.unitEhandle !== undefined && (obj.unitEhandle = Math.round(message.unitEhandle));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgPauseMinigameData(): CDOTAUserMsgPauseMinigameData {
@@ -11647,6 +16852,24 @@ export const CDOTAUserMsgPauseMinigameData = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgPauseMinigameData {
+    return {
+      dataBits: Array.isArray(object?.dataBits)
+        ? object.dataBits.map((e: any) => CDOTAUserMsgPauseMinigameData_DataBit.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgPauseMinigameData): unknown {
+    const obj: any = {};
+    if (message.dataBits) {
+      obj.dataBits = message.dataBits.map((e) => e ? CDOTAUserMsgPauseMinigameData_DataBit.toJSON(e) : undefined);
+    } else {
+      obj.dataBits = [];
+    }
+    return obj;
   },
 };
 
@@ -11703,6 +16926,22 @@ export const CDOTAUserMsgPauseMinigameData_DataBit = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgPauseMinigameData_DataBit {
+    return {
+      index: isSet(object.index) ? Number(object.index) : 0,
+      data: isSet(object.data) ? Number(object.data) : 0,
+      dataExtra: isSet(object.dataExtra) ? String(object.dataExtra) : "0",
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgPauseMinigameData_DataBit): unknown {
+    const obj: any = {};
+    message.index !== undefined && (obj.index = Math.round(message.index));
+    message.data !== undefined && (obj.data = Math.round(message.data));
+    message.dataExtra !== undefined && (obj.dataExtra = message.dataExtra);
+    return obj;
   },
 };
 
@@ -11780,6 +17019,29 @@ export const CDOTAUserMsgVersusScenePlayerBehavior = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgVersusScenePlayerBehavior {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      behavior: isSet(object.behavior) ? eDOTAVersusScenePlayerBehaviorFromJSON(object.behavior) : 1,
+      playActivity: isSet(object.playActivity) ? VersusScenePlayActivity.fromJSON(object.playActivity) : undefined,
+      chatWheel: isSet(object.chatWheel) ? VersusSceneChatWheel.fromJSON(object.chatWheel) : undefined,
+      playbackRate: isSet(object.playbackRate) ? VersusScenePlaybackRate.fromJSON(object.playbackRate) : undefined,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgVersusScenePlayerBehavior): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.behavior !== undefined && (obj.behavior = eDOTAVersusScenePlayerBehaviorToJSON(message.behavior));
+    message.playActivity !== undefined &&
+      (obj.playActivity = message.playActivity ? VersusScenePlayActivity.toJSON(message.playActivity) : undefined);
+    message.chatWheel !== undefined &&
+      (obj.chatWheel = message.chatWheel ? VersusSceneChatWheel.toJSON(message.chatWheel) : undefined);
+    message.playbackRate !== undefined &&
+      (obj.playbackRate = message.playbackRate ? VersusScenePlaybackRate.toJSON(message.playbackRate) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgQoPArcanaSummary(): CDOTAUserMsgQoPArcanaSummary {
@@ -11846,6 +17108,24 @@ export const CDOTAUserMsgQoPArcanaSummary = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgQoPArcanaSummary {
+    return {
+      ehandle: isSet(object.ehandle) ? Number(object.ehandle) : 0,
+      arcanaLevel: isSet(object.arcanaLevel) ? Number(object.arcanaLevel) : 0,
+      playersHit: isSet(object.playersHit) ? Number(object.playersHit) : 0,
+      playersKilled: isSet(object.playersKilled) ? Number(object.playersKilled) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgQoPArcanaSummary): unknown {
+    const obj: any = {};
+    message.ehandle !== undefined && (obj.ehandle = Math.round(message.ehandle));
+    message.arcanaLevel !== undefined && (obj.arcanaLevel = Math.round(message.arcanaLevel));
+    message.playersHit !== undefined && (obj.playersHit = Math.round(message.playersHit));
+    message.playersKilled !== undefined && (obj.playersKilled = Math.round(message.playersKilled));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgHotPotatoCreated(): CDOTAUserMsgHotPotatoCreated {
@@ -11892,6 +17172,20 @@ export const CDOTAUserMsgHotPotatoCreated = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgHotPotatoCreated {
+    return {
+      playerId1: isSet(object.playerId1) ? Number(object.playerId1) : 0,
+      playerId2: isSet(object.playerId2) ? Number(object.playerId2) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgHotPotatoCreated): unknown {
+    const obj: any = {};
+    message.playerId1 !== undefined && (obj.playerId1 = Math.round(message.playerId1));
+    message.playerId2 !== undefined && (obj.playerId2 = Math.round(message.playerId2));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgHotPotatoExploded(): CDOTAUserMsgHotPotatoExploded {
@@ -11927,6 +17221,16 @@ export const CDOTAUserMsgHotPotatoExploded = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgHotPotatoExploded {
+    return { playerId: isSet(object.playerId) ? Number(object.playerId) : 0 };
+  },
+
+  toJSON(message: CDOTAUserMsgHotPotatoExploded): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    return obj;
   },
 };
 
@@ -11983,6 +17287,22 @@ export const CDOTAUserMsgWKArcanaProgress = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgWKArcanaProgress {
+    return {
+      ehandle: isSet(object.ehandle) ? Number(object.ehandle) : 0,
+      arcanaLevel: isSet(object.arcanaLevel) ? Number(object.arcanaLevel) : 0,
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgWKArcanaProgress): unknown {
+    const obj: any = {};
+    message.ehandle !== undefined && (obj.ehandle = Math.round(message.ehandle));
+    message.arcanaLevel !== undefined && (obj.arcanaLevel = Math.round(message.arcanaLevel));
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    return obj;
   },
 };
 
@@ -12090,6 +17410,42 @@ export const CDOTAUserMsgGuildChallengeProgress = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgGuildChallengeProgress {
+    return {
+      playerProgress: Array.isArray(object?.playerProgress)
+        ? object.playerProgress.map((e: any) => CDOTAUserMsgGuildChallengeProgress_PlayerProgress.fromJSON(e))
+        : [],
+      guildId: isSet(object.guildId) ? Number(object.guildId) : 0,
+      challengeInstanceId: isSet(object.challengeInstanceId) ? Number(object.challengeInstanceId) : 0,
+      challengeParameter: isSet(object.challengeParameter) ? Number(object.challengeParameter) : 0,
+      challengeType: isSet(object.challengeType)
+        ? cDOTAUserMsgGuildChallengeProgress_EChallengeTypeFromJSON(object.challengeType)
+        : 0,
+      challengeProgressAtStart: isSet(object.challengeProgressAtStart) ? Number(object.challengeProgressAtStart) : 0,
+      complete: isSet(object.complete) ? Boolean(object.complete) : false,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgGuildChallengeProgress): unknown {
+    const obj: any = {};
+    if (message.playerProgress) {
+      obj.playerProgress = message.playerProgress.map((e) =>
+        e ? CDOTAUserMsgGuildChallengeProgress_PlayerProgress.toJSON(e) : undefined
+      );
+    } else {
+      obj.playerProgress = [];
+    }
+    message.guildId !== undefined && (obj.guildId = Math.round(message.guildId));
+    message.challengeInstanceId !== undefined && (obj.challengeInstanceId = Math.round(message.challengeInstanceId));
+    message.challengeParameter !== undefined && (obj.challengeParameter = Math.round(message.challengeParameter));
+    message.challengeType !== undefined &&
+      (obj.challengeType = cDOTAUserMsgGuildChallengeProgress_EChallengeTypeToJSON(message.challengeType));
+    message.challengeProgressAtStart !== undefined &&
+      (obj.challengeProgressAtStart = Math.round(message.challengeProgressAtStart));
+    message.complete !== undefined && (obj.complete = message.complete);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgGuildChallengeProgress_PlayerProgress(): CDOTAUserMsgGuildChallengeProgress_PlayerProgress {
@@ -12138,6 +17494,20 @@ export const CDOTAUserMsgGuildChallengeProgress_PlayerProgress = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgGuildChallengeProgress_PlayerProgress {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      progress: isSet(object.progress) ? Number(object.progress) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgGuildChallengeProgress_PlayerProgress): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.progress !== undefined && (obj.progress = Math.round(message.progress));
+    return obj;
   },
 };
 
@@ -12234,6 +17604,30 @@ export const CDOTAUserMsgWRArcanaProgress = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgWRArcanaProgress {
+    return {
+      ehandle: isSet(object.ehandle) ? Number(object.ehandle) : 0,
+      targetEhandle: isSet(object.targetEhandle) ? Number(object.targetEhandle) : 0,
+      arrowsLanded: isSet(object.arrowsLanded) ? Number(object.arrowsLanded) : 0,
+      damageDealt: isSet(object.damageDealt) ? Number(object.damageDealt) : 0,
+      targetHp: isSet(object.targetHp) ? Number(object.targetHp) : 0,
+      targetMaxHp: isSet(object.targetMaxHp) ? Number(object.targetMaxHp) : 0,
+      arcanaLevel: isSet(object.arcanaLevel) ? Number(object.arcanaLevel) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgWRArcanaProgress): unknown {
+    const obj: any = {};
+    message.ehandle !== undefined && (obj.ehandle = Math.round(message.ehandle));
+    message.targetEhandle !== undefined && (obj.targetEhandle = Math.round(message.targetEhandle));
+    message.arrowsLanded !== undefined && (obj.arrowsLanded = Math.round(message.arrowsLanded));
+    message.damageDealt !== undefined && (obj.damageDealt = Math.round(message.damageDealt));
+    message.targetHp !== undefined && (obj.targetHp = Math.round(message.targetHp));
+    message.targetMaxHp !== undefined && (obj.targetMaxHp = Math.round(message.targetMaxHp));
+    message.arcanaLevel !== undefined && (obj.arcanaLevel = Math.round(message.arcanaLevel));
+    return obj;
   },
 };
 
@@ -12350,6 +17744,32 @@ export const CDOTAUserMsgWRArcanaSummary = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgWRArcanaSummary {
+    return {
+      ehandle: isSet(object.ehandle) ? Number(object.ehandle) : 0,
+      targetEhandle: isSet(object.targetEhandle) ? Number(object.targetEhandle) : 0,
+      arrowsLanded: isSet(object.arrowsLanded) ? Number(object.arrowsLanded) : 0,
+      damageDealt: isSet(object.damageDealt) ? Number(object.damageDealt) : 0,
+      targetHp: isSet(object.targetHp) ? Number(object.targetHp) : 0,
+      targetMaxHp: isSet(object.targetMaxHp) ? Number(object.targetMaxHp) : 0,
+      arcanaLevel: isSet(object.arcanaLevel) ? Number(object.arcanaLevel) : 0,
+      success: isSet(object.success) ? Boolean(object.success) : false,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgWRArcanaSummary): unknown {
+    const obj: any = {};
+    message.ehandle !== undefined && (obj.ehandle = Math.round(message.ehandle));
+    message.targetEhandle !== undefined && (obj.targetEhandle = Math.round(message.targetEhandle));
+    message.arrowsLanded !== undefined && (obj.arrowsLanded = Math.round(message.arrowsLanded));
+    message.damageDealt !== undefined && (obj.damageDealt = Math.round(message.damageDealt));
+    message.targetHp !== undefined && (obj.targetHp = Math.round(message.targetHp));
+    message.targetMaxHp !== undefined && (obj.targetMaxHp = Math.round(message.targetMaxHp));
+    message.arcanaLevel !== undefined && (obj.arcanaLevel = Math.round(message.arcanaLevel));
+    message.success !== undefined && (obj.success = message.success);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgEmptyItemSlotAlert(): CDOTAUserMsgEmptyItemSlotAlert {
@@ -12415,6 +17835,24 @@ export const CDOTAUserMsgEmptyItemSlotAlert = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgEmptyItemSlotAlert {
+    return {
+      sourcePlayerId: isSet(object.sourcePlayerId) ? Number(object.sourcePlayerId) : 0,
+      targetPlayerId: isSet(object.targetPlayerId) ? Number(object.targetPlayerId) : 0,
+      slotIndex: isSet(object.slotIndex) ? Number(object.slotIndex) : 0,
+      cooldownSeconds: isSet(object.cooldownSeconds) ? Number(object.cooldownSeconds) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgEmptyItemSlotAlert): unknown {
+    const obj: any = {};
+    message.sourcePlayerId !== undefined && (obj.sourcePlayerId = Math.round(message.sourcePlayerId));
+    message.targetPlayerId !== undefined && (obj.targetPlayerId = Math.round(message.targetPlayerId));
+    message.slotIndex !== undefined && (obj.slotIndex = Math.round(message.slotIndex));
+    message.cooldownSeconds !== undefined && (obj.cooldownSeconds = Math.round(message.cooldownSeconds));
+    return obj;
   },
 };
 
@@ -12502,6 +17940,28 @@ export const CDOTAUserMsgAghsStatusAlert = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgAghsStatusAlert {
+    return {
+      sourcePlayerId: isSet(object.sourcePlayerId) ? Number(object.sourcePlayerId) : 0,
+      targetPlayerId: isSet(object.targetPlayerId) ? Number(object.targetPlayerId) : 0,
+      targetEntindex: isSet(object.targetEntindex) ? Number(object.targetEntindex) : 0,
+      alertType: isSet(object.alertType) ? Number(object.alertType) : 0,
+      hasScepter: isSet(object.hasScepter) ? Boolean(object.hasScepter) : false,
+      hasShard: isSet(object.hasShard) ? Boolean(object.hasShard) : false,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgAghsStatusAlert): unknown {
+    const obj: any = {};
+    message.sourcePlayerId !== undefined && (obj.sourcePlayerId = Math.round(message.sourcePlayerId));
+    message.targetPlayerId !== undefined && (obj.targetPlayerId = Math.round(message.targetPlayerId));
+    message.targetEntindex !== undefined && (obj.targetEntindex = Math.round(message.targetEntindex));
+    message.alertType !== undefined && (obj.alertType = Math.round(message.alertType));
+    message.hasScepter !== undefined && (obj.hasScepter = message.hasScepter);
+    message.hasShard !== undefined && (obj.hasShard = message.hasShard);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgMutedPlayers(): CDOTAUserMsgMutedPlayers {
@@ -12569,6 +18029,32 @@ export const CDOTAUserMsgMutedPlayers = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgMutedPlayers {
+    return {
+      textMutedPlayerIds: Array.isArray(object?.textMutedPlayerIds)
+        ? object.textMutedPlayerIds.map((e: any) => Number(e))
+        : [],
+      voiceMutedPlayerIds: Array.isArray(object?.voiceMutedPlayerIds)
+        ? object.voiceMutedPlayerIds.map((e: any) => Number(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgMutedPlayers): unknown {
+    const obj: any = {};
+    if (message.textMutedPlayerIds) {
+      obj.textMutedPlayerIds = message.textMutedPlayerIds.map((e) => Math.round(e));
+    } else {
+      obj.textMutedPlayerIds = [];
+    }
+    if (message.voiceMutedPlayerIds) {
+      obj.voiceMutedPlayerIds = message.voiceMutedPlayerIds.map((e) => Math.round(e));
+    } else {
+      obj.voiceMutedPlayerIds = [];
+    }
+    return obj;
   },
 };
 
@@ -12762,6 +18248,60 @@ export const CDOTAUserMsgContextualTip = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgContextualTip {
+    return {
+      tipId: isSet(object.tipId) ? Number(object.tipId) : 0,
+      referencedAbilities: Array.isArray(object?.referencedAbilities)
+        ? object.referencedAbilities.map((e: any) => String(e))
+        : [],
+      referencedUnits: Array.isArray(object?.referencedUnits) ? object.referencedUnits.map((e: any) => String(e)) : [],
+      panoramaClasses: Array.isArray(object?.panoramaClasses) ? object.panoramaClasses.map((e: any) => String(e)) : [],
+      forceAnnotation: isSet(object.forceAnnotation) ? Boolean(object.forceAnnotation) : false,
+      variant: isSet(object.variant) ? Number(object.variant) : 0,
+      intParam: isSet(object.intParam) ? Number(object.intParam) : 0,
+      intParam2: isSet(object.intParam2) ? Number(object.intParam2) : 0,
+      floatParam: isSet(object.floatParam) ? Number(object.floatParam) : 0,
+      floatParam2: isSet(object.floatParam2) ? Number(object.floatParam2) : 0,
+      stringParam: isSet(object.stringParam) ? String(object.stringParam) : "",
+      stringParam2: isSet(object.stringParam2) ? String(object.stringParam2) : "",
+      tipTextOverride: isSet(object.tipTextOverride) ? String(object.tipTextOverride) : "",
+      tipAnnotationOverride: isSet(object.tipAnnotationOverride) ? String(object.tipAnnotationOverride) : "",
+      panoramaSnippet: isSet(object.panoramaSnippet) ? String(object.panoramaSnippet) : "",
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgContextualTip): unknown {
+    const obj: any = {};
+    message.tipId !== undefined && (obj.tipId = Math.round(message.tipId));
+    if (message.referencedAbilities) {
+      obj.referencedAbilities = message.referencedAbilities.map((e) => e);
+    } else {
+      obj.referencedAbilities = [];
+    }
+    if (message.referencedUnits) {
+      obj.referencedUnits = message.referencedUnits.map((e) => e);
+    } else {
+      obj.referencedUnits = [];
+    }
+    if (message.panoramaClasses) {
+      obj.panoramaClasses = message.panoramaClasses.map((e) => e);
+    } else {
+      obj.panoramaClasses = [];
+    }
+    message.forceAnnotation !== undefined && (obj.forceAnnotation = message.forceAnnotation);
+    message.variant !== undefined && (obj.variant = Math.round(message.variant));
+    message.intParam !== undefined && (obj.intParam = Math.round(message.intParam));
+    message.intParam2 !== undefined && (obj.intParam2 = Math.round(message.intParam2));
+    message.floatParam !== undefined && (obj.floatParam = message.floatParam);
+    message.floatParam2 !== undefined && (obj.floatParam2 = message.floatParam2);
+    message.stringParam !== undefined && (obj.stringParam = message.stringParam);
+    message.stringParam2 !== undefined && (obj.stringParam2 = message.stringParam2);
+    message.tipTextOverride !== undefined && (obj.tipTextOverride = message.tipTextOverride);
+    message.tipAnnotationOverride !== undefined && (obj.tipAnnotationOverride = message.tipAnnotationOverride);
+    message.panoramaSnippet !== undefined && (obj.panoramaSnippet = message.panoramaSnippet);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgChatMessage(): CDOTAUserMsgChatMessage {
@@ -12818,6 +18358,22 @@ export const CDOTAUserMsgChatMessage = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgChatMessage {
+    return {
+      sourcePlayerId: isSet(object.sourcePlayerId) ? Number(object.sourcePlayerId) : 0,
+      channelType: isSet(object.channelType) ? Number(object.channelType) : 0,
+      messageText: isSet(object.messageText) ? String(object.messageText) : "",
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgChatMessage): unknown {
+    const obj: any = {};
+    message.sourcePlayerId !== undefined && (obj.sourcePlayerId = Math.round(message.sourcePlayerId));
+    message.channelType !== undefined && (obj.channelType = Math.round(message.channelType));
+    message.messageText !== undefined && (obj.messageText = message.messageText);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgRockPaperScissorsStarted(): CDOTAUserMsgRockPaperScissorsStarted {
@@ -12863,6 +18419,20 @@ export const CDOTAUserMsgRockPaperScissorsStarted = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgRockPaperScissorsStarted {
+    return {
+      playerIdSource: isSet(object.playerIdSource) ? Number(object.playerIdSource) : 0,
+      playerIdTarget: isSet(object.playerIdTarget) ? Number(object.playerIdTarget) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgRockPaperScissorsStarted): unknown {
+    const obj: any = {};
+    message.playerIdSource !== undefined && (obj.playerIdSource = Math.round(message.playerIdSource));
+    message.playerIdTarget !== undefined && (obj.playerIdTarget = Math.round(message.playerIdTarget));
+    return obj;
   },
 };
 
@@ -12930,6 +18500,24 @@ export const CDOTAUserMsgRockPaperScissorsFinished = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgRockPaperScissorsFinished {
+    return {
+      playerId1: isSet(object.playerId1) ? Number(object.playerId1) : 0,
+      playerId2: isSet(object.playerId2) ? Number(object.playerId2) : 0,
+      player1Choice: isSet(object.player1Choice) ? Number(object.player1Choice) : 0,
+      player2Choice: isSet(object.player2Choice) ? Number(object.player2Choice) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgRockPaperScissorsFinished): unknown {
+    const obj: any = {};
+    message.playerId1 !== undefined && (obj.playerId1 = Math.round(message.playerId1));
+    message.playerId2 !== undefined && (obj.playerId2 = Math.round(message.playerId2));
+    message.player1Choice !== undefined && (obj.player1Choice = Math.round(message.player1Choice));
+    message.player2Choice !== undefined && (obj.player2Choice = Math.round(message.player2Choice));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgDuelOpponentKilled(): CDOTAUserMsgDuelOpponentKilled {
@@ -12975,6 +18563,20 @@ export const CDOTAUserMsgDuelOpponentKilled = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgDuelOpponentKilled {
+    return {
+      playerIdWinner: isSet(object.playerIdWinner) ? Number(object.playerIdWinner) : 0,
+      playerIdLoser: isSet(object.playerIdLoser) ? Number(object.playerIdLoser) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgDuelOpponentKilled): unknown {
+    const obj: any = {};
+    message.playerIdWinner !== undefined && (obj.playerIdWinner = Math.round(message.playerIdWinner));
+    message.playerIdLoser !== undefined && (obj.playerIdLoser = Math.round(message.playerIdLoser));
+    return obj;
   },
 };
 
@@ -13022,6 +18624,20 @@ export const CDOTAUserMsgDuelAccepted = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgDuelAccepted {
+    return {
+      playerId1: isSet(object.playerId1) ? Number(object.playerId1) : 0,
+      playerId2: isSet(object.playerId2) ? Number(object.playerId2) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgDuelAccepted): unknown {
+    const obj: any = {};
+    message.playerId1 !== undefined && (obj.playerId1 = Math.round(message.playerId1));
+    message.playerId2 !== undefined && (obj.playerId2 = Math.round(message.playerId2));
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgDuelRequested(): CDOTAUserMsgDuelRequested {
@@ -13057,6 +18673,16 @@ export const CDOTAUserMsgDuelRequested = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgDuelRequested {
+    return { playerIdRequestor: isSet(object.playerIdRequestor) ? Number(object.playerIdRequestor) : 0 };
+  },
+
+  toJSON(message: CDOTAUserMsgDuelRequested): unknown {
+    const obj: any = {};
+    message.playerIdRequestor !== undefined && (obj.playerIdRequestor = Math.round(message.playerIdRequestor));
+    return obj;
   },
 };
 
@@ -13137,6 +18763,26 @@ export const CDOTAUserMsgMuertaReleaseEventAssignedTargetKilled = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgMuertaReleaseEventAssignedTargetKilled {
+    return {
+      playerIdKiller: isSet(object.playerIdKiller) ? Number(object.playerIdKiller) : 0,
+      playerIdTarget: isSet(object.playerIdTarget) ? Number(object.playerIdTarget) : 0,
+      points: isSet(object.points) ? Number(object.points) : 0,
+      pointsTotal: isSet(object.pointsTotal) ? Number(object.pointsTotal) : 0,
+      lastHit: isSet(object.lastHit) ? Boolean(object.lastHit) : false,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgMuertaReleaseEventAssignedTargetKilled): unknown {
+    const obj: any = {};
+    message.playerIdKiller !== undefined && (obj.playerIdKiller = Math.round(message.playerIdKiller));
+    message.playerIdTarget !== undefined && (obj.playerIdTarget = Math.round(message.playerIdTarget));
+    message.points !== undefined && (obj.points = Math.round(message.points));
+    message.pointsTotal !== undefined && (obj.pointsTotal = Math.round(message.pointsTotal));
+    message.lastHit !== undefined && (obj.lastHit = message.lastHit);
+    return obj;
+  },
 };
 
 function createBaseCDOTAUserMsgPlayerDraftSuggestPick(): CDOTAUserMsgPlayerDraftSuggestPick {
@@ -13182,6 +18828,20 @@ export const CDOTAUserMsgPlayerDraftSuggestPick = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAUserMsgPlayerDraftSuggestPick {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      suggestionPlayerId: isSet(object.suggestionPlayerId) ? Number(object.suggestionPlayerId) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgPlayerDraftSuggestPick): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.suggestionPlayerId !== undefined && (obj.suggestionPlayerId = Math.round(message.suggestionPlayerId));
+    return obj;
   },
 };
 
@@ -13239,7 +18899,67 @@ export const CDOTAUserMsgPlayerDraftPick = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAUserMsgPlayerDraftPick {
+    return {
+      playerIdCaptain: isSet(object.playerIdCaptain) ? Number(object.playerIdCaptain) : 0,
+      playerIdTarget: isSet(object.playerIdTarget) ? Number(object.playerIdTarget) : 0,
+      team: isSet(object.team) ? Number(object.team) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAUserMsgPlayerDraftPick): unknown {
+    const obj: any = {};
+    message.playerIdCaptain !== undefined && (obj.playerIdCaptain = Math.round(message.playerIdCaptain));
+    message.playerIdTarget !== undefined && (obj.playerIdTarget = Math.round(message.playerIdTarget));
+    message.team !== undefined && (obj.team = Math.round(message.team));
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if (tsProtoGlobalThis.Buffer) {
+    return Uint8Array.from(tsProtoGlobalThis.Buffer.from(b64, "base64"));
+  } else {
+    const bin = tsProtoGlobalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if (tsProtoGlobalThis.Buffer) {
+    return tsProtoGlobalThis.Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(String.fromCharCode(byte));
+    });
+    return tsProtoGlobalThis.btoa(bin.join(""));
+  }
+}
 
 function longToString(long: Long) {
   return long.toString();
@@ -13248,4 +18968,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }
