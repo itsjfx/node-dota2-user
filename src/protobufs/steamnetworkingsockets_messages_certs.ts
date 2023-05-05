@@ -28,6 +28,34 @@ export enum CMsgSteamDatagramCertificate_EKeyType {
   ED25519 = 1,
 }
 
+export function cMsgSteamDatagramCertificate_EKeyTypeFromJSON(object: any): CMsgSteamDatagramCertificate_EKeyType {
+  switch (object) {
+    case 0:
+    case "INVALID":
+      return CMsgSteamDatagramCertificate_EKeyType.INVALID;
+    case 1:
+    case "ED25519":
+      return CMsgSteamDatagramCertificate_EKeyType.ED25519;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgSteamDatagramCertificate_EKeyType",
+      );
+  }
+}
+
+export function cMsgSteamDatagramCertificate_EKeyTypeToJSON(object: CMsgSteamDatagramCertificate_EKeyType): string {
+  switch (object) {
+    case CMsgSteamDatagramCertificate_EKeyType.INVALID:
+      return "INVALID";
+    case CMsgSteamDatagramCertificate_EKeyType.ED25519:
+      return "ED25519";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgSteamDatagramCertificate_EKeyType",
+      );
+  }
+}
+
 export interface CMsgSteamDatagramCertificateSigned {
   cert: Buffer;
   caKeyId: string;
@@ -118,6 +146,28 @@ export const CMsgSteamNetworkingIdentityLegacyBinary = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamNetworkingIdentityLegacyBinary {
+    return {
+      steamId: isSet(object.steamId) ? String(object.steamId) : "0",
+      xboxPairwiseId: isSet(object.xboxPairwiseId) ? String(object.xboxPairwiseId) : "",
+      genericBytes: isSet(object.genericBytes) ? Buffer.from(bytesFromBase64(object.genericBytes)) : Buffer.alloc(0),
+      genericString: isSet(object.genericString) ? String(object.genericString) : "",
+      ipv6AndPort: isSet(object.ipv6AndPort) ? Buffer.from(bytesFromBase64(object.ipv6AndPort)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CMsgSteamNetworkingIdentityLegacyBinary): unknown {
+    const obj: any = {};
+    message.steamId !== undefined && (obj.steamId = message.steamId);
+    message.xboxPairwiseId !== undefined && (obj.xboxPairwiseId = message.xboxPairwiseId);
+    message.genericBytes !== undefined &&
+      (obj.genericBytes = base64FromBytes(message.genericBytes !== undefined ? message.genericBytes : Buffer.alloc(0)));
+    message.genericString !== undefined && (obj.genericString = message.genericString);
+    message.ipv6AndPort !== undefined &&
+      (obj.ipv6AndPort = base64FromBytes(message.ipv6AndPort !== undefined ? message.ipv6AndPort : Buffer.alloc(0)));
+    return obj;
   },
 };
 
@@ -278,6 +328,55 @@ export const CMsgSteamDatagramCertificate = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramCertificate {
+    return {
+      keyType: isSet(object.keyType) ? cMsgSteamDatagramCertificate_EKeyTypeFromJSON(object.keyType) : 0,
+      keyData: isSet(object.keyData) ? Buffer.from(bytesFromBase64(object.keyData)) : Buffer.alloc(0),
+      legacySteamId: isSet(object.legacySteamId) ? String(object.legacySteamId) : "0",
+      legacyIdentityBinary: isSet(object.legacyIdentityBinary)
+        ? CMsgSteamNetworkingIdentityLegacyBinary.fromJSON(object.legacyIdentityBinary)
+        : undefined,
+      identityString: isSet(object.identityString) ? String(object.identityString) : "",
+      gameserverDatacenterIds: Array.isArray(object?.gameserverDatacenterIds)
+        ? object.gameserverDatacenterIds.map((e: any) => Number(e))
+        : [],
+      timeCreated: isSet(object.timeCreated) ? Number(object.timeCreated) : 0,
+      timeExpiry: isSet(object.timeExpiry) ? Number(object.timeExpiry) : 0,
+      appIds: Array.isArray(object?.appIds) ? object.appIds.map((e: any) => Number(e)) : [],
+      ipAddresses: Array.isArray(object?.ipAddresses) ? object.ipAddresses.map((e: any) => String(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramCertificate): unknown {
+    const obj: any = {};
+    message.keyType !== undefined && (obj.keyType = cMsgSteamDatagramCertificate_EKeyTypeToJSON(message.keyType));
+    message.keyData !== undefined &&
+      (obj.keyData = base64FromBytes(message.keyData !== undefined ? message.keyData : Buffer.alloc(0)));
+    message.legacySteamId !== undefined && (obj.legacySteamId = message.legacySteamId);
+    message.legacyIdentityBinary !== undefined && (obj.legacyIdentityBinary = message.legacyIdentityBinary
+      ? CMsgSteamNetworkingIdentityLegacyBinary.toJSON(message.legacyIdentityBinary)
+      : undefined);
+    message.identityString !== undefined && (obj.identityString = message.identityString);
+    if (message.gameserverDatacenterIds) {
+      obj.gameserverDatacenterIds = message.gameserverDatacenterIds.map((e) => Math.round(e));
+    } else {
+      obj.gameserverDatacenterIds = [];
+    }
+    message.timeCreated !== undefined && (obj.timeCreated = Math.round(message.timeCreated));
+    message.timeExpiry !== undefined && (obj.timeExpiry = Math.round(message.timeExpiry));
+    if (message.appIds) {
+      obj.appIds = message.appIds.map((e) => Math.round(e));
+    } else {
+      obj.appIds = [];
+    }
+    if (message.ipAddresses) {
+      obj.ipAddresses = message.ipAddresses.map((e) => e);
+    } else {
+      obj.ipAddresses = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamDatagramCertificateSigned(): CMsgSteamDatagramCertificateSigned {
@@ -344,6 +443,31 @@ export const CMsgSteamDatagramCertificateSigned = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramCertificateSigned {
+    return {
+      cert: isSet(object.cert) ? Buffer.from(bytesFromBase64(object.cert)) : Buffer.alloc(0),
+      caKeyId: isSet(object.caKeyId) ? String(object.caKeyId) : "0",
+      caSignature: isSet(object.caSignature) ? Buffer.from(bytesFromBase64(object.caSignature)) : Buffer.alloc(0),
+      privateKeyData: isSet(object.privateKeyData)
+        ? Buffer.from(bytesFromBase64(object.privateKeyData))
+        : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CMsgSteamDatagramCertificateSigned): unknown {
+    const obj: any = {};
+    message.cert !== undefined &&
+      (obj.cert = base64FromBytes(message.cert !== undefined ? message.cert : Buffer.alloc(0)));
+    message.caKeyId !== undefined && (obj.caKeyId = message.caKeyId);
+    message.caSignature !== undefined &&
+      (obj.caSignature = base64FromBytes(message.caSignature !== undefined ? message.caSignature : Buffer.alloc(0)));
+    message.privateKeyData !== undefined &&
+      (obj.privateKeyData = base64FromBytes(
+        message.privateKeyData !== undefined ? message.privateKeyData : Buffer.alloc(0),
+      ));
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamDatagramCertificateRequest(): CMsgSteamDatagramCertificateRequest {
@@ -380,7 +504,62 @@ export const CMsgSteamDatagramCertificateRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamDatagramCertificateRequest {
+    return { cert: isSet(object.cert) ? CMsgSteamDatagramCertificate.fromJSON(object.cert) : undefined };
+  },
+
+  toJSON(message: CMsgSteamDatagramCertificateRequest): unknown {
+    const obj: any = {};
+    message.cert !== undefined &&
+      (obj.cert = message.cert ? CMsgSteamDatagramCertificate.toJSON(message.cert) : undefined);
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if (tsProtoGlobalThis.Buffer) {
+    return Uint8Array.from(tsProtoGlobalThis.Buffer.from(b64, "base64"));
+  } else {
+    const bin = tsProtoGlobalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if (tsProtoGlobalThis.Buffer) {
+    return tsProtoGlobalThis.Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(String.fromCharCode(byte));
+    });
+    return tsProtoGlobalThis.btoa(bin.join(""));
+  }
+}
 
 function longToString(long: Long) {
   return long.toString();
@@ -389,4 +568,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

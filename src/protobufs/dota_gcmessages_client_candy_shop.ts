@@ -1,7 +1,7 @@
 /* eslint-disable */
 import Long from "long";
 import _m0 from "protobufjs/minimal";
-import { EEvent } from "./dota_shared_enums";
+import { EEvent, eEventFromJSON, eEventToJSON } from "./dota_shared_enums";
 
 export enum ECandyShopAuditAction {
   k_ECandyShopAuditAction_Invalid = 0,
@@ -15,11 +15,104 @@ export enum ECandyShopAuditAction {
   k_ECandyShopAuditAction_EventActionGrantRerollChargesIncrease = 8,
 }
 
+export function eCandyShopAuditActionFromJSON(object: any): ECandyShopAuditAction {
+  switch (object) {
+    case 0:
+    case "k_ECandyShopAuditAction_Invalid":
+      return ECandyShopAuditAction.k_ECandyShopAuditAction_Invalid;
+    case 1:
+    case "k_ECandyShopAuditAction_SupportModify":
+      return ECandyShopAuditAction.k_ECandyShopAuditAction_SupportModify;
+    case 2:
+    case "k_ECandyShopAuditAction_PurchaseReward":
+      return ECandyShopAuditAction.k_ECandyShopAuditAction_PurchaseReward;
+    case 3:
+    case "k_ECandyShopAuditAction_OpenBags":
+      return ECandyShopAuditAction.k_ECandyShopAuditAction_OpenBags;
+    case 4:
+    case "k_ECandyShopAuditAction_RerollRewards":
+      return ECandyShopAuditAction.k_ECandyShopAuditAction_RerollRewards;
+    case 5:
+    case "k_ECandyShopAuditAction_DoVariableExchange":
+      return ECandyShopAuditAction.k_ECandyShopAuditAction_DoVariableExchange;
+    case 6:
+    case "k_ECandyShopAuditAction_DoExchange":
+      return ECandyShopAuditAction.k_ECandyShopAuditAction_DoExchange;
+    case 7:
+    case "k_ECandyShopAuditAction_EventActionGrantInventorySizeIncrease":
+      return ECandyShopAuditAction.k_ECandyShopAuditAction_EventActionGrantInventorySizeIncrease;
+    case 8:
+    case "k_ECandyShopAuditAction_EventActionGrantRerollChargesIncrease":
+      return ECandyShopAuditAction.k_ECandyShopAuditAction_EventActionGrantRerollChargesIncrease;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ECandyShopAuditAction");
+  }
+}
+
+export function eCandyShopAuditActionToJSON(object: ECandyShopAuditAction): string {
+  switch (object) {
+    case ECandyShopAuditAction.k_ECandyShopAuditAction_Invalid:
+      return "k_ECandyShopAuditAction_Invalid";
+    case ECandyShopAuditAction.k_ECandyShopAuditAction_SupportModify:
+      return "k_ECandyShopAuditAction_SupportModify";
+    case ECandyShopAuditAction.k_ECandyShopAuditAction_PurchaseReward:
+      return "k_ECandyShopAuditAction_PurchaseReward";
+    case ECandyShopAuditAction.k_ECandyShopAuditAction_OpenBags:
+      return "k_ECandyShopAuditAction_OpenBags";
+    case ECandyShopAuditAction.k_ECandyShopAuditAction_RerollRewards:
+      return "k_ECandyShopAuditAction_RerollRewards";
+    case ECandyShopAuditAction.k_ECandyShopAuditAction_DoVariableExchange:
+      return "k_ECandyShopAuditAction_DoVariableExchange";
+    case ECandyShopAuditAction.k_ECandyShopAuditAction_DoExchange:
+      return "k_ECandyShopAuditAction_DoExchange";
+    case ECandyShopAuditAction.k_ECandyShopAuditAction_EventActionGrantInventorySizeIncrease:
+      return "k_ECandyShopAuditAction_EventActionGrantInventorySizeIncrease";
+    case ECandyShopAuditAction.k_ECandyShopAuditAction_EventActionGrantRerollChargesIncrease:
+      return "k_ECandyShopAuditAction_EventActionGrantRerollChargesIncrease";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ECandyShopAuditAction");
+  }
+}
+
 export enum ECandyShopRewardType {
   k_eCandyShopRewardType_None = 0,
   k_eCandyShopRewardType_Item = 1,
   k_eCandyShopRewardType_EventAction = 2,
   k_eCandyShopRewardType_EventPoints = 3,
+}
+
+export function eCandyShopRewardTypeFromJSON(object: any): ECandyShopRewardType {
+  switch (object) {
+    case 0:
+    case "k_eCandyShopRewardType_None":
+      return ECandyShopRewardType.k_eCandyShopRewardType_None;
+    case 1:
+    case "k_eCandyShopRewardType_Item":
+      return ECandyShopRewardType.k_eCandyShopRewardType_Item;
+    case 2:
+    case "k_eCandyShopRewardType_EventAction":
+      return ECandyShopRewardType.k_eCandyShopRewardType_EventAction;
+    case 3:
+    case "k_eCandyShopRewardType_EventPoints":
+      return ECandyShopRewardType.k_eCandyShopRewardType_EventPoints;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ECandyShopRewardType");
+  }
+}
+
+export function eCandyShopRewardTypeToJSON(object: ECandyShopRewardType): string {
+  switch (object) {
+    case ECandyShopRewardType.k_eCandyShopRewardType_None:
+      return "k_eCandyShopRewardType_None";
+    case ECandyShopRewardType.k_eCandyShopRewardType_Item:
+      return "k_eCandyShopRewardType_Item";
+    case ECandyShopRewardType.k_eCandyShopRewardType_EventAction:
+      return "k_eCandyShopRewardType_EventAction";
+    case ECandyShopRewardType.k_eCandyShopRewardType_EventPoints:
+      return "k_eCandyShopRewardType_EventPoints";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ECandyShopRewardType");
+  }
 }
 
 export interface CMsgCandyShopCandyCount {
@@ -90,6 +183,63 @@ export enum CMsgClientToGCCandyShopGetUserDataResponse_EResponse {
   k_eExpiredShop = 6,
 }
 
+export function cMsgClientToGCCandyShopGetUserDataResponse_EResponseFromJSON(
+  object: any,
+): CMsgClientToGCCandyShopGetUserDataResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgClientToGCCandyShopGetUserDataResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgClientToGCCandyShopGetUserDataResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eTooBusy":
+      return CMsgClientToGCCandyShopGetUserDataResponse_EResponse.k_eTooBusy;
+    case 3:
+    case "k_eDisabled":
+      return CMsgClientToGCCandyShopGetUserDataResponse_EResponse.k_eDisabled;
+    case 4:
+    case "k_eTimeout":
+      return CMsgClientToGCCandyShopGetUserDataResponse_EResponse.k_eTimeout;
+    case 5:
+    case "k_eInvalidShop":
+      return CMsgClientToGCCandyShopGetUserDataResponse_EResponse.k_eInvalidShop;
+    case 6:
+    case "k_eExpiredShop":
+      return CMsgClientToGCCandyShopGetUserDataResponse_EResponse.k_eExpiredShop;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCCandyShopGetUserDataResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgClientToGCCandyShopGetUserDataResponse_EResponseToJSON(
+  object: CMsgClientToGCCandyShopGetUserDataResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgClientToGCCandyShopGetUserDataResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgClientToGCCandyShopGetUserDataResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgClientToGCCandyShopGetUserDataResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgClientToGCCandyShopGetUserDataResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    case CMsgClientToGCCandyShopGetUserDataResponse_EResponse.k_eTimeout:
+      return "k_eTimeout";
+    case CMsgClientToGCCandyShopGetUserDataResponse_EResponse.k_eInvalidShop:
+      return "k_eInvalidShop";
+    case CMsgClientToGCCandyShopGetUserDataResponse_EResponse.k_eExpiredShop:
+      return "k_eExpiredShop";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCCandyShopGetUserDataResponse_EResponse",
+      );
+  }
+}
+
 export interface CMsgGCToClientCandyShopUserDataUpdated {
   candyShopId: number;
   userData: CMsgCandyShopUserData | undefined;
@@ -116,6 +266,73 @@ export enum CMsgClientToGCCandyShopPurchaseRewardResponse_EResponse {
   k_eExpiredShop = 8,
 }
 
+export function cMsgClientToGCCandyShopPurchaseRewardResponse_EResponseFromJSON(
+  object: any,
+): CMsgClientToGCCandyShopPurchaseRewardResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgClientToGCCandyShopPurchaseRewardResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgClientToGCCandyShopPurchaseRewardResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eTooBusy":
+      return CMsgClientToGCCandyShopPurchaseRewardResponse_EResponse.k_eTooBusy;
+    case 3:
+    case "k_eDisabled":
+      return CMsgClientToGCCandyShopPurchaseRewardResponse_EResponse.k_eDisabled;
+    case 4:
+    case "k_eTimeout":
+      return CMsgClientToGCCandyShopPurchaseRewardResponse_EResponse.k_eTimeout;
+    case 5:
+    case "k_eInvalidShop":
+      return CMsgClientToGCCandyShopPurchaseRewardResponse_EResponse.k_eInvalidShop;
+    case 6:
+    case "k_eInvalidReward":
+      return CMsgClientToGCCandyShopPurchaseRewardResponse_EResponse.k_eInvalidReward;
+    case 7:
+    case "k_eNotEnoughCandy":
+      return CMsgClientToGCCandyShopPurchaseRewardResponse_EResponse.k_eNotEnoughCandy;
+    case 8:
+    case "k_eExpiredShop":
+      return CMsgClientToGCCandyShopPurchaseRewardResponse_EResponse.k_eExpiredShop;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCCandyShopPurchaseRewardResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgClientToGCCandyShopPurchaseRewardResponse_EResponseToJSON(
+  object: CMsgClientToGCCandyShopPurchaseRewardResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgClientToGCCandyShopPurchaseRewardResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgClientToGCCandyShopPurchaseRewardResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgClientToGCCandyShopPurchaseRewardResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgClientToGCCandyShopPurchaseRewardResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    case CMsgClientToGCCandyShopPurchaseRewardResponse_EResponse.k_eTimeout:
+      return "k_eTimeout";
+    case CMsgClientToGCCandyShopPurchaseRewardResponse_EResponse.k_eInvalidShop:
+      return "k_eInvalidShop";
+    case CMsgClientToGCCandyShopPurchaseRewardResponse_EResponse.k_eInvalidReward:
+      return "k_eInvalidReward";
+    case CMsgClientToGCCandyShopPurchaseRewardResponse_EResponse.k_eNotEnoughCandy:
+      return "k_eNotEnoughCandy";
+    case CMsgClientToGCCandyShopPurchaseRewardResponse_EResponse.k_eExpiredShop:
+      return "k_eExpiredShop";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCCandyShopPurchaseRewardResponse_EResponse",
+      );
+  }
+}
+
 export interface CMsgClientToGCCandyShopOpenBags {
   candyShopId: number;
   bagCount: number;
@@ -138,6 +355,78 @@ export enum CMsgClientToGCCandyShopOpenBagsResponse_EResponse {
   k_eExpiredShop = 9,
 }
 
+export function cMsgClientToGCCandyShopOpenBagsResponse_EResponseFromJSON(
+  object: any,
+): CMsgClientToGCCandyShopOpenBagsResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgClientToGCCandyShopOpenBagsResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgClientToGCCandyShopOpenBagsResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eTooBusy":
+      return CMsgClientToGCCandyShopOpenBagsResponse_EResponse.k_eTooBusy;
+    case 3:
+    case "k_eDisabled":
+      return CMsgClientToGCCandyShopOpenBagsResponse_EResponse.k_eDisabled;
+    case 4:
+    case "k_eTimeout":
+      return CMsgClientToGCCandyShopOpenBagsResponse_EResponse.k_eTimeout;
+    case 5:
+    case "k_eInvalidShop":
+      return CMsgClientToGCCandyShopOpenBagsResponse_EResponse.k_eInvalidShop;
+    case 6:
+    case "k_eInvalidItem":
+      return CMsgClientToGCCandyShopOpenBagsResponse_EResponse.k_eInvalidItem;
+    case 7:
+    case "k_eNotEnoughBags":
+      return CMsgClientToGCCandyShopOpenBagsResponse_EResponse.k_eNotEnoughBags;
+    case 8:
+    case "k_eNotEnoughSpace":
+      return CMsgClientToGCCandyShopOpenBagsResponse_EResponse.k_eNotEnoughSpace;
+    case 9:
+    case "k_eExpiredShop":
+      return CMsgClientToGCCandyShopOpenBagsResponse_EResponse.k_eExpiredShop;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCCandyShopOpenBagsResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgClientToGCCandyShopOpenBagsResponse_EResponseToJSON(
+  object: CMsgClientToGCCandyShopOpenBagsResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgClientToGCCandyShopOpenBagsResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgClientToGCCandyShopOpenBagsResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgClientToGCCandyShopOpenBagsResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgClientToGCCandyShopOpenBagsResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    case CMsgClientToGCCandyShopOpenBagsResponse_EResponse.k_eTimeout:
+      return "k_eTimeout";
+    case CMsgClientToGCCandyShopOpenBagsResponse_EResponse.k_eInvalidShop:
+      return "k_eInvalidShop";
+    case CMsgClientToGCCandyShopOpenBagsResponse_EResponse.k_eInvalidItem:
+      return "k_eInvalidItem";
+    case CMsgClientToGCCandyShopOpenBagsResponse_EResponse.k_eNotEnoughBags:
+      return "k_eNotEnoughBags";
+    case CMsgClientToGCCandyShopOpenBagsResponse_EResponse.k_eNotEnoughSpace:
+      return "k_eNotEnoughSpace";
+    case CMsgClientToGCCandyShopOpenBagsResponse_EResponse.k_eExpiredShop:
+      return "k_eExpiredShop";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCCandyShopOpenBagsResponse_EResponse",
+      );
+  }
+}
+
 export interface CMsgClientToGCCandyShopDoExchange {
   candyShopId: number;
   recipeId: number;
@@ -158,6 +447,78 @@ export enum CMsgClientToGCCandyShopDoExchangeResponse_EResponse {
   k_eInvalidRecipe = 7,
   k_eNotEnoughSpace = 8,
   k_eExpiredShop = 9,
+}
+
+export function cMsgClientToGCCandyShopDoExchangeResponse_EResponseFromJSON(
+  object: any,
+): CMsgClientToGCCandyShopDoExchangeResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgClientToGCCandyShopDoExchangeResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgClientToGCCandyShopDoExchangeResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eTooBusy":
+      return CMsgClientToGCCandyShopDoExchangeResponse_EResponse.k_eTooBusy;
+    case 3:
+    case "k_eDisabled":
+      return CMsgClientToGCCandyShopDoExchangeResponse_EResponse.k_eDisabled;
+    case 4:
+    case "k_eTimeout":
+      return CMsgClientToGCCandyShopDoExchangeResponse_EResponse.k_eTimeout;
+    case 5:
+    case "k_eInvalidShop":
+      return CMsgClientToGCCandyShopDoExchangeResponse_EResponse.k_eInvalidShop;
+    case 6:
+    case "k_eNotEnoughCandy":
+      return CMsgClientToGCCandyShopDoExchangeResponse_EResponse.k_eNotEnoughCandy;
+    case 7:
+    case "k_eInvalidRecipe":
+      return CMsgClientToGCCandyShopDoExchangeResponse_EResponse.k_eInvalidRecipe;
+    case 8:
+    case "k_eNotEnoughSpace":
+      return CMsgClientToGCCandyShopDoExchangeResponse_EResponse.k_eNotEnoughSpace;
+    case 9:
+    case "k_eExpiredShop":
+      return CMsgClientToGCCandyShopDoExchangeResponse_EResponse.k_eExpiredShop;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCCandyShopDoExchangeResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgClientToGCCandyShopDoExchangeResponse_EResponseToJSON(
+  object: CMsgClientToGCCandyShopDoExchangeResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgClientToGCCandyShopDoExchangeResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgClientToGCCandyShopDoExchangeResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgClientToGCCandyShopDoExchangeResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgClientToGCCandyShopDoExchangeResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    case CMsgClientToGCCandyShopDoExchangeResponse_EResponse.k_eTimeout:
+      return "k_eTimeout";
+    case CMsgClientToGCCandyShopDoExchangeResponse_EResponse.k_eInvalidShop:
+      return "k_eInvalidShop";
+    case CMsgClientToGCCandyShopDoExchangeResponse_EResponse.k_eNotEnoughCandy:
+      return "k_eNotEnoughCandy";
+    case CMsgClientToGCCandyShopDoExchangeResponse_EResponse.k_eInvalidRecipe:
+      return "k_eInvalidRecipe";
+    case CMsgClientToGCCandyShopDoExchangeResponse_EResponse.k_eNotEnoughSpace:
+      return "k_eNotEnoughSpace";
+    case CMsgClientToGCCandyShopDoExchangeResponse_EResponse.k_eExpiredShop:
+      return "k_eExpiredShop";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCCandyShopDoExchangeResponse_EResponse",
+      );
+  }
 }
 
 export interface CMsgClientToGCCandyShopDoVariableExchange {
@@ -183,6 +544,78 @@ export enum CMsgClientToGCCandyShopDoVariableExchangeResponse_EResponse {
   k_eExpiredShop = 9,
 }
 
+export function cMsgClientToGCCandyShopDoVariableExchangeResponse_EResponseFromJSON(
+  object: any,
+): CMsgClientToGCCandyShopDoVariableExchangeResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgClientToGCCandyShopDoVariableExchangeResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgClientToGCCandyShopDoVariableExchangeResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eTooBusy":
+      return CMsgClientToGCCandyShopDoVariableExchangeResponse_EResponse.k_eTooBusy;
+    case 3:
+    case "k_eDisabled":
+      return CMsgClientToGCCandyShopDoVariableExchangeResponse_EResponse.k_eDisabled;
+    case 4:
+    case "k_eTimeout":
+      return CMsgClientToGCCandyShopDoVariableExchangeResponse_EResponse.k_eTimeout;
+    case 5:
+    case "k_eInvalidShop":
+      return CMsgClientToGCCandyShopDoVariableExchangeResponse_EResponse.k_eInvalidShop;
+    case 6:
+    case "k_eNotEnoughCandy":
+      return CMsgClientToGCCandyShopDoVariableExchangeResponse_EResponse.k_eNotEnoughCandy;
+    case 7:
+    case "k_eInvalidRecipe":
+      return CMsgClientToGCCandyShopDoVariableExchangeResponse_EResponse.k_eInvalidRecipe;
+    case 8:
+    case "k_eNotEnoughSpace":
+      return CMsgClientToGCCandyShopDoVariableExchangeResponse_EResponse.k_eNotEnoughSpace;
+    case 9:
+    case "k_eExpiredShop":
+      return CMsgClientToGCCandyShopDoVariableExchangeResponse_EResponse.k_eExpiredShop;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCCandyShopDoVariableExchangeResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgClientToGCCandyShopDoVariableExchangeResponse_EResponseToJSON(
+  object: CMsgClientToGCCandyShopDoVariableExchangeResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgClientToGCCandyShopDoVariableExchangeResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgClientToGCCandyShopDoVariableExchangeResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgClientToGCCandyShopDoVariableExchangeResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgClientToGCCandyShopDoVariableExchangeResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    case CMsgClientToGCCandyShopDoVariableExchangeResponse_EResponse.k_eTimeout:
+      return "k_eTimeout";
+    case CMsgClientToGCCandyShopDoVariableExchangeResponse_EResponse.k_eInvalidShop:
+      return "k_eInvalidShop";
+    case CMsgClientToGCCandyShopDoVariableExchangeResponse_EResponse.k_eNotEnoughCandy:
+      return "k_eNotEnoughCandy";
+    case CMsgClientToGCCandyShopDoVariableExchangeResponse_EResponse.k_eInvalidRecipe:
+      return "k_eInvalidRecipe";
+    case CMsgClientToGCCandyShopDoVariableExchangeResponse_EResponse.k_eNotEnoughSpace:
+      return "k_eNotEnoughSpace";
+    case CMsgClientToGCCandyShopDoVariableExchangeResponse_EResponse.k_eExpiredShop:
+      return "k_eExpiredShop";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCCandyShopDoVariableExchangeResponse_EResponse",
+      );
+  }
+}
+
 export interface CMsgClientToGCCandyShopRerollRewards {
   candyShopId: number;
 }
@@ -200,6 +633,68 @@ export enum CMsgClientToGCCandyShopRerollRewardsResponse_EResponse {
   k_eInvalidShop = 5,
   k_eNoRerollCharges = 6,
   k_eExpiredShop = 7,
+}
+
+export function cMsgClientToGCCandyShopRerollRewardsResponse_EResponseFromJSON(
+  object: any,
+): CMsgClientToGCCandyShopRerollRewardsResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgClientToGCCandyShopRerollRewardsResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgClientToGCCandyShopRerollRewardsResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eTooBusy":
+      return CMsgClientToGCCandyShopRerollRewardsResponse_EResponse.k_eTooBusy;
+    case 3:
+    case "k_eDisabled":
+      return CMsgClientToGCCandyShopRerollRewardsResponse_EResponse.k_eDisabled;
+    case 4:
+    case "k_eTimeout":
+      return CMsgClientToGCCandyShopRerollRewardsResponse_EResponse.k_eTimeout;
+    case 5:
+    case "k_eInvalidShop":
+      return CMsgClientToGCCandyShopRerollRewardsResponse_EResponse.k_eInvalidShop;
+    case 6:
+    case "k_eNoRerollCharges":
+      return CMsgClientToGCCandyShopRerollRewardsResponse_EResponse.k_eNoRerollCharges;
+    case 7:
+    case "k_eExpiredShop":
+      return CMsgClientToGCCandyShopRerollRewardsResponse_EResponse.k_eExpiredShop;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCCandyShopRerollRewardsResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgClientToGCCandyShopRerollRewardsResponse_EResponseToJSON(
+  object: CMsgClientToGCCandyShopRerollRewardsResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgClientToGCCandyShopRerollRewardsResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgClientToGCCandyShopRerollRewardsResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgClientToGCCandyShopRerollRewardsResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgClientToGCCandyShopRerollRewardsResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    case CMsgClientToGCCandyShopRerollRewardsResponse_EResponse.k_eTimeout:
+      return "k_eTimeout";
+    case CMsgClientToGCCandyShopRerollRewardsResponse_EResponse.k_eInvalidShop:
+      return "k_eInvalidShop";
+    case CMsgClientToGCCandyShopRerollRewardsResponse_EResponse.k_eNoRerollCharges:
+      return "k_eNoRerollCharges";
+    case CMsgClientToGCCandyShopRerollRewardsResponse_EResponse.k_eExpiredShop:
+      return "k_eExpiredShop";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCCandyShopRerollRewardsResponse_EResponse",
+      );
+  }
 }
 
 export interface CMsgClientToGCCandyShopDevGrantCandy {
@@ -222,6 +717,68 @@ export enum CMsgClientToGCCandyShopDevGrantCandyResponse_EResponse {
   k_eNotEnoughSpace = 7,
 }
 
+export function cMsgClientToGCCandyShopDevGrantCandyResponse_EResponseFromJSON(
+  object: any,
+): CMsgClientToGCCandyShopDevGrantCandyResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgClientToGCCandyShopDevGrantCandyResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgClientToGCCandyShopDevGrantCandyResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eTooBusy":
+      return CMsgClientToGCCandyShopDevGrantCandyResponse_EResponse.k_eTooBusy;
+    case 3:
+    case "k_eDisabled":
+      return CMsgClientToGCCandyShopDevGrantCandyResponse_EResponse.k_eDisabled;
+    case 4:
+    case "k_eTimeout":
+      return CMsgClientToGCCandyShopDevGrantCandyResponse_EResponse.k_eTimeout;
+    case 5:
+    case "k_eNotAllowed":
+      return CMsgClientToGCCandyShopDevGrantCandyResponse_EResponse.k_eNotAllowed;
+    case 6:
+    case "k_eInvalidShop":
+      return CMsgClientToGCCandyShopDevGrantCandyResponse_EResponse.k_eInvalidShop;
+    case 7:
+    case "k_eNotEnoughSpace":
+      return CMsgClientToGCCandyShopDevGrantCandyResponse_EResponse.k_eNotEnoughSpace;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCCandyShopDevGrantCandyResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgClientToGCCandyShopDevGrantCandyResponse_EResponseToJSON(
+  object: CMsgClientToGCCandyShopDevGrantCandyResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgClientToGCCandyShopDevGrantCandyResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgClientToGCCandyShopDevGrantCandyResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgClientToGCCandyShopDevGrantCandyResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgClientToGCCandyShopDevGrantCandyResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    case CMsgClientToGCCandyShopDevGrantCandyResponse_EResponse.k_eTimeout:
+      return "k_eTimeout";
+    case CMsgClientToGCCandyShopDevGrantCandyResponse_EResponse.k_eNotAllowed:
+      return "k_eNotAllowed";
+    case CMsgClientToGCCandyShopDevGrantCandyResponse_EResponse.k_eInvalidShop:
+      return "k_eInvalidShop";
+    case CMsgClientToGCCandyShopDevGrantCandyResponse_EResponse.k_eNotEnoughSpace:
+      return "k_eNotEnoughSpace";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCCandyShopDevGrantCandyResponse_EResponse",
+      );
+  }
+}
+
 export interface CMsgClientToGCCandyShopDevClearInventory {
   candyShopId: number;
 }
@@ -238,6 +795,63 @@ export enum CMsgClientToGCCandyShopDevClearInventoryResponse_EResponse {
   k_eTimeout = 4,
   k_eNotAllowed = 5,
   k_eInvalidShop = 6,
+}
+
+export function cMsgClientToGCCandyShopDevClearInventoryResponse_EResponseFromJSON(
+  object: any,
+): CMsgClientToGCCandyShopDevClearInventoryResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgClientToGCCandyShopDevClearInventoryResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgClientToGCCandyShopDevClearInventoryResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eTooBusy":
+      return CMsgClientToGCCandyShopDevClearInventoryResponse_EResponse.k_eTooBusy;
+    case 3:
+    case "k_eDisabled":
+      return CMsgClientToGCCandyShopDevClearInventoryResponse_EResponse.k_eDisabled;
+    case 4:
+    case "k_eTimeout":
+      return CMsgClientToGCCandyShopDevClearInventoryResponse_EResponse.k_eTimeout;
+    case 5:
+    case "k_eNotAllowed":
+      return CMsgClientToGCCandyShopDevClearInventoryResponse_EResponse.k_eNotAllowed;
+    case 6:
+    case "k_eInvalidShop":
+      return CMsgClientToGCCandyShopDevClearInventoryResponse_EResponse.k_eInvalidShop;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCCandyShopDevClearInventoryResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgClientToGCCandyShopDevClearInventoryResponse_EResponseToJSON(
+  object: CMsgClientToGCCandyShopDevClearInventoryResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgClientToGCCandyShopDevClearInventoryResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgClientToGCCandyShopDevClearInventoryResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgClientToGCCandyShopDevClearInventoryResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgClientToGCCandyShopDevClearInventoryResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    case CMsgClientToGCCandyShopDevClearInventoryResponse_EResponse.k_eTimeout:
+      return "k_eTimeout";
+    case CMsgClientToGCCandyShopDevClearInventoryResponse_EResponse.k_eNotAllowed:
+      return "k_eNotAllowed";
+    case CMsgClientToGCCandyShopDevClearInventoryResponse_EResponse.k_eInvalidShop:
+      return "k_eInvalidShop";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCCandyShopDevClearInventoryResponse_EResponse",
+      );
+  }
 }
 
 export interface CMsgClientToGCCandyShopDevGrantCandyBags {
@@ -259,6 +873,63 @@ export enum CMsgClientToGCCandyShopDevGrantCandyBagsResponse_EResponse {
   k_eInvalidShop = 6,
 }
 
+export function cMsgClientToGCCandyShopDevGrantCandyBagsResponse_EResponseFromJSON(
+  object: any,
+): CMsgClientToGCCandyShopDevGrantCandyBagsResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgClientToGCCandyShopDevGrantCandyBagsResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgClientToGCCandyShopDevGrantCandyBagsResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eTooBusy":
+      return CMsgClientToGCCandyShopDevGrantCandyBagsResponse_EResponse.k_eTooBusy;
+    case 3:
+    case "k_eDisabled":
+      return CMsgClientToGCCandyShopDevGrantCandyBagsResponse_EResponse.k_eDisabled;
+    case 4:
+    case "k_eTimeout":
+      return CMsgClientToGCCandyShopDevGrantCandyBagsResponse_EResponse.k_eTimeout;
+    case 5:
+    case "k_eNotAllowed":
+      return CMsgClientToGCCandyShopDevGrantCandyBagsResponse_EResponse.k_eNotAllowed;
+    case 6:
+    case "k_eInvalidShop":
+      return CMsgClientToGCCandyShopDevGrantCandyBagsResponse_EResponse.k_eInvalidShop;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCCandyShopDevGrantCandyBagsResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgClientToGCCandyShopDevGrantCandyBagsResponse_EResponseToJSON(
+  object: CMsgClientToGCCandyShopDevGrantCandyBagsResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgClientToGCCandyShopDevGrantCandyBagsResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgClientToGCCandyShopDevGrantCandyBagsResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgClientToGCCandyShopDevGrantCandyBagsResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgClientToGCCandyShopDevGrantCandyBagsResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    case CMsgClientToGCCandyShopDevGrantCandyBagsResponse_EResponse.k_eTimeout:
+      return "k_eTimeout";
+    case CMsgClientToGCCandyShopDevGrantCandyBagsResponse_EResponse.k_eNotAllowed:
+      return "k_eNotAllowed";
+    case CMsgClientToGCCandyShopDevGrantCandyBagsResponse_EResponse.k_eInvalidShop:
+      return "k_eInvalidShop";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCCandyShopDevGrantCandyBagsResponse_EResponse",
+      );
+  }
+}
+
 export interface CMsgClientToGCCandyShopDevShuffleExchange {
   candyShopId: number;
 }
@@ -275,6 +946,63 @@ export enum CMsgClientToGCCandyShopDevShuffleExchangeResponse_EResponse {
   k_eTimeout = 4,
   k_eNotAllowed = 5,
   k_eInvalidShop = 6,
+}
+
+export function cMsgClientToGCCandyShopDevShuffleExchangeResponse_EResponseFromJSON(
+  object: any,
+): CMsgClientToGCCandyShopDevShuffleExchangeResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgClientToGCCandyShopDevShuffleExchangeResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgClientToGCCandyShopDevShuffleExchangeResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eTooBusy":
+      return CMsgClientToGCCandyShopDevShuffleExchangeResponse_EResponse.k_eTooBusy;
+    case 3:
+    case "k_eDisabled":
+      return CMsgClientToGCCandyShopDevShuffleExchangeResponse_EResponse.k_eDisabled;
+    case 4:
+    case "k_eTimeout":
+      return CMsgClientToGCCandyShopDevShuffleExchangeResponse_EResponse.k_eTimeout;
+    case 5:
+    case "k_eNotAllowed":
+      return CMsgClientToGCCandyShopDevShuffleExchangeResponse_EResponse.k_eNotAllowed;
+    case 6:
+    case "k_eInvalidShop":
+      return CMsgClientToGCCandyShopDevShuffleExchangeResponse_EResponse.k_eInvalidShop;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCCandyShopDevShuffleExchangeResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgClientToGCCandyShopDevShuffleExchangeResponse_EResponseToJSON(
+  object: CMsgClientToGCCandyShopDevShuffleExchangeResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgClientToGCCandyShopDevShuffleExchangeResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgClientToGCCandyShopDevShuffleExchangeResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgClientToGCCandyShopDevShuffleExchangeResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgClientToGCCandyShopDevShuffleExchangeResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    case CMsgClientToGCCandyShopDevShuffleExchangeResponse_EResponse.k_eTimeout:
+      return "k_eTimeout";
+    case CMsgClientToGCCandyShopDevShuffleExchangeResponse_EResponse.k_eNotAllowed:
+      return "k_eNotAllowed";
+    case CMsgClientToGCCandyShopDevShuffleExchangeResponse_EResponse.k_eInvalidShop:
+      return "k_eInvalidShop";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCCandyShopDevShuffleExchangeResponse_EResponse",
+      );
+  }
 }
 
 export interface CMsgClientToGCCandyShopDevGrantRerollCharges {
@@ -294,6 +1022,65 @@ export enum CMsgClientToGCCandyShopDevGrantRerollChargesResponse_EResponse {
   k_eTimeout = 4,
   k_eNotAllowed = 5,
   k_eInvalidShop = 6,
+}
+
+export function cMsgClientToGCCandyShopDevGrantRerollChargesResponse_EResponseFromJSON(
+  object: any,
+): CMsgClientToGCCandyShopDevGrantRerollChargesResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgClientToGCCandyShopDevGrantRerollChargesResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgClientToGCCandyShopDevGrantRerollChargesResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eTooBusy":
+      return CMsgClientToGCCandyShopDevGrantRerollChargesResponse_EResponse.k_eTooBusy;
+    case 3:
+    case "k_eDisabled":
+      return CMsgClientToGCCandyShopDevGrantRerollChargesResponse_EResponse.k_eDisabled;
+    case 4:
+    case "k_eTimeout":
+      return CMsgClientToGCCandyShopDevGrantRerollChargesResponse_EResponse.k_eTimeout;
+    case 5:
+    case "k_eNotAllowed":
+      return CMsgClientToGCCandyShopDevGrantRerollChargesResponse_EResponse.k_eNotAllowed;
+    case 6:
+    case "k_eInvalidShop":
+      return CMsgClientToGCCandyShopDevGrantRerollChargesResponse_EResponse.k_eInvalidShop;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object +
+          " for enum CMsgClientToGCCandyShopDevGrantRerollChargesResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgClientToGCCandyShopDevGrantRerollChargesResponse_EResponseToJSON(
+  object: CMsgClientToGCCandyShopDevGrantRerollChargesResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgClientToGCCandyShopDevGrantRerollChargesResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgClientToGCCandyShopDevGrantRerollChargesResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgClientToGCCandyShopDevGrantRerollChargesResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgClientToGCCandyShopDevGrantRerollChargesResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    case CMsgClientToGCCandyShopDevGrantRerollChargesResponse_EResponse.k_eTimeout:
+      return "k_eTimeout";
+    case CMsgClientToGCCandyShopDevGrantRerollChargesResponse_EResponse.k_eNotAllowed:
+      return "k_eNotAllowed";
+    case CMsgClientToGCCandyShopDevGrantRerollChargesResponse_EResponse.k_eInvalidShop:
+      return "k_eInvalidShop";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object +
+          " for enum CMsgClientToGCCandyShopDevGrantRerollChargesResponse_EResponse",
+      );
+  }
 }
 
 function createBaseCMsgCandyShopCandyCount(): CMsgCandyShopCandyCount {
@@ -340,6 +1127,20 @@ export const CMsgCandyShopCandyCount = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgCandyShopCandyCount {
+    return {
+      candyType: isSet(object.candyType) ? Number(object.candyType) : 0,
+      candyCount: isSet(object.candyCount) ? Number(object.candyCount) : 0,
+    };
+  },
+
+  toJSON(message: CMsgCandyShopCandyCount): unknown {
+    const obj: any = {};
+    message.candyType !== undefined && (obj.candyType = Math.round(message.candyType));
+    message.candyCount !== undefined && (obj.candyCount = Math.round(message.candyCount));
+    return obj;
+  },
 };
 
 function createBaseCMsgCandyShopCandyQuantity(): CMsgCandyShopCandyQuantity {
@@ -375,6 +1176,24 @@ export const CMsgCandyShopCandyQuantity = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgCandyShopCandyQuantity {
+    return {
+      candyCounts: Array.isArray(object?.candyCounts)
+        ? object.candyCounts.map((e: any) => CMsgCandyShopCandyCount.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgCandyShopCandyQuantity): unknown {
+    const obj: any = {};
+    if (message.candyCounts) {
+      obj.candyCounts = message.candyCounts.map((e) => e ? CMsgCandyShopCandyCount.toJSON(e) : undefined);
+    } else {
+      obj.candyCounts = [];
+    }
+    return obj;
   },
 };
 
@@ -432,6 +1251,24 @@ export const CMsgCandyShopExchangeRecipe = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgCandyShopExchangeRecipe {
+    return {
+      recipeId: isSet(object.recipeId) ? Number(object.recipeId) : 0,
+      input: isSet(object.input) ? CMsgCandyShopCandyQuantity.fromJSON(object.input) : undefined,
+      output: isSet(object.output) ? CMsgCandyShopCandyQuantity.fromJSON(object.output) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgCandyShopExchangeRecipe): unknown {
+    const obj: any = {};
+    message.recipeId !== undefined && (obj.recipeId = Math.round(message.recipeId));
+    message.input !== undefined &&
+      (obj.input = message.input ? CMsgCandyShopCandyQuantity.toJSON(message.input) : undefined);
+    message.output !== undefined &&
+      (obj.output = message.output ? CMsgCandyShopCandyQuantity.toJSON(message.output) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgCandyShopRewardDataItem(): CMsgCandyShopRewardDataItem {
@@ -467,6 +1304,16 @@ export const CMsgCandyShopRewardDataItem = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgCandyShopRewardDataItem {
+    return { itemDef: isSet(object.itemDef) ? Number(object.itemDef) : 0 };
+  },
+
+  toJSON(message: CMsgCandyShopRewardDataItem): unknown {
+    const obj: any = {};
+    message.itemDef !== undefined && (obj.itemDef = Math.round(message.itemDef));
+    return obj;
   },
 };
 
@@ -524,6 +1371,22 @@ export const CMsgCandyShopRewardDataEventAction = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgCandyShopRewardDataEventAction {
+    return {
+      eventId: isSet(object.eventId) ? eEventFromJSON(object.eventId) : 0,
+      actionId: isSet(object.actionId) ? Number(object.actionId) : 0,
+      quantity: isSet(object.quantity) ? Number(object.quantity) : 0,
+    };
+  },
+
+  toJSON(message: CMsgCandyShopRewardDataEventAction): unknown {
+    const obj: any = {};
+    message.eventId !== undefined && (obj.eventId = eEventToJSON(message.eventId));
+    message.actionId !== undefined && (obj.actionId = Math.round(message.actionId));
+    message.quantity !== undefined && (obj.quantity = Math.round(message.quantity));
+    return obj;
+  },
 };
 
 function createBaseCMsgCandyShopRewardDataEventPoints(): CMsgCandyShopRewardDataEventPoints {
@@ -569,6 +1432,20 @@ export const CMsgCandyShopRewardDataEventPoints = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgCandyShopRewardDataEventPoints {
+    return {
+      eventId: isSet(object.eventId) ? eEventFromJSON(object.eventId) : 0,
+      points: isSet(object.points) ? Number(object.points) : 0,
+    };
+  },
+
+  toJSON(message: CMsgCandyShopRewardDataEventPoints): unknown {
+    const obj: any = {};
+    message.eventId !== undefined && (obj.eventId = eEventToJSON(message.eventId));
+    message.points !== undefined && (obj.points = Math.round(message.points));
+    return obj;
   },
 };
 
@@ -674,6 +1551,40 @@ export const CMsgCandyShopReward = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgCandyShopReward {
+    return {
+      rewardId: isSet(object.rewardId) ? Number(object.rewardId) : 0,
+      rewardOptionId: isSet(object.rewardOptionId) ? Number(object.rewardOptionId) : 0,
+      price: isSet(object.price) ? CMsgCandyShopCandyQuantity.fromJSON(object.price) : undefined,
+      rewardType: isSet(object.rewardType) ? eCandyShopRewardTypeFromJSON(object.rewardType) : 0,
+      itemData: isSet(object.itemData) ? CMsgCandyShopRewardDataItem.fromJSON(object.itemData) : undefined,
+      eventActionData: isSet(object.eventActionData)
+        ? CMsgCandyShopRewardDataEventAction.fromJSON(object.eventActionData)
+        : undefined,
+      eventPointsData: isSet(object.eventPointsData)
+        ? CMsgCandyShopRewardDataEventPoints.fromJSON(object.eventPointsData)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CMsgCandyShopReward): unknown {
+    const obj: any = {};
+    message.rewardId !== undefined && (obj.rewardId = Math.round(message.rewardId));
+    message.rewardOptionId !== undefined && (obj.rewardOptionId = Math.round(message.rewardOptionId));
+    message.price !== undefined &&
+      (obj.price = message.price ? CMsgCandyShopCandyQuantity.toJSON(message.price) : undefined);
+    message.rewardType !== undefined && (obj.rewardType = eCandyShopRewardTypeToJSON(message.rewardType));
+    message.itemData !== undefined &&
+      (obj.itemData = message.itemData ? CMsgCandyShopRewardDataItem.toJSON(message.itemData) : undefined);
+    message.eventActionData !== undefined && (obj.eventActionData = message.eventActionData
+      ? CMsgCandyShopRewardDataEventAction.toJSON(message.eventActionData)
+      : undefined);
+    message.eventPointsData !== undefined && (obj.eventPointsData = message.eventPointsData
+      ? CMsgCandyShopRewardDataEventPoints.toJSON(message.eventPointsData)
+      : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgCandyShopUserData(): CMsgCandyShopUserData {
@@ -767,6 +1678,42 @@ export const CMsgCandyShopUserData = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgCandyShopUserData {
+    return {
+      inventorySize: isSet(object.inventorySize) ? Number(object.inventorySize) : 0,
+      inventory: isSet(object.inventory) ? CMsgCandyShopCandyQuantity.fromJSON(object.inventory) : undefined,
+      exchangeResetTimestamp: isSet(object.exchangeResetTimestamp) ? Number(object.exchangeResetTimestamp) : 0,
+      exchangeRecipes: Array.isArray(object?.exchangeRecipes)
+        ? object.exchangeRecipes.map((e: any) => CMsgCandyShopExchangeRecipe.fromJSON(e))
+        : [],
+      activeRewards: Array.isArray(object?.activeRewards)
+        ? object.activeRewards.map((e: any) => CMsgCandyShopReward.fromJSON(e))
+        : [],
+      rerollCharges: isSet(object.rerollCharges) ? Number(object.rerollCharges) : 0,
+    };
+  },
+
+  toJSON(message: CMsgCandyShopUserData): unknown {
+    const obj: any = {};
+    message.inventorySize !== undefined && (obj.inventorySize = Math.round(message.inventorySize));
+    message.inventory !== undefined &&
+      (obj.inventory = message.inventory ? CMsgCandyShopCandyQuantity.toJSON(message.inventory) : undefined);
+    message.exchangeResetTimestamp !== undefined &&
+      (obj.exchangeResetTimestamp = Math.round(message.exchangeResetTimestamp));
+    if (message.exchangeRecipes) {
+      obj.exchangeRecipes = message.exchangeRecipes.map((e) => e ? CMsgCandyShopExchangeRecipe.toJSON(e) : undefined);
+    } else {
+      obj.exchangeRecipes = [];
+    }
+    if (message.activeRewards) {
+      obj.activeRewards = message.activeRewards.map((e) => e ? CMsgCandyShopReward.toJSON(e) : undefined);
+    } else {
+      obj.activeRewards = [];
+    }
+    message.rerollCharges !== undefined && (obj.rerollCharges = Math.round(message.rerollCharges));
+    return obj;
+  },
 };
 
 function createBaseCMsgClientToGCCandyShopGetUserData(): CMsgClientToGCCandyShopGetUserData {
@@ -802,6 +1749,16 @@ export const CMsgClientToGCCandyShopGetUserData = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCCandyShopGetUserData {
+    return { candyShopId: isSet(object.candyShopId) ? Number(object.candyShopId) : 0 };
+  },
+
+  toJSON(message: CMsgClientToGCCandyShopGetUserData): unknown {
+    const obj: any = {};
+    message.candyShopId !== undefined && (obj.candyShopId = Math.round(message.candyShopId));
+    return obj;
   },
 };
 
@@ -849,6 +1806,24 @@ export const CMsgClientToGCCandyShopGetUserDataResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientToGCCandyShopGetUserDataResponse {
+    return {
+      response: isSet(object.response)
+        ? cMsgClientToGCCandyShopGetUserDataResponse_EResponseFromJSON(object.response)
+        : 0,
+      userData: isSet(object.userData) ? CMsgCandyShopUserData.fromJSON(object.userData) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCCandyShopGetUserDataResponse): unknown {
+    const obj: any = {};
+    message.response !== undefined &&
+      (obj.response = cMsgClientToGCCandyShopGetUserDataResponse_EResponseToJSON(message.response));
+    message.userData !== undefined &&
+      (obj.userData = message.userData ? CMsgCandyShopUserData.toJSON(message.userData) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgGCToClientCandyShopUserDataUpdated(): CMsgGCToClientCandyShopUserDataUpdated {
@@ -894,6 +1869,21 @@ export const CMsgGCToClientCandyShopUserDataUpdated = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCToClientCandyShopUserDataUpdated {
+    return {
+      candyShopId: isSet(object.candyShopId) ? Number(object.candyShopId) : 0,
+      userData: isSet(object.userData) ? CMsgCandyShopUserData.fromJSON(object.userData) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgGCToClientCandyShopUserDataUpdated): unknown {
+    const obj: any = {};
+    message.candyShopId !== undefined && (obj.candyShopId = Math.round(message.candyShopId));
+    message.userData !== undefined &&
+      (obj.userData = message.userData ? CMsgCandyShopUserData.toJSON(message.userData) : undefined);
+    return obj;
   },
 };
 
@@ -941,6 +1931,20 @@ export const CMsgClientToGCCandyShopPurchaseReward = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientToGCCandyShopPurchaseReward {
+    return {
+      candyShopId: isSet(object.candyShopId) ? Number(object.candyShopId) : 0,
+      rewardId: isSet(object.rewardId) ? String(object.rewardId) : "0",
+    };
+  },
+
+  toJSON(message: CMsgClientToGCCandyShopPurchaseReward): unknown {
+    const obj: any = {};
+    message.candyShopId !== undefined && (obj.candyShopId = Math.round(message.candyShopId));
+    message.rewardId !== undefined && (obj.rewardId = message.rewardId);
+    return obj;
+  },
 };
 
 function createBaseCMsgClientToGCCandyShopPurchaseRewardResponse(): CMsgClientToGCCandyShopPurchaseRewardResponse {
@@ -976,6 +1980,21 @@ export const CMsgClientToGCCandyShopPurchaseRewardResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCCandyShopPurchaseRewardResponse {
+    return {
+      response: isSet(object.response)
+        ? cMsgClientToGCCandyShopPurchaseRewardResponse_EResponseFromJSON(object.response)
+        : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCCandyShopPurchaseRewardResponse): unknown {
+    const obj: any = {};
+    message.response !== undefined &&
+      (obj.response = cMsgClientToGCCandyShopPurchaseRewardResponse_EResponseToJSON(message.response));
+    return obj;
   },
 };
 
@@ -1023,6 +2042,20 @@ export const CMsgClientToGCCandyShopOpenBags = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientToGCCandyShopOpenBags {
+    return {
+      candyShopId: isSet(object.candyShopId) ? Number(object.candyShopId) : 0,
+      bagCount: isSet(object.bagCount) ? Number(object.bagCount) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCCandyShopOpenBags): unknown {
+    const obj: any = {};
+    message.candyShopId !== undefined && (obj.candyShopId = Math.round(message.candyShopId));
+    message.bagCount !== undefined && (obj.bagCount = Math.round(message.bagCount));
+    return obj;
+  },
 };
 
 function createBaseCMsgClientToGCCandyShopOpenBagsResponse(): CMsgClientToGCCandyShopOpenBagsResponse {
@@ -1058,6 +2091,19 @@ export const CMsgClientToGCCandyShopOpenBagsResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCCandyShopOpenBagsResponse {
+    return {
+      response: isSet(object.response) ? cMsgClientToGCCandyShopOpenBagsResponse_EResponseFromJSON(object.response) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCCandyShopOpenBagsResponse): unknown {
+    const obj: any = {};
+    message.response !== undefined &&
+      (obj.response = cMsgClientToGCCandyShopOpenBagsResponse_EResponseToJSON(message.response));
+    return obj;
   },
 };
 
@@ -1105,6 +2151,20 @@ export const CMsgClientToGCCandyShopDoExchange = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientToGCCandyShopDoExchange {
+    return {
+      candyShopId: isSet(object.candyShopId) ? Number(object.candyShopId) : 0,
+      recipeId: isSet(object.recipeId) ? Number(object.recipeId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCCandyShopDoExchange): unknown {
+    const obj: any = {};
+    message.candyShopId !== undefined && (obj.candyShopId = Math.round(message.candyShopId));
+    message.recipeId !== undefined && (obj.recipeId = Math.round(message.recipeId));
+    return obj;
+  },
 };
 
 function createBaseCMsgClientToGCCandyShopDoExchangeResponse(): CMsgClientToGCCandyShopDoExchangeResponse {
@@ -1140,6 +2200,21 @@ export const CMsgClientToGCCandyShopDoExchangeResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCCandyShopDoExchangeResponse {
+    return {
+      response: isSet(object.response)
+        ? cMsgClientToGCCandyShopDoExchangeResponse_EResponseFromJSON(object.response)
+        : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCCandyShopDoExchangeResponse): unknown {
+    const obj: any = {};
+    message.response !== undefined &&
+      (obj.response = cMsgClientToGCCandyShopDoExchangeResponse_EResponseToJSON(message.response));
+    return obj;
   },
 };
 
@@ -1197,6 +2272,24 @@ export const CMsgClientToGCCandyShopDoVariableExchange = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientToGCCandyShopDoVariableExchange {
+    return {
+      candyShopId: isSet(object.candyShopId) ? Number(object.candyShopId) : 0,
+      input: isSet(object.input) ? CMsgCandyShopCandyQuantity.fromJSON(object.input) : undefined,
+      output: isSet(object.output) ? CMsgCandyShopCandyQuantity.fromJSON(object.output) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCCandyShopDoVariableExchange): unknown {
+    const obj: any = {};
+    message.candyShopId !== undefined && (obj.candyShopId = Math.round(message.candyShopId));
+    message.input !== undefined &&
+      (obj.input = message.input ? CMsgCandyShopCandyQuantity.toJSON(message.input) : undefined);
+    message.output !== undefined &&
+      (obj.output = message.output ? CMsgCandyShopCandyQuantity.toJSON(message.output) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgClientToGCCandyShopDoVariableExchangeResponse(): CMsgClientToGCCandyShopDoVariableExchangeResponse {
@@ -1236,6 +2329,21 @@ export const CMsgClientToGCCandyShopDoVariableExchangeResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientToGCCandyShopDoVariableExchangeResponse {
+    return {
+      response: isSet(object.response)
+        ? cMsgClientToGCCandyShopDoVariableExchangeResponse_EResponseFromJSON(object.response)
+        : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCCandyShopDoVariableExchangeResponse): unknown {
+    const obj: any = {};
+    message.response !== undefined &&
+      (obj.response = cMsgClientToGCCandyShopDoVariableExchangeResponse_EResponseToJSON(message.response));
+    return obj;
+  },
 };
 
 function createBaseCMsgClientToGCCandyShopRerollRewards(): CMsgClientToGCCandyShopRerollRewards {
@@ -1272,6 +2380,16 @@ export const CMsgClientToGCCandyShopRerollRewards = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientToGCCandyShopRerollRewards {
+    return { candyShopId: isSet(object.candyShopId) ? Number(object.candyShopId) : 0 };
+  },
+
+  toJSON(message: CMsgClientToGCCandyShopRerollRewards): unknown {
+    const obj: any = {};
+    message.candyShopId !== undefined && (obj.candyShopId = Math.round(message.candyShopId));
+    return obj;
+  },
 };
 
 function createBaseCMsgClientToGCCandyShopRerollRewardsResponse(): CMsgClientToGCCandyShopRerollRewardsResponse {
@@ -1307,6 +2425,21 @@ export const CMsgClientToGCCandyShopRerollRewardsResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCCandyShopRerollRewardsResponse {
+    return {
+      response: isSet(object.response)
+        ? cMsgClientToGCCandyShopRerollRewardsResponse_EResponseFromJSON(object.response)
+        : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCCandyShopRerollRewardsResponse): unknown {
+    const obj: any = {};
+    message.response !== undefined &&
+      (obj.response = cMsgClientToGCCandyShopRerollRewardsResponse_EResponseToJSON(message.response));
+    return obj;
   },
 };
 
@@ -1354,6 +2487,25 @@ export const CMsgClientToGCCandyShopDevGrantCandy = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientToGCCandyShopDevGrantCandy {
+    return {
+      candyShopId: isSet(object.candyShopId) ? Number(object.candyShopId) : 0,
+      candyQuantity: isSet(object.candyQuantity)
+        ? CMsgCandyShopCandyQuantity.fromJSON(object.candyQuantity)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCCandyShopDevGrantCandy): unknown {
+    const obj: any = {};
+    message.candyShopId !== undefined && (obj.candyShopId = Math.round(message.candyShopId));
+    message.candyQuantity !== undefined &&
+      (obj.candyQuantity = message.candyQuantity
+        ? CMsgCandyShopCandyQuantity.toJSON(message.candyQuantity)
+        : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgClientToGCCandyShopDevGrantCandyResponse(): CMsgClientToGCCandyShopDevGrantCandyResponse {
@@ -1390,6 +2542,21 @@ export const CMsgClientToGCCandyShopDevGrantCandyResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientToGCCandyShopDevGrantCandyResponse {
+    return {
+      response: isSet(object.response)
+        ? cMsgClientToGCCandyShopDevGrantCandyResponse_EResponseFromJSON(object.response)
+        : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCCandyShopDevGrantCandyResponse): unknown {
+    const obj: any = {};
+    message.response !== undefined &&
+      (obj.response = cMsgClientToGCCandyShopDevGrantCandyResponse_EResponseToJSON(message.response));
+    return obj;
+  },
 };
 
 function createBaseCMsgClientToGCCandyShopDevClearInventory(): CMsgClientToGCCandyShopDevClearInventory {
@@ -1425,6 +2592,16 @@ export const CMsgClientToGCCandyShopDevClearInventory = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCCandyShopDevClearInventory {
+    return { candyShopId: isSet(object.candyShopId) ? Number(object.candyShopId) : 0 };
+  },
+
+  toJSON(message: CMsgClientToGCCandyShopDevClearInventory): unknown {
+    const obj: any = {};
+    message.candyShopId !== undefined && (obj.candyShopId = Math.round(message.candyShopId));
+    return obj;
   },
 };
 
@@ -1464,6 +2641,21 @@ export const CMsgClientToGCCandyShopDevClearInventoryResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCCandyShopDevClearInventoryResponse {
+    return {
+      response: isSet(object.response)
+        ? cMsgClientToGCCandyShopDevClearInventoryResponse_EResponseFromJSON(object.response)
+        : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCCandyShopDevClearInventoryResponse): unknown {
+    const obj: any = {};
+    message.response !== undefined &&
+      (obj.response = cMsgClientToGCCandyShopDevClearInventoryResponse_EResponseToJSON(message.response));
+    return obj;
   },
 };
 
@@ -1511,6 +2703,20 @@ export const CMsgClientToGCCandyShopDevGrantCandyBags = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientToGCCandyShopDevGrantCandyBags {
+    return {
+      candyShopId: isSet(object.candyShopId) ? Number(object.candyShopId) : 0,
+      quantity: isSet(object.quantity) ? Number(object.quantity) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCCandyShopDevGrantCandyBags): unknown {
+    const obj: any = {};
+    message.candyShopId !== undefined && (obj.candyShopId = Math.round(message.candyShopId));
+    message.quantity !== undefined && (obj.quantity = Math.round(message.quantity));
+    return obj;
+  },
 };
 
 function createBaseCMsgClientToGCCandyShopDevGrantCandyBagsResponse(): CMsgClientToGCCandyShopDevGrantCandyBagsResponse {
@@ -1550,6 +2756,21 @@ export const CMsgClientToGCCandyShopDevGrantCandyBagsResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientToGCCandyShopDevGrantCandyBagsResponse {
+    return {
+      response: isSet(object.response)
+        ? cMsgClientToGCCandyShopDevGrantCandyBagsResponse_EResponseFromJSON(object.response)
+        : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCCandyShopDevGrantCandyBagsResponse): unknown {
+    const obj: any = {};
+    message.response !== undefined &&
+      (obj.response = cMsgClientToGCCandyShopDevGrantCandyBagsResponse_EResponseToJSON(message.response));
+    return obj;
+  },
 };
 
 function createBaseCMsgClientToGCCandyShopDevShuffleExchange(): CMsgClientToGCCandyShopDevShuffleExchange {
@@ -1585,6 +2806,16 @@ export const CMsgClientToGCCandyShopDevShuffleExchange = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCCandyShopDevShuffleExchange {
+    return { candyShopId: isSet(object.candyShopId) ? Number(object.candyShopId) : 0 };
+  },
+
+  toJSON(message: CMsgClientToGCCandyShopDevShuffleExchange): unknown {
+    const obj: any = {};
+    message.candyShopId !== undefined && (obj.candyShopId = Math.round(message.candyShopId));
+    return obj;
   },
 };
 
@@ -1624,6 +2855,21 @@ export const CMsgClientToGCCandyShopDevShuffleExchangeResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCCandyShopDevShuffleExchangeResponse {
+    return {
+      response: isSet(object.response)
+        ? cMsgClientToGCCandyShopDevShuffleExchangeResponse_EResponseFromJSON(object.response)
+        : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCCandyShopDevShuffleExchangeResponse): unknown {
+    const obj: any = {};
+    message.response !== undefined &&
+      (obj.response = cMsgClientToGCCandyShopDevShuffleExchangeResponse_EResponseToJSON(message.response));
+    return obj;
   },
 };
 
@@ -1671,6 +2917,20 @@ export const CMsgClientToGCCandyShopDevGrantRerollCharges = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientToGCCandyShopDevGrantRerollCharges {
+    return {
+      candyShopId: isSet(object.candyShopId) ? Number(object.candyShopId) : 0,
+      rerollCharges: isSet(object.rerollCharges) ? Number(object.rerollCharges) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCCandyShopDevGrantRerollCharges): unknown {
+    const obj: any = {};
+    message.candyShopId !== undefined && (obj.candyShopId = Math.round(message.candyShopId));
+    message.rerollCharges !== undefined && (obj.rerollCharges = Math.round(message.rerollCharges));
+    return obj;
+  },
 };
 
 function createBaseCMsgClientToGCCandyShopDevGrantRerollChargesResponse(): CMsgClientToGCCandyShopDevGrantRerollChargesResponse {
@@ -1710,7 +2970,41 @@ export const CMsgClientToGCCandyShopDevGrantRerollChargesResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientToGCCandyShopDevGrantRerollChargesResponse {
+    return {
+      response: isSet(object.response)
+        ? cMsgClientToGCCandyShopDevGrantRerollChargesResponse_EResponseFromJSON(object.response)
+        : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCCandyShopDevGrantRerollChargesResponse): unknown {
+    const obj: any = {};
+    message.response !== undefined &&
+      (obj.response = cMsgClientToGCCandyShopDevGrantRerollChargesResponse_EResponseToJSON(message.response));
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
 
 function longToString(long: Long) {
   return long.toString();
@@ -1719,4 +3013,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

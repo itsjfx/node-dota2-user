@@ -3,11 +3,23 @@ import Long from "long";
 import _m0 from "protobufjs/minimal";
 import {
   ELeagueBroadcastProvider,
+  eLeagueBroadcastProviderFromJSON,
+  eLeagueBroadcastProviderToJSON,
   ELeagueDivision,
+  eLeagueDivisionFromJSON,
+  eLeagueDivisionToJSON,
   ELeaguePhase,
+  eLeaguePhaseFromJSON,
+  eLeaguePhaseToJSON,
   ELeagueRegion,
+  eLeagueRegionFromJSON,
+  eLeagueRegionToJSON,
   ELeagueStatus,
+  eLeagueStatusFromJSON,
+  eLeagueStatusToJSON,
   ELeagueTier,
+  eLeagueTierFromJSON,
+  eLeagueTierToJSON,
 } from "./dota_shared_enums";
 
 export enum ELeagueNodeGroupType {
@@ -22,12 +34,110 @@ export enum ELeagueNodeGroupType {
   GSL = 8,
 }
 
+export function eLeagueNodeGroupTypeFromJSON(object: any): ELeagueNodeGroupType {
+  switch (object) {
+    case 0:
+    case "INVALID_GROUP_TYPE":
+      return ELeagueNodeGroupType.INVALID_GROUP_TYPE;
+    case 1:
+    case "ORGANIZATIONAL":
+      return ELeagueNodeGroupType.ORGANIZATIONAL;
+    case 2:
+    case "ROUND_ROBIN":
+      return ELeagueNodeGroupType.ROUND_ROBIN;
+    case 3:
+    case "SWISS":
+      return ELeagueNodeGroupType.SWISS;
+    case 4:
+    case "BRACKET_SINGLE":
+      return ELeagueNodeGroupType.BRACKET_SINGLE;
+    case 5:
+    case "BRACKET_DOUBLE_SEED_LOSER":
+      return ELeagueNodeGroupType.BRACKET_DOUBLE_SEED_LOSER;
+    case 6:
+    case "BRACKET_DOUBLE_ALL_WINNER":
+      return ELeagueNodeGroupType.BRACKET_DOUBLE_ALL_WINNER;
+    case 7:
+    case "SHOWMATCH":
+      return ELeagueNodeGroupType.SHOWMATCH;
+    case 8:
+    case "GSL":
+      return ELeagueNodeGroupType.GSL;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ELeagueNodeGroupType");
+  }
+}
+
+export function eLeagueNodeGroupTypeToJSON(object: ELeagueNodeGroupType): string {
+  switch (object) {
+    case ELeagueNodeGroupType.INVALID_GROUP_TYPE:
+      return "INVALID_GROUP_TYPE";
+    case ELeagueNodeGroupType.ORGANIZATIONAL:
+      return "ORGANIZATIONAL";
+    case ELeagueNodeGroupType.ROUND_ROBIN:
+      return "ROUND_ROBIN";
+    case ELeagueNodeGroupType.SWISS:
+      return "SWISS";
+    case ELeagueNodeGroupType.BRACKET_SINGLE:
+      return "BRACKET_SINGLE";
+    case ELeagueNodeGroupType.BRACKET_DOUBLE_SEED_LOSER:
+      return "BRACKET_DOUBLE_SEED_LOSER";
+    case ELeagueNodeGroupType.BRACKET_DOUBLE_ALL_WINNER:
+      return "BRACKET_DOUBLE_ALL_WINNER";
+    case ELeagueNodeGroupType.SHOWMATCH:
+      return "SHOWMATCH";
+    case ELeagueNodeGroupType.GSL:
+      return "GSL";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ELeagueNodeGroupType");
+  }
+}
+
 export enum ELeagueNodeType {
   INVALID_NODE_TYPE = 0,
   BEST_OF_ONE = 1,
   BEST_OF_THREE = 2,
   BEST_OF_FIVE = 3,
   BEST_OF_TWO = 4,
+}
+
+export function eLeagueNodeTypeFromJSON(object: any): ELeagueNodeType {
+  switch (object) {
+    case 0:
+    case "INVALID_NODE_TYPE":
+      return ELeagueNodeType.INVALID_NODE_TYPE;
+    case 1:
+    case "BEST_OF_ONE":
+      return ELeagueNodeType.BEST_OF_ONE;
+    case 2:
+    case "BEST_OF_THREE":
+      return ELeagueNodeType.BEST_OF_THREE;
+    case 3:
+    case "BEST_OF_FIVE":
+      return ELeagueNodeType.BEST_OF_FIVE;
+    case 4:
+    case "BEST_OF_TWO":
+      return ELeagueNodeType.BEST_OF_TWO;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ELeagueNodeType");
+  }
+}
+
+export function eLeagueNodeTypeToJSON(object: ELeagueNodeType): string {
+  switch (object) {
+    case ELeagueNodeType.INVALID_NODE_TYPE:
+      return "INVALID_NODE_TYPE";
+    case ELeagueNodeType.BEST_OF_ONE:
+      return "BEST_OF_ONE";
+    case ELeagueNodeType.BEST_OF_THREE:
+      return "BEST_OF_THREE";
+    case ELeagueNodeType.BEST_OF_FIVE:
+      return "BEST_OF_FIVE";
+    case ELeagueNodeType.BEST_OF_TWO:
+      return "BEST_OF_TWO";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ELeagueNodeType");
+  }
 }
 
 export interface CMsgDOTALeagueNode {
@@ -615,6 +725,70 @@ export const CMsgDOTALeagueNode = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTALeagueNode {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      nodeId: isSet(object.nodeId) ? Number(object.nodeId) : 0,
+      nodeGroupId: isSet(object.nodeGroupId) ? Number(object.nodeGroupId) : 0,
+      winningNodeId: isSet(object.winningNodeId) ? Number(object.winningNodeId) : 0,
+      losingNodeId: isSet(object.losingNodeId) ? Number(object.losingNodeId) : 0,
+      incomingNodeId1: isSet(object.incomingNodeId1) ? Number(object.incomingNodeId1) : 0,
+      incomingNodeId2: isSet(object.incomingNodeId2) ? Number(object.incomingNodeId2) : 0,
+      nodeType: isSet(object.nodeType) ? eLeagueNodeTypeFromJSON(object.nodeType) : 0,
+      scheduledTime: isSet(object.scheduledTime) ? Number(object.scheduledTime) : 0,
+      actualTime: isSet(object.actualTime) ? Number(object.actualTime) : 0,
+      seriesId: isSet(object.seriesId) ? Number(object.seriesId) : 0,
+      teamId1: isSet(object.teamId1) ? Number(object.teamId1) : 0,
+      teamId2: isSet(object.teamId2) ? Number(object.teamId2) : 0,
+      matches: Array.isArray(object?.matches)
+        ? object.matches.map((e: any) => CMsgDOTALeagueNode_MatchDetails.fromJSON(e))
+        : [],
+      team1Wins: isSet(object.team1Wins) ? Number(object.team1Wins) : 0,
+      team2Wins: isSet(object.team2Wins) ? Number(object.team2Wins) : 0,
+      hasStarted: isSet(object.hasStarted) ? Boolean(object.hasStarted) : false,
+      isCompleted: isSet(object.isCompleted) ? Boolean(object.isCompleted) : false,
+      streamIds: Array.isArray(object?.streamIds) ? object.streamIds.map((e: any) => Number(e)) : [],
+      vods: Array.isArray(object?.vods) ? object.vods.map((e: any) => CMsgDOTALeagueNode_VOD.fromJSON(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTALeagueNode): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.nodeId !== undefined && (obj.nodeId = Math.round(message.nodeId));
+    message.nodeGroupId !== undefined && (obj.nodeGroupId = Math.round(message.nodeGroupId));
+    message.winningNodeId !== undefined && (obj.winningNodeId = Math.round(message.winningNodeId));
+    message.losingNodeId !== undefined && (obj.losingNodeId = Math.round(message.losingNodeId));
+    message.incomingNodeId1 !== undefined && (obj.incomingNodeId1 = Math.round(message.incomingNodeId1));
+    message.incomingNodeId2 !== undefined && (obj.incomingNodeId2 = Math.round(message.incomingNodeId2));
+    message.nodeType !== undefined && (obj.nodeType = eLeagueNodeTypeToJSON(message.nodeType));
+    message.scheduledTime !== undefined && (obj.scheduledTime = Math.round(message.scheduledTime));
+    message.actualTime !== undefined && (obj.actualTime = Math.round(message.actualTime));
+    message.seriesId !== undefined && (obj.seriesId = Math.round(message.seriesId));
+    message.teamId1 !== undefined && (obj.teamId1 = Math.round(message.teamId1));
+    message.teamId2 !== undefined && (obj.teamId2 = Math.round(message.teamId2));
+    if (message.matches) {
+      obj.matches = message.matches.map((e) => e ? CMsgDOTALeagueNode_MatchDetails.toJSON(e) : undefined);
+    } else {
+      obj.matches = [];
+    }
+    message.team1Wins !== undefined && (obj.team1Wins = Math.round(message.team1Wins));
+    message.team2Wins !== undefined && (obj.team2Wins = Math.round(message.team2Wins));
+    message.hasStarted !== undefined && (obj.hasStarted = message.hasStarted);
+    message.isCompleted !== undefined && (obj.isCompleted = message.isCompleted);
+    if (message.streamIds) {
+      obj.streamIds = message.streamIds.map((e) => Math.round(e));
+    } else {
+      obj.streamIds = [];
+    }
+    if (message.vods) {
+      obj.vods = message.vods.map((e) => e ? CMsgDOTALeagueNode_VOD.toJSON(e) : undefined);
+    } else {
+      obj.vods = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTALeagueNode_MatchDetails(): CMsgDOTALeagueNode_MatchDetails {
@@ -660,6 +834,20 @@ export const CMsgDOTALeagueNode_MatchDetails = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTALeagueNode_MatchDetails {
+    return {
+      matchId: isSet(object.matchId) ? String(object.matchId) : "0",
+      winningTeamId: isSet(object.winningTeamId) ? Number(object.winningTeamId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTALeagueNode_MatchDetails): unknown {
+    const obj: any = {};
+    message.matchId !== undefined && (obj.matchId = message.matchId);
+    message.winningTeamId !== undefined && (obj.winningTeamId = Math.round(message.winningTeamId));
+    return obj;
   },
 };
 
@@ -716,6 +904,22 @@ export const CMsgDOTALeagueNode_VOD = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTALeagueNode_VOD {
+    return {
+      seriesGame: isSet(object.seriesGame) ? Number(object.seriesGame) : 0,
+      streamId: isSet(object.streamId) ? Number(object.streamId) : 0,
+      url: isSet(object.url) ? String(object.url) : "",
+    };
+  },
+
+  toJSON(message: CMsgDOTALeagueNode_VOD): unknown {
+    const obj: any = {};
+    message.seriesGame !== undefined && (obj.seriesGame = Math.round(message.seriesGame));
+    message.streamId !== undefined && (obj.streamId = Math.round(message.streamId));
+    message.url !== undefined && (obj.url = message.url);
+    return obj;
   },
 };
 
@@ -1041,6 +1245,106 @@ export const CMsgDOTALeagueNodeGroup = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTALeagueNodeGroup {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      nodeGroupId: isSet(object.nodeGroupId) ? Number(object.nodeGroupId) : 0,
+      parentNodeGroupId: isSet(object.parentNodeGroupId) ? Number(object.parentNodeGroupId) : 0,
+      incomingNodeGroupIds: Array.isArray(object?.incomingNodeGroupIds)
+        ? object.incomingNodeGroupIds.map((e: any) => Number(e))
+        : [],
+      advancingNodeGroupId: isSet(object.advancingNodeGroupId) ? Number(object.advancingNodeGroupId) : 0,
+      advancingTeamCount: isSet(object.advancingTeamCount) ? Number(object.advancingTeamCount) : 0,
+      teamCount: isSet(object.teamCount) ? Number(object.teamCount) : 0,
+      nodeGroupType: isSet(object.nodeGroupType) ? eLeagueNodeGroupTypeFromJSON(object.nodeGroupType) : 0,
+      defaultNodeType: isSet(object.defaultNodeType) ? eLeagueNodeTypeFromJSON(object.defaultNodeType) : 0,
+      round: isSet(object.round) ? Number(object.round) : 0,
+      maxRounds: isSet(object.maxRounds) ? Number(object.maxRounds) : 0,
+      isTiebreaker: isSet(object.isTiebreaker) ? Boolean(object.isTiebreaker) : false,
+      isFinalGroup: isSet(object.isFinalGroup) ? Boolean(object.isFinalGroup) : false,
+      isCompleted: isSet(object.isCompleted) ? Boolean(object.isCompleted) : false,
+      phase: isSet(object.phase) ? eLeaguePhaseFromJSON(object.phase) : 0,
+      region: isSet(object.region) ? eLeagueRegionFromJSON(object.region) : 0,
+      startTime: isSet(object.startTime) ? Number(object.startTime) : 0,
+      endTime: isSet(object.endTime) ? Number(object.endTime) : 0,
+      secondaryAdvancingNodeGroupId: isSet(object.secondaryAdvancingNodeGroupId)
+        ? Number(object.secondaryAdvancingNodeGroupId)
+        : 0,
+      secondaryAdvancingTeamCount: isSet(object.secondaryAdvancingTeamCount)
+        ? Number(object.secondaryAdvancingTeamCount)
+        : 0,
+      tertiaryAdvancingNodeGroupId: isSet(object.tertiaryAdvancingNodeGroupId)
+        ? Number(object.tertiaryAdvancingNodeGroupId)
+        : 0,
+      tertiaryAdvancingTeamCount: isSet(object.tertiaryAdvancingTeamCount)
+        ? Number(object.tertiaryAdvancingTeamCount)
+        : 0,
+      eliminationDpcPoints: isSet(object.eliminationDpcPoints) ? Number(object.eliminationDpcPoints) : 0,
+      teamStandings: Array.isArray(object?.teamStandings)
+        ? object.teamStandings.map((e: any) => CMsgDOTALeagueNodeGroup_TeamStanding.fromJSON(e))
+        : [],
+      nodes: Array.isArray(object?.nodes)
+        ? object.nodes.map((e: any) => CMsgDOTALeagueNode.fromJSON(e))
+        : [],
+      nodeGroups: Array.isArray(object?.nodeGroups)
+        ? object.nodeGroups.map((e: any) => CMsgDOTALeagueNodeGroup.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTALeagueNodeGroup): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.nodeGroupId !== undefined && (obj.nodeGroupId = Math.round(message.nodeGroupId));
+    message.parentNodeGroupId !== undefined && (obj.parentNodeGroupId = Math.round(message.parentNodeGroupId));
+    if (message.incomingNodeGroupIds) {
+      obj.incomingNodeGroupIds = message.incomingNodeGroupIds.map((e) => Math.round(e));
+    } else {
+      obj.incomingNodeGroupIds = [];
+    }
+    message.advancingNodeGroupId !== undefined && (obj.advancingNodeGroupId = Math.round(message.advancingNodeGroupId));
+    message.advancingTeamCount !== undefined && (obj.advancingTeamCount = Math.round(message.advancingTeamCount));
+    message.teamCount !== undefined && (obj.teamCount = Math.round(message.teamCount));
+    message.nodeGroupType !== undefined && (obj.nodeGroupType = eLeagueNodeGroupTypeToJSON(message.nodeGroupType));
+    message.defaultNodeType !== undefined && (obj.defaultNodeType = eLeagueNodeTypeToJSON(message.defaultNodeType));
+    message.round !== undefined && (obj.round = Math.round(message.round));
+    message.maxRounds !== undefined && (obj.maxRounds = Math.round(message.maxRounds));
+    message.isTiebreaker !== undefined && (obj.isTiebreaker = message.isTiebreaker);
+    message.isFinalGroup !== undefined && (obj.isFinalGroup = message.isFinalGroup);
+    message.isCompleted !== undefined && (obj.isCompleted = message.isCompleted);
+    message.phase !== undefined && (obj.phase = eLeaguePhaseToJSON(message.phase));
+    message.region !== undefined && (obj.region = eLeagueRegionToJSON(message.region));
+    message.startTime !== undefined && (obj.startTime = Math.round(message.startTime));
+    message.endTime !== undefined && (obj.endTime = Math.round(message.endTime));
+    message.secondaryAdvancingNodeGroupId !== undefined &&
+      (obj.secondaryAdvancingNodeGroupId = Math.round(message.secondaryAdvancingNodeGroupId));
+    message.secondaryAdvancingTeamCount !== undefined &&
+      (obj.secondaryAdvancingTeamCount = Math.round(message.secondaryAdvancingTeamCount));
+    message.tertiaryAdvancingNodeGroupId !== undefined &&
+      (obj.tertiaryAdvancingNodeGroupId = Math.round(message.tertiaryAdvancingNodeGroupId));
+    message.tertiaryAdvancingTeamCount !== undefined &&
+      (obj.tertiaryAdvancingTeamCount = Math.round(message.tertiaryAdvancingTeamCount));
+    message.eliminationDpcPoints !== undefined && (obj.eliminationDpcPoints = Math.round(message.eliminationDpcPoints));
+    if (message.teamStandings) {
+      obj.teamStandings = message.teamStandings.map((e) =>
+        e ? CMsgDOTALeagueNodeGroup_TeamStanding.toJSON(e) : undefined
+      );
+    } else {
+      obj.teamStandings = [];
+    }
+    if (message.nodes) {
+      obj.nodes = message.nodes.map((e) => e ? CMsgDOTALeagueNode.toJSON(e) : undefined);
+    } else {
+      obj.nodes = [];
+    }
+    if (message.nodeGroups) {
+      obj.nodeGroups = message.nodeGroups.map((e) => e ? CMsgDOTALeagueNodeGroup.toJSON(e) : undefined);
+    } else {
+      obj.nodeGroups = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTALeagueNodeGroup_TeamStanding(): CMsgDOTALeagueNodeGroup_TeamStanding {
@@ -1222,6 +1526,44 @@ export const CMsgDOTALeagueNodeGroup_TeamStanding = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTALeagueNodeGroup_TeamStanding {
+    return {
+      standing: isSet(object.standing) ? Number(object.standing) : 0,
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      teamName: isSet(object.teamName) ? String(object.teamName) : "",
+      teamTag: isSet(object.teamTag) ? String(object.teamTag) : "",
+      teamLogo: isSet(object.teamLogo) ? String(object.teamLogo) : "0",
+      teamLogoUrl: isSet(object.teamLogoUrl) ? String(object.teamLogoUrl) : "",
+      wins: isSet(object.wins) ? Number(object.wins) : 0,
+      losses: isSet(object.losses) ? Number(object.losses) : 0,
+      score: isSet(object.score) ? String(object.score) : "0",
+      teamAbbreviation: isSet(object.teamAbbreviation) ? String(object.teamAbbreviation) : "",
+      scoreTiebreakGroup: isSet(object.scoreTiebreakGroup) ? String(object.scoreTiebreakGroup) : "0",
+      scoreTiebreakBelow: isSet(object.scoreTiebreakBelow) ? String(object.scoreTiebreakBelow) : "0",
+      scoreTiebreakRandom: isSet(object.scoreTiebreakRandom) ? String(object.scoreTiebreakRandom) : "0",
+      isPro: isSet(object.isPro) ? Boolean(object.isPro) : false,
+    };
+  },
+
+  toJSON(message: CMsgDOTALeagueNodeGroup_TeamStanding): unknown {
+    const obj: any = {};
+    message.standing !== undefined && (obj.standing = Math.round(message.standing));
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    message.teamName !== undefined && (obj.teamName = message.teamName);
+    message.teamTag !== undefined && (obj.teamTag = message.teamTag);
+    message.teamLogo !== undefined && (obj.teamLogo = message.teamLogo);
+    message.teamLogoUrl !== undefined && (obj.teamLogoUrl = message.teamLogoUrl);
+    message.wins !== undefined && (obj.wins = Math.round(message.wins));
+    message.losses !== undefined && (obj.losses = Math.round(message.losses));
+    message.score !== undefined && (obj.score = message.score);
+    message.teamAbbreviation !== undefined && (obj.teamAbbreviation = message.teamAbbreviation);
+    message.scoreTiebreakGroup !== undefined && (obj.scoreTiebreakGroup = message.scoreTiebreakGroup);
+    message.scoreTiebreakBelow !== undefined && (obj.scoreTiebreakBelow = message.scoreTiebreakBelow);
+    message.scoreTiebreakRandom !== undefined && (obj.scoreTiebreakRandom = message.scoreTiebreakRandom);
+    message.isPro !== undefined && (obj.isPro = message.isPro);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTALeague(): CMsgDOTALeague {
@@ -1325,6 +1667,57 @@ export const CMsgDOTALeague = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTALeague {
+    return {
+      info: isSet(object.info) ? CMsgDOTALeague_Info.fromJSON(object.info) : undefined,
+      prizePool: isSet(object.prizePool) ? CMsgDOTALeague_PrizePool.fromJSON(object.prizePool) : undefined,
+      admins: Array.isArray(object?.admins) ? object.admins.map((e: any) => CMsgDOTALeague_Admin.fromJSON(e)) : [],
+      streams: Array.isArray(object?.streams) ? object.streams.map((e: any) => CMsgDOTALeague_Stream.fromJSON(e)) : [],
+      nodeGroups: Array.isArray(object?.nodeGroups)
+        ? object.nodeGroups.map((e: any) => CMsgDOTALeagueNodeGroup.fromJSON(e))
+        : [],
+      seriesInfos: Array.isArray(object?.seriesInfos)
+        ? object.seriesInfos.map((e: any) => CMsgDOTALeague_SeriesInfo.fromJSON(e))
+        : [],
+      registeredPlayers: Array.isArray(object?.registeredPlayers)
+        ? object.registeredPlayers.map((e: any) => CMsgDOTALeague_Player.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTALeague): unknown {
+    const obj: any = {};
+    message.info !== undefined && (obj.info = message.info ? CMsgDOTALeague_Info.toJSON(message.info) : undefined);
+    message.prizePool !== undefined &&
+      (obj.prizePool = message.prizePool ? CMsgDOTALeague_PrizePool.toJSON(message.prizePool) : undefined);
+    if (message.admins) {
+      obj.admins = message.admins.map((e) => e ? CMsgDOTALeague_Admin.toJSON(e) : undefined);
+    } else {
+      obj.admins = [];
+    }
+    if (message.streams) {
+      obj.streams = message.streams.map((e) => e ? CMsgDOTALeague_Stream.toJSON(e) : undefined);
+    } else {
+      obj.streams = [];
+    }
+    if (message.nodeGroups) {
+      obj.nodeGroups = message.nodeGroups.map((e) => e ? CMsgDOTALeagueNodeGroup.toJSON(e) : undefined);
+    } else {
+      obj.nodeGroups = [];
+    }
+    if (message.seriesInfos) {
+      obj.seriesInfos = message.seriesInfos.map((e) => e ? CMsgDOTALeague_SeriesInfo.toJSON(e) : undefined);
+    } else {
+      obj.seriesInfos = [];
+    }
+    if (message.registeredPlayers) {
+      obj.registeredPlayers = message.registeredPlayers.map((e) => e ? CMsgDOTALeague_Player.toJSON(e) : undefined);
+    } else {
+      obj.registeredPlayers = [];
+    }
+    return obj;
   },
 };
 
@@ -1507,6 +1900,44 @@ export const CMsgDOTALeague_Info = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTALeague_Info {
+    return {
+      leagueId: isSet(object.leagueId) ? Number(object.leagueId) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      tier: isSet(object.tier) ? eLeagueTierFromJSON(object.tier) : 0,
+      region: isSet(object.region) ? eLeagueRegionFromJSON(object.region) : 0,
+      url: isSet(object.url) ? String(object.url) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      notes: isSet(object.notes) ? String(object.notes) : "",
+      startTimestamp: isSet(object.startTimestamp) ? Number(object.startTimestamp) : 0,
+      endTimestamp: isSet(object.endTimestamp) ? Number(object.endTimestamp) : 0,
+      proCircuitPoints: isSet(object.proCircuitPoints) ? Number(object.proCircuitPoints) : 0,
+      imageBits: isSet(object.imageBits) ? Number(object.imageBits) : 0,
+      status: isSet(object.status) ? eLeagueStatusFromJSON(object.status) : 0,
+      mostRecentActivity: isSet(object.mostRecentActivity) ? Number(object.mostRecentActivity) : 0,
+      registrationPeriod: isSet(object.registrationPeriod) ? Number(object.registrationPeriod) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTALeague_Info): unknown {
+    const obj: any = {};
+    message.leagueId !== undefined && (obj.leagueId = Math.round(message.leagueId));
+    message.name !== undefined && (obj.name = message.name);
+    message.tier !== undefined && (obj.tier = eLeagueTierToJSON(message.tier));
+    message.region !== undefined && (obj.region = eLeagueRegionToJSON(message.region));
+    message.url !== undefined && (obj.url = message.url);
+    message.description !== undefined && (obj.description = message.description);
+    message.notes !== undefined && (obj.notes = message.notes);
+    message.startTimestamp !== undefined && (obj.startTimestamp = Math.round(message.startTimestamp));
+    message.endTimestamp !== undefined && (obj.endTimestamp = Math.round(message.endTimestamp));
+    message.proCircuitPoints !== undefined && (obj.proCircuitPoints = Math.round(message.proCircuitPoints));
+    message.imageBits !== undefined && (obj.imageBits = Math.round(message.imageBits));
+    message.status !== undefined && (obj.status = eLeagueStatusToJSON(message.status));
+    message.mostRecentActivity !== undefined && (obj.mostRecentActivity = Math.round(message.mostRecentActivity));
+    message.registrationPeriod !== undefined && (obj.registrationPeriod = Math.round(message.registrationPeriod));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTALeague_Admin(): CMsgDOTALeague_Admin {
@@ -1562,6 +1993,22 @@ export const CMsgDOTALeague_Admin = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTALeague_Admin {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      isPrimary: isSet(object.isPrimary) ? Boolean(object.isPrimary) : false,
+      emailAddress: isSet(object.emailAddress) ? String(object.emailAddress) : "",
+    };
+  },
+
+  toJSON(message: CMsgDOTALeague_Admin): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.isPrimary !== undefined && (obj.isPrimary = message.isPrimary);
+    message.emailAddress !== undefined && (obj.emailAddress = message.emailAddress);
+    return obj;
   },
 };
 
@@ -1628,6 +2075,24 @@ export const CMsgDOTALeague_PrizePoolItem = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTALeague_PrizePoolItem {
+    return {
+      itemDef: isSet(object.itemDef) ? Number(object.itemDef) : 0,
+      salesStopTimestamp: isSet(object.salesStopTimestamp) ? Number(object.salesStopTimestamp) : 0,
+      revenuePct: isSet(object.revenuePct) ? Number(object.revenuePct) : 0,
+      revenueCentsPerSale: isSet(object.revenueCentsPerSale) ? Number(object.revenueCentsPerSale) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTALeague_PrizePoolItem): unknown {
+    const obj: any = {};
+    message.itemDef !== undefined && (obj.itemDef = Math.round(message.itemDef));
+    message.salesStopTimestamp !== undefined && (obj.salesStopTimestamp = Math.round(message.salesStopTimestamp));
+    message.revenuePct !== undefined && (obj.revenuePct = Math.round(message.revenuePct));
+    message.revenueCentsPerSale !== undefined && (obj.revenueCentsPerSale = Math.round(message.revenueCentsPerSale));
+    return obj;
   },
 };
 
@@ -1705,6 +2170,36 @@ export const CMsgDOTALeague_PrizePool = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTALeague_PrizePool {
+    return {
+      basePrizePool: isSet(object.basePrizePool) ? Number(object.basePrizePool) : 0,
+      totalPrizePool: isSet(object.totalPrizePool) ? Number(object.totalPrizePool) : 0,
+      prizeSplitPctX100: Array.isArray(object?.prizeSplitPctX100)
+        ? object.prizeSplitPctX100.map((e: any) => Number(e))
+        : [],
+      prizePoolItems: Array.isArray(object?.prizePoolItems)
+        ? object.prizePoolItems.map((e: any) => CMsgDOTALeague_PrizePoolItem.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTALeague_PrizePool): unknown {
+    const obj: any = {};
+    message.basePrizePool !== undefined && (obj.basePrizePool = Math.round(message.basePrizePool));
+    message.totalPrizePool !== undefined && (obj.totalPrizePool = Math.round(message.totalPrizePool));
+    if (message.prizeSplitPctX100) {
+      obj.prizeSplitPctX100 = message.prizeSplitPctX100.map((e) => Math.round(e));
+    } else {
+      obj.prizeSplitPctX100 = [];
+    }
+    if (message.prizePoolItems) {
+      obj.prizePoolItems = message.prizePoolItems.map((e) => e ? CMsgDOTALeague_PrizePoolItem.toJSON(e) : undefined);
+    } else {
+      obj.prizePoolItems = [];
+    }
+    return obj;
   },
 };
 
@@ -1791,6 +2286,31 @@ export const CMsgDOTALeague_Stream = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTALeague_Stream {
+    return {
+      streamId: isSet(object.streamId) ? Number(object.streamId) : 0,
+      language: isSet(object.language) ? Number(object.language) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      broadcastProvider: isSet(object.broadcastProvider)
+        ? eLeagueBroadcastProviderFromJSON(object.broadcastProvider)
+        : 0,
+      streamUrl: isSet(object.streamUrl) ? String(object.streamUrl) : "",
+      vodUrl: isSet(object.vodUrl) ? String(object.vodUrl) : "",
+    };
+  },
+
+  toJSON(message: CMsgDOTALeague_Stream): unknown {
+    const obj: any = {};
+    message.streamId !== undefined && (obj.streamId = Math.round(message.streamId));
+    message.language !== undefined && (obj.language = Math.round(message.language));
+    message.name !== undefined && (obj.name = message.name);
+    message.broadcastProvider !== undefined &&
+      (obj.broadcastProvider = eLeagueBroadcastProviderToJSON(message.broadcastProvider));
+    message.streamUrl !== undefined && (obj.streamUrl = message.streamUrl);
+    message.vodUrl !== undefined && (obj.vodUrl = message.vodUrl);
+    return obj;
   },
 };
 
@@ -1889,6 +2409,32 @@ export const CMsgDOTALeague_SeriesInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTALeague_SeriesInfo {
+    return {
+      seriesId: isSet(object.seriesId) ? Number(object.seriesId) : 0,
+      seriesType: isSet(object.seriesType) ? Number(object.seriesType) : 0,
+      startTime: isSet(object.startTime) ? Number(object.startTime) : 0,
+      matchIds: Array.isArray(object?.matchIds) ? object.matchIds.map((e: any) => String(e)) : [],
+      teamId1: isSet(object.teamId1) ? Number(object.teamId1) : 0,
+      teamId2: isSet(object.teamId2) ? Number(object.teamId2) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTALeague_SeriesInfo): unknown {
+    const obj: any = {};
+    message.seriesId !== undefined && (obj.seriesId = Math.round(message.seriesId));
+    message.seriesType !== undefined && (obj.seriesType = Math.round(message.seriesType));
+    message.startTime !== undefined && (obj.startTime = Math.round(message.startTime));
+    if (message.matchIds) {
+      obj.matchIds = message.matchIds.map((e) => e);
+    } else {
+      obj.matchIds = [];
+    }
+    message.teamId1 !== undefined && (obj.teamId1 = Math.round(message.teamId1));
+    message.teamId2 !== undefined && (obj.teamId2 = Math.round(message.teamId2));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTALeague_Player(): CMsgDOTALeague_Player {
@@ -1945,6 +2491,22 @@ export const CMsgDOTALeague_Player = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTALeague_Player {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTALeague_Player): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.name !== undefined && (obj.name = message.name);
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTALeagueList(): CMsgDOTALeagueList {
@@ -1980,6 +2542,22 @@ export const CMsgDOTALeagueList = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTALeagueList {
+    return {
+      leagues: Array.isArray(object?.leagues) ? object.leagues.map((e: any) => CMsgDOTALeague.fromJSON(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTALeagueList): unknown {
+    const obj: any = {};
+    if (message.leagues) {
+      obj.leagues = message.leagues.map((e) => e ? CMsgDOTALeague.toJSON(e) : undefined);
+    } else {
+      obj.leagues = [];
+    }
+    return obj;
   },
 };
 
@@ -2107,6 +2685,34 @@ export const CMsgDOTALeagueInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTALeagueInfo {
+    return {
+      leagueId: isSet(object.leagueId) ? Number(object.leagueId) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      tier: isSet(object.tier) ? eLeagueTierFromJSON(object.tier) : 0,
+      region: isSet(object.region) ? eLeagueRegionFromJSON(object.region) : 0,
+      mostRecentActivity: isSet(object.mostRecentActivity) ? Number(object.mostRecentActivity) : 0,
+      totalPrizePool: isSet(object.totalPrizePool) ? Number(object.totalPrizePool) : 0,
+      startTimestamp: isSet(object.startTimestamp) ? Number(object.startTimestamp) : 0,
+      endTimestamp: isSet(object.endTimestamp) ? Number(object.endTimestamp) : 0,
+      status: isSet(object.status) ? Number(object.status) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTALeagueInfo): unknown {
+    const obj: any = {};
+    message.leagueId !== undefined && (obj.leagueId = Math.round(message.leagueId));
+    message.name !== undefined && (obj.name = message.name);
+    message.tier !== undefined && (obj.tier = eLeagueTierToJSON(message.tier));
+    message.region !== undefined && (obj.region = eLeagueRegionToJSON(message.region));
+    message.mostRecentActivity !== undefined && (obj.mostRecentActivity = Math.round(message.mostRecentActivity));
+    message.totalPrizePool !== undefined && (obj.totalPrizePool = Math.round(message.totalPrizePool));
+    message.startTimestamp !== undefined && (obj.startTimestamp = Math.round(message.startTimestamp));
+    message.endTimestamp !== undefined && (obj.endTimestamp = Math.round(message.endTimestamp));
+    message.status !== undefined && (obj.status = Math.round(message.status));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTALeagueInfoList(): CMsgDOTALeagueInfoList {
@@ -2143,6 +2749,20 @@ export const CMsgDOTALeagueInfoList = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTALeagueInfoList {
+    return { infos: Array.isArray(object?.infos) ? object.infos.map((e: any) => CMsgDOTALeagueInfo.fromJSON(e)) : [] };
+  },
+
+  toJSON(message: CMsgDOTALeagueInfoList): unknown {
+    const obj: any = {};
+    if (message.infos) {
+      obj.infos = message.infos.map((e) => e ? CMsgDOTALeagueInfo.toJSON(e) : undefined);
+    } else {
+      obj.infos = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTALeagueLiveGames(): CMsgDOTALeagueLiveGames {
@@ -2178,6 +2798,24 @@ export const CMsgDOTALeagueLiveGames = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTALeagueLiveGames {
+    return {
+      games: Array.isArray(object?.games)
+        ? object.games.map((e: any) => CMsgDOTALeagueLiveGames_LiveGame.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTALeagueLiveGames): unknown {
+    const obj: any = {};
+    if (message.games) {
+      obj.games = message.games.map((e) => e ? CMsgDOTALeagueLiveGames_LiveGame.toJSON(e) : undefined);
+    } else {
+      obj.games = [];
+    }
+    return obj;
   },
 };
 
@@ -2349,6 +2987,42 @@ export const CMsgDOTALeagueLiveGames_LiveGame = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTALeagueLiveGames_LiveGame {
+    return {
+      leagueId: isSet(object.leagueId) ? Number(object.leagueId) : 0,
+      serverSteamId: isSet(object.serverSteamId) ? String(object.serverSteamId) : "0",
+      radiantName: isSet(object.radiantName) ? String(object.radiantName) : "",
+      radiantLogo: isSet(object.radiantLogo) ? String(object.radiantLogo) : "0",
+      radiantTeamId: isSet(object.radiantTeamId) ? Number(object.radiantTeamId) : 0,
+      direName: isSet(object.direName) ? String(object.direName) : "",
+      direLogo: isSet(object.direLogo) ? String(object.direLogo) : "0",
+      direTeamId: isSet(object.direTeamId) ? Number(object.direTeamId) : 0,
+      time: isSet(object.time) ? Number(object.time) : 0,
+      spectators: isSet(object.spectators) ? Number(object.spectators) : 0,
+      leagueNodeId: isSet(object.leagueNodeId) ? Number(object.leagueNodeId) : 0,
+      seriesId: isSet(object.seriesId) ? Number(object.seriesId) : 0,
+      matchId: isSet(object.matchId) ? String(object.matchId) : "0",
+    };
+  },
+
+  toJSON(message: CMsgDOTALeagueLiveGames_LiveGame): unknown {
+    const obj: any = {};
+    message.leagueId !== undefined && (obj.leagueId = Math.round(message.leagueId));
+    message.serverSteamId !== undefined && (obj.serverSteamId = message.serverSteamId);
+    message.radiantName !== undefined && (obj.radiantName = message.radiantName);
+    message.radiantLogo !== undefined && (obj.radiantLogo = message.radiantLogo);
+    message.radiantTeamId !== undefined && (obj.radiantTeamId = Math.round(message.radiantTeamId));
+    message.direName !== undefined && (obj.direName = message.direName);
+    message.direLogo !== undefined && (obj.direLogo = message.direLogo);
+    message.direTeamId !== undefined && (obj.direTeamId = Math.round(message.direTeamId));
+    message.time !== undefined && (obj.time = Math.round(message.time));
+    message.spectators !== undefined && (obj.spectators = Math.round(message.spectators));
+    message.leagueNodeId !== undefined && (obj.leagueNodeId = Math.round(message.leagueNodeId));
+    message.seriesId !== undefined && (obj.seriesId = Math.round(message.seriesId));
+    message.matchId !== undefined && (obj.matchId = message.matchId);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTALeagueMessages(): CMsgDOTALeagueMessages {
@@ -2384,6 +3058,24 @@ export const CMsgDOTALeagueMessages = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTALeagueMessages {
+    return {
+      messages: Array.isArray(object?.messages)
+        ? object.messages.map((e: any) => CMsgDOTALeagueMessages_Message.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTALeagueMessages): unknown {
+    const obj: any = {};
+    if (message.messages) {
+      obj.messages = message.messages.map((e) => e ? CMsgDOTALeagueMessages_Message.toJSON(e) : undefined);
+    } else {
+      obj.messages = [];
+    }
+    return obj;
   },
 };
 
@@ -2441,6 +3133,22 @@ export const CMsgDOTALeagueMessages_Message = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTALeagueMessages_Message {
+    return {
+      authorAccountId: isSet(object.authorAccountId) ? Number(object.authorAccountId) : 0,
+      timestamp: isSet(object.timestamp) ? Number(object.timestamp) : 0,
+      message: isSet(object.message) ? String(object.message) : "",
+    };
+  },
+
+  toJSON(message: CMsgDOTALeagueMessages_Message): unknown {
+    const obj: any = {};
+    message.authorAccountId !== undefined && (obj.authorAccountId = Math.round(message.authorAccountId));
+    message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
+    message.message !== undefined && (obj.message = message.message);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTALeaguePrizePool(): CMsgDOTALeaguePrizePool {
@@ -2487,6 +3195,20 @@ export const CMsgDOTALeaguePrizePool = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTALeaguePrizePool {
+    return {
+      prizePool: isSet(object.prizePool) ? Number(object.prizePool) : 0,
+      incrementPerSecond: isSet(object.incrementPerSecond) ? Number(object.incrementPerSecond) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTALeaguePrizePool): unknown {
+    const obj: any = {};
+    message.prizePool !== undefined && (obj.prizePool = Math.round(message.prizePool));
+    message.incrementPerSecond !== undefined && (obj.incrementPerSecond = message.incrementPerSecond);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTALeagueInfoListAdminsRequest(): CMsgDOTALeagueInfoListAdminsRequest {
@@ -2512,6 +3234,15 @@ export const CMsgDOTALeagueInfoListAdminsRequest = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CMsgDOTALeagueInfoListAdminsRequest {
+    return {};
+  },
+
+  toJSON(_: CMsgDOTALeagueInfoListAdminsRequest): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -2549,6 +3280,16 @@ export const CMsgDOTALeagueAvailableLobbyNodesRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTALeagueAvailableLobbyNodesRequest {
+    return { leagueId: isSet(object.leagueId) ? Number(object.leagueId) : 0 };
+  },
+
+  toJSON(message: CMsgDOTALeagueAvailableLobbyNodesRequest): unknown {
+    const obj: any = {};
+    message.leagueId !== undefined && (obj.leagueId = Math.round(message.leagueId));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTALeagueAvailableLobbyNodes(): CMsgDOTALeagueAvailableLobbyNodes {
@@ -2584,6 +3325,26 @@ export const CMsgDOTALeagueAvailableLobbyNodes = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTALeagueAvailableLobbyNodes {
+    return {
+      nodeInfos: Array.isArray(object?.nodeInfos)
+        ? object.nodeInfos.map((e: any) => CMsgDOTALeagueAvailableLobbyNodes_NodeInfo.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTALeagueAvailableLobbyNodes): unknown {
+    const obj: any = {};
+    if (message.nodeInfos) {
+      obj.nodeInfos = message.nodeInfos.map((e) =>
+        e ? CMsgDOTALeagueAvailableLobbyNodes_NodeInfo.toJSON(e) : undefined
+      );
+    } else {
+      obj.nodeInfos = [];
+    }
+    return obj;
   },
 };
 
@@ -2661,6 +3422,26 @@ export const CMsgDOTALeagueAvailableLobbyNodes_NodeInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTALeagueAvailableLobbyNodes_NodeInfo {
+    return {
+      nodeId: isSet(object.nodeId) ? Number(object.nodeId) : 0,
+      nodeName: isSet(object.nodeName) ? String(object.nodeName) : "",
+      nodeGroupName: isSet(object.nodeGroupName) ? String(object.nodeGroupName) : "",
+      teamId1: isSet(object.teamId1) ? Number(object.teamId1) : 0,
+      teamId2: isSet(object.teamId2) ? Number(object.teamId2) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTALeagueAvailableLobbyNodes_NodeInfo): unknown {
+    const obj: any = {};
+    message.nodeId !== undefined && (obj.nodeId = Math.round(message.nodeId));
+    message.nodeName !== undefined && (obj.nodeName = message.nodeName);
+    message.nodeGroupName !== undefined && (obj.nodeGroupName = message.nodeGroupName);
+    message.teamId1 !== undefined && (obj.teamId1 = Math.round(message.teamId1));
+    message.teamId2 !== undefined && (obj.teamId2 = Math.round(message.teamId2));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTALeagueNodeResults(): CMsgDOTALeagueNodeResults {
@@ -2696,6 +3477,24 @@ export const CMsgDOTALeagueNodeResults = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTALeagueNodeResults {
+    return {
+      nodeResults: Array.isArray(object?.nodeResults)
+        ? object.nodeResults.map((e: any) => CMsgDOTALeagueNodeResults_Result.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTALeagueNodeResults): unknown {
+    const obj: any = {};
+    if (message.nodeResults) {
+      obj.nodeResults = message.nodeResults.map((e) => e ? CMsgDOTALeagueNodeResults_Result.toJSON(e) : undefined);
+    } else {
+      obj.nodeResults = [];
+    }
+    return obj;
   },
 };
 
@@ -2922,6 +3721,54 @@ export const CMsgDOTALeagueNodeResults_Result = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTALeagueNodeResults_Result {
+    return {
+      nodeId: isSet(object.nodeId) ? Number(object.nodeId) : 0,
+      winningNodeId: isSet(object.winningNodeId) ? Number(object.winningNodeId) : 0,
+      losingNodeId: isSet(object.losingNodeId) ? Number(object.losingNodeId) : 0,
+      incomingNodeId1: isSet(object.incomingNodeId1) ? Number(object.incomingNodeId1) : 0,
+      incomingNodeId2: isSet(object.incomingNodeId2) ? Number(object.incomingNodeId2) : 0,
+      teamId1: isSet(object.teamId1) ? Number(object.teamId1) : 0,
+      teamId2: isSet(object.teamId2) ? Number(object.teamId2) : 0,
+      team1Name: isSet(object.team1Name) ? String(object.team1Name) : "",
+      team2Name: isSet(object.team2Name) ? String(object.team2Name) : "",
+      team1Wins: isSet(object.team1Wins) ? Number(object.team1Wins) : 0,
+      team2Wins: isSet(object.team2Wins) ? Number(object.team2Wins) : 0,
+      winningTeamId: isSet(object.winningTeamId) ? Number(object.winningTeamId) : 0,
+      losingTeamId: isSet(object.losingTeamId) ? Number(object.losingTeamId) : 0,
+      hasStarted: isSet(object.hasStarted) ? Boolean(object.hasStarted) : false,
+      isCompleted: isSet(object.isCompleted) ? Boolean(object.isCompleted) : false,
+      scheduledTime: isSet(object.scheduledTime) ? Number(object.scheduledTime) : 0,
+      matchIds: Array.isArray(object?.matchIds) ? object.matchIds.map((e: any) => String(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTALeagueNodeResults_Result): unknown {
+    const obj: any = {};
+    message.nodeId !== undefined && (obj.nodeId = Math.round(message.nodeId));
+    message.winningNodeId !== undefined && (obj.winningNodeId = Math.round(message.winningNodeId));
+    message.losingNodeId !== undefined && (obj.losingNodeId = Math.round(message.losingNodeId));
+    message.incomingNodeId1 !== undefined && (obj.incomingNodeId1 = Math.round(message.incomingNodeId1));
+    message.incomingNodeId2 !== undefined && (obj.incomingNodeId2 = Math.round(message.incomingNodeId2));
+    message.teamId1 !== undefined && (obj.teamId1 = Math.round(message.teamId1));
+    message.teamId2 !== undefined && (obj.teamId2 = Math.round(message.teamId2));
+    message.team1Name !== undefined && (obj.team1Name = message.team1Name);
+    message.team2Name !== undefined && (obj.team2Name = message.team2Name);
+    message.team1Wins !== undefined && (obj.team1Wins = Math.round(message.team1Wins));
+    message.team2Wins !== undefined && (obj.team2Wins = Math.round(message.team2Wins));
+    message.winningTeamId !== undefined && (obj.winningTeamId = Math.round(message.winningTeamId));
+    message.losingTeamId !== undefined && (obj.losingTeamId = Math.round(message.losingTeamId));
+    message.hasStarted !== undefined && (obj.hasStarted = message.hasStarted);
+    message.isCompleted !== undefined && (obj.isCompleted = message.isCompleted);
+    message.scheduledTime !== undefined && (obj.scheduledTime = Math.round(message.scheduledTime));
+    if (message.matchIds) {
+      obj.matchIds = message.matchIds.map((e) => e);
+    } else {
+      obj.matchIds = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTADPCLeagueResults(): CMsgDOTADPCLeagueResults {
@@ -2999,6 +3846,36 @@ export const CMsgDOTADPCLeagueResults = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTADPCLeagueResults {
+    return {
+      results: Array.isArray(object?.results)
+        ? object.results.map((e: any) => CMsgDOTADPCLeagueResults_Result.fromJSON(e))
+        : [],
+      points: Array.isArray(object?.points) ? object.points.map((e: any) => Number(e)) : [],
+      dollars: Array.isArray(object?.dollars) ? object.dollars.map((e: any) => Number(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTADPCLeagueResults): unknown {
+    const obj: any = {};
+    if (message.results) {
+      obj.results = message.results.map((e) => e ? CMsgDOTADPCLeagueResults_Result.toJSON(e) : undefined);
+    } else {
+      obj.results = [];
+    }
+    if (message.points) {
+      obj.points = message.points.map((e) => Math.round(e));
+    } else {
+      obj.points = [];
+    }
+    if (message.dollars) {
+      obj.dollars = message.dollars.map((e) => Math.round(e));
+    } else {
+      obj.dollars = [];
+    }
+    return obj;
   },
 };
 
@@ -3137,6 +4014,36 @@ export const CMsgDOTADPCLeagueResults_Result = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTADPCLeagueResults_Result {
+    return {
+      standing: isSet(object.standing) ? Number(object.standing) : 0,
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      teamName: isSet(object.teamName) ? String(object.teamName) : "",
+      teamLogo: isSet(object.teamLogo) ? String(object.teamLogo) : "0",
+      teamLogoUrl: isSet(object.teamLogoUrl) ? String(object.teamLogoUrl) : "",
+      points: isSet(object.points) ? Number(object.points) : 0,
+      earnings: isSet(object.earnings) ? Number(object.earnings) : 0,
+      timestamp: isSet(object.timestamp) ? Number(object.timestamp) : 0,
+      phase: isSet(object.phase) ? eLeaguePhaseFromJSON(object.phase) : 0,
+      teamAbbreviation: isSet(object.teamAbbreviation) ? String(object.teamAbbreviation) : "",
+    };
+  },
+
+  toJSON(message: CMsgDOTADPCLeagueResults_Result): unknown {
+    const obj: any = {};
+    message.standing !== undefined && (obj.standing = Math.round(message.standing));
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    message.teamName !== undefined && (obj.teamName = message.teamName);
+    message.teamLogo !== undefined && (obj.teamLogo = message.teamLogo);
+    message.teamLogoUrl !== undefined && (obj.teamLogoUrl = message.teamLogoUrl);
+    message.points !== undefined && (obj.points = Math.round(message.points));
+    message.earnings !== undefined && (obj.earnings = Math.round(message.earnings));
+    message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
+    message.phase !== undefined && (obj.phase = eLeaguePhaseToJSON(message.phase));
+    message.teamAbbreviation !== undefined && (obj.teamAbbreviation = message.teamAbbreviation);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTADPCTeamResults(): CMsgDOTADPCTeamResults {
@@ -3172,6 +4079,24 @@ export const CMsgDOTADPCTeamResults = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTADPCTeamResults {
+    return {
+      results: Array.isArray(object?.results)
+        ? object.results.map((e: any) => CMsgDOTADPCTeamResults_Result.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTADPCTeamResults): unknown {
+    const obj: any = {};
+    if (message.results) {
+      obj.results = message.results.map((e) => e ? CMsgDOTADPCTeamResults_Result.toJSON(e) : undefined);
+    } else {
+      obj.results = [];
+    }
+    return obj;
   },
 };
 
@@ -3249,6 +4174,26 @@ export const CMsgDOTADPCTeamResults_Result = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTADPCTeamResults_Result {
+    return {
+      leagueId: isSet(object.leagueId) ? Number(object.leagueId) : 0,
+      standing: isSet(object.standing) ? Number(object.standing) : 0,
+      points: isSet(object.points) ? Number(object.points) : 0,
+      earnings: isSet(object.earnings) ? Number(object.earnings) : 0,
+      timestamp: isSet(object.timestamp) ? Number(object.timestamp) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTADPCTeamResults_Result): unknown {
+    const obj: any = {};
+    message.leagueId !== undefined && (obj.leagueId = Math.round(message.leagueId));
+    message.standing !== undefined && (obj.standing = Math.round(message.standing));
+    message.points !== undefined && (obj.points = Math.round(message.points));
+    message.earnings !== undefined && (obj.earnings = Math.round(message.earnings));
+    message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTADPCSeasonResults(): CMsgDOTADPCSeasonResults {
@@ -3324,6 +4269,62 @@ export const CMsgDOTADPCSeasonResults = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTADPCSeasonResults {
+    return {
+      results: Array.isArray(object?.results)
+        ? object.results.map((e: any) => CMsgDOTADPCSeasonResults_TeamResult.fromJSON(e))
+        : [],
+      standings: Array.isArray(object?.standings)
+        ? object.standings.map((e: any) => CMsgDOTADPCSeasonResults_Standing.fromJSON(e))
+        : [],
+      majorWildcardStandings: Array.isArray(object?.majorWildcardStandings)
+        ? object.majorWildcardStandings.map((e: any) => CMsgDOTADPCSeasonResults_StandingEntry.fromJSON(e))
+        : [],
+      majorGroupStandings: Array.isArray(object?.majorGroupStandings)
+        ? object.majorGroupStandings.map((e: any) => CMsgDOTADPCSeasonResults_StandingEntry.fromJSON(e))
+        : [],
+      majorPlayoffStandings: Array.isArray(object?.majorPlayoffStandings)
+        ? object.majorPlayoffStandings.map((e: any) => CMsgDOTADPCSeasonResults_StandingEntry.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTADPCSeasonResults): unknown {
+    const obj: any = {};
+    if (message.results) {
+      obj.results = message.results.map((e) => e ? CMsgDOTADPCSeasonResults_TeamResult.toJSON(e) : undefined);
+    } else {
+      obj.results = [];
+    }
+    if (message.standings) {
+      obj.standings = message.standings.map((e) => e ? CMsgDOTADPCSeasonResults_Standing.toJSON(e) : undefined);
+    } else {
+      obj.standings = [];
+    }
+    if (message.majorWildcardStandings) {
+      obj.majorWildcardStandings = message.majorWildcardStandings.map((e) =>
+        e ? CMsgDOTADPCSeasonResults_StandingEntry.toJSON(e) : undefined
+      );
+    } else {
+      obj.majorWildcardStandings = [];
+    }
+    if (message.majorGroupStandings) {
+      obj.majorGroupStandings = message.majorGroupStandings.map((e) =>
+        e ? CMsgDOTADPCSeasonResults_StandingEntry.toJSON(e) : undefined
+      );
+    } else {
+      obj.majorGroupStandings = [];
+    }
+    if (message.majorPlayoffStandings) {
+      obj.majorPlayoffStandings = message.majorPlayoffStandings.map((e) =>
+        e ? CMsgDOTADPCSeasonResults_StandingEntry.toJSON(e) : undefined
+      );
+    } else {
+      obj.majorPlayoffStandings = [];
+    }
+    return obj;
   },
 };
 
@@ -3420,6 +4421,30 @@ export const CMsgDOTADPCSeasonResults_TeamLeagueResult = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTADPCSeasonResults_TeamLeagueResult {
+    return {
+      timestamp: isSet(object.timestamp) ? Number(object.timestamp) : 0,
+      leagueId: isSet(object.leagueId) ? Number(object.leagueId) : 0,
+      standing: isSet(object.standing) ? Number(object.standing) : 0,
+      points: isSet(object.points) ? Number(object.points) : 0,
+      earnings: isSet(object.earnings) ? Number(object.earnings) : 0,
+      auditAction: isSet(object.auditAction) ? Number(object.auditAction) : 0,
+      auditData: isSet(object.auditData) ? Number(object.auditData) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTADPCSeasonResults_TeamLeagueResult): unknown {
+    const obj: any = {};
+    message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
+    message.leagueId !== undefined && (obj.leagueId = Math.round(message.leagueId));
+    message.standing !== undefined && (obj.standing = Math.round(message.standing));
+    message.points !== undefined && (obj.points = Math.round(message.points));
+    message.earnings !== undefined && (obj.earnings = Math.round(message.earnings));
+    message.auditAction !== undefined && (obj.auditAction = Math.round(message.auditAction));
+    message.auditData !== undefined && (obj.auditData = Math.round(message.auditData));
+    return obj;
   },
 };
 
@@ -3536,6 +4561,40 @@ export const CMsgDOTADPCSeasonResults_TeamResult = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTADPCSeasonResults_TeamResult {
+    return {
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      teamName: isSet(object.teamName) ? String(object.teamName) : "",
+      teamAbbreviation: isSet(object.teamAbbreviation) ? String(object.teamAbbreviation) : "",
+      teamLogo: isSet(object.teamLogo) ? String(object.teamLogo) : "0",
+      teamLogoUrl: isSet(object.teamLogoUrl) ? String(object.teamLogoUrl) : "",
+      totalPoints: isSet(object.totalPoints) ? Number(object.totalPoints) : 0,
+      totalEarnings: isSet(object.totalEarnings) ? Number(object.totalEarnings) : 0,
+      leagueResults: Array.isArray(object?.leagueResults)
+        ? object.leagueResults.map((e: any) => CMsgDOTADPCSeasonResults_TeamLeagueResult.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTADPCSeasonResults_TeamResult): unknown {
+    const obj: any = {};
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    message.teamName !== undefined && (obj.teamName = message.teamName);
+    message.teamAbbreviation !== undefined && (obj.teamAbbreviation = message.teamAbbreviation);
+    message.teamLogo !== undefined && (obj.teamLogo = message.teamLogo);
+    message.teamLogoUrl !== undefined && (obj.teamLogoUrl = message.teamLogoUrl);
+    message.totalPoints !== undefined && (obj.totalPoints = Math.round(message.totalPoints));
+    message.totalEarnings !== undefined && (obj.totalEarnings = Math.round(message.totalEarnings));
+    if (message.leagueResults) {
+      obj.leagueResults = message.leagueResults.map((e) =>
+        e ? CMsgDOTADPCSeasonResults_TeamLeagueResult.toJSON(e) : undefined
+      );
+    } else {
+      obj.leagueResults = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTADPCSeasonResults_StandingEntry(): CMsgDOTADPCSeasonResults_StandingEntry {
@@ -3622,6 +4681,28 @@ export const CMsgDOTADPCSeasonResults_StandingEntry = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTADPCSeasonResults_StandingEntry {
+    return {
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      wins: isSet(object.wins) ? Number(object.wins) : 0,
+      losses: isSet(object.losses) ? Number(object.losses) : 0,
+      teamUrl: isSet(object.teamUrl) ? String(object.teamUrl) : "",
+      teamName: isSet(object.teamName) ? String(object.teamName) : "",
+      teamAbbreviation: isSet(object.teamAbbreviation) ? String(object.teamAbbreviation) : "",
+    };
+  },
+
+  toJSON(message: CMsgDOTADPCSeasonResults_StandingEntry): unknown {
+    const obj: any = {};
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    message.wins !== undefined && (obj.wins = Math.round(message.wins));
+    message.losses !== undefined && (obj.losses = Math.round(message.losses));
+    message.teamUrl !== undefined && (obj.teamUrl = message.teamUrl);
+    message.teamName !== undefined && (obj.teamName = message.teamName);
+    message.teamAbbreviation !== undefined && (obj.teamAbbreviation = message.teamAbbreviation);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTADPCSeasonResults_Standing(): CMsgDOTADPCSeasonResults_Standing {
@@ -3678,6 +4759,28 @@ export const CMsgDOTADPCSeasonResults_Standing = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTADPCSeasonResults_Standing {
+    return {
+      region: isSet(object.region) ? eLeagueRegionFromJSON(object.region) : 0,
+      division: isSet(object.division) ? eLeagueDivisionFromJSON(object.division) : 0,
+      entries: Array.isArray(object?.entries)
+        ? object.entries.map((e: any) => CMsgDOTADPCSeasonResults_StandingEntry.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTADPCSeasonResults_Standing): unknown {
+    const obj: any = {};
+    message.region !== undefined && (obj.region = eLeagueRegionToJSON(message.region));
+    message.division !== undefined && (obj.division = eLeagueDivisionToJSON(message.division));
+    if (message.entries) {
+      obj.entries = message.entries.map((e) => e ? CMsgDOTADPCSeasonResults_StandingEntry.toJSON(e) : undefined);
+    } else {
+      obj.entries = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTADPCSeasonSpoilerResults(): CMsgDOTADPCSeasonSpoilerResults {
@@ -3724,7 +4827,41 @@ export const CMsgDOTADPCSeasonSpoilerResults = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTADPCSeasonSpoilerResults {
+    return {
+      timeLastUpdated: isSet(object.timeLastUpdated) ? Number(object.timeLastUpdated) : 0,
+      savedResults: isSet(object.savedResults) ? CMsgDOTADPCSeasonResults.fromJSON(object.savedResults) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgDOTADPCSeasonSpoilerResults): unknown {
+    const obj: any = {};
+    message.timeLastUpdated !== undefined && (obj.timeLastUpdated = Math.round(message.timeLastUpdated));
+    message.savedResults !== undefined &&
+      (obj.savedResults = message.savedResults ? CMsgDOTADPCSeasonResults.toJSON(message.savedResults) : undefined);
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
 
 function longToString(long: Long) {
   return long.toString();
@@ -3733,4 +4870,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

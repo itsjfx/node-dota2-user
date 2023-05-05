@@ -93,6 +93,22 @@ export const CInButtonStatePB = {
     }
     return message;
   },
+
+  fromJSON(object: any): CInButtonStatePB {
+    return {
+      buttonstate1: isSet(object.buttonstate1) ? String(object.buttonstate1) : "0",
+      buttonstate2: isSet(object.buttonstate2) ? String(object.buttonstate2) : "0",
+      buttonstate3: isSet(object.buttonstate3) ? String(object.buttonstate3) : "0",
+    };
+  },
+
+  toJSON(message: CInButtonStatePB): unknown {
+    const obj: any = {};
+    message.buttonstate1 !== undefined && (obj.buttonstate1 = message.buttonstate1);
+    message.buttonstate2 !== undefined && (obj.buttonstate2 = message.buttonstate2);
+    message.buttonstate3 !== undefined && (obj.buttonstate3 = message.buttonstate3);
+    return obj;
+  },
 };
 
 function createBaseCSubtickMoveStep(): CSubtickMoveStep {
@@ -148,6 +164,22 @@ export const CSubtickMoveStep = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSubtickMoveStep {
+    return {
+      button: isSet(object.button) ? String(object.button) : "0",
+      pressed: isSet(object.pressed) ? Boolean(object.pressed) : false,
+      when: isSet(object.when) ? Number(object.when) : 0,
+    };
+  },
+
+  toJSON(message: CSubtickMoveStep): unknown {
+    const obj: any = {};
+    message.button !== undefined && (obj.button = message.button);
+    message.pressed !== undefined && (obj.pressed = message.pressed);
+    message.when !== undefined && (obj.when = message.when);
+    return obj;
   },
 };
 
@@ -363,6 +395,59 @@ export const CBaseUserCmdPB = {
     }
     return message;
   },
+
+  fromJSON(object: any): CBaseUserCmdPB {
+    return {
+      commandNumber: isSet(object.commandNumber) ? Number(object.commandNumber) : 0,
+      tickCount: isSet(object.tickCount) ? Number(object.tickCount) : 0,
+      buttonsPb: isSet(object.buttonsPb) ? CInButtonStatePB.fromJSON(object.buttonsPb) : undefined,
+      viewangles: isSet(object.viewangles) ? CMsgQAngle.fromJSON(object.viewangles) : undefined,
+      forwardmove: isSet(object.forwardmove) ? Number(object.forwardmove) : 0,
+      leftmove: isSet(object.leftmove) ? Number(object.leftmove) : 0,
+      upmove: isSet(object.upmove) ? Number(object.upmove) : 0,
+      impulse: isSet(object.impulse) ? Number(object.impulse) : 0,
+      weaponselect: isSet(object.weaponselect) ? Number(object.weaponselect) : 0,
+      randomSeed: isSet(object.randomSeed) ? Number(object.randomSeed) : 0,
+      mousedx: isSet(object.mousedx) ? Number(object.mousedx) : 0,
+      mousedy: isSet(object.mousedy) ? Number(object.mousedy) : 0,
+      hasbeenpredicted: isSet(object.hasbeenpredicted) ? Boolean(object.hasbeenpredicted) : false,
+      pawnEntityHandle: isSet(object.pawnEntityHandle) ? Number(object.pawnEntityHandle) : 0,
+      subtickMoves: Array.isArray(object?.subtickMoves)
+        ? object.subtickMoves.map((e: any) => CSubtickMoveStep.fromJSON(e))
+        : [],
+      moveCrc: isSet(object.moveCrc) ? Buffer.from(bytesFromBase64(object.moveCrc)) : Buffer.alloc(0),
+      fixangleTick: isSet(object.fixangleTick) ? Number(object.fixangleTick) : 0,
+    };
+  },
+
+  toJSON(message: CBaseUserCmdPB): unknown {
+    const obj: any = {};
+    message.commandNumber !== undefined && (obj.commandNumber = Math.round(message.commandNumber));
+    message.tickCount !== undefined && (obj.tickCount = Math.round(message.tickCount));
+    message.buttonsPb !== undefined &&
+      (obj.buttonsPb = message.buttonsPb ? CInButtonStatePB.toJSON(message.buttonsPb) : undefined);
+    message.viewangles !== undefined &&
+      (obj.viewangles = message.viewangles ? CMsgQAngle.toJSON(message.viewangles) : undefined);
+    message.forwardmove !== undefined && (obj.forwardmove = message.forwardmove);
+    message.leftmove !== undefined && (obj.leftmove = message.leftmove);
+    message.upmove !== undefined && (obj.upmove = message.upmove);
+    message.impulse !== undefined && (obj.impulse = Math.round(message.impulse));
+    message.weaponselect !== undefined && (obj.weaponselect = Math.round(message.weaponselect));
+    message.randomSeed !== undefined && (obj.randomSeed = Math.round(message.randomSeed));
+    message.mousedx !== undefined && (obj.mousedx = Math.round(message.mousedx));
+    message.mousedy !== undefined && (obj.mousedy = Math.round(message.mousedy));
+    message.hasbeenpredicted !== undefined && (obj.hasbeenpredicted = message.hasbeenpredicted);
+    message.pawnEntityHandle !== undefined && (obj.pawnEntityHandle = Math.round(message.pawnEntityHandle));
+    if (message.subtickMoves) {
+      obj.subtickMoves = message.subtickMoves.map((e) => e ? CSubtickMoveStep.toJSON(e) : undefined);
+    } else {
+      obj.subtickMoves = [];
+    }
+    message.moveCrc !== undefined &&
+      (obj.moveCrc = base64FromBytes(message.moveCrc !== undefined ? message.moveCrc : Buffer.alloc(0)));
+    message.fixangleTick !== undefined && (obj.fixangleTick = Math.round(message.fixangleTick));
+    return obj;
+  },
 };
 
 function createBaseCUserCmdBasePB(): CUserCmdBasePB {
@@ -399,7 +484,61 @@ export const CUserCmdBasePB = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserCmdBasePB {
+    return { base: isSet(object.base) ? CBaseUserCmdPB.fromJSON(object.base) : undefined };
+  },
+
+  toJSON(message: CUserCmdBasePB): unknown {
+    const obj: any = {};
+    message.base !== undefined && (obj.base = message.base ? CBaseUserCmdPB.toJSON(message.base) : undefined);
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if (tsProtoGlobalThis.Buffer) {
+    return Uint8Array.from(tsProtoGlobalThis.Buffer.from(b64, "base64"));
+  } else {
+    const bin = tsProtoGlobalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if (tsProtoGlobalThis.Buffer) {
+    return tsProtoGlobalThis.Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(String.fromCharCode(byte));
+    });
+    return tsProtoGlobalThis.btoa(bin.join(""));
+  }
+}
 
 function longToString(long: Long) {
   return long.toString();
@@ -408,4 +547,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

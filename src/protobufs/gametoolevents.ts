@@ -111,6 +111,16 @@ export const ChangeMapToolEvent = {
     }
     return message;
   },
+
+  fromJSON(object: any): ChangeMapToolEvent {
+    return { mapname: isSet(object.mapname) ? String(object.mapname) : "" };
+  },
+
+  toJSON(message: ChangeMapToolEvent): unknown {
+    const obj: any = {};
+    message.mapname !== undefined && (obj.mapname = message.mapname);
+    return obj;
+  },
 };
 
 function createBaseTraceRayServerToolEvent(): TraceRayServerToolEvent {
@@ -156,6 +166,20 @@ export const TraceRayServerToolEvent = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): TraceRayServerToolEvent {
+    return {
+      start: isSet(object.start) ? CMsgVector.fromJSON(object.start) : undefined,
+      end: isSet(object.end) ? CMsgVector.fromJSON(object.end) : undefined,
+    };
+  },
+
+  toJSON(message: TraceRayServerToolEvent): unknown {
+    const obj: any = {};
+    message.start !== undefined && (obj.start = message.start ? CMsgVector.toJSON(message.start) : undefined);
+    message.end !== undefined && (obj.end = message.end ? CMsgVector.toJSON(message.end) : undefined);
+    return obj;
   },
 };
 
@@ -243,6 +267,28 @@ export const ToolTraceRayResult = {
     }
     return message;
   },
+
+  fromJSON(object: any): ToolTraceRayResult {
+    return {
+      hit: isSet(object.hit) ? Boolean(object.hit) : false,
+      impact: isSet(object.impact) ? CMsgVector.fromJSON(object.impact) : undefined,
+      normal: isSet(object.normal) ? CMsgVector.fromJSON(object.normal) : undefined,
+      distance: isSet(object.distance) ? Number(object.distance) : 0,
+      fraction: isSet(object.fraction) ? Number(object.fraction) : 0,
+      ehandle: isSet(object.ehandle) ? Number(object.ehandle) : 0,
+    };
+  },
+
+  toJSON(message: ToolTraceRayResult): unknown {
+    const obj: any = {};
+    message.hit !== undefined && (obj.hit = message.hit);
+    message.impact !== undefined && (obj.impact = message.impact ? CMsgVector.toJSON(message.impact) : undefined);
+    message.normal !== undefined && (obj.normal = message.normal ? CMsgVector.toJSON(message.normal) : undefined);
+    message.distance !== undefined && (obj.distance = message.distance);
+    message.fraction !== undefined && (obj.fraction = message.fraction);
+    message.ehandle !== undefined && (obj.ehandle = Math.round(message.ehandle));
+    return obj;
+  },
 };
 
 function createBaseSpawnEntityToolEvent(): SpawnEntityToolEvent {
@@ -289,6 +335,25 @@ export const SpawnEntityToolEvent = {
     }
     return message;
   },
+
+  fromJSON(object: any): SpawnEntityToolEvent {
+    return {
+      entityKeyvalues: isSet(object.entityKeyvalues)
+        ? Buffer.from(bytesFromBase64(object.entityKeyvalues))
+        : Buffer.alloc(0),
+      clientsideentity: isSet(object.clientsideentity) ? Boolean(object.clientsideentity) : false,
+    };
+  },
+
+  toJSON(message: SpawnEntityToolEvent): unknown {
+    const obj: any = {};
+    message.entityKeyvalues !== undefined &&
+      (obj.entityKeyvalues = base64FromBytes(
+        message.entityKeyvalues !== undefined ? message.entityKeyvalues : Buffer.alloc(0),
+      ));
+    message.clientsideentity !== undefined && (obj.clientsideentity = message.clientsideentity);
+    return obj;
+  },
 };
 
 function createBaseSpawnEntityToolEventResult(): SpawnEntityToolEventResult {
@@ -324,6 +389,16 @@ export const SpawnEntityToolEventResult = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): SpawnEntityToolEventResult {
+    return { ehandle: isSet(object.ehandle) ? Number(object.ehandle) : 0 };
+  },
+
+  toJSON(message: SpawnEntityToolEventResult): unknown {
+    const obj: any = {};
+    message.ehandle !== undefined && (obj.ehandle = Math.round(message.ehandle));
+    return obj;
   },
 };
 
@@ -361,6 +436,16 @@ export const DestroyEntityToolEvent = {
     }
     return message;
   },
+
+  fromJSON(object: any): DestroyEntityToolEvent {
+    return { ehandle: isSet(object.ehandle) ? Number(object.ehandle) : 0 };
+  },
+
+  toJSON(message: DestroyEntityToolEvent): unknown {
+    const obj: any = {};
+    message.ehandle !== undefined && (obj.ehandle = Math.round(message.ehandle));
+    return obj;
+  },
 };
 
 function createBaseDestroyAllEntitiesToolEvent(): DestroyAllEntitiesToolEvent {
@@ -387,6 +472,15 @@ export const DestroyAllEntitiesToolEvent = {
     }
     return message;
   },
+
+  fromJSON(_: any): DestroyAllEntitiesToolEvent {
+    return {};
+  },
+
+  toJSON(_: DestroyAllEntitiesToolEvent): unknown {
+    const obj: any = {};
+    return obj;
+  },
 };
 
 function createBaseRestartMapToolEvent(): RestartMapToolEvent {
@@ -412,6 +506,15 @@ export const RestartMapToolEvent = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): RestartMapToolEvent {
+    return {};
+  },
+
+  toJSON(_: RestartMapToolEvent): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -458,6 +561,20 @@ export const ToolEventGetEntityInfo = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): ToolEventGetEntityInfo {
+    return {
+      ehandle: isSet(object.ehandle) ? Number(object.ehandle) : 0,
+      clientsideentity: isSet(object.clientsideentity) ? Boolean(object.clientsideentity) : false,
+    };
+  },
+
+  toJSON(message: ToolEventGetEntityInfo): unknown {
+    const obj: any = {};
+    message.ehandle !== undefined && (obj.ehandle = Math.round(message.ehandle));
+    message.clientsideentity !== undefined && (obj.clientsideentity = message.clientsideentity);
+    return obj;
   },
 };
 
@@ -545,6 +662,28 @@ export const ToolEventGetEntityInfoResult = {
     }
     return message;
   },
+
+  fromJSON(object: any): ToolEventGetEntityInfoResult {
+    return {
+      cppclass: isSet(object.cppclass) ? String(object.cppclass) : "",
+      classname: isSet(object.classname) ? String(object.classname) : "",
+      name: isSet(object.name) ? String(object.name) : "",
+      origin: isSet(object.origin) ? CMsgVector.fromJSON(object.origin) : undefined,
+      mins: isSet(object.mins) ? CMsgVector.fromJSON(object.mins) : undefined,
+      maxs: isSet(object.maxs) ? CMsgVector.fromJSON(object.maxs) : undefined,
+    };
+  },
+
+  toJSON(message: ToolEventGetEntityInfoResult): unknown {
+    const obj: any = {};
+    message.cppclass !== undefined && (obj.cppclass = message.cppclass);
+    message.classname !== undefined && (obj.classname = message.classname);
+    message.name !== undefined && (obj.name = message.name);
+    message.origin !== undefined && (obj.origin = message.origin ? CMsgVector.toJSON(message.origin) : undefined);
+    message.mins !== undefined && (obj.mins = message.mins ? CMsgVector.toJSON(message.mins) : undefined);
+    message.maxs !== undefined && (obj.maxs = message.maxs ? CMsgVector.toJSON(message.maxs) : undefined);
+    return obj;
+  },
 };
 
 function createBaseToolEventGetEntityInputs(): ToolEventGetEntityInputs {
@@ -591,6 +730,20 @@ export const ToolEventGetEntityInputs = {
     }
     return message;
   },
+
+  fromJSON(object: any): ToolEventGetEntityInputs {
+    return {
+      ehandle: isSet(object.ehandle) ? Number(object.ehandle) : 0,
+      clientsideentity: isSet(object.clientsideentity) ? Boolean(object.clientsideentity) : false,
+    };
+  },
+
+  toJSON(message: ToolEventGetEntityInputs): unknown {
+    const obj: any = {};
+    message.ehandle !== undefined && (obj.ehandle = Math.round(message.ehandle));
+    message.clientsideentity !== undefined && (obj.clientsideentity = message.clientsideentity);
+    return obj;
+  },
 };
 
 function createBaseToolEventGetEntityInputsResult(): ToolEventGetEntityInputsResult {
@@ -626,6 +779,20 @@ export const ToolEventGetEntityInputsResult = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): ToolEventGetEntityInputsResult {
+    return { inputList: Array.isArray(object?.inputList) ? object.inputList.map((e: any) => String(e)) : [] };
+  },
+
+  toJSON(message: ToolEventGetEntityInputsResult): unknown {
+    const obj: any = {};
+    if (message.inputList) {
+      obj.inputList = message.inputList.map((e) => e);
+    } else {
+      obj.inputList = [];
+    }
+    return obj;
   },
 };
 
@@ -693,6 +860,24 @@ export const ToolEventFireEntityInput = {
     }
     return message;
   },
+
+  fromJSON(object: any): ToolEventFireEntityInput {
+    return {
+      ehandle: isSet(object.ehandle) ? Number(object.ehandle) : 0,
+      clientsideentity: isSet(object.clientsideentity) ? Boolean(object.clientsideentity) : false,
+      inputName: isSet(object.inputName) ? String(object.inputName) : "",
+      inputParam: isSet(object.inputParam) ? String(object.inputParam) : "",
+    };
+  },
+
+  toJSON(message: ToolEventFireEntityInput): unknown {
+    const obj: any = {};
+    message.ehandle !== undefined && (obj.ehandle = Math.round(message.ehandle));
+    message.clientsideentity !== undefined && (obj.clientsideentity = message.clientsideentity);
+    message.inputName !== undefined && (obj.inputName = message.inputName);
+    message.inputParam !== undefined && (obj.inputParam = message.inputParam);
+    return obj;
+  },
 };
 
 function createBaseToolEventSFMRecordingStateChanged(): ToolEventSFMRecordingStateChanged {
@@ -728,6 +913,16 @@ export const ToolEventSFMRecordingStateChanged = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): ToolEventSFMRecordingStateChanged {
+    return { isrecording: isSet(object.isrecording) ? Boolean(object.isrecording) : false };
+  },
+
+  toJSON(message: ToolEventSFMRecordingStateChanged): unknown {
+    const obj: any = {};
+    message.isrecording !== undefined && (obj.isrecording = message.isrecording);
+    return obj;
   },
 };
 
@@ -765,4 +960,62 @@ export const ToolEventSFMToolActiveStateChanged = {
     }
     return message;
   },
+
+  fromJSON(object: any): ToolEventSFMToolActiveStateChanged {
+    return { isactive: isSet(object.isactive) ? Boolean(object.isactive) : false };
+  },
+
+  toJSON(message: ToolEventSFMToolActiveStateChanged): unknown {
+    const obj: any = {};
+    message.isactive !== undefined && (obj.isactive = message.isactive);
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if (tsProtoGlobalThis.Buffer) {
+    return Uint8Array.from(tsProtoGlobalThis.Buffer.from(b64, "base64"));
+  } else {
+    const bin = tsProtoGlobalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if (tsProtoGlobalThis.Buffer) {
+    return tsProtoGlobalThis.Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(String.fromCharCode(byte));
+    });
+    return tsProtoGlobalThis.btoa(bin.join(""));
+  }
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
+}

@@ -156,6 +156,48 @@ export const C2SCONNECTMessage = {
     }
     return message;
   },
+
+  fromJSON(object: any): C2SCONNECTMessage {
+    return {
+      hostVersion: isSet(object.hostVersion) ? Number(object.hostVersion) : 0,
+      authProtocol: isSet(object.authProtocol) ? Number(object.authProtocol) : 0,
+      challengeNumber: isSet(object.challengeNumber) ? Number(object.challengeNumber) : 0,
+      reservationCookie: isSet(object.reservationCookie) ? String(object.reservationCookie) : "0",
+      lowViolence: isSet(object.lowViolence) ? Boolean(object.lowViolence) : false,
+      encryptedPassword: isSet(object.encryptedPassword)
+        ? Buffer.from(bytesFromBase64(object.encryptedPassword))
+        : Buffer.alloc(0),
+      splitplayers: Array.isArray(object?.splitplayers)
+        ? object.splitplayers.map((e: any) => CCLCMsgSplitPlayerConnect.fromJSON(e))
+        : [],
+      authSteam: isSet(object.authSteam) ? Buffer.from(bytesFromBase64(object.authSteam)) : Buffer.alloc(0),
+      challengeContext: isSet(object.challengeContext) ? String(object.challengeContext) : "",
+      useSnp: isSet(object.useSnp) ? Number(object.useSnp) : 0,
+    };
+  },
+
+  toJSON(message: C2SCONNECTMessage): unknown {
+    const obj: any = {};
+    message.hostVersion !== undefined && (obj.hostVersion = Math.round(message.hostVersion));
+    message.authProtocol !== undefined && (obj.authProtocol = Math.round(message.authProtocol));
+    message.challengeNumber !== undefined && (obj.challengeNumber = Math.round(message.challengeNumber));
+    message.reservationCookie !== undefined && (obj.reservationCookie = message.reservationCookie);
+    message.lowViolence !== undefined && (obj.lowViolence = message.lowViolence);
+    message.encryptedPassword !== undefined &&
+      (obj.encryptedPassword = base64FromBytes(
+        message.encryptedPassword !== undefined ? message.encryptedPassword : Buffer.alloc(0),
+      ));
+    if (message.splitplayers) {
+      obj.splitplayers = message.splitplayers.map((e) => e ? CCLCMsgSplitPlayerConnect.toJSON(e) : undefined);
+    } else {
+      obj.splitplayers = [];
+    }
+    message.authSteam !== undefined &&
+      (obj.authSteam = base64FromBytes(message.authSteam !== undefined ? message.authSteam : Buffer.alloc(0)));
+    message.challengeContext !== undefined && (obj.challengeContext = message.challengeContext);
+    message.useSnp !== undefined && (obj.useSnp = Math.round(message.useSnp));
+    return obj;
+  },
 };
 
 function createBaseC2SCONNECTIONMessage(): C2SCONNECTIONMessage {
@@ -202,7 +244,65 @@ export const C2SCONNECTIONMessage = {
     }
     return message;
   },
+
+  fromJSON(object: any): C2SCONNECTIONMessage {
+    return {
+      addonName: isSet(object.addonName) ? String(object.addonName) : "",
+      useSnp: isSet(object.useSnp) ? Boolean(object.useSnp) : false,
+    };
+  },
+
+  toJSON(message: C2SCONNECTIONMessage): unknown {
+    const obj: any = {};
+    message.addonName !== undefined && (obj.addonName = message.addonName);
+    message.useSnp !== undefined && (obj.useSnp = message.useSnp);
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if (tsProtoGlobalThis.Buffer) {
+    return Uint8Array.from(tsProtoGlobalThis.Buffer.from(b64, "base64"));
+  } else {
+    const bin = tsProtoGlobalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if (tsProtoGlobalThis.Buffer) {
+    return tsProtoGlobalThis.Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(String.fromCharCode(byte));
+    });
+    return tsProtoGlobalThis.btoa(bin.join(""));
+  }
+}
 
 function longToString(long: Long) {
   return long.toString();
@@ -211,4 +311,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

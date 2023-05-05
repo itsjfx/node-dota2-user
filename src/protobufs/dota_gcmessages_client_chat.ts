@@ -1,7 +1,14 @@
 /* eslint-disable */
 import Long from "long";
 import _m0 from "protobufjs/minimal";
-import { DOTAChatChannelTypeT, EChatSpecialPrivileges } from "./dota_shared_enums";
+import {
+  DOTAChatChannelTypeT,
+  dOTAChatChannelTypeTFromJSON,
+  dOTAChatChannelTypeTToJSON,
+  EChatSpecialPrivileges,
+  eChatSpecialPrivilegesFromJSON,
+  eChatSpecialPrivilegesToJSON,
+} from "./dota_shared_enums";
 
 export interface CMsgClientToGCPrivateChatInvite {
   privateChatChannelName: string;
@@ -45,6 +52,103 @@ export enum CMsgGCToClientPrivateChatResponse_Result {
   FAILURE_UNKNOWN_ERROR = 13,
   FAILURE_CANNOT_KICK_ADMIN = 14,
   FAILURE_ALREADY_ADMIN = 15,
+}
+
+export function cMsgGCToClientPrivateChatResponse_ResultFromJSON(
+  object: any,
+): CMsgGCToClientPrivateChatResponse_Result {
+  switch (object) {
+    case 0:
+    case "SUCCESS":
+      return CMsgGCToClientPrivateChatResponse_Result.SUCCESS;
+    case 1:
+    case "FAILURE_CREATION_LOCK":
+      return CMsgGCToClientPrivateChatResponse_Result.FAILURE_CREATION_LOCK;
+    case 2:
+    case "FAILURE_SQL_TRANSACTION":
+      return CMsgGCToClientPrivateChatResponse_Result.FAILURE_SQL_TRANSACTION;
+    case 3:
+    case "FAILURE_SDO_LOAD":
+      return CMsgGCToClientPrivateChatResponse_Result.FAILURE_SDO_LOAD;
+    case 4:
+    case "FAILURE_NO_PERMISSION":
+      return CMsgGCToClientPrivateChatResponse_Result.FAILURE_NO_PERMISSION;
+    case 5:
+    case "FAILURE_ALREADY_MEMBER":
+      return CMsgGCToClientPrivateChatResponse_Result.FAILURE_ALREADY_MEMBER;
+    case 7:
+    case "FAILURE_NOT_A_MEMBER":
+      return CMsgGCToClientPrivateChatResponse_Result.FAILURE_NOT_A_MEMBER;
+    case 8:
+    case "FAILURE_NO_REMAINING_ADMINS":
+      return CMsgGCToClientPrivateChatResponse_Result.FAILURE_NO_REMAINING_ADMINS;
+    case 9:
+    case "FAILURE_NO_ROOM":
+      return CMsgGCToClientPrivateChatResponse_Result.FAILURE_NO_ROOM;
+    case 10:
+    case "FAILURE_CREATION_RATE_LIMITED":
+      return CMsgGCToClientPrivateChatResponse_Result.FAILURE_CREATION_RATE_LIMITED;
+    case 11:
+    case "FAILURE_UNKNOWN_CHANNEL_NAME":
+      return CMsgGCToClientPrivateChatResponse_Result.FAILURE_UNKNOWN_CHANNEL_NAME;
+    case 12:
+    case "FAILURE_UNKNOWN_USER":
+      return CMsgGCToClientPrivateChatResponse_Result.FAILURE_UNKNOWN_USER;
+    case 13:
+    case "FAILURE_UNKNOWN_ERROR":
+      return CMsgGCToClientPrivateChatResponse_Result.FAILURE_UNKNOWN_ERROR;
+    case 14:
+    case "FAILURE_CANNOT_KICK_ADMIN":
+      return CMsgGCToClientPrivateChatResponse_Result.FAILURE_CANNOT_KICK_ADMIN;
+    case 15:
+    case "FAILURE_ALREADY_ADMIN":
+      return CMsgGCToClientPrivateChatResponse_Result.FAILURE_ALREADY_ADMIN;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgGCToClientPrivateChatResponse_Result",
+      );
+  }
+}
+
+export function cMsgGCToClientPrivateChatResponse_ResultToJSON(
+  object: CMsgGCToClientPrivateChatResponse_Result,
+): string {
+  switch (object) {
+    case CMsgGCToClientPrivateChatResponse_Result.SUCCESS:
+      return "SUCCESS";
+    case CMsgGCToClientPrivateChatResponse_Result.FAILURE_CREATION_LOCK:
+      return "FAILURE_CREATION_LOCK";
+    case CMsgGCToClientPrivateChatResponse_Result.FAILURE_SQL_TRANSACTION:
+      return "FAILURE_SQL_TRANSACTION";
+    case CMsgGCToClientPrivateChatResponse_Result.FAILURE_SDO_LOAD:
+      return "FAILURE_SDO_LOAD";
+    case CMsgGCToClientPrivateChatResponse_Result.FAILURE_NO_PERMISSION:
+      return "FAILURE_NO_PERMISSION";
+    case CMsgGCToClientPrivateChatResponse_Result.FAILURE_ALREADY_MEMBER:
+      return "FAILURE_ALREADY_MEMBER";
+    case CMsgGCToClientPrivateChatResponse_Result.FAILURE_NOT_A_MEMBER:
+      return "FAILURE_NOT_A_MEMBER";
+    case CMsgGCToClientPrivateChatResponse_Result.FAILURE_NO_REMAINING_ADMINS:
+      return "FAILURE_NO_REMAINING_ADMINS";
+    case CMsgGCToClientPrivateChatResponse_Result.FAILURE_NO_ROOM:
+      return "FAILURE_NO_ROOM";
+    case CMsgGCToClientPrivateChatResponse_Result.FAILURE_CREATION_RATE_LIMITED:
+      return "FAILURE_CREATION_RATE_LIMITED";
+    case CMsgGCToClientPrivateChatResponse_Result.FAILURE_UNKNOWN_CHANNEL_NAME:
+      return "FAILURE_UNKNOWN_CHANNEL_NAME";
+    case CMsgGCToClientPrivateChatResponse_Result.FAILURE_UNKNOWN_USER:
+      return "FAILURE_UNKNOWN_USER";
+    case CMsgGCToClientPrivateChatResponse_Result.FAILURE_UNKNOWN_ERROR:
+      return "FAILURE_UNKNOWN_ERROR";
+    case CMsgGCToClientPrivateChatResponse_Result.FAILURE_CANNOT_KICK_ADMIN:
+      return "FAILURE_CANNOT_KICK_ADMIN";
+    case CMsgGCToClientPrivateChatResponse_Result.FAILURE_ALREADY_ADMIN:
+      return "FAILURE_ALREADY_ADMIN";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgGCToClientPrivateChatResponse_Result",
+      );
+  }
 }
 
 export interface CMsgDOTAJoinChatChannel {
@@ -171,6 +275,119 @@ export enum CMsgDOTAJoinChatChannelResponse_Result {
   NEW_PLAYER_USER_BANNED = 18,
 }
 
+export function cMsgDOTAJoinChatChannelResponse_ResultFromJSON(object: any): CMsgDOTAJoinChatChannelResponse_Result {
+  switch (object) {
+    case 0:
+    case "JOIN_SUCCESS":
+      return CMsgDOTAJoinChatChannelResponse_Result.JOIN_SUCCESS;
+    case 1:
+    case "INVALID_CHANNEL_TYPE":
+      return CMsgDOTAJoinChatChannelResponse_Result.INVALID_CHANNEL_TYPE;
+    case 2:
+    case "ACCOUNT_NOT_FOUND":
+      return CMsgDOTAJoinChatChannelResponse_Result.ACCOUNT_NOT_FOUND;
+    case 3:
+    case "ACH_FAILED":
+      return CMsgDOTAJoinChatChannelResponse_Result.ACH_FAILED;
+    case 4:
+    case "USER_IN_TOO_MANY_CHANNELS":
+      return CMsgDOTAJoinChatChannelResponse_Result.USER_IN_TOO_MANY_CHANNELS;
+    case 5:
+    case "RATE_LIMIT_EXCEEDED":
+      return CMsgDOTAJoinChatChannelResponse_Result.RATE_LIMIT_EXCEEDED;
+    case 6:
+    case "CHANNEL_FULL":
+      return CMsgDOTAJoinChatChannelResponse_Result.CHANNEL_FULL;
+    case 7:
+    case "CHANNEL_FULL_OVERFLOWED":
+      return CMsgDOTAJoinChatChannelResponse_Result.CHANNEL_FULL_OVERFLOWED;
+    case 8:
+    case "FAILED_TO_ADD_USER":
+      return CMsgDOTAJoinChatChannelResponse_Result.FAILED_TO_ADD_USER;
+    case 9:
+    case "CHANNEL_TYPE_DISABLED":
+      return CMsgDOTAJoinChatChannelResponse_Result.CHANNEL_TYPE_DISABLED;
+    case 10:
+    case "PRIVATE_CHAT_CREATE_FAILED":
+      return CMsgDOTAJoinChatChannelResponse_Result.PRIVATE_CHAT_CREATE_FAILED;
+    case 11:
+    case "PRIVATE_CHAT_NO_PERMISSION":
+      return CMsgDOTAJoinChatChannelResponse_Result.PRIVATE_CHAT_NO_PERMISSION;
+    case 12:
+    case "PRIVATE_CHAT_CREATE_LOCK_FAILED":
+      return CMsgDOTAJoinChatChannelResponse_Result.PRIVATE_CHAT_CREATE_LOCK_FAILED;
+    case 13:
+    case "PRIVATE_CHAT_KICKED":
+      return CMsgDOTAJoinChatChannelResponse_Result.PRIVATE_CHAT_KICKED;
+    case 14:
+    case "USER_NOT_ALLOWED":
+      return CMsgDOTAJoinChatChannelResponse_Result.USER_NOT_ALLOWED;
+    case 15:
+    case "ENSURE_SPECIAL_PRIVILEGES_FAILED":
+      return CMsgDOTAJoinChatChannelResponse_Result.ENSURE_SPECIAL_PRIVILEGES_FAILED;
+    case 16:
+    case "NEW_PLAYER_USER_NOT_ELIGIBLE":
+      return CMsgDOTAJoinChatChannelResponse_Result.NEW_PLAYER_USER_NOT_ELIGIBLE;
+    case 17:
+    case "SILENT_ERROR":
+      return CMsgDOTAJoinChatChannelResponse_Result.SILENT_ERROR;
+    case 18:
+    case "NEW_PLAYER_USER_BANNED":
+      return CMsgDOTAJoinChatChannelResponse_Result.NEW_PLAYER_USER_BANNED;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDOTAJoinChatChannelResponse_Result",
+      );
+  }
+}
+
+export function cMsgDOTAJoinChatChannelResponse_ResultToJSON(object: CMsgDOTAJoinChatChannelResponse_Result): string {
+  switch (object) {
+    case CMsgDOTAJoinChatChannelResponse_Result.JOIN_SUCCESS:
+      return "JOIN_SUCCESS";
+    case CMsgDOTAJoinChatChannelResponse_Result.INVALID_CHANNEL_TYPE:
+      return "INVALID_CHANNEL_TYPE";
+    case CMsgDOTAJoinChatChannelResponse_Result.ACCOUNT_NOT_FOUND:
+      return "ACCOUNT_NOT_FOUND";
+    case CMsgDOTAJoinChatChannelResponse_Result.ACH_FAILED:
+      return "ACH_FAILED";
+    case CMsgDOTAJoinChatChannelResponse_Result.USER_IN_TOO_MANY_CHANNELS:
+      return "USER_IN_TOO_MANY_CHANNELS";
+    case CMsgDOTAJoinChatChannelResponse_Result.RATE_LIMIT_EXCEEDED:
+      return "RATE_LIMIT_EXCEEDED";
+    case CMsgDOTAJoinChatChannelResponse_Result.CHANNEL_FULL:
+      return "CHANNEL_FULL";
+    case CMsgDOTAJoinChatChannelResponse_Result.CHANNEL_FULL_OVERFLOWED:
+      return "CHANNEL_FULL_OVERFLOWED";
+    case CMsgDOTAJoinChatChannelResponse_Result.FAILED_TO_ADD_USER:
+      return "FAILED_TO_ADD_USER";
+    case CMsgDOTAJoinChatChannelResponse_Result.CHANNEL_TYPE_DISABLED:
+      return "CHANNEL_TYPE_DISABLED";
+    case CMsgDOTAJoinChatChannelResponse_Result.PRIVATE_CHAT_CREATE_FAILED:
+      return "PRIVATE_CHAT_CREATE_FAILED";
+    case CMsgDOTAJoinChatChannelResponse_Result.PRIVATE_CHAT_NO_PERMISSION:
+      return "PRIVATE_CHAT_NO_PERMISSION";
+    case CMsgDOTAJoinChatChannelResponse_Result.PRIVATE_CHAT_CREATE_LOCK_FAILED:
+      return "PRIVATE_CHAT_CREATE_LOCK_FAILED";
+    case CMsgDOTAJoinChatChannelResponse_Result.PRIVATE_CHAT_KICKED:
+      return "PRIVATE_CHAT_KICKED";
+    case CMsgDOTAJoinChatChannelResponse_Result.USER_NOT_ALLOWED:
+      return "USER_NOT_ALLOWED";
+    case CMsgDOTAJoinChatChannelResponse_Result.ENSURE_SPECIAL_PRIVILEGES_FAILED:
+      return "ENSURE_SPECIAL_PRIVILEGES_FAILED";
+    case CMsgDOTAJoinChatChannelResponse_Result.NEW_PLAYER_USER_NOT_ELIGIBLE:
+      return "NEW_PLAYER_USER_NOT_ELIGIBLE";
+    case CMsgDOTAJoinChatChannelResponse_Result.SILENT_ERROR:
+      return "SILENT_ERROR";
+    case CMsgDOTAJoinChatChannelResponse_Result.NEW_PLAYER_USER_BANNED:
+      return "NEW_PLAYER_USER_BANNED";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDOTAJoinChatChannelResponse_Result",
+      );
+  }
+}
+
 export interface CMsgDOTAOtherJoinedChatChannel {
   channelId: string;
   personaName: string;
@@ -277,6 +494,20 @@ export const CMsgClientToGCPrivateChatInvite = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientToGCPrivateChatInvite {
+    return {
+      privateChatChannelName: isSet(object.privateChatChannelName) ? String(object.privateChatChannelName) : "",
+      invitedAccountId: isSet(object.invitedAccountId) ? Number(object.invitedAccountId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCPrivateChatInvite): unknown {
+    const obj: any = {};
+    message.privateChatChannelName !== undefined && (obj.privateChatChannelName = message.privateChatChannelName);
+    message.invitedAccountId !== undefined && (obj.invitedAccountId = Math.round(message.invitedAccountId));
+    return obj;
+  },
 };
 
 function createBaseCMsgClientToGCPrivateChatKick(): CMsgClientToGCPrivateChatKick {
@@ -322,6 +553,20 @@ export const CMsgClientToGCPrivateChatKick = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCPrivateChatKick {
+    return {
+      privateChatChannelName: isSet(object.privateChatChannelName) ? String(object.privateChatChannelName) : "",
+      kickAccountId: isSet(object.kickAccountId) ? Number(object.kickAccountId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCPrivateChatKick): unknown {
+    const obj: any = {};
+    message.privateChatChannelName !== undefined && (obj.privateChatChannelName = message.privateChatChannelName);
+    message.kickAccountId !== undefined && (obj.kickAccountId = Math.round(message.kickAccountId));
+    return obj;
   },
 };
 
@@ -369,6 +614,20 @@ export const CMsgClientToGCPrivateChatPromote = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientToGCPrivateChatPromote {
+    return {
+      privateChatChannelName: isSet(object.privateChatChannelName) ? String(object.privateChatChannelName) : "",
+      promoteAccountId: isSet(object.promoteAccountId) ? Number(object.promoteAccountId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCPrivateChatPromote): unknown {
+    const obj: any = {};
+    message.privateChatChannelName !== undefined && (obj.privateChatChannelName = message.privateChatChannelName);
+    message.promoteAccountId !== undefined && (obj.promoteAccountId = Math.round(message.promoteAccountId));
+    return obj;
+  },
 };
 
 function createBaseCMsgClientToGCPrivateChatDemote(): CMsgClientToGCPrivateChatDemote {
@@ -414,6 +673,20 @@ export const CMsgClientToGCPrivateChatDemote = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCPrivateChatDemote {
+    return {
+      privateChatChannelName: isSet(object.privateChatChannelName) ? String(object.privateChatChannelName) : "",
+      demoteAccountId: isSet(object.demoteAccountId) ? Number(object.demoteAccountId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCPrivateChatDemote): unknown {
+    const obj: any = {};
+    message.privateChatChannelName !== undefined && (obj.privateChatChannelName = message.privateChatChannelName);
+    message.demoteAccountId !== undefined && (obj.demoteAccountId = Math.round(message.demoteAccountId));
+    return obj;
   },
 };
 
@@ -471,6 +744,22 @@ export const CMsgGCToClientPrivateChatResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCToClientPrivateChatResponse {
+    return {
+      privateChatChannelName: isSet(object.privateChatChannelName) ? String(object.privateChatChannelName) : "",
+      result: isSet(object.result) ? cMsgGCToClientPrivateChatResponse_ResultFromJSON(object.result) : 0,
+      username: isSet(object.username) ? String(object.username) : "",
+    };
+  },
+
+  toJSON(message: CMsgGCToClientPrivateChatResponse): unknown {
+    const obj: any = {};
+    message.privateChatChannelName !== undefined && (obj.privateChatChannelName = message.privateChatChannelName);
+    message.result !== undefined && (obj.result = cMsgGCToClientPrivateChatResponse_ResultToJSON(message.result));
+    message.username !== undefined && (obj.username = message.username);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTAJoinChatChannel(): CMsgDOTAJoinChatChannel {
@@ -527,6 +816,22 @@ export const CMsgDOTAJoinChatChannel = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTAJoinChatChannel {
+    return {
+      channelName: isSet(object.channelName) ? String(object.channelName) : "",
+      channelType: isSet(object.channelType) ? dOTAChatChannelTypeTFromJSON(object.channelType) : 0,
+      silentRejection: isSet(object.silentRejection) ? Boolean(object.silentRejection) : false,
+    };
+  },
+
+  toJSON(message: CMsgDOTAJoinChatChannel): unknown {
+    const obj: any = {};
+    message.channelName !== undefined && (obj.channelName = message.channelName);
+    message.channelType !== undefined && (obj.channelType = dOTAChatChannelTypeTToJSON(message.channelType));
+    message.silentRejection !== undefined && (obj.silentRejection = message.silentRejection);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTALeaveChatChannel(): CMsgDOTALeaveChatChannel {
@@ -562,6 +867,16 @@ export const CMsgDOTALeaveChatChannel = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTALeaveChatChannel {
+    return { channelId: isSet(object.channelId) ? String(object.channelId) : "0" };
+  },
+
+  toJSON(message: CMsgDOTALeaveChatChannel): unknown {
+    const obj: any = {};
+    message.channelId !== undefined && (obj.channelId = message.channelId);
+    return obj;
   },
 };
 
@@ -608,6 +923,20 @@ export const CMsgGCChatReportPublicSpam = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCChatReportPublicSpam {
+    return {
+      channelId: isSet(object.channelId) ? String(object.channelId) : "0",
+      channelUserId: isSet(object.channelUserId) ? Number(object.channelUserId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgGCChatReportPublicSpam): unknown {
+    const obj: any = {};
+    message.channelId !== undefined && (obj.channelId = message.channelId);
+    message.channelUserId !== undefined && (obj.channelUserId = Math.round(message.channelUserId));
+    return obj;
   },
 };
 
@@ -664,6 +993,22 @@ export const CMsgDOTAChatModeratorBan = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAChatModeratorBan {
+    return {
+      channelId: isSet(object.channelId) ? String(object.channelId) : "0",
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      duration: isSet(object.duration) ? Number(object.duration) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTAChatModeratorBan): unknown {
+    const obj: any = {};
+    message.channelId !== undefined && (obj.channelId = message.channelId);
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.duration !== undefined && (obj.duration = Math.round(message.duration));
+    return obj;
   },
 };
 
@@ -1110,6 +1455,110 @@ export const CMsgDOTAChatMessage = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTAChatMessage {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      channelId: isSet(object.channelId) ? String(object.channelId) : "0",
+      personaName: isSet(object.personaName) ? String(object.personaName) : "",
+      text: isSet(object.text) ? String(object.text) : "",
+      timestamp: isSet(object.timestamp) ? Number(object.timestamp) : 0,
+      suggestInviteAccountId: isSet(object.suggestInviteAccountId) ? Number(object.suggestInviteAccountId) : 0,
+      suggestInviteName: isSet(object.suggestInviteName) ? String(object.suggestInviteName) : "",
+      fantasyDraftOwnerAccountId: isSet(object.fantasyDraftOwnerAccountId)
+        ? Number(object.fantasyDraftOwnerAccountId)
+        : 0,
+      fantasyDraftPlayerAccountId: isSet(object.fantasyDraftPlayerAccountId)
+        ? Number(object.fantasyDraftPlayerAccountId)
+        : 0,
+      eventId: isSet(object.eventId) ? Number(object.eventId) : 0,
+      suggestInviteToLobby: isSet(object.suggestInviteToLobby) ? Boolean(object.suggestInviteToLobby) : false,
+      eventPoints: isSet(object.eventPoints) ? Number(object.eventPoints) : 0,
+      coinFlip: isSet(object.coinFlip) ? Boolean(object.coinFlip) : false,
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      shareProfileAccountId: isSet(object.shareProfileAccountId) ? Number(object.shareProfileAccountId) : 0,
+      channelUserId: isSet(object.channelUserId) ? Number(object.channelUserId) : 0,
+      diceRoll: isSet(object.diceRoll) ? CMsgDOTAChatMessage_DiceRoll.fromJSON(object.diceRoll) : undefined,
+      sharePartyId: isSet(object.sharePartyId) ? String(object.sharePartyId) : "0",
+      shareLobbyId: isSet(object.shareLobbyId) ? String(object.shareLobbyId) : "0",
+      shareLobbyCustomGameId: isSet(object.shareLobbyCustomGameId) ? String(object.shareLobbyCustomGameId) : "0",
+      shareLobbyPasskey: isSet(object.shareLobbyPasskey) ? String(object.shareLobbyPasskey) : "",
+      privateChatChannelId: isSet(object.privateChatChannelId) ? Number(object.privateChatChannelId) : 0,
+      status: isSet(object.status) ? Number(object.status) : 0,
+      legacyBattleCupVictory: isSet(object.legacyBattleCupVictory) ? Boolean(object.legacyBattleCupVictory) : false,
+      battleCupStreak: isSet(object.battleCupStreak) ? Number(object.battleCupStreak) : 0,
+      badgeLevel: isSet(object.badgeLevel) ? Number(object.badgeLevel) : 0,
+      suggestPickHeroId: isSet(object.suggestPickHeroId) ? Number(object.suggestPickHeroId) : 0,
+      suggestPickHeroRole: isSet(object.suggestPickHeroRole) ? String(object.suggestPickHeroRole) : "",
+      suggestBanHeroId: isSet(object.suggestBanHeroId) ? Number(object.suggestBanHeroId) : 0,
+      triviaAnswer: isSet(object.triviaAnswer)
+        ? CMsgDOTAChatMessage_TriviaAnswered.fromJSON(object.triviaAnswer)
+        : undefined,
+      requestedAbilityId: isSet(object.requestedAbilityId) ? Number(object.requestedAbilityId) : 0,
+      chatFlags: isSet(object.chatFlags) ? Number(object.chatFlags) : 0,
+      startedFindingMatch: isSet(object.startedFindingMatch) ? Boolean(object.startedFindingMatch) : false,
+      ctrlIsDown: isSet(object.ctrlIsDown) ? Boolean(object.ctrlIsDown) : false,
+      favoriteTeamId: isSet(object.favoriteTeamId) ? Number(object.favoriteTeamId) : 0,
+      favoriteTeamQuality: isSet(object.favoriteTeamQuality) ? Number(object.favoriteTeamQuality) : 0,
+      suggestPlayerDraftPick: isSet(object.suggestPlayerDraftPick) ? Number(object.suggestPlayerDraftPick) : 0,
+      playerDraftPick: isSet(object.playerDraftPick)
+        ? CMsgDOTAChatMessage_PlayerDraftPick.fromJSON(object.playerDraftPick)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CMsgDOTAChatMessage): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.channelId !== undefined && (obj.channelId = message.channelId);
+    message.personaName !== undefined && (obj.personaName = message.personaName);
+    message.text !== undefined && (obj.text = message.text);
+    message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
+    message.suggestInviteAccountId !== undefined &&
+      (obj.suggestInviteAccountId = Math.round(message.suggestInviteAccountId));
+    message.suggestInviteName !== undefined && (obj.suggestInviteName = message.suggestInviteName);
+    message.fantasyDraftOwnerAccountId !== undefined &&
+      (obj.fantasyDraftOwnerAccountId = Math.round(message.fantasyDraftOwnerAccountId));
+    message.fantasyDraftPlayerAccountId !== undefined &&
+      (obj.fantasyDraftPlayerAccountId = Math.round(message.fantasyDraftPlayerAccountId));
+    message.eventId !== undefined && (obj.eventId = Math.round(message.eventId));
+    message.suggestInviteToLobby !== undefined && (obj.suggestInviteToLobby = message.suggestInviteToLobby);
+    message.eventPoints !== undefined && (obj.eventPoints = Math.round(message.eventPoints));
+    message.coinFlip !== undefined && (obj.coinFlip = message.coinFlip);
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.shareProfileAccountId !== undefined &&
+      (obj.shareProfileAccountId = Math.round(message.shareProfileAccountId));
+    message.channelUserId !== undefined && (obj.channelUserId = Math.round(message.channelUserId));
+    message.diceRoll !== undefined &&
+      (obj.diceRoll = message.diceRoll ? CMsgDOTAChatMessage_DiceRoll.toJSON(message.diceRoll) : undefined);
+    message.sharePartyId !== undefined && (obj.sharePartyId = message.sharePartyId);
+    message.shareLobbyId !== undefined && (obj.shareLobbyId = message.shareLobbyId);
+    message.shareLobbyCustomGameId !== undefined && (obj.shareLobbyCustomGameId = message.shareLobbyCustomGameId);
+    message.shareLobbyPasskey !== undefined && (obj.shareLobbyPasskey = message.shareLobbyPasskey);
+    message.privateChatChannelId !== undefined && (obj.privateChatChannelId = Math.round(message.privateChatChannelId));
+    message.status !== undefined && (obj.status = Math.round(message.status));
+    message.legacyBattleCupVictory !== undefined && (obj.legacyBattleCupVictory = message.legacyBattleCupVictory);
+    message.battleCupStreak !== undefined && (obj.battleCupStreak = Math.round(message.battleCupStreak));
+    message.badgeLevel !== undefined && (obj.badgeLevel = Math.round(message.badgeLevel));
+    message.suggestPickHeroId !== undefined && (obj.suggestPickHeroId = Math.round(message.suggestPickHeroId));
+    message.suggestPickHeroRole !== undefined && (obj.suggestPickHeroRole = message.suggestPickHeroRole);
+    message.suggestBanHeroId !== undefined && (obj.suggestBanHeroId = Math.round(message.suggestBanHeroId));
+    message.triviaAnswer !== undefined && (obj.triviaAnswer = message.triviaAnswer
+      ? CMsgDOTAChatMessage_TriviaAnswered.toJSON(message.triviaAnswer)
+      : undefined);
+    message.requestedAbilityId !== undefined && (obj.requestedAbilityId = Math.round(message.requestedAbilityId));
+    message.chatFlags !== undefined && (obj.chatFlags = Math.round(message.chatFlags));
+    message.startedFindingMatch !== undefined && (obj.startedFindingMatch = message.startedFindingMatch);
+    message.ctrlIsDown !== undefined && (obj.ctrlIsDown = message.ctrlIsDown);
+    message.favoriteTeamId !== undefined && (obj.favoriteTeamId = Math.round(message.favoriteTeamId));
+    message.favoriteTeamQuality !== undefined && (obj.favoriteTeamQuality = Math.round(message.favoriteTeamQuality));
+    message.suggestPlayerDraftPick !== undefined &&
+      (obj.suggestPlayerDraftPick = Math.round(message.suggestPlayerDraftPick));
+    message.playerDraftPick !== undefined && (obj.playerDraftPick = message.playerDraftPick
+      ? CMsgDOTAChatMessage_PlayerDraftPick.toJSON(message.playerDraftPick)
+      : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTAChatMessage_DiceRoll(): CMsgDOTAChatMessage_DiceRoll {
@@ -1165,6 +1614,22 @@ export const CMsgDOTAChatMessage_DiceRoll = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAChatMessage_DiceRoll {
+    return {
+      rollMin: isSet(object.rollMin) ? Number(object.rollMin) : 0,
+      rollMax: isSet(object.rollMax) ? Number(object.rollMax) : 0,
+      result: isSet(object.result) ? Number(object.result) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTAChatMessage_DiceRoll): unknown {
+    const obj: any = {};
+    message.rollMin !== undefined && (obj.rollMin = Math.round(message.rollMin));
+    message.rollMax !== undefined && (obj.rollMax = Math.round(message.rollMax));
+    message.result !== undefined && (obj.result = Math.round(message.result));
+    return obj;
   },
 };
 
@@ -1242,6 +1707,27 @@ export const CMsgDOTAChatMessage_TriviaAnswered = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTAChatMessage_TriviaAnswered {
+    return {
+      questionId: isSet(object.questionId) ? Number(object.questionId) : 0,
+      answerIndex: isSet(object.answerIndex) ? Number(object.answerIndex) : 0,
+      partyQuestionsCorrect: isSet(object.partyQuestionsCorrect) ? Number(object.partyQuestionsCorrect) : 0,
+      partyQuestionsViewed: isSet(object.partyQuestionsViewed) ? Number(object.partyQuestionsViewed) : 0,
+      partyTriviaPoints: isSet(object.partyTriviaPoints) ? Number(object.partyTriviaPoints) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTAChatMessage_TriviaAnswered): unknown {
+    const obj: any = {};
+    message.questionId !== undefined && (obj.questionId = Math.round(message.questionId));
+    message.answerIndex !== undefined && (obj.answerIndex = Math.round(message.answerIndex));
+    message.partyQuestionsCorrect !== undefined &&
+      (obj.partyQuestionsCorrect = Math.round(message.partyQuestionsCorrect));
+    message.partyQuestionsViewed !== undefined && (obj.partyQuestionsViewed = Math.round(message.partyQuestionsViewed));
+    message.partyTriviaPoints !== undefined && (obj.partyTriviaPoints = Math.round(message.partyTriviaPoints));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTAChatMessage_PlayerDraftPick(): CMsgDOTAChatMessage_PlayerDraftPick {
@@ -1287,6 +1773,20 @@ export const CMsgDOTAChatMessage_PlayerDraftPick = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAChatMessage_PlayerDraftPick {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      team: isSet(object.team) ? Number(object.team) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTAChatMessage_PlayerDraftPick): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.team !== undefined && (obj.team = Math.round(message.team));
+    return obj;
   },
 };
 
@@ -1353,6 +1853,24 @@ export const CMsgDOTAChatMember = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAChatMember {
+    return {
+      steamId: isSet(object.steamId) ? String(object.steamId) : "0",
+      personaName: isSet(object.personaName) ? String(object.personaName) : "",
+      channelUserId: isSet(object.channelUserId) ? Number(object.channelUserId) : 0,
+      status: isSet(object.status) ? Number(object.status) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTAChatMember): unknown {
+    const obj: any = {};
+    message.steamId !== undefined && (obj.steamId = message.steamId);
+    message.personaName !== undefined && (obj.personaName = message.personaName);
+    message.channelUserId !== undefined && (obj.channelUserId = Math.round(message.channelUserId));
+    message.status !== undefined && (obj.status = Math.round(message.status));
+    return obj;
   },
 };
 
@@ -1502,6 +2020,43 @@ export const CMsgDOTAJoinChatChannelResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTAJoinChatChannelResponse {
+    return {
+      response: isSet(object.response) ? Number(object.response) : 0,
+      channelName: isSet(object.channelName) ? String(object.channelName) : "",
+      channelId: isSet(object.channelId) ? String(object.channelId) : "0",
+      maxMembers: isSet(object.maxMembers) ? Number(object.maxMembers) : 0,
+      members: Array.isArray(object?.members) ? object.members.map((e: any) => CMsgDOTAChatMember.fromJSON(e)) : [],
+      channelType: isSet(object.channelType) ? dOTAChatChannelTypeTFromJSON(object.channelType) : 0,
+      result: isSet(object.result) ? cMsgDOTAJoinChatChannelResponse_ResultFromJSON(object.result) : 0,
+      gcInitiatedJoin: isSet(object.gcInitiatedJoin) ? Boolean(object.gcInitiatedJoin) : false,
+      channelUserId: isSet(object.channelUserId) ? Number(object.channelUserId) : 0,
+      welcomeMessage: isSet(object.welcomeMessage) ? String(object.welcomeMessage) : "",
+      specialPrivileges: isSet(object.specialPrivileges) ? eChatSpecialPrivilegesFromJSON(object.specialPrivileges) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTAJoinChatChannelResponse): unknown {
+    const obj: any = {};
+    message.response !== undefined && (obj.response = Math.round(message.response));
+    message.channelName !== undefined && (obj.channelName = message.channelName);
+    message.channelId !== undefined && (obj.channelId = message.channelId);
+    message.maxMembers !== undefined && (obj.maxMembers = Math.round(message.maxMembers));
+    if (message.members) {
+      obj.members = message.members.map((e) => e ? CMsgDOTAChatMember.toJSON(e) : undefined);
+    } else {
+      obj.members = [];
+    }
+    message.channelType !== undefined && (obj.channelType = dOTAChatChannelTypeTToJSON(message.channelType));
+    message.result !== undefined && (obj.result = cMsgDOTAJoinChatChannelResponse_ResultToJSON(message.result));
+    message.gcInitiatedJoin !== undefined && (obj.gcInitiatedJoin = message.gcInitiatedJoin);
+    message.channelUserId !== undefined && (obj.channelUserId = Math.round(message.channelUserId));
+    message.welcomeMessage !== undefined && (obj.welcomeMessage = message.welcomeMessage);
+    message.specialPrivileges !== undefined &&
+      (obj.specialPrivileges = eChatSpecialPrivilegesToJSON(message.specialPrivileges));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTAOtherJoinedChatChannel(): CMsgDOTAOtherJoinedChatChannel {
@@ -1578,6 +2133,26 @@ export const CMsgDOTAOtherJoinedChatChannel = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTAOtherJoinedChatChannel {
+    return {
+      channelId: isSet(object.channelId) ? String(object.channelId) : "0",
+      personaName: isSet(object.personaName) ? String(object.personaName) : "",
+      steamId: isSet(object.steamId) ? String(object.steamId) : "0",
+      channelUserId: isSet(object.channelUserId) ? Number(object.channelUserId) : 0,
+      status: isSet(object.status) ? Number(object.status) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTAOtherJoinedChatChannel): unknown {
+    const obj: any = {};
+    message.channelId !== undefined && (obj.channelId = message.channelId);
+    message.personaName !== undefined && (obj.personaName = message.personaName);
+    message.steamId !== undefined && (obj.steamId = message.steamId);
+    message.channelUserId !== undefined && (obj.channelUserId = Math.round(message.channelUserId));
+    message.status !== undefined && (obj.status = Math.round(message.status));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTAOtherLeftChatChannel(): CMsgDOTAOtherLeftChatChannel {
@@ -1634,6 +2209,22 @@ export const CMsgDOTAOtherLeftChatChannel = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTAOtherLeftChatChannel {
+    return {
+      channelId: isSet(object.channelId) ? String(object.channelId) : "0",
+      steamId: isSet(object.steamId) ? String(object.steamId) : "0",
+      channelUserId: isSet(object.channelUserId) ? Number(object.channelUserId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTAOtherLeftChatChannel): unknown {
+    const obj: any = {};
+    message.channelId !== undefined && (obj.channelId = message.channelId);
+    message.steamId !== undefined && (obj.steamId = message.steamId);
+    message.channelUserId !== undefined && (obj.channelUserId = Math.round(message.channelUserId));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTARequestChatChannelList(): CMsgDOTARequestChatChannelList {
@@ -1659,6 +2250,15 @@ export const CMsgDOTARequestChatChannelList = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CMsgDOTARequestChatChannelList {
+    return {};
+  },
+
+  toJSON(_: CMsgDOTARequestChatChannelList): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -1695,6 +2295,26 @@ export const CMsgDOTARequestChatChannelListResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTARequestChatChannelListResponse {
+    return {
+      channels: Array.isArray(object?.channels)
+        ? object.channels.map((e: any) => CMsgDOTARequestChatChannelListResponse_ChatChannel.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTARequestChatChannelListResponse): unknown {
+    const obj: any = {};
+    if (message.channels) {
+      obj.channels = message.channels.map((e) =>
+        e ? CMsgDOTARequestChatChannelListResponse_ChatChannel.toJSON(e) : undefined
+      );
+    } else {
+      obj.channels = [];
+    }
+    return obj;
   },
 };
 
@@ -1755,6 +2375,22 @@ export const CMsgDOTARequestChatChannelListResponse_ChatChannel = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTARequestChatChannelListResponse_ChatChannel {
+    return {
+      channelName: isSet(object.channelName) ? String(object.channelName) : "",
+      numMembers: isSet(object.numMembers) ? Number(object.numMembers) : 0,
+      channelType: isSet(object.channelType) ? dOTAChatChannelTypeTFromJSON(object.channelType) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTARequestChatChannelListResponse_ChatChannel): unknown {
+    const obj: any = {};
+    message.channelName !== undefined && (obj.channelName = message.channelName);
+    message.numMembers !== undefined && (obj.numMembers = Math.round(message.numMembers));
+    message.channelType !== undefined && (obj.channelType = dOTAChatChannelTypeTToJSON(message.channelType));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTAChatGetUserListResponse(): CMsgDOTAChatGetUserListResponse {
@@ -1800,6 +2436,26 @@ export const CMsgDOTAChatGetUserListResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAChatGetUserListResponse {
+    return {
+      channelId: isSet(object.channelId) ? String(object.channelId) : "0",
+      members: Array.isArray(object?.members)
+        ? object.members.map((e: any) => CMsgDOTAChatGetUserListResponse_Member.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTAChatGetUserListResponse): unknown {
+    const obj: any = {};
+    message.channelId !== undefined && (obj.channelId = message.channelId);
+    if (message.members) {
+      obj.members = message.members.map((e) => e ? CMsgDOTAChatGetUserListResponse_Member.toJSON(e) : undefined);
+    } else {
+      obj.members = [];
+    }
+    return obj;
   },
 };
 
@@ -1867,6 +2523,24 @@ export const CMsgDOTAChatGetUserListResponse_Member = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTAChatGetUserListResponse_Member {
+    return {
+      steamId: isSet(object.steamId) ? String(object.steamId) : "0",
+      personaName: isSet(object.personaName) ? String(object.personaName) : "",
+      channelUserId: isSet(object.channelUserId) ? Number(object.channelUserId) : 0,
+      status: isSet(object.status) ? Number(object.status) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTAChatGetUserListResponse_Member): unknown {
+    const obj: any = {};
+    message.steamId !== undefined && (obj.steamId = message.steamId);
+    message.personaName !== undefined && (obj.personaName = message.personaName);
+    message.channelUserId !== undefined && (obj.channelUserId = Math.round(message.channelUserId));
+    message.status !== undefined && (obj.status = Math.round(message.status));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTAChatGetMemberCount(): CMsgDOTAChatGetMemberCount {
@@ -1912,6 +2586,20 @@ export const CMsgDOTAChatGetMemberCount = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAChatGetMemberCount {
+    return {
+      channelName: isSet(object.channelName) ? String(object.channelName) : "",
+      channelType: isSet(object.channelType) ? dOTAChatChannelTypeTFromJSON(object.channelType) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTAChatGetMemberCount): unknown {
+    const obj: any = {};
+    message.channelName !== undefined && (obj.channelName = message.channelName);
+    message.channelType !== undefined && (obj.channelType = dOTAChatChannelTypeTToJSON(message.channelType));
+    return obj;
   },
 };
 
@@ -1969,6 +2657,22 @@ export const CMsgDOTAChatGetMemberCountResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTAChatGetMemberCountResponse {
+    return {
+      channelName: isSet(object.channelName) ? String(object.channelName) : "",
+      channelType: isSet(object.channelType) ? dOTAChatChannelTypeTFromJSON(object.channelType) : 0,
+      memberCount: isSet(object.memberCount) ? Number(object.memberCount) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTAChatGetMemberCountResponse): unknown {
+    const obj: any = {};
+    message.channelName !== undefined && (obj.channelName = message.channelName);
+    message.channelType !== undefined && (obj.channelType = dOTAChatChannelTypeTToJSON(message.channelType));
+    message.memberCount !== undefined && (obj.memberCount = Math.round(message.memberCount));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTAChatRegionsEnabled(): CMsgDOTAChatRegionsEnabled {
@@ -2014,6 +2718,28 @@ export const CMsgDOTAChatRegionsEnabled = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAChatRegionsEnabled {
+    return {
+      enableAllRegions: isSet(object.enableAllRegions) ? Boolean(object.enableAllRegions) : false,
+      enabledRegions: Array.isArray(object?.enabledRegions)
+        ? object.enabledRegions.map((e: any) => CMsgDOTAChatRegionsEnabled_Region.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTAChatRegionsEnabled): unknown {
+    const obj: any = {};
+    message.enableAllRegions !== undefined && (obj.enableAllRegions = message.enableAllRegions);
+    if (message.enabledRegions) {
+      obj.enabledRegions = message.enabledRegions.map((e) =>
+        e ? CMsgDOTAChatRegionsEnabled_Region.toJSON(e) : undefined
+      );
+    } else {
+      obj.enabledRegions = [];
+    }
+    return obj;
   },
 };
 
@@ -2081,7 +2807,44 @@ export const CMsgDOTAChatRegionsEnabled_Region = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTAChatRegionsEnabled_Region {
+    return {
+      minLatitude: isSet(object.minLatitude) ? Number(object.minLatitude) : 0,
+      maxLatitude: isSet(object.maxLatitude) ? Number(object.maxLatitude) : 0,
+      minLongitude: isSet(object.minLongitude) ? Number(object.minLongitude) : 0,
+      maxLongitude: isSet(object.maxLongitude) ? Number(object.maxLongitude) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTAChatRegionsEnabled_Region): unknown {
+    const obj: any = {};
+    message.minLatitude !== undefined && (obj.minLatitude = message.minLatitude);
+    message.maxLatitude !== undefined && (obj.maxLatitude = message.maxLatitude);
+    message.minLongitude !== undefined && (obj.minLongitude = message.minLongitude);
+    message.maxLongitude !== undefined && (obj.maxLongitude = message.maxLongitude);
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
 
 function longToString(long: Long) {
   return long.toString();
@@ -2090,4 +2853,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

@@ -8,6 +8,35 @@ export enum EMobilePaymentProvider {
   k_EMobilePaymentProvider_AppleAppStore = 2,
 }
 
+export function eMobilePaymentProviderFromJSON(object: any): EMobilePaymentProvider {
+  switch (object) {
+    case 0:
+    case "k_EMobilePaymentProvider_Invalid":
+      return EMobilePaymentProvider.k_EMobilePaymentProvider_Invalid;
+    case 1:
+    case "k_EMobilePaymentProvider_GooglePlay":
+      return EMobilePaymentProvider.k_EMobilePaymentProvider_GooglePlay;
+    case 2:
+    case "k_EMobilePaymentProvider_AppleAppStore":
+      return EMobilePaymentProvider.k_EMobilePaymentProvider_AppleAppStore;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EMobilePaymentProvider");
+  }
+}
+
+export function eMobilePaymentProviderToJSON(object: EMobilePaymentProvider): string {
+  switch (object) {
+    case EMobilePaymentProvider.k_EMobilePaymentProvider_Invalid:
+      return "k_EMobilePaymentProvider_Invalid";
+    case EMobilePaymentProvider.k_EMobilePaymentProvider_GooglePlay:
+      return "k_EMobilePaymentProvider_GooglePlay";
+    case EMobilePaymentProvider.k_EMobilePaymentProvider_AppleAppStore:
+      return "k_EMobilePaymentProvider_AppleAppStore";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EMobilePaymentProvider");
+  }
+}
+
 export interface CMsgWebAPIKey {
   status: number;
   accountId: number;
@@ -397,6 +426,54 @@ export enum CMsgGCRoutingInfo_RoutingMethod {
   WEBAPI_PARAM_STEAMID_ACCOUNTID = 5,
 }
 
+export function cMsgGCRoutingInfo_RoutingMethodFromJSON(object: any): CMsgGCRoutingInfo_RoutingMethod {
+  switch (object) {
+    case 0:
+    case "RANDOM":
+      return CMsgGCRoutingInfo_RoutingMethod.RANDOM;
+    case 1:
+    case "DISCARD":
+      return CMsgGCRoutingInfo_RoutingMethod.DISCARD;
+    case 2:
+    case "CLIENT_STEAMID":
+      return CMsgGCRoutingInfo_RoutingMethod.CLIENT_STEAMID;
+    case 3:
+    case "PROTOBUF_FIELD_UINT64":
+      return CMsgGCRoutingInfo_RoutingMethod.PROTOBUF_FIELD_UINT64;
+    case 4:
+    case "WEBAPI_PARAM":
+      return CMsgGCRoutingInfo_RoutingMethod.WEBAPI_PARAM;
+    case 5:
+    case "WEBAPI_PARAM_STEAMID_ACCOUNTID":
+      return CMsgGCRoutingInfo_RoutingMethod.WEBAPI_PARAM_STEAMID_ACCOUNTID;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgGCRoutingInfo_RoutingMethod",
+      );
+  }
+}
+
+export function cMsgGCRoutingInfo_RoutingMethodToJSON(object: CMsgGCRoutingInfo_RoutingMethod): string {
+  switch (object) {
+    case CMsgGCRoutingInfo_RoutingMethod.RANDOM:
+      return "RANDOM";
+    case CMsgGCRoutingInfo_RoutingMethod.DISCARD:
+      return "DISCARD";
+    case CMsgGCRoutingInfo_RoutingMethod.CLIENT_STEAMID:
+      return "CLIENT_STEAMID";
+    case CMsgGCRoutingInfo_RoutingMethod.PROTOBUF_FIELD_UINT64:
+      return "PROTOBUF_FIELD_UINT64";
+    case CMsgGCRoutingInfo_RoutingMethod.WEBAPI_PARAM:
+      return "WEBAPI_PARAM";
+    case CMsgGCRoutingInfo_RoutingMethod.WEBAPI_PARAM_STEAMID_ACCOUNTID:
+      return "WEBAPI_PARAM_STEAMID_ACCOUNTID";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgGCRoutingInfo_RoutingMethod",
+      );
+  }
+}
+
 export interface CMsgGCMsgMasterSetWebAPIRouting {
   entries: CMsgGCMsgMasterSetWebAPIRouting_Entry[];
 }
@@ -437,9 +514,71 @@ export enum CMsgGCMsgSetOptions_Option {
   NOTIFY_VAC_ACTION = 3,
 }
 
+export function cMsgGCMsgSetOptions_OptionFromJSON(object: any): CMsgGCMsgSetOptions_Option {
+  switch (object) {
+    case 0:
+    case "NOTIFY_USER_SESSIONS":
+      return CMsgGCMsgSetOptions_Option.NOTIFY_USER_SESSIONS;
+    case 1:
+    case "NOTIFY_SERVER_SESSIONS":
+      return CMsgGCMsgSetOptions_Option.NOTIFY_SERVER_SESSIONS;
+    case 2:
+    case "NOTIFY_ACHIEVEMENTS":
+      return CMsgGCMsgSetOptions_Option.NOTIFY_ACHIEVEMENTS;
+    case 3:
+    case "NOTIFY_VAC_ACTION":
+      return CMsgGCMsgSetOptions_Option.NOTIFY_VAC_ACTION;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum CMsgGCMsgSetOptions_Option");
+  }
+}
+
+export function cMsgGCMsgSetOptions_OptionToJSON(object: CMsgGCMsgSetOptions_Option): string {
+  switch (object) {
+    case CMsgGCMsgSetOptions_Option.NOTIFY_USER_SESSIONS:
+      return "NOTIFY_USER_SESSIONS";
+    case CMsgGCMsgSetOptions_Option.NOTIFY_SERVER_SESSIONS:
+      return "NOTIFY_SERVER_SESSIONS";
+    case CMsgGCMsgSetOptions_Option.NOTIFY_ACHIEVEMENTS:
+      return "NOTIFY_ACHIEVEMENTS";
+    case CMsgGCMsgSetOptions_Option.NOTIFY_VAC_ACTION:
+      return "NOTIFY_VAC_ACTION";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum CMsgGCMsgSetOptions_Option");
+  }
+}
+
 export enum CMsgGCMsgSetOptions_GCSQLVersion {
   GCSQL_VERSION_BASELINE = 1,
   GCSQL_VERSION_BOOLTYPE = 2,
+}
+
+export function cMsgGCMsgSetOptions_GCSQLVersionFromJSON(object: any): CMsgGCMsgSetOptions_GCSQLVersion {
+  switch (object) {
+    case 1:
+    case "GCSQL_VERSION_BASELINE":
+      return CMsgGCMsgSetOptions_GCSQLVersion.GCSQL_VERSION_BASELINE;
+    case 2:
+    case "GCSQL_VERSION_BOOLTYPE":
+      return CMsgGCMsgSetOptions_GCSQLVersion.GCSQL_VERSION_BOOLTYPE;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgGCMsgSetOptions_GCSQLVersion",
+      );
+  }
+}
+
+export function cMsgGCMsgSetOptions_GCSQLVersionToJSON(object: CMsgGCMsgSetOptions_GCSQLVersion): string {
+  switch (object) {
+    case CMsgGCMsgSetOptions_GCSQLVersion.GCSQL_VERSION_BASELINE:
+      return "GCSQL_VERSION_BASELINE";
+    case CMsgGCMsgSetOptions_GCSQLVersion.GCSQL_VERSION_BOOLTYPE:
+      return "GCSQL_VERSION_BOOLTYPE";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgGCMsgSetOptions_GCSQLVersion",
+      );
+  }
 }
 
 export interface CMsgGCMsgSetOptions_MessageRange {
@@ -524,6 +663,73 @@ export enum CMsgDPPartnerMicroTxnsResponse_EErrorCode {
   k_MsgTransactionInsertFailed = 7,
   k_MsgAlreadyRunning = 8,
   k_MsgInvalidTransactionData = 9,
+}
+
+export function cMsgDPPartnerMicroTxnsResponse_EErrorCodeFromJSON(
+  object: any,
+): CMsgDPPartnerMicroTxnsResponse_EErrorCode {
+  switch (object) {
+    case 0:
+    case "k_MsgValid":
+      return CMsgDPPartnerMicroTxnsResponse_EErrorCode.k_MsgValid;
+    case 1:
+    case "k_MsgInvalidAppID":
+      return CMsgDPPartnerMicroTxnsResponse_EErrorCode.k_MsgInvalidAppID;
+    case 2:
+    case "k_MsgInvalidPartnerInfo":
+      return CMsgDPPartnerMicroTxnsResponse_EErrorCode.k_MsgInvalidPartnerInfo;
+    case 3:
+    case "k_MsgNoTransactions":
+      return CMsgDPPartnerMicroTxnsResponse_EErrorCode.k_MsgNoTransactions;
+    case 4:
+    case "k_MsgSQLFailure":
+      return CMsgDPPartnerMicroTxnsResponse_EErrorCode.k_MsgSQLFailure;
+    case 5:
+    case "k_MsgPartnerInfoDiscrepancy":
+      return CMsgDPPartnerMicroTxnsResponse_EErrorCode.k_MsgPartnerInfoDiscrepancy;
+    case 7:
+    case "k_MsgTransactionInsertFailed":
+      return CMsgDPPartnerMicroTxnsResponse_EErrorCode.k_MsgTransactionInsertFailed;
+    case 8:
+    case "k_MsgAlreadyRunning":
+      return CMsgDPPartnerMicroTxnsResponse_EErrorCode.k_MsgAlreadyRunning;
+    case 9:
+    case "k_MsgInvalidTransactionData":
+      return CMsgDPPartnerMicroTxnsResponse_EErrorCode.k_MsgInvalidTransactionData;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDPPartnerMicroTxnsResponse_EErrorCode",
+      );
+  }
+}
+
+export function cMsgDPPartnerMicroTxnsResponse_EErrorCodeToJSON(
+  object: CMsgDPPartnerMicroTxnsResponse_EErrorCode,
+): string {
+  switch (object) {
+    case CMsgDPPartnerMicroTxnsResponse_EErrorCode.k_MsgValid:
+      return "k_MsgValid";
+    case CMsgDPPartnerMicroTxnsResponse_EErrorCode.k_MsgInvalidAppID:
+      return "k_MsgInvalidAppID";
+    case CMsgDPPartnerMicroTxnsResponse_EErrorCode.k_MsgInvalidPartnerInfo:
+      return "k_MsgInvalidPartnerInfo";
+    case CMsgDPPartnerMicroTxnsResponse_EErrorCode.k_MsgNoTransactions:
+      return "k_MsgNoTransactions";
+    case CMsgDPPartnerMicroTxnsResponse_EErrorCode.k_MsgSQLFailure:
+      return "k_MsgSQLFailure";
+    case CMsgDPPartnerMicroTxnsResponse_EErrorCode.k_MsgPartnerInfoDiscrepancy:
+      return "k_MsgPartnerInfoDiscrepancy";
+    case CMsgDPPartnerMicroTxnsResponse_EErrorCode.k_MsgTransactionInsertFailed:
+      return "k_MsgTransactionInsertFailed";
+    case CMsgDPPartnerMicroTxnsResponse_EErrorCode.k_MsgAlreadyRunning:
+      return "k_MsgAlreadyRunning";
+    case CMsgDPPartnerMicroTxnsResponse_EErrorCode.k_MsgInvalidTransactionData:
+      return "k_MsgInvalidTransactionData";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDPPartnerMicroTxnsResponse_EErrorCode",
+      );
+  }
 }
 
 export interface CMsgGCHVacVerificationChange {
@@ -703,6 +909,26 @@ export const CMsgWebAPIKey = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgWebAPIKey {
+    return {
+      status: isSet(object.status) ? Number(object.status) : 0,
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      publisherGroupId: isSet(object.publisherGroupId) ? Number(object.publisherGroupId) : 0,
+      keyId: isSet(object.keyId) ? Number(object.keyId) : 0,
+      domain: isSet(object.domain) ? String(object.domain) : "",
+    };
+  },
+
+  toJSON(message: CMsgWebAPIKey): unknown {
+    const obj: any = {};
+    message.status !== undefined && (obj.status = Math.round(message.status));
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.publisherGroupId !== undefined && (obj.publisherGroupId = Math.round(message.publisherGroupId));
+    message.keyId !== undefined && (obj.keyId = Math.round(message.keyId));
+    message.domain !== undefined && (obj.domain = message.domain);
+    return obj;
+  },
 };
 
 function createBaseCMsgHttpRequest(): CMsgHttpRequest {
@@ -829,6 +1055,53 @@ export const CMsgHttpRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgHttpRequest {
+    return {
+      requestMethod: isSet(object.requestMethod) ? Number(object.requestMethod) : 0,
+      hostname: isSet(object.hostname) ? String(object.hostname) : "",
+      url: isSet(object.url) ? String(object.url) : "",
+      headers: Array.isArray(object?.headers)
+        ? object.headers.map((e: any) => CMsgHttpRequest_RequestHeader.fromJSON(e))
+        : [],
+      getParams: Array.isArray(object?.getParams)
+        ? object.getParams.map((e: any) => CMsgHttpRequest_QueryParam.fromJSON(e))
+        : [],
+      postParams: Array.isArray(object?.postParams)
+        ? object.postParams.map((e: any) => CMsgHttpRequest_QueryParam.fromJSON(e))
+        : [],
+      body: isSet(object.body) ? Buffer.from(bytesFromBase64(object.body)) : Buffer.alloc(0),
+      absoluteTimeout: isSet(object.absoluteTimeout) ? Number(object.absoluteTimeout) : 0,
+      useHttps: isSet(object.useHttps) ? Boolean(object.useHttps) : false,
+    };
+  },
+
+  toJSON(message: CMsgHttpRequest): unknown {
+    const obj: any = {};
+    message.requestMethod !== undefined && (obj.requestMethod = Math.round(message.requestMethod));
+    message.hostname !== undefined && (obj.hostname = message.hostname);
+    message.url !== undefined && (obj.url = message.url);
+    if (message.headers) {
+      obj.headers = message.headers.map((e) => e ? CMsgHttpRequest_RequestHeader.toJSON(e) : undefined);
+    } else {
+      obj.headers = [];
+    }
+    if (message.getParams) {
+      obj.getParams = message.getParams.map((e) => e ? CMsgHttpRequest_QueryParam.toJSON(e) : undefined);
+    } else {
+      obj.getParams = [];
+    }
+    if (message.postParams) {
+      obj.postParams = message.postParams.map((e) => e ? CMsgHttpRequest_QueryParam.toJSON(e) : undefined);
+    } else {
+      obj.postParams = [];
+    }
+    message.body !== undefined &&
+      (obj.body = base64FromBytes(message.body !== undefined ? message.body : Buffer.alloc(0)));
+    message.absoluteTimeout !== undefined && (obj.absoluteTimeout = Math.round(message.absoluteTimeout));
+    message.useHttps !== undefined && (obj.useHttps = message.useHttps);
+    return obj;
+  },
 };
 
 function createBaseCMsgHttpRequest_RequestHeader(): CMsgHttpRequest_RequestHeader {
@@ -875,6 +1148,20 @@ export const CMsgHttpRequest_RequestHeader = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgHttpRequest_RequestHeader {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      value: isSet(object.value) ? String(object.value) : "",
+    };
+  },
+
+  toJSON(message: CMsgHttpRequest_RequestHeader): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.value !== undefined && (obj.value = message.value);
+    return obj;
+  },
 };
 
 function createBaseCMsgHttpRequest_QueryParam(): CMsgHttpRequest_QueryParam {
@@ -920,6 +1207,21 @@ export const CMsgHttpRequest_QueryParam = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgHttpRequest_QueryParam {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      value: isSet(object.value) ? Buffer.from(bytesFromBase64(object.value)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CMsgHttpRequest_QueryParam): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.value !== undefined &&
+      (obj.value = base64FromBytes(message.value !== undefined ? message.value : Buffer.alloc(0)));
+    return obj;
   },
 };
 
@@ -1007,6 +1309,29 @@ export const CMsgWebAPIRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgWebAPIRequest {
+    return {
+      interfaceName: isSet(object.interfaceName) ? String(object.interfaceName) : "",
+      methodName: isSet(object.methodName) ? String(object.methodName) : "",
+      version: isSet(object.version) ? Number(object.version) : 0,
+      apiKey: isSet(object.apiKey) ? CMsgWebAPIKey.fromJSON(object.apiKey) : undefined,
+      request: isSet(object.request) ? CMsgHttpRequest.fromJSON(object.request) : undefined,
+      routingAppId: isSet(object.routingAppId) ? Number(object.routingAppId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgWebAPIRequest): unknown {
+    const obj: any = {};
+    message.interfaceName !== undefined && (obj.interfaceName = message.interfaceName);
+    message.methodName !== undefined && (obj.methodName = message.methodName);
+    message.version !== undefined && (obj.version = Math.round(message.version));
+    message.apiKey !== undefined && (obj.apiKey = message.apiKey ? CMsgWebAPIKey.toJSON(message.apiKey) : undefined);
+    message.request !== undefined &&
+      (obj.request = message.request ? CMsgHttpRequest.toJSON(message.request) : undefined);
+    message.routingAppId !== undefined && (obj.routingAppId = Math.round(message.routingAppId));
+    return obj;
+  },
 };
 
 function createBaseCMsgHttpResponse(): CMsgHttpResponse {
@@ -1063,6 +1388,29 @@ export const CMsgHttpResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgHttpResponse {
+    return {
+      statusCode: isSet(object.statusCode) ? Number(object.statusCode) : 0,
+      headers: Array.isArray(object?.headers)
+        ? object.headers.map((e: any) => CMsgHttpResponse_ResponseHeader.fromJSON(e))
+        : [],
+      body: isSet(object.body) ? Buffer.from(bytesFromBase64(object.body)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CMsgHttpResponse): unknown {
+    const obj: any = {};
+    message.statusCode !== undefined && (obj.statusCode = Math.round(message.statusCode));
+    if (message.headers) {
+      obj.headers = message.headers.map((e) => e ? CMsgHttpResponse_ResponseHeader.toJSON(e) : undefined);
+    } else {
+      obj.headers = [];
+    }
+    message.body !== undefined &&
+      (obj.body = base64FromBytes(message.body !== undefined ? message.body : Buffer.alloc(0)));
+    return obj;
+  },
 };
 
 function createBaseCMsgHttpResponse_ResponseHeader(): CMsgHttpResponse_ResponseHeader {
@@ -1108,6 +1456,20 @@ export const CMsgHttpResponse_ResponseHeader = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgHttpResponse_ResponseHeader {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      value: isSet(object.value) ? String(object.value) : "",
+    };
+  },
+
+  toJSON(message: CMsgHttpResponse_ResponseHeader): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.value !== undefined && (obj.value = message.value);
+    return obj;
   },
 };
 
@@ -1155,6 +1517,20 @@ export const CMsgAMFindAccounts = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgAMFindAccounts {
+    return {
+      searchType: isSet(object.searchType) ? Number(object.searchType) : 0,
+      searchString: isSet(object.searchString) ? String(object.searchString) : "",
+    };
+  },
+
+  toJSON(message: CMsgAMFindAccounts): unknown {
+    const obj: any = {};
+    message.searchType !== undefined && (obj.searchType = Math.round(message.searchType));
+    message.searchString !== undefined && (obj.searchString = message.searchString);
+    return obj;
+  },
 };
 
 function createBaseCMsgAMFindAccountsResponse(): CMsgAMFindAccountsResponse {
@@ -1201,6 +1577,20 @@ export const CMsgAMFindAccountsResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgAMFindAccountsResponse {
+    return { steamId: Array.isArray(object?.steamId) ? object.steamId.map((e: any) => String(e)) : [] };
+  },
+
+  toJSON(message: CMsgAMFindAccountsResponse): unknown {
+    const obj: any = {};
+    if (message.steamId) {
+      obj.steamId = message.steamId.map((e) => e);
+    } else {
+      obj.steamId = [];
+    }
+    return obj;
   },
 };
 
@@ -1298,6 +1688,30 @@ export const CMsgNotifyWatchdog = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgNotifyWatchdog {
+    return {
+      source: isSet(object.source) ? Number(object.source) : 0,
+      alertType: isSet(object.alertType) ? Number(object.alertType) : 0,
+      critical: isSet(object.critical) ? Boolean(object.critical) : false,
+      time: isSet(object.time) ? Number(object.time) : 0,
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      text: isSet(object.text) ? String(object.text) : "",
+      recipient: isSet(object.recipient) ? String(object.recipient) : "",
+    };
+  },
+
+  toJSON(message: CMsgNotifyWatchdog): unknown {
+    const obj: any = {};
+    message.source !== undefined && (obj.source = Math.round(message.source));
+    message.alertType !== undefined && (obj.alertType = Math.round(message.alertType));
+    message.critical !== undefined && (obj.critical = message.critical);
+    message.time !== undefined && (obj.time = Math.round(message.time));
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    message.text !== undefined && (obj.text = message.text);
+    message.recipient !== undefined && (obj.recipient = message.recipient);
+    return obj;
+  },
 };
 
 function createBaseCMsgAMGetLicenses(): CMsgAMGetLicenses {
@@ -1333,6 +1747,16 @@ export const CMsgAMGetLicenses = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgAMGetLicenses {
+    return { steamid: isSet(object.steamid) ? String(object.steamid) : "0" };
+  },
+
+  toJSON(message: CMsgAMGetLicenses): unknown {
+    const obj: any = {};
+    message.steamid !== undefined && (obj.steamid = message.steamid);
+    return obj;
   },
 };
 
@@ -1390,6 +1814,22 @@ export const CMsgPackageLicense = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgPackageLicense {
+    return {
+      packageId: isSet(object.packageId) ? Number(object.packageId) : 0,
+      timeCreated: isSet(object.timeCreated) ? Number(object.timeCreated) : 0,
+      ownerId: isSet(object.ownerId) ? Number(object.ownerId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgPackageLicense): unknown {
+    const obj: any = {};
+    message.packageId !== undefined && (obj.packageId = Math.round(message.packageId));
+    message.timeCreated !== undefined && (obj.timeCreated = Math.round(message.timeCreated));
+    message.ownerId !== undefined && (obj.ownerId = Math.round(message.ownerId));
+    return obj;
+  },
 };
 
 function createBaseCMsgAMGetLicensesResponse(): CMsgAMGetLicensesResponse {
@@ -1435,6 +1875,24 @@ export const CMsgAMGetLicensesResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgAMGetLicensesResponse {
+    return {
+      license: Array.isArray(object?.license) ? object.license.map((e: any) => CMsgPackageLicense.fromJSON(e)) : [],
+      result: isSet(object.result) ? Number(object.result) : 0,
+    };
+  },
+
+  toJSON(message: CMsgAMGetLicensesResponse): unknown {
+    const obj: any = {};
+    if (message.license) {
+      obj.license = message.license.map((e) => e ? CMsgPackageLicense.toJSON(e) : undefined);
+    } else {
+      obj.license = [];
+    }
+    message.result !== undefined && (obj.result = Math.round(message.result));
+    return obj;
   },
 };
 
@@ -1502,6 +1960,26 @@ export const CMsgAMGetUserGameStats = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgAMGetUserGameStats {
+    return {
+      steamId: isSet(object.steamId) ? String(object.steamId) : "0",
+      gameId: isSet(object.gameId) ? String(object.gameId) : "0",
+      stats: Array.isArray(object?.stats) ? object.stats.map((e: any) => Number(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgAMGetUserGameStats): unknown {
+    const obj: any = {};
+    message.steamId !== undefined && (obj.steamId = message.steamId);
+    message.gameId !== undefined && (obj.gameId = message.gameId);
+    if (message.stats) {
+      obj.stats = message.stats.map((e) => Math.round(e));
+    } else {
+      obj.stats = [];
+    }
+    return obj;
   },
 };
 
@@ -1581,6 +2059,40 @@ export const CMsgAMGetUserGameStatsResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgAMGetUserGameStatsResponse {
+    return {
+      steamId: isSet(object.steamId) ? String(object.steamId) : "0",
+      gameId: isSet(object.gameId) ? String(object.gameId) : "0",
+      eresult: isSet(object.eresult) ? Number(object.eresult) : 0,
+      stats: Array.isArray(object?.stats)
+        ? object.stats.map((e: any) => CMsgAMGetUserGameStatsResponse_Stats.fromJSON(e))
+        : [],
+      achievementBlocks: Array.isArray(object?.achievementBlocks)
+        ? object.achievementBlocks.map((e: any) => CMsgAMGetUserGameStatsResponse_AchievementBlocks.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgAMGetUserGameStatsResponse): unknown {
+    const obj: any = {};
+    message.steamId !== undefined && (obj.steamId = message.steamId);
+    message.gameId !== undefined && (obj.gameId = message.gameId);
+    message.eresult !== undefined && (obj.eresult = Math.round(message.eresult));
+    if (message.stats) {
+      obj.stats = message.stats.map((e) => e ? CMsgAMGetUserGameStatsResponse_Stats.toJSON(e) : undefined);
+    } else {
+      obj.stats = [];
+    }
+    if (message.achievementBlocks) {
+      obj.achievementBlocks = message.achievementBlocks.map((e) =>
+        e ? CMsgAMGetUserGameStatsResponse_AchievementBlocks.toJSON(e) : undefined
+      );
+    } else {
+      obj.achievementBlocks = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgAMGetUserGameStatsResponse_Stats(): CMsgAMGetUserGameStatsResponse_Stats {
@@ -1626,6 +2138,20 @@ export const CMsgAMGetUserGameStatsResponse_Stats = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgAMGetUserGameStatsResponse_Stats {
+    return {
+      statId: isSet(object.statId) ? Number(object.statId) : 0,
+      statValue: isSet(object.statValue) ? Number(object.statValue) : 0,
+    };
+  },
+
+  toJSON(message: CMsgAMGetUserGameStatsResponse_Stats): unknown {
+    const obj: any = {};
+    message.statId !== undefined && (obj.statId = Math.round(message.statId));
+    message.statValue !== undefined && (obj.statValue = Math.round(message.statValue));
+    return obj;
   },
 };
 
@@ -1686,6 +2212,22 @@ export const CMsgAMGetUserGameStatsResponse_AchievementBlocks = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgAMGetUserGameStatsResponse_AchievementBlocks {
+    return {
+      achievementId: isSet(object.achievementId) ? Number(object.achievementId) : 0,
+      achievementBitId: isSet(object.achievementBitId) ? Number(object.achievementBitId) : 0,
+      unlockTime: isSet(object.unlockTime) ? Number(object.unlockTime) : 0,
+    };
+  },
+
+  toJSON(message: CMsgAMGetUserGameStatsResponse_AchievementBlocks): unknown {
+    const obj: any = {};
+    message.achievementId !== undefined && (obj.achievementId = Math.round(message.achievementId));
+    message.achievementBitId !== undefined && (obj.achievementBitId = Math.round(message.achievementBitId));
+    message.unlockTime !== undefined && (obj.unlockTime = Math.round(message.unlockTime));
+    return obj;
+  },
 };
 
 function createBaseCMsgGCGetCommandList(): CMsgGCGetCommandList {
@@ -1732,6 +2274,20 @@ export const CMsgGCGetCommandList = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCGetCommandList {
+    return {
+      appId: isSet(object.appId) ? Number(object.appId) : 0,
+      commandPrefix: isSet(object.commandPrefix) ? String(object.commandPrefix) : "",
+    };
+  },
+
+  toJSON(message: CMsgGCGetCommandList): unknown {
+    const obj: any = {};
+    message.appId !== undefined && (obj.appId = Math.round(message.appId));
+    message.commandPrefix !== undefined && (obj.commandPrefix = message.commandPrefix);
+    return obj;
+  },
 };
 
 function createBaseCMsgGCGetCommandListResponse(): CMsgGCGetCommandListResponse {
@@ -1767,6 +2323,20 @@ export const CMsgGCGetCommandListResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCGetCommandListResponse {
+    return { commandName: Array.isArray(object?.commandName) ? object.commandName.map((e: any) => String(e)) : [] };
+  },
+
+  toJSON(message: CMsgGCGetCommandListResponse): unknown {
+    const obj: any = {};
+    if (message.commandName) {
+      obj.commandName = message.commandName.map((e) => e);
+    } else {
+      obj.commandName = [];
+    }
+    return obj;
   },
 };
 
@@ -1804,6 +2374,20 @@ export const CGCMsgMemCachedGet = {
     }
     return message;
   },
+
+  fromJSON(object: any): CGCMsgMemCachedGet {
+    return { keys: Array.isArray(object?.keys) ? object.keys.map((e: any) => String(e)) : [] };
+  },
+
+  toJSON(message: CGCMsgMemCachedGet): unknown {
+    const obj: any = {};
+    if (message.keys) {
+      obj.keys = message.keys.map((e) => e);
+    } else {
+      obj.keys = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCGCMsgMemCachedGetResponse(): CGCMsgMemCachedGetResponse {
@@ -1839,6 +2423,24 @@ export const CGCMsgMemCachedGetResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CGCMsgMemCachedGetResponse {
+    return {
+      values: Array.isArray(object?.values)
+        ? object.values.map((e: any) => CGCMsgMemCachedGetResponse_ValueTag.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CGCMsgMemCachedGetResponse): unknown {
+    const obj: any = {};
+    if (message.values) {
+      obj.values = message.values.map((e) => e ? CGCMsgMemCachedGetResponse_ValueTag.toJSON(e) : undefined);
+    } else {
+      obj.values = [];
+    }
+    return obj;
   },
 };
 
@@ -1886,6 +2488,21 @@ export const CGCMsgMemCachedGetResponse_ValueTag = {
     }
     return message;
   },
+
+  fromJSON(object: any): CGCMsgMemCachedGetResponse_ValueTag {
+    return {
+      found: isSet(object.found) ? Boolean(object.found) : false,
+      value: isSet(object.value) ? Buffer.from(bytesFromBase64(object.value)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CGCMsgMemCachedGetResponse_ValueTag): unknown {
+    const obj: any = {};
+    message.found !== undefined && (obj.found = message.found);
+    message.value !== undefined &&
+      (obj.value = base64FromBytes(message.value !== undefined ? message.value : Buffer.alloc(0)));
+    return obj;
+  },
 };
 
 function createBaseCGCMsgMemCachedSet(): CGCMsgMemCachedSet {
@@ -1921,6 +2538,22 @@ export const CGCMsgMemCachedSet = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CGCMsgMemCachedSet {
+    return {
+      keys: Array.isArray(object?.keys) ? object.keys.map((e: any) => CGCMsgMemCachedSet_KeyPair.fromJSON(e)) : [],
+    };
+  },
+
+  toJSON(message: CGCMsgMemCachedSet): unknown {
+    const obj: any = {};
+    if (message.keys) {
+      obj.keys = message.keys.map((e) => e ? CGCMsgMemCachedSet_KeyPair.toJSON(e) : undefined);
+    } else {
+      obj.keys = [];
+    }
+    return obj;
   },
 };
 
@@ -1968,6 +2601,21 @@ export const CGCMsgMemCachedSet_KeyPair = {
     }
     return message;
   },
+
+  fromJSON(object: any): CGCMsgMemCachedSet_KeyPair {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      value: isSet(object.value) ? Buffer.from(bytesFromBase64(object.value)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CGCMsgMemCachedSet_KeyPair): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.value !== undefined &&
+      (obj.value = base64FromBytes(message.value !== undefined ? message.value : Buffer.alloc(0)));
+    return obj;
+  },
 };
 
 function createBaseCGCMsgMemCachedDelete(): CGCMsgMemCachedDelete {
@@ -2004,6 +2652,20 @@ export const CGCMsgMemCachedDelete = {
     }
     return message;
   },
+
+  fromJSON(object: any): CGCMsgMemCachedDelete {
+    return { keys: Array.isArray(object?.keys) ? object.keys.map((e: any) => String(e)) : [] };
+  },
+
+  toJSON(message: CGCMsgMemCachedDelete): unknown {
+    const obj: any = {};
+    if (message.keys) {
+      obj.keys = message.keys.map((e) => e);
+    } else {
+      obj.keys = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCGCMsgMemCachedStats(): CGCMsgMemCachedStats {
@@ -2029,6 +2691,15 @@ export const CGCMsgMemCachedStats = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CGCMsgMemCachedStats {
+    return {};
+  },
+
+  toJSON(_: CGCMsgMemCachedStats): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -2211,6 +2882,44 @@ export const CGCMsgMemCachedStatsResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CGCMsgMemCachedStatsResponse {
+    return {
+      currConnections: isSet(object.currConnections) ? String(object.currConnections) : "0",
+      cmdGet: isSet(object.cmdGet) ? String(object.cmdGet) : "0",
+      cmdSet: isSet(object.cmdSet) ? String(object.cmdSet) : "0",
+      cmdFlush: isSet(object.cmdFlush) ? String(object.cmdFlush) : "0",
+      getHits: isSet(object.getHits) ? String(object.getHits) : "0",
+      getMisses: isSet(object.getMisses) ? String(object.getMisses) : "0",
+      deleteHits: isSet(object.deleteHits) ? String(object.deleteHits) : "0",
+      deleteMisses: isSet(object.deleteMisses) ? String(object.deleteMisses) : "0",
+      bytesRead: isSet(object.bytesRead) ? String(object.bytesRead) : "0",
+      bytesWritten: isSet(object.bytesWritten) ? String(object.bytesWritten) : "0",
+      limitMaxbytes: isSet(object.limitMaxbytes) ? String(object.limitMaxbytes) : "0",
+      currItems: isSet(object.currItems) ? String(object.currItems) : "0",
+      evictions: isSet(object.evictions) ? String(object.evictions) : "0",
+      bytes: isSet(object.bytes) ? String(object.bytes) : "0",
+    };
+  },
+
+  toJSON(message: CGCMsgMemCachedStatsResponse): unknown {
+    const obj: any = {};
+    message.currConnections !== undefined && (obj.currConnections = message.currConnections);
+    message.cmdGet !== undefined && (obj.cmdGet = message.cmdGet);
+    message.cmdSet !== undefined && (obj.cmdSet = message.cmdSet);
+    message.cmdFlush !== undefined && (obj.cmdFlush = message.cmdFlush);
+    message.getHits !== undefined && (obj.getHits = message.getHits);
+    message.getMisses !== undefined && (obj.getMisses = message.getMisses);
+    message.deleteHits !== undefined && (obj.deleteHits = message.deleteHits);
+    message.deleteMisses !== undefined && (obj.deleteMisses = message.deleteMisses);
+    message.bytesRead !== undefined && (obj.bytesRead = message.bytesRead);
+    message.bytesWritten !== undefined && (obj.bytesWritten = message.bytesWritten);
+    message.limitMaxbytes !== undefined && (obj.limitMaxbytes = message.limitMaxbytes);
+    message.currItems !== undefined && (obj.currItems = message.currItems);
+    message.evictions !== undefined && (obj.evictions = message.evictions);
+    message.bytes !== undefined && (obj.bytes = message.bytes);
+    return obj;
+  },
 };
 
 function createBaseCGCMsgSQLStats(): CGCMsgSQLStats {
@@ -2246,6 +2955,16 @@ export const CGCMsgSQLStats = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CGCMsgSQLStats {
+    return { schemaCatalog: isSet(object.schemaCatalog) ? Number(object.schemaCatalog) : 0 };
+  },
+
+  toJSON(message: CGCMsgSQLStats): unknown {
+    const obj: any = {};
+    message.schemaCatalog !== undefined && (obj.schemaCatalog = Math.round(message.schemaCatalog));
+    return obj;
   },
 };
 
@@ -2373,6 +3092,41 @@ export const CGCMsgSQLStatsResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CGCMsgSQLStatsResponse {
+    return {
+      threads: isSet(object.threads) ? Number(object.threads) : 0,
+      threadsConnected: isSet(object.threadsConnected) ? Number(object.threadsConnected) : 0,
+      threadsActive: isSet(object.threadsActive) ? Number(object.threadsActive) : 0,
+      operationsSubmitted: isSet(object.operationsSubmitted) ? Number(object.operationsSubmitted) : 0,
+      preparedStatementsExecuted: isSet(object.preparedStatementsExecuted)
+        ? Number(object.preparedStatementsExecuted)
+        : 0,
+      nonPreparedStatementsExecuted: isSet(object.nonPreparedStatementsExecuted)
+        ? Number(object.nonPreparedStatementsExecuted)
+        : 0,
+      deadlockRetries: isSet(object.deadlockRetries) ? Number(object.deadlockRetries) : 0,
+      operationsTimedOutInQueue: isSet(object.operationsTimedOutInQueue) ? Number(object.operationsTimedOutInQueue) : 0,
+      errors: isSet(object.errors) ? Number(object.errors) : 0,
+    };
+  },
+
+  toJSON(message: CGCMsgSQLStatsResponse): unknown {
+    const obj: any = {};
+    message.threads !== undefined && (obj.threads = Math.round(message.threads));
+    message.threadsConnected !== undefined && (obj.threadsConnected = Math.round(message.threadsConnected));
+    message.threadsActive !== undefined && (obj.threadsActive = Math.round(message.threadsActive));
+    message.operationsSubmitted !== undefined && (obj.operationsSubmitted = Math.round(message.operationsSubmitted));
+    message.preparedStatementsExecuted !== undefined &&
+      (obj.preparedStatementsExecuted = Math.round(message.preparedStatementsExecuted));
+    message.nonPreparedStatementsExecuted !== undefined &&
+      (obj.nonPreparedStatementsExecuted = Math.round(message.nonPreparedStatementsExecuted));
+    message.deadlockRetries !== undefined && (obj.deadlockRetries = Math.round(message.deadlockRetries));
+    message.operationsTimedOutInQueue !== undefined &&
+      (obj.operationsTimedOutInQueue = Math.round(message.operationsTimedOutInQueue));
+    message.errors !== undefined && (obj.errors = Math.round(message.errors));
+    return obj;
+  },
 };
 
 function createBaseCMsgAMAddFreeLicense(): CMsgAMAddFreeLicense {
@@ -2439,6 +3193,24 @@ export const CMsgAMAddFreeLicense = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgAMAddFreeLicense {
+    return {
+      steamid: isSet(object.steamid) ? String(object.steamid) : "0",
+      ipPublic: isSet(object.ipPublic) ? Number(object.ipPublic) : 0,
+      packageid: isSet(object.packageid) ? Number(object.packageid) : 0,
+      storeCountryCode: isSet(object.storeCountryCode) ? String(object.storeCountryCode) : "",
+    };
+  },
+
+  toJSON(message: CMsgAMAddFreeLicense): unknown {
+    const obj: any = {};
+    message.steamid !== undefined && (obj.steamid = message.steamid);
+    message.ipPublic !== undefined && (obj.ipPublic = Math.round(message.ipPublic));
+    message.packageid !== undefined && (obj.packageid = Math.round(message.packageid));
+    message.storeCountryCode !== undefined && (obj.storeCountryCode = message.storeCountryCode);
+    return obj;
+  },
 };
 
 function createBaseCMsgAMAddFreeLicenseResponse(): CMsgAMAddFreeLicenseResponse {
@@ -2495,6 +3267,22 @@ export const CMsgAMAddFreeLicenseResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgAMAddFreeLicenseResponse {
+    return {
+      eresult: isSet(object.eresult) ? Number(object.eresult) : 0,
+      purchaseResultDetail: isSet(object.purchaseResultDetail) ? Number(object.purchaseResultDetail) : 0,
+      transid: isSet(object.transid) ? String(object.transid) : "0",
+    };
+  },
+
+  toJSON(message: CMsgAMAddFreeLicenseResponse): unknown {
+    const obj: any = {};
+    message.eresult !== undefined && (obj.eresult = Math.round(message.eresult));
+    message.purchaseResultDetail !== undefined && (obj.purchaseResultDetail = Math.round(message.purchaseResultDetail));
+    message.transid !== undefined && (obj.transid = message.transid);
+    return obj;
+  },
 };
 
 function createBaseCGCMsgGetIPLocation(): CGCMsgGetIPLocation {
@@ -2541,6 +3329,20 @@ export const CGCMsgGetIPLocation = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CGCMsgGetIPLocation {
+    return { ips: Array.isArray(object?.ips) ? object.ips.map((e: any) => Number(e)) : [] };
+  },
+
+  toJSON(message: CGCMsgGetIPLocation): unknown {
+    const obj: any = {};
+    if (message.ips) {
+      obj.ips = message.ips.map((e) => Math.round(e));
+    } else {
+      obj.ips = [];
+    }
+    return obj;
   },
 };
 
@@ -2589,6 +3391,20 @@ export const CGCMsgGetIPASN = {
     }
     return message;
   },
+
+  fromJSON(object: any): CGCMsgGetIPASN {
+    return { ips: Array.isArray(object?.ips) ? object.ips.map((e: any) => Number(e)) : [] };
+  },
+
+  toJSON(message: CGCMsgGetIPASN): unknown {
+    const obj: any = {};
+    if (message.ips) {
+      obj.ips = message.ips.map((e) => Math.round(e));
+    } else {
+      obj.ips = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCIPASNInfo(): CIPASNInfo {
@@ -2635,6 +3451,17 @@ export const CIPASNInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CIPASNInfo {
+    return { ip: isSet(object.ip) ? Number(object.ip) : 0, asn: isSet(object.asn) ? Number(object.asn) : 0 };
+  },
+
+  toJSON(message: CIPASNInfo): unknown {
+    const obj: any = {};
+    message.ip !== undefined && (obj.ip = Math.round(message.ip));
+    message.asn !== undefined && (obj.asn = Math.round(message.asn));
+    return obj;
+  },
 };
 
 function createBaseCGCMsgGetIPASNResponse(): CGCMsgGetIPASNResponse {
@@ -2670,6 +3497,20 @@ export const CGCMsgGetIPASNResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CGCMsgGetIPASNResponse {
+    return { infos: Array.isArray(object?.infos) ? object.infos.map((e: any) => CIPASNInfo.fromJSON(e)) : [] };
+  },
+
+  toJSON(message: CGCMsgGetIPASNResponse): unknown {
+    const obj: any = {};
+    if (message.infos) {
+      obj.infos = message.infos.map((e) => e ? CIPASNInfo.toJSON(e) : undefined);
+    } else {
+      obj.infos = [];
+    }
+    return obj;
   },
 };
 
@@ -2717,6 +3558,21 @@ export const CGCMsgSystemStatsSchema = {
     }
     return message;
   },
+
+  fromJSON(object: any): CGCMsgSystemStatsSchema {
+    return {
+      gcAppId: isSet(object.gcAppId) ? Number(object.gcAppId) : 0,
+      schemaKv: isSet(object.schemaKv) ? Buffer.from(bytesFromBase64(object.schemaKv)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CGCMsgSystemStatsSchema): unknown {
+    const obj: any = {};
+    message.gcAppId !== undefined && (obj.gcAppId = Math.round(message.gcAppId));
+    message.schemaKv !== undefined &&
+      (obj.schemaKv = base64FromBytes(message.schemaKv !== undefined ? message.schemaKv : Buffer.alloc(0)));
+    return obj;
+  },
 };
 
 function createBaseCGCMsgGetSystemStats(): CGCMsgGetSystemStats {
@@ -2742,6 +3598,15 @@ export const CGCMsgGetSystemStats = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CGCMsgGetSystemStats {
+    return {};
+  },
+
+  toJSON(_: CGCMsgGetSystemStats): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -2913,6 +3778,43 @@ export const CGCMsgGetSystemStatsResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CGCMsgGetSystemStatsResponse {
+    return {
+      gcAppId: isSet(object.gcAppId) ? Number(object.gcAppId) : 0,
+      statsKv: isSet(object.statsKv) ? Buffer.from(bytesFromBase64(object.statsKv)) : Buffer.alloc(0),
+      activeJobs: isSet(object.activeJobs) ? Number(object.activeJobs) : 0,
+      yieldingJobs: isSet(object.yieldingJobs) ? Number(object.yieldingJobs) : 0,
+      userSessions: isSet(object.userSessions) ? Number(object.userSessions) : 0,
+      gameServerSessions: isSet(object.gameServerSessions) ? Number(object.gameServerSessions) : 0,
+      socaches: isSet(object.socaches) ? Number(object.socaches) : 0,
+      socachesToUnload: isSet(object.socachesToUnload) ? Number(object.socachesToUnload) : 0,
+      socachesLoading: isSet(object.socachesLoading) ? Number(object.socachesLoading) : 0,
+      writebackQueue: isSet(object.writebackQueue) ? Number(object.writebackQueue) : 0,
+      steamidLocks: isSet(object.steamidLocks) ? Number(object.steamidLocks) : 0,
+      logonQueue: isSet(object.logonQueue) ? Number(object.logonQueue) : 0,
+      logonJobs: isSet(object.logonJobs) ? Number(object.logonJobs) : 0,
+    };
+  },
+
+  toJSON(message: CGCMsgGetSystemStatsResponse): unknown {
+    const obj: any = {};
+    message.gcAppId !== undefined && (obj.gcAppId = Math.round(message.gcAppId));
+    message.statsKv !== undefined &&
+      (obj.statsKv = base64FromBytes(message.statsKv !== undefined ? message.statsKv : Buffer.alloc(0)));
+    message.activeJobs !== undefined && (obj.activeJobs = Math.round(message.activeJobs));
+    message.yieldingJobs !== undefined && (obj.yieldingJobs = Math.round(message.yieldingJobs));
+    message.userSessions !== undefined && (obj.userSessions = Math.round(message.userSessions));
+    message.gameServerSessions !== undefined && (obj.gameServerSessions = Math.round(message.gameServerSessions));
+    message.socaches !== undefined && (obj.socaches = Math.round(message.socaches));
+    message.socachesToUnload !== undefined && (obj.socachesToUnload = Math.round(message.socachesToUnload));
+    message.socachesLoading !== undefined && (obj.socachesLoading = Math.round(message.socachesLoading));
+    message.writebackQueue !== undefined && (obj.writebackQueue = Math.round(message.writebackQueue));
+    message.steamidLocks !== undefined && (obj.steamidLocks = Math.round(message.steamidLocks));
+    message.logonQueue !== undefined && (obj.logonQueue = Math.round(message.logonQueue));
+    message.logonJobs !== undefined && (obj.logonJobs = Math.round(message.logonJobs));
+    return obj;
+  },
 };
 
 function createBaseCMsgAMSendEmail(): CMsgAMSendEmail {
@@ -2999,6 +3901,42 @@ export const CMsgAMSendEmail = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgAMSendEmail {
+    return {
+      steamid: isSet(object.steamid) ? String(object.steamid) : "0",
+      emailMsgType: isSet(object.emailMsgType) ? Number(object.emailMsgType) : 0,
+      emailFormat: isSet(object.emailFormat) ? Number(object.emailFormat) : 0,
+      personaNameTokens: Array.isArray(object?.personaNameTokens)
+        ? object.personaNameTokens.map((e: any) => CMsgAMSendEmail_PersonaNameReplacementToken.fromJSON(e))
+        : [],
+      sourceGc: isSet(object.sourceGc) ? Number(object.sourceGc) : 0,
+      tokens: Array.isArray(object?.tokens)
+        ? object.tokens.map((e: any) => CMsgAMSendEmail_ReplacementToken.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgAMSendEmail): unknown {
+    const obj: any = {};
+    message.steamid !== undefined && (obj.steamid = message.steamid);
+    message.emailMsgType !== undefined && (obj.emailMsgType = Math.round(message.emailMsgType));
+    message.emailFormat !== undefined && (obj.emailFormat = Math.round(message.emailFormat));
+    if (message.personaNameTokens) {
+      obj.personaNameTokens = message.personaNameTokens.map((e) =>
+        e ? CMsgAMSendEmail_PersonaNameReplacementToken.toJSON(e) : undefined
+      );
+    } else {
+      obj.personaNameTokens = [];
+    }
+    message.sourceGc !== undefined && (obj.sourceGc = Math.round(message.sourceGc));
+    if (message.tokens) {
+      obj.tokens = message.tokens.map((e) => e ? CMsgAMSendEmail_ReplacementToken.toJSON(e) : undefined);
+    } else {
+      obj.tokens = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgAMSendEmail_ReplacementToken(): CMsgAMSendEmail_ReplacementToken {
@@ -3044,6 +3982,20 @@ export const CMsgAMSendEmail_ReplacementToken = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgAMSendEmail_ReplacementToken {
+    return {
+      tokenName: isSet(object.tokenName) ? String(object.tokenName) : "",
+      tokenValue: isSet(object.tokenValue) ? String(object.tokenValue) : "",
+    };
+  },
+
+  toJSON(message: CMsgAMSendEmail_ReplacementToken): unknown {
+    const obj: any = {};
+    message.tokenName !== undefined && (obj.tokenName = message.tokenName);
+    message.tokenValue !== undefined && (obj.tokenValue = message.tokenValue);
+    return obj;
   },
 };
 
@@ -3091,6 +4043,20 @@ export const CMsgAMSendEmail_PersonaNameReplacementToken = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgAMSendEmail_PersonaNameReplacementToken {
+    return {
+      steamid: isSet(object.steamid) ? String(object.steamid) : "0",
+      tokenName: isSet(object.tokenName) ? String(object.tokenName) : "",
+    };
+  },
+
+  toJSON(message: CMsgAMSendEmail_PersonaNameReplacementToken): unknown {
+    const obj: any = {};
+    message.steamid !== undefined && (obj.steamid = message.steamid);
+    message.tokenName !== undefined && (obj.tokenName = message.tokenName);
+    return obj;
+  },
 };
 
 function createBaseCMsgAMSendEmailResponse(): CMsgAMSendEmailResponse {
@@ -3126,6 +4092,16 @@ export const CMsgAMSendEmailResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgAMSendEmailResponse {
+    return { eresult: isSet(object.eresult) ? Number(object.eresult) : 0 };
+  },
+
+  toJSON(message: CMsgAMSendEmailResponse): unknown {
+    const obj: any = {};
+    message.eresult !== undefined && (obj.eresult = Math.round(message.eresult));
+    return obj;
   },
 };
 
@@ -3193,6 +4169,24 @@ export const CMsgGCGetEmailTemplate = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCGetEmailTemplate {
+    return {
+      appId: isSet(object.appId) ? Number(object.appId) : 0,
+      emailMsgType: isSet(object.emailMsgType) ? Number(object.emailMsgType) : 0,
+      emailLang: isSet(object.emailLang) ? Number(object.emailLang) : 0,
+      emailFormat: isSet(object.emailFormat) ? Number(object.emailFormat) : 0,
+    };
+  },
+
+  toJSON(message: CMsgGCGetEmailTemplate): unknown {
+    const obj: any = {};
+    message.appId !== undefined && (obj.appId = Math.round(message.appId));
+    message.emailMsgType !== undefined && (obj.emailMsgType = Math.round(message.emailMsgType));
+    message.emailLang !== undefined && (obj.emailLang = Math.round(message.emailLang));
+    message.emailFormat !== undefined && (obj.emailFormat = Math.round(message.emailFormat));
+    return obj;
+  },
 };
 
 function createBaseCMsgGCGetEmailTemplateResponse(): CMsgGCGetEmailTemplateResponse {
@@ -3248,6 +4242,22 @@ export const CMsgGCGetEmailTemplateResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCGetEmailTemplateResponse {
+    return {
+      eresult: isSet(object.eresult) ? Number(object.eresult) : 0,
+      templateExists: isSet(object.templateExists) ? Boolean(object.templateExists) : false,
+      template: isSet(object.template) ? String(object.template) : "",
+    };
+  },
+
+  toJSON(message: CMsgGCGetEmailTemplateResponse): unknown {
+    const obj: any = {};
+    message.eresult !== undefined && (obj.eresult = Math.round(message.eresult));
+    message.templateExists !== undefined && (obj.templateExists = message.templateExists);
+    message.template !== undefined && (obj.template = message.template);
+    return obj;
   },
 };
 
@@ -3325,6 +4335,26 @@ export const CMsgAMGrantGuestPasses2 = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgAMGrantGuestPasses2 {
+    return {
+      steamId: isSet(object.steamId) ? String(object.steamId) : "0",
+      packageId: isSet(object.packageId) ? Number(object.packageId) : 0,
+      passesToGrant: isSet(object.passesToGrant) ? Number(object.passesToGrant) : 0,
+      daysToExpiration: isSet(object.daysToExpiration) ? Number(object.daysToExpiration) : 0,
+      action: isSet(object.action) ? Number(object.action) : 0,
+    };
+  },
+
+  toJSON(message: CMsgAMGrantGuestPasses2): unknown {
+    const obj: any = {};
+    message.steamId !== undefined && (obj.steamId = message.steamId);
+    message.packageId !== undefined && (obj.packageId = Math.round(message.packageId));
+    message.passesToGrant !== undefined && (obj.passesToGrant = Math.round(message.passesToGrant));
+    message.daysToExpiration !== undefined && (obj.daysToExpiration = Math.round(message.daysToExpiration));
+    message.action !== undefined && (obj.action = Math.round(message.action));
+    return obj;
+  },
 };
 
 function createBaseCMsgAMGrantGuestPasses2Response(): CMsgAMGrantGuestPasses2Response {
@@ -3370,6 +4400,20 @@ export const CMsgAMGrantGuestPasses2Response = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgAMGrantGuestPasses2Response {
+    return {
+      eresult: isSet(object.eresult) ? Number(object.eresult) : 0,
+      passesGranted: isSet(object.passesGranted) ? Number(object.passesGranted) : 0,
+    };
+  },
+
+  toJSON(message: CMsgAMGrantGuestPasses2Response): unknown {
+    const obj: any = {};
+    message.eresult !== undefined && (obj.eresult = Math.round(message.eresult));
+    message.passesGranted !== undefined && (obj.passesGranted = Math.round(message.passesGranted));
+    return obj;
   },
 };
 
@@ -3417,6 +4461,20 @@ export const CMsgGCGetPersonaNames = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCGetPersonaNames {
+    return { steamids: Array.isArray(object?.steamids) ? object.steamids.map((e: any) => String(e)) : [] };
+  },
+
+  toJSON(message: CMsgGCGetPersonaNames): unknown {
+    const obj: any = {};
+    if (message.steamids) {
+      obj.steamids = message.steamids.map((e) => e);
+    } else {
+      obj.steamids = [];
+    }
+    return obj;
   },
 };
 
@@ -3475,6 +4533,34 @@ export const CMsgGCGetPersonaNamesResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCGetPersonaNamesResponse {
+    return {
+      succeededLookups: Array.isArray(object?.succeededLookups)
+        ? object.succeededLookups.map((e: any) => CMsgGCGetPersonaNamesResponse_PersonaName.fromJSON(e))
+        : [],
+      failedLookupSteamids: Array.isArray(object?.failedLookupSteamids)
+        ? object.failedLookupSteamids.map((e: any) => String(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgGCGetPersonaNamesResponse): unknown {
+    const obj: any = {};
+    if (message.succeededLookups) {
+      obj.succeededLookups = message.succeededLookups.map((e) =>
+        e ? CMsgGCGetPersonaNamesResponse_PersonaName.toJSON(e) : undefined
+      );
+    } else {
+      obj.succeededLookups = [];
+    }
+    if (message.failedLookupSteamids) {
+      obj.failedLookupSteamids = message.failedLookupSteamids.map((e) => e);
+    } else {
+      obj.failedLookupSteamids = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgGCGetPersonaNamesResponse_PersonaName(): CMsgGCGetPersonaNamesResponse_PersonaName {
@@ -3520,6 +4606,20 @@ export const CMsgGCGetPersonaNamesResponse_PersonaName = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCGetPersonaNamesResponse_PersonaName {
+    return {
+      steamid: isSet(object.steamid) ? String(object.steamid) : "0",
+      personaName: isSet(object.personaName) ? String(object.personaName) : "",
+    };
+  },
+
+  toJSON(message: CMsgGCGetPersonaNamesResponse_PersonaName): unknown {
+    const obj: any = {};
+    message.steamid !== undefined && (obj.steamid = message.steamid);
+    message.personaName !== undefined && (obj.personaName = message.personaName);
+    return obj;
   },
 };
 
@@ -3567,6 +4667,20 @@ export const CMsgGCCheckFriendship = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCCheckFriendship {
+    return {
+      steamidLeft: isSet(object.steamidLeft) ? String(object.steamidLeft) : "0",
+      steamidRight: isSet(object.steamidRight) ? String(object.steamidRight) : "0",
+    };
+  },
+
+  toJSON(message: CMsgGCCheckFriendship): unknown {
+    const obj: any = {};
+    message.steamidLeft !== undefined && (obj.steamidLeft = message.steamidLeft);
+    message.steamidRight !== undefined && (obj.steamidRight = message.steamidRight);
+    return obj;
+  },
 };
 
 function createBaseCMsgGCCheckFriendshipResponse(): CMsgGCCheckFriendshipResponse {
@@ -3613,6 +4727,20 @@ export const CMsgGCCheckFriendshipResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCCheckFriendshipResponse {
+    return {
+      success: isSet(object.success) ? Boolean(object.success) : false,
+      foundFriendship: isSet(object.foundFriendship) ? Boolean(object.foundFriendship) : false,
+    };
+  },
+
+  toJSON(message: CMsgGCCheckFriendshipResponse): unknown {
+    const obj: any = {};
+    message.success !== undefined && (obj.success = message.success);
+    message.foundFriendship !== undefined && (obj.foundFriendship = message.foundFriendship);
+    return obj;
+  },
 };
 
 function createBaseCMsgGCGetAppFriendsList(): CMsgGCGetAppFriendsList {
@@ -3658,6 +4786,23 @@ export const CMsgGCGetAppFriendsList = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCGetAppFriendsList {
+    return {
+      steamid: isSet(object.steamid) ? String(object.steamid) : "0",
+      includeFriendshipTimestamps: isSet(object.includeFriendshipTimestamps)
+        ? Boolean(object.includeFriendshipTimestamps)
+        : false,
+    };
+  },
+
+  toJSON(message: CMsgGCGetAppFriendsList): unknown {
+    const obj: any = {};
+    message.steamid !== undefined && (obj.steamid = message.steamid);
+    message.includeFriendshipTimestamps !== undefined &&
+      (obj.includeFriendshipTimestamps = message.includeFriendshipTimestamps);
+    return obj;
   },
 };
 
@@ -3758,6 +4903,38 @@ export const CMsgGCGetAppFriendsListResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCGetAppFriendsListResponse {
+    return {
+      success: isSet(object.success) ? Boolean(object.success) : false,
+      steamids: Array.isArray(object?.steamids) ? object.steamids.map((e: any) => String(e)) : [],
+      friendshipTimestamps: Array.isArray(object?.friendshipTimestamps)
+        ? object.friendshipTimestamps.map((e: any) => Number(e))
+        : [],
+      lastPlaytimes: Array.isArray(object?.lastPlaytimes) ? object.lastPlaytimes.map((e: any) => Number(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgGCGetAppFriendsListResponse): unknown {
+    const obj: any = {};
+    message.success !== undefined && (obj.success = message.success);
+    if (message.steamids) {
+      obj.steamids = message.steamids.map((e) => e);
+    } else {
+      obj.steamids = [];
+    }
+    if (message.friendshipTimestamps) {
+      obj.friendshipTimestamps = message.friendshipTimestamps.map((e) => Math.round(e));
+    } else {
+      obj.friendshipTimestamps = [];
+    }
+    if (message.lastPlaytimes) {
+      obj.lastPlaytimes = message.lastPlaytimes.map((e) => Math.round(e));
+    } else {
+      obj.lastPlaytimes = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgGCMsgMasterSetDirectory(): CMsgGCMsgMasterSetDirectory {
@@ -3803,6 +4980,24 @@ export const CMsgGCMsgMasterSetDirectory = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCMsgMasterSetDirectory {
+    return {
+      masterDirIndex: isSet(object.masterDirIndex) ? Number(object.masterDirIndex) : 0,
+      dir: Array.isArray(object?.dir) ? object.dir.map((e: any) => CMsgGCMsgMasterSetDirectory_SubGC.fromJSON(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgGCMsgMasterSetDirectory): unknown {
+    const obj: any = {};
+    message.masterDirIndex !== undefined && (obj.masterDirIndex = Math.round(message.masterDirIndex));
+    if (message.dir) {
+      obj.dir = message.dir.map((e) => e ? CMsgGCMsgMasterSetDirectory_SubGC.toJSON(e) : undefined);
+    } else {
+      obj.dir = [];
+    }
+    return obj;
   },
 };
 
@@ -3880,6 +5075,26 @@ export const CMsgGCMsgMasterSetDirectory_SubGC = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCMsgMasterSetDirectory_SubGC {
+    return {
+      dirIndex: isSet(object.dirIndex) ? Number(object.dirIndex) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      box: isSet(object.box) ? String(object.box) : "",
+      commandLine: isSet(object.commandLine) ? String(object.commandLine) : "",
+      gcBinary: isSet(object.gcBinary) ? String(object.gcBinary) : "",
+    };
+  },
+
+  toJSON(message: CMsgGCMsgMasterSetDirectory_SubGC): unknown {
+    const obj: any = {};
+    message.dirIndex !== undefined && (obj.dirIndex = Math.round(message.dirIndex));
+    message.name !== undefined && (obj.name = message.name);
+    message.box !== undefined && (obj.box = message.box);
+    message.commandLine !== undefined && (obj.commandLine = message.commandLine);
+    message.gcBinary !== undefined && (obj.gcBinary = message.gcBinary);
+    return obj;
+  },
 };
 
 function createBaseCMsgGCMsgMasterSetDirectoryResponse(): CMsgGCMsgMasterSetDirectoryResponse {
@@ -3926,6 +5141,20 @@ export const CMsgGCMsgMasterSetDirectoryResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCMsgMasterSetDirectoryResponse {
+    return {
+      eresult: isSet(object.eresult) ? Number(object.eresult) : 0,
+      message: isSet(object.message) ? String(object.message) : "",
+    };
+  },
+
+  toJSON(message: CMsgGCMsgMasterSetDirectoryResponse): unknown {
+    const obj: any = {};
+    message.eresult !== undefined && (obj.eresult = Math.round(message.eresult));
+    message.message !== undefined && (obj.message = message.message);
+    return obj;
+  },
 };
 
 function createBaseCMsgGCMsgWebAPIJobRequestForwardResponse(): CMsgGCMsgWebAPIJobRequestForwardResponse {
@@ -3962,6 +5191,16 @@ export const CMsgGCMsgWebAPIJobRequestForwardResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCMsgWebAPIJobRequestForwardResponse {
+    return { dirIndex: isSet(object.dirIndex) ? Number(object.dirIndex) : 0 };
+  },
+
+  toJSON(message: CMsgGCMsgWebAPIJobRequestForwardResponse): unknown {
+    const obj: any = {};
+    message.dirIndex !== undefined && (obj.dirIndex = Math.round(message.dirIndex));
+    return obj;
+  },
 };
 
 function createBaseCGCSystemMsgGetPurchaseTrustRequest(): CGCSystemMsgGetPurchaseTrustRequest {
@@ -3997,6 +5236,16 @@ export const CGCSystemMsgGetPurchaseTrustRequest = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CGCSystemMsgGetPurchaseTrustRequest {
+    return { steamid: isSet(object.steamid) ? String(object.steamid) : "0" };
+  },
+
+  toJSON(message: CGCSystemMsgGetPurchaseTrustRequest): unknown {
+    const obj: any = {};
+    message.steamid !== undefined && (obj.steamid = message.steamid);
+    return obj;
   },
 };
 
@@ -4068,6 +5317,27 @@ export const CGCSystemMsgGetPurchaseTrustResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CGCSystemMsgGetPurchaseTrustResponse {
+    return {
+      hasPriorPurchaseHistory: isSet(object.hasPriorPurchaseHistory) ? Boolean(object.hasPriorPurchaseHistory) : false,
+      hasNoRecentPasswordResets: isSet(object.hasNoRecentPasswordResets)
+        ? Boolean(object.hasNoRecentPasswordResets)
+        : false,
+      isWalletCashTrusted: isSet(object.isWalletCashTrusted) ? Boolean(object.isWalletCashTrusted) : false,
+      timeAllTrusted: isSet(object.timeAllTrusted) ? Number(object.timeAllTrusted) : 0,
+    };
+  },
+
+  toJSON(message: CGCSystemMsgGetPurchaseTrustResponse): unknown {
+    const obj: any = {};
+    message.hasPriorPurchaseHistory !== undefined && (obj.hasPriorPurchaseHistory = message.hasPriorPurchaseHistory);
+    message.hasNoRecentPasswordResets !== undefined &&
+      (obj.hasNoRecentPasswordResets = message.hasNoRecentPasswordResets);
+    message.isWalletCashTrusted !== undefined && (obj.isWalletCashTrusted = message.isWalletCashTrusted);
+    message.timeAllTrusted !== undefined && (obj.timeAllTrusted = Math.round(message.timeAllTrusted));
+    return obj;
   },
 };
 
@@ -4145,6 +5415,26 @@ export const CMsgGCHAccountVacStatusChange = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCHAccountVacStatusChange {
+    return {
+      steamId: isSet(object.steamId) ? String(object.steamId) : "0",
+      appId: isSet(object.appId) ? Number(object.appId) : 0,
+      rtimeVacbanStarts: isSet(object.rtimeVacbanStarts) ? Number(object.rtimeVacbanStarts) : 0,
+      isBannedNow: isSet(object.isBannedNow) ? Boolean(object.isBannedNow) : false,
+      isBannedFuture: isSet(object.isBannedFuture) ? Boolean(object.isBannedFuture) : false,
+    };
+  },
+
+  toJSON(message: CMsgGCHAccountVacStatusChange): unknown {
+    const obj: any = {};
+    message.steamId !== undefined && (obj.steamId = message.steamId);
+    message.appId !== undefined && (obj.appId = Math.round(message.appId));
+    message.rtimeVacbanStarts !== undefined && (obj.rtimeVacbanStarts = Math.round(message.rtimeVacbanStarts));
+    message.isBannedNow !== undefined && (obj.isBannedNow = message.isBannedNow);
+    message.isBannedFuture !== undefined && (obj.isBannedFuture = message.isBannedFuture);
+    return obj;
+  },
 };
 
 function createBaseCMsgGCGetPartnerAccountLink(): CMsgGCGetPartnerAccountLink {
@@ -4180,6 +5470,16 @@ export const CMsgGCGetPartnerAccountLink = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCGetPartnerAccountLink {
+    return { steamid: isSet(object.steamid) ? String(object.steamid) : "0" };
+  },
+
+  toJSON(message: CMsgGCGetPartnerAccountLink): unknown {
+    const obj: any = {};
+    message.steamid !== undefined && (obj.steamid = message.steamid);
+    return obj;
   },
 };
 
@@ -4256,6 +5556,26 @@ export const CMsgGCGetPartnerAccountLinkResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCGetPartnerAccountLinkResponse {
+    return {
+      pwid: isSet(object.pwid) ? Number(object.pwid) : 0,
+      nexonid: isSet(object.nexonid) ? Number(object.nexonid) : 0,
+      ageclass: isSet(object.ageclass) ? Number(object.ageclass) : 0,
+      idVerified: isSet(object.idVerified) ? Boolean(object.idVerified) : false,
+      isAdult: isSet(object.isAdult) ? Boolean(object.isAdult) : false,
+    };
+  },
+
+  toJSON(message: CMsgGCGetPartnerAccountLinkResponse): unknown {
+    const obj: any = {};
+    message.pwid !== undefined && (obj.pwid = Math.round(message.pwid));
+    message.nexonid !== undefined && (obj.nexonid = Math.round(message.nexonid));
+    message.ageclass !== undefined && (obj.ageclass = Math.round(message.ageclass));
+    message.idVerified !== undefined && (obj.idVerified = message.idVerified);
+    message.isAdult !== undefined && (obj.isAdult = message.isAdult);
+    return obj;
   },
 };
 
@@ -4344,6 +5664,30 @@ export const CMsgGCRoutingInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCRoutingInfo {
+    return {
+      dirIndex: Array.isArray(object?.dirIndex) ? object.dirIndex.map((e: any) => Number(e)) : [],
+      method: isSet(object.method) ? cMsgGCRoutingInfo_RoutingMethodFromJSON(object.method) : 0,
+      fallback: isSet(object.fallback) ? cMsgGCRoutingInfo_RoutingMethodFromJSON(object.fallback) : 0,
+      protobufField: isSet(object.protobufField) ? Number(object.protobufField) : 0,
+      webapiParam: isSet(object.webapiParam) ? String(object.webapiParam) : "",
+    };
+  },
+
+  toJSON(message: CMsgGCRoutingInfo): unknown {
+    const obj: any = {};
+    if (message.dirIndex) {
+      obj.dirIndex = message.dirIndex.map((e) => Math.round(e));
+    } else {
+      obj.dirIndex = [];
+    }
+    message.method !== undefined && (obj.method = cMsgGCRoutingInfo_RoutingMethodToJSON(message.method));
+    message.fallback !== undefined && (obj.fallback = cMsgGCRoutingInfo_RoutingMethodToJSON(message.fallback));
+    message.protobufField !== undefined && (obj.protobufField = Math.round(message.protobufField));
+    message.webapiParam !== undefined && (obj.webapiParam = message.webapiParam);
+    return obj;
+  },
 };
 
 function createBaseCMsgGCMsgMasterSetWebAPIRouting(): CMsgGCMsgMasterSetWebAPIRouting {
@@ -4379,6 +5723,24 @@ export const CMsgGCMsgMasterSetWebAPIRouting = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCMsgMasterSetWebAPIRouting {
+    return {
+      entries: Array.isArray(object?.entries)
+        ? object.entries.map((e: any) => CMsgGCMsgMasterSetWebAPIRouting_Entry.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgGCMsgMasterSetWebAPIRouting): unknown {
+    const obj: any = {};
+    if (message.entries) {
+      obj.entries = message.entries.map((e) => e ? CMsgGCMsgMasterSetWebAPIRouting_Entry.toJSON(e) : undefined);
+    } else {
+      obj.entries = [];
+    }
+    return obj;
   },
 };
 
@@ -4436,6 +5798,23 @@ export const CMsgGCMsgMasterSetWebAPIRouting_Entry = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCMsgMasterSetWebAPIRouting_Entry {
+    return {
+      interfaceName: isSet(object.interfaceName) ? String(object.interfaceName) : "",
+      methodName: isSet(object.methodName) ? String(object.methodName) : "",
+      routing: isSet(object.routing) ? CMsgGCRoutingInfo.fromJSON(object.routing) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgGCMsgMasterSetWebAPIRouting_Entry): unknown {
+    const obj: any = {};
+    message.interfaceName !== undefined && (obj.interfaceName = message.interfaceName);
+    message.methodName !== undefined && (obj.methodName = message.methodName);
+    message.routing !== undefined &&
+      (obj.routing = message.routing ? CMsgGCRoutingInfo.toJSON(message.routing) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgGCMsgMasterSetClientMsgRouting(): CMsgGCMsgMasterSetClientMsgRouting {
@@ -4471,6 +5850,24 @@ export const CMsgGCMsgMasterSetClientMsgRouting = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCMsgMasterSetClientMsgRouting {
+    return {
+      entries: Array.isArray(object?.entries)
+        ? object.entries.map((e: any) => CMsgGCMsgMasterSetClientMsgRouting_Entry.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgGCMsgMasterSetClientMsgRouting): unknown {
+    const obj: any = {};
+    if (message.entries) {
+      obj.entries = message.entries.map((e) => e ? CMsgGCMsgMasterSetClientMsgRouting_Entry.toJSON(e) : undefined);
+    } else {
+      obj.entries = [];
+    }
+    return obj;
   },
 };
 
@@ -4518,6 +5915,21 @@ export const CMsgGCMsgMasterSetClientMsgRouting_Entry = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCMsgMasterSetClientMsgRouting_Entry {
+    return {
+      msgType: isSet(object.msgType) ? Number(object.msgType) : 0,
+      routing: isSet(object.routing) ? CMsgGCRoutingInfo.fromJSON(object.routing) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgGCMsgMasterSetClientMsgRouting_Entry): unknown {
+    const obj: any = {};
+    message.msgType !== undefined && (obj.msgType = Math.round(message.msgType));
+    message.routing !== undefined &&
+      (obj.routing = message.routing ? CMsgGCRoutingInfo.toJSON(message.routing) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgGCMsgMasterSetWebAPIRoutingResponse(): CMsgGCMsgMasterSetWebAPIRoutingResponse {
@@ -4554,6 +5966,16 @@ export const CMsgGCMsgMasterSetWebAPIRoutingResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCMsgMasterSetWebAPIRoutingResponse {
+    return { eresult: isSet(object.eresult) ? Number(object.eresult) : 0 };
+  },
+
+  toJSON(message: CMsgGCMsgMasterSetWebAPIRoutingResponse): unknown {
+    const obj: any = {};
+    message.eresult !== undefined && (obj.eresult = Math.round(message.eresult));
+    return obj;
+  },
 };
 
 function createBaseCMsgGCMsgMasterSetClientMsgRoutingResponse(): CMsgGCMsgMasterSetClientMsgRoutingResponse {
@@ -4589,6 +6011,16 @@ export const CMsgGCMsgMasterSetClientMsgRoutingResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCMsgMasterSetClientMsgRoutingResponse {
+    return { eresult: isSet(object.eresult) ? Number(object.eresult) : 0 };
+  },
+
+  toJSON(message: CMsgGCMsgMasterSetClientMsgRoutingResponse): unknown {
+    const obj: any = {};
+    message.eresult !== undefined && (obj.eresult = Math.round(message.eresult));
+    return obj;
   },
 };
 
@@ -4657,6 +6089,37 @@ export const CMsgGCMsgSetOptions = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCMsgSetOptions {
+    return {
+      options: Array.isArray(object?.options)
+        ? object.options.map((e: any) => cMsgGCMsgSetOptions_OptionFromJSON(e))
+        : [],
+      clientMsgRanges: Array.isArray(object?.clientMsgRanges)
+        ? object.clientMsgRanges.map((e: any) => CMsgGCMsgSetOptions_MessageRange.fromJSON(e))
+        : [],
+      gcsqlVersion: isSet(object.gcsqlVersion) ? cMsgGCMsgSetOptions_GCSQLVersionFromJSON(object.gcsqlVersion) : 1,
+    };
+  },
+
+  toJSON(message: CMsgGCMsgSetOptions): unknown {
+    const obj: any = {};
+    if (message.options) {
+      obj.options = message.options.map((e) => cMsgGCMsgSetOptions_OptionToJSON(e));
+    } else {
+      obj.options = [];
+    }
+    if (message.clientMsgRanges) {
+      obj.clientMsgRanges = message.clientMsgRanges.map((e) =>
+        e ? CMsgGCMsgSetOptions_MessageRange.toJSON(e) : undefined
+      );
+    } else {
+      obj.clientMsgRanges = [];
+    }
+    message.gcsqlVersion !== undefined &&
+      (obj.gcsqlVersion = cMsgGCMsgSetOptions_GCSQLVersionToJSON(message.gcsqlVersion));
+    return obj;
+  },
 };
 
 function createBaseCMsgGCMsgSetOptions_MessageRange(): CMsgGCMsgSetOptions_MessageRange {
@@ -4702,6 +6165,17 @@ export const CMsgGCMsgSetOptions_MessageRange = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCMsgSetOptions_MessageRange {
+    return { low: isSet(object.low) ? Number(object.low) : 0, high: isSet(object.high) ? Number(object.high) : 0 };
+  },
+
+  toJSON(message: CMsgGCMsgSetOptions_MessageRange): unknown {
+    const obj: any = {};
+    message.low !== undefined && (obj.low = Math.round(message.low));
+    message.high !== undefined && (obj.high = Math.round(message.high));
+    return obj;
   },
 };
 
@@ -4829,6 +6303,40 @@ export const CMsgGCHUpdateSession = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCHUpdateSession {
+    return {
+      steamId: isSet(object.steamId) ? String(object.steamId) : "0",
+      appId: isSet(object.appId) ? Number(object.appId) : 0,
+      online: isSet(object.online) ? Boolean(object.online) : false,
+      serverSteamId: isSet(object.serverSteamId) ? String(object.serverSteamId) : "0",
+      serverAddr: isSet(object.serverAddr) ? Number(object.serverAddr) : 0,
+      serverPort: isSet(object.serverPort) ? Number(object.serverPort) : 0,
+      osType: isSet(object.osType) ? Number(object.osType) : 0,
+      clientAddr: isSet(object.clientAddr) ? Number(object.clientAddr) : 0,
+      extraFields: Array.isArray(object?.extraFields)
+        ? object.extraFields.map((e: any) => CMsgGCHUpdateSession_ExtraField.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgGCHUpdateSession): unknown {
+    const obj: any = {};
+    message.steamId !== undefined && (obj.steamId = message.steamId);
+    message.appId !== undefined && (obj.appId = Math.round(message.appId));
+    message.online !== undefined && (obj.online = message.online);
+    message.serverSteamId !== undefined && (obj.serverSteamId = message.serverSteamId);
+    message.serverAddr !== undefined && (obj.serverAddr = Math.round(message.serverAddr));
+    message.serverPort !== undefined && (obj.serverPort = Math.round(message.serverPort));
+    message.osType !== undefined && (obj.osType = Math.round(message.osType));
+    message.clientAddr !== undefined && (obj.clientAddr = Math.round(message.clientAddr));
+    if (message.extraFields) {
+      obj.extraFields = message.extraFields.map((e) => e ? CMsgGCHUpdateSession_ExtraField.toJSON(e) : undefined);
+    } else {
+      obj.extraFields = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgGCHUpdateSession_ExtraField(): CMsgGCHUpdateSession_ExtraField {
@@ -4874,6 +6382,20 @@ export const CMsgGCHUpdateSession_ExtraField = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCHUpdateSession_ExtraField {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      value: isSet(object.value) ? String(object.value) : "",
+    };
+  },
+
+  toJSON(message: CMsgGCHUpdateSession_ExtraField): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.value !== undefined && (obj.value = message.value);
+    return obj;
   },
 };
 
@@ -4937,6 +6459,26 @@ export const CMsgNotificationOfSuspiciousActivity = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgNotificationOfSuspiciousActivity {
+    return {
+      steamid: isSet(object.steamid) ? String(object.steamid) : "0",
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      multipleInstances: isSet(object.multipleInstances)
+        ? CMsgNotificationOfSuspiciousActivity_MultipleGameInstances.fromJSON(object.multipleInstances)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CMsgNotificationOfSuspiciousActivity): unknown {
+    const obj: any = {};
+    message.steamid !== undefined && (obj.steamid = message.steamid);
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    message.multipleInstances !== undefined && (obj.multipleInstances = message.multipleInstances
+      ? CMsgNotificationOfSuspiciousActivity_MultipleGameInstances.toJSON(message.multipleInstances)
+      : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgNotificationOfSuspiciousActivity_MultipleGameInstances(): CMsgNotificationOfSuspiciousActivity_MultipleGameInstances {
@@ -4996,6 +6538,24 @@ export const CMsgNotificationOfSuspiciousActivity_MultipleGameInstances = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgNotificationOfSuspiciousActivity_MultipleGameInstances {
+    return {
+      appInstanceCount: isSet(object.appInstanceCount) ? Number(object.appInstanceCount) : 0,
+      otherSteamids: Array.isArray(object?.otherSteamids) ? object.otherSteamids.map((e: any) => String(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgNotificationOfSuspiciousActivity_MultipleGameInstances): unknown {
+    const obj: any = {};
+    message.appInstanceCount !== undefined && (obj.appInstanceCount = Math.round(message.appInstanceCount));
+    if (message.otherSteamids) {
+      obj.otherSteamids = message.otherSteamids.map((e) => e);
+    } else {
+      obj.otherSteamids = [];
+    }
+    return obj;
   },
 };
 
@@ -5062,6 +6622,33 @@ export const CMsgDPPartnerMicroTxns = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDPPartnerMicroTxns {
+    return {
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      gcName: isSet(object.gcName) ? String(object.gcName) : "",
+      partner: isSet(object.partner) ? CMsgDPPartnerMicroTxns_PartnerInfo.fromJSON(object.partner) : undefined,
+      transactions: Array.isArray(object?.transactions)
+        ? object.transactions.map((e: any) => CMsgDPPartnerMicroTxns_PartnerMicroTxn.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgDPPartnerMicroTxns): unknown {
+    const obj: any = {};
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    message.gcName !== undefined && (obj.gcName = message.gcName);
+    message.partner !== undefined &&
+      (obj.partner = message.partner ? CMsgDPPartnerMicroTxns_PartnerInfo.toJSON(message.partner) : undefined);
+    if (message.transactions) {
+      obj.transactions = message.transactions.map((e) =>
+        e ? CMsgDPPartnerMicroTxns_PartnerMicroTxn.toJSON(e) : undefined
+      );
+    } else {
+      obj.transactions = [];
+    }
+    return obj;
   },
 };
 
@@ -5277,6 +6864,50 @@ export const CMsgDPPartnerMicroTxns_PartnerMicroTxn = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDPPartnerMicroTxns_PartnerMicroTxn {
+    return {
+      initTime: isSet(object.initTime) ? Number(object.initTime) : 0,
+      lastUpdateTime: isSet(object.lastUpdateTime) ? Number(object.lastUpdateTime) : 0,
+      txnId: isSet(object.txnId) ? String(object.txnId) : "0",
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      lineItem: isSet(object.lineItem) ? Number(object.lineItem) : 0,
+      itemId: isSet(object.itemId) ? String(object.itemId) : "0",
+      defIndex: isSet(object.defIndex) ? Number(object.defIndex) : 0,
+      price: isSet(object.price) ? String(object.price) : "0",
+      tax: isSet(object.tax) ? String(object.tax) : "0",
+      priceUsd: isSet(object.priceUsd) ? String(object.priceUsd) : "0",
+      taxUsd: isSet(object.taxUsd) ? String(object.taxUsd) : "0",
+      purchaseType: isSet(object.purchaseType) ? Number(object.purchaseType) : 0,
+      steamTxnType: isSet(object.steamTxnType) ? Number(object.steamTxnType) : 0,
+      countryCode: isSet(object.countryCode) ? String(object.countryCode) : "",
+      regionCode: isSet(object.regionCode) ? String(object.regionCode) : "",
+      quantity: isSet(object.quantity) ? Number(object.quantity) : 0,
+      refTransId: isSet(object.refTransId) ? String(object.refTransId) : "0",
+    };
+  },
+
+  toJSON(message: CMsgDPPartnerMicroTxns_PartnerMicroTxn): unknown {
+    const obj: any = {};
+    message.initTime !== undefined && (obj.initTime = Math.round(message.initTime));
+    message.lastUpdateTime !== undefined && (obj.lastUpdateTime = Math.round(message.lastUpdateTime));
+    message.txnId !== undefined && (obj.txnId = message.txnId);
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.lineItem !== undefined && (obj.lineItem = Math.round(message.lineItem));
+    message.itemId !== undefined && (obj.itemId = message.itemId);
+    message.defIndex !== undefined && (obj.defIndex = Math.round(message.defIndex));
+    message.price !== undefined && (obj.price = message.price);
+    message.tax !== undefined && (obj.tax = message.tax);
+    message.priceUsd !== undefined && (obj.priceUsd = message.priceUsd);
+    message.taxUsd !== undefined && (obj.taxUsd = message.taxUsd);
+    message.purchaseType !== undefined && (obj.purchaseType = Math.round(message.purchaseType));
+    message.steamTxnType !== undefined && (obj.steamTxnType = Math.round(message.steamTxnType));
+    message.countryCode !== undefined && (obj.countryCode = message.countryCode);
+    message.regionCode !== undefined && (obj.regionCode = message.regionCode);
+    message.quantity !== undefined && (obj.quantity = Math.round(message.quantity));
+    message.refTransId !== undefined && (obj.refTransId = message.refTransId);
+    return obj;
+  },
 };
 
 function createBaseCMsgDPPartnerMicroTxns_PartnerInfo(): CMsgDPPartnerMicroTxns_PartnerInfo {
@@ -5343,6 +6974,24 @@ export const CMsgDPPartnerMicroTxns_PartnerInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDPPartnerMicroTxns_PartnerInfo {
+    return {
+      partnerId: isSet(object.partnerId) ? Number(object.partnerId) : 0,
+      partnerName: isSet(object.partnerName) ? String(object.partnerName) : "",
+      currencyCode: isSet(object.currencyCode) ? String(object.currencyCode) : "",
+      currencyName: isSet(object.currencyName) ? String(object.currencyName) : "",
+    };
+  },
+
+  toJSON(message: CMsgDPPartnerMicroTxns_PartnerInfo): unknown {
+    const obj: any = {};
+    message.partnerId !== undefined && (obj.partnerId = Math.round(message.partnerId));
+    message.partnerName !== undefined && (obj.partnerName = message.partnerName);
+    message.currencyCode !== undefined && (obj.currencyCode = message.currencyCode);
+    message.currencyName !== undefined && (obj.currencyName = message.currencyName);
+    return obj;
+  },
 };
 
 function createBaseCMsgDPPartnerMicroTxnsResponse(): CMsgDPPartnerMicroTxnsResponse {
@@ -5388,6 +7037,21 @@ export const CMsgDPPartnerMicroTxnsResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDPPartnerMicroTxnsResponse {
+    return {
+      eresult: isSet(object.eresult) ? Number(object.eresult) : 0,
+      eerrorcode: isSet(object.eerrorcode) ? cMsgDPPartnerMicroTxnsResponse_EErrorCodeFromJSON(object.eerrorcode) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDPPartnerMicroTxnsResponse): unknown {
+    const obj: any = {};
+    message.eresult !== undefined && (obj.eresult = Math.round(message.eresult));
+    message.eerrorcode !== undefined &&
+      (obj.eerrorcode = cMsgDPPartnerMicroTxnsResponse_EErrorCodeToJSON(message.eerrorcode));
+    return obj;
   },
 };
 
@@ -5445,6 +7109,22 @@ export const CMsgGCHVacVerificationChange = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCHVacVerificationChange {
+    return {
+      steamid: isSet(object.steamid) ? String(object.steamid) : "0",
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      isVerified: isSet(object.isVerified) ? Boolean(object.isVerified) : false,
+    };
+  },
+
+  toJSON(message: CMsgGCHVacVerificationChange): unknown {
+    const obj: any = {};
+    message.steamid !== undefined && (obj.steamid = message.steamid);
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    message.isVerified !== undefined && (obj.isVerified = message.isVerified);
+    return obj;
+  },
 };
 
 function createBaseCMsgGCHAccountTwoFactorChange(): CMsgGCHAccountTwoFactorChange {
@@ -5501,6 +7181,22 @@ export const CMsgGCHAccountTwoFactorChange = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCHAccountTwoFactorChange {
+    return {
+      steamid: isSet(object.steamid) ? String(object.steamid) : "0",
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      twofactorEnabled: isSet(object.twofactorEnabled) ? Boolean(object.twofactorEnabled) : false,
+    };
+  },
+
+  toJSON(message: CMsgGCHAccountTwoFactorChange): unknown {
+    const obj: any = {};
+    message.steamid !== undefined && (obj.steamid = message.steamid);
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    message.twofactorEnabled !== undefined && (obj.twofactorEnabled = message.twofactorEnabled);
+    return obj;
+  },
 };
 
 function createBaseCMsgGCCheckClanMembership(): CMsgGCCheckClanMembership {
@@ -5547,6 +7243,20 @@ export const CMsgGCCheckClanMembership = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCCheckClanMembership {
+    return {
+      steamid: isSet(object.steamid) ? String(object.steamid) : "0",
+      clanid: isSet(object.clanid) ? Number(object.clanid) : 0,
+    };
+  },
+
+  toJSON(message: CMsgGCCheckClanMembership): unknown {
+    const obj: any = {};
+    message.steamid !== undefined && (obj.steamid = message.steamid);
+    message.clanid !== undefined && (obj.clanid = Math.round(message.clanid));
+    return obj;
+  },
 };
 
 function createBaseCMsgGCCheckClanMembershipResponse(): CMsgGCCheckClanMembershipResponse {
@@ -5582,6 +7292,16 @@ export const CMsgGCCheckClanMembershipResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCCheckClanMembershipResponse {
+    return { ismember: isSet(object.ismember) ? Boolean(object.ismember) : false };
+  },
+
+  toJSON(message: CMsgGCCheckClanMembershipResponse): unknown {
+    const obj: any = {};
+    message.ismember !== undefined && (obj.ismember = message.ismember);
+    return obj;
   },
 };
 
@@ -5629,6 +7349,28 @@ export const CMsgGCHAppCheersReceived = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCHAppCheersReceived {
+    return {
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      cheerTargets: Array.isArray(object?.cheerTargets)
+        ? object.cheerTargets.map((e: any) => CMsgGCHAppCheersReceived_CheerTarget.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgGCHAppCheersReceived): unknown {
+    const obj: any = {};
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    if (message.cheerTargets) {
+      obj.cheerTargets = message.cheerTargets.map((e) =>
+        e ? CMsgGCHAppCheersReceived_CheerTarget.toJSON(e) : undefined
+      );
+    } else {
+      obj.cheerTargets = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgGCHAppCheersReceived_CheerTypeAmount(): CMsgGCHAppCheersReceived_CheerTypeAmount {
@@ -5674,6 +7416,20 @@ export const CMsgGCHAppCheersReceived_CheerTypeAmount = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCHAppCheersReceived_CheerTypeAmount {
+    return {
+      cheerType: isSet(object.cheerType) ? Number(object.cheerType) : 0,
+      cheerAmount: isSet(object.cheerAmount) ? Number(object.cheerAmount) : 0,
+    };
+  },
+
+  toJSON(message: CMsgGCHAppCheersReceived_CheerTypeAmount): unknown {
+    const obj: any = {};
+    message.cheerType !== undefined && (obj.cheerType = Math.round(message.cheerType));
+    message.cheerAmount !== undefined && (obj.cheerAmount = Math.round(message.cheerAmount));
+    return obj;
   },
 };
 
@@ -5721,6 +7477,28 @@ export const CMsgGCHAppCheersReceived_CheerTarget = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCHAppCheersReceived_CheerTarget {
+    return {
+      cheerTarget: isSet(object.cheerTarget) ? String(object.cheerTarget) : "0",
+      cheerTypes: Array.isArray(object?.cheerTypes)
+        ? object.cheerTypes.map((e: any) => CMsgGCHAppCheersReceived_CheerTypeAmount.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgGCHAppCheersReceived_CheerTarget): unknown {
+    const obj: any = {};
+    message.cheerTarget !== undefined && (obj.cheerTarget = message.cheerTarget);
+    if (message.cheerTypes) {
+      obj.cheerTypes = message.cheerTypes.map((e) =>
+        e ? CMsgGCHAppCheersReceived_CheerTypeAmount.toJSON(e) : undefined
+      );
+    } else {
+      obj.cheerTypes = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgGCHAppCheersGetAllowedTypes(): CMsgGCHAppCheersGetAllowedTypes {
@@ -5766,6 +7544,20 @@ export const CMsgGCHAppCheersGetAllowedTypes = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCHAppCheersGetAllowedTypes {
+    return {
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      cheerTarget: isSet(object.cheerTarget) ? String(object.cheerTarget) : "0",
+    };
+  },
+
+  toJSON(message: CMsgGCHAppCheersGetAllowedTypes): unknown {
+    const obj: any = {};
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    message.cheerTarget !== undefined && (obj.cheerTarget = message.cheerTarget);
+    return obj;
   },
 };
 
@@ -5833,6 +7625,36 @@ export const CMsgGCHAppCheersGetAllowedTypesResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCHAppCheersGetAllowedTypesResponse {
+    return {
+      cheerTypesValidAllUsers: Array.isArray(object?.cheerTypesValidAllUsers)
+        ? object.cheerTypesValidAllUsers.map((e: any) => Number(e))
+        : [],
+      cheerRemaps: Array.isArray(object?.cheerRemaps)
+        ? object.cheerRemaps.map((e: any) => CMsgGCHAppCheersGetAllowedTypesResponse_CheerRemaps.fromJSON(e))
+        : [],
+      cacheDuration: isSet(object.cacheDuration) ? Number(object.cacheDuration) : 0,
+    };
+  },
+
+  toJSON(message: CMsgGCHAppCheersGetAllowedTypesResponse): unknown {
+    const obj: any = {};
+    if (message.cheerTypesValidAllUsers) {
+      obj.cheerTypesValidAllUsers = message.cheerTypesValidAllUsers.map((e) => Math.round(e));
+    } else {
+      obj.cheerTypesValidAllUsers = [];
+    }
+    if (message.cheerRemaps) {
+      obj.cheerRemaps = message.cheerRemaps.map((e) =>
+        e ? CMsgGCHAppCheersGetAllowedTypesResponse_CheerRemaps.toJSON(e) : undefined
+      );
+    } else {
+      obj.cheerRemaps = [];
+    }
+    message.cacheDuration !== undefined && (obj.cacheDuration = Math.round(message.cacheDuration));
+    return obj;
   },
 };
 
@@ -5903,6 +7725,26 @@ export const CMsgGCHAppCheersGetAllowedTypesResponse_CheerRemaps = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCHAppCheersGetAllowedTypesResponse_CheerRemaps {
+    return {
+      originalCheerType: isSet(object.originalCheerType) ? Number(object.originalCheerType) : 0,
+      remappedCheerType: isSet(object.remappedCheerType) ? Number(object.remappedCheerType) : 0,
+      accountIds: Array.isArray(object?.accountIds) ? object.accountIds.map((e: any) => Number(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgGCHAppCheersGetAllowedTypesResponse_CheerRemaps): unknown {
+    const obj: any = {};
+    message.originalCheerType !== undefined && (obj.originalCheerType = Math.round(message.originalCheerType));
+    message.remappedCheerType !== undefined && (obj.remappedCheerType = Math.round(message.remappedCheerType));
+    if (message.accountIds) {
+      obj.accountIds = message.accountIds.map((e) => Math.round(e));
+    } else {
+      obj.accountIds = [];
+    }
+    return obj;
   },
 };
 
@@ -6074,6 +7916,42 @@ export const CGCSystemMsgReportExternalPurchaseRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CGCSystemMsgReportExternalPurchaseRequest {
+    return {
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      steamid: isSet(object.steamid) ? String(object.steamid) : "0",
+      provider: isSet(object.provider) ? eMobilePaymentProviderFromJSON(object.provider) : 0,
+      orderid: isSet(object.orderid) ? String(object.orderid) : "0",
+      providerOrderid: isSet(object.providerOrderid) ? String(object.providerOrderid) : "",
+      amount: isSet(object.amount) ? String(object.amount) : "0",
+      currency: isSet(object.currency) ? String(object.currency) : "",
+      quantity: isSet(object.quantity) ? Number(object.quantity) : 0,
+      itemid: isSet(object.itemid) ? Number(object.itemid) : 0,
+      itemDescription: isSet(object.itemDescription) ? String(object.itemDescription) : "",
+      language: isSet(object.language) ? String(object.language) : "",
+      category: isSet(object.category) ? String(object.category) : "",
+      timeCreated: isSet(object.timeCreated) ? Number(object.timeCreated) : 0,
+    };
+  },
+
+  toJSON(message: CGCSystemMsgReportExternalPurchaseRequest): unknown {
+    const obj: any = {};
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    message.steamid !== undefined && (obj.steamid = message.steamid);
+    message.provider !== undefined && (obj.provider = eMobilePaymentProviderToJSON(message.provider));
+    message.orderid !== undefined && (obj.orderid = message.orderid);
+    message.providerOrderid !== undefined && (obj.providerOrderid = message.providerOrderid);
+    message.amount !== undefined && (obj.amount = message.amount);
+    message.currency !== undefined && (obj.currency = message.currency);
+    message.quantity !== undefined && (obj.quantity = Math.round(message.quantity));
+    message.itemid !== undefined && (obj.itemid = Math.round(message.itemid));
+    message.itemDescription !== undefined && (obj.itemDescription = message.itemDescription);
+    message.language !== undefined && (obj.language = message.language);
+    message.category !== undefined && (obj.category = message.category);
+    message.timeCreated !== undefined && (obj.timeCreated = Math.round(message.timeCreated));
+    return obj;
+  },
 };
 
 function createBaseCGCSystemMsgReportExternalPurchaseResponse(): CGCSystemMsgReportExternalPurchaseResponse {
@@ -6119,6 +7997,20 @@ export const CGCSystemMsgReportExternalPurchaseResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CGCSystemMsgReportExternalPurchaseResponse {
+    return {
+      transid: isSet(object.transid) ? String(object.transid) : "0",
+      orderid: isSet(object.orderid) ? String(object.orderid) : "0",
+    };
+  },
+
+  toJSON(message: CGCSystemMsgReportExternalPurchaseResponse): unknown {
+    const obj: any = {};
+    message.transid !== undefined && (obj.transid = message.transid);
+    message.orderid !== undefined && (obj.orderid = message.orderid);
+    return obj;
   },
 };
 
@@ -6196,6 +8088,26 @@ export const CWorkshopAddSpecialPaymentRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CWorkshopAddSpecialPaymentRequest {
+    return {
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      gameitemid: isSet(object.gameitemid) ? Number(object.gameitemid) : 0,
+      date: isSet(object.date) ? String(object.date) : "",
+      paymentUsUsd: isSet(object.paymentUsUsd) ? String(object.paymentUsUsd) : "0",
+      paymentRowUsd: isSet(object.paymentRowUsd) ? String(object.paymentRowUsd) : "0",
+    };
+  },
+
+  toJSON(message: CWorkshopAddSpecialPaymentRequest): unknown {
+    const obj: any = {};
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    message.gameitemid !== undefined && (obj.gameitemid = Math.round(message.gameitemid));
+    message.date !== undefined && (obj.date = message.date);
+    message.paymentUsUsd !== undefined && (obj.paymentUsUsd = message.paymentUsUsd);
+    message.paymentRowUsd !== undefined && (obj.paymentRowUsd = message.paymentRowUsd);
+    return obj;
+  },
 };
 
 function createBaseCWorkshopAddSpecialPaymentResponse(): CWorkshopAddSpecialPaymentResponse {
@@ -6221,6 +8133,15 @@ export const CWorkshopAddSpecialPaymentResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CWorkshopAddSpecialPaymentResponse {
+    return {};
+  },
+
+  toJSON(_: CWorkshopAddSpecialPaymentResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -6278,6 +8199,22 @@ export const CWorkshopGetSpecialPaymentsRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CWorkshopGetSpecialPaymentsRequest {
+    return {
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      gameitemid: isSet(object.gameitemid) ? Number(object.gameitemid) : 0,
+      date: isSet(object.date) ? String(object.date) : "",
+    };
+  },
+
+  toJSON(message: CWorkshopGetSpecialPaymentsRequest): unknown {
+    const obj: any = {};
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    message.gameitemid !== undefined && (obj.gameitemid = Math.round(message.gameitemid));
+    message.date !== undefined && (obj.date = message.date);
+    return obj;
+  },
 };
 
 function createBaseCWorkshopGetSpecialPaymentsResponse(): CWorkshopGetSpecialPaymentsResponse {
@@ -6315,6 +8252,26 @@ export const CWorkshopGetSpecialPaymentsResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CWorkshopGetSpecialPaymentsResponse {
+    return {
+      specialPayments: Array.isArray(object?.specialPayments)
+        ? object.specialPayments.map((e: any) => CWorkshopGetSpecialPaymentsResponse_SpecialPayment.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CWorkshopGetSpecialPaymentsResponse): unknown {
+    const obj: any = {};
+    if (message.specialPayments) {
+      obj.specialPayments = message.specialPayments.map((e) =>
+        e ? CWorkshopGetSpecialPaymentsResponse_SpecialPayment.toJSON(e) : undefined
+      );
+    } else {
+      obj.specialPayments = [];
+    }
+    return obj;
   },
 };
 
@@ -6395,7 +8352,71 @@ export const CWorkshopGetSpecialPaymentsResponse_SpecialPayment = {
     }
     return message;
   },
+
+  fromJSON(object: any): CWorkshopGetSpecialPaymentsResponse_SpecialPayment {
+    return {
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      gameitemid: isSet(object.gameitemid) ? Number(object.gameitemid) : 0,
+      date: isSet(object.date) ? String(object.date) : "",
+      netPaymentUsUsd: isSet(object.netPaymentUsUsd) ? String(object.netPaymentUsUsd) : "0",
+      netPaymentRowUsd: isSet(object.netPaymentRowUsd) ? String(object.netPaymentRowUsd) : "0",
+    };
+  },
+
+  toJSON(message: CWorkshopGetSpecialPaymentsResponse_SpecialPayment): unknown {
+    const obj: any = {};
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    message.gameitemid !== undefined && (obj.gameitemid = Math.round(message.gameitemid));
+    message.date !== undefined && (obj.date = message.date);
+    message.netPaymentUsUsd !== undefined && (obj.netPaymentUsUsd = message.netPaymentUsUsd);
+    message.netPaymentRowUsd !== undefined && (obj.netPaymentRowUsd = message.netPaymentRowUsd);
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if (tsProtoGlobalThis.Buffer) {
+    return Uint8Array.from(tsProtoGlobalThis.Buffer.from(b64, "base64"));
+  } else {
+    const bin = tsProtoGlobalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if (tsProtoGlobalThis.Buffer) {
+    return tsProtoGlobalThis.Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(String.fromCharCode(byte));
+    });
+    return tsProtoGlobalThis.btoa(bin.join(""));
+  }
+}
 
 function longToString(long: Long) {
   return long.toString();
@@ -6404,4 +8425,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

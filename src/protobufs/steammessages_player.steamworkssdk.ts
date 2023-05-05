@@ -8,6 +8,35 @@ export enum ENotificationSetting {
   k_ENotificationSettingNever = 2,
 }
 
+export function eNotificationSettingFromJSON(object: any): ENotificationSetting {
+  switch (object) {
+    case 0:
+    case "k_ENotificationSettingNotifyUseDefault":
+      return ENotificationSetting.k_ENotificationSettingNotifyUseDefault;
+    case 1:
+    case "k_ENotificationSettingAlways":
+      return ENotificationSetting.k_ENotificationSettingAlways;
+    case 2:
+    case "k_ENotificationSettingNever":
+      return ENotificationSetting.k_ENotificationSettingNever;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ENotificationSetting");
+  }
+}
+
+export function eNotificationSettingToJSON(object: ENotificationSetting): string {
+  switch (object) {
+    case ENotificationSetting.k_ENotificationSettingNotifyUseDefault:
+      return "k_ENotificationSettingNotifyUseDefault";
+    case ENotificationSetting.k_ENotificationSettingAlways:
+      return "k_ENotificationSettingAlways";
+    case ENotificationSetting.k_ENotificationSettingNever:
+      return "k_ENotificationSettingNever";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ENotificationSetting");
+  }
+}
+
 export interface CPlayerGetMutualFriendsForIncomingInvitesRequest {
 }
 
@@ -213,6 +242,15 @@ export const CPlayerGetMutualFriendsForIncomingInvitesRequest = {
     }
     return message;
   },
+
+  fromJSON(_: any): CPlayerGetMutualFriendsForIncomingInvitesRequest {
+    return {};
+  },
+
+  toJSON(_: CPlayerGetMutualFriendsForIncomingInvitesRequest): unknown {
+    const obj: any = {};
+    return obj;
+  },
 };
 
 function createBaseCPlayerIncomingInviteMutualFriendList(): CPlayerIncomingInviteMutualFriendList {
@@ -270,6 +308,26 @@ export const CPlayerIncomingInviteMutualFriendList = {
     }
     return message;
   },
+
+  fromJSON(object: any): CPlayerIncomingInviteMutualFriendList {
+    return {
+      steamid: isSet(object.steamid) ? String(object.steamid) : "0",
+      mutualFriendAccountIds: Array.isArray(object?.mutualFriendAccountIds)
+        ? object.mutualFriendAccountIds.map((e: any) => Number(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CPlayerIncomingInviteMutualFriendList): unknown {
+    const obj: any = {};
+    message.steamid !== undefined && (obj.steamid = message.steamid);
+    if (message.mutualFriendAccountIds) {
+      obj.mutualFriendAccountIds = message.mutualFriendAccountIds.map((e) => Math.round(e));
+    } else {
+      obj.mutualFriendAccountIds = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCPlayerGetMutualFriendsForIncomingInvitesResponse(): CPlayerGetMutualFriendsForIncomingInvitesResponse {
@@ -311,6 +369,26 @@ export const CPlayerGetMutualFriendsForIncomingInvitesResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CPlayerGetMutualFriendsForIncomingInvitesResponse {
+    return {
+      incomingInviteMutualFriendsLists: Array.isArray(object?.incomingInviteMutualFriendsLists)
+        ? object.incomingInviteMutualFriendsLists.map((e: any) => CPlayerIncomingInviteMutualFriendList.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CPlayerGetMutualFriendsForIncomingInvitesResponse): unknown {
+    const obj: any = {};
+    if (message.incomingInviteMutualFriendsLists) {
+      obj.incomingInviteMutualFriendsLists = message.incomingInviteMutualFriendsLists.map((e) =>
+        e ? CPlayerIncomingInviteMutualFriendList.toJSON(e) : undefined
+      );
+    } else {
+      obj.incomingInviteMutualFriendsLists = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCPlayerGetFriendsGameplayInfoRequest(): CPlayerGetFriendsGameplayInfoRequest {
@@ -346,6 +424,16 @@ export const CPlayerGetFriendsGameplayInfoRequest = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CPlayerGetFriendsGameplayInfoRequest {
+    return { appid: isSet(object.appid) ? Number(object.appid) : 0 };
+  },
+
+  toJSON(message: CPlayerGetFriendsGameplayInfoRequest): unknown {
+    const obj: any = {};
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    return obj;
   },
 };
 
@@ -441,6 +529,72 @@ export const CPlayerGetFriendsGameplayInfoResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CPlayerGetFriendsGameplayInfoResponse {
+    return {
+      yourInfo: isSet(object.yourInfo)
+        ? CPlayerGetFriendsGameplayInfoResponse_OwnGameplayInfo.fromJSON(object.yourInfo)
+        : undefined,
+      inGame: Array.isArray(object?.inGame)
+        ? object.inGame.map((e: any) => CPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo.fromJSON(e))
+        : [],
+      playedRecently: Array.isArray(object?.playedRecently)
+        ? object.playedRecently.map((e: any) => CPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo.fromJSON(e))
+        : [],
+      playedEver: Array.isArray(object?.playedEver)
+        ? object.playedEver.map((e: any) => CPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo.fromJSON(e))
+        : [],
+      owns: Array.isArray(object?.owns)
+        ? object.owns.map((e: any) => CPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo.fromJSON(e))
+        : [],
+      inWishlist: Array.isArray(object?.inWishlist)
+        ? object.inWishlist.map((e: any) => CPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CPlayerGetFriendsGameplayInfoResponse): unknown {
+    const obj: any = {};
+    message.yourInfo !== undefined && (obj.yourInfo = message.yourInfo
+      ? CPlayerGetFriendsGameplayInfoResponse_OwnGameplayInfo.toJSON(message.yourInfo)
+      : undefined);
+    if (message.inGame) {
+      obj.inGame = message.inGame.map((e) =>
+        e ? CPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo.toJSON(e) : undefined
+      );
+    } else {
+      obj.inGame = [];
+    }
+    if (message.playedRecently) {
+      obj.playedRecently = message.playedRecently.map((e) =>
+        e ? CPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo.toJSON(e) : undefined
+      );
+    } else {
+      obj.playedRecently = [];
+    }
+    if (message.playedEver) {
+      obj.playedEver = message.playedEver.map((e) =>
+        e ? CPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo.toJSON(e) : undefined
+      );
+    } else {
+      obj.playedEver = [];
+    }
+    if (message.owns) {
+      obj.owns = message.owns.map((e) =>
+        e ? CPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo.toJSON(e) : undefined
+      );
+    } else {
+      obj.owns = [];
+    }
+    if (message.inWishlist) {
+      obj.inWishlist = message.inWishlist.map((e) =>
+        e ? CPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo.toJSON(e) : undefined
+      );
+    } else {
+      obj.inWishlist = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo(): CPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo {
@@ -499,6 +653,22 @@ export const CPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo {
+    return {
+      steamid: isSet(object.steamid) ? String(object.steamid) : "0",
+      minutesPlayed: isSet(object.minutesPlayed) ? Number(object.minutesPlayed) : 0,
+      minutesPlayedForever: isSet(object.minutesPlayedForever) ? Number(object.minutesPlayedForever) : 0,
+    };
+  },
+
+  toJSON(message: CPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo): unknown {
+    const obj: any = {};
+    message.steamid !== undefined && (obj.steamid = message.steamid);
+    message.minutesPlayed !== undefined && (obj.minutesPlayed = Math.round(message.minutesPlayed));
+    message.minutesPlayedForever !== undefined && (obj.minutesPlayedForever = Math.round(message.minutesPlayedForever));
+    return obj;
   },
 };
 
@@ -579,6 +749,26 @@ export const CPlayerGetFriendsGameplayInfoResponse_OwnGameplayInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CPlayerGetFriendsGameplayInfoResponse_OwnGameplayInfo {
+    return {
+      steamid: isSet(object.steamid) ? String(object.steamid) : "0",
+      minutesPlayed: isSet(object.minutesPlayed) ? Number(object.minutesPlayed) : 0,
+      minutesPlayedForever: isSet(object.minutesPlayedForever) ? Number(object.minutesPlayedForever) : 0,
+      inWishlist: isSet(object.inWishlist) ? Boolean(object.inWishlist) : false,
+      owned: isSet(object.owned) ? Boolean(object.owned) : false,
+    };
+  },
+
+  toJSON(message: CPlayerGetFriendsGameplayInfoResponse_OwnGameplayInfo): unknown {
+    const obj: any = {};
+    message.steamid !== undefined && (obj.steamid = message.steamid);
+    message.minutesPlayed !== undefined && (obj.minutesPlayed = Math.round(message.minutesPlayed));
+    message.minutesPlayedForever !== undefined && (obj.minutesPlayedForever = Math.round(message.minutesPlayedForever));
+    message.inWishlist !== undefined && (obj.inWishlist = message.inWishlist);
+    message.owned !== undefined && (obj.owned = message.owned);
+    return obj;
+  },
 };
 
 function createBaseCPlayerGetGameBadgeLevelsRequest(): CPlayerGetGameBadgeLevelsRequest {
@@ -614,6 +804,16 @@ export const CPlayerGetGameBadgeLevelsRequest = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CPlayerGetGameBadgeLevelsRequest {
+    return { appid: isSet(object.appid) ? Number(object.appid) : 0 };
+  },
+
+  toJSON(message: CPlayerGetGameBadgeLevelsRequest): unknown {
+    const obj: any = {};
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    return obj;
   },
 };
 
@@ -660,6 +860,26 @@ export const CPlayerGetGameBadgeLevelsResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CPlayerGetGameBadgeLevelsResponse {
+    return {
+      playerLevel: isSet(object.playerLevel) ? Number(object.playerLevel) : 0,
+      badges: Array.isArray(object?.badges)
+        ? object.badges.map((e: any) => CPlayerGetGameBadgeLevelsResponse_Badge.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CPlayerGetGameBadgeLevelsResponse): unknown {
+    const obj: any = {};
+    message.playerLevel !== undefined && (obj.playerLevel = Math.round(message.playerLevel));
+    if (message.badges) {
+      obj.badges = message.badges.map((e) => e ? CPlayerGetGameBadgeLevelsResponse_Badge.toJSON(e) : undefined);
+    } else {
+      obj.badges = [];
+    }
+    return obj;
   },
 };
 
@@ -717,6 +937,22 @@ export const CPlayerGetGameBadgeLevelsResponse_Badge = {
     }
     return message;
   },
+
+  fromJSON(object: any): CPlayerGetGameBadgeLevelsResponse_Badge {
+    return {
+      level: isSet(object.level) ? Number(object.level) : 0,
+      series: isSet(object.series) ? Number(object.series) : 0,
+      borderColor: isSet(object.borderColor) ? Number(object.borderColor) : 0,
+    };
+  },
+
+  toJSON(message: CPlayerGetGameBadgeLevelsResponse_Badge): unknown {
+    const obj: any = {};
+    message.level !== undefined && (obj.level = Math.round(message.level));
+    message.series !== undefined && (obj.series = Math.round(message.series));
+    message.borderColor !== undefined && (obj.borderColor = Math.round(message.borderColor));
+    return obj;
+  },
 };
 
 function createBaseCPlayerGetLastPlayedTimesRequest(): CPlayerGetLastPlayedTimesRequest {
@@ -753,6 +989,16 @@ export const CPlayerGetLastPlayedTimesRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CPlayerGetLastPlayedTimesRequest {
+    return { minLastPlayed: isSet(object.minLastPlayed) ? Number(object.minLastPlayed) : 0 };
+  },
+
+  toJSON(message: CPlayerGetLastPlayedTimesRequest): unknown {
+    const obj: any = {};
+    message.minLastPlayed !== undefined && (obj.minLastPlayed = Math.round(message.minLastPlayed));
+    return obj;
+  },
 };
 
 function createBaseCPlayerGetLastPlayedTimesResponse(): CPlayerGetLastPlayedTimesResponse {
@@ -788,6 +1034,24 @@ export const CPlayerGetLastPlayedTimesResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CPlayerGetLastPlayedTimesResponse {
+    return {
+      games: Array.isArray(object?.games)
+        ? object.games.map((e: any) => CPlayerGetLastPlayedTimesResponse_Game.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CPlayerGetLastPlayedTimesResponse): unknown {
+    const obj: any = {};
+    if (message.games) {
+      obj.games = message.games.map((e) => e ? CPlayerGetLastPlayedTimesResponse_Game.toJSON(e) : undefined);
+    } else {
+      obj.games = [];
+    }
+    return obj;
   },
 };
 
@@ -865,6 +1129,26 @@ export const CPlayerGetLastPlayedTimesResponse_Game = {
     }
     return message;
   },
+
+  fromJSON(object: any): CPlayerGetLastPlayedTimesResponse_Game {
+    return {
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      lastPlaytime: isSet(object.lastPlaytime) ? Number(object.lastPlaytime) : 0,
+      playtime2weeks: isSet(object.playtime2weeks) ? Number(object.playtime2weeks) : 0,
+      playtimeForever: isSet(object.playtimeForever) ? Number(object.playtimeForever) : 0,
+      firstPlaytime: isSet(object.firstPlaytime) ? Number(object.firstPlaytime) : 0,
+    };
+  },
+
+  toJSON(message: CPlayerGetLastPlayedTimesResponse_Game): unknown {
+    const obj: any = {};
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    message.lastPlaytime !== undefined && (obj.lastPlaytime = Math.round(message.lastPlaytime));
+    message.playtime2weeks !== undefined && (obj.playtime2weeks = Math.round(message.playtime2weeks));
+    message.playtimeForever !== undefined && (obj.playtimeForever = Math.round(message.playtimeForever));
+    message.firstPlaytime !== undefined && (obj.firstPlaytime = Math.round(message.firstPlaytime));
+    return obj;
+  },
 };
 
 function createBaseCPlayerAcceptSSARequest(): CPlayerAcceptSSARequest {
@@ -890,6 +1174,15 @@ export const CPlayerAcceptSSARequest = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CPlayerAcceptSSARequest {
+    return {};
+  },
+
+  toJSON(_: CPlayerAcceptSSARequest): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -917,6 +1210,15 @@ export const CPlayerAcceptSSAResponse = {
     }
     return message;
   },
+
+  fromJSON(_: any): CPlayerAcceptSSAResponse {
+    return {};
+  },
+
+  toJSON(_: CPlayerAcceptSSAResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
 };
 
 function createBaseCPlayerGetNicknameListRequest(): CPlayerGetNicknameListRequest {
@@ -942,6 +1244,15 @@ export const CPlayerGetNicknameListRequest = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CPlayerGetNicknameListRequest {
+    return {};
+  },
+
+  toJSON(_: CPlayerGetNicknameListRequest): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -978,6 +1289,26 @@ export const CPlayerGetNicknameListResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CPlayerGetNicknameListResponse {
+    return {
+      nicknames: Array.isArray(object?.nicknames)
+        ? object.nicknames.map((e: any) => CPlayerGetNicknameListResponse_PlayerNickname.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CPlayerGetNicknameListResponse): unknown {
+    const obj: any = {};
+    if (message.nicknames) {
+      obj.nicknames = message.nicknames.map((e) =>
+        e ? CPlayerGetNicknameListResponse_PlayerNickname.toJSON(e) : undefined
+      );
+    } else {
+      obj.nicknames = [];
+    }
+    return obj;
   },
 };
 
@@ -1025,6 +1356,20 @@ export const CPlayerGetNicknameListResponse_PlayerNickname = {
     }
     return message;
   },
+
+  fromJSON(object: any): CPlayerGetNicknameListResponse_PlayerNickname {
+    return {
+      accountid: isSet(object.accountid) ? Number(object.accountid) : 0,
+      nickname: isSet(object.nickname) ? String(object.nickname) : "",
+    };
+  },
+
+  toJSON(message: CPlayerGetNicknameListResponse_PlayerNickname): unknown {
+    const obj: any = {};
+    message.accountid !== undefined && (obj.accountid = Math.round(message.accountid));
+    message.nickname !== undefined && (obj.nickname = message.nickname);
+    return obj;
+  },
 };
 
 function createBaseCPlayerGetPerFriendPreferencesRequest(): CPlayerGetPerFriendPreferencesRequest {
@@ -1050,6 +1395,15 @@ export const CPlayerGetPerFriendPreferencesRequest = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CPlayerGetPerFriendPreferencesRequest {
+    return {};
+  },
+
+  toJSON(_: CPlayerGetPerFriendPreferencesRequest): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -1177,6 +1531,51 @@ export const PerFriendPreferences = {
     }
     return message;
   },
+
+  fromJSON(object: any): PerFriendPreferences {
+    return {
+      accountid: isSet(object.accountid) ? Number(object.accountid) : 0,
+      nickname: isSet(object.nickname) ? String(object.nickname) : "",
+      notificationsShowingame: isSet(object.notificationsShowingame)
+        ? eNotificationSettingFromJSON(object.notificationsShowingame)
+        : 0,
+      notificationsShowonline: isSet(object.notificationsShowonline)
+        ? eNotificationSettingFromJSON(object.notificationsShowonline)
+        : 0,
+      notificationsShowmessages: isSet(object.notificationsShowmessages)
+        ? eNotificationSettingFromJSON(object.notificationsShowmessages)
+        : 0,
+      soundsShowingame: isSet(object.soundsShowingame) ? eNotificationSettingFromJSON(object.soundsShowingame) : 0,
+      soundsShowonline: isSet(object.soundsShowonline) ? eNotificationSettingFromJSON(object.soundsShowonline) : 0,
+      soundsShowmessages: isSet(object.soundsShowmessages)
+        ? eNotificationSettingFromJSON(object.soundsShowmessages)
+        : 0,
+      notificationsSendmobile: isSet(object.notificationsSendmobile)
+        ? eNotificationSettingFromJSON(object.notificationsSendmobile)
+        : 0,
+    };
+  },
+
+  toJSON(message: PerFriendPreferences): unknown {
+    const obj: any = {};
+    message.accountid !== undefined && (obj.accountid = Math.round(message.accountid));
+    message.nickname !== undefined && (obj.nickname = message.nickname);
+    message.notificationsShowingame !== undefined &&
+      (obj.notificationsShowingame = eNotificationSettingToJSON(message.notificationsShowingame));
+    message.notificationsShowonline !== undefined &&
+      (obj.notificationsShowonline = eNotificationSettingToJSON(message.notificationsShowonline));
+    message.notificationsShowmessages !== undefined &&
+      (obj.notificationsShowmessages = eNotificationSettingToJSON(message.notificationsShowmessages));
+    message.soundsShowingame !== undefined &&
+      (obj.soundsShowingame = eNotificationSettingToJSON(message.soundsShowingame));
+    message.soundsShowonline !== undefined &&
+      (obj.soundsShowonline = eNotificationSettingToJSON(message.soundsShowonline));
+    message.soundsShowmessages !== undefined &&
+      (obj.soundsShowmessages = eNotificationSettingToJSON(message.soundsShowmessages));
+    message.notificationsSendmobile !== undefined &&
+      (obj.notificationsSendmobile = eNotificationSettingToJSON(message.notificationsSendmobile));
+    return obj;
+  },
 };
 
 function createBaseCPlayerGetPerFriendPreferencesResponse(): CPlayerGetPerFriendPreferencesResponse {
@@ -1212,6 +1611,24 @@ export const CPlayerGetPerFriendPreferencesResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CPlayerGetPerFriendPreferencesResponse {
+    return {
+      preferences: Array.isArray(object?.preferences)
+        ? object.preferences.map((e: any) => PerFriendPreferences.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CPlayerGetPerFriendPreferencesResponse): unknown {
+    const obj: any = {};
+    if (message.preferences) {
+      obj.preferences = message.preferences.map((e) => e ? PerFriendPreferences.toJSON(e) : undefined);
+    } else {
+      obj.preferences = [];
+    }
+    return obj;
   },
 };
 
@@ -1249,6 +1666,17 @@ export const CPlayerSetPerFriendPreferencesRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CPlayerSetPerFriendPreferencesRequest {
+    return { preferences: isSet(object.preferences) ? PerFriendPreferences.fromJSON(object.preferences) : undefined };
+  },
+
+  toJSON(message: CPlayerSetPerFriendPreferencesRequest): unknown {
+    const obj: any = {};
+    message.preferences !== undefined &&
+      (obj.preferences = message.preferences ? PerFriendPreferences.toJSON(message.preferences) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCPlayerSetPerFriendPreferencesResponse(): CPlayerSetPerFriendPreferencesResponse {
@@ -1274,6 +1702,15 @@ export const CPlayerSetPerFriendPreferencesResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CPlayerSetPerFriendPreferencesResponse {
+    return {};
+  },
+
+  toJSON(_: CPlayerSetPerFriendPreferencesResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -1310,6 +1747,16 @@ export const CPlayerAddFriendRequest = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CPlayerAddFriendRequest {
+    return { steamid: isSet(object.steamid) ? String(object.steamid) : "0" };
+  },
+
+  toJSON(message: CPlayerAddFriendRequest): unknown {
+    const obj: any = {};
+    message.steamid !== undefined && (obj.steamid = message.steamid);
+    return obj;
   },
 };
 
@@ -1357,6 +1804,20 @@ export const CPlayerAddFriendResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CPlayerAddFriendResponse {
+    return {
+      inviteSent: isSet(object.inviteSent) ? Boolean(object.inviteSent) : false,
+      friendRelationship: isSet(object.friendRelationship) ? Number(object.friendRelationship) : 0,
+    };
+  },
+
+  toJSON(message: CPlayerAddFriendResponse): unknown {
+    const obj: any = {};
+    message.inviteSent !== undefined && (obj.inviteSent = message.inviteSent);
+    message.friendRelationship !== undefined && (obj.friendRelationship = Math.round(message.friendRelationship));
+    return obj;
+  },
 };
 
 function createBaseCPlayerRemoveFriendRequest(): CPlayerRemoveFriendRequest {
@@ -1393,6 +1854,16 @@ export const CPlayerRemoveFriendRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CPlayerRemoveFriendRequest {
+    return { steamid: isSet(object.steamid) ? String(object.steamid) : "0" };
+  },
+
+  toJSON(message: CPlayerRemoveFriendRequest): unknown {
+    const obj: any = {};
+    message.steamid !== undefined && (obj.steamid = message.steamid);
+    return obj;
+  },
 };
 
 function createBaseCPlayerRemoveFriendResponse(): CPlayerRemoveFriendResponse {
@@ -1428,6 +1899,16 @@ export const CPlayerRemoveFriendResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CPlayerRemoveFriendResponse {
+    return { friendRelationship: isSet(object.friendRelationship) ? Number(object.friendRelationship) : 0 };
+  },
+
+  toJSON(message: CPlayerRemoveFriendResponse): unknown {
+    const obj: any = {};
+    message.friendRelationship !== undefined && (obj.friendRelationship = Math.round(message.friendRelationship));
+    return obj;
   },
 };
 
@@ -1475,6 +1956,20 @@ export const CPlayerIgnoreFriendRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CPlayerIgnoreFriendRequest {
+    return {
+      steamid: isSet(object.steamid) ? String(object.steamid) : "0",
+      unignore: isSet(object.unignore) ? Boolean(object.unignore) : false,
+    };
+  },
+
+  toJSON(message: CPlayerIgnoreFriendRequest): unknown {
+    const obj: any = {};
+    message.steamid !== undefined && (obj.steamid = message.steamid);
+    message.unignore !== undefined && (obj.unignore = message.unignore);
+    return obj;
+  },
 };
 
 function createBaseCPlayerIgnoreFriendResponse(): CPlayerIgnoreFriendResponse {
@@ -1511,6 +2006,16 @@ export const CPlayerIgnoreFriendResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CPlayerIgnoreFriendResponse {
+    return { friendRelationship: isSet(object.friendRelationship) ? Number(object.friendRelationship) : 0 };
+  },
+
+  toJSON(message: CPlayerIgnoreFriendResponse): unknown {
+    const obj: any = {};
+    message.friendRelationship !== undefined && (obj.friendRelationship = Math.round(message.friendRelationship));
+    return obj;
+  },
 };
 
 function createBaseCPlayerGetCommunityPreferencesRequest(): CPlayerGetCommunityPreferencesRequest {
@@ -1536,6 +2041,15 @@ export const CPlayerGetCommunityPreferencesRequest = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CPlayerGetCommunityPreferencesRequest {
+    return {};
+  },
+
+  toJSON(_: CPlayerGetCommunityPreferencesRequest): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -1608,6 +2122,26 @@ export const CPlayerCommunityPreferences = {
     }
     return message;
   },
+
+  fromJSON(object: any): CPlayerCommunityPreferences {
+    return {
+      hideAdultContentViolence: isSet(object.hideAdultContentViolence)
+        ? Boolean(object.hideAdultContentViolence)
+        : false,
+      hideAdultContentSex: isSet(object.hideAdultContentSex) ? Boolean(object.hideAdultContentSex) : false,
+      parenthesizeNicknames: isSet(object.parenthesizeNicknames) ? Boolean(object.parenthesizeNicknames) : false,
+      timestampUpdated: isSet(object.timestampUpdated) ? Number(object.timestampUpdated) : 0,
+    };
+  },
+
+  toJSON(message: CPlayerCommunityPreferences): unknown {
+    const obj: any = {};
+    message.hideAdultContentViolence !== undefined && (obj.hideAdultContentViolence = message.hideAdultContentViolence);
+    message.hideAdultContentSex !== undefined && (obj.hideAdultContentSex = message.hideAdultContentSex);
+    message.parenthesizeNicknames !== undefined && (obj.parenthesizeNicknames = message.parenthesizeNicknames);
+    message.timestampUpdated !== undefined && (obj.timestampUpdated = Math.round(message.timestampUpdated));
+    return obj;
+  },
 };
 
 function createBaseCPlayerGetCommunityPreferencesResponse(): CPlayerGetCommunityPreferencesResponse {
@@ -1643,6 +2177,19 @@ export const CPlayerGetCommunityPreferencesResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CPlayerGetCommunityPreferencesResponse {
+    return {
+      preferences: isSet(object.preferences) ? CPlayerCommunityPreferences.fromJSON(object.preferences) : undefined,
+    };
+  },
+
+  toJSON(message: CPlayerGetCommunityPreferencesResponse): unknown {
+    const obj: any = {};
+    message.preferences !== undefined &&
+      (obj.preferences = message.preferences ? CPlayerCommunityPreferences.toJSON(message.preferences) : undefined);
+    return obj;
   },
 };
 
@@ -1680,6 +2227,19 @@ export const CPlayerSetCommunityPreferencesRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CPlayerSetCommunityPreferencesRequest {
+    return {
+      preferences: isSet(object.preferences) ? CPlayerCommunityPreferences.fromJSON(object.preferences) : undefined,
+    };
+  },
+
+  toJSON(message: CPlayerSetCommunityPreferencesRequest): unknown {
+    const obj: any = {};
+    message.preferences !== undefined &&
+      (obj.preferences = message.preferences ? CPlayerCommunityPreferences.toJSON(message.preferences) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCPlayerSetCommunityPreferencesResponse(): CPlayerSetCommunityPreferencesResponse {
@@ -1705,6 +2265,15 @@ export const CPlayerSetCommunityPreferencesResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CPlayerSetCommunityPreferencesResponse {
+    return {};
+  },
+
+  toJSON(_: CPlayerSetCommunityPreferencesResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -1741,6 +2310,16 @@ export const CPlayerGetNewSteamAnnouncementStateRequest = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CPlayerGetNewSteamAnnouncementStateRequest {
+    return { language: isSet(object.language) ? Number(object.language) : 0 };
+  },
+
+  toJSON(message: CPlayerGetNewSteamAnnouncementStateRequest): unknown {
+    const obj: any = {};
+    message.language !== undefined && (obj.language = Math.round(message.language));
+    return obj;
   },
 };
 
@@ -1818,6 +2397,26 @@ export const CPlayerGetNewSteamAnnouncementStateResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CPlayerGetNewSteamAnnouncementStateResponse {
+    return {
+      state: isSet(object.state) ? Number(object.state) : 0,
+      announcementHeadline: isSet(object.announcementHeadline) ? String(object.announcementHeadline) : "",
+      announcementUrl: isSet(object.announcementUrl) ? String(object.announcementUrl) : "",
+      timePosted: isSet(object.timePosted) ? Number(object.timePosted) : 0,
+      announcementGid: isSet(object.announcementGid) ? String(object.announcementGid) : "0",
+    };
+  },
+
+  toJSON(message: CPlayerGetNewSteamAnnouncementStateResponse): unknown {
+    const obj: any = {};
+    message.state !== undefined && (obj.state = Math.round(message.state));
+    message.announcementHeadline !== undefined && (obj.announcementHeadline = message.announcementHeadline);
+    message.announcementUrl !== undefined && (obj.announcementUrl = message.announcementUrl);
+    message.timePosted !== undefined && (obj.timePosted = Math.round(message.timePosted));
+    message.announcementGid !== undefined && (obj.announcementGid = message.announcementGid);
+    return obj;
+  },
 };
 
 function createBaseCPlayerUpdateSteamAnnouncementLastReadRequest(): CPlayerUpdateSteamAnnouncementLastReadRequest {
@@ -1864,6 +2463,20 @@ export const CPlayerUpdateSteamAnnouncementLastReadRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CPlayerUpdateSteamAnnouncementLastReadRequest {
+    return {
+      announcementGid: isSet(object.announcementGid) ? String(object.announcementGid) : "0",
+      timePosted: isSet(object.timePosted) ? Number(object.timePosted) : 0,
+    };
+  },
+
+  toJSON(message: CPlayerUpdateSteamAnnouncementLastReadRequest): unknown {
+    const obj: any = {};
+    message.announcementGid !== undefined && (obj.announcementGid = message.announcementGid);
+    message.timePosted !== undefined && (obj.timePosted = Math.round(message.timePosted));
+    return obj;
+  },
 };
 
 function createBaseCPlayerUpdateSteamAnnouncementLastReadResponse(): CPlayerUpdateSteamAnnouncementLastReadResponse {
@@ -1889,6 +2502,15 @@ export const CPlayerUpdateSteamAnnouncementLastReadResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CPlayerUpdateSteamAnnouncementLastReadResponse {
+    return {};
+  },
+
+  toJSON(_: CPlayerUpdateSteamAnnouncementLastReadResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -2057,6 +2679,25 @@ interface Rpc {
   request(service: string, method: string, data: Uint8Array): Promise<Uint8Array>;
 }
 
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
+
 function longToString(long: Long) {
   return long.toString();
 }
@@ -2064,4 +2705,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

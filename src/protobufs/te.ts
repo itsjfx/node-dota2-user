@@ -32,6 +32,150 @@ export enum ETEProtobufIds {
   TE_SmokeId = 426,
 }
 
+export function eTEProtobufIdsFromJSON(object: any): ETEProtobufIds {
+  switch (object) {
+    case 400:
+    case "TE_EffectDispatchId":
+      return ETEProtobufIds.TE_EffectDispatchId;
+    case 401:
+    case "TE_ArmorRicochetId":
+      return ETEProtobufIds.TE_ArmorRicochetId;
+    case 402:
+    case "TE_BeamEntPointId":
+      return ETEProtobufIds.TE_BeamEntPointId;
+    case 403:
+    case "TE_BeamEntsId":
+      return ETEProtobufIds.TE_BeamEntsId;
+    case 404:
+    case "TE_BeamPointsId":
+      return ETEProtobufIds.TE_BeamPointsId;
+    case 405:
+    case "TE_BeamRingId":
+      return ETEProtobufIds.TE_BeamRingId;
+    case 407:
+    case "TE_BSPDecalId":
+      return ETEProtobufIds.TE_BSPDecalId;
+    case 408:
+    case "TE_BubblesId":
+      return ETEProtobufIds.TE_BubblesId;
+    case 409:
+    case "TE_BubbleTrailId":
+      return ETEProtobufIds.TE_BubbleTrailId;
+    case 410:
+    case "TE_DecalId":
+      return ETEProtobufIds.TE_DecalId;
+    case 411:
+    case "TE_WorldDecalId":
+      return ETEProtobufIds.TE_WorldDecalId;
+    case 412:
+    case "TE_EnergySplashId":
+      return ETEProtobufIds.TE_EnergySplashId;
+    case 413:
+    case "TE_FizzId":
+      return ETEProtobufIds.TE_FizzId;
+    case 414:
+    case "TE_ShatterSurfaceId":
+      return ETEProtobufIds.TE_ShatterSurfaceId;
+    case 415:
+    case "TE_GlowSpriteId":
+      return ETEProtobufIds.TE_GlowSpriteId;
+    case 416:
+    case "TE_ImpactId":
+      return ETEProtobufIds.TE_ImpactId;
+    case 417:
+    case "TE_MuzzleFlashId":
+      return ETEProtobufIds.TE_MuzzleFlashId;
+    case 418:
+    case "TE_BloodStreamId":
+      return ETEProtobufIds.TE_BloodStreamId;
+    case 419:
+    case "TE_ExplosionId":
+      return ETEProtobufIds.TE_ExplosionId;
+    case 420:
+    case "TE_DustId":
+      return ETEProtobufIds.TE_DustId;
+    case 421:
+    case "TE_LargeFunnelId":
+      return ETEProtobufIds.TE_LargeFunnelId;
+    case 422:
+    case "TE_SparksId":
+      return ETEProtobufIds.TE_SparksId;
+    case 423:
+    case "TE_PhysicsPropId":
+      return ETEProtobufIds.TE_PhysicsPropId;
+    case 424:
+    case "TE_PlayerDecalId":
+      return ETEProtobufIds.TE_PlayerDecalId;
+    case 425:
+    case "TE_ProjectedDecalId":
+      return ETEProtobufIds.TE_ProjectedDecalId;
+    case 426:
+    case "TE_SmokeId":
+      return ETEProtobufIds.TE_SmokeId;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ETEProtobufIds");
+  }
+}
+
+export function eTEProtobufIdsToJSON(object: ETEProtobufIds): string {
+  switch (object) {
+    case ETEProtobufIds.TE_EffectDispatchId:
+      return "TE_EffectDispatchId";
+    case ETEProtobufIds.TE_ArmorRicochetId:
+      return "TE_ArmorRicochetId";
+    case ETEProtobufIds.TE_BeamEntPointId:
+      return "TE_BeamEntPointId";
+    case ETEProtobufIds.TE_BeamEntsId:
+      return "TE_BeamEntsId";
+    case ETEProtobufIds.TE_BeamPointsId:
+      return "TE_BeamPointsId";
+    case ETEProtobufIds.TE_BeamRingId:
+      return "TE_BeamRingId";
+    case ETEProtobufIds.TE_BSPDecalId:
+      return "TE_BSPDecalId";
+    case ETEProtobufIds.TE_BubblesId:
+      return "TE_BubblesId";
+    case ETEProtobufIds.TE_BubbleTrailId:
+      return "TE_BubbleTrailId";
+    case ETEProtobufIds.TE_DecalId:
+      return "TE_DecalId";
+    case ETEProtobufIds.TE_WorldDecalId:
+      return "TE_WorldDecalId";
+    case ETEProtobufIds.TE_EnergySplashId:
+      return "TE_EnergySplashId";
+    case ETEProtobufIds.TE_FizzId:
+      return "TE_FizzId";
+    case ETEProtobufIds.TE_ShatterSurfaceId:
+      return "TE_ShatterSurfaceId";
+    case ETEProtobufIds.TE_GlowSpriteId:
+      return "TE_GlowSpriteId";
+    case ETEProtobufIds.TE_ImpactId:
+      return "TE_ImpactId";
+    case ETEProtobufIds.TE_MuzzleFlashId:
+      return "TE_MuzzleFlashId";
+    case ETEProtobufIds.TE_BloodStreamId:
+      return "TE_BloodStreamId";
+    case ETEProtobufIds.TE_ExplosionId:
+      return "TE_ExplosionId";
+    case ETEProtobufIds.TE_DustId:
+      return "TE_DustId";
+    case ETEProtobufIds.TE_LargeFunnelId:
+      return "TE_LargeFunnelId";
+    case ETEProtobufIds.TE_SparksId:
+      return "TE_SparksId";
+    case ETEProtobufIds.TE_PhysicsPropId:
+      return "TE_PhysicsPropId";
+    case ETEProtobufIds.TE_PlayerDecalId:
+      return "TE_PlayerDecalId";
+    case ETEProtobufIds.TE_ProjectedDecalId:
+      return "TE_ProjectedDecalId";
+    case ETEProtobufIds.TE_SmokeId:
+      return "TE_SmokeId";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ETEProtobufIds");
+  }
+}
+
 export interface CMsgTEArmorRicochet {
   pos: CMsgVector | undefined;
   dir: CMsgVector | undefined;
@@ -302,6 +446,20 @@ export const CMsgTEArmorRicochet = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgTEArmorRicochet {
+    return {
+      pos: isSet(object.pos) ? CMsgVector.fromJSON(object.pos) : undefined,
+      dir: isSet(object.dir) ? CMsgVector.fromJSON(object.dir) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgTEArmorRicochet): unknown {
+    const obj: any = {};
+    message.pos !== undefined && (obj.pos = message.pos ? CMsgVector.toJSON(message.pos) : undefined);
+    message.dir !== undefined && (obj.dir = message.dir ? CMsgVector.toJSON(message.dir) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgTEBaseBeam(): CMsgTEBaseBeam {
@@ -461,6 +619,40 @@ export const CMsgTEBaseBeam = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgTEBaseBeam {
+    return {
+      modelindex: isSet(object.modelindex) ? String(object.modelindex) : "0",
+      haloindex: isSet(object.haloindex) ? String(object.haloindex) : "0",
+      startframe: isSet(object.startframe) ? Number(object.startframe) : 0,
+      framerate: isSet(object.framerate) ? Number(object.framerate) : 0,
+      life: isSet(object.life) ? Number(object.life) : 0,
+      width: isSet(object.width) ? Number(object.width) : 0,
+      endwidth: isSet(object.endwidth) ? Number(object.endwidth) : 0,
+      fadelength: isSet(object.fadelength) ? Number(object.fadelength) : 0,
+      amplitude: isSet(object.amplitude) ? Number(object.amplitude) : 0,
+      color: isSet(object.color) ? Number(object.color) : 0,
+      speed: isSet(object.speed) ? Number(object.speed) : 0,
+      flags: isSet(object.flags) ? Number(object.flags) : 0,
+    };
+  },
+
+  toJSON(message: CMsgTEBaseBeam): unknown {
+    const obj: any = {};
+    message.modelindex !== undefined && (obj.modelindex = message.modelindex);
+    message.haloindex !== undefined && (obj.haloindex = message.haloindex);
+    message.startframe !== undefined && (obj.startframe = Math.round(message.startframe));
+    message.framerate !== undefined && (obj.framerate = Math.round(message.framerate));
+    message.life !== undefined && (obj.life = message.life);
+    message.width !== undefined && (obj.width = message.width);
+    message.endwidth !== undefined && (obj.endwidth = message.endwidth);
+    message.fadelength !== undefined && (obj.fadelength = Math.round(message.fadelength));
+    message.amplitude !== undefined && (obj.amplitude = message.amplitude);
+    message.color !== undefined && (obj.color = Math.round(message.color));
+    message.speed !== undefined && (obj.speed = Math.round(message.speed));
+    message.flags !== undefined && (obj.flags = Math.round(message.flags));
+    return obj;
+  },
 };
 
 function createBaseCMsgTEBeamEntPoint(): CMsgTEBeamEntPoint {
@@ -537,6 +729,26 @@ export const CMsgTEBeamEntPoint = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgTEBeamEntPoint {
+    return {
+      base: isSet(object.base) ? CMsgTEBaseBeam.fromJSON(object.base) : undefined,
+      startentity: isSet(object.startentity) ? Number(object.startentity) : 0,
+      endentity: isSet(object.endentity) ? Number(object.endentity) : 0,
+      start: isSet(object.start) ? CMsgVector.fromJSON(object.start) : undefined,
+      end: isSet(object.end) ? CMsgVector.fromJSON(object.end) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgTEBeamEntPoint): unknown {
+    const obj: any = {};
+    message.base !== undefined && (obj.base = message.base ? CMsgTEBaseBeam.toJSON(message.base) : undefined);
+    message.startentity !== undefined && (obj.startentity = Math.round(message.startentity));
+    message.endentity !== undefined && (obj.endentity = Math.round(message.endentity));
+    message.start !== undefined && (obj.start = message.start ? CMsgVector.toJSON(message.start) : undefined);
+    message.end !== undefined && (obj.end = message.end ? CMsgVector.toJSON(message.end) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgTEBeamEnts(): CMsgTEBeamEnts {
@@ -592,6 +804,22 @@ export const CMsgTEBeamEnts = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgTEBeamEnts {
+    return {
+      base: isSet(object.base) ? CMsgTEBaseBeam.fromJSON(object.base) : undefined,
+      startentity: isSet(object.startentity) ? Number(object.startentity) : 0,
+      endentity: isSet(object.endentity) ? Number(object.endentity) : 0,
+    };
+  },
+
+  toJSON(message: CMsgTEBeamEnts): unknown {
+    const obj: any = {};
+    message.base !== undefined && (obj.base = message.base ? CMsgTEBaseBeam.toJSON(message.base) : undefined);
+    message.startentity !== undefined && (obj.startentity = Math.round(message.startentity));
+    message.endentity !== undefined && (obj.endentity = Math.round(message.endentity));
+    return obj;
   },
 };
 
@@ -649,6 +877,22 @@ export const CMsgTEBeamPoints = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgTEBeamPoints {
+    return {
+      base: isSet(object.base) ? CMsgTEBaseBeam.fromJSON(object.base) : undefined,
+      start: isSet(object.start) ? CMsgVector.fromJSON(object.start) : undefined,
+      end: isSet(object.end) ? CMsgVector.fromJSON(object.end) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgTEBeamPoints): unknown {
+    const obj: any = {};
+    message.base !== undefined && (obj.base = message.base ? CMsgTEBaseBeam.toJSON(message.base) : undefined);
+    message.start !== undefined && (obj.start = message.start ? CMsgVector.toJSON(message.start) : undefined);
+    message.end !== undefined && (obj.end = message.end ? CMsgVector.toJSON(message.end) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgTEBeamRing(): CMsgTEBeamRing {
@@ -704,6 +948,22 @@ export const CMsgTEBeamRing = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgTEBeamRing {
+    return {
+      base: isSet(object.base) ? CMsgTEBaseBeam.fromJSON(object.base) : undefined,
+      startentity: isSet(object.startentity) ? Number(object.startentity) : 0,
+      endentity: isSet(object.endentity) ? Number(object.endentity) : 0,
+    };
+  },
+
+  toJSON(message: CMsgTEBeamRing): unknown {
+    const obj: any = {};
+    message.base !== undefined && (obj.base = message.base ? CMsgTEBaseBeam.toJSON(message.base) : undefined);
+    message.startentity !== undefined && (obj.startentity = Math.round(message.startentity));
+    message.endentity !== undefined && (obj.endentity = Math.round(message.endentity));
+    return obj;
   },
 };
 
@@ -781,6 +1041,26 @@ export const CMsgTEBSPDecal = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgTEBSPDecal {
+    return {
+      origin: isSet(object.origin) ? CMsgVector.fromJSON(object.origin) : undefined,
+      normal: isSet(object.normal) ? CMsgVector.fromJSON(object.normal) : undefined,
+      saxis: isSet(object.saxis) ? CMsgVector.fromJSON(object.saxis) : undefined,
+      entity: isSet(object.entity) ? Number(object.entity) : 0,
+      index: isSet(object.index) ? Number(object.index) : 0,
+    };
+  },
+
+  toJSON(message: CMsgTEBSPDecal): unknown {
+    const obj: any = {};
+    message.origin !== undefined && (obj.origin = message.origin ? CMsgVector.toJSON(message.origin) : undefined);
+    message.normal !== undefined && (obj.normal = message.normal ? CMsgVector.toJSON(message.normal) : undefined);
+    message.saxis !== undefined && (obj.saxis = message.saxis ? CMsgVector.toJSON(message.saxis) : undefined);
+    message.entity !== undefined && (obj.entity = Math.round(message.entity));
+    message.index !== undefined && (obj.index = Math.round(message.index));
+    return obj;
+  },
 };
 
 function createBaseCMsgTEBubbles(): CMsgTEBubbles {
@@ -856,6 +1136,26 @@ export const CMsgTEBubbles = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgTEBubbles {
+    return {
+      mins: isSet(object.mins) ? CMsgVector.fromJSON(object.mins) : undefined,
+      maxs: isSet(object.maxs) ? CMsgVector.fromJSON(object.maxs) : undefined,
+      height: isSet(object.height) ? Number(object.height) : 0,
+      count: isSet(object.count) ? Number(object.count) : 0,
+      speed: isSet(object.speed) ? Number(object.speed) : 0,
+    };
+  },
+
+  toJSON(message: CMsgTEBubbles): unknown {
+    const obj: any = {};
+    message.mins !== undefined && (obj.mins = message.mins ? CMsgVector.toJSON(message.mins) : undefined);
+    message.maxs !== undefined && (obj.maxs = message.maxs ? CMsgVector.toJSON(message.maxs) : undefined);
+    message.height !== undefined && (obj.height = message.height);
+    message.count !== undefined && (obj.count = Math.round(message.count));
+    message.speed !== undefined && (obj.speed = message.speed);
+    return obj;
   },
 };
 
@@ -933,6 +1233,26 @@ export const CMsgTEBubbleTrail = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgTEBubbleTrail {
+    return {
+      mins: isSet(object.mins) ? CMsgVector.fromJSON(object.mins) : undefined,
+      maxs: isSet(object.maxs) ? CMsgVector.fromJSON(object.maxs) : undefined,
+      waterz: isSet(object.waterz) ? Number(object.waterz) : 0,
+      count: isSet(object.count) ? Number(object.count) : 0,
+      speed: isSet(object.speed) ? Number(object.speed) : 0,
+    };
+  },
+
+  toJSON(message: CMsgTEBubbleTrail): unknown {
+    const obj: any = {};
+    message.mins !== undefined && (obj.mins = message.mins ? CMsgVector.toJSON(message.mins) : undefined);
+    message.maxs !== undefined && (obj.maxs = message.maxs ? CMsgVector.toJSON(message.maxs) : undefined);
+    message.waterz !== undefined && (obj.waterz = message.waterz);
+    message.count !== undefined && (obj.count = Math.round(message.count));
+    message.speed !== undefined && (obj.speed = message.speed);
+    return obj;
+  },
 };
 
 function createBaseCMsgTEDecal(): CMsgTEDecal {
@@ -1008,6 +1328,26 @@ export const CMsgTEDecal = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgTEDecal {
+    return {
+      origin: isSet(object.origin) ? CMsgVector.fromJSON(object.origin) : undefined,
+      start: isSet(object.start) ? CMsgVector.fromJSON(object.start) : undefined,
+      entity: isSet(object.entity) ? Number(object.entity) : 0,
+      hitbox: isSet(object.hitbox) ? Number(object.hitbox) : 0,
+      index: isSet(object.index) ? Number(object.index) : 0,
+    };
+  },
+
+  toJSON(message: CMsgTEDecal): unknown {
+    const obj: any = {};
+    message.origin !== undefined && (obj.origin = message.origin ? CMsgVector.toJSON(message.origin) : undefined);
+    message.start !== undefined && (obj.start = message.start ? CMsgVector.toJSON(message.start) : undefined);
+    message.entity !== undefined && (obj.entity = Math.round(message.entity));
+    message.hitbox !== undefined && (obj.hitbox = Math.round(message.hitbox));
+    message.index !== undefined && (obj.index = Math.round(message.index));
+    return obj;
   },
 };
 
@@ -1245,6 +1585,54 @@ export const CMsgEffectData = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgEffectData {
+    return {
+      origin: isSet(object.origin) ? CMsgVector.fromJSON(object.origin) : undefined,
+      start: isSet(object.start) ? CMsgVector.fromJSON(object.start) : undefined,
+      normal: isSet(object.normal) ? CMsgVector.fromJSON(object.normal) : undefined,
+      angles: isSet(object.angles) ? CMsgQAngle.fromJSON(object.angles) : undefined,
+      entity: isSet(object.entity) ? Number(object.entity) : 0,
+      otherentity: isSet(object.otherentity) ? Number(object.otherentity) : 0,
+      scale: isSet(object.scale) ? Number(object.scale) : 0,
+      magnitude: isSet(object.magnitude) ? Number(object.magnitude) : 0,
+      radius: isSet(object.radius) ? Number(object.radius) : 0,
+      surfaceprop: isSet(object.surfaceprop) ? Number(object.surfaceprop) : 0,
+      effectindex: isSet(object.effectindex) ? String(object.effectindex) : "0",
+      damagetype: isSet(object.damagetype) ? Number(object.damagetype) : 0,
+      material: isSet(object.material) ? Number(object.material) : 0,
+      hitbox: isSet(object.hitbox) ? Number(object.hitbox) : 0,
+      color: isSet(object.color) ? Number(object.color) : 0,
+      flags: isSet(object.flags) ? Number(object.flags) : 0,
+      attachmentindex: isSet(object.attachmentindex) ? Number(object.attachmentindex) : 0,
+      effectname: isSet(object.effectname) ? Number(object.effectname) : 0,
+      attachmentname: isSet(object.attachmentname) ? Number(object.attachmentname) : 0,
+    };
+  },
+
+  toJSON(message: CMsgEffectData): unknown {
+    const obj: any = {};
+    message.origin !== undefined && (obj.origin = message.origin ? CMsgVector.toJSON(message.origin) : undefined);
+    message.start !== undefined && (obj.start = message.start ? CMsgVector.toJSON(message.start) : undefined);
+    message.normal !== undefined && (obj.normal = message.normal ? CMsgVector.toJSON(message.normal) : undefined);
+    message.angles !== undefined && (obj.angles = message.angles ? CMsgQAngle.toJSON(message.angles) : undefined);
+    message.entity !== undefined && (obj.entity = Math.round(message.entity));
+    message.otherentity !== undefined && (obj.otherentity = Math.round(message.otherentity));
+    message.scale !== undefined && (obj.scale = message.scale);
+    message.magnitude !== undefined && (obj.magnitude = message.magnitude);
+    message.radius !== undefined && (obj.radius = message.radius);
+    message.surfaceprop !== undefined && (obj.surfaceprop = Math.round(message.surfaceprop));
+    message.effectindex !== undefined && (obj.effectindex = message.effectindex);
+    message.damagetype !== undefined && (obj.damagetype = Math.round(message.damagetype));
+    message.material !== undefined && (obj.material = Math.round(message.material));
+    message.hitbox !== undefined && (obj.hitbox = Math.round(message.hitbox));
+    message.color !== undefined && (obj.color = Math.round(message.color));
+    message.flags !== undefined && (obj.flags = Math.round(message.flags));
+    message.attachmentindex !== undefined && (obj.attachmentindex = Math.round(message.attachmentindex));
+    message.effectname !== undefined && (obj.effectname = Math.round(message.effectname));
+    message.attachmentname !== undefined && (obj.attachmentname = Math.round(message.attachmentname));
+    return obj;
+  },
 };
 
 function createBaseCMsgTEEffectDispatch(): CMsgTEEffectDispatch {
@@ -1280,6 +1668,17 @@ export const CMsgTEEffectDispatch = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgTEEffectDispatch {
+    return { effectdata: isSet(object.effectdata) ? CMsgEffectData.fromJSON(object.effectdata) : undefined };
+  },
+
+  toJSON(message: CMsgTEEffectDispatch): unknown {
+    const obj: any = {};
+    message.effectdata !== undefined &&
+      (obj.effectdata = message.effectdata ? CMsgEffectData.toJSON(message.effectdata) : undefined);
+    return obj;
   },
 };
 
@@ -1337,6 +1736,22 @@ export const CMsgTEEnergySplash = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgTEEnergySplash {
+    return {
+      pos: isSet(object.pos) ? CMsgVector.fromJSON(object.pos) : undefined,
+      dir: isSet(object.dir) ? CMsgVector.fromJSON(object.dir) : undefined,
+      explosive: isSet(object.explosive) ? Boolean(object.explosive) : false,
+    };
+  },
+
+  toJSON(message: CMsgTEEnergySplash): unknown {
+    const obj: any = {};
+    message.pos !== undefined && (obj.pos = message.pos ? CMsgVector.toJSON(message.pos) : undefined);
+    message.dir !== undefined && (obj.dir = message.dir ? CMsgVector.toJSON(message.dir) : undefined);
+    message.explosive !== undefined && (obj.explosive = message.explosive);
+    return obj;
+  },
 };
 
 function createBaseCMsgTEFizz(): CMsgTEFizz {
@@ -1392,6 +1807,22 @@ export const CMsgTEFizz = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgTEFizz {
+    return {
+      entity: isSet(object.entity) ? Number(object.entity) : 0,
+      density: isSet(object.density) ? Number(object.density) : 0,
+      current: isSet(object.current) ? Number(object.current) : 0,
+    };
+  },
+
+  toJSON(message: CMsgTEFizz): unknown {
+    const obj: any = {};
+    message.entity !== undefined && (obj.entity = Math.round(message.entity));
+    message.density !== undefined && (obj.density = Math.round(message.density));
+    message.current !== undefined && (obj.current = Math.round(message.current));
+    return obj;
   },
 };
 
@@ -1530,6 +1961,37 @@ export const CMsgTEShatterSurface = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgTEShatterSurface {
+    return {
+      origin: isSet(object.origin) ? CMsgVector.fromJSON(object.origin) : undefined,
+      angles: isSet(object.angles) ? CMsgQAngle.fromJSON(object.angles) : undefined,
+      force: isSet(object.force) ? CMsgVector.fromJSON(object.force) : undefined,
+      forcepos: isSet(object.forcepos) ? CMsgVector.fromJSON(object.forcepos) : undefined,
+      width: isSet(object.width) ? Number(object.width) : 0,
+      height: isSet(object.height) ? Number(object.height) : 0,
+      shardsize: isSet(object.shardsize) ? Number(object.shardsize) : 0,
+      surfacetype: isSet(object.surfacetype) ? Number(object.surfacetype) : 0,
+      frontcolor: isSet(object.frontcolor) ? Number(object.frontcolor) : 0,
+      backcolor: isSet(object.backcolor) ? Number(object.backcolor) : 0,
+    };
+  },
+
+  toJSON(message: CMsgTEShatterSurface): unknown {
+    const obj: any = {};
+    message.origin !== undefined && (obj.origin = message.origin ? CMsgVector.toJSON(message.origin) : undefined);
+    message.angles !== undefined && (obj.angles = message.angles ? CMsgQAngle.toJSON(message.angles) : undefined);
+    message.force !== undefined && (obj.force = message.force ? CMsgVector.toJSON(message.force) : undefined);
+    message.forcepos !== undefined &&
+      (obj.forcepos = message.forcepos ? CMsgVector.toJSON(message.forcepos) : undefined);
+    message.width !== undefined && (obj.width = message.width);
+    message.height !== undefined && (obj.height = message.height);
+    message.shardsize !== undefined && (obj.shardsize = message.shardsize);
+    message.surfacetype !== undefined && (obj.surfacetype = Math.round(message.surfacetype));
+    message.frontcolor !== undefined && (obj.frontcolor = Math.round(message.frontcolor));
+    message.backcolor !== undefined && (obj.backcolor = Math.round(message.backcolor));
+    return obj;
+  },
 };
 
 function createBaseCMsgTEGlowSprite(): CMsgTEGlowSprite {
@@ -1596,6 +2058,24 @@ export const CMsgTEGlowSprite = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgTEGlowSprite {
+    return {
+      origin: isSet(object.origin) ? CMsgVector.fromJSON(object.origin) : undefined,
+      scale: isSet(object.scale) ? Number(object.scale) : 0,
+      life: isSet(object.life) ? Number(object.life) : 0,
+      brightness: isSet(object.brightness) ? Number(object.brightness) : 0,
+    };
+  },
+
+  toJSON(message: CMsgTEGlowSprite): unknown {
+    const obj: any = {};
+    message.origin !== undefined && (obj.origin = message.origin ? CMsgVector.toJSON(message.origin) : undefined);
+    message.scale !== undefined && (obj.scale = message.scale);
+    message.life !== undefined && (obj.life = message.life);
+    message.brightness !== undefined && (obj.brightness = Math.round(message.brightness));
+    return obj;
+  },
 };
 
 function createBaseCMsgTEImpact(): CMsgTEImpact {
@@ -1651,6 +2131,22 @@ export const CMsgTEImpact = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgTEImpact {
+    return {
+      origin: isSet(object.origin) ? CMsgVector.fromJSON(object.origin) : undefined,
+      normal: isSet(object.normal) ? CMsgVector.fromJSON(object.normal) : undefined,
+      type: isSet(object.type) ? Number(object.type) : 0,
+    };
+  },
+
+  toJSON(message: CMsgTEImpact): unknown {
+    const obj: any = {};
+    message.origin !== undefined && (obj.origin = message.origin ? CMsgVector.toJSON(message.origin) : undefined);
+    message.normal !== undefined && (obj.normal = message.normal ? CMsgVector.toJSON(message.normal) : undefined);
+    message.type !== undefined && (obj.type = Math.round(message.type));
+    return obj;
   },
 };
 
@@ -1718,6 +2214,24 @@ export const CMsgTEMuzzleFlash = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgTEMuzzleFlash {
+    return {
+      origin: isSet(object.origin) ? CMsgVector.fromJSON(object.origin) : undefined,
+      angles: isSet(object.angles) ? CMsgQAngle.fromJSON(object.angles) : undefined,
+      scale: isSet(object.scale) ? Number(object.scale) : 0,
+      type: isSet(object.type) ? Number(object.type) : 0,
+    };
+  },
+
+  toJSON(message: CMsgTEMuzzleFlash): unknown {
+    const obj: any = {};
+    message.origin !== undefined && (obj.origin = message.origin ? CMsgVector.toJSON(message.origin) : undefined);
+    message.angles !== undefined && (obj.angles = message.angles ? CMsgQAngle.toJSON(message.angles) : undefined);
+    message.scale !== undefined && (obj.scale = message.scale);
+    message.type !== undefined && (obj.type = Math.round(message.type));
+    return obj;
+  },
 };
 
 function createBaseCMsgTEBloodStream(): CMsgTEBloodStream {
@@ -1783,6 +2297,25 @@ export const CMsgTEBloodStream = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgTEBloodStream {
+    return {
+      origin: isSet(object.origin) ? CMsgVector.fromJSON(object.origin) : undefined,
+      direction: isSet(object.direction) ? CMsgVector.fromJSON(object.direction) : undefined,
+      color: isSet(object.color) ? Number(object.color) : 0,
+      amount: isSet(object.amount) ? Number(object.amount) : 0,
+    };
+  },
+
+  toJSON(message: CMsgTEBloodStream): unknown {
+    const obj: any = {};
+    message.origin !== undefined && (obj.origin = message.origin ? CMsgVector.toJSON(message.origin) : undefined);
+    message.direction !== undefined &&
+      (obj.direction = message.direction ? CMsgVector.toJSON(message.direction) : undefined);
+    message.color !== undefined && (obj.color = Math.round(message.color));
+    message.amount !== undefined && (obj.amount = Math.round(message.amount));
+    return obj;
   },
 };
 
@@ -1932,6 +2465,38 @@ export const CMsgTEExplosion = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgTEExplosion {
+    return {
+      origin: isSet(object.origin) ? CMsgVector.fromJSON(object.origin) : undefined,
+      framerate: isSet(object.framerate) ? Number(object.framerate) : 0,
+      flags: isSet(object.flags) ? Number(object.flags) : 0,
+      normal: isSet(object.normal) ? CMsgVector.fromJSON(object.normal) : undefined,
+      materialtype: isSet(object.materialtype) ? Number(object.materialtype) : 0,
+      radius: isSet(object.radius) ? Number(object.radius) : 0,
+      magnitude: isSet(object.magnitude) ? Number(object.magnitude) : 0,
+      scale: isSet(object.scale) ? Number(object.scale) : 0,
+      affectRagdolls: isSet(object.affectRagdolls) ? Boolean(object.affectRagdolls) : false,
+      effectName: isSet(object.effectName) ? String(object.effectName) : "",
+      explosionType: isSet(object.explosionType) ? Number(object.explosionType) : 0,
+    };
+  },
+
+  toJSON(message: CMsgTEExplosion): unknown {
+    const obj: any = {};
+    message.origin !== undefined && (obj.origin = message.origin ? CMsgVector.toJSON(message.origin) : undefined);
+    message.framerate !== undefined && (obj.framerate = Math.round(message.framerate));
+    message.flags !== undefined && (obj.flags = Math.round(message.flags));
+    message.normal !== undefined && (obj.normal = message.normal ? CMsgVector.toJSON(message.normal) : undefined);
+    message.materialtype !== undefined && (obj.materialtype = Math.round(message.materialtype));
+    message.radius !== undefined && (obj.radius = Math.round(message.radius));
+    message.magnitude !== undefined && (obj.magnitude = Math.round(message.magnitude));
+    message.scale !== undefined && (obj.scale = message.scale);
+    message.affectRagdolls !== undefined && (obj.affectRagdolls = message.affectRagdolls);
+    message.effectName !== undefined && (obj.effectName = message.effectName);
+    message.explosionType !== undefined && (obj.explosionType = Math.round(message.explosionType));
+    return obj;
+  },
 };
 
 function createBaseCMsgTEDust(): CMsgTEDust {
@@ -1998,6 +2563,25 @@ export const CMsgTEDust = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgTEDust {
+    return {
+      origin: isSet(object.origin) ? CMsgVector.fromJSON(object.origin) : undefined,
+      size: isSet(object.size) ? Number(object.size) : 0,
+      speed: isSet(object.speed) ? Number(object.speed) : 0,
+      direction: isSet(object.direction) ? CMsgVector.fromJSON(object.direction) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgTEDust): unknown {
+    const obj: any = {};
+    message.origin !== undefined && (obj.origin = message.origin ? CMsgVector.toJSON(message.origin) : undefined);
+    message.size !== undefined && (obj.size = message.size);
+    message.speed !== undefined && (obj.speed = message.speed);
+    message.direction !== undefined &&
+      (obj.direction = message.direction ? CMsgVector.toJSON(message.direction) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgTELargeFunnel(): CMsgTELargeFunnel {
@@ -2043,6 +2627,20 @@ export const CMsgTELargeFunnel = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgTELargeFunnel {
+    return {
+      origin: isSet(object.origin) ? CMsgVector.fromJSON(object.origin) : undefined,
+      reversed: isSet(object.reversed) ? Number(object.reversed) : 0,
+    };
+  },
+
+  toJSON(message: CMsgTELargeFunnel): unknown {
+    const obj: any = {};
+    message.origin !== undefined && (obj.origin = message.origin ? CMsgVector.toJSON(message.origin) : undefined);
+    message.reversed !== undefined && (obj.reversed = Math.round(message.reversed));
+    return obj;
   },
 };
 
@@ -2109,6 +2707,25 @@ export const CMsgTESparks = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgTESparks {
+    return {
+      origin: isSet(object.origin) ? CMsgVector.fromJSON(object.origin) : undefined,
+      magnitude: isSet(object.magnitude) ? Number(object.magnitude) : 0,
+      length: isSet(object.length) ? Number(object.length) : 0,
+      direction: isSet(object.direction) ? CMsgVector.fromJSON(object.direction) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgTESparks): unknown {
+    const obj: any = {};
+    message.origin !== undefined && (obj.origin = message.origin ? CMsgVector.toJSON(message.origin) : undefined);
+    message.magnitude !== undefined && (obj.magnitude = Math.round(message.magnitude));
+    message.length !== undefined && (obj.length = Math.round(message.length));
+    message.direction !== undefined &&
+      (obj.direction = message.direction ? CMsgVector.toJSON(message.direction) : undefined);
+    return obj;
   },
 };
 
@@ -2247,6 +2864,40 @@ export const CMsgTEPhysicsProp = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgTEPhysicsProp {
+    return {
+      origin: isSet(object.origin) ? CMsgVector.fromJSON(object.origin) : undefined,
+      velocity: isSet(object.velocity) ? CMsgVector.fromJSON(object.velocity) : undefined,
+      angles: isSet(object.angles) ? CMsgQAngle.fromJSON(object.angles) : undefined,
+      skin: isSet(object.skin) ? Number(object.skin) : 0,
+      flags: isSet(object.flags) ? Number(object.flags) : 0,
+      effects: isSet(object.effects) ? Number(object.effects) : 0,
+      color: isSet(object.color) ? Number(object.color) : 0,
+      modelindex: isSet(object.modelindex) ? String(object.modelindex) : "0",
+      unusedBreakmodelsnottomake: isSet(object.unusedBreakmodelsnottomake)
+        ? Number(object.unusedBreakmodelsnottomake)
+        : 0,
+      scale: isSet(object.scale) ? Number(object.scale) : 0,
+    };
+  },
+
+  toJSON(message: CMsgTEPhysicsProp): unknown {
+    const obj: any = {};
+    message.origin !== undefined && (obj.origin = message.origin ? CMsgVector.toJSON(message.origin) : undefined);
+    message.velocity !== undefined &&
+      (obj.velocity = message.velocity ? CMsgVector.toJSON(message.velocity) : undefined);
+    message.angles !== undefined && (obj.angles = message.angles ? CMsgQAngle.toJSON(message.angles) : undefined);
+    message.skin !== undefined && (obj.skin = Math.round(message.skin));
+    message.flags !== undefined && (obj.flags = Math.round(message.flags));
+    message.effects !== undefined && (obj.effects = Math.round(message.effects));
+    message.color !== undefined && (obj.color = Math.round(message.color));
+    message.modelindex !== undefined && (obj.modelindex = message.modelindex);
+    message.unusedBreakmodelsnottomake !== undefined &&
+      (obj.unusedBreakmodelsnottomake = Math.round(message.unusedBreakmodelsnottomake));
+    message.scale !== undefined && (obj.scale = message.scale);
+    return obj;
+  },
 };
 
 function createBaseCMsgTEPlayerDecal(): CMsgTEPlayerDecal {
@@ -2302,6 +2953,22 @@ export const CMsgTEPlayerDecal = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgTEPlayerDecal {
+    return {
+      origin: isSet(object.origin) ? CMsgVector.fromJSON(object.origin) : undefined,
+      player: isSet(object.player) ? Number(object.player) : 0,
+      entity: isSet(object.entity) ? Number(object.entity) : 0,
+    };
+  },
+
+  toJSON(message: CMsgTEPlayerDecal): unknown {
+    const obj: any = {};
+    message.origin !== undefined && (obj.origin = message.origin ? CMsgVector.toJSON(message.origin) : undefined);
+    message.player !== undefined && (obj.player = Math.round(message.player));
+    message.entity !== undefined && (obj.entity = Math.round(message.entity));
+    return obj;
   },
 };
 
@@ -2369,6 +3036,24 @@ export const CMsgTEProjectedDecal = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgTEProjectedDecal {
+    return {
+      origin: isSet(object.origin) ? CMsgVector.fromJSON(object.origin) : undefined,
+      angles: isSet(object.angles) ? CMsgQAngle.fromJSON(object.angles) : undefined,
+      index: isSet(object.index) ? Number(object.index) : 0,
+      distance: isSet(object.distance) ? Number(object.distance) : 0,
+    };
+  },
+
+  toJSON(message: CMsgTEProjectedDecal): unknown {
+    const obj: any = {};
+    message.origin !== undefined && (obj.origin = message.origin ? CMsgVector.toJSON(message.origin) : undefined);
+    message.angles !== undefined && (obj.angles = message.angles ? CMsgQAngle.toJSON(message.angles) : undefined);
+    message.index !== undefined && (obj.index = Math.round(message.index));
+    message.distance !== undefined && (obj.distance = message.distance);
+    return obj;
+  },
 };
 
 function createBaseCMsgTESmoke(): CMsgTESmoke {
@@ -2414,6 +3099,20 @@ export const CMsgTESmoke = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgTESmoke {
+    return {
+      origin: isSet(object.origin) ? CMsgVector.fromJSON(object.origin) : undefined,
+      scale: isSet(object.scale) ? Number(object.scale) : 0,
+    };
+  },
+
+  toJSON(message: CMsgTESmoke): unknown {
+    const obj: any = {};
+    message.origin !== undefined && (obj.origin = message.origin ? CMsgVector.toJSON(message.origin) : undefined);
+    message.scale !== undefined && (obj.scale = message.scale);
+    return obj;
   },
 };
 
@@ -2471,7 +3170,42 @@ export const CMsgTEWorldDecal = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgTEWorldDecal {
+    return {
+      origin: isSet(object.origin) ? CMsgVector.fromJSON(object.origin) : undefined,
+      normal: isSet(object.normal) ? CMsgVector.fromJSON(object.normal) : undefined,
+      index: isSet(object.index) ? Number(object.index) : 0,
+    };
+  },
+
+  toJSON(message: CMsgTEWorldDecal): unknown {
+    const obj: any = {};
+    message.origin !== undefined && (obj.origin = message.origin ? CMsgVector.toJSON(message.origin) : undefined);
+    message.normal !== undefined && (obj.normal = message.normal ? CMsgVector.toJSON(message.normal) : undefined);
+    message.index !== undefined && (obj.index = Math.round(message.index));
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
 
 function longToString(long: Long) {
   return long.toString();
@@ -2480,4 +3214,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

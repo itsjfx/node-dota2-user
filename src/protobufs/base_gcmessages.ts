@@ -2,7 +2,7 @@
 import Long from "long";
 import _m0 from "protobufjs/minimal";
 import { CExtraMsgBlock } from "./gcsdk_gcmessages";
-import { EGCPlatform } from "./steammessages";
+import { EGCPlatform, eGCPlatformFromJSON, eGCPlatformToJSON } from "./steammessages";
 
 export enum EGCBaseMsg {
   k_EMsgGCReplicateConVars = 4002,
@@ -31,6 +31,140 @@ export enum EGCBaseMsg {
   k_EMsgGCToClientAggregateMetricsBackoff = 4524,
 }
 
+export function eGCBaseMsgFromJSON(object: any): EGCBaseMsg {
+  switch (object) {
+    case 4002:
+    case "k_EMsgGCReplicateConVars":
+      return EGCBaseMsg.k_EMsgGCReplicateConVars;
+    case 4003:
+    case "k_EMsgGCConVarUpdated":
+      return EGCBaseMsg.k_EMsgGCConVarUpdated;
+    case 4501:
+    case "k_EMsgGCInviteToParty":
+      return EGCBaseMsg.k_EMsgGCInviteToParty;
+    case 4502:
+    case "k_EMsgGCInvitationCreated":
+      return EGCBaseMsg.k_EMsgGCInvitationCreated;
+    case 4503:
+    case "k_EMsgGCPartyInviteResponse":
+      return EGCBaseMsg.k_EMsgGCPartyInviteResponse;
+    case 4504:
+    case "k_EMsgGCKickFromParty":
+      return EGCBaseMsg.k_EMsgGCKickFromParty;
+    case 4505:
+    case "k_EMsgGCLeaveParty":
+      return EGCBaseMsg.k_EMsgGCLeaveParty;
+    case 4506:
+    case "k_EMsgGCServerAvailable":
+      return EGCBaseMsg.k_EMsgGCServerAvailable;
+    case 4507:
+    case "k_EMsgGCClientConnectToServer":
+      return EGCBaseMsg.k_EMsgGCClientConnectToServer;
+    case 4508:
+    case "k_EMsgGCGameServerInfo":
+      return EGCBaseMsg.k_EMsgGCGameServerInfo;
+    case 4511:
+    case "k_EMsgGCLANServerAvailable":
+      return EGCBaseMsg.k_EMsgGCLANServerAvailable;
+    case 4512:
+    case "k_EMsgGCInviteToLobby":
+      return EGCBaseMsg.k_EMsgGCInviteToLobby;
+    case 4513:
+    case "k_EMsgGCLobbyInviteResponse":
+      return EGCBaseMsg.k_EMsgGCLobbyInviteResponse;
+    case 4514:
+    case "k_EMsgGCToClientPollFileRequest":
+      return EGCBaseMsg.k_EMsgGCToClientPollFileRequest;
+    case 4515:
+    case "k_EMsgGCToClientPollFileResponse":
+      return EGCBaseMsg.k_EMsgGCToClientPollFileResponse;
+    case 4516:
+    case "k_EMsgGCToGCPerformManualOp":
+      return EGCBaseMsg.k_EMsgGCToGCPerformManualOp;
+    case 4517:
+    case "k_EMsgGCToGCPerformManualOpCompleted":
+      return EGCBaseMsg.k_EMsgGCToGCPerformManualOpCompleted;
+    case 4518:
+    case "k_EMsgGCToGCReloadServerRegionSettings":
+      return EGCBaseMsg.k_EMsgGCToGCReloadServerRegionSettings;
+    case 4519:
+    case "k_EMsgGCAdditionalWelcomeMsgList":
+      return EGCBaseMsg.k_EMsgGCAdditionalWelcomeMsgList;
+    case 4520:
+    case "k_EMsgGCToClientApplyRemoteConVars":
+      return EGCBaseMsg.k_EMsgGCToClientApplyRemoteConVars;
+    case 4521:
+    case "k_EMsgGCToServerApplyRemoteConVars":
+      return EGCBaseMsg.k_EMsgGCToServerApplyRemoteConVars;
+    case 4522:
+    case "k_EMsgClientToGCIntegrityStatus":
+      return EGCBaseMsg.k_EMsgClientToGCIntegrityStatus;
+    case 4523:
+    case "k_EMsgClientToGCAggregateMetrics":
+      return EGCBaseMsg.k_EMsgClientToGCAggregateMetrics;
+    case 4524:
+    case "k_EMsgGCToClientAggregateMetricsBackoff":
+      return EGCBaseMsg.k_EMsgGCToClientAggregateMetricsBackoff;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EGCBaseMsg");
+  }
+}
+
+export function eGCBaseMsgToJSON(object: EGCBaseMsg): string {
+  switch (object) {
+    case EGCBaseMsg.k_EMsgGCReplicateConVars:
+      return "k_EMsgGCReplicateConVars";
+    case EGCBaseMsg.k_EMsgGCConVarUpdated:
+      return "k_EMsgGCConVarUpdated";
+    case EGCBaseMsg.k_EMsgGCInviteToParty:
+      return "k_EMsgGCInviteToParty";
+    case EGCBaseMsg.k_EMsgGCInvitationCreated:
+      return "k_EMsgGCInvitationCreated";
+    case EGCBaseMsg.k_EMsgGCPartyInviteResponse:
+      return "k_EMsgGCPartyInviteResponse";
+    case EGCBaseMsg.k_EMsgGCKickFromParty:
+      return "k_EMsgGCKickFromParty";
+    case EGCBaseMsg.k_EMsgGCLeaveParty:
+      return "k_EMsgGCLeaveParty";
+    case EGCBaseMsg.k_EMsgGCServerAvailable:
+      return "k_EMsgGCServerAvailable";
+    case EGCBaseMsg.k_EMsgGCClientConnectToServer:
+      return "k_EMsgGCClientConnectToServer";
+    case EGCBaseMsg.k_EMsgGCGameServerInfo:
+      return "k_EMsgGCGameServerInfo";
+    case EGCBaseMsg.k_EMsgGCLANServerAvailable:
+      return "k_EMsgGCLANServerAvailable";
+    case EGCBaseMsg.k_EMsgGCInviteToLobby:
+      return "k_EMsgGCInviteToLobby";
+    case EGCBaseMsg.k_EMsgGCLobbyInviteResponse:
+      return "k_EMsgGCLobbyInviteResponse";
+    case EGCBaseMsg.k_EMsgGCToClientPollFileRequest:
+      return "k_EMsgGCToClientPollFileRequest";
+    case EGCBaseMsg.k_EMsgGCToClientPollFileResponse:
+      return "k_EMsgGCToClientPollFileResponse";
+    case EGCBaseMsg.k_EMsgGCToGCPerformManualOp:
+      return "k_EMsgGCToGCPerformManualOp";
+    case EGCBaseMsg.k_EMsgGCToGCPerformManualOpCompleted:
+      return "k_EMsgGCToGCPerformManualOpCompleted";
+    case EGCBaseMsg.k_EMsgGCToGCReloadServerRegionSettings:
+      return "k_EMsgGCToGCReloadServerRegionSettings";
+    case EGCBaseMsg.k_EMsgGCAdditionalWelcomeMsgList:
+      return "k_EMsgGCAdditionalWelcomeMsgList";
+    case EGCBaseMsg.k_EMsgGCToClientApplyRemoteConVars:
+      return "k_EMsgGCToClientApplyRemoteConVars";
+    case EGCBaseMsg.k_EMsgGCToServerApplyRemoteConVars:
+      return "k_EMsgGCToServerApplyRemoteConVars";
+    case EGCBaseMsg.k_EMsgClientToGCIntegrityStatus:
+      return "k_EMsgClientToGCIntegrityStatus";
+    case EGCBaseMsg.k_EMsgClientToGCAggregateMetrics:
+      return "k_EMsgClientToGCAggregateMetrics";
+    case EGCBaseMsg.k_EMsgGCToClientAggregateMetricsBackoff:
+      return "k_EMsgGCToClientAggregateMetricsBackoff";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EGCBaseMsg");
+  }
+}
+
 export enum ECustomGameInstallStatus {
   k_ECustomGameInstallStatus_Unknown = 0,
   k_ECustomGameInstallStatus_Ready = 1,
@@ -42,6 +176,70 @@ export enum ECustomGameInstallStatus {
   k_ECustomGameInstallStatus_CRCMismatch = 105,
   k_ECustomGameInstallStatus_FailedSteam = 106,
   k_ECustomGameInstallStatus_FailedCanceled = 107,
+}
+
+export function eCustomGameInstallStatusFromJSON(object: any): ECustomGameInstallStatus {
+  switch (object) {
+    case 0:
+    case "k_ECustomGameInstallStatus_Unknown":
+      return ECustomGameInstallStatus.k_ECustomGameInstallStatus_Unknown;
+    case 1:
+    case "k_ECustomGameInstallStatus_Ready":
+      return ECustomGameInstallStatus.k_ECustomGameInstallStatus_Ready;
+    case 2:
+    case "k_ECustomGameInstallStatus_Busy":
+      return ECustomGameInstallStatus.k_ECustomGameInstallStatus_Busy;
+    case 101:
+    case "k_ECustomGameInstallStatus_FailedGeneric":
+      return ECustomGameInstallStatus.k_ECustomGameInstallStatus_FailedGeneric;
+    case 102:
+    case "k_ECustomGameInstallStatus_FailedInternalError":
+      return ECustomGameInstallStatus.k_ECustomGameInstallStatus_FailedInternalError;
+    case 103:
+    case "k_ECustomGameInstallStatus_RequestedTimestampTooOld":
+      return ECustomGameInstallStatus.k_ECustomGameInstallStatus_RequestedTimestampTooOld;
+    case 104:
+    case "k_ECustomGameInstallStatus_RequestedTimestampTooNew":
+      return ECustomGameInstallStatus.k_ECustomGameInstallStatus_RequestedTimestampTooNew;
+    case 105:
+    case "k_ECustomGameInstallStatus_CRCMismatch":
+      return ECustomGameInstallStatus.k_ECustomGameInstallStatus_CRCMismatch;
+    case 106:
+    case "k_ECustomGameInstallStatus_FailedSteam":
+      return ECustomGameInstallStatus.k_ECustomGameInstallStatus_FailedSteam;
+    case 107:
+    case "k_ECustomGameInstallStatus_FailedCanceled":
+      return ECustomGameInstallStatus.k_ECustomGameInstallStatus_FailedCanceled;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ECustomGameInstallStatus");
+  }
+}
+
+export function eCustomGameInstallStatusToJSON(object: ECustomGameInstallStatus): string {
+  switch (object) {
+    case ECustomGameInstallStatus.k_ECustomGameInstallStatus_Unknown:
+      return "k_ECustomGameInstallStatus_Unknown";
+    case ECustomGameInstallStatus.k_ECustomGameInstallStatus_Ready:
+      return "k_ECustomGameInstallStatus_Ready";
+    case ECustomGameInstallStatus.k_ECustomGameInstallStatus_Busy:
+      return "k_ECustomGameInstallStatus_Busy";
+    case ECustomGameInstallStatus.k_ECustomGameInstallStatus_FailedGeneric:
+      return "k_ECustomGameInstallStatus_FailedGeneric";
+    case ECustomGameInstallStatus.k_ECustomGameInstallStatus_FailedInternalError:
+      return "k_ECustomGameInstallStatus_FailedInternalError";
+    case ECustomGameInstallStatus.k_ECustomGameInstallStatus_RequestedTimestampTooOld:
+      return "k_ECustomGameInstallStatus_RequestedTimestampTooOld";
+    case ECustomGameInstallStatus.k_ECustomGameInstallStatus_RequestedTimestampTooNew:
+      return "k_ECustomGameInstallStatus_RequestedTimestampTooNew";
+    case ECustomGameInstallStatus.k_ECustomGameInstallStatus_CRCMismatch:
+      return "k_ECustomGameInstallStatus_CRCMismatch";
+    case ECustomGameInstallStatus.k_ECustomGameInstallStatus_FailedSteam:
+      return "k_ECustomGameInstallStatus_FailedSteam";
+    case ECustomGameInstallStatus.k_ECustomGameInstallStatus_FailedCanceled:
+      return "k_ECustomGameInstallStatus_FailedCanceled";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ECustomGameInstallStatus");
+  }
 }
 
 export interface CGCStorePurchaseInitLineItem {
@@ -275,6 +473,49 @@ export enum CMsgExtractGemsResponse_EExtractGems {
   k_ExtractGems_Failed_FailedToRemoveGem = 4,
 }
 
+export function cMsgExtractGemsResponse_EExtractGemsFromJSON(object: any): CMsgExtractGemsResponse_EExtractGems {
+  switch (object) {
+    case 0:
+    case "k_ExtractGems_Succeeded":
+      return CMsgExtractGemsResponse_EExtractGems.k_ExtractGems_Succeeded;
+    case 1:
+    case "k_ExtractGems_Failed_ToolIsInvalid":
+      return CMsgExtractGemsResponse_EExtractGems.k_ExtractGems_Failed_ToolIsInvalid;
+    case 2:
+    case "k_ExtractGems_Failed_ItemIsInvalid":
+      return CMsgExtractGemsResponse_EExtractGems.k_ExtractGems_Failed_ItemIsInvalid;
+    case 3:
+    case "k_ExtractGems_Failed_ToolCannotRemoveGem":
+      return CMsgExtractGemsResponse_EExtractGems.k_ExtractGems_Failed_ToolCannotRemoveGem;
+    case 4:
+    case "k_ExtractGems_Failed_FailedToRemoveGem":
+      return CMsgExtractGemsResponse_EExtractGems.k_ExtractGems_Failed_FailedToRemoveGem;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgExtractGemsResponse_EExtractGems",
+      );
+  }
+}
+
+export function cMsgExtractGemsResponse_EExtractGemsToJSON(object: CMsgExtractGemsResponse_EExtractGems): string {
+  switch (object) {
+    case CMsgExtractGemsResponse_EExtractGems.k_ExtractGems_Succeeded:
+      return "k_ExtractGems_Succeeded";
+    case CMsgExtractGemsResponse_EExtractGems.k_ExtractGems_Failed_ToolIsInvalid:
+      return "k_ExtractGems_Failed_ToolIsInvalid";
+    case CMsgExtractGemsResponse_EExtractGems.k_ExtractGems_Failed_ItemIsInvalid:
+      return "k_ExtractGems_Failed_ItemIsInvalid";
+    case CMsgExtractGemsResponse_EExtractGems.k_ExtractGems_Failed_ToolCannotRemoveGem:
+      return "k_ExtractGems_Failed_ToolCannotRemoveGem";
+    case CMsgExtractGemsResponse_EExtractGems.k_ExtractGems_Failed_FailedToRemoveGem:
+      return "k_ExtractGems_Failed_FailedToRemoveGem";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgExtractGemsResponse_EExtractGems",
+      );
+  }
+}
+
 export interface CMsgAddSocket {
   toolItemId: string;
   itemItemId: string;
@@ -292,6 +533,44 @@ export enum CMsgAddSocketResponse_EAddSocket {
   k_AddSocket_Failed_ToolIsInvalid = 1,
   k_AddSocket_Failed_ItemCannotBeSocketed = 2,
   k_AddSocket_Failed_FailedToAddSocket = 3,
+}
+
+export function cMsgAddSocketResponse_EAddSocketFromJSON(object: any): CMsgAddSocketResponse_EAddSocket {
+  switch (object) {
+    case 0:
+    case "k_AddSocket_Succeeded":
+      return CMsgAddSocketResponse_EAddSocket.k_AddSocket_Succeeded;
+    case 1:
+    case "k_AddSocket_Failed_ToolIsInvalid":
+      return CMsgAddSocketResponse_EAddSocket.k_AddSocket_Failed_ToolIsInvalid;
+    case 2:
+    case "k_AddSocket_Failed_ItemCannotBeSocketed":
+      return CMsgAddSocketResponse_EAddSocket.k_AddSocket_Failed_ItemCannotBeSocketed;
+    case 3:
+    case "k_AddSocket_Failed_FailedToAddSocket":
+      return CMsgAddSocketResponse_EAddSocket.k_AddSocket_Failed_FailedToAddSocket;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgAddSocketResponse_EAddSocket",
+      );
+  }
+}
+
+export function cMsgAddSocketResponse_EAddSocketToJSON(object: CMsgAddSocketResponse_EAddSocket): string {
+  switch (object) {
+    case CMsgAddSocketResponse_EAddSocket.k_AddSocket_Succeeded:
+      return "k_AddSocket_Succeeded";
+    case CMsgAddSocketResponse_EAddSocket.k_AddSocket_Failed_ToolIsInvalid:
+      return "k_AddSocket_Failed_ToolIsInvalid";
+    case CMsgAddSocketResponse_EAddSocket.k_AddSocket_Failed_ItemCannotBeSocketed:
+      return "k_AddSocket_Failed_ItemCannotBeSocketed";
+    case CMsgAddSocketResponse_EAddSocket.k_AddSocket_Failed_FailedToAddSocket:
+      return "k_AddSocket_Failed_FailedToAddSocket";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgAddSocketResponse_EAddSocket",
+      );
+  }
 }
 
 export interface CMsgAddItemToSocketData {
@@ -321,6 +600,64 @@ export enum CMsgAddItemToSocketResponse_EAddGem {
   k_AddGem_Failed_SocketContainsUnremovableGem = 7,
 }
 
+export function cMsgAddItemToSocketResponse_EAddGemFromJSON(object: any): CMsgAddItemToSocketResponse_EAddGem {
+  switch (object) {
+    case 0:
+    case "k_AddGem_Succeeded":
+      return CMsgAddItemToSocketResponse_EAddGem.k_AddGem_Succeeded;
+    case 1:
+    case "k_AddGem_Failed_GemIsInvalid":
+      return CMsgAddItemToSocketResponse_EAddGem.k_AddGem_Failed_GemIsInvalid;
+    case 2:
+    case "k_AddGem_Failed_ItemIsInvalid":
+      return CMsgAddItemToSocketResponse_EAddGem.k_AddGem_Failed_ItemIsInvalid;
+    case 3:
+    case "k_AddGem_Failed_FailedToAddGem":
+      return CMsgAddItemToSocketResponse_EAddGem.k_AddGem_Failed_FailedToAddGem;
+    case 4:
+    case "k_AddGem_Failed_InvalidGemTypeForSocket":
+      return CMsgAddItemToSocketResponse_EAddGem.k_AddGem_Failed_InvalidGemTypeForSocket;
+    case 5:
+    case "k_AddGem_Failed_InvalidGemTypeForHero":
+      return CMsgAddItemToSocketResponse_EAddGem.k_AddGem_Failed_InvalidGemTypeForHero;
+    case 6:
+    case "k_AddGem_Failed_InvalidGemTypeForSlot":
+      return CMsgAddItemToSocketResponse_EAddGem.k_AddGem_Failed_InvalidGemTypeForSlot;
+    case 7:
+    case "k_AddGem_Failed_SocketContainsUnremovableGem":
+      return CMsgAddItemToSocketResponse_EAddGem.k_AddGem_Failed_SocketContainsUnremovableGem;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgAddItemToSocketResponse_EAddGem",
+      );
+  }
+}
+
+export function cMsgAddItemToSocketResponse_EAddGemToJSON(object: CMsgAddItemToSocketResponse_EAddGem): string {
+  switch (object) {
+    case CMsgAddItemToSocketResponse_EAddGem.k_AddGem_Succeeded:
+      return "k_AddGem_Succeeded";
+    case CMsgAddItemToSocketResponse_EAddGem.k_AddGem_Failed_GemIsInvalid:
+      return "k_AddGem_Failed_GemIsInvalid";
+    case CMsgAddItemToSocketResponse_EAddGem.k_AddGem_Failed_ItemIsInvalid:
+      return "k_AddGem_Failed_ItemIsInvalid";
+    case CMsgAddItemToSocketResponse_EAddGem.k_AddGem_Failed_FailedToAddGem:
+      return "k_AddGem_Failed_FailedToAddGem";
+    case CMsgAddItemToSocketResponse_EAddGem.k_AddGem_Failed_InvalidGemTypeForSocket:
+      return "k_AddGem_Failed_InvalidGemTypeForSocket";
+    case CMsgAddItemToSocketResponse_EAddGem.k_AddGem_Failed_InvalidGemTypeForHero:
+      return "k_AddGem_Failed_InvalidGemTypeForHero";
+    case CMsgAddItemToSocketResponse_EAddGem.k_AddGem_Failed_InvalidGemTypeForSlot:
+      return "k_AddGem_Failed_InvalidGemTypeForSlot";
+    case CMsgAddItemToSocketResponse_EAddGem.k_AddGem_Failed_SocketContainsUnremovableGem:
+      return "k_AddGem_Failed_SocketContainsUnremovableGem";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgAddItemToSocketResponse_EAddGem",
+      );
+  }
+}
+
 export interface CMsgResetStrangeGemCount {
   itemItemId: string;
   socketIndex: number;
@@ -336,6 +673,53 @@ export enum CMsgResetStrangeGemCountResponse_EResetGem {
   k_ResetGem_Failed_ItemIsInvalid = 2,
   k_ResetGem_Failed_InvalidSocketId = 3,
   k_ResetGem_Failed_SocketCannotBeReset = 4,
+}
+
+export function cMsgResetStrangeGemCountResponse_EResetGemFromJSON(
+  object: any,
+): CMsgResetStrangeGemCountResponse_EResetGem {
+  switch (object) {
+    case 0:
+    case "k_ResetGem_Succeeded":
+      return CMsgResetStrangeGemCountResponse_EResetGem.k_ResetGem_Succeeded;
+    case 1:
+    case "k_ResetGem_Failed_FailedToResetGem":
+      return CMsgResetStrangeGemCountResponse_EResetGem.k_ResetGem_Failed_FailedToResetGem;
+    case 2:
+    case "k_ResetGem_Failed_ItemIsInvalid":
+      return CMsgResetStrangeGemCountResponse_EResetGem.k_ResetGem_Failed_ItemIsInvalid;
+    case 3:
+    case "k_ResetGem_Failed_InvalidSocketId":
+      return CMsgResetStrangeGemCountResponse_EResetGem.k_ResetGem_Failed_InvalidSocketId;
+    case 4:
+    case "k_ResetGem_Failed_SocketCannotBeReset":
+      return CMsgResetStrangeGemCountResponse_EResetGem.k_ResetGem_Failed_SocketCannotBeReset;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgResetStrangeGemCountResponse_EResetGem",
+      );
+  }
+}
+
+export function cMsgResetStrangeGemCountResponse_EResetGemToJSON(
+  object: CMsgResetStrangeGemCountResponse_EResetGem,
+): string {
+  switch (object) {
+    case CMsgResetStrangeGemCountResponse_EResetGem.k_ResetGem_Succeeded:
+      return "k_ResetGem_Succeeded";
+    case CMsgResetStrangeGemCountResponse_EResetGem.k_ResetGem_Failed_FailedToResetGem:
+      return "k_ResetGem_Failed_FailedToResetGem";
+    case CMsgResetStrangeGemCountResponse_EResetGem.k_ResetGem_Failed_ItemIsInvalid:
+      return "k_ResetGem_Failed_ItemIsInvalid";
+    case CMsgResetStrangeGemCountResponse_EResetGem.k_ResetGem_Failed_InvalidSocketId:
+      return "k_ResetGem_Failed_InvalidSocketId";
+    case CMsgResetStrangeGemCountResponse_EResetGem.k_ResetGem_Failed_SocketCannotBeReset:
+      return "k_ResetGem_Failed_SocketCannotBeReset";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgResetStrangeGemCountResponse_EResetGem",
+      );
+  }
 }
 
 export interface CMsgGCToClientPollFileRequest {
@@ -487,6 +871,26 @@ export const CGCStorePurchaseInitLineItem = {
     }
     return message;
   },
+
+  fromJSON(object: any): CGCStorePurchaseInitLineItem {
+    return {
+      itemDefId: isSet(object.itemDefId) ? Number(object.itemDefId) : 0,
+      quantity: isSet(object.quantity) ? Number(object.quantity) : 0,
+      costInLocalCurrency: isSet(object.costInLocalCurrency) ? Number(object.costInLocalCurrency) : 0,
+      purchaseType: isSet(object.purchaseType) ? Number(object.purchaseType) : 0,
+      sourceReferenceId: isSet(object.sourceReferenceId) ? String(object.sourceReferenceId) : "0",
+    };
+  },
+
+  toJSON(message: CGCStorePurchaseInitLineItem): unknown {
+    const obj: any = {};
+    message.itemDefId !== undefined && (obj.itemDefId = Math.round(message.itemDefId));
+    message.quantity !== undefined && (obj.quantity = Math.round(message.quantity));
+    message.costInLocalCurrency !== undefined && (obj.costInLocalCurrency = Math.round(message.costInLocalCurrency));
+    message.purchaseType !== undefined && (obj.purchaseType = Math.round(message.purchaseType));
+    message.sourceReferenceId !== undefined && (obj.sourceReferenceId = message.sourceReferenceId);
+    return obj;
+  },
 };
 
 function createBaseCMsgGCStorePurchaseInit(): CMsgGCStorePurchaseInit {
@@ -553,6 +957,30 @@ export const CMsgGCStorePurchaseInit = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCStorePurchaseInit {
+    return {
+      country: isSet(object.country) ? String(object.country) : "",
+      language: isSet(object.language) ? Number(object.language) : 0,
+      currency: isSet(object.currency) ? Number(object.currency) : 0,
+      lineItems: Array.isArray(object?.lineItems)
+        ? object.lineItems.map((e: any) => CGCStorePurchaseInitLineItem.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgGCStorePurchaseInit): unknown {
+    const obj: any = {};
+    message.country !== undefined && (obj.country = message.country);
+    message.language !== undefined && (obj.language = Math.round(message.language));
+    message.currency !== undefined && (obj.currency = Math.round(message.currency));
+    if (message.lineItems) {
+      obj.lineItems = message.lineItems.map((e) => e ? CGCStorePurchaseInitLineItem.toJSON(e) : undefined);
+    } else {
+      obj.lineItems = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgGCStorePurchaseInitResponse(): CMsgGCStorePurchaseInitResponse {
@@ -598,6 +1026,20 @@ export const CMsgGCStorePurchaseInitResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCStorePurchaseInitResponse {
+    return {
+      result: isSet(object.result) ? Number(object.result) : 0,
+      txnId: isSet(object.txnId) ? String(object.txnId) : "0",
+    };
+  },
+
+  toJSON(message: CMsgGCStorePurchaseInitResponse): unknown {
+    const obj: any = {};
+    message.result !== undefined && (obj.result = Math.round(message.result));
+    message.txnId !== undefined && (obj.txnId = message.txnId);
+    return obj;
   },
 };
 
@@ -719,6 +1161,43 @@ export const CMsgClientPingData = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientPingData {
+    return {
+      relayCodes: Array.isArray(object?.relayCodes) ? object.relayCodes.map((e: any) => Number(e)) : [],
+      relayPings: Array.isArray(object?.relayPings) ? object.relayPings.map((e: any) => Number(e)) : [],
+      regionCodes: Array.isArray(object?.regionCodes) ? object.regionCodes.map((e: any) => Number(e)) : [],
+      regionPings: Array.isArray(object?.regionPings) ? object.regionPings.map((e: any) => Number(e)) : [],
+      regionPingFailedBitmask: isSet(object.regionPingFailedBitmask) ? Number(object.regionPingFailedBitmask) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientPingData): unknown {
+    const obj: any = {};
+    if (message.relayCodes) {
+      obj.relayCodes = message.relayCodes.map((e) => Math.round(e));
+    } else {
+      obj.relayCodes = [];
+    }
+    if (message.relayPings) {
+      obj.relayPings = message.relayPings.map((e) => Math.round(e));
+    } else {
+      obj.relayPings = [];
+    }
+    if (message.regionCodes) {
+      obj.regionCodes = message.regionCodes.map((e) => Math.round(e));
+    } else {
+      obj.regionCodes = [];
+    }
+    if (message.regionPings) {
+      obj.regionPings = message.regionPings.map((e) => Math.round(e));
+    } else {
+      obj.regionPings = [];
+    }
+    message.regionPingFailedBitmask !== undefined &&
+      (obj.regionPingFailedBitmask = Math.round(message.regionPingFailedBitmask));
+    return obj;
+  },
 };
 
 function createBaseCMsgInviteToParty(): CMsgInviteToParty {
@@ -795,6 +1274,27 @@ export const CMsgInviteToParty = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgInviteToParty {
+    return {
+      steamId: isSet(object.steamId) ? String(object.steamId) : "0",
+      clientVersion: isSet(object.clientVersion) ? Number(object.clientVersion) : 0,
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      asCoach: isSet(object.asCoach) ? Boolean(object.asCoach) : false,
+      pingData: isSet(object.pingData) ? CMsgClientPingData.fromJSON(object.pingData) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgInviteToParty): unknown {
+    const obj: any = {};
+    message.steamId !== undefined && (obj.steamId = message.steamId);
+    message.clientVersion !== undefined && (obj.clientVersion = Math.round(message.clientVersion));
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    message.asCoach !== undefined && (obj.asCoach = message.asCoach);
+    message.pingData !== undefined &&
+      (obj.pingData = message.pingData ? CMsgClientPingData.toJSON(message.pingData) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgInviteToLobby(): CMsgInviteToLobby {
@@ -840,6 +1340,20 @@ export const CMsgInviteToLobby = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgInviteToLobby {
+    return {
+      steamId: isSet(object.steamId) ? String(object.steamId) : "0",
+      clientVersion: isSet(object.clientVersion) ? Number(object.clientVersion) : 0,
+    };
+  },
+
+  toJSON(message: CMsgInviteToLobby): unknown {
+    const obj: any = {};
+    message.steamId !== undefined && (obj.steamId = message.steamId);
+    message.clientVersion !== undefined && (obj.clientVersion = Math.round(message.clientVersion));
+    return obj;
   },
 };
 
@@ -896,6 +1410,22 @@ export const CMsgInvitationCreated = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgInvitationCreated {
+    return {
+      groupId: isSet(object.groupId) ? String(object.groupId) : "0",
+      steamId: isSet(object.steamId) ? String(object.steamId) : "0",
+      userOffline: isSet(object.userOffline) ? Boolean(object.userOffline) : false,
+    };
+  },
+
+  toJSON(message: CMsgInvitationCreated): unknown {
+    const obj: any = {};
+    message.groupId !== undefined && (obj.groupId = message.groupId);
+    message.steamId !== undefined && (obj.steamId = message.steamId);
+    message.userOffline !== undefined && (obj.userOffline = message.userOffline);
+    return obj;
   },
 };
 
@@ -962,6 +1492,25 @@ export const CMsgPartyInviteResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgPartyInviteResponse {
+    return {
+      partyId: isSet(object.partyId) ? String(object.partyId) : "0",
+      accept: isSet(object.accept) ? Boolean(object.accept) : false,
+      clientVersion: isSet(object.clientVersion) ? Number(object.clientVersion) : 0,
+      pingData: isSet(object.pingData) ? CMsgClientPingData.fromJSON(object.pingData) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgPartyInviteResponse): unknown {
+    const obj: any = {};
+    message.partyId !== undefined && (obj.partyId = message.partyId);
+    message.accept !== undefined && (obj.accept = message.accept);
+    message.clientVersion !== undefined && (obj.clientVersion = Math.round(message.clientVersion));
+    message.pingData !== undefined &&
+      (obj.pingData = message.pingData ? CMsgClientPingData.toJSON(message.pingData) : undefined);
+    return obj;
   },
 };
 
@@ -1039,6 +1588,26 @@ export const CMsgLobbyInviteResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgLobbyInviteResponse {
+    return {
+      lobbyId: isSet(object.lobbyId) ? String(object.lobbyId) : "0",
+      accept: isSet(object.accept) ? Boolean(object.accept) : false,
+      clientVersion: isSet(object.clientVersion) ? Number(object.clientVersion) : 0,
+      customGameCrc: isSet(object.customGameCrc) ? String(object.customGameCrc) : "0",
+      customGameTimestamp: isSet(object.customGameTimestamp) ? Number(object.customGameTimestamp) : 0,
+    };
+  },
+
+  toJSON(message: CMsgLobbyInviteResponse): unknown {
+    const obj: any = {};
+    message.lobbyId !== undefined && (obj.lobbyId = message.lobbyId);
+    message.accept !== undefined && (obj.accept = message.accept);
+    message.clientVersion !== undefined && (obj.clientVersion = Math.round(message.clientVersion));
+    message.customGameCrc !== undefined && (obj.customGameCrc = message.customGameCrc);
+    message.customGameTimestamp !== undefined && (obj.customGameTimestamp = Math.round(message.customGameTimestamp));
+    return obj;
+  },
 };
 
 function createBaseCMsgKickFromParty(): CMsgKickFromParty {
@@ -1075,6 +1644,16 @@ export const CMsgKickFromParty = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgKickFromParty {
+    return { steamId: isSet(object.steamId) ? String(object.steamId) : "0" };
+  },
+
+  toJSON(message: CMsgKickFromParty): unknown {
+    const obj: any = {};
+    message.steamId !== undefined && (obj.steamId = message.steamId);
+    return obj;
+  },
 };
 
 function createBaseCMsgLeaveParty(): CMsgLeaveParty {
@@ -1100,6 +1679,15 @@ export const CMsgLeaveParty = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CMsgLeaveParty {
+    return {};
+  },
+
+  toJSON(_: CMsgLeaveParty): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -1157,6 +1745,23 @@ export const CMsgCustomGameInstallStatus = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgCustomGameInstallStatus {
+    return {
+      status: isSet(object.status) ? eCustomGameInstallStatusFromJSON(object.status) : 0,
+      message: isSet(object.message) ? String(object.message) : "",
+      latestTimestampFromSteam: isSet(object.latestTimestampFromSteam) ? Number(object.latestTimestampFromSteam) : 0,
+    };
+  },
+
+  toJSON(message: CMsgCustomGameInstallStatus): unknown {
+    const obj: any = {};
+    message.status !== undefined && (obj.status = eCustomGameInstallStatusToJSON(message.status));
+    message.message !== undefined && (obj.message = message.message);
+    message.latestTimestampFromSteam !== undefined &&
+      (obj.latestTimestampFromSteam = Math.round(message.latestTimestampFromSteam));
+    return obj;
+  },
 };
 
 function createBaseCMsgServerAvailable(): CMsgServerAvailable {
@@ -1193,6 +1798,22 @@ export const CMsgServerAvailable = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgServerAvailable {
+    return {
+      customGameInstallStatus: isSet(object.customGameInstallStatus)
+        ? CMsgCustomGameInstallStatus.fromJSON(object.customGameInstallStatus)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CMsgServerAvailable): unknown {
+    const obj: any = {};
+    message.customGameInstallStatus !== undefined && (obj.customGameInstallStatus = message.customGameInstallStatus
+      ? CMsgCustomGameInstallStatus.toJSON(message.customGameInstallStatus)
+      : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgLANServerAvailable(): CMsgLANServerAvailable {
@@ -1228,6 +1849,16 @@ export const CMsgLANServerAvailable = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgLANServerAvailable {
+    return { lobbyId: isSet(object.lobbyId) ? String(object.lobbyId) : "0" };
+  },
+
+  toJSON(message: CMsgLANServerAvailable): unknown {
+    const obj: any = {};
+    message.lobbyId !== undefined && (obj.lobbyId = message.lobbyId);
+    return obj;
   },
 };
 
@@ -1344,6 +1975,36 @@ export const CSOEconGameAccountClient = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSOEconGameAccountClient {
+    return {
+      additionalBackpackSlots: isSet(object.additionalBackpackSlots) ? Number(object.additionalBackpackSlots) : 0,
+      trialAccount: isSet(object.trialAccount) ? Boolean(object.trialAccount) : false,
+      eligibleForOnlinePlay: isSet(object.eligibleForOnlinePlay) ? Boolean(object.eligibleForOnlinePlay) : false,
+      needToChooseMostHelpfulFriend: isSet(object.needToChooseMostHelpfulFriend)
+        ? Boolean(object.needToChooseMostHelpfulFriend)
+        : false,
+      inCoachesList: isSet(object.inCoachesList) ? Boolean(object.inCoachesList) : false,
+      tradeBanExpiration: isSet(object.tradeBanExpiration) ? Number(object.tradeBanExpiration) : 0,
+      duelBanExpiration: isSet(object.duelBanExpiration) ? Number(object.duelBanExpiration) : 0,
+      madeFirstPurchase: isSet(object.madeFirstPurchase) ? Boolean(object.madeFirstPurchase) : false,
+    };
+  },
+
+  toJSON(message: CSOEconGameAccountClient): unknown {
+    const obj: any = {};
+    message.additionalBackpackSlots !== undefined &&
+      (obj.additionalBackpackSlots = Math.round(message.additionalBackpackSlots));
+    message.trialAccount !== undefined && (obj.trialAccount = message.trialAccount);
+    message.eligibleForOnlinePlay !== undefined && (obj.eligibleForOnlinePlay = message.eligibleForOnlinePlay);
+    message.needToChooseMostHelpfulFriend !== undefined &&
+      (obj.needToChooseMostHelpfulFriend = message.needToChooseMostHelpfulFriend);
+    message.inCoachesList !== undefined && (obj.inCoachesList = message.inCoachesList);
+    message.tradeBanExpiration !== undefined && (obj.tradeBanExpiration = Math.round(message.tradeBanExpiration));
+    message.duelBanExpiration !== undefined && (obj.duelBanExpiration = Math.round(message.duelBanExpiration));
+    message.madeFirstPurchase !== undefined && (obj.madeFirstPurchase = message.madeFirstPurchase);
+    return obj;
+  },
 };
 
 function createBaseCMsgApplyStrangePart(): CMsgApplyStrangePart {
@@ -1389,6 +2050,20 @@ export const CMsgApplyStrangePart = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgApplyStrangePart {
+    return {
+      strangePartItemId: isSet(object.strangePartItemId) ? String(object.strangePartItemId) : "0",
+      itemItemId: isSet(object.itemItemId) ? String(object.itemItemId) : "0",
+    };
+  },
+
+  toJSON(message: CMsgApplyStrangePart): unknown {
+    const obj: any = {};
+    message.strangePartItemId !== undefined && (obj.strangePartItemId = message.strangePartItemId);
+    message.itemItemId !== undefined && (obj.itemItemId = message.itemItemId);
+    return obj;
   },
 };
 
@@ -1436,6 +2111,20 @@ export const CMsgApplyPennantUpgrade = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgApplyPennantUpgrade {
+    return {
+      upgradeItemId: isSet(object.upgradeItemId) ? String(object.upgradeItemId) : "0",
+      pennantItemId: isSet(object.pennantItemId) ? String(object.pennantItemId) : "0",
+    };
+  },
+
+  toJSON(message: CMsgApplyPennantUpgrade): unknown {
+    const obj: any = {};
+    message.upgradeItemId !== undefined && (obj.upgradeItemId = message.upgradeItemId);
+    message.pennantItemId !== undefined && (obj.pennantItemId = message.pennantItemId);
+    return obj;
+  },
 };
 
 function createBaseCMsgApplyEggEssence(): CMsgApplyEggEssence {
@@ -1481,6 +2170,20 @@ export const CMsgApplyEggEssence = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgApplyEggEssence {
+    return {
+      essenceItemId: isSet(object.essenceItemId) ? String(object.essenceItemId) : "0",
+      eggItemId: isSet(object.eggItemId) ? String(object.eggItemId) : "0",
+    };
+  },
+
+  toJSON(message: CMsgApplyEggEssence): unknown {
+    const obj: any = {};
+    message.essenceItemId !== undefined && (obj.essenceItemId = message.essenceItemId);
+    message.eggItemId !== undefined && (obj.eggItemId = message.eggItemId);
+    return obj;
   },
 };
 
@@ -1538,6 +2241,23 @@ export const CSOEconItemAttribute = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSOEconItemAttribute {
+    return {
+      defIndex: isSet(object.defIndex) ? Number(object.defIndex) : 0,
+      value: isSet(object.value) ? Number(object.value) : 0,
+      valueBytes: isSet(object.valueBytes) ? Buffer.from(bytesFromBase64(object.valueBytes)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CSOEconItemAttribute): unknown {
+    const obj: any = {};
+    message.defIndex !== undefined && (obj.defIndex = Math.round(message.defIndex));
+    message.value !== undefined && (obj.value = Math.round(message.value));
+    message.valueBytes !== undefined &&
+      (obj.valueBytes = base64FromBytes(message.valueBytes !== undefined ? message.valueBytes : Buffer.alloc(0)));
+    return obj;
+  },
 };
 
 function createBaseCSOEconItemEquipped(): CSOEconItemEquipped {
@@ -1583,6 +2303,20 @@ export const CSOEconItemEquipped = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CSOEconItemEquipped {
+    return {
+      newClass: isSet(object.newClass) ? Number(object.newClass) : 0,
+      newSlot: isSet(object.newSlot) ? Number(object.newSlot) : 0,
+    };
+  },
+
+  toJSON(message: CSOEconItemEquipped): unknown {
+    const obj: any = {};
+    message.newClass !== undefined && (obj.newClass = Math.round(message.newClass));
+    message.newSlot !== undefined && (obj.newSlot = Math.round(message.newSlot));
+    return obj;
   },
 };
 
@@ -1765,6 +2499,57 @@ export const CSOEconItem = {
     }
     return message;
   },
+
+  fromJSON(object: any): CSOEconItem {
+    return {
+      id: isSet(object.id) ? String(object.id) : "0",
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      inventory: isSet(object.inventory) ? Number(object.inventory) : 0,
+      defIndex: isSet(object.defIndex) ? Number(object.defIndex) : 0,
+      quantity: isSet(object.quantity) ? Number(object.quantity) : 0,
+      level: isSet(object.level) ? Number(object.level) : 0,
+      quality: isSet(object.quality) ? Number(object.quality) : 0,
+      flags: isSet(object.flags) ? Number(object.flags) : 0,
+      origin: isSet(object.origin) ? Number(object.origin) : 0,
+      attribute: Array.isArray(object?.attribute)
+        ? object.attribute.map((e: any) => CSOEconItemAttribute.fromJSON(e))
+        : [],
+      interiorItem: isSet(object.interiorItem) ? CSOEconItem.fromJSON(object.interiorItem) : undefined,
+      style: isSet(object.style) ? Number(object.style) : 0,
+      originalId: isSet(object.originalId) ? String(object.originalId) : "0",
+      equippedState: Array.isArray(object?.equippedState)
+        ? object.equippedState.map((e: any) => CSOEconItemEquipped.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CSOEconItem): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.inventory !== undefined && (obj.inventory = Math.round(message.inventory));
+    message.defIndex !== undefined && (obj.defIndex = Math.round(message.defIndex));
+    message.quantity !== undefined && (obj.quantity = Math.round(message.quantity));
+    message.level !== undefined && (obj.level = Math.round(message.level));
+    message.quality !== undefined && (obj.quality = Math.round(message.quality));
+    message.flags !== undefined && (obj.flags = Math.round(message.flags));
+    message.origin !== undefined && (obj.origin = Math.round(message.origin));
+    if (message.attribute) {
+      obj.attribute = message.attribute.map((e) => e ? CSOEconItemAttribute.toJSON(e) : undefined);
+    } else {
+      obj.attribute = [];
+    }
+    message.interiorItem !== undefined &&
+      (obj.interiorItem = message.interiorItem ? CSOEconItem.toJSON(message.interiorItem) : undefined);
+    message.style !== undefined && (obj.style = Math.round(message.style));
+    message.originalId !== undefined && (obj.originalId = message.originalId);
+    if (message.equippedState) {
+      obj.equippedState = message.equippedState.map((e) => e ? CSOEconItemEquipped.toJSON(e) : undefined);
+    } else {
+      obj.equippedState = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgSortItems(): CMsgSortItems {
@@ -1800,6 +2585,16 @@ export const CMsgSortItems = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSortItems {
+    return { sortType: isSet(object.sortType) ? Number(object.sortType) : 0 };
+  },
+
+  toJSON(message: CMsgSortItems): unknown {
+    const obj: any = {};
+    message.sortType !== undefined && (obj.sortType = Math.round(message.sortType));
+    return obj;
   },
 };
 
@@ -1847,6 +2642,20 @@ export const CMsgConVarValue = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgConVarValue {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      value: isSet(object.value) ? String(object.value) : "",
+    };
+  },
+
+  toJSON(message: CMsgConVarValue): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.value !== undefined && (obj.value = message.value);
+    return obj;
+  },
 };
 
 function createBaseCMsgReplicateConVars(): CMsgReplicateConVars {
@@ -1882,6 +2691,22 @@ export const CMsgReplicateConVars = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgReplicateConVars {
+    return {
+      convars: Array.isArray(object?.convars) ? object.convars.map((e: any) => CMsgConVarValue.fromJSON(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgReplicateConVars): unknown {
+    const obj: any = {};
+    if (message.convars) {
+      obj.convars = message.convars.map((e) => e ? CMsgConVarValue.toJSON(e) : undefined);
+    } else {
+      obj.convars = [];
+    }
+    return obj;
   },
 };
 
@@ -1969,6 +2794,28 @@ export const CMsgItemAcknowledged = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgItemAcknowledged {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      inventory: isSet(object.inventory) ? Number(object.inventory) : 0,
+      defIndex: isSet(object.defIndex) ? Number(object.defIndex) : 0,
+      quality: isSet(object.quality) ? Number(object.quality) : 0,
+      rarity: isSet(object.rarity) ? Number(object.rarity) : 0,
+      origin: isSet(object.origin) ? Number(object.origin) : 0,
+    };
+  },
+
+  toJSON(message: CMsgItemAcknowledged): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.inventory !== undefined && (obj.inventory = Math.round(message.inventory));
+    message.defIndex !== undefined && (obj.defIndex = Math.round(message.defIndex));
+    message.quality !== undefined && (obj.quality = Math.round(message.quality));
+    message.rarity !== undefined && (obj.rarity = Math.round(message.rarity));
+    message.origin !== undefined && (obj.origin = Math.round(message.origin));
+    return obj;
+  },
 };
 
 function createBaseCMsgSetItemPositions(): CMsgSetItemPositions {
@@ -2004,6 +2851,24 @@ export const CMsgSetItemPositions = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSetItemPositions {
+    return {
+      itemPositions: Array.isArray(object?.itemPositions)
+        ? object.itemPositions.map((e: any) => CMsgSetItemPositions_ItemPosition.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgSetItemPositions): unknown {
+    const obj: any = {};
+    if (message.itemPositions) {
+      obj.itemPositions = message.itemPositions.map((e) => e ? CMsgSetItemPositions_ItemPosition.toJSON(e) : undefined);
+    } else {
+      obj.itemPositions = [];
+    }
+    return obj;
   },
 };
 
@@ -2051,6 +2916,20 @@ export const CMsgSetItemPositions_ItemPosition = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSetItemPositions_ItemPosition {
+    return {
+      itemId: isSet(object.itemId) ? String(object.itemId) : "0",
+      position: isSet(object.position) ? Number(object.position) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSetItemPositions_ItemPosition): unknown {
+    const obj: any = {};
+    message.itemId !== undefined && (obj.itemId = message.itemId);
+    message.position !== undefined && (obj.position = Math.round(message.position));
+    return obj;
+  },
 };
 
 function createBaseCMsgGCStorePurchaseCancel(): CMsgGCStorePurchaseCancel {
@@ -2086,6 +2965,16 @@ export const CMsgGCStorePurchaseCancel = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCStorePurchaseCancel {
+    return { txnId: isSet(object.txnId) ? String(object.txnId) : "0" };
+  },
+
+  toJSON(message: CMsgGCStorePurchaseCancel): unknown {
+    const obj: any = {};
+    message.txnId !== undefined && (obj.txnId = message.txnId);
+    return obj;
   },
 };
 
@@ -2123,6 +3012,16 @@ export const CMsgGCStorePurchaseCancelResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCStorePurchaseCancelResponse {
+    return { result: isSet(object.result) ? Number(object.result) : 0 };
+  },
+
+  toJSON(message: CMsgGCStorePurchaseCancelResponse): unknown {
+    const obj: any = {};
+    message.result !== undefined && (obj.result = Math.round(message.result));
+    return obj;
+  },
 };
 
 function createBaseCMsgGCStorePurchaseFinalize(): CMsgGCStorePurchaseFinalize {
@@ -2158,6 +3057,16 @@ export const CMsgGCStorePurchaseFinalize = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCStorePurchaseFinalize {
+    return { txnId: isSet(object.txnId) ? String(object.txnId) : "0" };
+  },
+
+  toJSON(message: CMsgGCStorePurchaseFinalize): unknown {
+    const obj: any = {};
+    message.txnId !== undefined && (obj.txnId = message.txnId);
+    return obj;
   },
 };
 
@@ -2216,6 +3125,24 @@ export const CMsgGCStorePurchaseFinalizeResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCStorePurchaseFinalizeResponse {
+    return {
+      result: isSet(object.result) ? Number(object.result) : 0,
+      itemIds: Array.isArray(object?.itemIds) ? object.itemIds.map((e: any) => String(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgGCStorePurchaseFinalizeResponse): unknown {
+    const obj: any = {};
+    message.result !== undefined && (obj.result = Math.round(message.result));
+    if (message.itemIds) {
+      obj.itemIds = message.itemIds.map((e) => e);
+    } else {
+      obj.itemIds = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgGCToGCBannedWordListUpdated(): CMsgGCToGCBannedWordListUpdated {
@@ -2251,6 +3178,16 @@ export const CMsgGCToGCBannedWordListUpdated = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCToGCBannedWordListUpdated {
+    return { groupId: isSet(object.groupId) ? Number(object.groupId) : 0 };
+  },
+
+  toJSON(message: CMsgGCToGCBannedWordListUpdated): unknown {
+    const obj: any = {};
+    message.groupId !== undefined && (obj.groupId = Math.round(message.groupId));
+    return obj;
   },
 };
 
@@ -2298,6 +3235,20 @@ export const CMsgGCToGCDirtySDOCache = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCToGCDirtySDOCache {
+    return {
+      sdoType: isSet(object.sdoType) ? Number(object.sdoType) : 0,
+      keyUint64: isSet(object.keyUint64) ? String(object.keyUint64) : "0",
+    };
+  },
+
+  toJSON(message: CMsgGCToGCDirtySDOCache): unknown {
+    const obj: any = {};
+    message.sdoType !== undefined && (obj.sdoType = Math.round(message.sdoType));
+    message.keyUint64 !== undefined && (obj.keyUint64 = message.keyUint64);
+    return obj;
+  },
 };
 
 function createBaseCMsgSDONoMemcached(): CMsgSDONoMemcached {
@@ -2323,6 +3274,15 @@ export const CMsgSDONoMemcached = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CMsgSDONoMemcached {
+    return {};
+  },
+
+  toJSON(_: CMsgSDONoMemcached): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -2360,6 +3320,16 @@ export const CMsgGCToGCUpdateSQLKeyValue = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCToGCUpdateSQLKeyValue {
+    return { keyName: isSet(object.keyName) ? String(object.keyName) : "" };
+  },
+
+  toJSON(message: CMsgGCToGCUpdateSQLKeyValue): unknown {
+    const obj: any = {};
+    message.keyName !== undefined && (obj.keyName = message.keyName);
+    return obj;
+  },
 };
 
 function createBaseCMsgGCServerVersionUpdated(): CMsgGCServerVersionUpdated {
@@ -2395,6 +3365,16 @@ export const CMsgGCServerVersionUpdated = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCServerVersionUpdated {
+    return { serverVersion: isSet(object.serverVersion) ? Number(object.serverVersion) : 0 };
+  },
+
+  toJSON(message: CMsgGCServerVersionUpdated): unknown {
+    const obj: any = {};
+    message.serverVersion !== undefined && (obj.serverVersion = Math.round(message.serverVersion));
+    return obj;
   },
 };
 
@@ -2432,6 +3412,16 @@ export const CMsgGCClientVersionUpdated = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCClientVersionUpdated {
+    return { clientVersion: isSet(object.clientVersion) ? Number(object.clientVersion) : 0 };
+  },
+
+  toJSON(message: CMsgGCClientVersionUpdated): unknown {
+    const obj: any = {};
+    message.clientVersion !== undefined && (obj.clientVersion = Math.round(message.clientVersion));
+    return obj;
+  },
 };
 
 function createBaseCMsgGCToGCWebAPIAccountChanged(): CMsgGCToGCWebAPIAccountChanged {
@@ -2457,6 +3447,15 @@ export const CMsgGCToGCWebAPIAccountChanged = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CMsgGCToGCWebAPIAccountChanged {
+    return {};
+  },
+
+  toJSON(_: CMsgGCToGCWebAPIAccountChanged): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -2514,6 +3513,22 @@ export const CMsgExtractGems = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgExtractGems {
+    return {
+      toolItemId: isSet(object.toolItemId) ? String(object.toolItemId) : "0",
+      itemItemId: isSet(object.itemItemId) ? String(object.itemItemId) : "0",
+      itemSocketId: isSet(object.itemSocketId) ? Number(object.itemSocketId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgExtractGems): unknown {
+    const obj: any = {};
+    message.toolItemId !== undefined && (obj.toolItemId = message.toolItemId);
+    message.itemItemId !== undefined && (obj.itemItemId = message.itemItemId);
+    message.itemSocketId !== undefined && (obj.itemSocketId = Math.round(message.itemSocketId));
+    return obj;
+  },
 };
 
 function createBaseCMsgExtractGemsResponse(): CMsgExtractGemsResponse {
@@ -2559,6 +3574,20 @@ export const CMsgExtractGemsResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgExtractGemsResponse {
+    return {
+      itemId: isSet(object.itemId) ? String(object.itemId) : "0",
+      response: isSet(object.response) ? cMsgExtractGemsResponse_EExtractGemsFromJSON(object.response) : 0,
+    };
+  },
+
+  toJSON(message: CMsgExtractGemsResponse): unknown {
+    const obj: any = {};
+    message.itemId !== undefined && (obj.itemId = message.itemId);
+    message.response !== undefined && (obj.response = cMsgExtractGemsResponse_EExtractGemsToJSON(message.response));
+    return obj;
   },
 };
 
@@ -2615,6 +3644,22 @@ export const CMsgAddSocket = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgAddSocket {
+    return {
+      toolItemId: isSet(object.toolItemId) ? String(object.toolItemId) : "0",
+      itemItemId: isSet(object.itemItemId) ? String(object.itemItemId) : "0",
+      unusual: isSet(object.unusual) ? Boolean(object.unusual) : false,
+    };
+  },
+
+  toJSON(message: CMsgAddSocket): unknown {
+    const obj: any = {};
+    message.toolItemId !== undefined && (obj.toolItemId = message.toolItemId);
+    message.itemItemId !== undefined && (obj.itemItemId = message.itemItemId);
+    message.unusual !== undefined && (obj.unusual = message.unusual);
+    return obj;
   },
 };
 
@@ -2683,6 +3728,28 @@ export const CMsgAddSocketResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgAddSocketResponse {
+    return {
+      itemId: isSet(object.itemId) ? String(object.itemId) : "0",
+      updatedSocketIndex: Array.isArray(object?.updatedSocketIndex)
+        ? object.updatedSocketIndex.map((e: any) => Number(e))
+        : [],
+      response: isSet(object.response) ? cMsgAddSocketResponse_EAddSocketFromJSON(object.response) : 0,
+    };
+  },
+
+  toJSON(message: CMsgAddSocketResponse): unknown {
+    const obj: any = {};
+    message.itemId !== undefined && (obj.itemId = message.itemId);
+    if (message.updatedSocketIndex) {
+      obj.updatedSocketIndex = message.updatedSocketIndex.map((e) => Math.round(e));
+    } else {
+      obj.updatedSocketIndex = [];
+    }
+    message.response !== undefined && (obj.response = cMsgAddSocketResponse_EAddSocketToJSON(message.response));
+    return obj;
+  },
 };
 
 function createBaseCMsgAddItemToSocketData(): CMsgAddItemToSocketData {
@@ -2729,6 +3796,20 @@ export const CMsgAddItemToSocketData = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgAddItemToSocketData {
+    return {
+      gemItemId: isSet(object.gemItemId) ? String(object.gemItemId) : "0",
+      socketIndex: isSet(object.socketIndex) ? Number(object.socketIndex) : 0,
+    };
+  },
+
+  toJSON(message: CMsgAddItemToSocketData): unknown {
+    const obj: any = {};
+    message.gemItemId !== undefined && (obj.gemItemId = message.gemItemId);
+    message.socketIndex !== undefined && (obj.socketIndex = Math.round(message.socketIndex));
+    return obj;
+  },
 };
 
 function createBaseCMsgAddItemToSocket(): CMsgAddItemToSocket {
@@ -2774,6 +3855,26 @@ export const CMsgAddItemToSocket = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgAddItemToSocket {
+    return {
+      itemItemId: isSet(object.itemItemId) ? String(object.itemItemId) : "0",
+      gemsToSocket: Array.isArray(object?.gemsToSocket)
+        ? object.gemsToSocket.map((e: any) => CMsgAddItemToSocketData.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgAddItemToSocket): unknown {
+    const obj: any = {};
+    message.itemItemId !== undefined && (obj.itemItemId = message.itemItemId);
+    if (message.gemsToSocket) {
+      obj.gemsToSocket = message.gemsToSocket.map((e) => e ? CMsgAddItemToSocketData.toJSON(e) : undefined);
+    } else {
+      obj.gemsToSocket = [];
+    }
+    return obj;
   },
 };
 
@@ -2842,6 +3943,28 @@ export const CMsgAddItemToSocketResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgAddItemToSocketResponse {
+    return {
+      itemItemId: isSet(object.itemItemId) ? String(object.itemItemId) : "0",
+      updatedSocketIndex: Array.isArray(object?.updatedSocketIndex)
+        ? object.updatedSocketIndex.map((e: any) => Number(e))
+        : [],
+      response: isSet(object.response) ? cMsgAddItemToSocketResponse_EAddGemFromJSON(object.response) : 0,
+    };
+  },
+
+  toJSON(message: CMsgAddItemToSocketResponse): unknown {
+    const obj: any = {};
+    message.itemItemId !== undefined && (obj.itemItemId = message.itemItemId);
+    if (message.updatedSocketIndex) {
+      obj.updatedSocketIndex = message.updatedSocketIndex.map((e) => Math.round(e));
+    } else {
+      obj.updatedSocketIndex = [];
+    }
+    message.response !== undefined && (obj.response = cMsgAddItemToSocketResponse_EAddGemToJSON(message.response));
+    return obj;
+  },
 };
 
 function createBaseCMsgResetStrangeGemCount(): CMsgResetStrangeGemCount {
@@ -2888,6 +4011,20 @@ export const CMsgResetStrangeGemCount = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgResetStrangeGemCount {
+    return {
+      itemItemId: isSet(object.itemItemId) ? String(object.itemItemId) : "0",
+      socketIndex: isSet(object.socketIndex) ? Number(object.socketIndex) : 0,
+    };
+  },
+
+  toJSON(message: CMsgResetStrangeGemCount): unknown {
+    const obj: any = {};
+    message.itemItemId !== undefined && (obj.itemItemId = message.itemItemId);
+    message.socketIndex !== undefined && (obj.socketIndex = Math.round(message.socketIndex));
+    return obj;
+  },
 };
 
 function createBaseCMsgResetStrangeGemCountResponse(): CMsgResetStrangeGemCountResponse {
@@ -2923,6 +4060,19 @@ export const CMsgResetStrangeGemCountResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgResetStrangeGemCountResponse {
+    return {
+      response: isSet(object.response) ? cMsgResetStrangeGemCountResponse_EResetGemFromJSON(object.response) : 0,
+    };
+  },
+
+  toJSON(message: CMsgResetStrangeGemCountResponse): unknown {
+    const obj: any = {};
+    message.response !== undefined &&
+      (obj.response = cMsgResetStrangeGemCountResponse_EResetGemToJSON(message.response));
+    return obj;
   },
 };
 
@@ -2980,6 +4130,22 @@ export const CMsgGCToClientPollFileRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCToClientPollFileRequest {
+    return {
+      fileName: isSet(object.fileName) ? String(object.fileName) : "",
+      clientVersion: isSet(object.clientVersion) ? Number(object.clientVersion) : 0,
+      pollId: isSet(object.pollId) ? Number(object.pollId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgGCToClientPollFileRequest): unknown {
+    const obj: any = {};
+    message.fileName !== undefined && (obj.fileName = message.fileName);
+    message.clientVersion !== undefined && (obj.clientVersion = Math.round(message.clientVersion));
+    message.pollId !== undefined && (obj.pollId = Math.round(message.pollId));
+    return obj;
+  },
 };
 
 function createBaseCMsgGCToClientPollFileResponse(): CMsgGCToClientPollFileResponse {
@@ -3036,6 +4202,22 @@ export const CMsgGCToClientPollFileResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCToClientPollFileResponse {
+    return {
+      pollId: isSet(object.pollId) ? Number(object.pollId) : 0,
+      fileSize: isSet(object.fileSize) ? Number(object.fileSize) : 0,
+      fileCrc: isSet(object.fileCrc) ? Number(object.fileCrc) : 0,
+    };
+  },
+
+  toJSON(message: CMsgGCToClientPollFileResponse): unknown {
+    const obj: any = {};
+    message.pollId !== undefined && (obj.pollId = Math.round(message.pollId));
+    message.fileSize !== undefined && (obj.fileSize = Math.round(message.fileSize));
+    message.fileCrc !== undefined && (obj.fileCrc = Math.round(message.fileCrc));
+    return obj;
+  },
 };
 
 function createBaseCMsgGCToGCPerformManualOp(): CMsgGCToGCPerformManualOp {
@@ -3081,6 +4263,20 @@ export const CMsgGCToGCPerformManualOp = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCToGCPerformManualOp {
+    return {
+      opId: isSet(object.opId) ? String(object.opId) : "0",
+      groupCode: isSet(object.groupCode) ? Number(object.groupCode) : 0,
+    };
+  },
+
+  toJSON(message: CMsgGCToGCPerformManualOp): unknown {
+    const obj: any = {};
+    message.opId !== undefined && (obj.opId = message.opId);
+    message.groupCode !== undefined && (obj.groupCode = Math.round(message.groupCode));
+    return obj;
   },
 };
 
@@ -3128,6 +4324,20 @@ export const CMsgGCToGCPerformManualOpCompleted = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCToGCPerformManualOpCompleted {
+    return {
+      success: isSet(object.success) ? Boolean(object.success) : false,
+      sourceGc: isSet(object.sourceGc) ? Number(object.sourceGc) : 0,
+    };
+  },
+
+  toJSON(message: CMsgGCToGCPerformManualOpCompleted): unknown {
+    const obj: any = {};
+    message.success !== undefined && (obj.success = message.success);
+    message.sourceGc !== undefined && (obj.sourceGc = Math.round(message.sourceGc));
+    return obj;
+  },
 };
 
 function createBaseCMsgGCToGCReloadServerRegionSettings(): CMsgGCToGCReloadServerRegionSettings {
@@ -3153,6 +4363,15 @@ export const CMsgGCToGCReloadServerRegionSettings = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CMsgGCToGCReloadServerRegionSettings {
+    return {};
+  },
+
+  toJSON(_: CMsgGCToGCReloadServerRegionSettings): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -3190,6 +4409,24 @@ export const CMsgGCAdditionalWelcomeMsgList = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCAdditionalWelcomeMsgList {
+    return {
+      welcomeMessages: Array.isArray(object?.welcomeMessages)
+        ? object.welcomeMessages.map((e: any) => CExtraMsgBlock.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgGCAdditionalWelcomeMsgList): unknown {
+    const obj: any = {};
+    if (message.welcomeMessages) {
+      obj.welcomeMessages = message.welcomeMessages.map((e) => e ? CExtraMsgBlock.toJSON(e) : undefined);
+    } else {
+      obj.welcomeMessages = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgApplyRemoteConVars(): CMsgApplyRemoteConVars {
@@ -3225,6 +4462,24 @@ export const CMsgApplyRemoteConVars = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgApplyRemoteConVars {
+    return {
+      conVars: Array.isArray(object?.conVars)
+        ? object.conVars.map((e: any) => CMsgApplyRemoteConVars_ConVar.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgApplyRemoteConVars): unknown {
+    const obj: any = {};
+    if (message.conVars) {
+      obj.conVars = message.conVars.map((e) => e ? CMsgApplyRemoteConVars_ConVar.toJSON(e) : undefined);
+    } else {
+      obj.conVars = [];
+    }
+    return obj;
   },
 };
 
@@ -3302,6 +4557,26 @@ export const CMsgApplyRemoteConVars_ConVar = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgApplyRemoteConVars_ConVar {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      value: isSet(object.value) ? String(object.value) : "",
+      versionMin: isSet(object.versionMin) ? Number(object.versionMin) : 0,
+      versionMax: isSet(object.versionMax) ? Number(object.versionMax) : 0,
+      platform: isSet(object.platform) ? eGCPlatformFromJSON(object.platform) : 0,
+    };
+  },
+
+  toJSON(message: CMsgApplyRemoteConVars_ConVar): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.value !== undefined && (obj.value = message.value);
+    message.versionMin !== undefined && (obj.versionMin = Math.round(message.versionMin));
+    message.versionMax !== undefined && (obj.versionMax = Math.round(message.versionMax));
+    message.platform !== undefined && (obj.platform = eGCPlatformToJSON(message.platform));
+    return obj;
+  },
 };
 
 function createBaseCMsgGCToClientApplyRemoteConVars(): CMsgGCToClientApplyRemoteConVars {
@@ -3338,6 +4613,16 @@ export const CMsgGCToClientApplyRemoteConVars = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCToClientApplyRemoteConVars {
+    return { msg: isSet(object.msg) ? CMsgApplyRemoteConVars.fromJSON(object.msg) : undefined };
+  },
+
+  toJSON(message: CMsgGCToClientApplyRemoteConVars): unknown {
+    const obj: any = {};
+    message.msg !== undefined && (obj.msg = message.msg ? CMsgApplyRemoteConVars.toJSON(message.msg) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgGCToServerApplyRemoteConVars(): CMsgGCToServerApplyRemoteConVars {
@@ -3373,6 +4658,16 @@ export const CMsgGCToServerApplyRemoteConVars = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGCToServerApplyRemoteConVars {
+    return { msg: isSet(object.msg) ? CMsgApplyRemoteConVars.fromJSON(object.msg) : undefined };
+  },
+
+  toJSON(message: CMsgGCToServerApplyRemoteConVars): unknown {
+    const obj: any = {};
+    message.msg !== undefined && (obj.msg = message.msg ? CMsgApplyRemoteConVars.toJSON(message.msg) : undefined);
+    return obj;
   },
 };
 
@@ -3429,6 +4724,30 @@ export const CMsgClientToGCIntegrityStatus = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCIntegrityStatus {
+    return {
+      report: isSet(object.report) ? String(object.report) : "",
+      secureAllowed: isSet(object.secureAllowed) ? Boolean(object.secureAllowed) : false,
+      diagnostics: Array.isArray(object?.diagnostics)
+        ? object.diagnostics.map((e: any) => CMsgClientToGCIntegrityStatus_keyvalue.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgClientToGCIntegrityStatus): unknown {
+    const obj: any = {};
+    message.report !== undefined && (obj.report = message.report);
+    message.secureAllowed !== undefined && (obj.secureAllowed = message.secureAllowed);
+    if (message.diagnostics) {
+      obj.diagnostics = message.diagnostics.map((e) =>
+        e ? CMsgClientToGCIntegrityStatus_keyvalue.toJSON(e) : undefined
+      );
+    } else {
+      obj.diagnostics = [];
+    }
+    return obj;
   },
 };
 
@@ -3496,6 +4815,24 @@ export const CMsgClientToGCIntegrityStatus_keyvalue = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientToGCIntegrityStatus_keyvalue {
+    return {
+      id: isSet(object.id) ? Number(object.id) : 0,
+      extended: isSet(object.extended) ? Number(object.extended) : 0,
+      value: isSet(object.value) ? String(object.value) : "0",
+      stringValue: isSet(object.stringValue) ? String(object.stringValue) : "",
+    };
+  },
+
+  toJSON(message: CMsgClientToGCIntegrityStatus_keyvalue): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = Math.round(message.id));
+    message.extended !== undefined && (obj.extended = Math.round(message.extended));
+    message.value !== undefined && (obj.value = message.value);
+    message.stringValue !== undefined && (obj.stringValue = message.stringValue);
+    return obj;
+  },
 };
 
 function createBaseCMsgClientToGCAggregateMetrics(): CMsgClientToGCAggregateMetrics {
@@ -3531,6 +4868,24 @@ export const CMsgClientToGCAggregateMetrics = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCAggregateMetrics {
+    return {
+      metrics: Array.isArray(object?.metrics)
+        ? object.metrics.map((e: any) => CMsgClientToGCAggregateMetrics_SingleMetric.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgClientToGCAggregateMetrics): unknown {
+    const obj: any = {};
+    if (message.metrics) {
+      obj.metrics = message.metrics.map((e) => e ? CMsgClientToGCAggregateMetrics_SingleMetric.toJSON(e) : undefined);
+    } else {
+      obj.metrics = [];
+    }
+    return obj;
   },
 };
 
@@ -3578,6 +4933,20 @@ export const CMsgClientToGCAggregateMetrics_SingleMetric = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientToGCAggregateMetrics_SingleMetric {
+    return {
+      metricName: isSet(object.metricName) ? String(object.metricName) : "",
+      metricCount: isSet(object.metricCount) ? Number(object.metricCount) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCAggregateMetrics_SingleMetric): unknown {
+    const obj: any = {};
+    message.metricName !== undefined && (obj.metricName = message.metricName);
+    message.metricCount !== undefined && (obj.metricCount = Math.round(message.metricCount));
+    return obj;
+  },
 };
 
 function createBaseCMsgGCToClientAggregateMetricsBackoff(): CMsgGCToClientAggregateMetricsBackoff {
@@ -3614,7 +4983,61 @@ export const CMsgGCToClientAggregateMetricsBackoff = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGCToClientAggregateMetricsBackoff {
+    return { uploadRateModifier: isSet(object.uploadRateModifier) ? Number(object.uploadRateModifier) : 0 };
+  },
+
+  toJSON(message: CMsgGCToClientAggregateMetricsBackoff): unknown {
+    const obj: any = {};
+    message.uploadRateModifier !== undefined && (obj.uploadRateModifier = message.uploadRateModifier);
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if (tsProtoGlobalThis.Buffer) {
+    return Uint8Array.from(tsProtoGlobalThis.Buffer.from(b64, "base64"));
+  } else {
+    const bin = tsProtoGlobalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if (tsProtoGlobalThis.Buffer) {
+    return tsProtoGlobalThis.Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(String.fromCharCode(byte));
+    });
+    return tsProtoGlobalThis.btoa(bin.join(""));
+  }
+}
 
 function longToString(long: Long) {
   return long.toString();
@@ -3623,4 +5046,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

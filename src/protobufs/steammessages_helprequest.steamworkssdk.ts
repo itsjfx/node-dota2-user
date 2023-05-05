@@ -80,6 +80,24 @@ export const CHelpRequestLogsUploadUserApplicationLogRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CHelpRequestLogsUploadUserApplicationLogRequest {
+    return {
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      logType: isSet(object.logType) ? String(object.logType) : "",
+      versionString: isSet(object.versionString) ? String(object.versionString) : "",
+      logContents: isSet(object.logContents) ? String(object.logContents) : "",
+    };
+  },
+
+  toJSON(message: CHelpRequestLogsUploadUserApplicationLogRequest): unknown {
+    const obj: any = {};
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    message.logType !== undefined && (obj.logType = message.logType);
+    message.versionString !== undefined && (obj.versionString = message.versionString);
+    message.logContents !== undefined && (obj.logContents = message.logContents);
+    return obj;
+  },
 };
 
 function createBaseCHelpRequestLogsUploadUserApplicationLogResponse(): CHelpRequestLogsUploadUserApplicationLogResponse {
@@ -119,6 +137,16 @@ export const CHelpRequestLogsUploadUserApplicationLogResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CHelpRequestLogsUploadUserApplicationLogResponse {
+    return { id: isSet(object.id) ? String(object.id) : "0" };
+  },
+
+  toJSON(message: CHelpRequestLogsUploadUserApplicationLogResponse): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = message.id);
+    return obj;
+  },
 };
 
 export interface HelpRequestLogs {
@@ -155,4 +183,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

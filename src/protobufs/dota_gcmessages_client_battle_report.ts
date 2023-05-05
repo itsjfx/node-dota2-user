@@ -72,10 +72,396 @@ export enum CMsgBattleReportHighlightType {
   k_eMaxXPM = 65,
 }
 
+export function cMsgBattleReportHighlightTypeFromJSON(object: any): CMsgBattleReportHighlightType {
+  switch (object) {
+    case -1:
+    case "k_eHighlightTypeInvalid":
+      return CMsgBattleReportHighlightType.k_eHighlightTypeInvalid;
+    case 0:
+    case "k_eGameWinrate":
+      return CMsgBattleReportHighlightType.k_eGameWinrate;
+    case 1:
+    case "k_eLaneWinrate":
+      return CMsgBattleReportHighlightType.k_eLaneWinrate;
+    case 2:
+    case "k_eMMRDelta":
+      return CMsgBattleReportHighlightType.k_eMMRDelta;
+    case 3:
+    case "k_eNumHeroesPlayed":
+      return CMsgBattleReportHighlightType.k_eNumHeroesPlayed;
+    case 4:
+    case "k_eNumGamesPlayed":
+      return CMsgBattleReportHighlightType.k_eNumGamesPlayed;
+    case 5:
+    case "k_eAveragePowerRunesTaken":
+      return CMsgBattleReportHighlightType.k_eAveragePowerRunesTaken;
+    case 6:
+    case "k_eAverageBountyRunesTaken":
+      return CMsgBattleReportHighlightType.k_eAverageBountyRunesTaken;
+    case 7:
+    case "k_eTotalKillEnemyT1First":
+      return CMsgBattleReportHighlightType.k_eTotalKillEnemyT1First;
+    case 8:
+    case "k_eTotalRoshanKills":
+      return CMsgBattleReportHighlightType.k_eTotalRoshanKills;
+    case 9:
+    case "k_eTotalDewards":
+      return CMsgBattleReportHighlightType.k_eTotalDewards;
+    case 10:
+    case "k_eTotalCampsStacked":
+      return CMsgBattleReportHighlightType.k_eTotalCampsStacked;
+    case 11:
+    case "k_eMaxWinstreak":
+      return CMsgBattleReportHighlightType.k_eMaxWinstreak;
+    case 12:
+    case "k_eAverageDewards":
+      return CMsgBattleReportHighlightType.k_eAverageDewards;
+    case 13:
+    case "k_eAverageKills":
+      return CMsgBattleReportHighlightType.k_eAverageKills;
+    case 14:
+    case "k_eMaxKills":
+      return CMsgBattleReportHighlightType.k_eMaxKills;
+    case 15:
+    case "k_eAverageAssists":
+      return CMsgBattleReportHighlightType.k_eAverageAssists;
+    case 16:
+    case "k_eMaxAssists":
+      return CMsgBattleReportHighlightType.k_eMaxAssists;
+    case 17:
+    case "k_eAverageDeaths":
+      return CMsgBattleReportHighlightType.k_eAverageDeaths;
+    case 18:
+    case "k_eMinDeaths":
+      return CMsgBattleReportHighlightType.k_eMinDeaths;
+    case 19:
+    case "k_eAverageCampsStacked":
+      return CMsgBattleReportHighlightType.k_eAverageCampsStacked;
+    case 20:
+    case "k_eTotalLastHits":
+      return CMsgBattleReportHighlightType.k_eTotalLastHits;
+    case 21:
+    case "k_eAverageLastHits":
+      return CMsgBattleReportHighlightType.k_eAverageLastHits;
+    case 22:
+    case "k_eTotalDenies":
+      return CMsgBattleReportHighlightType.k_eTotalDenies;
+    case 23:
+    case "k_eAverageDenies":
+      return CMsgBattleReportHighlightType.k_eAverageDenies;
+    case 24:
+    case "k_eTotalGamesWithRoshanAdvantage":
+      return CMsgBattleReportHighlightType.k_eTotalGamesWithRoshanAdvantage;
+    case 25:
+    case "k_ePercentGamesWithRoshanAdvantage":
+      return CMsgBattleReportHighlightType.k_ePercentGamesWithRoshanAdvantage;
+    case 26:
+    case "k_eAverageStunDuration":
+      return CMsgBattleReportHighlightType.k_eAverageStunDuration;
+    case 27:
+    case "k_eTotalStunDuration":
+      return CMsgBattleReportHighlightType.k_eTotalStunDuration;
+    case 28:
+    case "k_eAverageTeleportsUsed":
+      return CMsgBattleReportHighlightType.k_eAverageTeleportsUsed;
+    case 29:
+    case "k_eTotalTeleportsUsed":
+      return CMsgBattleReportHighlightType.k_eTotalTeleportsUsed;
+    case 30:
+    case "k_eAverageHeroDamage":
+      return CMsgBattleReportHighlightType.k_eAverageHeroDamage;
+    case 31:
+    case "k_eTotalHeroDamage":
+      return CMsgBattleReportHighlightType.k_eTotalHeroDamage;
+    case 32:
+    case "k_eAverageHeroHealing":
+      return CMsgBattleReportHighlightType.k_eAverageHeroHealing;
+    case 33:
+    case "k_eTotalHeroHealing":
+      return CMsgBattleReportHighlightType.k_eTotalHeroHealing;
+    case 34:
+    case "k_eAverageTowerDamage":
+      return CMsgBattleReportHighlightType.k_eAverageTowerDamage;
+    case 35:
+    case "k_eTotalTowerDamage":
+      return CMsgBattleReportHighlightType.k_eTotalTowerDamage;
+    case 36:
+    case "k_eMaxLossStreak":
+      return CMsgBattleReportHighlightType.k_eMaxLossStreak;
+    case 37:
+    case "k_eAverageGameDuration":
+      return CMsgBattleReportHighlightType.k_eAverageGameDuration;
+    case 38:
+    case "k_eMaxGameDuration":
+      return CMsgBattleReportHighlightType.k_eMaxGameDuration;
+    case 39:
+    case "k_eMinGameDuration":
+      return CMsgBattleReportHighlightType.k_eMinGameDuration;
+    case 40:
+    case "k_eAverageWinDuration":
+      return CMsgBattleReportHighlightType.k_eAverageWinDuration;
+    case 41:
+    case "k_eMaxWinDuration":
+      return CMsgBattleReportHighlightType.k_eMaxWinDuration;
+    case 42:
+    case "k_eMinWinDuration":
+      return CMsgBattleReportHighlightType.k_eMinWinDuration;
+    case 43:
+    case "k_eAverageLossDuration":
+      return CMsgBattleReportHighlightType.k_eAverageLossDuration;
+    case 44:
+    case "k_eMaxLossDuration":
+      return CMsgBattleReportHighlightType.k_eMaxLossDuration;
+    case 45:
+    case "k_eMinLossDuration":
+      return CMsgBattleReportHighlightType.k_eMinLossDuration;
+    case 46:
+    case "k_ePctGamesEnemyT1TakenFirst":
+      return CMsgBattleReportHighlightType.k_ePctGamesEnemyT1TakenFirst;
+    case 47:
+    case "k_eMaxCampsStacked":
+      return CMsgBattleReportHighlightType.k_eMaxCampsStacked;
+    case 48:
+    case "k_eMaxDewards":
+      return CMsgBattleReportHighlightType.k_eMaxDewards;
+    case 49:
+    case "k_eMaxRoshanKills":
+      return CMsgBattleReportHighlightType.k_eMaxRoshanKills;
+    case 50:
+    case "k_eMaxBountyRunesTaken":
+      return CMsgBattleReportHighlightType.k_eMaxBountyRunesTaken;
+    case 51:
+    case "k_eMaxPowerRunesTaken":
+      return CMsgBattleReportHighlightType.k_eMaxPowerRunesTaken;
+    case 52:
+    case "k_eMaxDeaths":
+      return CMsgBattleReportHighlightType.k_eMaxDeaths;
+    case 53:
+    case "k_eMaxLastHits":
+      return CMsgBattleReportHighlightType.k_eMaxLastHits;
+    case 54:
+    case "k_eMaxDenies":
+      return CMsgBattleReportHighlightType.k_eMaxDenies;
+    case 55:
+    case "k_eRadiantWinRate":
+      return CMsgBattleReportHighlightType.k_eRadiantWinRate;
+    case 56:
+    case "k_eDireWinRate":
+      return CMsgBattleReportHighlightType.k_eDireWinRate;
+    case 57:
+    case "k_eRadiantGameCount":
+      return CMsgBattleReportHighlightType.k_eRadiantGameCount;
+    case 58:
+    case "k_eDireGameCount":
+      return CMsgBattleReportHighlightType.k_eDireGameCount;
+    case 59:
+    case "k_eMaxDamage":
+      return CMsgBattleReportHighlightType.k_eMaxDamage;
+    case 60:
+    case "k_eMaxHealing":
+      return CMsgBattleReportHighlightType.k_eMaxHealing;
+    case 61:
+    case "k_eMaxTowerDamage":
+      return CMsgBattleReportHighlightType.k_eMaxTowerDamage;
+    case 62:
+    case "k_eAverageGPM":
+      return CMsgBattleReportHighlightType.k_eAverageGPM;
+    case 63:
+    case "k_eMaxGPM":
+      return CMsgBattleReportHighlightType.k_eMaxGPM;
+    case 64:
+    case "k_eAverageXPM":
+      return CMsgBattleReportHighlightType.k_eAverageXPM;
+    case 65:
+    case "k_eMaxXPM":
+      return CMsgBattleReportHighlightType.k_eMaxXPM;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgBattleReportHighlightType",
+      );
+  }
+}
+
+export function cMsgBattleReportHighlightTypeToJSON(object: CMsgBattleReportHighlightType): string {
+  switch (object) {
+    case CMsgBattleReportHighlightType.k_eHighlightTypeInvalid:
+      return "k_eHighlightTypeInvalid";
+    case CMsgBattleReportHighlightType.k_eGameWinrate:
+      return "k_eGameWinrate";
+    case CMsgBattleReportHighlightType.k_eLaneWinrate:
+      return "k_eLaneWinrate";
+    case CMsgBattleReportHighlightType.k_eMMRDelta:
+      return "k_eMMRDelta";
+    case CMsgBattleReportHighlightType.k_eNumHeroesPlayed:
+      return "k_eNumHeroesPlayed";
+    case CMsgBattleReportHighlightType.k_eNumGamesPlayed:
+      return "k_eNumGamesPlayed";
+    case CMsgBattleReportHighlightType.k_eAveragePowerRunesTaken:
+      return "k_eAveragePowerRunesTaken";
+    case CMsgBattleReportHighlightType.k_eAverageBountyRunesTaken:
+      return "k_eAverageBountyRunesTaken";
+    case CMsgBattleReportHighlightType.k_eTotalKillEnemyT1First:
+      return "k_eTotalKillEnemyT1First";
+    case CMsgBattleReportHighlightType.k_eTotalRoshanKills:
+      return "k_eTotalRoshanKills";
+    case CMsgBattleReportHighlightType.k_eTotalDewards:
+      return "k_eTotalDewards";
+    case CMsgBattleReportHighlightType.k_eTotalCampsStacked:
+      return "k_eTotalCampsStacked";
+    case CMsgBattleReportHighlightType.k_eMaxWinstreak:
+      return "k_eMaxWinstreak";
+    case CMsgBattleReportHighlightType.k_eAverageDewards:
+      return "k_eAverageDewards";
+    case CMsgBattleReportHighlightType.k_eAverageKills:
+      return "k_eAverageKills";
+    case CMsgBattleReportHighlightType.k_eMaxKills:
+      return "k_eMaxKills";
+    case CMsgBattleReportHighlightType.k_eAverageAssists:
+      return "k_eAverageAssists";
+    case CMsgBattleReportHighlightType.k_eMaxAssists:
+      return "k_eMaxAssists";
+    case CMsgBattleReportHighlightType.k_eAverageDeaths:
+      return "k_eAverageDeaths";
+    case CMsgBattleReportHighlightType.k_eMinDeaths:
+      return "k_eMinDeaths";
+    case CMsgBattleReportHighlightType.k_eAverageCampsStacked:
+      return "k_eAverageCampsStacked";
+    case CMsgBattleReportHighlightType.k_eTotalLastHits:
+      return "k_eTotalLastHits";
+    case CMsgBattleReportHighlightType.k_eAverageLastHits:
+      return "k_eAverageLastHits";
+    case CMsgBattleReportHighlightType.k_eTotalDenies:
+      return "k_eTotalDenies";
+    case CMsgBattleReportHighlightType.k_eAverageDenies:
+      return "k_eAverageDenies";
+    case CMsgBattleReportHighlightType.k_eTotalGamesWithRoshanAdvantage:
+      return "k_eTotalGamesWithRoshanAdvantage";
+    case CMsgBattleReportHighlightType.k_ePercentGamesWithRoshanAdvantage:
+      return "k_ePercentGamesWithRoshanAdvantage";
+    case CMsgBattleReportHighlightType.k_eAverageStunDuration:
+      return "k_eAverageStunDuration";
+    case CMsgBattleReportHighlightType.k_eTotalStunDuration:
+      return "k_eTotalStunDuration";
+    case CMsgBattleReportHighlightType.k_eAverageTeleportsUsed:
+      return "k_eAverageTeleportsUsed";
+    case CMsgBattleReportHighlightType.k_eTotalTeleportsUsed:
+      return "k_eTotalTeleportsUsed";
+    case CMsgBattleReportHighlightType.k_eAverageHeroDamage:
+      return "k_eAverageHeroDamage";
+    case CMsgBattleReportHighlightType.k_eTotalHeroDamage:
+      return "k_eTotalHeroDamage";
+    case CMsgBattleReportHighlightType.k_eAverageHeroHealing:
+      return "k_eAverageHeroHealing";
+    case CMsgBattleReportHighlightType.k_eTotalHeroHealing:
+      return "k_eTotalHeroHealing";
+    case CMsgBattleReportHighlightType.k_eAverageTowerDamage:
+      return "k_eAverageTowerDamage";
+    case CMsgBattleReportHighlightType.k_eTotalTowerDamage:
+      return "k_eTotalTowerDamage";
+    case CMsgBattleReportHighlightType.k_eMaxLossStreak:
+      return "k_eMaxLossStreak";
+    case CMsgBattleReportHighlightType.k_eAverageGameDuration:
+      return "k_eAverageGameDuration";
+    case CMsgBattleReportHighlightType.k_eMaxGameDuration:
+      return "k_eMaxGameDuration";
+    case CMsgBattleReportHighlightType.k_eMinGameDuration:
+      return "k_eMinGameDuration";
+    case CMsgBattleReportHighlightType.k_eAverageWinDuration:
+      return "k_eAverageWinDuration";
+    case CMsgBattleReportHighlightType.k_eMaxWinDuration:
+      return "k_eMaxWinDuration";
+    case CMsgBattleReportHighlightType.k_eMinWinDuration:
+      return "k_eMinWinDuration";
+    case CMsgBattleReportHighlightType.k_eAverageLossDuration:
+      return "k_eAverageLossDuration";
+    case CMsgBattleReportHighlightType.k_eMaxLossDuration:
+      return "k_eMaxLossDuration";
+    case CMsgBattleReportHighlightType.k_eMinLossDuration:
+      return "k_eMinLossDuration";
+    case CMsgBattleReportHighlightType.k_ePctGamesEnemyT1TakenFirst:
+      return "k_ePctGamesEnemyT1TakenFirst";
+    case CMsgBattleReportHighlightType.k_eMaxCampsStacked:
+      return "k_eMaxCampsStacked";
+    case CMsgBattleReportHighlightType.k_eMaxDewards:
+      return "k_eMaxDewards";
+    case CMsgBattleReportHighlightType.k_eMaxRoshanKills:
+      return "k_eMaxRoshanKills";
+    case CMsgBattleReportHighlightType.k_eMaxBountyRunesTaken:
+      return "k_eMaxBountyRunesTaken";
+    case CMsgBattleReportHighlightType.k_eMaxPowerRunesTaken:
+      return "k_eMaxPowerRunesTaken";
+    case CMsgBattleReportHighlightType.k_eMaxDeaths:
+      return "k_eMaxDeaths";
+    case CMsgBattleReportHighlightType.k_eMaxLastHits:
+      return "k_eMaxLastHits";
+    case CMsgBattleReportHighlightType.k_eMaxDenies:
+      return "k_eMaxDenies";
+    case CMsgBattleReportHighlightType.k_eRadiantWinRate:
+      return "k_eRadiantWinRate";
+    case CMsgBattleReportHighlightType.k_eDireWinRate:
+      return "k_eDireWinRate";
+    case CMsgBattleReportHighlightType.k_eRadiantGameCount:
+      return "k_eRadiantGameCount";
+    case CMsgBattleReportHighlightType.k_eDireGameCount:
+      return "k_eDireGameCount";
+    case CMsgBattleReportHighlightType.k_eMaxDamage:
+      return "k_eMaxDamage";
+    case CMsgBattleReportHighlightType.k_eMaxHealing:
+      return "k_eMaxHealing";
+    case CMsgBattleReportHighlightType.k_eMaxTowerDamage:
+      return "k_eMaxTowerDamage";
+    case CMsgBattleReportHighlightType.k_eAverageGPM:
+      return "k_eAverageGPM";
+    case CMsgBattleReportHighlightType.k_eMaxGPM:
+      return "k_eMaxGPM";
+    case CMsgBattleReportHighlightType.k_eAverageXPM:
+      return "k_eAverageXPM";
+    case CMsgBattleReportHighlightType.k_eMaxXPM:
+      return "k_eMaxXPM";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgBattleReportHighlightType",
+      );
+  }
+}
+
 export enum CMsgBattleReportHighlightCategory {
   k_eHighlightGeneral = 0,
   k_eHighlightHero = 1,
   k_eHighlightRole = 2,
+}
+
+export function cMsgBattleReportHighlightCategoryFromJSON(object: any): CMsgBattleReportHighlightCategory {
+  switch (object) {
+    case 0:
+    case "k_eHighlightGeneral":
+      return CMsgBattleReportHighlightCategory.k_eHighlightGeneral;
+    case 1:
+    case "k_eHighlightHero":
+      return CMsgBattleReportHighlightCategory.k_eHighlightHero;
+    case 2:
+    case "k_eHighlightRole":
+      return CMsgBattleReportHighlightCategory.k_eHighlightRole;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgBattleReportHighlightCategory",
+      );
+  }
+}
+
+export function cMsgBattleReportHighlightCategoryToJSON(object: CMsgBattleReportHighlightCategory): string {
+  switch (object) {
+    case CMsgBattleReportHighlightCategory.k_eHighlightGeneral:
+      return "k_eHighlightGeneral";
+    case CMsgBattleReportHighlightCategory.k_eHighlightHero:
+      return "k_eHighlightHero";
+    case CMsgBattleReportHighlightCategory.k_eHighlightRole:
+      return "k_eHighlightRole";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgBattleReportHighlightCategory",
+      );
+  }
 }
 
 export enum CMsgBattleReportRole {
@@ -87,12 +473,99 @@ export enum CMsgBattleReportRole {
   k_eHardSupport = 4,
 }
 
+export function cMsgBattleReportRoleFromJSON(object: any): CMsgBattleReportRole {
+  switch (object) {
+    case -1:
+    case "k_eUnknownRole":
+      return CMsgBattleReportRole.k_eUnknownRole;
+    case 0:
+    case "k_eSafelane":
+      return CMsgBattleReportRole.k_eSafelane;
+    case 1:
+    case "k_eMidlane":
+      return CMsgBattleReportRole.k_eMidlane;
+    case 2:
+    case "k_eOfflane":
+      return CMsgBattleReportRole.k_eOfflane;
+    case 3:
+    case "k_eSoftSupport":
+      return CMsgBattleReportRole.k_eSoftSupport;
+    case 4:
+    case "k_eHardSupport":
+      return CMsgBattleReportRole.k_eHardSupport;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum CMsgBattleReportRole");
+  }
+}
+
+export function cMsgBattleReportRoleToJSON(object: CMsgBattleReportRole): string {
+  switch (object) {
+    case CMsgBattleReportRole.k_eUnknownRole:
+      return "k_eUnknownRole";
+    case CMsgBattleReportRole.k_eSafelane:
+      return "k_eSafelane";
+    case CMsgBattleReportRole.k_eMidlane:
+      return "k_eMidlane";
+    case CMsgBattleReportRole.k_eOfflane:
+      return "k_eOfflane";
+    case CMsgBattleReportRole.k_eSoftSupport:
+      return "k_eSoftSupport";
+    case CMsgBattleReportRole.k_eHardSupport:
+      return "k_eHardSupport";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum CMsgBattleReportRole");
+  }
+}
+
 export enum CMsgBattleReportCompareContext {
   k_eCompareContextInvalid = -1,
   k_eAbsoluteValue = 0,
   k_ePlayersOfSimilarRank = 1,
   k_eAllPlayers = 2,
   k_ePlayersPersonalHistory = 3,
+}
+
+export function cMsgBattleReportCompareContextFromJSON(object: any): CMsgBattleReportCompareContext {
+  switch (object) {
+    case -1:
+    case "k_eCompareContextInvalid":
+      return CMsgBattleReportCompareContext.k_eCompareContextInvalid;
+    case 0:
+    case "k_eAbsoluteValue":
+      return CMsgBattleReportCompareContext.k_eAbsoluteValue;
+    case 1:
+    case "k_ePlayersOfSimilarRank":
+      return CMsgBattleReportCompareContext.k_ePlayersOfSimilarRank;
+    case 2:
+    case "k_eAllPlayers":
+      return CMsgBattleReportCompareContext.k_eAllPlayers;
+    case 3:
+    case "k_ePlayersPersonalHistory":
+      return CMsgBattleReportCompareContext.k_ePlayersPersonalHistory;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgBattleReportCompareContext",
+      );
+  }
+}
+
+export function cMsgBattleReportCompareContextToJSON(object: CMsgBattleReportCompareContext): string {
+  switch (object) {
+    case CMsgBattleReportCompareContext.k_eCompareContextInvalid:
+      return "k_eCompareContextInvalid";
+    case CMsgBattleReportCompareContext.k_eAbsoluteValue:
+      return "k_eAbsoluteValue";
+    case CMsgBattleReportCompareContext.k_ePlayersOfSimilarRank:
+      return "k_ePlayersOfSimilarRank";
+    case CMsgBattleReportCompareContext.k_eAllPlayers:
+      return "k_eAllPlayers";
+    case CMsgBattleReportCompareContext.k_ePlayersPersonalHistory:
+      return "k_ePlayersPersonalHistory";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgBattleReportCompareContext",
+      );
+  }
 }
 
 export enum CMsgBattleReportHighlightTier {
@@ -104,10 +577,91 @@ export enum CMsgBattleReportHighlightTier {
   k_eHighlightTierCustom = 4,
 }
 
+export function cMsgBattleReportHighlightTierFromJSON(object: any): CMsgBattleReportHighlightTier {
+  switch (object) {
+    case -1:
+    case "k_eHighlightTierLow":
+      return CMsgBattleReportHighlightTier.k_eHighlightTierLow;
+    case 0:
+    case "k_eHighlightTierNone":
+      return CMsgBattleReportHighlightTier.k_eHighlightTierNone;
+    case 1:
+    case "k_eHighlightTier1":
+      return CMsgBattleReportHighlightTier.k_eHighlightTier1;
+    case 2:
+    case "k_eHighlightTier2":
+      return CMsgBattleReportHighlightTier.k_eHighlightTier2;
+    case 3:
+    case "k_eHighlightTier3":
+      return CMsgBattleReportHighlightTier.k_eHighlightTier3;
+    case 4:
+    case "k_eHighlightTierCustom":
+      return CMsgBattleReportHighlightTier.k_eHighlightTierCustom;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgBattleReportHighlightTier",
+      );
+  }
+}
+
+export function cMsgBattleReportHighlightTierToJSON(object: CMsgBattleReportHighlightTier): string {
+  switch (object) {
+    case CMsgBattleReportHighlightTier.k_eHighlightTierLow:
+      return "k_eHighlightTierLow";
+    case CMsgBattleReportHighlightTier.k_eHighlightTierNone:
+      return "k_eHighlightTierNone";
+    case CMsgBattleReportHighlightTier.k_eHighlightTier1:
+      return "k_eHighlightTier1";
+    case CMsgBattleReportHighlightTier.k_eHighlightTier2:
+      return "k_eHighlightTier2";
+    case CMsgBattleReportHighlightTier.k_eHighlightTier3:
+      return "k_eHighlightTier3";
+    case CMsgBattleReportHighlightTier.k_eHighlightTierCustom:
+      return "k_eHighlightTierCustom";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgBattleReportHighlightTier",
+      );
+  }
+}
+
 export enum CMsgBattleReportHighlightRarity {
   k_eHighlightCommon = 0,
   k_eHighlightUncommon = 1,
   k_eHighlightRare = 2,
+}
+
+export function cMsgBattleReportHighlightRarityFromJSON(object: any): CMsgBattleReportHighlightRarity {
+  switch (object) {
+    case 0:
+    case "k_eHighlightCommon":
+      return CMsgBattleReportHighlightRarity.k_eHighlightCommon;
+    case 1:
+    case "k_eHighlightUncommon":
+      return CMsgBattleReportHighlightRarity.k_eHighlightUncommon;
+    case 2:
+    case "k_eHighlightRare":
+      return CMsgBattleReportHighlightRarity.k_eHighlightRare;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgBattleReportHighlightRarity",
+      );
+  }
+}
+
+export function cMsgBattleReportHighlightRarityToJSON(object: CMsgBattleReportHighlightRarity): string {
+  switch (object) {
+    case CMsgBattleReportHighlightRarity.k_eHighlightCommon:
+      return "k_eHighlightCommon";
+    case CMsgBattleReportHighlightRarity.k_eHighlightUncommon:
+      return "k_eHighlightUncommon";
+    case CMsgBattleReportHighlightRarity.k_eHighlightRare:
+      return "k_eHighlightRare";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgBattleReportHighlightRarity",
+      );
+  }
 }
 
 export enum CMsgBattleReportEOutcome {
@@ -115,11 +669,69 @@ export enum CMsgBattleReportEOutcome {
   k_eLoss = 1,
 }
 
+export function cMsgBattleReportEOutcomeFromJSON(object: any): CMsgBattleReportEOutcome {
+  switch (object) {
+    case 0:
+    case "k_eWin":
+      return CMsgBattleReportEOutcome.k_eWin;
+    case 1:
+    case "k_eLoss":
+      return CMsgBattleReportEOutcome.k_eLoss;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum CMsgBattleReportEOutcome");
+  }
+}
+
+export function cMsgBattleReportEOutcomeToJSON(object: CMsgBattleReportEOutcome): string {
+  switch (object) {
+    case CMsgBattleReportEOutcome.k_eWin:
+      return "k_eWin";
+    case CMsgBattleReportEOutcome.k_eLoss:
+      return "k_eLoss";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum CMsgBattleReportEOutcome");
+  }
+}
+
 export enum CMsgBattleReportELaneOutcome {
   k_eUnknownLaneOutcome = -1,
   k_eWonLane = 0,
   k_eLostLane = 1,
   k_eEvenLane = 2,
+}
+
+export function cMsgBattleReportELaneOutcomeFromJSON(object: any): CMsgBattleReportELaneOutcome {
+  switch (object) {
+    case -1:
+    case "k_eUnknownLaneOutcome":
+      return CMsgBattleReportELaneOutcome.k_eUnknownLaneOutcome;
+    case 0:
+    case "k_eWonLane":
+      return CMsgBattleReportELaneOutcome.k_eWonLane;
+    case 1:
+    case "k_eLostLane":
+      return CMsgBattleReportELaneOutcome.k_eLostLane;
+    case 2:
+    case "k_eEvenLane":
+      return CMsgBattleReportELaneOutcome.k_eEvenLane;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum CMsgBattleReportELaneOutcome");
+  }
+}
+
+export function cMsgBattleReportELaneOutcomeToJSON(object: CMsgBattleReportELaneOutcome): string {
+  switch (object) {
+    case CMsgBattleReportELaneOutcome.k_eUnknownLaneOutcome:
+      return "k_eUnknownLaneOutcome";
+    case CMsgBattleReportELaneOutcome.k_eWonLane:
+      return "k_eWonLane";
+    case CMsgBattleReportELaneOutcome.k_eLostLane:
+      return "k_eLostLane";
+    case CMsgBattleReportELaneOutcome.k_eEvenLane:
+      return "k_eEvenLane";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum CMsgBattleReportELaneOutcome");
+  }
 }
 
 export interface CMsgClientToGCGetBattleReport {
@@ -295,6 +907,88 @@ export enum CMsgClientToGCGetBattleReportResponse_EResponse {
   k_eNotEnoughGamesPlayed = 11,
 }
 
+export function cMsgClientToGCGetBattleReportResponse_EResponseFromJSON(
+  object: any,
+): CMsgClientToGCGetBattleReportResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgClientToGCGetBattleReportResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgClientToGCGetBattleReportResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eTooBusy":
+      return CMsgClientToGCGetBattleReportResponse_EResponse.k_eTooBusy;
+    case 3:
+    case "k_eDisabled":
+      return CMsgClientToGCGetBattleReportResponse_EResponse.k_eDisabled;
+    case 4:
+    case "k_ePermissionDenied":
+      return CMsgClientToGCGetBattleReportResponse_EResponse.k_ePermissionDenied;
+    case 5:
+    case "k_eNotSubscribedToDotaPlus":
+      return CMsgClientToGCGetBattleReportResponse_EResponse.k_eNotSubscribedToDotaPlus;
+    case 6:
+    case "k_eInvalidParameters":
+      return CMsgClientToGCGetBattleReportResponse_EResponse.k_eInvalidParameters;
+    case 7:
+    case "k_eUnableToGetPlusSubInfo":
+      return CMsgClientToGCGetBattleReportResponse_EResponse.k_eUnableToGetPlusSubInfo;
+    case 8:
+    case "k_eUnableToLoadBattleReport":
+      return CMsgClientToGCGetBattleReportResponse_EResponse.k_eUnableToLoadBattleReport;
+    case 9:
+    case "k_eUnableToSaveBattleReport":
+      return CMsgClientToGCGetBattleReportResponse_EResponse.k_eUnableToSaveBattleReport;
+    case 10:
+    case "k_eUnableToGetAggregates":
+      return CMsgClientToGCGetBattleReportResponse_EResponse.k_eUnableToGetAggregates;
+    case 11:
+    case "k_eNotEnoughGamesPlayed":
+      return CMsgClientToGCGetBattleReportResponse_EResponse.k_eNotEnoughGamesPlayed;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCGetBattleReportResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgClientToGCGetBattleReportResponse_EResponseToJSON(
+  object: CMsgClientToGCGetBattleReportResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgClientToGCGetBattleReportResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgClientToGCGetBattleReportResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgClientToGCGetBattleReportResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgClientToGCGetBattleReportResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    case CMsgClientToGCGetBattleReportResponse_EResponse.k_ePermissionDenied:
+      return "k_ePermissionDenied";
+    case CMsgClientToGCGetBattleReportResponse_EResponse.k_eNotSubscribedToDotaPlus:
+      return "k_eNotSubscribedToDotaPlus";
+    case CMsgClientToGCGetBattleReportResponse_EResponse.k_eInvalidParameters:
+      return "k_eInvalidParameters";
+    case CMsgClientToGCGetBattleReportResponse_EResponse.k_eUnableToGetPlusSubInfo:
+      return "k_eUnableToGetPlusSubInfo";
+    case CMsgClientToGCGetBattleReportResponse_EResponse.k_eUnableToLoadBattleReport:
+      return "k_eUnableToLoadBattleReport";
+    case CMsgClientToGCGetBattleReportResponse_EResponse.k_eUnableToSaveBattleReport:
+      return "k_eUnableToSaveBattleReport";
+    case CMsgClientToGCGetBattleReportResponse_EResponse.k_eUnableToGetAggregates:
+      return "k_eUnableToGetAggregates";
+    case CMsgClientToGCGetBattleReportResponse_EResponse.k_eNotEnoughGamesPlayed:
+      return "k_eNotEnoughGamesPlayed";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCGetBattleReportResponse_EResponse",
+      );
+  }
+}
+
 export interface CMsgClientToGCGetBattleReportAggregateStats {
   aggregateKeys: CMsgClientToGCGetBattleReportAggregateStats_CMsgBattleReportAggregateKey[];
   timestamp: number;
@@ -322,6 +1016,63 @@ export enum CMsgClientToGCGetBattleReportAggregateStatsResponse_EResponse {
   k_eNotSubscribedToDotaPlus = 6,
 }
 
+export function cMsgClientToGCGetBattleReportAggregateStatsResponse_EResponseFromJSON(
+  object: any,
+): CMsgClientToGCGetBattleReportAggregateStatsResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgClientToGCGetBattleReportAggregateStatsResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgClientToGCGetBattleReportAggregateStatsResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eTooBusy":
+      return CMsgClientToGCGetBattleReportAggregateStatsResponse_EResponse.k_eTooBusy;
+    case 3:
+    case "k_eDisabled":
+      return CMsgClientToGCGetBattleReportAggregateStatsResponse_EResponse.k_eDisabled;
+    case 4:
+    case "k_ePermissionDenied":
+      return CMsgClientToGCGetBattleReportAggregateStatsResponse_EResponse.k_ePermissionDenied;
+    case 5:
+    case "k_eInvalidParams":
+      return CMsgClientToGCGetBattleReportAggregateStatsResponse_EResponse.k_eInvalidParams;
+    case 6:
+    case "k_eNotSubscribedToDotaPlus":
+      return CMsgClientToGCGetBattleReportAggregateStatsResponse_EResponse.k_eNotSubscribedToDotaPlus;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCGetBattleReportAggregateStatsResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgClientToGCGetBattleReportAggregateStatsResponse_EResponseToJSON(
+  object: CMsgClientToGCGetBattleReportAggregateStatsResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgClientToGCGetBattleReportAggregateStatsResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgClientToGCGetBattleReportAggregateStatsResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgClientToGCGetBattleReportAggregateStatsResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgClientToGCGetBattleReportAggregateStatsResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    case CMsgClientToGCGetBattleReportAggregateStatsResponse_EResponse.k_ePermissionDenied:
+      return "k_ePermissionDenied";
+    case CMsgClientToGCGetBattleReportAggregateStatsResponse_EResponse.k_eInvalidParams:
+      return "k_eInvalidParams";
+    case CMsgClientToGCGetBattleReportAggregateStatsResponse_EResponse.k_eNotSubscribedToDotaPlus:
+      return "k_eNotSubscribedToDotaPlus";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCGetBattleReportAggregateStatsResponse_EResponse",
+      );
+  }
+}
+
 export interface CMsgClientToGCGetBattleReportInfo {
   accountId: number;
 }
@@ -338,6 +1089,58 @@ export enum CMsgClientToGCGetBattleReportInfoResponse_EResponse {
   k_eDisabled = 3,
   k_ePermissionDenied = 4,
   k_eNotSubscribedToDotaPlus = 5,
+}
+
+export function cMsgClientToGCGetBattleReportInfoResponse_EResponseFromJSON(
+  object: any,
+): CMsgClientToGCGetBattleReportInfoResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgClientToGCGetBattleReportInfoResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgClientToGCGetBattleReportInfoResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eTooBusy":
+      return CMsgClientToGCGetBattleReportInfoResponse_EResponse.k_eTooBusy;
+    case 3:
+    case "k_eDisabled":
+      return CMsgClientToGCGetBattleReportInfoResponse_EResponse.k_eDisabled;
+    case 4:
+    case "k_ePermissionDenied":
+      return CMsgClientToGCGetBattleReportInfoResponse_EResponse.k_ePermissionDenied;
+    case 5:
+    case "k_eNotSubscribedToDotaPlus":
+      return CMsgClientToGCGetBattleReportInfoResponse_EResponse.k_eNotSubscribedToDotaPlus;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCGetBattleReportInfoResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgClientToGCGetBattleReportInfoResponse_EResponseToJSON(
+  object: CMsgClientToGCGetBattleReportInfoResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgClientToGCGetBattleReportInfoResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgClientToGCGetBattleReportInfoResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgClientToGCGetBattleReportInfoResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgClientToGCGetBattleReportInfoResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    case CMsgClientToGCGetBattleReportInfoResponse_EResponse.k_ePermissionDenied:
+      return "k_ePermissionDenied";
+    case CMsgClientToGCGetBattleReportInfoResponse_EResponse.k_eNotSubscribedToDotaPlus:
+      return "k_eNotSubscribedToDotaPlus";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCGetBattleReportInfoResponse_EResponse",
+      );
+  }
 }
 
 export interface CMsgClientToGCAcknowledgeBattleReport {
@@ -365,6 +1168,83 @@ export enum CMsgClientToGCAcknowledgeBattleReportResponse_EResponse {
   k_eNotEnoughGamesPlayed = 10,
 }
 
+export function cMsgClientToGCAcknowledgeBattleReportResponse_EResponseFromJSON(
+  object: any,
+): CMsgClientToGCAcknowledgeBattleReportResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgClientToGCAcknowledgeBattleReportResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgClientToGCAcknowledgeBattleReportResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eTooBusy":
+      return CMsgClientToGCAcknowledgeBattleReportResponse_EResponse.k_eTooBusy;
+    case 3:
+    case "k_eDisabled":
+      return CMsgClientToGCAcknowledgeBattleReportResponse_EResponse.k_eDisabled;
+    case 4:
+    case "k_eTimeout":
+      return CMsgClientToGCAcknowledgeBattleReportResponse_EResponse.k_eTimeout;
+    case 5:
+    case "k_ePermissionDenied":
+      return CMsgClientToGCAcknowledgeBattleReportResponse_EResponse.k_ePermissionDenied;
+    case 6:
+    case "k_eUnableToLoadBattleReport":
+      return CMsgClientToGCAcknowledgeBattleReportResponse_EResponse.k_eUnableToLoadBattleReport;
+    case 7:
+    case "k_eAlreadyAcknowledged":
+      return CMsgClientToGCAcknowledgeBattleReportResponse_EResponse.k_eAlreadyAcknowledged;
+    case 8:
+    case "k_eUnknownReport":
+      return CMsgClientToGCAcknowledgeBattleReportResponse_EResponse.k_eUnknownReport;
+    case 9:
+    case "k_eNotSubscribedToDotaPlus":
+      return CMsgClientToGCAcknowledgeBattleReportResponse_EResponse.k_eNotSubscribedToDotaPlus;
+    case 10:
+    case "k_eNotEnoughGamesPlayed":
+      return CMsgClientToGCAcknowledgeBattleReportResponse_EResponse.k_eNotEnoughGamesPlayed;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCAcknowledgeBattleReportResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgClientToGCAcknowledgeBattleReportResponse_EResponseToJSON(
+  object: CMsgClientToGCAcknowledgeBattleReportResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgClientToGCAcknowledgeBattleReportResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgClientToGCAcknowledgeBattleReportResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgClientToGCAcknowledgeBattleReportResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgClientToGCAcknowledgeBattleReportResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    case CMsgClientToGCAcknowledgeBattleReportResponse_EResponse.k_eTimeout:
+      return "k_eTimeout";
+    case CMsgClientToGCAcknowledgeBattleReportResponse_EResponse.k_ePermissionDenied:
+      return "k_ePermissionDenied";
+    case CMsgClientToGCAcknowledgeBattleReportResponse_EResponse.k_eUnableToLoadBattleReport:
+      return "k_eUnableToLoadBattleReport";
+    case CMsgClientToGCAcknowledgeBattleReportResponse_EResponse.k_eAlreadyAcknowledged:
+      return "k_eAlreadyAcknowledged";
+    case CMsgClientToGCAcknowledgeBattleReportResponse_EResponse.k_eUnknownReport:
+      return "k_eUnknownReport";
+    case CMsgClientToGCAcknowledgeBattleReportResponse_EResponse.k_eNotSubscribedToDotaPlus:
+      return "k_eNotSubscribedToDotaPlus";
+    case CMsgClientToGCAcknowledgeBattleReportResponse_EResponse.k_eNotEnoughGamesPlayed:
+      return "k_eNotEnoughGamesPlayed";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCAcknowledgeBattleReportResponse_EResponse",
+      );
+  }
+}
+
 export interface CMsgClientToGCGetBattleReportMatchHistory {
   accountId: number;
   timestamp: number;
@@ -384,6 +1264,63 @@ export enum CMsgClientToGCGetBattleReportMatchHistoryResponse_EResponse {
   k_eTimeout = 4,
   k_ePermissionDenied = 5,
   k_eNotSubscribedToDotaPlus = 6,
+}
+
+export function cMsgClientToGCGetBattleReportMatchHistoryResponse_EResponseFromJSON(
+  object: any,
+): CMsgClientToGCGetBattleReportMatchHistoryResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgClientToGCGetBattleReportMatchHistoryResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgClientToGCGetBattleReportMatchHistoryResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eTooBusy":
+      return CMsgClientToGCGetBattleReportMatchHistoryResponse_EResponse.k_eTooBusy;
+    case 3:
+    case "k_eDisabled":
+      return CMsgClientToGCGetBattleReportMatchHistoryResponse_EResponse.k_eDisabled;
+    case 4:
+    case "k_eTimeout":
+      return CMsgClientToGCGetBattleReportMatchHistoryResponse_EResponse.k_eTimeout;
+    case 5:
+    case "k_ePermissionDenied":
+      return CMsgClientToGCGetBattleReportMatchHistoryResponse_EResponse.k_ePermissionDenied;
+    case 6:
+    case "k_eNotSubscribedToDotaPlus":
+      return CMsgClientToGCGetBattleReportMatchHistoryResponse_EResponse.k_eNotSubscribedToDotaPlus;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCGetBattleReportMatchHistoryResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgClientToGCGetBattleReportMatchHistoryResponse_EResponseToJSON(
+  object: CMsgClientToGCGetBattleReportMatchHistoryResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgClientToGCGetBattleReportMatchHistoryResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgClientToGCGetBattleReportMatchHistoryResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgClientToGCGetBattleReportMatchHistoryResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgClientToGCGetBattleReportMatchHistoryResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    case CMsgClientToGCGetBattleReportMatchHistoryResponse_EResponse.k_eTimeout:
+      return "k_eTimeout";
+    case CMsgClientToGCGetBattleReportMatchHistoryResponse_EResponse.k_ePermissionDenied:
+      return "k_ePermissionDenied";
+    case CMsgClientToGCGetBattleReportMatchHistoryResponse_EResponse.k_eNotSubscribedToDotaPlus:
+      return "k_eNotSubscribedToDotaPlus";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCGetBattleReportMatchHistoryResponse_EResponse",
+      );
+  }
 }
 
 function createBaseCMsgClientToGCGetBattleReport(): CMsgClientToGCGetBattleReport {
@@ -439,6 +1376,22 @@ export const CMsgClientToGCGetBattleReport = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCGetBattleReport {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      timestamp: isSet(object.timestamp) ? Number(object.timestamp) : 0,
+      duration: isSet(object.duration) ? Number(object.duration) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCGetBattleReport): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
+    message.duration !== undefined && (obj.duration = Math.round(message.duration));
+    return obj;
   },
 };
 
@@ -1006,6 +1959,118 @@ export const CMsgBattleReportGame = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgBattleReportGame {
+    return {
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      kills: isSet(object.kills) ? Number(object.kills) : 0,
+      deaths: isSet(object.deaths) ? Number(object.deaths) : 0,
+      assists: isSet(object.assists) ? Number(object.assists) : 0,
+      rankChange: isSet(object.rankChange) ? Number(object.rankChange) : 0,
+      lastHits: isSet(object.lastHits) ? Number(object.lastHits) : 0,
+      denies: isSet(object.denies) ? Number(object.denies) : 0,
+      gpm: isSet(object.gpm) ? Number(object.gpm) : 0,
+      xpm: isSet(object.xpm) ? Number(object.xpm) : 0,
+      role: isSet(object.role) ? cMsgBattleReportRoleFromJSON(object.role) : 0,
+      outcome: isSet(object.outcome) ? cMsgBattleReportEOutcomeFromJSON(object.outcome) : 0,
+      laneOutcome: isSet(object.laneOutcome) ? cMsgBattleReportELaneOutcomeFromJSON(object.laneOutcome) : 0,
+      ranked: isSet(object.ranked) ? Boolean(object.ranked) : false,
+      matchId: isSet(object.matchId) ? String(object.matchId) : "0",
+      laneSelectionFlags: isSet(object.laneSelectionFlags) ? Number(object.laneSelectionFlags) : 0,
+      predictedPosition: isSet(object.predictedPosition) ? Number(object.predictedPosition) : 0,
+      secondsDead: isSet(object.secondsDead) ? Number(object.secondsDead) : 0,
+      winningTeam: isSet(object.winningTeam) ? Number(object.winningTeam) : 0,
+      playerSlot: isSet(object.playerSlot) ? Number(object.playerSlot) : 0,
+      partyGame: isSet(object.partyGame) ? Boolean(object.partyGame) : false,
+      startTime: isSet(object.startTime) ? Number(object.startTime) : 0,
+      bountyRunes: isSet(object.bountyRunes) ? Number(object.bountyRunes) : 0,
+      waterRunes: isSet(object.waterRunes) ? Number(object.waterRunes) : 0,
+      powerRunes: isSet(object.powerRunes) ? Number(object.powerRunes) : 0,
+      timeEnemyT1TowerDestroyed: isSet(object.timeEnemyT1TowerDestroyed) ? Number(object.timeEnemyT1TowerDestroyed) : 0,
+      timeFriendlyT1TowerDestroyed: isSet(object.timeFriendlyT1TowerDestroyed)
+        ? Number(object.timeFriendlyT1TowerDestroyed)
+        : 0,
+      enemyRoshanKills: isSet(object.enemyRoshanKills) ? Number(object.enemyRoshanKills) : 0,
+      teleportsUsed: isSet(object.teleportsUsed) ? Number(object.teleportsUsed) : 0,
+      dewards: isSet(object.dewards) ? Number(object.dewards) : 0,
+      campsStacked: isSet(object.campsStacked) ? Number(object.campsStacked) : 0,
+      supportGold: isSet(object.supportGold) ? Number(object.supportGold) : 0,
+      heroDamage: isSet(object.heroDamage) ? Number(object.heroDamage) : 0,
+      heroHealing: isSet(object.heroHealing) ? Number(object.heroHealing) : 0,
+      towerDamage: isSet(object.towerDamage) ? Number(object.towerDamage) : 0,
+      successfulSmokes: isSet(object.successfulSmokes) ? Number(object.successfulSmokes) : 0,
+      stunDuration: isSet(object.stunDuration) ? Number(object.stunDuration) : 0,
+      duration: isSet(object.duration) ? Number(object.duration) : 0,
+      friendlyRoshanKills: isSet(object.friendlyRoshanKills) ? Number(object.friendlyRoshanKills) : 0,
+      previousRank: isSet(object.previousRank) ? Number(object.previousRank) : 0,
+      gameMode: isSet(object.gameMode) ? Number(object.gameMode) : 0,
+      lobbyType: isSet(object.lobbyType) ? Number(object.lobbyType) : 0,
+      timePurchasedShard: isSet(object.timePurchasedShard) ? Number(object.timePurchasedShard) : 0,
+      timePurchasedScepter: isSet(object.timePurchasedScepter) ? Number(object.timePurchasedScepter) : 0,
+      item0: isSet(object.item0) ? Number(object.item0) : 0,
+      item1: isSet(object.item1) ? Number(object.item1) : 0,
+      item2: isSet(object.item2) ? Number(object.item2) : 0,
+      item3: isSet(object.item3) ? Number(object.item3) : 0,
+      item4: isSet(object.item4) ? Number(object.item4) : 0,
+      item5: isSet(object.item5) ? Number(object.item5) : 0,
+    };
+  },
+
+  toJSON(message: CMsgBattleReportGame): unknown {
+    const obj: any = {};
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.kills !== undefined && (obj.kills = Math.round(message.kills));
+    message.deaths !== undefined && (obj.deaths = Math.round(message.deaths));
+    message.assists !== undefined && (obj.assists = Math.round(message.assists));
+    message.rankChange !== undefined && (obj.rankChange = Math.round(message.rankChange));
+    message.lastHits !== undefined && (obj.lastHits = Math.round(message.lastHits));
+    message.denies !== undefined && (obj.denies = Math.round(message.denies));
+    message.gpm !== undefined && (obj.gpm = Math.round(message.gpm));
+    message.xpm !== undefined && (obj.xpm = Math.round(message.xpm));
+    message.role !== undefined && (obj.role = cMsgBattleReportRoleToJSON(message.role));
+    message.outcome !== undefined && (obj.outcome = cMsgBattleReportEOutcomeToJSON(message.outcome));
+    message.laneOutcome !== undefined && (obj.laneOutcome = cMsgBattleReportELaneOutcomeToJSON(message.laneOutcome));
+    message.ranked !== undefined && (obj.ranked = message.ranked);
+    message.matchId !== undefined && (obj.matchId = message.matchId);
+    message.laneSelectionFlags !== undefined && (obj.laneSelectionFlags = Math.round(message.laneSelectionFlags));
+    message.predictedPosition !== undefined && (obj.predictedPosition = Math.round(message.predictedPosition));
+    message.secondsDead !== undefined && (obj.secondsDead = Math.round(message.secondsDead));
+    message.winningTeam !== undefined && (obj.winningTeam = Math.round(message.winningTeam));
+    message.playerSlot !== undefined && (obj.playerSlot = Math.round(message.playerSlot));
+    message.partyGame !== undefined && (obj.partyGame = message.partyGame);
+    message.startTime !== undefined && (obj.startTime = Math.round(message.startTime));
+    message.bountyRunes !== undefined && (obj.bountyRunes = Math.round(message.bountyRunes));
+    message.waterRunes !== undefined && (obj.waterRunes = Math.round(message.waterRunes));
+    message.powerRunes !== undefined && (obj.powerRunes = Math.round(message.powerRunes));
+    message.timeEnemyT1TowerDestroyed !== undefined &&
+      (obj.timeEnemyT1TowerDestroyed = Math.round(message.timeEnemyT1TowerDestroyed));
+    message.timeFriendlyT1TowerDestroyed !== undefined &&
+      (obj.timeFriendlyT1TowerDestroyed = Math.round(message.timeFriendlyT1TowerDestroyed));
+    message.enemyRoshanKills !== undefined && (obj.enemyRoshanKills = Math.round(message.enemyRoshanKills));
+    message.teleportsUsed !== undefined && (obj.teleportsUsed = Math.round(message.teleportsUsed));
+    message.dewards !== undefined && (obj.dewards = Math.round(message.dewards));
+    message.campsStacked !== undefined && (obj.campsStacked = Math.round(message.campsStacked));
+    message.supportGold !== undefined && (obj.supportGold = Math.round(message.supportGold));
+    message.heroDamage !== undefined && (obj.heroDamage = Math.round(message.heroDamage));
+    message.heroHealing !== undefined && (obj.heroHealing = Math.round(message.heroHealing));
+    message.towerDamage !== undefined && (obj.towerDamage = Math.round(message.towerDamage));
+    message.successfulSmokes !== undefined && (obj.successfulSmokes = Math.round(message.successfulSmokes));
+    message.stunDuration !== undefined && (obj.stunDuration = Math.round(message.stunDuration));
+    message.duration !== undefined && (obj.duration = Math.round(message.duration));
+    message.friendlyRoshanKills !== undefined && (obj.friendlyRoshanKills = Math.round(message.friendlyRoshanKills));
+    message.previousRank !== undefined && (obj.previousRank = Math.round(message.previousRank));
+    message.gameMode !== undefined && (obj.gameMode = Math.round(message.gameMode));
+    message.lobbyType !== undefined && (obj.lobbyType = Math.round(message.lobbyType));
+    message.timePurchasedShard !== undefined && (obj.timePurchasedShard = message.timePurchasedShard);
+    message.timePurchasedScepter !== undefined && (obj.timePurchasedScepter = message.timePurchasedScepter);
+    message.item0 !== undefined && (obj.item0 = Math.round(message.item0));
+    message.item1 !== undefined && (obj.item1 = Math.round(message.item1));
+    message.item2 !== undefined && (obj.item2 = Math.round(message.item2));
+    message.item3 !== undefined && (obj.item3 = Math.round(message.item3));
+    message.item4 !== undefined && (obj.item4 = Math.round(message.item4));
+    message.item5 !== undefined && (obj.item5 = Math.round(message.item5));
+    return obj;
+  },
 };
 
 function createBaseCMsgBattleReportGameList(): CMsgBattleReportGameList {
@@ -1041,6 +2106,22 @@ export const CMsgBattleReportGameList = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgBattleReportGameList {
+    return {
+      games: Array.isArray(object?.games) ? object.games.map((e: any) => CMsgBattleReportGame.fromJSON(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgBattleReportGameList): unknown {
+    const obj: any = {};
+    if (message.games) {
+      obj.games = message.games.map((e) => e ? CMsgBattleReportGame.toJSON(e) : undefined);
+    } else {
+      obj.games = [];
+    }
+    return obj;
   },
 };
 
@@ -1087,6 +2168,25 @@ export const CMsgBattleReport = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgBattleReport {
+    return {
+      games: Array.isArray(object?.games) ? object.games.map((e: any) => CMsgBattleReportGame.fromJSON(e)) : [],
+      highlights: isSet(object.highlights) ? CMsgBattleReportHighlights.fromJSON(object.highlights) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgBattleReport): unknown {
+    const obj: any = {};
+    if (message.games) {
+      obj.games = message.games.map((e) => e ? CMsgBattleReportGame.toJSON(e) : undefined);
+    } else {
+      obj.games = [];
+    }
+    message.highlights !== undefined &&
+      (obj.highlights = message.highlights ? CMsgBattleReportHighlights.toJSON(message.highlights) : undefined);
+    return obj;
   },
 };
 
@@ -1153,6 +2253,24 @@ export const CMsgBattleReport_HighlightGeneral = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgBattleReport_HighlightGeneral {
+    return {
+      winLossWindow: isSet(object.winLossWindow) ? Number(object.winLossWindow) : 0,
+      winPercent: isSet(object.winPercent) ? Number(object.winPercent) : 0,
+      mmrDelta: isSet(object.mmrDelta) ? Number(object.mmrDelta) : 0,
+      highlightScore: isSet(object.highlightScore) ? Number(object.highlightScore) : 0,
+    };
+  },
+
+  toJSON(message: CMsgBattleReport_HighlightGeneral): unknown {
+    const obj: any = {};
+    message.winLossWindow !== undefined && (obj.winLossWindow = Math.round(message.winLossWindow));
+    message.winPercent !== undefined && (obj.winPercent = message.winPercent);
+    message.mmrDelta !== undefined && (obj.mmrDelta = Math.round(message.mmrDelta));
+    message.highlightScore !== undefined && (obj.highlightScore = message.highlightScore);
+    return obj;
   },
 };
 
@@ -1291,6 +2409,36 @@ export const CMsgBattleReport_Highlight = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgBattleReport_Highlight {
+    return {
+      highlightId: isSet(object.highlightId) ? Number(object.highlightId) : 0,
+      category: isSet(object.category) ? cMsgBattleReportHighlightCategoryFromJSON(object.category) : 0,
+      tier: isSet(object.tier) ? cMsgBattleReportHighlightTierFromJSON(object.tier) : 0,
+      rarity: isSet(object.rarity) ? cMsgBattleReportHighlightRarityFromJSON(object.rarity) : 0,
+      score: isSet(object.score) ? Number(object.score) : 0,
+      confidence: isSet(object.confidence) ? Number(object.confidence) : 0,
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      role: isSet(object.role) ? cMsgBattleReportRoleFromJSON(object.role) : 0,
+      comparisonDeltaValue: isSet(object.comparisonDeltaValue) ? Number(object.comparisonDeltaValue) : 0,
+      context: isSet(object.context) ? cMsgBattleReportCompareContextFromJSON(object.context) : 0,
+    };
+  },
+
+  toJSON(message: CMsgBattleReport_Highlight): unknown {
+    const obj: any = {};
+    message.highlightId !== undefined && (obj.highlightId = Math.round(message.highlightId));
+    message.category !== undefined && (obj.category = cMsgBattleReportHighlightCategoryToJSON(message.category));
+    message.tier !== undefined && (obj.tier = cMsgBattleReportHighlightTierToJSON(message.tier));
+    message.rarity !== undefined && (obj.rarity = cMsgBattleReportHighlightRarityToJSON(message.rarity));
+    message.score !== undefined && (obj.score = message.score);
+    message.confidence !== undefined && (obj.confidence = message.confidence);
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.role !== undefined && (obj.role = cMsgBattleReportRoleToJSON(message.role));
+    message.comparisonDeltaValue !== undefined && (obj.comparisonDeltaValue = message.comparisonDeltaValue);
+    message.context !== undefined && (obj.context = cMsgBattleReportCompareContextToJSON(message.context));
+    return obj;
+  },
 };
 
 function createBaseCMsgBattleReportInfo(): CMsgBattleReportInfo {
@@ -1406,6 +2554,34 @@ export const CMsgBattleReportInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgBattleReportInfo {
+    return {
+      timestamp: isSet(object.timestamp) ? Number(object.timestamp) : 0,
+      duration: isSet(object.duration) ? Number(object.duration) : 0,
+      acknowledged: isSet(object.acknowledged) ? Boolean(object.acknowledged) : false,
+      featuredHeroId: isSet(object.featuredHeroId) ? Number(object.featuredHeroId) : 0,
+      featuredPosition: isSet(object.featuredPosition) ? Number(object.featuredPosition) : 0,
+      gamesPlayed: isSet(object.gamesPlayed) ? Number(object.gamesPlayed) : 0,
+      medalCounts: Array.isArray(object?.medalCounts) ? object.medalCounts.map((e: any) => Number(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgBattleReportInfo): unknown {
+    const obj: any = {};
+    message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
+    message.duration !== undefined && (obj.duration = Math.round(message.duration));
+    message.acknowledged !== undefined && (obj.acknowledged = message.acknowledged);
+    message.featuredHeroId !== undefined && (obj.featuredHeroId = Math.round(message.featuredHeroId));
+    message.featuredPosition !== undefined && (obj.featuredPosition = Math.round(message.featuredPosition));
+    message.gamesPlayed !== undefined && (obj.gamesPlayed = Math.round(message.gamesPlayed));
+    if (message.medalCounts) {
+      obj.medalCounts = message.medalCounts.map((e) => Math.round(e));
+    } else {
+      obj.medalCounts = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgBattleReportInfoList(): CMsgBattleReportInfoList {
@@ -1441,6 +2617,24 @@ export const CMsgBattleReportInfoList = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgBattleReportInfoList {
+    return {
+      battleReportInfo: Array.isArray(object?.battleReportInfo)
+        ? object.battleReportInfo.map((e: any) => CMsgBattleReportInfo.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgBattleReportInfoList): unknown {
+    const obj: any = {};
+    if (message.battleReportInfo) {
+      obj.battleReportInfo = message.battleReportInfo.map((e) => e ? CMsgBattleReportInfo.toJSON(e) : undefined);
+    } else {
+      obj.battleReportInfo = [];
+    }
+    return obj;
   },
 };
 
@@ -1478,6 +2672,24 @@ export const CMsgBattleReportHighlights = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgBattleReportHighlights {
+    return {
+      highlights: Array.isArray(object?.highlights)
+        ? object.highlights.map((e: any) => CMsgBattleReport_Highlight.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgBattleReportHighlights): unknown {
+    const obj: any = {};
+    if (message.highlights) {
+      obj.highlights = message.highlights.map((e) => e ? CMsgBattleReport_Highlight.toJSON(e) : undefined);
+    } else {
+      obj.highlights = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgBattleReportAggregateStats(): CMsgBattleReportAggregateStats {
@@ -1513,6 +2725,26 @@ export const CMsgBattleReportAggregateStats = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgBattleReportAggregateStats {
+    return {
+      result: Array.isArray(object?.result)
+        ? object.result.map((e: any) => CMsgBattleReportAggregateStats_CMsgBattleReportAggregate.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgBattleReportAggregateStats): unknown {
+    const obj: any = {};
+    if (message.result) {
+      obj.result = message.result.map((e) =>
+        e ? CMsgBattleReportAggregateStats_CMsgBattleReportAggregate.toJSON(e) : undefined
+      );
+    } else {
+      obj.result = [];
+    }
+    return obj;
   },
 };
 
@@ -1562,6 +2794,20 @@ export const CMsgBattleReportAggregateStats_CMsgBattleReportStat = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgBattleReportAggregateStats_CMsgBattleReportStat {
+    return {
+      mean: isSet(object.mean) ? Number(object.mean) : 0,
+      stdev: isSet(object.stdev) ? Number(object.stdev) : 0,
+    };
+  },
+
+  toJSON(message: CMsgBattleReportAggregateStats_CMsgBattleReportStat): unknown {
+    const obj: any = {};
+    message.mean !== undefined && (obj.mean = message.mean);
+    message.stdev !== undefined && (obj.stdev = message.stdev);
+    return obj;
   },
 };
 
@@ -1969,6 +3215,179 @@ export const CMsgBattleReportAggregateStats_CMsgBattleReportAggregate = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgBattleReportAggregateStats_CMsgBattleReportAggregate {
+    return {
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      predictedPosition: isSet(object.predictedPosition) ? Number(object.predictedPosition) : 0,
+      gameCount: isSet(object.gameCount) ? Number(object.gameCount) : 0,
+      winCount: isSet(object.winCount) ? Number(object.winCount) : 0,
+      laneWinCount: isSet(object.laneWinCount) ? Number(object.laneWinCount) : 0,
+      kills: isSet(object.kills)
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromJSON(object.kills)
+        : undefined,
+      deaths: isSet(object.deaths)
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromJSON(object.deaths)
+        : undefined,
+      assists: isSet(object.assists)
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromJSON(object.assists)
+        : undefined,
+      rankChange: isSet(object.rankChange)
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromJSON(object.rankChange)
+        : undefined,
+      lastHits: isSet(object.lastHits)
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromJSON(object.lastHits)
+        : undefined,
+      denies: isSet(object.denies)
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromJSON(object.denies)
+        : undefined,
+      gpm: isSet(object.gpm) ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromJSON(object.gpm) : undefined,
+      xpm: isSet(object.xpm) ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromJSON(object.xpm) : undefined,
+      secondsDead: isSet(object.secondsDead)
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromJSON(object.secondsDead)
+        : undefined,
+      bountyRunes: isSet(object.bountyRunes)
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromJSON(object.bountyRunes)
+        : undefined,
+      waterRunes: isSet(object.waterRunes)
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromJSON(object.waterRunes)
+        : undefined,
+      powerRunes: isSet(object.powerRunes)
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromJSON(object.powerRunes)
+        : undefined,
+      timeEnemyT1TowerDestroyed: isSet(object.timeEnemyT1TowerDestroyed)
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromJSON(object.timeEnemyT1TowerDestroyed)
+        : undefined,
+      timeFriendlyT1TowerDestroyed: isSet(object.timeFriendlyT1TowerDestroyed)
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromJSON(object.timeFriendlyT1TowerDestroyed)
+        : undefined,
+      enemyRoshanKills: isSet(object.enemyRoshanKills)
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromJSON(object.enemyRoshanKills)
+        : undefined,
+      teleportsUsed: isSet(object.teleportsUsed)
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromJSON(object.teleportsUsed)
+        : undefined,
+      dewards: isSet(object.dewards)
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromJSON(object.dewards)
+        : undefined,
+      campsStacked: isSet(object.campsStacked)
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromJSON(object.campsStacked)
+        : undefined,
+      supportGold: isSet(object.supportGold)
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromJSON(object.supportGold)
+        : undefined,
+      heroDamage: isSet(object.heroDamage)
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromJSON(object.heroDamage)
+        : undefined,
+      heroHealing: isSet(object.heroHealing)
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromJSON(object.heroHealing)
+        : undefined,
+      towerDamage: isSet(object.towerDamage)
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromJSON(object.towerDamage)
+        : undefined,
+      successfulSmokes: isSet(object.successfulSmokes)
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromJSON(object.successfulSmokes)
+        : undefined,
+      stunDuration: isSet(object.stunDuration)
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromJSON(object.stunDuration)
+        : undefined,
+      duration: isSet(object.duration)
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromJSON(object.duration)
+        : undefined,
+      friendlyRoshanKills: isSet(object.friendlyRoshanKills)
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromJSON(object.friendlyRoshanKills)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CMsgBattleReportAggregateStats_CMsgBattleReportAggregate): unknown {
+    const obj: any = {};
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.predictedPosition !== undefined && (obj.predictedPosition = Math.round(message.predictedPosition));
+    message.gameCount !== undefined && (obj.gameCount = Math.round(message.gameCount));
+    message.winCount !== undefined && (obj.winCount = Math.round(message.winCount));
+    message.laneWinCount !== undefined && (obj.laneWinCount = Math.round(message.laneWinCount));
+    message.kills !== undefined &&
+      (obj.kills = message.kills
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.toJSON(message.kills)
+        : undefined);
+    message.deaths !== undefined && (obj.deaths = message.deaths
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.toJSON(message.deaths)
+      : undefined);
+    message.assists !== undefined && (obj.assists = message.assists
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.toJSON(message.assists)
+      : undefined);
+    message.rankChange !== undefined && (obj.rankChange = message.rankChange
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.toJSON(message.rankChange)
+      : undefined);
+    message.lastHits !== undefined && (obj.lastHits = message.lastHits
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.toJSON(message.lastHits)
+      : undefined);
+    message.denies !== undefined && (obj.denies = message.denies
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.toJSON(message.denies)
+      : undefined);
+    message.gpm !== undefined &&
+      (obj.gpm = message.gpm ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.toJSON(message.gpm) : undefined);
+    message.xpm !== undefined &&
+      (obj.xpm = message.xpm ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.toJSON(message.xpm) : undefined);
+    message.secondsDead !== undefined && (obj.secondsDead = message.secondsDead
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.toJSON(message.secondsDead)
+      : undefined);
+    message.bountyRunes !== undefined && (obj.bountyRunes = message.bountyRunes
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.toJSON(message.bountyRunes)
+      : undefined);
+    message.waterRunes !== undefined && (obj.waterRunes = message.waterRunes
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.toJSON(message.waterRunes)
+      : undefined);
+    message.powerRunes !== undefined && (obj.powerRunes = message.powerRunes
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.toJSON(message.powerRunes)
+      : undefined);
+    message.timeEnemyT1TowerDestroyed !== undefined &&
+      (obj.timeEnemyT1TowerDestroyed = message.timeEnemyT1TowerDestroyed
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.toJSON(message.timeEnemyT1TowerDestroyed)
+        : undefined);
+    message.timeFriendlyT1TowerDestroyed !== undefined &&
+      (obj.timeFriendlyT1TowerDestroyed = message.timeFriendlyT1TowerDestroyed
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.toJSON(message.timeFriendlyT1TowerDestroyed)
+        : undefined);
+    message.enemyRoshanKills !== undefined && (obj.enemyRoshanKills = message.enemyRoshanKills
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.toJSON(message.enemyRoshanKills)
+      : undefined);
+    message.teleportsUsed !== undefined && (obj.teleportsUsed = message.teleportsUsed
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.toJSON(message.teleportsUsed)
+      : undefined);
+    message.dewards !== undefined && (obj.dewards = message.dewards
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.toJSON(message.dewards)
+      : undefined);
+    message.campsStacked !== undefined && (obj.campsStacked = message.campsStacked
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.toJSON(message.campsStacked)
+      : undefined);
+    message.supportGold !== undefined && (obj.supportGold = message.supportGold
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.toJSON(message.supportGold)
+      : undefined);
+    message.heroDamage !== undefined && (obj.heroDamage = message.heroDamage
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.toJSON(message.heroDamage)
+      : undefined);
+    message.heroHealing !== undefined && (obj.heroHealing = message.heroHealing
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.toJSON(message.heroHealing)
+      : undefined);
+    message.towerDamage !== undefined && (obj.towerDamage = message.towerDamage
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.toJSON(message.towerDamage)
+      : undefined);
+    message.successfulSmokes !== undefined && (obj.successfulSmokes = message.successfulSmokes
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.toJSON(message.successfulSmokes)
+      : undefined);
+    message.stunDuration !== undefined && (obj.stunDuration = message.stunDuration
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.toJSON(message.stunDuration)
+      : undefined);
+    message.duration !== undefined && (obj.duration = message.duration
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.toJSON(message.duration)
+      : undefined);
+    message.friendlyRoshanKills !== undefined && (obj.friendlyRoshanKills = message.friendlyRoshanKills
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.toJSON(message.friendlyRoshanKills)
+      : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgBattleReportAggregatedGeneralStats(): CMsgBattleReportAggregatedGeneralStats {
@@ -1994,6 +3413,15 @@ export const CMsgBattleReportAggregatedGeneralStats = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CMsgBattleReportAggregatedGeneralStats {
+    return {};
+  },
+
+  toJSON(_: CMsgBattleReportAggregatedGeneralStats): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -2060,6 +3488,29 @@ export const CMsgClientToGCGetBattleReportResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCGetBattleReportResponse {
+    return {
+      report: isSet(object.report) ? CMsgBattleReport.fromJSON(object.report) : undefined,
+      response: isSet(object.response) ? cMsgClientToGCGetBattleReportResponse_EResponseFromJSON(object.response) : 0,
+      aggregateStats: isSet(object.aggregateStats)
+        ? CMsgBattleReportAggregateStats.fromJSON(object.aggregateStats)
+        : undefined,
+      info: isSet(object.info) ? CMsgBattleReportInfo.fromJSON(object.info) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCGetBattleReportResponse): unknown {
+    const obj: any = {};
+    message.report !== undefined && (obj.report = message.report ? CMsgBattleReport.toJSON(message.report) : undefined);
+    message.response !== undefined &&
+      (obj.response = cMsgClientToGCGetBattleReportResponse_EResponseToJSON(message.response));
+    message.aggregateStats !== undefined && (obj.aggregateStats = message.aggregateStats
+      ? CMsgBattleReportAggregateStats.toJSON(message.aggregateStats)
+      : undefined);
+    message.info !== undefined && (obj.info = message.info ? CMsgBattleReportInfo.toJSON(message.info) : undefined);
+    return obj;
   },
 };
 
@@ -2130,6 +3581,34 @@ export const CMsgClientToGCGetBattleReportAggregateStats = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientToGCGetBattleReportAggregateStats {
+    return {
+      aggregateKeys: Array.isArray(object?.aggregateKeys)
+        ? object.aggregateKeys.map((e: any) =>
+          CMsgClientToGCGetBattleReportAggregateStats_CMsgBattleReportAggregateKey.fromJSON(e)
+        )
+        : [],
+      timestamp: isSet(object.timestamp) ? Number(object.timestamp) : 0,
+      duration: isSet(object.duration) ? Number(object.duration) : 0,
+      rank: isSet(object.rank) ? Number(object.rank) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCGetBattleReportAggregateStats): unknown {
+    const obj: any = {};
+    if (message.aggregateKeys) {
+      obj.aggregateKeys = message.aggregateKeys.map((e) =>
+        e ? CMsgClientToGCGetBattleReportAggregateStats_CMsgBattleReportAggregateKey.toJSON(e) : undefined
+      );
+    } else {
+      obj.aggregateKeys = [];
+    }
+    message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
+    message.duration !== undefined && (obj.duration = Math.round(message.duration));
+    message.rank !== undefined && (obj.rank = Math.round(message.rank));
+    return obj;
+  },
 };
 
 function createBaseCMsgClientToGCGetBattleReportAggregateStats_CMsgBattleReportAggregateKey(): CMsgClientToGCGetBattleReportAggregateStats_CMsgBattleReportAggregateKey {
@@ -2182,6 +3661,20 @@ export const CMsgClientToGCGetBattleReportAggregateStats_CMsgBattleReportAggrega
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientToGCGetBattleReportAggregateStats_CMsgBattleReportAggregateKey {
+    return {
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      predictedPosition: isSet(object.predictedPosition) ? Number(object.predictedPosition) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCGetBattleReportAggregateStats_CMsgBattleReportAggregateKey): unknown {
+    const obj: any = {};
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.predictedPosition !== undefined && (obj.predictedPosition = Math.round(message.predictedPosition));
+    return obj;
+  },
 };
 
 function createBaseCMsgClientToGCGetBattleReportAggregateStatsResponse(): CMsgClientToGCGetBattleReportAggregateStatsResponse {
@@ -2231,6 +3724,27 @@ export const CMsgClientToGCGetBattleReportAggregateStatsResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientToGCGetBattleReportAggregateStatsResponse {
+    return {
+      aggregateStats: isSet(object.aggregateStats)
+        ? CMsgBattleReportAggregateStats.fromJSON(object.aggregateStats)
+        : undefined,
+      response: isSet(object.response)
+        ? cMsgClientToGCGetBattleReportAggregateStatsResponse_EResponseFromJSON(object.response)
+        : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCGetBattleReportAggregateStatsResponse): unknown {
+    const obj: any = {};
+    message.aggregateStats !== undefined && (obj.aggregateStats = message.aggregateStats
+      ? CMsgBattleReportAggregateStats.toJSON(message.aggregateStats)
+      : undefined);
+    message.response !== undefined &&
+      (obj.response = cMsgClientToGCGetBattleReportAggregateStatsResponse_EResponseToJSON(message.response));
+    return obj;
+  },
 };
 
 function createBaseCMsgClientToGCGetBattleReportInfo(): CMsgClientToGCGetBattleReportInfo {
@@ -2266,6 +3780,16 @@ export const CMsgClientToGCGetBattleReportInfo = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCGetBattleReportInfo {
+    return { accountId: isSet(object.accountId) ? Number(object.accountId) : 0 };
+  },
+
+  toJSON(message: CMsgClientToGCGetBattleReportInfo): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    return obj;
   },
 };
 
@@ -2312,6 +3836,27 @@ export const CMsgClientToGCGetBattleReportInfoResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCGetBattleReportInfoResponse {
+    return {
+      battleReportInfoList: isSet(object.battleReportInfoList)
+        ? CMsgBattleReportInfoList.fromJSON(object.battleReportInfoList)
+        : undefined,
+      response: isSet(object.response)
+        ? cMsgClientToGCGetBattleReportInfoResponse_EResponseFromJSON(object.response)
+        : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCGetBattleReportInfoResponse): unknown {
+    const obj: any = {};
+    message.battleReportInfoList !== undefined && (obj.battleReportInfoList = message.battleReportInfoList
+      ? CMsgBattleReportInfoList.toJSON(message.battleReportInfoList)
+      : undefined);
+    message.response !== undefined &&
+      (obj.response = cMsgClientToGCGetBattleReportInfoResponse_EResponseToJSON(message.response));
+    return obj;
   },
 };
 
@@ -2369,6 +3914,22 @@ export const CMsgClientToGCAcknowledgeBattleReport = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientToGCAcknowledgeBattleReport {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      timestamp: isSet(object.timestamp) ? Number(object.timestamp) : 0,
+      duration: isSet(object.duration) ? Number(object.duration) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCAcknowledgeBattleReport): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
+    message.duration !== undefined && (obj.duration = Math.round(message.duration));
+    return obj;
+  },
 };
 
 function createBaseCMsgClientToGCAcknowledgeBattleReportResponse(): CMsgClientToGCAcknowledgeBattleReportResponse {
@@ -2414,6 +3975,23 @@ export const CMsgClientToGCAcknowledgeBattleReportResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCAcknowledgeBattleReportResponse {
+    return {
+      response: isSet(object.response)
+        ? cMsgClientToGCAcknowledgeBattleReportResponse_EResponseFromJSON(object.response)
+        : 0,
+      shardsAwarded: isSet(object.shardsAwarded) ? Number(object.shardsAwarded) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCAcknowledgeBattleReportResponse): unknown {
+    const obj: any = {};
+    message.response !== undefined &&
+      (obj.response = cMsgClientToGCAcknowledgeBattleReportResponse_EResponseToJSON(message.response));
+    message.shardsAwarded !== undefined && (obj.shardsAwarded = Math.round(message.shardsAwarded));
+    return obj;
   },
 };
 
@@ -2471,6 +4049,22 @@ export const CMsgClientToGCGetBattleReportMatchHistory = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientToGCGetBattleReportMatchHistory {
+    return {
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      timestamp: isSet(object.timestamp) ? Number(object.timestamp) : 0,
+      duration: isSet(object.duration) ? Number(object.duration) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCGetBattleReportMatchHistory): unknown {
+    const obj: any = {};
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
+    message.duration !== undefined && (obj.duration = Math.round(message.duration));
+    return obj;
+  },
 };
 
 function createBaseCMsgClientToGCGetBattleReportMatchHistoryResponse(): CMsgClientToGCGetBattleReportMatchHistoryResponse {
@@ -2520,7 +4114,44 @@ export const CMsgClientToGCGetBattleReportMatchHistoryResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientToGCGetBattleReportMatchHistoryResponse {
+    return {
+      response: isSet(object.response)
+        ? cMsgClientToGCGetBattleReportMatchHistoryResponse_EResponseFromJSON(object.response)
+        : 0,
+      games: isSet(object.games) ? CMsgBattleReportGameList.fromJSON(object.games) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCGetBattleReportMatchHistoryResponse): unknown {
+    const obj: any = {};
+    message.response !== undefined &&
+      (obj.response = cMsgClientToGCGetBattleReportMatchHistoryResponse_EResponseToJSON(message.response));
+    message.games !== undefined &&
+      (obj.games = message.games ? CMsgBattleReportGameList.toJSON(message.games) : undefined);
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
 
 function longToString(long: Long) {
   return long.toString();
@@ -2529,4 +4160,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

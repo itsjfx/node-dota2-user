@@ -11,6 +11,50 @@ export enum EGCPlatform {
   k_eGCPlatform_iOS = 5,
 }
 
+export function eGCPlatformFromJSON(object: any): EGCPlatform {
+  switch (object) {
+    case 0:
+    case "k_eGCPlatform_None":
+      return EGCPlatform.k_eGCPlatform_None;
+    case 1:
+    case "k_eGCPlatform_PC":
+      return EGCPlatform.k_eGCPlatform_PC;
+    case 2:
+    case "k_eGCPlatform_Mac":
+      return EGCPlatform.k_eGCPlatform_Mac;
+    case 3:
+    case "k_eGCPlatform_Linux":
+      return EGCPlatform.k_eGCPlatform_Linux;
+    case 4:
+    case "k_eGCPlatform_Android":
+      return EGCPlatform.k_eGCPlatform_Android;
+    case 5:
+    case "k_eGCPlatform_iOS":
+      return EGCPlatform.k_eGCPlatform_iOS;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EGCPlatform");
+  }
+}
+
+export function eGCPlatformToJSON(object: EGCPlatform): string {
+  switch (object) {
+    case EGCPlatform.k_eGCPlatform_None:
+      return "k_eGCPlatform_None";
+    case EGCPlatform.k_eGCPlatform_PC:
+      return "k_eGCPlatform_PC";
+    case EGCPlatform.k_eGCPlatform_Mac:
+      return "k_eGCPlatform_Mac";
+    case EGCPlatform.k_eGCPlatform_Linux:
+      return "k_eGCPlatform_Linux";
+    case EGCPlatform.k_eGCPlatform_Android:
+      return "k_eGCPlatform_Android";
+    case EGCPlatform.k_eGCPlatform_iOS:
+      return "k_eGCPlatform_iOS";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EGCPlatform");
+  }
+}
+
 export enum GCProtoBufMsgSrc {
   GCProtoBufMsgSrc_Unspecified = 0,
   GCProtoBufMsgSrc_FromSystem = 1,
@@ -18,6 +62,50 @@ export enum GCProtoBufMsgSrc {
   GCProtoBufMsgSrc_FromGC = 3,
   GCProtoBufMsgSrc_ReplySystem = 4,
   GCProtoBufMsgSrc_SpoofedSteamID = 5,
+}
+
+export function gCProtoBufMsgSrcFromJSON(object: any): GCProtoBufMsgSrc {
+  switch (object) {
+    case 0:
+    case "GCProtoBufMsgSrc_Unspecified":
+      return GCProtoBufMsgSrc.GCProtoBufMsgSrc_Unspecified;
+    case 1:
+    case "GCProtoBufMsgSrc_FromSystem":
+      return GCProtoBufMsgSrc.GCProtoBufMsgSrc_FromSystem;
+    case 2:
+    case "GCProtoBufMsgSrc_FromSteamID":
+      return GCProtoBufMsgSrc.GCProtoBufMsgSrc_FromSteamID;
+    case 3:
+    case "GCProtoBufMsgSrc_FromGC":
+      return GCProtoBufMsgSrc.GCProtoBufMsgSrc_FromGC;
+    case 4:
+    case "GCProtoBufMsgSrc_ReplySystem":
+      return GCProtoBufMsgSrc.GCProtoBufMsgSrc_ReplySystem;
+    case 5:
+    case "GCProtoBufMsgSrc_SpoofedSteamID":
+      return GCProtoBufMsgSrc.GCProtoBufMsgSrc_SpoofedSteamID;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum GCProtoBufMsgSrc");
+  }
+}
+
+export function gCProtoBufMsgSrcToJSON(object: GCProtoBufMsgSrc): string {
+  switch (object) {
+    case GCProtoBufMsgSrc.GCProtoBufMsgSrc_Unspecified:
+      return "GCProtoBufMsgSrc_Unspecified";
+    case GCProtoBufMsgSrc.GCProtoBufMsgSrc_FromSystem:
+      return "GCProtoBufMsgSrc_FromSystem";
+    case GCProtoBufMsgSrc.GCProtoBufMsgSrc_FromSteamID:
+      return "GCProtoBufMsgSrc_FromSteamID";
+    case GCProtoBufMsgSrc.GCProtoBufMsgSrc_FromGC:
+      return "GCProtoBufMsgSrc_FromGC";
+    case GCProtoBufMsgSrc.GCProtoBufMsgSrc_ReplySystem:
+      return "GCProtoBufMsgSrc_ReplySystem";
+    case GCProtoBufMsgSrc.GCProtoBufMsgSrc_SpoofedSteamID:
+      return "GCProtoBufMsgSrc_SpoofedSteamID";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum GCProtoBufMsgSrc");
+  }
 }
 
 export interface CMsgProtoBufHeader {
@@ -226,6 +314,36 @@ export const CMsgProtoBufHeader = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgProtoBufHeader {
+    return {
+      clientSteamId: isSet(object.clientSteamId) ? String(object.clientSteamId) : "0",
+      clientSessionId: isSet(object.clientSessionId) ? Number(object.clientSessionId) : 0,
+      sourceAppId: isSet(object.sourceAppId) ? Number(object.sourceAppId) : 0,
+      jobIdSource: isSet(object.jobIdSource) ? String(object.jobIdSource) : "0",
+      jobIdTarget: isSet(object.jobIdTarget) ? String(object.jobIdTarget) : "0",
+      targetJobName: isSet(object.targetJobName) ? String(object.targetJobName) : "",
+      eresult: isSet(object.eresult) ? Number(object.eresult) : 0,
+      errorMessage: isSet(object.errorMessage) ? String(object.errorMessage) : "",
+      gcMsgSrc: isSet(object.gcMsgSrc) ? gCProtoBufMsgSrcFromJSON(object.gcMsgSrc) : 0,
+      gcDirIndexSource: isSet(object.gcDirIndexSource) ? Number(object.gcDirIndexSource) : 0,
+    };
+  },
+
+  toJSON(message: CMsgProtoBufHeader): unknown {
+    const obj: any = {};
+    message.clientSteamId !== undefined && (obj.clientSteamId = message.clientSteamId);
+    message.clientSessionId !== undefined && (obj.clientSessionId = Math.round(message.clientSessionId));
+    message.sourceAppId !== undefined && (obj.sourceAppId = Math.round(message.sourceAppId));
+    message.jobIdSource !== undefined && (obj.jobIdSource = message.jobIdSource);
+    message.jobIdTarget !== undefined && (obj.jobIdTarget = message.jobIdTarget);
+    message.targetJobName !== undefined && (obj.targetJobName = message.targetJobName);
+    message.eresult !== undefined && (obj.eresult = Math.round(message.eresult));
+    message.errorMessage !== undefined && (obj.errorMessage = message.errorMessage);
+    message.gcMsgSrc !== undefined && (obj.gcMsgSrc = gCProtoBufMsgSrcToJSON(message.gcMsgSrc));
+    message.gcDirIndexSource !== undefined && (obj.gcDirIndexSource = Math.round(message.gcDirIndexSource));
+    return obj;
+  },
 };
 
 function createBaseCGCSystemMsgGetAccountDetails(): CGCSystemMsgGetAccountDetails {
@@ -271,6 +389,20 @@ export const CGCSystemMsgGetAccountDetails = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CGCSystemMsgGetAccountDetails {
+    return {
+      steamid: isSet(object.steamid) ? String(object.steamid) : "0",
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+    };
+  },
+
+  toJSON(message: CGCSystemMsgGetAccountDetails): unknown {
+    const obj: any = {};
+    message.steamid !== undefined && (obj.steamid = message.steamid);
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    return obj;
   },
 };
 
@@ -706,6 +838,91 @@ export const CGCSystemMsgGetAccountDetailsResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CGCSystemMsgGetAccountDetailsResponse {
+    return {
+      eresultDeprecated: isSet(object.eresultDeprecated) ? Number(object.eresultDeprecated) : 0,
+      accountName: isSet(object.accountName) ? String(object.accountName) : "",
+      personaName: isSet(object.personaName) ? String(object.personaName) : "",
+      isProfileCreated: isSet(object.isProfileCreated) ? Boolean(object.isProfileCreated) : false,
+      isProfilePublic: isSet(object.isProfilePublic) ? Boolean(object.isProfilePublic) : false,
+      isInventoryPublic: isSet(object.isInventoryPublic) ? Boolean(object.isInventoryPublic) : false,
+      isVacBanned: isSet(object.isVacBanned) ? Boolean(object.isVacBanned) : false,
+      isCyberCafe: isSet(object.isCyberCafe) ? Boolean(object.isCyberCafe) : false,
+      isSchoolAccount: isSet(object.isSchoolAccount) ? Boolean(object.isSchoolAccount) : false,
+      isLimited: isSet(object.isLimited) ? Boolean(object.isLimited) : false,
+      isSubscribed: isSet(object.isSubscribed) ? Boolean(object.isSubscribed) : false,
+      package: isSet(object.package) ? Number(object.package) : 0,
+      isFreeTrialAccount: isSet(object.isFreeTrialAccount) ? Boolean(object.isFreeTrialAccount) : false,
+      freeTrialExpiration: isSet(object.freeTrialExpiration) ? Number(object.freeTrialExpiration) : 0,
+      isLowViolence: isSet(object.isLowViolence) ? Boolean(object.isLowViolence) : false,
+      isAccountLockedDown: isSet(object.isAccountLockedDown) ? Boolean(object.isAccountLockedDown) : false,
+      isCommunityBanned: isSet(object.isCommunityBanned) ? Boolean(object.isCommunityBanned) : false,
+      isTradeBanned: isSet(object.isTradeBanned) ? Boolean(object.isTradeBanned) : false,
+      tradeBanExpiration: isSet(object.tradeBanExpiration) ? Number(object.tradeBanExpiration) : 0,
+      accountid: isSet(object.accountid) ? Number(object.accountid) : 0,
+      suspensionEndTime: isSet(object.suspensionEndTime) ? Number(object.suspensionEndTime) : 0,
+      currency: isSet(object.currency) ? String(object.currency) : "",
+      steamLevel: isSet(object.steamLevel) ? Number(object.steamLevel) : 0,
+      friendCount: isSet(object.friendCount) ? Number(object.friendCount) : 0,
+      accountCreationTime: isSet(object.accountCreationTime) ? Number(object.accountCreationTime) : 0,
+      isSteamguardEnabled: isSet(object.isSteamguardEnabled) ? Boolean(object.isSteamguardEnabled) : false,
+      isPhoneVerified: isSet(object.isPhoneVerified) ? Boolean(object.isPhoneVerified) : false,
+      isTwoFactorAuthEnabled: isSet(object.isTwoFactorAuthEnabled) ? Boolean(object.isTwoFactorAuthEnabled) : false,
+      twoFactorEnabledTime: isSet(object.twoFactorEnabledTime) ? Number(object.twoFactorEnabledTime) : 0,
+      phoneVerificationTime: isSet(object.phoneVerificationTime) ? Number(object.phoneVerificationTime) : 0,
+      phoneId: isSet(object.phoneId) ? String(object.phoneId) : "0",
+      isPhoneIdentifying: isSet(object.isPhoneIdentifying) ? Boolean(object.isPhoneIdentifying) : false,
+      rtIdentityLinked: isSet(object.rtIdentityLinked) ? Number(object.rtIdentityLinked) : 0,
+      rtBirthDate: isSet(object.rtBirthDate) ? Number(object.rtBirthDate) : 0,
+      txnCountryCode: isSet(object.txnCountryCode) ? String(object.txnCountryCode) : "",
+      hasAcceptedChinaSsa: isSet(object.hasAcceptedChinaSsa) ? Boolean(object.hasAcceptedChinaSsa) : false,
+      isBannedSteamChina: isSet(object.isBannedSteamChina) ? Boolean(object.isBannedSteamChina) : false,
+    };
+  },
+
+  toJSON(message: CGCSystemMsgGetAccountDetailsResponse): unknown {
+    const obj: any = {};
+    message.eresultDeprecated !== undefined && (obj.eresultDeprecated = Math.round(message.eresultDeprecated));
+    message.accountName !== undefined && (obj.accountName = message.accountName);
+    message.personaName !== undefined && (obj.personaName = message.personaName);
+    message.isProfileCreated !== undefined && (obj.isProfileCreated = message.isProfileCreated);
+    message.isProfilePublic !== undefined && (obj.isProfilePublic = message.isProfilePublic);
+    message.isInventoryPublic !== undefined && (obj.isInventoryPublic = message.isInventoryPublic);
+    message.isVacBanned !== undefined && (obj.isVacBanned = message.isVacBanned);
+    message.isCyberCafe !== undefined && (obj.isCyberCafe = message.isCyberCafe);
+    message.isSchoolAccount !== undefined && (obj.isSchoolAccount = message.isSchoolAccount);
+    message.isLimited !== undefined && (obj.isLimited = message.isLimited);
+    message.isSubscribed !== undefined && (obj.isSubscribed = message.isSubscribed);
+    message.package !== undefined && (obj.package = Math.round(message.package));
+    message.isFreeTrialAccount !== undefined && (obj.isFreeTrialAccount = message.isFreeTrialAccount);
+    message.freeTrialExpiration !== undefined && (obj.freeTrialExpiration = Math.round(message.freeTrialExpiration));
+    message.isLowViolence !== undefined && (obj.isLowViolence = message.isLowViolence);
+    message.isAccountLockedDown !== undefined && (obj.isAccountLockedDown = message.isAccountLockedDown);
+    message.isCommunityBanned !== undefined && (obj.isCommunityBanned = message.isCommunityBanned);
+    message.isTradeBanned !== undefined && (obj.isTradeBanned = message.isTradeBanned);
+    message.tradeBanExpiration !== undefined && (obj.tradeBanExpiration = Math.round(message.tradeBanExpiration));
+    message.accountid !== undefined && (obj.accountid = Math.round(message.accountid));
+    message.suspensionEndTime !== undefined && (obj.suspensionEndTime = Math.round(message.suspensionEndTime));
+    message.currency !== undefined && (obj.currency = message.currency);
+    message.steamLevel !== undefined && (obj.steamLevel = Math.round(message.steamLevel));
+    message.friendCount !== undefined && (obj.friendCount = Math.round(message.friendCount));
+    message.accountCreationTime !== undefined && (obj.accountCreationTime = Math.round(message.accountCreationTime));
+    message.isSteamguardEnabled !== undefined && (obj.isSteamguardEnabled = message.isSteamguardEnabled);
+    message.isPhoneVerified !== undefined && (obj.isPhoneVerified = message.isPhoneVerified);
+    message.isTwoFactorAuthEnabled !== undefined && (obj.isTwoFactorAuthEnabled = message.isTwoFactorAuthEnabled);
+    message.twoFactorEnabledTime !== undefined && (obj.twoFactorEnabledTime = Math.round(message.twoFactorEnabledTime));
+    message.phoneVerificationTime !== undefined &&
+      (obj.phoneVerificationTime = Math.round(message.phoneVerificationTime));
+    message.phoneId !== undefined && (obj.phoneId = message.phoneId);
+    message.isPhoneIdentifying !== undefined && (obj.isPhoneIdentifying = message.isPhoneIdentifying);
+    message.rtIdentityLinked !== undefined && (obj.rtIdentityLinked = Math.round(message.rtIdentityLinked));
+    message.rtBirthDate !== undefined && (obj.rtBirthDate = Math.round(message.rtBirthDate));
+    message.txnCountryCode !== undefined && (obj.txnCountryCode = message.txnCountryCode);
+    message.hasAcceptedChinaSsa !== undefined && (obj.hasAcceptedChinaSsa = message.hasAcceptedChinaSsa);
+    message.isBannedSteamChina !== undefined && (obj.isBannedSteamChina = message.isBannedSteamChina);
+    return obj;
+  },
 };
 
 function createBaseCIPLocationInfo(): CIPLocationInfo {
@@ -792,6 +1009,28 @@ export const CIPLocationInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CIPLocationInfo {
+    return {
+      ip: isSet(object.ip) ? Number(object.ip) : 0,
+      latitude: isSet(object.latitude) ? Number(object.latitude) : 0,
+      longitude: isSet(object.longitude) ? Number(object.longitude) : 0,
+      country: isSet(object.country) ? String(object.country) : "",
+      state: isSet(object.state) ? String(object.state) : "",
+      city: isSet(object.city) ? String(object.city) : "",
+    };
+  },
+
+  toJSON(message: CIPLocationInfo): unknown {
+    const obj: any = {};
+    message.ip !== undefined && (obj.ip = Math.round(message.ip));
+    message.latitude !== undefined && (obj.latitude = message.latitude);
+    message.longitude !== undefined && (obj.longitude = message.longitude);
+    message.country !== undefined && (obj.country = message.country);
+    message.state !== undefined && (obj.state = message.state);
+    message.city !== undefined && (obj.city = message.city);
+    return obj;
+  },
 };
 
 function createBaseCGCMsgGetIPLocationResponse(): CGCMsgGetIPLocationResponse {
@@ -828,7 +1067,40 @@ export const CGCMsgGetIPLocationResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CGCMsgGetIPLocationResponse {
+    return { infos: Array.isArray(object?.infos) ? object.infos.map((e: any) => CIPLocationInfo.fromJSON(e)) : [] };
+  },
+
+  toJSON(message: CGCMsgGetIPLocationResponse): unknown {
+    const obj: any = {};
+    if (message.infos) {
+      obj.infos = message.infos.map((e) => e ? CIPLocationInfo.toJSON(e) : undefined);
+    } else {
+      obj.infos = [];
+    }
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
 
 function longToString(long: Long) {
   return long.toString();
@@ -837,4 +1109,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

@@ -11,6 +11,50 @@ export enum ESteamLearnDataType {
   STEAMLEARN_DATATYPE_OBJECT = 5,
 }
 
+export function eSteamLearnDataTypeFromJSON(object: any): ESteamLearnDataType {
+  switch (object) {
+    case 0:
+    case "STEAMLEARN_DATATYPE_INVALID":
+      return ESteamLearnDataType.STEAMLEARN_DATATYPE_INVALID;
+    case 1:
+    case "STEAMLEARN_DATATYPE_INT32":
+      return ESteamLearnDataType.STEAMLEARN_DATATYPE_INT32;
+    case 2:
+    case "STEAMLEARN_DATATYPE_FLOAT32":
+      return ESteamLearnDataType.STEAMLEARN_DATATYPE_FLOAT32;
+    case 3:
+    case "STEAMLEARN_DATATYPE_BOOL":
+      return ESteamLearnDataType.STEAMLEARN_DATATYPE_BOOL;
+    case 4:
+    case "STEAMLEARN_DATATYPE_STRING":
+      return ESteamLearnDataType.STEAMLEARN_DATATYPE_STRING;
+    case 5:
+    case "STEAMLEARN_DATATYPE_OBJECT":
+      return ESteamLearnDataType.STEAMLEARN_DATATYPE_OBJECT;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ESteamLearnDataType");
+  }
+}
+
+export function eSteamLearnDataTypeToJSON(object: ESteamLearnDataType): string {
+  switch (object) {
+    case ESteamLearnDataType.STEAMLEARN_DATATYPE_INVALID:
+      return "STEAMLEARN_DATATYPE_INVALID";
+    case ESteamLearnDataType.STEAMLEARN_DATATYPE_INT32:
+      return "STEAMLEARN_DATATYPE_INT32";
+    case ESteamLearnDataType.STEAMLEARN_DATATYPE_FLOAT32:
+      return "STEAMLEARN_DATATYPE_FLOAT32";
+    case ESteamLearnDataType.STEAMLEARN_DATATYPE_BOOL:
+      return "STEAMLEARN_DATATYPE_BOOL";
+    case ESteamLearnDataType.STEAMLEARN_DATATYPE_STRING:
+      return "STEAMLEARN_DATATYPE_STRING";
+    case ESteamLearnDataType.STEAMLEARN_DATATYPE_OBJECT:
+      return "STEAMLEARN_DATATYPE_OBJECT";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ESteamLearnDataType");
+  }
+}
+
 export enum ESteammLearnRegisterDataSourceResult {
   STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR = 0,
   STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_SUCCESS_CREATED = 1,
@@ -25,6 +69,79 @@ export enum ESteammLearnRegisterDataSourceResult {
   STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_DISABLED = 10,
 }
 
+export function eSteammLearnRegisterDataSourceResultFromJSON(object: any): ESteammLearnRegisterDataSourceResult {
+  switch (object) {
+    case 0:
+    case "STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR":
+      return ESteammLearnRegisterDataSourceResult.STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR;
+    case 1:
+    case "STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_SUCCESS_CREATED":
+      return ESteammLearnRegisterDataSourceResult.STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_SUCCESS_CREATED;
+    case 2:
+    case "STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_SUCCESS_FOUND":
+      return ESteammLearnRegisterDataSourceResult.STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_SUCCESS_FOUND;
+    case 3:
+    case "STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR_GENERIC":
+      return ESteammLearnRegisterDataSourceResult.STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR_GENERIC;
+    case 4:
+    case "STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR_INVALID_NAME":
+      return ESteammLearnRegisterDataSourceResult.STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR_INVALID_NAME;
+    case 5:
+    case "STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR_INVALID_VERSION":
+      return ESteammLearnRegisterDataSourceResult.STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR_INVALID_VERSION;
+    case 6:
+    case "STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR_DATA_CHANGED":
+      return ESteammLearnRegisterDataSourceResult.STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR_DATA_CHANGED;
+    case 7:
+    case "STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR_DATA_INVALID":
+      return ESteammLearnRegisterDataSourceResult.STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR_DATA_INVALID;
+    case 8:
+    case "STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR_FORBIDDEN":
+      return ESteammLearnRegisterDataSourceResult.STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR_FORBIDDEN;
+    case 9:
+    case "STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR_INVALID_TIMESTAMP":
+      return ESteammLearnRegisterDataSourceResult.STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR_INVALID_TIMESTAMP;
+    case 10:
+    case "STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_DISABLED":
+      return ESteammLearnRegisterDataSourceResult.STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_DISABLED;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum ESteammLearnRegisterDataSourceResult",
+      );
+  }
+}
+
+export function eSteammLearnRegisterDataSourceResultToJSON(object: ESteammLearnRegisterDataSourceResult): string {
+  switch (object) {
+    case ESteammLearnRegisterDataSourceResult.STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR:
+      return "STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR";
+    case ESteammLearnRegisterDataSourceResult.STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_SUCCESS_CREATED:
+      return "STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_SUCCESS_CREATED";
+    case ESteammLearnRegisterDataSourceResult.STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_SUCCESS_FOUND:
+      return "STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_SUCCESS_FOUND";
+    case ESteammLearnRegisterDataSourceResult.STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR_GENERIC:
+      return "STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR_GENERIC";
+    case ESteammLearnRegisterDataSourceResult.STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR_INVALID_NAME:
+      return "STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR_INVALID_NAME";
+    case ESteammLearnRegisterDataSourceResult.STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR_INVALID_VERSION:
+      return "STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR_INVALID_VERSION";
+    case ESteammLearnRegisterDataSourceResult.STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR_DATA_CHANGED:
+      return "STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR_DATA_CHANGED";
+    case ESteammLearnRegisterDataSourceResult.STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR_DATA_INVALID:
+      return "STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR_DATA_INVALID";
+    case ESteammLearnRegisterDataSourceResult.STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR_FORBIDDEN:
+      return "STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR_FORBIDDEN";
+    case ESteammLearnRegisterDataSourceResult.STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR_INVALID_TIMESTAMP:
+      return "STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_ERROR_INVALID_TIMESTAMP";
+    case ESteammLearnRegisterDataSourceResult.STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_DISABLED:
+      return "STEAMLEARN_REGISTER_DATA_SOURCE_RESULT_DISABLED";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum ESteammLearnRegisterDataSourceResult",
+      );
+  }
+}
+
 export enum ESteamLearnCacheDataResult {
   STEAMLEARN_CACHE_DATA_ERROR = 0,
   STEAMLEARN_CACHE_DATA_SUCCESS = 1,
@@ -34,6 +151,60 @@ export enum ESteamLearnCacheDataResult {
   STEAMLEARN_CACHE_DATA_ERROR_FORBIDDEN = 5,
   STEAMLEARN_CACHE_DATA_ERROR_INVALID_TIMESTAMP = 6,
   STEAMLEARN_CACHE_DATA_DISABLED = 7,
+}
+
+export function eSteamLearnCacheDataResultFromJSON(object: any): ESteamLearnCacheDataResult {
+  switch (object) {
+    case 0:
+    case "STEAMLEARN_CACHE_DATA_ERROR":
+      return ESteamLearnCacheDataResult.STEAMLEARN_CACHE_DATA_ERROR;
+    case 1:
+    case "STEAMLEARN_CACHE_DATA_SUCCESS":
+      return ESteamLearnCacheDataResult.STEAMLEARN_CACHE_DATA_SUCCESS;
+    case 2:
+    case "STEAMLEARN_CACHE_DATA_ERROR_UNKNOWN_DATA_SOURCE":
+      return ESteamLearnCacheDataResult.STEAMLEARN_CACHE_DATA_ERROR_UNKNOWN_DATA_SOURCE;
+    case 3:
+    case "STEAMLEARN_CACHE_DATA_ERROR_UNCACHED_DATA_SOURCE":
+      return ESteamLearnCacheDataResult.STEAMLEARN_CACHE_DATA_ERROR_UNCACHED_DATA_SOURCE;
+    case 4:
+    case "STEAMLEARN_CACHE_DATA_ERROR_INVALID_KEYS":
+      return ESteamLearnCacheDataResult.STEAMLEARN_CACHE_DATA_ERROR_INVALID_KEYS;
+    case 5:
+    case "STEAMLEARN_CACHE_DATA_ERROR_FORBIDDEN":
+      return ESteamLearnCacheDataResult.STEAMLEARN_CACHE_DATA_ERROR_FORBIDDEN;
+    case 6:
+    case "STEAMLEARN_CACHE_DATA_ERROR_INVALID_TIMESTAMP":
+      return ESteamLearnCacheDataResult.STEAMLEARN_CACHE_DATA_ERROR_INVALID_TIMESTAMP;
+    case 7:
+    case "STEAMLEARN_CACHE_DATA_DISABLED":
+      return ESteamLearnCacheDataResult.STEAMLEARN_CACHE_DATA_DISABLED;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ESteamLearnCacheDataResult");
+  }
+}
+
+export function eSteamLearnCacheDataResultToJSON(object: ESteamLearnCacheDataResult): string {
+  switch (object) {
+    case ESteamLearnCacheDataResult.STEAMLEARN_CACHE_DATA_ERROR:
+      return "STEAMLEARN_CACHE_DATA_ERROR";
+    case ESteamLearnCacheDataResult.STEAMLEARN_CACHE_DATA_SUCCESS:
+      return "STEAMLEARN_CACHE_DATA_SUCCESS";
+    case ESteamLearnCacheDataResult.STEAMLEARN_CACHE_DATA_ERROR_UNKNOWN_DATA_SOURCE:
+      return "STEAMLEARN_CACHE_DATA_ERROR_UNKNOWN_DATA_SOURCE";
+    case ESteamLearnCacheDataResult.STEAMLEARN_CACHE_DATA_ERROR_UNCACHED_DATA_SOURCE:
+      return "STEAMLEARN_CACHE_DATA_ERROR_UNCACHED_DATA_SOURCE";
+    case ESteamLearnCacheDataResult.STEAMLEARN_CACHE_DATA_ERROR_INVALID_KEYS:
+      return "STEAMLEARN_CACHE_DATA_ERROR_INVALID_KEYS";
+    case ESteamLearnCacheDataResult.STEAMLEARN_CACHE_DATA_ERROR_FORBIDDEN:
+      return "STEAMLEARN_CACHE_DATA_ERROR_FORBIDDEN";
+    case ESteamLearnCacheDataResult.STEAMLEARN_CACHE_DATA_ERROR_INVALID_TIMESTAMP:
+      return "STEAMLEARN_CACHE_DATA_ERROR_INVALID_TIMESTAMP";
+    case ESteamLearnCacheDataResult.STEAMLEARN_CACHE_DATA_DISABLED:
+      return "STEAMLEARN_CACHE_DATA_DISABLED";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ESteamLearnCacheDataResult");
+  }
 }
 
 export enum ESteamLearnSnapshotProjectResult {
@@ -52,8 +223,110 @@ export enum ESteamLearnSnapshotProjectResult {
   STEAMLEARN_SNAPSHOT_PROJECT_ERROR_INVALID_PUBLISHED_VERSION = 12,
 }
 
+export function eSteamLearnSnapshotProjectResultFromJSON(object: any): ESteamLearnSnapshotProjectResult {
+  switch (object) {
+    case 0:
+    case "STEAMLEARN_SNAPSHOT_PROJECT_ERROR":
+      return ESteamLearnSnapshotProjectResult.STEAMLEARN_SNAPSHOT_PROJECT_ERROR;
+    case 1:
+    case "STEAMLEARN_SNAPSHOT_PROJECT_SUCCESS_STORED":
+      return ESteamLearnSnapshotProjectResult.STEAMLEARN_SNAPSHOT_PROJECT_SUCCESS_STORED;
+    case 2:
+    case "STEAMLEARN_SNAPSHOT_PROJECT_SUCCESS_QUEUED":
+      return ESteamLearnSnapshotProjectResult.STEAMLEARN_SNAPSHOT_PROJECT_SUCCESS_QUEUED;
+    case 3:
+    case "STEAMLEARN_SNAPSHOT_PROJECT_ERROR_INVALID_PROJECT_ID":
+      return ESteamLearnSnapshotProjectResult.STEAMLEARN_SNAPSHOT_PROJECT_ERROR_INVALID_PROJECT_ID;
+    case 4:
+    case "STEAMLEARN_SNAPSHOT_PROJECT_ERROR_UNKNOWN_DATA_SOURCE":
+      return ESteamLearnSnapshotProjectResult.STEAMLEARN_SNAPSHOT_PROJECT_ERROR_UNKNOWN_DATA_SOURCE;
+    case 5:
+    case "STEAMLEARN_SNAPSHOT_PROJECT_ERROR_INVALID_DATA_SOURCE_KEY":
+      return ESteamLearnSnapshotProjectResult.STEAMLEARN_SNAPSHOT_PROJECT_ERROR_INVALID_DATA_SOURCE_KEY;
+    case 6:
+    case "STEAMLEARN_SNAPSHOT_PROJECT_ERROR_MISSING_CACHE_DURATION":
+      return ESteamLearnSnapshotProjectResult.STEAMLEARN_SNAPSHOT_PROJECT_ERROR_MISSING_CACHE_DURATION;
+    case 7:
+    case "STEAMLEARN_SNAPSHOT_PROJECT_ERROR_NO_PUBLISHED_CONFIG":
+      return ESteamLearnSnapshotProjectResult.STEAMLEARN_SNAPSHOT_PROJECT_ERROR_NO_PUBLISHED_CONFIG;
+    case 8:
+    case "STEAMLEARN_SNAPSHOT_PROJECT_ERROR_FORBIDDEN":
+      return ESteamLearnSnapshotProjectResult.STEAMLEARN_SNAPSHOT_PROJECT_ERROR_FORBIDDEN;
+    case 9:
+    case "STEAMLEARN_SNAPSHOT_PROJECT_ERROR_INVALID_TIMESTAMP":
+      return ESteamLearnSnapshotProjectResult.STEAMLEARN_SNAPSHOT_PROJECT_ERROR_INVALID_TIMESTAMP;
+    case 10:
+    case "STEAMLEARN_SNAPSHOT_PROJECT_ERROR_INTERNAL_DATA_SOURCE_ERROR":
+      return ESteamLearnSnapshotProjectResult.STEAMLEARN_SNAPSHOT_PROJECT_ERROR_INTERNAL_DATA_SOURCE_ERROR;
+    case 11:
+    case "STEAMLEARN_SNAPSHOT_PROJECT_DISABLED":
+      return ESteamLearnSnapshotProjectResult.STEAMLEARN_SNAPSHOT_PROJECT_DISABLED;
+    case 12:
+    case "STEAMLEARN_SNAPSHOT_PROJECT_ERROR_INVALID_PUBLISHED_VERSION":
+      return ESteamLearnSnapshotProjectResult.STEAMLEARN_SNAPSHOT_PROJECT_ERROR_INVALID_PUBLISHED_VERSION;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum ESteamLearnSnapshotProjectResult",
+      );
+  }
+}
+
+export function eSteamLearnSnapshotProjectResultToJSON(object: ESteamLearnSnapshotProjectResult): string {
+  switch (object) {
+    case ESteamLearnSnapshotProjectResult.STEAMLEARN_SNAPSHOT_PROJECT_ERROR:
+      return "STEAMLEARN_SNAPSHOT_PROJECT_ERROR";
+    case ESteamLearnSnapshotProjectResult.STEAMLEARN_SNAPSHOT_PROJECT_SUCCESS_STORED:
+      return "STEAMLEARN_SNAPSHOT_PROJECT_SUCCESS_STORED";
+    case ESteamLearnSnapshotProjectResult.STEAMLEARN_SNAPSHOT_PROJECT_SUCCESS_QUEUED:
+      return "STEAMLEARN_SNAPSHOT_PROJECT_SUCCESS_QUEUED";
+    case ESteamLearnSnapshotProjectResult.STEAMLEARN_SNAPSHOT_PROJECT_ERROR_INVALID_PROJECT_ID:
+      return "STEAMLEARN_SNAPSHOT_PROJECT_ERROR_INVALID_PROJECT_ID";
+    case ESteamLearnSnapshotProjectResult.STEAMLEARN_SNAPSHOT_PROJECT_ERROR_UNKNOWN_DATA_SOURCE:
+      return "STEAMLEARN_SNAPSHOT_PROJECT_ERROR_UNKNOWN_DATA_SOURCE";
+    case ESteamLearnSnapshotProjectResult.STEAMLEARN_SNAPSHOT_PROJECT_ERROR_INVALID_DATA_SOURCE_KEY:
+      return "STEAMLEARN_SNAPSHOT_PROJECT_ERROR_INVALID_DATA_SOURCE_KEY";
+    case ESteamLearnSnapshotProjectResult.STEAMLEARN_SNAPSHOT_PROJECT_ERROR_MISSING_CACHE_DURATION:
+      return "STEAMLEARN_SNAPSHOT_PROJECT_ERROR_MISSING_CACHE_DURATION";
+    case ESteamLearnSnapshotProjectResult.STEAMLEARN_SNAPSHOT_PROJECT_ERROR_NO_PUBLISHED_CONFIG:
+      return "STEAMLEARN_SNAPSHOT_PROJECT_ERROR_NO_PUBLISHED_CONFIG";
+    case ESteamLearnSnapshotProjectResult.STEAMLEARN_SNAPSHOT_PROJECT_ERROR_FORBIDDEN:
+      return "STEAMLEARN_SNAPSHOT_PROJECT_ERROR_FORBIDDEN";
+    case ESteamLearnSnapshotProjectResult.STEAMLEARN_SNAPSHOT_PROJECT_ERROR_INVALID_TIMESTAMP:
+      return "STEAMLEARN_SNAPSHOT_PROJECT_ERROR_INVALID_TIMESTAMP";
+    case ESteamLearnSnapshotProjectResult.STEAMLEARN_SNAPSHOT_PROJECT_ERROR_INTERNAL_DATA_SOURCE_ERROR:
+      return "STEAMLEARN_SNAPSHOT_PROJECT_ERROR_INTERNAL_DATA_SOURCE_ERROR";
+    case ESteamLearnSnapshotProjectResult.STEAMLEARN_SNAPSHOT_PROJECT_DISABLED:
+      return "STEAMLEARN_SNAPSHOT_PROJECT_DISABLED";
+    case ESteamLearnSnapshotProjectResult.STEAMLEARN_SNAPSHOT_PROJECT_ERROR_INVALID_PUBLISHED_VERSION:
+      return "STEAMLEARN_SNAPSHOT_PROJECT_ERROR_INVALID_PUBLISHED_VERSION";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum ESteamLearnSnapshotProjectResult",
+      );
+  }
+}
+
 export enum ESteamLearnGetHMACKeysResult {
   STEAMLEARN_GET_HMAC_KEYS_SUCCESS = 0,
+}
+
+export function eSteamLearnGetHMACKeysResultFromJSON(object: any): ESteamLearnGetHMACKeysResult {
+  switch (object) {
+    case 0:
+    case "STEAMLEARN_GET_HMAC_KEYS_SUCCESS":
+      return ESteamLearnGetHMACKeysResult.STEAMLEARN_GET_HMAC_KEYS_SUCCESS;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ESteamLearnGetHMACKeysResult");
+  }
+}
+
+export function eSteamLearnGetHMACKeysResultToJSON(object: ESteamLearnGetHMACKeysResult): string {
+  switch (object) {
+    case ESteamLearnGetHMACKeysResult.STEAMLEARN_GET_HMAC_KEYS_SUCCESS:
+      return "STEAMLEARN_GET_HMAC_KEYS_SUCCESS";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ESteamLearnGetHMACKeysResult");
+  }
 }
 
 export enum ESteamLearnInferenceResult {
@@ -66,6 +339,65 @@ export enum ESteamLearnInferenceResult {
   STEAMLEARN_INFERENCE_ERROR_INVALID_TIMESTAMP = 6,
   STEAMLEARN_INFERENCE_ERROR_INVALID_PUBLISHED_VERSION = 7,
   STEAMLEARN_INFERENCE_ERROR_NO_FETCH_ID_FOUND = 8,
+}
+
+export function eSteamLearnInferenceResultFromJSON(object: any): ESteamLearnInferenceResult {
+  switch (object) {
+    case 0:
+    case "STEAMLEARN_INFERENCE_ERROR":
+      return ESteamLearnInferenceResult.STEAMLEARN_INFERENCE_ERROR;
+    case 1:
+    case "STEAMLEARN_INFERENCE_SUCCESS":
+      return ESteamLearnInferenceResult.STEAMLEARN_INFERENCE_SUCCESS;
+    case 2:
+    case "STEAMLEARN_INFERENCE_ERROR_INVALID_PROJECT_ID":
+      return ESteamLearnInferenceResult.STEAMLEARN_INFERENCE_ERROR_INVALID_PROJECT_ID;
+    case 3:
+    case "STEAMLEARN_INFERENCE_ERROR_MISSING_CACHED_SCHEMA_DATA":
+      return ESteamLearnInferenceResult.STEAMLEARN_INFERENCE_ERROR_MISSING_CACHED_SCHEMA_DATA;
+    case 4:
+    case "STEAMLEARN_INFERENCE_ERROR_NO_PUBLISHED_CONFIG":
+      return ESteamLearnInferenceResult.STEAMLEARN_INFERENCE_ERROR_NO_PUBLISHED_CONFIG;
+    case 5:
+    case "STEAMLEARN_INFERENCE_ERROR_FORBIDDEN":
+      return ESteamLearnInferenceResult.STEAMLEARN_INFERENCE_ERROR_FORBIDDEN;
+    case 6:
+    case "STEAMLEARN_INFERENCE_ERROR_INVALID_TIMESTAMP":
+      return ESteamLearnInferenceResult.STEAMLEARN_INFERENCE_ERROR_INVALID_TIMESTAMP;
+    case 7:
+    case "STEAMLEARN_INFERENCE_ERROR_INVALID_PUBLISHED_VERSION":
+      return ESteamLearnInferenceResult.STEAMLEARN_INFERENCE_ERROR_INVALID_PUBLISHED_VERSION;
+    case 8:
+    case "STEAMLEARN_INFERENCE_ERROR_NO_FETCH_ID_FOUND":
+      return ESteamLearnInferenceResult.STEAMLEARN_INFERENCE_ERROR_NO_FETCH_ID_FOUND;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ESteamLearnInferenceResult");
+  }
+}
+
+export function eSteamLearnInferenceResultToJSON(object: ESteamLearnInferenceResult): string {
+  switch (object) {
+    case ESteamLearnInferenceResult.STEAMLEARN_INFERENCE_ERROR:
+      return "STEAMLEARN_INFERENCE_ERROR";
+    case ESteamLearnInferenceResult.STEAMLEARN_INFERENCE_SUCCESS:
+      return "STEAMLEARN_INFERENCE_SUCCESS";
+    case ESteamLearnInferenceResult.STEAMLEARN_INFERENCE_ERROR_INVALID_PROJECT_ID:
+      return "STEAMLEARN_INFERENCE_ERROR_INVALID_PROJECT_ID";
+    case ESteamLearnInferenceResult.STEAMLEARN_INFERENCE_ERROR_MISSING_CACHED_SCHEMA_DATA:
+      return "STEAMLEARN_INFERENCE_ERROR_MISSING_CACHED_SCHEMA_DATA";
+    case ESteamLearnInferenceResult.STEAMLEARN_INFERENCE_ERROR_NO_PUBLISHED_CONFIG:
+      return "STEAMLEARN_INFERENCE_ERROR_NO_PUBLISHED_CONFIG";
+    case ESteamLearnInferenceResult.STEAMLEARN_INFERENCE_ERROR_FORBIDDEN:
+      return "STEAMLEARN_INFERENCE_ERROR_FORBIDDEN";
+    case ESteamLearnInferenceResult.STEAMLEARN_INFERENCE_ERROR_INVALID_TIMESTAMP:
+      return "STEAMLEARN_INFERENCE_ERROR_INVALID_TIMESTAMP";
+    case ESteamLearnInferenceResult.STEAMLEARN_INFERENCE_ERROR_INVALID_PUBLISHED_VERSION:
+      return "STEAMLEARN_INFERENCE_ERROR_INVALID_PUBLISHED_VERSION";
+    case ESteamLearnInferenceResult.STEAMLEARN_INFERENCE_ERROR_NO_FETCH_ID_FOUND:
+      return "STEAMLEARN_INFERENCE_ERROR_NO_FETCH_ID_FOUND";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ESteamLearnInferenceResult");
+  }
 }
 
 export interface CMsgSteamLearnDataSourceDescObject {
@@ -263,6 +595,24 @@ export const CMsgSteamLearnDataSourceDescObject = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamLearnDataSourceDescObject {
+    return {
+      elements: Array.isArray(object?.elements)
+        ? object.elements.map((e: any) => CMsgSteamLearnDataSourceDescElement.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnDataSourceDescObject): unknown {
+    const obj: any = {};
+    if (message.elements) {
+      obj.elements = message.elements.map((e) => e ? CMsgSteamLearnDataSourceDescElement.toJSON(e) : undefined);
+    } else {
+      obj.elements = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamLearnDataSourceDescElement(): CMsgSteamLearnDataSourceDescElement {
@@ -328,6 +678,25 @@ export const CMsgSteamLearnDataSourceDescElement = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamLearnDataSourceDescElement {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      dataType: isSet(object.dataType) ? eSteamLearnDataTypeFromJSON(object.dataType) : 0,
+      object: isSet(object.object) ? CMsgSteamLearnDataSourceDescObject.fromJSON(object.object) : undefined,
+      count: isSet(object.count) ? Number(object.count) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnDataSourceDescElement): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.dataType !== undefined && (obj.dataType = eSteamLearnDataTypeToJSON(message.dataType));
+    message.object !== undefined &&
+      (obj.object = message.object ? CMsgSteamLearnDataSourceDescObject.toJSON(message.object) : undefined);
+    message.count !== undefined && (obj.count = Math.round(message.count));
+    return obj;
   },
 };
 
@@ -433,6 +802,31 @@ export const CMsgSteamLearnDataSource = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamLearnDataSource {
+    return {
+      id: isSet(object.id) ? Number(object.id) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      version: isSet(object.version) ? Number(object.version) : 0,
+      sourceDescription: isSet(object.sourceDescription) ? String(object.sourceDescription) : "",
+      structure: isSet(object.structure) ? CMsgSteamLearnDataSourceDescObject.fromJSON(object.structure) : undefined,
+      structureCrc: isSet(object.structureCrc) ? Number(object.structureCrc) : 0,
+      cacheDurationSeconds: isSet(object.cacheDurationSeconds) ? Number(object.cacheDurationSeconds) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnDataSource): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = Math.round(message.id));
+    message.name !== undefined && (obj.name = message.name);
+    message.version !== undefined && (obj.version = Math.round(message.version));
+    message.sourceDescription !== undefined && (obj.sourceDescription = message.sourceDescription);
+    message.structure !== undefined &&
+      (obj.structure = message.structure ? CMsgSteamLearnDataSourceDescObject.toJSON(message.structure) : undefined);
+    message.structureCrc !== undefined && (obj.structureCrc = Math.round(message.structureCrc));
+    message.cacheDurationSeconds !== undefined && (obj.cacheDurationSeconds = Math.round(message.cacheDurationSeconds));
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamLearnDataObject(): CMsgSteamLearnDataObject {
@@ -468,6 +862,24 @@ export const CMsgSteamLearnDataObject = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamLearnDataObject {
+    return {
+      elements: Array.isArray(object?.elements)
+        ? object.elements.map((e: any) => CMsgSteamLearnDataElement.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnDataObject): unknown {
+    const obj: any = {};
+    if (message.elements) {
+      obj.elements = message.elements.map((e) => e ? CMsgSteamLearnDataElement.toJSON(e) : undefined);
+    } else {
+      obj.elements = [];
+    }
+    return obj;
   },
 };
 
@@ -588,6 +1000,50 @@ export const CMsgSteamLearnDataElement = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamLearnDataElement {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      dataInt32s: Array.isArray(object?.dataInt32s) ? object.dataInt32s.map((e: any) => Number(e)) : [],
+      dataFloats: Array.isArray(object?.dataFloats) ? object.dataFloats.map((e: any) => Number(e)) : [],
+      dataBools: Array.isArray(object?.dataBools) ? object.dataBools.map((e: any) => Boolean(e)) : [],
+      dataStrings: Array.isArray(object?.dataStrings) ? object.dataStrings.map((e: any) => String(e)) : [],
+      dataObjects: Array.isArray(object?.dataObjects)
+        ? object.dataObjects.map((e: any) => CMsgSteamLearnDataObject.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnDataElement): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    if (message.dataInt32s) {
+      obj.dataInt32s = message.dataInt32s.map((e) => Math.round(e));
+    } else {
+      obj.dataInt32s = [];
+    }
+    if (message.dataFloats) {
+      obj.dataFloats = message.dataFloats.map((e) => e);
+    } else {
+      obj.dataFloats = [];
+    }
+    if (message.dataBools) {
+      obj.dataBools = message.dataBools.map((e) => e);
+    } else {
+      obj.dataBools = [];
+    }
+    if (message.dataStrings) {
+      obj.dataStrings = message.dataStrings.map((e) => e);
+    } else {
+      obj.dataStrings = [];
+    }
+    if (message.dataObjects) {
+      obj.dataObjects = message.dataObjects.map((e) => e ? CMsgSteamLearnDataObject.toJSON(e) : undefined);
+    } else {
+      obj.dataObjects = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamLearnData(): CMsgSteamLearnData {
@@ -655,6 +1111,27 @@ export const CMsgSteamLearnData = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamLearnData {
+    return {
+      dataSourceId: isSet(object.dataSourceId) ? Number(object.dataSourceId) : 0,
+      keys: Array.isArray(object?.keys) ? object.keys.map((e: any) => String(e)) : [],
+      dataObject: isSet(object.dataObject) ? CMsgSteamLearnDataObject.fromJSON(object.dataObject) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnData): unknown {
+    const obj: any = {};
+    message.dataSourceId !== undefined && (obj.dataSourceId = Math.round(message.dataSourceId));
+    if (message.keys) {
+      obj.keys = message.keys.map((e) => e);
+    } else {
+      obj.keys = [];
+    }
+    message.dataObject !== undefined &&
+      (obj.dataObject = message.dataObject ? CMsgSteamLearnDataObject.toJSON(message.dataObject) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamLearnDataList(): CMsgSteamLearnDataList {
@@ -690,6 +1167,20 @@ export const CMsgSteamLearnDataList = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamLearnDataList {
+    return { data: Array.isArray(object?.data) ? object.data.map((e: any) => CMsgSteamLearnData.fromJSON(e)) : [] };
+  },
+
+  toJSON(message: CMsgSteamLearnDataList): unknown {
+    const obj: any = {};
+    if (message.data) {
+      obj.data = message.data.map((e) => e ? CMsgSteamLearnData.toJSON(e) : undefined);
+    } else {
+      obj.data = [];
+    }
+    return obj;
   },
 };
 
@@ -747,6 +1238,22 @@ export const CMsgSteamLearnAccessData = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamLearnAccessData {
+    return {
+      publisherId: isSet(object.publisherId) ? Number(object.publisherId) : 0,
+      timestamp: isSet(object.timestamp) ? Number(object.timestamp) : 0,
+      randomValue: isSet(object.randomValue) ? String(object.randomValue) : "0",
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnAccessData): unknown {
+    const obj: any = {};
+    message.publisherId !== undefined && (obj.publisherId = Math.round(message.publisherId));
+    message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
+    message.randomValue !== undefined && (obj.randomValue = message.randomValue);
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamLearnRegisterDataSourceRequest(): CMsgSteamLearnRegisterDataSourceRequest {
@@ -803,6 +1310,24 @@ export const CMsgSteamLearnRegisterDataSourceRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamLearnRegisterDataSourceRequest {
+    return {
+      accessToken: isSet(object.accessToken) ? String(object.accessToken) : "",
+      accessData: isSet(object.accessData) ? CMsgSteamLearnAccessData.fromJSON(object.accessData) : undefined,
+      dataSource: isSet(object.dataSource) ? CMsgSteamLearnDataSource.fromJSON(object.dataSource) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnRegisterDataSourceRequest): unknown {
+    const obj: any = {};
+    message.accessToken !== undefined && (obj.accessToken = message.accessToken);
+    message.accessData !== undefined &&
+      (obj.accessData = message.accessData ? CMsgSteamLearnAccessData.toJSON(message.accessData) : undefined);
+    message.dataSource !== undefined &&
+      (obj.dataSource = message.dataSource ? CMsgSteamLearnDataSource.toJSON(message.dataSource) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamLearnRegisterDataSourceResponse(): CMsgSteamLearnRegisterDataSourceResponse {
@@ -848,6 +1373,21 @@ export const CMsgSteamLearnRegisterDataSourceResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamLearnRegisterDataSourceResponse {
+    return {
+      result: isSet(object.result) ? eSteammLearnRegisterDataSourceResultFromJSON(object.result) : 0,
+      dataSource: isSet(object.dataSource) ? CMsgSteamLearnDataSource.fromJSON(object.dataSource) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnRegisterDataSourceResponse): unknown {
+    const obj: any = {};
+    message.result !== undefined && (obj.result = eSteammLearnRegisterDataSourceResultToJSON(message.result));
+    message.dataSource !== undefined &&
+      (obj.dataSource = message.dataSource ? CMsgSteamLearnDataSource.toJSON(message.dataSource) : undefined);
+    return obj;
   },
 };
 
@@ -905,6 +1445,23 @@ export const CMsgSteamLearnCacheDataRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamLearnCacheDataRequest {
+    return {
+      accessToken: isSet(object.accessToken) ? String(object.accessToken) : "",
+      accessData: isSet(object.accessData) ? CMsgSteamLearnAccessData.fromJSON(object.accessData) : undefined,
+      data: isSet(object.data) ? CMsgSteamLearnData.fromJSON(object.data) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnCacheDataRequest): unknown {
+    const obj: any = {};
+    message.accessToken !== undefined && (obj.accessToken = message.accessToken);
+    message.accessData !== undefined &&
+      (obj.accessData = message.accessData ? CMsgSteamLearnAccessData.toJSON(message.accessData) : undefined);
+    message.data !== undefined && (obj.data = message.data ? CMsgSteamLearnData.toJSON(message.data) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamLearnCacheDataResponse(): CMsgSteamLearnCacheDataResponse {
@@ -940,6 +1497,19 @@ export const CMsgSteamLearnCacheDataResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamLearnCacheDataResponse {
+    return {
+      cacheDataResult: isSet(object.cacheDataResult) ? eSteamLearnCacheDataResultFromJSON(object.cacheDataResult) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnCacheDataResponse): unknown {
+    const obj: any = {};
+    message.cacheDataResult !== undefined &&
+      (obj.cacheDataResult = eSteamLearnCacheDataResultToJSON(message.cacheDataResult));
+    return obj;
   },
 };
 
@@ -1056,6 +1626,40 @@ export const CMsgSteamLearnSnapshotProjectRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamLearnSnapshotProjectRequest {
+    return {
+      accessToken: isSet(object.accessToken) ? String(object.accessToken) : "",
+      accessData: isSet(object.accessData) ? CMsgSteamLearnAccessData.fromJSON(object.accessData) : undefined,
+      projectId: isSet(object.projectId) ? Number(object.projectId) : 0,
+      publishedVersion: isSet(object.publishedVersion) ? Number(object.publishedVersion) : 0,
+      keys: Array.isArray(object?.keys) ? object.keys.map((e: any) => String(e)) : [],
+      data: Array.isArray(object?.data) ? object.data.map((e: any) => CMsgSteamLearnData.fromJSON(e)) : [],
+      pendingDataLimitSeconds: isSet(object.pendingDataLimitSeconds) ? Number(object.pendingDataLimitSeconds) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnSnapshotProjectRequest): unknown {
+    const obj: any = {};
+    message.accessToken !== undefined && (obj.accessToken = message.accessToken);
+    message.accessData !== undefined &&
+      (obj.accessData = message.accessData ? CMsgSteamLearnAccessData.toJSON(message.accessData) : undefined);
+    message.projectId !== undefined && (obj.projectId = Math.round(message.projectId));
+    message.publishedVersion !== undefined && (obj.publishedVersion = Math.round(message.publishedVersion));
+    if (message.keys) {
+      obj.keys = message.keys.map((e) => e);
+    } else {
+      obj.keys = [];
+    }
+    if (message.data) {
+      obj.data = message.data.map((e) => e ? CMsgSteamLearnData.toJSON(e) : undefined);
+    } else {
+      obj.data = [];
+    }
+    message.pendingDataLimitSeconds !== undefined &&
+      (obj.pendingDataLimitSeconds = Math.round(message.pendingDataLimitSeconds));
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamLearnSnapshotProjectResponse(): CMsgSteamLearnSnapshotProjectResponse {
@@ -1091,6 +1695,21 @@ export const CMsgSteamLearnSnapshotProjectResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamLearnSnapshotProjectResponse {
+    return {
+      snapshotResult: isSet(object.snapshotResult)
+        ? eSteamLearnSnapshotProjectResultFromJSON(object.snapshotResult)
+        : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnSnapshotProjectResponse): unknown {
+    const obj: any = {};
+    message.snapshotResult !== undefined &&
+      (obj.snapshotResult = eSteamLearnSnapshotProjectResultToJSON(message.snapshotResult));
+    return obj;
   },
 };
 
@@ -1138,6 +1757,36 @@ export const CMsgSteamLearnBatchOperationRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamLearnBatchOperationRequest {
+    return {
+      cacheDataRequests: Array.isArray(object?.cacheDataRequests)
+        ? object.cacheDataRequests.map((e: any) => CMsgSteamLearnCacheDataRequest.fromJSON(e))
+        : [],
+      snapshotRequests: Array.isArray(object?.snapshotRequests)
+        ? object.snapshotRequests.map((e: any) => CMsgSteamLearnSnapshotProjectRequest.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnBatchOperationRequest): unknown {
+    const obj: any = {};
+    if (message.cacheDataRequests) {
+      obj.cacheDataRequests = message.cacheDataRequests.map((e) =>
+        e ? CMsgSteamLearnCacheDataRequest.toJSON(e) : undefined
+      );
+    } else {
+      obj.cacheDataRequests = [];
+    }
+    if (message.snapshotRequests) {
+      obj.snapshotRequests = message.snapshotRequests.map((e) =>
+        e ? CMsgSteamLearnSnapshotProjectRequest.toJSON(e) : undefined
+      );
+    } else {
+      obj.snapshotRequests = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamLearnBatchOperationResponse(): CMsgSteamLearnBatchOperationResponse {
@@ -1183,6 +1832,36 @@ export const CMsgSteamLearnBatchOperationResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamLearnBatchOperationResponse {
+    return {
+      cacheDataResponses: Array.isArray(object?.cacheDataResponses)
+        ? object.cacheDataResponses.map((e: any) => CMsgSteamLearnCacheDataResponse.fromJSON(e))
+        : [],
+      snapshotResponses: Array.isArray(object?.snapshotResponses)
+        ? object.snapshotResponses.map((e: any) => CMsgSteamLearnSnapshotProjectResponse.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnBatchOperationResponse): unknown {
+    const obj: any = {};
+    if (message.cacheDataResponses) {
+      obj.cacheDataResponses = message.cacheDataResponses.map((e) =>
+        e ? CMsgSteamLearnCacheDataResponse.toJSON(e) : undefined
+      );
+    } else {
+      obj.cacheDataResponses = [];
+    }
+    if (message.snapshotResponses) {
+      obj.snapshotResponses = message.snapshotResponses.map((e) =>
+        e ? CMsgSteamLearnSnapshotProjectResponse.toJSON(e) : undefined
+      );
+    } else {
+      obj.snapshotResponses = [];
+    }
+    return obj;
   },
 };
 
@@ -1240,6 +1919,38 @@ export const CMsgSteamLearnHMACKeys = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamLearnHMACKeys {
+    return {
+      registerDataSourceKey: isSet(object.registerDataSourceKey) ? String(object.registerDataSourceKey) : "",
+      cacheDataKeys: Array.isArray(object?.cacheDataKeys)
+        ? object.cacheDataKeys.map((e: any) => CMsgSteamLearnHMACKeys_CacheDataKeys.fromJSON(e))
+        : [],
+      snapshotProjectKeys: Array.isArray(object?.snapshotProjectKeys)
+        ? object.snapshotProjectKeys.map((e: any) => CMsgSteamLearnHMACKeys_SnapshotProjectKeys.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnHMACKeys): unknown {
+    const obj: any = {};
+    message.registerDataSourceKey !== undefined && (obj.registerDataSourceKey = message.registerDataSourceKey);
+    if (message.cacheDataKeys) {
+      obj.cacheDataKeys = message.cacheDataKeys.map((e) =>
+        e ? CMsgSteamLearnHMACKeys_CacheDataKeys.toJSON(e) : undefined
+      );
+    } else {
+      obj.cacheDataKeys = [];
+    }
+    if (message.snapshotProjectKeys) {
+      obj.snapshotProjectKeys = message.snapshotProjectKeys.map((e) =>
+        e ? CMsgSteamLearnHMACKeys_SnapshotProjectKeys.toJSON(e) : undefined
+      );
+    } else {
+      obj.snapshotProjectKeys = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamLearnHMACKeys_CacheDataKeys(): CMsgSteamLearnHMACKeys_CacheDataKeys {
@@ -1295,6 +2006,22 @@ export const CMsgSteamLearnHMACKeys_CacheDataKeys = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamLearnHMACKeys_CacheDataKeys {
+    return {
+      dataSourceId: isSet(object.dataSourceId) ? Number(object.dataSourceId) : 0,
+      version: isSet(object.version) ? Number(object.version) : 0,
+      key: isSet(object.key) ? String(object.key) : "",
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnHMACKeys_CacheDataKeys): unknown {
+    const obj: any = {};
+    message.dataSourceId !== undefined && (obj.dataSourceId = Math.round(message.dataSourceId));
+    message.version !== undefined && (obj.version = Math.round(message.version));
+    message.key !== undefined && (obj.key = message.key);
+    return obj;
   },
 };
 
@@ -1352,6 +2079,22 @@ export const CMsgSteamLearnHMACKeys_SnapshotProjectKeys = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamLearnHMACKeys_SnapshotProjectKeys {
+    return {
+      projectId: isSet(object.projectId) ? Number(object.projectId) : 0,
+      publishedVersion: isSet(object.publishedVersion) ? Number(object.publishedVersion) : 0,
+      key: isSet(object.key) ? String(object.key) : "",
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnHMACKeys_SnapshotProjectKeys): unknown {
+    const obj: any = {};
+    message.projectId !== undefined && (obj.projectId = Math.round(message.projectId));
+    message.publishedVersion !== undefined && (obj.publishedVersion = Math.round(message.publishedVersion));
+    message.key !== undefined && (obj.key = message.key);
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamLearnGetHMACKeysRequest(): CMsgSteamLearnGetHMACKeysRequest {
@@ -1387,6 +2130,16 @@ export const CMsgSteamLearnGetHMACKeysRequest = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamLearnGetHMACKeysRequest {
+    return { appid: isSet(object.appid) ? Number(object.appid) : 0 };
+  },
+
+  toJSON(message: CMsgSteamLearnGetHMACKeysRequest): unknown {
+    const obj: any = {};
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    return obj;
   },
 };
 
@@ -1433,6 +2186,20 @@ export const CMsgSteamLearnGetHMACKeysResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamLearnGetHMACKeysResponse {
+    return {
+      result: isSet(object.result) ? eSteamLearnGetHMACKeysResultFromJSON(object.result) : 0,
+      keys: isSet(object.keys) ? CMsgSteamLearnHMACKeys.fromJSON(object.keys) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnGetHMACKeysResponse): unknown {
+    const obj: any = {};
+    message.result !== undefined && (obj.result = eSteamLearnGetHMACKeysResultToJSON(message.result));
+    message.keys !== undefined && (obj.keys = message.keys ? CMsgSteamLearnHMACKeys.toJSON(message.keys) : undefined);
+    return obj;
   },
 };
 
@@ -1549,6 +2316,35 @@ export const CMsgSteamLearnInferenceRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamLearnInferenceRequest {
+    return {
+      accessToken: isSet(object.accessToken) ? String(object.accessToken) : "",
+      accessData: isSet(object.accessData) ? CMsgSteamLearnAccessData.fromJSON(object.accessData) : undefined,
+      projectId: isSet(object.projectId) ? Number(object.projectId) : 0,
+      publishedVersion: isSet(object.publishedVersion) ? Number(object.publishedVersion) : 0,
+      overrideTrainId: isSet(object.overrideTrainId) ? Number(object.overrideTrainId) : 0,
+      data: isSet(object.data) ? CMsgSteamLearnDataList.fromJSON(object.data) : undefined,
+      additionalData: Array.isArray(object?.additionalData) ? object.additionalData.map((e: any) => Number(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnInferenceRequest): unknown {
+    const obj: any = {};
+    message.accessToken !== undefined && (obj.accessToken = message.accessToken);
+    message.accessData !== undefined &&
+      (obj.accessData = message.accessData ? CMsgSteamLearnAccessData.toJSON(message.accessData) : undefined);
+    message.projectId !== undefined && (obj.projectId = Math.round(message.projectId));
+    message.publishedVersion !== undefined && (obj.publishedVersion = Math.round(message.publishedVersion));
+    message.overrideTrainId !== undefined && (obj.overrideTrainId = Math.round(message.overrideTrainId));
+    message.data !== undefined && (obj.data = message.data ? CMsgSteamLearnDataList.toJSON(message.data) : undefined);
+    if (message.additionalData) {
+      obj.additionalData = message.additionalData.map((e) => e);
+    } else {
+      obj.additionalData = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamLearnInferenceBackendResponse(): CMsgSteamLearnInferenceBackendResponse {
@@ -1584,6 +2380,24 @@ export const CMsgSteamLearnInferenceBackendResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamLearnInferenceBackendResponse {
+    return {
+      outputs: Array.isArray(object?.outputs)
+        ? object.outputs.map((e: any) => CMsgSteamLearnInferenceBackendResponse_Output.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnInferenceBackendResponse): unknown {
+    const obj: any = {};
+    if (message.outputs) {
+      obj.outputs = message.outputs.map((e) => e ? CMsgSteamLearnInferenceBackendResponse_Output.toJSON(e) : undefined);
+    } else {
+      obj.outputs = [];
+    }
+    return obj;
   },
 };
 
@@ -1626,6 +2440,16 @@ export const CMsgSteamLearnInferenceBackendResponse_BinaryCrossEntropyOutput = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamLearnInferenceBackendResponse_BinaryCrossEntropyOutput {
+    return { value: isSet(object.value) ? Number(object.value) : 0 };
+  },
+
+  toJSON(message: CMsgSteamLearnInferenceBackendResponse_BinaryCrossEntropyOutput): unknown {
+    const obj: any = {};
+    message.value !== undefined && (obj.value = message.value);
+    return obj;
   },
 };
 
@@ -1701,6 +2525,28 @@ export const CMsgSteamLearnInferenceBackendResponse_MutliBinaryCrossEntropyOutpu
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamLearnInferenceBackendResponse_MutliBinaryCrossEntropyOutput {
+    return {
+      weight: Array.isArray(object?.weight) ? object.weight.map((e: any) => Number(e)) : [],
+      value: Array.isArray(object?.value) ? object.value.map((e: any) => Number(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnInferenceBackendResponse_MutliBinaryCrossEntropyOutput): unknown {
+    const obj: any = {};
+    if (message.weight) {
+      obj.weight = message.weight.map((e) => e);
+    } else {
+      obj.weight = [];
+    }
+    if (message.value) {
+      obj.value = message.value.map((e) => e);
+    } else {
+      obj.value = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamLearnInferenceBackendResponse_CategoricalCrossEntropyOutput(): CMsgSteamLearnInferenceBackendResponse_CategoricalCrossEntropyOutput {
@@ -1774,6 +2620,28 @@ export const CMsgSteamLearnInferenceBackendResponse_CategoricalCrossEntropyOutpu
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamLearnInferenceBackendResponse_CategoricalCrossEntropyOutput {
+    return {
+      weight: Array.isArray(object?.weight) ? object.weight.map((e: any) => Number(e)) : [],
+      value: Array.isArray(object?.value) ? object.value.map((e: any) => Number(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnInferenceBackendResponse_CategoricalCrossEntropyOutput): unknown {
+    const obj: any = {};
+    if (message.weight) {
+      obj.weight = message.weight.map((e) => e);
+    } else {
+      obj.weight = [];
+    }
+    if (message.value) {
+      obj.value = message.value.map((e) => e);
+    } else {
+      obj.value = [];
+    }
+    return obj;
   },
 };
 
@@ -1849,6 +2717,34 @@ export const CMsgSteamLearnInferenceBackendResponse_Output = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSteamLearnInferenceBackendResponse_Output {
+    return {
+      binaryCrossentropy: isSet(object.binaryCrossentropy)
+        ? CMsgSteamLearnInferenceBackendResponse_BinaryCrossEntropyOutput.fromJSON(object.binaryCrossentropy)
+        : undefined,
+      categoricalCrossentropy: isSet(object.categoricalCrossentropy)
+        ? CMsgSteamLearnInferenceBackendResponse_CategoricalCrossEntropyOutput.fromJSON(object.categoricalCrossentropy)
+        : undefined,
+      multiBinaryCrossentropy: isSet(object.multiBinaryCrossentropy)
+        ? CMsgSteamLearnInferenceBackendResponse_MutliBinaryCrossEntropyOutput.fromJSON(object.multiBinaryCrossentropy)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnInferenceBackendResponse_Output): unknown {
+    const obj: any = {};
+    message.binaryCrossentropy !== undefined && (obj.binaryCrossentropy = message.binaryCrossentropy
+      ? CMsgSteamLearnInferenceBackendResponse_BinaryCrossEntropyOutput.toJSON(message.binaryCrossentropy)
+      : undefined);
+    message.categoricalCrossentropy !== undefined && (obj.categoricalCrossentropy = message.categoricalCrossentropy
+      ? CMsgSteamLearnInferenceBackendResponse_CategoricalCrossEntropyOutput.toJSON(message.categoricalCrossentropy)
+      : undefined);
+    message.multiBinaryCrossentropy !== undefined && (obj.multiBinaryCrossentropy = message.multiBinaryCrossentropy
+      ? CMsgSteamLearnInferenceBackendResponse_MutliBinaryCrossEntropyOutput.toJSON(message.multiBinaryCrossentropy)
+      : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgSteamLearnInferenceResponse(): CMsgSteamLearnInferenceResponse {
@@ -1894,6 +2790,25 @@ export const CMsgSteamLearnInferenceResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSteamLearnInferenceResponse {
+    return {
+      inferenceResult: isSet(object.inferenceResult) ? eSteamLearnInferenceResultFromJSON(object.inferenceResult) : 0,
+      backendResponse: isSet(object.backendResponse)
+        ? CMsgSteamLearnInferenceBackendResponse.fromJSON(object.backendResponse)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnInferenceResponse): unknown {
+    const obj: any = {};
+    message.inferenceResult !== undefined &&
+      (obj.inferenceResult = eSteamLearnInferenceResultToJSON(message.inferenceResult));
+    message.backendResponse !== undefined && (obj.backendResponse = message.backendResponse
+      ? CMsgSteamLearnInferenceBackendResponse.toJSON(message.backendResponse)
+      : undefined);
+    return obj;
   },
 };
 
@@ -1964,6 +2879,25 @@ interface Rpc {
   request(service: string, method: string, data: Uint8Array): Promise<Uint8Array>;
 }
 
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
+
 function longToString(long: Long) {
   return long.toString();
 }
@@ -1971,4 +2905,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

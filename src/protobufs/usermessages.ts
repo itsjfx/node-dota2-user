@@ -52,6 +52,250 @@ export enum EBaseUserMessages {
   UM_MAX_BASE = 200,
 }
 
+export function eBaseUserMessagesFromJSON(object: any): EBaseUserMessages {
+  switch (object) {
+    case 101:
+    case "UM_AchievementEvent":
+      return EBaseUserMessages.UM_AchievementEvent;
+    case 102:
+    case "UM_CloseCaption":
+      return EBaseUserMessages.UM_CloseCaption;
+    case 103:
+    case "UM_CloseCaptionDirect":
+      return EBaseUserMessages.UM_CloseCaptionDirect;
+    case 104:
+    case "UM_CurrentTimescale":
+      return EBaseUserMessages.UM_CurrentTimescale;
+    case 105:
+    case "UM_DesiredTimescale":
+      return EBaseUserMessages.UM_DesiredTimescale;
+    case 106:
+    case "UM_Fade":
+      return EBaseUserMessages.UM_Fade;
+    case 107:
+    case "UM_GameTitle":
+      return EBaseUserMessages.UM_GameTitle;
+    case 110:
+    case "UM_HudMsg":
+      return EBaseUserMessages.UM_HudMsg;
+    case 111:
+    case "UM_HudText":
+      return EBaseUserMessages.UM_HudText;
+    case 113:
+    case "UM_ColoredText":
+      return EBaseUserMessages.UM_ColoredText;
+    case 114:
+    case "UM_RequestState":
+      return EBaseUserMessages.UM_RequestState;
+    case 115:
+    case "UM_ResetHUD":
+      return EBaseUserMessages.UM_ResetHUD;
+    case 116:
+    case "UM_Rumble":
+      return EBaseUserMessages.UM_Rumble;
+    case 117:
+    case "UM_SayText":
+      return EBaseUserMessages.UM_SayText;
+    case 118:
+    case "UM_SayText2":
+      return EBaseUserMessages.UM_SayText2;
+    case 119:
+    case "UM_SayTextChannel":
+      return EBaseUserMessages.UM_SayTextChannel;
+    case 120:
+    case "UM_Shake":
+      return EBaseUserMessages.UM_Shake;
+    case 121:
+    case "UM_ShakeDir":
+      return EBaseUserMessages.UM_ShakeDir;
+    case 124:
+    case "UM_TextMsg":
+      return EBaseUserMessages.UM_TextMsg;
+    case 125:
+    case "UM_ScreenTilt":
+      return EBaseUserMessages.UM_ScreenTilt;
+    case 128:
+    case "UM_VoiceMask":
+      return EBaseUserMessages.UM_VoiceMask;
+    case 130:
+    case "UM_SendAudio":
+      return EBaseUserMessages.UM_SendAudio;
+    case 131:
+    case "UM_ItemPickup":
+      return EBaseUserMessages.UM_ItemPickup;
+    case 132:
+    case "UM_AmmoDenied":
+      return EBaseUserMessages.UM_AmmoDenied;
+    case 134:
+    case "UM_ShowMenu":
+      return EBaseUserMessages.UM_ShowMenu;
+    case 135:
+    case "UM_CreditsMsg":
+      return EBaseUserMessages.UM_CreditsMsg;
+    case 142:
+    case "UM_CloseCaptionPlaceholder":
+      return EBaseUserMessages.UM_CloseCaptionPlaceholder;
+    case 143:
+    case "UM_CameraTransition":
+      return EBaseUserMessages.UM_CameraTransition;
+    case 144:
+    case "UM_AudioParameter":
+      return EBaseUserMessages.UM_AudioParameter;
+    case 145:
+    case "UM_ParticleManager":
+      return EBaseUserMessages.UM_ParticleManager;
+    case 146:
+    case "UM_HudError":
+      return EBaseUserMessages.UM_HudError;
+    case 148:
+    case "UM_CustomGameEvent":
+      return EBaseUserMessages.UM_CustomGameEvent;
+    case 149:
+    case "UM_AnimGraphUpdate":
+      return EBaseUserMessages.UM_AnimGraphUpdate;
+    case 150:
+    case "UM_HapticsManagerPulse":
+      return EBaseUserMessages.UM_HapticsManagerPulse;
+    case 151:
+    case "UM_HapticsManagerEffect":
+      return EBaseUserMessages.UM_HapticsManagerEffect;
+    case 152:
+    case "UM_CommandQueueState":
+      return EBaseUserMessages.UM_CommandQueueState;
+    case 153:
+    case "UM_UpdateCssClasses":
+      return EBaseUserMessages.UM_UpdateCssClasses;
+    case 154:
+    case "UM_ServerFrameTime":
+      return EBaseUserMessages.UM_ServerFrameTime;
+    case 155:
+    case "UM_LagCompensationError":
+      return EBaseUserMessages.UM_LagCompensationError;
+    case 156:
+    case "UM_RequestDllStatus":
+      return EBaseUserMessages.UM_RequestDllStatus;
+    case 157:
+    case "UM_RequestUtilAction":
+      return EBaseUserMessages.UM_RequestUtilAction;
+    case 158:
+    case "UM_UtilActionResponse":
+      return EBaseUserMessages.UM_UtilActionResponse;
+    case 159:
+    case "UM_DllStatusResponse":
+      return EBaseUserMessages.UM_DllStatusResponse;
+    case 160:
+    case "UM_RequestInventory":
+      return EBaseUserMessages.UM_RequestInventory;
+    case 161:
+    case "UM_InventoryResponse":
+      return EBaseUserMessages.UM_InventoryResponse;
+    case 200:
+    case "UM_MAX_BASE":
+      return EBaseUserMessages.UM_MAX_BASE;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EBaseUserMessages");
+  }
+}
+
+export function eBaseUserMessagesToJSON(object: EBaseUserMessages): string {
+  switch (object) {
+    case EBaseUserMessages.UM_AchievementEvent:
+      return "UM_AchievementEvent";
+    case EBaseUserMessages.UM_CloseCaption:
+      return "UM_CloseCaption";
+    case EBaseUserMessages.UM_CloseCaptionDirect:
+      return "UM_CloseCaptionDirect";
+    case EBaseUserMessages.UM_CurrentTimescale:
+      return "UM_CurrentTimescale";
+    case EBaseUserMessages.UM_DesiredTimescale:
+      return "UM_DesiredTimescale";
+    case EBaseUserMessages.UM_Fade:
+      return "UM_Fade";
+    case EBaseUserMessages.UM_GameTitle:
+      return "UM_GameTitle";
+    case EBaseUserMessages.UM_HudMsg:
+      return "UM_HudMsg";
+    case EBaseUserMessages.UM_HudText:
+      return "UM_HudText";
+    case EBaseUserMessages.UM_ColoredText:
+      return "UM_ColoredText";
+    case EBaseUserMessages.UM_RequestState:
+      return "UM_RequestState";
+    case EBaseUserMessages.UM_ResetHUD:
+      return "UM_ResetHUD";
+    case EBaseUserMessages.UM_Rumble:
+      return "UM_Rumble";
+    case EBaseUserMessages.UM_SayText:
+      return "UM_SayText";
+    case EBaseUserMessages.UM_SayText2:
+      return "UM_SayText2";
+    case EBaseUserMessages.UM_SayTextChannel:
+      return "UM_SayTextChannel";
+    case EBaseUserMessages.UM_Shake:
+      return "UM_Shake";
+    case EBaseUserMessages.UM_ShakeDir:
+      return "UM_ShakeDir";
+    case EBaseUserMessages.UM_TextMsg:
+      return "UM_TextMsg";
+    case EBaseUserMessages.UM_ScreenTilt:
+      return "UM_ScreenTilt";
+    case EBaseUserMessages.UM_VoiceMask:
+      return "UM_VoiceMask";
+    case EBaseUserMessages.UM_SendAudio:
+      return "UM_SendAudio";
+    case EBaseUserMessages.UM_ItemPickup:
+      return "UM_ItemPickup";
+    case EBaseUserMessages.UM_AmmoDenied:
+      return "UM_AmmoDenied";
+    case EBaseUserMessages.UM_ShowMenu:
+      return "UM_ShowMenu";
+    case EBaseUserMessages.UM_CreditsMsg:
+      return "UM_CreditsMsg";
+    case EBaseUserMessages.UM_CloseCaptionPlaceholder:
+      return "UM_CloseCaptionPlaceholder";
+    case EBaseUserMessages.UM_CameraTransition:
+      return "UM_CameraTransition";
+    case EBaseUserMessages.UM_AudioParameter:
+      return "UM_AudioParameter";
+    case EBaseUserMessages.UM_ParticleManager:
+      return "UM_ParticleManager";
+    case EBaseUserMessages.UM_HudError:
+      return "UM_HudError";
+    case EBaseUserMessages.UM_CustomGameEvent:
+      return "UM_CustomGameEvent";
+    case EBaseUserMessages.UM_AnimGraphUpdate:
+      return "UM_AnimGraphUpdate";
+    case EBaseUserMessages.UM_HapticsManagerPulse:
+      return "UM_HapticsManagerPulse";
+    case EBaseUserMessages.UM_HapticsManagerEffect:
+      return "UM_HapticsManagerEffect";
+    case EBaseUserMessages.UM_CommandQueueState:
+      return "UM_CommandQueueState";
+    case EBaseUserMessages.UM_UpdateCssClasses:
+      return "UM_UpdateCssClasses";
+    case EBaseUserMessages.UM_ServerFrameTime:
+      return "UM_ServerFrameTime";
+    case EBaseUserMessages.UM_LagCompensationError:
+      return "UM_LagCompensationError";
+    case EBaseUserMessages.UM_RequestDllStatus:
+      return "UM_RequestDllStatus";
+    case EBaseUserMessages.UM_RequestUtilAction:
+      return "UM_RequestUtilAction";
+    case EBaseUserMessages.UM_UtilActionResponse:
+      return "UM_UtilActionResponse";
+    case EBaseUserMessages.UM_DllStatusResponse:
+      return "UM_DllStatusResponse";
+    case EBaseUserMessages.UM_RequestInventory:
+      return "UM_RequestInventory";
+    case EBaseUserMessages.UM_InventoryResponse:
+      return "UM_InventoryResponse";
+    case EBaseUserMessages.UM_MAX_BASE:
+      return "UM_MAX_BASE";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EBaseUserMessages");
+  }
+}
+
 export enum EBaseEntityMessages {
   EM_PlayJingle = 136,
   EM_ScreenOverlay = 137,
@@ -61,12 +305,95 @@ export enum EBaseEntityMessages {
   EM_FixAngle = 141,
 }
 
+export function eBaseEntityMessagesFromJSON(object: any): EBaseEntityMessages {
+  switch (object) {
+    case 136:
+    case "EM_PlayJingle":
+      return EBaseEntityMessages.EM_PlayJingle;
+    case 137:
+    case "EM_ScreenOverlay":
+      return EBaseEntityMessages.EM_ScreenOverlay;
+    case 138:
+    case "EM_RemoveAllDecals":
+      return EBaseEntityMessages.EM_RemoveAllDecals;
+    case 139:
+    case "EM_PropagateForce":
+      return EBaseEntityMessages.EM_PropagateForce;
+    case 140:
+    case "EM_DoSpark":
+      return EBaseEntityMessages.EM_DoSpark;
+    case 141:
+    case "EM_FixAngle":
+      return EBaseEntityMessages.EM_FixAngle;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EBaseEntityMessages");
+  }
+}
+
+export function eBaseEntityMessagesToJSON(object: EBaseEntityMessages): string {
+  switch (object) {
+    case EBaseEntityMessages.EM_PlayJingle:
+      return "EM_PlayJingle";
+    case EBaseEntityMessages.EM_ScreenOverlay:
+      return "EM_ScreenOverlay";
+    case EBaseEntityMessages.EM_RemoveAllDecals:
+      return "EM_RemoveAllDecals";
+    case EBaseEntityMessages.EM_PropagateForce:
+      return "EM_PropagateForce";
+    case EBaseEntityMessages.EM_DoSpark:
+      return "EM_DoSpark";
+    case EBaseEntityMessages.EM_FixAngle:
+      return "EM_FixAngle";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EBaseEntityMessages");
+  }
+}
+
 export enum eRollType {
   ROLL_NONE = -1,
   ROLL_STATS = 0,
   ROLL_CREDITS = 1,
   ROLL_LATE_JOIN_LOGO = 2,
   ROLL_OUTTRO = 3,
+}
+
+export function eRollTypeFromJSON(object: any): eRollType {
+  switch (object) {
+    case -1:
+    case "ROLL_NONE":
+      return eRollType.ROLL_NONE;
+    case 0:
+    case "ROLL_STATS":
+      return eRollType.ROLL_STATS;
+    case 1:
+    case "ROLL_CREDITS":
+      return eRollType.ROLL_CREDITS;
+    case 2:
+    case "ROLL_LATE_JOIN_LOGO":
+      return eRollType.ROLL_LATE_JOIN_LOGO;
+    case 3:
+    case "ROLL_OUTTRO":
+      return eRollType.ROLL_OUTTRO;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum eRollType");
+  }
+}
+
+export function eRollTypeToJSON(object: eRollType): string {
+  switch (object) {
+    case eRollType.ROLL_NONE:
+      return "ROLL_NONE";
+    case eRollType.ROLL_STATS:
+      return "ROLL_STATS";
+    case eRollType.ROLL_CREDITS:
+      return "ROLL_CREDITS";
+    case eRollType.ROLL_LATE_JOIN_LOGO:
+      return "ROLL_LATE_JOIN_LOGO";
+    case eRollType.ROLL_OUTTRO:
+      return "ROLL_OUTTRO";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum eRollType");
+  }
 }
 
 export enum particleMessage {
@@ -101,10 +428,198 @@ export enum particleMessage {
   GAME_PARTICLE_MANAGER_EVENT_FREEZE_TRANSITION_OVERRIDE = 28,
 }
 
+export function particleMessageFromJSON(object: any): particleMessage {
+  switch (object) {
+    case 0:
+    case "GAME_PARTICLE_MANAGER_EVENT_CREATE":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_CREATE;
+    case 1:
+    case "GAME_PARTICLE_MANAGER_EVENT_UPDATE":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_UPDATE;
+    case 2:
+    case "GAME_PARTICLE_MANAGER_EVENT_UPDATE_FORWARD":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_UPDATE_FORWARD;
+    case 3:
+    case "GAME_PARTICLE_MANAGER_EVENT_UPDATE_ORIENTATION":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_UPDATE_ORIENTATION;
+    case 4:
+    case "GAME_PARTICLE_MANAGER_EVENT_UPDATE_FALLBACK":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_UPDATE_FALLBACK;
+    case 5:
+    case "GAME_PARTICLE_MANAGER_EVENT_UPDATE_ENT":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_UPDATE_ENT;
+    case 6:
+    case "GAME_PARTICLE_MANAGER_EVENT_UPDATE_OFFSET":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_UPDATE_OFFSET;
+    case 7:
+    case "GAME_PARTICLE_MANAGER_EVENT_DESTROY":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_DESTROY;
+    case 8:
+    case "GAME_PARTICLE_MANAGER_EVENT_DESTROY_INVOLVING":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_DESTROY_INVOLVING;
+    case 9:
+    case "GAME_PARTICLE_MANAGER_EVENT_RELEASE":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_RELEASE;
+    case 10:
+    case "GAME_PARTICLE_MANAGER_EVENT_LATENCY":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_LATENCY;
+    case 11:
+    case "GAME_PARTICLE_MANAGER_EVENT_SHOULD_DRAW":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_SHOULD_DRAW;
+    case 12:
+    case "GAME_PARTICLE_MANAGER_EVENT_FROZEN":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_FROZEN;
+    case 13:
+    case "GAME_PARTICLE_MANAGER_EVENT_CHANGE_CONTROL_POINT_ATTACHMENT":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_CHANGE_CONTROL_POINT_ATTACHMENT;
+    case 14:
+    case "GAME_PARTICLE_MANAGER_EVENT_UPDATE_ENTITY_POSITION":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_UPDATE_ENTITY_POSITION;
+    case 15:
+    case "GAME_PARTICLE_MANAGER_EVENT_SET_FOW_PROPERTIES":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_SET_FOW_PROPERTIES;
+    case 16:
+    case "GAME_PARTICLE_MANAGER_EVENT_SET_TEXT":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_SET_TEXT;
+    case 17:
+    case "GAME_PARTICLE_MANAGER_EVENT_SET_SHOULD_CHECK_FOW":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_SET_SHOULD_CHECK_FOW;
+    case 18:
+    case "GAME_PARTICLE_MANAGER_EVENT_SET_CONTROL_POINT_MODEL":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_SET_CONTROL_POINT_MODEL;
+    case 19:
+    case "GAME_PARTICLE_MANAGER_EVENT_SET_CONTROL_POINT_SNAPSHOT":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_SET_CONTROL_POINT_SNAPSHOT;
+    case 20:
+    case "GAME_PARTICLE_MANAGER_EVENT_SET_TEXTURE_ATTRIBUTE":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_SET_TEXTURE_ATTRIBUTE;
+    case 21:
+    case "GAME_PARTICLE_MANAGER_EVENT_SET_SCENE_OBJECT_GENERIC_FLAG":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_SET_SCENE_OBJECT_GENERIC_FLAG;
+    case 22:
+    case "GAME_PARTICLE_MANAGER_EVENT_SET_SCENE_OBJECT_TINT_AND_DESAT":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_SET_SCENE_OBJECT_TINT_AND_DESAT;
+    case 23:
+    case "GAME_PARTICLE_MANAGER_EVENT_DESTROY_NAMED":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_DESTROY_NAMED;
+    case 24:
+    case "GAME_PARTICLE_MANAGER_EVENT_SKIP_TO_TIME":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_SKIP_TO_TIME;
+    case 25:
+    case "GAME_PARTICLE_MANAGER_EVENT_CAN_FREEZE":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_CAN_FREEZE;
+    case 26:
+    case "GAME_PARTICLE_MANAGER_EVENT_SET_NAMED_VALUE_CONTEXT":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_SET_NAMED_VALUE_CONTEXT;
+    case 27:
+    case "GAME_PARTICLE_MANAGER_EVENT_UPDATE_TRANSFORM":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_UPDATE_TRANSFORM;
+    case 28:
+    case "GAME_PARTICLE_MANAGER_EVENT_FREEZE_TRANSITION_OVERRIDE":
+      return particleMessage.GAME_PARTICLE_MANAGER_EVENT_FREEZE_TRANSITION_OVERRIDE;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum particleMessage");
+  }
+}
+
+export function particleMessageToJSON(object: particleMessage): string {
+  switch (object) {
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_CREATE:
+      return "GAME_PARTICLE_MANAGER_EVENT_CREATE";
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_UPDATE:
+      return "GAME_PARTICLE_MANAGER_EVENT_UPDATE";
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_UPDATE_FORWARD:
+      return "GAME_PARTICLE_MANAGER_EVENT_UPDATE_FORWARD";
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_UPDATE_ORIENTATION:
+      return "GAME_PARTICLE_MANAGER_EVENT_UPDATE_ORIENTATION";
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_UPDATE_FALLBACK:
+      return "GAME_PARTICLE_MANAGER_EVENT_UPDATE_FALLBACK";
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_UPDATE_ENT:
+      return "GAME_PARTICLE_MANAGER_EVENT_UPDATE_ENT";
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_UPDATE_OFFSET:
+      return "GAME_PARTICLE_MANAGER_EVENT_UPDATE_OFFSET";
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_DESTROY:
+      return "GAME_PARTICLE_MANAGER_EVENT_DESTROY";
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_DESTROY_INVOLVING:
+      return "GAME_PARTICLE_MANAGER_EVENT_DESTROY_INVOLVING";
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_RELEASE:
+      return "GAME_PARTICLE_MANAGER_EVENT_RELEASE";
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_LATENCY:
+      return "GAME_PARTICLE_MANAGER_EVENT_LATENCY";
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_SHOULD_DRAW:
+      return "GAME_PARTICLE_MANAGER_EVENT_SHOULD_DRAW";
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_FROZEN:
+      return "GAME_PARTICLE_MANAGER_EVENT_FROZEN";
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_CHANGE_CONTROL_POINT_ATTACHMENT:
+      return "GAME_PARTICLE_MANAGER_EVENT_CHANGE_CONTROL_POINT_ATTACHMENT";
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_UPDATE_ENTITY_POSITION:
+      return "GAME_PARTICLE_MANAGER_EVENT_UPDATE_ENTITY_POSITION";
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_SET_FOW_PROPERTIES:
+      return "GAME_PARTICLE_MANAGER_EVENT_SET_FOW_PROPERTIES";
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_SET_TEXT:
+      return "GAME_PARTICLE_MANAGER_EVENT_SET_TEXT";
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_SET_SHOULD_CHECK_FOW:
+      return "GAME_PARTICLE_MANAGER_EVENT_SET_SHOULD_CHECK_FOW";
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_SET_CONTROL_POINT_MODEL:
+      return "GAME_PARTICLE_MANAGER_EVENT_SET_CONTROL_POINT_MODEL";
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_SET_CONTROL_POINT_SNAPSHOT:
+      return "GAME_PARTICLE_MANAGER_EVENT_SET_CONTROL_POINT_SNAPSHOT";
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_SET_TEXTURE_ATTRIBUTE:
+      return "GAME_PARTICLE_MANAGER_EVENT_SET_TEXTURE_ATTRIBUTE";
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_SET_SCENE_OBJECT_GENERIC_FLAG:
+      return "GAME_PARTICLE_MANAGER_EVENT_SET_SCENE_OBJECT_GENERIC_FLAG";
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_SET_SCENE_OBJECT_TINT_AND_DESAT:
+      return "GAME_PARTICLE_MANAGER_EVENT_SET_SCENE_OBJECT_TINT_AND_DESAT";
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_DESTROY_NAMED:
+      return "GAME_PARTICLE_MANAGER_EVENT_DESTROY_NAMED";
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_SKIP_TO_TIME:
+      return "GAME_PARTICLE_MANAGER_EVENT_SKIP_TO_TIME";
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_CAN_FREEZE:
+      return "GAME_PARTICLE_MANAGER_EVENT_CAN_FREEZE";
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_SET_NAMED_VALUE_CONTEXT:
+      return "GAME_PARTICLE_MANAGER_EVENT_SET_NAMED_VALUE_CONTEXT";
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_UPDATE_TRANSFORM:
+      return "GAME_PARTICLE_MANAGER_EVENT_UPDATE_TRANSFORM";
+    case particleMessage.GAME_PARTICLE_MANAGER_EVENT_FREEZE_TRANSITION_OVERRIDE:
+      return "GAME_PARTICLE_MANAGER_EVENT_FREEZE_TRANSITION_OVERRIDE";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum particleMessage");
+  }
+}
+
 export enum EHapticPulseType {
   VR_HAND_HAPTIC_PULSE_LIGHT = 0,
   VR_HAND_HAPTIC_PULSE_MEDIUM = 1,
   VR_HAND_HAPTIC_PULSE_STRONG = 2,
+}
+
+export function eHapticPulseTypeFromJSON(object: any): EHapticPulseType {
+  switch (object) {
+    case 0:
+    case "VR_HAND_HAPTIC_PULSE_LIGHT":
+      return EHapticPulseType.VR_HAND_HAPTIC_PULSE_LIGHT;
+    case 1:
+    case "VR_HAND_HAPTIC_PULSE_MEDIUM":
+      return EHapticPulseType.VR_HAND_HAPTIC_PULSE_MEDIUM;
+    case 2:
+    case "VR_HAND_HAPTIC_PULSE_STRONG":
+      return EHapticPulseType.VR_HAND_HAPTIC_PULSE_STRONG;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EHapticPulseType");
+  }
+}
+
+export function eHapticPulseTypeToJSON(object: EHapticPulseType): string {
+  switch (object) {
+    case EHapticPulseType.VR_HAND_HAPTIC_PULSE_LIGHT:
+      return "VR_HAND_HAPTIC_PULSE_LIGHT";
+    case EHapticPulseType.VR_HAND_HAPTIC_PULSE_MEDIUM:
+      return "VR_HAND_HAPTIC_PULSE_MEDIUM";
+    case EHapticPulseType.VR_HAND_HAPTIC_PULSE_STRONG:
+      return "VR_HAND_HAPTIC_PULSE_STRONG";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EHapticPulseType");
+  }
 }
 
 export interface CUserMessageAchievementEvent {
@@ -698,6 +1213,16 @@ export const CUserMessageAchievementEvent = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMessageAchievementEvent {
+    return { achievement: isSet(object.achievement) ? Number(object.achievement) : 0 };
+  },
+
+  toJSON(message: CUserMessageAchievementEvent): unknown {
+    const obj: any = {};
+    message.achievement !== undefined && (obj.achievement = Math.round(message.achievement));
+    return obj;
+  },
 };
 
 function createBaseCUserMessageCloseCaption(): CUserMessageCloseCaption {
@@ -763,6 +1288,24 @@ export const CUserMessageCloseCaption = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMessageCloseCaption {
+    return {
+      hash: isSet(object.hash) ? Number(object.hash) : 0,
+      duration: isSet(object.duration) ? Number(object.duration) : 0,
+      fromPlayer: isSet(object.fromPlayer) ? Boolean(object.fromPlayer) : false,
+      entIndex: isSet(object.entIndex) ? Number(object.entIndex) : 0,
+    };
+  },
+
+  toJSON(message: CUserMessageCloseCaption): unknown {
+    const obj: any = {};
+    message.hash !== undefined && (obj.hash = Math.round(message.hash));
+    message.duration !== undefined && (obj.duration = message.duration);
+    message.fromPlayer !== undefined && (obj.fromPlayer = message.fromPlayer);
+    message.entIndex !== undefined && (obj.entIndex = Math.round(message.entIndex));
+    return obj;
   },
 };
 
@@ -830,6 +1373,24 @@ export const CUserMessageCloseCaptionDirect = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMessageCloseCaptionDirect {
+    return {
+      hash: isSet(object.hash) ? Number(object.hash) : 0,
+      duration: isSet(object.duration) ? Number(object.duration) : 0,
+      fromPlayer: isSet(object.fromPlayer) ? Boolean(object.fromPlayer) : false,
+      entIndex: isSet(object.entIndex) ? Number(object.entIndex) : 0,
+    };
+  },
+
+  toJSON(message: CUserMessageCloseCaptionDirect): unknown {
+    const obj: any = {};
+    message.hash !== undefined && (obj.hash = Math.round(message.hash));
+    message.duration !== undefined && (obj.duration = message.duration);
+    message.fromPlayer !== undefined && (obj.fromPlayer = message.fromPlayer);
+    message.entIndex !== undefined && (obj.entIndex = Math.round(message.entIndex));
+    return obj;
+  },
 };
 
 function createBaseCUserMessageCloseCaptionPlaceholder(): CUserMessageCloseCaptionPlaceholder {
@@ -896,6 +1457,24 @@ export const CUserMessageCloseCaptionPlaceholder = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMessageCloseCaptionPlaceholder {
+    return {
+      string: isSet(object.string) ? String(object.string) : "",
+      duration: isSet(object.duration) ? Number(object.duration) : 0,
+      fromPlayer: isSet(object.fromPlayer) ? Boolean(object.fromPlayer) : false,
+      entIndex: isSet(object.entIndex) ? Number(object.entIndex) : 0,
+    };
+  },
+
+  toJSON(message: CUserMessageCloseCaptionPlaceholder): unknown {
+    const obj: any = {};
+    message.string !== undefined && (obj.string = message.string);
+    message.duration !== undefined && (obj.duration = message.duration);
+    message.fromPlayer !== undefined && (obj.fromPlayer = message.fromPlayer);
+    message.entIndex !== undefined && (obj.entIndex = Math.round(message.entIndex));
+    return obj;
+  },
 };
 
 function createBaseCUserMessageCurrentTimescale(): CUserMessageCurrentTimescale {
@@ -931,6 +1510,16 @@ export const CUserMessageCurrentTimescale = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMessageCurrentTimescale {
+    return { current: isSet(object.current) ? Number(object.current) : 0 };
+  },
+
+  toJSON(message: CUserMessageCurrentTimescale): unknown {
+    const obj: any = {};
+    message.current !== undefined && (obj.current = message.current);
+    return obj;
   },
 };
 
@@ -998,6 +1587,24 @@ export const CUserMessageDesiredTimescale = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMessageDesiredTimescale {
+    return {
+      desired: isSet(object.desired) ? Number(object.desired) : 0,
+      acceleration: isSet(object.acceleration) ? Number(object.acceleration) : 0,
+      minblendrate: isSet(object.minblendrate) ? Number(object.minblendrate) : 0,
+      blenddeltamultiplier: isSet(object.blenddeltamultiplier) ? Number(object.blenddeltamultiplier) : 0,
+    };
+  },
+
+  toJSON(message: CUserMessageDesiredTimescale): unknown {
+    const obj: any = {};
+    message.desired !== undefined && (obj.desired = message.desired);
+    message.acceleration !== undefined && (obj.acceleration = message.acceleration);
+    message.minblendrate !== undefined && (obj.minblendrate = message.minblendrate);
+    message.blenddeltamultiplier !== undefined && (obj.blenddeltamultiplier = message.blenddeltamultiplier);
+    return obj;
+  },
 };
 
 function createBaseCUserMessageFade(): CUserMessageFade {
@@ -1063,6 +1670,24 @@ export const CUserMessageFade = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMessageFade {
+    return {
+      duration: isSet(object.duration) ? Number(object.duration) : 0,
+      holdTime: isSet(object.holdTime) ? Number(object.holdTime) : 0,
+      flags: isSet(object.flags) ? Number(object.flags) : 0,
+      color: isSet(object.color) ? Number(object.color) : 0,
+    };
+  },
+
+  toJSON(message: CUserMessageFade): unknown {
+    const obj: any = {};
+    message.duration !== undefined && (obj.duration = Math.round(message.duration));
+    message.holdTime !== undefined && (obj.holdTime = Math.round(message.holdTime));
+    message.flags !== undefined && (obj.flags = Math.round(message.flags));
+    message.color !== undefined && (obj.color = Math.round(message.color));
+    return obj;
   },
 };
 
@@ -1130,6 +1755,24 @@ export const CUserMessageShake = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMessageShake {
+    return {
+      command: isSet(object.command) ? Number(object.command) : 0,
+      amplitude: isSet(object.amplitude) ? Number(object.amplitude) : 0,
+      frequency: isSet(object.frequency) ? Number(object.frequency) : 0,
+      duration: isSet(object.duration) ? Number(object.duration) : 0,
+    };
+  },
+
+  toJSON(message: CUserMessageShake): unknown {
+    const obj: any = {};
+    message.command !== undefined && (obj.command = Math.round(message.command));
+    message.amplitude !== undefined && (obj.amplitude = message.amplitude);
+    message.frequency !== undefined && (obj.frequency = message.frequency);
+    message.duration !== undefined && (obj.duration = message.duration);
+    return obj;
+  },
 };
 
 function createBaseCUserMessageShakeDir(): CUserMessageShakeDir {
@@ -1175,6 +1818,21 @@ export const CUserMessageShakeDir = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMessageShakeDir {
+    return {
+      shake: isSet(object.shake) ? CUserMessageShake.fromJSON(object.shake) : undefined,
+      direction: isSet(object.direction) ? CMsgVector.fromJSON(object.direction) : undefined,
+    };
+  },
+
+  toJSON(message: CUserMessageShakeDir): unknown {
+    const obj: any = {};
+    message.shake !== undefined && (obj.shake = message.shake ? CUserMessageShake.toJSON(message.shake) : undefined);
+    message.direction !== undefined &&
+      (obj.direction = message.direction ? CMsgVector.toJSON(message.direction) : undefined);
+    return obj;
   },
 };
 
@@ -1252,6 +1910,26 @@ export const CUserMessageScreenTilt = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMessageScreenTilt {
+    return {
+      command: isSet(object.command) ? Number(object.command) : 0,
+      easeInOut: isSet(object.easeInOut) ? Boolean(object.easeInOut) : false,
+      angle: isSet(object.angle) ? CMsgVector.fromJSON(object.angle) : undefined,
+      duration: isSet(object.duration) ? Number(object.duration) : 0,
+      time: isSet(object.time) ? Number(object.time) : 0,
+    };
+  },
+
+  toJSON(message: CUserMessageScreenTilt): unknown {
+    const obj: any = {};
+    message.command !== undefined && (obj.command = Math.round(message.command));
+    message.easeInOut !== undefined && (obj.easeInOut = message.easeInOut);
+    message.angle !== undefined && (obj.angle = message.angle ? CMsgVector.toJSON(message.angle) : undefined);
+    message.duration !== undefined && (obj.duration = message.duration);
+    message.time !== undefined && (obj.time = message.time);
+    return obj;
+  },
 };
 
 function createBaseCUserMessageSayText(): CUserMessageSayText {
@@ -1307,6 +1985,22 @@ export const CUserMessageSayText = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMessageSayText {
+    return {
+      playerindex: isSet(object.playerindex) ? Number(object.playerindex) : 0,
+      text: isSet(object.text) ? String(object.text) : "",
+      chat: isSet(object.chat) ? Boolean(object.chat) : false,
+    };
+  },
+
+  toJSON(message: CUserMessageSayText): unknown {
+    const obj: any = {};
+    message.playerindex !== undefined && (obj.playerindex = Math.round(message.playerindex));
+    message.text !== undefined && (obj.text = message.text);
+    message.chat !== undefined && (obj.chat = message.chat);
+    return obj;
   },
 };
 
@@ -1404,6 +2098,30 @@ export const CUserMessageSayText2 = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMessageSayText2 {
+    return {
+      entityindex: isSet(object.entityindex) ? Number(object.entityindex) : 0,
+      chat: isSet(object.chat) ? Boolean(object.chat) : false,
+      messagename: isSet(object.messagename) ? String(object.messagename) : "",
+      param1: isSet(object.param1) ? String(object.param1) : "",
+      param2: isSet(object.param2) ? String(object.param2) : "",
+      param3: isSet(object.param3) ? String(object.param3) : "",
+      param4: isSet(object.param4) ? String(object.param4) : "",
+    };
+  },
+
+  toJSON(message: CUserMessageSayText2): unknown {
+    const obj: any = {};
+    message.entityindex !== undefined && (obj.entityindex = Math.round(message.entityindex));
+    message.chat !== undefined && (obj.chat = message.chat);
+    message.messagename !== undefined && (obj.messagename = message.messagename);
+    message.param1 !== undefined && (obj.param1 = message.param1);
+    message.param2 !== undefined && (obj.param2 = message.param2);
+    message.param3 !== undefined && (obj.param3 = message.param3);
+    message.param4 !== undefined && (obj.param4 = message.param4);
+    return obj;
+  },
 };
 
 function createBaseCUserMessageHudMsg(): CUserMessageHudMsg {
@@ -1500,6 +2218,30 @@ export const CUserMessageHudMsg = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMessageHudMsg {
+    return {
+      channel: isSet(object.channel) ? Number(object.channel) : 0,
+      x: isSet(object.x) ? Number(object.x) : 0,
+      y: isSet(object.y) ? Number(object.y) : 0,
+      color1: isSet(object.color1) ? Number(object.color1) : 0,
+      color2: isSet(object.color2) ? Number(object.color2) : 0,
+      effect: isSet(object.effect) ? Number(object.effect) : 0,
+      message: isSet(object.message) ? String(object.message) : "",
+    };
+  },
+
+  toJSON(message: CUserMessageHudMsg): unknown {
+    const obj: any = {};
+    message.channel !== undefined && (obj.channel = Math.round(message.channel));
+    message.x !== undefined && (obj.x = message.x);
+    message.y !== undefined && (obj.y = message.y);
+    message.color1 !== undefined && (obj.color1 = Math.round(message.color1));
+    message.color2 !== undefined && (obj.color2 = Math.round(message.color2));
+    message.effect !== undefined && (obj.effect = Math.round(message.effect));
+    message.message !== undefined && (obj.message = message.message);
+    return obj;
+  },
 };
 
 function createBaseCUserMessageHudText(): CUserMessageHudText {
@@ -1535,6 +2277,16 @@ export const CUserMessageHudText = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMessageHudText {
+    return { message: isSet(object.message) ? String(object.message) : "" };
+  },
+
+  toJSON(message: CUserMessageHudText): unknown {
+    const obj: any = {};
+    message.message !== undefined && (obj.message = message.message);
+    return obj;
   },
 };
 
@@ -1582,6 +2334,24 @@ export const CUserMessageTextMsg = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMessageTextMsg {
+    return {
+      dest: isSet(object.dest) ? Number(object.dest) : 0,
+      param: Array.isArray(object?.param) ? object.param.map((e: any) => String(e)) : [],
+    };
+  },
+
+  toJSON(message: CUserMessageTextMsg): unknown {
+    const obj: any = {};
+    message.dest !== undefined && (obj.dest = Math.round(message.dest));
+    if (message.param) {
+      obj.param = message.param.map((e) => e);
+    } else {
+      obj.param = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCUserMessageGameTitle(): CUserMessageGameTitle {
@@ -1608,6 +2378,15 @@ export const CUserMessageGameTitle = {
     }
     return message;
   },
+
+  fromJSON(_: any): CUserMessageGameTitle {
+    return {};
+  },
+
+  toJSON(_: CUserMessageGameTitle): unknown {
+    const obj: any = {};
+    return obj;
+  },
 };
 
 function createBaseCUserMessageResetHUD(): CUserMessageResetHUD {
@@ -1633,6 +2412,15 @@ export const CUserMessageResetHUD = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CUserMessageResetHUD {
+    return {};
+  },
+
+  toJSON(_: CUserMessageResetHUD): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -1679,6 +2467,20 @@ export const CUserMessageSendAudio = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMessageSendAudio {
+    return {
+      soundname: isSet(object.soundname) ? String(object.soundname) : "",
+      stop: isSet(object.stop) ? Boolean(object.stop) : false,
+    };
+  },
+
+  toJSON(message: CUserMessageSendAudio): unknown {
+    const obj: any = {};
+    message.soundname !== undefined && (obj.soundname = message.soundname);
+    message.stop !== undefined && (obj.stop = message.stop);
+    return obj;
   },
 };
 
@@ -1745,6 +2547,24 @@ export const CUserMessageAudioParameter = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMessageAudioParameter {
+    return {
+      parameterType: isSet(object.parameterType) ? Number(object.parameterType) : 0,
+      nameHashCode: isSet(object.nameHashCode) ? Number(object.nameHashCode) : 0,
+      value: isSet(object.value) ? Number(object.value) : 0,
+      intValue: isSet(object.intValue) ? Number(object.intValue) : 0,
+    };
+  },
+
+  toJSON(message: CUserMessageAudioParameter): unknown {
+    const obj: any = {};
+    message.parameterType !== undefined && (obj.parameterType = Math.round(message.parameterType));
+    message.nameHashCode !== undefined && (obj.nameHashCode = Math.round(message.nameHashCode));
+    message.value !== undefined && (obj.value = message.value);
+    message.intValue !== undefined && (obj.intValue = Math.round(message.intValue));
+    return obj;
   },
 };
 
@@ -1824,6 +2644,30 @@ export const CUserMessageVoiceMask = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMessageVoiceMask {
+    return {
+      gamerulesMasks: Array.isArray(object?.gamerulesMasks) ? object.gamerulesMasks.map((e: any) => Number(e)) : [],
+      banMasks: Array.isArray(object?.banMasks) ? object.banMasks.map((e: any) => Number(e)) : [],
+      modEnable: isSet(object.modEnable) ? Boolean(object.modEnable) : false,
+    };
+  },
+
+  toJSON(message: CUserMessageVoiceMask): unknown {
+    const obj: any = {};
+    if (message.gamerulesMasks) {
+      obj.gamerulesMasks = message.gamerulesMasks.map((e) => Math.round(e));
+    } else {
+      obj.gamerulesMasks = [];
+    }
+    if (message.banMasks) {
+      obj.banMasks = message.banMasks.map((e) => Math.round(e));
+    } else {
+      obj.banMasks = [];
+    }
+    message.modEnable !== undefined && (obj.modEnable = message.modEnable);
+    return obj;
+  },
 };
 
 function createBaseCUserMessageRequestState(): CUserMessageRequestState {
@@ -1849,6 +2693,15 @@ export const CUserMessageRequestState = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CUserMessageRequestState {
+    return {};
+  },
+
+  toJSON(_: CUserMessageRequestState): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -1906,6 +2759,22 @@ export const CUserMessageRumble = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMessageRumble {
+    return {
+      index: isSet(object.index) ? Number(object.index) : 0,
+      data: isSet(object.data) ? Number(object.data) : 0,
+      flags: isSet(object.flags) ? Number(object.flags) : 0,
+    };
+  },
+
+  toJSON(message: CUserMessageRumble): unknown {
+    const obj: any = {};
+    message.index !== undefined && (obj.index = Math.round(message.index));
+    message.data !== undefined && (obj.data = Math.round(message.data));
+    message.flags !== undefined && (obj.flags = Math.round(message.flags));
+    return obj;
+  },
 };
 
 function createBaseCUserMessageSayTextChannel(): CUserMessageSayTextChannel {
@@ -1961,6 +2830,22 @@ export const CUserMessageSayTextChannel = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMessageSayTextChannel {
+    return {
+      player: isSet(object.player) ? Number(object.player) : 0,
+      channel: isSet(object.channel) ? Number(object.channel) : 0,
+      text: isSet(object.text) ? String(object.text) : "",
+    };
+  },
+
+  toJSON(message: CUserMessageSayTextChannel): unknown {
+    const obj: any = {};
+    message.player !== undefined && (obj.player = Math.round(message.player));
+    message.channel !== undefined && (obj.channel = Math.round(message.channel));
+    message.text !== undefined && (obj.text = message.text);
+    return obj;
   },
 };
 
@@ -2048,6 +2933,28 @@ export const CUserMessageColoredText = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMessageColoredText {
+    return {
+      color: isSet(object.color) ? Number(object.color) : 0,
+      text: isSet(object.text) ? String(object.text) : "",
+      reset: isSet(object.reset) ? Boolean(object.reset) : false,
+      contextPlayerSlot: isSet(object.contextPlayerSlot) ? Number(object.contextPlayerSlot) : 0,
+      contextValue: isSet(object.contextValue) ? Number(object.contextValue) : 0,
+      contextTeamId: isSet(object.contextTeamId) ? Number(object.contextTeamId) : 0,
+    };
+  },
+
+  toJSON(message: CUserMessageColoredText): unknown {
+    const obj: any = {};
+    message.color !== undefined && (obj.color = Math.round(message.color));
+    message.text !== undefined && (obj.text = message.text);
+    message.reset !== undefined && (obj.reset = message.reset);
+    message.contextPlayerSlot !== undefined && (obj.contextPlayerSlot = Math.round(message.contextPlayerSlot));
+    message.contextValue !== undefined && (obj.contextValue = Math.round(message.contextValue));
+    message.contextTeamId !== undefined && (obj.contextTeamId = Math.round(message.contextTeamId));
+    return obj;
+  },
 };
 
 function createBaseCUserMessageItemPickup(): CUserMessageItemPickup {
@@ -2084,6 +2991,16 @@ export const CUserMessageItemPickup = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMessageItemPickup {
+    return { itemname: isSet(object.itemname) ? String(object.itemname) : "" };
+  },
+
+  toJSON(message: CUserMessageItemPickup): unknown {
+    const obj: any = {};
+    message.itemname !== undefined && (obj.itemname = message.itemname);
+    return obj;
+  },
 };
 
 function createBaseCUserMessageAmmoDenied(): CUserMessageAmmoDenied {
@@ -2119,6 +3036,16 @@ export const CUserMessageAmmoDenied = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMessageAmmoDenied {
+    return { ammoId: isSet(object.ammoId) ? Number(object.ammoId) : 0 };
+  },
+
+  toJSON(message: CUserMessageAmmoDenied): unknown {
+    const obj: any = {};
+    message.ammoId !== undefined && (obj.ammoId = Math.round(message.ammoId));
+    return obj;
   },
 };
 
@@ -2186,6 +3113,24 @@ export const CUserMessageShowMenu = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMessageShowMenu {
+    return {
+      validslots: isSet(object.validslots) ? Number(object.validslots) : 0,
+      displaytime: isSet(object.displaytime) ? Number(object.displaytime) : 0,
+      needmore: isSet(object.needmore) ? Boolean(object.needmore) : false,
+      menustring: isSet(object.menustring) ? String(object.menustring) : "",
+    };
+  },
+
+  toJSON(message: CUserMessageShowMenu): unknown {
+    const obj: any = {};
+    message.validslots !== undefined && (obj.validslots = Math.round(message.validslots));
+    message.displaytime !== undefined && (obj.displaytime = Math.round(message.displaytime));
+    message.needmore !== undefined && (obj.needmore = message.needmore);
+    message.menustring !== undefined && (obj.menustring = message.menustring);
+    return obj;
+  },
 };
 
 function createBaseCUserMessageCreditsMsg(): CUserMessageCreditsMsg {
@@ -2232,6 +3177,20 @@ export const CUserMessageCreditsMsg = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMessageCreditsMsg {
+    return {
+      rolltype: isSet(object.rolltype) ? eRollTypeFromJSON(object.rolltype) : 0,
+      logoLength: isSet(object.logoLength) ? Number(object.logoLength) : 0,
+    };
+  },
+
+  toJSON(message: CUserMessageCreditsMsg): unknown {
+    const obj: any = {};
+    message.rolltype !== undefined && (obj.rolltype = eRollTypeToJSON(message.rolltype));
+    message.logoLength !== undefined && (obj.logoLength = message.logoLength);
+    return obj;
+  },
 };
 
 function createBaseCEntityMessagePlayJingle(): CEntityMessagePlayJingle {
@@ -2267,6 +3226,17 @@ export const CEntityMessagePlayJingle = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CEntityMessagePlayJingle {
+    return { entityMsg: isSet(object.entityMsg) ? CEntityMsg.fromJSON(object.entityMsg) : undefined };
+  },
+
+  toJSON(message: CEntityMessagePlayJingle): unknown {
+    const obj: any = {};
+    message.entityMsg !== undefined &&
+      (obj.entityMsg = message.entityMsg ? CEntityMsg.toJSON(message.entityMsg) : undefined);
+    return obj;
   },
 };
 
@@ -2314,6 +3284,21 @@ export const CEntityMessageScreenOverlay = {
     }
     return message;
   },
+
+  fromJSON(object: any): CEntityMessageScreenOverlay {
+    return {
+      startEffect: isSet(object.startEffect) ? Boolean(object.startEffect) : false,
+      entityMsg: isSet(object.entityMsg) ? CEntityMsg.fromJSON(object.entityMsg) : undefined,
+    };
+  },
+
+  toJSON(message: CEntityMessageScreenOverlay): unknown {
+    const obj: any = {};
+    message.startEffect !== undefined && (obj.startEffect = message.startEffect);
+    message.entityMsg !== undefined &&
+      (obj.entityMsg = message.entityMsg ? CEntityMsg.toJSON(message.entityMsg) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCEntityMessageRemoveAllDecals(): CEntityMessageRemoveAllDecals {
@@ -2360,6 +3345,21 @@ export const CEntityMessageRemoveAllDecals = {
     }
     return message;
   },
+
+  fromJSON(object: any): CEntityMessageRemoveAllDecals {
+    return {
+      removeDecals: isSet(object.removeDecals) ? Boolean(object.removeDecals) : false,
+      entityMsg: isSet(object.entityMsg) ? CEntityMsg.fromJSON(object.entityMsg) : undefined,
+    };
+  },
+
+  toJSON(message: CEntityMessageRemoveAllDecals): unknown {
+    const obj: any = {};
+    message.removeDecals !== undefined && (obj.removeDecals = message.removeDecals);
+    message.entityMsg !== undefined &&
+      (obj.entityMsg = message.entityMsg ? CEntityMsg.toJSON(message.entityMsg) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCEntityMessagePropagateForce(): CEntityMessagePropagateForce {
@@ -2405,6 +3405,21 @@ export const CEntityMessagePropagateForce = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CEntityMessagePropagateForce {
+    return {
+      impulse: isSet(object.impulse) ? CMsgVector.fromJSON(object.impulse) : undefined,
+      entityMsg: isSet(object.entityMsg) ? CEntityMsg.fromJSON(object.entityMsg) : undefined,
+    };
+  },
+
+  toJSON(message: CEntityMessagePropagateForce): unknown {
+    const obj: any = {};
+    message.impulse !== undefined && (obj.impulse = message.impulse ? CMsgVector.toJSON(message.impulse) : undefined);
+    message.entityMsg !== undefined &&
+      (obj.entityMsg = message.entityMsg ? CEntityMsg.toJSON(message.entityMsg) : undefined);
+    return obj;
   },
 };
 
@@ -2521,6 +3536,33 @@ export const CEntityMessageDoSpark = {
     }
     return message;
   },
+
+  fromJSON(object: any): CEntityMessageDoSpark {
+    return {
+      origin: isSet(object.origin) ? CMsgVector.fromJSON(object.origin) : undefined,
+      entityindex: isSet(object.entityindex) ? Number(object.entityindex) : 0,
+      radius: isSet(object.radius) ? Number(object.radius) : 0,
+      color: isSet(object.color) ? Number(object.color) : 0,
+      beams: isSet(object.beams) ? Number(object.beams) : 0,
+      thick: isSet(object.thick) ? Number(object.thick) : 0,
+      duration: isSet(object.duration) ? Number(object.duration) : 0,
+      entityMsg: isSet(object.entityMsg) ? CEntityMsg.fromJSON(object.entityMsg) : undefined,
+    };
+  },
+
+  toJSON(message: CEntityMessageDoSpark): unknown {
+    const obj: any = {};
+    message.origin !== undefined && (obj.origin = message.origin ? CMsgVector.toJSON(message.origin) : undefined);
+    message.entityindex !== undefined && (obj.entityindex = Math.round(message.entityindex));
+    message.radius !== undefined && (obj.radius = message.radius);
+    message.color !== undefined && (obj.color = Math.round(message.color));
+    message.beams !== undefined && (obj.beams = Math.round(message.beams));
+    message.thick !== undefined && (obj.thick = message.thick);
+    message.duration !== undefined && (obj.duration = message.duration);
+    message.entityMsg !== undefined &&
+      (obj.entityMsg = message.entityMsg ? CEntityMsg.toJSON(message.entityMsg) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCEntityMessageFixAngle(): CEntityMessageFixAngle {
@@ -2576,6 +3618,23 @@ export const CEntityMessageFixAngle = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CEntityMessageFixAngle {
+    return {
+      relative: isSet(object.relative) ? Boolean(object.relative) : false,
+      angle: isSet(object.angle) ? CMsgQAngle.fromJSON(object.angle) : undefined,
+      entityMsg: isSet(object.entityMsg) ? CEntityMsg.fromJSON(object.entityMsg) : undefined,
+    };
+  },
+
+  toJSON(message: CEntityMessageFixAngle): unknown {
+    const obj: any = {};
+    message.relative !== undefined && (obj.relative = message.relative);
+    message.angle !== undefined && (obj.angle = message.angle ? CMsgQAngle.toJSON(message.angle) : undefined);
+    message.entityMsg !== undefined &&
+      (obj.entityMsg = message.entityMsg ? CEntityMsg.toJSON(message.entityMsg) : undefined);
+    return obj;
   },
 };
 
@@ -2633,6 +3692,26 @@ export const CUserMessageCameraTransition = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMessageCameraTransition {
+    return {
+      cameraType: isSet(object.cameraType) ? Number(object.cameraType) : 0,
+      duration: isSet(object.duration) ? Number(object.duration) : 0,
+      paramsDataDriven: isSet(object.paramsDataDriven)
+        ? CUserMessageCameraTransition_TransitionDataDriven.fromJSON(object.paramsDataDriven)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CUserMessageCameraTransition): unknown {
+    const obj: any = {};
+    message.cameraType !== undefined && (obj.cameraType = Math.round(message.cameraType));
+    message.duration !== undefined && (obj.duration = message.duration);
+    message.paramsDataDriven !== undefined && (obj.paramsDataDriven = message.paramsDataDriven
+      ? CUserMessageCameraTransition_TransitionDataDriven.toJSON(message.paramsDataDriven)
+      : undefined);
+    return obj;
   },
 };
 
@@ -2692,6 +3771,22 @@ export const CUserMessageCameraTransition_TransitionDataDriven = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMessageCameraTransition_TransitionDataDriven {
+    return {
+      filename: isSet(object.filename) ? String(object.filename) : "",
+      attachEntIndex: isSet(object.attachEntIndex) ? Number(object.attachEntIndex) : 0,
+      duration: isSet(object.duration) ? Number(object.duration) : 0,
+    };
+  },
+
+  toJSON(message: CUserMessageCameraTransition_TransitionDataDriven): unknown {
+    const obj: any = {};
+    message.filename !== undefined && (obj.filename = message.filename);
+    message.attachEntIndex !== undefined && (obj.attachEntIndex = Math.round(message.attachEntIndex));
+    message.duration !== undefined && (obj.duration = message.duration);
+    return obj;
   },
 };
 
@@ -3133,6 +4228,193 @@ export const CUserMsgParticleManager = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMsgParticleManager {
+    return {
+      type: isSet(object.type) ? particleMessageFromJSON(object.type) : 0,
+      index: isSet(object.index) ? Number(object.index) : 0,
+      releaseParticleIndex: isSet(object.releaseParticleIndex)
+        ? CUserMsgParticleManager_ReleaseParticleIndex.fromJSON(object.releaseParticleIndex)
+        : undefined,
+      createParticle: isSet(object.createParticle)
+        ? CUserMsgParticleManager_CreateParticle.fromJSON(object.createParticle)
+        : undefined,
+      destroyParticle: isSet(object.destroyParticle)
+        ? CUserMsgParticleManager_DestroyParticle.fromJSON(object.destroyParticle)
+        : undefined,
+      destroyParticleInvolving: isSet(object.destroyParticleInvolving)
+        ? CUserMsgParticleManager_DestroyParticleInvolving.fromJSON(object.destroyParticleInvolving)
+        : undefined,
+      updateParticle: isSet(object.updateParticle)
+        ? CUserMsgParticleManager_UpdateParticleOBSOLETE.fromJSON(object.updateParticle)
+        : undefined,
+      updateParticleFwd: isSet(object.updateParticleFwd)
+        ? CUserMsgParticleManager_UpdateParticleFwdOBSOLETE.fromJSON(object.updateParticleFwd)
+        : undefined,
+      updateParticleOrient: isSet(object.updateParticleOrient)
+        ? CUserMsgParticleManager_UpdateParticleOrientOBSOLETE.fromJSON(object.updateParticleOrient)
+        : undefined,
+      updateParticleFallback: isSet(object.updateParticleFallback)
+        ? CUserMsgParticleManager_UpdateParticleFallback.fromJSON(object.updateParticleFallback)
+        : undefined,
+      updateParticleOffset: isSet(object.updateParticleOffset)
+        ? CUserMsgParticleManager_UpdateParticleOffset.fromJSON(object.updateParticleOffset)
+        : undefined,
+      updateParticleEnt: isSet(object.updateParticleEnt)
+        ? CUserMsgParticleManager_UpdateParticleEnt.fromJSON(object.updateParticleEnt)
+        : undefined,
+      updateParticleShouldDraw: isSet(object.updateParticleShouldDraw)
+        ? CUserMsgParticleManager_UpdateParticleShouldDraw.fromJSON(object.updateParticleShouldDraw)
+        : undefined,
+      updateParticleSetFrozen: isSet(object.updateParticleSetFrozen)
+        ? CUserMsgParticleManager_UpdateParticleSetFrozen.fromJSON(object.updateParticleSetFrozen)
+        : undefined,
+      changeControlPointAttachment: isSet(object.changeControlPointAttachment)
+        ? CUserMsgParticleManager_ChangeControlPointAttachment.fromJSON(object.changeControlPointAttachment)
+        : undefined,
+      updateEntityPosition: isSet(object.updateEntityPosition)
+        ? CUserMsgParticleManager_UpdateEntityPosition.fromJSON(object.updateEntityPosition)
+        : undefined,
+      setParticleFowProperties: isSet(object.setParticleFowProperties)
+        ? CUserMsgParticleManager_SetParticleFoWProperties.fromJSON(object.setParticleFowProperties)
+        : undefined,
+      setParticleText: isSet(object.setParticleText)
+        ? CUserMsgParticleManager_SetParticleText.fromJSON(object.setParticleText)
+        : undefined,
+      setParticleShouldCheckFow: isSet(object.setParticleShouldCheckFow)
+        ? CUserMsgParticleManager_SetParticleShouldCheckFoW.fromJSON(object.setParticleShouldCheckFow)
+        : undefined,
+      setControlPointModel: isSet(object.setControlPointModel)
+        ? CUserMsgParticleManager_SetControlPointModel.fromJSON(object.setControlPointModel)
+        : undefined,
+      setControlPointSnapshot: isSet(object.setControlPointSnapshot)
+        ? CUserMsgParticleManager_SetControlPointSnapshot.fromJSON(object.setControlPointSnapshot)
+        : undefined,
+      setTextureAttribute: isSet(object.setTextureAttribute)
+        ? CUserMsgParticleManager_SetTextureAttribute.fromJSON(object.setTextureAttribute)
+        : undefined,
+      setSceneObjectGenericFlag: isSet(object.setSceneObjectGenericFlag)
+        ? CUserMsgParticleManager_SetSceneObjectGenericFlag.fromJSON(object.setSceneObjectGenericFlag)
+        : undefined,
+      setSceneObjectTintAndDesat: isSet(object.setSceneObjectTintAndDesat)
+        ? CUserMsgParticleManager_SetSceneObjectTintAndDesat.fromJSON(object.setSceneObjectTintAndDesat)
+        : undefined,
+      destroyParticleNamed: isSet(object.destroyParticleNamed)
+        ? CUserMsgParticleManager_DestroyParticleNamed.fromJSON(object.destroyParticleNamed)
+        : undefined,
+      particleSkipToTime: isSet(object.particleSkipToTime)
+        ? CUserMsgParticleManager_ParticleSkipToTime.fromJSON(object.particleSkipToTime)
+        : undefined,
+      particleCanFreeze: isSet(object.particleCanFreeze)
+        ? CUserMsgParticleManager_ParticleCanFreeze.fromJSON(object.particleCanFreeze)
+        : undefined,
+      setNamedValueContext: isSet(object.setNamedValueContext)
+        ? CUserMsgParticleManager_SetParticleNamedValueContext.fromJSON(object.setNamedValueContext)
+        : undefined,
+      updateParticleTransform: isSet(object.updateParticleTransform)
+        ? CUserMsgParticleManager_UpdateParticleTransform.fromJSON(object.updateParticleTransform)
+        : undefined,
+      particleFreezeTransitionOverride: isSet(object.particleFreezeTransitionOverride)
+        ? CUserMsgParticleManager_ParticleFreezeTransitionOverride.fromJSON(object.particleFreezeTransitionOverride)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CUserMsgParticleManager): unknown {
+    const obj: any = {};
+    message.type !== undefined && (obj.type = particleMessageToJSON(message.type));
+    message.index !== undefined && (obj.index = Math.round(message.index));
+    message.releaseParticleIndex !== undefined && (obj.releaseParticleIndex = message.releaseParticleIndex
+      ? CUserMsgParticleManager_ReleaseParticleIndex.toJSON(message.releaseParticleIndex)
+      : undefined);
+    message.createParticle !== undefined && (obj.createParticle = message.createParticle
+      ? CUserMsgParticleManager_CreateParticle.toJSON(message.createParticle)
+      : undefined);
+    message.destroyParticle !== undefined && (obj.destroyParticle = message.destroyParticle
+      ? CUserMsgParticleManager_DestroyParticle.toJSON(message.destroyParticle)
+      : undefined);
+    message.destroyParticleInvolving !== undefined && (obj.destroyParticleInvolving = message.destroyParticleInvolving
+      ? CUserMsgParticleManager_DestroyParticleInvolving.toJSON(message.destroyParticleInvolving)
+      : undefined);
+    message.updateParticle !== undefined && (obj.updateParticle = message.updateParticle
+      ? CUserMsgParticleManager_UpdateParticleOBSOLETE.toJSON(message.updateParticle)
+      : undefined);
+    message.updateParticleFwd !== undefined && (obj.updateParticleFwd = message.updateParticleFwd
+      ? CUserMsgParticleManager_UpdateParticleFwdOBSOLETE.toJSON(message.updateParticleFwd)
+      : undefined);
+    message.updateParticleOrient !== undefined && (obj.updateParticleOrient = message.updateParticleOrient
+      ? CUserMsgParticleManager_UpdateParticleOrientOBSOLETE.toJSON(message.updateParticleOrient)
+      : undefined);
+    message.updateParticleFallback !== undefined && (obj.updateParticleFallback = message.updateParticleFallback
+      ? CUserMsgParticleManager_UpdateParticleFallback.toJSON(message.updateParticleFallback)
+      : undefined);
+    message.updateParticleOffset !== undefined && (obj.updateParticleOffset = message.updateParticleOffset
+      ? CUserMsgParticleManager_UpdateParticleOffset.toJSON(message.updateParticleOffset)
+      : undefined);
+    message.updateParticleEnt !== undefined && (obj.updateParticleEnt = message.updateParticleEnt
+      ? CUserMsgParticleManager_UpdateParticleEnt.toJSON(message.updateParticleEnt)
+      : undefined);
+    message.updateParticleShouldDraw !== undefined && (obj.updateParticleShouldDraw = message.updateParticleShouldDraw
+      ? CUserMsgParticleManager_UpdateParticleShouldDraw.toJSON(message.updateParticleShouldDraw)
+      : undefined);
+    message.updateParticleSetFrozen !== undefined && (obj.updateParticleSetFrozen = message.updateParticleSetFrozen
+      ? CUserMsgParticleManager_UpdateParticleSetFrozen.toJSON(message.updateParticleSetFrozen)
+      : undefined);
+    message.changeControlPointAttachment !== undefined &&
+      (obj.changeControlPointAttachment = message.changeControlPointAttachment
+        ? CUserMsgParticleManager_ChangeControlPointAttachment.toJSON(message.changeControlPointAttachment)
+        : undefined);
+    message.updateEntityPosition !== undefined && (obj.updateEntityPosition = message.updateEntityPosition
+      ? CUserMsgParticleManager_UpdateEntityPosition.toJSON(message.updateEntityPosition)
+      : undefined);
+    message.setParticleFowProperties !== undefined && (obj.setParticleFowProperties = message.setParticleFowProperties
+      ? CUserMsgParticleManager_SetParticleFoWProperties.toJSON(message.setParticleFowProperties)
+      : undefined);
+    message.setParticleText !== undefined && (obj.setParticleText = message.setParticleText
+      ? CUserMsgParticleManager_SetParticleText.toJSON(message.setParticleText)
+      : undefined);
+    message.setParticleShouldCheckFow !== undefined &&
+      (obj.setParticleShouldCheckFow = message.setParticleShouldCheckFow
+        ? CUserMsgParticleManager_SetParticleShouldCheckFoW.toJSON(message.setParticleShouldCheckFow)
+        : undefined);
+    message.setControlPointModel !== undefined && (obj.setControlPointModel = message.setControlPointModel
+      ? CUserMsgParticleManager_SetControlPointModel.toJSON(message.setControlPointModel)
+      : undefined);
+    message.setControlPointSnapshot !== undefined && (obj.setControlPointSnapshot = message.setControlPointSnapshot
+      ? CUserMsgParticleManager_SetControlPointSnapshot.toJSON(message.setControlPointSnapshot)
+      : undefined);
+    message.setTextureAttribute !== undefined && (obj.setTextureAttribute = message.setTextureAttribute
+      ? CUserMsgParticleManager_SetTextureAttribute.toJSON(message.setTextureAttribute)
+      : undefined);
+    message.setSceneObjectGenericFlag !== undefined &&
+      (obj.setSceneObjectGenericFlag = message.setSceneObjectGenericFlag
+        ? CUserMsgParticleManager_SetSceneObjectGenericFlag.toJSON(message.setSceneObjectGenericFlag)
+        : undefined);
+    message.setSceneObjectTintAndDesat !== undefined &&
+      (obj.setSceneObjectTintAndDesat = message.setSceneObjectTintAndDesat
+        ? CUserMsgParticleManager_SetSceneObjectTintAndDesat.toJSON(message.setSceneObjectTintAndDesat)
+        : undefined);
+    message.destroyParticleNamed !== undefined && (obj.destroyParticleNamed = message.destroyParticleNamed
+      ? CUserMsgParticleManager_DestroyParticleNamed.toJSON(message.destroyParticleNamed)
+      : undefined);
+    message.particleSkipToTime !== undefined && (obj.particleSkipToTime = message.particleSkipToTime
+      ? CUserMsgParticleManager_ParticleSkipToTime.toJSON(message.particleSkipToTime)
+      : undefined);
+    message.particleCanFreeze !== undefined && (obj.particleCanFreeze = message.particleCanFreeze
+      ? CUserMsgParticleManager_ParticleCanFreeze.toJSON(message.particleCanFreeze)
+      : undefined);
+    message.setNamedValueContext !== undefined && (obj.setNamedValueContext = message.setNamedValueContext
+      ? CUserMsgParticleManager_SetParticleNamedValueContext.toJSON(message.setNamedValueContext)
+      : undefined);
+    message.updateParticleTransform !== undefined && (obj.updateParticleTransform = message.updateParticleTransform
+      ? CUserMsgParticleManager_UpdateParticleTransform.toJSON(message.updateParticleTransform)
+      : undefined);
+    message.particleFreezeTransitionOverride !== undefined &&
+      (obj.particleFreezeTransitionOverride = message.particleFreezeTransitionOverride
+        ? CUserMsgParticleManager_ParticleFreezeTransitionOverride.toJSON(message.particleFreezeTransitionOverride)
+        : undefined);
+    return obj;
+  },
 };
 
 function createBaseCUserMsgParticleManager_ReleaseParticleIndex(): CUserMsgParticleManager_ReleaseParticleIndex {
@@ -3158,6 +4440,15 @@ export const CUserMsgParticleManager_ReleaseParticleIndex = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CUserMsgParticleManager_ReleaseParticleIndex {
+    return {};
+  },
+
+  toJSON(_: CUserMsgParticleManager_ReleaseParticleIndex): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -3263,6 +4554,34 @@ export const CUserMsgParticleManager_CreateParticle = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMsgParticleManager_CreateParticle {
+    return {
+      particleNameIndex: isSet(object.particleNameIndex) ? String(object.particleNameIndex) : "0",
+      attachType: isSet(object.attachType) ? Number(object.attachType) : 0,
+      entityHandle: isSet(object.entityHandle) ? Number(object.entityHandle) : 0,
+      entityHandleForModifiers: isSet(object.entityHandleForModifiers) ? Number(object.entityHandleForModifiers) : 0,
+      applyVoiceBanRules: isSet(object.applyVoiceBanRules) ? Boolean(object.applyVoiceBanRules) : false,
+      teamBehavior: isSet(object.teamBehavior) ? Number(object.teamBehavior) : 0,
+      controlPointConfiguration: isSet(object.controlPointConfiguration)
+        ? String(object.controlPointConfiguration)
+        : "",
+    };
+  },
+
+  toJSON(message: CUserMsgParticleManager_CreateParticle): unknown {
+    const obj: any = {};
+    message.particleNameIndex !== undefined && (obj.particleNameIndex = message.particleNameIndex);
+    message.attachType !== undefined && (obj.attachType = Math.round(message.attachType));
+    message.entityHandle !== undefined && (obj.entityHandle = Math.round(message.entityHandle));
+    message.entityHandleForModifiers !== undefined &&
+      (obj.entityHandleForModifiers = Math.round(message.entityHandleForModifiers));
+    message.applyVoiceBanRules !== undefined && (obj.applyVoiceBanRules = message.applyVoiceBanRules);
+    message.teamBehavior !== undefined && (obj.teamBehavior = Math.round(message.teamBehavior));
+    message.controlPointConfiguration !== undefined &&
+      (obj.controlPointConfiguration = message.controlPointConfiguration);
+    return obj;
+  },
 };
 
 function createBaseCUserMsgParticleManager_DestroyParticle(): CUserMsgParticleManager_DestroyParticle {
@@ -3298,6 +4617,16 @@ export const CUserMsgParticleManager_DestroyParticle = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMsgParticleManager_DestroyParticle {
+    return { destroyImmediately: isSet(object.destroyImmediately) ? Boolean(object.destroyImmediately) : false };
+  },
+
+  toJSON(message: CUserMsgParticleManager_DestroyParticle): unknown {
+    const obj: any = {};
+    message.destroyImmediately !== undefined && (obj.destroyImmediately = message.destroyImmediately);
+    return obj;
   },
 };
 
@@ -3347,6 +4676,20 @@ export const CUserMsgParticleManager_DestroyParticleInvolving = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMsgParticleManager_DestroyParticleInvolving {
+    return {
+      destroyImmediately: isSet(object.destroyImmediately) ? Boolean(object.destroyImmediately) : false,
+      entityHandle: isSet(object.entityHandle) ? Number(object.entityHandle) : 0,
+    };
+  },
+
+  toJSON(message: CUserMsgParticleManager_DestroyParticleInvolving): unknown {
+    const obj: any = {};
+    message.destroyImmediately !== undefined && (obj.destroyImmediately = message.destroyImmediately);
+    message.entityHandle !== undefined && (obj.entityHandle = Math.round(message.entityHandle));
+    return obj;
   },
 };
 
@@ -3414,6 +4757,24 @@ export const CUserMsgParticleManager_DestroyParticleNamed = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMsgParticleManager_DestroyParticleNamed {
+    return {
+      particleNameIndex: isSet(object.particleNameIndex) ? String(object.particleNameIndex) : "0",
+      entityHandle: isSet(object.entityHandle) ? Number(object.entityHandle) : 0,
+      destroyImmediately: isSet(object.destroyImmediately) ? Boolean(object.destroyImmediately) : false,
+      playEndcap: isSet(object.playEndcap) ? Boolean(object.playEndcap) : false,
+    };
+  },
+
+  toJSON(message: CUserMsgParticleManager_DestroyParticleNamed): unknown {
+    const obj: any = {};
+    message.particleNameIndex !== undefined && (obj.particleNameIndex = message.particleNameIndex);
+    message.entityHandle !== undefined && (obj.entityHandle = Math.round(message.entityHandle));
+    message.destroyImmediately !== undefined && (obj.destroyImmediately = message.destroyImmediately);
+    message.playEndcap !== undefined && (obj.playEndcap = message.playEndcap);
+    return obj;
+  },
 };
 
 function createBaseCUserMsgParticleManager_UpdateParticleOBSOLETE(): CUserMsgParticleManager_UpdateParticleOBSOLETE {
@@ -3463,6 +4824,21 @@ export const CUserMsgParticleManager_UpdateParticleOBSOLETE = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMsgParticleManager_UpdateParticleOBSOLETE {
+    return {
+      controlPoint: isSet(object.controlPoint) ? Number(object.controlPoint) : 0,
+      position: isSet(object.position) ? CMsgVector.fromJSON(object.position) : undefined,
+    };
+  },
+
+  toJSON(message: CUserMsgParticleManager_UpdateParticleOBSOLETE): unknown {
+    const obj: any = {};
+    message.controlPoint !== undefined && (obj.controlPoint = Math.round(message.controlPoint));
+    message.position !== undefined &&
+      (obj.position = message.position ? CMsgVector.toJSON(message.position) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCUserMsgParticleManager_UpdateParticleFwdOBSOLETE(): CUserMsgParticleManager_UpdateParticleFwdOBSOLETE {
@@ -3511,6 +4887,20 @@ export const CUserMsgParticleManager_UpdateParticleFwdOBSOLETE = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMsgParticleManager_UpdateParticleFwdOBSOLETE {
+    return {
+      controlPoint: isSet(object.controlPoint) ? Number(object.controlPoint) : 0,
+      forward: isSet(object.forward) ? CMsgVector.fromJSON(object.forward) : undefined,
+    };
+  },
+
+  toJSON(message: CUserMsgParticleManager_UpdateParticleFwdOBSOLETE): unknown {
+    const obj: any = {};
+    message.controlPoint !== undefined && (obj.controlPoint = Math.round(message.controlPoint));
+    message.forward !== undefined && (obj.forward = message.forward ? CMsgVector.toJSON(message.forward) : undefined);
+    return obj;
   },
 };
 
@@ -3591,6 +4981,27 @@ export const CUserMsgParticleManager_UpdateParticleOrientOBSOLETE = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMsgParticleManager_UpdateParticleOrientOBSOLETE {
+    return {
+      controlPoint: isSet(object.controlPoint) ? Number(object.controlPoint) : 0,
+      forward: isSet(object.forward) ? CMsgVector.fromJSON(object.forward) : undefined,
+      deprecatedRight: isSet(object.deprecatedRight) ? CMsgVector.fromJSON(object.deprecatedRight) : undefined,
+      up: isSet(object.up) ? CMsgVector.fromJSON(object.up) : undefined,
+      left: isSet(object.left) ? CMsgVector.fromJSON(object.left) : undefined,
+    };
+  },
+
+  toJSON(message: CUserMsgParticleManager_UpdateParticleOrientOBSOLETE): unknown {
+    const obj: any = {};
+    message.controlPoint !== undefined && (obj.controlPoint = Math.round(message.controlPoint));
+    message.forward !== undefined && (obj.forward = message.forward ? CMsgVector.toJSON(message.forward) : undefined);
+    message.deprecatedRight !== undefined &&
+      (obj.deprecatedRight = message.deprecatedRight ? CMsgVector.toJSON(message.deprecatedRight) : undefined);
+    message.up !== undefined && (obj.up = message.up ? CMsgVector.toJSON(message.up) : undefined);
+    message.left !== undefined && (obj.left = message.left ? CMsgVector.toJSON(message.left) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCUserMsgParticleManager_UpdateParticleTransform(): CUserMsgParticleManager_UpdateParticleTransform {
@@ -3660,6 +5071,26 @@ export const CUserMsgParticleManager_UpdateParticleTransform = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMsgParticleManager_UpdateParticleTransform {
+    return {
+      controlPoint: isSet(object.controlPoint) ? Number(object.controlPoint) : 0,
+      position: isSet(object.position) ? CMsgVector.fromJSON(object.position) : undefined,
+      orientation: isSet(object.orientation) ? CMsgQuaternion.fromJSON(object.orientation) : undefined,
+      interpolationInterval: isSet(object.interpolationInterval) ? Number(object.interpolationInterval) : 0,
+    };
+  },
+
+  toJSON(message: CUserMsgParticleManager_UpdateParticleTransform): unknown {
+    const obj: any = {};
+    message.controlPoint !== undefined && (obj.controlPoint = Math.round(message.controlPoint));
+    message.position !== undefined &&
+      (obj.position = message.position ? CMsgVector.toJSON(message.position) : undefined);
+    message.orientation !== undefined &&
+      (obj.orientation = message.orientation ? CMsgQuaternion.toJSON(message.orientation) : undefined);
+    message.interpolationInterval !== undefined && (obj.interpolationInterval = message.interpolationInterval);
+    return obj;
+  },
 };
 
 function createBaseCUserMsgParticleManager_UpdateParticleFallback(): CUserMsgParticleManager_UpdateParticleFallback {
@@ -3708,6 +5139,21 @@ export const CUserMsgParticleManager_UpdateParticleFallback = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMsgParticleManager_UpdateParticleFallback {
+    return {
+      controlPoint: isSet(object.controlPoint) ? Number(object.controlPoint) : 0,
+      position: isSet(object.position) ? CMsgVector.fromJSON(object.position) : undefined,
+    };
+  },
+
+  toJSON(message: CUserMsgParticleManager_UpdateParticleFallback): unknown {
+    const obj: any = {};
+    message.controlPoint !== undefined && (obj.controlPoint = Math.round(message.controlPoint));
+    message.position !== undefined &&
+      (obj.position = message.position ? CMsgVector.toJSON(message.position) : undefined);
+    return obj;
   },
 };
 
@@ -3764,6 +5210,24 @@ export const CUserMsgParticleManager_UpdateParticleOffset = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMsgParticleManager_UpdateParticleOffset {
+    return {
+      controlPoint: isSet(object.controlPoint) ? Number(object.controlPoint) : 0,
+      originOffset: isSet(object.originOffset) ? CMsgVector.fromJSON(object.originOffset) : undefined,
+      angleOffset: isSet(object.angleOffset) ? CMsgQAngle.fromJSON(object.angleOffset) : undefined,
+    };
+  },
+
+  toJSON(message: CUserMsgParticleManager_UpdateParticleOffset): unknown {
+    const obj: any = {};
+    message.controlPoint !== undefined && (obj.controlPoint = Math.round(message.controlPoint));
+    message.originOffset !== undefined &&
+      (obj.originOffset = message.originOffset ? CMsgVector.toJSON(message.originOffset) : undefined);
+    message.angleOffset !== undefined &&
+      (obj.angleOffset = message.angleOffset ? CMsgQAngle.toJSON(message.angleOffset) : undefined);
+    return obj;
   },
 };
 
@@ -3880,6 +5344,35 @@ export const CUserMsgParticleManager_UpdateParticleEnt = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMsgParticleManager_UpdateParticleEnt {
+    return {
+      controlPoint: isSet(object.controlPoint) ? Number(object.controlPoint) : 0,
+      entityHandle: isSet(object.entityHandle) ? Number(object.entityHandle) : 0,
+      attachType: isSet(object.attachType) ? Number(object.attachType) : 0,
+      attachment: isSet(object.attachment) ? Number(object.attachment) : 0,
+      fallbackPosition: isSet(object.fallbackPosition) ? CMsgVector.fromJSON(object.fallbackPosition) : undefined,
+      includeWearables: isSet(object.includeWearables) ? Boolean(object.includeWearables) : false,
+      offsetPosition: isSet(object.offsetPosition) ? CMsgVector.fromJSON(object.offsetPosition) : undefined,
+      offsetAngles: isSet(object.offsetAngles) ? CMsgQAngle.fromJSON(object.offsetAngles) : undefined,
+    };
+  },
+
+  toJSON(message: CUserMsgParticleManager_UpdateParticleEnt): unknown {
+    const obj: any = {};
+    message.controlPoint !== undefined && (obj.controlPoint = Math.round(message.controlPoint));
+    message.entityHandle !== undefined && (obj.entityHandle = Math.round(message.entityHandle));
+    message.attachType !== undefined && (obj.attachType = Math.round(message.attachType));
+    message.attachment !== undefined && (obj.attachment = Math.round(message.attachment));
+    message.fallbackPosition !== undefined &&
+      (obj.fallbackPosition = message.fallbackPosition ? CMsgVector.toJSON(message.fallbackPosition) : undefined);
+    message.includeWearables !== undefined && (obj.includeWearables = message.includeWearables);
+    message.offsetPosition !== undefined &&
+      (obj.offsetPosition = message.offsetPosition ? CMsgVector.toJSON(message.offsetPosition) : undefined);
+    message.offsetAngles !== undefined &&
+      (obj.offsetAngles = message.offsetAngles ? CMsgQAngle.toJSON(message.offsetAngles) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCUserMsgParticleManager_UpdateParticleSetFrozen(): CUserMsgParticleManager_UpdateParticleSetFrozen {
@@ -3929,6 +5422,20 @@ export const CUserMsgParticleManager_UpdateParticleSetFrozen = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMsgParticleManager_UpdateParticleSetFrozen {
+    return {
+      setFrozen: isSet(object.setFrozen) ? Boolean(object.setFrozen) : false,
+      transitionDuration: isSet(object.transitionDuration) ? Number(object.transitionDuration) : 0,
+    };
+  },
+
+  toJSON(message: CUserMsgParticleManager_UpdateParticleSetFrozen): unknown {
+    const obj: any = {};
+    message.setFrozen !== undefined && (obj.setFrozen = message.setFrozen);
+    message.transitionDuration !== undefined && (obj.transitionDuration = message.transitionDuration);
+    return obj;
+  },
 };
 
 function createBaseCUserMsgParticleManager_UpdateParticleShouldDraw(): CUserMsgParticleManager_UpdateParticleShouldDraw {
@@ -3967,6 +5474,16 @@ export const CUserMsgParticleManager_UpdateParticleShouldDraw = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMsgParticleManager_UpdateParticleShouldDraw {
+    return { shouldDraw: isSet(object.shouldDraw) ? Boolean(object.shouldDraw) : false };
+  },
+
+  toJSON(message: CUserMsgParticleManager_UpdateParticleShouldDraw): unknown {
+    const obj: any = {};
+    message.shouldDraw !== undefined && (obj.shouldDraw = message.shouldDraw);
+    return obj;
   },
 };
 
@@ -4027,6 +5544,22 @@ export const CUserMsgParticleManager_ChangeControlPointAttachment = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMsgParticleManager_ChangeControlPointAttachment {
+    return {
+      attachmentOld: isSet(object.attachmentOld) ? Number(object.attachmentOld) : 0,
+      attachmentNew: isSet(object.attachmentNew) ? Number(object.attachmentNew) : 0,
+      entityHandle: isSet(object.entityHandle) ? Number(object.entityHandle) : 0,
+    };
+  },
+
+  toJSON(message: CUserMsgParticleManager_ChangeControlPointAttachment): unknown {
+    const obj: any = {};
+    message.attachmentOld !== undefined && (obj.attachmentOld = Math.round(message.attachmentOld));
+    message.attachmentNew !== undefined && (obj.attachmentNew = Math.round(message.attachmentNew));
+    message.entityHandle !== undefined && (obj.entityHandle = Math.round(message.entityHandle));
+    return obj;
+  },
 };
 
 function createBaseCUserMsgParticleManager_UpdateEntityPosition(): CUserMsgParticleManager_UpdateEntityPosition {
@@ -4072,6 +5605,21 @@ export const CUserMsgParticleManager_UpdateEntityPosition = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMsgParticleManager_UpdateEntityPosition {
+    return {
+      entityHandle: isSet(object.entityHandle) ? Number(object.entityHandle) : 0,
+      position: isSet(object.position) ? CMsgVector.fromJSON(object.position) : undefined,
+    };
+  },
+
+  toJSON(message: CUserMsgParticleManager_UpdateEntityPosition): unknown {
+    const obj: any = {};
+    message.entityHandle !== undefined && (obj.entityHandle = Math.round(message.entityHandle));
+    message.position !== undefined &&
+      (obj.position = message.position ? CMsgVector.toJSON(message.position) : undefined);
+    return obj;
   },
 };
 
@@ -4132,6 +5680,22 @@ export const CUserMsgParticleManager_SetParticleFoWProperties = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMsgParticleManager_SetParticleFoWProperties {
+    return {
+      fowControlPoint: isSet(object.fowControlPoint) ? Number(object.fowControlPoint) : 0,
+      fowControlPoint2: isSet(object.fowControlPoint2) ? Number(object.fowControlPoint2) : 0,
+      fowRadius: isSet(object.fowRadius) ? Number(object.fowRadius) : 0,
+    };
+  },
+
+  toJSON(message: CUserMsgParticleManager_SetParticleFoWProperties): unknown {
+    const obj: any = {};
+    message.fowControlPoint !== undefined && (obj.fowControlPoint = Math.round(message.fowControlPoint));
+    message.fowControlPoint2 !== undefined && (obj.fowControlPoint2 = Math.round(message.fowControlPoint2));
+    message.fowRadius !== undefined && (obj.fowRadius = message.fowRadius);
+    return obj;
+  },
 };
 
 function createBaseCUserMsgParticleManager_SetParticleShouldCheckFoW(): CUserMsgParticleManager_SetParticleShouldCheckFoW {
@@ -4170,6 +5734,16 @@ export const CUserMsgParticleManager_SetParticleShouldCheckFoW = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMsgParticleManager_SetParticleShouldCheckFoW {
+    return { checkFow: isSet(object.checkFow) ? Boolean(object.checkFow) : false };
+  },
+
+  toJSON(message: CUserMsgParticleManager_SetParticleShouldCheckFoW): unknown {
+    const obj: any = {};
+    message.checkFow !== undefined && (obj.checkFow = message.checkFow);
+    return obj;
   },
 };
 
@@ -4216,6 +5790,20 @@ export const CUserMsgParticleManager_SetControlPointModel = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMsgParticleManager_SetControlPointModel {
+    return {
+      controlPoint: isSet(object.controlPoint) ? Number(object.controlPoint) : 0,
+      modelName: isSet(object.modelName) ? String(object.modelName) : "",
+    };
+  },
+
+  toJSON(message: CUserMsgParticleManager_SetControlPointModel): unknown {
+    const obj: any = {};
+    message.controlPoint !== undefined && (obj.controlPoint = Math.round(message.controlPoint));
+    message.modelName !== undefined && (obj.modelName = message.modelName);
+    return obj;
   },
 };
 
@@ -4266,6 +5854,20 @@ export const CUserMsgParticleManager_SetControlPointSnapshot = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMsgParticleManager_SetControlPointSnapshot {
+    return {
+      controlPoint: isSet(object.controlPoint) ? Number(object.controlPoint) : 0,
+      snapshotName: isSet(object.snapshotName) ? String(object.snapshotName) : "",
+    };
+  },
+
+  toJSON(message: CUserMsgParticleManager_SetControlPointSnapshot): unknown {
+    const obj: any = {};
+    message.controlPoint !== undefined && (obj.controlPoint = Math.round(message.controlPoint));
+    message.snapshotName !== undefined && (obj.snapshotName = message.snapshotName);
+    return obj;
+  },
 };
 
 function createBaseCUserMsgParticleManager_SetParticleText(): CUserMsgParticleManager_SetParticleText {
@@ -4301,6 +5903,16 @@ export const CUserMsgParticleManager_SetParticleText = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMsgParticleManager_SetParticleText {
+    return { text: isSet(object.text) ? String(object.text) : "" };
+  },
+
+  toJSON(message: CUserMsgParticleManager_SetParticleText): unknown {
+    const obj: any = {};
+    message.text !== undefined && (obj.text = message.text);
+    return obj;
   },
 };
 
@@ -4348,6 +5960,20 @@ export const CUserMsgParticleManager_SetTextureAttribute = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMsgParticleManager_SetTextureAttribute {
+    return {
+      attributeName: isSet(object.attributeName) ? String(object.attributeName) : "",
+      textureName: isSet(object.textureName) ? String(object.textureName) : "",
+    };
+  },
+
+  toJSON(message: CUserMsgParticleManager_SetTextureAttribute): unknown {
+    const obj: any = {};
+    message.attributeName !== undefined && (obj.attributeName = message.attributeName);
+    message.textureName !== undefined && (obj.textureName = message.textureName);
+    return obj;
+  },
 };
 
 function createBaseCUserMsgParticleManager_SetSceneObjectGenericFlag(): CUserMsgParticleManager_SetSceneObjectGenericFlag {
@@ -4386,6 +6012,16 @@ export const CUserMsgParticleManager_SetSceneObjectGenericFlag = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMsgParticleManager_SetSceneObjectGenericFlag {
+    return { flagValue: isSet(object.flagValue) ? Boolean(object.flagValue) : false };
+  },
+
+  toJSON(message: CUserMsgParticleManager_SetSceneObjectGenericFlag): unknown {
+    const obj: any = {};
+    message.flagValue !== undefined && (obj.flagValue = message.flagValue);
+    return obj;
   },
 };
 
@@ -4436,6 +6072,20 @@ export const CUserMsgParticleManager_SetSceneObjectTintAndDesat = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMsgParticleManager_SetSceneObjectTintAndDesat {
+    return {
+      tint: isSet(object.tint) ? Number(object.tint) : 0,
+      desat: isSet(object.desat) ? Number(object.desat) : 0,
+    };
+  },
+
+  toJSON(message: CUserMsgParticleManager_SetSceneObjectTintAndDesat): unknown {
+    const obj: any = {};
+    message.tint !== undefined && (obj.tint = Math.round(message.tint));
+    message.desat !== undefined && (obj.desat = message.desat);
+    return obj;
+  },
 };
 
 function createBaseCUserMsgParticleManager_ParticleSkipToTime(): CUserMsgParticleManager_ParticleSkipToTime {
@@ -4472,6 +6122,16 @@ export const CUserMsgParticleManager_ParticleSkipToTime = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMsgParticleManager_ParticleSkipToTime {
+    return { skipToTime: isSet(object.skipToTime) ? Number(object.skipToTime) : 0 };
+  },
+
+  toJSON(message: CUserMsgParticleManager_ParticleSkipToTime): unknown {
+    const obj: any = {};
+    message.skipToTime !== undefined && (obj.skipToTime = message.skipToTime);
+    return obj;
+  },
 };
 
 function createBaseCUserMsgParticleManager_ParticleCanFreeze(): CUserMsgParticleManager_ParticleCanFreeze {
@@ -4507,6 +6167,16 @@ export const CUserMsgParticleManager_ParticleCanFreeze = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMsgParticleManager_ParticleCanFreeze {
+    return { canFreeze: isSet(object.canFreeze) ? Boolean(object.canFreeze) : false };
+  },
+
+  toJSON(message: CUserMsgParticleManager_ParticleCanFreeze): unknown {
+    const obj: any = {};
+    message.canFreeze !== undefined && (obj.canFreeze = message.canFreeze);
+    return obj;
   },
 };
 
@@ -4546,6 +6216,18 @@ export const CUserMsgParticleManager_ParticleFreezeTransitionOverride = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMsgParticleManager_ParticleFreezeTransitionOverride {
+    return {
+      freezeTransitionOverride: isSet(object.freezeTransitionOverride) ? Number(object.freezeTransitionOverride) : 0,
+    };
+  },
+
+  toJSON(message: CUserMsgParticleManager_ParticleFreezeTransitionOverride): unknown {
+    const obj: any = {};
+    message.freezeTransitionOverride !== undefined && (obj.freezeTransitionOverride = message.freezeTransitionOverride);
+    return obj;
   },
 };
 
@@ -4615,6 +6297,52 @@ export const CUserMsgParticleManager_SetParticleNamedValueContext = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMsgParticleManager_SetParticleNamedValueContext {
+    return {
+      floatValues: Array.isArray(object?.floatValues)
+        ? object.floatValues.map((e: any) =>
+          CUserMsgParticleManager_SetParticleNamedValueContext_FloatContextValue.fromJSON(e)
+        )
+        : [],
+      vectorValues: Array.isArray(object?.vectorValues)
+        ? object.vectorValues.map((e: any) =>
+          CUserMsgParticleManager_SetParticleNamedValueContext_VectorContextValue.fromJSON(e)
+        )
+        : [],
+      transformValues: Array.isArray(object?.transformValues)
+        ? object.transformValues.map((e: any) =>
+          CUserMsgParticleManager_SetParticleNamedValueContext_TransformContextValue.fromJSON(e)
+        )
+        : [],
+    };
+  },
+
+  toJSON(message: CUserMsgParticleManager_SetParticleNamedValueContext): unknown {
+    const obj: any = {};
+    if (message.floatValues) {
+      obj.floatValues = message.floatValues.map((e) =>
+        e ? CUserMsgParticleManager_SetParticleNamedValueContext_FloatContextValue.toJSON(e) : undefined
+      );
+    } else {
+      obj.floatValues = [];
+    }
+    if (message.vectorValues) {
+      obj.vectorValues = message.vectorValues.map((e) =>
+        e ? CUserMsgParticleManager_SetParticleNamedValueContext_VectorContextValue.toJSON(e) : undefined
+      );
+    } else {
+      obj.vectorValues = [];
+    }
+    if (message.transformValues) {
+      obj.transformValues = message.transformValues.map((e) =>
+        e ? CUserMsgParticleManager_SetParticleNamedValueContext_TransformContextValue.toJSON(e) : undefined
+      );
+    } else {
+      obj.transformValues = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCUserMsgParticleManager_SetParticleNamedValueContext_FloatContextValue(): CUserMsgParticleManager_SetParticleNamedValueContext_FloatContextValue {
@@ -4666,6 +6394,20 @@ export const CUserMsgParticleManager_SetParticleNamedValueContext_FloatContextVa
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMsgParticleManager_SetParticleNamedValueContext_FloatContextValue {
+    return {
+      valueName: isSet(object.valueName) ? String(object.valueName) : "",
+      value: isSet(object.value) ? Number(object.value) : 0,
+    };
+  },
+
+  toJSON(message: CUserMsgParticleManager_SetParticleNamedValueContext_FloatContextValue): unknown {
+    const obj: any = {};
+    message.valueName !== undefined && (obj.valueName = message.valueName);
+    message.value !== undefined && (obj.value = message.value);
+    return obj;
   },
 };
 
@@ -4738,6 +6480,24 @@ export const CUserMsgParticleManager_SetParticleNamedValueContext_VectorContextV
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMsgParticleManager_SetParticleNamedValueContext_VectorContextValue {
+    return {
+      valueName: isSet(object.valueName) ? String(object.valueName) : "",
+      value: isSet(object.value) ? CMsgVector.fromJSON(object.value) : undefined,
+      entIndex: isSet(object.entIndex) ? Number(object.entIndex) : 0,
+      attachmentName: isSet(object.attachmentName) ? String(object.attachmentName) : "",
+    };
+  },
+
+  toJSON(message: CUserMsgParticleManager_SetParticleNamedValueContext_VectorContextValue): unknown {
+    const obj: any = {};
+    message.valueName !== undefined && (obj.valueName = message.valueName);
+    message.value !== undefined && (obj.value = message.value ? CMsgVector.toJSON(message.value) : undefined);
+    message.entIndex !== undefined && (obj.entIndex = Math.round(message.entIndex));
+    message.attachmentName !== undefined && (obj.attachmentName = message.attachmentName);
+    return obj;
   },
 };
 
@@ -4821,6 +6581,27 @@ export const CUserMsgParticleManager_SetParticleNamedValueContext_TransformConte
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMsgParticleManager_SetParticleNamedValueContext_TransformContextValue {
+    return {
+      valueName: isSet(object.valueName) ? String(object.valueName) : "",
+      angles: isSet(object.angles) ? CMsgQAngle.fromJSON(object.angles) : undefined,
+      translation: isSet(object.translation) ? CMsgVector.fromJSON(object.translation) : undefined,
+      entIndex: isSet(object.entIndex) ? Number(object.entIndex) : 0,
+      attachmentName: isSet(object.attachmentName) ? String(object.attachmentName) : "",
+    };
+  },
+
+  toJSON(message: CUserMsgParticleManager_SetParticleNamedValueContext_TransformContextValue): unknown {
+    const obj: any = {};
+    message.valueName !== undefined && (obj.valueName = message.valueName);
+    message.angles !== undefined && (obj.angles = message.angles ? CMsgQAngle.toJSON(message.angles) : undefined);
+    message.translation !== undefined &&
+      (obj.translation = message.translation ? CMsgVector.toJSON(message.translation) : undefined);
+    message.entIndex !== undefined && (obj.entIndex = Math.round(message.entIndex));
+    message.attachmentName !== undefined && (obj.attachmentName = message.attachmentName);
+    return obj;
+  },
 };
 
 function createBaseCUserMsgHudError(): CUserMsgHudError {
@@ -4856,6 +6637,16 @@ export const CUserMsgHudError = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMsgHudError {
+    return { orderId: isSet(object.orderId) ? Number(object.orderId) : 0 };
+  },
+
+  toJSON(message: CUserMsgHudError): unknown {
+    const obj: any = {};
+    message.orderId !== undefined && (obj.orderId = Math.round(message.orderId));
+    return obj;
   },
 };
 
@@ -4902,6 +6693,21 @@ export const CUserMsgCustomGameEvent = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMsgCustomGameEvent {
+    return {
+      eventName: isSet(object.eventName) ? String(object.eventName) : "",
+      data: isSet(object.data) ? Buffer.from(bytesFromBase64(object.data)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CUserMsgCustomGameEvent): unknown {
+    const obj: any = {};
+    message.eventName !== undefined && (obj.eventName = message.eventName);
+    message.data !== undefined &&
+      (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
+    return obj;
   },
 };
 
@@ -4969,6 +6775,24 @@ export const CUserMessageHapticsManagerPulse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMessageHapticsManagerPulse {
+    return {
+      handId: isSet(object.handId) ? Number(object.handId) : 0,
+      effectAmplitude: isSet(object.effectAmplitude) ? Number(object.effectAmplitude) : 0,
+      effectFrequency: isSet(object.effectFrequency) ? Number(object.effectFrequency) : 0,
+      effectDuration: isSet(object.effectDuration) ? Number(object.effectDuration) : 0,
+    };
+  },
+
+  toJSON(message: CUserMessageHapticsManagerPulse): unknown {
+    const obj: any = {};
+    message.handId !== undefined && (obj.handId = Math.round(message.handId));
+    message.effectAmplitude !== undefined && (obj.effectAmplitude = message.effectAmplitude);
+    message.effectFrequency !== undefined && (obj.effectFrequency = message.effectFrequency);
+    message.effectDuration !== undefined && (obj.effectDuration = message.effectDuration);
+    return obj;
+  },
 };
 
 function createBaseCUserMessageHapticsManagerEffect(): CUserMessageHapticsManagerEffect {
@@ -5025,6 +6849,22 @@ export const CUserMessageHapticsManagerEffect = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMessageHapticsManagerEffect {
+    return {
+      handId: isSet(object.handId) ? Number(object.handId) : 0,
+      effectNameHashCode: isSet(object.effectNameHashCode) ? Number(object.effectNameHashCode) : 0,
+      effectScale: isSet(object.effectScale) ? Number(object.effectScale) : 0,
+    };
+  },
+
+  toJSON(message: CUserMessageHapticsManagerEffect): unknown {
+    const obj: any = {};
+    message.handId !== undefined && (obj.handId = Math.round(message.handId));
+    message.effectNameHashCode !== undefined && (obj.effectNameHashCode = Math.round(message.effectNameHashCode));
+    message.effectScale !== undefined && (obj.effectScale = message.effectScale);
+    return obj;
+  },
 };
 
 function createBaseCUserMessageAnimStateGraphState(): CUserMessageAnimStateGraphState {
@@ -5070,6 +6910,21 @@ export const CUserMessageAnimStateGraphState = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMessageAnimStateGraphState {
+    return {
+      entityIndex: isSet(object.entityIndex) ? Number(object.entityIndex) : 0,
+      data: isSet(object.data) ? Buffer.from(bytesFromBase64(object.data)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CUserMessageAnimStateGraphState): unknown {
+    const obj: any = {};
+    message.entityIndex !== undefined && (obj.entityIndex = Math.round(message.entityIndex));
+    message.data !== undefined &&
+      (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
+    return obj;
   },
 };
 
@@ -5117,6 +6972,24 @@ export const CUserMessageCommandQueueState = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMessageCommandQueueState {
+    return {
+      playerSlot: isSet(object.playerSlot) ? Number(object.playerSlot) : 0,
+      commandQueueInfo: isSet(object.commandQueueInfo)
+        ? CUserMessageCommandQueueState_commandQueueInfoT.fromJSON(object.commandQueueInfo)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CUserMessageCommandQueueState): unknown {
+    const obj: any = {};
+    message.playerSlot !== undefined && (obj.playerSlot = Math.round(message.playerSlot));
+    message.commandQueueInfo !== undefined && (obj.commandQueueInfo = message.commandQueueInfo
+      ? CUserMessageCommandQueueState_commandQueueInfoT.toJSON(message.commandQueueInfo)
+      : undefined);
+    return obj;
   },
 };
 
@@ -5187,6 +7060,25 @@ export const CUserMessageCommandQueueState_commandQueueInfoT = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMessageCommandQueueState_commandQueueInfoT {
+    return {
+      commandsQueued: isSet(object.commandsQueued) ? Number(object.commandsQueued) : 0,
+      commandQueueDesiredSize: isSet(object.commandQueueDesiredSize) ? Number(object.commandQueueDesiredSize) : 0,
+      starvedCommandTicks: isSet(object.starvedCommandTicks) ? Number(object.starvedCommandTicks) : 0,
+      timeDilationPercent: isSet(object.timeDilationPercent) ? Number(object.timeDilationPercent) : 0,
+    };
+  },
+
+  toJSON(message: CUserMessageCommandQueueState_commandQueueInfoT): unknown {
+    const obj: any = {};
+    message.commandsQueued !== undefined && (obj.commandsQueued = Math.round(message.commandsQueued));
+    message.commandQueueDesiredSize !== undefined &&
+      (obj.commandQueueDesiredSize = Math.round(message.commandQueueDesiredSize));
+    message.starvedCommandTicks !== undefined && (obj.starvedCommandTicks = Math.round(message.starvedCommandTicks));
+    message.timeDilationPercent !== undefined && (obj.timeDilationPercent = Math.round(message.timeDilationPercent));
+    return obj;
+  },
 };
 
 function createBaseCUserMessageUpdateCssClasses(): CUserMessageUpdateCssClasses {
@@ -5243,6 +7135,22 @@ export const CUserMessageUpdateCssClasses = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMessageUpdateCssClasses {
+    return {
+      targetWorldPanel: isSet(object.targetWorldPanel) ? Number(object.targetWorldPanel) : 0,
+      cssClasses: isSet(object.cssClasses) ? String(object.cssClasses) : "",
+      isAdd: isSet(object.isAdd) ? Boolean(object.isAdd) : false,
+    };
+  },
+
+  toJSON(message: CUserMessageUpdateCssClasses): unknown {
+    const obj: any = {};
+    message.targetWorldPanel !== undefined && (obj.targetWorldPanel = Math.round(message.targetWorldPanel));
+    message.cssClasses !== undefined && (obj.cssClasses = message.cssClasses);
+    message.isAdd !== undefined && (obj.isAdd = message.isAdd);
+    return obj;
+  },
 };
 
 function createBaseCUserMessageServerFrameTime(): CUserMessageServerFrameTime {
@@ -5279,6 +7187,16 @@ export const CUserMessageServerFrameTime = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMessageServerFrameTime {
+    return { frameTime: isSet(object.frameTime) ? Number(object.frameTime) : 0 };
+  },
+
+  toJSON(message: CUserMessageServerFrameTime): unknown {
+    const obj: any = {};
+    message.frameTime !== undefined && (obj.frameTime = message.frameTime);
+    return obj;
+  },
 };
 
 function createBaseCUserMessageLagCompensationError(): CUserMessageLagCompensationError {
@@ -5314,6 +7232,16 @@ export const CUserMessageLagCompensationError = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMessageLagCompensationError {
+    return { distance: isSet(object.distance) ? Number(object.distance) : 0 };
+  },
+
+  toJSON(message: CUserMessageLagCompensationError): unknown {
+    const obj: any = {};
+    message.distance !== undefined && (obj.distance = message.distance);
+    return obj;
   },
 };
 
@@ -5360,6 +7288,20 @@ export const CUserMessageRequestDllStatus = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMessageRequestDllStatus {
+    return {
+      dllAction: isSet(object.dllAction) ? String(object.dllAction) : "",
+      fullReport: isSet(object.fullReport) ? Boolean(object.fullReport) : false,
+    };
+  },
+
+  toJSON(message: CUserMessageRequestDllStatus): unknown {
+    const obj: any = {};
+    message.dllAction !== undefined && (obj.dllAction = message.dllAction);
+    message.fullReport !== undefined && (obj.fullReport = message.fullReport);
+    return obj;
   },
 };
 
@@ -5436,6 +7378,26 @@ export const CUserMessageRequestUtilAction = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMessageRequestUtilAction {
+    return {
+      util1: isSet(object.util1) ? Number(object.util1) : 0,
+      util2: isSet(object.util2) ? Number(object.util2) : 0,
+      util3: isSet(object.util3) ? Number(object.util3) : 0,
+      util4: isSet(object.util4) ? Number(object.util4) : 0,
+      util5: isSet(object.util5) ? Number(object.util5) : 0,
+    };
+  },
+
+  toJSON(message: CUserMessageRequestUtilAction): unknown {
+    const obj: any = {};
+    message.util1 !== undefined && (obj.util1 = Math.round(message.util1));
+    message.util2 !== undefined && (obj.util2 = Math.round(message.util2));
+    message.util3 !== undefined && (obj.util3 = Math.round(message.util3));
+    message.util4 !== undefined && (obj.util4 = Math.round(message.util4));
+    message.util5 !== undefined && (obj.util5 = Math.round(message.util5));
+    return obj;
   },
 };
 
@@ -5618,6 +7580,56 @@ export const CUserMessageUtilMsgResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMessageUtilMsgResponse {
+    return {
+      crc: isSet(object.crc) ? Number(object.crc) : 0,
+      itemCount: isSet(object.itemCount) ? Number(object.itemCount) : 0,
+      crc2: isSet(object.crc2) ? Number(object.crc2) : 0,
+      itemCount2: isSet(object.itemCount2) ? Number(object.itemCount2) : 0,
+      crcPart: Array.isArray(object?.crcPart) ? object.crcPart.map((e: any) => Number(e)) : [],
+      crcPart2: Array.isArray(object?.crcPart2) ? object.crcPart2.map((e: any) => Number(e)) : [],
+      clientTimestamp: isSet(object.clientTimestamp) ? Number(object.clientTimestamp) : 0,
+      platform: isSet(object.platform) ? Number(object.platform) : 0,
+      itemdetails: Array.isArray(object?.itemdetails)
+        ? object.itemdetails.map((e: any) => CUserMessageUtilMsgResponse_ItemDetail.fromJSON(e))
+        : [],
+      itemgroup: isSet(object.itemgroup) ? Number(object.itemgroup) : 0,
+      totalCount: isSet(object.totalCount) ? Number(object.totalCount) : 0,
+      totalCount2: isSet(object.totalCount2) ? Number(object.totalCount2) : 0,
+    };
+  },
+
+  toJSON(message: CUserMessageUtilMsgResponse): unknown {
+    const obj: any = {};
+    message.crc !== undefined && (obj.crc = Math.round(message.crc));
+    message.itemCount !== undefined && (obj.itemCount = Math.round(message.itemCount));
+    message.crc2 !== undefined && (obj.crc2 = Math.round(message.crc2));
+    message.itemCount2 !== undefined && (obj.itemCount2 = Math.round(message.itemCount2));
+    if (message.crcPart) {
+      obj.crcPart = message.crcPart.map((e) => Math.round(e));
+    } else {
+      obj.crcPart = [];
+    }
+    if (message.crcPart2) {
+      obj.crcPart2 = message.crcPart2.map((e) => Math.round(e));
+    } else {
+      obj.crcPart2 = [];
+    }
+    message.clientTimestamp !== undefined && (obj.clientTimestamp = Math.round(message.clientTimestamp));
+    message.platform !== undefined && (obj.platform = Math.round(message.platform));
+    if (message.itemdetails) {
+      obj.itemdetails = message.itemdetails.map((e) =>
+        e ? CUserMessageUtilMsgResponse_ItemDetail.toJSON(e) : undefined
+      );
+    } else {
+      obj.itemdetails = [];
+    }
+    message.itemgroup !== undefined && (obj.itemgroup = Math.round(message.itemgroup));
+    message.totalCount !== undefined && (obj.totalCount = Math.round(message.totalCount));
+    message.totalCount2 !== undefined && (obj.totalCount2 = Math.round(message.totalCount2));
+    return obj;
+  },
 };
 
 function createBaseCUserMessageUtilMsgResponse_ItemDetail(): CUserMessageUtilMsgResponse_ItemDetail {
@@ -5683,6 +7695,24 @@ export const CUserMessageUtilMsgResponse_ItemDetail = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMessageUtilMsgResponse_ItemDetail {
+    return {
+      index: isSet(object.index) ? Number(object.index) : 0,
+      hash: isSet(object.hash) ? Number(object.hash) : 0,
+      crc: isSet(object.crc) ? Number(object.crc) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+    };
+  },
+
+  toJSON(message: CUserMessageUtilMsgResponse_ItemDetail): unknown {
+    const obj: any = {};
+    message.index !== undefined && (obj.index = Math.round(message.index));
+    message.hash !== undefined && (obj.hash = Math.round(message.hash));
+    message.crc !== undefined && (obj.crc = Math.round(message.crc));
+    message.name !== undefined && (obj.name = message.name);
+    return obj;
   },
 };
 
@@ -5788,6 +7818,36 @@ export const CUserMessageDllStatus = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMessageDllStatus {
+    return {
+      fileReport: isSet(object.fileReport) ? String(object.fileReport) : "",
+      commandLine: isSet(object.commandLine) ? String(object.commandLine) : "",
+      totalFiles: isSet(object.totalFiles) ? Number(object.totalFiles) : 0,
+      processId: isSet(object.processId) ? Number(object.processId) : 0,
+      osversion: isSet(object.osversion) ? Number(object.osversion) : 0,
+      clientTime: isSet(object.clientTime) ? String(object.clientTime) : "0",
+      diagnostics: Array.isArray(object?.diagnostics)
+        ? object.diagnostics.map((e: any) => CUserMessageDllStatus_CVDiagnostic.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CUserMessageDllStatus): unknown {
+    const obj: any = {};
+    message.fileReport !== undefined && (obj.fileReport = message.fileReport);
+    message.commandLine !== undefined && (obj.commandLine = message.commandLine);
+    message.totalFiles !== undefined && (obj.totalFiles = Math.round(message.totalFiles));
+    message.processId !== undefined && (obj.processId = Math.round(message.processId));
+    message.osversion !== undefined && (obj.osversion = Math.round(message.osversion));
+    message.clientTime !== undefined && (obj.clientTime = message.clientTime);
+    if (message.diagnostics) {
+      obj.diagnostics = message.diagnostics.map((e) => e ? CUserMessageDllStatus_CVDiagnostic.toJSON(e) : undefined);
+    } else {
+      obj.diagnostics = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCUserMessageDllStatus_CVDiagnostic(): CUserMessageDllStatus_CVDiagnostic {
@@ -5854,6 +7914,24 @@ export const CUserMessageDllStatus_CVDiagnostic = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMessageDllStatus_CVDiagnostic {
+    return {
+      id: isSet(object.id) ? Number(object.id) : 0,
+      extended: isSet(object.extended) ? Number(object.extended) : 0,
+      value: isSet(object.value) ? String(object.value) : "0",
+      stringValue: isSet(object.stringValue) ? String(object.stringValue) : "",
+    };
+  },
+
+  toJSON(message: CUserMessageDllStatus_CVDiagnostic): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = Math.round(message.id));
+    message.extended !== undefined && (obj.extended = Math.round(message.extended));
+    message.value !== undefined && (obj.value = message.value);
+    message.stringValue !== undefined && (obj.stringValue = message.stringValue);
+    return obj;
+  },
 };
 
 function createBaseCUserMessageRequestInventory(): CUserMessageRequestInventory {
@@ -5909,6 +7987,22 @@ export const CUserMessageRequestInventory = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CUserMessageRequestInventory {
+    return {
+      inventory: isSet(object.inventory) ? Number(object.inventory) : 0,
+      offset: isSet(object.offset) ? Number(object.offset) : 0,
+      options: isSet(object.options) ? Number(object.options) : 0,
+    };
+  },
+
+  toJSON(message: CUserMessageRequestInventory): unknown {
+    const obj: any = {};
+    message.inventory !== undefined && (obj.inventory = Math.round(message.inventory));
+    message.offset !== undefined && (obj.offset = Math.round(message.offset));
+    message.options !== undefined && (obj.options = Math.round(message.options));
+    return obj;
   },
 };
 
@@ -6058,6 +8152,54 @@ export const CUserMessageInventoryResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMessageInventoryResponse {
+    return {
+      crc: isSet(object.crc) ? Number(object.crc) : 0,
+      itemCount: isSet(object.itemCount) ? Number(object.itemCount) : 0,
+      osversion: isSet(object.osversion) ? Number(object.osversion) : 0,
+      perfTime: isSet(object.perfTime) ? Number(object.perfTime) : 0,
+      clientTimestamp: isSet(object.clientTimestamp) ? Number(object.clientTimestamp) : 0,
+      platform: isSet(object.platform) ? Number(object.platform) : 0,
+      inventories: Array.isArray(object?.inventories)
+        ? object.inventories.map((e: any) => CUserMessageInventoryResponse_InventoryDetail.fromJSON(e))
+        : [],
+      inventories2: Array.isArray(object?.inventories2)
+        ? object.inventories2.map((e: any) => CUserMessageInventoryResponse_InventoryDetail.fromJSON(e))
+        : [],
+      invType: isSet(object.invType) ? Number(object.invType) : 0,
+      buildVersion: isSet(object.buildVersion) ? Number(object.buildVersion) : 0,
+      instance: isSet(object.instance) ? Number(object.instance) : 0,
+    };
+  },
+
+  toJSON(message: CUserMessageInventoryResponse): unknown {
+    const obj: any = {};
+    message.crc !== undefined && (obj.crc = Math.round(message.crc));
+    message.itemCount !== undefined && (obj.itemCount = Math.round(message.itemCount));
+    message.osversion !== undefined && (obj.osversion = Math.round(message.osversion));
+    message.perfTime !== undefined && (obj.perfTime = Math.round(message.perfTime));
+    message.clientTimestamp !== undefined && (obj.clientTimestamp = Math.round(message.clientTimestamp));
+    message.platform !== undefined && (obj.platform = Math.round(message.platform));
+    if (message.inventories) {
+      obj.inventories = message.inventories.map((e) =>
+        e ? CUserMessageInventoryResponse_InventoryDetail.toJSON(e) : undefined
+      );
+    } else {
+      obj.inventories = [];
+    }
+    if (message.inventories2) {
+      obj.inventories2 = message.inventories2.map((e) =>
+        e ? CUserMessageInventoryResponse_InventoryDetail.toJSON(e) : undefined
+      );
+    } else {
+      obj.inventories2 = [];
+    }
+    message.invType !== undefined && (obj.invType = Math.round(message.invType));
+    message.buildVersion !== undefined && (obj.buildVersion = Math.round(message.buildVersion));
+    message.instance !== undefined && (obj.instance = Math.round(message.instance));
+    return obj;
+  },
 };
 
 function createBaseCUserMessageInventoryResponse_InventoryDetail(): CUserMessageInventoryResponse_InventoryDetail {
@@ -6195,7 +8337,81 @@ export const CUserMessageInventoryResponse_InventoryDetail = {
     }
     return message;
   },
+
+  fromJSON(object: any): CUserMessageInventoryResponse_InventoryDetail {
+    return {
+      index: isSet(object.index) ? Number(object.index) : 0,
+      primary: isSet(object.primary) ? String(object.primary) : "0",
+      offset: isSet(object.offset) ? String(object.offset) : "0",
+      first: isSet(object.first) ? String(object.first) : "0",
+      base: isSet(object.base) ? String(object.base) : "0",
+      name: isSet(object.name) ? String(object.name) : "",
+      baseName: isSet(object.baseName) ? String(object.baseName) : "",
+      baseDetail: isSet(object.baseDetail) ? Number(object.baseDetail) : 0,
+      baseTime: isSet(object.baseTime) ? Number(object.baseTime) : 0,
+      baseHash: isSet(object.baseHash) ? Number(object.baseHash) : 0,
+    };
+  },
+
+  toJSON(message: CUserMessageInventoryResponse_InventoryDetail): unknown {
+    const obj: any = {};
+    message.index !== undefined && (obj.index = Math.round(message.index));
+    message.primary !== undefined && (obj.primary = message.primary);
+    message.offset !== undefined && (obj.offset = message.offset);
+    message.first !== undefined && (obj.first = message.first);
+    message.base !== undefined && (obj.base = message.base);
+    message.name !== undefined && (obj.name = message.name);
+    message.baseName !== undefined && (obj.baseName = message.baseName);
+    message.baseDetail !== undefined && (obj.baseDetail = Math.round(message.baseDetail));
+    message.baseTime !== undefined && (obj.baseTime = Math.round(message.baseTime));
+    message.baseHash !== undefined && (obj.baseHash = Math.round(message.baseHash));
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if (tsProtoGlobalThis.Buffer) {
+    return Uint8Array.from(tsProtoGlobalThis.Buffer.from(b64, "base64"));
+  } else {
+    const bin = tsProtoGlobalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if (tsProtoGlobalThis.Buffer) {
+    return tsProtoGlobalThis.Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(String.fromCharCode(byte));
+    });
+    return tsProtoGlobalThis.btoa(bin.join(""));
+  }
+}
 
 function longToString(long: Long) {
   return long.toString();
@@ -6204,4 +8420,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

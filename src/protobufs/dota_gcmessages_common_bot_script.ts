@@ -43,6 +43,85 @@ export enum CMsgBotWorldState_UnitType {
   WARD = 12,
 }
 
+export function cMsgBotWorldState_UnitTypeFromJSON(object: any): CMsgBotWorldState_UnitType {
+  switch (object) {
+    case 0:
+    case "INVALID":
+      return CMsgBotWorldState_UnitType.INVALID;
+    case 1:
+    case "HERO":
+      return CMsgBotWorldState_UnitType.HERO;
+    case 2:
+    case "CREEP_HERO":
+      return CMsgBotWorldState_UnitType.CREEP_HERO;
+    case 3:
+    case "LANE_CREEP":
+      return CMsgBotWorldState_UnitType.LANE_CREEP;
+    case 4:
+    case "JUNGLE_CREEP":
+      return CMsgBotWorldState_UnitType.JUNGLE_CREEP;
+    case 5:
+    case "ROSHAN":
+      return CMsgBotWorldState_UnitType.ROSHAN;
+    case 6:
+    case "TOWER":
+      return CMsgBotWorldState_UnitType.TOWER;
+    case 7:
+    case "BARRACKS":
+      return CMsgBotWorldState_UnitType.BARRACKS;
+    case 8:
+    case "SHRINE":
+      return CMsgBotWorldState_UnitType.SHRINE;
+    case 9:
+    case "FORT":
+      return CMsgBotWorldState_UnitType.FORT;
+    case 10:
+    case "BUILDING":
+      return CMsgBotWorldState_UnitType.BUILDING;
+    case 11:
+    case "COURIER":
+      return CMsgBotWorldState_UnitType.COURIER;
+    case 12:
+    case "WARD":
+      return CMsgBotWorldState_UnitType.WARD;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum CMsgBotWorldState_UnitType");
+  }
+}
+
+export function cMsgBotWorldState_UnitTypeToJSON(object: CMsgBotWorldState_UnitType): string {
+  switch (object) {
+    case CMsgBotWorldState_UnitType.INVALID:
+      return "INVALID";
+    case CMsgBotWorldState_UnitType.HERO:
+      return "HERO";
+    case CMsgBotWorldState_UnitType.CREEP_HERO:
+      return "CREEP_HERO";
+    case CMsgBotWorldState_UnitType.LANE_CREEP:
+      return "LANE_CREEP";
+    case CMsgBotWorldState_UnitType.JUNGLE_CREEP:
+      return "JUNGLE_CREEP";
+    case CMsgBotWorldState_UnitType.ROSHAN:
+      return "ROSHAN";
+    case CMsgBotWorldState_UnitType.TOWER:
+      return "TOWER";
+    case CMsgBotWorldState_UnitType.BARRACKS:
+      return "BARRACKS";
+    case CMsgBotWorldState_UnitType.SHRINE:
+      return "SHRINE";
+    case CMsgBotWorldState_UnitType.FORT:
+      return "FORT";
+    case CMsgBotWorldState_UnitType.BUILDING:
+      return "BUILDING";
+    case CMsgBotWorldState_UnitType.COURIER:
+      return "COURIER";
+    case CMsgBotWorldState_UnitType.WARD:
+      return "WARD";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum CMsgBotWorldState_UnitType");
+  }
+}
+
 export enum CMsgBotWorldState_CourierState {
   COURIER_STATE_INIT = -1,
   COURIER_STATE_IDLE = 0,
@@ -51,6 +130,59 @@ export enum CMsgBotWorldState_CourierState {
   COURIER_STATE_DELIVERING_ITEMS = 3,
   COURIER_STATE_RETURNING_TO_BASE = 4,
   COURIER_STATE_DEAD = 5,
+}
+
+export function cMsgBotWorldState_CourierStateFromJSON(object: any): CMsgBotWorldState_CourierState {
+  switch (object) {
+    case -1:
+    case "COURIER_STATE_INIT":
+      return CMsgBotWorldState_CourierState.COURIER_STATE_INIT;
+    case 0:
+    case "COURIER_STATE_IDLE":
+      return CMsgBotWorldState_CourierState.COURIER_STATE_IDLE;
+    case 1:
+    case "COURIER_STATE_AT_BASE":
+      return CMsgBotWorldState_CourierState.COURIER_STATE_AT_BASE;
+    case 2:
+    case "COURIER_STATE_MOVING":
+      return CMsgBotWorldState_CourierState.COURIER_STATE_MOVING;
+    case 3:
+    case "COURIER_STATE_DELIVERING_ITEMS":
+      return CMsgBotWorldState_CourierState.COURIER_STATE_DELIVERING_ITEMS;
+    case 4:
+    case "COURIER_STATE_RETURNING_TO_BASE":
+      return CMsgBotWorldState_CourierState.COURIER_STATE_RETURNING_TO_BASE;
+    case 5:
+    case "COURIER_STATE_DEAD":
+      return CMsgBotWorldState_CourierState.COURIER_STATE_DEAD;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgBotWorldState_CourierState",
+      );
+  }
+}
+
+export function cMsgBotWorldState_CourierStateToJSON(object: CMsgBotWorldState_CourierState): string {
+  switch (object) {
+    case CMsgBotWorldState_CourierState.COURIER_STATE_INIT:
+      return "COURIER_STATE_INIT";
+    case CMsgBotWorldState_CourierState.COURIER_STATE_IDLE:
+      return "COURIER_STATE_IDLE";
+    case CMsgBotWorldState_CourierState.COURIER_STATE_AT_BASE:
+      return "COURIER_STATE_AT_BASE";
+    case CMsgBotWorldState_CourierState.COURIER_STATE_MOVING:
+      return "COURIER_STATE_MOVING";
+    case CMsgBotWorldState_CourierState.COURIER_STATE_DELIVERING_ITEMS:
+      return "COURIER_STATE_DELIVERING_ITEMS";
+    case CMsgBotWorldState_CourierState.COURIER_STATE_RETURNING_TO_BASE:
+      return "COURIER_STATE_RETURNING_TO_BASE";
+    case CMsgBotWorldState_CourierState.COURIER_STATE_DEAD:
+      return "COURIER_STATE_DEAD";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgBotWorldState_CourierState",
+      );
+  }
 }
 
 export interface CMsgBotWorldState_Vector {
@@ -594,6 +726,156 @@ export const CMsgBotWorldState = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgBotWorldState {
+    return {
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      gameTime: isSet(object.gameTime) ? Number(object.gameTime) : 0,
+      dotaTime: isSet(object.dotaTime) ? Number(object.dotaTime) : 0,
+      gameState: isSet(object.gameState) ? Number(object.gameState) : 0,
+      heroPickState: isSet(object.heroPickState) ? Number(object.heroPickState) : 0,
+      timeOfDay: isSet(object.timeOfDay) ? Number(object.timeOfDay) : 0,
+      glyphCooldown: isSet(object.glyphCooldown) ? Number(object.glyphCooldown) : 0,
+      glyphCooldownEnemy: isSet(object.glyphCooldownEnemy) ? Number(object.glyphCooldownEnemy) : 0,
+      players: Array.isArray(object?.players)
+        ? object.players.map((e: any) => CMsgBotWorldState_Player.fromJSON(e))
+        : [],
+      units: Array.isArray(object?.units) ? object.units.map((e: any) => CMsgBotWorldState_Unit.fromJSON(e)) : [],
+      droppedItems: Array.isArray(object?.droppedItems)
+        ? object.droppedItems.map((e: any) => CMsgBotWorldState_DroppedItem.fromJSON(e))
+        : [],
+      droppedItemsDeltas: Array.isArray(object?.droppedItemsDeltas)
+        ? object.droppedItemsDeltas.map((e: any) => Number(e))
+        : [],
+      runeInfos: Array.isArray(object?.runeInfos)
+        ? object.runeInfos.map((e: any) => CMsgBotWorldState_RuneInfo.fromJSON(e))
+        : [],
+      runeInfosDeltas: Array.isArray(object?.runeInfosDeltas) ? object.runeInfosDeltas.map((e: any) => Number(e)) : [],
+      incomingTeleports: Array.isArray(object?.incomingTeleports)
+        ? object.incomingTeleports.map((e: any) => CMsgBotWorldState_TeleportInfo.fromJSON(e))
+        : [],
+      linearProjectiles: Array.isArray(object?.linearProjectiles)
+        ? object.linearProjectiles.map((e: any) => CMsgBotWorldState_LinearProjectile.fromJSON(e))
+        : [],
+      avoidanceZones: Array.isArray(object?.avoidanceZones)
+        ? object.avoidanceZones.map((e: any) => CMsgBotWorldState_AvoidanceZone.fromJSON(e))
+        : [],
+      couriers: Array.isArray(object?.couriers)
+        ? object.couriers.map((e: any) => CMsgBotWorldState_Courier.fromJSON(e))
+        : [],
+      abilityEvents: Array.isArray(object?.abilityEvents)
+        ? object.abilityEvents.map((e: any) => CMsgBotWorldState_EventAbility.fromJSON(e))
+        : [],
+      damageEvents: Array.isArray(object?.damageEvents)
+        ? object.damageEvents.map((e: any) => CMsgBotWorldState_EventDamage.fromJSON(e))
+        : [],
+      courierKilledEvents: Array.isArray(object?.courierKilledEvents)
+        ? object.courierKilledEvents.map((e: any) => CMsgBotWorldState_EventCourierKilled.fromJSON(e))
+        : [],
+      roshanKilledEvents: Array.isArray(object?.roshanKilledEvents)
+        ? object.roshanKilledEvents.map((e: any) => CMsgBotWorldState_EventRoshanKilled.fromJSON(e))
+        : [],
+      treeEvents: Array.isArray(object?.treeEvents)
+        ? object.treeEvents.map((e: any) => CMsgBotWorldState_EventTree.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgBotWorldState): unknown {
+    const obj: any = {};
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    message.gameTime !== undefined && (obj.gameTime = message.gameTime);
+    message.dotaTime !== undefined && (obj.dotaTime = message.dotaTime);
+    message.gameState !== undefined && (obj.gameState = Math.round(message.gameState));
+    message.heroPickState !== undefined && (obj.heroPickState = Math.round(message.heroPickState));
+    message.timeOfDay !== undefined && (obj.timeOfDay = message.timeOfDay);
+    message.glyphCooldown !== undefined && (obj.glyphCooldown = message.glyphCooldown);
+    message.glyphCooldownEnemy !== undefined && (obj.glyphCooldownEnemy = message.glyphCooldownEnemy);
+    if (message.players) {
+      obj.players = message.players.map((e) => e ? CMsgBotWorldState_Player.toJSON(e) : undefined);
+    } else {
+      obj.players = [];
+    }
+    if (message.units) {
+      obj.units = message.units.map((e) => e ? CMsgBotWorldState_Unit.toJSON(e) : undefined);
+    } else {
+      obj.units = [];
+    }
+    if (message.droppedItems) {
+      obj.droppedItems = message.droppedItems.map((e) => e ? CMsgBotWorldState_DroppedItem.toJSON(e) : undefined);
+    } else {
+      obj.droppedItems = [];
+    }
+    if (message.droppedItemsDeltas) {
+      obj.droppedItemsDeltas = message.droppedItemsDeltas.map((e) => Math.round(e));
+    } else {
+      obj.droppedItemsDeltas = [];
+    }
+    if (message.runeInfos) {
+      obj.runeInfos = message.runeInfos.map((e) => e ? CMsgBotWorldState_RuneInfo.toJSON(e) : undefined);
+    } else {
+      obj.runeInfos = [];
+    }
+    if (message.runeInfosDeltas) {
+      obj.runeInfosDeltas = message.runeInfosDeltas.map((e) => Math.round(e));
+    } else {
+      obj.runeInfosDeltas = [];
+    }
+    if (message.incomingTeleports) {
+      obj.incomingTeleports = message.incomingTeleports.map((e) =>
+        e ? CMsgBotWorldState_TeleportInfo.toJSON(e) : undefined
+      );
+    } else {
+      obj.incomingTeleports = [];
+    }
+    if (message.linearProjectiles) {
+      obj.linearProjectiles = message.linearProjectiles.map((e) =>
+        e ? CMsgBotWorldState_LinearProjectile.toJSON(e) : undefined
+      );
+    } else {
+      obj.linearProjectiles = [];
+    }
+    if (message.avoidanceZones) {
+      obj.avoidanceZones = message.avoidanceZones.map((e) => e ? CMsgBotWorldState_AvoidanceZone.toJSON(e) : undefined);
+    } else {
+      obj.avoidanceZones = [];
+    }
+    if (message.couriers) {
+      obj.couriers = message.couriers.map((e) => e ? CMsgBotWorldState_Courier.toJSON(e) : undefined);
+    } else {
+      obj.couriers = [];
+    }
+    if (message.abilityEvents) {
+      obj.abilityEvents = message.abilityEvents.map((e) => e ? CMsgBotWorldState_EventAbility.toJSON(e) : undefined);
+    } else {
+      obj.abilityEvents = [];
+    }
+    if (message.damageEvents) {
+      obj.damageEvents = message.damageEvents.map((e) => e ? CMsgBotWorldState_EventDamage.toJSON(e) : undefined);
+    } else {
+      obj.damageEvents = [];
+    }
+    if (message.courierKilledEvents) {
+      obj.courierKilledEvents = message.courierKilledEvents.map((e) =>
+        e ? CMsgBotWorldState_EventCourierKilled.toJSON(e) : undefined
+      );
+    } else {
+      obj.courierKilledEvents = [];
+    }
+    if (message.roshanKilledEvents) {
+      obj.roshanKilledEvents = message.roshanKilledEvents.map((e) =>
+        e ? CMsgBotWorldState_EventRoshanKilled.toJSON(e) : undefined
+      );
+    } else {
+      obj.roshanKilledEvents = [];
+    }
+    if (message.treeEvents) {
+      obj.treeEvents = message.treeEvents.map((e) => e ? CMsgBotWorldState_EventTree.toJSON(e) : undefined);
+    } else {
+      obj.treeEvents = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgBotWorldState_Vector(): CMsgBotWorldState_Vector {
@@ -649,6 +931,22 @@ export const CMsgBotWorldState_Vector = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgBotWorldState_Vector {
+    return {
+      x: isSet(object.x) ? Number(object.x) : 0,
+      y: isSet(object.y) ? Number(object.y) : 0,
+      z: isSet(object.z) ? Number(object.z) : 0,
+    };
+  },
+
+  toJSON(message: CMsgBotWorldState_Vector): unknown {
+    const obj: any = {};
+    message.x !== undefined && (obj.x = message.x);
+    message.y !== undefined && (obj.y = message.y);
+    message.z !== undefined && (obj.z = message.z);
+    return obj;
   },
 };
 
@@ -797,6 +1095,39 @@ export const CMsgBotWorldState_Player = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgBotWorldState_Player {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      isAlive: isSet(object.isAlive) ? Boolean(object.isAlive) : false,
+      respawnTime: isSet(object.respawnTime) ? Number(object.respawnTime) : 0,
+      kills: isSet(object.kills) ? Number(object.kills) : 0,
+      deaths: isSet(object.deaths) ? Number(object.deaths) : 0,
+      assists: isSet(object.assists) ? Number(object.assists) : 0,
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      primaryUnitHandle: isSet(object.primaryUnitHandle) ? Number(object.primaryUnitHandle) : 0,
+      mmr: isSet(object.mmr) ? Number(object.mmr) : 0,
+      location: isSet(object.location) ? CMsgBotWorldState_Vector.fromJSON(object.location) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgBotWorldState_Player): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.isAlive !== undefined && (obj.isAlive = message.isAlive);
+    message.respawnTime !== undefined && (obj.respawnTime = message.respawnTime);
+    message.kills !== undefined && (obj.kills = Math.round(message.kills));
+    message.deaths !== undefined && (obj.deaths = Math.round(message.deaths));
+    message.assists !== undefined && (obj.assists = Math.round(message.assists));
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    message.primaryUnitHandle !== undefined && (obj.primaryUnitHandle = Math.round(message.primaryUnitHandle));
+    message.mmr !== undefined && (obj.mmr = Math.round(message.mmr));
+    message.location !== undefined &&
+      (obj.location = message.location ? CMsgBotWorldState_Vector.toJSON(message.location) : undefined);
+    return obj;
   },
 };
 
@@ -1023,6 +1354,52 @@ export const CMsgBotWorldState_Ability = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgBotWorldState_Ability {
+    return {
+      handle: isSet(object.handle) ? Number(object.handle) : 0,
+      abilityId: isSet(object.abilityId) ? Number(object.abilityId) : 0,
+      slot: isSet(object.slot) ? Number(object.slot) : 0,
+      casterHandle: isSet(object.casterHandle) ? Number(object.casterHandle) : 0,
+      level: isSet(object.level) ? Number(object.level) : 0,
+      castRange: isSet(object.castRange) ? Number(object.castRange) : 0,
+      channelTime: isSet(object.channelTime) ? Number(object.channelTime) : 0,
+      cooldownRemaining: isSet(object.cooldownRemaining) ? Number(object.cooldownRemaining) : 0,
+      isActivated: isSet(object.isActivated) ? Boolean(object.isActivated) : false,
+      isToggled: isSet(object.isToggled) ? Boolean(object.isToggled) : false,
+      isInAbilityPhase: isSet(object.isInAbilityPhase) ? Boolean(object.isInAbilityPhase) : false,
+      isChanneling: isSet(object.isChanneling) ? Boolean(object.isChanneling) : false,
+      isStolen: isSet(object.isStolen) ? Boolean(object.isStolen) : false,
+      isFullyCastable: isSet(object.isFullyCastable) ? Boolean(object.isFullyCastable) : false,
+      charges: isSet(object.charges) ? Number(object.charges) : 0,
+      secondaryCharges: isSet(object.secondaryCharges) ? Number(object.secondaryCharges) : 0,
+      isCombinedLocked: isSet(object.isCombinedLocked) ? Boolean(object.isCombinedLocked) : false,
+      powerTreadsStat: isSet(object.powerTreadsStat) ? Number(object.powerTreadsStat) : 0,
+    };
+  },
+
+  toJSON(message: CMsgBotWorldState_Ability): unknown {
+    const obj: any = {};
+    message.handle !== undefined && (obj.handle = Math.round(message.handle));
+    message.abilityId !== undefined && (obj.abilityId = Math.round(message.abilityId));
+    message.slot !== undefined && (obj.slot = Math.round(message.slot));
+    message.casterHandle !== undefined && (obj.casterHandle = Math.round(message.casterHandle));
+    message.level !== undefined && (obj.level = Math.round(message.level));
+    message.castRange !== undefined && (obj.castRange = Math.round(message.castRange));
+    message.channelTime !== undefined && (obj.channelTime = message.channelTime);
+    message.cooldownRemaining !== undefined && (obj.cooldownRemaining = message.cooldownRemaining);
+    message.isActivated !== undefined && (obj.isActivated = message.isActivated);
+    message.isToggled !== undefined && (obj.isToggled = message.isToggled);
+    message.isInAbilityPhase !== undefined && (obj.isInAbilityPhase = message.isInAbilityPhase);
+    message.isChanneling !== undefined && (obj.isChanneling = message.isChanneling);
+    message.isStolen !== undefined && (obj.isStolen = message.isStolen);
+    message.isFullyCastable !== undefined && (obj.isFullyCastable = message.isFullyCastable);
+    message.charges !== undefined && (obj.charges = Math.round(message.charges));
+    message.secondaryCharges !== undefined && (obj.secondaryCharges = Math.round(message.secondaryCharges));
+    message.isCombinedLocked !== undefined && (obj.isCombinedLocked = message.isCombinedLocked);
+    message.powerTreadsStat !== undefined && (obj.powerTreadsStat = Math.round(message.powerTreadsStat));
+    return obj;
+  },
 };
 
 function createBaseCMsgBotWorldState_DroppedItem(): CMsgBotWorldState_DroppedItem {
@@ -1068,6 +1445,21 @@ export const CMsgBotWorldState_DroppedItem = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgBotWorldState_DroppedItem {
+    return {
+      itemId: isSet(object.itemId) ? Number(object.itemId) : 0,
+      location: isSet(object.location) ? CMsgBotWorldState_Vector.fromJSON(object.location) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgBotWorldState_DroppedItem): unknown {
+    const obj: any = {};
+    message.itemId !== undefined && (obj.itemId = Math.round(message.itemId));
+    message.location !== undefined &&
+      (obj.location = message.location ? CMsgBotWorldState_Vector.toJSON(message.location) : undefined);
+    return obj;
   },
 };
 
@@ -1135,6 +1527,25 @@ export const CMsgBotWorldState_RuneInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgBotWorldState_RuneInfo {
+    return {
+      type: isSet(object.type) ? Number(object.type) : 0,
+      location: isSet(object.location) ? CMsgBotWorldState_Vector.fromJSON(object.location) : undefined,
+      status: isSet(object.status) ? Number(object.status) : 0,
+      timeSinceSeen: isSet(object.timeSinceSeen) ? Number(object.timeSinceSeen) : 0,
+    };
+  },
+
+  toJSON(message: CMsgBotWorldState_RuneInfo): unknown {
+    const obj: any = {};
+    message.type !== undefined && (obj.type = Math.round(message.type));
+    message.location !== undefined &&
+      (obj.location = message.location ? CMsgBotWorldState_Vector.toJSON(message.location) : undefined);
+    message.status !== undefined && (obj.status = Math.round(message.status));
+    message.timeSinceSeen !== undefined && (obj.timeSinceSeen = message.timeSinceSeen);
+    return obj;
+  },
 };
 
 function createBaseCMsgBotWorldState_TeleportInfo(): CMsgBotWorldState_TeleportInfo {
@@ -1190,6 +1601,23 @@ export const CMsgBotWorldState_TeleportInfo = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgBotWorldState_TeleportInfo {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      location: isSet(object.location) ? CMsgBotWorldState_Vector.fromJSON(object.location) : undefined,
+      timeRemaining: isSet(object.timeRemaining) ? Number(object.timeRemaining) : 0,
+    };
+  },
+
+  toJSON(message: CMsgBotWorldState_TeleportInfo): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.location !== undefined &&
+      (obj.location = message.location ? CMsgBotWorldState_Vector.toJSON(message.location) : undefined);
+    message.timeRemaining !== undefined && (obj.timeRemaining = message.timeRemaining);
+    return obj;
   },
 };
 
@@ -1305,6 +1733,36 @@ export const CMsgBotWorldState_Modifier = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgBotWorldState_Modifier {
+    return {
+      handle: isSet(object.handle) ? Number(object.handle) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      stackCount: isSet(object.stackCount) ? Number(object.stackCount) : 0,
+      abilityHandle: isSet(object.abilityHandle) ? Number(object.abilityHandle) : 0,
+      abilityId: isSet(object.abilityId) ? Number(object.abilityId) : 0,
+      remainingDuration: isSet(object.remainingDuration) ? Number(object.remainingDuration) : 0,
+      auxiliaryUnitsHandles: Array.isArray(object?.auxiliaryUnitsHandles)
+        ? object.auxiliaryUnitsHandles.map((e: any) => Number(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgBotWorldState_Modifier): unknown {
+    const obj: any = {};
+    message.handle !== undefined && (obj.handle = Math.round(message.handle));
+    message.name !== undefined && (obj.name = message.name);
+    message.stackCount !== undefined && (obj.stackCount = Math.round(message.stackCount));
+    message.abilityHandle !== undefined && (obj.abilityHandle = Math.round(message.abilityHandle));
+    message.abilityId !== undefined && (obj.abilityId = Math.round(message.abilityId));
+    message.remainingDuration !== undefined && (obj.remainingDuration = message.remainingDuration);
+    if (message.auxiliaryUnitsHandles) {
+      obj.auxiliaryUnitsHandles = message.auxiliaryUnitsHandles.map((e) => Math.round(e));
+    } else {
+      obj.auxiliaryUnitsHandles = [];
+    }
+    return obj;
   },
 };
 
@@ -1431,6 +1889,37 @@ export const CMsgBotWorldState_LinearProjectile = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgBotWorldState_LinearProjectile {
+    return {
+      handle: isSet(object.handle) ? Number(object.handle) : 0,
+      casterHandle: isSet(object.casterHandle) ? Number(object.casterHandle) : 0,
+      casterUnitType: isSet(object.casterUnitType) ? cMsgBotWorldState_UnitTypeFromJSON(object.casterUnitType) : 0,
+      casterPlayerId: isSet(object.casterPlayerId) ? Number(object.casterPlayerId) : 0,
+      abilityHandle: isSet(object.abilityHandle) ? Number(object.abilityHandle) : 0,
+      abilityId: isSet(object.abilityId) ? Number(object.abilityId) : 0,
+      location: isSet(object.location) ? CMsgBotWorldState_Vector.fromJSON(object.location) : undefined,
+      velocity: isSet(object.velocity) ? CMsgBotWorldState_Vector.fromJSON(object.velocity) : undefined,
+      radius: isSet(object.radius) ? Number(object.radius) : 0,
+    };
+  },
+
+  toJSON(message: CMsgBotWorldState_LinearProjectile): unknown {
+    const obj: any = {};
+    message.handle !== undefined && (obj.handle = Math.round(message.handle));
+    message.casterHandle !== undefined && (obj.casterHandle = Math.round(message.casterHandle));
+    message.casterUnitType !== undefined &&
+      (obj.casterUnitType = cMsgBotWorldState_UnitTypeToJSON(message.casterUnitType));
+    message.casterPlayerId !== undefined && (obj.casterPlayerId = Math.round(message.casterPlayerId));
+    message.abilityHandle !== undefined && (obj.abilityHandle = Math.round(message.abilityHandle));
+    message.abilityId !== undefined && (obj.abilityId = Math.round(message.abilityId));
+    message.location !== undefined &&
+      (obj.location = message.location ? CMsgBotWorldState_Vector.toJSON(message.location) : undefined);
+    message.velocity !== undefined &&
+      (obj.velocity = message.velocity ? CMsgBotWorldState_Vector.toJSON(message.velocity) : undefined);
+    message.radius !== undefined && (obj.radius = Math.round(message.radius));
+    return obj;
   },
 };
 
@@ -1569,6 +2058,38 @@ export const CMsgBotWorldState_TrackingProjectile = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgBotWorldState_TrackingProjectile {
+    return {
+      handle: isSet(object.handle) ? Number(object.handle) : 0,
+      casterHandle: isSet(object.casterHandle) ? Number(object.casterHandle) : 0,
+      casterUnitType: isSet(object.casterUnitType) ? cMsgBotWorldState_UnitTypeFromJSON(object.casterUnitType) : 0,
+      casterPlayerId: isSet(object.casterPlayerId) ? Number(object.casterPlayerId) : 0,
+      abilityHandle: isSet(object.abilityHandle) ? Number(object.abilityHandle) : 0,
+      abilityId: isSet(object.abilityId) ? Number(object.abilityId) : 0,
+      location: isSet(object.location) ? CMsgBotWorldState_Vector.fromJSON(object.location) : undefined,
+      velocity: isSet(object.velocity) ? Number(object.velocity) : 0,
+      isDodgeable: isSet(object.isDodgeable) ? Boolean(object.isDodgeable) : false,
+      isAttack: isSet(object.isAttack) ? Boolean(object.isAttack) : false,
+    };
+  },
+
+  toJSON(message: CMsgBotWorldState_TrackingProjectile): unknown {
+    const obj: any = {};
+    message.handle !== undefined && (obj.handle = Math.round(message.handle));
+    message.casterHandle !== undefined && (obj.casterHandle = Math.round(message.casterHandle));
+    message.casterUnitType !== undefined &&
+      (obj.casterUnitType = cMsgBotWorldState_UnitTypeToJSON(message.casterUnitType));
+    message.casterPlayerId !== undefined && (obj.casterPlayerId = Math.round(message.casterPlayerId));
+    message.abilityHandle !== undefined && (obj.abilityHandle = Math.round(message.abilityHandle));
+    message.abilityId !== undefined && (obj.abilityId = Math.round(message.abilityId));
+    message.location !== undefined &&
+      (obj.location = message.location ? CMsgBotWorldState_Vector.toJSON(message.location) : undefined);
+    message.velocity !== undefined && (obj.velocity = Math.round(message.velocity));
+    message.isDodgeable !== undefined && (obj.isDodgeable = message.isDodgeable);
+    message.isAttack !== undefined && (obj.isAttack = message.isAttack);
+    return obj;
+  },
 };
 
 function createBaseCMsgBotWorldState_AvoidanceZone(): CMsgBotWorldState_AvoidanceZone {
@@ -1673,6 +2194,32 @@ export const CMsgBotWorldState_AvoidanceZone = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgBotWorldState_AvoidanceZone {
+    return {
+      location: isSet(object.location) ? CMsgBotWorldState_Vector.fromJSON(object.location) : undefined,
+      casterHandle: isSet(object.casterHandle) ? Number(object.casterHandle) : 0,
+      casterUnitType: isSet(object.casterUnitType) ? cMsgBotWorldState_UnitTypeFromJSON(object.casterUnitType) : 0,
+      casterPlayerId: isSet(object.casterPlayerId) ? Number(object.casterPlayerId) : 0,
+      abilityHandle: isSet(object.abilityHandle) ? Number(object.abilityHandle) : 0,
+      abilityId: isSet(object.abilityId) ? Number(object.abilityId) : 0,
+      radius: isSet(object.radius) ? Number(object.radius) : 0,
+    };
+  },
+
+  toJSON(message: CMsgBotWorldState_AvoidanceZone): unknown {
+    const obj: any = {};
+    message.location !== undefined &&
+      (obj.location = message.location ? CMsgBotWorldState_Vector.toJSON(message.location) : undefined);
+    message.casterHandle !== undefined && (obj.casterHandle = Math.round(message.casterHandle));
+    message.casterUnitType !== undefined &&
+      (obj.casterUnitType = cMsgBotWorldState_UnitTypeToJSON(message.casterUnitType));
+    message.casterPlayerId !== undefined && (obj.casterPlayerId = Math.round(message.casterPlayerId));
+    message.abilityHandle !== undefined && (obj.abilityHandle = Math.round(message.abilityHandle));
+    message.abilityId !== undefined && (obj.abilityId = Math.round(message.abilityId));
+    message.radius !== undefined && (obj.radius = Math.round(message.radius));
+    return obj;
+  },
 };
 
 function createBaseCMsgBotWorldState_Courier(): CMsgBotWorldState_Courier {
@@ -1728,6 +2275,22 @@ export const CMsgBotWorldState_Courier = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgBotWorldState_Courier {
+    return {
+      handle: isSet(object.handle) ? Number(object.handle) : 0,
+      state: isSet(object.state) ? cMsgBotWorldState_CourierStateFromJSON(object.state) : 0,
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgBotWorldState_Courier): unknown {
+    const obj: any = {};
+    message.handle !== undefined && (obj.handle = Math.round(message.handle));
+    message.state !== undefined && (obj.state = cMsgBotWorldState_CourierStateToJSON(message.state));
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    return obj;
   },
 };
 
@@ -1804,6 +2367,27 @@ export const CMsgBotWorldState_EventAbility = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgBotWorldState_EventAbility {
+    return {
+      abilityId: isSet(object.abilityId) ? Number(object.abilityId) : 0,
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      unitHandle: isSet(object.unitHandle) ? Number(object.unitHandle) : 0,
+      location: isSet(object.location) ? CMsgBotWorldState_Vector.fromJSON(object.location) : undefined,
+      isChannelStart: isSet(object.isChannelStart) ? Boolean(object.isChannelStart) : false,
+    };
+  },
+
+  toJSON(message: CMsgBotWorldState_EventAbility): unknown {
+    const obj: any = {};
+    message.abilityId !== undefined && (obj.abilityId = Math.round(message.abilityId));
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.unitHandle !== undefined && (obj.unitHandle = Math.round(message.unitHandle));
+    message.location !== undefined &&
+      (obj.location = message.location ? CMsgBotWorldState_Vector.toJSON(message.location) : undefined);
+    message.isChannelStart !== undefined && (obj.isChannelStart = message.isChannelStart);
+    return obj;
   },
 };
 
@@ -1898,6 +2482,28 @@ export const CMsgBotWorldState_EventDamage = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgBotWorldState_EventDamage {
+    return {
+      damage: isSet(object.damage) ? Number(object.damage) : 0,
+      victimPlayerId: isSet(object.victimPlayerId) ? Number(object.victimPlayerId) : 0,
+      victimUnitHandle: isSet(object.victimUnitHandle) ? Number(object.victimUnitHandle) : 0,
+      attackerPlayerId: isSet(object.attackerPlayerId) ? Number(object.attackerPlayerId) : 0,
+      attackerUnitHandle: isSet(object.attackerUnitHandle) ? Number(object.attackerUnitHandle) : 0,
+      abilityId: isSet(object.abilityId) ? Number(object.abilityId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgBotWorldState_EventDamage): unknown {
+    const obj: any = {};
+    message.damage !== undefined && (obj.damage = Math.round(message.damage));
+    message.victimPlayerId !== undefined && (obj.victimPlayerId = Math.round(message.victimPlayerId));
+    message.victimUnitHandle !== undefined && (obj.victimUnitHandle = Math.round(message.victimUnitHandle));
+    message.attackerPlayerId !== undefined && (obj.attackerPlayerId = Math.round(message.attackerPlayerId));
+    message.attackerUnitHandle !== undefined && (obj.attackerUnitHandle = Math.round(message.attackerUnitHandle));
+    message.abilityId !== undefined && (obj.abilityId = Math.round(message.abilityId));
+    return obj;
+  },
 };
 
 function createBaseCMsgBotWorldState_EventCourierKilled(): CMsgBotWorldState_EventCourierKilled {
@@ -1964,6 +2570,24 @@ export const CMsgBotWorldState_EventCourierKilled = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgBotWorldState_EventCourierKilled {
+    return {
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      courierUnitHandle: isSet(object.courierUnitHandle) ? Number(object.courierUnitHandle) : 0,
+      killerPlayerId: isSet(object.killerPlayerId) ? Number(object.killerPlayerId) : 0,
+      killerUnitHandle: isSet(object.killerUnitHandle) ? Number(object.killerUnitHandle) : 0,
+    };
+  },
+
+  toJSON(message: CMsgBotWorldState_EventCourierKilled): unknown {
+    const obj: any = {};
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    message.courierUnitHandle !== undefined && (obj.courierUnitHandle = Math.round(message.courierUnitHandle));
+    message.killerPlayerId !== undefined && (obj.killerPlayerId = Math.round(message.killerPlayerId));
+    message.killerUnitHandle !== undefined && (obj.killerUnitHandle = Math.round(message.killerUnitHandle));
+    return obj;
+  },
 };
 
 function createBaseCMsgBotWorldState_EventRoshanKilled(): CMsgBotWorldState_EventRoshanKilled {
@@ -2009,6 +2633,20 @@ export const CMsgBotWorldState_EventRoshanKilled = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgBotWorldState_EventRoshanKilled {
+    return {
+      killerPlayerId: isSet(object.killerPlayerId) ? Number(object.killerPlayerId) : 0,
+      killerUnitHandle: isSet(object.killerUnitHandle) ? Number(object.killerUnitHandle) : 0,
+    };
+  },
+
+  toJSON(message: CMsgBotWorldState_EventRoshanKilled): unknown {
+    const obj: any = {};
+    message.killerPlayerId !== undefined && (obj.killerPlayerId = Math.round(message.killerPlayerId));
+    message.killerUnitHandle !== undefined && (obj.killerUnitHandle = Math.round(message.killerUnitHandle));
+    return obj;
   },
 };
 
@@ -2085,6 +2723,27 @@ export const CMsgBotWorldState_EventTree = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgBotWorldState_EventTree {
+    return {
+      treeId: isSet(object.treeId) ? Number(object.treeId) : 0,
+      destroyed: isSet(object.destroyed) ? Boolean(object.destroyed) : false,
+      respawned: isSet(object.respawned) ? Boolean(object.respawned) : false,
+      location: isSet(object.location) ? CMsgBotWorldState_Vector.fromJSON(object.location) : undefined,
+      delayed: isSet(object.delayed) ? Boolean(object.delayed) : false,
+    };
+  },
+
+  toJSON(message: CMsgBotWorldState_EventTree): unknown {
+    const obj: any = {};
+    message.treeId !== undefined && (obj.treeId = Math.round(message.treeId));
+    message.destroyed !== undefined && (obj.destroyed = message.destroyed);
+    message.respawned !== undefined && (obj.respawned = message.respawned);
+    message.location !== undefined &&
+      (obj.location = message.location ? CMsgBotWorldState_Vector.toJSON(message.location) : undefined);
+    message.delayed !== undefined && (obj.delayed = message.delayed);
+    return obj;
   },
 };
 
@@ -3116,4 +3775,246 @@ export const CMsgBotWorldState_Unit = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgBotWorldState_Unit {
+    return {
+      handle: isSet(object.handle) ? Number(object.handle) : 0,
+      unitType: isSet(object.unitType) ? cMsgBotWorldState_UnitTypeFromJSON(object.unitType) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      level: isSet(object.level) ? Number(object.level) : 0,
+      location: isSet(object.location) ? CMsgBotWorldState_Vector.fromJSON(object.location) : undefined,
+      isAlive: isSet(object.isAlive) ? Boolean(object.isAlive) : false,
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      boundingRadius: isSet(object.boundingRadius) ? Number(object.boundingRadius) : 0,
+      facing: isSet(object.facing) ? Number(object.facing) : 0,
+      groundHeight: isSet(object.groundHeight) ? Number(object.groundHeight) : 0,
+      visionRangeDaytime: isSet(object.visionRangeDaytime) ? Number(object.visionRangeDaytime) : 0,
+      visionRangeNighttime: isSet(object.visionRangeNighttime) ? Number(object.visionRangeNighttime) : 0,
+      health: isSet(object.health) ? Number(object.health) : 0,
+      healthMax: isSet(object.healthMax) ? Number(object.healthMax) : 0,
+      healthRegen: isSet(object.healthRegen) ? Number(object.healthRegen) : 0,
+      mana: isSet(object.mana) ? Number(object.mana) : 0,
+      manaMax: isSet(object.manaMax) ? Number(object.manaMax) : 0,
+      manaRegen: isSet(object.manaRegen) ? Number(object.manaRegen) : 0,
+      baseMovementSpeed: isSet(object.baseMovementSpeed) ? Number(object.baseMovementSpeed) : 0,
+      currentMovementSpeed: isSet(object.currentMovementSpeed) ? Number(object.currentMovementSpeed) : 0,
+      animActivity: isSet(object.animActivity) ? Number(object.animActivity) : 0,
+      animCycle: isSet(object.animCycle) ? Number(object.animCycle) : 0,
+      baseDamage: isSet(object.baseDamage) ? Number(object.baseDamage) : 0,
+      baseDamageVariance: isSet(object.baseDamageVariance) ? Number(object.baseDamageVariance) : 0,
+      bonusDamage: isSet(object.bonusDamage) ? Number(object.bonusDamage) : 0,
+      attackDamage: isSet(object.attackDamage) ? Number(object.attackDamage) : 0,
+      attackRange: isSet(object.attackRange) ? Number(object.attackRange) : 0,
+      attackSpeed: isSet(object.attackSpeed) ? Number(object.attackSpeed) : 0,
+      attackAnimPoint: isSet(object.attackAnimPoint) ? Number(object.attackAnimPoint) : 0,
+      attackAcquisitionRange: isSet(object.attackAcquisitionRange) ? Number(object.attackAcquisitionRange) : 0,
+      attackProjectileSpeed: isSet(object.attackProjectileSpeed) ? Number(object.attackProjectileSpeed) : 0,
+      attackTargetHandle: isSet(object.attackTargetHandle) ? Number(object.attackTargetHandle) : 0,
+      attackTargetName: isSet(object.attackTargetName) ? String(object.attackTargetName) : "",
+      attacksPerSecond: isSet(object.attacksPerSecond) ? Number(object.attacksPerSecond) : 0,
+      lastAttackTime: isSet(object.lastAttackTime) ? Number(object.lastAttackTime) : 0,
+      bountyXp: isSet(object.bountyXp) ? Number(object.bountyXp) : 0,
+      bountyGoldMin: isSet(object.bountyGoldMin) ? Number(object.bountyGoldMin) : 0,
+      bountyGoldMax: isSet(object.bountyGoldMax) ? Number(object.bountyGoldMax) : 0,
+      isChanneling: isSet(object.isChanneling) ? Boolean(object.isChanneling) : false,
+      activeAbilityHandle: isSet(object.activeAbilityHandle) ? Number(object.activeAbilityHandle) : 0,
+      isAttackImmune: isSet(object.isAttackImmune) ? Boolean(object.isAttackImmune) : false,
+      isBlind: isSet(object.isBlind) ? Boolean(object.isBlind) : false,
+      isBlockDisabled: isSet(object.isBlockDisabled) ? Boolean(object.isBlockDisabled) : false,
+      isDisarmed: isSet(object.isDisarmed) ? Boolean(object.isDisarmed) : false,
+      isDominated: isSet(object.isDominated) ? Boolean(object.isDominated) : false,
+      isEvadeDisabled: isSet(object.isEvadeDisabled) ? Boolean(object.isEvadeDisabled) : false,
+      isHexed: isSet(object.isHexed) ? Boolean(object.isHexed) : false,
+      isInvisible: isSet(object.isInvisible) ? Boolean(object.isInvisible) : false,
+      isInvulnerable: isSet(object.isInvulnerable) ? Boolean(object.isInvulnerable) : false,
+      isMagicImmune: isSet(object.isMagicImmune) ? Boolean(object.isMagicImmune) : false,
+      isMuted: isSet(object.isMuted) ? Boolean(object.isMuted) : false,
+      isNightmared: isSet(object.isNightmared) ? Boolean(object.isNightmared) : false,
+      isRooted: isSet(object.isRooted) ? Boolean(object.isRooted) : false,
+      isSilenced: isSet(object.isSilenced) ? Boolean(object.isSilenced) : false,
+      isSpeciallyDeniable: isSet(object.isSpeciallyDeniable) ? Boolean(object.isSpeciallyDeniable) : false,
+      isStunned: isSet(object.isStunned) ? Boolean(object.isStunned) : false,
+      isUnableToMiss: isSet(object.isUnableToMiss) ? Boolean(object.isUnableToMiss) : false,
+      hasScepter: isSet(object.hasScepter) ? Boolean(object.hasScepter) : false,
+      isSpeciallyUndeniable: isSet(object.isSpeciallyUndeniable) ? Boolean(object.isSpeciallyUndeniable) : false,
+      abilities: Array.isArray(object?.abilities)
+        ? object.abilities.map((e: any) => CMsgBotWorldState_Ability.fromJSON(e))
+        : [],
+      items: Array.isArray(object?.items) ? object.items.map((e: any) => CMsgBotWorldState_Ability.fromJSON(e)) : [],
+      modifiers: Array.isArray(object?.modifiers)
+        ? object.modifiers.map((e: any) => CMsgBotWorldState_Modifier.fromJSON(e))
+        : [],
+      incomingTrackingProjectiles: Array.isArray(object?.incomingTrackingProjectiles)
+        ? object.incomingTrackingProjectiles.map((e: any) => CMsgBotWorldState_TrackingProjectile.fromJSON(e))
+        : [],
+      actionType: isSet(object.actionType) ? Number(object.actionType) : 0,
+      abilityTargetHandle: isSet(object.abilityTargetHandle) ? Number(object.abilityTargetHandle) : 0,
+      abilityTargetName: isSet(object.abilityTargetName) ? String(object.abilityTargetName) : "",
+      isUsingAbility: isSet(object.isUsingAbility) ? Boolean(object.isUsingAbility) : false,
+      primaryAttribute: isSet(object.primaryAttribute) ? Number(object.primaryAttribute) : 0,
+      isIllusion: isSet(object.isIllusion) ? Boolean(object.isIllusion) : false,
+      respawnTime: isSet(object.respawnTime) ? Number(object.respawnTime) : 0,
+      buybackCost: isSet(object.buybackCost) ? Number(object.buybackCost) : 0,
+      buybackCooldown: isSet(object.buybackCooldown) ? Number(object.buybackCooldown) : 0,
+      spellAmplification: isSet(object.spellAmplification) ? Number(object.spellAmplification) : 0,
+      armor: isSet(object.armor) ? Number(object.armor) : 0,
+      magicResist: isSet(object.magicResist) ? Number(object.magicResist) : 0,
+      evasion: isSet(object.evasion) ? Number(object.evasion) : 0,
+      xpNeededToLevel: isSet(object.xpNeededToLevel) ? Number(object.xpNeededToLevel) : 0,
+      abilityPoints: isSet(object.abilityPoints) ? Number(object.abilityPoints) : 0,
+      reliableGold: isSet(object.reliableGold) ? Number(object.reliableGold) : 0,
+      unreliableGold: isSet(object.unreliableGold) ? Number(object.unreliableGold) : 0,
+      lastHits: isSet(object.lastHits) ? Number(object.lastHits) : 0,
+      denies: isSet(object.denies) ? Number(object.denies) : 0,
+      netWorth: isSet(object.netWorth) ? Number(object.netWorth) : 0,
+      strength: isSet(object.strength) ? Number(object.strength) : 0,
+      agility: isSet(object.agility) ? Number(object.agility) : 0,
+      intelligence: isSet(object.intelligence) ? Number(object.intelligence) : 0,
+      remainingLifespan: isSet(object.remainingLifespan) ? Number(object.remainingLifespan) : 0,
+      flyingCourier: isSet(object.flyingCourier) ? Boolean(object.flyingCourier) : false,
+      shrineCooldown: isSet(object.shrineCooldown) ? Number(object.shrineCooldown) : 0,
+      isShrineHealing: isSet(object.isShrineHealing) ? Boolean(object.isShrineHealing) : false,
+    };
+  },
+
+  toJSON(message: CMsgBotWorldState_Unit): unknown {
+    const obj: any = {};
+    message.handle !== undefined && (obj.handle = Math.round(message.handle));
+    message.unitType !== undefined && (obj.unitType = cMsgBotWorldState_UnitTypeToJSON(message.unitType));
+    message.name !== undefined && (obj.name = message.name);
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    message.level !== undefined && (obj.level = Math.round(message.level));
+    message.location !== undefined &&
+      (obj.location = message.location ? CMsgBotWorldState_Vector.toJSON(message.location) : undefined);
+    message.isAlive !== undefined && (obj.isAlive = message.isAlive);
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.boundingRadius !== undefined && (obj.boundingRadius = Math.round(message.boundingRadius));
+    message.facing !== undefined && (obj.facing = Math.round(message.facing));
+    message.groundHeight !== undefined && (obj.groundHeight = Math.round(message.groundHeight));
+    message.visionRangeDaytime !== undefined && (obj.visionRangeDaytime = Math.round(message.visionRangeDaytime));
+    message.visionRangeNighttime !== undefined && (obj.visionRangeNighttime = Math.round(message.visionRangeNighttime));
+    message.health !== undefined && (obj.health = Math.round(message.health));
+    message.healthMax !== undefined && (obj.healthMax = Math.round(message.healthMax));
+    message.healthRegen !== undefined && (obj.healthRegen = message.healthRegen);
+    message.mana !== undefined && (obj.mana = Math.round(message.mana));
+    message.manaMax !== undefined && (obj.manaMax = Math.round(message.manaMax));
+    message.manaRegen !== undefined && (obj.manaRegen = message.manaRegen);
+    message.baseMovementSpeed !== undefined && (obj.baseMovementSpeed = Math.round(message.baseMovementSpeed));
+    message.currentMovementSpeed !== undefined && (obj.currentMovementSpeed = Math.round(message.currentMovementSpeed));
+    message.animActivity !== undefined && (obj.animActivity = Math.round(message.animActivity));
+    message.animCycle !== undefined && (obj.animCycle = message.animCycle);
+    message.baseDamage !== undefined && (obj.baseDamage = Math.round(message.baseDamage));
+    message.baseDamageVariance !== undefined && (obj.baseDamageVariance = Math.round(message.baseDamageVariance));
+    message.bonusDamage !== undefined && (obj.bonusDamage = Math.round(message.bonusDamage));
+    message.attackDamage !== undefined && (obj.attackDamage = Math.round(message.attackDamage));
+    message.attackRange !== undefined && (obj.attackRange = Math.round(message.attackRange));
+    message.attackSpeed !== undefined && (obj.attackSpeed = message.attackSpeed);
+    message.attackAnimPoint !== undefined && (obj.attackAnimPoint = message.attackAnimPoint);
+    message.attackAcquisitionRange !== undefined &&
+      (obj.attackAcquisitionRange = Math.round(message.attackAcquisitionRange));
+    message.attackProjectileSpeed !== undefined &&
+      (obj.attackProjectileSpeed = Math.round(message.attackProjectileSpeed));
+    message.attackTargetHandle !== undefined && (obj.attackTargetHandle = Math.round(message.attackTargetHandle));
+    message.attackTargetName !== undefined && (obj.attackTargetName = message.attackTargetName);
+    message.attacksPerSecond !== undefined && (obj.attacksPerSecond = Math.round(message.attacksPerSecond));
+    message.lastAttackTime !== undefined && (obj.lastAttackTime = message.lastAttackTime);
+    message.bountyXp !== undefined && (obj.bountyXp = Math.round(message.bountyXp));
+    message.bountyGoldMin !== undefined && (obj.bountyGoldMin = Math.round(message.bountyGoldMin));
+    message.bountyGoldMax !== undefined && (obj.bountyGoldMax = Math.round(message.bountyGoldMax));
+    message.isChanneling !== undefined && (obj.isChanneling = message.isChanneling);
+    message.activeAbilityHandle !== undefined && (obj.activeAbilityHandle = Math.round(message.activeAbilityHandle));
+    message.isAttackImmune !== undefined && (obj.isAttackImmune = message.isAttackImmune);
+    message.isBlind !== undefined && (obj.isBlind = message.isBlind);
+    message.isBlockDisabled !== undefined && (obj.isBlockDisabled = message.isBlockDisabled);
+    message.isDisarmed !== undefined && (obj.isDisarmed = message.isDisarmed);
+    message.isDominated !== undefined && (obj.isDominated = message.isDominated);
+    message.isEvadeDisabled !== undefined && (obj.isEvadeDisabled = message.isEvadeDisabled);
+    message.isHexed !== undefined && (obj.isHexed = message.isHexed);
+    message.isInvisible !== undefined && (obj.isInvisible = message.isInvisible);
+    message.isInvulnerable !== undefined && (obj.isInvulnerable = message.isInvulnerable);
+    message.isMagicImmune !== undefined && (obj.isMagicImmune = message.isMagicImmune);
+    message.isMuted !== undefined && (obj.isMuted = message.isMuted);
+    message.isNightmared !== undefined && (obj.isNightmared = message.isNightmared);
+    message.isRooted !== undefined && (obj.isRooted = message.isRooted);
+    message.isSilenced !== undefined && (obj.isSilenced = message.isSilenced);
+    message.isSpeciallyDeniable !== undefined && (obj.isSpeciallyDeniable = message.isSpeciallyDeniable);
+    message.isStunned !== undefined && (obj.isStunned = message.isStunned);
+    message.isUnableToMiss !== undefined && (obj.isUnableToMiss = message.isUnableToMiss);
+    message.hasScepter !== undefined && (obj.hasScepter = message.hasScepter);
+    message.isSpeciallyUndeniable !== undefined && (obj.isSpeciallyUndeniable = message.isSpeciallyUndeniable);
+    if (message.abilities) {
+      obj.abilities = message.abilities.map((e) => e ? CMsgBotWorldState_Ability.toJSON(e) : undefined);
+    } else {
+      obj.abilities = [];
+    }
+    if (message.items) {
+      obj.items = message.items.map((e) => e ? CMsgBotWorldState_Ability.toJSON(e) : undefined);
+    } else {
+      obj.items = [];
+    }
+    if (message.modifiers) {
+      obj.modifiers = message.modifiers.map((e) => e ? CMsgBotWorldState_Modifier.toJSON(e) : undefined);
+    } else {
+      obj.modifiers = [];
+    }
+    if (message.incomingTrackingProjectiles) {
+      obj.incomingTrackingProjectiles = message.incomingTrackingProjectiles.map((e) =>
+        e ? CMsgBotWorldState_TrackingProjectile.toJSON(e) : undefined
+      );
+    } else {
+      obj.incomingTrackingProjectiles = [];
+    }
+    message.actionType !== undefined && (obj.actionType = Math.round(message.actionType));
+    message.abilityTargetHandle !== undefined && (obj.abilityTargetHandle = Math.round(message.abilityTargetHandle));
+    message.abilityTargetName !== undefined && (obj.abilityTargetName = message.abilityTargetName);
+    message.isUsingAbility !== undefined && (obj.isUsingAbility = message.isUsingAbility);
+    message.primaryAttribute !== undefined && (obj.primaryAttribute = Math.round(message.primaryAttribute));
+    message.isIllusion !== undefined && (obj.isIllusion = message.isIllusion);
+    message.respawnTime !== undefined && (obj.respawnTime = message.respawnTime);
+    message.buybackCost !== undefined && (obj.buybackCost = Math.round(message.buybackCost));
+    message.buybackCooldown !== undefined && (obj.buybackCooldown = message.buybackCooldown);
+    message.spellAmplification !== undefined && (obj.spellAmplification = message.spellAmplification);
+    message.armor !== undefined && (obj.armor = message.armor);
+    message.magicResist !== undefined && (obj.magicResist = message.magicResist);
+    message.evasion !== undefined && (obj.evasion = message.evasion);
+    message.xpNeededToLevel !== undefined && (obj.xpNeededToLevel = Math.round(message.xpNeededToLevel));
+    message.abilityPoints !== undefined && (obj.abilityPoints = Math.round(message.abilityPoints));
+    message.reliableGold !== undefined && (obj.reliableGold = Math.round(message.reliableGold));
+    message.unreliableGold !== undefined && (obj.unreliableGold = Math.round(message.unreliableGold));
+    message.lastHits !== undefined && (obj.lastHits = Math.round(message.lastHits));
+    message.denies !== undefined && (obj.denies = Math.round(message.denies));
+    message.netWorth !== undefined && (obj.netWorth = Math.round(message.netWorth));
+    message.strength !== undefined && (obj.strength = Math.round(message.strength));
+    message.agility !== undefined && (obj.agility = Math.round(message.agility));
+    message.intelligence !== undefined && (obj.intelligence = Math.round(message.intelligence));
+    message.remainingLifespan !== undefined && (obj.remainingLifespan = message.remainingLifespan);
+    message.flyingCourier !== undefined && (obj.flyingCourier = message.flyingCourier);
+    message.shrineCooldown !== undefined && (obj.shrineCooldown = message.shrineCooldown);
+    message.isShrineHealing !== undefined && (obj.isShrineHealing = message.isShrineHealing);
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
+}

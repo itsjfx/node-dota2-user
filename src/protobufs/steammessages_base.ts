@@ -13,6 +13,60 @@ export enum EBanContentCheckResult {
   k_EBanContentCheckResult_VeryLikely = 100,
 }
 
+export function eBanContentCheckResultFromJSON(object: any): EBanContentCheckResult {
+  switch (object) {
+    case 0:
+    case "k_EBanContentCheckResult_NotScanned":
+      return EBanContentCheckResult.k_EBanContentCheckResult_NotScanned;
+    case 1:
+    case "k_EBanContentCheckResult_Reset":
+      return EBanContentCheckResult.k_EBanContentCheckResult_Reset;
+    case 2:
+    case "k_EBanContentCheckResult_NeedsChecking":
+      return EBanContentCheckResult.k_EBanContentCheckResult_NeedsChecking;
+    case 5:
+    case "k_EBanContentCheckResult_VeryUnlikely":
+      return EBanContentCheckResult.k_EBanContentCheckResult_VeryUnlikely;
+    case 30:
+    case "k_EBanContentCheckResult_Unlikely":
+      return EBanContentCheckResult.k_EBanContentCheckResult_Unlikely;
+    case 50:
+    case "k_EBanContentCheckResult_Possible":
+      return EBanContentCheckResult.k_EBanContentCheckResult_Possible;
+    case 75:
+    case "k_EBanContentCheckResult_Likely":
+      return EBanContentCheckResult.k_EBanContentCheckResult_Likely;
+    case 100:
+    case "k_EBanContentCheckResult_VeryLikely":
+      return EBanContentCheckResult.k_EBanContentCheckResult_VeryLikely;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EBanContentCheckResult");
+  }
+}
+
+export function eBanContentCheckResultToJSON(object: EBanContentCheckResult): string {
+  switch (object) {
+    case EBanContentCheckResult.k_EBanContentCheckResult_NotScanned:
+      return "k_EBanContentCheckResult_NotScanned";
+    case EBanContentCheckResult.k_EBanContentCheckResult_Reset:
+      return "k_EBanContentCheckResult_Reset";
+    case EBanContentCheckResult.k_EBanContentCheckResult_NeedsChecking:
+      return "k_EBanContentCheckResult_NeedsChecking";
+    case EBanContentCheckResult.k_EBanContentCheckResult_VeryUnlikely:
+      return "k_EBanContentCheckResult_VeryUnlikely";
+    case EBanContentCheckResult.k_EBanContentCheckResult_Unlikely:
+      return "k_EBanContentCheckResult_Unlikely";
+    case EBanContentCheckResult.k_EBanContentCheckResult_Possible:
+      return "k_EBanContentCheckResult_Possible";
+    case EBanContentCheckResult.k_EBanContentCheckResult_Likely:
+      return "k_EBanContentCheckResult_Likely";
+    case EBanContentCheckResult.k_EBanContentCheckResult_VeryLikely:
+      return "k_EBanContentCheckResult_VeryLikely";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EBanContentCheckResult");
+  }
+}
+
 export enum EProtoClanEventType {
   k_EClanOtherEvent = 1,
   k_EClanGameEvent = 2,
@@ -51,11 +105,234 @@ export enum EProtoClanEventType {
   k_EClanInGameEventGeneral = 35,
 }
 
+export function eProtoClanEventTypeFromJSON(object: any): EProtoClanEventType {
+  switch (object) {
+    case 1:
+    case "k_EClanOtherEvent":
+      return EProtoClanEventType.k_EClanOtherEvent;
+    case 2:
+    case "k_EClanGameEvent":
+      return EProtoClanEventType.k_EClanGameEvent;
+    case 3:
+    case "k_EClanPartyEvent":
+      return EProtoClanEventType.k_EClanPartyEvent;
+    case 4:
+    case "k_EClanMeetingEvent":
+      return EProtoClanEventType.k_EClanMeetingEvent;
+    case 5:
+    case "k_EClanSpecialCauseEvent":
+      return EProtoClanEventType.k_EClanSpecialCauseEvent;
+    case 6:
+    case "k_EClanMusicAndArtsEvent":
+      return EProtoClanEventType.k_EClanMusicAndArtsEvent;
+    case 7:
+    case "k_EClanSportsEvent":
+      return EProtoClanEventType.k_EClanSportsEvent;
+    case 8:
+    case "k_EClanTripEvent":
+      return EProtoClanEventType.k_EClanTripEvent;
+    case 9:
+    case "k_EClanChatEvent":
+      return EProtoClanEventType.k_EClanChatEvent;
+    case 10:
+    case "k_EClanGameReleaseEvent":
+      return EProtoClanEventType.k_EClanGameReleaseEvent;
+    case 11:
+    case "k_EClanBroadcastEvent":
+      return EProtoClanEventType.k_EClanBroadcastEvent;
+    case 12:
+    case "k_EClanSmallUpdateEvent":
+      return EProtoClanEventType.k_EClanSmallUpdateEvent;
+    case 13:
+    case "k_EClanPreAnnounceMajorUpdateEvent":
+      return EProtoClanEventType.k_EClanPreAnnounceMajorUpdateEvent;
+    case 14:
+    case "k_EClanMajorUpdateEvent":
+      return EProtoClanEventType.k_EClanMajorUpdateEvent;
+    case 15:
+    case "k_EClanDLCReleaseEvent":
+      return EProtoClanEventType.k_EClanDLCReleaseEvent;
+    case 16:
+    case "k_EClanFutureReleaseEvent":
+      return EProtoClanEventType.k_EClanFutureReleaseEvent;
+    case 17:
+    case "k_EClanESportTournamentStreamEvent":
+      return EProtoClanEventType.k_EClanESportTournamentStreamEvent;
+    case 18:
+    case "k_EClanDevStreamEvent":
+      return EProtoClanEventType.k_EClanDevStreamEvent;
+    case 19:
+    case "k_EClanFamousStreamEvent":
+      return EProtoClanEventType.k_EClanFamousStreamEvent;
+    case 20:
+    case "k_EClanGameSalesEvent":
+      return EProtoClanEventType.k_EClanGameSalesEvent;
+    case 21:
+    case "k_EClanGameItemSalesEvent":
+      return EProtoClanEventType.k_EClanGameItemSalesEvent;
+    case 22:
+    case "k_EClanInGameBonusXPEvent":
+      return EProtoClanEventType.k_EClanInGameBonusXPEvent;
+    case 23:
+    case "k_EClanInGameLootEvent":
+      return EProtoClanEventType.k_EClanInGameLootEvent;
+    case 24:
+    case "k_EClanInGamePerksEvent":
+      return EProtoClanEventType.k_EClanInGamePerksEvent;
+    case 25:
+    case "k_EClanInGameChallengeEvent":
+      return EProtoClanEventType.k_EClanInGameChallengeEvent;
+    case 26:
+    case "k_EClanInGameContestEvent":
+      return EProtoClanEventType.k_EClanInGameContestEvent;
+    case 27:
+    case "k_EClanIRLEvent":
+      return EProtoClanEventType.k_EClanIRLEvent;
+    case 28:
+    case "k_EClanNewsEvent":
+      return EProtoClanEventType.k_EClanNewsEvent;
+    case 29:
+    case "k_EClanBetaReleaseEvent":
+      return EProtoClanEventType.k_EClanBetaReleaseEvent;
+    case 30:
+    case "k_EClanInGameContentReleaseEvent":
+      return EProtoClanEventType.k_EClanInGameContentReleaseEvent;
+    case 31:
+    case "k_EClanFreeTrial":
+      return EProtoClanEventType.k_EClanFreeTrial;
+    case 32:
+    case "k_EClanSeasonRelease":
+      return EProtoClanEventType.k_EClanSeasonRelease;
+    case 33:
+    case "k_EClanSeasonUpdate":
+      return EProtoClanEventType.k_EClanSeasonUpdate;
+    case 34:
+    case "k_EClanCrosspostEvent":
+      return EProtoClanEventType.k_EClanCrosspostEvent;
+    case 35:
+    case "k_EClanInGameEventGeneral":
+      return EProtoClanEventType.k_EClanInGameEventGeneral;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EProtoClanEventType");
+  }
+}
+
+export function eProtoClanEventTypeToJSON(object: EProtoClanEventType): string {
+  switch (object) {
+    case EProtoClanEventType.k_EClanOtherEvent:
+      return "k_EClanOtherEvent";
+    case EProtoClanEventType.k_EClanGameEvent:
+      return "k_EClanGameEvent";
+    case EProtoClanEventType.k_EClanPartyEvent:
+      return "k_EClanPartyEvent";
+    case EProtoClanEventType.k_EClanMeetingEvent:
+      return "k_EClanMeetingEvent";
+    case EProtoClanEventType.k_EClanSpecialCauseEvent:
+      return "k_EClanSpecialCauseEvent";
+    case EProtoClanEventType.k_EClanMusicAndArtsEvent:
+      return "k_EClanMusicAndArtsEvent";
+    case EProtoClanEventType.k_EClanSportsEvent:
+      return "k_EClanSportsEvent";
+    case EProtoClanEventType.k_EClanTripEvent:
+      return "k_EClanTripEvent";
+    case EProtoClanEventType.k_EClanChatEvent:
+      return "k_EClanChatEvent";
+    case EProtoClanEventType.k_EClanGameReleaseEvent:
+      return "k_EClanGameReleaseEvent";
+    case EProtoClanEventType.k_EClanBroadcastEvent:
+      return "k_EClanBroadcastEvent";
+    case EProtoClanEventType.k_EClanSmallUpdateEvent:
+      return "k_EClanSmallUpdateEvent";
+    case EProtoClanEventType.k_EClanPreAnnounceMajorUpdateEvent:
+      return "k_EClanPreAnnounceMajorUpdateEvent";
+    case EProtoClanEventType.k_EClanMajorUpdateEvent:
+      return "k_EClanMajorUpdateEvent";
+    case EProtoClanEventType.k_EClanDLCReleaseEvent:
+      return "k_EClanDLCReleaseEvent";
+    case EProtoClanEventType.k_EClanFutureReleaseEvent:
+      return "k_EClanFutureReleaseEvent";
+    case EProtoClanEventType.k_EClanESportTournamentStreamEvent:
+      return "k_EClanESportTournamentStreamEvent";
+    case EProtoClanEventType.k_EClanDevStreamEvent:
+      return "k_EClanDevStreamEvent";
+    case EProtoClanEventType.k_EClanFamousStreamEvent:
+      return "k_EClanFamousStreamEvent";
+    case EProtoClanEventType.k_EClanGameSalesEvent:
+      return "k_EClanGameSalesEvent";
+    case EProtoClanEventType.k_EClanGameItemSalesEvent:
+      return "k_EClanGameItemSalesEvent";
+    case EProtoClanEventType.k_EClanInGameBonusXPEvent:
+      return "k_EClanInGameBonusXPEvent";
+    case EProtoClanEventType.k_EClanInGameLootEvent:
+      return "k_EClanInGameLootEvent";
+    case EProtoClanEventType.k_EClanInGamePerksEvent:
+      return "k_EClanInGamePerksEvent";
+    case EProtoClanEventType.k_EClanInGameChallengeEvent:
+      return "k_EClanInGameChallengeEvent";
+    case EProtoClanEventType.k_EClanInGameContestEvent:
+      return "k_EClanInGameContestEvent";
+    case EProtoClanEventType.k_EClanIRLEvent:
+      return "k_EClanIRLEvent";
+    case EProtoClanEventType.k_EClanNewsEvent:
+      return "k_EClanNewsEvent";
+    case EProtoClanEventType.k_EClanBetaReleaseEvent:
+      return "k_EClanBetaReleaseEvent";
+    case EProtoClanEventType.k_EClanInGameContentReleaseEvent:
+      return "k_EClanInGameContentReleaseEvent";
+    case EProtoClanEventType.k_EClanFreeTrial:
+      return "k_EClanFreeTrial";
+    case EProtoClanEventType.k_EClanSeasonRelease:
+      return "k_EClanSeasonRelease";
+    case EProtoClanEventType.k_EClanSeasonUpdate:
+      return "k_EClanSeasonUpdate";
+    case EProtoClanEventType.k_EClanCrosspostEvent:
+      return "k_EClanCrosspostEvent";
+    case EProtoClanEventType.k_EClanInGameEventGeneral:
+      return "k_EClanInGameEventGeneral";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EProtoClanEventType");
+  }
+}
+
 export enum PartnerEventNotificationType {
   k_EEventStart = 0,
   k_EEventBroadcastStart = 1,
   k_EEventMatchStart = 2,
   k_EEventPartnerMaxType = 3,
+}
+
+export function partnerEventNotificationTypeFromJSON(object: any): PartnerEventNotificationType {
+  switch (object) {
+    case 0:
+    case "k_EEventStart":
+      return PartnerEventNotificationType.k_EEventStart;
+    case 1:
+    case "k_EEventBroadcastStart":
+      return PartnerEventNotificationType.k_EEventBroadcastStart;
+    case 2:
+    case "k_EEventMatchStart":
+      return PartnerEventNotificationType.k_EEventMatchStart;
+    case 3:
+    case "k_EEventPartnerMaxType":
+      return PartnerEventNotificationType.k_EEventPartnerMaxType;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum PartnerEventNotificationType");
+  }
+}
+
+export function partnerEventNotificationTypeToJSON(object: PartnerEventNotificationType): string {
+  switch (object) {
+    case PartnerEventNotificationType.k_EEventStart:
+      return "k_EEventStart";
+    case PartnerEventNotificationType.k_EEventBroadcastStart:
+      return "k_EEventBroadcastStart";
+    case PartnerEventNotificationType.k_EEventMatchStart:
+      return "k_EEventMatchStart";
+    case PartnerEventNotificationType.k_EEventPartnerMaxType:
+      return "k_EEventPartnerMaxType";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum PartnerEventNotificationType");
+  }
 }
 
 export interface CMsgIPAddress {
@@ -323,6 +600,20 @@ export const CMsgIPAddress = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgIPAddress {
+    return {
+      v4: isSet(object.v4) ? Number(object.v4) : undefined,
+      v6: isSet(object.v6) ? Buffer.from(bytesFromBase64(object.v6)) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgIPAddress): unknown {
+    const obj: any = {};
+    message.v4 !== undefined && (obj.v4 = Math.round(message.v4));
+    message.v6 !== undefined && (obj.v6 = message.v6 !== undefined ? base64FromBytes(message.v6) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgIPAddressBucket(): CMsgIPAddressBucket {
@@ -368,6 +659,21 @@ export const CMsgIPAddressBucket = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgIPAddressBucket {
+    return {
+      originalIpAddress: isSet(object.originalIpAddress) ? CMsgIPAddress.fromJSON(object.originalIpAddress) : undefined,
+      bucket: isSet(object.bucket) ? String(object.bucket) : "0",
+    };
+  },
+
+  toJSON(message: CMsgIPAddressBucket): unknown {
+    const obj: any = {};
+    message.originalIpAddress !== undefined &&
+      (obj.originalIpAddress = message.originalIpAddress ? CMsgIPAddress.toJSON(message.originalIpAddress) : undefined);
+    message.bucket !== undefined && (obj.bucket = message.bucket);
+    return obj;
   },
 };
 
@@ -704,6 +1010,74 @@ export const CMsgProtoBufHeader = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgProtoBufHeader {
+    return {
+      steamid: isSet(object.steamid) ? String(object.steamid) : "0",
+      clientSessionid: isSet(object.clientSessionid) ? Number(object.clientSessionid) : 0,
+      routingAppid: isSet(object.routingAppid) ? Number(object.routingAppid) : 0,
+      jobidSource: isSet(object.jobidSource) ? String(object.jobidSource) : "0",
+      jobidTarget: isSet(object.jobidTarget) ? String(object.jobidTarget) : "0",
+      targetJobName: isSet(object.targetJobName) ? String(object.targetJobName) : "",
+      seqNum: isSet(object.seqNum) ? Number(object.seqNum) : 0,
+      eresult: isSet(object.eresult) ? Number(object.eresult) : 0,
+      errorMessage: isSet(object.errorMessage) ? String(object.errorMessage) : "",
+      authAccountFlags: isSet(object.authAccountFlags) ? Number(object.authAccountFlags) : 0,
+      tokenSource: isSet(object.tokenSource) ? Number(object.tokenSource) : 0,
+      adminSpoofingUser: isSet(object.adminSpoofingUser) ? Boolean(object.adminSpoofingUser) : false,
+      transportError: isSet(object.transportError) ? Number(object.transportError) : 0,
+      messageid: isSet(object.messageid) ? String(object.messageid) : "0",
+      publisherGroupId: isSet(object.publisherGroupId) ? Number(object.publisherGroupId) : 0,
+      sysid: isSet(object.sysid) ? Number(object.sysid) : 0,
+      traceTag: isSet(object.traceTag) ? String(object.traceTag) : "0",
+      webapiKeyId: isSet(object.webapiKeyId) ? Number(object.webapiKeyId) : 0,
+      isFromExternalSource: isSet(object.isFromExternalSource) ? Boolean(object.isFromExternalSource) : false,
+      forwardToSysid: Array.isArray(object?.forwardToSysid) ? object.forwardToSysid.map((e: any) => Number(e)) : [],
+      cmSysid: isSet(object.cmSysid) ? Number(object.cmSysid) : 0,
+      launcherType: isSet(object.launcherType) ? Number(object.launcherType) : 0,
+      realm: isSet(object.realm) ? Number(object.realm) : 0,
+      timeoutMs: isSet(object.timeoutMs) ? Number(object.timeoutMs) : 0,
+      debugSource: isSet(object.debugSource) ? String(object.debugSource) : "",
+      ip: isSet(object.ip) ? Number(object.ip) : undefined,
+      ipV6: isSet(object.ipV6) ? Buffer.from(bytesFromBase64(object.ipV6)) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgProtoBufHeader): unknown {
+    const obj: any = {};
+    message.steamid !== undefined && (obj.steamid = message.steamid);
+    message.clientSessionid !== undefined && (obj.clientSessionid = Math.round(message.clientSessionid));
+    message.routingAppid !== undefined && (obj.routingAppid = Math.round(message.routingAppid));
+    message.jobidSource !== undefined && (obj.jobidSource = message.jobidSource);
+    message.jobidTarget !== undefined && (obj.jobidTarget = message.jobidTarget);
+    message.targetJobName !== undefined && (obj.targetJobName = message.targetJobName);
+    message.seqNum !== undefined && (obj.seqNum = Math.round(message.seqNum));
+    message.eresult !== undefined && (obj.eresult = Math.round(message.eresult));
+    message.errorMessage !== undefined && (obj.errorMessage = message.errorMessage);
+    message.authAccountFlags !== undefined && (obj.authAccountFlags = Math.round(message.authAccountFlags));
+    message.tokenSource !== undefined && (obj.tokenSource = Math.round(message.tokenSource));
+    message.adminSpoofingUser !== undefined && (obj.adminSpoofingUser = message.adminSpoofingUser);
+    message.transportError !== undefined && (obj.transportError = Math.round(message.transportError));
+    message.messageid !== undefined && (obj.messageid = message.messageid);
+    message.publisherGroupId !== undefined && (obj.publisherGroupId = Math.round(message.publisherGroupId));
+    message.sysid !== undefined && (obj.sysid = Math.round(message.sysid));
+    message.traceTag !== undefined && (obj.traceTag = message.traceTag);
+    message.webapiKeyId !== undefined && (obj.webapiKeyId = Math.round(message.webapiKeyId));
+    message.isFromExternalSource !== undefined && (obj.isFromExternalSource = message.isFromExternalSource);
+    if (message.forwardToSysid) {
+      obj.forwardToSysid = message.forwardToSysid.map((e) => Math.round(e));
+    } else {
+      obj.forwardToSysid = [];
+    }
+    message.cmSysid !== undefined && (obj.cmSysid = Math.round(message.cmSysid));
+    message.launcherType !== undefined && (obj.launcherType = Math.round(message.launcherType));
+    message.realm !== undefined && (obj.realm = Math.round(message.realm));
+    message.timeoutMs !== undefined && (obj.timeoutMs = Math.round(message.timeoutMs));
+    message.debugSource !== undefined && (obj.debugSource = message.debugSource);
+    message.ip !== undefined && (obj.ip = Math.round(message.ip));
+    message.ipV6 !== undefined && (obj.ipV6 = message.ipV6 !== undefined ? base64FromBytes(message.ipV6) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgMulti(): CMsgMulti {
@@ -750,6 +1124,21 @@ export const CMsgMulti = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgMulti {
+    return {
+      sizeUnzipped: isSet(object.sizeUnzipped) ? Number(object.sizeUnzipped) : 0,
+      messageBody: isSet(object.messageBody) ? Buffer.from(bytesFromBase64(object.messageBody)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CMsgMulti): unknown {
+    const obj: any = {};
+    message.sizeUnzipped !== undefined && (obj.sizeUnzipped = Math.round(message.sizeUnzipped));
+    message.messageBody !== undefined &&
+      (obj.messageBody = base64FromBytes(message.messageBody !== undefined ? message.messageBody : Buffer.alloc(0)));
+    return obj;
+  },
 };
 
 function createBaseCMsgProtobufWrapped(): CMsgProtobufWrapped {
@@ -785,6 +1174,19 @@ export const CMsgProtobufWrapped = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgProtobufWrapped {
+    return {
+      messageBody: isSet(object.messageBody) ? Buffer.from(bytesFromBase64(object.messageBody)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CMsgProtobufWrapped): unknown {
+    const obj: any = {};
+    message.messageBody !== undefined &&
+      (obj.messageBody = base64FromBytes(message.messageBody !== undefined ? message.messageBody : Buffer.alloc(0)));
+    return obj;
   },
 };
 
@@ -881,6 +1283,31 @@ export const CMsgAuthTicket = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgAuthTicket {
+    return {
+      estate: isSet(object.estate) ? Number(object.estate) : 0,
+      eresult: isSet(object.eresult) ? Number(object.eresult) : 0,
+      steamid: isSet(object.steamid) ? String(object.steamid) : "0",
+      gameid: isSet(object.gameid) ? String(object.gameid) : "0",
+      hSteamPipe: isSet(object.hSteamPipe) ? Number(object.hSteamPipe) : 0,
+      ticketCrc: isSet(object.ticketCrc) ? Number(object.ticketCrc) : 0,
+      ticket: isSet(object.ticket) ? Buffer.from(bytesFromBase64(object.ticket)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CMsgAuthTicket): unknown {
+    const obj: any = {};
+    message.estate !== undefined && (obj.estate = Math.round(message.estate));
+    message.eresult !== undefined && (obj.eresult = Math.round(message.eresult));
+    message.steamid !== undefined && (obj.steamid = message.steamid);
+    message.gameid !== undefined && (obj.gameid = message.gameid);
+    message.hSteamPipe !== undefined && (obj.hSteamPipe = Math.round(message.hSteamPipe));
+    message.ticketCrc !== undefined && (obj.ticketCrc = Math.round(message.ticketCrc));
+    message.ticket !== undefined &&
+      (obj.ticket = base64FromBytes(message.ticket !== undefined ? message.ticket : Buffer.alloc(0)));
+    return obj;
   },
 };
 
@@ -1040,6 +1467,40 @@ export const CCDDBAppDetailCommon = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CCDDBAppDetailCommon {
+    return {
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      icon: isSet(object.icon) ? String(object.icon) : "",
+      tool: isSet(object.tool) ? Boolean(object.tool) : false,
+      demo: isSet(object.demo) ? Boolean(object.demo) : false,
+      media: isSet(object.media) ? Boolean(object.media) : false,
+      communityVisibleStats: isSet(object.communityVisibleStats) ? Boolean(object.communityVisibleStats) : false,
+      friendlyName: isSet(object.friendlyName) ? String(object.friendlyName) : "",
+      propagation: isSet(object.propagation) ? String(object.propagation) : "",
+      hasAdultContent: isSet(object.hasAdultContent) ? Boolean(object.hasAdultContent) : false,
+      isVisibleInSteamChina: isSet(object.isVisibleInSteamChina) ? Boolean(object.isVisibleInSteamChina) : false,
+      appType: isSet(object.appType) ? Number(object.appType) : 0,
+    };
+  },
+
+  toJSON(message: CCDDBAppDetailCommon): unknown {
+    const obj: any = {};
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    message.name !== undefined && (obj.name = message.name);
+    message.icon !== undefined && (obj.icon = message.icon);
+    message.tool !== undefined && (obj.tool = message.tool);
+    message.demo !== undefined && (obj.demo = message.demo);
+    message.media !== undefined && (obj.media = message.media);
+    message.communityVisibleStats !== undefined && (obj.communityVisibleStats = message.communityVisibleStats);
+    message.friendlyName !== undefined && (obj.friendlyName = message.friendlyName);
+    message.propagation !== undefined && (obj.propagation = message.propagation);
+    message.hasAdultContent !== undefined && (obj.hasAdultContent = message.hasAdultContent);
+    message.isVisibleInSteamChina !== undefined && (obj.isVisibleInSteamChina = message.isVisibleInSteamChina);
+    message.appType !== undefined && (obj.appType = Math.round(message.appType));
+    return obj;
   },
 };
 
@@ -1255,6 +1716,52 @@ export const CMsgAppRights = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgAppRights {
+    return {
+      editInfo: isSet(object.editInfo) ? Boolean(object.editInfo) : false,
+      publish: isSet(object.publish) ? Boolean(object.publish) : false,
+      viewErrorData: isSet(object.viewErrorData) ? Boolean(object.viewErrorData) : false,
+      download: isSet(object.download) ? Boolean(object.download) : false,
+      uploadCdkeys: isSet(object.uploadCdkeys) ? Boolean(object.uploadCdkeys) : false,
+      generateCdkeys: isSet(object.generateCdkeys) ? Boolean(object.generateCdkeys) : false,
+      viewFinancials: isSet(object.viewFinancials) ? Boolean(object.viewFinancials) : false,
+      manageCeg: isSet(object.manageCeg) ? Boolean(object.manageCeg) : false,
+      manageSigning: isSet(object.manageSigning) ? Boolean(object.manageSigning) : false,
+      manageCdkeys: isSet(object.manageCdkeys) ? Boolean(object.manageCdkeys) : false,
+      editMarketing: isSet(object.editMarketing) ? Boolean(object.editMarketing) : false,
+      economySupport: isSet(object.economySupport) ? Boolean(object.economySupport) : false,
+      economySupportSupervisor: isSet(object.economySupportSupervisor)
+        ? Boolean(object.economySupportSupervisor)
+        : false,
+      managePricing: isSet(object.managePricing) ? Boolean(object.managePricing) : false,
+      broadcastLive: isSet(object.broadcastLive) ? Boolean(object.broadcastLive) : false,
+      viewMarketingTraffic: isSet(object.viewMarketingTraffic) ? Boolean(object.viewMarketingTraffic) : false,
+      editStoreDisplayContent: isSet(object.editStoreDisplayContent) ? Boolean(object.editStoreDisplayContent) : false,
+    };
+  },
+
+  toJSON(message: CMsgAppRights): unknown {
+    const obj: any = {};
+    message.editInfo !== undefined && (obj.editInfo = message.editInfo);
+    message.publish !== undefined && (obj.publish = message.publish);
+    message.viewErrorData !== undefined && (obj.viewErrorData = message.viewErrorData);
+    message.download !== undefined && (obj.download = message.download);
+    message.uploadCdkeys !== undefined && (obj.uploadCdkeys = message.uploadCdkeys);
+    message.generateCdkeys !== undefined && (obj.generateCdkeys = message.generateCdkeys);
+    message.viewFinancials !== undefined && (obj.viewFinancials = message.viewFinancials);
+    message.manageCeg !== undefined && (obj.manageCeg = message.manageCeg);
+    message.manageSigning !== undefined && (obj.manageSigning = message.manageSigning);
+    message.manageCdkeys !== undefined && (obj.manageCdkeys = message.manageCdkeys);
+    message.editMarketing !== undefined && (obj.editMarketing = message.editMarketing);
+    message.economySupport !== undefined && (obj.economySupport = message.economySupport);
+    message.economySupportSupervisor !== undefined && (obj.economySupportSupervisor = message.economySupportSupervisor);
+    message.managePricing !== undefined && (obj.managePricing = message.managePricing);
+    message.broadcastLive !== undefined && (obj.broadcastLive = message.broadcastLive);
+    message.viewMarketingTraffic !== undefined && (obj.viewMarketingTraffic = message.viewMarketingTraffic);
+    message.editStoreDisplayContent !== undefined && (obj.editStoreDisplayContent = message.editStoreDisplayContent);
+    return obj;
+  },
 };
 
 function createBaseCCuratorPreferences(): CCuratorPreferences {
@@ -1458,6 +1965,52 @@ export const CCuratorPreferences = {
     }
     return message;
   },
+
+  fromJSON(object: any): CCuratorPreferences {
+    return {
+      supportedLanguages: isSet(object.supportedLanguages) ? Number(object.supportedLanguages) : 0,
+      platformWindows: isSet(object.platformWindows) ? Boolean(object.platformWindows) : false,
+      platformMac: isSet(object.platformMac) ? Boolean(object.platformMac) : false,
+      platformLinux: isSet(object.platformLinux) ? Boolean(object.platformLinux) : false,
+      vrContent: isSet(object.vrContent) ? Boolean(object.vrContent) : false,
+      adultContentViolence: isSet(object.adultContentViolence) ? Boolean(object.adultContentViolence) : false,
+      adultContentSex: isSet(object.adultContentSex) ? Boolean(object.adultContentSex) : false,
+      timestampUpdated: isSet(object.timestampUpdated) ? Number(object.timestampUpdated) : 0,
+      tagidsCurated: Array.isArray(object?.tagidsCurated) ? object.tagidsCurated.map((e: any) => Number(e)) : [],
+      tagidsFiltered: Array.isArray(object?.tagidsFiltered) ? object.tagidsFiltered.map((e: any) => Number(e)) : [],
+      websiteTitle: isSet(object.websiteTitle) ? String(object.websiteTitle) : "",
+      websiteUrl: isSet(object.websiteUrl) ? String(object.websiteUrl) : "",
+      discussionUrl: isSet(object.discussionUrl) ? String(object.discussionUrl) : "",
+      showBroadcast: isSet(object.showBroadcast) ? Boolean(object.showBroadcast) : false,
+    };
+  },
+
+  toJSON(message: CCuratorPreferences): unknown {
+    const obj: any = {};
+    message.supportedLanguages !== undefined && (obj.supportedLanguages = Math.round(message.supportedLanguages));
+    message.platformWindows !== undefined && (obj.platformWindows = message.platformWindows);
+    message.platformMac !== undefined && (obj.platformMac = message.platformMac);
+    message.platformLinux !== undefined && (obj.platformLinux = message.platformLinux);
+    message.vrContent !== undefined && (obj.vrContent = message.vrContent);
+    message.adultContentViolence !== undefined && (obj.adultContentViolence = message.adultContentViolence);
+    message.adultContentSex !== undefined && (obj.adultContentSex = message.adultContentSex);
+    message.timestampUpdated !== undefined && (obj.timestampUpdated = Math.round(message.timestampUpdated));
+    if (message.tagidsCurated) {
+      obj.tagidsCurated = message.tagidsCurated.map((e) => Math.round(e));
+    } else {
+      obj.tagidsCurated = [];
+    }
+    if (message.tagidsFiltered) {
+      obj.tagidsFiltered = message.tagidsFiltered.map((e) => Math.round(e));
+    } else {
+      obj.tagidsFiltered = [];
+    }
+    message.websiteTitle !== undefined && (obj.websiteTitle = message.websiteTitle);
+    message.websiteUrl !== undefined && (obj.websiteUrl = message.websiteUrl);
+    message.discussionUrl !== undefined && (obj.discussionUrl = message.discussionUrl);
+    message.showBroadcast !== undefined && (obj.showBroadcast = message.showBroadcast);
+    return obj;
+  },
 };
 
 function createBaseCLocalizationToken(): CLocalizationToken {
@@ -1503,6 +2056,20 @@ export const CLocalizationToken = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CLocalizationToken {
+    return {
+      language: isSet(object.language) ? Number(object.language) : 0,
+      localizedString: isSet(object.localizedString) ? String(object.localizedString) : "",
+    };
+  },
+
+  toJSON(message: CLocalizationToken): unknown {
+    const obj: any = {};
+    message.language !== undefined && (obj.language = Math.round(message.language));
+    message.localizedString !== undefined && (obj.localizedString = message.localizedString);
+    return obj;
   },
 };
 
@@ -1641,6 +2208,36 @@ export const CClanEventUserNewsTuple = {
     }
     return message;
   },
+
+  fromJSON(object: any): CClanEventUserNewsTuple {
+    return {
+      clanid: isSet(object.clanid) ? Number(object.clanid) : 0,
+      eventGid: isSet(object.eventGid) ? String(object.eventGid) : "0",
+      announcementGid: isSet(object.announcementGid) ? String(object.announcementGid) : "0",
+      rtimeStart: isSet(object.rtimeStart) ? Number(object.rtimeStart) : 0,
+      rtimeEnd: isSet(object.rtimeEnd) ? Number(object.rtimeEnd) : 0,
+      priorityScore: isSet(object.priorityScore) ? Number(object.priorityScore) : 0,
+      type: isSet(object.type) ? Number(object.type) : 0,
+      clampRangeSlot: isSet(object.clampRangeSlot) ? Number(object.clampRangeSlot) : 0,
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      rtime32LastModified: isSet(object.rtime32LastModified) ? Number(object.rtime32LastModified) : 0,
+    };
+  },
+
+  toJSON(message: CClanEventUserNewsTuple): unknown {
+    const obj: any = {};
+    message.clanid !== undefined && (obj.clanid = Math.round(message.clanid));
+    message.eventGid !== undefined && (obj.eventGid = message.eventGid);
+    message.announcementGid !== undefined && (obj.announcementGid = message.announcementGid);
+    message.rtimeStart !== undefined && (obj.rtimeStart = Math.round(message.rtimeStart));
+    message.rtimeEnd !== undefined && (obj.rtimeEnd = Math.round(message.rtimeEnd));
+    message.priorityScore !== undefined && (obj.priorityScore = Math.round(message.priorityScore));
+    message.type !== undefined && (obj.type = Math.round(message.type));
+    message.clampRangeSlot !== undefined && (obj.clampRangeSlot = Math.round(message.clampRangeSlot));
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    message.rtime32LastModified !== undefined && (obj.rtime32LastModified = Math.round(message.rtime32LastModified));
+    return obj;
+  },
 };
 
 function createBaseCClanMatchEventByRange(): CClanMatchEventByRange {
@@ -1706,6 +2303,28 @@ export const CClanMatchEventByRange = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CClanMatchEventByRange {
+    return {
+      rtimeBefore: isSet(object.rtimeBefore) ? Number(object.rtimeBefore) : 0,
+      rtimeAfter: isSet(object.rtimeAfter) ? Number(object.rtimeAfter) : 0,
+      qualified: isSet(object.qualified) ? Number(object.qualified) : 0,
+      events: Array.isArray(object?.events) ? object.events.map((e: any) => CClanEventUserNewsTuple.fromJSON(e)) : [],
+    };
+  },
+
+  toJSON(message: CClanMatchEventByRange): unknown {
+    const obj: any = {};
+    message.rtimeBefore !== undefined && (obj.rtimeBefore = Math.round(message.rtimeBefore));
+    message.rtimeAfter !== undefined && (obj.rtimeAfter = Math.round(message.rtimeAfter));
+    message.qualified !== undefined && (obj.qualified = Math.round(message.qualified));
+    if (message.events) {
+      obj.events = message.events.map((e) => e ? CClanEventUserNewsTuple.toJSON(e) : undefined);
+    } else {
+      obj.events = [];
+    }
+    return obj;
   },
 };
 
@@ -1909,6 +2528,52 @@ export const CCommunityClanAnnouncementInfo = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CCommunityClanAnnouncementInfo {
+    return {
+      gid: isSet(object.gid) ? String(object.gid) : "0",
+      clanid: isSet(object.clanid) ? String(object.clanid) : "0",
+      posterid: isSet(object.posterid) ? String(object.posterid) : "0",
+      headline: isSet(object.headline) ? String(object.headline) : "",
+      posttime: isSet(object.posttime) ? Number(object.posttime) : 0,
+      updatetime: isSet(object.updatetime) ? Number(object.updatetime) : 0,
+      body: isSet(object.body) ? String(object.body) : "",
+      commentcount: isSet(object.commentcount) ? Number(object.commentcount) : 0,
+      tags: Array.isArray(object?.tags) ? object.tags.map((e: any) => String(e)) : [],
+      language: isSet(object.language) ? Number(object.language) : 0,
+      hidden: isSet(object.hidden) ? Boolean(object.hidden) : false,
+      forumTopicId: isSet(object.forumTopicId) ? String(object.forumTopicId) : "0",
+      eventGid: isSet(object.eventGid) ? String(object.eventGid) : "0",
+      voteupcount: isSet(object.voteupcount) ? Number(object.voteupcount) : 0,
+      votedowncount: isSet(object.votedowncount) ? Number(object.votedowncount) : 0,
+      banCheckResult: isSet(object.banCheckResult) ? eBanContentCheckResultFromJSON(object.banCheckResult) : 0,
+    };
+  },
+
+  toJSON(message: CCommunityClanAnnouncementInfo): unknown {
+    const obj: any = {};
+    message.gid !== undefined && (obj.gid = message.gid);
+    message.clanid !== undefined && (obj.clanid = message.clanid);
+    message.posterid !== undefined && (obj.posterid = message.posterid);
+    message.headline !== undefined && (obj.headline = message.headline);
+    message.posttime !== undefined && (obj.posttime = Math.round(message.posttime));
+    message.updatetime !== undefined && (obj.updatetime = Math.round(message.updatetime));
+    message.body !== undefined && (obj.body = message.body);
+    message.commentcount !== undefined && (obj.commentcount = Math.round(message.commentcount));
+    if (message.tags) {
+      obj.tags = message.tags.map((e) => e);
+    } else {
+      obj.tags = [];
+    }
+    message.language !== undefined && (obj.language = Math.round(message.language));
+    message.hidden !== undefined && (obj.hidden = message.hidden);
+    message.forumTopicId !== undefined && (obj.forumTopicId = message.forumTopicId);
+    message.eventGid !== undefined && (obj.eventGid = message.eventGid);
+    message.voteupcount !== undefined && (obj.voteupcount = Math.round(message.voteupcount));
+    message.votedowncount !== undefined && (obj.votedowncount = Math.round(message.votedowncount));
+    message.banCheckResult !== undefined && (obj.banCheckResult = eBanContentCheckResultToJSON(message.banCheckResult));
+    return obj;
   },
 };
 
@@ -2278,6 +2943,87 @@ export const CClanEventData = {
     }
     return message;
   },
+
+  fromJSON(object: any): CClanEventData {
+    return {
+      gid: isSet(object.gid) ? String(object.gid) : "0",
+      clanSteamid: isSet(object.clanSteamid) ? String(object.clanSteamid) : "0",
+      eventName: isSet(object.eventName) ? String(object.eventName) : "",
+      eventType: isSet(object.eventType) ? eProtoClanEventTypeFromJSON(object.eventType) : 1,
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      serverAddress: isSet(object.serverAddress) ? String(object.serverAddress) : "",
+      serverPassword: isSet(object.serverPassword) ? String(object.serverPassword) : "",
+      rtime32StartTime: isSet(object.rtime32StartTime) ? Number(object.rtime32StartTime) : 0,
+      rtime32EndTime: isSet(object.rtime32EndTime) ? Number(object.rtime32EndTime) : 0,
+      commentCount: isSet(object.commentCount) ? Number(object.commentCount) : 0,
+      creatorSteamid: isSet(object.creatorSteamid) ? String(object.creatorSteamid) : "0",
+      lastUpdateSteamid: isSet(object.lastUpdateSteamid) ? String(object.lastUpdateSteamid) : "0",
+      eventNotes: isSet(object.eventNotes) ? String(object.eventNotes) : "",
+      jsondata: isSet(object.jsondata) ? String(object.jsondata) : "",
+      announcementBody: isSet(object.announcementBody)
+        ? CCommunityClanAnnouncementInfo.fromJSON(object.announcementBody)
+        : undefined,
+      published: isSet(object.published) ? Boolean(object.published) : false,
+      hidden: isSet(object.hidden) ? Boolean(object.hidden) : false,
+      rtime32VisibilityStart: isSet(object.rtime32VisibilityStart) ? Number(object.rtime32VisibilityStart) : 0,
+      rtime32VisibilityEnd: isSet(object.rtime32VisibilityEnd) ? Number(object.rtime32VisibilityEnd) : 0,
+      broadcasterAccountid: isSet(object.broadcasterAccountid) ? Number(object.broadcasterAccountid) : 0,
+      followerCount: isSet(object.followerCount) ? Number(object.followerCount) : 0,
+      ignoreCount: isSet(object.ignoreCount) ? Number(object.ignoreCount) : 0,
+      forumTopicId: isSet(object.forumTopicId) ? String(object.forumTopicId) : "0",
+      rtime32LastModified: isSet(object.rtime32LastModified) ? Number(object.rtime32LastModified) : 0,
+      newsPostGid: isSet(object.newsPostGid) ? String(object.newsPostGid) : "0",
+      rtimeModReviewed: isSet(object.rtimeModReviewed) ? Number(object.rtimeModReviewed) : 0,
+      featuredAppTagid: isSet(object.featuredAppTagid) ? Number(object.featuredAppTagid) : 0,
+      referencedAppids: Array.isArray(object?.referencedAppids)
+        ? object.referencedAppids.map((e: any) => Number(e))
+        : [],
+      buildId: isSet(object.buildId) ? Number(object.buildId) : 0,
+      buildBranch: isSet(object.buildBranch) ? String(object.buildBranch) : "",
+    };
+  },
+
+  toJSON(message: CClanEventData): unknown {
+    const obj: any = {};
+    message.gid !== undefined && (obj.gid = message.gid);
+    message.clanSteamid !== undefined && (obj.clanSteamid = message.clanSteamid);
+    message.eventName !== undefined && (obj.eventName = message.eventName);
+    message.eventType !== undefined && (obj.eventType = eProtoClanEventTypeToJSON(message.eventType));
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    message.serverAddress !== undefined && (obj.serverAddress = message.serverAddress);
+    message.serverPassword !== undefined && (obj.serverPassword = message.serverPassword);
+    message.rtime32StartTime !== undefined && (obj.rtime32StartTime = Math.round(message.rtime32StartTime));
+    message.rtime32EndTime !== undefined && (obj.rtime32EndTime = Math.round(message.rtime32EndTime));
+    message.commentCount !== undefined && (obj.commentCount = Math.round(message.commentCount));
+    message.creatorSteamid !== undefined && (obj.creatorSteamid = message.creatorSteamid);
+    message.lastUpdateSteamid !== undefined && (obj.lastUpdateSteamid = message.lastUpdateSteamid);
+    message.eventNotes !== undefined && (obj.eventNotes = message.eventNotes);
+    message.jsondata !== undefined && (obj.jsondata = message.jsondata);
+    message.announcementBody !== undefined && (obj.announcementBody = message.announcementBody
+      ? CCommunityClanAnnouncementInfo.toJSON(message.announcementBody)
+      : undefined);
+    message.published !== undefined && (obj.published = message.published);
+    message.hidden !== undefined && (obj.hidden = message.hidden);
+    message.rtime32VisibilityStart !== undefined &&
+      (obj.rtime32VisibilityStart = Math.round(message.rtime32VisibilityStart));
+    message.rtime32VisibilityEnd !== undefined && (obj.rtime32VisibilityEnd = Math.round(message.rtime32VisibilityEnd));
+    message.broadcasterAccountid !== undefined && (obj.broadcasterAccountid = Math.round(message.broadcasterAccountid));
+    message.followerCount !== undefined && (obj.followerCount = Math.round(message.followerCount));
+    message.ignoreCount !== undefined && (obj.ignoreCount = Math.round(message.ignoreCount));
+    message.forumTopicId !== undefined && (obj.forumTopicId = message.forumTopicId);
+    message.rtime32LastModified !== undefined && (obj.rtime32LastModified = Math.round(message.rtime32LastModified));
+    message.newsPostGid !== undefined && (obj.newsPostGid = message.newsPostGid);
+    message.rtimeModReviewed !== undefined && (obj.rtimeModReviewed = Math.round(message.rtimeModReviewed));
+    message.featuredAppTagid !== undefined && (obj.featuredAppTagid = Math.round(message.featuredAppTagid));
+    if (message.referencedAppids) {
+      obj.referencedAppids = message.referencedAppids.map((e) => Math.round(e));
+    } else {
+      obj.referencedAppids = [];
+    }
+    message.buildId !== undefined && (obj.buildId = Math.round(message.buildId));
+    message.buildBranch !== undefined && (obj.buildBranch = message.buildBranch);
+    return obj;
+  },
 };
 
 function createBaseCBillingAddress(): CBillingAddress {
@@ -2415,6 +3161,36 @@ export const CBillingAddress = {
     }
     return message;
   },
+
+  fromJSON(object: any): CBillingAddress {
+    return {
+      firstName: isSet(object.firstName) ? String(object.firstName) : "",
+      lastName: isSet(object.lastName) ? String(object.lastName) : "",
+      address1: isSet(object.address1) ? String(object.address1) : "",
+      address2: isSet(object.address2) ? String(object.address2) : "",
+      city: isSet(object.city) ? String(object.city) : "",
+      usState: isSet(object.usState) ? String(object.usState) : "",
+      countryCode: isSet(object.countryCode) ? String(object.countryCode) : "",
+      postcode: isSet(object.postcode) ? String(object.postcode) : "",
+      zipPlus4: isSet(object.zipPlus4) ? Number(object.zipPlus4) : 0,
+      phone: isSet(object.phone) ? String(object.phone) : "",
+    };
+  },
+
+  toJSON(message: CBillingAddress): unknown {
+    const obj: any = {};
+    message.firstName !== undefined && (obj.firstName = message.firstName);
+    message.lastName !== undefined && (obj.lastName = message.lastName);
+    message.address1 !== undefined && (obj.address1 = message.address1);
+    message.address2 !== undefined && (obj.address2 = message.address2);
+    message.city !== undefined && (obj.city = message.city);
+    message.usState !== undefined && (obj.usState = message.usState);
+    message.countryCode !== undefined && (obj.countryCode = message.countryCode);
+    message.postcode !== undefined && (obj.postcode = message.postcode);
+    message.zipPlus4 !== undefined && (obj.zipPlus4 = Math.round(message.zipPlus4));
+    message.phone !== undefined && (obj.phone = message.phone);
+    return obj;
+  },
 };
 
 function createBaseCPackageReservationStatus(): CPackageReservationStatus {
@@ -2530,6 +3306,32 @@ export const CPackageReservationStatus = {
     }
     return message;
   },
+
+  fromJSON(object: any): CPackageReservationStatus {
+    return {
+      packageid: isSet(object.packageid) ? Number(object.packageid) : 0,
+      reservationState: isSet(object.reservationState) ? Number(object.reservationState) : 0,
+      queuePosition: isSet(object.queuePosition) ? Number(object.queuePosition) : 0,
+      totalQueueSize: isSet(object.totalQueueSize) ? Number(object.totalQueueSize) : 0,
+      reservationCountryCode: isSet(object.reservationCountryCode) ? String(object.reservationCountryCode) : "",
+      expired: isSet(object.expired) ? Boolean(object.expired) : false,
+      timeExpires: isSet(object.timeExpires) ? Number(object.timeExpires) : 0,
+      timeReserved: isSet(object.timeReserved) ? Number(object.timeReserved) : 0,
+    };
+  },
+
+  toJSON(message: CPackageReservationStatus): unknown {
+    const obj: any = {};
+    message.packageid !== undefined && (obj.packageid = Math.round(message.packageid));
+    message.reservationState !== undefined && (obj.reservationState = Math.round(message.reservationState));
+    message.queuePosition !== undefined && (obj.queuePosition = Math.round(message.queuePosition));
+    message.totalQueueSize !== undefined && (obj.totalQueueSize = Math.round(message.totalQueueSize));
+    message.reservationCountryCode !== undefined && (obj.reservationCountryCode = message.reservationCountryCode);
+    message.expired !== undefined && (obj.expired = message.expired);
+    message.timeExpires !== undefined && (obj.timeExpires = Math.round(message.timeExpires));
+    message.timeReserved !== undefined && (obj.timeReserved = Math.round(message.timeReserved));
+    return obj;
+  },
 };
 
 function createBaseCMsgKeyValuePair(): CMsgKeyValuePair {
@@ -2576,6 +3378,20 @@ export const CMsgKeyValuePair = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgKeyValuePair {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      value: isSet(object.value) ? String(object.value) : "",
+    };
+  },
+
+  toJSON(message: CMsgKeyValuePair): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.value !== undefined && (obj.value = message.value);
+    return obj;
+  },
 };
 
 function createBaseCMsgKeyValueSet(): CMsgKeyValueSet {
@@ -2612,7 +3428,65 @@ export const CMsgKeyValueSet = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgKeyValueSet {
+    return { pairs: Array.isArray(object?.pairs) ? object.pairs.map((e: any) => CMsgKeyValuePair.fromJSON(e)) : [] };
+  },
+
+  toJSON(message: CMsgKeyValueSet): unknown {
+    const obj: any = {};
+    if (message.pairs) {
+      obj.pairs = message.pairs.map((e) => e ? CMsgKeyValuePair.toJSON(e) : undefined);
+    } else {
+      obj.pairs = [];
+    }
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if (tsProtoGlobalThis.Buffer) {
+    return Uint8Array.from(tsProtoGlobalThis.Buffer.from(b64, "base64"));
+  } else {
+    const bin = tsProtoGlobalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if (tsProtoGlobalThis.Buffer) {
+    return tsProtoGlobalThis.Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(String.fromCharCode(byte));
+    });
+    return tsProtoGlobalThis.btoa(bin.join(""));
+  }
+}
 
 function longToString(long: Long) {
   return long.toString();
@@ -2621,4 +3495,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

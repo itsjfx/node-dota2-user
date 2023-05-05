@@ -3,12 +3,48 @@ import Long from "long";
 import _m0 from "protobufjs/minimal";
 import { CMsgDOTAMatch } from "./dota_gcmessages_common";
 import { CDOTAMatchMetadata } from "./dota_match_metadata";
-import { ELeagueDivision, ELeagueRegion } from "./dota_shared_enums";
+import {
+  ELeagueDivision,
+  eLeagueDivisionFromJSON,
+  eLeagueDivisionToJSON,
+  ELeagueRegion,
+  eLeagueRegionFromJSON,
+  eLeagueRegionToJSON,
+} from "./dota_shared_enums";
 
 export enum ETeamFanContentStatus {
   TEAM_FAN_CONTENT_STATUS_INVALID = 0,
   TEAM_FAN_CONTENT_STATUS_PENDING = 1,
   TEAM_FAN_CONTENT_STATUS_EVALUATED = 2,
+}
+
+export function eTeamFanContentStatusFromJSON(object: any): ETeamFanContentStatus {
+  switch (object) {
+    case 0:
+    case "TEAM_FAN_CONTENT_STATUS_INVALID":
+      return ETeamFanContentStatus.TEAM_FAN_CONTENT_STATUS_INVALID;
+    case 1:
+    case "TEAM_FAN_CONTENT_STATUS_PENDING":
+      return ETeamFanContentStatus.TEAM_FAN_CONTENT_STATUS_PENDING;
+    case 2:
+    case "TEAM_FAN_CONTENT_STATUS_EVALUATED":
+      return ETeamFanContentStatus.TEAM_FAN_CONTENT_STATUS_EVALUATED;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ETeamFanContentStatus");
+  }
+}
+
+export function eTeamFanContentStatusToJSON(object: ETeamFanContentStatus): string {
+  switch (object) {
+    case ETeamFanContentStatus.TEAM_FAN_CONTENT_STATUS_INVALID:
+      return "TEAM_FAN_CONTENT_STATUS_INVALID";
+    case ETeamFanContentStatus.TEAM_FAN_CONTENT_STATUS_PENDING:
+      return "TEAM_FAN_CONTENT_STATUS_PENDING";
+    case ETeamFanContentStatus.TEAM_FAN_CONTENT_STATUS_EVALUATED:
+      return "TEAM_FAN_CONTENT_STATUS_EVALUATED";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ETeamFanContentStatus");
+  }
 }
 
 export enum ETeamFanContentAssetType {
@@ -23,10 +59,98 @@ export enum ETeamFanContentAssetType {
   k_eFanContentAssetType_Localization = 9,
 }
 
+export function eTeamFanContentAssetTypeFromJSON(object: any): ETeamFanContentAssetType {
+  switch (object) {
+    case 1:
+    case "k_eFanContentAssetType_LogoPNG":
+      return ETeamFanContentAssetType.k_eFanContentAssetType_LogoPNG;
+    case 2:
+    case "k_eFanContentAssetType_LogoSVG":
+      return ETeamFanContentAssetType.k_eFanContentAssetType_LogoSVG;
+    case 3:
+    case "k_eFanContentAssetType_Logo3D":
+      return ETeamFanContentAssetType.k_eFanContentAssetType_Logo3D;
+    case 4:
+    case "k_eFanContentAssetType_Players":
+      return ETeamFanContentAssetType.k_eFanContentAssetType_Players;
+    case 5:
+    case "k_eFanContentAssetType_Sprays":
+      return ETeamFanContentAssetType.k_eFanContentAssetType_Sprays;
+    case 6:
+    case "k_eFanContentAssetType_Wallpapers":
+      return ETeamFanContentAssetType.k_eFanContentAssetType_Wallpapers;
+    case 7:
+    case "k_eFanContentAssetType_Emoticons":
+      return ETeamFanContentAssetType.k_eFanContentAssetType_Emoticons;
+    case 8:
+    case "k_eFanContentAssetType_VoiceLines":
+      return ETeamFanContentAssetType.k_eFanContentAssetType_VoiceLines;
+    case 9:
+    case "k_eFanContentAssetType_Localization":
+      return ETeamFanContentAssetType.k_eFanContentAssetType_Localization;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ETeamFanContentAssetType");
+  }
+}
+
+export function eTeamFanContentAssetTypeToJSON(object: ETeamFanContentAssetType): string {
+  switch (object) {
+    case ETeamFanContentAssetType.k_eFanContentAssetType_LogoPNG:
+      return "k_eFanContentAssetType_LogoPNG";
+    case ETeamFanContentAssetType.k_eFanContentAssetType_LogoSVG:
+      return "k_eFanContentAssetType_LogoSVG";
+    case ETeamFanContentAssetType.k_eFanContentAssetType_Logo3D:
+      return "k_eFanContentAssetType_Logo3D";
+    case ETeamFanContentAssetType.k_eFanContentAssetType_Players:
+      return "k_eFanContentAssetType_Players";
+    case ETeamFanContentAssetType.k_eFanContentAssetType_Sprays:
+      return "k_eFanContentAssetType_Sprays";
+    case ETeamFanContentAssetType.k_eFanContentAssetType_Wallpapers:
+      return "k_eFanContentAssetType_Wallpapers";
+    case ETeamFanContentAssetType.k_eFanContentAssetType_Emoticons:
+      return "k_eFanContentAssetType_Emoticons";
+    case ETeamFanContentAssetType.k_eFanContentAssetType_VoiceLines:
+      return "k_eFanContentAssetType_VoiceLines";
+    case ETeamFanContentAssetType.k_eFanContentAssetType_Localization:
+      return "k_eFanContentAssetType_Localization";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ETeamFanContentAssetType");
+  }
+}
+
 export enum ETeamFanContentAssetStatus {
   k_eFanContentAssetStatus_None = 0,
   k_eFanContentAssetStatus_Approved = 1,
   k_eFanContentAssetStatus_Rejected = 2,
+}
+
+export function eTeamFanContentAssetStatusFromJSON(object: any): ETeamFanContentAssetStatus {
+  switch (object) {
+    case 0:
+    case "k_eFanContentAssetStatus_None":
+      return ETeamFanContentAssetStatus.k_eFanContentAssetStatus_None;
+    case 1:
+    case "k_eFanContentAssetStatus_Approved":
+      return ETeamFanContentAssetStatus.k_eFanContentAssetStatus_Approved;
+    case 2:
+    case "k_eFanContentAssetStatus_Rejected":
+      return ETeamFanContentAssetStatus.k_eFanContentAssetStatus_Rejected;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ETeamFanContentAssetStatus");
+  }
+}
+
+export function eTeamFanContentAssetStatusToJSON(object: ETeamFanContentAssetStatus): string {
+  switch (object) {
+    case ETeamFanContentAssetStatus.k_eFanContentAssetStatus_None:
+      return "k_eFanContentAssetStatus_None";
+    case ETeamFanContentAssetStatus.k_eFanContentAssetStatus_Approved:
+      return "k_eFanContentAssetStatus_Approved";
+    case ETeamFanContentAssetStatus.k_eFanContentAssetStatus_Rejected:
+      return "k_eFanContentAssetStatus_Rejected";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ETeamFanContentAssetStatus");
+  }
 }
 
 export interface CMsgArcanaVotes {
@@ -44,6 +168,35 @@ export enum CMsgArcanaVotes_VotingState {
   FINISHED = 0,
   IN_PROGRESS = 1,
   IN_FUTURE = 2,
+}
+
+export function cMsgArcanaVotes_VotingStateFromJSON(object: any): CMsgArcanaVotes_VotingState {
+  switch (object) {
+    case 0:
+    case "FINISHED":
+      return CMsgArcanaVotes_VotingState.FINISHED;
+    case 1:
+    case "IN_PROGRESS":
+      return CMsgArcanaVotes_VotingState.IN_PROGRESS;
+    case 2:
+    case "IN_FUTURE":
+      return CMsgArcanaVotes_VotingState.IN_FUTURE;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum CMsgArcanaVotes_VotingState");
+  }
+}
+
+export function cMsgArcanaVotes_VotingStateToJSON(object: CMsgArcanaVotes_VotingState): string {
+  switch (object) {
+    case CMsgArcanaVotes_VotingState.FINISHED:
+      return "FINISHED";
+    case CMsgArcanaVotes_VotingState.IN_PROGRESS:
+      return "IN_PROGRESS";
+    case CMsgArcanaVotes_VotingState.IN_FUTURE:
+      return "IN_FUTURE";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum CMsgArcanaVotes_VotingState");
+  }
 }
 
 export interface CMsgArcanaVotes_Match {
@@ -79,6 +232,94 @@ export enum CMsgDOTADPCFeed_EFeedElementType {
   FEED_ALERT_FANTASY = 12,
   FEED_LEAGUE_LIVE_MATCH = 13,
   FEED_LEAGUE_INPROGRESS_SERIES = 14,
+}
+
+export function cMsgDOTADPCFeed_EFeedElementTypeFromJSON(object: any): CMsgDOTADPCFeed_EFeedElementType {
+  switch (object) {
+    case 1:
+    case "FEED_SERIES_RESULT":
+      return CMsgDOTADPCFeed_EFeedElementType.FEED_SERIES_RESULT;
+    case 2:
+    case "FEED_MATCH_POPULAR":
+      return CMsgDOTADPCFeed_EFeedElementType.FEED_MATCH_POPULAR;
+    case 3:
+    case "FEED_TEAM_UPCOMING_MATCH":
+      return CMsgDOTADPCFeed_EFeedElementType.FEED_TEAM_UPCOMING_MATCH;
+    case 4:
+    case "FEED_TEAM_LEAGUE_RESULT":
+      return CMsgDOTADPCFeed_EFeedElementType.FEED_TEAM_LEAGUE_RESULT;
+    case 5:
+    case "FEED_TEAM_ADD_PLAYER":
+      return CMsgDOTADPCFeed_EFeedElementType.FEED_TEAM_ADD_PLAYER;
+    case 6:
+    case "FEED_TEAM_REMOVE_PLAYER":
+      return CMsgDOTADPCFeed_EFeedElementType.FEED_TEAM_REMOVE_PLAYER;
+    case 7:
+    case "FEED_TEAM_DISBAND":
+      return CMsgDOTADPCFeed_EFeedElementType.FEED_TEAM_DISBAND;
+    case 8:
+    case "FEED_LEAGUE_UPCOMING":
+      return CMsgDOTADPCFeed_EFeedElementType.FEED_LEAGUE_UPCOMING;
+    case 9:
+    case "FEED_LEAGUE_CONCLUDED":
+      return CMsgDOTADPCFeed_EFeedElementType.FEED_LEAGUE_CONCLUDED;
+    case 10:
+    case "FEED_DPC_STANDINGS":
+      return CMsgDOTADPCFeed_EFeedElementType.FEED_DPC_STANDINGS;
+    case 11:
+    case "FEED_ALERT_PREDICTIONS":
+      return CMsgDOTADPCFeed_EFeedElementType.FEED_ALERT_PREDICTIONS;
+    case 12:
+    case "FEED_ALERT_FANTASY":
+      return CMsgDOTADPCFeed_EFeedElementType.FEED_ALERT_FANTASY;
+    case 13:
+    case "FEED_LEAGUE_LIVE_MATCH":
+      return CMsgDOTADPCFeed_EFeedElementType.FEED_LEAGUE_LIVE_MATCH;
+    case 14:
+    case "FEED_LEAGUE_INPROGRESS_SERIES":
+      return CMsgDOTADPCFeed_EFeedElementType.FEED_LEAGUE_INPROGRESS_SERIES;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDOTADPCFeed_EFeedElementType",
+      );
+  }
+}
+
+export function cMsgDOTADPCFeed_EFeedElementTypeToJSON(object: CMsgDOTADPCFeed_EFeedElementType): string {
+  switch (object) {
+    case CMsgDOTADPCFeed_EFeedElementType.FEED_SERIES_RESULT:
+      return "FEED_SERIES_RESULT";
+    case CMsgDOTADPCFeed_EFeedElementType.FEED_MATCH_POPULAR:
+      return "FEED_MATCH_POPULAR";
+    case CMsgDOTADPCFeed_EFeedElementType.FEED_TEAM_UPCOMING_MATCH:
+      return "FEED_TEAM_UPCOMING_MATCH";
+    case CMsgDOTADPCFeed_EFeedElementType.FEED_TEAM_LEAGUE_RESULT:
+      return "FEED_TEAM_LEAGUE_RESULT";
+    case CMsgDOTADPCFeed_EFeedElementType.FEED_TEAM_ADD_PLAYER:
+      return "FEED_TEAM_ADD_PLAYER";
+    case CMsgDOTADPCFeed_EFeedElementType.FEED_TEAM_REMOVE_PLAYER:
+      return "FEED_TEAM_REMOVE_PLAYER";
+    case CMsgDOTADPCFeed_EFeedElementType.FEED_TEAM_DISBAND:
+      return "FEED_TEAM_DISBAND";
+    case CMsgDOTADPCFeed_EFeedElementType.FEED_LEAGUE_UPCOMING:
+      return "FEED_LEAGUE_UPCOMING";
+    case CMsgDOTADPCFeed_EFeedElementType.FEED_LEAGUE_CONCLUDED:
+      return "FEED_LEAGUE_CONCLUDED";
+    case CMsgDOTADPCFeed_EFeedElementType.FEED_DPC_STANDINGS:
+      return "FEED_DPC_STANDINGS";
+    case CMsgDOTADPCFeed_EFeedElementType.FEED_ALERT_PREDICTIONS:
+      return "FEED_ALERT_PREDICTIONS";
+    case CMsgDOTADPCFeed_EFeedElementType.FEED_ALERT_FANTASY:
+      return "FEED_ALERT_FANTASY";
+    case CMsgDOTADPCFeed_EFeedElementType.FEED_LEAGUE_LIVE_MATCH:
+      return "FEED_LEAGUE_LIVE_MATCH";
+    case CMsgDOTADPCFeed_EFeedElementType.FEED_LEAGUE_INPROGRESS_SERIES:
+      return "FEED_LEAGUE_INPROGRESS_SERIES";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDOTADPCFeed_EFeedElementType",
+      );
+  }
 }
 
 export interface CMsgDOTADPCFeed_Element {
@@ -145,6 +386,38 @@ export interface CMsgTeamFanContentAssetStatusResponse {
 export enum CMsgTeamFanContentAssetStatusResponse_EResult {
   k_eSuccess = 0,
   k_eInternalError = 1,
+}
+
+export function cMsgTeamFanContentAssetStatusResponse_EResultFromJSON(
+  object: any,
+): CMsgTeamFanContentAssetStatusResponse_EResult {
+  switch (object) {
+    case 0:
+    case "k_eSuccess":
+      return CMsgTeamFanContentAssetStatusResponse_EResult.k_eSuccess;
+    case 1:
+    case "k_eInternalError":
+      return CMsgTeamFanContentAssetStatusResponse_EResult.k_eInternalError;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgTeamFanContentAssetStatusResponse_EResult",
+      );
+  }
+}
+
+export function cMsgTeamFanContentAssetStatusResponse_EResultToJSON(
+  object: CMsgTeamFanContentAssetStatusResponse_EResult,
+): string {
+  switch (object) {
+    case CMsgTeamFanContentAssetStatusResponse_EResult.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgTeamFanContentAssetStatusResponse_EResult.k_eInternalError:
+      return "k_eInternalError";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgTeamFanContentAssetStatusResponse_EResult",
+      );
+  }
 }
 
 export interface CMsgTeamFanContentStatus {
@@ -233,6 +506,130 @@ export enum CMsgDPCEvent_ELeagueEvent {
   INTERNATIONAL_2023 = 21,
 }
 
+export function cMsgDPCEvent_ELeagueEventFromJSON(object: any): CMsgDPCEvent_ELeagueEvent {
+  switch (object) {
+    case 0:
+    case "EVENT_INVALID":
+      return CMsgDPCEvent_ELeagueEvent.EVENT_INVALID;
+    case 1:
+    case "SPRING_2021_LEAGUE":
+      return CMsgDPCEvent_ELeagueEvent.SPRING_2021_LEAGUE;
+    case 2:
+    case "SPRING_2021_MAJOR":
+      return CMsgDPCEvent_ELeagueEvent.SPRING_2021_MAJOR;
+    case 3:
+    case "INTERNATIONAL_2021_QUALIFIERS":
+      return CMsgDPCEvent_ELeagueEvent.INTERNATIONAL_2021_QUALIFIERS;
+    case 4:
+    case "INTERNATIONAL_2021":
+      return CMsgDPCEvent_ELeagueEvent.INTERNATIONAL_2021;
+    case 5:
+    case "WINTER_2021_LEAGUE":
+      return CMsgDPCEvent_ELeagueEvent.WINTER_2021_LEAGUE;
+    case 6:
+    case "WINTER_2021_LEAGUE_FINALS":
+      return CMsgDPCEvent_ELeagueEvent.WINTER_2021_LEAGUE_FINALS;
+    case 7:
+    case "SPRING_2022_LEAGUE":
+      return CMsgDPCEvent_ELeagueEvent.SPRING_2022_LEAGUE;
+    case 8:
+    case "SPRING_2022_MAJOR":
+      return CMsgDPCEvent_ELeagueEvent.SPRING_2022_MAJOR;
+    case 9:
+    case "SUMMER_2022_LEAGUE":
+      return CMsgDPCEvent_ELeagueEvent.SUMMER_2022_LEAGUE;
+    case 10:
+    case "SUMMER_2022_MAJOR":
+      return CMsgDPCEvent_ELeagueEvent.SUMMER_2022_MAJOR;
+    case 11:
+    case "INTERNATIONAL_2022":
+      return CMsgDPCEvent_ELeagueEvent.INTERNATIONAL_2022;
+    case 12:
+    case "CHINA_REGIONAL_FINALS":
+      return CMsgDPCEvent_ELeagueEvent.CHINA_REGIONAL_FINALS;
+    case 13:
+    case "INTERNATIONAL_2022_REGIONAL_QUALIFIERS":
+      return CMsgDPCEvent_ELeagueEvent.INTERNATIONAL_2022_REGIONAL_QUALIFIERS;
+    case 14:
+    case "INTERNATIONAL_2022_LAST_CHANCE_QUALIFIERS":
+      return CMsgDPCEvent_ELeagueEvent.INTERNATIONAL_2022_LAST_CHANCE_QUALIFIERS;
+    case 15:
+    case "WINTER_2023_LEAGUE":
+      return CMsgDPCEvent_ELeagueEvent.WINTER_2023_LEAGUE;
+    case 16:
+    case "WINTER_2023_MAJOR":
+      return CMsgDPCEvent_ELeagueEvent.WINTER_2023_MAJOR;
+    case 17:
+    case "SPRING_2023_LEAGUE":
+      return CMsgDPCEvent_ELeagueEvent.SPRING_2023_LEAGUE;
+    case 18:
+    case "SPRING_2023_MAJOR":
+      return CMsgDPCEvent_ELeagueEvent.SPRING_2023_MAJOR;
+    case 19:
+    case "SUMMER_2023_LEAGUE":
+      return CMsgDPCEvent_ELeagueEvent.SUMMER_2023_LEAGUE;
+    case 20:
+    case "SUMMER_2023_MAJOR":
+      return CMsgDPCEvent_ELeagueEvent.SUMMER_2023_MAJOR;
+    case 21:
+    case "INTERNATIONAL_2023":
+      return CMsgDPCEvent_ELeagueEvent.INTERNATIONAL_2023;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum CMsgDPCEvent_ELeagueEvent");
+  }
+}
+
+export function cMsgDPCEvent_ELeagueEventToJSON(object: CMsgDPCEvent_ELeagueEvent): string {
+  switch (object) {
+    case CMsgDPCEvent_ELeagueEvent.EVENT_INVALID:
+      return "EVENT_INVALID";
+    case CMsgDPCEvent_ELeagueEvent.SPRING_2021_LEAGUE:
+      return "SPRING_2021_LEAGUE";
+    case CMsgDPCEvent_ELeagueEvent.SPRING_2021_MAJOR:
+      return "SPRING_2021_MAJOR";
+    case CMsgDPCEvent_ELeagueEvent.INTERNATIONAL_2021_QUALIFIERS:
+      return "INTERNATIONAL_2021_QUALIFIERS";
+    case CMsgDPCEvent_ELeagueEvent.INTERNATIONAL_2021:
+      return "INTERNATIONAL_2021";
+    case CMsgDPCEvent_ELeagueEvent.WINTER_2021_LEAGUE:
+      return "WINTER_2021_LEAGUE";
+    case CMsgDPCEvent_ELeagueEvent.WINTER_2021_LEAGUE_FINALS:
+      return "WINTER_2021_LEAGUE_FINALS";
+    case CMsgDPCEvent_ELeagueEvent.SPRING_2022_LEAGUE:
+      return "SPRING_2022_LEAGUE";
+    case CMsgDPCEvent_ELeagueEvent.SPRING_2022_MAJOR:
+      return "SPRING_2022_MAJOR";
+    case CMsgDPCEvent_ELeagueEvent.SUMMER_2022_LEAGUE:
+      return "SUMMER_2022_LEAGUE";
+    case CMsgDPCEvent_ELeagueEvent.SUMMER_2022_MAJOR:
+      return "SUMMER_2022_MAJOR";
+    case CMsgDPCEvent_ELeagueEvent.INTERNATIONAL_2022:
+      return "INTERNATIONAL_2022";
+    case CMsgDPCEvent_ELeagueEvent.CHINA_REGIONAL_FINALS:
+      return "CHINA_REGIONAL_FINALS";
+    case CMsgDPCEvent_ELeagueEvent.INTERNATIONAL_2022_REGIONAL_QUALIFIERS:
+      return "INTERNATIONAL_2022_REGIONAL_QUALIFIERS";
+    case CMsgDPCEvent_ELeagueEvent.INTERNATIONAL_2022_LAST_CHANCE_QUALIFIERS:
+      return "INTERNATIONAL_2022_LAST_CHANCE_QUALIFIERS";
+    case CMsgDPCEvent_ELeagueEvent.WINTER_2023_LEAGUE:
+      return "WINTER_2023_LEAGUE";
+    case CMsgDPCEvent_ELeagueEvent.WINTER_2023_MAJOR:
+      return "WINTER_2023_MAJOR";
+    case CMsgDPCEvent_ELeagueEvent.SPRING_2023_LEAGUE:
+      return "SPRING_2023_LEAGUE";
+    case CMsgDPCEvent_ELeagueEvent.SPRING_2023_MAJOR:
+      return "SPRING_2023_MAJOR";
+    case CMsgDPCEvent_ELeagueEvent.SUMMER_2023_LEAGUE:
+      return "SUMMER_2023_LEAGUE";
+    case CMsgDPCEvent_ELeagueEvent.SUMMER_2023_MAJOR:
+      return "SUMMER_2023_MAJOR";
+    case CMsgDPCEvent_ELeagueEvent.INTERNATIONAL_2023:
+      return "INTERNATIONAL_2023";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum CMsgDPCEvent_ELeagueEvent");
+  }
+}
+
 export enum CMsgDPCEvent_ELeagueEventPhase {
   PHASE_INVALID = 0,
   WILD_CARD = 1,
@@ -244,6 +641,64 @@ export enum CMsgDPCEvent_ELeagueEventPhase {
   RESULTS = 7,
 }
 
+export function cMsgDPCEvent_ELeagueEventPhaseFromJSON(object: any): CMsgDPCEvent_ELeagueEventPhase {
+  switch (object) {
+    case 0:
+    case "PHASE_INVALID":
+      return CMsgDPCEvent_ELeagueEventPhase.PHASE_INVALID;
+    case 1:
+    case "WILD_CARD":
+      return CMsgDPCEvent_ELeagueEventPhase.WILD_CARD;
+    case 2:
+    case "GROUP_STAGE":
+      return CMsgDPCEvent_ELeagueEventPhase.GROUP_STAGE;
+    case 3:
+    case "GROUP_A":
+      return CMsgDPCEvent_ELeagueEventPhase.GROUP_A;
+    case 4:
+    case "GROUP_B":
+      return CMsgDPCEvent_ELeagueEventPhase.GROUP_B;
+    case 5:
+    case "OVERALL":
+      return CMsgDPCEvent_ELeagueEventPhase.OVERALL;
+    case 6:
+    case "PLAYOFF":
+      return CMsgDPCEvent_ELeagueEventPhase.PLAYOFF;
+    case 7:
+    case "RESULTS":
+      return CMsgDPCEvent_ELeagueEventPhase.RESULTS;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDPCEvent_ELeagueEventPhase",
+      );
+  }
+}
+
+export function cMsgDPCEvent_ELeagueEventPhaseToJSON(object: CMsgDPCEvent_ELeagueEventPhase): string {
+  switch (object) {
+    case CMsgDPCEvent_ELeagueEventPhase.PHASE_INVALID:
+      return "PHASE_INVALID";
+    case CMsgDPCEvent_ELeagueEventPhase.WILD_CARD:
+      return "WILD_CARD";
+    case CMsgDPCEvent_ELeagueEventPhase.GROUP_STAGE:
+      return "GROUP_STAGE";
+    case CMsgDPCEvent_ELeagueEventPhase.GROUP_A:
+      return "GROUP_A";
+    case CMsgDPCEvent_ELeagueEventPhase.GROUP_B:
+      return "GROUP_B";
+    case CMsgDPCEvent_ELeagueEventPhase.OVERALL:
+      return "OVERALL";
+    case CMsgDPCEvent_ELeagueEventPhase.PLAYOFF:
+      return "PLAYOFF";
+    case CMsgDPCEvent_ELeagueEventPhase.RESULTS:
+      return "RESULTS";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDPCEvent_ELeagueEventPhase",
+      );
+  }
+}
+
 export enum CMsgDPCEvent_ELeagueEventType {
   UNKNOWN = 0,
   LEAGUE = 1,
@@ -253,11 +708,93 @@ export enum CMsgDPCEvent_ELeagueEventType {
   LEAGUE_FINALS = 5,
 }
 
+export function cMsgDPCEvent_ELeagueEventTypeFromJSON(object: any): CMsgDPCEvent_ELeagueEventType {
+  switch (object) {
+    case 0:
+    case "UNKNOWN":
+      return CMsgDPCEvent_ELeagueEventType.UNKNOWN;
+    case 1:
+    case "LEAGUE":
+      return CMsgDPCEvent_ELeagueEventType.LEAGUE;
+    case 2:
+    case "MAJOR":
+      return CMsgDPCEvent_ELeagueEventType.MAJOR;
+    case 3:
+    case "INTERNATIONAL_QUALIFIERS":
+      return CMsgDPCEvent_ELeagueEventType.INTERNATIONAL_QUALIFIERS;
+    case 4:
+    case "INTERNATIONAL":
+      return CMsgDPCEvent_ELeagueEventType.INTERNATIONAL;
+    case 5:
+    case "LEAGUE_FINALS":
+      return CMsgDPCEvent_ELeagueEventType.LEAGUE_FINALS;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDPCEvent_ELeagueEventType",
+      );
+  }
+}
+
+export function cMsgDPCEvent_ELeagueEventTypeToJSON(object: CMsgDPCEvent_ELeagueEventType): string {
+  switch (object) {
+    case CMsgDPCEvent_ELeagueEventType.UNKNOWN:
+      return "UNKNOWN";
+    case CMsgDPCEvent_ELeagueEventType.LEAGUE:
+      return "LEAGUE";
+    case CMsgDPCEvent_ELeagueEventType.MAJOR:
+      return "MAJOR";
+    case CMsgDPCEvent_ELeagueEventType.INTERNATIONAL_QUALIFIERS:
+      return "INTERNATIONAL_QUALIFIERS";
+    case CMsgDPCEvent_ELeagueEventType.INTERNATIONAL:
+      return "INTERNATIONAL";
+    case CMsgDPCEvent_ELeagueEventType.LEAGUE_FINALS:
+      return "LEAGUE_FINALS";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDPCEvent_ELeagueEventType",
+      );
+  }
+}
+
 export enum CMsgDPCEvent_ETour {
   TOUR_NONE = 0,
   TOUR_1 = 1,
   TOUR_2 = 2,
   TOUR_3 = 3,
+}
+
+export function cMsgDPCEvent_ETourFromJSON(object: any): CMsgDPCEvent_ETour {
+  switch (object) {
+    case 0:
+    case "TOUR_NONE":
+      return CMsgDPCEvent_ETour.TOUR_NONE;
+    case 1:
+    case "TOUR_1":
+      return CMsgDPCEvent_ETour.TOUR_1;
+    case 2:
+    case "TOUR_2":
+      return CMsgDPCEvent_ETour.TOUR_2;
+    case 3:
+    case "TOUR_3":
+      return CMsgDPCEvent_ETour.TOUR_3;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum CMsgDPCEvent_ETour");
+  }
+}
+
+export function cMsgDPCEvent_ETourToJSON(object: CMsgDPCEvent_ETour): string {
+  switch (object) {
+    case CMsgDPCEvent_ETour.TOUR_NONE:
+      return "TOUR_NONE";
+    case CMsgDPCEvent_ETour.TOUR_1:
+      return "TOUR_1";
+    case CMsgDPCEvent_ETour.TOUR_2:
+      return "TOUR_2";
+    case CMsgDPCEvent_ETour.TOUR_3:
+      return "TOUR_3";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum CMsgDPCEvent_ETour");
+  }
 }
 
 export interface CMsgDPCEvent_PhaseInfo {
@@ -473,6 +1010,39 @@ export const CMsgArcanaVotes = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgArcanaVotes {
+    return {
+      matches: Array.isArray(object?.matches) ? object.matches.map((e: any) => CMsgArcanaVotes_Match.fromJSON(e)) : [],
+      roundTimeRemaining: isSet(object.roundTimeRemaining) ? Number(object.roundTimeRemaining) : 0,
+      roundNumber: isSet(object.roundNumber) ? Number(object.roundNumber) : 0,
+      votingState: isSet(object.votingState) ? Number(object.votingState) : 0,
+      isCurrentRoundCalibrating: isSet(object.isCurrentRoundCalibrating)
+        ? Boolean(object.isCurrentRoundCalibrating)
+        : false,
+      closestActiveMatchId: isSet(object.closestActiveMatchId) ? Number(object.closestActiveMatchId) : 0,
+      eventId: isSet(object.eventId) ? Number(object.eventId) : 0,
+      votingStartTime: isSet(object.votingStartTime) ? Number(object.votingStartTime) : 0,
+    };
+  },
+
+  toJSON(message: CMsgArcanaVotes): unknown {
+    const obj: any = {};
+    if (message.matches) {
+      obj.matches = message.matches.map((e) => e ? CMsgArcanaVotes_Match.toJSON(e) : undefined);
+    } else {
+      obj.matches = [];
+    }
+    message.roundTimeRemaining !== undefined && (obj.roundTimeRemaining = Math.round(message.roundTimeRemaining));
+    message.roundNumber !== undefined && (obj.roundNumber = Math.round(message.roundNumber));
+    message.votingState !== undefined && (obj.votingState = Math.round(message.votingState));
+    message.isCurrentRoundCalibrating !== undefined &&
+      (obj.isCurrentRoundCalibrating = message.isCurrentRoundCalibrating);
+    message.closestActiveMatchId !== undefined && (obj.closestActiveMatchId = Math.round(message.closestActiveMatchId));
+    message.eventId !== undefined && (obj.eventId = Math.round(message.eventId));
+    message.votingStartTime !== undefined && (obj.votingStartTime = Math.round(message.votingStartTime));
+    return obj;
+  },
 };
 
 function createBaseCMsgArcanaVotes_Match(): CMsgArcanaVotes_Match {
@@ -621,6 +1191,39 @@ export const CMsgArcanaVotes_Match = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgArcanaVotes_Match {
+    return {
+      matchId: isSet(object.matchId) ? Number(object.matchId) : 0,
+      heroId0: isSet(object.heroId0) ? Number(object.heroId0) : 0,
+      heroId1: isSet(object.heroId1) ? Number(object.heroId1) : 0,
+      heroSeeding0: isSet(object.heroSeeding0) ? Number(object.heroSeeding0) : 0,
+      heroSeeding1: isSet(object.heroSeeding1) ? Number(object.heroSeeding1) : 0,
+      voteCount0: isSet(object.voteCount0) ? Number(object.voteCount0) : 0,
+      voteCount1: isSet(object.voteCount1) ? Number(object.voteCount1) : 0,
+      votingState: isSet(object.votingState) ? Number(object.votingState) : 0,
+      roundNumber: isSet(object.roundNumber) ? Number(object.roundNumber) : 0,
+      isVotesHidden: isSet(object.isVotesHidden) ? Boolean(object.isVotesHidden) : false,
+      calibrationTimeRemaining: isSet(object.calibrationTimeRemaining) ? Number(object.calibrationTimeRemaining) : 0,
+    };
+  },
+
+  toJSON(message: CMsgArcanaVotes_Match): unknown {
+    const obj: any = {};
+    message.matchId !== undefined && (obj.matchId = Math.round(message.matchId));
+    message.heroId0 !== undefined && (obj.heroId0 = Math.round(message.heroId0));
+    message.heroId1 !== undefined && (obj.heroId1 = Math.round(message.heroId1));
+    message.heroSeeding0 !== undefined && (obj.heroSeeding0 = Math.round(message.heroSeeding0));
+    message.heroSeeding1 !== undefined && (obj.heroSeeding1 = Math.round(message.heroSeeding1));
+    message.voteCount0 !== undefined && (obj.voteCount0 = Math.round(message.voteCount0));
+    message.voteCount1 !== undefined && (obj.voteCount1 = Math.round(message.voteCount1));
+    message.votingState !== undefined && (obj.votingState = Math.round(message.votingState));
+    message.roundNumber !== undefined && (obj.roundNumber = Math.round(message.roundNumber));
+    message.isVotesHidden !== undefined && (obj.isVotesHidden = message.isVotesHidden);
+    message.calibrationTimeRemaining !== undefined &&
+      (obj.calibrationTimeRemaining = Math.round(message.calibrationTimeRemaining));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTADPCFeed(): CMsgDOTADPCFeed {
@@ -656,6 +1259,24 @@ export const CMsgDOTADPCFeed = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTADPCFeed {
+    return {
+      elements: Array.isArray(object?.elements)
+        ? object.elements.map((e: any) => CMsgDOTADPCFeed_Element.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTADPCFeed): unknown {
+    const obj: any = {};
+    if (message.elements) {
+      obj.elements = message.elements.map((e) => e ? CMsgDOTADPCFeed_Element.toJSON(e) : undefined);
+    } else {
+      obj.elements = [];
+    }
+    return obj;
   },
 };
 
@@ -827,6 +1448,42 @@ export const CMsgDOTADPCFeed_Element = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTADPCFeed_Element {
+    return {
+      type: isSet(object.type) ? cMsgDOTADPCFeed_EFeedElementTypeFromJSON(object.type) : 1,
+      timestamp: isSet(object.timestamp) ? Number(object.timestamp) : 0,
+      seriesId: isSet(object.seriesId) ? Number(object.seriesId) : 0,
+      matchId: isSet(object.matchId) ? String(object.matchId) : "0",
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      leagueId: isSet(object.leagueId) ? Number(object.leagueId) : 0,
+      nodeId: isSet(object.nodeId) ? Number(object.nodeId) : 0,
+      serverSteamId: isSet(object.serverSteamId) ? String(object.serverSteamId) : "0",
+      data1: isSet(object.data1) ? Number(object.data1) : 0,
+      data2: isSet(object.data2) ? Number(object.data2) : 0,
+      data3: isSet(object.data3) ? Number(object.data3) : 0,
+      data4: isSet(object.data4) ? Number(object.data4) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTADPCFeed_Element): unknown {
+    const obj: any = {};
+    message.type !== undefined && (obj.type = cMsgDOTADPCFeed_EFeedElementTypeToJSON(message.type));
+    message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
+    message.seriesId !== undefined && (obj.seriesId = Math.round(message.seriesId));
+    message.matchId !== undefined && (obj.matchId = message.matchId);
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.leagueId !== undefined && (obj.leagueId = Math.round(message.leagueId));
+    message.nodeId !== undefined && (obj.nodeId = Math.round(message.nodeId));
+    message.serverSteamId !== undefined && (obj.serverSteamId = message.serverSteamId);
+    message.data1 !== undefined && (obj.data1 = Math.round(message.data1));
+    message.data2 !== undefined && (obj.data2 = Math.round(message.data2));
+    message.data3 !== undefined && (obj.data3 = Math.round(message.data3));
+    message.data4 !== undefined && (obj.data4 = Math.round(message.data4));
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTADPCUserInfo(): CMsgDOTADPCUserInfo {
@@ -862,6 +1519,16 @@ export const CMsgDOTADPCUserInfo = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTADPCUserInfo {
+    return { isPlusSubscriber: isSet(object.isPlusSubscriber) ? Boolean(object.isPlusSubscriber) : false };
+  },
+
+  toJSON(message: CMsgDOTADPCUserInfo): unknown {
+    const obj: any = {};
+    message.isPlusSubscriber !== undefined && (obj.isPlusSubscriber = message.isPlusSubscriber);
+    return obj;
   },
 };
 
@@ -978,6 +1645,42 @@ export const CMsgDraftTrivia = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDraftTrivia {
+    return {
+      hasValidMatch: isSet(object.hasValidMatch) ? Boolean(object.hasValidMatch) : false,
+      matchHeroInfo: isSet(object.matchHeroInfo)
+        ? CMsgDraftTrivia_DraftTriviaMatchInfo.fromJSON(object.matchHeroInfo)
+        : undefined,
+      matchRankTier: isSet(object.matchRankTier) ? Number(object.matchRankTier) : 0,
+      endTime: isSet(object.endTime) ? Number(object.endTime) : 0,
+      eventId: isSet(object.eventId) ? Number(object.eventId) : 0,
+      currentMatchVotedRadiant: isSet(object.currentMatchVotedRadiant)
+        ? Boolean(object.currentMatchVotedRadiant)
+        : false,
+      previousResult: isSet(object.previousResult)
+        ? CMsgDraftTrivia_PreviousResult.fromJSON(object.previousResult)
+        : undefined,
+      currentStreak: isSet(object.currentStreak) ? Number(object.currentStreak) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDraftTrivia): unknown {
+    const obj: any = {};
+    message.hasValidMatch !== undefined && (obj.hasValidMatch = message.hasValidMatch);
+    message.matchHeroInfo !== undefined && (obj.matchHeroInfo = message.matchHeroInfo
+      ? CMsgDraftTrivia_DraftTriviaMatchInfo.toJSON(message.matchHeroInfo)
+      : undefined);
+    message.matchRankTier !== undefined && (obj.matchRankTier = Math.round(message.matchRankTier));
+    message.endTime !== undefined && (obj.endTime = Math.round(message.endTime));
+    message.eventId !== undefined && (obj.eventId = Math.round(message.eventId));
+    message.currentMatchVotedRadiant !== undefined && (obj.currentMatchVotedRadiant = message.currentMatchVotedRadiant);
+    message.previousResult !== undefined && (obj.previousResult = message.previousResult
+      ? CMsgDraftTrivia_PreviousResult.toJSON(message.previousResult)
+      : undefined);
+    message.currentStreak !== undefined && (obj.currentStreak = Math.round(message.currentStreak));
+    return obj;
+  },
 };
 
 function createBaseCMsgDraftTrivia_DraftTriviaHeroInfo(): CMsgDraftTrivia_DraftTriviaHeroInfo {
@@ -1024,6 +1727,20 @@ export const CMsgDraftTrivia_DraftTriviaHeroInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDraftTrivia_DraftTriviaHeroInfo {
+    return {
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      role: isSet(object.role) ? Number(object.role) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDraftTrivia_DraftTriviaHeroInfo): unknown {
+    const obj: any = {};
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.role !== undefined && (obj.role = Math.round(message.role));
+    return obj;
+  },
 };
 
 function createBaseCMsgDraftTrivia_DraftTriviaMatchInfo(): CMsgDraftTrivia_DraftTriviaMatchInfo {
@@ -1069,6 +1786,34 @@ export const CMsgDraftTrivia_DraftTriviaMatchInfo = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDraftTrivia_DraftTriviaMatchInfo {
+    return {
+      radiantHeroes: Array.isArray(object?.radiantHeroes)
+        ? object.radiantHeroes.map((e: any) => CMsgDraftTrivia_DraftTriviaHeroInfo.fromJSON(e))
+        : [],
+      direHeroes: Array.isArray(object?.direHeroes)
+        ? object.direHeroes.map((e: any) => CMsgDraftTrivia_DraftTriviaHeroInfo.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgDraftTrivia_DraftTriviaMatchInfo): unknown {
+    const obj: any = {};
+    if (message.radiantHeroes) {
+      obj.radiantHeroes = message.radiantHeroes.map((e) =>
+        e ? CMsgDraftTrivia_DraftTriviaHeroInfo.toJSON(e) : undefined
+      );
+    } else {
+      obj.radiantHeroes = [];
+    }
+    if (message.direHeroes) {
+      obj.direHeroes = message.direHeroes.map((e) => e ? CMsgDraftTrivia_DraftTriviaHeroInfo.toJSON(e) : undefined);
+    } else {
+      obj.direHeroes = [];
+    }
+    return obj;
   },
 };
 
@@ -1163,6 +1908,32 @@ export const CMsgDraftTrivia_PreviousResult = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDraftTrivia_PreviousResult {
+    return {
+      votedCorrectly: isSet(object.votedCorrectly) ? Boolean(object.votedCorrectly) : false,
+      votedRadiant: isSet(object.votedRadiant) ? Boolean(object.votedRadiant) : false,
+      matchHeroInfo: isSet(object.matchHeroInfo)
+        ? CMsgDraftTrivia_DraftTriviaMatchInfo.fromJSON(object.matchHeroInfo)
+        : undefined,
+      matchRankTier: isSet(object.matchRankTier) ? Number(object.matchRankTier) : 0,
+      endTime: isSet(object.endTime) ? Number(object.endTime) : 0,
+      matchId: isSet(object.matchId) ? String(object.matchId) : "0",
+    };
+  },
+
+  toJSON(message: CMsgDraftTrivia_PreviousResult): unknown {
+    const obj: any = {};
+    message.votedCorrectly !== undefined && (obj.votedCorrectly = message.votedCorrectly);
+    message.votedRadiant !== undefined && (obj.votedRadiant = message.votedRadiant);
+    message.matchHeroInfo !== undefined && (obj.matchHeroInfo = message.matchHeroInfo
+      ? CMsgDraftTrivia_DraftTriviaMatchInfo.toJSON(message.matchHeroInfo)
+      : undefined);
+    message.matchRankTier !== undefined && (obj.matchRankTier = Math.round(message.matchRankTier));
+    message.endTime !== undefined && (obj.endTime = Math.round(message.endTime));
+    message.matchId !== undefined && (obj.matchId = message.matchId);
+    return obj;
+  },
 };
 
 function createBaseCMsgTeamFanContentAssetStatus(): CMsgTeamFanContentAssetStatus {
@@ -1229,6 +2000,24 @@ export const CMsgTeamFanContentAssetStatus = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgTeamFanContentAssetStatus {
+    return {
+      assetType: isSet(object.assetType) ? eTeamFanContentAssetTypeFromJSON(object.assetType) : 1,
+      assetIndex: isSet(object.assetIndex) ? Number(object.assetIndex) : 0,
+      assetStatus: isSet(object.assetStatus) ? eTeamFanContentAssetStatusFromJSON(object.assetStatus) : 0,
+      crc: isSet(object.crc) ? Number(object.crc) : 0,
+    };
+  },
+
+  toJSON(message: CMsgTeamFanContentAssetStatus): unknown {
+    const obj: any = {};
+    message.assetType !== undefined && (obj.assetType = eTeamFanContentAssetTypeToJSON(message.assetType));
+    message.assetIndex !== undefined && (obj.assetIndex = Math.round(message.assetIndex));
+    message.assetStatus !== undefined && (obj.assetStatus = eTeamFanContentAssetStatusToJSON(message.assetStatus));
+    message.crc !== undefined && (obj.crc = Math.round(message.crc));
+    return obj;
+  },
 };
 
 function createBaseCMsgTeamFanContentAssetStatusResponse(): CMsgTeamFanContentAssetStatusResponse {
@@ -1265,6 +2054,16 @@ export const CMsgTeamFanContentAssetStatusResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgTeamFanContentAssetStatusResponse {
+    return { result: isSet(object.result) ? cMsgTeamFanContentAssetStatusResponse_EResultFromJSON(object.result) : 0 };
+  },
+
+  toJSON(message: CMsgTeamFanContentAssetStatusResponse): unknown {
+    const obj: any = {};
+    message.result !== undefined && (obj.result = cMsgTeamFanContentAssetStatusResponse_EResultToJSON(message.result));
+    return obj;
+  },
 };
 
 function createBaseCMsgTeamFanContentStatus(): CMsgTeamFanContentStatus {
@@ -1300,6 +2099,26 @@ export const CMsgTeamFanContentStatus = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgTeamFanContentStatus {
+    return {
+      teamStatusList: Array.isArray(object?.teamStatusList)
+        ? object.teamStatusList.map((e: any) => CMsgTeamFanContentStatus_TeamStatus.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgTeamFanContentStatus): unknown {
+    const obj: any = {};
+    if (message.teamStatusList) {
+      obj.teamStatusList = message.teamStatusList.map((e) =>
+        e ? CMsgTeamFanContentStatus_TeamStatus.toJSON(e) : undefined
+      );
+    } else {
+      obj.teamStatusList = [];
+    }
+    return obj;
   },
 };
 
@@ -1526,6 +2345,58 @@ export const CMsgTeamFanContentStatus_TeamStatus = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgTeamFanContentStatus_TeamStatus {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      logoUrl: isSet(object.logoUrl) ? String(object.logoUrl) : "",
+      status: isSet(object.status) ? eTeamFanContentStatusFromJSON(object.status) : 0,
+      timestamp: isSet(object.timestamp) ? Number(object.timestamp) : 0,
+      ugcLogo: isSet(object.ugcLogo) ? String(object.ugcLogo) : "0",
+      workshopAccountId: isSet(object.workshopAccountId) ? Number(object.workshopAccountId) : 0,
+      abbreviation: isSet(object.abbreviation) ? String(object.abbreviation) : "",
+      voicelineCount: isSet(object.voicelineCount) ? Number(object.voicelineCount) : 0,
+      sprayCount: isSet(object.sprayCount) ? Number(object.sprayCount) : 0,
+      emoticonCount: isSet(object.emoticonCount) ? Number(object.emoticonCount) : 0,
+      wallpaperCount: isSet(object.wallpaperCount) ? Number(object.wallpaperCount) : 0,
+      comment: isSet(object.comment) ? String(object.comment) : "",
+      commentTimestamp: isSet(object.commentTimestamp) ? Number(object.commentTimestamp) : 0,
+      assetStatus: Array.isArray(object?.assetStatus)
+        ? object.assetStatus.map((e: any) => CMsgTeamFanContentAssetStatus.fromJSON(e))
+        : [],
+      emailTimestamp: isSet(object.emailTimestamp) ? Number(object.emailTimestamp) : 0,
+      emailTier: isSet(object.emailTier) ? Number(object.emailTier) : 0,
+      languages: isSet(object.languages) ? String(object.languages) : "",
+    };
+  },
+
+  toJSON(message: CMsgTeamFanContentStatus_TeamStatus): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    message.logoUrl !== undefined && (obj.logoUrl = message.logoUrl);
+    message.status !== undefined && (obj.status = eTeamFanContentStatusToJSON(message.status));
+    message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
+    message.ugcLogo !== undefined && (obj.ugcLogo = message.ugcLogo);
+    message.workshopAccountId !== undefined && (obj.workshopAccountId = Math.round(message.workshopAccountId));
+    message.abbreviation !== undefined && (obj.abbreviation = message.abbreviation);
+    message.voicelineCount !== undefined && (obj.voicelineCount = Math.round(message.voicelineCount));
+    message.sprayCount !== undefined && (obj.sprayCount = Math.round(message.sprayCount));
+    message.emoticonCount !== undefined && (obj.emoticonCount = Math.round(message.emoticonCount));
+    message.wallpaperCount !== undefined && (obj.wallpaperCount = Math.round(message.wallpaperCount));
+    message.comment !== undefined && (obj.comment = message.comment);
+    message.commentTimestamp !== undefined && (obj.commentTimestamp = Math.round(message.commentTimestamp));
+    if (message.assetStatus) {
+      obj.assetStatus = message.assetStatus.map((e) => e ? CMsgTeamFanContentAssetStatus.toJSON(e) : undefined);
+    } else {
+      obj.assetStatus = [];
+    }
+    message.emailTimestamp !== undefined && (obj.emailTimestamp = Math.round(message.emailTimestamp));
+    message.emailTier !== undefined && (obj.emailTier = Math.round(message.emailTier));
+    message.languages !== undefined && (obj.languages = message.languages);
+    return obj;
+  },
 };
 
 function createBaseCMsgTeamFanContentAutographStatus(): CMsgTeamFanContentAutographStatus {
@@ -1561,6 +2432,26 @@ export const CMsgTeamFanContentAutographStatus = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgTeamFanContentAutographStatus {
+    return {
+      teamAutographs: Array.isArray(object?.teamAutographs)
+        ? object.teamAutographs.map((e: any) => CMsgTeamFanContentAutographStatus_TeamStatus.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgTeamFanContentAutographStatus): unknown {
+    const obj: any = {};
+    if (message.teamAutographs) {
+      obj.teamAutographs = message.teamAutographs.map((e) =>
+        e ? CMsgTeamFanContentAutographStatus_TeamStatus.toJSON(e) : undefined
+      );
+    } else {
+      obj.teamAutographs = [];
+    }
+    return obj;
   },
 };
 
@@ -1631,6 +2522,24 @@ export const CMsgTeamFanContentAutographStatus_AutographStatus = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgTeamFanContentAutographStatus_AutographStatus {
+    return {
+      proName: isSet(object.proName) ? String(object.proName) : "",
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      timestamp: isSet(object.timestamp) ? Number(object.timestamp) : 0,
+      file: isSet(object.file) ? String(object.file) : "",
+    };
+  },
+
+  toJSON(message: CMsgTeamFanContentAutographStatus_AutographStatus): unknown {
+    const obj: any = {};
+    message.proName !== undefined && (obj.proName = message.proName);
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
+    message.file !== undefined && (obj.file = message.file);
+    return obj;
+  },
 };
 
 function createBaseCMsgTeamFanContentAutographStatus_TeamStatus(): CMsgTeamFanContentAutographStatus_TeamStatus {
@@ -1696,6 +2605,32 @@ export const CMsgTeamFanContentAutographStatus_TeamStatus = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgTeamFanContentAutographStatus_TeamStatus {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      autographs: Array.isArray(object?.autographs)
+        ? object.autographs.map((e: any) => CMsgTeamFanContentAutographStatus_AutographStatus.fromJSON(e))
+        : [],
+      workshopAccountId: isSet(object.workshopAccountId) ? Number(object.workshopAccountId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgTeamFanContentAutographStatus_TeamStatus): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    if (message.autographs) {
+      obj.autographs = message.autographs.map((e) =>
+        e ? CMsgTeamFanContentAutographStatus_AutographStatus.toJSON(e) : undefined
+      );
+    } else {
+      obj.autographs = [];
+    }
+    message.workshopAccountId !== undefined && (obj.workshopAccountId = Math.round(message.workshopAccountId));
+    return obj;
   },
 };
 
@@ -1900,6 +2835,60 @@ export const CMsgDPCEvent = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDPCEvent {
+    return {
+      event: isSet(object.event) ? cMsgDPCEvent_ELeagueEventFromJSON(object.event) : 0,
+      eventType: isSet(object.eventType) ? cMsgDPCEvent_ELeagueEventTypeFromJSON(object.eventType) : 0,
+      leagues: Array.isArray(object?.leagues) ? object.leagues.map((e: any) => CMsgDPCEvent_League.fromJSON(e)) : [],
+      registrationPeriod: isSet(object.registrationPeriod) ? Number(object.registrationPeriod) : 0,
+      isEventUpcoming: isSet(object.isEventUpcoming) ? Boolean(object.isEventUpcoming) : false,
+      isEventCompleted: isSet(object.isEventCompleted) ? Boolean(object.isEventCompleted) : false,
+      eventName: isSet(object.eventName) ? String(object.eventName) : "",
+      multicastLeagueId: isSet(object.multicastLeagueId) ? Number(object.multicastLeagueId) : 0,
+      multicastStreams: Array.isArray(object?.multicastStreams)
+        ? object.multicastStreams.map((e: any) => Number(e))
+        : [],
+      tour: isSet(object.tour) ? cMsgDPCEvent_ETourFromJSON(object.tour) : 0,
+      timestampDropLock: isSet(object.timestampDropLock) ? Number(object.timestampDropLock) : 0,
+      timestampAddLock: isSet(object.timestampAddLock) ? Number(object.timestampAddLock) : 0,
+      timestampContentDeadline: isSet(object.timestampContentDeadline) ? Number(object.timestampContentDeadline) : 0,
+      isFantasyEnabled: isSet(object.isFantasyEnabled) ? Boolean(object.isFantasyEnabled) : false,
+      timestampContentReviewDeadline: isSet(object.timestampContentReviewDeadline)
+        ? Number(object.timestampContentReviewDeadline)
+        : 0,
+    };
+  },
+
+  toJSON(message: CMsgDPCEvent): unknown {
+    const obj: any = {};
+    message.event !== undefined && (obj.event = cMsgDPCEvent_ELeagueEventToJSON(message.event));
+    message.eventType !== undefined && (obj.eventType = cMsgDPCEvent_ELeagueEventTypeToJSON(message.eventType));
+    if (message.leagues) {
+      obj.leagues = message.leagues.map((e) => e ? CMsgDPCEvent_League.toJSON(e) : undefined);
+    } else {
+      obj.leagues = [];
+    }
+    message.registrationPeriod !== undefined && (obj.registrationPeriod = Math.round(message.registrationPeriod));
+    message.isEventUpcoming !== undefined && (obj.isEventUpcoming = message.isEventUpcoming);
+    message.isEventCompleted !== undefined && (obj.isEventCompleted = message.isEventCompleted);
+    message.eventName !== undefined && (obj.eventName = message.eventName);
+    message.multicastLeagueId !== undefined && (obj.multicastLeagueId = Math.round(message.multicastLeagueId));
+    if (message.multicastStreams) {
+      obj.multicastStreams = message.multicastStreams.map((e) => Math.round(e));
+    } else {
+      obj.multicastStreams = [];
+    }
+    message.tour !== undefined && (obj.tour = cMsgDPCEvent_ETourToJSON(message.tour));
+    message.timestampDropLock !== undefined && (obj.timestampDropLock = Math.round(message.timestampDropLock));
+    message.timestampAddLock !== undefined && (obj.timestampAddLock = Math.round(message.timestampAddLock));
+    message.timestampContentDeadline !== undefined &&
+      (obj.timestampContentDeadline = Math.round(message.timestampContentDeadline));
+    message.isFantasyEnabled !== undefined && (obj.isFantasyEnabled = message.isFantasyEnabled);
+    message.timestampContentReviewDeadline !== undefined &&
+      (obj.timestampContentReviewDeadline = Math.round(message.timestampContentReviewDeadline));
+    return obj;
+  },
 };
 
 function createBaseCMsgDPCEvent_PhaseInfo(): CMsgDPCEvent_PhaseInfo {
@@ -1945,6 +2934,20 @@ export const CMsgDPCEvent_PhaseInfo = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDPCEvent_PhaseInfo {
+    return {
+      phase: isSet(object.phase) ? cMsgDPCEvent_ELeagueEventPhaseFromJSON(object.phase) : 0,
+      nodeGroupId: isSet(object.nodeGroupId) ? Number(object.nodeGroupId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDPCEvent_PhaseInfo): unknown {
+    const obj: any = {};
+    message.phase !== undefined && (obj.phase = cMsgDPCEvent_ELeagueEventPhaseToJSON(message.phase));
+    message.nodeGroupId !== undefined && (obj.nodeGroupId = Math.round(message.nodeGroupId));
+    return obj;
   },
 };
 
@@ -2012,6 +3015,28 @@ export const CMsgDPCEvent_League = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDPCEvent_League {
+    return {
+      region: isSet(object.region) ? eLeagueRegionFromJSON(object.region) : 0,
+      division: isSet(object.division) ? eLeagueDivisionFromJSON(object.division) : 0,
+      leagueId: isSet(object.leagueId) ? Number(object.leagueId) : 0,
+      phases: Array.isArray(object?.phases) ? object.phases.map((e: any) => CMsgDPCEvent_PhaseInfo.fromJSON(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgDPCEvent_League): unknown {
+    const obj: any = {};
+    message.region !== undefined && (obj.region = eLeagueRegionToJSON(message.region));
+    message.division !== undefined && (obj.division = eLeagueDivisionToJSON(message.division));
+    message.leagueId !== undefined && (obj.leagueId = Math.round(message.leagueId));
+    if (message.phases) {
+      obj.phases = message.phases.map((e) => e ? CMsgDPCEvent_PhaseInfo.toJSON(e) : undefined);
+    } else {
+      obj.phases = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgDPCEventList(): CMsgDPCEventList {
@@ -2048,6 +3073,20 @@ export const CMsgDPCEventList = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDPCEventList {
+    return { events: Array.isArray(object?.events) ? object.events.map((e: any) => CMsgDPCEvent.fromJSON(e)) : [] };
+  },
+
+  toJSON(message: CMsgDPCEventList): unknown {
+    const obj: any = {};
+    if (message.events) {
+      obj.events = message.events.map((e) => e ? CMsgDPCEvent.toJSON(e) : undefined);
+    } else {
+      obj.events = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTAFantasyCardLineup(): CMsgDOTAFantasyCardLineup {
@@ -2083,6 +3122,24 @@ export const CMsgDOTAFantasyCardLineup = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAFantasyCardLineup {
+    return {
+      periods: Array.isArray(object?.periods)
+        ? object.periods.map((e: any) => CMsgDOTAFantasyCardLineup_Period.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTAFantasyCardLineup): unknown {
+    const obj: any = {};
+    if (message.periods) {
+      obj.periods = message.periods.map((e) => e ? CMsgDOTAFantasyCardLineup_Period.toJSON(e) : undefined);
+    } else {
+      obj.periods = [];
+    }
+    return obj;
   },
 };
 
@@ -2129,6 +3186,20 @@ export const CMsgDOTAFantasyCardLineup_CardBonus = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAFantasyCardLineup_CardBonus {
+    return {
+      bonusStat: isSet(object.bonusStat) ? Number(object.bonusStat) : 0,
+      bonusValue: isSet(object.bonusValue) ? Number(object.bonusValue) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTAFantasyCardLineup_CardBonus): unknown {
+    const obj: any = {};
+    message.bonusStat !== undefined && (obj.bonusStat = Math.round(message.bonusStat));
+    message.bonusValue !== undefined && (obj.bonusValue = Math.round(message.bonusValue));
+    return obj;
   },
 };
 
@@ -2256,6 +3327,40 @@ export const CMsgDOTAFantasyCardLineup_Card = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTAFantasyCardLineup_Card {
+    return {
+      playerAccountId: isSet(object.playerAccountId) ? Number(object.playerAccountId) : 0,
+      playerName: isSet(object.playerName) ? String(object.playerName) : "",
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      teamName: isSet(object.teamName) ? String(object.teamName) : "",
+      role: isSet(object.role) ? Number(object.role) : 0,
+      bonuses: Array.isArray(object?.bonuses)
+        ? object.bonuses.map((e: any) => CMsgDOTAFantasyCardLineup_CardBonus.fromJSON(e))
+        : [],
+      score: isSet(object.score) ? Number(object.score) : 0,
+      finalized: isSet(object.finalized) ? Boolean(object.finalized) : false,
+      itemId: isSet(object.itemId) ? String(object.itemId) : "0",
+    };
+  },
+
+  toJSON(message: CMsgDOTAFantasyCardLineup_Card): unknown {
+    const obj: any = {};
+    message.playerAccountId !== undefined && (obj.playerAccountId = Math.round(message.playerAccountId));
+    message.playerName !== undefined && (obj.playerName = message.playerName);
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    message.teamName !== undefined && (obj.teamName = message.teamName);
+    message.role !== undefined && (obj.role = Math.round(message.role));
+    if (message.bonuses) {
+      obj.bonuses = message.bonuses.map((e) => e ? CMsgDOTAFantasyCardLineup_CardBonus.toJSON(e) : undefined);
+    } else {
+      obj.bonuses = [];
+    }
+    message.score !== undefined && (obj.score = message.score);
+    message.finalized !== undefined && (obj.finalized = message.finalized);
+    message.itemId !== undefined && (obj.itemId = message.itemId);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTAFantasyCardLineup_League(): CMsgDOTAFantasyCardLineup_League {
@@ -2311,6 +3416,28 @@ export const CMsgDOTAFantasyCardLineup_League = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAFantasyCardLineup_League {
+    return {
+      leagueId: isSet(object.leagueId) ? Number(object.leagueId) : 0,
+      cards: Array.isArray(object?.cards)
+        ? object.cards.map((e: any) => CMsgDOTAFantasyCardLineup_Card.fromJSON(e))
+        : [],
+      score: isSet(object.score) ? Number(object.score) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTAFantasyCardLineup_League): unknown {
+    const obj: any = {};
+    message.leagueId !== undefined && (obj.leagueId = Math.round(message.leagueId));
+    if (message.cards) {
+      obj.cards = message.cards.map((e) => e ? CMsgDOTAFantasyCardLineup_Card.toJSON(e) : undefined);
+    } else {
+      obj.cards = [];
+    }
+    message.score !== undefined && (obj.score = message.score);
+    return obj;
   },
 };
 
@@ -2378,6 +3505,30 @@ export const CMsgDOTAFantasyCardLineup_Period = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTAFantasyCardLineup_Period {
+    return {
+      fantasyPeriod: isSet(object.fantasyPeriod) ? Number(object.fantasyPeriod) : 0,
+      timestampStart: isSet(object.timestampStart) ? Number(object.timestampStart) : 0,
+      timestampEnd: isSet(object.timestampEnd) ? Number(object.timestampEnd) : 0,
+      leagues: Array.isArray(object?.leagues)
+        ? object.leagues.map((e: any) => CMsgDOTAFantasyCardLineup_League.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTAFantasyCardLineup_Period): unknown {
+    const obj: any = {};
+    message.fantasyPeriod !== undefined && (obj.fantasyPeriod = Math.round(message.fantasyPeriod));
+    message.timestampStart !== undefined && (obj.timestampStart = Math.round(message.timestampStart));
+    message.timestampEnd !== undefined && (obj.timestampEnd = Math.round(message.timestampEnd));
+    if (message.leagues) {
+      obj.leagues = message.leagues.map((e) => e ? CMsgDOTAFantasyCardLineup_League.toJSON(e) : undefined);
+    } else {
+      obj.leagues = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTAFantasyCardList(): CMsgDOTAFantasyCardList {
@@ -2413,6 +3564,22 @@ export const CMsgDOTAFantasyCardList = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAFantasyCardList {
+    return {
+      cards: Array.isArray(object?.cards) ? object.cards.map((e: any) => CMsgDOTAFantasyCardList_Card.fromJSON(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgDOTAFantasyCardList): unknown {
+    const obj: any = {};
+    if (message.cards) {
+      obj.cards = message.cards.map((e) => e ? CMsgDOTAFantasyCardList_Card.toJSON(e) : undefined);
+    } else {
+      obj.cards = [];
+    }
+    return obj;
   },
 };
 
@@ -2459,6 +3626,20 @@ export const CMsgDOTAFantasyCardList_CardBonus = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAFantasyCardList_CardBonus {
+    return {
+      bonusStat: isSet(object.bonusStat) ? Number(object.bonusStat) : 0,
+      bonusValue: isSet(object.bonusValue) ? Number(object.bonusValue) : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTAFantasyCardList_CardBonus): unknown {
+    const obj: any = {};
+    message.bonusStat !== undefined && (obj.bonusStat = Math.round(message.bonusStat));
+    message.bonusValue !== undefined && (obj.bonusValue = Math.round(message.bonusValue));
+    return obj;
   },
 };
 
@@ -2555,6 +3736,36 @@ export const CMsgDOTAFantasyCardList_Card = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgDOTAFantasyCardList_Card {
+    return {
+      playerAccountId: isSet(object.playerAccountId) ? Number(object.playerAccountId) : 0,
+      playerName: isSet(object.playerName) ? String(object.playerName) : "",
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      teamName: isSet(object.teamName) ? String(object.teamName) : "",
+      role: isSet(object.role) ? Number(object.role) : 0,
+      bonuses: Array.isArray(object?.bonuses)
+        ? object.bonuses.map((e: any) => CMsgDOTAFantasyCardList_CardBonus.fromJSON(e))
+        : [],
+      itemId: isSet(object.itemId) ? String(object.itemId) : "0",
+    };
+  },
+
+  toJSON(message: CMsgDOTAFantasyCardList_Card): unknown {
+    const obj: any = {};
+    message.playerAccountId !== undefined && (obj.playerAccountId = Math.round(message.playerAccountId));
+    message.playerName !== undefined && (obj.playerName = message.playerName);
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    message.teamName !== undefined && (obj.teamName = message.teamName);
+    message.role !== undefined && (obj.role = Math.round(message.role));
+    if (message.bonuses) {
+      obj.bonuses = message.bonuses.map((e) => e ? CMsgDOTAFantasyCardList_CardBonus.toJSON(e) : undefined);
+    } else {
+      obj.bonuses = [];
+    }
+    message.itemId !== undefined && (obj.itemId = message.itemId);
+    return obj;
   },
 };
 
@@ -2660,6 +3871,34 @@ export const CMsgChatToxicityReport = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgChatToxicityReport {
+    return {
+      numMatchesSeen: isSet(object.numMatchesSeen) ? Number(object.numMatchesSeen) : 0,
+      numMessages: isSet(object.numMessages) ? Number(object.numMessages) : 0,
+      numMessagesHumanThinksToxic: isSet(object.numMessagesHumanThinksToxic)
+        ? Number(object.numMessagesHumanThinksToxic)
+        : 0,
+      numMessagesMlThinksToxic: isSet(object.numMessagesMlThinksToxic) ? Number(object.numMessagesMlThinksToxic) : 0,
+      status: isSet(object.status) ? String(object.status) : "",
+      result: isSet(object.result) ? Number(object.result) : 0,
+      message: isSet(object.message) ? String(object.message) : "",
+    };
+  },
+
+  toJSON(message: CMsgChatToxicityReport): unknown {
+    const obj: any = {};
+    message.numMatchesSeen !== undefined && (obj.numMatchesSeen = Math.round(message.numMatchesSeen));
+    message.numMessages !== undefined && (obj.numMessages = Math.round(message.numMessages));
+    message.numMessagesHumanThinksToxic !== undefined &&
+      (obj.numMessagesHumanThinksToxic = Math.round(message.numMessagesHumanThinksToxic));
+    message.numMessagesMlThinksToxic !== undefined &&
+      (obj.numMessagesMlThinksToxic = Math.round(message.numMessagesMlThinksToxic));
+    message.status !== undefined && (obj.status = message.status);
+    message.result !== undefined && (obj.result = Math.round(message.result));
+    message.message !== undefined && (obj.message = message.message);
+    return obj;
+  },
 };
 
 function createBaseCMsgGetTeamAuditInformation(): CMsgGetTeamAuditInformation {
@@ -2725,6 +3964,30 @@ export const CMsgGetTeamAuditInformation = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgGetTeamAuditInformation {
+    return {
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      teamName: isSet(object.teamName) ? String(object.teamName) : "",
+      actions: Array.isArray(object?.actions)
+        ? object.actions.map((e: any) => CMsgGetTeamAuditInformation_Action.fromJSON(e))
+        : [],
+      lastUpdated: isSet(object.lastUpdated) ? Number(object.lastUpdated) : 0,
+    };
+  },
+
+  toJSON(message: CMsgGetTeamAuditInformation): unknown {
+    const obj: any = {};
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    message.teamName !== undefined && (obj.teamName = message.teamName);
+    if (message.actions) {
+      obj.actions = message.actions.map((e) => e ? CMsgGetTeamAuditInformation_Action.toJSON(e) : undefined);
+    } else {
+      obj.actions = [];
+    }
+    message.lastUpdated !== undefined && (obj.lastUpdated = Math.round(message.lastUpdated));
+    return obj;
   },
 };
 
@@ -2812,6 +4075,28 @@ export const CMsgGetTeamAuditInformation_Action = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgGetTeamAuditInformation_Action {
+    return {
+      registrationPeriod: isSet(object.registrationPeriod) ? Number(object.registrationPeriod) : 0,
+      accountId: isSet(object.accountId) ? Number(object.accountId) : 0,
+      action: isSet(object.action) ? Number(object.action) : 0,
+      timestamp: isSet(object.timestamp) ? Number(object.timestamp) : 0,
+      playerName: isSet(object.playerName) ? String(object.playerName) : "",
+      playerRealName: isSet(object.playerRealName) ? String(object.playerRealName) : "",
+    };
+  },
+
+  toJSON(message: CMsgGetTeamAuditInformation_Action): unknown {
+    const obj: any = {};
+    message.registrationPeriod !== undefined && (obj.registrationPeriod = Math.round(message.registrationPeriod));
+    message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
+    message.action !== undefined && (obj.action = Math.round(message.action));
+    message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
+    message.playerName !== undefined && (obj.playerName = message.playerName);
+    message.playerRealName !== undefined && (obj.playerRealName = message.playerRealName);
+    return obj;
+  },
 };
 
 function createBaseCMsgDOTADPCMatch(): CMsgDOTADPCMatch {
@@ -2858,7 +4143,41 @@ export const CMsgDOTADPCMatch = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgDOTADPCMatch {
+    return {
+      match: isSet(object.match) ? CMsgDOTAMatch.fromJSON(object.match) : undefined,
+      metadata: isSet(object.metadata) ? CDOTAMatchMetadata.fromJSON(object.metadata) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgDOTADPCMatch): unknown {
+    const obj: any = {};
+    message.match !== undefined && (obj.match = message.match ? CMsgDOTAMatch.toJSON(message.match) : undefined);
+    message.metadata !== undefined &&
+      (obj.metadata = message.metadata ? CDOTAMatchMetadata.toJSON(message.metadata) : undefined);
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
 
 function longToString(long: Long) {
   return long.toString();
@@ -2867,4 +4186,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

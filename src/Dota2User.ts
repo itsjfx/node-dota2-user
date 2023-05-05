@@ -1,8 +1,10 @@
+import ByteBuffer from 'bytebuffer';
 import { EventEmitter } from 'node:events';
 import SteamUser from 'steam-user';
-import { Router } from './Router';
-import { EGCBaseClientMsg } from './protobufs/gcsystemmsgs';
-const Protos = require('../protobufs/generated/_load.js'); // TODO move to src
+import { Router } from './router';
+import { EGCBaseClientMsg } from './generated-protobufs';
+import { protobufsMap } from './known-protobufs';
+const debug = require('debug')('dota2-user');
 
 // TODO... there has to be a better way
 export interface Dota2User {
@@ -15,7 +17,6 @@ export interface Dota2User {
 
 export class Dota2User extends EventEmitter {
     static STEAM_APPID = 570;
-    static Protos = Protos;
 
     _steam: SteamUser; // private
 
@@ -85,7 +86,8 @@ export class Dota2User extends EventEmitter {
             // Handle caches
 
             // this.inventory = this.inventory || [];
-            this.emit('debug', "GC connection established");
+            debug("GC connection established");
+            debug('Received welcome: %o', message)
             this.haveGCSession = true;
             this._clearHelloTimer();
             this.emit('connectedToGC');
@@ -95,10 +97,40 @@ export class Dota2User extends EventEmitter {
     get inDota2() {
         return this._inDota2;
     }
+
+    // TODO: people should probably not use the fromJSON calls, cause it won't be typed
+    // This to be sendRaw instead
+    send(type: number, body: Object) {
+        if (!this._steam.steamID) {
+            return false;
+        }
+
+        const protobuf = protobufsMap[type];
+        if (protobuf) {
+            const buffer = Buffer.from(protobuf.encode(protobuf.fromJSON(body)).finish());
+            debug("Sending GC message %s", type);
+            this._steam.sendToGC(Dota2User.STEAM_APPID, type, {}, buffer);
+        } else {
+            debug('Unable to send message, no protobuf found');
+            return false;
+        }
+
+        return true;
+    };
+
+    sendRaw(type: number, body: Buffer|ByteBuffer) {
+        if (!this._steam.steamID) {
+            return false;
+        }
+
+        debug("Sending raw GC message %s", type);
+        // Convert ByteBuffer to Buffer
+        if (body instanceof ByteBuffer && ByteBuffer.isByteBuffer(body)) {
+            body = body.flip().toBuffer();
+        }
+        this._steam.sendToGC(Dota2User.STEAM_APPID, type, null, body as Buffer);
+    }
 }
-// @ts-ignore
-Dota2User.prototype._handlers = {}; // private
 
 // And finally, require all the components that add their own methods to the class' prototype
 require('./components/connection.js');
-require('./components/messages.js');

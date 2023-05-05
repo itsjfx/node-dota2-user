@@ -14,6 +14,60 @@ export enum MLBotMessageId {
   mlbot_PlayerOrder = 8,
 }
 
+export function mLBotMessageIdFromJSON(object: any): MLBotMessageId {
+  switch (object) {
+    case 1:
+    case "mlbot_MatchMetadata":
+      return MLBotMessageId.mlbot_MatchMetadata;
+    case 2:
+    case "mlbot_TickBoundary":
+      return MLBotMessageId.mlbot_TickBoundary;
+    case 3:
+    case "mlbot_TeamState_Radiant":
+      return MLBotMessageId.mlbot_TeamState_Radiant;
+    case 4:
+    case "mlbot_TeamState_Radiant_Delta":
+      return MLBotMessageId.mlbot_TeamState_Radiant_Delta;
+    case 5:
+    case "mlbot_TeamState_Dire":
+      return MLBotMessageId.mlbot_TeamState_Dire;
+    case 6:
+    case "mlbot_TeamState_Dire_Delta":
+      return MLBotMessageId.mlbot_TeamState_Dire_Delta;
+    case 7:
+    case "mlbot_PlayerCommand":
+      return MLBotMessageId.mlbot_PlayerCommand;
+    case 8:
+    case "mlbot_PlayerOrder":
+      return MLBotMessageId.mlbot_PlayerOrder;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum MLBotMessageId");
+  }
+}
+
+export function mLBotMessageIdToJSON(object: MLBotMessageId): string {
+  switch (object) {
+    case MLBotMessageId.mlbot_MatchMetadata:
+      return "mlbot_MatchMetadata";
+    case MLBotMessageId.mlbot_TickBoundary:
+      return "mlbot_TickBoundary";
+    case MLBotMessageId.mlbot_TeamState_Radiant:
+      return "mlbot_TeamState_Radiant";
+    case MLBotMessageId.mlbot_TeamState_Radiant_Delta:
+      return "mlbot_TeamState_Radiant_Delta";
+    case MLBotMessageId.mlbot_TeamState_Dire:
+      return "mlbot_TeamState_Dire";
+    case MLBotMessageId.mlbot_TeamState_Dire_Delta:
+      return "mlbot_TeamState_Dire_Delta";
+    case MLBotMessageId.mlbot_PlayerCommand:
+      return "mlbot_PlayerCommand";
+    case MLBotMessageId.mlbot_PlayerOrder:
+      return "mlbot_PlayerOrder";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum MLBotMessageId");
+  }
+}
+
 export interface CMsgMLBotMatchMetadata {
   matchId: string;
   lobbyId: string;
@@ -136,6 +190,32 @@ export const CMsgMLBotMatchMetadata = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgMLBotMatchMetadata {
+    return {
+      matchId: isSet(object.matchId) ? String(object.matchId) : "0",
+      lobbyId: isSet(object.lobbyId) ? String(object.lobbyId) : "0",
+      lobbyType: isSet(object.lobbyType) ? Number(object.lobbyType) : 0,
+      gameMode: isSet(object.gameMode) ? Number(object.gameMode) : 0,
+      players: Array.isArray(object?.players)
+        ? object.players.map((e: any) => CMsgMLBotMatchMetadata_Player.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgMLBotMatchMetadata): unknown {
+    const obj: any = {};
+    message.matchId !== undefined && (obj.matchId = message.matchId);
+    message.lobbyId !== undefined && (obj.lobbyId = message.lobbyId);
+    message.lobbyType !== undefined && (obj.lobbyType = Math.round(message.lobbyType));
+    message.gameMode !== undefined && (obj.gameMode = Math.round(message.gameMode));
+    if (message.players) {
+      obj.players = message.players.map((e) => e ? CMsgMLBotMatchMetadata_Player.toJSON(e) : undefined);
+    } else {
+      obj.players = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgMLBotMatchMetadata_Player(): CMsgMLBotMatchMetadata_Player {
@@ -202,6 +282,24 @@ export const CMsgMLBotMatchMetadata_Player = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgMLBotMatchMetadata_Player {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      rank: isSet(object.rank) ? Number(object.rank) : 0,
+    };
+  },
+
+  toJSON(message: CMsgMLBotMatchMetadata_Player): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.rank !== undefined && (obj.rank = Math.round(message.rank));
+    return obj;
+  },
 };
 
 function createBaseCMsgMLBotTickBoundary(): CMsgMLBotTickBoundary {
@@ -237,6 +335,16 @@ export const CMsgMLBotTickBoundary = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgMLBotTickBoundary {
+    return { tickNumber: isSet(object.tickNumber) ? Number(object.tickNumber) : 0 };
+  },
+
+  toJSON(message: CMsgMLBotTickBoundary): unknown {
+    const obj: any = {};
+    message.tickNumber !== undefined && (obj.tickNumber = Math.round(message.tickNumber));
+    return obj;
   },
 };
 
@@ -408,6 +516,46 @@ export const CMsgMLBotPlayerOrder = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgMLBotPlayerOrder {
+    return {
+      playerId: isSet(object.playerId) ? Number(object.playerId) : 0,
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      orderType: isSet(object.orderType) ? Number(object.orderType) : 0,
+      selectedUnitHandles: Array.isArray(object?.selectedUnitHandles)
+        ? object.selectedUnitHandles.map((e: any) => Number(e))
+        : [],
+      targetIndex: isSet(object.targetIndex) ? Number(object.targetIndex) : 0,
+      targetHandle: isSet(object.targetHandle) ? Number(object.targetHandle) : 0,
+      abilityIndex: isSet(object.abilityIndex) ? Number(object.abilityIndex) : 0,
+      abilityHandle: isSet(object.abilityHandle) ? Number(object.abilityHandle) : 0,
+      posX: isSet(object.posX) ? Number(object.posX) : 0,
+      posY: isSet(object.posY) ? Number(object.posY) : 0,
+      posZ: isSet(object.posZ) ? Number(object.posZ) : 0,
+      queue: isSet(object.queue) ? Boolean(object.queue) : false,
+    };
+  },
+
+  toJSON(message: CMsgMLBotPlayerOrder): unknown {
+    const obj: any = {};
+    message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    message.orderType !== undefined && (obj.orderType = Math.round(message.orderType));
+    if (message.selectedUnitHandles) {
+      obj.selectedUnitHandles = message.selectedUnitHandles.map((e) => Math.round(e));
+    } else {
+      obj.selectedUnitHandles = [];
+    }
+    message.targetIndex !== undefined && (obj.targetIndex = Math.round(message.targetIndex));
+    message.targetHandle !== undefined && (obj.targetHandle = Math.round(message.targetHandle));
+    message.abilityIndex !== undefined && (obj.abilityIndex = Math.round(message.abilityIndex));
+    message.abilityHandle !== undefined && (obj.abilityHandle = Math.round(message.abilityHandle));
+    message.posX !== undefined && (obj.posX = message.posX);
+    message.posY !== undefined && (obj.posY = message.posY);
+    message.posZ !== undefined && (obj.posZ = message.posZ);
+    message.queue !== undefined && (obj.queue = message.queue);
+    return obj;
+  },
 };
 
 function createBaseCMsgMLBotTeamInference(): CMsgMLBotTeamInference {
@@ -475,6 +623,27 @@ export const CMsgMLBotTeamInference = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgMLBotTeamInference {
+    return {
+      teamId: isSet(object.teamId) ? Number(object.teamId) : 0,
+      botPlayerIds: Array.isArray(object?.botPlayerIds) ? object.botPlayerIds.map((e: any) => Number(e)) : [],
+      worldState: isSet(object.worldState) ? CMsgBotWorldState.fromJSON(object.worldState) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgMLBotTeamInference): unknown {
+    const obj: any = {};
+    message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
+    if (message.botPlayerIds) {
+      obj.botPlayerIds = message.botPlayerIds.map((e) => Math.round(e));
+    } else {
+      obj.botPlayerIds = [];
+    }
+    message.worldState !== undefined &&
+      (obj.worldState = message.worldState ? CMsgBotWorldState.toJSON(message.worldState) : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgMLBotTeamInferenceResponse(): CMsgMLBotTeamInferenceResponse {
@@ -510,6 +679,22 @@ export const CMsgMLBotTeamInferenceResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgMLBotTeamInferenceResponse {
+    return {
+      orders: Array.isArray(object?.orders) ? object.orders.map((e: any) => CMsgMLBotPlayerOrder.fromJSON(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgMLBotTeamInferenceResponse): unknown {
+    const obj: any = {};
+    if (message.orders) {
+      obj.orders = message.orders.map((e) => e ? CMsgMLBotPlayerOrder.toJSON(e) : undefined);
+    } else {
+      obj.orders = [];
+    }
+    return obj;
   },
 };
 
@@ -547,7 +732,44 @@ export const CMsgMLBotTeamInferenceList = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgMLBotTeamInferenceList {
+    return {
+      messages: Array.isArray(object?.messages)
+        ? object.messages.map((e: any) => CMsgMLBotTeamInference.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgMLBotTeamInferenceList): unknown {
+    const obj: any = {};
+    if (message.messages) {
+      obj.messages = message.messages.map((e) => e ? CMsgMLBotTeamInference.toJSON(e) : undefined);
+    } else {
+      obj.messages = [];
+    }
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
 
 function longToString(long: Long) {
   return long.toString();
@@ -556,4 +778,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

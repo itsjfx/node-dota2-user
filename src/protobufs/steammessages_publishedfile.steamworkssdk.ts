@@ -266,6 +266,24 @@ export const CPublishedFileSubscribeRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CPublishedFileSubscribeRequest {
+    return {
+      publishedfileid: isSet(object.publishedfileid) ? String(object.publishedfileid) : "0",
+      listType: isSet(object.listType) ? Number(object.listType) : 0,
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      notifyClient: isSet(object.notifyClient) ? Boolean(object.notifyClient) : false,
+    };
+  },
+
+  toJSON(message: CPublishedFileSubscribeRequest): unknown {
+    const obj: any = {};
+    message.publishedfileid !== undefined && (obj.publishedfileid = message.publishedfileid);
+    message.listType !== undefined && (obj.listType = Math.round(message.listType));
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    message.notifyClient !== undefined && (obj.notifyClient = message.notifyClient);
+    return obj;
+  },
 };
 
 function createBaseCPublishedFileSubscribeResponse(): CPublishedFileSubscribeResponse {
@@ -291,6 +309,15 @@ export const CPublishedFileSubscribeResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CPublishedFileSubscribeResponse {
+    return {};
+  },
+
+  toJSON(_: CPublishedFileSubscribeResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -358,6 +385,24 @@ export const CPublishedFileUnsubscribeRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CPublishedFileUnsubscribeRequest {
+    return {
+      publishedfileid: isSet(object.publishedfileid) ? String(object.publishedfileid) : "0",
+      listType: isSet(object.listType) ? Number(object.listType) : 0,
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      notifyClient: isSet(object.notifyClient) ? Boolean(object.notifyClient) : false,
+    };
+  },
+
+  toJSON(message: CPublishedFileUnsubscribeRequest): unknown {
+    const obj: any = {};
+    message.publishedfileid !== undefined && (obj.publishedfileid = message.publishedfileid);
+    message.listType !== undefined && (obj.listType = Math.round(message.listType));
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    message.notifyClient !== undefined && (obj.notifyClient = message.notifyClient);
+    return obj;
+  },
 };
 
 function createBaseCPublishedFileUnsubscribeResponse(): CPublishedFileUnsubscribeResponse {
@@ -383,6 +428,15 @@ export const CPublishedFileUnsubscribeResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CPublishedFileUnsubscribeResponse {
+    return {};
+  },
+
+  toJSON(_: CPublishedFileUnsubscribeResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -587,6 +641,52 @@ export const CPublishedFilePublishRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CPublishedFilePublishRequest {
+    return {
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      consumerAppid: isSet(object.consumerAppid) ? Number(object.consumerAppid) : 0,
+      cloudfilename: isSet(object.cloudfilename) ? String(object.cloudfilename) : "",
+      previewCloudfilename: isSet(object.previewCloudfilename) ? String(object.previewCloudfilename) : "",
+      title: isSet(object.title) ? String(object.title) : "",
+      fileDescription: isSet(object.fileDescription) ? String(object.fileDescription) : "",
+      fileType: isSet(object.fileType) ? Number(object.fileType) : 0,
+      consumerShortcutName: isSet(object.consumerShortcutName) ? String(object.consumerShortcutName) : "",
+      youtubeUsername: isSet(object.youtubeUsername) ? String(object.youtubeUsername) : "",
+      youtubeVideoid: isSet(object.youtubeVideoid) ? String(object.youtubeVideoid) : "",
+      visibility: isSet(object.visibility) ? Number(object.visibility) : 0,
+      redirectUri: isSet(object.redirectUri) ? String(object.redirectUri) : "",
+      tags: Array.isArray(object?.tags) ? object.tags.map((e: any) => String(e)) : [],
+      collectionType: isSet(object.collectionType) ? String(object.collectionType) : "",
+      gameType: isSet(object.gameType) ? String(object.gameType) : "",
+      url: isSet(object.url) ? String(object.url) : "",
+    };
+  },
+
+  toJSON(message: CPublishedFilePublishRequest): unknown {
+    const obj: any = {};
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    message.consumerAppid !== undefined && (obj.consumerAppid = Math.round(message.consumerAppid));
+    message.cloudfilename !== undefined && (obj.cloudfilename = message.cloudfilename);
+    message.previewCloudfilename !== undefined && (obj.previewCloudfilename = message.previewCloudfilename);
+    message.title !== undefined && (obj.title = message.title);
+    message.fileDescription !== undefined && (obj.fileDescription = message.fileDescription);
+    message.fileType !== undefined && (obj.fileType = Math.round(message.fileType));
+    message.consumerShortcutName !== undefined && (obj.consumerShortcutName = message.consumerShortcutName);
+    message.youtubeUsername !== undefined && (obj.youtubeUsername = message.youtubeUsername);
+    message.youtubeVideoid !== undefined && (obj.youtubeVideoid = message.youtubeVideoid);
+    message.visibility !== undefined && (obj.visibility = Math.round(message.visibility));
+    message.redirectUri !== undefined && (obj.redirectUri = message.redirectUri);
+    if (message.tags) {
+      obj.tags = message.tags.map((e) => e);
+    } else {
+      obj.tags = [];
+    }
+    message.collectionType !== undefined && (obj.collectionType = message.collectionType);
+    message.gameType !== undefined && (obj.gameType = message.gameType);
+    message.url !== undefined && (obj.url = message.url);
+    return obj;
+  },
 };
 
 function createBaseCPublishedFilePublishResponse(): CPublishedFilePublishResponse {
@@ -632,6 +732,20 @@ export const CPublishedFilePublishResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CPublishedFilePublishResponse {
+    return {
+      publishedfileid: isSet(object.publishedfileid) ? String(object.publishedfileid) : "0",
+      redirectUri: isSet(object.redirectUri) ? String(object.redirectUri) : "",
+    };
+  },
+
+  toJSON(message: CPublishedFilePublishResponse): unknown {
+    const obj: any = {};
+    message.publishedfileid !== undefined && (obj.publishedfileid = message.publishedfileid);
+    message.redirectUri !== undefined && (obj.redirectUri = message.redirectUri);
+    return obj;
   },
 };
 
@@ -747,6 +861,39 @@ export const CPublishedFileGetDetailsRequest = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CPublishedFileGetDetailsRequest {
+    return {
+      publishedfileids: Array.isArray(object?.publishedfileids)
+        ? object.publishedfileids.map((e: any) => String(e))
+        : [],
+      includetags: isSet(object.includetags) ? Boolean(object.includetags) : false,
+      includeadditionalpreviews: isSet(object.includeadditionalpreviews)
+        ? Boolean(object.includeadditionalpreviews)
+        : false,
+      includechildren: isSet(object.includechildren) ? Boolean(object.includechildren) : false,
+      includekvtags: isSet(object.includekvtags) ? Boolean(object.includekvtags) : false,
+      includevotes: isSet(object.includevotes) ? Boolean(object.includevotes) : false,
+      shortDescription: isSet(object.shortDescription) ? Boolean(object.shortDescription) : false,
+    };
+  },
+
+  toJSON(message: CPublishedFileGetDetailsRequest): unknown {
+    const obj: any = {};
+    if (message.publishedfileids) {
+      obj.publishedfileids = message.publishedfileids.map((e) => e);
+    } else {
+      obj.publishedfileids = [];
+    }
+    message.includetags !== undefined && (obj.includetags = message.includetags);
+    message.includeadditionalpreviews !== undefined &&
+      (obj.includeadditionalpreviews = message.includeadditionalpreviews);
+    message.includechildren !== undefined && (obj.includechildren = message.includechildren);
+    message.includekvtags !== undefined && (obj.includekvtags = message.includekvtags);
+    message.includevotes !== undefined && (obj.includevotes = message.includevotes);
+    message.shortDescription !== undefined && (obj.shortDescription = message.shortDescription);
+    return obj;
   },
 };
 
@@ -1391,6 +1538,152 @@ export const PublishedFileDetails = {
     }
     return message;
   },
+
+  fromJSON(object: any): PublishedFileDetails {
+    return {
+      result: isSet(object.result) ? Number(object.result) : 0,
+      publishedfileid: isSet(object.publishedfileid) ? String(object.publishedfileid) : "0",
+      creator: isSet(object.creator) ? String(object.creator) : "0",
+      creatorAppid: isSet(object.creatorAppid) ? Number(object.creatorAppid) : 0,
+      consumerAppid: isSet(object.consumerAppid) ? Number(object.consumerAppid) : 0,
+      consumerShortcutid: isSet(object.consumerShortcutid) ? Number(object.consumerShortcutid) : 0,
+      filename: isSet(object.filename) ? String(object.filename) : "",
+      fileSize: isSet(object.fileSize) ? String(object.fileSize) : "0",
+      previewFileSize: isSet(object.previewFileSize) ? String(object.previewFileSize) : "0",
+      fileUrl: isSet(object.fileUrl) ? String(object.fileUrl) : "",
+      previewUrl: isSet(object.previewUrl) ? String(object.previewUrl) : "",
+      youtubevideoid: isSet(object.youtubevideoid) ? String(object.youtubevideoid) : "",
+      url: isSet(object.url) ? String(object.url) : "",
+      hcontentFile: isSet(object.hcontentFile) ? String(object.hcontentFile) : "0",
+      hcontentPreview: isSet(object.hcontentPreview) ? String(object.hcontentPreview) : "0",
+      title: isSet(object.title) ? String(object.title) : "",
+      fileDescription: isSet(object.fileDescription) ? String(object.fileDescription) : "",
+      shortDescription: isSet(object.shortDescription) ? String(object.shortDescription) : "",
+      timeCreated: isSet(object.timeCreated) ? Number(object.timeCreated) : 0,
+      timeUpdated: isSet(object.timeUpdated) ? Number(object.timeUpdated) : 0,
+      visibility: isSet(object.visibility) ? Number(object.visibility) : 0,
+      flags: isSet(object.flags) ? Number(object.flags) : 0,
+      workshopFile: isSet(object.workshopFile) ? Boolean(object.workshopFile) : false,
+      workshopAccepted: isSet(object.workshopAccepted) ? Boolean(object.workshopAccepted) : false,
+      showSubscribeAll: isSet(object.showSubscribeAll) ? Boolean(object.showSubscribeAll) : false,
+      numCommentsDeveloper: isSet(object.numCommentsDeveloper) ? Number(object.numCommentsDeveloper) : 0,
+      numCommentsPublic: isSet(object.numCommentsPublic) ? Number(object.numCommentsPublic) : 0,
+      banned: isSet(object.banned) ? Boolean(object.banned) : false,
+      banReason: isSet(object.banReason) ? String(object.banReason) : "",
+      banner: isSet(object.banner) ? String(object.banner) : "0",
+      canBeDeleted: isSet(object.canBeDeleted) ? Boolean(object.canBeDeleted) : false,
+      incompatible: isSet(object.incompatible) ? Boolean(object.incompatible) : false,
+      appName: isSet(object.appName) ? String(object.appName) : "",
+      fileType: isSet(object.fileType) ? Number(object.fileType) : 0,
+      canSubscribe: isSet(object.canSubscribe) ? Boolean(object.canSubscribe) : false,
+      subscriptions: isSet(object.subscriptions) ? Number(object.subscriptions) : 0,
+      favorited: isSet(object.favorited) ? Number(object.favorited) : 0,
+      followers: isSet(object.followers) ? Number(object.followers) : 0,
+      lifetimeSubscriptions: isSet(object.lifetimeSubscriptions) ? Number(object.lifetimeSubscriptions) : 0,
+      lifetimeFavorited: isSet(object.lifetimeFavorited) ? Number(object.lifetimeFavorited) : 0,
+      lifetimeFollowers: isSet(object.lifetimeFollowers) ? Number(object.lifetimeFollowers) : 0,
+      views: isSet(object.views) ? Number(object.views) : 0,
+      imageWidth: isSet(object.imageWidth) ? Number(object.imageWidth) : 0,
+      imageHeight: isSet(object.imageHeight) ? Number(object.imageHeight) : 0,
+      imageUrl: isSet(object.imageUrl) ? String(object.imageUrl) : "",
+      spoilerTag: isSet(object.spoilerTag) ? Boolean(object.spoilerTag) : false,
+      shortcutid: isSet(object.shortcutid) ? Number(object.shortcutid) : 0,
+      shortcutname: isSet(object.shortcutname) ? String(object.shortcutname) : "",
+      numChildren: isSet(object.numChildren) ? Number(object.numChildren) : 0,
+      numReports: isSet(object.numReports) ? Number(object.numReports) : 0,
+      previews: Array.isArray(object?.previews)
+        ? object.previews.map((e: any) => PublishedFileDetails_Preview.fromJSON(e))
+        : [],
+      tags: Array.isArray(object?.tags) ? object.tags.map((e: any) => PublishedFileDetails_Tag.fromJSON(e)) : [],
+      children: Array.isArray(object?.children)
+        ? object.children.map((e: any) => PublishedFileDetails_Child.fromJSON(e))
+        : [],
+      kvtags: Array.isArray(object?.kvtags)
+        ? object.kvtags.map((e: any) => PublishedFileDetails_KVTag.fromJSON(e))
+        : [],
+      voteData: isSet(object.voteData) ? PublishedFileDetails_VoteData.fromJSON(object.voteData) : undefined,
+      timeSubscribed: isSet(object.timeSubscribed) ? Number(object.timeSubscribed) : 0,
+    };
+  },
+
+  toJSON(message: PublishedFileDetails): unknown {
+    const obj: any = {};
+    message.result !== undefined && (obj.result = Math.round(message.result));
+    message.publishedfileid !== undefined && (obj.publishedfileid = message.publishedfileid);
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.creatorAppid !== undefined && (obj.creatorAppid = Math.round(message.creatorAppid));
+    message.consumerAppid !== undefined && (obj.consumerAppid = Math.round(message.consumerAppid));
+    message.consumerShortcutid !== undefined && (obj.consumerShortcutid = Math.round(message.consumerShortcutid));
+    message.filename !== undefined && (obj.filename = message.filename);
+    message.fileSize !== undefined && (obj.fileSize = message.fileSize);
+    message.previewFileSize !== undefined && (obj.previewFileSize = message.previewFileSize);
+    message.fileUrl !== undefined && (obj.fileUrl = message.fileUrl);
+    message.previewUrl !== undefined && (obj.previewUrl = message.previewUrl);
+    message.youtubevideoid !== undefined && (obj.youtubevideoid = message.youtubevideoid);
+    message.url !== undefined && (obj.url = message.url);
+    message.hcontentFile !== undefined && (obj.hcontentFile = message.hcontentFile);
+    message.hcontentPreview !== undefined && (obj.hcontentPreview = message.hcontentPreview);
+    message.title !== undefined && (obj.title = message.title);
+    message.fileDescription !== undefined && (obj.fileDescription = message.fileDescription);
+    message.shortDescription !== undefined && (obj.shortDescription = message.shortDescription);
+    message.timeCreated !== undefined && (obj.timeCreated = Math.round(message.timeCreated));
+    message.timeUpdated !== undefined && (obj.timeUpdated = Math.round(message.timeUpdated));
+    message.visibility !== undefined && (obj.visibility = Math.round(message.visibility));
+    message.flags !== undefined && (obj.flags = Math.round(message.flags));
+    message.workshopFile !== undefined && (obj.workshopFile = message.workshopFile);
+    message.workshopAccepted !== undefined && (obj.workshopAccepted = message.workshopAccepted);
+    message.showSubscribeAll !== undefined && (obj.showSubscribeAll = message.showSubscribeAll);
+    message.numCommentsDeveloper !== undefined && (obj.numCommentsDeveloper = Math.round(message.numCommentsDeveloper));
+    message.numCommentsPublic !== undefined && (obj.numCommentsPublic = Math.round(message.numCommentsPublic));
+    message.banned !== undefined && (obj.banned = message.banned);
+    message.banReason !== undefined && (obj.banReason = message.banReason);
+    message.banner !== undefined && (obj.banner = message.banner);
+    message.canBeDeleted !== undefined && (obj.canBeDeleted = message.canBeDeleted);
+    message.incompatible !== undefined && (obj.incompatible = message.incompatible);
+    message.appName !== undefined && (obj.appName = message.appName);
+    message.fileType !== undefined && (obj.fileType = Math.round(message.fileType));
+    message.canSubscribe !== undefined && (obj.canSubscribe = message.canSubscribe);
+    message.subscriptions !== undefined && (obj.subscriptions = Math.round(message.subscriptions));
+    message.favorited !== undefined && (obj.favorited = Math.round(message.favorited));
+    message.followers !== undefined && (obj.followers = Math.round(message.followers));
+    message.lifetimeSubscriptions !== undefined &&
+      (obj.lifetimeSubscriptions = Math.round(message.lifetimeSubscriptions));
+    message.lifetimeFavorited !== undefined && (obj.lifetimeFavorited = Math.round(message.lifetimeFavorited));
+    message.lifetimeFollowers !== undefined && (obj.lifetimeFollowers = Math.round(message.lifetimeFollowers));
+    message.views !== undefined && (obj.views = Math.round(message.views));
+    message.imageWidth !== undefined && (obj.imageWidth = Math.round(message.imageWidth));
+    message.imageHeight !== undefined && (obj.imageHeight = Math.round(message.imageHeight));
+    message.imageUrl !== undefined && (obj.imageUrl = message.imageUrl);
+    message.spoilerTag !== undefined && (obj.spoilerTag = message.spoilerTag);
+    message.shortcutid !== undefined && (obj.shortcutid = Math.round(message.shortcutid));
+    message.shortcutname !== undefined && (obj.shortcutname = message.shortcutname);
+    message.numChildren !== undefined && (obj.numChildren = Math.round(message.numChildren));
+    message.numReports !== undefined && (obj.numReports = Math.round(message.numReports));
+    if (message.previews) {
+      obj.previews = message.previews.map((e) => e ? PublishedFileDetails_Preview.toJSON(e) : undefined);
+    } else {
+      obj.previews = [];
+    }
+    if (message.tags) {
+      obj.tags = message.tags.map((e) => e ? PublishedFileDetails_Tag.toJSON(e) : undefined);
+    } else {
+      obj.tags = [];
+    }
+    if (message.children) {
+      obj.children = message.children.map((e) => e ? PublishedFileDetails_Child.toJSON(e) : undefined);
+    } else {
+      obj.children = [];
+    }
+    if (message.kvtags) {
+      obj.kvtags = message.kvtags.map((e) => e ? PublishedFileDetails_KVTag.toJSON(e) : undefined);
+    } else {
+      obj.kvtags = [];
+    }
+    message.voteData !== undefined &&
+      (obj.voteData = message.voteData ? PublishedFileDetails_VoteData.toJSON(message.voteData) : undefined);
+    message.timeSubscribed !== undefined && (obj.timeSubscribed = Math.round(message.timeSubscribed));
+    return obj;
+  },
 };
 
 function createBasePublishedFileDetails_Tag(): PublishedFileDetails_Tag {
@@ -1436,6 +1729,20 @@ export const PublishedFileDetails_Tag = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): PublishedFileDetails_Tag {
+    return {
+      tag: isSet(object.tag) ? String(object.tag) : "",
+      adminonly: isSet(object.adminonly) ? Boolean(object.adminonly) : false,
+    };
+  },
+
+  toJSON(message: PublishedFileDetails_Tag): unknown {
+    const obj: any = {};
+    message.tag !== undefined && (obj.tag = message.tag);
+    message.adminonly !== undefined && (obj.adminonly = message.adminonly);
+    return obj;
   },
 };
 
@@ -1523,6 +1830,28 @@ export const PublishedFileDetails_Preview = {
     }
     return message;
   },
+
+  fromJSON(object: any): PublishedFileDetails_Preview {
+    return {
+      previewid: isSet(object.previewid) ? String(object.previewid) : "0",
+      sortorder: isSet(object.sortorder) ? Number(object.sortorder) : 0,
+      url: isSet(object.url) ? String(object.url) : "",
+      size: isSet(object.size) ? Number(object.size) : 0,
+      filename: isSet(object.filename) ? String(object.filename) : "",
+      youtubevideoid: isSet(object.youtubevideoid) ? String(object.youtubevideoid) : "",
+    };
+  },
+
+  toJSON(message: PublishedFileDetails_Preview): unknown {
+    const obj: any = {};
+    message.previewid !== undefined && (obj.previewid = message.previewid);
+    message.sortorder !== undefined && (obj.sortorder = Math.round(message.sortorder));
+    message.url !== undefined && (obj.url = message.url);
+    message.size !== undefined && (obj.size = Math.round(message.size));
+    message.filename !== undefined && (obj.filename = message.filename);
+    message.youtubevideoid !== undefined && (obj.youtubevideoid = message.youtubevideoid);
+    return obj;
+  },
 };
 
 function createBasePublishedFileDetails_Child(): PublishedFileDetails_Child {
@@ -1579,6 +1908,22 @@ export const PublishedFileDetails_Child = {
     }
     return message;
   },
+
+  fromJSON(object: any): PublishedFileDetails_Child {
+    return {
+      publishedfileid: isSet(object.publishedfileid) ? String(object.publishedfileid) : "0",
+      sortorder: isSet(object.sortorder) ? Number(object.sortorder) : 0,
+      fileType: isSet(object.fileType) ? Number(object.fileType) : 0,
+    };
+  },
+
+  toJSON(message: PublishedFileDetails_Child): unknown {
+    const obj: any = {};
+    message.publishedfileid !== undefined && (obj.publishedfileid = message.publishedfileid);
+    message.sortorder !== undefined && (obj.sortorder = Math.round(message.sortorder));
+    message.fileType !== undefined && (obj.fileType = Math.round(message.fileType));
+    return obj;
+  },
 };
 
 function createBasePublishedFileDetails_KVTag(): PublishedFileDetails_KVTag {
@@ -1624,6 +1969,17 @@ export const PublishedFileDetails_KVTag = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): PublishedFileDetails_KVTag {
+    return { key: isSet(object.key) ? String(object.key) : "", value: isSet(object.value) ? String(object.value) : "" };
+  },
+
+  toJSON(message: PublishedFileDetails_KVTag): unknown {
+    const obj: any = {};
+    message.key !== undefined && (obj.key = message.key);
+    message.value !== undefined && (obj.value = message.value);
+    return obj;
   },
 };
 
@@ -1681,6 +2037,22 @@ export const PublishedFileDetails_VoteData = {
     }
     return message;
   },
+
+  fromJSON(object: any): PublishedFileDetails_VoteData {
+    return {
+      score: isSet(object.score) ? Number(object.score) : 0,
+      votesUp: isSet(object.votesUp) ? Number(object.votesUp) : 0,
+      votesDown: isSet(object.votesDown) ? Number(object.votesDown) : 0,
+    };
+  },
+
+  toJSON(message: PublishedFileDetails_VoteData): unknown {
+    const obj: any = {};
+    message.score !== undefined && (obj.score = message.score);
+    message.votesUp !== undefined && (obj.votesUp = Math.round(message.votesUp));
+    message.votesDown !== undefined && (obj.votesDown = Math.round(message.votesDown));
+    return obj;
+  },
 };
 
 function createBaseCPublishedFileGetDetailsResponse(): CPublishedFileGetDetailsResponse {
@@ -1716,6 +2088,26 @@ export const CPublishedFileGetDetailsResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CPublishedFileGetDetailsResponse {
+    return {
+      publishedfiledetails: Array.isArray(object?.publishedfiledetails)
+        ? object.publishedfiledetails.map((e: any) => PublishedFileDetails.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CPublishedFileGetDetailsResponse): unknown {
+    const obj: any = {};
+    if (message.publishedfiledetails) {
+      obj.publishedfiledetails = message.publishedfiledetails.map((e) =>
+        e ? PublishedFileDetails.toJSON(e) : undefined
+      );
+    } else {
+      obj.publishedfiledetails = [];
+    }
+    return obj;
   },
 };
 
@@ -1843,6 +2235,42 @@ export const CPublishedFileGetUserFilesRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CPublishedFileGetUserFilesRequest {
+    return {
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      page: isSet(object.page) ? Number(object.page) : 0,
+      numperpage: isSet(object.numperpage) ? Number(object.numperpage) : 0,
+      sortmethod: isSet(object.sortmethod) ? String(object.sortmethod) : "",
+      totalonly: isSet(object.totalonly) ? Boolean(object.totalonly) : false,
+      privacy: isSet(object.privacy) ? Number(object.privacy) : 0,
+      idsOnly: isSet(object.idsOnly) ? Boolean(object.idsOnly) : false,
+      requiredtags: Array.isArray(object?.requiredtags) ? object.requiredtags.map((e: any) => String(e)) : [],
+      excludedtags: Array.isArray(object?.excludedtags) ? object.excludedtags.map((e: any) => String(e)) : [],
+    };
+  },
+
+  toJSON(message: CPublishedFileGetUserFilesRequest): unknown {
+    const obj: any = {};
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    message.page !== undefined && (obj.page = Math.round(message.page));
+    message.numperpage !== undefined && (obj.numperpage = Math.round(message.numperpage));
+    message.sortmethod !== undefined && (obj.sortmethod = message.sortmethod);
+    message.totalonly !== undefined && (obj.totalonly = message.totalonly);
+    message.privacy !== undefined && (obj.privacy = Math.round(message.privacy));
+    message.idsOnly !== undefined && (obj.idsOnly = message.idsOnly);
+    if (message.requiredtags) {
+      obj.requiredtags = message.requiredtags.map((e) => e);
+    } else {
+      obj.requiredtags = [];
+    }
+    if (message.excludedtags) {
+      obj.excludedtags = message.excludedtags.map((e) => e);
+    } else {
+      obj.excludedtags = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCPublishedFileGetUserFilesResponse(): CPublishedFileGetUserFilesResponse {
@@ -1909,6 +2337,38 @@ export const CPublishedFileGetUserFilesResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CPublishedFileGetUserFilesResponse {
+    return {
+      total: isSet(object.total) ? Number(object.total) : 0,
+      startindex: isSet(object.startindex) ? Number(object.startindex) : 0,
+      publishedfiledetails: Array.isArray(object?.publishedfiledetails)
+        ? object.publishedfiledetails.map((e: any) => PublishedFileDetails.fromJSON(e))
+        : [],
+      apps: Array.isArray(object?.apps)
+        ? object.apps.map((e: any) => CPublishedFileGetUserFilesResponse_App.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CPublishedFileGetUserFilesResponse): unknown {
+    const obj: any = {};
+    message.total !== undefined && (obj.total = Math.round(message.total));
+    message.startindex !== undefined && (obj.startindex = Math.round(message.startindex));
+    if (message.publishedfiledetails) {
+      obj.publishedfiledetails = message.publishedfiledetails.map((e) =>
+        e ? PublishedFileDetails.toJSON(e) : undefined
+      );
+    } else {
+      obj.publishedfiledetails = [];
+    }
+    if (message.apps) {
+      obj.apps = message.apps.map((e) => e ? CPublishedFileGetUserFilesResponse_App.toJSON(e) : undefined);
+    } else {
+      obj.apps = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCPublishedFileGetUserFilesResponse_App(): CPublishedFileGetUserFilesResponse_App {
@@ -1974,6 +2434,24 @@ export const CPublishedFileGetUserFilesResponse_App = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CPublishedFileGetUserFilesResponse_App {
+    return {
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      shortcutid: isSet(object.shortcutid) ? Number(object.shortcutid) : 0,
+      private: isSet(object.private) ? Boolean(object.private) : false,
+    };
+  },
+
+  toJSON(message: CPublishedFileGetUserFilesResponse_App): unknown {
+    const obj: any = {};
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    message.name !== undefined && (obj.name = message.name);
+    message.shortcutid !== undefined && (obj.shortcutid = Math.round(message.shortcutid));
+    message.private !== undefined && (obj.private = message.private);
+    return obj;
   },
 };
 
@@ -2090,6 +2568,36 @@ export const CPublishedFileUpdateRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CPublishedFileUpdateRequest {
+    return {
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      publishedfileid: isSet(object.publishedfileid) ? String(object.publishedfileid) : "0",
+      title: isSet(object.title) ? String(object.title) : "",
+      fileDescription: isSet(object.fileDescription) ? String(object.fileDescription) : "",
+      visibility: isSet(object.visibility) ? Number(object.visibility) : 0,
+      tags: Array.isArray(object?.tags) ? object.tags.map((e: any) => String(e)) : [],
+      filename: isSet(object.filename) ? String(object.filename) : "",
+      previewFilename: isSet(object.previewFilename) ? String(object.previewFilename) : "",
+    };
+  },
+
+  toJSON(message: CPublishedFileUpdateRequest): unknown {
+    const obj: any = {};
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    message.publishedfileid !== undefined && (obj.publishedfileid = message.publishedfileid);
+    message.title !== undefined && (obj.title = message.title);
+    message.fileDescription !== undefined && (obj.fileDescription = message.fileDescription);
+    message.visibility !== undefined && (obj.visibility = Math.round(message.visibility));
+    if (message.tags) {
+      obj.tags = message.tags.map((e) => e);
+    } else {
+      obj.tags = [];
+    }
+    message.filename !== undefined && (obj.filename = message.filename);
+    message.previewFilename !== undefined && (obj.previewFilename = message.previewFilename);
+    return obj;
+  },
 };
 
 function createBaseCPublishedFileUpdateResponse(): CPublishedFileUpdateResponse {
@@ -2115,6 +2623,15 @@ export const CPublishedFileUpdateResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CPublishedFileUpdateResponse {
+    return {};
+  },
+
+  toJSON(_: CPublishedFileUpdateResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -2202,6 +2719,36 @@ export const CPublishedFileRefreshVotingQueueRequest = {
     }
     return message;
   },
+
+  fromJSON(object: any): CPublishedFileRefreshVotingQueueRequest {
+    return {
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      matchingFileType: isSet(object.matchingFileType) ? Number(object.matchingFileType) : 0,
+      tags: Array.isArray(object?.tags) ? object.tags.map((e: any) => String(e)) : [],
+      matchAllTags: isSet(object.matchAllTags) ? Boolean(object.matchAllTags) : false,
+      excludedTags: Array.isArray(object?.excludedTags) ? object.excludedTags.map((e: any) => String(e)) : [],
+      desiredQueueSize: isSet(object.desiredQueueSize) ? Number(object.desiredQueueSize) : 0,
+    };
+  },
+
+  toJSON(message: CPublishedFileRefreshVotingQueueRequest): unknown {
+    const obj: any = {};
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    message.matchingFileType !== undefined && (obj.matchingFileType = Math.round(message.matchingFileType));
+    if (message.tags) {
+      obj.tags = message.tags.map((e) => e);
+    } else {
+      obj.tags = [];
+    }
+    message.matchAllTags !== undefined && (obj.matchAllTags = message.matchAllTags);
+    if (message.excludedTags) {
+      obj.excludedTags = message.excludedTags.map((e) => e);
+    } else {
+      obj.excludedTags = [];
+    }
+    message.desiredQueueSize !== undefined && (obj.desiredQueueSize = Math.round(message.desiredQueueSize));
+    return obj;
+  },
 };
 
 function createBaseCPublishedFileRefreshVotingQueueResponse(): CPublishedFileRefreshVotingQueueResponse {
@@ -2227,6 +2774,15 @@ export const CPublishedFileRefreshVotingQueueResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CPublishedFileRefreshVotingQueueResponse {
+    return {};
+  },
+
+  toJSON(_: CPublishedFileRefreshVotingQueueResponse): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -2312,4 +2868,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

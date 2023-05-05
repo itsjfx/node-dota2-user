@@ -29,7 +29,6 @@ for file in "$PROTOS_PATH"/*.proto; do
         --ts_proto_opt=forceLong=string \
         --ts_proto_opt=exportCommonSymbols=false \
         --ts_proto_opt=unrecognizedEnum=false \
-        --ts_proto_opt=outputJsonMethods=false \
         --ts_proto_opt=outputPartialMethods=false \
         "$file"
 done

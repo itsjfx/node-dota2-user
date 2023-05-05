@@ -19,6 +19,85 @@ export enum EBaseGameEvents {
   GE_SosStopSoundEventHash = 212,
 }
 
+export function eBaseGameEventsFromJSON(object: any): EBaseGameEvents {
+  switch (object) {
+    case 200:
+    case "GE_VDebugGameSessionIDEvent":
+      return EBaseGameEvents.GE_VDebugGameSessionIDEvent;
+    case 201:
+    case "GE_PlaceDecalEvent":
+      return EBaseGameEvents.GE_PlaceDecalEvent;
+    case 202:
+    case "GE_ClearWorldDecalsEvent":
+      return EBaseGameEvents.GE_ClearWorldDecalsEvent;
+    case 203:
+    case "GE_ClearEntityDecalsEvent":
+      return EBaseGameEvents.GE_ClearEntityDecalsEvent;
+    case 204:
+    case "GE_ClearDecalsForSkeletonInstanceEvent":
+      return EBaseGameEvents.GE_ClearDecalsForSkeletonInstanceEvent;
+    case 205:
+    case "GE_Source1LegacyGameEventList":
+      return EBaseGameEvents.GE_Source1LegacyGameEventList;
+    case 206:
+    case "GE_Source1LegacyListenEvents":
+      return EBaseGameEvents.GE_Source1LegacyListenEvents;
+    case 207:
+    case "GE_Source1LegacyGameEvent":
+      return EBaseGameEvents.GE_Source1LegacyGameEvent;
+    case 208:
+    case "GE_SosStartSoundEvent":
+      return EBaseGameEvents.GE_SosStartSoundEvent;
+    case 209:
+    case "GE_SosStopSoundEvent":
+      return EBaseGameEvents.GE_SosStopSoundEvent;
+    case 210:
+    case "GE_SosSetSoundEventParams":
+      return EBaseGameEvents.GE_SosSetSoundEventParams;
+    case 211:
+    case "GE_SosSetLibraryStackFields":
+      return EBaseGameEvents.GE_SosSetLibraryStackFields;
+    case 212:
+    case "GE_SosStopSoundEventHash":
+      return EBaseGameEvents.GE_SosStopSoundEventHash;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EBaseGameEvents");
+  }
+}
+
+export function eBaseGameEventsToJSON(object: EBaseGameEvents): string {
+  switch (object) {
+    case EBaseGameEvents.GE_VDebugGameSessionIDEvent:
+      return "GE_VDebugGameSessionIDEvent";
+    case EBaseGameEvents.GE_PlaceDecalEvent:
+      return "GE_PlaceDecalEvent";
+    case EBaseGameEvents.GE_ClearWorldDecalsEvent:
+      return "GE_ClearWorldDecalsEvent";
+    case EBaseGameEvents.GE_ClearEntityDecalsEvent:
+      return "GE_ClearEntityDecalsEvent";
+    case EBaseGameEvents.GE_ClearDecalsForSkeletonInstanceEvent:
+      return "GE_ClearDecalsForSkeletonInstanceEvent";
+    case EBaseGameEvents.GE_Source1LegacyGameEventList:
+      return "GE_Source1LegacyGameEventList";
+    case EBaseGameEvents.GE_Source1LegacyListenEvents:
+      return "GE_Source1LegacyListenEvents";
+    case EBaseGameEvents.GE_Source1LegacyGameEvent:
+      return "GE_Source1LegacyGameEvent";
+    case EBaseGameEvents.GE_SosStartSoundEvent:
+      return "GE_SosStartSoundEvent";
+    case EBaseGameEvents.GE_SosStopSoundEvent:
+      return "GE_SosStopSoundEvent";
+    case EBaseGameEvents.GE_SosSetSoundEventParams:
+      return "GE_SosSetSoundEventParams";
+    case EBaseGameEvents.GE_SosSetLibraryStackFields:
+      return "GE_SosSetLibraryStackFields";
+    case EBaseGameEvents.GE_SosStopSoundEventHash:
+      return "GE_SosStopSoundEventHash";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EBaseGameEvents");
+  }
+}
+
 export interface CMsgVDebugGameSessionIDEvent {
   clientid: number;
   gamesessionid: string;
@@ -165,6 +244,20 @@ export const CMsgVDebugGameSessionIDEvent = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgVDebugGameSessionIDEvent {
+    return {
+      clientid: isSet(object.clientid) ? Number(object.clientid) : 0,
+      gamesessionid: isSet(object.gamesessionid) ? String(object.gamesessionid) : "",
+    };
+  },
+
+  toJSON(message: CMsgVDebugGameSessionIDEvent): unknown {
+    const obj: any = {};
+    message.clientid !== undefined && (obj.clientid = Math.round(message.clientid));
+    message.gamesessionid !== undefined && (obj.gamesessionid = message.gamesessionid);
+    return obj;
   },
 };
 
@@ -347,6 +440,45 @@ export const CMsgPlaceDecalEvent = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgPlaceDecalEvent {
+    return {
+      position: isSet(object.position) ? CMsgVector.fromJSON(object.position) : undefined,
+      normal: isSet(object.normal) ? CMsgVector.fromJSON(object.normal) : undefined,
+      saxis: isSet(object.saxis) ? CMsgVector.fromJSON(object.saxis) : undefined,
+      decalmaterialindex: isSet(object.decalmaterialindex) ? Number(object.decalmaterialindex) : 0,
+      flags: isSet(object.flags) ? Number(object.flags) : 0,
+      color: isSet(object.color) ? Number(object.color) : 0,
+      width: isSet(object.width) ? Number(object.width) : 0,
+      height: isSet(object.height) ? Number(object.height) : 0,
+      depth: isSet(object.depth) ? Number(object.depth) : 0,
+      entityhandleindex: isSet(object.entityhandleindex) ? Number(object.entityhandleindex) : 0,
+      skeletoninstancehash: isSet(object.skeletoninstancehash) ? Number(object.skeletoninstancehash) : 0,
+      boneindex: isSet(object.boneindex) ? Number(object.boneindex) : 0,
+      translucenthit: isSet(object.translucenthit) ? Boolean(object.translucenthit) : false,
+      isAdjacent: isSet(object.isAdjacent) ? Boolean(object.isAdjacent) : false,
+    };
+  },
+
+  toJSON(message: CMsgPlaceDecalEvent): unknown {
+    const obj: any = {};
+    message.position !== undefined &&
+      (obj.position = message.position ? CMsgVector.toJSON(message.position) : undefined);
+    message.normal !== undefined && (obj.normal = message.normal ? CMsgVector.toJSON(message.normal) : undefined);
+    message.saxis !== undefined && (obj.saxis = message.saxis ? CMsgVector.toJSON(message.saxis) : undefined);
+    message.decalmaterialindex !== undefined && (obj.decalmaterialindex = Math.round(message.decalmaterialindex));
+    message.flags !== undefined && (obj.flags = Math.round(message.flags));
+    message.color !== undefined && (obj.color = Math.round(message.color));
+    message.width !== undefined && (obj.width = message.width);
+    message.height !== undefined && (obj.height = message.height);
+    message.depth !== undefined && (obj.depth = message.depth);
+    message.entityhandleindex !== undefined && (obj.entityhandleindex = Math.round(message.entityhandleindex));
+    message.skeletoninstancehash !== undefined && (obj.skeletoninstancehash = Math.round(message.skeletoninstancehash));
+    message.boneindex !== undefined && (obj.boneindex = Math.round(message.boneindex));
+    message.translucenthit !== undefined && (obj.translucenthit = message.translucenthit);
+    message.isAdjacent !== undefined && (obj.isAdjacent = message.isAdjacent);
+    return obj;
+  },
 };
 
 function createBaseCMsgClearWorldDecalsEvent(): CMsgClearWorldDecalsEvent {
@@ -383,6 +515,16 @@ export const CMsgClearWorldDecalsEvent = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClearWorldDecalsEvent {
+    return { flagstoclear: isSet(object.flagstoclear) ? Number(object.flagstoclear) : 0 };
+  },
+
+  toJSON(message: CMsgClearWorldDecalsEvent): unknown {
+    const obj: any = {};
+    message.flagstoclear !== undefined && (obj.flagstoclear = Math.round(message.flagstoclear));
+    return obj;
+  },
 };
 
 function createBaseCMsgClearEntityDecalsEvent(): CMsgClearEntityDecalsEvent {
@@ -418,6 +560,16 @@ export const CMsgClearEntityDecalsEvent = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClearEntityDecalsEvent {
+    return { flagstoclear: isSet(object.flagstoclear) ? Number(object.flagstoclear) : 0 };
+  },
+
+  toJSON(message: CMsgClearEntityDecalsEvent): unknown {
+    const obj: any = {};
+    message.flagstoclear !== undefined && (obj.flagstoclear = Math.round(message.flagstoclear));
+    return obj;
   },
 };
 
@@ -475,6 +627,22 @@ export const CMsgClearDecalsForSkeletonInstanceEvent = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClearDecalsForSkeletonInstanceEvent {
+    return {
+      flagstoclear: isSet(object.flagstoclear) ? Number(object.flagstoclear) : 0,
+      entityhandleindex: isSet(object.entityhandleindex) ? Number(object.entityhandleindex) : 0,
+      skeletoninstancehash: isSet(object.skeletoninstancehash) ? Number(object.skeletoninstancehash) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClearDecalsForSkeletonInstanceEvent): unknown {
+    const obj: any = {};
+    message.flagstoclear !== undefined && (obj.flagstoclear = Math.round(message.flagstoclear));
+    message.entityhandleindex !== undefined && (obj.entityhandleindex = Math.round(message.entityhandleindex));
+    message.skeletoninstancehash !== undefined && (obj.skeletoninstancehash = Math.round(message.skeletoninstancehash));
+    return obj;
+  },
 };
 
 function createBaseCMsgSource1LegacyGameEventList(): CMsgSource1LegacyGameEventList {
@@ -510,6 +678,26 @@ export const CMsgSource1LegacyGameEventList = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSource1LegacyGameEventList {
+    return {
+      descriptors: Array.isArray(object?.descriptors)
+        ? object.descriptors.map((e: any) => CMsgSource1LegacyGameEventList_descriptorT.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgSource1LegacyGameEventList): unknown {
+    const obj: any = {};
+    if (message.descriptors) {
+      obj.descriptors = message.descriptors.map((e) =>
+        e ? CMsgSource1LegacyGameEventList_descriptorT.toJSON(e) : undefined
+      );
+    } else {
+      obj.descriptors = [];
+    }
+    return obj;
   },
 };
 
@@ -556,6 +744,17 @@ export const CMsgSource1LegacyGameEventList_keyT = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSource1LegacyGameEventList_keyT {
+    return { type: isSet(object.type) ? Number(object.type) : 0, name: isSet(object.name) ? String(object.name) : "" };
+  },
+
+  toJSON(message: CMsgSource1LegacyGameEventList_keyT): unknown {
+    const obj: any = {};
+    message.type !== undefined && (obj.type = Math.round(message.type));
+    message.name !== undefined && (obj.name = message.name);
+    return obj;
   },
 };
 
@@ -613,6 +812,28 @@ export const CMsgSource1LegacyGameEventList_descriptorT = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSource1LegacyGameEventList_descriptorT {
+    return {
+      eventid: isSet(object.eventid) ? Number(object.eventid) : 0,
+      name: isSet(object.name) ? String(object.name) : "",
+      keys: Array.isArray(object?.keys)
+        ? object.keys.map((e: any) => CMsgSource1LegacyGameEventList_keyT.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgSource1LegacyGameEventList_descriptorT): unknown {
+    const obj: any = {};
+    message.eventid !== undefined && (obj.eventid = Math.round(message.eventid));
+    message.name !== undefined && (obj.name = message.name);
+    if (message.keys) {
+      obj.keys = message.keys.map((e) => e ? CMsgSource1LegacyGameEventList_keyT.toJSON(e) : undefined);
+    } else {
+      obj.keys = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCMsgSource1LegacyListenEvents(): CMsgSource1LegacyListenEvents {
@@ -669,6 +890,24 @@ export const CMsgSource1LegacyListenEvents = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSource1LegacyListenEvents {
+    return {
+      playerslot: isSet(object.playerslot) ? Number(object.playerslot) : 0,
+      eventarraybits: Array.isArray(object?.eventarraybits) ? object.eventarraybits.map((e: any) => Number(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgSource1LegacyListenEvents): unknown {
+    const obj: any = {};
+    message.playerslot !== undefined && (obj.playerslot = Math.round(message.playerslot));
+    if (message.eventarraybits) {
+      obj.eventarraybits = message.eventarraybits.map((e) => Math.round(e));
+    } else {
+      obj.eventarraybits = [];
+    }
+    return obj;
   },
 };
 
@@ -745,6 +984,30 @@ export const CMsgSource1LegacyGameEvent = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSource1LegacyGameEvent {
+    return {
+      eventName: isSet(object.eventName) ? String(object.eventName) : "",
+      eventid: isSet(object.eventid) ? Number(object.eventid) : 0,
+      keys: Array.isArray(object?.keys) ? object.keys.map((e: any) => CMsgSource1LegacyGameEvent_keyT.fromJSON(e)) : [],
+      serverTick: isSet(object.serverTick) ? Number(object.serverTick) : 0,
+      passthrough: isSet(object.passthrough) ? Number(object.passthrough) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSource1LegacyGameEvent): unknown {
+    const obj: any = {};
+    message.eventName !== undefined && (obj.eventName = message.eventName);
+    message.eventid !== undefined && (obj.eventid = Math.round(message.eventid));
+    if (message.keys) {
+      obj.keys = message.keys.map((e) => e ? CMsgSource1LegacyGameEvent_keyT.toJSON(e) : undefined);
+    } else {
+      obj.keys = [];
+    }
+    message.serverTick !== undefined && (obj.serverTick = Math.round(message.serverTick));
+    message.passthrough !== undefined && (obj.passthrough = Math.round(message.passthrough));
+    return obj;
   },
 };
 
@@ -852,6 +1115,32 @@ export const CMsgSource1LegacyGameEvent_keyT = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSource1LegacyGameEvent_keyT {
+    return {
+      type: isSet(object.type) ? Number(object.type) : 0,
+      valString: isSet(object.valString) ? String(object.valString) : "",
+      valFloat: isSet(object.valFloat) ? Number(object.valFloat) : 0,
+      valLong: isSet(object.valLong) ? Number(object.valLong) : 0,
+      valShort: isSet(object.valShort) ? Number(object.valShort) : 0,
+      valByte: isSet(object.valByte) ? Number(object.valByte) : 0,
+      valBool: isSet(object.valBool) ? Boolean(object.valBool) : false,
+      valUint64: isSet(object.valUint64) ? String(object.valUint64) : "0",
+    };
+  },
+
+  toJSON(message: CMsgSource1LegacyGameEvent_keyT): unknown {
+    const obj: any = {};
+    message.type !== undefined && (obj.type = Math.round(message.type));
+    message.valString !== undefined && (obj.valString = message.valString);
+    message.valFloat !== undefined && (obj.valFloat = message.valFloat);
+    message.valLong !== undefined && (obj.valLong = Math.round(message.valLong));
+    message.valShort !== undefined && (obj.valShort = Math.round(message.valShort));
+    message.valByte !== undefined && (obj.valByte = Math.round(message.valByte));
+    message.valBool !== undefined && (obj.valBool = message.valBool);
+    message.valUint64 !== undefined && (obj.valUint64 = message.valUint64);
+    return obj;
+  },
 };
 
 function createBaseCMsgSosStartSoundEvent(): CMsgSosStartSoundEvent {
@@ -945,6 +1234,29 @@ export const CMsgSosStartSoundEvent = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSosStartSoundEvent {
+    return {
+      soundeventGuid: isSet(object.soundeventGuid) ? Number(object.soundeventGuid) : 0,
+      soundeventHash: isSet(object.soundeventHash) ? Number(object.soundeventHash) : 0,
+      sourceEntityIndex: isSet(object.sourceEntityIndex) ? Number(object.sourceEntityIndex) : 0,
+      seed: isSet(object.seed) ? Number(object.seed) : 0,
+      packedParams: isSet(object.packedParams) ? Buffer.from(bytesFromBase64(object.packedParams)) : Buffer.alloc(0),
+      startTime: isSet(object.startTime) ? Number(object.startTime) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSosStartSoundEvent): unknown {
+    const obj: any = {};
+    message.soundeventGuid !== undefined && (obj.soundeventGuid = Math.round(message.soundeventGuid));
+    message.soundeventHash !== undefined && (obj.soundeventHash = Math.round(message.soundeventHash));
+    message.sourceEntityIndex !== undefined && (obj.sourceEntityIndex = Math.round(message.sourceEntityIndex));
+    message.seed !== undefined && (obj.seed = Math.round(message.seed));
+    message.packedParams !== undefined &&
+      (obj.packedParams = base64FromBytes(message.packedParams !== undefined ? message.packedParams : Buffer.alloc(0)));
+    message.startTime !== undefined && (obj.startTime = message.startTime);
+    return obj;
+  },
 };
 
 function createBaseCMsgSosStopSoundEvent(): CMsgSosStopSoundEvent {
@@ -980,6 +1292,16 @@ export const CMsgSosStopSoundEvent = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSosStopSoundEvent {
+    return { soundeventGuid: isSet(object.soundeventGuid) ? Number(object.soundeventGuid) : 0 };
+  },
+
+  toJSON(message: CMsgSosStopSoundEvent): unknown {
+    const obj: any = {};
+    message.soundeventGuid !== undefined && (obj.soundeventGuid = Math.round(message.soundeventGuid));
+    return obj;
   },
 };
 
@@ -1027,6 +1349,20 @@ export const CMsgSosStopSoundEventHash = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSosStopSoundEventHash {
+    return {
+      soundeventHash: isSet(object.soundeventHash) ? Number(object.soundeventHash) : 0,
+      sourceEntityIndex: isSet(object.sourceEntityIndex) ? Number(object.sourceEntityIndex) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSosStopSoundEventHash): unknown {
+    const obj: any = {};
+    message.soundeventHash !== undefined && (obj.soundeventHash = Math.round(message.soundeventHash));
+    message.sourceEntityIndex !== undefined && (obj.sourceEntityIndex = Math.round(message.sourceEntityIndex));
+    return obj;
+  },
 };
 
 function createBaseCMsgSosSetSoundEventParams(): CMsgSosSetSoundEventParams {
@@ -1072,6 +1408,21 @@ export const CMsgSosSetSoundEventParams = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgSosSetSoundEventParams {
+    return {
+      soundeventGuid: isSet(object.soundeventGuid) ? Number(object.soundeventGuid) : 0,
+      packedParams: isSet(object.packedParams) ? Buffer.from(bytesFromBase64(object.packedParams)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CMsgSosSetSoundEventParams): unknown {
+    const obj: any = {};
+    message.soundeventGuid !== undefined && (obj.soundeventGuid = Math.round(message.soundeventGuid));
+    message.packedParams !== undefined &&
+      (obj.packedParams = base64FromBytes(message.packedParams !== undefined ? message.packedParams : Buffer.alloc(0)));
+    return obj;
   },
 };
 
@@ -1119,7 +1470,66 @@ export const CMsgSosSetLibraryStackFields = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgSosSetLibraryStackFields {
+    return {
+      stackHash: isSet(object.stackHash) ? Number(object.stackHash) : 0,
+      packedFields: isSet(object.packedFields) ? Buffer.from(bytesFromBase64(object.packedFields)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CMsgSosSetLibraryStackFields): unknown {
+    const obj: any = {};
+    message.stackHash !== undefined && (obj.stackHash = Math.round(message.stackHash));
+    message.packedFields !== undefined &&
+      (obj.packedFields = base64FromBytes(message.packedFields !== undefined ? message.packedFields : Buffer.alloc(0)));
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if (tsProtoGlobalThis.Buffer) {
+    return Uint8Array.from(tsProtoGlobalThis.Buffer.from(b64, "base64"));
+  } else {
+    const bin = tsProtoGlobalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if (tsProtoGlobalThis.Buffer) {
+    return tsProtoGlobalThis.Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(String.fromCharCode(byte));
+    });
+    return tsProtoGlobalThis.btoa(bin.join(""));
+  }
+}
 
 function longToString(long: Long) {
   return long.toString();
@@ -1128,4 +1538,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

@@ -3,7 +3,17 @@ import Long from "long";
 import _m0 from "protobufjs/minimal";
 import { CSOEconItemAttribute, CSOEconItemEquipped } from "./base_gcmessages";
 import { CMsgMatchMatchmakingStats, CMvpData } from "./dota_gcmessages_common_match_management";
-import { dotaGcTeam, EDOTAMMRBoostType, EEvent } from "./dota_shared_enums";
+import {
+  dotaGcTeam,
+  dotaGcTeamFromJSON,
+  dotaGcTeamToJSON,
+  EDOTAMMRBoostType,
+  eDOTAMMRBoostTypeFromJSON,
+  eDOTAMMRBoostTypeToJSON,
+  EEvent,
+  eEventFromJSON,
+  eEventToJSON,
+} from "./dota_shared_enums";
 
 export interface CDOTAMatchMetadataFile {
   version: number;
@@ -405,6 +415,30 @@ export const CDOTAMatchMetadataFile = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAMatchMetadataFile {
+    return {
+      version: isSet(object.version) ? Number(object.version) : 0,
+      matchId: isSet(object.matchId) ? String(object.matchId) : "0",
+      metadata: isSet(object.metadata) ? CDOTAMatchMetadata.fromJSON(object.metadata) : undefined,
+      privateMetadata: isSet(object.privateMetadata)
+        ? Buffer.from(bytesFromBase64(object.privateMetadata))
+        : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CDOTAMatchMetadataFile): unknown {
+    const obj: any = {};
+    message.version !== undefined && (obj.version = Math.round(message.version));
+    message.matchId !== undefined && (obj.matchId = message.matchId);
+    message.metadata !== undefined &&
+      (obj.metadata = message.metadata ? CDOTAMatchMetadata.toJSON(message.metadata) : undefined);
+    message.privateMetadata !== undefined &&
+      (obj.privateMetadata = base64FromBytes(
+        message.privateMetadata !== undefined ? message.privateMetadata : Buffer.alloc(0),
+      ));
+    return obj;
+  },
 };
 
 function createBaseCDOTAMatchMetadata(): CDOTAMatchMetadata {
@@ -544,6 +578,68 @@ export const CDOTAMatchMetadata = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAMatchMetadata {
+    return {
+      teams: Array.isArray(object?.teams) ? object.teams.map((e: any) => CDOTAMatchMetadata_Team.fromJSON(e)) : [],
+      lobbyId: isSet(object.lobbyId) ? String(object.lobbyId) : "0",
+      reportUntilTime: isSet(object.reportUntilTime) ? String(object.reportUntilTime) : "0",
+      eventGameCustomTable: isSet(object.eventGameCustomTable)
+        ? Buffer.from(bytesFromBase64(object.eventGameCustomTable))
+        : Buffer.alloc(0),
+      primaryEventId: isSet(object.primaryEventId) ? Number(object.primaryEventId) : 0,
+      matchmakingStats: isSet(object.matchmakingStats)
+        ? CMsgMatchMatchmakingStats.fromJSON(object.matchmakingStats)
+        : undefined,
+      mvpData: isSet(object.mvpData) ? CMvpData.fromJSON(object.mvpData) : undefined,
+      guildChallengeProgress: Array.isArray(object?.guildChallengeProgress)
+        ? object.guildChallengeProgress.map((e: any) => CDOTAMatchMetadata_GuildChallengeProgress.fromJSON(e))
+        : [],
+      customPostGameTable: isSet(object.customPostGameTable)
+        ? Buffer.from(bytesFromBase64(object.customPostGameTable))
+        : Buffer.alloc(0),
+      matchTips: Array.isArray(object?.matchTips)
+        ? object.matchTips.map((e: any) => CDOTAMatchMetadata_Tip.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CDOTAMatchMetadata): unknown {
+    const obj: any = {};
+    if (message.teams) {
+      obj.teams = message.teams.map((e) => e ? CDOTAMatchMetadata_Team.toJSON(e) : undefined);
+    } else {
+      obj.teams = [];
+    }
+    message.lobbyId !== undefined && (obj.lobbyId = message.lobbyId);
+    message.reportUntilTime !== undefined && (obj.reportUntilTime = message.reportUntilTime);
+    message.eventGameCustomTable !== undefined &&
+      (obj.eventGameCustomTable = base64FromBytes(
+        message.eventGameCustomTable !== undefined ? message.eventGameCustomTable : Buffer.alloc(0),
+      ));
+    message.primaryEventId !== undefined && (obj.primaryEventId = Math.round(message.primaryEventId));
+    message.matchmakingStats !== undefined && (obj.matchmakingStats = message.matchmakingStats
+      ? CMsgMatchMatchmakingStats.toJSON(message.matchmakingStats)
+      : undefined);
+    message.mvpData !== undefined && (obj.mvpData = message.mvpData ? CMvpData.toJSON(message.mvpData) : undefined);
+    if (message.guildChallengeProgress) {
+      obj.guildChallengeProgress = message.guildChallengeProgress.map((e) =>
+        e ? CDOTAMatchMetadata_GuildChallengeProgress.toJSON(e) : undefined
+      );
+    } else {
+      obj.guildChallengeProgress = [];
+    }
+    message.customPostGameTable !== undefined &&
+      (obj.customPostGameTable = base64FromBytes(
+        message.customPostGameTable !== undefined ? message.customPostGameTable : Buffer.alloc(0),
+      ));
+    if (message.matchTips) {
+      obj.matchTips = message.matchTips.map((e) => e ? CDOTAMatchMetadata_Tip.toJSON(e) : undefined);
+    } else {
+      obj.matchTips = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCDOTAMatchMetadata_EconItem(): CDOTAMatchMetadata_EconItem {
@@ -619,6 +715,38 @@ export const CDOTAMatchMetadata_EconItem = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAMatchMetadata_EconItem {
+    return {
+      defIndex: isSet(object.defIndex) ? Number(object.defIndex) : 0,
+      quality: isSet(object.quality) ? Number(object.quality) : 0,
+      attribute: Array.isArray(object?.attribute)
+        ? object.attribute.map((e: any) => CSOEconItemAttribute.fromJSON(e))
+        : [],
+      style: isSet(object.style) ? Number(object.style) : 0,
+      equippedState: Array.isArray(object?.equippedState)
+        ? object.equippedState.map((e: any) => CSOEconItemEquipped.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CDOTAMatchMetadata_EconItem): unknown {
+    const obj: any = {};
+    message.defIndex !== undefined && (obj.defIndex = Math.round(message.defIndex));
+    message.quality !== undefined && (obj.quality = Math.round(message.quality));
+    if (message.attribute) {
+      obj.attribute = message.attribute.map((e) => e ? CSOEconItemAttribute.toJSON(e) : undefined);
+    } else {
+      obj.attribute = [];
+    }
+    message.style !== undefined && (obj.style = Math.round(message.style));
+    if (message.equippedState) {
+      obj.equippedState = message.equippedState.map((e) => e ? CSOEconItemEquipped.toJSON(e) : undefined);
+    } else {
+      obj.equippedState = [];
+    }
+    return obj;
   },
 };
 
@@ -768,6 +896,50 @@ export const CDOTAMatchMetadata_Team = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAMatchMetadata_Team {
+    return {
+      dotaTeam: isSet(object.dotaTeam) ? Number(object.dotaTeam) : 0,
+      players: Array.isArray(object?.players)
+        ? object.players.map((e: any) => CDOTAMatchMetadata_Team_Player.fromJSON(e))
+        : [],
+      graphExperience: Array.isArray(object?.graphExperience) ? object.graphExperience.map((e: any) => Number(e)) : [],
+      graphGoldEarned: Array.isArray(object?.graphGoldEarned) ? object.graphGoldEarned.map((e: any) => Number(e)) : [],
+      graphNetWorth: Array.isArray(object?.graphNetWorth) ? object.graphNetWorth.map((e: any) => Number(e)) : [],
+      cmFirstPick: isSet(object.cmFirstPick) ? Boolean(object.cmFirstPick) : false,
+      cmCaptainPlayerId: isSet(object.cmCaptainPlayerId) ? Number(object.cmCaptainPlayerId) : 0,
+      cmPenalty: isSet(object.cmPenalty) ? Number(object.cmPenalty) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAMatchMetadata_Team): unknown {
+    const obj: any = {};
+    message.dotaTeam !== undefined && (obj.dotaTeam = Math.round(message.dotaTeam));
+    if (message.players) {
+      obj.players = message.players.map((e) => e ? CDOTAMatchMetadata_Team_Player.toJSON(e) : undefined);
+    } else {
+      obj.players = [];
+    }
+    if (message.graphExperience) {
+      obj.graphExperience = message.graphExperience.map((e) => e);
+    } else {
+      obj.graphExperience = [];
+    }
+    if (message.graphGoldEarned) {
+      obj.graphGoldEarned = message.graphGoldEarned.map((e) => e);
+    } else {
+      obj.graphGoldEarned = [];
+    }
+    if (message.graphNetWorth) {
+      obj.graphNetWorth = message.graphNetWorth.map((e) => e);
+    } else {
+      obj.graphNetWorth = [];
+    }
+    message.cmFirstPick !== undefined && (obj.cmFirstPick = message.cmFirstPick);
+    message.cmCaptainPlayerId !== undefined && (obj.cmCaptainPlayerId = Math.round(message.cmCaptainPlayerId));
+    message.cmPenalty !== undefined && (obj.cmPenalty = Math.round(message.cmPenalty));
+    return obj;
+  },
 };
 
 function createBaseCDOTAMatchMetadata_Team_PlayerKill(): CDOTAMatchMetadata_Team_PlayerKill {
@@ -814,6 +986,20 @@ export const CDOTAMatchMetadata_Team_PlayerKill = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAMatchMetadata_Team_PlayerKill {
+    return {
+      victimSlot: isSet(object.victimSlot) ? Number(object.victimSlot) : 0,
+      count: isSet(object.count) ? Number(object.count) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAMatchMetadata_Team_PlayerKill): unknown {
+    const obj: any = {};
+    message.victimSlot !== undefined && (obj.victimSlot = Math.round(message.victimSlot));
+    message.count !== undefined && (obj.count = Math.round(message.count));
+    return obj;
+  },
 };
 
 function createBaseCDOTAMatchMetadata_Team_ItemPurchase(): CDOTAMatchMetadata_Team_ItemPurchase {
@@ -859,6 +1045,20 @@ export const CDOTAMatchMetadata_Team_ItemPurchase = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAMatchMetadata_Team_ItemPurchase {
+    return {
+      itemId: isSet(object.itemId) ? Number(object.itemId) : 0,
+      purchaseTime: isSet(object.purchaseTime) ? Number(object.purchaseTime) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAMatchMetadata_Team_ItemPurchase): unknown {
+    const obj: any = {};
+    message.itemId !== undefined && (obj.itemId = Math.round(message.itemId));
+    message.purchaseTime !== undefined && (obj.purchaseTime = Math.round(message.purchaseTime));
+    return obj;
   },
 };
 
@@ -988,6 +1188,40 @@ export const CDOTAMatchMetadata_Team_InventorySnapshot = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAMatchMetadata_Team_InventorySnapshot {
+    return {
+      itemId: Array.isArray(object?.itemId) ? object.itemId.map((e: any) => Number(e)) : [],
+      gameTime: isSet(object.gameTime) ? Number(object.gameTime) : 0,
+      kills: isSet(object.kills) ? Number(object.kills) : 0,
+      deaths: isSet(object.deaths) ? Number(object.deaths) : 0,
+      assists: isSet(object.assists) ? Number(object.assists) : 0,
+      level: isSet(object.level) ? Number(object.level) : 0,
+      backpackItemId: Array.isArray(object?.backpackItemId) ? object.backpackItemId.map((e: any) => Number(e)) : [],
+      neutralItemId: isSet(object.neutralItemId) ? Number(object.neutralItemId) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAMatchMetadata_Team_InventorySnapshot): unknown {
+    const obj: any = {};
+    if (message.itemId) {
+      obj.itemId = message.itemId.map((e) => Math.round(e));
+    } else {
+      obj.itemId = [];
+    }
+    message.gameTime !== undefined && (obj.gameTime = Math.round(message.gameTime));
+    message.kills !== undefined && (obj.kills = Math.round(message.kills));
+    message.deaths !== undefined && (obj.deaths = Math.round(message.deaths));
+    message.assists !== undefined && (obj.assists = Math.round(message.assists));
+    message.level !== undefined && (obj.level = Math.round(message.level));
+    if (message.backpackItemId) {
+      obj.backpackItemId = message.backpackItemId.map((e) => Math.round(e));
+    } else {
+      obj.backpackItemId = [];
+    }
+    message.neutralItemId !== undefined && (obj.neutralItemId = Math.round(message.neutralItemId));
+    return obj;
+  },
 };
 
 function createBaseCDOTAMatchMetadata_Team_AutoStyleCriteria(): CDOTAMatchMetadata_Team_AutoStyleCriteria {
@@ -1033,6 +1267,20 @@ export const CDOTAMatchMetadata_Team_AutoStyleCriteria = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAMatchMetadata_Team_AutoStyleCriteria {
+    return {
+      nameToken: isSet(object.nameToken) ? Number(object.nameToken) : 0,
+      value: isSet(object.value) ? Number(object.value) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAMatchMetadata_Team_AutoStyleCriteria): unknown {
+    const obj: any = {};
+    message.nameToken !== undefined && (obj.nameToken = Math.round(message.nameToken));
+    message.value !== undefined && (obj.value = message.value);
+    return obj;
   },
 };
 
@@ -1138,6 +1386,30 @@ export const CDOTAMatchMetadata_Team_StrangeGemProgress = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAMatchMetadata_Team_StrangeGemProgress {
+    return {
+      killEaterType: isSet(object.killEaterType) ? Number(object.killEaterType) : 0,
+      gemItemDefIndex: isSet(object.gemItemDefIndex) ? Number(object.gemItemDefIndex) : 0,
+      requiredHeroId: isSet(object.requiredHeroId) ? Number(object.requiredHeroId) : 0,
+      startingValue: isSet(object.startingValue) ? Number(object.startingValue) : 0,
+      endingValue: isSet(object.endingValue) ? Number(object.endingValue) : 0,
+      ownerItemDefIndex: isSet(object.ownerItemDefIndex) ? Number(object.ownerItemDefIndex) : 0,
+      ownerItemId: isSet(object.ownerItemId) ? String(object.ownerItemId) : "0",
+    };
+  },
+
+  toJSON(message: CDOTAMatchMetadata_Team_StrangeGemProgress): unknown {
+    const obj: any = {};
+    message.killEaterType !== undefined && (obj.killEaterType = Math.round(message.killEaterType));
+    message.gemItemDefIndex !== undefined && (obj.gemItemDefIndex = Math.round(message.gemItemDefIndex));
+    message.requiredHeroId !== undefined && (obj.requiredHeroId = Math.round(message.requiredHeroId));
+    message.startingValue !== undefined && (obj.startingValue = Math.round(message.startingValue));
+    message.endingValue !== undefined && (obj.endingValue = Math.round(message.endingValue));
+    message.ownerItemDefIndex !== undefined && (obj.ownerItemDefIndex = Math.round(message.ownerItemDefIndex));
+    message.ownerItemId !== undefined && (obj.ownerItemId = message.ownerItemId);
+    return obj;
+  },
 };
 
 function createBaseCDOTAMatchMetadata_Team_VictoryPrediction(): CDOTAMatchMetadata_Team_VictoryPrediction {
@@ -1203,6 +1475,24 @@ export const CDOTAMatchMetadata_Team_VictoryPrediction = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAMatchMetadata_Team_VictoryPrediction {
+    return {
+      itemId: isSet(object.itemId) ? String(object.itemId) : "0",
+      itemDefIndex: isSet(object.itemDefIndex) ? Number(object.itemDefIndex) : 0,
+      startingValue: isSet(object.startingValue) ? Number(object.startingValue) : 0,
+      isVictory: isSet(object.isVictory) ? Boolean(object.isVictory) : false,
+    };
+  },
+
+  toJSON(message: CDOTAMatchMetadata_Team_VictoryPrediction): unknown {
+    const obj: any = {};
+    message.itemId !== undefined && (obj.itemId = message.itemId);
+    message.itemDefIndex !== undefined && (obj.itemDefIndex = Math.round(message.itemDefIndex));
+    message.startingValue !== undefined && (obj.startingValue = Math.round(message.startingValue));
+    message.isVictory !== undefined && (obj.isVictory = message.isVictory);
+    return obj;
   },
 };
 
@@ -1270,6 +1560,24 @@ export const CDOTAMatchMetadata_Team_SubChallenge = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAMatchMetadata_Team_SubChallenge {
+    return {
+      slotId: isSet(object.slotId) ? Number(object.slotId) : 0,
+      startValue: isSet(object.startValue) ? Number(object.startValue) : 0,
+      endValue: isSet(object.endValue) ? Number(object.endValue) : 0,
+      completed: isSet(object.completed) ? Boolean(object.completed) : false,
+    };
+  },
+
+  toJSON(message: CDOTAMatchMetadata_Team_SubChallenge): unknown {
+    const obj: any = {};
+    message.slotId !== undefined && (obj.slotId = Math.round(message.slotId));
+    message.startValue !== undefined && (obj.startValue = Math.round(message.startValue));
+    message.endValue !== undefined && (obj.endValue = Math.round(message.endValue));
+    message.completed !== undefined && (obj.completed = message.completed);
+    return obj;
+  },
 };
 
 function createBaseCDOTAMatchMetadata_Team_CavernChallengeResult(): CDOTAMatchMetadata_Team_CavernChallengeResult {
@@ -1315,6 +1623,20 @@ export const CDOTAMatchMetadata_Team_CavernChallengeResult = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAMatchMetadata_Team_CavernChallengeResult {
+    return {
+      completedPathId: isSet(object.completedPathId) ? Number(object.completedPathId) : 0,
+      claimedRoomId: isSet(object.claimedRoomId) ? Number(object.claimedRoomId) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAMatchMetadata_Team_CavernChallengeResult): unknown {
+    const obj: any = {};
+    message.completedPathId !== undefined && (obj.completedPathId = Math.round(message.completedPathId));
+    message.claimedRoomId !== undefined && (obj.claimedRoomId = Math.round(message.claimedRoomId));
+    return obj;
   },
 };
 
@@ -1392,6 +1714,26 @@ export const CDOTAMatchMetadata_Team_ActionGrant = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAMatchMetadata_Team_ActionGrant {
+    return {
+      actionId: isSet(object.actionId) ? Number(object.actionId) : 0,
+      quantity: isSet(object.quantity) ? Number(object.quantity) : 0,
+      audit: isSet(object.audit) ? Number(object.audit) : 0,
+      requiresWin: isSet(object.requiresWin) ? Boolean(object.requiresWin) : false,
+      auditData: isSet(object.auditData) ? String(object.auditData) : "0",
+    };
+  },
+
+  toJSON(message: CDOTAMatchMetadata_Team_ActionGrant): unknown {
+    const obj: any = {};
+    message.actionId !== undefined && (obj.actionId = Math.round(message.actionId));
+    message.quantity !== undefined && (obj.quantity = Math.round(message.quantity));
+    message.audit !== undefined && (obj.audit = Math.round(message.audit));
+    message.requiresWin !== undefined && (obj.requiresWin = message.requiresWin);
+    message.auditData !== undefined && (obj.auditData = message.auditData);
+    return obj;
+  },
 };
 
 function createBaseCDOTAMatchMetadata_Team_CandyGrant(): CDOTAMatchMetadata_Team_CandyGrant {
@@ -1437,6 +1779,20 @@ export const CDOTAMatchMetadata_Team_CandyGrant = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAMatchMetadata_Team_CandyGrant {
+    return {
+      points: isSet(object.points) ? Number(object.points) : 0,
+      reason: isSet(object.reason) ? Number(object.reason) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAMatchMetadata_Team_CandyGrant): unknown {
+    const obj: any = {};
+    message.points !== undefined && (obj.points = Math.round(message.points));
+    message.reason !== undefined && (obj.reason = Math.round(message.reason));
+    return obj;
   },
 };
 
@@ -1493,6 +1849,22 @@ export const CDOTAMatchMetadata_Team_PeriodicResourceData = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAMatchMetadata_Team_PeriodicResourceData {
+    return {
+      periodicResourceId: isSet(object.periodicResourceId) ? Number(object.periodicResourceId) : 0,
+      remaining: isSet(object.remaining) ? Number(object.remaining) : 0,
+      max: isSet(object.max) ? Number(object.max) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAMatchMetadata_Team_PeriodicResourceData): unknown {
+    const obj: any = {};
+    message.periodicResourceId !== undefined && (obj.periodicResourceId = Math.round(message.periodicResourceId));
+    message.remaining !== undefined && (obj.remaining = Math.round(message.remaining));
+    message.max !== undefined && (obj.max = Math.round(message.max));
+    return obj;
   },
 };
 
@@ -1798,6 +2170,117 @@ export const CDOTAMatchMetadata_Team_EventData = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAMatchMetadata_Team_EventData {
+    return {
+      eventId: isSet(object.eventId) ? Number(object.eventId) : 0,
+      eventPoints: isSet(object.eventPoints) ? Number(object.eventPoints) : 0,
+      challengeInstanceId: isSet(object.challengeInstanceId) ? Number(object.challengeInstanceId) : 0,
+      challengeQuestId: isSet(object.challengeQuestId) ? Number(object.challengeQuestId) : 0,
+      challengeQuestChallengeId: isSet(object.challengeQuestChallengeId) ? Number(object.challengeQuestChallengeId) : 0,
+      challengeCompleted: isSet(object.challengeCompleted) ? Boolean(object.challengeCompleted) : false,
+      challengeRankCompleted: isSet(object.challengeRankCompleted) ? Number(object.challengeRankCompleted) : 0,
+      challengeRankPreviouslyCompleted: isSet(object.challengeRankPreviouslyCompleted)
+        ? Number(object.challengeRankPreviouslyCompleted)
+        : 0,
+      eventOwned: isSet(object.eventOwned) ? Boolean(object.eventOwned) : false,
+      subChallengesWithProgress: Array.isArray(object?.subChallengesWithProgress)
+        ? object.subChallengesWithProgress.map((e: any) => CDOTAMatchMetadata_Team_SubChallenge.fromJSON(e))
+        : [],
+      wagerWinnings: isSet(object.wagerWinnings) ? Number(object.wagerWinnings) : 0,
+      cavernChallengeActive: isSet(object.cavernChallengeActive) ? Boolean(object.cavernChallengeActive) : false,
+      cavernChallengeWinnings: isSet(object.cavernChallengeWinnings) ? Number(object.cavernChallengeWinnings) : 0,
+      amountWagered: isSet(object.amountWagered) ? Number(object.amountWagered) : 0,
+      periodicPointAdjustments: isSet(object.periodicPointAdjustments) ? Number(object.periodicPointAdjustments) : 0,
+      cavernChallengeMapResults: Array.isArray(object?.cavernChallengeMapResults)
+        ? object.cavernChallengeMapResults.map((e: any) => CDOTAMatchMetadata_Team_CavernChallengeResult.fromJSON(e))
+        : [],
+      cavernChallengePlusShardWinnings: isSet(object.cavernChallengePlusShardWinnings)
+        ? Number(object.cavernChallengePlusShardWinnings)
+        : 0,
+      actionsGranted: Array.isArray(object?.actionsGranted)
+        ? object.actionsGranted.map((e: any) => CDOTAMatchMetadata_Team_ActionGrant.fromJSON(e))
+        : [],
+      cavernCrawlMapVariant: isSet(object.cavernCrawlMapVariant) ? Number(object.cavernCrawlMapVariant) : 0,
+      teamWagerBonusPct: isSet(object.teamWagerBonusPct) ? Number(object.teamWagerBonusPct) : 0,
+      wagerStreakPct: isSet(object.wagerStreakPct) ? Number(object.wagerStreakPct) : 0,
+      candyPointsGranted: Array.isArray(object?.candyPointsGranted)
+        ? object.candyPointsGranted.map((e: any) => CDOTAMatchMetadata_Team_CandyGrant.fromJSON(e))
+        : [],
+      activeSeasonId: isSet(object.activeSeasonId) ? Number(object.activeSeasonId) : 0,
+      cavernCrawlHalfCredit: isSet(object.cavernCrawlHalfCredit) ? Boolean(object.cavernCrawlHalfCredit) : false,
+      periodicResources: Array.isArray(object?.periodicResources)
+        ? object.periodicResources.map((e: any) => CDOTAMatchMetadata_Team_PeriodicResourceData.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CDOTAMatchMetadata_Team_EventData): unknown {
+    const obj: any = {};
+    message.eventId !== undefined && (obj.eventId = Math.round(message.eventId));
+    message.eventPoints !== undefined && (obj.eventPoints = Math.round(message.eventPoints));
+    message.challengeInstanceId !== undefined && (obj.challengeInstanceId = Math.round(message.challengeInstanceId));
+    message.challengeQuestId !== undefined && (obj.challengeQuestId = Math.round(message.challengeQuestId));
+    message.challengeQuestChallengeId !== undefined &&
+      (obj.challengeQuestChallengeId = Math.round(message.challengeQuestChallengeId));
+    message.challengeCompleted !== undefined && (obj.challengeCompleted = message.challengeCompleted);
+    message.challengeRankCompleted !== undefined &&
+      (obj.challengeRankCompleted = Math.round(message.challengeRankCompleted));
+    message.challengeRankPreviouslyCompleted !== undefined &&
+      (obj.challengeRankPreviouslyCompleted = Math.round(message.challengeRankPreviouslyCompleted));
+    message.eventOwned !== undefined && (obj.eventOwned = message.eventOwned);
+    if (message.subChallengesWithProgress) {
+      obj.subChallengesWithProgress = message.subChallengesWithProgress.map((e) =>
+        e ? CDOTAMatchMetadata_Team_SubChallenge.toJSON(e) : undefined
+      );
+    } else {
+      obj.subChallengesWithProgress = [];
+    }
+    message.wagerWinnings !== undefined && (obj.wagerWinnings = Math.round(message.wagerWinnings));
+    message.cavernChallengeActive !== undefined && (obj.cavernChallengeActive = message.cavernChallengeActive);
+    message.cavernChallengeWinnings !== undefined &&
+      (obj.cavernChallengeWinnings = Math.round(message.cavernChallengeWinnings));
+    message.amountWagered !== undefined && (obj.amountWagered = Math.round(message.amountWagered));
+    message.periodicPointAdjustments !== undefined &&
+      (obj.periodicPointAdjustments = Math.round(message.periodicPointAdjustments));
+    if (message.cavernChallengeMapResults) {
+      obj.cavernChallengeMapResults = message.cavernChallengeMapResults.map((e) =>
+        e ? CDOTAMatchMetadata_Team_CavernChallengeResult.toJSON(e) : undefined
+      );
+    } else {
+      obj.cavernChallengeMapResults = [];
+    }
+    message.cavernChallengePlusShardWinnings !== undefined &&
+      (obj.cavernChallengePlusShardWinnings = Math.round(message.cavernChallengePlusShardWinnings));
+    if (message.actionsGranted) {
+      obj.actionsGranted = message.actionsGranted.map((e) =>
+        e ? CDOTAMatchMetadata_Team_ActionGrant.toJSON(e) : undefined
+      );
+    } else {
+      obj.actionsGranted = [];
+    }
+    message.cavernCrawlMapVariant !== undefined &&
+      (obj.cavernCrawlMapVariant = Math.round(message.cavernCrawlMapVariant));
+    message.teamWagerBonusPct !== undefined && (obj.teamWagerBonusPct = Math.round(message.teamWagerBonusPct));
+    message.wagerStreakPct !== undefined && (obj.wagerStreakPct = Math.round(message.wagerStreakPct));
+    if (message.candyPointsGranted) {
+      obj.candyPointsGranted = message.candyPointsGranted.map((e) =>
+        e ? CDOTAMatchMetadata_Team_CandyGrant.toJSON(e) : undefined
+      );
+    } else {
+      obj.candyPointsGranted = [];
+    }
+    message.activeSeasonId !== undefined && (obj.activeSeasonId = Math.round(message.activeSeasonId));
+    message.cavernCrawlHalfCredit !== undefined && (obj.cavernCrawlHalfCredit = message.cavernCrawlHalfCredit);
+    if (message.periodicResources) {
+      obj.periodicResources = message.periodicResources.map((e) =>
+        e ? CDOTAMatchMetadata_Team_PeriodicResourceData.toJSON(e) : undefined
+      );
+    } else {
+      obj.periodicResources = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCDOTAMatchMetadata_Team_FeaturedGamemodeProgress(): CDOTAMatchMetadata_Team_FeaturedGamemodeProgress {
@@ -1856,6 +2339,22 @@ export const CDOTAMatchMetadata_Team_FeaturedGamemodeProgress = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAMatchMetadata_Team_FeaturedGamemodeProgress {
+    return {
+      startValue: isSet(object.startValue) ? Number(object.startValue) : 0,
+      endValue: isSet(object.endValue) ? Number(object.endValue) : 0,
+      maxValue: isSet(object.maxValue) ? Number(object.maxValue) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAMatchMetadata_Team_FeaturedGamemodeProgress): unknown {
+    const obj: any = {};
+    message.startValue !== undefined && (obj.startValue = Math.round(message.startValue));
+    message.endValue !== undefined && (obj.endValue = Math.round(message.endValue));
+    message.maxValue !== undefined && (obj.maxValue = Math.round(message.maxValue));
+    return obj;
   },
 };
 
@@ -2519,6 +3018,217 @@ export const CDOTAMatchMetadata_Team_Player = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAMatchMetadata_Team_Player {
+    return {
+      abilityUpgrades: Array.isArray(object?.abilityUpgrades) ? object.abilityUpgrades.map((e: any) => Number(e)) : [],
+      playerSlot: isSet(object.playerSlot) ? Number(object.playerSlot) : 0,
+      kills: Array.isArray(object?.kills)
+        ? object.kills.map((e: any) => CDOTAMatchMetadata_Team_PlayerKill.fromJSON(e))
+        : [],
+      items: Array.isArray(object?.items)
+        ? object.items.map((e: any) => CDOTAMatchMetadata_Team_ItemPurchase.fromJSON(e))
+        : [],
+      avgKillsX16: isSet(object.avgKillsX16) ? Number(object.avgKillsX16) : 0,
+      avgDeathsX16: isSet(object.avgDeathsX16) ? Number(object.avgDeathsX16) : 0,
+      avgAssistsX16: isSet(object.avgAssistsX16) ? Number(object.avgAssistsX16) : 0,
+      avgGpmX16: isSet(object.avgGpmX16) ? Number(object.avgGpmX16) : 0,
+      avgXpmX16: isSet(object.avgXpmX16) ? Number(object.avgXpmX16) : 0,
+      bestKillsX16: isSet(object.bestKillsX16) ? Number(object.bestKillsX16) : 0,
+      bestAssistsX16: isSet(object.bestAssistsX16) ? Number(object.bestAssistsX16) : 0,
+      bestGpmX16: isSet(object.bestGpmX16) ? Number(object.bestGpmX16) : 0,
+      bestXpmX16: isSet(object.bestXpmX16) ? Number(object.bestXpmX16) : 0,
+      winStreak: isSet(object.winStreak) ? Number(object.winStreak) : 0,
+      bestWinStreak: isSet(object.bestWinStreak) ? Number(object.bestWinStreak) : 0,
+      fightScore: isSet(object.fightScore) ? Number(object.fightScore) : 0,
+      farmScore: isSet(object.farmScore) ? Number(object.farmScore) : 0,
+      supportScore: isSet(object.supportScore) ? Number(object.supportScore) : 0,
+      pushScore: isSet(object.pushScore) ? Number(object.pushScore) : 0,
+      levelUpTimes: Array.isArray(object?.levelUpTimes) ? object.levelUpTimes.map((e: any) => Number(e)) : [],
+      graphNetWorth: Array.isArray(object?.graphNetWorth) ? object.graphNetWorth.map((e: any) => Number(e)) : [],
+      inventorySnapshot: Array.isArray(object?.inventorySnapshot)
+        ? object.inventorySnapshot.map((e: any) => CDOTAMatchMetadata_Team_InventorySnapshot.fromJSON(e))
+        : [],
+      avgStatsCalibrated: isSet(object.avgStatsCalibrated) ? Boolean(object.avgStatsCalibrated) : false,
+      autoStyleCriteria: Array.isArray(object?.autoStyleCriteria)
+        ? object.autoStyleCriteria.map((e: any) => CDOTAMatchMetadata_Team_AutoStyleCriteria.fromJSON(e))
+        : [],
+      eventData: Array.isArray(object?.eventData)
+        ? object.eventData.map((e: any) => CDOTAMatchMetadata_Team_EventData.fromJSON(e))
+        : [],
+      strangeGemProgress: Array.isArray(object?.strangeGemProgress)
+        ? object.strangeGemProgress.map((e: any) => CDOTAMatchMetadata_Team_StrangeGemProgress.fromJSON(e))
+        : [],
+      heroXp: isSet(object.heroXp) ? Number(object.heroXp) : 0,
+      campsStacked: isSet(object.campsStacked) ? Number(object.campsStacked) : 0,
+      victoryPrediction: Array.isArray(object?.victoryPrediction)
+        ? object.victoryPrediction.map((e: any) => CDOTAMatchMetadata_Team_VictoryPrediction.fromJSON(e))
+        : [],
+      laneSelectionFlags: isSet(object.laneSelectionFlags) ? Number(object.laneSelectionFlags) : 0,
+      rampages: isSet(object.rampages) ? Number(object.rampages) : 0,
+      tripleKills: isSet(object.tripleKills) ? Number(object.tripleKills) : 0,
+      aegisSnatched: isSet(object.aegisSnatched) ? Number(object.aegisSnatched) : 0,
+      rapiersPurchased: isSet(object.rapiersPurchased) ? Number(object.rapiersPurchased) : 0,
+      couriersKilled: isSet(object.couriersKilled) ? Number(object.couriersKilled) : 0,
+      netWorthRank: isSet(object.netWorthRank) ? Number(object.netWorthRank) : 0,
+      supportGoldSpent: isSet(object.supportGoldSpent) ? Number(object.supportGoldSpent) : 0,
+      observerWardsPlaced: isSet(object.observerWardsPlaced) ? Number(object.observerWardsPlaced) : 0,
+      sentryWardsPlaced: isSet(object.sentryWardsPlaced) ? Number(object.sentryWardsPlaced) : 0,
+      wardsDewarded: isSet(object.wardsDewarded) ? Number(object.wardsDewarded) : 0,
+      stunDuration: isSet(object.stunDuration) ? Number(object.stunDuration) : 0,
+      rankMmrBoostType: isSet(object.rankMmrBoostType) ? eDOTAMMRBoostTypeFromJSON(object.rankMmrBoostType) : 0,
+      contractProgress: Array.isArray(object?.contractProgress)
+        ? object.contractProgress.map((e: any) => CDOTAMatchMetadata_Team_Player_ContractProgress.fromJSON(e))
+        : [],
+      guildIds: Array.isArray(object?.guildIds)
+        ? object.guildIds.map((e: any) => Number(e))
+        : [],
+      graphHeroDamage: Array.isArray(object?.graphHeroDamage) ? object.graphHeroDamage.map((e: any) => Number(e)) : [],
+      teamNumber: isSet(object.teamNumber) ? dotaGcTeamFromJSON(object.teamNumber) : 0,
+      teamSlot: isSet(object.teamSlot) ? Number(object.teamSlot) : 0,
+      featuredGamemodeProgress: isSet(object.featuredGamemodeProgress)
+        ? CDOTAMatchMetadata_Team_FeaturedGamemodeProgress.fromJSON(object.featuredGamemodeProgress)
+        : undefined,
+      featuredHeroStickerIndex: isSet(object.featuredHeroStickerIndex) ? Number(object.featuredHeroStickerIndex) : 0,
+      featuredHeroStickerQuality: isSet(object.featuredHeroStickerQuality)
+        ? Number(object.featuredHeroStickerQuality)
+        : 0,
+      equippedEconItems: Array.isArray(object?.equippedEconItems)
+        ? object.equippedEconItems.map((e: any) => CDOTAMatchMetadata_EconItem.fromJSON(e))
+        : [],
+      gamePlayerId: isSet(object.gamePlayerId) ? Number(object.gamePlayerId) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAMatchMetadata_Team_Player): unknown {
+    const obj: any = {};
+    if (message.abilityUpgrades) {
+      obj.abilityUpgrades = message.abilityUpgrades.map((e) => Math.round(e));
+    } else {
+      obj.abilityUpgrades = [];
+    }
+    message.playerSlot !== undefined && (obj.playerSlot = Math.round(message.playerSlot));
+    if (message.kills) {
+      obj.kills = message.kills.map((e) => e ? CDOTAMatchMetadata_Team_PlayerKill.toJSON(e) : undefined);
+    } else {
+      obj.kills = [];
+    }
+    if (message.items) {
+      obj.items = message.items.map((e) => e ? CDOTAMatchMetadata_Team_ItemPurchase.toJSON(e) : undefined);
+    } else {
+      obj.items = [];
+    }
+    message.avgKillsX16 !== undefined && (obj.avgKillsX16 = Math.round(message.avgKillsX16));
+    message.avgDeathsX16 !== undefined && (obj.avgDeathsX16 = Math.round(message.avgDeathsX16));
+    message.avgAssistsX16 !== undefined && (obj.avgAssistsX16 = Math.round(message.avgAssistsX16));
+    message.avgGpmX16 !== undefined && (obj.avgGpmX16 = Math.round(message.avgGpmX16));
+    message.avgXpmX16 !== undefined && (obj.avgXpmX16 = Math.round(message.avgXpmX16));
+    message.bestKillsX16 !== undefined && (obj.bestKillsX16 = Math.round(message.bestKillsX16));
+    message.bestAssistsX16 !== undefined && (obj.bestAssistsX16 = Math.round(message.bestAssistsX16));
+    message.bestGpmX16 !== undefined && (obj.bestGpmX16 = Math.round(message.bestGpmX16));
+    message.bestXpmX16 !== undefined && (obj.bestXpmX16 = Math.round(message.bestXpmX16));
+    message.winStreak !== undefined && (obj.winStreak = Math.round(message.winStreak));
+    message.bestWinStreak !== undefined && (obj.bestWinStreak = Math.round(message.bestWinStreak));
+    message.fightScore !== undefined && (obj.fightScore = message.fightScore);
+    message.farmScore !== undefined && (obj.farmScore = message.farmScore);
+    message.supportScore !== undefined && (obj.supportScore = message.supportScore);
+    message.pushScore !== undefined && (obj.pushScore = message.pushScore);
+    if (message.levelUpTimes) {
+      obj.levelUpTimes = message.levelUpTimes.map((e) => Math.round(e));
+    } else {
+      obj.levelUpTimes = [];
+    }
+    if (message.graphNetWorth) {
+      obj.graphNetWorth = message.graphNetWorth.map((e) => e);
+    } else {
+      obj.graphNetWorth = [];
+    }
+    if (message.inventorySnapshot) {
+      obj.inventorySnapshot = message.inventorySnapshot.map((e) =>
+        e ? CDOTAMatchMetadata_Team_InventorySnapshot.toJSON(e) : undefined
+      );
+    } else {
+      obj.inventorySnapshot = [];
+    }
+    message.avgStatsCalibrated !== undefined && (obj.avgStatsCalibrated = message.avgStatsCalibrated);
+    if (message.autoStyleCriteria) {
+      obj.autoStyleCriteria = message.autoStyleCriteria.map((e) =>
+        e ? CDOTAMatchMetadata_Team_AutoStyleCriteria.toJSON(e) : undefined
+      );
+    } else {
+      obj.autoStyleCriteria = [];
+    }
+    if (message.eventData) {
+      obj.eventData = message.eventData.map((e) => e ? CDOTAMatchMetadata_Team_EventData.toJSON(e) : undefined);
+    } else {
+      obj.eventData = [];
+    }
+    if (message.strangeGemProgress) {
+      obj.strangeGemProgress = message.strangeGemProgress.map((e) =>
+        e ? CDOTAMatchMetadata_Team_StrangeGemProgress.toJSON(e) : undefined
+      );
+    } else {
+      obj.strangeGemProgress = [];
+    }
+    message.heroXp !== undefined && (obj.heroXp = Math.round(message.heroXp));
+    message.campsStacked !== undefined && (obj.campsStacked = Math.round(message.campsStacked));
+    if (message.victoryPrediction) {
+      obj.victoryPrediction = message.victoryPrediction.map((e) =>
+        e ? CDOTAMatchMetadata_Team_VictoryPrediction.toJSON(e) : undefined
+      );
+    } else {
+      obj.victoryPrediction = [];
+    }
+    message.laneSelectionFlags !== undefined && (obj.laneSelectionFlags = Math.round(message.laneSelectionFlags));
+    message.rampages !== undefined && (obj.rampages = Math.round(message.rampages));
+    message.tripleKills !== undefined && (obj.tripleKills = Math.round(message.tripleKills));
+    message.aegisSnatched !== undefined && (obj.aegisSnatched = Math.round(message.aegisSnatched));
+    message.rapiersPurchased !== undefined && (obj.rapiersPurchased = Math.round(message.rapiersPurchased));
+    message.couriersKilled !== undefined && (obj.couriersKilled = Math.round(message.couriersKilled));
+    message.netWorthRank !== undefined && (obj.netWorthRank = Math.round(message.netWorthRank));
+    message.supportGoldSpent !== undefined && (obj.supportGoldSpent = Math.round(message.supportGoldSpent));
+    message.observerWardsPlaced !== undefined && (obj.observerWardsPlaced = Math.round(message.observerWardsPlaced));
+    message.sentryWardsPlaced !== undefined && (obj.sentryWardsPlaced = Math.round(message.sentryWardsPlaced));
+    message.wardsDewarded !== undefined && (obj.wardsDewarded = Math.round(message.wardsDewarded));
+    message.stunDuration !== undefined && (obj.stunDuration = message.stunDuration);
+    message.rankMmrBoostType !== undefined &&
+      (obj.rankMmrBoostType = eDOTAMMRBoostTypeToJSON(message.rankMmrBoostType));
+    if (message.contractProgress) {
+      obj.contractProgress = message.contractProgress.map((e) =>
+        e ? CDOTAMatchMetadata_Team_Player_ContractProgress.toJSON(e) : undefined
+      );
+    } else {
+      obj.contractProgress = [];
+    }
+    if (message.guildIds) {
+      obj.guildIds = message.guildIds.map((e) => Math.round(e));
+    } else {
+      obj.guildIds = [];
+    }
+    if (message.graphHeroDamage) {
+      obj.graphHeroDamage = message.graphHeroDamage.map((e) => e);
+    } else {
+      obj.graphHeroDamage = [];
+    }
+    message.teamNumber !== undefined && (obj.teamNumber = dotaGcTeamToJSON(message.teamNumber));
+    message.teamSlot !== undefined && (obj.teamSlot = Math.round(message.teamSlot));
+    message.featuredGamemodeProgress !== undefined && (obj.featuredGamemodeProgress = message.featuredGamemodeProgress
+      ? CDOTAMatchMetadata_Team_FeaturedGamemodeProgress.toJSON(message.featuredGamemodeProgress)
+      : undefined);
+    message.featuredHeroStickerIndex !== undefined &&
+      (obj.featuredHeroStickerIndex = Math.round(message.featuredHeroStickerIndex));
+    message.featuredHeroStickerQuality !== undefined &&
+      (obj.featuredHeroStickerQuality = Math.round(message.featuredHeroStickerQuality));
+    if (message.equippedEconItems) {
+      obj.equippedEconItems = message.equippedEconItems.map((e) =>
+        e ? CDOTAMatchMetadata_EconItem.toJSON(e) : undefined
+      );
+    } else {
+      obj.equippedEconItems = [];
+    }
+    message.gamePlayerId !== undefined && (obj.gamePlayerId = Math.round(message.gamePlayerId));
+    return obj;
+  },
 };
 
 function createBaseCDOTAMatchMetadata_Team_Player_ContractProgress(): CDOTAMatchMetadata_Team_Player_ContractProgress {
@@ -2625,6 +3335,30 @@ export const CDOTAMatchMetadata_Team_Player_ContractProgress = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAMatchMetadata_Team_Player_ContractProgress {
+    return {
+      guildId: isSet(object.guildId) ? Number(object.guildId) : 0,
+      eventId: isSet(object.eventId) ? Number(object.eventId) : 0,
+      challengeInstanceId: isSet(object.challengeInstanceId) ? Number(object.challengeInstanceId) : 0,
+      challengeParameter: isSet(object.challengeParameter) ? Number(object.challengeParameter) : 0,
+      contractStars: isSet(object.contractStars) ? Number(object.contractStars) : 0,
+      contractSlot: isSet(object.contractSlot) ? Number(object.contractSlot) : 0,
+      completed: isSet(object.completed) ? Boolean(object.completed) : false,
+    };
+  },
+
+  toJSON(message: CDOTAMatchMetadata_Team_Player_ContractProgress): unknown {
+    const obj: any = {};
+    message.guildId !== undefined && (obj.guildId = Math.round(message.guildId));
+    message.eventId !== undefined && (obj.eventId = Math.round(message.eventId));
+    message.challengeInstanceId !== undefined && (obj.challengeInstanceId = Math.round(message.challengeInstanceId));
+    message.challengeParameter !== undefined && (obj.challengeParameter = Math.round(message.challengeParameter));
+    message.contractStars !== undefined && (obj.contractStars = Math.round(message.contractStars));
+    message.contractSlot !== undefined && (obj.contractSlot = Math.round(message.contractSlot));
+    message.completed !== undefined && (obj.completed = message.completed);
+    return obj;
   },
 };
 
@@ -2743,6 +3477,46 @@ export const CDOTAMatchMetadata_GuildChallengeProgress = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAMatchMetadata_GuildChallengeProgress {
+    return {
+      guildId: isSet(object.guildId) ? Number(object.guildId) : 0,
+      eventId: isSet(object.eventId) ? eEventFromJSON(object.eventId) : 0,
+      challengeInstanceId: isSet(object.challengeInstanceId) ? Number(object.challengeInstanceId) : 0,
+      challengeParameter: isSet(object.challengeParameter) ? Number(object.challengeParameter) : 0,
+      challengeTimestamp: isSet(object.challengeTimestamp) ? Number(object.challengeTimestamp) : 0,
+      challengeProgressAtStart: isSet(object.challengeProgressAtStart) ? Number(object.challengeProgressAtStart) : 0,
+      challengeProgressAccumulated: isSet(object.challengeProgressAccumulated)
+        ? Number(object.challengeProgressAccumulated)
+        : 0,
+      individualProgress: Array.isArray(object?.individualProgress)
+        ? object.individualProgress.map((e: any) =>
+          CDOTAMatchMetadata_GuildChallengeProgress_IndividualProgress.fromJSON(e)
+        )
+        : [],
+    };
+  },
+
+  toJSON(message: CDOTAMatchMetadata_GuildChallengeProgress): unknown {
+    const obj: any = {};
+    message.guildId !== undefined && (obj.guildId = Math.round(message.guildId));
+    message.eventId !== undefined && (obj.eventId = eEventToJSON(message.eventId));
+    message.challengeInstanceId !== undefined && (obj.challengeInstanceId = Math.round(message.challengeInstanceId));
+    message.challengeParameter !== undefined && (obj.challengeParameter = Math.round(message.challengeParameter));
+    message.challengeTimestamp !== undefined && (obj.challengeTimestamp = Math.round(message.challengeTimestamp));
+    message.challengeProgressAtStart !== undefined &&
+      (obj.challengeProgressAtStart = Math.round(message.challengeProgressAtStart));
+    message.challengeProgressAccumulated !== undefined &&
+      (obj.challengeProgressAccumulated = Math.round(message.challengeProgressAccumulated));
+    if (message.individualProgress) {
+      obj.individualProgress = message.individualProgress.map((e) =>
+        e ? CDOTAMatchMetadata_GuildChallengeProgress_IndividualProgress.toJSON(e) : undefined
+      );
+    } else {
+      obj.individualProgress = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCDOTAMatchMetadata_GuildChallengeProgress_IndividualProgress(): CDOTAMatchMetadata_GuildChallengeProgress_IndividualProgress {
@@ -2794,6 +3568,20 @@ export const CDOTAMatchMetadata_GuildChallengeProgress_IndividualProgress = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAMatchMetadata_GuildChallengeProgress_IndividualProgress {
+    return {
+      progress: isSet(object.progress) ? Number(object.progress) : 0,
+      playerSlot: isSet(object.playerSlot) ? Number(object.playerSlot) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAMatchMetadata_GuildChallengeProgress_IndividualProgress): unknown {
+    const obj: any = {};
+    message.progress !== undefined && (obj.progress = Math.round(message.progress));
+    message.playerSlot !== undefined && (obj.playerSlot = Math.round(message.playerSlot));
+    return obj;
   },
 };
 
@@ -2860,6 +3648,24 @@ export const CDOTAMatchMetadata_Tip = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAMatchMetadata_Tip {
+    return {
+      sourcePlayerSlot: isSet(object.sourcePlayerSlot) ? Number(object.sourcePlayerSlot) : 0,
+      targetPlayerSlot: isSet(object.targetPlayerSlot) ? Number(object.targetPlayerSlot) : 0,
+      tipAmount: isSet(object.tipAmount) ? Number(object.tipAmount) : 0,
+      eventId: isSet(object.eventId) ? eEventFromJSON(object.eventId) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAMatchMetadata_Tip): unknown {
+    const obj: any = {};
+    message.sourcePlayerSlot !== undefined && (obj.sourcePlayerSlot = Math.round(message.sourcePlayerSlot));
+    message.targetPlayerSlot !== undefined && (obj.targetPlayerSlot = Math.round(message.targetPlayerSlot));
+    message.tipAmount !== undefined && (obj.tipAmount = Math.round(message.tipAmount));
+    message.eventId !== undefined && (obj.eventId = eEventToJSON(message.eventId));
+    return obj;
   },
 };
 
@@ -2928,6 +3734,40 @@ export const CDOTAMatchPrivateMetadata = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAMatchPrivateMetadata {
+    return {
+      teams: Array.isArray(object?.teams)
+        ? object.teams.map((e: any) => CDOTAMatchPrivateMetadata_Team.fromJSON(e))
+        : [],
+      graphWinProbability: Array.isArray(object?.graphWinProbability)
+        ? object.graphWinProbability.map((e: any) => Number(e))
+        : [],
+      stringNames: Array.isArray(object?.stringNames)
+        ? object.stringNames.map((e: any) => CDOTAMatchPrivateMetadata_StringName.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CDOTAMatchPrivateMetadata): unknown {
+    const obj: any = {};
+    if (message.teams) {
+      obj.teams = message.teams.map((e) => e ? CDOTAMatchPrivateMetadata_Team.toJSON(e) : undefined);
+    } else {
+      obj.teams = [];
+    }
+    if (message.graphWinProbability) {
+      obj.graphWinProbability = message.graphWinProbability.map((e) => e);
+    } else {
+      obj.graphWinProbability = [];
+    }
+    if (message.stringNames) {
+      obj.stringNames = message.stringNames.map((e) => e ? CDOTAMatchPrivateMetadata_StringName.toJSON(e) : undefined);
+    } else {
+      obj.stringNames = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCDOTAMatchPrivateMetadata_StringName(): CDOTAMatchPrivateMetadata_StringName {
@@ -2973,6 +3813,17 @@ export const CDOTAMatchPrivateMetadata_StringName = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAMatchPrivateMetadata_StringName {
+    return { id: isSet(object.id) ? Number(object.id) : 0, name: isSet(object.name) ? String(object.name) : "" };
+  },
+
+  toJSON(message: CDOTAMatchPrivateMetadata_StringName): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = Math.round(message.id));
+    message.name !== undefined && (obj.name = message.name);
+    return obj;
   },
 };
 
@@ -3029,6 +3880,34 @@ export const CDOTAMatchPrivateMetadata_Team = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAMatchPrivateMetadata_Team {
+    return {
+      dotaTeam: isSet(object.dotaTeam) ? Number(object.dotaTeam) : 0,
+      players: Array.isArray(object?.players)
+        ? object.players.map((e: any) => CDOTAMatchPrivateMetadata_Team_Player.fromJSON(e))
+        : [],
+      buildings: Array.isArray(object?.buildings)
+        ? object.buildings.map((e: any) => CDOTAMatchPrivateMetadata_Team_Building.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CDOTAMatchPrivateMetadata_Team): unknown {
+    const obj: any = {};
+    message.dotaTeam !== undefined && (obj.dotaTeam = Math.round(message.dotaTeam));
+    if (message.players) {
+      obj.players = message.players.map((e) => e ? CDOTAMatchPrivateMetadata_Team_Player.toJSON(e) : undefined);
+    } else {
+      obj.players = [];
+    }
+    if (message.buildings) {
+      obj.buildings = message.buildings.map((e) => e ? CDOTAMatchPrivateMetadata_Team_Building.toJSON(e) : undefined);
+    } else {
+      obj.buildings = [];
+    }
+    return obj;
   },
 };
 
@@ -3269,6 +4148,97 @@ export const CDOTAMatchPrivateMetadata_Team_Player = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAMatchPrivateMetadata_Team_Player {
+    return {
+      playerSlot: isSet(object.playerSlot) ? Number(object.playerSlot) : 0,
+      positionStream: isSet(object.positionStream)
+        ? Buffer.from(bytesFromBase64(object.positionStream))
+        : Buffer.alloc(0),
+      combatSegments: Array.isArray(object?.combatSegments)
+        ? object.combatSegments.map((e: any) => CDOTAMatchPrivateMetadata_Team_Player_CombatSegment.fromJSON(e))
+        : [],
+      damageUnitNames: Array.isArray(object?.damageUnitNames) ? object.damageUnitNames.map((e: any) => String(e)) : [],
+      buffRecords: Array.isArray(object?.buffRecords)
+        ? object.buffRecords.map((e: any) => CDOTAMatchPrivateMetadata_Team_Player_BuffRecord.fromJSON(e))
+        : [],
+      graphKills: Array.isArray(object?.graphKills) ? object.graphKills.map((e: any) => Number(e)) : [],
+      graphDeaths: Array.isArray(object?.graphDeaths) ? object.graphDeaths.map((e: any) => Number(e)) : [],
+      graphAssists: Array.isArray(object?.graphAssists) ? object.graphAssists.map((e: any) => Number(e)) : [],
+      graphLasthits: Array.isArray(object?.graphLasthits) ? object.graphLasthits.map((e: any) => Number(e)) : [],
+      graphDenies: Array.isArray(object?.graphDenies) ? object.graphDenies.map((e: any) => Number(e)) : [],
+      goldReceived: isSet(object.goldReceived)
+        ? CDOTAMatchPrivateMetadata_Team_Player_GoldReceived.fromJSON(object.goldReceived)
+        : undefined,
+      xpReceived: isSet(object.xpReceived)
+        ? CDOTAMatchPrivateMetadata_Team_Player_XPReceived.fromJSON(object.xpReceived)
+        : undefined,
+      teamNumber: isSet(object.teamNumber) ? dotaGcTeamFromJSON(object.teamNumber) : 0,
+      teamSlot: isSet(object.teamSlot) ? Number(object.teamSlot) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAMatchPrivateMetadata_Team_Player): unknown {
+    const obj: any = {};
+    message.playerSlot !== undefined && (obj.playerSlot = Math.round(message.playerSlot));
+    message.positionStream !== undefined &&
+      (obj.positionStream = base64FromBytes(
+        message.positionStream !== undefined ? message.positionStream : Buffer.alloc(0),
+      ));
+    if (message.combatSegments) {
+      obj.combatSegments = message.combatSegments.map((e) =>
+        e ? CDOTAMatchPrivateMetadata_Team_Player_CombatSegment.toJSON(e) : undefined
+      );
+    } else {
+      obj.combatSegments = [];
+    }
+    if (message.damageUnitNames) {
+      obj.damageUnitNames = message.damageUnitNames.map((e) => e);
+    } else {
+      obj.damageUnitNames = [];
+    }
+    if (message.buffRecords) {
+      obj.buffRecords = message.buffRecords.map((e) =>
+        e ? CDOTAMatchPrivateMetadata_Team_Player_BuffRecord.toJSON(e) : undefined
+      );
+    } else {
+      obj.buffRecords = [];
+    }
+    if (message.graphKills) {
+      obj.graphKills = message.graphKills.map((e) => e);
+    } else {
+      obj.graphKills = [];
+    }
+    if (message.graphDeaths) {
+      obj.graphDeaths = message.graphDeaths.map((e) => e);
+    } else {
+      obj.graphDeaths = [];
+    }
+    if (message.graphAssists) {
+      obj.graphAssists = message.graphAssists.map((e) => e);
+    } else {
+      obj.graphAssists = [];
+    }
+    if (message.graphLasthits) {
+      obj.graphLasthits = message.graphLasthits.map((e) => e);
+    } else {
+      obj.graphLasthits = [];
+    }
+    if (message.graphDenies) {
+      obj.graphDenies = message.graphDenies.map((e) => e);
+    } else {
+      obj.graphDenies = [];
+    }
+    message.goldReceived !== undefined && (obj.goldReceived = message.goldReceived
+      ? CDOTAMatchPrivateMetadata_Team_Player_GoldReceived.toJSON(message.goldReceived)
+      : undefined);
+    message.xpReceived !== undefined && (obj.xpReceived = message.xpReceived
+      ? CDOTAMatchPrivateMetadata_Team_Player_XPReceived.toJSON(message.xpReceived)
+      : undefined);
+    message.teamNumber !== undefined && (obj.teamNumber = dotaGcTeamToJSON(message.teamNumber));
+    message.teamSlot !== undefined && (obj.teamSlot = Math.round(message.teamSlot));
+    return obj;
+  },
 };
 
 function createBaseCDOTAMatchPrivateMetadata_Team_Player_CombatSegment(): CDOTAMatchPrivateMetadata_Team_Player_CombatSegment {
@@ -3332,6 +4302,42 @@ export const CDOTAMatchPrivateMetadata_Team_Player_CombatSegment = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAMatchPrivateMetadata_Team_Player_CombatSegment {
+    return {
+      gameTime: isSet(object.gameTime) ? Number(object.gameTime) : 0,
+      damageByAbility: Array.isArray(object?.damageByAbility)
+        ? object.damageByAbility.map((e: any) =>
+          CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility.fromJSON(e)
+        )
+        : [],
+      healingByAbility: Array.isArray(object?.healingByAbility)
+        ? object.healingByAbility.map((e: any) =>
+          CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbility.fromJSON(e)
+        )
+        : [],
+    };
+  },
+
+  toJSON(message: CDOTAMatchPrivateMetadata_Team_Player_CombatSegment): unknown {
+    const obj: any = {};
+    message.gameTime !== undefined && (obj.gameTime = Math.round(message.gameTime));
+    if (message.damageByAbility) {
+      obj.damageByAbility = message.damageByAbility.map((e) =>
+        e ? CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility.toJSON(e) : undefined
+      );
+    } else {
+      obj.damageByAbility = [];
+    }
+    if (message.healingByAbility) {
+      obj.healingByAbility = message.healingByAbility.map((e) =>
+        e ? CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbility.toJSON(e) : undefined
+      );
+    } else {
+      obj.healingByAbility = [];
+    }
+    return obj;
   },
 };
 
@@ -3403,6 +4409,32 @@ export const CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility {
+    return {
+      sourceUnitIndex: isSet(object.sourceUnitIndex) ? Number(object.sourceUnitIndex) : 0,
+      abilityId: isSet(object.abilityId) ? Number(object.abilityId) : 0,
+      byHeroTargets: Array.isArray(object?.byHeroTargets)
+        ? object.byHeroTargets.map((e: any) =>
+          CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility_ByHeroTarget.fromJSON(e)
+        )
+        : [],
+    };
+  },
+
+  toJSON(message: CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility): unknown {
+    const obj: any = {};
+    message.sourceUnitIndex !== undefined && (obj.sourceUnitIndex = Math.round(message.sourceUnitIndex));
+    message.abilityId !== undefined && (obj.abilityId = Math.round(message.abilityId));
+    if (message.byHeroTargets) {
+      obj.byHeroTargets = message.byHeroTargets.map((e) =>
+        e ? CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility_ByHeroTarget.toJSON(e) : undefined
+      );
+    } else {
+      obj.byHeroTargets = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility_ByHeroTarget(): CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility_ByHeroTarget {
@@ -3454,6 +4486,20 @@ export const CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility_ByHeroTarget {
+    return {
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      damage: isSet(object.damage) ? Number(object.damage) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility_ByHeroTarget): unknown {
+    const obj: any = {};
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.damage !== undefined && (obj.damage = Math.round(message.damage));
+    return obj;
   },
 };
 
@@ -3525,6 +4571,32 @@ export const CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbilit
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbility {
+    return {
+      sourceUnitIndex: isSet(object.sourceUnitIndex) ? Number(object.sourceUnitIndex) : 0,
+      abilityId: isSet(object.abilityId) ? Number(object.abilityId) : 0,
+      byHeroTargets: Array.isArray(object?.byHeroTargets)
+        ? object.byHeroTargets.map((e: any) =>
+          CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbility_ByHeroTarget.fromJSON(e)
+        )
+        : [],
+    };
+  },
+
+  toJSON(message: CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbility): unknown {
+    const obj: any = {};
+    message.sourceUnitIndex !== undefined && (obj.sourceUnitIndex = Math.round(message.sourceUnitIndex));
+    message.abilityId !== undefined && (obj.abilityId = Math.round(message.abilityId));
+    if (message.byHeroTargets) {
+      obj.byHeroTargets = message.byHeroTargets.map((e) =>
+        e ? CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbility_ByHeroTarget.toJSON(e) : undefined
+      );
+    } else {
+      obj.byHeroTargets = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbility_ByHeroTarget(): CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbility_ByHeroTarget {
@@ -3576,6 +4648,20 @@ export const CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbilit
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbility_ByHeroTarget {
+    return {
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      healing: isSet(object.healing) ? Number(object.healing) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbility_ByHeroTarget): unknown {
+    const obj: any = {};
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.healing !== undefined && (obj.healing = Math.round(message.healing));
+    return obj;
   },
 };
 
@@ -3638,6 +4724,32 @@ export const CDOTAMatchPrivateMetadata_Team_Player_BuffRecord = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAMatchPrivateMetadata_Team_Player_BuffRecord {
+    return {
+      buffAbilityId: isSet(object.buffAbilityId) ? Number(object.buffAbilityId) : 0,
+      buffModifierName: isSet(object.buffModifierName) ? String(object.buffModifierName) : "",
+      byHeroTargets: Array.isArray(object?.byHeroTargets)
+        ? object.byHeroTargets.map((e: any) =>
+          CDOTAMatchPrivateMetadata_Team_Player_BuffRecord_ByHeroTarget.fromJSON(e)
+        )
+        : [],
+    };
+  },
+
+  toJSON(message: CDOTAMatchPrivateMetadata_Team_Player_BuffRecord): unknown {
+    const obj: any = {};
+    message.buffAbilityId !== undefined && (obj.buffAbilityId = Math.round(message.buffAbilityId));
+    message.buffModifierName !== undefined && (obj.buffModifierName = message.buffModifierName);
+    if (message.byHeroTargets) {
+      obj.byHeroTargets = message.byHeroTargets.map((e) =>
+        e ? CDOTAMatchPrivateMetadata_Team_Player_BuffRecord_ByHeroTarget.toJSON(e) : undefined
+      );
+    } else {
+      obj.byHeroTargets = [];
+    }
+    return obj;
+  },
 };
 
 function createBaseCDOTAMatchPrivateMetadata_Team_Player_BuffRecord_ByHeroTarget(): CDOTAMatchPrivateMetadata_Team_Player_BuffRecord_ByHeroTarget {
@@ -3699,6 +4811,22 @@ export const CDOTAMatchPrivateMetadata_Team_Player_BuffRecord_ByHeroTarget = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CDOTAMatchPrivateMetadata_Team_Player_BuffRecord_ByHeroTarget {
+    return {
+      heroId: isSet(object.heroId) ? Number(object.heroId) : 0,
+      elapsedDuration: isSet(object.elapsedDuration) ? Number(object.elapsedDuration) : 0,
+      isHidden: isSet(object.isHidden) ? Boolean(object.isHidden) : false,
+    };
+  },
+
+  toJSON(message: CDOTAMatchPrivateMetadata_Team_Player_BuffRecord_ByHeroTarget): unknown {
+    const obj: any = {};
+    message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
+    message.elapsedDuration !== undefined && (obj.elapsedDuration = message.elapsedDuration);
+    message.isHidden !== undefined && (obj.isHidden = message.isHidden);
+    return obj;
   },
 };
 
@@ -3809,6 +4937,32 @@ export const CDOTAMatchPrivateMetadata_Team_Player_GoldReceived = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAMatchPrivateMetadata_Team_Player_GoldReceived {
+    return {
+      creep: isSet(object.creep) ? Number(object.creep) : 0,
+      heroes: isSet(object.heroes) ? Number(object.heroes) : 0,
+      bountyRunes: isSet(object.bountyRunes) ? Number(object.bountyRunes) : 0,
+      passive: isSet(object.passive) ? Number(object.passive) : 0,
+      buildings: isSet(object.buildings) ? Number(object.buildings) : 0,
+      abilities: isSet(object.abilities) ? Number(object.abilities) : 0,
+      wards: isSet(object.wards) ? Number(object.wards) : 0,
+      other: isSet(object.other) ? Number(object.other) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAMatchPrivateMetadata_Team_Player_GoldReceived): unknown {
+    const obj: any = {};
+    message.creep !== undefined && (obj.creep = Math.round(message.creep));
+    message.heroes !== undefined && (obj.heroes = Math.round(message.heroes));
+    message.bountyRunes !== undefined && (obj.bountyRunes = Math.round(message.bountyRunes));
+    message.passive !== undefined && (obj.passive = Math.round(message.passive));
+    message.buildings !== undefined && (obj.buildings = Math.round(message.buildings));
+    message.abilities !== undefined && (obj.abilities = Math.round(message.abilities));
+    message.wards !== undefined && (obj.wards = Math.round(message.wards));
+    message.other !== undefined && (obj.other = Math.round(message.other));
+    return obj;
+  },
 };
 
 function createBaseCDOTAMatchPrivateMetadata_Team_Player_XPReceived(): CDOTAMatchPrivateMetadata_Team_Player_XPReceived {
@@ -3898,6 +5052,28 @@ export const CDOTAMatchPrivateMetadata_Team_Player_XPReceived = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAMatchPrivateMetadata_Team_Player_XPReceived {
+    return {
+      creep: isSet(object.creep) ? Number(object.creep) : 0,
+      heroes: isSet(object.heroes) ? Number(object.heroes) : 0,
+      roshan: isSet(object.roshan) ? Number(object.roshan) : 0,
+      tomeOfKnowledge: isSet(object.tomeOfKnowledge) ? Number(object.tomeOfKnowledge) : 0,
+      outpost: isSet(object.outpost) ? Number(object.outpost) : 0,
+      other: isSet(object.other) ? Number(object.other) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAMatchPrivateMetadata_Team_Player_XPReceived): unknown {
+    const obj: any = {};
+    message.creep !== undefined && (obj.creep = Math.round(message.creep));
+    message.heroes !== undefined && (obj.heroes = Math.round(message.heroes));
+    message.roshan !== undefined && (obj.roshan = Math.round(message.roshan));
+    message.tomeOfKnowledge !== undefined && (obj.tomeOfKnowledge = Math.round(message.tomeOfKnowledge));
+    message.outpost !== undefined && (obj.outpost = Math.round(message.outpost));
+    message.other !== undefined && (obj.other = Math.round(message.other));
+    return obj;
+  },
 };
 
 function createBaseCDOTAMatchPrivateMetadata_Team_Building(): CDOTAMatchPrivateMetadata_Team_Building {
@@ -3964,7 +5140,69 @@ export const CDOTAMatchPrivateMetadata_Team_Building = {
     }
     return message;
   },
+
+  fromJSON(object: any): CDOTAMatchPrivateMetadata_Team_Building {
+    return {
+      unitName: isSet(object.unitName) ? String(object.unitName) : "",
+      positionQuantX: isSet(object.positionQuantX) ? Number(object.positionQuantX) : 0,
+      positionQuantY: isSet(object.positionQuantY) ? Number(object.positionQuantY) : 0,
+      deathTime: isSet(object.deathTime) ? Number(object.deathTime) : 0,
+    };
+  },
+
+  toJSON(message: CDOTAMatchPrivateMetadata_Team_Building): unknown {
+    const obj: any = {};
+    message.unitName !== undefined && (obj.unitName = message.unitName);
+    message.positionQuantX !== undefined && (obj.positionQuantX = Math.round(message.positionQuantX));
+    message.positionQuantY !== undefined && (obj.positionQuantY = Math.round(message.positionQuantY));
+    message.deathTime !== undefined && (obj.deathTime = message.deathTime);
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if (tsProtoGlobalThis.Buffer) {
+    return Uint8Array.from(tsProtoGlobalThis.Buffer.from(b64, "base64"));
+  } else {
+    const bin = tsProtoGlobalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if (tsProtoGlobalThis.Buffer) {
+    return tsProtoGlobalThis.Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(String.fromCharCode(byte));
+    });
+    return tsProtoGlobalThis.btoa(bin.join(""));
+  }
+}
 
 function longToString(long: Long) {
   return long.toString();
@@ -3973,4 +5211,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }

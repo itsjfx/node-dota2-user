@@ -178,6 +178,15 @@ export const CMsgClientHeartBeat = {
     }
     return message;
   },
+
+  fromJSON(_: any): CMsgClientHeartBeat {
+    return {};
+  },
+
+  toJSON(_: CMsgClientHeartBeat): unknown {
+    const obj: any = {};
+    return obj;
+  },
 };
 
 function createBaseCMsgClientServerTimestampRequest(): CMsgClientServerTimestampRequest {
@@ -213,6 +222,18 @@ export const CMsgClientServerTimestampRequest = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientServerTimestampRequest {
+    return {
+      clientRequestTimestamp: isSet(object.clientRequestTimestamp) ? String(object.clientRequestTimestamp) : "0",
+    };
+  },
+
+  toJSON(message: CMsgClientServerTimestampRequest): unknown {
+    const obj: any = {};
+    message.clientRequestTimestamp !== undefined && (obj.clientRequestTimestamp = message.clientRequestTimestamp);
+    return obj;
   },
 };
 
@@ -259,6 +280,20 @@ export const CMsgClientServerTimestampResponse = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientServerTimestampResponse {
+    return {
+      clientRequestTimestamp: isSet(object.clientRequestTimestamp) ? String(object.clientRequestTimestamp) : "0",
+      serverTimestampMs: isSet(object.serverTimestampMs) ? String(object.serverTimestampMs) : "0",
+    };
+  },
+
+  toJSON(message: CMsgClientServerTimestampResponse): unknown {
+    const obj: any = {};
+    message.clientRequestTimestamp !== undefined && (obj.clientRequestTimestamp = message.clientRequestTimestamp);
+    message.serverTimestampMs !== undefined && (obj.serverTimestampMs = message.serverTimestampMs);
+    return obj;
   },
 };
 
@@ -335,6 +370,27 @@ export const CMsgClientSecret = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientSecret {
+    return {
+      version: isSet(object.version) ? Number(object.version) : 0,
+      appid: isSet(object.appid) ? Number(object.appid) : 0,
+      deviceid: isSet(object.deviceid) ? Number(object.deviceid) : 0,
+      nonce: isSet(object.nonce) ? String(object.nonce) : "0",
+      hmac: isSet(object.hmac) ? Buffer.from(bytesFromBase64(object.hmac)) : Buffer.alloc(0),
+    };
+  },
+
+  toJSON(message: CMsgClientSecret): unknown {
+    const obj: any = {};
+    message.version !== undefined && (obj.version = Math.round(message.version));
+    message.appid !== undefined && (obj.appid = Math.round(message.appid));
+    message.deviceid !== undefined && (obj.deviceid = Math.round(message.deviceid));
+    message.nonce !== undefined && (obj.nonce = message.nonce);
+    message.hmac !== undefined &&
+      (obj.hmac = base64FromBytes(message.hmac !== undefined ? message.hmac : Buffer.alloc(0)));
+    return obj;
   },
 };
 
@@ -935,6 +991,160 @@ export const CMsgClientLogon = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientLogon {
+    return {
+      protocolVersion: isSet(object.protocolVersion) ? Number(object.protocolVersion) : 0,
+      deprecatedObfustucatedPrivateIp: isSet(object.deprecatedObfustucatedPrivateIp)
+        ? Number(object.deprecatedObfustucatedPrivateIp)
+        : 0,
+      cellId: isSet(object.cellId) ? Number(object.cellId) : 0,
+      lastSessionId: isSet(object.lastSessionId) ? Number(object.lastSessionId) : 0,
+      clientPackageVersion: isSet(object.clientPackageVersion) ? Number(object.clientPackageVersion) : 0,
+      clientLanguage: isSet(object.clientLanguage) ? String(object.clientLanguage) : "",
+      clientOsType: isSet(object.clientOsType) ? Number(object.clientOsType) : 0,
+      shouldRememberPassword: isSet(object.shouldRememberPassword) ? Boolean(object.shouldRememberPassword) : false,
+      wineVersion: isSet(object.wineVersion) ? String(object.wineVersion) : "",
+      deprecated10: isSet(object.deprecated10) ? Number(object.deprecated10) : 0,
+      obfuscatedPrivateIp: isSet(object.obfuscatedPrivateIp)
+        ? CMsgIPAddress.fromJSON(object.obfuscatedPrivateIp)
+        : undefined,
+      deprecatedPublicIp: isSet(object.deprecatedPublicIp) ? Number(object.deprecatedPublicIp) : 0,
+      qosLevel: isSet(object.qosLevel) ? Number(object.qosLevel) : 0,
+      clientSuppliedSteamId: isSet(object.clientSuppliedSteamId) ? String(object.clientSuppliedSteamId) : "0",
+      publicIp: isSet(object.publicIp) ? CMsgIPAddress.fromJSON(object.publicIp) : undefined,
+      machineId: isSet(object.machineId) ? Buffer.from(bytesFromBase64(object.machineId)) : Buffer.alloc(0),
+      launcherType: isSet(object.launcherType) ? Number(object.launcherType) : 0,
+      uiMode: isSet(object.uiMode) ? Number(object.uiMode) : 0,
+      chatMode: isSet(object.chatMode) ? Number(object.chatMode) : 0,
+      steam2AuthTicket: isSet(object.steam2AuthTicket)
+        ? Buffer.from(bytesFromBase64(object.steam2AuthTicket))
+        : Buffer.alloc(0),
+      emailAddress: isSet(object.emailAddress) ? String(object.emailAddress) : "",
+      rtime32AccountCreation: isSet(object.rtime32AccountCreation) ? Number(object.rtime32AccountCreation) : 0,
+      accountName: isSet(object.accountName) ? String(object.accountName) : "",
+      password: isSet(object.password) ? String(object.password) : "",
+      gameServerToken: isSet(object.gameServerToken) ? String(object.gameServerToken) : "",
+      loginKey: isSet(object.loginKey) ? String(object.loginKey) : "",
+      wasConvertedDeprecatedMsg: isSet(object.wasConvertedDeprecatedMsg)
+        ? Boolean(object.wasConvertedDeprecatedMsg)
+        : false,
+      anonUserTargetAccountName: isSet(object.anonUserTargetAccountName)
+        ? String(object.anonUserTargetAccountName)
+        : "",
+      resolvedUserSteamId: isSet(object.resolvedUserSteamId) ? String(object.resolvedUserSteamId) : "0",
+      eresultSentryfile: isSet(object.eresultSentryfile) ? Number(object.eresultSentryfile) : 0,
+      shaSentryfile: isSet(object.shaSentryfile) ? Buffer.from(bytesFromBase64(object.shaSentryfile)) : Buffer.alloc(0),
+      authCode: isSet(object.authCode) ? String(object.authCode) : "",
+      otpType: isSet(object.otpType) ? Number(object.otpType) : 0,
+      otpValue: isSet(object.otpValue) ? Number(object.otpValue) : 0,
+      otpIdentifier: isSet(object.otpIdentifier) ? String(object.otpIdentifier) : "",
+      steam2TicketRequest: isSet(object.steam2TicketRequest) ? Boolean(object.steam2TicketRequest) : false,
+      sonyPsnTicket: isSet(object.sonyPsnTicket) ? Buffer.from(bytesFromBase64(object.sonyPsnTicket)) : Buffer.alloc(0),
+      sonyPsnServiceId: isSet(object.sonyPsnServiceId) ? String(object.sonyPsnServiceId) : "",
+      createNewPsnLinkedAccountIfNeeded: isSet(object.createNewPsnLinkedAccountIfNeeded)
+        ? Boolean(object.createNewPsnLinkedAccountIfNeeded)
+        : false,
+      sonyPsnName: isSet(object.sonyPsnName) ? String(object.sonyPsnName) : "",
+      gameServerAppId: isSet(object.gameServerAppId) ? Number(object.gameServerAppId) : 0,
+      steamguardDontRememberComputer: isSet(object.steamguardDontRememberComputer)
+        ? Boolean(object.steamguardDontRememberComputer)
+        : false,
+      machineName: isSet(object.machineName) ? String(object.machineName) : "",
+      machineNameUserchosen: isSet(object.machineNameUserchosen) ? String(object.machineNameUserchosen) : "",
+      countryOverride: isSet(object.countryOverride) ? String(object.countryOverride) : "",
+      isSteamBox: isSet(object.isSteamBox) ? Boolean(object.isSteamBox) : false,
+      clientInstanceId: isSet(object.clientInstanceId) ? String(object.clientInstanceId) : "0",
+      twoFactorCode: isSet(object.twoFactorCode) ? String(object.twoFactorCode) : "",
+      supportsRateLimitResponse: isSet(object.supportsRateLimitResponse)
+        ? Boolean(object.supportsRateLimitResponse)
+        : false,
+      webLogonNonce: isSet(object.webLogonNonce) ? String(object.webLogonNonce) : "",
+      priorityReason: isSet(object.priorityReason) ? Number(object.priorityReason) : 0,
+      embeddedClientSecret: isSet(object.embeddedClientSecret)
+        ? CMsgClientSecret.fromJSON(object.embeddedClientSecret)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CMsgClientLogon): unknown {
+    const obj: any = {};
+    message.protocolVersion !== undefined && (obj.protocolVersion = Math.round(message.protocolVersion));
+    message.deprecatedObfustucatedPrivateIp !== undefined &&
+      (obj.deprecatedObfustucatedPrivateIp = Math.round(message.deprecatedObfustucatedPrivateIp));
+    message.cellId !== undefined && (obj.cellId = Math.round(message.cellId));
+    message.lastSessionId !== undefined && (obj.lastSessionId = Math.round(message.lastSessionId));
+    message.clientPackageVersion !== undefined && (obj.clientPackageVersion = Math.round(message.clientPackageVersion));
+    message.clientLanguage !== undefined && (obj.clientLanguage = message.clientLanguage);
+    message.clientOsType !== undefined && (obj.clientOsType = Math.round(message.clientOsType));
+    message.shouldRememberPassword !== undefined && (obj.shouldRememberPassword = message.shouldRememberPassword);
+    message.wineVersion !== undefined && (obj.wineVersion = message.wineVersion);
+    message.deprecated10 !== undefined && (obj.deprecated10 = Math.round(message.deprecated10));
+    message.obfuscatedPrivateIp !== undefined && (obj.obfuscatedPrivateIp = message.obfuscatedPrivateIp
+      ? CMsgIPAddress.toJSON(message.obfuscatedPrivateIp)
+      : undefined);
+    message.deprecatedPublicIp !== undefined && (obj.deprecatedPublicIp = Math.round(message.deprecatedPublicIp));
+    message.qosLevel !== undefined && (obj.qosLevel = Math.round(message.qosLevel));
+    message.clientSuppliedSteamId !== undefined && (obj.clientSuppliedSteamId = message.clientSuppliedSteamId);
+    message.publicIp !== undefined &&
+      (obj.publicIp = message.publicIp ? CMsgIPAddress.toJSON(message.publicIp) : undefined);
+    message.machineId !== undefined &&
+      (obj.machineId = base64FromBytes(message.machineId !== undefined ? message.machineId : Buffer.alloc(0)));
+    message.launcherType !== undefined && (obj.launcherType = Math.round(message.launcherType));
+    message.uiMode !== undefined && (obj.uiMode = Math.round(message.uiMode));
+    message.chatMode !== undefined && (obj.chatMode = Math.round(message.chatMode));
+    message.steam2AuthTicket !== undefined &&
+      (obj.steam2AuthTicket = base64FromBytes(
+        message.steam2AuthTicket !== undefined ? message.steam2AuthTicket : Buffer.alloc(0),
+      ));
+    message.emailAddress !== undefined && (obj.emailAddress = message.emailAddress);
+    message.rtime32AccountCreation !== undefined &&
+      (obj.rtime32AccountCreation = Math.round(message.rtime32AccountCreation));
+    message.accountName !== undefined && (obj.accountName = message.accountName);
+    message.password !== undefined && (obj.password = message.password);
+    message.gameServerToken !== undefined && (obj.gameServerToken = message.gameServerToken);
+    message.loginKey !== undefined && (obj.loginKey = message.loginKey);
+    message.wasConvertedDeprecatedMsg !== undefined &&
+      (obj.wasConvertedDeprecatedMsg = message.wasConvertedDeprecatedMsg);
+    message.anonUserTargetAccountName !== undefined &&
+      (obj.anonUserTargetAccountName = message.anonUserTargetAccountName);
+    message.resolvedUserSteamId !== undefined && (obj.resolvedUserSteamId = message.resolvedUserSteamId);
+    message.eresultSentryfile !== undefined && (obj.eresultSentryfile = Math.round(message.eresultSentryfile));
+    message.shaSentryfile !== undefined &&
+      (obj.shaSentryfile = base64FromBytes(
+        message.shaSentryfile !== undefined ? message.shaSentryfile : Buffer.alloc(0),
+      ));
+    message.authCode !== undefined && (obj.authCode = message.authCode);
+    message.otpType !== undefined && (obj.otpType = Math.round(message.otpType));
+    message.otpValue !== undefined && (obj.otpValue = Math.round(message.otpValue));
+    message.otpIdentifier !== undefined && (obj.otpIdentifier = message.otpIdentifier);
+    message.steam2TicketRequest !== undefined && (obj.steam2TicketRequest = message.steam2TicketRequest);
+    message.sonyPsnTicket !== undefined &&
+      (obj.sonyPsnTicket = base64FromBytes(
+        message.sonyPsnTicket !== undefined ? message.sonyPsnTicket : Buffer.alloc(0),
+      ));
+    message.sonyPsnServiceId !== undefined && (obj.sonyPsnServiceId = message.sonyPsnServiceId);
+    message.createNewPsnLinkedAccountIfNeeded !== undefined &&
+      (obj.createNewPsnLinkedAccountIfNeeded = message.createNewPsnLinkedAccountIfNeeded);
+    message.sonyPsnName !== undefined && (obj.sonyPsnName = message.sonyPsnName);
+    message.gameServerAppId !== undefined && (obj.gameServerAppId = Math.round(message.gameServerAppId));
+    message.steamguardDontRememberComputer !== undefined &&
+      (obj.steamguardDontRememberComputer = message.steamguardDontRememberComputer);
+    message.machineName !== undefined && (obj.machineName = message.machineName);
+    message.machineNameUserchosen !== undefined && (obj.machineNameUserchosen = message.machineNameUserchosen);
+    message.countryOverride !== undefined && (obj.countryOverride = message.countryOverride);
+    message.isSteamBox !== undefined && (obj.isSteamBox = message.isSteamBox);
+    message.clientInstanceId !== undefined && (obj.clientInstanceId = message.clientInstanceId);
+    message.twoFactorCode !== undefined && (obj.twoFactorCode = message.twoFactorCode);
+    message.supportsRateLimitResponse !== undefined &&
+      (obj.supportsRateLimitResponse = message.supportsRateLimitResponse);
+    message.webLogonNonce !== undefined && (obj.webLogonNonce = message.webLogonNonce);
+    message.priorityReason !== undefined && (obj.priorityReason = Math.round(message.priorityReason));
+    message.embeddedClientSecret !== undefined && (obj.embeddedClientSecret = message.embeddedClientSecret
+      ? CMsgClientSecret.toJSON(message.embeddedClientSecret)
+      : undefined);
+    return obj;
+  },
 };
 
 function createBaseCMsgClientLogonResponse(): CMsgClientLogonResponse {
@@ -1226,6 +1436,86 @@ export const CMsgClientLogonResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientLogonResponse {
+    return {
+      eresult: isSet(object.eresult) ? Number(object.eresult) : 0,
+      outOfGameHeartbeatSeconds: isSet(object.outOfGameHeartbeatSeconds) ? Number(object.outOfGameHeartbeatSeconds) : 0,
+      inGameHeartbeatSeconds: isSet(object.inGameHeartbeatSeconds) ? Number(object.inGameHeartbeatSeconds) : 0,
+      deprecatedPublicIp: isSet(object.deprecatedPublicIp) ? Number(object.deprecatedPublicIp) : 0,
+      rtime32ServerTime: isSet(object.rtime32ServerTime) ? Number(object.rtime32ServerTime) : 0,
+      accountFlags: isSet(object.accountFlags) ? Number(object.accountFlags) : 0,
+      cellId: isSet(object.cellId) ? Number(object.cellId) : 0,
+      emailDomain: isSet(object.emailDomain) ? String(object.emailDomain) : "",
+      steam2Ticket: isSet(object.steam2Ticket) ? Buffer.from(bytesFromBase64(object.steam2Ticket)) : Buffer.alloc(0),
+      eresultExtended: isSet(object.eresultExtended) ? Number(object.eresultExtended) : 0,
+      webapiAuthenticateUserNonce: isSet(object.webapiAuthenticateUserNonce)
+        ? String(object.webapiAuthenticateUserNonce)
+        : "",
+      cellIdPingThreshold: isSet(object.cellIdPingThreshold) ? Number(object.cellIdPingThreshold) : 0,
+      usePics: isSet(object.usePics) ? Boolean(object.usePics) : false,
+      vanityUrl: isSet(object.vanityUrl) ? String(object.vanityUrl) : "",
+      publicIp: isSet(object.publicIp) ? CMsgIPAddress.fromJSON(object.publicIp) : undefined,
+      clientSuppliedSteamid: isSet(object.clientSuppliedSteamid) ? String(object.clientSuppliedSteamid) : "0",
+      ipCountryCode: isSet(object.ipCountryCode) ? String(object.ipCountryCode) : "",
+      parentalSettings: isSet(object.parentalSettings)
+        ? Buffer.from(bytesFromBase64(object.parentalSettings))
+        : Buffer.alloc(0),
+      parentalSettingSignature: isSet(object.parentalSettingSignature)
+        ? Buffer.from(bytesFromBase64(object.parentalSettingSignature))
+        : Buffer.alloc(0),
+      countLoginfailuresToMigrate: isSet(object.countLoginfailuresToMigrate)
+        ? Number(object.countLoginfailuresToMigrate)
+        : 0,
+      countDisconnectsToMigrate: isSet(object.countDisconnectsToMigrate) ? Number(object.countDisconnectsToMigrate) : 0,
+      ogsDataReportTimeWindow: isSet(object.ogsDataReportTimeWindow) ? Number(object.ogsDataReportTimeWindow) : 0,
+      clientInstanceId: isSet(object.clientInstanceId) ? String(object.clientInstanceId) : "0",
+      forceClientUpdateCheck: isSet(object.forceClientUpdateCheck) ? Boolean(object.forceClientUpdateCheck) : false,
+    };
+  },
+
+  toJSON(message: CMsgClientLogonResponse): unknown {
+    const obj: any = {};
+    message.eresult !== undefined && (obj.eresult = Math.round(message.eresult));
+    message.outOfGameHeartbeatSeconds !== undefined &&
+      (obj.outOfGameHeartbeatSeconds = Math.round(message.outOfGameHeartbeatSeconds));
+    message.inGameHeartbeatSeconds !== undefined &&
+      (obj.inGameHeartbeatSeconds = Math.round(message.inGameHeartbeatSeconds));
+    message.deprecatedPublicIp !== undefined && (obj.deprecatedPublicIp = Math.round(message.deprecatedPublicIp));
+    message.rtime32ServerTime !== undefined && (obj.rtime32ServerTime = Math.round(message.rtime32ServerTime));
+    message.accountFlags !== undefined && (obj.accountFlags = Math.round(message.accountFlags));
+    message.cellId !== undefined && (obj.cellId = Math.round(message.cellId));
+    message.emailDomain !== undefined && (obj.emailDomain = message.emailDomain);
+    message.steam2Ticket !== undefined &&
+      (obj.steam2Ticket = base64FromBytes(message.steam2Ticket !== undefined ? message.steam2Ticket : Buffer.alloc(0)));
+    message.eresultExtended !== undefined && (obj.eresultExtended = Math.round(message.eresultExtended));
+    message.webapiAuthenticateUserNonce !== undefined &&
+      (obj.webapiAuthenticateUserNonce = message.webapiAuthenticateUserNonce);
+    message.cellIdPingThreshold !== undefined && (obj.cellIdPingThreshold = Math.round(message.cellIdPingThreshold));
+    message.usePics !== undefined && (obj.usePics = message.usePics);
+    message.vanityUrl !== undefined && (obj.vanityUrl = message.vanityUrl);
+    message.publicIp !== undefined &&
+      (obj.publicIp = message.publicIp ? CMsgIPAddress.toJSON(message.publicIp) : undefined);
+    message.clientSuppliedSteamid !== undefined && (obj.clientSuppliedSteamid = message.clientSuppliedSteamid);
+    message.ipCountryCode !== undefined && (obj.ipCountryCode = message.ipCountryCode);
+    message.parentalSettings !== undefined &&
+      (obj.parentalSettings = base64FromBytes(
+        message.parentalSettings !== undefined ? message.parentalSettings : Buffer.alloc(0),
+      ));
+    message.parentalSettingSignature !== undefined &&
+      (obj.parentalSettingSignature = base64FromBytes(
+        message.parentalSettingSignature !== undefined ? message.parentalSettingSignature : Buffer.alloc(0),
+      ));
+    message.countLoginfailuresToMigrate !== undefined &&
+      (obj.countLoginfailuresToMigrate = Math.round(message.countLoginfailuresToMigrate));
+    message.countDisconnectsToMigrate !== undefined &&
+      (obj.countDisconnectsToMigrate = Math.round(message.countDisconnectsToMigrate));
+    message.ogsDataReportTimeWindow !== undefined &&
+      (obj.ogsDataReportTimeWindow = Math.round(message.ogsDataReportTimeWindow));
+    message.clientInstanceId !== undefined && (obj.clientInstanceId = message.clientInstanceId);
+    message.forceClientUpdateCheck !== undefined && (obj.forceClientUpdateCheck = message.forceClientUpdateCheck);
+    return obj;
+  },
 };
 
 function createBaseCMsgClientRequestWebAPIAuthenticateUserNonce(): CMsgClientRequestWebAPIAuthenticateUserNonce {
@@ -1261,6 +1551,16 @@ export const CMsgClientRequestWebAPIAuthenticateUserNonce = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientRequestWebAPIAuthenticateUserNonce {
+    return { tokenType: isSet(object.tokenType) ? Number(object.tokenType) : 0 };
+  },
+
+  toJSON(message: CMsgClientRequestWebAPIAuthenticateUserNonce): unknown {
+    const obj: any = {};
+    message.tokenType !== undefined && (obj.tokenType = Math.round(message.tokenType));
+    return obj;
   },
 };
 
@@ -1321,6 +1621,25 @@ export const CMsgClientRequestWebAPIAuthenticateUserNonceResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientRequestWebAPIAuthenticateUserNonceResponse {
+    return {
+      eresult: isSet(object.eresult) ? Number(object.eresult) : 0,
+      webapiAuthenticateUserNonce: isSet(object.webapiAuthenticateUserNonce)
+        ? String(object.webapiAuthenticateUserNonce)
+        : "",
+      tokenType: isSet(object.tokenType) ? Number(object.tokenType) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientRequestWebAPIAuthenticateUserNonceResponse): unknown {
+    const obj: any = {};
+    message.eresult !== undefined && (obj.eresult = Math.round(message.eresult));
+    message.webapiAuthenticateUserNonce !== undefined &&
+      (obj.webapiAuthenticateUserNonce = message.webapiAuthenticateUserNonce);
+    message.tokenType !== undefined && (obj.tokenType = Math.round(message.tokenType));
+    return obj;
+  },
 };
 
 function createBaseCMsgClientLogOff(): CMsgClientLogOff {
@@ -1346,6 +1665,15 @@ export const CMsgClientLogOff = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(_: any): CMsgClientLogOff {
+    return {};
+  },
+
+  toJSON(_: CMsgClientLogOff): unknown {
+    const obj: any = {};
+    return obj;
   },
 };
 
@@ -1382,6 +1710,16 @@ export const CMsgClientLoggedOff = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientLoggedOff {
+    return { eresult: isSet(object.eresult) ? Number(object.eresult) : 0 };
+  },
+
+  toJSON(message: CMsgClientLoggedOff): unknown {
+    const obj: any = {};
+    message.eresult !== undefined && (obj.eresult = Math.round(message.eresult));
+    return obj;
   },
 };
 
@@ -1429,6 +1767,20 @@ export const CMsgClientNewLoginKey = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientNewLoginKey {
+    return {
+      uniqueId: isSet(object.uniqueId) ? Number(object.uniqueId) : 0,
+      loginKey: isSet(object.loginKey) ? String(object.loginKey) : "",
+    };
+  },
+
+  toJSON(message: CMsgClientNewLoginKey): unknown {
+    const obj: any = {};
+    message.uniqueId !== undefined && (obj.uniqueId = Math.round(message.uniqueId));
+    message.loginKey !== undefined && (obj.loginKey = message.loginKey);
+    return obj;
+  },
 };
 
 function createBaseCMsgClientNewLoginKeyAccepted(): CMsgClientNewLoginKeyAccepted {
@@ -1464,6 +1816,16 @@ export const CMsgClientNewLoginKeyAccepted = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientNewLoginKeyAccepted {
+    return { uniqueId: isSet(object.uniqueId) ? Number(object.uniqueId) : 0 };
+  },
+
+  toJSON(message: CMsgClientNewLoginKeyAccepted): unknown {
+    const obj: any = {};
+    message.uniqueId !== undefined && (obj.uniqueId = Math.round(message.uniqueId));
+    return obj;
   },
 };
 
@@ -1624,6 +1986,46 @@ export const CMsgClientAccountInfo = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientAccountInfo {
+    return {
+      personaName: isSet(object.personaName) ? String(object.personaName) : "",
+      ipCountry: isSet(object.ipCountry) ? String(object.ipCountry) : "",
+      countAuthedComputers: isSet(object.countAuthedComputers) ? Number(object.countAuthedComputers) : 0,
+      accountFlags: isSet(object.accountFlags) ? Number(object.accountFlags) : 0,
+      facebookId: isSet(object.facebookId) ? String(object.facebookId) : "0",
+      facebookName: isSet(object.facebookName) ? String(object.facebookName) : "",
+      steamguardNotifyNewmachines: isSet(object.steamguardNotifyNewmachines)
+        ? Boolean(object.steamguardNotifyNewmachines)
+        : false,
+      steamguardMachineNameUserChosen: isSet(object.steamguardMachineNameUserChosen)
+        ? String(object.steamguardMachineNameUserChosen)
+        : "",
+      isPhoneVerified: isSet(object.isPhoneVerified) ? Boolean(object.isPhoneVerified) : false,
+      twoFactorState: isSet(object.twoFactorState) ? Number(object.twoFactorState) : 0,
+      isPhoneIdentifying: isSet(object.isPhoneIdentifying) ? Boolean(object.isPhoneIdentifying) : false,
+      isPhoneNeedingReverify: isSet(object.isPhoneNeedingReverify) ? Boolean(object.isPhoneNeedingReverify) : false,
+    };
+  },
+
+  toJSON(message: CMsgClientAccountInfo): unknown {
+    const obj: any = {};
+    message.personaName !== undefined && (obj.personaName = message.personaName);
+    message.ipCountry !== undefined && (obj.ipCountry = message.ipCountry);
+    message.countAuthedComputers !== undefined && (obj.countAuthedComputers = Math.round(message.countAuthedComputers));
+    message.accountFlags !== undefined && (obj.accountFlags = Math.round(message.accountFlags));
+    message.facebookId !== undefined && (obj.facebookId = message.facebookId);
+    message.facebookName !== undefined && (obj.facebookName = message.facebookName);
+    message.steamguardNotifyNewmachines !== undefined &&
+      (obj.steamguardNotifyNewmachines = message.steamguardNotifyNewmachines);
+    message.steamguardMachineNameUserChosen !== undefined &&
+      (obj.steamguardMachineNameUserChosen = message.steamguardMachineNameUserChosen);
+    message.isPhoneVerified !== undefined && (obj.isPhoneVerified = message.isPhoneVerified);
+    message.twoFactorState !== undefined && (obj.twoFactorState = Math.round(message.twoFactorState));
+    message.isPhoneIdentifying !== undefined && (obj.isPhoneIdentifying = message.isPhoneIdentifying);
+    message.isPhoneNeedingReverify !== undefined && (obj.isPhoneNeedingReverify = message.isPhoneNeedingReverify);
+    return obj;
+  },
 };
 
 function createBaseCMsgClientChallengeRequest(): CMsgClientChallengeRequest {
@@ -1659,6 +2061,16 @@ export const CMsgClientChallengeRequest = {
       reader.skipType(tag & 7);
     }
     return message;
+  },
+
+  fromJSON(object: any): CMsgClientChallengeRequest {
+    return { steamid: isSet(object.steamid) ? String(object.steamid) : "0" };
+  },
+
+  toJSON(message: CMsgClientChallengeRequest): unknown {
+    const obj: any = {};
+    message.steamid !== undefined && (obj.steamid = message.steamid);
+    return obj;
   },
 };
 
@@ -1696,7 +2108,61 @@ export const CMsgClientChallengeResponse = {
     }
     return message;
   },
+
+  fromJSON(object: any): CMsgClientChallengeResponse {
+    return { challenge: isSet(object.challenge) ? String(object.challenge) : "0" };
+  },
+
+  toJSON(message: CMsgClientChallengeResponse): unknown {
+    const obj: any = {};
+    message.challenge !== undefined && (obj.challenge = message.challenge);
+    return obj;
+  },
 };
+
+declare var self: any | undefined;
+declare var window: any | undefined;
+declare var global: any | undefined;
+var tsProtoGlobalThis: any = (() => {
+  if (typeof globalThis !== "undefined") {
+    return globalThis;
+  }
+  if (typeof self !== "undefined") {
+    return self;
+  }
+  if (typeof window !== "undefined") {
+    return window;
+  }
+  if (typeof global !== "undefined") {
+    return global;
+  }
+  throw "Unable to locate global object";
+})();
+
+function bytesFromBase64(b64: string): Uint8Array {
+  if (tsProtoGlobalThis.Buffer) {
+    return Uint8Array.from(tsProtoGlobalThis.Buffer.from(b64, "base64"));
+  } else {
+    const bin = tsProtoGlobalThis.atob(b64);
+    const arr = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; ++i) {
+      arr[i] = bin.charCodeAt(i);
+    }
+    return arr;
+  }
+}
+
+function base64FromBytes(arr: Uint8Array): string {
+  if (tsProtoGlobalThis.Buffer) {
+    return tsProtoGlobalThis.Buffer.from(arr).toString("base64");
+  } else {
+    const bin: string[] = [];
+    arr.forEach((byte) => {
+      bin.push(String.fromCharCode(byte));
+    });
+    return tsProtoGlobalThis.btoa(bin.join(""));
+  }
+}
 
 function longToString(long: Long) {
   return long.toString();
@@ -1705,4 +2171,8 @@ function longToString(long: Long) {
 if (_m0.util.Long !== Long) {
   _m0.util.Long = Long as any;
   _m0.configure();
+}
+
+function isSet(value: any): boolean {
+  return value !== null && value !== undefined;
 }
