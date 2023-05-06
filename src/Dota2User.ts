@@ -1,33 +1,31 @@
-import ByteBuffer from 'bytebuffer';
 import { EventEmitter } from 'node:events';
+
+import ByteBuffer from 'bytebuffer';
 import SteamUser from 'steam-user';
-import { Router } from './router';
-import { EGCBaseClientMsg } from './generated-protobufs';
-import { protobufsMap } from './known-protobufs';
 const debug = require('debug')('dota2-user');
+
+import { Router } from './router';
+import { EGCBaseClientMsg, EDOTAGCMsg } from './generated-protobufs';
+import { protobufsMap } from './known-protobufs';
 
 // TODO... there has to be a better way
 export interface Dota2User {
     _connect(): void;
     _handleAppQuit(emitDisconnectEvent: boolean): void;
     _clearHelloTimer(): void;
-    _handleMessage(msgType: number, payload: Object | Buffer): void;
-    _send(type: number, body: Buffer|ByteBuffer, ignoreProtobuf?: boolean): boolean;
 }
 
 export class Dota2User extends EventEmitter {
     static STEAM_APPID = 570;
+    router: Router;
 
-    _steam: SteamUser; // private
-
-    // state
-    haveGCSession: boolean;
-    _inDota2: boolean; // private
-
+    _steam: SteamUser;
+    // State
+    _haveGCSession: boolean;
+    _inDota2: boolean;
     // TODO
     _helloTimer: NodeJS.Timer | undefined | null;
     _helloTimerMs: number | undefined;
-    router: Router;
 
     constructor(steam: SteamUser) {
         if (steam.packageName !== 'steam-user' || !('packageVersion' in steam) || !steam.constructor) {
@@ -43,7 +41,7 @@ export class Dota2User extends EventEmitter {
         super();
         this.router = new Router();
         this._steam = steam;
-        this.haveGCSession = false;
+        this._haveGCSession = false;
         this._inDota2 = false;
 
         // Hook our steam-user events
@@ -88,7 +86,7 @@ export class Dota2User extends EventEmitter {
             // this.inventory = this.inventory || [];
             debug("GC connection established");
             debug('Received welcome: %o', message)
-            this.haveGCSession = true;
+            this._haveGCSession = true;
             this._clearHelloTimer();
             this.emit('connectedToGC');
         });
@@ -98,37 +96,32 @@ export class Dota2User extends EventEmitter {
         return this._inDota2;
     }
 
-    // TODO: people should probably not use the fromJSON calls, cause it won't be typed
-    // This to be sendRaw instead
-    send(type: number, body: Object) {
-        if (!this._steam.steamID) {
-            return false;
-        }
+    get haveGCSession() {
+        return this._haveGCSession;
+    }
 
-        const protobuf = protobufsMap[type];
+    sendRaw(messageId: number, body: object) {
+        const protobuf = protobufsMap[messageId];
         if (protobuf) {
             const buffer = Buffer.from(protobuf.encode(protobuf.fromJSON(body)).finish());
-            debug("Sending GC message %s", type);
-            this._steam.sendToGC(Dota2User.STEAM_APPID, type, {}, buffer);
+            return this.sendRawBuffer(messageId, buffer);
         } else {
-            debug('Unable to send message, no protobuf found');
-            return false;
+            debug('Unable to send message %s, no protobuf found', messageId);
+            throw new Error(`Unable to send message ${messageId}, no protobuf found`);
         }
-
-        return true;
     };
 
-    sendRaw(type: number, body: Buffer|ByteBuffer) {
+    sendRawBuffer(messageId: number, body: Buffer|ByteBuffer) {
         if (!this._steam.steamID) {
-            return false;
+            throw new Error('Cannot send GC message, not logged into Steam Client');
         }
-
-        debug("Sending raw GC message %s", type);
+        debug("Sending GC message %s", messageId);
         // Convert ByteBuffer to Buffer
-        if (body instanceof ByteBuffer && ByteBuffer.isByteBuffer(body)) {
+        if (body instanceof ByteBuffer) {
             body = body.flip().toBuffer();
         }
-        this._steam.sendToGC(Dota2User.STEAM_APPID, type, null, body as Buffer);
+        // TODO: not setting a callback, not sure how it functions
+        this._steam.sendToGC(Dota2User.STEAM_APPID, messageId, {}, body);
     }
 }
 

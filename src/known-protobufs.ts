@@ -17,6 +17,5 @@ export const protobufsMap: KnownProtobufs = {
     [EGCBaseClientMsg.k_EMsgGCClientWelcome.toString()]: CMsgClientWelcome,
 };
 export interface ProtobufEvents {
-    [EGCBaseClientMsg.k_EMsgGCClientHello]: (data: CMsgClientHello) => void,
     [EGCBaseClientMsg.k_EMsgGCClientWelcome]: (data: CMsgClientWelcome) => void,
 }
