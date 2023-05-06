@@ -21,13 +21,13 @@ Dota2User.prototype._connect = function() {
             return;
         }
 
-        this.send(EGCBaseClientMsg.k_EMsgGCClientHello, {});
+        this.sendRaw(EGCBaseClientMsg.k_EMsgGCClientHello, {});
         this._helloTimerMs = Math.min(EXPONENTIAL_HELLO_BACKOFF_MAX, (this._helloTimerMs || DEFAULT_HELLO_DELAY) * 2); // exponential backoff, max 60 seconds
-        this._helloTimer = setTimeout(sendHello, this._helloTimerMs);
+        this._helloTimer = setTimeout(() => sendHello(), this._helloTimerMs);
         this.emit('debug', "Sending hello, setting timer for next attempt to " + this._helloTimerMs + " ms");
     };
 
-    this._helloTimer = setTimeout(sendHello, INITIAL_HELLO_DELAY);
+    this._helloTimer = setTimeout(() => sendHello(), INITIAL_HELLO_DELAY);
 };
 
 /**
@@ -42,7 +42,7 @@ Dota2User.prototype._handleAppQuit = function(emitDisconnectEvent) {
     }
 
     this._inDota2 = false;
-    this.haveGCSession = false;
+    this._haveGCSession = false;
 };
 
 /**
