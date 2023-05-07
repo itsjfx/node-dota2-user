@@ -1,7 +1,7 @@
 const debug = require('debug')('dota2-user:router');
 
 import { ExtendedEventEmitter, TypedEmitter } from './utils';
-import { protobufsMap, ProtobufEvents } from "./known-protobufs";
+import { protobufsMap, ProtobufEvents } from './known-protobufs';
 
 export class Router extends (ExtendedEventEmitter as new () => TypedEmitter<ProtobufEvents>) {
     route(messageId: number, body: Buffer) {

@@ -2,6 +2,7 @@ import { EventEmitter } from 'node:events';
 
 // Extended version of https://github.com/binier/tiny-typed-emitter/blob/66c1b66bc159675352a6f38911e4c6cf2117f3e4/lib/index.d.ts#L1-L26 with onAny
 export type ListenerSignature<L> = {
+    // eslint-disable-next-line no-unused-vars
     [E in keyof L]: (...args: any[]) => any;
 };
 export type DefaultListener = {
@@ -31,7 +32,7 @@ export interface TypedEmitter<L extends ListenerSignature<L> = DefaultListener> 
 /**
  * Slightly extended out of the box EventEmitter
  *
- * @remarks 
+ * @remarks
  * * The `eventName` argument for most methods can also be a `number`.
  *   * Numbers get type-casted to strings.
  *   * This is to provide a friendlier way when using enum values which are numbers
@@ -74,6 +75,7 @@ export class ExtendedEventEmitter extends EventEmitter {
         }
         return super.listenerCount(eventName);
     }
+    // eslint-disable-next-line @typescript-eslint/ban-types
     listeners(eventName: string | symbol | number): Function[] {
         if (typeof eventName === 'number') {
             eventName = eventName.toString();
@@ -111,6 +113,7 @@ export class ExtendedEventEmitter extends EventEmitter {
         }
         return super.removeListener(eventName, listener);
     }
+    // eslint-disable-next-line @typescript-eslint/ban-types
     rawListeners(eventName: string | symbol | number): Function[] {
         if (typeof eventName === 'number') {
             eventName = eventName.toString();
