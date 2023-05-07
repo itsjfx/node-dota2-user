@@ -27,7 +27,6 @@
   "dependencies": {
     "bytebuffer": "^5.0.1",
     "debug": "^4.3.4",
-    "tiny-typed-emitter": "^2.1.0",
     "ts-proto": "^1.146.0"
   },
   "peerDependencies": {
