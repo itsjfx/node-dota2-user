@@ -10,13 +10,13 @@ const EXPONENTIAL_HELLO_BACKOFF_MAX = 60000;
  */
 Dota2User.prototype._connect = function() {
     if (!this.inDota2 || this._helloTimer) {
-        this.emit('debug', "Not trying to connect due to " + (!this.inDota2 ? "not in Dota 2" : "has helloTimer"));
+        this.emit('debug', 'Not trying to connect due to ' + (!this.inDota2 ? 'not in Dota 2' : 'has helloTimer'));
         return; // We're not in Dota 2 or we're already trying to connect
     }
 
-    let sendHello = () => {
+    const sendHello = () => {
         if (!this.inDota2 || this.haveGCSession) {
-            this.emit('debug', "Not sending hello because " + (!this.inDota2 ? "we're no longer in Dota 2" : "we have a session"));
+            this.emit('debug', 'Not sending hello because ' + (!this.inDota2 ? 'we\'re no longer in Dota 2' : 'we have a session'));
             this._clearHelloTimer();
             return;
         }
@@ -24,21 +24,21 @@ Dota2User.prototype._connect = function() {
         this.sendRaw(EGCBaseClientMsg.k_EMsgGCClientHello, {});
         this._helloTimerMs = Math.min(EXPONENTIAL_HELLO_BACKOFF_MAX, (this._helloTimerMs || DEFAULT_HELLO_DELAY) * 2); // exponential backoff, max 60 seconds
         this._helloTimer = setTimeout(() => sendHello(), this._helloTimerMs);
-        this.emit('debug', "Sending hello, setting timer for next attempt to " + this._helloTimerMs + " ms");
+        this.emit('debug', 'Sending hello, setting timer for next attempt to ' + this._helloTimerMs + ' ms');
     };
 
     this._helloTimer = setTimeout(() => sendHello(), INITIAL_HELLO_DELAY);
 };
 
 /**
- * @param {boolean} emitDisconnectEvent 
+ * @param {boolean} emitDisconnectEvent
  * @private
  */
 Dota2User.prototype._handleAppQuit = function(emitDisconnectEvent) {
     this._clearHelloTimer();
 
     if (this.haveGCSession && emitDisconnectEvent) {
-        this.emit('disconnectedFromGC', "2"); // Dota2User.GCConnectionStatus.NO_SESSION);
+        this.emit('disconnectedFromGC', '2'); // Dota2User.GCConnectionStatus.NO_SESSION);
     }
 
     this._inDota2 = false;

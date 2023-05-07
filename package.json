@@ -36,6 +36,9 @@
     "@types/debug": "^4.1.7",
     "@types/node": "^18.15.11",
     "@types/steam-user": "^4.26.1",
+    "@typescript-eslint/eslint-plugin": "^5.59.2",
+    "@typescript-eslint/parser": "^5.59.2",
+    "eslint": "^8.40.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.3"
   }

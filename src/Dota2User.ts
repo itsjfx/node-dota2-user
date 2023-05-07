@@ -5,7 +5,7 @@ import SteamUser from 'steam-user';
 const debug = require('debug')('dota2-user');
 
 import { Router } from './router';
-import { EGCBaseClientMsg, EDOTAGCMsg } from './generated-protobufs';
+import { EGCBaseClientMsg } from './generated-protobufs';
 import { protobufsMap } from './known-protobufs';
 
 // TODO... there has to be a better way
@@ -57,7 +57,7 @@ export class Dota2User extends EventEmitter {
             if (this.inDota2 || appid !== Dota2User.STEAM_APPID) {
                 return;
             }
-    
+
             this._inDota2 = true;
             if (!this.haveGCSession) {
                 this._connect();
@@ -68,15 +68,15 @@ export class Dota2User extends EventEmitter {
             if (!this.inDota2 || appid !== Dota2User.STEAM_APPID) {
                 return;
             }
-    
+
             this._handleAppQuit(false);
         });
-    
+
         this._steam.on('disconnected', () => {
             this._handleAppQuit(true);
         });
-    
-        this._steam.on('error', (err) => {
+
+        this._steam.on('error', () => {
             this._handleAppQuit(true);
         });
 
@@ -84,8 +84,8 @@ export class Dota2User extends EventEmitter {
             // Handle caches
 
             // this.inventory = this.inventory || [];
-            debug("GC connection established");
-            debug('Received welcome: %o', message)
+            debug('GC connection established');
+            debug('Received welcome: %o', message);
             this._haveGCSession = true;
             this._clearHelloTimer();
             this.emit('connectedToGC');
@@ -109,13 +109,13 @@ export class Dota2User extends EventEmitter {
             debug('Unable to send message %s, no protobuf found', messageId);
             throw new Error(`Unable to send message ${messageId}, no protobuf found`);
         }
-    };
+    }
 
     sendRawBuffer(messageId: number, body: Buffer|ByteBuffer) {
         if (!this._steam.steamID) {
             throw new Error('Cannot send GC message, not logged into Steam Client');
         }
-        debug("Sending GC message %s", messageId);
+        debug('Sending GC message %s', messageId);
         // Convert ByteBuffer to Buffer
         if (body instanceof ByteBuffer) {
             body = body.flip().toBuffer();
