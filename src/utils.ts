@@ -1,5 +1,32 @@
 import { EventEmitter } from 'node:events';
 
+// Extended version of https://github.com/binier/tiny-typed-emitter/blob/66c1b66bc159675352a6f38911e4c6cf2117f3e4/lib/index.d.ts#L1-L26 with onAny
+export type ListenerSignature<L> = {
+    [E in keyof L]: (...args: any[]) => any;
+};
+export type DefaultListener = {
+    [k: string]: (...args: any[]) => any;
+};
+export interface TypedEmitter<L extends ListenerSignature<L> = DefaultListener> {
+    addListener<U extends keyof L>(event: U, listener: L[U]): this;
+    prependListener<U extends keyof L>(event: U, listener: L[U]): this;
+    prependOnceListener<U extends keyof L>(event: U, listener: L[U]): this;
+    removeListener<U extends keyof L>(event: U, listener: L[U]): this;
+    removeAllListeners(event?: keyof L): this;
+    once<U extends keyof L>(event: U, listener: L[U]): this;
+    on<U extends keyof L>(event: U, listener: L[U]): this;
+    // added in
+    onAny<U extends keyof L>(listener: (eventName: keyof L, ...args: Parameters<L[U]>) => void): this;
+    off<U extends keyof L>(event: U, listener: L[U]): this;
+    emit<U extends keyof L>(event: U, ...args: Parameters<L[U]>): boolean;
+    eventNames<U extends keyof L>(): U[];
+    listenerCount(type: keyof L): number;
+    listeners<U extends keyof L>(type: U): L[U][];
+    rawListeners<U extends keyof L>(type: U): L[U][];
+    getMaxListeners(): number;
+    setMaxListeners(n: number): this;
+}
+
 // TODO use EventEmitter for now, may move to a third party one
 /**
  * Slightly extended out of the box EventEmitter
