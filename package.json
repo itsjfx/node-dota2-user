@@ -4,10 +4,16 @@
   "description": "Exposes a simple API for interacting with the Dota 2 game coordinator",
   "main": "dist/index.js",
   "scripts": {
-    "generate-protos": "node scripts/generate-protos.js"
+    "build": "./bin/build",
+    "build-protos": "./bin/build-protos",
+    "lint": "./bin/lint",
+    "lint:fix": "./bin/lint --fix",
+    "test": "./bin/test",
+    "update-protos": "./bin/update-protos",
+    "watch": "./bin/watch"
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=14.0.0"
   },
   "repository": {
     "type": "git",
