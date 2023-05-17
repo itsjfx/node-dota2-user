@@ -1,7 +1,7 @@
 const debug = require('debug')('dota2-user:connection');
 
 import { Dota2User } from '../Dota2User.js';
-import { EGCBaseClientMsg, GCConnectionStatus } from '../generated-protobufs';
+import { EGCBaseClientMsg, GCConnectionStatus } from '../protobufs';
 
 const INITIAL_HELLO_DELAY = 500;
 const DEFAULT_HELLO_DELAY = 1000;

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
+
 set -eu -o pipefail
 
 cd "$(dirname "$0")/../"
-
 
 EXPORTS_FILE="src/generated-protobufs.ts"
 PROTOS_PATH="Protobufs/dota2"

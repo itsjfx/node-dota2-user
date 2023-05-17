@@ -5,7 +5,7 @@ import SteamUser from 'steam-user';
 const debug = require('debug')('dota2-user');
 
 import { Router } from './router';
-import { EGCBaseClientMsg, GCConnectionStatus } from './generated-protobufs';
+import { EGCBaseClientMsg, GCConnectionStatus } from './protobufs';
 import { ProtobufDataMapType } from './known-protobufs';
 import { Dota2UserError, getProtobufForMessage } from './utils';
 
