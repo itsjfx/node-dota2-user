@@ -1,8 +1,8 @@
 {
   "name": "dota2-user",
-  "version": "1.0.1-beta.1",
+  "version": "2.0.0-beta.0",
   "description": "Exposes a simple API for interacting with the Dota 2 game coordinator",
-  "main": "./lib/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "generate-protos": "node scripts/generate-protos.js"
   },
@@ -15,17 +15,31 @@
   },
   "keywords": [
     "dota2",
-    "dota",
-    "steam"
+    "steam",
+    "dota"
   ],
   "author": "jfx",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/itsjfx/node-dota2-user/issues"
   },
   "homepage": "https://github.com/itsjfx/node-dota2-user#readme",
   "dependencies": {
     "bytebuffer": "^5.0.1",
-    "protobufjs": "^6.10.1"
+    "debug": "^4.3.4",
+    "ts-proto": "^1.146.0"
+  },
+  "peerDependencies": {
+    "steam-user": ">=4.2.0 < 5"
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.7",
+    "@types/node": "^18.15.11",
+    "@types/steam-user": "^4.26.1",
+    "@typescript-eslint/eslint-plugin": "^5.59.2",
+    "@typescript-eslint/parser": "^5.59.2",
+    "eslint": "^8.40.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.3"
   }
 }

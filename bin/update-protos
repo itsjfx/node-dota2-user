@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -eu -o pipefail
+
+cd "$(dirname "$0")/../"
+
+git submodule update --depth=1 --remote Protobufs
