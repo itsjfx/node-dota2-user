@@ -40,7 +40,7 @@ cat << EOF > "$EXPORTS_FILE"
 
 EOF
 
-all_files="$(find "$OUTPUT_DIR" -name '*.ts' -mindepth 1 -maxdepth 1 -print)"
+all_files="$(find "$OUTPUT_DIR" -mindepth 1 -maxdepth 1 -name '*.ts' -print)"
 bad_files=("$OUTPUT_DIR"/steammessages_base.ts "$OUTPUT_DIR"/valveextensions.ts)
 files_to_export="$(printf '%s\n' "$all_files" "${bad_files[@]}" | LC_ALL=C sort | uniq -u)"
 for file in $files_to_export; do

@@ -1,4 +1,18 @@
 import { EventEmitter } from 'node:events';
+import { protobufMap, ProtobufDataMapType} from './known-protobufs';
+const debug = require('debug')('dota2-user:utils');
+
+export class Dota2UserError extends Error {}
+
+// TODO maybe this should be attached to Dota2User
+export const getProtobufForMessage = (messageId: keyof ProtobufDataMapType) => {
+    if (protobufMap.has(messageId)) {
+        return protobufMap.get(messageId)!;
+    } else {
+        debug('Unable to find protobuf for message: %s', messageId);
+        throw new Dota2UserError(`Unable to find protobuf for message: ${messageId}`);
+    }
+};
 
 // Extended version of https://github.com/binier/tiny-typed-emitter/blob/66c1b66bc159675352a6f38911e4c6cf2117f3e4/lib/index.d.ts#L1-L26 with onAny
 export type ListenerSignature<L> = {

@@ -5,8 +5,9 @@ import SteamUser from 'steam-user';
 const debug = require('debug')('dota2-user');
 
 import { Router } from './router';
-import { EGCBaseClientMsg } from './generated-protobufs';
-import { protobufsMap } from './known-protobufs';
+import { EGCBaseClientMsg, GCConnectionStatus } from './generated-protobufs';
+import { ProtobufDataMapType } from './known-protobufs';
+import { Dota2UserError, getProtobufForMessage } from './utils';
 
 // TODO... there has to be a better way
 export interface Dota2User {
@@ -29,11 +30,11 @@ export class Dota2User extends EventEmitter {
 
     constructor(steam: SteamUser) {
         if (steam.packageName !== 'steam-user' || !('packageVersion' in steam) || !steam.constructor) {
-            throw new Error('dota2-user v2 only supports steam-user v4.2.0 or later.');
+            throw new Dota2UserError('dota2-user v2 only supports steam-user v4.2.0 or later.');
         } else {
             const [major, minor] = steam.packageVersion.split('.');
             if (+major < 4 || +minor < 2) {
-                throw new Error(`dota2-user v2 only supports steam-user v4.2.0 or later. ${steam.constructor.name} v${steam.packageVersion} given.`);
+                throw new Dota2UserError(`dota2-user v2 only supports steam-user v4.2.0 or later. ${steam.constructor.name} v${steam.packageVersion} given.`);
             }
         }
 
@@ -90,6 +91,15 @@ export class Dota2User extends EventEmitter {
             this._clearHelloTimer();
             this.emit('connectedToGC');
         });
+
+        this.router.on(EGCBaseClientMsg.k_EMsgGCClientConnectionStatus, (data) => {
+            if (data.status !== GCConnectionStatus.GCConnectionStatus_HAVE_SESSION && this.haveGCSession) {
+                debug('Connection status: %s; have session: %s', data.status, this.haveGCSession);
+                this.emit('disconnectedFromGC', data.status);
+                this._haveGCSession = false;
+                this._connect(); // Try to reconnect
+            }
+        });
     }
 
     get inDota2() {
@@ -100,20 +110,24 @@ export class Dota2User extends EventEmitter {
         return this._haveGCSession;
     }
 
-    sendRaw(messageId: number, body: object) {
-        const protobuf = protobufsMap[messageId];
-        if (protobuf) {
-            const buffer = Buffer.from(protobuf.encode(protobuf.fromJSON(body)).finish());
-            return this.sendRawBuffer(messageId, buffer);
-        } else {
-            debug('Unable to send message %s, no protobuf found', messageId);
-            throw new Error(`Unable to send message ${messageId}, no protobuf found`);
-        }
+    // TODO read about extends and typeof in TypeScript
+    send<T extends keyof ProtobufDataMapType>(messageId: T, body: ProtobufDataMapType[T]) {
+        const protobuf = getProtobufForMessage(messageId);
+        const buffer = Buffer.from(protobuf.encode(body).finish());
+        return this.sendRawBuffer(messageId, buffer);
+    }
+
+    // this may get deprecated
+    // a "raw" / not entirely type-safe way of sending data
+    sendRaw(messageId: keyof ProtobufDataMapType, body: object) {
+        const protobuf = getProtobufForMessage(messageId);
+        const buffer = Buffer.from(protobuf.encode(protobuf.fromJSON(body)).finish());
+        return this.sendRawBuffer(messageId, buffer);
     }
 
     sendRawBuffer(messageId: number, body: Buffer|ByteBuffer) {
         if (!this._steam.steamID) {
-            throw new Error('Cannot send GC message, not logged into Steam Client');
+            throw new Dota2UserError('Cannot send GC message, not logged into Steam Client');
         }
         debug('Sending GC message %s', messageId);
         // Convert ByteBuffer to Buffer
