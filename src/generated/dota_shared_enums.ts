@@ -427,6 +427,7 @@ export enum EEvent {
   EVENT_ID_MUERTA_RELEASE_SPRING2023 = 40,
   EVENT_ID_TEAM_2023_TOUR1 = 41,
   EVENT_ID_TEAM_2023_TOUR2 = 42,
+  EVENT_ID_TEAM_2023_TOUR3 = 43,
 }
 
 export function eEventFromJSON(object: any): EEvent {
@@ -560,6 +561,9 @@ export function eEventFromJSON(object: any): EEvent {
     case 42:
     case "EVENT_ID_TEAM_2023_TOUR2":
       return EEvent.EVENT_ID_TEAM_2023_TOUR2;
+    case 43:
+    case "EVENT_ID_TEAM_2023_TOUR3":
+      return EEvent.EVENT_ID_TEAM_2023_TOUR3;
     default:
       throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EEvent");
   }
@@ -653,6 +657,8 @@ export function eEventToJSON(object: EEvent): string {
       return "EVENT_ID_TEAM_2023_TOUR1";
     case EEvent.EVENT_ID_TEAM_2023_TOUR2:
       return "EVENT_ID_TEAM_2023_TOUR2";
+    case EEvent.EVENT_ID_TEAM_2023_TOUR3:
+      return "EVENT_ID_TEAM_2023_TOUR3";
     default:
       throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EEvent");
   }
@@ -666,9 +672,6 @@ export enum ERankType {
   k_ERankType_RankedLegacy = 4,
   k_ERankType_CasualGlicko = 5,
   k_ERankType_RankedGlicko = 6,
-  k_ERankType_CasualRemapped = 7,
-  k_ERankType_CasualRemappedGlicko = 8,
-  k_ERankType_CasualShiftedGlicko = 9,
 }
 
 export function eRankTypeFromJSON(object: any): ERankType {
@@ -694,15 +697,6 @@ export function eRankTypeFromJSON(object: any): ERankType {
     case 6:
     case "k_ERankType_RankedGlicko":
       return ERankType.k_ERankType_RankedGlicko;
-    case 7:
-    case "k_ERankType_CasualRemapped":
-      return ERankType.k_ERankType_CasualRemapped;
-    case 8:
-    case "k_ERankType_CasualRemappedGlicko":
-      return ERankType.k_ERankType_CasualRemappedGlicko;
-    case 9:
-    case "k_ERankType_CasualShiftedGlicko":
-      return ERankType.k_ERankType_CasualShiftedGlicko;
     default:
       throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ERankType");
   }
@@ -724,12 +718,6 @@ export function eRankTypeToJSON(object: ERankType): string {
       return "k_ERankType_CasualGlicko";
     case ERankType.k_ERankType_RankedGlicko:
       return "k_ERankType_RankedGlicko";
-    case ERankType.k_ERankType_CasualRemapped:
-      return "k_ERankType_CasualRemapped";
-    case ERankType.k_ERankType_CasualRemappedGlicko:
-      return "k_ERankType_CasualRemappedGlicko";
-    case ERankType.k_ERankType_CasualShiftedGlicko:
-      return "k_ERankType_CasualShiftedGlicko";
     default:
       throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ERankType");
   }

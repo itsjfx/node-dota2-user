@@ -1019,26 +1019,28 @@ export interface CUserMsgParticleManager_SetParticleNamedValueContext {
   floatValues: CUserMsgParticleManager_SetParticleNamedValueContext_FloatContextValue[];
   vectorValues: CUserMsgParticleManager_SetParticleNamedValueContext_VectorContextValue[];
   transformValues: CUserMsgParticleManager_SetParticleNamedValueContext_TransformContextValue[];
+  ehandleValues: CUserMsgParticleManager_SetParticleNamedValueContext_EHandleContext[];
 }
 
 export interface CUserMsgParticleManager_SetParticleNamedValueContext_FloatContextValue {
-  valueName: string;
+  valueNameHash: number;
   value: number;
 }
 
 export interface CUserMsgParticleManager_SetParticleNamedValueContext_VectorContextValue {
-  valueName: string;
+  valueNameHash: number;
   value: CMsgVector | undefined;
-  entIndex: number;
-  attachmentName: string;
 }
 
 export interface CUserMsgParticleManager_SetParticleNamedValueContext_TransformContextValue {
-  valueName: string;
+  valueNameHash: number;
   angles: CMsgQAngle | undefined;
   translation: CMsgVector | undefined;
+}
+
+export interface CUserMsgParticleManager_SetParticleNamedValueContext_EHandleContext {
+  valueNameHash: number;
   entIndex: number;
-  attachmentName: string;
 }
 
 export interface CUserMsgHudError {
@@ -6232,7 +6234,7 @@ export const CUserMsgParticleManager_ParticleFreezeTransitionOverride = {
 };
 
 function createBaseCUserMsgParticleManager_SetParticleNamedValueContext(): CUserMsgParticleManager_SetParticleNamedValueContext {
-  return { floatValues: [], vectorValues: [], transformValues: [] };
+  return { floatValues: [], vectorValues: [], transformValues: [], ehandleValues: [] };
 }
 
 export const CUserMsgParticleManager_SetParticleNamedValueContext = {
@@ -6251,6 +6253,9 @@ export const CUserMsgParticleManager_SetParticleNamedValueContext = {
     for (const v of message.transformValues) {
       CUserMsgParticleManager_SetParticleNamedValueContext_TransformContextValue.encode(v!, writer.uint32(26).fork())
         .ldelim();
+    }
+    for (const v of message.ehandleValues) {
+      CUserMsgParticleManager_SetParticleNamedValueContext_EHandleContext.encode(v!, writer.uint32(34).fork()).ldelim();
     }
     return writer;
   },
@@ -6289,6 +6294,15 @@ export const CUserMsgParticleManager_SetParticleNamedValueContext = {
             CUserMsgParticleManager_SetParticleNamedValueContext_TransformContextValue.decode(reader, reader.uint32()),
           );
           continue;
+        case 4:
+          if (tag != 34) {
+            break;
+          }
+
+          message.ehandleValues.push(
+            CUserMsgParticleManager_SetParticleNamedValueContext_EHandleContext.decode(reader, reader.uint32()),
+          );
+          continue;
       }
       if ((tag & 7) == 4 || tag == 0) {
         break;
@@ -6313,6 +6327,11 @@ export const CUserMsgParticleManager_SetParticleNamedValueContext = {
       transformValues: Array.isArray(object?.transformValues)
         ? object.transformValues.map((e: any) =>
           CUserMsgParticleManager_SetParticleNamedValueContext_TransformContextValue.fromJSON(e)
+        )
+        : [],
+      ehandleValues: Array.isArray(object?.ehandleValues)
+        ? object.ehandleValues.map((e: any) =>
+          CUserMsgParticleManager_SetParticleNamedValueContext_EHandleContext.fromJSON(e)
         )
         : [],
     };
@@ -6341,12 +6360,19 @@ export const CUserMsgParticleManager_SetParticleNamedValueContext = {
     } else {
       obj.transformValues = [];
     }
+    if (message.ehandleValues) {
+      obj.ehandleValues = message.ehandleValues.map((e) =>
+        e ? CUserMsgParticleManager_SetParticleNamedValueContext_EHandleContext.toJSON(e) : undefined
+      );
+    } else {
+      obj.ehandleValues = [];
+    }
     return obj;
   },
 };
 
 function createBaseCUserMsgParticleManager_SetParticleNamedValueContext_FloatContextValue(): CUserMsgParticleManager_SetParticleNamedValueContext_FloatContextValue {
-  return { valueName: "", value: 0 };
+  return { valueNameHash: 0, value: 0 };
 }
 
 export const CUserMsgParticleManager_SetParticleNamedValueContext_FloatContextValue = {
@@ -6354,8 +6380,8 @@ export const CUserMsgParticleManager_SetParticleNamedValueContext_FloatContextVa
     message: CUserMsgParticleManager_SetParticleNamedValueContext_FloatContextValue,
     writer: _m0.Writer = _m0.Writer.create(),
   ): _m0.Writer {
-    if (message.valueName !== "") {
-      writer.uint32(10).string(message.valueName);
+    if (message.valueNameHash !== 0) {
+      writer.uint32(8).uint32(message.valueNameHash);
     }
     if (message.value !== 0) {
       writer.uint32(21).float(message.value);
@@ -6374,11 +6400,11 @@ export const CUserMsgParticleManager_SetParticleNamedValueContext_FloatContextVa
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag != 8) {
             break;
           }
 
-          message.valueName = reader.string();
+          message.valueNameHash = reader.uint32();
           continue;
         case 2:
           if (tag != 21) {
@@ -6398,21 +6424,21 @@ export const CUserMsgParticleManager_SetParticleNamedValueContext_FloatContextVa
 
   fromJSON(object: any): CUserMsgParticleManager_SetParticleNamedValueContext_FloatContextValue {
     return {
-      valueName: isSet(object.valueName) ? String(object.valueName) : "",
+      valueNameHash: isSet(object.valueNameHash) ? Number(object.valueNameHash) : 0,
       value: isSet(object.value) ? Number(object.value) : 0,
     };
   },
 
   toJSON(message: CUserMsgParticleManager_SetParticleNamedValueContext_FloatContextValue): unknown {
     const obj: any = {};
-    message.valueName !== undefined && (obj.valueName = message.valueName);
+    message.valueNameHash !== undefined && (obj.valueNameHash = Math.round(message.valueNameHash));
     message.value !== undefined && (obj.value = message.value);
     return obj;
   },
 };
 
 function createBaseCUserMsgParticleManager_SetParticleNamedValueContext_VectorContextValue(): CUserMsgParticleManager_SetParticleNamedValueContext_VectorContextValue {
-  return { valueName: "", value: undefined, entIndex: 0, attachmentName: "" };
+  return { valueNameHash: 0, value: undefined };
 }
 
 export const CUserMsgParticleManager_SetParticleNamedValueContext_VectorContextValue = {
@@ -6420,17 +6446,11 @@ export const CUserMsgParticleManager_SetParticleNamedValueContext_VectorContextV
     message: CUserMsgParticleManager_SetParticleNamedValueContext_VectorContextValue,
     writer: _m0.Writer = _m0.Writer.create(),
   ): _m0.Writer {
-    if (message.valueName !== "") {
-      writer.uint32(10).string(message.valueName);
+    if (message.valueNameHash !== 0) {
+      writer.uint32(8).uint32(message.valueNameHash);
     }
     if (message.value !== undefined) {
       CMsgVector.encode(message.value, writer.uint32(18).fork()).ldelim();
-    }
-    if (message.entIndex !== 0) {
-      writer.uint32(24).uint32(message.entIndex);
-    }
-    if (message.attachmentName !== "") {
-      writer.uint32(34).string(message.attachmentName);
     }
     return writer;
   },
@@ -6446,11 +6466,11 @@ export const CUserMsgParticleManager_SetParticleNamedValueContext_VectorContextV
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag != 8) {
             break;
           }
 
-          message.valueName = reader.string();
+          message.valueNameHash = reader.uint32();
           continue;
         case 2:
           if (tag != 18) {
@@ -6458,20 +6478,6 @@ export const CUserMsgParticleManager_SetParticleNamedValueContext_VectorContextV
           }
 
           message.value = CMsgVector.decode(reader, reader.uint32());
-          continue;
-        case 3:
-          if (tag != 24) {
-            break;
-          }
-
-          message.entIndex = reader.uint32();
-          continue;
-        case 4:
-          if (tag != 34) {
-            break;
-          }
-
-          message.attachmentName = reader.string();
           continue;
       }
       if ((tag & 7) == 4 || tag == 0) {
@@ -6484,25 +6490,21 @@ export const CUserMsgParticleManager_SetParticleNamedValueContext_VectorContextV
 
   fromJSON(object: any): CUserMsgParticleManager_SetParticleNamedValueContext_VectorContextValue {
     return {
-      valueName: isSet(object.valueName) ? String(object.valueName) : "",
+      valueNameHash: isSet(object.valueNameHash) ? Number(object.valueNameHash) : 0,
       value: isSet(object.value) ? CMsgVector.fromJSON(object.value) : undefined,
-      entIndex: isSet(object.entIndex) ? Number(object.entIndex) : 0,
-      attachmentName: isSet(object.attachmentName) ? String(object.attachmentName) : "",
     };
   },
 
   toJSON(message: CUserMsgParticleManager_SetParticleNamedValueContext_VectorContextValue): unknown {
     const obj: any = {};
-    message.valueName !== undefined && (obj.valueName = message.valueName);
+    message.valueNameHash !== undefined && (obj.valueNameHash = Math.round(message.valueNameHash));
     message.value !== undefined && (obj.value = message.value ? CMsgVector.toJSON(message.value) : undefined);
-    message.entIndex !== undefined && (obj.entIndex = Math.round(message.entIndex));
-    message.attachmentName !== undefined && (obj.attachmentName = message.attachmentName);
     return obj;
   },
 };
 
 function createBaseCUserMsgParticleManager_SetParticleNamedValueContext_TransformContextValue(): CUserMsgParticleManager_SetParticleNamedValueContext_TransformContextValue {
-  return { valueName: "", angles: undefined, translation: undefined, entIndex: 0, attachmentName: "" };
+  return { valueNameHash: 0, angles: undefined, translation: undefined };
 }
 
 export const CUserMsgParticleManager_SetParticleNamedValueContext_TransformContextValue = {
@@ -6510,20 +6512,14 @@ export const CUserMsgParticleManager_SetParticleNamedValueContext_TransformConte
     message: CUserMsgParticleManager_SetParticleNamedValueContext_TransformContextValue,
     writer: _m0.Writer = _m0.Writer.create(),
   ): _m0.Writer {
-    if (message.valueName !== "") {
-      writer.uint32(10).string(message.valueName);
+    if (message.valueNameHash !== 0) {
+      writer.uint32(8).uint32(message.valueNameHash);
     }
     if (message.angles !== undefined) {
       CMsgQAngle.encode(message.angles, writer.uint32(18).fork()).ldelim();
     }
     if (message.translation !== undefined) {
       CMsgVector.encode(message.translation, writer.uint32(26).fork()).ldelim();
-    }
-    if (message.entIndex !== 0) {
-      writer.uint32(32).uint32(message.entIndex);
-    }
-    if (message.attachmentName !== "") {
-      writer.uint32(42).string(message.attachmentName);
     }
     return writer;
   },
@@ -6539,11 +6535,11 @@ export const CUserMsgParticleManager_SetParticleNamedValueContext_TransformConte
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          if (tag != 10) {
+          if (tag != 8) {
             break;
           }
 
-          message.valueName = reader.string();
+          message.valueNameHash = reader.uint32();
           continue;
         case 2:
           if (tag != 18) {
@@ -6559,20 +6555,6 @@ export const CUserMsgParticleManager_SetParticleNamedValueContext_TransformConte
 
           message.translation = CMsgVector.decode(reader, reader.uint32());
           continue;
-        case 4:
-          if (tag != 32) {
-            break;
-          }
-
-          message.entIndex = reader.uint32();
-          continue;
-        case 5:
-          if (tag != 42) {
-            break;
-          }
-
-          message.attachmentName = reader.string();
-          continue;
       }
       if ((tag & 7) == 4 || tag == 0) {
         break;
@@ -6584,22 +6566,84 @@ export const CUserMsgParticleManager_SetParticleNamedValueContext_TransformConte
 
   fromJSON(object: any): CUserMsgParticleManager_SetParticleNamedValueContext_TransformContextValue {
     return {
-      valueName: isSet(object.valueName) ? String(object.valueName) : "",
+      valueNameHash: isSet(object.valueNameHash) ? Number(object.valueNameHash) : 0,
       angles: isSet(object.angles) ? CMsgQAngle.fromJSON(object.angles) : undefined,
       translation: isSet(object.translation) ? CMsgVector.fromJSON(object.translation) : undefined,
-      entIndex: isSet(object.entIndex) ? Number(object.entIndex) : 0,
-      attachmentName: isSet(object.attachmentName) ? String(object.attachmentName) : "",
     };
   },
 
   toJSON(message: CUserMsgParticleManager_SetParticleNamedValueContext_TransformContextValue): unknown {
     const obj: any = {};
-    message.valueName !== undefined && (obj.valueName = message.valueName);
+    message.valueNameHash !== undefined && (obj.valueNameHash = Math.round(message.valueNameHash));
     message.angles !== undefined && (obj.angles = message.angles ? CMsgQAngle.toJSON(message.angles) : undefined);
     message.translation !== undefined &&
       (obj.translation = message.translation ? CMsgVector.toJSON(message.translation) : undefined);
+    return obj;
+  },
+};
+
+function createBaseCUserMsgParticleManager_SetParticleNamedValueContext_EHandleContext(): CUserMsgParticleManager_SetParticleNamedValueContext_EHandleContext {
+  return { valueNameHash: 0, entIndex: 0 };
+}
+
+export const CUserMsgParticleManager_SetParticleNamedValueContext_EHandleContext = {
+  encode(
+    message: CUserMsgParticleManager_SetParticleNamedValueContext_EHandleContext,
+    writer: _m0.Writer = _m0.Writer.create(),
+  ): _m0.Writer {
+    if (message.valueNameHash !== 0) {
+      writer.uint32(8).uint32(message.valueNameHash);
+    }
+    if (message.entIndex !== 0) {
+      writer.uint32(16).uint32(message.entIndex);
+    }
+    return writer;
+  },
+
+  decode(
+    input: _m0.Reader | Uint8Array,
+    length?: number,
+  ): CUserMsgParticleManager_SetParticleNamedValueContext_EHandleContext {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCUserMsgParticleManager_SetParticleNamedValueContext_EHandleContext();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 8) {
+            break;
+          }
+
+          message.valueNameHash = reader.uint32();
+          continue;
+        case 2:
+          if (tag != 16) {
+            break;
+          }
+
+          message.entIndex = reader.uint32();
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CUserMsgParticleManager_SetParticleNamedValueContext_EHandleContext {
+    return {
+      valueNameHash: isSet(object.valueNameHash) ? Number(object.valueNameHash) : 0,
+      entIndex: isSet(object.entIndex) ? Number(object.entIndex) : 0,
+    };
+  },
+
+  toJSON(message: CUserMsgParticleManager_SetParticleNamedValueContext_EHandleContext): unknown {
+    const obj: any = {};
+    message.valueNameHash !== undefined && (obj.valueNameHash = Math.round(message.valueNameHash));
     message.entIndex !== undefined && (obj.entIndex = Math.round(message.entIndex));
-    message.attachmentName !== undefined && (obj.attachmentName = message.attachmentName);
     return obj;
   },
 };

@@ -1864,6 +1864,13 @@ export interface CMsgSteamLearnPreGameItemPurchases {
   isUsingDotaPlus: boolean;
 }
 
+export interface CMsgSteamLearnNeutralItemPurchase {
+  itemId: number;
+  tier: number;
+  isRadiantTeam: number;
+  isUsingDotaPlus: boolean;
+}
+
 export interface CMsgSteamLearnAbilitySkill {
   abilityId: number;
   skilledAbilities: number[];
@@ -21223,6 +21230,90 @@ export const CMsgSteamLearnPreGameItemPurchases = {
     } else {
       obj.itemIds = [];
     }
+    message.isRadiantTeam !== undefined && (obj.isRadiantTeam = Math.round(message.isRadiantTeam));
+    message.isUsingDotaPlus !== undefined && (obj.isUsingDotaPlus = message.isUsingDotaPlus);
+    return obj;
+  },
+};
+
+function createBaseCMsgSteamLearnNeutralItemPurchase(): CMsgSteamLearnNeutralItemPurchase {
+  return { itemId: 0, tier: 0, isRadiantTeam: 0, isUsingDotaPlus: false };
+}
+
+export const CMsgSteamLearnNeutralItemPurchase = {
+  encode(message: CMsgSteamLearnNeutralItemPurchase, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.itemId !== 0) {
+      writer.uint32(8).int32(message.itemId);
+    }
+    if (message.tier !== 0) {
+      writer.uint32(16).uint32(message.tier);
+    }
+    if (message.isRadiantTeam !== 0) {
+      writer.uint32(24).uint32(message.isRadiantTeam);
+    }
+    if (message.isUsingDotaPlus === true) {
+      writer.uint32(32).bool(message.isUsingDotaPlus);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): CMsgSteamLearnNeutralItemPurchase {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgSteamLearnNeutralItemPurchase();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 8) {
+            break;
+          }
+
+          message.itemId = reader.int32();
+          continue;
+        case 2:
+          if (tag != 16) {
+            break;
+          }
+
+          message.tier = reader.uint32();
+          continue;
+        case 3:
+          if (tag != 24) {
+            break;
+          }
+
+          message.isRadiantTeam = reader.uint32();
+          continue;
+        case 4:
+          if (tag != 32) {
+            break;
+          }
+
+          message.isUsingDotaPlus = reader.bool();
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgSteamLearnNeutralItemPurchase {
+    return {
+      itemId: isSet(object.itemId) ? Number(object.itemId) : 0,
+      tier: isSet(object.tier) ? Number(object.tier) : 0,
+      isRadiantTeam: isSet(object.isRadiantTeam) ? Number(object.isRadiantTeam) : 0,
+      isUsingDotaPlus: isSet(object.isUsingDotaPlus) ? Boolean(object.isUsingDotaPlus) : false,
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnNeutralItemPurchase): unknown {
+    const obj: any = {};
+    message.itemId !== undefined && (obj.itemId = Math.round(message.itemId));
+    message.tier !== undefined && (obj.tier = Math.round(message.tier));
     message.isRadiantTeam !== undefined && (obj.isRadiantTeam = Math.round(message.isRadiantTeam));
     message.isUsingDotaPlus !== undefined && (obj.isUsingDotaPlus = message.isUsingDotaPlus);
     return obj;
