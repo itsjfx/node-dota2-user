@@ -4,9 +4,9 @@ set -eu -o pipefail
 
 cd "$(dirname "$0")/../"
 
-EXPORTS_FILE="src/generated-protobufs.ts"
+EXPORTS_FILE="src/protobufs.ts"
 PROTOS_PATH="Protobufs/dota2"
-OUTPUT_DIR="src/protobufs"
+OUTPUT_DIR="src/generated"
 cleanup() {
     rm -rf "$OUTPUT_DIR"
     rm -f "$EXPORTS_FILE"
@@ -44,5 +44,5 @@ all_files="$(find "$OUTPUT_DIR" -mindepth 1 -maxdepth 1 -name '*.ts' -print)"
 bad_files=("$OUTPUT_DIR"/steammessages_base.ts "$OUTPUT_DIR"/valveextensions.ts)
 files_to_export="$(printf '%s\n' "$all_files" "${bad_files[@]}" | LC_ALL=C sort | uniq -u)"
 for file in $files_to_export; do
-    echo "export * from './protobufs/$(basename "$file" .ts)';" >> "$EXPORTS_FILE"
+    echo "export * from './$(basename $OUTPUT_DIR)/$(basename "$file" .ts)';" >> "$EXPORTS_FILE"
 done
