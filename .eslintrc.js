@@ -13,7 +13,7 @@ module.exports = {
     },
     ignorePatterns: [
         'dist/*',
-        'src/protobufs/*',
+        'src/generated/*',
         'bin/*'
     ],
     rules: {
