@@ -2,4 +2,6 @@
 
 set -eu -o pipefail
 
+cd "$(dirname "$0")/../"
+
 npx tsc -w "$@"

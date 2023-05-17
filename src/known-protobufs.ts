@@ -1,6 +1,6 @@
 import * as _m0 from 'protobufjs/minimal';
 
-import { EGCBaseClientMsg, CMsgClientHello, CMsgClientWelcome, CMsgConnectionStatus } from './generated-protobufs';
+import { EGCBaseClientMsg, CMsgClientHello, CMsgClientWelcome, CMsgConnectionStatus } from './protobufs';
 
 export interface MessageType<Message = UnknownMessage> {
     encode(message: Message, writer?: _m0.Writer): _m0.Writer;
