@@ -2584,6 +2584,8 @@ export interface CMsgGameDataSpecialValues {
   isPercentage: boolean;
   headingLoc: string;
   bonuses: CMsgGameDataSpecialValueBonus[];
+  valuesShard: number[];
+  valuesScepter: number[];
 }
 
 export interface CMsgGameDataAbilityOrItem {
@@ -18736,7 +18738,15 @@ export const CMsgGameDataSpecialValueBonus = {
 };
 
 function createBaseCMsgGameDataSpecialValues(): CMsgGameDataSpecialValues {
-  return { name: "", valuesFloat: [], isPercentage: false, headingLoc: "", bonuses: [] };
+  return {
+    name: "",
+    valuesFloat: [],
+    isPercentage: false,
+    headingLoc: "",
+    bonuses: [],
+    valuesShard: [],
+    valuesScepter: [],
+  };
 }
 
 export const CMsgGameDataSpecialValues = {
@@ -18758,6 +18768,16 @@ export const CMsgGameDataSpecialValues = {
     for (const v of message.bonuses) {
       CMsgGameDataSpecialValueBonus.encode(v!, writer.uint32(50).fork()).ldelim();
     }
+    writer.uint32(58).fork();
+    for (const v of message.valuesShard) {
+      writer.float(v);
+    }
+    writer.ldelim();
+    writer.uint32(66).fork();
+    for (const v of message.valuesScepter) {
+      writer.float(v);
+    }
+    writer.ldelim();
     return writer;
   },
 
@@ -18812,6 +18832,38 @@ export const CMsgGameDataSpecialValues = {
 
           message.bonuses.push(CMsgGameDataSpecialValueBonus.decode(reader, reader.uint32()));
           continue;
+        case 7:
+          if (tag == 61) {
+            message.valuesShard.push(reader.float());
+            continue;
+          }
+
+          if (tag == 58) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.valuesShard.push(reader.float());
+            }
+
+            continue;
+          }
+
+          break;
+        case 8:
+          if (tag == 69) {
+            message.valuesScepter.push(reader.float());
+            continue;
+          }
+
+          if (tag == 66) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.valuesScepter.push(reader.float());
+            }
+
+            continue;
+          }
+
+          break;
       }
       if ((tag & 7) == 4 || tag == 0) {
         break;
@@ -18830,6 +18882,8 @@ export const CMsgGameDataSpecialValues = {
       bonuses: Array.isArray(object?.bonuses)
         ? object.bonuses.map((e: any) => CMsgGameDataSpecialValueBonus.fromJSON(e))
         : [],
+      valuesShard: Array.isArray(object?.valuesShard) ? object.valuesShard.map((e: any) => Number(e)) : [],
+      valuesScepter: Array.isArray(object?.valuesScepter) ? object.valuesScepter.map((e: any) => Number(e)) : [],
     };
   },
 
@@ -18847,6 +18901,16 @@ export const CMsgGameDataSpecialValues = {
       obj.bonuses = message.bonuses.map((e) => e ? CMsgGameDataSpecialValueBonus.toJSON(e) : undefined);
     } else {
       obj.bonuses = [];
+    }
+    if (message.valuesShard) {
+      obj.valuesShard = message.valuesShard.map((e) => e);
+    } else {
+      obj.valuesShard = [];
+    }
+    if (message.valuesScepter) {
+      obj.valuesScepter = message.valuesScepter.map((e) => e);
+    } else {
+      obj.valuesScepter = [];
     }
     return obj;
   },

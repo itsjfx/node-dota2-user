@@ -866,10 +866,22 @@ export interface CMsgDOTAFantasyCardList_Card {
   itemId: string;
 }
 
+export interface CMsgChatToxicityToxicPlayerMatchesReport {
+  rows: CMsgChatToxicityToxicPlayerMatchesReport_IndividualRow[];
+}
+
+export interface CMsgChatToxicityToxicPlayerMatchesReport_IndividualRow {
+  playerAccountId: number;
+  numMatchesSeen: number;
+  numMessages: number;
+  numMessagesToxic: number;
+  firstMatchSeen: string;
+  lastMatchSeen: string;
+}
+
 export interface CMsgChatToxicityReport {
   numMatchesSeen: number;
   numMessages: number;
-  numMessagesHumanThinksToxic: number;
   numMessagesMlThinksToxic: number;
   status: string;
   result: number;
@@ -3769,16 +3781,182 @@ export const CMsgDOTAFantasyCardList_Card = {
   },
 };
 
-function createBaseCMsgChatToxicityReport(): CMsgChatToxicityReport {
+function createBaseCMsgChatToxicityToxicPlayerMatchesReport(): CMsgChatToxicityToxicPlayerMatchesReport {
+  return { rows: [] };
+}
+
+export const CMsgChatToxicityToxicPlayerMatchesReport = {
+  encode(message: CMsgChatToxicityToxicPlayerMatchesReport, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    for (const v of message.rows) {
+      CMsgChatToxicityToxicPlayerMatchesReport_IndividualRow.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): CMsgChatToxicityToxicPlayerMatchesReport {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgChatToxicityToxicPlayerMatchesReport();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.rows.push(CMsgChatToxicityToxicPlayerMatchesReport_IndividualRow.decode(reader, reader.uint32()));
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgChatToxicityToxicPlayerMatchesReport {
+    return {
+      rows: Array.isArray(object?.rows)
+        ? object.rows.map((e: any) => CMsgChatToxicityToxicPlayerMatchesReport_IndividualRow.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgChatToxicityToxicPlayerMatchesReport): unknown {
+    const obj: any = {};
+    if (message.rows) {
+      obj.rows = message.rows.map((e) =>
+        e ? CMsgChatToxicityToxicPlayerMatchesReport_IndividualRow.toJSON(e) : undefined
+      );
+    } else {
+      obj.rows = [];
+    }
+    return obj;
+  },
+};
+
+function createBaseCMsgChatToxicityToxicPlayerMatchesReport_IndividualRow(): CMsgChatToxicityToxicPlayerMatchesReport_IndividualRow {
   return {
+    playerAccountId: 0,
     numMatchesSeen: 0,
     numMessages: 0,
-    numMessagesHumanThinksToxic: 0,
-    numMessagesMlThinksToxic: 0,
-    status: "",
-    result: 0,
-    message: "",
+    numMessagesToxic: 0,
+    firstMatchSeen: "0",
+    lastMatchSeen: "0",
   };
+}
+
+export const CMsgChatToxicityToxicPlayerMatchesReport_IndividualRow = {
+  encode(
+    message: CMsgChatToxicityToxicPlayerMatchesReport_IndividualRow,
+    writer: _m0.Writer = _m0.Writer.create(),
+  ): _m0.Writer {
+    if (message.playerAccountId !== 0) {
+      writer.uint32(8).uint32(message.playerAccountId);
+    }
+    if (message.numMatchesSeen !== 0) {
+      writer.uint32(16).uint32(message.numMatchesSeen);
+    }
+    if (message.numMessages !== 0) {
+      writer.uint32(24).uint32(message.numMessages);
+    }
+    if (message.numMessagesToxic !== 0) {
+      writer.uint32(32).uint32(message.numMessagesToxic);
+    }
+    if (message.firstMatchSeen !== "0") {
+      writer.uint32(40).uint64(message.firstMatchSeen);
+    }
+    if (message.lastMatchSeen !== "0") {
+      writer.uint32(48).uint64(message.lastMatchSeen);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): CMsgChatToxicityToxicPlayerMatchesReport_IndividualRow {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgChatToxicityToxicPlayerMatchesReport_IndividualRow();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 8) {
+            break;
+          }
+
+          message.playerAccountId = reader.uint32();
+          continue;
+        case 2:
+          if (tag != 16) {
+            break;
+          }
+
+          message.numMatchesSeen = reader.uint32();
+          continue;
+        case 3:
+          if (tag != 24) {
+            break;
+          }
+
+          message.numMessages = reader.uint32();
+          continue;
+        case 4:
+          if (tag != 32) {
+            break;
+          }
+
+          message.numMessagesToxic = reader.uint32();
+          continue;
+        case 5:
+          if (tag != 40) {
+            break;
+          }
+
+          message.firstMatchSeen = longToString(reader.uint64() as Long);
+          continue;
+        case 6:
+          if (tag != 48) {
+            break;
+          }
+
+          message.lastMatchSeen = longToString(reader.uint64() as Long);
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgChatToxicityToxicPlayerMatchesReport_IndividualRow {
+    return {
+      playerAccountId: isSet(object.playerAccountId) ? Number(object.playerAccountId) : 0,
+      numMatchesSeen: isSet(object.numMatchesSeen) ? Number(object.numMatchesSeen) : 0,
+      numMessages: isSet(object.numMessages) ? Number(object.numMessages) : 0,
+      numMessagesToxic: isSet(object.numMessagesToxic) ? Number(object.numMessagesToxic) : 0,
+      firstMatchSeen: isSet(object.firstMatchSeen) ? String(object.firstMatchSeen) : "0",
+      lastMatchSeen: isSet(object.lastMatchSeen) ? String(object.lastMatchSeen) : "0",
+    };
+  },
+
+  toJSON(message: CMsgChatToxicityToxicPlayerMatchesReport_IndividualRow): unknown {
+    const obj: any = {};
+    message.playerAccountId !== undefined && (obj.playerAccountId = Math.round(message.playerAccountId));
+    message.numMatchesSeen !== undefined && (obj.numMatchesSeen = Math.round(message.numMatchesSeen));
+    message.numMessages !== undefined && (obj.numMessages = Math.round(message.numMessages));
+    message.numMessagesToxic !== undefined && (obj.numMessagesToxic = Math.round(message.numMessagesToxic));
+    message.firstMatchSeen !== undefined && (obj.firstMatchSeen = message.firstMatchSeen);
+    message.lastMatchSeen !== undefined && (obj.lastMatchSeen = message.lastMatchSeen);
+    return obj;
+  },
+};
+
+function createBaseCMsgChatToxicityReport(): CMsgChatToxicityReport {
+  return { numMatchesSeen: 0, numMessages: 0, numMessagesMlThinksToxic: 0, status: "", result: 0, message: "" };
 }
 
 export const CMsgChatToxicityReport = {
@@ -3788,9 +3966,6 @@ export const CMsgChatToxicityReport = {
     }
     if (message.numMessages !== 0) {
       writer.uint32(16).uint32(message.numMessages);
-    }
-    if (message.numMessagesHumanThinksToxic !== 0) {
-      writer.uint32(24).uint32(message.numMessagesHumanThinksToxic);
     }
     if (message.numMessagesMlThinksToxic !== 0) {
       writer.uint32(32).uint32(message.numMessagesMlThinksToxic);
@@ -3827,13 +4002,6 @@ export const CMsgChatToxicityReport = {
           }
 
           message.numMessages = reader.uint32();
-          continue;
-        case 3:
-          if (tag != 24) {
-            break;
-          }
-
-          message.numMessagesHumanThinksToxic = reader.uint32();
           continue;
         case 4:
           if (tag != 32) {
@@ -3876,9 +4044,6 @@ export const CMsgChatToxicityReport = {
     return {
       numMatchesSeen: isSet(object.numMatchesSeen) ? Number(object.numMatchesSeen) : 0,
       numMessages: isSet(object.numMessages) ? Number(object.numMessages) : 0,
-      numMessagesHumanThinksToxic: isSet(object.numMessagesHumanThinksToxic)
-        ? Number(object.numMessagesHumanThinksToxic)
-        : 0,
       numMessagesMlThinksToxic: isSet(object.numMessagesMlThinksToxic) ? Number(object.numMessagesMlThinksToxic) : 0,
       status: isSet(object.status) ? String(object.status) : "",
       result: isSet(object.result) ? Number(object.result) : 0,
@@ -3890,8 +4055,6 @@ export const CMsgChatToxicityReport = {
     const obj: any = {};
     message.numMatchesSeen !== undefined && (obj.numMatchesSeen = Math.round(message.numMatchesSeen));
     message.numMessages !== undefined && (obj.numMessages = Math.round(message.numMessages));
-    message.numMessagesHumanThinksToxic !== undefined &&
-      (obj.numMessagesHumanThinksToxic = Math.round(message.numMessagesHumanThinksToxic));
     message.numMessagesMlThinksToxic !== undefined &&
       (obj.numMessagesMlThinksToxic = Math.round(message.numMessagesMlThinksToxic));
     message.status !== undefined && (obj.status = message.status);

@@ -138,6 +138,7 @@ export interface CMsgSteamLearnServerInfo {
   enableDataSubmission: boolean;
   enableInferencing: boolean;
   hmacKeys: CMsgSteamLearnHMACKeys | undefined;
+  enableTestInferencing: boolean;
 }
 
 export interface CMsgGCAssertJobData {
@@ -675,7 +676,7 @@ export const CExtraMsgBlock = {
 };
 
 function createBaseCMsgSteamLearnServerInfo(): CMsgSteamLearnServerInfo {
-  return { enableDataSubmission: false, enableInferencing: false, hmacKeys: undefined };
+  return { enableDataSubmission: false, enableInferencing: false, hmacKeys: undefined, enableTestInferencing: false };
 }
 
 export const CMsgSteamLearnServerInfo = {
@@ -688,6 +689,9 @@ export const CMsgSteamLearnServerInfo = {
     }
     if (message.hmacKeys !== undefined) {
       CMsgSteamLearnHMACKeys.encode(message.hmacKeys, writer.uint32(26).fork()).ldelim();
+    }
+    if (message.enableTestInferencing === true) {
+      writer.uint32(32).bool(message.enableTestInferencing);
     }
     return writer;
   },
@@ -720,6 +724,13 @@ export const CMsgSteamLearnServerInfo = {
 
           message.hmacKeys = CMsgSteamLearnHMACKeys.decode(reader, reader.uint32());
           continue;
+        case 4:
+          if (tag != 32) {
+            break;
+          }
+
+          message.enableTestInferencing = reader.bool();
+          continue;
       }
       if ((tag & 7) == 4 || tag == 0) {
         break;
@@ -734,6 +745,7 @@ export const CMsgSteamLearnServerInfo = {
       enableDataSubmission: isSet(object.enableDataSubmission) ? Boolean(object.enableDataSubmission) : false,
       enableInferencing: isSet(object.enableInferencing) ? Boolean(object.enableInferencing) : false,
       hmacKeys: isSet(object.hmacKeys) ? CMsgSteamLearnHMACKeys.fromJSON(object.hmacKeys) : undefined,
+      enableTestInferencing: isSet(object.enableTestInferencing) ? Boolean(object.enableTestInferencing) : false,
     };
   },
 
@@ -743,6 +755,7 @@ export const CMsgSteamLearnServerInfo = {
     message.enableInferencing !== undefined && (obj.enableInferencing = message.enableInferencing);
     message.hmacKeys !== undefined &&
       (obj.hmacKeys = message.hmacKeys ? CMsgSteamLearnHMACKeys.toJSON(message.hmacKeys) : undefined);
+    message.enableTestInferencing !== undefined && (obj.enableTestInferencing = message.enableTestInferencing);
     return obj;
   },
 };

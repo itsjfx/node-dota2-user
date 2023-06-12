@@ -4,4 +4,7 @@ set -eu -o pipefail
 
 cd "$(dirname "$0")/../"
 
-git submodule update --depth=1 --remote Protobufs
+if [[ "$(git submodule status Protobufs)" == -* ]]; then
+    git submodule update --init --depth=1 --remote Protobufs "$@"
+fi
+git submodule update --depth=1 --remote Protobufs "$@"
