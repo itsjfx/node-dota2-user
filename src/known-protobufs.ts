@@ -9,23 +9,30 @@ export interface MessageType<Message = UnknownMessage> {
     toJSON(message: Message): unknown;
 }
 export type UnknownMessage = any;
-
-export interface ProtobufDataMapType {
-    [EGCBaseClientMsg.k_EMsgGCClientWelcome]: CMsgClientWelcome,
+export type ClientMessageProtobufs = {
     [EGCBaseClientMsg.k_EMsgGCClientHello]: CMsgClientHello,
-}
-export interface ProtobufTypeMapType {
-    [EGCBaseClientMsg.k_EMsgGCClientWelcome]: MessageType<CMsgClientWelcome>,
-    [EGCBaseClientMsg.k_EMsgGCClientHello]: MessageType<CMsgClientHello>,
-}
-// TODO not sure whether to make it just a MessageType
-export const protobufMap = new Map<keyof ProtobufTypeMapType, MessageType<CMsgClientHello | CMsgClientWelcome>>(
-    [
-        [EGCBaseClientMsg.k_EMsgGCClientWelcome, CMsgClientWelcome],
-        [EGCBaseClientMsg.k_EMsgGCClientHello, CMsgClientHello],
-    ]
-);
-export interface ProtobufEvents {
-    [EGCBaseClientMsg.k_EMsgGCClientWelcome]: (data: CMsgClientWelcome) => void,
-    [EGCBaseClientMsg.k_EMsgGCClientConnectionStatus]: (data: CMsgConnectionStatus) => void,
-}
+};
+export type ServerMessageProtobufs = {
+    [EGCBaseClientMsg.k_EMsgGCClientWelcome]: CMsgClientWelcome,
+    [EGCBaseClientMsg.k_EMsgGCClientConnectionStatus]: CMsgConnectionStatus,
+};
+export type ProtobufDataMapType = ClientMessageProtobufs & ServerMessageProtobufs;
+// TypeScript will do an intersection for everything and sadly this the only way I've found to get the types to work
+// until I figure out a better way, means no fine grained types on the stuff that the ProtobufMap returns
+// https://github.com/microsoft/TypeScript/pull/30769
+export type ProtobufTypeMapType = {
+    [key in keyof ProtobufDataMapType]: MessageType<ProtobufDataMapType[keyof ProtobufDataMapType]>;
+};
+// object with message id -> object with methods
+// I MAY move back to a Map type as the main reason I wanted to use an Object was for a strictly typed map
+// which is still not possible due to above
+export const protobufMap: ProtobufTypeMapType = {
+    [EGCBaseClientMsg.k_EMsgGCClientWelcome]: CMsgClientWelcome,
+    [EGCBaseClientMsg.k_EMsgGCClientHello]:  CMsgClientHello,
+    [EGCBaseClientMsg.k_EMsgGCClientConnectionStatus]: CMsgConnectionStatus,
+};
+Object.freeze(protobufMap);
+
+export type ProtobufEvents = {
+    [key in keyof ServerMessageProtobufs]: (data: ServerMessageProtobufs[key]) => void;
+};

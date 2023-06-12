@@ -13,7 +13,7 @@ const EXPONENTIAL_HELLO_BACKOFF_MAX = 60000;
 /**
  * @private
  */
-Dota2User.prototype._connect = function() {
+Dota2User.prototype._connect = function(): void {
     if (!this.inDota2 || this._helloTimer) {
         debug('Not trying to connect due to ' + (!this.inDota2 ? 'not in Dota 2' : 'has helloTimer'));
         return; // We're not in Dota 2 or we're already trying to connect
@@ -39,7 +39,7 @@ Dota2User.prototype._connect = function() {
  * @param {boolean} emitDisconnectEvent
  * @private
  */
-Dota2User.prototype._handleAppQuit = function(emitDisconnectEvent: boolean) {
+Dota2User.prototype._handleAppQuit = function(emitDisconnectEvent: boolean): void {
     this._clearHelloTimer();
 
     if (this.haveGCSession && emitDisconnectEvent) {
@@ -53,7 +53,7 @@ Dota2User.prototype._handleAppQuit = function(emitDisconnectEvent: boolean) {
 /**
  * @private
  */
-Dota2User.prototype._clearHelloTimer = function() {
+Dota2User.prototype._clearHelloTimer = function(): void {
     if (this._helloTimer) {
         clearTimeout(this._helloTimer);
         this._helloTimer = null;

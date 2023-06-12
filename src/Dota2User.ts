@@ -102,30 +102,37 @@ export class Dota2User extends EventEmitter {
         });
     }
 
-    get inDota2() {
+    get inDota2(): boolean {
         return this._inDota2;
     }
 
-    get haveGCSession() {
+    get haveGCSession(): boolean {
         return this._haveGCSession;
     }
 
     // TODO read about extends and typeof in TypeScript
-    send<T extends keyof ProtobufDataMapType>(messageId: T, body: ProtobufDataMapType[T]) {
+    send<T extends keyof ProtobufDataMapType>(messageId: T, body: ProtobufDataMapType[T]): void {
         const protobuf = getProtobufForMessage(messageId);
+        if (!protobuf) {
+            throw new Dota2UserError(`Unable to find protobuf for message: ${messageId}`);
+        }
         const buffer = Buffer.from(protobuf.encode(body).finish());
         return this.sendRawBuffer(messageId, buffer);
     }
 
     // this may get deprecated
     // a "raw" / not entirely type-safe way of sending data
-    sendRaw(messageId: keyof ProtobufDataMapType, body: object) {
+    sendRaw(messageId: keyof ProtobufDataMapType, body: object): void {
         const protobuf = getProtobufForMessage(messageId);
+        if (!protobuf) {
+            throw new Dota2UserError(`Unable to find protobuf for message: ${messageId}`);
+        }
+        // const blah = protobufMap[EGCBaseClientMsg.k_EMsgGCClientConnectionStatus];
         const buffer = Buffer.from(protobuf.encode(protobuf.fromJSON(body)).finish());
         return this.sendRawBuffer(messageId, buffer);
     }
 
-    sendRawBuffer(messageId: number, body: Buffer|ByteBuffer) {
+    sendRawBuffer(messageId: number, body: Buffer|ByteBuffer): void {
         if (!this._steam.steamID) {
             throw new Dota2UserError('Cannot send GC message, not logged into Steam Client');
         }
