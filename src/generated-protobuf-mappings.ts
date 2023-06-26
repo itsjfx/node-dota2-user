@@ -300,8 +300,11 @@ export const ClientProtobufs = {
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCMapStatsRequest]: protobufs.CMsgClientToGCMapStatsRequest,
     [protobufs.EGCBaseClientMsg.k_EMsgGCClientHello]: protobufs.CMsgClientHello,
     [protobufs.EGCBaseClientMsg.k_EMsgGCServerConnectionStatus]: protobufs.CMsgConnectionStatus,
+    [protobufs.ESOMsg.k_ESOMsg_Create]: protobufs.CMsgSOSingleObject,
+    [protobufs.ESOMsg.k_ESOMsg_Destroy]: protobufs.CMsgSOSingleObject,
     [protobufs.ESOMsg.k_ESOMsg_CacheSubscribed]: protobufs.CMsgSOCacheSubscribed,
     [protobufs.ESOMsg.k_ESOMsg_CacheUnsubscribed]: protobufs.CMsgSOCacheUnsubscribed,
+    [protobufs.ESOMsg.k_ESOMsg_UpdateMultiple]: protobufs.CMsgSOMultipleObjects,
     [protobufs.ESOMsg.k_ESOMsg_CacheSubscriptionRefresh]: protobufs.CMsgSOCacheSubscriptionRefresh,
     [protobufs.ESOMsg.k_ESOMsg_CacheSubscribedUpToDate]: protobufs.CMsgSOCacheSubscribedUpToDate,
     [protobufs.EGCBaseMsg.k_EMsgGCReplicateConVars]: protobufs.CMsgReplicateConVars,
@@ -319,8 +322,6 @@ export const ClientProtobufs = {
 };
 Object.freeze(ClientProtobufs);
 export const GCProtobufs = {
-    [protobufs.EGCBaseClientMsg.k_EMsgGCClientConnectionStatus]: protobufs.CMsgConnectionStatus,
-    [protobufs.EGCBaseClientMsg.k_EMsgGCClientWelcome]: protobufs.CMsgClientWelcome,
     [protobufs.EDOTAGCMsg.k_EMsgGCJoinChatChannelResponse]: protobufs.CMsgDOTAJoinChatChannelResponse,
     [protobufs.EDOTAGCMsg.k_EMsgGCPracticeLobbyListResponse]: protobufs.CMsgPracticeLobbyListResponse,
     [protobufs.EDOTAGCMsg.k_EMsgGCInitialQuestionnaireResponse]: protobufs.CMsgInitialQuestionnaireResponse,
@@ -572,6 +573,8 @@ export const GCProtobufs = {
     [protobufs.EGCBaseClientMsg.k_EMsgGCToClientPollConvarRequest]: protobufs.CMsgGCToClientPollConvarRequest,
     [protobufs.EGCBaseClientMsg.k_EMsgGCToClientPollConvarResponse]: protobufs.CMsgGCToClientPollConvarResponse,
     [protobufs.EGCBaseClientMsg.k_EMsgGCToClientRequestDropped]: protobufs.CMsgGCToClientRequestDropped,
+    [protobufs.EGCBaseClientMsg.k_EMsgGCClientWelcome]: protobufs.CMsgClientWelcome,
+    [protobufs.EGCBaseClientMsg.k_EMsgGCClientConnectionStatus]: protobufs.CMsgConnectionStatus,
     [protobufs.EGCBaseMsg.k_EMsgGCPartyInviteResponse]: protobufs.CMsgPartyInviteResponse,
     [protobufs.EGCBaseMsg.k_EMsgGCLobbyInviteResponse]: protobufs.CMsgLobbyInviteResponse,
     [protobufs.EGCBaseMsg.k_EMsgGCToClientPollFileRequest]: protobufs.CMsgGCToClientPollFileRequest,

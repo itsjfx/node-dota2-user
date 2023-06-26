@@ -12,29 +12,31 @@ const TAB = '    ';
 // EGCBaseMsg: for party and lobby messages
 const ENUMS_TO_SEARCH = ['EDOTAGCMsg', 'EGCBaseClientMsg', 'ESOMsg', 'EGCBaseMsg'];
 
-// https://github.com/paralin/go-dota2/blob/99aa20c303eaee83526aa2cedff8b1a47273125b/client.go#L83
-interface Overrides {
-    [key: string]: string;
-}
-// need to be very careful adding new overrides, as this list isn't type safe
-// there's a check to see if a value is valid, but no check whether a key is valid
-// TODO check if key is valid ?
-// TODO fix:
-// [protobufs.EGCBaseClientMsg.k_EMsgGCClientConnectionStatus]: protobufs.CMsgConnectionStatus,
-// [protobufs.EGCBaseClientMsg.k_EMsgGCClientWelcome]: protobufs.CMsgClientWelcome,
-// should be GC messages instead of Client
-// override value is object with sender and cmsg, optional but one is required
-const OVERRIDES: Overrides = {
-    'ESOMsg.k_ESOMsg_Create': 'CMsgSOSingleObject',
-    'ESOMsg.k_ESOMsg_Destroy': 'CMsgSOSingleObject',
-    'ESOMsg.k_ESOMsg_UpdateMultiple': 'CMsgSOMultipleObjects',
-};
-
 enum MessageSender {
     UNSUPPORTED,
     CLIENT,
     GC,
 }
+
+// https://github.com/paralin/go-dota2/blob/99aa20c303eaee83526aa2cedff8b1a47273125b/client.go#L83
+interface Overrides {
+    [key: string]: {
+        CMsg?: string;
+        sender?: MessageSender;
+    };
+}
+
+// need to be very careful adding new overrides, as this list isn't type safe
+// there's a check to see if a value is valid, but no check whether a key is valid
+// TODO check if key is valid ?
+const OVERRIDES: Overrides = {
+    'ESOMsg.k_ESOMsg_Create': { CMsg: 'CMsgSOSingleObject' },
+    'ESOMsg.k_ESOMsg_Destroy': { CMsg: 'CMsgSOSingleObject' },
+    'ESOMsg.k_ESOMsg_UpdateMultiple': { CMsg: 'CMsgSOMultipleObjects' },
+    // TODO, probably scrap long term
+    'EGCBaseClientMsg.k_EMsgGCClientConnectionStatus': { sender: MessageSender.GC },
+    'EGCBaseClientMsg.k_EMsgGCClientWelcome': { sender: MessageSender.GC },
+};
 
 type MatchingProtobuf = {
     kMsg: string;
@@ -118,25 +120,37 @@ export const guessCMsg = function* (protobufName: string, messageName: string) {
 };
 
 export const findCMsg = (protobufName: string, messageName: string) => {
-    const sender = getMessageSender(messageName);
+    let sender: MessageSender | undefined;
+    let CMsg: any;
+    const override = OVERRIDES[protobufName + '.' + messageName];
+    if (override) {
+        if (override.CMsg) {
+            // @ts-ignore
+            CMsg = protobufs[override.CMsg];
+        }
+        if (override.sender) {
+            sender = override.sender;
+        }
+        if (override.CMsg && !CMsg) {
+            throw new Error(`Invalid override for message: ${messageName}. ${override.CMsg} does not exist`);
+        }
+    }
+    if (!sender) {
+        sender = getMessageSender(messageName);
+    }
     if (sender === MessageSender.UNSUPPORTED) {
         debug('Skipping message %s as message sender is UNSUPPORTED', messageName);
         return;
     }
-    const override = OVERRIDES[messageName];
-    if (override) {
-        // @ts-ignore
-        const CMsg = protobufs[override];
-        if (CMsg) {
-            return { CMsg, CMsgName: override, sender };
-        } else {
-            throw new Error(`Invalid override for message: ${messageName}. ${override} does not exist`);
-        }
+    // return early if we have an override for CMsg
+    if (override?.CMsg) {
+        return { CMsg, CMsgName: override.CMsg, sender };
     }
+
     for (const CMsgName of guessCMsg(protobufName, messageName)) {
         debug('Searching protos for %s', CMsgName);
         // @ts-ignore
-        const CMsg = protobufs[CMsgName];
+        CMsg = protobufs[CMsgName];
         if (CMsg) {
             return { CMsg, CMsgName, sender };
         }
@@ -176,7 +190,7 @@ const main = async () => {
     // with 2 separate objects it's easier not to live generate the protobufs
     const protos = [...findMatchingProtos()];
 
-    console.log("import * as protobufs from './protobufs'");
+    console.log("import * as protobufs from './protobufs';");
     outputObject(protos, 'ClientProtobufs', MessageSender.CLIENT);
     outputObject(protos, 'GCProtobufs', MessageSender.GC);
 };
