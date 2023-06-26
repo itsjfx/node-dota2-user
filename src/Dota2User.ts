@@ -127,7 +127,6 @@ export class Dota2User extends EventEmitter {
         if (!protobuf) {
             throw new Dota2UserError(`Unable to find protobuf for message: ${messageId}`);
         }
-        // const blah = protobufMap[EGCBaseClientMsg.k_EMsgGCClientConnectionStatus];
         const buffer = Buffer.from(protobuf.encode(protobuf.fromJSON(body)).finish());
         return this.sendRawBuffer(messageId, buffer);
     }

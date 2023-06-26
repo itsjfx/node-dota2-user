@@ -28,7 +28,7 @@ module.exports = {
         // 4 space indent
         indent: ['error', 4],
         // Single quotes for strings
-        quotes: ['error', 'single'],
+        quotes: ['error', 'single', { avoidEscape: true }],
         // Always require semicolons - https://stackoverflow.com/questions/59790657/eslint-says-that-semicolons-are-missing-even-after-adding-them
         '@typescript-eslint/semi': ['error', 'always'],
         // Don't use 'var'
