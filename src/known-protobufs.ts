@@ -9,6 +9,7 @@ export interface MessageType<Message = UnknownMessage> {
 }
 export type UnknownMessage = any;
 const _protobufMap = { ...ClientProtobufs, ...GCProtobufs };
+Object.freeze(_protobufMap);
 
 // hack to get the interface
 export type ProtobufDataMapType = {
@@ -22,8 +23,6 @@ export type ProtobufTypeMapType = {
 // this is probably OK, cause eventually we should be able to auto generate an SDK instead of relying on users using send()
 // https://github.com/microsoft/TypeScript/pull/30769
 export const protobufMap: ProtobufTypeMapType = _protobufMap;
-Object.freeze(_protobufMap);
-Object.freeze(protobufMap);
 // I MAY move back to a Map type as the main reason I wanted to use an Object was for a strictly typed map
 // which is not possible due to above
 export type ProtobufEvents = {
