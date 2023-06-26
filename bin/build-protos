@@ -46,3 +46,5 @@ files_to_export="$(printf '%s\n' "$all_files" "${bad_files[@]}" | LC_ALL=C sort 
 for file in $files_to_export; do
     echo "export * from './$(basename $OUTPUT_DIR)/$(basename "$file" .ts)';" >> "$EXPORTS_FILE"
 done
+
+DEBUG=* ./bin/genny > src/generated-protobuf-mappings.ts
