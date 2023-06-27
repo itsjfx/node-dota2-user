@@ -6,6 +6,8 @@
   "scripts": {
     "build": "./bin/build",
     "build-protos": "./bin/build-protos",
+    "clean": "./bin/clean",
+    "genny": "./bin/genny",
     "lint": "./bin/lint",
     "lint:fix": "./bin/lint --fix",
     "test": "./bin/test",
@@ -22,7 +24,8 @@
   "keywords": [
     "dota2",
     "steam",
-    "dota"
+    "dota",
+    "dota2-user"
   ],
   "author": "jfx",
   "license": "GPL-3.0",
