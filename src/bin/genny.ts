@@ -96,6 +96,7 @@ export const guessCMsg = function* (protobufName: string, messageName: string) {
         yield responseToResult;
         yield 'GC' + responseToResult;
         yield name.replace(/DOTA/g, '');
+        yield name.replace(/GCToClient|ClientToGC/g, 'DOTA'); // https://github.com/ValvePython/dota2/blob/6ccebc3689e107746ec32ce07fc2f5cacecc0e18/dota2/msg.py#L84
         yield name.replace(/GCToClient/g, '').replace(/ClientToGC/g, '');
         yield 'DOTA' + name;
 

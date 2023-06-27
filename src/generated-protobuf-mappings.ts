@@ -148,6 +148,7 @@ export const ClientProtobufs = {
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetGiftPermissions]: protobufs.CMsgClientToGCGetGiftPermissions,
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCVoteForArcana]: protobufs.CMsgClientToGCVoteForArcana,
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestArcanaVotesRemaining]: protobufs.CMsgClientToGCRequestArcanaVotesRemaining,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCMyTeamInfoRequest]: protobufs.CMsgDOTAMyTeamInfoRequest,
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCPublishUserStat]: protobufs.CMsgClientToGCPublishUserStat,
     [protobufs.EDOTAGCMsg.k_EMsgGCSubmitLobbyMVPVote]: protobufs.CMsgDOTASubmitLobbyMVPVote,
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetSpectatorLobbyDetails]: protobufs.CMsgSetSpectatorLobbyDetails,
