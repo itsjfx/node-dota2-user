@@ -54,14 +54,24 @@ const dota2 = new Dota2User(user);
 To initialize your GC connection, just launch Dota 2 via `SteamUser` normally:
 
 ```js
-client.gamesPlayed([570]);
+client.gamesPlayed(570);
+client.gamesPlayed(Dota2User.STEAM_APPID);
 ```
 
-node-dota2-user will emit a `connectedToGC` event when the game coordinator connection has been successfully established. You shouldn't try to do anything before you receive that event.
+`node-dota2-user` will emit a `connectedToGC` event when the game coordinator connection has been successfully established. You shouldn't try to do anything before you receive that event.
+
+## Examples
+
+See [examples/](./examples/README.md) for TypeScript examples.
+
+## Thanks to
+
+* [DoctorMcKay](https://github.com/DoctorMcKay) for [node-steam-user](https://github.com/doctorMcKay/node-steam-user) which this module uses for Steam interaction
+* [paralin](https://github.com/paralin) for [go-dota2](https://github.com/paralin/go-dota2) which parts of this module is based off
+* The [node-dota2](https://github.com/Arcana/node-dota2) team for the original Dota 2 JS implementation
+* The [ValvePython](https://github.com/ValvePython) team for their [dota2 module](https://github.com/ValvePython/dota2/tree/master)
 
 ## See also
 
-* [node-dota2](https://github.com/Arcana/node-dota2)
 * [node-globaloffensive](https://github.com/DoctorMcKay/node-globaloffensive)
 * [node-tf2](https://github.com/DoctorMcKay/node-tf2)
-* [node-steam-user](https://github.com/DoctorMcKay/node-steam-user)
