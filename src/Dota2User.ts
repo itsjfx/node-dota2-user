@@ -107,7 +107,6 @@ export class Dota2User extends EventEmitter {
         return this._haveGCSession;
     }
 
-    // TODO read about extends and typeof in TypeScript
     send<T extends keyof ProtobufDataMapType>(messageId: T, body: ProtobufDataMapType[T]): void {
         const protobuf = getProtobufForMessage(messageId);
         if (!protobuf) {
@@ -155,7 +154,7 @@ export class Dota2User extends EventEmitter {
             }
 
             this.sendRaw(EGCBaseClientMsg.k_EMsgGCClientHello, {});
-            this._helloTimerMs = Math.min(EXPONENTIAL_HELLO_BACKOFF_MAX, (this._helloTimerMs || DEFAULT_HELLO_DELAY) * 2); // exponential backoff, max 60 seconds
+            this._helloTimerMs = Math.min(EXPONENTIAL_HELLO_BACKOFF_MAX, (this._helloTimerMs || DEFAULT_HELLO_DELAY) * 2);
             this._helloTimer = setTimeout(() => sendHello(), this._helloTimerMs);
             debug('Sending hello, setting timer for next attempt to %s ms', this._helloTimerMs);
         };
