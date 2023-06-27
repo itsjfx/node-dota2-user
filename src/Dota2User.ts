@@ -9,13 +9,6 @@ import { EGCBaseClientMsg, GCConnectionStatus } from './protobufs';
 import { ProtobufDataMapType } from './known-protobufs';
 import { Dota2UserError, getProtobufForMessage } from './utils';
 
-// TODO... there has to be a better way
-export interface Dota2User {
-    _connect(): void;
-    _handleAppQuit(emitDisconnectEvent: boolean): void;
-    _clearHelloTimer(): void;
-}
-
 const INITIAL_HELLO_DELAY = 500;
 const DEFAULT_HELLO_DELAY = 1000;
 const EXPONENTIAL_HELLO_BACKOFF_MAX = 60000;
