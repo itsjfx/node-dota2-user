@@ -1,3 +1,5 @@
+#!/usr/bin/env -S npx ts-node
+
 import SteamUser from 'steam-user';
 import { Dota2User, Dota2Protobufs } from '../src'; // replace with 'dota2-user' outside of the module
 
@@ -19,8 +21,10 @@ client.on('loggedOn', () => {
 
     dota2.on('connectedToGC', () => {
         // connected to GC, do things
+        // NOTE: the payload below is automatically typed as CMsgGCMatchDetailsRequest by the send() function
         dota2.send(Dota2Protobufs.EDOTAGCMsg.k_EMsgGCMatchDetailsRequest, { matchId: '271145478' });
     });
+    // NOTE: data is automatically typed as CMsgGCMatchDetailsResponse by the router
     dota2.router.on(Dota2Protobufs.EDOTAGCMsg.k_EMsgGCMatchDetailsResponse, (data) => {
         console.log('Received response');
         if (data.match) {
