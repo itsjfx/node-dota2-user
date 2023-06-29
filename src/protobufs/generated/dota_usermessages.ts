@@ -1081,6 +1081,7 @@ export enum dotaChatMessage {
   CHAT_MESSAGE_PRIVATE_COACH_CONNECTED = 113,
   CHAT_MESSAGE_CANT_PAUSE_TOO_EARLY = 115,
   CHAT_MESSAGE_HERO_KILL_WITH_PENGUIN = 116,
+  CHAT_MESSAGE_MINIBOSS_KILL = 117,
 }
 
 export function dotaChatMessageFromJSON(object: any): dotaChatMessage {
@@ -1409,6 +1410,9 @@ export function dotaChatMessageFromJSON(object: any): dotaChatMessage {
     case 116:
     case "CHAT_MESSAGE_HERO_KILL_WITH_PENGUIN":
       return dotaChatMessage.CHAT_MESSAGE_HERO_KILL_WITH_PENGUIN;
+    case 117:
+    case "CHAT_MESSAGE_MINIBOSS_KILL":
+      return dotaChatMessage.CHAT_MESSAGE_MINIBOSS_KILL;
     default:
       throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum dotaChatMessage");
   }
@@ -1632,6 +1636,8 @@ export function dotaChatMessageToJSON(object: dotaChatMessage): string {
       return "CHAT_MESSAGE_CANT_PAUSE_TOO_EARLY";
     case dotaChatMessage.CHAT_MESSAGE_HERO_KILL_WITH_PENGUIN:
       return "CHAT_MESSAGE_HERO_KILL_WITH_PENGUIN";
+    case dotaChatMessage.CHAT_MESSAGE_MINIBOSS_KILL:
+      return "CHAT_MESSAGE_MINIBOSS_KILL";
     default:
       throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum dotaChatMessage");
   }

@@ -19690,10 +19690,10 @@ export const CMsgGameDataHero = {
     }
     writer.ldelim();
     if (message.damageMin !== 0) {
-      writer.uint32(192).uint32(message.damageMin);
+      writer.uint32(192).int32(message.damageMin);
     }
     if (message.damageMax !== 0) {
-      writer.uint32(200).uint32(message.damageMax);
+      writer.uint32(200).int32(message.damageMax);
     }
     if (message.attackRate !== 0) {
       writer.uint32(213).float(message.attackRate);
@@ -19883,14 +19883,14 @@ export const CMsgGameDataHero = {
             break;
           }
 
-          message.damageMin = reader.uint32();
+          message.damageMin = reader.int32();
           continue;
         case 25:
           if (tag != 200) {
             break;
           }
 
-          message.damageMax = reader.uint32();
+          message.damageMax = reader.int32();
           continue;
         case 26:
           if (tag != 213) {

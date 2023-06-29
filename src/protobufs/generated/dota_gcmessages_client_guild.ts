@@ -330,6 +330,7 @@ export enum CMsgClientToGCCreateGuildResponse_EResponse {
   k_eGuildLimit = 13,
   k_eInvalidMotD = 14,
   k_eBlocked = 15,
+  k_eFreeTrialNotAllowed = 16,
 }
 
 export function cMsgClientToGCCreateGuildResponse_EResponseFromJSON(
@@ -384,6 +385,9 @@ export function cMsgClientToGCCreateGuildResponse_EResponseFromJSON(
     case 15:
     case "k_eBlocked":
       return CMsgClientToGCCreateGuildResponse_EResponse.k_eBlocked;
+    case 16:
+    case "k_eFreeTrialNotAllowed":
+      return CMsgClientToGCCreateGuildResponse_EResponse.k_eFreeTrialNotAllowed;
     default:
       throw new tsProtoGlobalThis.Error(
         "Unrecognized enum value " + object + " for enum CMsgClientToGCCreateGuildResponse_EResponse",
@@ -427,6 +431,8 @@ export function cMsgClientToGCCreateGuildResponse_EResponseToJSON(
       return "k_eInvalidMotD";
     case CMsgClientToGCCreateGuildResponse_EResponse.k_eBlocked:
       return "k_eBlocked";
+    case CMsgClientToGCCreateGuildResponse_EResponse.k_eFreeTrialNotAllowed:
+      return "k_eFreeTrialNotAllowed";
     default:
       throw new tsProtoGlobalThis.Error(
         "Unrecognized enum value " + object + " for enum CMsgClientToGCCreateGuildResponse_EResponse",

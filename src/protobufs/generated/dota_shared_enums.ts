@@ -672,6 +672,10 @@ export enum ERankType {
   k_ERankType_RankedLegacy = 4,
   k_ERankType_CasualGlicko = 5,
   k_ERankType_RankedGlicko = 6,
+  k_ERankType_RankMax = 7,
+  k_ERankType_BehaviorPrivate = 100,
+  k_ERankType_BehaviorPublic = 101,
+  k_ERankType_Max = 102,
 }
 
 export function eRankTypeFromJSON(object: any): ERankType {
@@ -697,6 +701,18 @@ export function eRankTypeFromJSON(object: any): ERankType {
     case 6:
     case "k_ERankType_RankedGlicko":
       return ERankType.k_ERankType_RankedGlicko;
+    case 7:
+    case "k_ERankType_RankMax":
+      return ERankType.k_ERankType_RankMax;
+    case 100:
+    case "k_ERankType_BehaviorPrivate":
+      return ERankType.k_ERankType_BehaviorPrivate;
+    case 101:
+    case "k_ERankType_BehaviorPublic":
+      return ERankType.k_ERankType_BehaviorPublic;
+    case 102:
+    case "k_ERankType_Max":
+      return ERankType.k_ERankType_Max;
     default:
       throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ERankType");
   }
@@ -718,6 +734,14 @@ export function eRankTypeToJSON(object: ERankType): string {
       return "k_ERankType_CasualGlicko";
     case ERankType.k_ERankType_RankedGlicko:
       return "k_ERankType_RankedGlicko";
+    case ERankType.k_ERankType_RankMax:
+      return "k_ERankType_RankMax";
+    case ERankType.k_ERankType_BehaviorPrivate:
+      return "k_ERankType_BehaviorPrivate";
+    case ERankType.k_ERankType_BehaviorPublic:
+      return "k_ERankType_BehaviorPublic";
+    case ERankType.k_ERankType_Max:
+      return "k_ERankType_Max";
     default:
       throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ERankType");
   }

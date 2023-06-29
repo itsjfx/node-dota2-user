@@ -75,7 +75,6 @@ export enum EMsg {
   k_EMsgLicenseProcessingComplete = 316,
   k_EMsgSetTestFlag = 317,
   k_EMsgQueuedEmailsComplete = 318,
-  k_EMsgGMReportPHPError = 319,
   k_EMsgGMDRMSync = 320,
   k_EMsgPhysicalBoxInventory = 321,
   k_EMsgUpdateConfigFile = 322,
@@ -93,6 +92,8 @@ export enum EMsg {
   k_EMsgExpectShellRestart = 336,
   k_EMsgHotFixProgress = 337,
   k_EMsgGMStatsForwardToAdminConnections = 338,
+  k_EMsgGMGetModifiedConVars = 339,
+  k_EMsgGMGetModifiedConVarsResponse = 340,
   k_EMsgBaseAIS = 400,
   k_EMsgAISRequestContentDescription = 402,
   k_EMsgAISUpdateAppInfo = 403,
@@ -501,11 +502,8 @@ export enum EMsg {
   k_EMsgClientDPSendSpecialSurveyResponse = 1622,
   k_EMsgClientDPSendSpecialSurveyResponseReply = 1623,
   k_EMsgDPStoreSaleStatistics = 1624,
-  k_EMsgClientDPUpdateAppJobReport = 1625,
-  k_EMsgClientDPUnsignedInstallScript = 1627,
   k_EMsgDPPartnerMicroTxns = 1628,
   k_EMsgDPPartnerMicroTxnsResponse = 1629,
-  k_EMsgClientDPContentStatsReport = 1630,
   k_EMsgDPVRUniquePlayersStat = 1631,
   k_EMsgBaseCM = 1700,
   k_EMsgCMSetAllowState = 1701,
@@ -551,6 +549,9 @@ export enum EMsg {
   k_EMsgGCHAppCheersReceived = 2242,
   k_EMsgGCHAppCheersGetAllowedTypes = 2243,
   k_EMsgGCHAppCheersGetAllowedTypesResponse = 2244,
+  k_EMsgGCHRoutingRulesFromGCHtoGM = 2245,
+  k_EMsgGCHRoutingRulesToGCHfromGM = 2246,
+  k_EMsgUpdateCMMessageRateRules = 2247,
   k_EMsgBaseP2P = 2500,
   k_EMsgP2PIntroducerMessage = 2502,
   k_EMsgBaseSM = 2900,
@@ -697,8 +698,6 @@ export enum EMsg {
   k_EMsgAMSendQueuedEmails = 4152,
   k_EMsgAMSetLicenseFlags = 4153,
   k_EMsgCommunityDeleteUserNews = 4155,
-  k_EMsgAMAllowUserFilesRequest = 4156,
-  k_EMsgAMAllowUserFilesResponse = 4157,
   k_EMsgAMGetAccountStatus = 4158,
   k_EMsgAMGetAccountStatusResponse = 4159,
   k_EMsgAMEditBanReason = 4160,
@@ -726,7 +725,6 @@ export enum EMsg {
   k_EMsgAMSupportIsAccountEnabledResponse = 4210,
   k_EMsgUGSGetUserStats = 4211,
   k_EMsgAMGSSearch = 4213,
-  k_EMsgMarketingMessageUpdate = 4216,
   k_EMsgChatServerRouteFriendMsg = 4219,
   k_EMsgAMTicketAuthRequestOrResponse = 4220,
   k_EMsgAMAddFreeLicense = 4224,
@@ -753,7 +751,6 @@ export enum EMsg {
   k_EMsgAMCreateFinancialAdjustment = 4265,
   k_EMsgAMPlayerNicknameList = 4266,
   k_EMsgAMPlayerNicknameListResponse = 4267,
-  k_EMsgAMSetDRMTestConfig = 4268,
   k_EMsgAMGetUserCurrentGameInfo = 4269,
   k_EMsgAMGetUserCurrentGameInfoResponse = 4270,
   k_EMsgAMGetGSPlayerList = 4271,
@@ -884,6 +881,7 @@ export enum EMsg {
   k_EMsgAMPerfectWorldPaymentResponse = 4422,
   k_EMsgAMECommPayPayment = 4423,
   k_EMsgAMECommPayPaymentResponse = 4424,
+  k_EMsgAMSetRemoteClientID = 4425,
   k_EMsgBasePSRange = 5000,
   k_EMsgPSCreateShoppingCart = 5001,
   k_EMsgPSCreateShoppingCartResponse = 5002,
@@ -973,7 +971,6 @@ export enum EMsg {
   k_EMsgClientP2PConnectionFailInfo = 5435,
   k_EMsgClientGetDepotDecryptionKey = 5438,
   k_EMsgClientGetDepotDecryptionKeyResponse = 5439,
-  k_EMsgGSPerformHardwareSurvey = 5440,
   k_EMsgClientEnableTestLicense = 5443,
   k_EMsgClientEnableTestLicenseResponse = 5444,
   k_EMsgClientDisableTestLicense = 5445,
@@ -1013,8 +1010,10 @@ export enum EMsg {
   k_EMsgClientOGSEndSession = 5492,
   k_EMsgClientOGSEndSessionResponse = 5493,
   k_EMsgClientOGSWriteRow = 5494,
-  k_EMsgClientDRMTest = 5495,
-  k_EMsgClientDRMTestResult = 5496,
+  k_EMsgClientGetPeerContentInfo = 5495,
+  k_EMsgClientGetPeerContentInfoResponse = 5496,
+  k_EMsgClientStartPeerContentServer = 5497,
+  k_EMsgClientStartPeerContentServerResponse = 5498,
   k_EMsgClientServerUnavailable = 5500,
   k_EMsgClientServersAvailable = 5501,
   k_EMsgClientRegisterAuthTicketWithCM = 5502,
@@ -1024,7 +1023,6 @@ export enum EMsg {
   k_EMsgClientMicroTxnAuthorizeResponse = 5506,
   k_EMsgClientGetMicroTxnInfo = 5508,
   k_EMsgClientGetMicroTxnInfoResponse = 5509,
-  k_EMsgClientMarketingMessageUpdate2 = 5510,
   k_EMsgClientDeregisterWithServer = 5511,
   k_EMsgClientSubscribeToPersonaFeed = 5512,
   k_EMsgClientLogon = 5514,
@@ -1239,8 +1237,6 @@ export enum EMsg {
   k_EMsgClientUCMUpdatePublishedFileResponse = 7326,
   k_EMsgUCMUpdatePublishedFile = 7327,
   k_EMsgUCMUpdatePublishedFileResponse = 7328,
-  k_EMsgUCMDeletePublishedFile = 7329,
-  k_EMsgUCMDeletePublishedFileResponse = 7330,
   k_EMsgUCMUpdatePublishedFileStat = 7331,
   k_EMsgUCMReloadPublishedFile = 7337,
   k_EMsgUCMReloadUserFileListCaches = 7338,
@@ -1269,8 +1265,6 @@ export enum EMsg {
   k_EMsgClientUCMEnumerateUserSubscribedFilesWithUpdatesResponse = 7379,
   k_EMsgUCMPublishedFileContentUpdated = 7380,
   k_EMsgClientUCMPublishedFileUpdated = 7381,
-  k_EMsgClientWorkshopItemChangesRequest = 7382,
-  k_EMsgClientWorkshopItemChangesResponse = 7383,
   k_EMsgFSBase = 7500,
   k_EMsgClientRichPresenceUpload = 7501,
   k_EMsgClientRichPresenceRequest = 7502,
@@ -1441,14 +1435,14 @@ export enum EMsg {
   k_EMsgRemoteClientStartStreamResponse = 9504,
   k_EMsgRemoteClientPing = 9505,
   k_EMsgRemoteClientPingResponse = 9506,
-  k_EMsgClientUnlockStreaming = 9507,
-  k_EMsgClientUnlockStreamingResponse = 9508,
+  k_EMsgClientUnlockH264 = 9507,
+  k_EMsgClientUnlockH264Response = 9508,
   k_EMsgRemoteClientAcceptEULA = 9509,
   k_EMsgRemoteClientGetControllerConfig = 9510,
   k_EMsgRemoteClientGetControllerConfigResponse = 9511,
   k_EMsgRemoteClientStreamingEnabled = 9512,
-  k_EMsgClientUnlockHEVC = 9513,
-  k_EMsgClientUnlockHEVCResponse = 9514,
+  k_EMsgClientUnlockHEVC_OBSOLETE = 9513,
+  k_EMsgClientUnlockHEVCResponse_OBSOLETE = 9514,
   k_EMsgRemoteClientStatusRequest = 9515,
   k_EMsgRemoteClientStatusResponse = 9516,
   k_EMsgClientConcurrentSessionsBase = 9600,
@@ -1458,7 +1452,6 @@ export enum EMsg {
   k_EMsgClientBroadcastInit = 9700,
   k_EMsgClientBroadcastFrames = 9701,
   k_EMsgClientBroadcastDisconnect = 9702,
-  k_EMsgClientBroadcastScreenshot = 9703,
   k_EMsgClientBroadcastUploadConfig = 9704,
   k_EMsgBaseClient3 = 9800,
   k_EMsgClientVoiceCallPreAuthorize = 9800,
@@ -1467,9 +1460,13 @@ export enum EMsg {
   k_EMsgClientServerTimestampResponse = 9803,
   k_EMsgServiceMethodCallFromClientNonAuthed = 9804,
   k_EMsgClientHello = 9805,
+  k_EMsgClientEnableOrDisableDownloads = 9806,
+  k_EMsgClientEnableOrDisableDownloadsResponse = 9807,
   k_EMsgClientLANP2PBase = 9900,
   k_EMsgClientLANP2PRequestChunk = 9900,
   k_EMsgClientLANP2PRequestChunkResponse = 9901,
+  k_EMsgClientPeerChunkRequest = 9902,
+  k_EMsgClientPeerChunkResponse = 9903,
   k_EMsgClientLANP2PMax = 9999,
   k_EMsgBaseWatchdogServer = 10000,
   k_EMsgNotifyWatchdog = 10000,
@@ -1486,6 +1483,12 @@ export enum EMsg {
   k_EMsgChatServerGetPendingNotificationCountResponse = 12001,
   k_EMsgBaseSecretServer = 12100,
   k_EMsgServerSecretChanged = 12100,
+  k_EMsgBaseWG = 12200,
+  k_EMsgWGConnectionProtocolError = 12200,
+  k_EMsgWGConnectionValidateUserToken = 12201,
+  k_EMsgWGConnectionValidateUserTokenResponse = 12202,
+  k_EMsgWGConnectionLegacyWGRequest = 12203,
+  k_EMsgWGConnectionLegacyWGResponse = 12204,
 }
 
 export function eMsgFromJSON(object: any): EMsg {
@@ -1712,9 +1715,6 @@ export function eMsgFromJSON(object: any): EMsg {
     case 318:
     case "k_EMsgQueuedEmailsComplete":
       return EMsg.k_EMsgQueuedEmailsComplete;
-    case 319:
-    case "k_EMsgGMReportPHPError":
-      return EMsg.k_EMsgGMReportPHPError;
     case 320:
     case "k_EMsgGMDRMSync":
       return EMsg.k_EMsgGMDRMSync;
@@ -1766,6 +1766,12 @@ export function eMsgFromJSON(object: any): EMsg {
     case 338:
     case "k_EMsgGMStatsForwardToAdminConnections":
       return EMsg.k_EMsgGMStatsForwardToAdminConnections;
+    case 339:
+    case "k_EMsgGMGetModifiedConVars":
+      return EMsg.k_EMsgGMGetModifiedConVars;
+    case 340:
+    case "k_EMsgGMGetModifiedConVarsResponse":
+      return EMsg.k_EMsgGMGetModifiedConVarsResponse;
     case 400:
     case "k_EMsgBaseAIS":
       return EMsg.k_EMsgBaseAIS;
@@ -2990,21 +2996,12 @@ export function eMsgFromJSON(object: any): EMsg {
     case 1624:
     case "k_EMsgDPStoreSaleStatistics":
       return EMsg.k_EMsgDPStoreSaleStatistics;
-    case 1625:
-    case "k_EMsgClientDPUpdateAppJobReport":
-      return EMsg.k_EMsgClientDPUpdateAppJobReport;
-    case 1627:
-    case "k_EMsgClientDPUnsignedInstallScript":
-      return EMsg.k_EMsgClientDPUnsignedInstallScript;
     case 1628:
     case "k_EMsgDPPartnerMicroTxns":
       return EMsg.k_EMsgDPPartnerMicroTxns;
     case 1629:
     case "k_EMsgDPPartnerMicroTxnsResponse":
       return EMsg.k_EMsgDPPartnerMicroTxnsResponse;
-    case 1630:
-    case "k_EMsgClientDPContentStatsReport":
-      return EMsg.k_EMsgClientDPContentStatsReport;
     case 1631:
     case "k_EMsgDPVRUniquePlayersStat":
       return EMsg.k_EMsgDPVRUniquePlayersStat;
@@ -3140,6 +3137,15 @@ export function eMsgFromJSON(object: any): EMsg {
     case 2244:
     case "k_EMsgGCHAppCheersGetAllowedTypesResponse":
       return EMsg.k_EMsgGCHAppCheersGetAllowedTypesResponse;
+    case 2245:
+    case "k_EMsgGCHRoutingRulesFromGCHtoGM":
+      return EMsg.k_EMsgGCHRoutingRulesFromGCHtoGM;
+    case 2246:
+    case "k_EMsgGCHRoutingRulesToGCHfromGM":
+      return EMsg.k_EMsgGCHRoutingRulesToGCHfromGM;
+    case 2247:
+    case "k_EMsgUpdateCMMessageRateRules":
+      return EMsg.k_EMsgUpdateCMMessageRateRules;
     case 2500:
     case "k_EMsgBaseP2P":
       return EMsg.k_EMsgBaseP2P;
@@ -3578,12 +3584,6 @@ export function eMsgFromJSON(object: any): EMsg {
     case 4155:
     case "k_EMsgCommunityDeleteUserNews":
       return EMsg.k_EMsgCommunityDeleteUserNews;
-    case 4156:
-    case "k_EMsgAMAllowUserFilesRequest":
-      return EMsg.k_EMsgAMAllowUserFilesRequest;
-    case 4157:
-    case "k_EMsgAMAllowUserFilesResponse":
-      return EMsg.k_EMsgAMAllowUserFilesResponse;
     case 4158:
     case "k_EMsgAMGetAccountStatus":
       return EMsg.k_EMsgAMGetAccountStatus;
@@ -3665,9 +3665,6 @@ export function eMsgFromJSON(object: any): EMsg {
     case 4213:
     case "k_EMsgAMGSSearch":
       return EMsg.k_EMsgAMGSSearch;
-    case 4216:
-    case "k_EMsgMarketingMessageUpdate":
-      return EMsg.k_EMsgMarketingMessageUpdate;
     case 4219:
     case "k_EMsgChatServerRouteFriendMsg":
       return EMsg.k_EMsgChatServerRouteFriendMsg;
@@ -3746,9 +3743,6 @@ export function eMsgFromJSON(object: any): EMsg {
     case 4267:
     case "k_EMsgAMPlayerNicknameListResponse":
       return EMsg.k_EMsgAMPlayerNicknameListResponse;
-    case 4268:
-    case "k_EMsgAMSetDRMTestConfig":
-      return EMsg.k_EMsgAMSetDRMTestConfig;
     case 4269:
     case "k_EMsgAMGetUserCurrentGameInfo":
       return EMsg.k_EMsgAMGetUserCurrentGameInfo;
@@ -4139,6 +4133,9 @@ export function eMsgFromJSON(object: any): EMsg {
     case 4424:
     case "k_EMsgAMECommPayPaymentResponse":
       return EMsg.k_EMsgAMECommPayPaymentResponse;
+    case 4425:
+    case "k_EMsgAMSetRemoteClientID":
+      return EMsg.k_EMsgAMSetRemoteClientID;
     case 5000:
     case "k_EMsgBasePSRange":
       return EMsg.k_EMsgBasePSRange;
@@ -4406,9 +4403,6 @@ export function eMsgFromJSON(object: any): EMsg {
     case 5439:
     case "k_EMsgClientGetDepotDecryptionKeyResponse":
       return EMsg.k_EMsgClientGetDepotDecryptionKeyResponse;
-    case 5440:
-    case "k_EMsgGSPerformHardwareSurvey":
-      return EMsg.k_EMsgGSPerformHardwareSurvey;
     case 5443:
     case "k_EMsgClientEnableTestLicense":
       return EMsg.k_EMsgClientEnableTestLicense;
@@ -4527,11 +4521,17 @@ export function eMsgFromJSON(object: any): EMsg {
     case "k_EMsgClientOGSWriteRow":
       return EMsg.k_EMsgClientOGSWriteRow;
     case 5495:
-    case "k_EMsgClientDRMTest":
-      return EMsg.k_EMsgClientDRMTest;
+    case "k_EMsgClientGetPeerContentInfo":
+      return EMsg.k_EMsgClientGetPeerContentInfo;
     case 5496:
-    case "k_EMsgClientDRMTestResult":
-      return EMsg.k_EMsgClientDRMTestResult;
+    case "k_EMsgClientGetPeerContentInfoResponse":
+      return EMsg.k_EMsgClientGetPeerContentInfoResponse;
+    case 5497:
+    case "k_EMsgClientStartPeerContentServer":
+      return EMsg.k_EMsgClientStartPeerContentServer;
+    case 5498:
+    case "k_EMsgClientStartPeerContentServerResponse":
+      return EMsg.k_EMsgClientStartPeerContentServerResponse;
     case 5500:
     case "k_EMsgClientServerUnavailable":
       return EMsg.k_EMsgClientServerUnavailable;
@@ -4559,9 +4559,6 @@ export function eMsgFromJSON(object: any): EMsg {
     case 5509:
     case "k_EMsgClientGetMicroTxnInfoResponse":
       return EMsg.k_EMsgClientGetMicroTxnInfoResponse;
-    case 5510:
-    case "k_EMsgClientMarketingMessageUpdate2":
-      return EMsg.k_EMsgClientMarketingMessageUpdate2;
     case 5511:
     case "k_EMsgClientDeregisterWithServer":
       return EMsg.k_EMsgClientDeregisterWithServer;
@@ -5204,12 +5201,6 @@ export function eMsgFromJSON(object: any): EMsg {
     case 7328:
     case "k_EMsgUCMUpdatePublishedFileResponse":
       return EMsg.k_EMsgUCMUpdatePublishedFileResponse;
-    case 7329:
-    case "k_EMsgUCMDeletePublishedFile":
-      return EMsg.k_EMsgUCMDeletePublishedFile;
-    case 7330:
-    case "k_EMsgUCMDeletePublishedFileResponse":
-      return EMsg.k_EMsgUCMDeletePublishedFileResponse;
     case 7331:
     case "k_EMsgUCMUpdatePublishedFileStat":
       return EMsg.k_EMsgUCMUpdatePublishedFileStat;
@@ -5294,12 +5285,6 @@ export function eMsgFromJSON(object: any): EMsg {
     case 7381:
     case "k_EMsgClientUCMPublishedFileUpdated":
       return EMsg.k_EMsgClientUCMPublishedFileUpdated;
-    case 7382:
-    case "k_EMsgClientWorkshopItemChangesRequest":
-      return EMsg.k_EMsgClientWorkshopItemChangesRequest;
-    case 7383:
-    case "k_EMsgClientWorkshopItemChangesResponse":
-      return EMsg.k_EMsgClientWorkshopItemChangesResponse;
     case 7500:
     case "k_EMsgFSBase":
       return EMsg.k_EMsgFSBase;
@@ -5811,11 +5796,11 @@ export function eMsgFromJSON(object: any): EMsg {
     case "k_EMsgRemoteClientPingResponse":
       return EMsg.k_EMsgRemoteClientPingResponse;
     case 9507:
-    case "k_EMsgClientUnlockStreaming":
-      return EMsg.k_EMsgClientUnlockStreaming;
+    case "k_EMsgClientUnlockH264":
+      return EMsg.k_EMsgClientUnlockH264;
     case 9508:
-    case "k_EMsgClientUnlockStreamingResponse":
-      return EMsg.k_EMsgClientUnlockStreamingResponse;
+    case "k_EMsgClientUnlockH264Response":
+      return EMsg.k_EMsgClientUnlockH264Response;
     case 9509:
     case "k_EMsgRemoteClientAcceptEULA":
       return EMsg.k_EMsgRemoteClientAcceptEULA;
@@ -5829,11 +5814,11 @@ export function eMsgFromJSON(object: any): EMsg {
     case "k_EMsgRemoteClientStreamingEnabled":
       return EMsg.k_EMsgRemoteClientStreamingEnabled;
     case 9513:
-    case "k_EMsgClientUnlockHEVC":
-      return EMsg.k_EMsgClientUnlockHEVC;
+    case "k_EMsgClientUnlockHEVC_OBSOLETE":
+      return EMsg.k_EMsgClientUnlockHEVC_OBSOLETE;
     case 9514:
-    case "k_EMsgClientUnlockHEVCResponse":
-      return EMsg.k_EMsgClientUnlockHEVCResponse;
+    case "k_EMsgClientUnlockHEVCResponse_OBSOLETE":
+      return EMsg.k_EMsgClientUnlockHEVCResponse_OBSOLETE;
     case 9515:
     case "k_EMsgRemoteClientStatusRequest":
       return EMsg.k_EMsgRemoteClientStatusRequest;
@@ -5861,9 +5846,6 @@ export function eMsgFromJSON(object: any): EMsg {
     case 9702:
     case "k_EMsgClientBroadcastDisconnect":
       return EMsg.k_EMsgClientBroadcastDisconnect;
-    case 9703:
-    case "k_EMsgClientBroadcastScreenshot":
-      return EMsg.k_EMsgClientBroadcastScreenshot;
     case 9704:
     case "k_EMsgClientBroadcastUploadConfig":
       return EMsg.k_EMsgClientBroadcastUploadConfig;
@@ -5888,6 +5870,12 @@ export function eMsgFromJSON(object: any): EMsg {
     case 9805:
     case "k_EMsgClientHello":
       return EMsg.k_EMsgClientHello;
+    case 9806:
+    case "k_EMsgClientEnableOrDisableDownloads":
+      return EMsg.k_EMsgClientEnableOrDisableDownloads;
+    case 9807:
+    case "k_EMsgClientEnableOrDisableDownloadsResponse":
+      return EMsg.k_EMsgClientEnableOrDisableDownloadsResponse;
     case 9900:
     case "k_EMsgClientLANP2PBase":
       return EMsg.k_EMsgClientLANP2PBase;
@@ -5897,6 +5885,12 @@ export function eMsgFromJSON(object: any): EMsg {
     case 9901:
     case "k_EMsgClientLANP2PRequestChunkResponse":
       return EMsg.k_EMsgClientLANP2PRequestChunkResponse;
+    case 9902:
+    case "k_EMsgClientPeerChunkRequest":
+      return EMsg.k_EMsgClientPeerChunkRequest;
+    case 9903:
+    case "k_EMsgClientPeerChunkResponse":
+      return EMsg.k_EMsgClientPeerChunkResponse;
     case 9999:
     case "k_EMsgClientLANP2PMax":
       return EMsg.k_EMsgClientLANP2PMax;
@@ -5945,6 +5939,24 @@ export function eMsgFromJSON(object: any): EMsg {
     case 12100:
     case "k_EMsgServerSecretChanged":
       return EMsg.k_EMsgServerSecretChanged;
+    case 12200:
+    case "k_EMsgBaseWG":
+      return EMsg.k_EMsgBaseWG;
+    case 12200:
+    case "k_EMsgWGConnectionProtocolError":
+      return EMsg.k_EMsgWGConnectionProtocolError;
+    case 12201:
+    case "k_EMsgWGConnectionValidateUserToken":
+      return EMsg.k_EMsgWGConnectionValidateUserToken;
+    case 12202:
+    case "k_EMsgWGConnectionValidateUserTokenResponse":
+      return EMsg.k_EMsgWGConnectionValidateUserTokenResponse;
+    case 12203:
+    case "k_EMsgWGConnectionLegacyWGRequest":
+      return EMsg.k_EMsgWGConnectionLegacyWGRequest;
+    case 12204:
+    case "k_EMsgWGConnectionLegacyWGResponse":
+      return EMsg.k_EMsgWGConnectionLegacyWGResponse;
     default:
       throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EMsg");
   }
@@ -6100,8 +6112,6 @@ export function eMsgToJSON(object: EMsg): string {
       return "k_EMsgSetTestFlag";
     case EMsg.k_EMsgQueuedEmailsComplete:
       return "k_EMsgQueuedEmailsComplete";
-    case EMsg.k_EMsgGMReportPHPError:
-      return "k_EMsgGMReportPHPError";
     case EMsg.k_EMsgGMDRMSync:
       return "k_EMsgGMDRMSync";
     case EMsg.k_EMsgPhysicalBoxInventory:
@@ -6136,6 +6146,10 @@ export function eMsgToJSON(object: EMsg): string {
       return "k_EMsgHotFixProgress";
     case EMsg.k_EMsgGMStatsForwardToAdminConnections:
       return "k_EMsgGMStatsForwardToAdminConnections";
+    case EMsg.k_EMsgGMGetModifiedConVars:
+      return "k_EMsgGMGetModifiedConVars";
+    case EMsg.k_EMsgGMGetModifiedConVarsResponse:
+      return "k_EMsgGMGetModifiedConVarsResponse";
     case EMsg.k_EMsgBaseAIS:
       return "k_EMsgBaseAIS";
     case EMsg.k_EMsgAISRequestContentDescription:
@@ -6952,16 +6966,10 @@ export function eMsgToJSON(object: EMsg): string {
       return "k_EMsgClientDPSendSpecialSurveyResponseReply";
     case EMsg.k_EMsgDPStoreSaleStatistics:
       return "k_EMsgDPStoreSaleStatistics";
-    case EMsg.k_EMsgClientDPUpdateAppJobReport:
-      return "k_EMsgClientDPUpdateAppJobReport";
-    case EMsg.k_EMsgClientDPUnsignedInstallScript:
-      return "k_EMsgClientDPUnsignedInstallScript";
     case EMsg.k_EMsgDPPartnerMicroTxns:
       return "k_EMsgDPPartnerMicroTxns";
     case EMsg.k_EMsgDPPartnerMicroTxnsResponse:
       return "k_EMsgDPPartnerMicroTxnsResponse";
-    case EMsg.k_EMsgClientDPContentStatsReport:
-      return "k_EMsgClientDPContentStatsReport";
     case EMsg.k_EMsgDPVRUniquePlayersStat:
       return "k_EMsgDPVRUniquePlayersStat";
     case EMsg.k_EMsgBaseCM:
@@ -7052,6 +7060,12 @@ export function eMsgToJSON(object: EMsg): string {
       return "k_EMsgGCHAppCheersGetAllowedTypes";
     case EMsg.k_EMsgGCHAppCheersGetAllowedTypesResponse:
       return "k_EMsgGCHAppCheersGetAllowedTypesResponse";
+    case EMsg.k_EMsgGCHRoutingRulesFromGCHtoGM:
+      return "k_EMsgGCHRoutingRulesFromGCHtoGM";
+    case EMsg.k_EMsgGCHRoutingRulesToGCHfromGM:
+      return "k_EMsgGCHRoutingRulesToGCHfromGM";
+    case EMsg.k_EMsgUpdateCMMessageRateRules:
+      return "k_EMsgUpdateCMMessageRateRules";
     case EMsg.k_EMsgBaseP2P:
       return "k_EMsgBaseP2P";
     case EMsg.k_EMsgP2PIntroducerMessage:
@@ -7344,10 +7358,6 @@ export function eMsgToJSON(object: EMsg): string {
       return "k_EMsgAMSetLicenseFlags";
     case EMsg.k_EMsgCommunityDeleteUserNews:
       return "k_EMsgCommunityDeleteUserNews";
-    case EMsg.k_EMsgAMAllowUserFilesRequest:
-      return "k_EMsgAMAllowUserFilesRequest";
-    case EMsg.k_EMsgAMAllowUserFilesResponse:
-      return "k_EMsgAMAllowUserFilesResponse";
     case EMsg.k_EMsgAMGetAccountStatus:
       return "k_EMsgAMGetAccountStatus";
     case EMsg.k_EMsgAMGetAccountStatusResponse:
@@ -7402,8 +7412,6 @@ export function eMsgToJSON(object: EMsg): string {
       return "k_EMsgUGSGetUserStats";
     case EMsg.k_EMsgAMGSSearch:
       return "k_EMsgAMGSSearch";
-    case EMsg.k_EMsgMarketingMessageUpdate:
-      return "k_EMsgMarketingMessageUpdate";
     case EMsg.k_EMsgChatServerRouteFriendMsg:
       return "k_EMsgChatServerRouteFriendMsg";
     case EMsg.k_EMsgAMTicketAuthRequestOrResponse:
@@ -7456,8 +7464,6 @@ export function eMsgToJSON(object: EMsg): string {
       return "k_EMsgAMPlayerNicknameList";
     case EMsg.k_EMsgAMPlayerNicknameListResponse:
       return "k_EMsgAMPlayerNicknameListResponse";
-    case EMsg.k_EMsgAMSetDRMTestConfig:
-      return "k_EMsgAMSetDRMTestConfig";
     case EMsg.k_EMsgAMGetUserCurrentGameInfo:
       return "k_EMsgAMGetUserCurrentGameInfo";
     case EMsg.k_EMsgAMGetUserCurrentGameInfoResponse:
@@ -7718,6 +7724,8 @@ export function eMsgToJSON(object: EMsg): string {
       return "k_EMsgAMECommPayPayment";
     case EMsg.k_EMsgAMECommPayPaymentResponse:
       return "k_EMsgAMECommPayPaymentResponse";
+    case EMsg.k_EMsgAMSetRemoteClientID:
+      return "k_EMsgAMSetRemoteClientID";
     case EMsg.k_EMsgBasePSRange:
       return "k_EMsgBasePSRange";
     case EMsg.k_EMsgPSCreateShoppingCart:
@@ -7896,8 +7904,6 @@ export function eMsgToJSON(object: EMsg): string {
       return "k_EMsgClientGetDepotDecryptionKey";
     case EMsg.k_EMsgClientGetDepotDecryptionKeyResponse:
       return "k_EMsgClientGetDepotDecryptionKeyResponse";
-    case EMsg.k_EMsgGSPerformHardwareSurvey:
-      return "k_EMsgGSPerformHardwareSurvey";
     case EMsg.k_EMsgClientEnableTestLicense:
       return "k_EMsgClientEnableTestLicense";
     case EMsg.k_EMsgClientEnableTestLicenseResponse:
@@ -7976,10 +7982,14 @@ export function eMsgToJSON(object: EMsg): string {
       return "k_EMsgClientOGSEndSessionResponse";
     case EMsg.k_EMsgClientOGSWriteRow:
       return "k_EMsgClientOGSWriteRow";
-    case EMsg.k_EMsgClientDRMTest:
-      return "k_EMsgClientDRMTest";
-    case EMsg.k_EMsgClientDRMTestResult:
-      return "k_EMsgClientDRMTestResult";
+    case EMsg.k_EMsgClientGetPeerContentInfo:
+      return "k_EMsgClientGetPeerContentInfo";
+    case EMsg.k_EMsgClientGetPeerContentInfoResponse:
+      return "k_EMsgClientGetPeerContentInfoResponse";
+    case EMsg.k_EMsgClientStartPeerContentServer:
+      return "k_EMsgClientStartPeerContentServer";
+    case EMsg.k_EMsgClientStartPeerContentServerResponse:
+      return "k_EMsgClientStartPeerContentServerResponse";
     case EMsg.k_EMsgClientServerUnavailable:
       return "k_EMsgClientServerUnavailable";
     case EMsg.k_EMsgClientServersAvailable:
@@ -7998,8 +8008,6 @@ export function eMsgToJSON(object: EMsg): string {
       return "k_EMsgClientGetMicroTxnInfo";
     case EMsg.k_EMsgClientGetMicroTxnInfoResponse:
       return "k_EMsgClientGetMicroTxnInfoResponse";
-    case EMsg.k_EMsgClientMarketingMessageUpdate2:
-      return "k_EMsgClientMarketingMessageUpdate2";
     case EMsg.k_EMsgClientDeregisterWithServer:
       return "k_EMsgClientDeregisterWithServer";
     case EMsg.k_EMsgClientSubscribeToPersonaFeed:
@@ -8428,10 +8436,6 @@ export function eMsgToJSON(object: EMsg): string {
       return "k_EMsgUCMUpdatePublishedFile";
     case EMsg.k_EMsgUCMUpdatePublishedFileResponse:
       return "k_EMsgUCMUpdatePublishedFileResponse";
-    case EMsg.k_EMsgUCMDeletePublishedFile:
-      return "k_EMsgUCMDeletePublishedFile";
-    case EMsg.k_EMsgUCMDeletePublishedFileResponse:
-      return "k_EMsgUCMDeletePublishedFileResponse";
     case EMsg.k_EMsgUCMUpdatePublishedFileStat:
       return "k_EMsgUCMUpdatePublishedFileStat";
     case EMsg.k_EMsgUCMReloadPublishedFile:
@@ -8488,10 +8492,6 @@ export function eMsgToJSON(object: EMsg): string {
       return "k_EMsgUCMPublishedFileContentUpdated";
     case EMsg.k_EMsgClientUCMPublishedFileUpdated:
       return "k_EMsgClientUCMPublishedFileUpdated";
-    case EMsg.k_EMsgClientWorkshopItemChangesRequest:
-      return "k_EMsgClientWorkshopItemChangesRequest";
-    case EMsg.k_EMsgClientWorkshopItemChangesResponse:
-      return "k_EMsgClientWorkshopItemChangesResponse";
     case EMsg.k_EMsgFSBase:
       return "k_EMsgFSBase";
     case EMsg.k_EMsgClientRichPresenceUpload:
@@ -8832,10 +8832,10 @@ export function eMsgToJSON(object: EMsg): string {
       return "k_EMsgRemoteClientPing";
     case EMsg.k_EMsgRemoteClientPingResponse:
       return "k_EMsgRemoteClientPingResponse";
-    case EMsg.k_EMsgClientUnlockStreaming:
-      return "k_EMsgClientUnlockStreaming";
-    case EMsg.k_EMsgClientUnlockStreamingResponse:
-      return "k_EMsgClientUnlockStreamingResponse";
+    case EMsg.k_EMsgClientUnlockH264:
+      return "k_EMsgClientUnlockH264";
+    case EMsg.k_EMsgClientUnlockH264Response:
+      return "k_EMsgClientUnlockH264Response";
     case EMsg.k_EMsgRemoteClientAcceptEULA:
       return "k_EMsgRemoteClientAcceptEULA";
     case EMsg.k_EMsgRemoteClientGetControllerConfig:
@@ -8844,10 +8844,10 @@ export function eMsgToJSON(object: EMsg): string {
       return "k_EMsgRemoteClientGetControllerConfigResponse";
     case EMsg.k_EMsgRemoteClientStreamingEnabled:
       return "k_EMsgRemoteClientStreamingEnabled";
-    case EMsg.k_EMsgClientUnlockHEVC:
-      return "k_EMsgClientUnlockHEVC";
-    case EMsg.k_EMsgClientUnlockHEVCResponse:
-      return "k_EMsgClientUnlockHEVCResponse";
+    case EMsg.k_EMsgClientUnlockHEVC_OBSOLETE:
+      return "k_EMsgClientUnlockHEVC_OBSOLETE";
+    case EMsg.k_EMsgClientUnlockHEVCResponse_OBSOLETE:
+      return "k_EMsgClientUnlockHEVCResponse_OBSOLETE";
     case EMsg.k_EMsgRemoteClientStatusRequest:
       return "k_EMsgRemoteClientStatusRequest";
     case EMsg.k_EMsgRemoteClientStatusResponse:
@@ -8866,8 +8866,6 @@ export function eMsgToJSON(object: EMsg): string {
       return "k_EMsgClientBroadcastFrames";
     case EMsg.k_EMsgClientBroadcastDisconnect:
       return "k_EMsgClientBroadcastDisconnect";
-    case EMsg.k_EMsgClientBroadcastScreenshot:
-      return "k_EMsgClientBroadcastScreenshot";
     case EMsg.k_EMsgClientBroadcastUploadConfig:
       return "k_EMsgClientBroadcastUploadConfig";
     case EMsg.k_EMsgBaseClient3:
@@ -8884,12 +8882,20 @@ export function eMsgToJSON(object: EMsg): string {
       return "k_EMsgServiceMethodCallFromClientNonAuthed";
     case EMsg.k_EMsgClientHello:
       return "k_EMsgClientHello";
+    case EMsg.k_EMsgClientEnableOrDisableDownloads:
+      return "k_EMsgClientEnableOrDisableDownloads";
+    case EMsg.k_EMsgClientEnableOrDisableDownloadsResponse:
+      return "k_EMsgClientEnableOrDisableDownloadsResponse";
     case EMsg.k_EMsgClientLANP2PBase:
       return "k_EMsgClientLANP2PBase";
     case EMsg.k_EMsgClientLANP2PRequestChunk:
       return "k_EMsgClientLANP2PRequestChunk";
     case EMsg.k_EMsgClientLANP2PRequestChunkResponse:
       return "k_EMsgClientLANP2PRequestChunkResponse";
+    case EMsg.k_EMsgClientPeerChunkRequest:
+      return "k_EMsgClientPeerChunkRequest";
+    case EMsg.k_EMsgClientPeerChunkResponse:
+      return "k_EMsgClientPeerChunkResponse";
     case EMsg.k_EMsgClientLANP2PMax:
       return "k_EMsgClientLANP2PMax";
     case EMsg.k_EMsgBaseWatchdogServer:
@@ -8922,6 +8928,18 @@ export function eMsgToJSON(object: EMsg): string {
       return "k_EMsgBaseSecretServer";
     case EMsg.k_EMsgServerSecretChanged:
       return "k_EMsgServerSecretChanged";
+    case EMsg.k_EMsgBaseWG:
+      return "k_EMsgBaseWG";
+    case EMsg.k_EMsgWGConnectionProtocolError:
+      return "k_EMsgWGConnectionProtocolError";
+    case EMsg.k_EMsgWGConnectionValidateUserToken:
+      return "k_EMsgWGConnectionValidateUserToken";
+    case EMsg.k_EMsgWGConnectionValidateUserTokenResponse:
+      return "k_EMsgWGConnectionValidateUserTokenResponse";
+    case EMsg.k_EMsgWGConnectionLegacyWGRequest:
+      return "k_EMsgWGConnectionLegacyWGRequest";
+    case EMsg.k_EMsgWGConnectionLegacyWGResponse:
+      return "k_EMsgWGConnectionLegacyWGResponse";
     default:
       throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum EMsg");
   }
@@ -9149,6 +9167,94 @@ export function eSteamReviewScoreToJSON(object: ESteamReviewScore): string {
       return "k_ESteamReviewScore_None";
     default:
       throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ESteamReviewScore");
+  }
+}
+
+export enum ECodecUsagePlatform {
+  k_ECodecUsagePlatformUnknown = 0,
+  k_ECodecUsagePlatformWindows = 1,
+  k_ECodecUsagePlatformMacOS = 2,
+  k_ECodecUsagePlatformLinux = 3,
+  k_ECodecUsagePlatformSteamDeck = 4,
+}
+
+export function eCodecUsagePlatformFromJSON(object: any): ECodecUsagePlatform {
+  switch (object) {
+    case 0:
+    case "k_ECodecUsagePlatformUnknown":
+      return ECodecUsagePlatform.k_ECodecUsagePlatformUnknown;
+    case 1:
+    case "k_ECodecUsagePlatformWindows":
+      return ECodecUsagePlatform.k_ECodecUsagePlatformWindows;
+    case 2:
+    case "k_ECodecUsagePlatformMacOS":
+      return ECodecUsagePlatform.k_ECodecUsagePlatformMacOS;
+    case 3:
+    case "k_ECodecUsagePlatformLinux":
+      return ECodecUsagePlatform.k_ECodecUsagePlatformLinux;
+    case 4:
+    case "k_ECodecUsagePlatformSteamDeck":
+      return ECodecUsagePlatform.k_ECodecUsagePlatformSteamDeck;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ECodecUsagePlatform");
+  }
+}
+
+export function eCodecUsagePlatformToJSON(object: ECodecUsagePlatform): string {
+  switch (object) {
+    case ECodecUsagePlatform.k_ECodecUsagePlatformUnknown:
+      return "k_ECodecUsagePlatformUnknown";
+    case ECodecUsagePlatform.k_ECodecUsagePlatformWindows:
+      return "k_ECodecUsagePlatformWindows";
+    case ECodecUsagePlatform.k_ECodecUsagePlatformMacOS:
+      return "k_ECodecUsagePlatformMacOS";
+    case ECodecUsagePlatform.k_ECodecUsagePlatformLinux:
+      return "k_ECodecUsagePlatformLinux";
+    case ECodecUsagePlatform.k_ECodecUsagePlatformSteamDeck:
+      return "k_ECodecUsagePlatformSteamDeck";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ECodecUsagePlatform");
+  }
+}
+
+export enum ECodecUsageReason {
+  k_ECodecUsageReasonUnknown = 0,
+  k_ECodecUsageReasonRemotePlay = 1,
+  k_ECodecUsageReasonBroadcasting = 2,
+  k_ECodecUsageReasonGameVideo = 3,
+}
+
+export function eCodecUsageReasonFromJSON(object: any): ECodecUsageReason {
+  switch (object) {
+    case 0:
+    case "k_ECodecUsageReasonUnknown":
+      return ECodecUsageReason.k_ECodecUsageReasonUnknown;
+    case 1:
+    case "k_ECodecUsageReasonRemotePlay":
+      return ECodecUsageReason.k_ECodecUsageReasonRemotePlay;
+    case 2:
+    case "k_ECodecUsageReasonBroadcasting":
+      return ECodecUsageReason.k_ECodecUsageReasonBroadcasting;
+    case 3:
+    case "k_ECodecUsageReasonGameVideo":
+      return ECodecUsageReason.k_ECodecUsageReasonGameVideo;
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ECodecUsageReason");
+  }
+}
+
+export function eCodecUsageReasonToJSON(object: ECodecUsageReason): string {
+  switch (object) {
+    case ECodecUsageReason.k_ECodecUsageReasonUnknown:
+      return "k_ECodecUsageReasonUnknown";
+    case ECodecUsageReason.k_ECodecUsageReasonRemotePlay:
+      return "k_ECodecUsageReasonRemotePlay";
+    case ECodecUsageReason.k_ECodecUsageReasonBroadcasting:
+      return "k_ECodecUsageReasonBroadcasting";
+    case ECodecUsageReason.k_ECodecUsageReasonGameVideo:
+      return "k_ECodecUsageReasonGameVideo";
+    default:
+      throw new tsProtoGlobalThis.Error("Unrecognized enum value " + object + " for enum ECodecUsageReason");
   }
 }
 

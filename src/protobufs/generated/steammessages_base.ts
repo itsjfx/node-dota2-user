@@ -345,6 +345,11 @@ export interface CMsgIPAddressBucket {
   bucket: string;
 }
 
+export interface CMsgGCRoutingProtoBufHeader {
+  dstGcidQueue: string;
+  dstGcDirIndex: number;
+}
+
 export interface CMsgProtoBufHeader {
   steamid: string;
   clientSessionid: number;
@@ -371,8 +376,47 @@ export interface CMsgProtoBufHeader {
   realm: number;
   timeoutMs: number;
   debugSource: string;
+  debugSourceStringIndex: number;
+  tokenId: string;
+  routingGc: CMsgGCRoutingProtoBufHeader | undefined;
+  sessionDisposition: CMsgProtoBufHeader_ESessionDisposition;
+  wgToken: string;
+  webuiAuthKey: string;
   ip?: number | undefined;
   ipV6?: Buffer | undefined;
+}
+
+export enum CMsgProtoBufHeader_ESessionDisposition {
+  k_ESessionDispositionNormal = 0,
+  k_ESessionDispositionDisconnect = 1,
+}
+
+export function cMsgProtoBufHeader_ESessionDispositionFromJSON(object: any): CMsgProtoBufHeader_ESessionDisposition {
+  switch (object) {
+    case 0:
+    case "k_ESessionDispositionNormal":
+      return CMsgProtoBufHeader_ESessionDisposition.k_ESessionDispositionNormal;
+    case 1:
+    case "k_ESessionDispositionDisconnect":
+      return CMsgProtoBufHeader_ESessionDisposition.k_ESessionDispositionDisconnect;
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgProtoBufHeader_ESessionDisposition",
+      );
+  }
+}
+
+export function cMsgProtoBufHeader_ESessionDispositionToJSON(object: CMsgProtoBufHeader_ESessionDisposition): string {
+  switch (object) {
+    case CMsgProtoBufHeader_ESessionDisposition.k_ESessionDispositionNormal:
+      return "k_ESessionDispositionNormal";
+    case CMsgProtoBufHeader_ESessionDisposition.k_ESessionDispositionDisconnect:
+      return "k_ESessionDispositionDisconnect";
+    default:
+      throw new tsProtoGlobalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgProtoBufHeader_ESessionDisposition",
+      );
+  }
 }
 
 export interface CMsgMulti {
@@ -392,6 +436,8 @@ export interface CMsgAuthTicket {
   hSteamPipe: number;
   ticketCrc: number;
   ticket: Buffer;
+  serverSecret: Buffer;
+  ticketType: number;
 }
 
 export interface CCDDBAppDetailCommon {
@@ -407,6 +453,9 @@ export interface CCDDBAppDetailCommon {
   hasAdultContent: boolean;
   isVisibleInSteamChina: boolean;
   appType: number;
+  hasAdultContentSex: boolean;
+  hasAdultContentViolence: boolean;
+  contentDescriptorids: number[];
 }
 
 export interface CMsgAppRights {
@@ -488,6 +537,7 @@ export interface CCommunityClanAnnouncementInfo {
   voteupcount: number;
   votedowncount: number;
   banCheckResult: EBanContentCheckResult;
+  banned: boolean;
 }
 
 export interface CClanEventData {
@@ -554,6 +604,15 @@ export interface CMsgKeyValuePair {
 
 export interface CMsgKeyValueSet {
   pairs: CMsgKeyValuePair[];
+}
+
+export interface UserContentDescriptorPreferences {
+  contentDescriptorsToExclude: UserContentDescriptorPreferences_ContentDescriptor[];
+}
+
+export interface UserContentDescriptorPreferences_ContentDescriptor {
+  contentDescriptorid: number;
+  timestampAdded: number;
 }
 
 function createBaseCMsgIPAddress(): CMsgIPAddress {
@@ -677,6 +736,66 @@ export const CMsgIPAddressBucket = {
   },
 };
 
+function createBaseCMsgGCRoutingProtoBufHeader(): CMsgGCRoutingProtoBufHeader {
+  return { dstGcidQueue: "0", dstGcDirIndex: 0 };
+}
+
+export const CMsgGCRoutingProtoBufHeader = {
+  encode(message: CMsgGCRoutingProtoBufHeader, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.dstGcidQueue !== "0") {
+      writer.uint32(8).uint64(message.dstGcidQueue);
+    }
+    if (message.dstGcDirIndex !== 0) {
+      writer.uint32(16).uint32(message.dstGcDirIndex);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): CMsgGCRoutingProtoBufHeader {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgGCRoutingProtoBufHeader();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 8) {
+            break;
+          }
+
+          message.dstGcidQueue = longToString(reader.uint64() as Long);
+          continue;
+        case 2:
+          if (tag != 16) {
+            break;
+          }
+
+          message.dstGcDirIndex = reader.uint32();
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgGCRoutingProtoBufHeader {
+    return {
+      dstGcidQueue: isSet(object.dstGcidQueue) ? String(object.dstGcidQueue) : "0",
+      dstGcDirIndex: isSet(object.dstGcDirIndex) ? Number(object.dstGcDirIndex) : 0,
+    };
+  },
+
+  toJSON(message: CMsgGCRoutingProtoBufHeader): unknown {
+    const obj: any = {};
+    message.dstGcidQueue !== undefined && (obj.dstGcidQueue = message.dstGcidQueue);
+    message.dstGcDirIndex !== undefined && (obj.dstGcDirIndex = Math.round(message.dstGcDirIndex));
+    return obj;
+  },
+};
+
 function createBaseCMsgProtoBufHeader(): CMsgProtoBufHeader {
   return {
     steamid: "0",
@@ -704,6 +823,12 @@ function createBaseCMsgProtoBufHeader(): CMsgProtoBufHeader {
     realm: 0,
     timeoutMs: 0,
     debugSource: "",
+    debugSourceStringIndex: 0,
+    tokenId: "0",
+    routingGc: undefined,
+    sessionDisposition: 0,
+    wgToken: "",
+    webuiAuthKey: "",
     ip: undefined,
     ipV6: undefined,
   };
@@ -787,6 +912,24 @@ export const CMsgProtoBufHeader = {
     }
     if (message.debugSource !== "") {
       writer.uint32(274).string(message.debugSource);
+    }
+    if (message.debugSourceStringIndex !== 0) {
+      writer.uint32(280).uint32(message.debugSourceStringIndex);
+    }
+    if (message.tokenId !== "0") {
+      writer.uint32(288).uint64(message.tokenId);
+    }
+    if (message.routingGc !== undefined) {
+      CMsgGCRoutingProtoBufHeader.encode(message.routingGc, writer.uint32(298).fork()).ldelim();
+    }
+    if (message.sessionDisposition !== 0) {
+      writer.uint32(304).int32(message.sessionDisposition);
+    }
+    if (message.wgToken !== "") {
+      writer.uint32(314).string(message.wgToken);
+    }
+    if (message.webuiAuthKey !== "") {
+      writer.uint32(322).string(message.webuiAuthKey);
     }
     if (message.ip !== undefined) {
       writer.uint32(120).uint32(message.ip);
@@ -988,6 +1131,48 @@ export const CMsgProtoBufHeader = {
 
           message.debugSource = reader.string();
           continue;
+        case 35:
+          if (tag != 280) {
+            break;
+          }
+
+          message.debugSourceStringIndex = reader.uint32();
+          continue;
+        case 36:
+          if (tag != 288) {
+            break;
+          }
+
+          message.tokenId = longToString(reader.uint64() as Long);
+          continue;
+        case 37:
+          if (tag != 298) {
+            break;
+          }
+
+          message.routingGc = CMsgGCRoutingProtoBufHeader.decode(reader, reader.uint32());
+          continue;
+        case 38:
+          if (tag != 304) {
+            break;
+          }
+
+          message.sessionDisposition = reader.int32() as any;
+          continue;
+        case 39:
+          if (tag != 314) {
+            break;
+          }
+
+          message.wgToken = reader.string();
+          continue;
+        case 40:
+          if (tag != 322) {
+            break;
+          }
+
+          message.webuiAuthKey = reader.string();
+          continue;
         case 15:
           if (tag != 120) {
             break;
@@ -1038,6 +1223,14 @@ export const CMsgProtoBufHeader = {
       realm: isSet(object.realm) ? Number(object.realm) : 0,
       timeoutMs: isSet(object.timeoutMs) ? Number(object.timeoutMs) : 0,
       debugSource: isSet(object.debugSource) ? String(object.debugSource) : "",
+      debugSourceStringIndex: isSet(object.debugSourceStringIndex) ? Number(object.debugSourceStringIndex) : 0,
+      tokenId: isSet(object.tokenId) ? String(object.tokenId) : "0",
+      routingGc: isSet(object.routingGc) ? CMsgGCRoutingProtoBufHeader.fromJSON(object.routingGc) : undefined,
+      sessionDisposition: isSet(object.sessionDisposition)
+        ? cMsgProtoBufHeader_ESessionDispositionFromJSON(object.sessionDisposition)
+        : 0,
+      wgToken: isSet(object.wgToken) ? String(object.wgToken) : "",
+      webuiAuthKey: isSet(object.webuiAuthKey) ? String(object.webuiAuthKey) : "",
       ip: isSet(object.ip) ? Number(object.ip) : undefined,
       ipV6: isSet(object.ipV6) ? Buffer.from(bytesFromBase64(object.ipV6)) : undefined,
     };
@@ -1074,6 +1267,15 @@ export const CMsgProtoBufHeader = {
     message.realm !== undefined && (obj.realm = Math.round(message.realm));
     message.timeoutMs !== undefined && (obj.timeoutMs = Math.round(message.timeoutMs));
     message.debugSource !== undefined && (obj.debugSource = message.debugSource);
+    message.debugSourceStringIndex !== undefined &&
+      (obj.debugSourceStringIndex = Math.round(message.debugSourceStringIndex));
+    message.tokenId !== undefined && (obj.tokenId = message.tokenId);
+    message.routingGc !== undefined &&
+      (obj.routingGc = message.routingGc ? CMsgGCRoutingProtoBufHeader.toJSON(message.routingGc) : undefined);
+    message.sessionDisposition !== undefined &&
+      (obj.sessionDisposition = cMsgProtoBufHeader_ESessionDispositionToJSON(message.sessionDisposition));
+    message.wgToken !== undefined && (obj.wgToken = message.wgToken);
+    message.webuiAuthKey !== undefined && (obj.webuiAuthKey = message.webuiAuthKey);
     message.ip !== undefined && (obj.ip = Math.round(message.ip));
     message.ipV6 !== undefined && (obj.ipV6 = message.ipV6 !== undefined ? base64FromBytes(message.ipV6) : undefined);
     return obj;
@@ -1191,7 +1393,17 @@ export const CMsgProtobufWrapped = {
 };
 
 function createBaseCMsgAuthTicket(): CMsgAuthTicket {
-  return { estate: 0, eresult: 0, steamid: "0", gameid: "0", hSteamPipe: 0, ticketCrc: 0, ticket: Buffer.alloc(0) };
+  return {
+    estate: 0,
+    eresult: 0,
+    steamid: "0",
+    gameid: "0",
+    hSteamPipe: 0,
+    ticketCrc: 0,
+    ticket: Buffer.alloc(0),
+    serverSecret: Buffer.alloc(0),
+    ticketType: 0,
+  };
 }
 
 export const CMsgAuthTicket = {
@@ -1216,6 +1428,12 @@ export const CMsgAuthTicket = {
     }
     if (message.ticket.length !== 0) {
       writer.uint32(58).bytes(message.ticket);
+    }
+    if (message.serverSecret.length !== 0) {
+      writer.uint32(66).bytes(message.serverSecret);
+    }
+    if (message.ticketType !== 0) {
+      writer.uint32(72).uint32(message.ticketType);
     }
     return writer;
   },
@@ -1276,6 +1494,20 @@ export const CMsgAuthTicket = {
 
           message.ticket = reader.bytes() as Buffer;
           continue;
+        case 8:
+          if (tag != 66) {
+            break;
+          }
+
+          message.serverSecret = reader.bytes() as Buffer;
+          continue;
+        case 9:
+          if (tag != 72) {
+            break;
+          }
+
+          message.ticketType = reader.uint32();
+          continue;
       }
       if ((tag & 7) == 4 || tag == 0) {
         break;
@@ -1294,6 +1526,8 @@ export const CMsgAuthTicket = {
       hSteamPipe: isSet(object.hSteamPipe) ? Number(object.hSteamPipe) : 0,
       ticketCrc: isSet(object.ticketCrc) ? Number(object.ticketCrc) : 0,
       ticket: isSet(object.ticket) ? Buffer.from(bytesFromBase64(object.ticket)) : Buffer.alloc(0),
+      serverSecret: isSet(object.serverSecret) ? Buffer.from(bytesFromBase64(object.serverSecret)) : Buffer.alloc(0),
+      ticketType: isSet(object.ticketType) ? Number(object.ticketType) : 0,
     };
   },
 
@@ -1307,6 +1541,9 @@ export const CMsgAuthTicket = {
     message.ticketCrc !== undefined && (obj.ticketCrc = Math.round(message.ticketCrc));
     message.ticket !== undefined &&
       (obj.ticket = base64FromBytes(message.ticket !== undefined ? message.ticket : Buffer.alloc(0)));
+    message.serverSecret !== undefined &&
+      (obj.serverSecret = base64FromBytes(message.serverSecret !== undefined ? message.serverSecret : Buffer.alloc(0)));
+    message.ticketType !== undefined && (obj.ticketType = Math.round(message.ticketType));
     return obj;
   },
 };
@@ -1325,6 +1562,9 @@ function createBaseCCDDBAppDetailCommon(): CCDDBAppDetailCommon {
     hasAdultContent: false,
     isVisibleInSteamChina: false,
     appType: 0,
+    hasAdultContentSex: false,
+    hasAdultContentViolence: false,
+    contentDescriptorids: [],
   };
 }
 
@@ -1366,6 +1606,17 @@ export const CCDDBAppDetailCommon = {
     if (message.appType !== 0) {
       writer.uint32(112).uint32(message.appType);
     }
+    if (message.hasAdultContentSex === true) {
+      writer.uint32(120).bool(message.hasAdultContentSex);
+    }
+    if (message.hasAdultContentViolence === true) {
+      writer.uint32(128).bool(message.hasAdultContentViolence);
+    }
+    writer.uint32(138).fork();
+    for (const v of message.contentDescriptorids) {
+      writer.uint32(v);
+    }
+    writer.ldelim();
     return writer;
   },
 
@@ -1460,6 +1711,36 @@ export const CCDDBAppDetailCommon = {
 
           message.appType = reader.uint32();
           continue;
+        case 15:
+          if (tag != 120) {
+            break;
+          }
+
+          message.hasAdultContentSex = reader.bool();
+          continue;
+        case 16:
+          if (tag != 128) {
+            break;
+          }
+
+          message.hasAdultContentViolence = reader.bool();
+          continue;
+        case 17:
+          if (tag == 136) {
+            message.contentDescriptorids.push(reader.uint32());
+            continue;
+          }
+
+          if (tag == 138) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.contentDescriptorids.push(reader.uint32());
+            }
+
+            continue;
+          }
+
+          break;
       }
       if ((tag & 7) == 4 || tag == 0) {
         break;
@@ -1483,6 +1764,11 @@ export const CCDDBAppDetailCommon = {
       hasAdultContent: isSet(object.hasAdultContent) ? Boolean(object.hasAdultContent) : false,
       isVisibleInSteamChina: isSet(object.isVisibleInSteamChina) ? Boolean(object.isVisibleInSteamChina) : false,
       appType: isSet(object.appType) ? Number(object.appType) : 0,
+      hasAdultContentSex: isSet(object.hasAdultContentSex) ? Boolean(object.hasAdultContentSex) : false,
+      hasAdultContentViolence: isSet(object.hasAdultContentViolence) ? Boolean(object.hasAdultContentViolence) : false,
+      contentDescriptorids: Array.isArray(object?.contentDescriptorids)
+        ? object.contentDescriptorids.map((e: any) => Number(e))
+        : [],
     };
   },
 
@@ -1500,6 +1786,13 @@ export const CCDDBAppDetailCommon = {
     message.hasAdultContent !== undefined && (obj.hasAdultContent = message.hasAdultContent);
     message.isVisibleInSteamChina !== undefined && (obj.isVisibleInSteamChina = message.isVisibleInSteamChina);
     message.appType !== undefined && (obj.appType = Math.round(message.appType));
+    message.hasAdultContentSex !== undefined && (obj.hasAdultContentSex = message.hasAdultContentSex);
+    message.hasAdultContentViolence !== undefined && (obj.hasAdultContentViolence = message.hasAdultContentViolence);
+    if (message.contentDescriptorids) {
+      obj.contentDescriptorids = message.contentDescriptorids.map((e) => Math.round(e));
+    } else {
+      obj.contentDescriptorids = [];
+    }
     return obj;
   },
 };
@@ -2346,6 +2639,7 @@ function createBaseCCommunityClanAnnouncementInfo(): CCommunityClanAnnouncementI
     voteupcount: 0,
     votedowncount: 0,
     banCheckResult: 0,
+    banned: false,
   };
 }
 
@@ -2398,6 +2692,9 @@ export const CCommunityClanAnnouncementInfo = {
     }
     if (message.banCheckResult !== 0) {
       writer.uint32(128).int32(message.banCheckResult);
+    }
+    if (message.banned === true) {
+      writer.uint32(136).bool(message.banned);
     }
     return writer;
   },
@@ -2521,6 +2818,13 @@ export const CCommunityClanAnnouncementInfo = {
 
           message.banCheckResult = reader.int32() as any;
           continue;
+        case 17:
+          if (tag != 136) {
+            break;
+          }
+
+          message.banned = reader.bool();
+          continue;
       }
       if ((tag & 7) == 4 || tag == 0) {
         break;
@@ -2548,6 +2852,7 @@ export const CCommunityClanAnnouncementInfo = {
       voteupcount: isSet(object.voteupcount) ? Number(object.voteupcount) : 0,
       votedowncount: isSet(object.votedowncount) ? Number(object.votedowncount) : 0,
       banCheckResult: isSet(object.banCheckResult) ? eBanContentCheckResultFromJSON(object.banCheckResult) : 0,
+      banned: isSet(object.banned) ? Boolean(object.banned) : false,
     };
   },
 
@@ -2573,6 +2878,7 @@ export const CCommunityClanAnnouncementInfo = {
     message.voteupcount !== undefined && (obj.voteupcount = Math.round(message.voteupcount));
     message.votedowncount !== undefined && (obj.votedowncount = Math.round(message.votedowncount));
     message.banCheckResult !== undefined && (obj.banCheckResult = eBanContentCheckResultToJSON(message.banCheckResult));
+    message.banned !== undefined && (obj.banned = message.banned);
     return obj;
   },
 };
@@ -3440,6 +3746,129 @@ export const CMsgKeyValueSet = {
     } else {
       obj.pairs = [];
     }
+    return obj;
+  },
+};
+
+function createBaseUserContentDescriptorPreferences(): UserContentDescriptorPreferences {
+  return { contentDescriptorsToExclude: [] };
+}
+
+export const UserContentDescriptorPreferences = {
+  encode(message: UserContentDescriptorPreferences, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    for (const v of message.contentDescriptorsToExclude) {
+      UserContentDescriptorPreferences_ContentDescriptor.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): UserContentDescriptorPreferences {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUserContentDescriptorPreferences();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 10) {
+            break;
+          }
+
+          message.contentDescriptorsToExclude.push(
+            UserContentDescriptorPreferences_ContentDescriptor.decode(reader, reader.uint32()),
+          );
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): UserContentDescriptorPreferences {
+    return {
+      contentDescriptorsToExclude: Array.isArray(object?.contentDescriptorsToExclude)
+        ? object.contentDescriptorsToExclude.map((e: any) =>
+          UserContentDescriptorPreferences_ContentDescriptor.fromJSON(e)
+        )
+        : [],
+    };
+  },
+
+  toJSON(message: UserContentDescriptorPreferences): unknown {
+    const obj: any = {};
+    if (message.contentDescriptorsToExclude) {
+      obj.contentDescriptorsToExclude = message.contentDescriptorsToExclude.map((e) =>
+        e ? UserContentDescriptorPreferences_ContentDescriptor.toJSON(e) : undefined
+      );
+    } else {
+      obj.contentDescriptorsToExclude = [];
+    }
+    return obj;
+  },
+};
+
+function createBaseUserContentDescriptorPreferences_ContentDescriptor(): UserContentDescriptorPreferences_ContentDescriptor {
+  return { contentDescriptorid: 0, timestampAdded: 0 };
+}
+
+export const UserContentDescriptorPreferences_ContentDescriptor = {
+  encode(
+    message: UserContentDescriptorPreferences_ContentDescriptor,
+    writer: _m0.Writer = _m0.Writer.create(),
+  ): _m0.Writer {
+    if (message.contentDescriptorid !== 0) {
+      writer.uint32(8).uint32(message.contentDescriptorid);
+    }
+    if (message.timestampAdded !== 0) {
+      writer.uint32(16).uint32(message.timestampAdded);
+    }
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): UserContentDescriptorPreferences_ContentDescriptor {
+    const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUserContentDescriptorPreferences_ContentDescriptor();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if (tag != 8) {
+            break;
+          }
+
+          message.contentDescriptorid = reader.uint32();
+          continue;
+        case 2:
+          if (tag != 16) {
+            break;
+          }
+
+          message.timestampAdded = reader.uint32();
+          continue;
+      }
+      if ((tag & 7) == 4 || tag == 0) {
+        break;
+      }
+      reader.skipType(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): UserContentDescriptorPreferences_ContentDescriptor {
+    return {
+      contentDescriptorid: isSet(object.contentDescriptorid) ? Number(object.contentDescriptorid) : 0,
+      timestampAdded: isSet(object.timestampAdded) ? Number(object.timestampAdded) : 0,
+    };
+  },
+
+  toJSON(message: UserContentDescriptorPreferences_ContentDescriptor): unknown {
+    const obj: any = {};
+    message.contentDescriptorid !== undefined && (obj.contentDescriptorid = Math.round(message.contentDescriptorid));
+    message.timestampAdded !== undefined && (obj.timestampAdded = Math.round(message.timestampAdded));
     return obj;
   },
 };
