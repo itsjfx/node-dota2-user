@@ -1,10 +1,8 @@
 import { Dota2User } from './Dota2User';
-import * as Dota2Protobufs from './protobufs';
 import { Dota2UserError } from './utils';
 
-// entrypoint
+// main module entrypoint
 export {
     Dota2User,
-    Dota2Protobufs,
     Dota2UserError,
 };

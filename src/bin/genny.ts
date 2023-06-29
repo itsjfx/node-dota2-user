@@ -191,7 +191,7 @@ const main = async () => {
     // with 2 separate objects it's easier not to live generate the protobufs
     const protos = [...findMatchingProtos()];
 
-    console.log("import * as protobufs from './protobufs';");
+    console.log("import * as protobufs from './index';");
     outputObject(protos, 'ClientProtobufs', MessageSender.CLIENT);
     outputObject(protos, 'GCProtobufs', MessageSender.GC);
 };
