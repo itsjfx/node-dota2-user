@@ -1,5 +1,5 @@
 import * as _m0 from 'protobufjs/minimal';
-import { ClientProtobufs, GCProtobufs } from './protobufs/generated-protobuf-mappings';
+import { ClientProtobufs, GCProtobufs } from './protobufs/protobuf-mappings';
 
 export interface MessageType<Message = UnknownMessage> {
     encode(message: Message, writer?: _m0.Writer): _m0.Writer;
