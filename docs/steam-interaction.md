@@ -49,9 +49,9 @@ OK... how does this module fit in?:
 
 How does a user/consumer communicate with the Dota 2 GC using this module?:
 * When messages are sent by the Dota 2 GC, there's an event emitted you can listen on to receive a typed payload object
-    * There's an underlying Router in Dota 2 User which is message aware, can deserialise a message, and emit/route/publish the payload with the correct type
+    * There's an underlying Router in Dota 2 User which is message aware, can de-serialise a message, and emit/route/publish the payload with the correct type
 * When you wish to send a specific message, the `send()` function definition infers the payload type and provides type hints
-* As the Router and send() mechanism are both type aware based on the message ID, this means that all known messages to the Dota 2 GC are documented
+* As the Router and `send()` mechanism are both type aware based on the message ID, this means that all known messages to the Dota 2 GC are documented
     * Currently I don't actually auto-generate Markdown documentation (sorry!), so you'll have to rely on type hints from your IDE / or the TypeScript compiler
 * To see a real examples of how to communicate with the Dota 2 GC with this module, check out [the examples/ folder](../examples/README.md)
 
