@@ -1,12 +1,8 @@
 {
   "name": "dota2-user",
-  "version": "2.0.0-beta.0",
+  "version": "2.0.0-beta.1",
   "description": "Exposes a simple API for interacting with the Dota 2 game coordinator",
-  "main": "dist/index.js",
-  "files": [
-    "dist",
-    "src"
-  ],
+  "main": "index.js",
   "scripts": {
     "build": "./bin/build",
     "build-protos": "./bin/build-protos",
