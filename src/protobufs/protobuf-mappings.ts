@@ -1,4 +1,4 @@
-import * as protobufs from './protobufs';
+import * as protobufs from './index';
 export const ClientProtobufs = {
     [protobufs.EDOTAGCMsg.k_EMsgGCJoinChatChannel]: protobufs.CMsgDOTAJoinChatChannel,
     [protobufs.EDOTAGCMsg.k_EMsgGCStartFindingMatch]: protobufs.CMsgStartFindingMatch,

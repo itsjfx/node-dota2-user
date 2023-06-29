@@ -4,9 +4,10 @@ set -eu -o pipefail
 
 cd "$(dirname "$0")/../"
 
-EXPORTS_FILE="src/protobufs.ts"
+EXPORTS_FILE="src/protobufs/index.ts"
 PROTOS_PATH="Protobufs/dota2"
-OUTPUT_DIR="src/generated"
+OUTPUT_DIR="src/protobufs/generated"
+GENNY_OUTPUT="src/protobufs/protobuf-mappings.ts"
 cleanup() {
     rm -rf "$OUTPUT_DIR"
     rm -f "$EXPORTS_FILE"
@@ -47,4 +48,4 @@ for file in $files_to_export; do
     echo "export * from './$(basename $OUTPUT_DIR)/$(basename "$file" .ts)';" >> "$EXPORTS_FILE"
 done
 
-DEBUG=* ./bin/genny > src/generated-protobuf-mappings.ts
+DEBUG=* ./bin/genny > "$GENNY_OUTPUT"
