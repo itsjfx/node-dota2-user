@@ -10,6 +10,7 @@
     "genny": "./bin/genny",
     "lint": "./bin/lint",
     "lint:fix": "./bin/lint --fix",
+    "publish": "./bin/publish",
     "test": "./bin/test",
     "update-protos": "./bin/update-protos",
     "watch": "./bin/watch"
