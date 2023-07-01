@@ -41,3 +41,5 @@ dota2.on('connectedToGC', () => {
     dota2.send(EDOTAGCMsg.k_EMsgGCMatchDetailsRequest, { matchId: '271145478' });
 });
 ```
+
+Please see [examples/](./examples/README.md) for TypeScript examples.
