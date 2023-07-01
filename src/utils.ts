@@ -47,7 +47,7 @@ export interface TypedEmitter<L extends ListenerSignature<L> = DefaultListener> 
  * * New `onAny` method which provides a listener that fires when any event is emitted.
  */
 export class ExtendedEventEmitter extends EventEmitter {
-    static AnyEvent = Symbol('AnyEvent');
+    static readonly AnyEvent = Symbol('AnyEvent');
 
     emit(eventName: string | symbol | number, ...args: any): boolean {
         // emit to any BEFORE casting to a string
