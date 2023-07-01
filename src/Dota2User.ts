@@ -119,9 +119,8 @@ export class Dota2User extends EventEmitter {
         return this.sendRawBuffer(messageId, buffer);
     }
 
-    // this may get deprecated
-    // a "raw" / not entirely type-safe way of sending data
-    sendRaw(messageId: keyof ProtobufDataMapType, body: object): void {
+    // a "raw" way of sending data, where every property of the message is optional, and default values will be best effort
+    sendRaw<T extends keyof ProtobufDataMapType>(messageId: T, body: Partial<ProtobufDataMapType[T]>): void {
         const protobuf = getProtobufForMessage(messageId);
         if (!protobuf) {
             throw new Dota2UserError(`Unable to find protobuf for message: ${messageId}`);
