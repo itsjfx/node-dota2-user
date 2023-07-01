@@ -29,6 +29,7 @@ If you're willing/prefer to use Go, I'd suggest checking out [paralin/go-dota2](
 
 * [Setup](./docs/setup.md) - for getting started
 * [Steam Interaction](./docs/steam-interaction.md)
+* [Troubleshooting](./docs/troubleshooting.md)
 
 ## Examples
 
