@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
 
-echo noop
+set -eu -o pipefail
+
+cd "$(dirname "$0")/../"
+
+npx jest "$@"
