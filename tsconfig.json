@@ -3,18 +3,17 @@
         "lib": ["es2020"],
         "module": "commonjs",
         "target": "es2020",
-
         "outDir": "dist",
         "strict": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
         "moduleResolution": "node",
-
         "experimentalDecorators": true,
         "inlineSourceMap": true,
         "declaration": true,
-		"declarationMap": true
+        "declarationMap": true,
+        "importHelpers": true
     },
     "include": ["src"]
 }
