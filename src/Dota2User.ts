@@ -15,12 +15,12 @@ const EXPONENTIAL_HELLO_BACKOFF_MAX = 60000;
 
 export class Dota2User extends EventEmitter {
     static readonly STEAM_APPID = 570;
-    router: Router;
+    router: Router = new Router();
 
     _steam: SteamUser;
     // State
-    _haveGCSession: boolean;
-    _inDota2: boolean;
+    _haveGCSession: boolean = false;
+    _inDota2: boolean = false;
     // TODO
     _helloTimer: NodeJS.Timer | undefined | null;
     _helloTimerMs: number | undefined;
@@ -37,13 +37,44 @@ export class Dota2User extends EventEmitter {
 
         // TODO: EventEmitter args
         super();
-        this.router = new Router();
         this._steam = steam;
-        this._haveGCSession = false;
-        this._inDota2 = false;
 
-        // Hook our steam-user events
-        // TODO should this be happening in the constructor or ...
+        this._hookSteamUserEvents();
+        this._hookRouterEvents();
+    }
+
+    get inDota2(): boolean {
+        return this._inDota2;
+    }
+
+    get haveGCSession(): boolean {
+        return this._haveGCSession;
+    }
+
+    // there's NO validation as to whether events have been hooked
+    // so only called in the constructor once
+    _hookRouterEvents() {
+        this.router.on(EGCBaseClientMsg.k_EMsgGCClientWelcome, (message) => {
+            // Handle caches
+
+            // this.inventory = this.inventory || [];
+            debug('GC connection established');
+            debug('Received welcome: %o', message);
+            this._haveGCSession = true;
+            this._clearHelloTimer();
+            this.emit('connectedToGC');
+        });
+
+        this.router.on(EGCBaseClientMsg.k_EMsgGCClientConnectionStatus, (data) => {
+            if (data.status !== GCConnectionStatus.GCConnectionStatus_HAVE_SESSION && this.haveGCSession) {
+                debug('Connection status: %s; have session: %s', data.status, this.haveGCSession);
+                this.emit('disconnectedFromGC', data.status);
+                this._haveGCSession = false;
+                this._connect(); // Try to reconnect
+            }
+        });
+    }
+    _hookSteamUserEvents() {
         this._steam.on('receivedFromGC', (appid, msgType, payload) => {
             if (appid !== Dota2User.STEAM_APPID) {
                 return; // we don't care
@@ -77,34 +108,6 @@ export class Dota2User extends EventEmitter {
         this._steam.on('error', () => {
             this._handleAppQuit(true);
         });
-
-        this.router.on(EGCBaseClientMsg.k_EMsgGCClientWelcome, (message) => {
-            // Handle caches
-
-            // this.inventory = this.inventory || [];
-            debug('GC connection established');
-            debug('Received welcome: %o', message);
-            this._haveGCSession = true;
-            this._clearHelloTimer();
-            this.emit('connectedToGC');
-        });
-
-        this.router.on(EGCBaseClientMsg.k_EMsgGCClientConnectionStatus, (data) => {
-            if (data.status !== GCConnectionStatus.GCConnectionStatus_HAVE_SESSION && this.haveGCSession) {
-                debug('Connection status: %s; have session: %s', data.status, this.haveGCSession);
-                this.emit('disconnectedFromGC', data.status);
-                this._haveGCSession = false;
-                this._connect(); // Try to reconnect
-            }
-        });
-    }
-
-    get inDota2(): boolean {
-        return this._inDota2;
-    }
-
-    get haveGCSession(): boolean {
-        return this._haveGCSession;
     }
 
     send<T extends keyof ProtobufDataMapType>(messageId: T, body: ProtobufDataMapType[T]): void {
