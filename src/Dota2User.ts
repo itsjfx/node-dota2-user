@@ -20,8 +20,8 @@ export class Dota2User extends EventEmitter {
 
     _steam: SteamUser;
     // State
-    _haveGCSession: boolean = false;
-    _inDota2: boolean = false;
+    _haveGCSession = false;
+    _inDota2 = false;
     // TODO
     _helloTimer: NodeJS.Timer | undefined | null;
     _helloTimerMs: number | undefined;
