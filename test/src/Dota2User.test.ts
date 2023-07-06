@@ -1,5 +1,5 @@
-import SteamUser from "steam-user";
-import { Dota2User, Dota2UserError } from "../../src";
+import SteamUser from 'steam-user';
+import { Dota2User, Dota2UserError } from '../../src';
 
 describe('Dota2User', () => {
     describe('constructor()', () => {
@@ -10,7 +10,7 @@ describe('Dota2User', () => {
                 expect(() => new Dota2User(blargh)).toThrow(Dota2UserError);
             });
         });
-        describe('where an valid SteamUser instance is given', () => {
+        describe('where a valid SteamUser instance is given', () => {
             let client: SteamUser;
             const clientPackageVersionSpy = jest.spyOn(SteamUser.prototype, 'packageVersion', 'get');
             beforeEach(() => {
