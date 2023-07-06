@@ -2,3 +2,4 @@ node_modules/
 dist/
 examples/config.js
 examples/test.js
+.eslintcache

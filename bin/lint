@@ -4,4 +4,4 @@ set -eu -o pipefail
 
 cd "$(dirname "$0")/../"
 
-npx eslint . "$@"
+npx eslint . --cache "$@"
