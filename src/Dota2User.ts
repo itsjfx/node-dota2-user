@@ -128,8 +128,8 @@ export class Dota2User extends EventEmitter {
         return this.sendRawBuffer(messageId, buffer);
     }
 
-    // a "raw" way of sending data, where every property of the message is optional, and default values will be best effort
-    sendRaw<T extends keyof ProtobufDataMapType>(messageId: T, body: Partial<ProtobufDataMapType[T]>): void {
+    // send a "partial" message, where all payload properties are optional, and missing values are filled in best effort
+    sendPartial<T extends keyof ProtobufDataMapType>(messageId: T, body: Partial<ProtobufDataMapType[T]>): void {
         const protobuf = getProtobufForMessage(messageId);
         if (!protobuf) {
             throw new Dota2UserError(`Unable to find protobuf for message: ${messageId}`);
@@ -164,7 +164,7 @@ export class Dota2User extends EventEmitter {
                 return;
             }
 
-            this.sendRaw(EGCBaseClientMsg.k_EMsgGCClientHello, {});
+            this.sendPartial(EGCBaseClientMsg.k_EMsgGCClientHello, {});
             this._helloTimerMs = Math.min(EXPONENTIAL_HELLO_BACKOFF_MAX, (this._helloTimerMs || DEFAULT_HELLO_DELAY) * 2);
             this._helloTimer = setTimeout(() => sendHello(), this._helloTimerMs);
             debug('Sending hello, setting timer for next attempt to %s ms', this._helloTimerMs);
