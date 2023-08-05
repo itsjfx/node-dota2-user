@@ -4,7 +4,7 @@ import { protobufMap, ProtobufDataMapType } from './known-protobufs';
 export class Dota2UserError extends Error {}
 
 // TODO maybe this should be attached to Dota2User
-export const getProtobufForMessage = (messageId: keyof ProtobufDataMapType) => {
+export const getProtobufForMessage = (messageId: keyof ProtobufDataMapType): typeof protobufMap[keyof typeof protobufMap] | undefined => {
     return protobufMap[messageId];
 };
 
