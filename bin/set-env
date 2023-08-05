@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# usage: set-env npx ts-node examples/...ts
+# or set-env node examples/...js
+# i use this to run the examples/ scripts
+# relies on a config.yaml existing a folder out of the directory
+
+set -eu -o pipefail
+
+cd "$(dirname "$0")/../"
+
+yaml2json() {
+    python3 -c 'import sys, yaml, json; [json.dump(doc, sys.stdout) for doc in yaml.safe_load_all(sys.stdin)]'
+}
+
+data="$(cat ../config.yaml | yaml2json)"
+read account_name password shared_secret <<<"$(<<<"$data" jq -r '. | [.account_name, .password, .shared_secret] | @tsv')"
+code="$(<<<"$shared_secret" node -e 'const totp = require("steam-totp"); const fs = require("fs"); process.stdout.write(totp.getAuthCode(fs.readFileSync(process.stdin.fd, "utf-8").toString()));')"
+
+export STEAM_ACCOUNT_NAME="$account_name"
+export STEAM_PASSWORD="$password"
+export STEAM_SHARED_SECRET="$shared_secret"
+export STEAM_TWO_FACTOR_CODE="$code"
+
+"$@"

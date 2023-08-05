@@ -8,9 +8,9 @@ const client = new SteamUser();
 const dota2 = new Dota2User(client);
 
 const logOnOptions = {
-    accountName: '...',
-    password: '...',
-    // twoFactorCode: SteamTotp.getAuthCode('...'), // e.g. use steam-totp
+    accountName: process.env.STEAM_ACCOUNT_NAME!, // '...'
+    password: process.env.STEAM_PASSWORD!, // '...'
+    twoFactorCode: process.env.STEAM_TWO_FACTOR_CODE!, // SteamTotp.getAuthCode('...'), // e.g. use steam-totp
 };
 
 client.logOn(logOnOptions);
