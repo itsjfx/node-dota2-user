@@ -44,6 +44,7 @@
     "steam-user": ">=4.2.0 < 5"
   },
   "devDependencies": {
+    "@tsconfig/node14": "^14.1.0",
     "@types/debug": "^4.1.7",
     "@types/jest": "^29.5.2",
     "@types/node": "^18.15.11",
