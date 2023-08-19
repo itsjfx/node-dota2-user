@@ -1,6 +1,6 @@
 {
   "name": "dota2-user",
-  "version": "2.0.0-beta.1",
+  "version": "2.0.1-beta.0",
   "description": "Exposes a simple API for interacting with the Dota 2 game coordinator",
   "main": "index.js",
   "scripts": {
