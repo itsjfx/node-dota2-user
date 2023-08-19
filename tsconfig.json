@@ -10,5 +10,5 @@
         "resolveJsonModule": true,
         "exactOptionalPropertyTypes": true
     },
-    "include": ["src", "test"]
+    "include": ["src"]
 }

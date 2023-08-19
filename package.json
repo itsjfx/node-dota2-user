@@ -11,6 +11,7 @@
     "lint": "./bin/lint",
     "lint:fix": "./bin/lint --fix",
     "publish": "./bin/publish",
+    "pull-protos": "./bin/pull-protos",
     "test": "./bin/test",
     "update-protos": "./bin/update-protos",
     "watch": "./bin/watch"

@@ -4,13 +4,15 @@ set -eu -o pipefail
 
 cd "$(dirname "$0")/../"
 
+npm run clean
+npm run pull-protos
+npm run build-protos
+npm run build
+
 # checks
 npm run lint
 npm run test
 
-npm run clean
-npm run build-protos
-npm run build
 
 # https://stackoverflow.com/a/48460033
 cp package.json package-lock.json LICENSE README.md dist/
