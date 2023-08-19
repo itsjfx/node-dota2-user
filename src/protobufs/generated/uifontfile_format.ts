@@ -78,6 +78,17 @@ export const CUIFontFilePB = {
       ));
     return obj;
   },
+
+  create(base?: DeepPartial<CUIFontFilePB>): CUIFontFilePB {
+    return CUIFontFilePB.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUIFontFilePB>): CUIFontFilePB {
+    const message = createBaseCUIFontFilePB();
+    message.fontFileName = object.fontFileName ?? "";
+    message.opentypeFontData = object.opentypeFontData ?? Buffer.alloc(0);
+    return message;
+  },
 };
 
 function createBaseCUIFontFilePackagePB(): CUIFontFilePackagePB {
@@ -146,6 +157,18 @@ export const CUIFontFilePackagePB = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CUIFontFilePackagePB>): CUIFontFilePackagePB {
+    return CUIFontFilePackagePB.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUIFontFilePackagePB>): CUIFontFilePackagePB {
+    const message = createBaseCUIFontFilePackagePB();
+    message.packageVersion = object.packageVersion ?? 0;
+    message.encryptedFontFiles =
+      object.encryptedFontFiles?.map((e) => CUIFontFilePackagePB_CUIEncryptedFontFilePB.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCUIFontFilePackagePB_CUIEncryptedFontFilePB(): CUIFontFilePackagePB_CUIEncryptedFontFilePB {
@@ -199,6 +222,18 @@ export const CUIFontFilePackagePB_CUIEncryptedFontFilePB = {
       ));
     return obj;
   },
+
+  create(base?: DeepPartial<CUIFontFilePackagePB_CUIEncryptedFontFilePB>): CUIFontFilePackagePB_CUIEncryptedFontFilePB {
+    return CUIFontFilePackagePB_CUIEncryptedFontFilePB.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUIFontFilePackagePB_CUIEncryptedFontFilePB>,
+  ): CUIFontFilePackagePB_CUIEncryptedFontFilePB {
+    const message = createBaseCUIFontFilePackagePB_CUIEncryptedFontFilePB();
+    message.encryptedContents = object.encryptedContents ?? Buffer.alloc(0);
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -244,6 +279,13 @@ function base64FromBytes(arr: Uint8Array): string {
     return tsProtoGlobalThis.btoa(bin.join(""));
   }
 }
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function isSet(value: any): boolean {
   return value !== null && value !== undefined;

@@ -508,6 +508,17 @@ export const CMsgClientToGCPrivateChatInvite = {
     message.invitedAccountId !== undefined && (obj.invitedAccountId = Math.round(message.invitedAccountId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCPrivateChatInvite>): CMsgClientToGCPrivateChatInvite {
+    return CMsgClientToGCPrivateChatInvite.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCPrivateChatInvite>): CMsgClientToGCPrivateChatInvite {
+    const message = createBaseCMsgClientToGCPrivateChatInvite();
+    message.privateChatChannelName = object.privateChatChannelName ?? "";
+    message.invitedAccountId = object.invitedAccountId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCPrivateChatKick(): CMsgClientToGCPrivateChatKick {
@@ -567,6 +578,17 @@ export const CMsgClientToGCPrivateChatKick = {
     message.privateChatChannelName !== undefined && (obj.privateChatChannelName = message.privateChatChannelName);
     message.kickAccountId !== undefined && (obj.kickAccountId = Math.round(message.kickAccountId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCPrivateChatKick>): CMsgClientToGCPrivateChatKick {
+    return CMsgClientToGCPrivateChatKick.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCPrivateChatKick>): CMsgClientToGCPrivateChatKick {
+    const message = createBaseCMsgClientToGCPrivateChatKick();
+    message.privateChatChannelName = object.privateChatChannelName ?? "";
+    message.kickAccountId = object.kickAccountId ?? 0;
+    return message;
   },
 };
 
@@ -628,6 +650,17 @@ export const CMsgClientToGCPrivateChatPromote = {
     message.promoteAccountId !== undefined && (obj.promoteAccountId = Math.round(message.promoteAccountId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCPrivateChatPromote>): CMsgClientToGCPrivateChatPromote {
+    return CMsgClientToGCPrivateChatPromote.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCPrivateChatPromote>): CMsgClientToGCPrivateChatPromote {
+    const message = createBaseCMsgClientToGCPrivateChatPromote();
+    message.privateChatChannelName = object.privateChatChannelName ?? "";
+    message.promoteAccountId = object.promoteAccountId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCPrivateChatDemote(): CMsgClientToGCPrivateChatDemote {
@@ -687,6 +720,17 @@ export const CMsgClientToGCPrivateChatDemote = {
     message.privateChatChannelName !== undefined && (obj.privateChatChannelName = message.privateChatChannelName);
     message.demoteAccountId !== undefined && (obj.demoteAccountId = Math.round(message.demoteAccountId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCPrivateChatDemote>): CMsgClientToGCPrivateChatDemote {
+    return CMsgClientToGCPrivateChatDemote.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCPrivateChatDemote>): CMsgClientToGCPrivateChatDemote {
+    const message = createBaseCMsgClientToGCPrivateChatDemote();
+    message.privateChatChannelName = object.privateChatChannelName ?? "";
+    message.demoteAccountId = object.demoteAccountId ?? 0;
+    return message;
   },
 };
 
@@ -760,6 +804,18 @@ export const CMsgGCToClientPrivateChatResponse = {
     message.username !== undefined && (obj.username = message.username);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientPrivateChatResponse>): CMsgGCToClientPrivateChatResponse {
+    return CMsgGCToClientPrivateChatResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientPrivateChatResponse>): CMsgGCToClientPrivateChatResponse {
+    const message = createBaseCMsgGCToClientPrivateChatResponse();
+    message.privateChatChannelName = object.privateChatChannelName ?? "";
+    message.result = object.result ?? 0;
+    message.username = object.username ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAJoinChatChannel(): CMsgDOTAJoinChatChannel {
@@ -832,6 +888,18 @@ export const CMsgDOTAJoinChatChannel = {
     message.silentRejection !== undefined && (obj.silentRejection = message.silentRejection);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAJoinChatChannel>): CMsgDOTAJoinChatChannel {
+    return CMsgDOTAJoinChatChannel.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAJoinChatChannel>): CMsgDOTAJoinChatChannel {
+    const message = createBaseCMsgDOTAJoinChatChannel();
+    message.channelName = object.channelName ?? "";
+    message.channelType = object.channelType ?? 0;
+    message.silentRejection = object.silentRejection ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTALeaveChatChannel(): CMsgDOTALeaveChatChannel {
@@ -877,6 +945,16 @@ export const CMsgDOTALeaveChatChannel = {
     const obj: any = {};
     message.channelId !== undefined && (obj.channelId = message.channelId);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTALeaveChatChannel>): CMsgDOTALeaveChatChannel {
+    return CMsgDOTALeaveChatChannel.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTALeaveChatChannel>): CMsgDOTALeaveChatChannel {
+    const message = createBaseCMsgDOTALeaveChatChannel();
+    message.channelId = object.channelId ?? "0";
+    return message;
   },
 };
 
@@ -937,6 +1015,17 @@ export const CMsgGCChatReportPublicSpam = {
     message.channelId !== undefined && (obj.channelId = message.channelId);
     message.channelUserId !== undefined && (obj.channelUserId = Math.round(message.channelUserId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCChatReportPublicSpam>): CMsgGCChatReportPublicSpam {
+    return CMsgGCChatReportPublicSpam.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCChatReportPublicSpam>): CMsgGCChatReportPublicSpam {
+    const message = createBaseCMsgGCChatReportPublicSpam();
+    message.channelId = object.channelId ?? "0";
+    message.channelUserId = object.channelUserId ?? 0;
+    return message;
   },
 };
 
@@ -1009,6 +1098,18 @@ export const CMsgDOTAChatModeratorBan = {
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     message.duration !== undefined && (obj.duration = Math.round(message.duration));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAChatModeratorBan>): CMsgDOTAChatModeratorBan {
+    return CMsgDOTAChatModeratorBan.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAChatModeratorBan>): CMsgDOTAChatModeratorBan {
+    const message = createBaseCMsgDOTAChatModeratorBan();
+    message.channelId = object.channelId ?? "0";
+    message.accountId = object.accountId ?? 0;
+    message.duration = object.duration ?? 0;
+    return message;
   },
 };
 
@@ -1559,6 +1660,59 @@ export const CMsgDOTAChatMessage = {
       : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAChatMessage>): CMsgDOTAChatMessage {
+    return CMsgDOTAChatMessage.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAChatMessage>): CMsgDOTAChatMessage {
+    const message = createBaseCMsgDOTAChatMessage();
+    message.accountId = object.accountId ?? 0;
+    message.channelId = object.channelId ?? "0";
+    message.personaName = object.personaName ?? "";
+    message.text = object.text ?? "";
+    message.timestamp = object.timestamp ?? 0;
+    message.suggestInviteAccountId = object.suggestInviteAccountId ?? 0;
+    message.suggestInviteName = object.suggestInviteName ?? "";
+    message.fantasyDraftOwnerAccountId = object.fantasyDraftOwnerAccountId ?? 0;
+    message.fantasyDraftPlayerAccountId = object.fantasyDraftPlayerAccountId ?? 0;
+    message.eventId = object.eventId ?? 0;
+    message.suggestInviteToLobby = object.suggestInviteToLobby ?? false;
+    message.eventPoints = object.eventPoints ?? 0;
+    message.coinFlip = object.coinFlip ?? false;
+    message.playerId = object.playerId ?? 0;
+    message.shareProfileAccountId = object.shareProfileAccountId ?? 0;
+    message.channelUserId = object.channelUserId ?? 0;
+    message.diceRoll = (object.diceRoll !== undefined && object.diceRoll !== null)
+      ? CMsgDOTAChatMessage_DiceRoll.fromPartial(object.diceRoll)
+      : undefined;
+    message.sharePartyId = object.sharePartyId ?? "0";
+    message.shareLobbyId = object.shareLobbyId ?? "0";
+    message.shareLobbyCustomGameId = object.shareLobbyCustomGameId ?? "0";
+    message.shareLobbyPasskey = object.shareLobbyPasskey ?? "";
+    message.privateChatChannelId = object.privateChatChannelId ?? 0;
+    message.status = object.status ?? 0;
+    message.legacyBattleCupVictory = object.legacyBattleCupVictory ?? false;
+    message.battleCupStreak = object.battleCupStreak ?? 0;
+    message.badgeLevel = object.badgeLevel ?? 0;
+    message.suggestPickHeroId = object.suggestPickHeroId ?? 0;
+    message.suggestPickHeroRole = object.suggestPickHeroRole ?? "";
+    message.suggestBanHeroId = object.suggestBanHeroId ?? 0;
+    message.triviaAnswer = (object.triviaAnswer !== undefined && object.triviaAnswer !== null)
+      ? CMsgDOTAChatMessage_TriviaAnswered.fromPartial(object.triviaAnswer)
+      : undefined;
+    message.requestedAbilityId = object.requestedAbilityId ?? 0;
+    message.chatFlags = object.chatFlags ?? 0;
+    message.startedFindingMatch = object.startedFindingMatch ?? false;
+    message.ctrlIsDown = object.ctrlIsDown ?? false;
+    message.favoriteTeamId = object.favoriteTeamId ?? 0;
+    message.favoriteTeamQuality = object.favoriteTeamQuality ?? 0;
+    message.suggestPlayerDraftPick = object.suggestPlayerDraftPick ?? 0;
+    message.playerDraftPick = (object.playerDraftPick !== undefined && object.playerDraftPick !== null)
+      ? CMsgDOTAChatMessage_PlayerDraftPick.fromPartial(object.playerDraftPick)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAChatMessage_DiceRoll(): CMsgDOTAChatMessage_DiceRoll {
@@ -1630,6 +1784,18 @@ export const CMsgDOTAChatMessage_DiceRoll = {
     message.rollMax !== undefined && (obj.rollMax = Math.round(message.rollMax));
     message.result !== undefined && (obj.result = Math.round(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAChatMessage_DiceRoll>): CMsgDOTAChatMessage_DiceRoll {
+    return CMsgDOTAChatMessage_DiceRoll.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAChatMessage_DiceRoll>): CMsgDOTAChatMessage_DiceRoll {
+    const message = createBaseCMsgDOTAChatMessage_DiceRoll();
+    message.rollMin = object.rollMin ?? 0;
+    message.rollMax = object.rollMax ?? 0;
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -1728,6 +1894,20 @@ export const CMsgDOTAChatMessage_TriviaAnswered = {
     message.partyTriviaPoints !== undefined && (obj.partyTriviaPoints = Math.round(message.partyTriviaPoints));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAChatMessage_TriviaAnswered>): CMsgDOTAChatMessage_TriviaAnswered {
+    return CMsgDOTAChatMessage_TriviaAnswered.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAChatMessage_TriviaAnswered>): CMsgDOTAChatMessage_TriviaAnswered {
+    const message = createBaseCMsgDOTAChatMessage_TriviaAnswered();
+    message.questionId = object.questionId ?? 0;
+    message.answerIndex = object.answerIndex ?? 0;
+    message.partyQuestionsCorrect = object.partyQuestionsCorrect ?? 0;
+    message.partyQuestionsViewed = object.partyQuestionsViewed ?? 0;
+    message.partyTriviaPoints = object.partyTriviaPoints ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAChatMessage_PlayerDraftPick(): CMsgDOTAChatMessage_PlayerDraftPick {
@@ -1787,6 +1967,17 @@ export const CMsgDOTAChatMessage_PlayerDraftPick = {
     message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
     message.team !== undefined && (obj.team = Math.round(message.team));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAChatMessage_PlayerDraftPick>): CMsgDOTAChatMessage_PlayerDraftPick {
+    return CMsgDOTAChatMessage_PlayerDraftPick.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAChatMessage_PlayerDraftPick>): CMsgDOTAChatMessage_PlayerDraftPick {
+    const message = createBaseCMsgDOTAChatMessage_PlayerDraftPick();
+    message.playerId = object.playerId ?? 0;
+    message.team = object.team ?? 0;
+    return message;
   },
 };
 
@@ -1871,6 +2062,19 @@ export const CMsgDOTAChatMember = {
     message.channelUserId !== undefined && (obj.channelUserId = Math.round(message.channelUserId));
     message.status !== undefined && (obj.status = Math.round(message.status));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAChatMember>): CMsgDOTAChatMember {
+    return CMsgDOTAChatMember.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAChatMember>): CMsgDOTAChatMember {
+    const message = createBaseCMsgDOTAChatMember();
+    message.steamId = object.steamId ?? "0";
+    message.personaName = object.personaName ?? "";
+    message.channelUserId = object.channelUserId ?? 0;
+    message.status = object.status ?? 0;
+    return message;
   },
 };
 
@@ -2057,6 +2261,26 @@ export const CMsgDOTAJoinChatChannelResponse = {
       (obj.specialPrivileges = eChatSpecialPrivilegesToJSON(message.specialPrivileges));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAJoinChatChannelResponse>): CMsgDOTAJoinChatChannelResponse {
+    return CMsgDOTAJoinChatChannelResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAJoinChatChannelResponse>): CMsgDOTAJoinChatChannelResponse {
+    const message = createBaseCMsgDOTAJoinChatChannelResponse();
+    message.response = object.response ?? 0;
+    message.channelName = object.channelName ?? "";
+    message.channelId = object.channelId ?? "0";
+    message.maxMembers = object.maxMembers ?? 0;
+    message.members = object.members?.map((e) => CMsgDOTAChatMember.fromPartial(e)) || [];
+    message.channelType = object.channelType ?? 0;
+    message.result = object.result ?? 0;
+    message.gcInitiatedJoin = object.gcInitiatedJoin ?? false;
+    message.channelUserId = object.channelUserId ?? 0;
+    message.welcomeMessage = object.welcomeMessage ?? "";
+    message.specialPrivileges = object.specialPrivileges ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAOtherJoinedChatChannel(): CMsgDOTAOtherJoinedChatChannel {
@@ -2153,6 +2377,20 @@ export const CMsgDOTAOtherJoinedChatChannel = {
     message.status !== undefined && (obj.status = Math.round(message.status));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAOtherJoinedChatChannel>): CMsgDOTAOtherJoinedChatChannel {
+    return CMsgDOTAOtherJoinedChatChannel.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAOtherJoinedChatChannel>): CMsgDOTAOtherJoinedChatChannel {
+    const message = createBaseCMsgDOTAOtherJoinedChatChannel();
+    message.channelId = object.channelId ?? "0";
+    message.personaName = object.personaName ?? "";
+    message.steamId = object.steamId ?? "0";
+    message.channelUserId = object.channelUserId ?? 0;
+    message.status = object.status ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAOtherLeftChatChannel(): CMsgDOTAOtherLeftChatChannel {
@@ -2225,6 +2463,18 @@ export const CMsgDOTAOtherLeftChatChannel = {
     message.channelUserId !== undefined && (obj.channelUserId = Math.round(message.channelUserId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAOtherLeftChatChannel>): CMsgDOTAOtherLeftChatChannel {
+    return CMsgDOTAOtherLeftChatChannel.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAOtherLeftChatChannel>): CMsgDOTAOtherLeftChatChannel {
+    const message = createBaseCMsgDOTAOtherLeftChatChannel();
+    message.channelId = object.channelId ?? "0";
+    message.steamId = object.steamId ?? "0";
+    message.channelUserId = object.channelUserId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTARequestChatChannelList(): CMsgDOTARequestChatChannelList {
@@ -2259,6 +2509,15 @@ export const CMsgDOTARequestChatChannelList = {
   toJSON(_: CMsgDOTARequestChatChannelList): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTARequestChatChannelList>): CMsgDOTARequestChatChannelList {
+    return CMsgDOTARequestChatChannelList.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgDOTARequestChatChannelList>): CMsgDOTARequestChatChannelList {
+    const message = createBaseCMsgDOTARequestChatChannelList();
+    return message;
   },
 };
 
@@ -2315,6 +2574,17 @@ export const CMsgDOTARequestChatChannelListResponse = {
       obj.channels = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTARequestChatChannelListResponse>): CMsgDOTARequestChatChannelListResponse {
+    return CMsgDOTARequestChatChannelListResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTARequestChatChannelListResponse>): CMsgDOTARequestChatChannelListResponse {
+    const message = createBaseCMsgDOTARequestChatChannelListResponse();
+    message.channels = object.channels?.map((e) => CMsgDOTARequestChatChannelListResponse_ChatChannel.fromPartial(e)) ||
+      [];
+    return message;
   },
 };
 
@@ -2391,6 +2661,22 @@ export const CMsgDOTARequestChatChannelListResponse_ChatChannel = {
     message.channelType !== undefined && (obj.channelType = dOTAChatChannelTypeTToJSON(message.channelType));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgDOTARequestChatChannelListResponse_ChatChannel>,
+  ): CMsgDOTARequestChatChannelListResponse_ChatChannel {
+    return CMsgDOTARequestChatChannelListResponse_ChatChannel.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgDOTARequestChatChannelListResponse_ChatChannel>,
+  ): CMsgDOTARequestChatChannelListResponse_ChatChannel {
+    const message = createBaseCMsgDOTARequestChatChannelListResponse_ChatChannel();
+    message.channelName = object.channelName ?? "";
+    message.numMembers = object.numMembers ?? 0;
+    message.channelType = object.channelType ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAChatGetUserListResponse(): CMsgDOTAChatGetUserListResponse {
@@ -2456,6 +2742,17 @@ export const CMsgDOTAChatGetUserListResponse = {
       obj.members = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAChatGetUserListResponse>): CMsgDOTAChatGetUserListResponse {
+    return CMsgDOTAChatGetUserListResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAChatGetUserListResponse>): CMsgDOTAChatGetUserListResponse {
+    const message = createBaseCMsgDOTAChatGetUserListResponse();
+    message.channelId = object.channelId ?? "0";
+    message.members = object.members?.map((e) => CMsgDOTAChatGetUserListResponse_Member.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -2541,6 +2838,19 @@ export const CMsgDOTAChatGetUserListResponse_Member = {
     message.status !== undefined && (obj.status = Math.round(message.status));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAChatGetUserListResponse_Member>): CMsgDOTAChatGetUserListResponse_Member {
+    return CMsgDOTAChatGetUserListResponse_Member.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAChatGetUserListResponse_Member>): CMsgDOTAChatGetUserListResponse_Member {
+    const message = createBaseCMsgDOTAChatGetUserListResponse_Member();
+    message.steamId = object.steamId ?? "0";
+    message.personaName = object.personaName ?? "";
+    message.channelUserId = object.channelUserId ?? 0;
+    message.status = object.status ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAChatGetMemberCount(): CMsgDOTAChatGetMemberCount {
@@ -2600,6 +2910,17 @@ export const CMsgDOTAChatGetMemberCount = {
     message.channelName !== undefined && (obj.channelName = message.channelName);
     message.channelType !== undefined && (obj.channelType = dOTAChatChannelTypeTToJSON(message.channelType));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAChatGetMemberCount>): CMsgDOTAChatGetMemberCount {
+    return CMsgDOTAChatGetMemberCount.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAChatGetMemberCount>): CMsgDOTAChatGetMemberCount {
+    const message = createBaseCMsgDOTAChatGetMemberCount();
+    message.channelName = object.channelName ?? "";
+    message.channelType = object.channelType ?? 0;
+    return message;
   },
 };
 
@@ -2673,6 +2994,18 @@ export const CMsgDOTAChatGetMemberCountResponse = {
     message.memberCount !== undefined && (obj.memberCount = Math.round(message.memberCount));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAChatGetMemberCountResponse>): CMsgDOTAChatGetMemberCountResponse {
+    return CMsgDOTAChatGetMemberCountResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAChatGetMemberCountResponse>): CMsgDOTAChatGetMemberCountResponse {
+    const message = createBaseCMsgDOTAChatGetMemberCountResponse();
+    message.channelName = object.channelName ?? "";
+    message.channelType = object.channelType ?? 0;
+    message.memberCount = object.memberCount ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAChatRegionsEnabled(): CMsgDOTAChatRegionsEnabled {
@@ -2740,6 +3073,17 @@ export const CMsgDOTAChatRegionsEnabled = {
       obj.enabledRegions = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAChatRegionsEnabled>): CMsgDOTAChatRegionsEnabled {
+    return CMsgDOTAChatRegionsEnabled.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAChatRegionsEnabled>): CMsgDOTAChatRegionsEnabled {
+    const message = createBaseCMsgDOTAChatRegionsEnabled();
+    message.enableAllRegions = object.enableAllRegions ?? false;
+    message.enabledRegions = object.enabledRegions?.map((e) => CMsgDOTAChatRegionsEnabled_Region.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -2825,6 +3169,19 @@ export const CMsgDOTAChatRegionsEnabled_Region = {
     message.maxLongitude !== undefined && (obj.maxLongitude = message.maxLongitude);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAChatRegionsEnabled_Region>): CMsgDOTAChatRegionsEnabled_Region {
+    return CMsgDOTAChatRegionsEnabled_Region.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAChatRegionsEnabled_Region>): CMsgDOTAChatRegionsEnabled_Region {
+    const message = createBaseCMsgDOTAChatRegionsEnabled_Region();
+    message.minLatitude = object.minLatitude ?? 0;
+    message.maxLatitude = object.maxLatitude ?? 0;
+    message.minLongitude = object.minLongitude ?? 0;
+    message.maxLongitude = object.maxLongitude ?? 0;
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -2845,6 +3202,13 @@ var tsProtoGlobalThis: any = (() => {
   }
   throw "Unable to locate global object";
 })();
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

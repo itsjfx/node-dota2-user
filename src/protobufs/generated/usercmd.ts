@@ -109,6 +109,18 @@ export const CInButtonStatePB = {
     message.buttonstate3 !== undefined && (obj.buttonstate3 = message.buttonstate3);
     return obj;
   },
+
+  create(base?: DeepPartial<CInButtonStatePB>): CInButtonStatePB {
+    return CInButtonStatePB.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CInButtonStatePB>): CInButtonStatePB {
+    const message = createBaseCInButtonStatePB();
+    message.buttonstate1 = object.buttonstate1 ?? "0";
+    message.buttonstate2 = object.buttonstate2 ?? "0";
+    message.buttonstate3 = object.buttonstate3 ?? "0";
+    return message;
+  },
 };
 
 function createBaseCSubtickMoveStep(): CSubtickMoveStep {
@@ -180,6 +192,18 @@ export const CSubtickMoveStep = {
     message.pressed !== undefined && (obj.pressed = message.pressed);
     message.when !== undefined && (obj.when = message.when);
     return obj;
+  },
+
+  create(base?: DeepPartial<CSubtickMoveStep>): CSubtickMoveStep {
+    return CSubtickMoveStep.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSubtickMoveStep>): CSubtickMoveStep {
+    const message = createBaseCSubtickMoveStep();
+    message.button = object.button ?? "0";
+    message.pressed = object.pressed ?? false;
+    message.when = object.when ?? 0;
+    return message;
   },
 };
 
@@ -448,6 +472,36 @@ export const CBaseUserCmdPB = {
     message.fixangleTick !== undefined && (obj.fixangleTick = Math.round(message.fixangleTick));
     return obj;
   },
+
+  create(base?: DeepPartial<CBaseUserCmdPB>): CBaseUserCmdPB {
+    return CBaseUserCmdPB.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CBaseUserCmdPB>): CBaseUserCmdPB {
+    const message = createBaseCBaseUserCmdPB();
+    message.commandNumber = object.commandNumber ?? 0;
+    message.tickCount = object.tickCount ?? 0;
+    message.buttonsPb = (object.buttonsPb !== undefined && object.buttonsPb !== null)
+      ? CInButtonStatePB.fromPartial(object.buttonsPb)
+      : undefined;
+    message.viewangles = (object.viewangles !== undefined && object.viewangles !== null)
+      ? CMsgQAngle.fromPartial(object.viewangles)
+      : undefined;
+    message.forwardmove = object.forwardmove ?? 0;
+    message.leftmove = object.leftmove ?? 0;
+    message.upmove = object.upmove ?? 0;
+    message.impulse = object.impulse ?? 0;
+    message.weaponselect = object.weaponselect ?? 0;
+    message.randomSeed = object.randomSeed ?? 0;
+    message.mousedx = object.mousedx ?? 0;
+    message.mousedy = object.mousedy ?? 0;
+    message.hasbeenpredicted = object.hasbeenpredicted ?? false;
+    message.pawnEntityHandle = object.pawnEntityHandle ?? 0;
+    message.subtickMoves = object.subtickMoves?.map((e) => CSubtickMoveStep.fromPartial(e)) || [];
+    message.moveCrc = object.moveCrc ?? Buffer.alloc(0);
+    message.fixangleTick = object.fixangleTick ?? 0;
+    return message;
+  },
 };
 
 function createBaseCUserCmdBasePB(): CUserCmdBasePB {
@@ -494,6 +548,18 @@ export const CUserCmdBasePB = {
     message.base !== undefined && (obj.base = message.base ? CBaseUserCmdPB.toJSON(message.base) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CUserCmdBasePB>): CUserCmdBasePB {
+    return CUserCmdBasePB.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserCmdBasePB>): CUserCmdBasePB {
+    const message = createBaseCUserCmdBasePB();
+    message.base = (object.base !== undefined && object.base !== null)
+      ? CBaseUserCmdPB.fromPartial(object.base)
+      : undefined;
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -539,6 +605,13 @@ function base64FromBytes(arr: Uint8Array): string {
     return tsProtoGlobalThis.btoa(bin.join(""));
   }
 }
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

@@ -160,6 +160,16 @@ export const CP2PTextMessage = {
       (obj.text = base64FromBytes(message.text !== undefined ? message.text : Buffer.alloc(0)));
     return obj;
   },
+
+  create(base?: DeepPartial<CP2PTextMessage>): CP2PTextMessage {
+    return CP2PTextMessage.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CP2PTextMessage>): CP2PTextMessage {
+    const message = createBaseCP2PTextMessage();
+    message.text = object.text ?? Buffer.alloc(0);
+    return message;
+  },
 };
 
 function createBaseCSteamVoiceEncoding(): CSteamVoiceEncoding {
@@ -206,6 +216,16 @@ export const CSteamVoiceEncoding = {
     message.voiceData !== undefined &&
       (obj.voiceData = base64FromBytes(message.voiceData !== undefined ? message.voiceData : Buffer.alloc(0)));
     return obj;
+  },
+
+  create(base?: DeepPartial<CSteamVoiceEncoding>): CSteamVoiceEncoding {
+    return CSteamVoiceEncoding.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSteamVoiceEncoding>): CSteamVoiceEncoding {
+    const message = createBaseCSteamVoiceEncoding();
+    message.voiceData = object.voiceData ?? Buffer.alloc(0);
+    return message;
   },
 };
 
@@ -267,6 +287,19 @@ export const CP2PVoice = {
     message.broadcastGroup !== undefined && (obj.broadcastGroup = Math.round(message.broadcastGroup));
     return obj;
   },
+
+  create(base?: DeepPartial<CP2PVoice>): CP2PVoice {
+    return CP2PVoice.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CP2PVoice>): CP2PVoice {
+    const message = createBaseCP2PVoice();
+    message.audio = (object.audio !== undefined && object.audio !== null)
+      ? CMsgVoiceAudio.fromPartial(object.audio)
+      : undefined;
+    message.broadcastGroup = object.broadcastGroup ?? 0;
+    return message;
+  },
 };
 
 function createBaseCP2PPing(): CP2PPing {
@@ -326,6 +359,17 @@ export const CP2PPing = {
     message.sendTime !== undefined && (obj.sendTime = message.sendTime);
     message.isReply !== undefined && (obj.isReply = message.isReply);
     return obj;
+  },
+
+  create(base?: DeepPartial<CP2PPing>): CP2PPing {
+    return CP2PPing.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CP2PPing>): CP2PPing {
+    const message = createBaseCP2PPing();
+    message.sendTime = object.sendTime ?? "0";
+    message.isReply = object.isReply ?? false;
+    return message;
   },
 };
 
@@ -417,6 +461,19 @@ export const CP2PVRAvatarPosition = {
     message.worldScale !== undefined && (obj.worldScale = Math.round(message.worldScale));
     return obj;
   },
+
+  create(base?: DeepPartial<CP2PVRAvatarPosition>): CP2PVRAvatarPosition {
+    return CP2PVRAvatarPosition.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CP2PVRAvatarPosition>): CP2PVRAvatarPosition {
+    const message = createBaseCP2PVRAvatarPosition();
+    message.bodyParts = object.bodyParts?.map((e) => CP2PVRAvatarPosition_COrientation.fromPartial(e)) || [];
+    message.hatId = object.hatId ?? 0;
+    message.sceneId = object.sceneId ?? 0;
+    message.worldScale = object.worldScale ?? 0;
+    return message;
+  },
 };
 
 function createBaseCP2PVRAvatarPosition_COrientation(): CP2PVRAvatarPosition_COrientation {
@@ -476,6 +533,17 @@ export const CP2PVRAvatarPosition_COrientation = {
     message.pos !== undefined && (obj.pos = message.pos ? CMsgVector.toJSON(message.pos) : undefined);
     message.ang !== undefined && (obj.ang = message.ang ? CMsgQAngle.toJSON(message.ang) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CP2PVRAvatarPosition_COrientation>): CP2PVRAvatarPosition_COrientation {
+    return CP2PVRAvatarPosition_COrientation.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CP2PVRAvatarPosition_COrientation>): CP2PVRAvatarPosition_COrientation {
+    const message = createBaseCP2PVRAvatarPosition_COrientation();
+    message.pos = (object.pos !== undefined && object.pos !== null) ? CMsgVector.fromPartial(object.pos) : undefined;
+    message.ang = (object.ang !== undefined && object.ang !== null) ? CMsgQAngle.fromPartial(object.ang) : undefined;
+    return message;
   },
 };
 
@@ -623,6 +691,23 @@ export const CP2PWatchSynchronization = {
     message.dotaReplaySpeed !== undefined && (obj.dotaReplaySpeed = Math.round(message.dotaReplaySpeed));
     return obj;
   },
+
+  create(base?: DeepPartial<CP2PWatchSynchronization>): CP2PWatchSynchronization {
+    return CP2PWatchSynchronization.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CP2PWatchSynchronization>): CP2PWatchSynchronization {
+    const message = createBaseCP2PWatchSynchronization();
+    message.demoTick = object.demoTick ?? 0;
+    message.paused = object.paused ?? false;
+    message.tvListenVoiceIndices = object.tvListenVoiceIndices ?? "0";
+    message.dotaSpectatorMode = object.dotaSpectatorMode ?? 0;
+    message.dotaSpectatorWatchingBroadcaster = object.dotaSpectatorWatchingBroadcaster ?? false;
+    message.dotaSpectatorHeroIndex = object.dotaSpectatorHeroIndex ?? 0;
+    message.dotaSpectatorAutospeed = object.dotaSpectatorAutospeed ?? 0;
+    message.dotaReplaySpeed = object.dotaReplaySpeed ?? 0;
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -668,6 +753,13 @@ function base64FromBytes(arr: Uint8Array): string {
     return tsProtoGlobalThis.btoa(bin.join(""));
   }
 }
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

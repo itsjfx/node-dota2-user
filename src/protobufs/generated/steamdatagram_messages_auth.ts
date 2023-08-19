@@ -297,6 +297,29 @@ export const CMsgSteamDatagramRelayAuthTicket = {
       ));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamDatagramRelayAuthTicket>): CMsgSteamDatagramRelayAuthTicket {
+    return CMsgSteamDatagramRelayAuthTicket.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramRelayAuthTicket>): CMsgSteamDatagramRelayAuthTicket {
+    const message = createBaseCMsgSteamDatagramRelayAuthTicket();
+    message.timeExpiry = object.timeExpiry ?? 0;
+    message.authorizedClientIdentityString = object.authorizedClientIdentityString ?? "";
+    message.gameserverIdentityString = object.gameserverIdentityString ?? "";
+    message.authorizedPublicIp = object.authorizedPublicIp ?? 0;
+    message.gameserverAddress = object.gameserverAddress ?? Buffer.alloc(0);
+    message.appId = object.appId ?? 0;
+    message.virtualPort = object.virtualPort ?? 0;
+    message.extraFields = object.extraFields?.map((e) => CMsgSteamDatagramRelayAuthTicket_ExtraField.fromPartial(e)) ||
+      [];
+    message.legacyAuthorizedSteamId = object.legacyAuthorizedSteamId ?? "0";
+    message.legacyGameserverSteamId = object.legacyGameserverSteamId ?? "0";
+    message.legacyGameserverPopId = object.legacyGameserverPopId ?? 0;
+    message.legacyAuthorizedClientIdentityBinary = object.legacyAuthorizedClientIdentityBinary ?? Buffer.alloc(0);
+    message.legacyGameserverIdentityBinary = object.legacyGameserverIdentityBinary ?? Buffer.alloc(0);
+    return message;
+  },
 };
 
 function createBaseCMsgSteamDatagramRelayAuthTicket_ExtraField(): CMsgSteamDatagramRelayAuthTicket_ExtraField {
@@ -380,6 +403,21 @@ export const CMsgSteamDatagramRelayAuthTicket_ExtraField = {
     message.int64Value !== undefined && (obj.int64Value = message.int64Value);
     message.fixed64Value !== undefined && (obj.fixed64Value = message.fixed64Value);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamDatagramRelayAuthTicket_ExtraField>): CMsgSteamDatagramRelayAuthTicket_ExtraField {
+    return CMsgSteamDatagramRelayAuthTicket_ExtraField.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamDatagramRelayAuthTicket_ExtraField>,
+  ): CMsgSteamDatagramRelayAuthTicket_ExtraField {
+    const message = createBaseCMsgSteamDatagramRelayAuthTicket_ExtraField();
+    message.name = object.name ?? "";
+    message.stringValue = object.stringValue ?? "";
+    message.int64Value = object.int64Value ?? "0";
+    message.fixed64Value = object.fixed64Value ?? "0";
+    return message;
   },
 };
 
@@ -485,6 +523,20 @@ export const CMsgSteamDatagramSignedRelayAuthTicket = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamDatagramSignedRelayAuthTicket>): CMsgSteamDatagramSignedRelayAuthTicket {
+    return CMsgSteamDatagramSignedRelayAuthTicket.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramSignedRelayAuthTicket>): CMsgSteamDatagramSignedRelayAuthTicket {
+    const message = createBaseCMsgSteamDatagramSignedRelayAuthTicket();
+    message.reservedDoNotUse = object.reservedDoNotUse ?? "0";
+    message.ticket = object.ticket ?? Buffer.alloc(0);
+    message.signature = object.signature ?? Buffer.alloc(0);
+    message.keyId = object.keyId ?? "0";
+    message.certs = object.certs?.map((e) => CMsgSteamDatagramCertificateSigned.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgSteamDatagramCachedCredentialsForApp(): CMsgSteamDatagramCachedCredentialsForApp {
@@ -564,6 +616,18 @@ export const CMsgSteamDatagramCachedCredentialsForApp = {
       obj.relayTickets = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamDatagramCachedCredentialsForApp>): CMsgSteamDatagramCachedCredentialsForApp {
+    return CMsgSteamDatagramCachedCredentialsForApp.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramCachedCredentialsForApp>): CMsgSteamDatagramCachedCredentialsForApp {
+    const message = createBaseCMsgSteamDatagramCachedCredentialsForApp();
+    message.privateKey = object.privateKey ?? Buffer.alloc(0);
+    message.cert = object.cert ?? Buffer.alloc(0);
+    message.relayTickets = object.relayTickets?.map((e) => e) || [];
+    return message;
   },
 };
 
@@ -700,6 +764,24 @@ export const CMsgSteamDatagramGameCoordinatorServerLogin = {
     message.dummySteamId !== undefined && (obj.dummySteamId = message.dummySteamId);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamDatagramGameCoordinatorServerLogin>): CMsgSteamDatagramGameCoordinatorServerLogin {
+    return CMsgSteamDatagramGameCoordinatorServerLogin.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamDatagramGameCoordinatorServerLogin>,
+  ): CMsgSteamDatagramGameCoordinatorServerLogin {
+    const message = createBaseCMsgSteamDatagramGameCoordinatorServerLogin();
+    message.timeGenerated = object.timeGenerated ?? 0;
+    message.appid = object.appid ?? 0;
+    message.routing = object.routing ?? Buffer.alloc(0);
+    message.appdata = object.appdata ?? Buffer.alloc(0);
+    message.legacyIdentityBinary = object.legacyIdentityBinary ?? Buffer.alloc(0);
+    message.identityString = object.identityString ?? "";
+    message.dummySteamId = object.dummySteamId ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgSteamDatagramSignedGameCoordinatorServerLogin(): CMsgSteamDatagramSignedGameCoordinatorServerLogin {
@@ -777,6 +859,24 @@ export const CMsgSteamDatagramSignedGameCoordinatorServerLogin = {
     message.signature !== undefined &&
       (obj.signature = base64FromBytes(message.signature !== undefined ? message.signature : Buffer.alloc(0)));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamDatagramSignedGameCoordinatorServerLogin>,
+  ): CMsgSteamDatagramSignedGameCoordinatorServerLogin {
+    return CMsgSteamDatagramSignedGameCoordinatorServerLogin.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamDatagramSignedGameCoordinatorServerLogin>,
+  ): CMsgSteamDatagramSignedGameCoordinatorServerLogin {
+    const message = createBaseCMsgSteamDatagramSignedGameCoordinatorServerLogin();
+    message.cert = (object.cert !== undefined && object.cert !== null)
+      ? CMsgSteamDatagramCertificateSigned.fromPartial(object.cert)
+      : undefined;
+    message.login = object.login ?? Buffer.alloc(0);
+    message.signature = object.signature ?? Buffer.alloc(0);
+    return message;
   },
 };
 
@@ -875,6 +975,24 @@ export const CMsgSteamDatagramHostedServerAddressPlaintext = {
     message.protocolVersion !== undefined && (obj.protocolVersion = Math.round(message.protocolVersion));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgSteamDatagramHostedServerAddressPlaintext>,
+  ): CMsgSteamDatagramHostedServerAddressPlaintext {
+    return CMsgSteamDatagramHostedServerAddressPlaintext.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamDatagramHostedServerAddressPlaintext>,
+  ): CMsgSteamDatagramHostedServerAddressPlaintext {
+    const message = createBaseCMsgSteamDatagramHostedServerAddressPlaintext();
+    message.ipv4 = object.ipv4 ?? 0;
+    message.ipv6 = object.ipv6 ?? Buffer.alloc(0);
+    message.port = object.port ?? 0;
+    message.routingSecret = object.routingSecret ?? "0";
+    message.protocolVersion = object.protocolVersion ?? 0;
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -920,6 +1038,13 @@ function base64FromBytes(arr: Uint8Array): string {
     return tsProtoGlobalThis.btoa(bin.join(""));
   }
 }
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

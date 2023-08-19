@@ -4002,6 +4002,16 @@ export const CDOTAUserMsgAIDebugLine = {
     message.message !== undefined && (obj.message = message.message);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgAIDebugLine>): CDOTAUserMsgAIDebugLine {
+    return CDOTAUserMsgAIDebugLine.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgAIDebugLine>): CDOTAUserMsgAIDebugLine {
+    const message = createBaseCDOTAUserMsgAIDebugLine();
+    message.message = object.message ?? "";
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgPing(): CDOTAUserMsgPing {
@@ -4059,6 +4069,17 @@ export const CDOTAUserMsgPing = {
     message.loss !== undefined && (obj.loss = Math.round(message.loss));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgPing>): CDOTAUserMsgPing {
+    return CDOTAUserMsgPing.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgPing>): CDOTAUserMsgPing {
+    const message = createBaseCDOTAUserMsgPing();
+    message.ping = object.ping ?? 0;
+    message.loss = object.loss ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgSwapVerify(): CDOTAUserMsgSwapVerify {
@@ -4104,6 +4125,16 @@ export const CDOTAUserMsgSwapVerify = {
     const obj: any = {};
     message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgSwapVerify>): CDOTAUserMsgSwapVerify {
+    return CDOTAUserMsgSwapVerify.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgSwapVerify>): CDOTAUserMsgSwapVerify {
+    const message = createBaseCDOTAUserMsgSwapVerify();
+    message.playerId = object.playerId ?? 0;
+    return message;
   },
 };
 
@@ -4272,6 +4303,25 @@ export const CDOTAUserMsgChatEvent = {
     message.value3 !== undefined && (obj.value3 = Math.round(message.value3));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgChatEvent>): CDOTAUserMsgChatEvent {
+    return CDOTAUserMsgChatEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgChatEvent>): CDOTAUserMsgChatEvent {
+    const message = createBaseCDOTAUserMsgChatEvent();
+    message.type = object.type ?? 0;
+    message.value = object.value ?? 0;
+    message.playerid1 = object.playerid1 ?? 0;
+    message.playerid2 = object.playerid2 ?? 0;
+    message.playerid3 = object.playerid3 ?? 0;
+    message.playerid4 = object.playerid4 ?? 0;
+    message.playerid5 = object.playerid5 ?? 0;
+    message.playerid6 = object.playerid6 ?? 0;
+    message.value2 = object.value2 ?? 0;
+    message.value3 = object.value3 ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgBotChat(): CDOTAUserMsgBotChat {
@@ -4355,6 +4405,19 @@ export const CDOTAUserMsgBotChat = {
     message.target !== undefined && (obj.target = message.target);
     message.teamOnly !== undefined && (obj.teamOnly = message.teamOnly);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgBotChat>): CDOTAUserMsgBotChat {
+    return CDOTAUserMsgBotChat.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgBotChat>): CDOTAUserMsgBotChat {
+    const message = createBaseCDOTAUserMsgBotChat();
+    message.playerId = object.playerId ?? 0;
+    message.message = object.message ?? "";
+    message.target = object.target ?? "";
+    message.teamOnly = object.teamOnly ?? false;
+    return message;
   },
 };
 
@@ -4440,6 +4503,21 @@ export const CDOTAUserMsgCombatHeroPositions = {
       (obj.worldPos = message.worldPos ? CMsgVector2D.toJSON(message.worldPos) : undefined);
     message.health !== undefined && (obj.health = Math.round(message.health));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgCombatHeroPositions>): CDOTAUserMsgCombatHeroPositions {
+    return CDOTAUserMsgCombatHeroPositions.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgCombatHeroPositions>): CDOTAUserMsgCombatHeroPositions {
+    const message = createBaseCDOTAUserMsgCombatHeroPositions();
+    message.index = object.index ?? 0;
+    message.time = object.time ?? 0;
+    message.worldPos = (object.worldPos !== undefined && object.worldPos !== null)
+      ? CMsgVector2D.fromPartial(object.worldPos)
+      : undefined;
+    message.health = object.health ?? 0;
+    return message;
   },
 };
 
@@ -4543,6 +4621,20 @@ export const CDOTAUserMsgCombatLogBulkData = {
     message.requestTime !== undefined && (obj.requestTime = message.requestTime);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgCombatLogBulkData>): CDOTAUserMsgCombatLogBulkData {
+    return CDOTAUserMsgCombatLogBulkData.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgCombatLogBulkData>): CDOTAUserMsgCombatLogBulkData {
+    const message = createBaseCDOTAUserMsgCombatLogBulkData();
+    message.combatEntries = object.combatEntries?.map((e) => CMsgDOTACombatLogEntry.fromPartial(e)) || [];
+    message.timestamp = object.timestamp ?? 0;
+    message.duration = object.duration ?? 0;
+    message.playerId = object.playerId ?? 0;
+    message.requestTime = object.requestTime ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgProjectileParticleCPData(): CDOTAUserMsgProjectileParticleCPData {
@@ -4603,6 +4695,19 @@ export const CDOTAUserMsgProjectileParticleCPData = {
     message.vector !== undefined && (obj.vector = message.vector ? CMsgVector.toJSON(message.vector) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgProjectileParticleCPData>): CDOTAUserMsgProjectileParticleCPData {
+    return CDOTAUserMsgProjectileParticleCPData.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgProjectileParticleCPData>): CDOTAUserMsgProjectileParticleCPData {
+    const message = createBaseCDOTAUserMsgProjectileParticleCPData();
+    message.controlPoint = object.controlPoint ?? 0;
+    message.vector = (object.vector !== undefined && object.vector !== null)
+      ? CMsgVector.fromPartial(object.vector)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgMiniKillCamInfo(): CDOTAUserMsgMiniKillCamInfo {
@@ -4656,6 +4761,16 @@ export const CDOTAUserMsgMiniKillCamInfo = {
       obj.attackers = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgMiniKillCamInfo>): CDOTAUserMsgMiniKillCamInfo {
+    return CDOTAUserMsgMiniKillCamInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgMiniKillCamInfo>): CDOTAUserMsgMiniKillCamInfo {
+    const message = createBaseCDOTAUserMsgMiniKillCamInfo();
+    message.attackers = object.attackers?.map((e) => CDOTAUserMsgMiniKillCamInfo_Attacker.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -4749,6 +4864,19 @@ export const CDOTAUserMsgMiniKillCamInfo_Attacker = {
     message.attackerName !== undefined && (obj.attackerName = message.attackerName);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgMiniKillCamInfo_Attacker>): CDOTAUserMsgMiniKillCamInfo_Attacker {
+    return CDOTAUserMsgMiniKillCamInfo_Attacker.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgMiniKillCamInfo_Attacker>): CDOTAUserMsgMiniKillCamInfo_Attacker {
+    const message = createBaseCDOTAUserMsgMiniKillCamInfo_Attacker();
+    message.attacker = object.attacker ?? 0;
+    message.totalDamage = object.totalDamage ?? 0;
+    message.abilities = object.abilities?.map((e) => CDOTAUserMsgMiniKillCamInfo_Attacker_Ability.fromPartial(e)) || [];
+    message.attackerName = object.attackerName ?? "";
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgMiniKillCamInfo_Attacker_Ability(): CDOTAUserMsgMiniKillCamInfo_Attacker_Ability {
@@ -4809,6 +4937,21 @@ export const CDOTAUserMsgMiniKillCamInfo_Attacker_Ability = {
     message.damage !== undefined && (obj.damage = Math.round(message.damage));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CDOTAUserMsgMiniKillCamInfo_Attacker_Ability>,
+  ): CDOTAUserMsgMiniKillCamInfo_Attacker_Ability {
+    return CDOTAUserMsgMiniKillCamInfo_Attacker_Ability.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CDOTAUserMsgMiniKillCamInfo_Attacker_Ability>,
+  ): CDOTAUserMsgMiniKillCamInfo_Attacker_Ability {
+    const message = createBaseCDOTAUserMsgMiniKillCamInfo_Attacker_Ability();
+    message.abilityId = object.abilityId ?? 0;
+    message.damage = object.damage ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgGlobalLightColor(): CDOTAUserMsgGlobalLightColor {
@@ -4868,6 +5011,17 @@ export const CDOTAUserMsgGlobalLightColor = {
     message.color !== undefined && (obj.color = Math.round(message.color));
     message.duration !== undefined && (obj.duration = message.duration);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgGlobalLightColor>): CDOTAUserMsgGlobalLightColor {
+    return CDOTAUserMsgGlobalLightColor.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgGlobalLightColor>): CDOTAUserMsgGlobalLightColor {
+    const message = createBaseCDOTAUserMsgGlobalLightColor();
+    message.color = object.color ?? 0;
+    message.duration = object.duration ?? 0;
+    return message;
   },
 };
 
@@ -4930,6 +5084,19 @@ export const CDOTAUserMsgGlobalLightDirection = {
     message.duration !== undefined && (obj.duration = message.duration);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgGlobalLightDirection>): CDOTAUserMsgGlobalLightDirection {
+    return CDOTAUserMsgGlobalLightDirection.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgGlobalLightDirection>): CDOTAUserMsgGlobalLightDirection {
+    const message = createBaseCDOTAUserMsgGlobalLightDirection();
+    message.direction = (object.direction !== undefined && object.direction !== null)
+      ? CMsgVector.fromPartial(object.direction)
+      : undefined;
+    message.duration = object.duration ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgLocationPing(): CDOTAUserMsgLocationPing {
@@ -4990,6 +5157,19 @@ export const CDOTAUserMsgLocationPing = {
     message.locationPing !== undefined &&
       (obj.locationPing = message.locationPing ? CDOTAMsgLocationPing.toJSON(message.locationPing) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgLocationPing>): CDOTAUserMsgLocationPing {
+    return CDOTAUserMsgLocationPing.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgLocationPing>): CDOTAUserMsgLocationPing {
+    const message = createBaseCDOTAUserMsgLocationPing();
+    message.playerId = object.playerId ?? 0;
+    message.locationPing = (object.locationPing !== undefined && object.locationPing !== null)
+      ? CDOTAMsgLocationPing.fromPartial(object.locationPing)
+      : undefined;
+    return message;
   },
 };
 
@@ -5077,6 +5257,21 @@ export const CDOTAUserMsgPingConfirmation = {
       (obj.location = message.location ? CMsgVector.toJSON(message.location) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgPingConfirmation>): CDOTAUserMsgPingConfirmation {
+    return CDOTAUserMsgPingConfirmation.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgPingConfirmation>): CDOTAUserMsgPingConfirmation {
+    const message = createBaseCDOTAUserMsgPingConfirmation();
+    message.playerIdOfOriginalPinger = object.playerIdOfOriginalPinger ?? 0;
+    message.entityIndex = object.entityIndex ?? 0;
+    message.iconType = object.iconType ?? 0;
+    message.location = (object.location !== undefined && object.location !== null)
+      ? CMsgVector.fromPartial(object.location)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgItemAlert(): CDOTAUserMsgItemAlert {
@@ -5137,6 +5332,19 @@ export const CDOTAUserMsgItemAlert = {
     message.itemAlert !== undefined &&
       (obj.itemAlert = message.itemAlert ? CDOTAMsgItemAlert.toJSON(message.itemAlert) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgItemAlert>): CDOTAUserMsgItemAlert {
+    return CDOTAUserMsgItemAlert.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgItemAlert>): CDOTAUserMsgItemAlert {
+    const message = createBaseCDOTAUserMsgItemAlert();
+    message.playerId = object.playerId ?? 0;
+    message.itemAlert = (object.itemAlert !== undefined && object.itemAlert !== null)
+      ? CDOTAMsgItemAlert.fromPartial(object.itemAlert)
+      : undefined;
+    return message;
   },
 };
 
@@ -5279,6 +5487,23 @@ export const CDOTAUserMsgEnemyItemAlert = {
     message.secondaryCharges !== undefined && (obj.secondaryCharges = Math.round(message.secondaryCharges));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgEnemyItemAlert>): CDOTAUserMsgEnemyItemAlert {
+    return CDOTAUserMsgEnemyItemAlert.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgEnemyItemAlert>): CDOTAUserMsgEnemyItemAlert {
+    const message = createBaseCDOTAUserMsgEnemyItemAlert();
+    message.playerId = object.playerId ?? 0;
+    message.targetPlayerId = object.targetPlayerId ?? 0;
+    message.itemAbilityId = object.itemAbilityId ?? 0;
+    message.runeType = object.runeType ?? 0;
+    message.entityId = object.entityId ?? 0;
+    message.itemLevel = object.itemLevel ?? 0;
+    message.primaryCharges = object.primaryCharges ?? 0;
+    message.secondaryCharges = object.secondaryCharges ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgModifierAlert(): CDOTAUserMsgModifierAlert {
@@ -5387,6 +5612,21 @@ export const CDOTAUserMsgModifierAlert = {
     message.secondsRemaining !== undefined && (obj.secondsRemaining = message.secondsRemaining);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgModifierAlert>): CDOTAUserMsgModifierAlert {
+    return CDOTAUserMsgModifierAlert.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgModifierAlert>): CDOTAUserMsgModifierAlert {
+    const message = createBaseCDOTAUserMsgModifierAlert();
+    message.playerId = object.playerId ?? 0;
+    message.className = object.className ?? "";
+    message.stackCount = object.stackCount ?? 0;
+    message.isDebuff = object.isDebuff ?? false;
+    message.targetEntindex = object.targetEntindex ?? 0;
+    message.secondsRemaining = object.secondsRemaining ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgHPManaAlert(): CDOTAUserMsgHPManaAlert {
@@ -5458,6 +5698,18 @@ export const CDOTAUserMsgHPManaAlert = {
     message.targetEntindex !== undefined && (obj.targetEntindex = Math.round(message.targetEntindex));
     message.showRawValues !== undefined && (obj.showRawValues = message.showRawValues);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgHPManaAlert>): CDOTAUserMsgHPManaAlert {
+    return CDOTAUserMsgHPManaAlert.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgHPManaAlert>): CDOTAUserMsgHPManaAlert {
+    const message = createBaseCDOTAUserMsgHPManaAlert();
+    message.playerId = object.playerId ?? 0;
+    message.targetEntindex = object.targetEntindex ?? 0;
+    message.showRawValues = object.showRawValues ?? false;
+    return message;
   },
 };
 
@@ -5587,6 +5839,22 @@ export const CDOTAUserMsgNeutralCampAlert = {
     message.stackIntention !== undefined && (obj.stackIntention = message.stackIntention);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgNeutralCampAlert>): CDOTAUserMsgNeutralCampAlert {
+    return CDOTAUserMsgNeutralCampAlert.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgNeutralCampAlert>): CDOTAUserMsgNeutralCampAlert {
+    const message = createBaseCDOTAUserMsgNeutralCampAlert();
+    message.playerId = object.playerId ?? 0;
+    message.spawnerEntindex = object.spawnerEntindex ?? 0;
+    message.unitEntindex = object.unitEntindex ?? 0;
+    message.stackCount = object.stackCount ?? 0;
+    message.campType = object.campType ?? 0;
+    message.stackRequest = object.stackRequest ?? false;
+    message.stackIntention = object.stackIntention ?? false;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgGlyphAlert(): CDOTAUserMsgGlyphAlert {
@@ -5647,6 +5915,17 @@ export const CDOTAUserMsgGlyphAlert = {
     message.negative !== undefined && (obj.negative = message.negative);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgGlyphAlert>): CDOTAUserMsgGlyphAlert {
+    return CDOTAUserMsgGlyphAlert.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgGlyphAlert>): CDOTAUserMsgGlyphAlert {
+    const message = createBaseCDOTAUserMsgGlyphAlert();
+    message.playerId = object.playerId ?? 0;
+    message.negative = object.negative ?? false;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgRadarAlert(): CDOTAUserMsgRadarAlert {
@@ -5706,6 +5985,17 @@ export const CDOTAUserMsgRadarAlert = {
     message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
     message.negative !== undefined && (obj.negative = message.negative);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgRadarAlert>): CDOTAUserMsgRadarAlert {
+    return CDOTAUserMsgRadarAlert.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgRadarAlert>): CDOTAUserMsgRadarAlert {
+    const message = createBaseCDOTAUserMsgRadarAlert();
+    message.playerId = object.playerId ?? 0;
+    message.negative = object.negative ?? false;
+    return message;
   },
 };
 
@@ -5791,6 +6081,19 @@ export const CDOTAUserMsgWillPurchaseAlert = {
     message.suggestionPlayerId !== undefined && (obj.suggestionPlayerId = Math.round(message.suggestionPlayerId));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgWillPurchaseAlert>): CDOTAUserMsgWillPurchaseAlert {
+    return CDOTAUserMsgWillPurchaseAlert.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgWillPurchaseAlert>): CDOTAUserMsgWillPurchaseAlert {
+    const message = createBaseCDOTAUserMsgWillPurchaseAlert();
+    message.itemAbilityId = object.itemAbilityId ?? 0;
+    message.playerId = object.playerId ?? 0;
+    message.goldRemaining = object.goldRemaining ?? 0;
+    message.suggestionPlayerId = object.suggestionPlayerId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgEmptyTeleportAlert(): CDOTAUserMsgEmptyTeleportAlert {
@@ -5862,6 +6165,18 @@ export const CDOTAUserMsgEmptyTeleportAlert = {
     message.targetPlayerId !== undefined && (obj.targetPlayerId = Math.round(message.targetPlayerId));
     message.cooldownSeconds !== undefined && (obj.cooldownSeconds = Math.round(message.cooldownSeconds));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgEmptyTeleportAlert>): CDOTAUserMsgEmptyTeleportAlert {
+    return CDOTAUserMsgEmptyTeleportAlert.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgEmptyTeleportAlert>): CDOTAUserMsgEmptyTeleportAlert {
+    const message = createBaseCDOTAUserMsgEmptyTeleportAlert();
+    message.sourcePlayerId = object.sourcePlayerId ?? 0;
+    message.targetPlayerId = object.targetPlayerId ?? 0;
+    message.cooldownSeconds = object.cooldownSeconds ?? 0;
+    return message;
   },
 };
 
@@ -5935,6 +6250,18 @@ export const CDOTAUserMsgMarsArenaOfBloodAttack = {
     message.warriorIndex !== undefined && (obj.warriorIndex = Math.round(message.warriorIndex));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgMarsArenaOfBloodAttack>): CDOTAUserMsgMarsArenaOfBloodAttack {
+    return CDOTAUserMsgMarsArenaOfBloodAttack.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgMarsArenaOfBloodAttack>): CDOTAUserMsgMarsArenaOfBloodAttack {
+    const message = createBaseCDOTAUserMsgMarsArenaOfBloodAttack();
+    message.sourceEhandle = object.sourceEhandle ?? 0;
+    message.targetEhandle = object.targetEhandle ?? 0;
+    message.warriorIndex = object.warriorIndex ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAEntityMsgInvokerSpellCast(): CDOTAEntityMsgInvokerSpellCast {
@@ -5996,6 +6323,19 @@ export const CDOTAEntityMsgInvokerSpellCast = {
     message.castActivity !== undefined && (obj.castActivity = Math.round(message.castActivity));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAEntityMsgInvokerSpellCast>): CDOTAEntityMsgInvokerSpellCast {
+    return CDOTAEntityMsgInvokerSpellCast.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAEntityMsgInvokerSpellCast>): CDOTAEntityMsgInvokerSpellCast {
+    const message = createBaseCDOTAEntityMsgInvokerSpellCast();
+    message.entityMsg = (object.entityMsg !== undefined && object.entityMsg !== null)
+      ? CEntityMsg.fromPartial(object.entityMsg)
+      : undefined;
+    message.castActivity = object.castActivity ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgBuyBackStateAlert(): CDOTAUserMsgBuyBackStateAlert {
@@ -6041,6 +6381,16 @@ export const CDOTAUserMsgBuyBackStateAlert = {
     const obj: any = {};
     message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgBuyBackStateAlert>): CDOTAUserMsgBuyBackStateAlert {
+    return CDOTAUserMsgBuyBackStateAlert.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgBuyBackStateAlert>): CDOTAUserMsgBuyBackStateAlert {
+    const message = createBaseCDOTAUserMsgBuyBackStateAlert();
+    message.playerId = object.playerId ?? 0;
+    return message;
   },
 };
 
@@ -6137,6 +6487,20 @@ export const CDOTAUserMsgQuickBuyAlert = {
     message.itemCooldownSeconds !== undefined && (obj.itemCooldownSeconds = Math.round(message.itemCooldownSeconds));
     message.showBuyback !== undefined && (obj.showBuyback = message.showBuyback);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgQuickBuyAlert>): CDOTAUserMsgQuickBuyAlert {
+    return CDOTAUserMsgQuickBuyAlert.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgQuickBuyAlert>): CDOTAUserMsgQuickBuyAlert {
+    const message = createBaseCDOTAUserMsgQuickBuyAlert();
+    message.playerId = object.playerId ?? 0;
+    message.itemAbilityId = object.itemAbilityId ?? 0;
+    message.goldCost = object.goldCost ?? 0;
+    message.itemCooldownSeconds = object.itemCooldownSeconds ?? 0;
+    message.showBuyback = object.showBuyback ?? false;
+    return message;
   },
 };
 
@@ -6264,6 +6628,22 @@ export const CDOTAUserMsgCourierKilledAlert = {
     message.owningPlayerId !== undefined && (obj.owningPlayerId = Math.round(message.owningPlayerId));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgCourierKilledAlert>): CDOTAUserMsgCourierKilledAlert {
+    return CDOTAUserMsgCourierKilledAlert.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgCourierKilledAlert>): CDOTAUserMsgCourierKilledAlert {
+    const message = createBaseCDOTAUserMsgCourierKilledAlert();
+    message.team = object.team ?? 0;
+    message.goldValue = object.goldValue ?? 0;
+    message.entityHandle = object.entityHandle ?? 0;
+    message.timestamp = object.timestamp ?? 0;
+    message.lostItems = object.lostItems?.map((e) => CDOTAUserMsgCourierKilledAlert_LostItem.fromPartial(e)) || [];
+    message.killerPlayerId = object.killerPlayerId ?? 0;
+    message.owningPlayerId = object.owningPlayerId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgCourierKilledAlert_LostItem(): CDOTAUserMsgCourierKilledAlert_LostItem {
@@ -6323,6 +6703,17 @@ export const CDOTAUserMsgCourierKilledAlert_LostItem = {
     message.itemAbilityId !== undefined && (obj.itemAbilityId = Math.round(message.itemAbilityId));
     message.quantity !== undefined && (obj.quantity = Math.round(message.quantity));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgCourierKilledAlert_LostItem>): CDOTAUserMsgCourierKilledAlert_LostItem {
+    return CDOTAUserMsgCourierKilledAlert_LostItem.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgCourierKilledAlert_LostItem>): CDOTAUserMsgCourierKilledAlert_LostItem {
+    const message = createBaseCDOTAUserMsgCourierKilledAlert_LostItem();
+    message.itemAbilityId = object.itemAbilityId ?? 0;
+    message.quantity = object.quantity ?? 0;
+    return message;
   },
 };
 
@@ -6432,6 +6823,21 @@ export const CDOTAUserMsgMinimapEvent = {
     message.targetEntityHandle !== undefined && (obj.targetEntityHandle = Math.round(message.targetEntityHandle));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgMinimapEvent>): CDOTAUserMsgMinimapEvent {
+    return CDOTAUserMsgMinimapEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgMinimapEvent>): CDOTAUserMsgMinimapEvent {
+    const message = createBaseCDOTAUserMsgMinimapEvent();
+    message.eventType = object.eventType ?? 0;
+    message.entityHandle = object.entityHandle ?? 0;
+    message.x = object.x ?? 0;
+    message.y = object.y ?? 0;
+    message.duration = object.duration ?? 0;
+    message.targetEntityHandle = object.targetEntityHandle ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgMapLine(): CDOTAUserMsgMapLine {
@@ -6492,6 +6898,19 @@ export const CDOTAUserMsgMapLine = {
     message.mapline !== undefined &&
       (obj.mapline = message.mapline ? CDOTAMsgMapLine.toJSON(message.mapline) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgMapLine>): CDOTAUserMsgMapLine {
+    return CDOTAUserMsgMapLine.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgMapLine>): CDOTAUserMsgMapLine {
+    const message = createBaseCDOTAUserMsgMapLine();
+    message.playerId = object.playerId ?? 0;
+    message.mapline = (object.mapline !== undefined && object.mapline !== null)
+      ? CDOTAMsgMapLine.fromPartial(object.mapline)
+      : undefined;
+    return message;
   },
 };
 
@@ -6589,6 +7008,22 @@ export const CDOTAUserMsgMinimapDebugPoint = {
     message.duration !== undefined && (obj.duration = message.duration);
     message.index !== undefined && (obj.index = Math.round(message.index));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgMinimapDebugPoint>): CDOTAUserMsgMinimapDebugPoint {
+    return CDOTAUserMsgMinimapDebugPoint.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgMinimapDebugPoint>): CDOTAUserMsgMinimapDebugPoint {
+    const message = createBaseCDOTAUserMsgMinimapDebugPoint();
+    message.location = (object.location !== undefined && object.location !== null)
+      ? CMsgVector.fromPartial(object.location)
+      : undefined;
+    message.color = object.color ?? 0;
+    message.size = object.size ?? 0;
+    message.duration = object.duration ?? 0;
+    message.index = object.index ?? 0;
+    return message;
   },
 };
 
@@ -6793,6 +7228,34 @@ export const CDOTAUserMsgCreateLinearProjectile = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgCreateLinearProjectile>): CDOTAUserMsgCreateLinearProjectile {
+    return CDOTAUserMsgCreateLinearProjectile.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgCreateLinearProjectile>): CDOTAUserMsgCreateLinearProjectile {
+    const message = createBaseCDOTAUserMsgCreateLinearProjectile();
+    message.origin = (object.origin !== undefined && object.origin !== null)
+      ? CMsgVector.fromPartial(object.origin)
+      : undefined;
+    message.velocity = (object.velocity !== undefined && object.velocity !== null)
+      ? CMsgVector2D.fromPartial(object.velocity)
+      : undefined;
+    message.entindex = object.entindex ?? 0;
+    message.particleIndex = object.particleIndex ?? "0";
+    message.handle = object.handle ?? 0;
+    message.acceleration = (object.acceleration !== undefined && object.acceleration !== null)
+      ? CMsgVector2D.fromPartial(object.acceleration)
+      : undefined;
+    message.maxSpeed = object.maxSpeed ?? 0;
+    message.fowRadius = object.fowRadius ?? 0;
+    message.stickyFowReveal = object.stickyFowReveal ?? false;
+    message.distance = object.distance ?? 0;
+    message.colorgemcolor = object.colorgemcolor ?? 0;
+    message.particleCpData = object.particleCpData?.map((e) => CDOTAUserMsgProjectileParticleCPData.fromPartial(e)) ||
+      [];
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgDestroyLinearProjectile(): CDOTAUserMsgDestroyLinearProjectile {
@@ -6838,6 +7301,16 @@ export const CDOTAUserMsgDestroyLinearProjectile = {
     const obj: any = {};
     message.handle !== undefined && (obj.handle = Math.round(message.handle));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgDestroyLinearProjectile>): CDOTAUserMsgDestroyLinearProjectile {
+    return CDOTAUserMsgDestroyLinearProjectile.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgDestroyLinearProjectile>): CDOTAUserMsgDestroyLinearProjectile {
+    const message = createBaseCDOTAUserMsgDestroyLinearProjectile();
+    message.handle = object.handle ?? 0;
+    return message;
   },
 };
 
@@ -6898,6 +7371,17 @@ export const CDOTAUserMsgDodgeTrackingProjectiles = {
     message.entindex !== undefined && (obj.entindex = Math.round(message.entindex));
     message.attacksOnly !== undefined && (obj.attacksOnly = message.attacksOnly);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgDodgeTrackingProjectiles>): CDOTAUserMsgDodgeTrackingProjectiles {
+    return CDOTAUserMsgDodgeTrackingProjectiles.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgDodgeTrackingProjectiles>): CDOTAUserMsgDodgeTrackingProjectiles {
+    const message = createBaseCDOTAUserMsgDodgeTrackingProjectiles();
+    message.entindex = object.entindex ?? 0;
+    message.attacksOnly = object.attacksOnly ?? false;
+    return message;
   },
 };
 
@@ -6970,6 +7454,18 @@ export const CDOTAUserMsgSpectatorPlayerClick = {
     message.orderType !== undefined && (obj.orderType = Math.round(message.orderType));
     message.targetIndex !== undefined && (obj.targetIndex = Math.round(message.targetIndex));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgSpectatorPlayerClick>): CDOTAUserMsgSpectatorPlayerClick {
+    return CDOTAUserMsgSpectatorPlayerClick.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgSpectatorPlayerClick>): CDOTAUserMsgSpectatorPlayerClick {
+    const message = createBaseCDOTAUserMsgSpectatorPlayerClick();
+    message.entindex = object.entindex ?? 0;
+    message.orderType = object.orderType ?? 0;
+    message.targetIndex = object.targetIndex ?? 0;
+    return message;
   },
 };
 
@@ -7141,6 +7637,26 @@ export const CDOTAUserMsgSpectatorPlayerUnitOrders = {
     message.flags !== undefined && (obj.flags = Math.round(message.flags));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgSpectatorPlayerUnitOrders>): CDOTAUserMsgSpectatorPlayerUnitOrders {
+    return CDOTAUserMsgSpectatorPlayerUnitOrders.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgSpectatorPlayerUnitOrders>): CDOTAUserMsgSpectatorPlayerUnitOrders {
+    const message = createBaseCDOTAUserMsgSpectatorPlayerUnitOrders();
+    message.entindex = object.entindex ?? 0;
+    message.orderType = object.orderType ?? 0;
+    message.units = object.units?.map((e) => e) || [];
+    message.targetIndex = object.targetIndex ?? 0;
+    message.abilityId = object.abilityId ?? 0;
+    message.position = (object.position !== undefined && object.position !== null)
+      ? CMsgVector.fromPartial(object.position)
+      : undefined;
+    message.queue = object.queue ?? false;
+    message.sequenceNumber = object.sequenceNumber ?? 0;
+    message.flags = object.flags ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgNevermoreRequiem(): CDOTAUserMsgNevermoreRequiem {
@@ -7225,6 +7741,21 @@ export const CDOTAUserMsgNevermoreRequiem = {
     message.reverse !== undefined && (obj.reverse = message.reverse);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgNevermoreRequiem>): CDOTAUserMsgNevermoreRequiem {
+    return CDOTAUserMsgNevermoreRequiem.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgNevermoreRequiem>): CDOTAUserMsgNevermoreRequiem {
+    const message = createBaseCDOTAUserMsgNevermoreRequiem();
+    message.entityHandle = object.entityHandle ?? 0;
+    message.lines = object.lines ?? 0;
+    message.origin = (object.origin !== undefined && object.origin !== null)
+      ? CMsgVector.fromPartial(object.origin)
+      : undefined;
+    message.reverse = object.reverse ?? false;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgInvalidCommand(): CDOTAUserMsgInvalidCommand {
@@ -7285,6 +7816,17 @@ export const CDOTAUserMsgInvalidCommand = {
     message.sequenceNumber !== undefined && (obj.sequenceNumber = Math.round(message.sequenceNumber));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgInvalidCommand>): CDOTAUserMsgInvalidCommand {
+    return CDOTAUserMsgInvalidCommand.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgInvalidCommand>): CDOTAUserMsgInvalidCommand {
+    const message = createBaseCDOTAUserMsgInvalidCommand();
+    message.message = object.message ?? "";
+    message.sequenceNumber = object.sequenceNumber ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgHudError(): CDOTAUserMsgHudError {
@@ -7344,6 +7886,17 @@ export const CDOTAUserMsgHudError = {
     message.orderId !== undefined && (obj.orderId = Math.round(message.orderId));
     message.sequenceNumber !== undefined && (obj.sequenceNumber = Math.round(message.sequenceNumber));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgHudError>): CDOTAUserMsgHudError {
+    return CDOTAUserMsgHudError.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgHudError>): CDOTAUserMsgHudError {
+    const message = createBaseCDOTAUserMsgHudError();
+    message.orderId = object.orderId ?? 0;
+    message.sequenceNumber = object.sequenceNumber ?? 0;
+    return message;
   },
 };
 
@@ -7429,6 +7982,19 @@ export const CDOTAUserMsgSharedCooldown = {
     message.nameIndex !== undefined && (obj.nameIndex = Math.round(message.nameIndex));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgSharedCooldown>): CDOTAUserMsgSharedCooldown {
+    return CDOTAUserMsgSharedCooldown.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgSharedCooldown>): CDOTAUserMsgSharedCooldown {
+    const message = createBaseCDOTAUserMsgSharedCooldown();
+    message.entindex = object.entindex ?? 0;
+    message.name = object.name ?? "";
+    message.cooldown = object.cooldown ?? 0;
+    message.nameIndex = object.nameIndex ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgSetNextAutobuyItem(): CDOTAUserMsgSetNextAutobuyItem {
@@ -7474,6 +8040,16 @@ export const CDOTAUserMsgSetNextAutobuyItem = {
     const obj: any = {};
     message.name !== undefined && (obj.name = message.name);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgSetNextAutobuyItem>): CDOTAUserMsgSetNextAutobuyItem {
+    return CDOTAUserMsgSetNextAutobuyItem.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgSetNextAutobuyItem>): CDOTAUserMsgSetNextAutobuyItem {
+    const message = createBaseCDOTAUserMsgSetNextAutobuyItem();
+    message.name = object.name ?? "";
+    return message;
   },
 };
 
@@ -7577,6 +8153,18 @@ export const CDOTAUserMsgHalloweenDrops = {
     message.prizeList !== undefined && (obj.prizeList = Math.round(message.prizeList));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgHalloweenDrops>): CDOTAUserMsgHalloweenDrops {
+    return CDOTAUserMsgHalloweenDrops.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgHalloweenDrops>): CDOTAUserMsgHalloweenDrops {
+    const message = createBaseCDOTAUserMsgHalloweenDrops();
+    message.itemDefs = object.itemDefs?.map((e) => e) || [];
+    message.playerIds = object.playerIds?.map((e) => e) || [];
+    message.prizeList = object.prizeList ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgPredictionResult(): CDOTAUserMsgPredictionResult {
@@ -7668,6 +8256,19 @@ export const CDOTAUserMsgPredictionResult = {
       obj.predictions = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgPredictionResult>): CDOTAUserMsgPredictionResult {
+    return CDOTAUserMsgPredictionResult.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgPredictionResult>): CDOTAUserMsgPredictionResult {
+    const message = createBaseCDOTAUserMsgPredictionResult();
+    message.accountId = object.accountId ?? 0;
+    message.matchId = object.matchId ?? "0";
+    message.correct = object.correct ?? false;
+    message.predictions = object.predictions?.map((e) => CDOTAUserMsgPredictionResult_Prediction.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -7781,6 +8382,20 @@ export const CDOTAUserMsgPredictionResult_Prediction = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgPredictionResult_Prediction>): CDOTAUserMsgPredictionResult_Prediction {
+    return CDOTAUserMsgPredictionResult_Prediction.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgPredictionResult_Prediction>): CDOTAUserMsgPredictionResult_Prediction {
+    const message = createBaseCDOTAUserMsgPredictionResult_Prediction();
+    message.itemDef = object.itemDef ?? 0;
+    message.numCorrect = object.numCorrect ?? 0;
+    message.numFails = object.numFails ?? 0;
+    message.result = object.result ?? 1;
+    message.grantedItemDefs = object.grantedItemDefs?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCDOTAResponseQuerySerialized(): CDOTAResponseQuerySerialized {
@@ -7834,6 +8449,16 @@ export const CDOTAResponseQuerySerialized = {
       obj.facts = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAResponseQuerySerialized>): CDOTAResponseQuerySerialized {
+    return CDOTAResponseQuerySerialized.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAResponseQuerySerialized>): CDOTAResponseQuerySerialized {
+    const message = createBaseCDOTAResponseQuerySerialized();
+    message.facts = object.facts?.map((e) => CDOTAResponseQuerySerialized_Fact.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -7943,6 +8568,21 @@ export const CDOTAResponseQuerySerialized_Fact = {
     message.valIntNumeric !== undefined && (obj.valIntNumeric = Math.round(message.valIntNumeric));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAResponseQuerySerialized_Fact>): CDOTAResponseQuerySerialized_Fact {
+    return CDOTAResponseQuerySerialized_Fact.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAResponseQuerySerialized_Fact>): CDOTAResponseQuerySerialized_Fact {
+    const message = createBaseCDOTAResponseQuerySerialized_Fact();
+    message.key = object.key ?? 0;
+    message.valtype = object.valtype ?? 1;
+    message.valNumeric = object.valNumeric ?? 0;
+    message.valString = object.valString ?? "";
+    message.valStringtableIndex = object.valStringtableIndex ?? 0;
+    message.valIntNumeric = object.valIntNumeric ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTASpeechMatchOnClient(): CDOTASpeechMatchOnClient {
@@ -8030,6 +8670,21 @@ export const CDOTASpeechMatchOnClient = {
       : undefined);
     message.randomseed !== undefined && (obj.randomseed = Math.round(message.randomseed));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTASpeechMatchOnClient>): CDOTASpeechMatchOnClient {
+    return CDOTASpeechMatchOnClient.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTASpeechMatchOnClient>): CDOTASpeechMatchOnClient {
+    const message = createBaseCDOTASpeechMatchOnClient();
+    message.speechConcept = object.speechConcept ?? 0;
+    message.recipientType = object.recipientType ?? 0;
+    message.responsequery = (object.responsequery !== undefined && object.responsequery !== null)
+      ? CDOTAResponseQuerySerialized.fromPartial(object.responsequery)
+      : undefined;
+    message.randomseed = object.randomseed ?? 0;
+    return message;
   },
 };
 
@@ -8206,6 +8861,38 @@ export const CDOTAUserMsgUnitEvent = {
       : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgUnitEvent>): CDOTAUserMsgUnitEvent {
+    return CDOTAUserMsgUnitEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgUnitEvent>): CDOTAUserMsgUnitEvent {
+    const message = createBaseCDOTAUserMsgUnitEvent();
+    message.msgType = object.msgType ?? 0;
+    message.entityIndex = object.entityIndex ?? 0;
+    message.speech = (object.speech !== undefined && object.speech !== null)
+      ? CDOTAUserMsgUnitEvent_Speech.fromPartial(object.speech)
+      : undefined;
+    message.speechMute = (object.speechMute !== undefined && object.speechMute !== null)
+      ? CDOTAUserMsgUnitEvent_SpeechMute.fromPartial(object.speechMute)
+      : undefined;
+    message.addGesture = (object.addGesture !== undefined && object.addGesture !== null)
+      ? CDOTAUserMsgUnitEvent_AddGesture.fromPartial(object.addGesture)
+      : undefined;
+    message.removeGesture = (object.removeGesture !== undefined && object.removeGesture !== null)
+      ? CDOTAUserMsgUnitEvent_RemoveGesture.fromPartial(object.removeGesture)
+      : undefined;
+    message.bloodImpact = (object.bloodImpact !== undefined && object.bloodImpact !== null)
+      ? CDOTAUserMsgUnitEvent_BloodImpact.fromPartial(object.bloodImpact)
+      : undefined;
+    message.fadeGesture = (object.fadeGesture !== undefined && object.fadeGesture !== null)
+      ? CDOTAUserMsgUnitEvent_FadeGesture.fromPartial(object.fadeGesture)
+      : undefined;
+    message.speechMatchOnClient = (object.speechMatchOnClient !== undefined && object.speechMatchOnClient !== null)
+      ? CDOTASpeechMatchOnClient.fromPartial(object.speechMatchOnClient)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgUnitEvent_Interval(): CDOTAUserMsgUnitEvent_Interval {
@@ -8265,6 +8952,17 @@ export const CDOTAUserMsgUnitEvent_Interval = {
     message.start !== undefined && (obj.start = message.start);
     message.range !== undefined && (obj.range = message.range);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgUnitEvent_Interval>): CDOTAUserMsgUnitEvent_Interval {
+    return CDOTAUserMsgUnitEvent_Interval.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgUnitEvent_Interval>): CDOTAUserMsgUnitEvent_Interval {
+    const message = createBaseCDOTAUserMsgUnitEvent_Interval();
+    message.start = object.start ?? 0;
+    message.range = object.range ?? 0;
+    return message;
   },
 };
 
@@ -8375,6 +9073,23 @@ export const CDOTAUserMsgUnitEvent_Speech = {
     message.flags !== undefined && (obj.flags = Math.round(message.flags));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgUnitEvent_Speech>): CDOTAUserMsgUnitEvent_Speech {
+    return CDOTAUserMsgUnitEvent_Speech.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgUnitEvent_Speech>): CDOTAUserMsgUnitEvent_Speech {
+    const message = createBaseCDOTAUserMsgUnitEvent_Speech();
+    message.speechConcept = object.speechConcept ?? 0;
+    message.response = object.response ?? "";
+    message.recipientType = object.recipientType ?? 0;
+    message.muteable = object.muteable ?? false;
+    message.predelay = (object.predelay !== undefined && object.predelay !== null)
+      ? CDOTAUserMsgUnitEvent_Interval.fromPartial(object.predelay)
+      : undefined;
+    message.flags = object.flags ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgUnitEvent_SpeechMute(): CDOTAUserMsgUnitEvent_SpeechMute {
@@ -8420,6 +9135,16 @@ export const CDOTAUserMsgUnitEvent_SpeechMute = {
     const obj: any = {};
     message.delay !== undefined && (obj.delay = message.delay);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgUnitEvent_SpeechMute>): CDOTAUserMsgUnitEvent_SpeechMute {
+    return CDOTAUserMsgUnitEvent_SpeechMute.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgUnitEvent_SpeechMute>): CDOTAUserMsgUnitEvent_SpeechMute {
+    const message = createBaseCDOTAUserMsgUnitEvent_SpeechMute();
+    message.delay = object.delay ?? 0;
+    return message;
   },
 };
 
@@ -8529,6 +9254,21 @@ export const CDOTAUserMsgUnitEvent_AddGesture = {
     message.sequenceVariant !== undefined && (obj.sequenceVariant = Math.round(message.sequenceVariant));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgUnitEvent_AddGesture>): CDOTAUserMsgUnitEvent_AddGesture {
+    return CDOTAUserMsgUnitEvent_AddGesture.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgUnitEvent_AddGesture>): CDOTAUserMsgUnitEvent_AddGesture {
+    const message = createBaseCDOTAUserMsgUnitEvent_AddGesture();
+    message.activity = object.activity ?? 0;
+    message.slot = object.slot ?? 0;
+    message.fadeIn = object.fadeIn ?? 0;
+    message.fadeOut = object.fadeOut ?? 0;
+    message.playbackRate = object.playbackRate ?? 0;
+    message.sequenceVariant = object.sequenceVariant ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgUnitEvent_RemoveGesture(): CDOTAUserMsgUnitEvent_RemoveGesture {
@@ -8574,6 +9314,16 @@ export const CDOTAUserMsgUnitEvent_RemoveGesture = {
     const obj: any = {};
     message.activity !== undefined && (obj.activity = Math.round(message.activity));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgUnitEvent_RemoveGesture>): CDOTAUserMsgUnitEvent_RemoveGesture {
+    return CDOTAUserMsgUnitEvent_RemoveGesture.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgUnitEvent_RemoveGesture>): CDOTAUserMsgUnitEvent_RemoveGesture {
+    const message = createBaseCDOTAUserMsgUnitEvent_RemoveGesture();
+    message.activity = object.activity ?? 0;
+    return message;
   },
 };
 
@@ -8647,6 +9397,18 @@ export const CDOTAUserMsgUnitEvent_BloodImpact = {
     message.yNormal !== undefined && (obj.yNormal = Math.round(message.yNormal));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgUnitEvent_BloodImpact>): CDOTAUserMsgUnitEvent_BloodImpact {
+    return CDOTAUserMsgUnitEvent_BloodImpact.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgUnitEvent_BloodImpact>): CDOTAUserMsgUnitEvent_BloodImpact {
+    const message = createBaseCDOTAUserMsgUnitEvent_BloodImpact();
+    message.scale = object.scale ?? 0;
+    message.xNormal = object.xNormal ?? 0;
+    message.yNormal = object.yNormal ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgUnitEvent_FadeGesture(): CDOTAUserMsgUnitEvent_FadeGesture {
@@ -8692,6 +9454,16 @@ export const CDOTAUserMsgUnitEvent_FadeGesture = {
     const obj: any = {};
     message.activity !== undefined && (obj.activity = Math.round(message.activity));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgUnitEvent_FadeGesture>): CDOTAUserMsgUnitEvent_FadeGesture {
+    return CDOTAUserMsgUnitEvent_FadeGesture.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgUnitEvent_FadeGesture>): CDOTAUserMsgUnitEvent_FadeGesture {
+    const message = createBaseCDOTAUserMsgUnitEvent_FadeGesture();
+    message.activity = object.activity ?? 0;
+    return message;
   },
 };
 
@@ -8739,6 +9511,16 @@ export const CDOTAUserMsgItemPurchased = {
     message.itemAbilityId !== undefined && (obj.itemAbilityId = Math.round(message.itemAbilityId));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgItemPurchased>): CDOTAUserMsgItemPurchased {
+    return CDOTAUserMsgItemPurchased.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgItemPurchased>): CDOTAUserMsgItemPurchased {
+    const message = createBaseCDOTAUserMsgItemPurchased();
+    message.itemAbilityId = object.itemAbilityId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgItemSold(): CDOTAUserMsgItemSold {
@@ -8784,6 +9566,16 @@ export const CDOTAUserMsgItemSold = {
     const obj: any = {};
     message.itemAbilityId !== undefined && (obj.itemAbilityId = Math.round(message.itemAbilityId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgItemSold>): CDOTAUserMsgItemSold {
+    return CDOTAUserMsgItemSold.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgItemSold>): CDOTAUserMsgItemSold {
+    const message = createBaseCDOTAUserMsgItemSold();
+    message.itemAbilityId = object.itemAbilityId ?? 0;
+    return message;
   },
 };
 
@@ -8881,6 +9673,20 @@ export const CDOTAUserMsgItemFound = {
     message.itemdef !== undefined && (obj.itemdef = Math.round(message.itemdef));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgItemFound>): CDOTAUserMsgItemFound {
+    return CDOTAUserMsgItemFound.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgItemFound>): CDOTAUserMsgItemFound {
+    const message = createBaseCDOTAUserMsgItemFound();
+    message.player = object.player ?? 0;
+    message.quality = object.quality ?? 0;
+    message.rarity = object.rarity ?? 0;
+    message.method = object.method ?? 0;
+    message.itemdef = object.itemdef ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgOverheadEvent(): CDOTAUserMsgOverheadEvent {
@@ -8977,6 +9783,20 @@ export const CDOTAUserMsgOverheadEvent = {
     message.sourcePlayerEntindex !== undefined && (obj.sourcePlayerEntindex = Math.round(message.sourcePlayerEntindex));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgOverheadEvent>): CDOTAUserMsgOverheadEvent {
+    return CDOTAUserMsgOverheadEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgOverheadEvent>): CDOTAUserMsgOverheadEvent {
+    const message = createBaseCDOTAUserMsgOverheadEvent();
+    message.messageType = object.messageType ?? 0;
+    message.value = object.value ?? 0;
+    message.targetPlayerEntindex = object.targetPlayerEntindex ?? 0;
+    message.targetEntindex = object.targetEntindex ?? 0;
+    message.sourcePlayerEntindex = object.sourcePlayerEntindex ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgTutorialTipInfo(): CDOTAUserMsgTutorialTipInfo {
@@ -9036,6 +9856,17 @@ export const CDOTAUserMsgTutorialTipInfo = {
     message.name !== undefined && (obj.name = message.name);
     message.progress !== undefined && (obj.progress = Math.round(message.progress));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgTutorialTipInfo>): CDOTAUserMsgTutorialTipInfo {
+    return CDOTAUserMsgTutorialTipInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgTutorialTipInfo>): CDOTAUserMsgTutorialTipInfo {
+    const message = createBaseCDOTAUserMsgTutorialTipInfo();
+    message.name = object.name ?? "";
+    message.progress = object.progress ?? 0;
+    return message;
   },
 };
 
@@ -9121,6 +9952,19 @@ export const CDOTAUserMsgTutorialFinish = {
     message.success !== undefined && (obj.success = message.success);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgTutorialFinish>): CDOTAUserMsgTutorialFinish {
+    return CDOTAUserMsgTutorialFinish.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgTutorialFinish>): CDOTAUserMsgTutorialFinish {
+    const message = createBaseCDOTAUserMsgTutorialFinish();
+    message.heading = object.heading ?? "";
+    message.emblem = object.emblem ?? "";
+    message.body = object.body ?? "";
+    message.success = object.success ?? false;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgTutorialMinimapPosition(): CDOTAUserMsgTutorialMinimapPosition {
@@ -9155,6 +9999,15 @@ export const CDOTAUserMsgTutorialMinimapPosition = {
   toJSON(_: CDOTAUserMsgTutorialMinimapPosition): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgTutorialMinimapPosition>): CDOTAUserMsgTutorialMinimapPosition {
+    return CDOTAUserMsgTutorialMinimapPosition.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CDOTAUserMsgTutorialMinimapPosition>): CDOTAUserMsgTutorialMinimapPosition {
+    const message = createBaseCDOTAUserMsgTutorialMinimapPosition();
+    return message;
   },
 };
 
@@ -9240,6 +10093,19 @@ export const CDOTAUserMsgSendGenericToolTip = {
     message.close !== undefined && (obj.close = message.close);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgSendGenericToolTip>): CDOTAUserMsgSendGenericToolTip {
+    return CDOTAUserMsgSendGenericToolTip.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgSendGenericToolTip>): CDOTAUserMsgSendGenericToolTip {
+    const message = createBaseCDOTAUserMsgSendGenericToolTip();
+    message.title = object.title ?? "";
+    message.text = object.text ?? "";
+    message.entindex = object.entindex ?? 0;
+    message.close = object.close ?? false;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgWorldLine(): CDOTAUserMsgWorldLine {
@@ -9300,6 +10166,19 @@ export const CDOTAUserMsgWorldLine = {
     message.worldline !== undefined &&
       (obj.worldline = message.worldline ? CDOTAMsgWorldLine.toJSON(message.worldline) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgWorldLine>): CDOTAUserMsgWorldLine {
+    return CDOTAUserMsgWorldLine.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgWorldLine>): CDOTAUserMsgWorldLine {
+    const message = createBaseCDOTAUserMsgWorldLine();
+    message.playerId = object.playerId ?? 0;
+    message.worldline = (object.worldline !== undefined && object.worldline !== null)
+      ? CDOTAMsgWorldLine.fromPartial(object.worldline)
+      : undefined;
+    return message;
   },
 };
 
@@ -9397,6 +10276,20 @@ export const CDOTAUserMsgChatWheel = {
     message.emoticonId !== undefined && (obj.emoticonId = Math.round(message.emoticonId));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgChatWheel>): CDOTAUserMsgChatWheel {
+    return CDOTAUserMsgChatWheel.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgChatWheel>): CDOTAUserMsgChatWheel {
+    const message = createBaseCDOTAUserMsgChatWheel();
+    message.chatMessageId = object.chatMessageId ?? 0;
+    message.playerId = object.playerId ?? 0;
+    message.accountId = object.accountId ?? 0;
+    message.paramHeroId = object.paramHeroId ?? 0;
+    message.emoticonId = object.emoticonId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgReceivedXmasGift(): CDOTAUserMsgReceivedXmasGift {
@@ -9468,6 +10361,18 @@ export const CDOTAUserMsgReceivedXmasGift = {
     message.itemName !== undefined && (obj.itemName = message.itemName);
     message.inventorySlot !== undefined && (obj.inventorySlot = Math.round(message.inventorySlot));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgReceivedXmasGift>): CDOTAUserMsgReceivedXmasGift {
+    return CDOTAUserMsgReceivedXmasGift.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgReceivedXmasGift>): CDOTAUserMsgReceivedXmasGift {
+    const message = createBaseCDOTAUserMsgReceivedXmasGift();
+    message.playerId = object.playerId ?? 0;
+    message.itemName = object.itemName ?? "";
+    message.inventorySlot = object.inventorySlot ?? 0;
+    return message;
   },
 };
 
@@ -9577,6 +10482,21 @@ export const CDOTAUserMsgShowSurvey = {
     message.teammateAccountId !== undefined && (obj.teammateAccountId = Math.round(message.teammateAccountId));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgShowSurvey>): CDOTAUserMsgShowSurvey {
+    return CDOTAUserMsgShowSurvey.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgShowSurvey>): CDOTAUserMsgShowSurvey {
+    const message = createBaseCDOTAUserMsgShowSurvey();
+    message.surveyId = object.surveyId ?? 0;
+    message.matchId = object.matchId ?? "0";
+    message.responseStyle = object.responseStyle ?? "";
+    message.teammateHeroId = object.teammateHeroId ?? 0;
+    message.teammateName = object.teammateName ?? "";
+    message.teammateAccountId = object.teammateAccountId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgUpdateSharedContent(): CDOTAUserMsgUpdateSharedContent {
@@ -9623,6 +10543,16 @@ export const CDOTAUserMsgUpdateSharedContent = {
     message.slotType !== undefined && (obj.slotType = Math.round(message.slotType));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgUpdateSharedContent>): CDOTAUserMsgUpdateSharedContent {
+    return CDOTAUserMsgUpdateSharedContent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgUpdateSharedContent>): CDOTAUserMsgUpdateSharedContent {
+    const message = createBaseCDOTAUserMsgUpdateSharedContent();
+    message.slotType = object.slotType ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgTutorialRequestExp(): CDOTAUserMsgTutorialRequestExp {
@@ -9657,6 +10587,15 @@ export const CDOTAUserMsgTutorialRequestExp = {
   toJSON(_: CDOTAUserMsgTutorialRequestExp): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgTutorialRequestExp>): CDOTAUserMsgTutorialRequestExp {
+    return CDOTAUserMsgTutorialRequestExp.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CDOTAUserMsgTutorialRequestExp>): CDOTAUserMsgTutorialRequestExp {
+    const message = createBaseCDOTAUserMsgTutorialRequestExp();
+    return message;
   },
 };
 
@@ -9703,6 +10642,16 @@ export const CDOTAUserMsgTutorialFade = {
     const obj: any = {};
     message.tgtAlpha !== undefined && (obj.tgtAlpha = Math.round(message.tgtAlpha));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgTutorialFade>): CDOTAUserMsgTutorialFade {
+    return CDOTAUserMsgTutorialFade.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgTutorialFade>): CDOTAUserMsgTutorialFade {
+    const message = createBaseCDOTAUserMsgTutorialFade();
+    message.tgtAlpha = object.tgtAlpha ?? 0;
+    return message;
   },
 };
 
@@ -9800,6 +10749,20 @@ export const CDOTAUserMsgTutorialPingMinimap = {
     message.entityIndex !== undefined && (obj.entityIndex = Math.round(message.entityIndex));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgTutorialPingMinimap>): CDOTAUserMsgTutorialPingMinimap {
+    return CDOTAUserMsgTutorialPingMinimap.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgTutorialPingMinimap>): CDOTAUserMsgTutorialPingMinimap {
+    const message = createBaseCDOTAUserMsgTutorialPingMinimap();
+    message.playerId = object.playerId ?? 0;
+    message.posX = object.posX ?? 0;
+    message.posY = object.posY ?? 0;
+    message.posZ = object.posZ ?? 0;
+    message.entityIndex = object.entityIndex ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgGamerulesStateChanged(): CDOTAUserMsgGamerulesStateChanged {
@@ -9845,6 +10808,16 @@ export const CDOTAUserMsgGamerulesStateChanged = {
     const obj: any = {};
     message.state !== undefined && (obj.state = Math.round(message.state));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgGamerulesStateChanged>): CDOTAUserMsgGamerulesStateChanged {
+    return CDOTAUserMsgGamerulesStateChanged.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgGamerulesStateChanged>): CDOTAUserMsgGamerulesStateChanged {
+    const message = createBaseCDOTAUserMsgGamerulesStateChanged();
+    message.state = object.state ?? 0;
+    return message;
   },
 };
 
@@ -9905,6 +10878,17 @@ export const CDOTAUserMsgAddQuestLogEntry = {
     message.npcName !== undefined && (obj.npcName = message.npcName);
     message.npcDialog !== undefined && (obj.npcDialog = message.npcDialog);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgAddQuestLogEntry>): CDOTAUserMsgAddQuestLogEntry {
+    return CDOTAUserMsgAddQuestLogEntry.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgAddQuestLogEntry>): CDOTAUserMsgAddQuestLogEntry {
+    const message = createBaseCDOTAUserMsgAddQuestLogEntry();
+    message.npcName = object.npcName ?? "";
+    message.npcDialog = object.npcDialog ?? "";
+    return message;
   },
 };
 
@@ -9967,6 +10951,19 @@ export const CDOTAUserMsgSendStatPopup = {
       (obj.statpopup = message.statpopup ? CDOTAMsgSendStatPopup.toJSON(message.statpopup) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgSendStatPopup>): CDOTAUserMsgSendStatPopup {
+    return CDOTAUserMsgSendStatPopup.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgSendStatPopup>): CDOTAUserMsgSendStatPopup {
+    const message = createBaseCDOTAUserMsgSendStatPopup();
+    message.playerId = object.playerId ?? 0;
+    message.statpopup = (object.statpopup !== undefined && object.statpopup !== null)
+      ? CDOTAMsgSendStatPopup.fromPartial(object.statpopup)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgDismissAllStatPopups(): CDOTAUserMsgDismissAllStatPopups {
@@ -10018,6 +11015,18 @@ export const CDOTAUserMsgDismissAllStatPopups = {
       ? CDOTAMsgDismissAllStatPopups.toJSON(message.dismissallmsg)
       : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgDismissAllStatPopups>): CDOTAUserMsgDismissAllStatPopups {
+    return CDOTAUserMsgDismissAllStatPopups.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgDismissAllStatPopups>): CDOTAUserMsgDismissAllStatPopups {
+    const message = createBaseCDOTAUserMsgDismissAllStatPopups();
+    message.dismissallmsg = (object.dismissallmsg !== undefined && object.dismissallmsg !== null)
+      ? CDOTAMsgDismissAllStatPopups.fromPartial(object.dismissallmsg)
+      : undefined;
+    return message;
   },
 };
 
@@ -10091,6 +11100,18 @@ export const CDOTAUserMsgSendRoshanSpectatorPhase = {
     message.phaseLength !== undefined && (obj.phaseLength = Math.round(message.phaseLength));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgSendRoshanSpectatorPhase>): CDOTAUserMsgSendRoshanSpectatorPhase {
+    return CDOTAUserMsgSendRoshanSpectatorPhase.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgSendRoshanSpectatorPhase>): CDOTAUserMsgSendRoshanSpectatorPhase {
+    const message = createBaseCDOTAUserMsgSendRoshanSpectatorPhase();
+    message.phase = object.phase ?? 0;
+    message.phaseStartTime = object.phaseStartTime ?? 0;
+    message.phaseLength = object.phaseLength ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgSendRoshanPopup(): CDOTAUserMsgSendRoshanPopup {
@@ -10150,6 +11171,17 @@ export const CDOTAUserMsgSendRoshanPopup = {
     message.reclaimed !== undefined && (obj.reclaimed = message.reclaimed);
     message.gametime !== undefined && (obj.gametime = Math.round(message.gametime));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgSendRoshanPopup>): CDOTAUserMsgSendRoshanPopup {
+    return CDOTAUserMsgSendRoshanPopup.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgSendRoshanPopup>): CDOTAUserMsgSendRoshanPopup {
+    const message = createBaseCDOTAUserMsgSendRoshanPopup();
+    message.reclaimed = object.reclaimed ?? false;
+    message.gametime = object.gametime ?? 0;
+    return message;
   },
 };
 
@@ -10241,6 +11273,17 @@ export const CDOTAUserMsgSendFinalGold = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgSendFinalGold>): CDOTAUserMsgSendFinalGold {
+    return CDOTAUserMsgSendFinalGold.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgSendFinalGold>): CDOTAUserMsgSendFinalGold {
+    const message = createBaseCDOTAUserMsgSendFinalGold();
+    message.reliableGold = object.reliableGold?.map((e) => e) || [];
+    message.unreliableGold = object.unreliableGold?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgCustomMsg(): CDOTAUserMsgCustomMsg {
@@ -10313,6 +11356,18 @@ export const CDOTAUserMsgCustomMsg = {
     message.value !== undefined && (obj.value = Math.round(message.value));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgCustomMsg>): CDOTAUserMsgCustomMsg {
+    return CDOTAUserMsgCustomMsg.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgCustomMsg>): CDOTAUserMsgCustomMsg {
+    const message = createBaseCDOTAUserMsgCustomMsg();
+    message.message = object.message ?? "";
+    message.playerId = object.playerId ?? 0;
+    message.value = object.value ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgCoachHUDPing(): CDOTAUserMsgCoachHUDPing {
@@ -10374,6 +11429,19 @@ export const CDOTAUserMsgCoachHUDPing = {
       (obj.hudPing = message.hudPing ? CDOTAMsgCoachHUDPing.toJSON(message.hudPing) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgCoachHUDPing>): CDOTAUserMsgCoachHUDPing {
+    return CDOTAUserMsgCoachHUDPing.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgCoachHUDPing>): CDOTAUserMsgCoachHUDPing {
+    const message = createBaseCDOTAUserMsgCoachHUDPing();
+    message.playerId = object.playerId ?? 0;
+    message.hudPing = (object.hudPing !== undefined && object.hudPing !== null)
+      ? CDOTAMsgCoachHUDPing.fromPartial(object.hudPing)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgClientLoadGridNav(): CDOTAUserMsgClientLoadGridNav {
@@ -10408,6 +11476,15 @@ export const CDOTAUserMsgClientLoadGridNav = {
   toJSON(_: CDOTAUserMsgClientLoadGridNav): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgClientLoadGridNav>): CDOTAUserMsgClientLoadGridNav {
+    return CDOTAUserMsgClientLoadGridNav.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CDOTAUserMsgClientLoadGridNav>): CDOTAUserMsgClientLoadGridNav {
+    const message = createBaseCDOTAUserMsgClientLoadGridNav();
+    return message;
   },
 };
 
@@ -10652,6 +11729,33 @@ export const CDOTAUserMsgTEProjectile = {
     message.additionalParticleSystemHandle !== undefined &&
       (obj.additionalParticleSystemHandle = message.additionalParticleSystemHandle);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgTEProjectile>): CDOTAUserMsgTEProjectile {
+    return CDOTAUserMsgTEProjectile.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgTEProjectile>): CDOTAUserMsgTEProjectile {
+    const message = createBaseCDOTAUserMsgTEProjectile();
+    message.source = object.source ?? 0;
+    message.target = object.target ?? 0;
+    message.moveSpeed = object.moveSpeed ?? 0;
+    message.sourceAttachment = object.sourceAttachment ?? 0;
+    message.particleSystemHandle = object.particleSystemHandle ?? "0";
+    message.dodgeable = object.dodgeable ?? false;
+    message.isAttack = object.isAttack ?? false;
+    message.expireTime = object.expireTime ?? 0;
+    message.maximpacttime = object.maximpacttime ?? 0;
+    message.colorgemcolor = object.colorgemcolor ?? 0;
+    message.launchTick = object.launchTick ?? 0;
+    message.handle = object.handle ?? 0;
+    message.targetLoc = (object.targetLoc !== undefined && object.targetLoc !== null)
+      ? CMsgVector.fromPartial(object.targetLoc)
+      : undefined;
+    message.particleCpData = object.particleCpData?.map((e) => CDOTAUserMsgProjectileParticleCPData.fromPartial(e)) ||
+      [];
+    message.additionalParticleSystemHandle = object.additionalParticleSystemHandle ?? "0";
+    return message;
   },
 };
 
@@ -10898,6 +12002,35 @@ export const CDOTAUserMsgTEProjectileLoc = {
       (obj.additionalParticleSystemHandle = message.additionalParticleSystemHandle);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgTEProjectileLoc>): CDOTAUserMsgTEProjectileLoc {
+    return CDOTAUserMsgTEProjectileLoc.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgTEProjectileLoc>): CDOTAUserMsgTEProjectileLoc {
+    const message = createBaseCDOTAUserMsgTEProjectileLoc();
+    message.sourceLoc = (object.sourceLoc !== undefined && object.sourceLoc !== null)
+      ? CMsgVector.fromPartial(object.sourceLoc)
+      : undefined;
+    message.target = object.target ?? 0;
+    message.moveSpeed = object.moveSpeed ?? 0;
+    message.particleSystemHandle = object.particleSystemHandle ?? "0";
+    message.dodgeable = object.dodgeable ?? false;
+    message.isAttack = object.isAttack ?? false;
+    message.expireTime = object.expireTime ?? 0;
+    message.targetLoc = (object.targetLoc !== undefined && object.targetLoc !== null)
+      ? CMsgVector.fromPartial(object.targetLoc)
+      : undefined;
+    message.colorgemcolor = object.colorgemcolor ?? 0;
+    message.launchTick = object.launchTick ?? 0;
+    message.handle = object.handle ?? 0;
+    message.source = object.source ?? 0;
+    message.sourceAttachment = object.sourceAttachment ?? 0;
+    message.particleCpData = object.particleCpData?.map((e) => CDOTAUserMsgProjectileParticleCPData.fromPartial(e)) ||
+      [];
+    message.additionalParticleSystemHandle = object.additionalParticleSystemHandle ?? "0";
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgTEDestroyProjectile(): CDOTAUserMsgTEDestroyProjectile {
@@ -10943,6 +12076,16 @@ export const CDOTAUserMsgTEDestroyProjectile = {
     const obj: any = {};
     message.handle !== undefined && (obj.handle = Math.round(message.handle));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgTEDestroyProjectile>): CDOTAUserMsgTEDestroyProjectile {
+    return CDOTAUserMsgTEDestroyProjectile.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgTEDestroyProjectile>): CDOTAUserMsgTEDestroyProjectile {
+    const message = createBaseCDOTAUserMsgTEDestroyProjectile();
+    message.handle = object.handle ?? 0;
+    return message;
   },
 };
 
@@ -11027,6 +12170,19 @@ export const CDOTAUserMsgTEDotaBloodImpact = {
     message.xnormal !== undefined && (obj.xnormal = message.xnormal);
     message.ynormal !== undefined && (obj.ynormal = message.ynormal);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgTEDotaBloodImpact>): CDOTAUserMsgTEDotaBloodImpact {
+    return CDOTAUserMsgTEDotaBloodImpact.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgTEDotaBloodImpact>): CDOTAUserMsgTEDotaBloodImpact {
+    const message = createBaseCDOTAUserMsgTEDotaBloodImpact();
+    message.entity = object.entity ?? 0;
+    message.scale = object.scale ?? 0;
+    message.xnormal = object.xnormal ?? 0;
+    message.ynormal = object.ynormal ?? 0;
+    return message;
   },
 };
 
@@ -11221,6 +12377,27 @@ export const CDOTAUserMsgAbilityPing = {
     message.reclaimTime !== undefined && (obj.reclaimTime = message.reclaimTime);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgAbilityPing>): CDOTAUserMsgAbilityPing {
+    return CDOTAUserMsgAbilityPing.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgAbilityPing>): CDOTAUserMsgAbilityPing {
+    const message = createBaseCDOTAUserMsgAbilityPing();
+    message.playerId = object.playerId ?? 0;
+    message.abilityId = object.abilityId ?? 0;
+    message.type = object.type ?? 1;
+    message.cooldownSeconds = object.cooldownSeconds ?? 0;
+    message.level = object.level ?? 0;
+    message.passive = object.passive ?? false;
+    message.manaNeeded = object.manaNeeded ?? 0;
+    message.entityId = object.entityId ?? 0;
+    message.primaryCharges = object.primaryCharges ?? 0;
+    message.secondaryCharges = object.secondaryCharges ?? 0;
+    message.ctrlHeld = object.ctrlHeld ?? false;
+    message.reclaimTime = object.reclaimTime ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgTEUnitAnimation(): CDOTAUserMsgTEUnitAnimation {
@@ -11341,6 +12518,22 @@ export const CDOTAUserMsgTEUnitAnimation = {
     message.lagCompensationTime !== undefined && (obj.lagCompensationTime = message.lagCompensationTime);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgTEUnitAnimation>): CDOTAUserMsgTEUnitAnimation {
+    return CDOTAUserMsgTEUnitAnimation.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgTEUnitAnimation>): CDOTAUserMsgTEUnitAnimation {
+    const message = createBaseCDOTAUserMsgTEUnitAnimation();
+    message.entity = object.entity ?? 0;
+    message.sequenceVariant = object.sequenceVariant ?? 0;
+    message.playbackrate = object.playbackrate ?? 0;
+    message.castpoint = object.castpoint ?? 0;
+    message.type = object.type ?? 0;
+    message.activity = object.activity ?? 0;
+    message.lagCompensationTime = object.lagCompensationTime ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgTEUnitAnimationEnd(): CDOTAUserMsgTEUnitAnimationEnd {
@@ -11400,6 +12593,17 @@ export const CDOTAUserMsgTEUnitAnimationEnd = {
     message.entity !== undefined && (obj.entity = Math.round(message.entity));
     message.snap !== undefined && (obj.snap = message.snap);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgTEUnitAnimationEnd>): CDOTAUserMsgTEUnitAnimationEnd {
+    return CDOTAUserMsgTEUnitAnimationEnd.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgTEUnitAnimationEnd>): CDOTAUserMsgTEUnitAnimationEnd {
+    const message = createBaseCDOTAUserMsgTEUnitAnimationEnd();
+    message.entity = object.entity ?? 0;
+    message.snap = object.snap ?? false;
+    return message;
   },
 };
 
@@ -11509,6 +12713,21 @@ export const CDOTAUserMsgShowGenericPopup = {
     message.showNoOtherDialogs !== undefined && (obj.showNoOtherDialogs = message.showNoOtherDialogs);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgShowGenericPopup>): CDOTAUserMsgShowGenericPopup {
+    return CDOTAUserMsgShowGenericPopup.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgShowGenericPopup>): CDOTAUserMsgShowGenericPopup {
+    const message = createBaseCDOTAUserMsgShowGenericPopup();
+    message.header = object.header ?? "";
+    message.body = object.body ?? "";
+    message.param1 = object.param1 ?? "";
+    message.param2 = object.param2 ?? "";
+    message.tintScreen = object.tintScreen ?? false;
+    message.showNoOtherDialogs = object.showNoOtherDialogs ?? false;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgVoteStart(): CDOTAUserMsgVoteStart {
@@ -11597,6 +12816,19 @@ export const CDOTAUserMsgVoteStart = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgVoteStart>): CDOTAUserMsgVoteStart {
+    return CDOTAUserMsgVoteStart.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgVoteStart>): CDOTAUserMsgVoteStart {
+    const message = createBaseCDOTAUserMsgVoteStart();
+    message.title = object.title ?? "";
+    message.duration = object.duration ?? 0;
+    message.choiceCount = object.choiceCount ?? 0;
+    message.choices = object.choices?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgVoteUpdate(): CDOTAUserMsgVoteUpdate {
@@ -11658,6 +12890,16 @@ export const CDOTAUserMsgVoteUpdate = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgVoteUpdate>): CDOTAUserMsgVoteUpdate {
+    return CDOTAUserMsgVoteUpdate.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgVoteUpdate>): CDOTAUserMsgVoteUpdate {
+    const message = createBaseCDOTAUserMsgVoteUpdate();
+    message.choiceCounts = object.choiceCounts?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgVoteEnd(): CDOTAUserMsgVoteEnd {
@@ -11703,6 +12945,16 @@ export const CDOTAUserMsgVoteEnd = {
     const obj: any = {};
     message.selectedChoice !== undefined && (obj.selectedChoice = Math.round(message.selectedChoice));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgVoteEnd>): CDOTAUserMsgVoteEnd {
+    return CDOTAUserMsgVoteEnd.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgVoteEnd>): CDOTAUserMsgVoteEnd {
+    const message = createBaseCDOTAUserMsgVoteEnd();
+    message.selectedChoice = object.selectedChoice ?? 0;
+    return message;
   },
 };
 
@@ -11800,6 +13052,20 @@ export const CDOTAUserMsgBoosterStatePlayer = {
     message.eventBonusItemId !== undefined && (obj.eventBonusItemId = Math.round(message.eventBonusItemId));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgBoosterStatePlayer>): CDOTAUserMsgBoosterStatePlayer {
+    return CDOTAUserMsgBoosterStatePlayer.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgBoosterStatePlayer>): CDOTAUserMsgBoosterStatePlayer {
+    const message = createBaseCDOTAUserMsgBoosterStatePlayer();
+    message.playerId = object.playerId ?? 0;
+    message.bonus = object.bonus ?? 0;
+    message.eventBonus = object.eventBonus ?? 0;
+    message.bonusItemId = object.bonusItemId ?? 0;
+    message.eventBonusItemId = object.eventBonusItemId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgBoosterState(): CDOTAUserMsgBoosterState {
@@ -11853,6 +13119,16 @@ export const CDOTAUserMsgBoosterState = {
       obj.boostedPlayers = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgBoosterState>): CDOTAUserMsgBoosterState {
+    return CDOTAUserMsgBoosterState.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgBoosterState>): CDOTAUserMsgBoosterState {
+    const message = createBaseCDOTAUserMsgBoosterState();
+    message.boostedPlayers = object.boostedPlayers?.map((e) => CDOTAUserMsgBoosterStatePlayer.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -11914,6 +13190,16 @@ export const CDOTAUserMsgPlayerMMR = {
       obj.mmr = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgPlayerMMR>): CDOTAUserMsgPlayerMMR {
+    return CDOTAUserMsgPlayerMMR.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgPlayerMMR>): CDOTAUserMsgPlayerMMR {
+    const message = createBaseCDOTAUserMsgPlayerMMR();
+    message.mmr = object.mmr?.map((e) => e) || [];
+    return message;
   },
 };
 
@@ -11986,6 +13272,18 @@ export const CDOTAUserMsgAbilitySteal = {
     message.abilityId !== undefined && (obj.abilityId = Math.round(message.abilityId));
     message.abilityLevel !== undefined && (obj.abilityLevel = Math.round(message.abilityLevel));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgAbilitySteal>): CDOTAUserMsgAbilitySteal {
+    return CDOTAUserMsgAbilitySteal.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgAbilitySteal>): CDOTAUserMsgAbilitySteal {
+    const message = createBaseCDOTAUserMsgAbilitySteal();
+    message.playerId = object.playerId ?? 0;
+    message.abilityId = object.abilityId ?? 0;
+    message.abilityLevel = object.abilityLevel ?? 0;
+    return message;
   },
 };
 
@@ -12071,6 +13369,19 @@ export const CDOTAUserMsgStatsHeroLookup = {
     message.persona !== undefined && (obj.persona = message.persona);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgStatsHeroLookup>): CDOTAUserMsgStatsHeroLookup {
+    return CDOTAUserMsgStatsHeroLookup.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgStatsHeroLookup>): CDOTAUserMsgStatsHeroLookup {
+    const message = createBaseCDOTAUserMsgStatsHeroLookup();
+    message.playerId = object.playerId ?? 0;
+    message.heroId = object.heroId ?? 0;
+    message.heroName = object.heroName ?? "";
+    message.persona = object.persona ?? "";
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgStatsHeroPositionInfo(): CDOTAUserMsgStatsHeroPositionInfo {
@@ -12139,6 +13450,18 @@ export const CDOTAUserMsgStatsHeroPositionInfo = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgStatsHeroPositionInfo>): CDOTAUserMsgStatsHeroPositionInfo {
+    return CDOTAUserMsgStatsHeroPositionInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgStatsHeroPositionInfo>): CDOTAUserMsgStatsHeroPositionInfo {
+    const message = createBaseCDOTAUserMsgStatsHeroPositionInfo();
+    message.averagePosition = object.averagePosition ?? 0;
+    message.positionDetails =
+      object.positionDetails?.map((e) => CDOTAUserMsgStatsHeroPositionInfo_PositionPair.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgStatsHeroPositionInfo_PositionPair(): CDOTAUserMsgStatsHeroPositionInfo_PositionPair {
@@ -12202,6 +13525,21 @@ export const CDOTAUserMsgStatsHeroPositionInfo_PositionPair = {
       (obj.positionCategory = dotaPositionCategoryToJSON(message.positionCategory));
     message.positionCount !== undefined && (obj.positionCount = Math.round(message.positionCount));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CDOTAUserMsgStatsHeroPositionInfo_PositionPair>,
+  ): CDOTAUserMsgStatsHeroPositionInfo_PositionPair {
+    return CDOTAUserMsgStatsHeroPositionInfo_PositionPair.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CDOTAUserMsgStatsHeroPositionInfo_PositionPair>,
+  ): CDOTAUserMsgStatsHeroPositionInfo_PositionPair {
+    const message = createBaseCDOTAUserMsgStatsHeroPositionInfo_PositionPair();
+    message.positionCategory = object.positionCategory ?? 0;
+    message.positionCount = object.positionCount ?? 0;
+    return message;
   },
 };
 
@@ -12484,6 +13822,32 @@ export const CDOTAUserMsgStatsHeroMinuteDetails = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgStatsHeroMinuteDetails>): CDOTAUserMsgStatsHeroMinuteDetails {
+    return CDOTAUserMsgStatsHeroMinuteDetails.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgStatsHeroMinuteDetails>): CDOTAUserMsgStatsHeroMinuteDetails {
+    const message = createBaseCDOTAUserMsgStatsHeroMinuteDetails();
+    message.lastHits = object.lastHits ?? 0;
+    message.heroKills = object.heroKills ?? 0;
+    message.heroDamage = object.heroDamage ?? 0;
+    message.towerDamage = object.towerDamage ?? 0;
+    message.positionInfo = (object.positionInfo !== undefined && object.positionInfo !== null)
+      ? CDOTAUserMsgStatsHeroPositionInfo.fromPartial(object.positionInfo)
+      : undefined;
+    message.totalXp = object.totalXp ?? 0;
+    message.netWorth = object.netWorth ?? 0;
+    message.harvestedCreepGold = object.harvestedCreepGold ?? 0;
+    message.claimedFarm = object.claimedFarm ?? 0;
+    message.wardsPlaced = object.wardsPlaced ?? 0;
+    message.runesCollected = object.runesCollected ?? 0;
+    message.tpsUsed = object.tpsUsed ?? 0;
+    message.manaSpent = object.manaSpent?.map((e) => e) || [];
+    message.damageAbsorbed = object.damageAbsorbed?.map((e) => e) || [];
+    message.damageDone = object.damageDone?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgStatsTeamMinuteDetails(): CDOTAUserMsgStatsTeamMinuteDetails {
@@ -12668,6 +14032,26 @@ export const CDOTAUserMsgStatsTeamMinuteDetails = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgStatsTeamMinuteDetails>): CDOTAUserMsgStatsTeamMinuteDetails {
+    return CDOTAUserMsgStatsTeamMinuteDetails.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgStatsTeamMinuteDetails>): CDOTAUserMsgStatsTeamMinuteDetails {
+    const message = createBaseCDOTAUserMsgStatsTeamMinuteDetails();
+    message.playerStats = object.playerStats?.map((e) => CDOTAUserMsgStatsHeroMinuteDetails.fromPartial(e)) || [];
+    message.towerKills = object.towerKills ?? 0;
+    message.barrackKills = object.barrackKills ?? 0;
+    message.availableLaneCreepGold = object.availableLaneCreepGold ?? 0;
+    message.balanceKillValue = object.balanceKillValue ?? 0;
+    message.balanceTowerValue = object.balanceTowerValue ?? 0;
+    message.balanceBarracksValue = object.balanceBarracksValue ?? 0;
+    message.balanceGoldValue = object.balanceGoldValue ?? 0;
+    message.balanceXpValue = object.balanceXpValue ?? 0;
+    message.lanePerformance =
+      object.lanePerformance?.map((e) => CDOTAUserMsgStatsTeamMinuteDetails_LocationPerformance.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgStatsTeamMinuteDetails_LocationPerformance(): CDOTAUserMsgStatsTeamMinuteDetails_LocationPerformance {
@@ -12742,6 +14126,22 @@ export const CDOTAUserMsgStatsTeamMinuteDetails_LocationPerformance = {
     message.statType !== undefined && (obj.statType = Math.round(message.statType));
     message.value !== undefined && (obj.value = Math.round(message.value));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CDOTAUserMsgStatsTeamMinuteDetails_LocationPerformance>,
+  ): CDOTAUserMsgStatsTeamMinuteDetails_LocationPerformance {
+    return CDOTAUserMsgStatsTeamMinuteDetails_LocationPerformance.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CDOTAUserMsgStatsTeamMinuteDetails_LocationPerformance>,
+  ): CDOTAUserMsgStatsTeamMinuteDetails_LocationPerformance {
+    const message = createBaseCDOTAUserMsgStatsTeamMinuteDetails_LocationPerformance();
+    message.locationCategory = object.locationCategory ?? 0;
+    message.statType = object.statType ?? 0;
+    message.value = object.value ?? 0;
+    return message;
   },
 };
 
@@ -12850,6 +14250,21 @@ export const CDOTAUserMsgStatsPlayerKillShare = {
     message.healthPercent !== undefined && (obj.healthPercent = message.healthPercent);
     message.manaPercent !== undefined && (obj.manaPercent = message.manaPercent);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgStatsPlayerKillShare>): CDOTAUserMsgStatsPlayerKillShare {
+    return CDOTAUserMsgStatsPlayerKillShare.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgStatsPlayerKillShare>): CDOTAUserMsgStatsPlayerKillShare {
+    const message = createBaseCDOTAUserMsgStatsPlayerKillShare();
+    message.playerId = object.playerId ?? 0;
+    message.killSharePercent = object.killSharePercent ?? 0;
+    message.playerLocX = object.playerLocX ?? 0;
+    message.playerLocY = object.playerLocY ?? 0;
+    message.healthPercent = object.healthPercent ?? 0;
+    message.manaPercent = object.manaPercent ?? 0;
+    return message;
   },
 };
 
@@ -12964,6 +14379,21 @@ export const CDOTAUserMsgStatsKillDetails = {
     message.deathTime !== undefined && (obj.deathTime = message.deathTime);
     message.killerId !== undefined && (obj.killerId = Math.round(message.killerId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgStatsKillDetails>): CDOTAUserMsgStatsKillDetails {
+    return CDOTAUserMsgStatsKillDetails.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgStatsKillDetails>): CDOTAUserMsgStatsKillDetails {
+    const message = createBaseCDOTAUserMsgStatsKillDetails();
+    message.victimId = object.victimId ?? 0;
+    message.killShares = object.killShares?.map((e) => CDOTAUserMsgStatsPlayerKillShare.fromPartial(e)) || [];
+    message.damageToKill = object.damageToKill ?? 0;
+    message.effectiveHealth = object.effectiveHealth ?? 0;
+    message.deathTime = object.deathTime ?? 0;
+    message.killerId = object.killerId ?? 0;
+    return message;
   },
 };
 
@@ -13113,6 +14543,22 @@ export const CDOTAUserMsgStatsMatchDetails = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgStatsMatchDetails>): CDOTAUserMsgStatsMatchDetails {
+    return CDOTAUserMsgStatsMatchDetails.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgStatsMatchDetails>): CDOTAUserMsgStatsMatchDetails {
+    const message = createBaseCDOTAUserMsgStatsMatchDetails();
+    message.heroLookup = object.heroLookup?.map((e) => CDOTAUserMsgStatsHeroLookup.fromPartial(e)) || [];
+    message.radiantStats = object.radiantStats?.map((e) => CDOTAUserMsgStatsTeamMinuteDetails.fromPartial(e)) || [];
+    message.direStats = object.direStats?.map((e) => CDOTAUserMsgStatsTeamMinuteDetails.fromPartial(e)) || [];
+    message.radiantKills = object.radiantKills?.map((e) => CDOTAUserMsgStatsKillDetails.fromPartial(e)) || [];
+    message.direKills = object.direKills?.map((e) => CDOTAUserMsgStatsKillDetails.fromPartial(e)) || [];
+    message.fightDetails =
+      object.fightDetails?.map((e) => CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightDetails.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightTeamDetails(): CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightTeamDetails {
@@ -13233,6 +14679,23 @@ export const CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightTeamDetails = {
     message.xpDelta !== undefined && (obj.xpDelta = Math.round(message.xpDelta));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightTeamDetails>,
+  ): CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightTeamDetails {
+    return CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightTeamDetails.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightTeamDetails>,
+  ): CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightTeamDetails {
+    const message = createBaseCDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightTeamDetails();
+    message.participants = object.participants?.map((e) => e) || [];
+    message.deaths = object.deaths?.map((e) => e) || [];
+    message.goldDelta = object.goldDelta ?? 0;
+    message.xpDelta = object.xpDelta ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightDetails(): CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightDetails {
@@ -13340,6 +14803,27 @@ export const CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightDetails = {
       : undefined);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightDetails>,
+  ): CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightDetails {
+    return CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightDetails.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightDetails>,
+  ): CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightDetails {
+    const message = createBaseCDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightDetails();
+    message.startTime = object.startTime ?? 0;
+    message.endTime = object.endTime ?? 0;
+    message.radiantFightDetails = (object.radiantFightDetails !== undefined && object.radiantFightDetails !== null)
+      ? CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightTeamDetails.fromPartial(object.radiantFightDetails)
+      : undefined;
+    message.direFightDetails = (object.direFightDetails !== undefined && object.direFightDetails !== null)
+      ? CDOTAUserMsgStatsMatchDetails_CDOTAUserMsgStatsFightTeamDetails.fromPartial(object.direFightDetails)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgMiniTaunt(): CDOTAUserMsgMiniTaunt {
@@ -13386,6 +14870,16 @@ export const CDOTAUserMsgMiniTaunt = {
     message.tauntingPlayerId !== undefined && (obj.tauntingPlayerId = Math.round(message.tauntingPlayerId));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgMiniTaunt>): CDOTAUserMsgMiniTaunt {
+    return CDOTAUserMsgMiniTaunt.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgMiniTaunt>): CDOTAUserMsgMiniTaunt {
+    const message = createBaseCDOTAUserMsgMiniTaunt();
+    message.tauntingPlayerId = object.tauntingPlayerId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgSpeechBubble(): CDOTAUserMsgSpeechBubble {
@@ -13431,6 +14925,16 @@ export const CDOTAUserMsgSpeechBubble = {
     const obj: any = {};
     message.destroyAll !== undefined && (obj.destroyAll = message.destroyAll);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgSpeechBubble>): CDOTAUserMsgSpeechBubble {
+    return CDOTAUserMsgSpeechBubble.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgSpeechBubble>): CDOTAUserMsgSpeechBubble {
+    const message = createBaseCDOTAUserMsgSpeechBubble();
+    message.destroyAll = object.destroyAll ?? false;
+    return message;
   },
 };
 
@@ -13516,6 +15020,19 @@ export const CDOTAUserMsgCustomHeaderMessage = {
     message.value !== undefined && (obj.value = Math.round(message.value));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgCustomHeaderMessage>): CDOTAUserMsgCustomHeaderMessage {
+    return CDOTAUserMsgCustomHeaderMessage.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgCustomHeaderMessage>): CDOTAUserMsgCustomHeaderMessage {
+    const message = createBaseCDOTAUserMsgCustomHeaderMessage();
+    message.playerId = object.playerId ?? 0;
+    message.duration = object.duration ?? 0;
+    message.message = object.message ?? "";
+    message.value = object.value ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgHeroAbilityStat(): CMsgHeroAbilityStat {
@@ -13588,6 +15105,18 @@ export const CMsgHeroAbilityStat = {
     message.floatValue !== undefined && (obj.floatValue = message.floatValue);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgHeroAbilityStat>): CMsgHeroAbilityStat {
+    return CMsgHeroAbilityStat.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgHeroAbilityStat>): CMsgHeroAbilityStat {
+    const message = createBaseCMsgHeroAbilityStat();
+    message.statType = object.statType ?? 0;
+    message.intValue = object.intValue ?? 0;
+    message.floatValue = object.floatValue ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgCombatAnalyzerPlayerStat(): CMsgCombatAnalyzerPlayerStat {
@@ -13654,6 +15183,17 @@ export const CMsgCombatAnalyzerPlayerStat = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgCombatAnalyzerPlayerStat>): CMsgCombatAnalyzerPlayerStat {
+    return CMsgCombatAnalyzerPlayerStat.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgCombatAnalyzerPlayerStat>): CMsgCombatAnalyzerPlayerStat {
+    const message = createBaseCMsgCombatAnalyzerPlayerStat();
+    message.accountId = object.accountId ?? 0;
+    message.heroAbilityStats = object.heroAbilityStats?.map((e) => CMsgHeroAbilityStat.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgCombatAnalyzerStats(): CMsgCombatAnalyzerStats {
@@ -13719,6 +15259,17 @@ export const CMsgCombatAnalyzerStats = {
       obj.playerStats = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgCombatAnalyzerStats>): CMsgCombatAnalyzerStats {
+    return CMsgCombatAnalyzerStats.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgCombatAnalyzerStats>): CMsgCombatAnalyzerStats {
+    const message = createBaseCMsgCombatAnalyzerStats();
+    message.matchId = object.matchId ?? "0";
+    message.playerStats = object.playerStats?.map((e) => CMsgCombatAnalyzerPlayerStat.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -13804,6 +15355,19 @@ export const CDOTAUserMsgBeastChat = {
     message.target !== undefined && (obj.target = message.target);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgBeastChat>): CDOTAUserMsgBeastChat {
+    return CDOTAUserMsgBeastChat.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgBeastChat>): CDOTAUserMsgBeastChat {
+    const message = createBaseCDOTAUserMsgBeastChat();
+    message.team = object.team ?? 0;
+    message.format = object.format ?? "";
+    message.message = object.message ?? "";
+    message.target = object.target ?? "";
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgCustomHudElementCreate(): CDOTAUserMsgCustomHudElementCreate {
@@ -13876,6 +15440,18 @@ export const CDOTAUserMsgCustomHudElementCreate = {
     message.data !== undefined &&
       (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgCustomHudElementCreate>): CDOTAUserMsgCustomHudElementCreate {
+    return CDOTAUserMsgCustomHudElementCreate.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgCustomHudElementCreate>): CDOTAUserMsgCustomHudElementCreate {
+    const message = createBaseCDOTAUserMsgCustomHudElementCreate();
+    message.elementId = object.elementId ?? "";
+    message.layoutFilename = object.layoutFilename ?? "";
+    message.data = object.data ?? Buffer.alloc(0);
+    return message;
   },
 };
 
@@ -13950,6 +15526,18 @@ export const CDOTAUserMsgCustomHudElementModify = {
       (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgCustomHudElementModify>): CDOTAUserMsgCustomHudElementModify {
+    return CDOTAUserMsgCustomHudElementModify.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgCustomHudElementModify>): CDOTAUserMsgCustomHudElementModify {
+    const message = createBaseCDOTAUserMsgCustomHudElementModify();
+    message.elementId = object.elementId ?? "";
+    message.modifyVisible = object.modifyVisible ?? false;
+    message.data = object.data ?? Buffer.alloc(0);
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgCustomHudElementDestroy(): CDOTAUserMsgCustomHudElementDestroy {
@@ -13995,6 +15583,16 @@ export const CDOTAUserMsgCustomHudElementDestroy = {
     const obj: any = {};
     message.elementId !== undefined && (obj.elementId = message.elementId);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgCustomHudElementDestroy>): CDOTAUserMsgCustomHudElementDestroy {
+    return CDOTAUserMsgCustomHudElementDestroy.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgCustomHudElementDestroy>): CDOTAUserMsgCustomHudElementDestroy {
+    const message = createBaseCDOTAUserMsgCustomHudElementDestroy();
+    message.elementId = object.elementId ?? "";
+    return message;
   },
 };
 
@@ -14056,6 +15654,17 @@ export const CDOTAUserMsgCompendiumStatePlayer = {
     message.level !== undefined && (obj.level = Math.round(message.level));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgCompendiumStatePlayer>): CDOTAUserMsgCompendiumStatePlayer {
+    return CDOTAUserMsgCompendiumStatePlayer.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgCompendiumStatePlayer>): CDOTAUserMsgCompendiumStatePlayer {
+    const message = createBaseCDOTAUserMsgCompendiumStatePlayer();
+    message.playerId = object.playerId ?? 0;
+    message.level = object.level ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgCompendiumState(): CDOTAUserMsgCompendiumState {
@@ -14111,6 +15720,17 @@ export const CDOTAUserMsgCompendiumState = {
       obj.compendiumPlayers = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgCompendiumState>): CDOTAUserMsgCompendiumState {
+    return CDOTAUserMsgCompendiumState.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgCompendiumState>): CDOTAUserMsgCompendiumState {
+    const message = createBaseCDOTAUserMsgCompendiumState();
+    message.compendiumPlayers =
+      object.compendiumPlayers?.map((e) => CDOTAUserMsgCompendiumStatePlayer.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -14253,6 +15873,25 @@ export const CDOTAUserMsgProjectionAbility = {
     message.victimEntIndex !== undefined && (obj.victimEntIndex = Math.round(message.victimEntIndex));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgProjectionAbility>): CDOTAUserMsgProjectionAbility {
+    return CDOTAUserMsgProjectionAbility.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgProjectionAbility>): CDOTAUserMsgProjectionAbility {
+    const message = createBaseCDOTAUserMsgProjectionAbility();
+    message.abilityId = object.abilityId ?? 0;
+    message.casterEntIndex = object.casterEntIndex ?? 0;
+    message.casterTeam = object.casterTeam ?? 0;
+    message.channelEnd = object.channelEnd ?? false;
+    message.origin = (object.origin !== undefined && object.origin !== null)
+      ? CMsgVector.fromPartial(object.origin)
+      : undefined;
+    message.trackCasterOnly = object.trackCasterOnly ?? false;
+    message.endTime = object.endTime ?? 0;
+    message.victimEntIndex = object.victimEntIndex ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgProjectionEvent(): CDOTAUserMsgProjectionEvent {
@@ -14313,6 +15952,17 @@ export const CDOTAUserMsgProjectionEvent = {
     message.team !== undefined && (obj.team = Math.round(message.team));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgProjectionEvent>): CDOTAUserMsgProjectionEvent {
+    return CDOTAUserMsgProjectionEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgProjectionEvent>): CDOTAUserMsgProjectionEvent {
+    const message = createBaseCDOTAUserMsgProjectionEvent();
+    message.eventId = object.eventId ?? 0;
+    message.team = object.team ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgXPAlert(): CDOTAUserMsgXPAlert {
@@ -14372,6 +16022,17 @@ export const CDOTAUserMsgXPAlert = {
     message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
     message.targetEntindex !== undefined && (obj.targetEntindex = Math.round(message.targetEntindex));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgXPAlert>): CDOTAUserMsgXPAlert {
+    return CDOTAUserMsgXPAlert.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgXPAlert>): CDOTAUserMsgXPAlert {
+    const message = createBaseCDOTAUserMsgXPAlert();
+    message.playerId = object.playerId ?? 0;
+    message.targetEntindex = object.targetEntindex ?? 0;
+    return message;
   },
 };
 
@@ -14469,6 +16130,20 @@ export const CDOTAUserMsgTalentTreeAlert = {
     message.learned !== undefined && (obj.learned = message.learned);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgTalentTreeAlert>): CDOTAUserMsgTalentTreeAlert {
+    return CDOTAUserMsgTalentTreeAlert.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgTalentTreeAlert>): CDOTAUserMsgTalentTreeAlert {
+    const message = createBaseCDOTAUserMsgTalentTreeAlert();
+    message.playerId = object.playerId ?? 0;
+    message.targetEntindex = object.targetEntindex ?? 0;
+    message.abilityId = object.abilityId ?? 0;
+    message.slot = object.slot ?? 0;
+    message.learned = object.learned ?? false;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgUpdateQuestProgress(): CDOTAUserMsgUpdateQuestProgress {
@@ -14503,6 +16178,15 @@ export const CDOTAUserMsgUpdateQuestProgress = {
   toJSON(_: CDOTAUserMsgUpdateQuestProgress): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgUpdateQuestProgress>): CDOTAUserMsgUpdateQuestProgress {
+    return CDOTAUserMsgUpdateQuestProgress.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CDOTAUserMsgUpdateQuestProgress>): CDOTAUserMsgUpdateQuestProgress {
+    const message = createBaseCDOTAUserMsgUpdateQuestProgress();
+    return message;
   },
 };
 
@@ -14636,6 +16320,23 @@ export const CDOTAUserMsgQuestStatus = {
     message.itemAbilityId !== undefined && (obj.itemAbilityId = Math.round(message.itemAbilityId));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgQuestStatus>): CDOTAUserMsgQuestStatus {
+    return CDOTAUserMsgQuestStatus.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgQuestStatus>): CDOTAUserMsgQuestStatus {
+    const message = createBaseCDOTAUserMsgQuestStatus();
+    message.playerId = object.playerId ?? 0;
+    message.questId = object.questId ?? 0;
+    message.challengeId = object.challengeId ?? 0;
+    message.progress = object.progress ?? 0;
+    message.goal = object.goal ?? 0;
+    message.query = object.query ?? 0;
+    message.failGametime = object.failGametime ?? 0;
+    message.itemAbilityId = object.itemAbilityId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgSuggestHeroPick(): CDOTAUserMsgSuggestHeroPick {
@@ -14708,6 +16409,18 @@ export const CDOTAUserMsgSuggestHeroPick = {
     message.ban !== undefined && (obj.ban = message.ban);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgSuggestHeroPick>): CDOTAUserMsgSuggestHeroPick {
+    return CDOTAUserMsgSuggestHeroPick.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgSuggestHeroPick>): CDOTAUserMsgSuggestHeroPick {
+    const message = createBaseCDOTAUserMsgSuggestHeroPick();
+    message.playerId = object.playerId ?? 0;
+    message.heroId = object.heroId ?? 0;
+    message.ban = object.ban ?? false;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgSuggestHeroRole(): CDOTAUserMsgSuggestHeroRole {
@@ -14767,6 +16480,17 @@ export const CDOTAUserMsgSuggestHeroRole = {
     message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
     message.heroRole !== undefined && (obj.heroRole = message.heroRole);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgSuggestHeroRole>): CDOTAUserMsgSuggestHeroRole {
+    return CDOTAUserMsgSuggestHeroRole.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgSuggestHeroRole>): CDOTAUserMsgSuggestHeroRole {
+    const message = createBaseCDOTAUserMsgSuggestHeroRole();
+    message.playerId = object.playerId ?? 0;
+    message.heroRole = object.heroRole ?? "";
+    return message;
   },
 };
 
@@ -14876,6 +16600,21 @@ export const CDOTAUserMsgKillcamDamageTaken = {
     message.damageColor !== undefined && (obj.damageColor = message.damageColor);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgKillcamDamageTaken>): CDOTAUserMsgKillcamDamageTaken {
+    return CDOTAUserMsgKillcamDamageTaken.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgKillcamDamageTaken>): CDOTAUserMsgKillcamDamageTaken {
+    const message = createBaseCDOTAUserMsgKillcamDamageTaken();
+    message.playerId = object.playerId ?? 0;
+    message.damageTaken = object.damageTaken ?? 0;
+    message.itemType = object.itemType ?? 0;
+    message.itemAbilityId = object.itemAbilityId ?? 0;
+    message.heroName = object.heroName ?? "";
+    message.damageColor = object.damageColor ?? "";
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgSelectPenaltyGold(): CDOTAUserMsgSelectPenaltyGold {
@@ -14935,6 +16674,17 @@ export const CDOTAUserMsgSelectPenaltyGold = {
     message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
     message.cost !== undefined && (obj.cost = Math.round(message.cost));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgSelectPenaltyGold>): CDOTAUserMsgSelectPenaltyGold {
+    return CDOTAUserMsgSelectPenaltyGold.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgSelectPenaltyGold>): CDOTAUserMsgSelectPenaltyGold {
+    const message = createBaseCDOTAUserMsgSelectPenaltyGold();
+    message.playerId = object.playerId ?? 0;
+    message.cost = object.cost ?? 0;
+    return message;
   },
 };
 
@@ -15032,6 +16782,20 @@ export const CDOTAUserMsgRollDiceResult = {
     message.result !== undefined && (obj.result = Math.round(message.result));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgRollDiceResult>): CDOTAUserMsgRollDiceResult {
+    return CDOTAUserMsgRollDiceResult.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgRollDiceResult>): CDOTAUserMsgRollDiceResult {
+    const message = createBaseCDOTAUserMsgRollDiceResult();
+    message.playerId = object.playerId ?? 0;
+    message.channelType = object.channelType ?? 0;
+    message.rollMin = object.rollMin ?? 0;
+    message.rollMax = object.rollMax ?? 0;
+    message.result = object.result ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgFlipCoinResult(): CDOTAUserMsgFlipCoinResult {
@@ -15104,6 +16868,18 @@ export const CDOTAUserMsgFlipCoinResult = {
     message.result !== undefined && (obj.result = message.result);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgFlipCoinResult>): CDOTAUserMsgFlipCoinResult {
+    return CDOTAUserMsgFlipCoinResult.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgFlipCoinResult>): CDOTAUserMsgFlipCoinResult {
+    const message = createBaseCDOTAUserMsgFlipCoinResult();
+    message.playerId = object.playerId ?? 0;
+    message.channelType = object.channelType ?? 0;
+    message.result = object.result ?? false;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMessageRequestItemSuggestions(): CDOTAUserMessageRequestItemSuggestions {
@@ -15149,6 +16925,16 @@ export const CDOTAUserMessageRequestItemSuggestions = {
     const obj: any = {};
     message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMessageRequestItemSuggestions>): CDOTAUserMessageRequestItemSuggestions {
+    return CDOTAUserMessageRequestItemSuggestions.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMessageRequestItemSuggestions>): CDOTAUserMessageRequestItemSuggestions {
+    const message = createBaseCDOTAUserMessageRequestItemSuggestions();
+    message.playerId = object.playerId ?? 0;
+    return message;
   },
 };
 
@@ -15210,6 +16996,17 @@ export const CDOTAUserMessageTeamCaptainChanged = {
     message.captainPlayerId !== undefined && (obj.captainPlayerId = Math.round(message.captainPlayerId));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMessageTeamCaptainChanged>): CDOTAUserMessageTeamCaptainChanged {
+    return CDOTAUserMessageTeamCaptainChanged.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMessageTeamCaptainChanged>): CDOTAUserMessageTeamCaptainChanged {
+    const message = createBaseCDOTAUserMessageTeamCaptainChanged();
+    message.team = object.team ?? 0;
+    message.captainPlayerId = object.captainPlayerId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgChatWheelCooldown(): CDOTAUserMsgChatWheelCooldown {
@@ -15269,6 +17066,17 @@ export const CDOTAUserMsgChatWheelCooldown = {
     message.messageId !== undefined && (obj.messageId = Math.round(message.messageId));
     message.cooldownRemaining !== undefined && (obj.cooldownRemaining = message.cooldownRemaining);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgChatWheelCooldown>): CDOTAUserMsgChatWheelCooldown {
+    return CDOTAUserMsgChatWheelCooldown.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgChatWheelCooldown>): CDOTAUserMsgChatWheelCooldown {
+    const message = createBaseCDOTAUserMsgChatWheelCooldown();
+    message.messageId = object.messageId ?? 0;
+    message.cooldownRemaining = object.cooldownRemaining ?? 0;
+    return message;
   },
 };
 
@@ -15366,6 +17174,20 @@ export const CDOTAUserMsgHeroRelicProgress = {
     message.valueDisplay !== undefined && (obj.valueDisplay = message.valueDisplay);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgHeroRelicProgress>): CDOTAUserMsgHeroRelicProgress {
+    return CDOTAUserMsgHeroRelicProgress.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgHeroRelicProgress>): CDOTAUserMsgHeroRelicProgress {
+    const message = createBaseCDOTAUserMsgHeroRelicProgress();
+    message.heroRelicType = object.heroRelicType ?? 0;
+    message.value = object.value ?? 0;
+    message.ehandle = object.ehandle ?? 0;
+    message.eventId = object.eventId ?? 0;
+    message.valueDisplay = object.valueDisplay ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgAbilityDraftRequestAbility(): CDOTAUserMsgAbilityDraftRequestAbility {
@@ -15437,6 +17259,18 @@ export const CDOTAUserMsgAbilityDraftRequestAbility = {
     message.requestedAbilityId !== undefined && (obj.requestedAbilityId = Math.round(message.requestedAbilityId));
     message.ctrlIsDown !== undefined && (obj.ctrlIsDown = message.ctrlIsDown);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgAbilityDraftRequestAbility>): CDOTAUserMsgAbilityDraftRequestAbility {
+    return CDOTAUserMsgAbilityDraftRequestAbility.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgAbilityDraftRequestAbility>): CDOTAUserMsgAbilityDraftRequestAbility {
+    const message = createBaseCDOTAUserMsgAbilityDraftRequestAbility();
+    message.playerId = object.playerId ?? 0;
+    message.requestedAbilityId = object.requestedAbilityId ?? 0;
+    message.ctrlIsDown = object.ctrlIsDown ?? false;
+    return message;
   },
 };
 
@@ -15533,6 +17367,20 @@ export const CDOTAUserMsgDamageReport = {
     message.damageAmount !== undefined && (obj.damageAmount = Math.round(message.damageAmount));
     message.broadcast !== undefined && (obj.broadcast = message.broadcast);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgDamageReport>): CDOTAUserMsgDamageReport {
+    return CDOTAUserMsgDamageReport.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgDamageReport>): CDOTAUserMsgDamageReport {
+    const message = createBaseCDOTAUserMsgDamageReport();
+    message.playerId = object.playerId ?? 0;
+    message.targetHeroId = object.targetHeroId ?? 0;
+    message.sourceHeroId = object.sourceHeroId ?? 0;
+    message.damageAmount = object.damageAmount ?? 0;
+    message.broadcast = object.broadcast ?? false;
+    return message;
   },
 };
 
@@ -15642,6 +17490,21 @@ export const CDOTAUserMsgSalutePlayer = {
     message.numRecentTips !== undefined && (obj.numRecentTips = Math.round(message.numRecentTips));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgSalutePlayer>): CDOTAUserMsgSalutePlayer {
+    return CDOTAUserMsgSalutePlayer.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgSalutePlayer>): CDOTAUserMsgSalutePlayer {
+    const message = createBaseCDOTAUserMsgSalutePlayer();
+    message.sourcePlayerId = object.sourcePlayerId ?? 0;
+    message.targetPlayerId = object.targetPlayerId ?? 0;
+    message.tipAmount = object.tipAmount ?? 0;
+    message.eventId = object.eventId ?? 0;
+    message.customTipStyle = object.customTipStyle ?? "";
+    message.numRecentTips = object.numRecentTips ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgTipAlert(): CDOTAUserMsgTipAlert {
@@ -15701,6 +17564,17 @@ export const CDOTAUserMsgTipAlert = {
     message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
     message.tipText !== undefined && (obj.tipText = message.tipText);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgTipAlert>): CDOTAUserMsgTipAlert {
+    return CDOTAUserMsgTipAlert.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgTipAlert>): CDOTAUserMsgTipAlert {
+    const message = createBaseCDOTAUserMsgTipAlert();
+    message.playerId = object.playerId ?? 0;
+    message.tipText = object.tipText ?? "";
+    return message;
   },
 };
 
@@ -15774,6 +17648,18 @@ export const CDOTAUserMsgReplaceQueryUnit = {
     message.targetEntindex !== undefined && (obj.targetEntindex = Math.round(message.targetEntindex));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgReplaceQueryUnit>): CDOTAUserMsgReplaceQueryUnit {
+    return CDOTAUserMsgReplaceQueryUnit.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgReplaceQueryUnit>): CDOTAUserMsgReplaceQueryUnit {
+    const message = createBaseCDOTAUserMsgReplaceQueryUnit();
+    message.playerId = object.playerId ?? 0;
+    message.sourceEntindex = object.sourceEntindex ?? 0;
+    message.targetEntindex = object.targetEntindex ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgESArcanaCombo(): CDOTAUserMsgESArcanaCombo {
@@ -15846,6 +17732,18 @@ export const CDOTAUserMsgESArcanaCombo = {
     message.arcanaLevel !== undefined && (obj.arcanaLevel = Math.round(message.arcanaLevel));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgESArcanaCombo>): CDOTAUserMsgESArcanaCombo {
+    return CDOTAUserMsgESArcanaCombo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgESArcanaCombo>): CDOTAUserMsgESArcanaCombo {
+    const message = createBaseCDOTAUserMsgESArcanaCombo();
+    message.ehandle = object.ehandle ?? 0;
+    message.comboCount = object.comboCount ?? 0;
+    message.arcanaLevel = object.arcanaLevel ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgESArcanaComboSummary(): CDOTAUserMsgESArcanaComboSummary {
@@ -15917,6 +17815,18 @@ export const CDOTAUserMsgESArcanaComboSummary = {
     message.comboCount !== undefined && (obj.comboCount = Math.round(message.comboCount));
     message.damageAmount !== undefined && (obj.damageAmount = Math.round(message.damageAmount));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgESArcanaComboSummary>): CDOTAUserMsgESArcanaComboSummary {
+    return CDOTAUserMsgESArcanaComboSummary.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgESArcanaComboSummary>): CDOTAUserMsgESArcanaComboSummary {
+    const message = createBaseCDOTAUserMsgESArcanaComboSummary();
+    message.ehandle = object.ehandle ?? 0;
+    message.comboCount = object.comboCount ?? 0;
+    message.damageAmount = object.damageAmount ?? 0;
+    return message;
   },
 };
 
@@ -16002,6 +17912,19 @@ export const CDOTAUserMsgOMArcanaCombo = {
     message.multicastChance !== undefined && (obj.multicastChance = Math.round(message.multicastChance));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgOMArcanaCombo>): CDOTAUserMsgOMArcanaCombo {
+    return CDOTAUserMsgOMArcanaCombo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgOMArcanaCombo>): CDOTAUserMsgOMArcanaCombo {
+    const message = createBaseCDOTAUserMsgOMArcanaCombo();
+    message.ehandle = object.ehandle ?? 0;
+    message.multicastAmount = object.multicastAmount ?? 0;
+    message.arcanaLevel = object.arcanaLevel ?? 0;
+    message.multicastChance = object.multicastChance ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgHighFiveCompleted(): CDOTAUserMsgHighFiveCompleted {
@@ -16086,6 +18009,19 @@ export const CDOTAUserMsgHighFiveCompleted = {
     message.specialEntindex !== undefined && (obj.specialEntindex = Math.round(message.specialEntindex));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgHighFiveCompleted>): CDOTAUserMsgHighFiveCompleted {
+    return CDOTAUserMsgHighFiveCompleted.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgHighFiveCompleted>): CDOTAUserMsgHighFiveCompleted {
+    const message = createBaseCDOTAUserMsgHighFiveCompleted();
+    message.playerId1 = object.playerId1 ?? 0;
+    message.playerId2 = object.playerId2 ?? 0;
+    message.specialHighFive = object.specialHighFive ?? false;
+    message.specialEntindex = object.specialEntindex ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgHighFiveLeftHanging(): CDOTAUserMsgHighFiveLeftHanging {
@@ -16131,6 +18067,16 @@ export const CDOTAUserMsgHighFiveLeftHanging = {
     const obj: any = {};
     message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgHighFiveLeftHanging>): CDOTAUserMsgHighFiveLeftHanging {
+    return CDOTAUserMsgHighFiveLeftHanging.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgHighFiveLeftHanging>): CDOTAUserMsgHighFiveLeftHanging {
+    const message = createBaseCDOTAUserMsgHighFiveLeftHanging();
+    message.playerId = object.playerId ?? 0;
+    return message;
   },
 };
 
@@ -16215,6 +18161,19 @@ export const CDOTAUserMsgShovelUnearth = {
     message.locstring !== undefined && (obj.locstring = message.locstring);
     message.quantity !== undefined && (obj.quantity = Math.round(message.quantity));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgShovelUnearth>): CDOTAUserMsgShovelUnearth {
+    return CDOTAUserMsgShovelUnearth.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgShovelUnearth>): CDOTAUserMsgShovelUnearth {
+    const message = createBaseCDOTAUserMsgShovelUnearth();
+    message.playerId = object.playerId ?? 0;
+    message.allChat = object.allChat ?? false;
+    message.locstring = object.locstring ?? "";
+    message.quantity = object.quantity ?? 0;
+    return message;
   },
 };
 
@@ -16320,6 +18279,20 @@ export const CDOTAUserMsgAllStarEvent = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgAllStarEvent>): CDOTAUserMsgAllStarEvent {
+    return CDOTAUserMsgAllStarEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgAllStarEvent>): CDOTAUserMsgAllStarEvent {
+    const message = createBaseCDOTAUserMsgAllStarEvent();
+    message.sourcePlayerId = object.sourcePlayerId ?? 0;
+    message.targetPlayerId = object.targetPlayerId ?? 0;
+    message.pointAmount = object.pointAmount ?? 0;
+    message.eventId = object.eventId ?? 0;
+    message.playerScores = object.playerScores?.map((e) => CDOTAUserMsgAllStarEvent_PlayerScore.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgAllStarEvent_PlayerScore(): CDOTAUserMsgAllStarEvent_PlayerScore {
@@ -16379,6 +18352,17 @@ export const CDOTAUserMsgAllStarEvent_PlayerScore = {
     message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
     message.scoreSansKda !== undefined && (obj.scoreSansKda = Math.round(message.scoreSansKda));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgAllStarEvent_PlayerScore>): CDOTAUserMsgAllStarEvent_PlayerScore {
+    return CDOTAUserMsgAllStarEvent_PlayerScore.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgAllStarEvent_PlayerScore>): CDOTAUserMsgAllStarEvent_PlayerScore {
+    const message = createBaseCDOTAUserMsgAllStarEvent_PlayerScore();
+    message.playerId = object.playerId ?? 0;
+    message.scoreSansKda = object.scoreSansKda ?? 0;
+    return message;
   },
 };
 
@@ -16444,6 +18428,16 @@ export const CDOTAUserMsgQueuedOrderRemoved = {
       obj.unitOrderSequence = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgQueuedOrderRemoved>): CDOTAUserMsgQueuedOrderRemoved {
+    return CDOTAUserMsgQueuedOrderRemoved.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgQueuedOrderRemoved>): CDOTAUserMsgQueuedOrderRemoved {
+    const message = createBaseCDOTAUserMsgQueuedOrderRemoved();
+    message.unitOrderSequence = object.unitOrderSequence?.map((e) => e) || [];
+    return message;
   },
 };
 
@@ -16573,6 +18567,22 @@ export const CDOTAUserMsgDebugChallenge = {
     message.challengeMaxRank !== undefined && (obj.challengeMaxRank = Math.round(message.challengeMaxRank));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgDebugChallenge>): CDOTAUserMsgDebugChallenge {
+    return CDOTAUserMsgDebugChallenge.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgDebugChallenge>): CDOTAUserMsgDebugChallenge {
+    const message = createBaseCDOTAUserMsgDebugChallenge();
+    message.challengeType = object.challengeType ?? 0;
+    message.challengeQueryId = object.challengeQueryId ?? 0;
+    message.eventId = object.eventId ?? 0;
+    message.instanceId = object.instanceId ?? 0;
+    message.challengeVar0 = object.challengeVar0 ?? 0;
+    message.challengeVar1 = object.challengeVar1 ?? 0;
+    message.challengeMaxRank = object.challengeMaxRank ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgFoundNeutralItem(): CDOTAUserMsgFoundNeutralItem {
@@ -16657,6 +18667,19 @@ export const CDOTAUserMsgFoundNeutralItem = {
     message.tierItemCount !== undefined && (obj.tierItemCount = Math.round(message.tierItemCount));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgFoundNeutralItem>): CDOTAUserMsgFoundNeutralItem {
+    return CDOTAUserMsgFoundNeutralItem.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgFoundNeutralItem>): CDOTAUserMsgFoundNeutralItem {
+    const message = createBaseCDOTAUserMsgFoundNeutralItem();
+    message.playerId = object.playerId ?? 0;
+    message.itemAbilityId = object.itemAbilityId ?? 0;
+    message.itemTier = object.itemTier ?? 0;
+    message.tierItemCount = object.tierItemCount ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgOutpostCaptured(): CDOTAUserMsgOutpostCaptured {
@@ -16716,6 +18739,17 @@ export const CDOTAUserMsgOutpostCaptured = {
     message.outpostEntindex !== undefined && (obj.outpostEntindex = Math.round(message.outpostEntindex));
     message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgOutpostCaptured>): CDOTAUserMsgOutpostCaptured {
+    return CDOTAUserMsgOutpostCaptured.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgOutpostCaptured>): CDOTAUserMsgOutpostCaptured {
+    const message = createBaseCDOTAUserMsgOutpostCaptured();
+    message.outpostEntindex = object.outpostEntindex ?? 0;
+    message.teamId = object.teamId ?? 0;
+    return message;
   },
 };
 
@@ -16777,6 +18811,17 @@ export const CDOTAUserMsgOutpostGrantedXP = {
     message.xpAmount !== undefined && (obj.xpAmount = Math.round(message.xpAmount));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgOutpostGrantedXP>): CDOTAUserMsgOutpostGrantedXP {
+    return CDOTAUserMsgOutpostGrantedXP.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgOutpostGrantedXP>): CDOTAUserMsgOutpostGrantedXP {
+    const message = createBaseCDOTAUserMsgOutpostGrantedXP();
+    message.teamId = object.teamId ?? 0;
+    message.xpAmount = object.xpAmount ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgMoveCameraToUnit(): CDOTAUserMsgMoveCameraToUnit {
@@ -16822,6 +18867,16 @@ export const CDOTAUserMsgMoveCameraToUnit = {
     const obj: any = {};
     message.unitEhandle !== undefined && (obj.unitEhandle = Math.round(message.unitEhandle));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgMoveCameraToUnit>): CDOTAUserMsgMoveCameraToUnit {
+    return CDOTAUserMsgMoveCameraToUnit.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgMoveCameraToUnit>): CDOTAUserMsgMoveCameraToUnit {
+    const message = createBaseCDOTAUserMsgMoveCameraToUnit();
+    message.unitEhandle = object.unitEhandle ?? 0;
+    return message;
   },
 };
 
@@ -16876,6 +18931,16 @@ export const CDOTAUserMsgPauseMinigameData = {
       obj.dataBits = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgPauseMinigameData>): CDOTAUserMsgPauseMinigameData {
+    return CDOTAUserMsgPauseMinigameData.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgPauseMinigameData>): CDOTAUserMsgPauseMinigameData {
+    const message = createBaseCDOTAUserMsgPauseMinigameData();
+    message.dataBits = object.dataBits?.map((e) => CDOTAUserMsgPauseMinigameData_DataBit.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -16948,6 +19013,18 @@ export const CDOTAUserMsgPauseMinigameData_DataBit = {
     message.data !== undefined && (obj.data = Math.round(message.data));
     message.dataExtra !== undefined && (obj.dataExtra = message.dataExtra);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgPauseMinigameData_DataBit>): CDOTAUserMsgPauseMinigameData_DataBit {
+    return CDOTAUserMsgPauseMinigameData_DataBit.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgPauseMinigameData_DataBit>): CDOTAUserMsgPauseMinigameData_DataBit {
+    const message = createBaseCDOTAUserMsgPauseMinigameData_DataBit();
+    message.index = object.index ?? 0;
+    message.data = object.data ?? 0;
+    message.dataExtra = object.dataExtra ?? "0";
+    return message;
   },
 };
 
@@ -17048,6 +19125,26 @@ export const CDOTAUserMsgVersusScenePlayerBehavior = {
       (obj.playbackRate = message.playbackRate ? VersusScenePlaybackRate.toJSON(message.playbackRate) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgVersusScenePlayerBehavior>): CDOTAUserMsgVersusScenePlayerBehavior {
+    return CDOTAUserMsgVersusScenePlayerBehavior.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgVersusScenePlayerBehavior>): CDOTAUserMsgVersusScenePlayerBehavior {
+    const message = createBaseCDOTAUserMsgVersusScenePlayerBehavior();
+    message.playerId = object.playerId ?? 0;
+    message.behavior = object.behavior ?? 1;
+    message.playActivity = (object.playActivity !== undefined && object.playActivity !== null)
+      ? VersusScenePlayActivity.fromPartial(object.playActivity)
+      : undefined;
+    message.chatWheel = (object.chatWheel !== undefined && object.chatWheel !== null)
+      ? VersusSceneChatWheel.fromPartial(object.chatWheel)
+      : undefined;
+    message.playbackRate = (object.playbackRate !== undefined && object.playbackRate !== null)
+      ? VersusScenePlaybackRate.fromPartial(object.playbackRate)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgQoPArcanaSummary(): CDOTAUserMsgQoPArcanaSummary {
@@ -17132,6 +19229,19 @@ export const CDOTAUserMsgQoPArcanaSummary = {
     message.playersKilled !== undefined && (obj.playersKilled = Math.round(message.playersKilled));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgQoPArcanaSummary>): CDOTAUserMsgQoPArcanaSummary {
+    return CDOTAUserMsgQoPArcanaSummary.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgQoPArcanaSummary>): CDOTAUserMsgQoPArcanaSummary {
+    const message = createBaseCDOTAUserMsgQoPArcanaSummary();
+    message.ehandle = object.ehandle ?? 0;
+    message.arcanaLevel = object.arcanaLevel ?? 0;
+    message.playersHit = object.playersHit ?? 0;
+    message.playersKilled = object.playersKilled ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgHotPotatoCreated(): CDOTAUserMsgHotPotatoCreated {
@@ -17192,6 +19302,17 @@ export const CDOTAUserMsgHotPotatoCreated = {
     message.playerId2 !== undefined && (obj.playerId2 = Math.round(message.playerId2));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgHotPotatoCreated>): CDOTAUserMsgHotPotatoCreated {
+    return CDOTAUserMsgHotPotatoCreated.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgHotPotatoCreated>): CDOTAUserMsgHotPotatoCreated {
+    const message = createBaseCDOTAUserMsgHotPotatoCreated();
+    message.playerId1 = object.playerId1 ?? 0;
+    message.playerId2 = object.playerId2 ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgHotPotatoExploded(): CDOTAUserMsgHotPotatoExploded {
@@ -17237,6 +19358,16 @@ export const CDOTAUserMsgHotPotatoExploded = {
     const obj: any = {};
     message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgHotPotatoExploded>): CDOTAUserMsgHotPotatoExploded {
+    return CDOTAUserMsgHotPotatoExploded.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgHotPotatoExploded>): CDOTAUserMsgHotPotatoExploded {
+    const message = createBaseCDOTAUserMsgHotPotatoExploded();
+    message.playerId = object.playerId ?? 0;
+    return message;
   },
 };
 
@@ -17309,6 +19440,18 @@ export const CDOTAUserMsgWKArcanaProgress = {
     message.arcanaLevel !== undefined && (obj.arcanaLevel = Math.round(message.arcanaLevel));
     message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgWKArcanaProgress>): CDOTAUserMsgWKArcanaProgress {
+    return CDOTAUserMsgWKArcanaProgress.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgWKArcanaProgress>): CDOTAUserMsgWKArcanaProgress {
+    const message = createBaseCDOTAUserMsgWKArcanaProgress();
+    message.ehandle = object.ehandle ?? 0;
+    message.arcanaLevel = object.arcanaLevel ?? 0;
+    message.heroId = object.heroId ?? 0;
+    return message;
   },
 };
 
@@ -17452,6 +19595,23 @@ export const CDOTAUserMsgGuildChallengeProgress = {
     message.complete !== undefined && (obj.complete = message.complete);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgGuildChallengeProgress>): CDOTAUserMsgGuildChallengeProgress {
+    return CDOTAUserMsgGuildChallengeProgress.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgGuildChallengeProgress>): CDOTAUserMsgGuildChallengeProgress {
+    const message = createBaseCDOTAUserMsgGuildChallengeProgress();
+    message.playerProgress =
+      object.playerProgress?.map((e) => CDOTAUserMsgGuildChallengeProgress_PlayerProgress.fromPartial(e)) || [];
+    message.guildId = object.guildId ?? 0;
+    message.challengeInstanceId = object.challengeInstanceId ?? 0;
+    message.challengeParameter = object.challengeParameter ?? 0;
+    message.challengeType = object.challengeType ?? 0;
+    message.challengeProgressAtStart = object.challengeProgressAtStart ?? 0;
+    message.complete = object.complete ?? false;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgGuildChallengeProgress_PlayerProgress(): CDOTAUserMsgGuildChallengeProgress_PlayerProgress {
@@ -17514,6 +19674,21 @@ export const CDOTAUserMsgGuildChallengeProgress_PlayerProgress = {
     message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
     message.progress !== undefined && (obj.progress = Math.round(message.progress));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CDOTAUserMsgGuildChallengeProgress_PlayerProgress>,
+  ): CDOTAUserMsgGuildChallengeProgress_PlayerProgress {
+    return CDOTAUserMsgGuildChallengeProgress_PlayerProgress.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CDOTAUserMsgGuildChallengeProgress_PlayerProgress>,
+  ): CDOTAUserMsgGuildChallengeProgress_PlayerProgress {
+    const message = createBaseCDOTAUserMsgGuildChallengeProgress_PlayerProgress();
+    message.playerId = object.playerId ?? 0;
+    message.progress = object.progress ?? 0;
+    return message;
   },
 };
 
@@ -17634,6 +19809,22 @@ export const CDOTAUserMsgWRArcanaProgress = {
     message.targetMaxHp !== undefined && (obj.targetMaxHp = Math.round(message.targetMaxHp));
     message.arcanaLevel !== undefined && (obj.arcanaLevel = Math.round(message.arcanaLevel));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgWRArcanaProgress>): CDOTAUserMsgWRArcanaProgress {
+    return CDOTAUserMsgWRArcanaProgress.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgWRArcanaProgress>): CDOTAUserMsgWRArcanaProgress {
+    const message = createBaseCDOTAUserMsgWRArcanaProgress();
+    message.ehandle = object.ehandle ?? 0;
+    message.targetEhandle = object.targetEhandle ?? 0;
+    message.arrowsLanded = object.arrowsLanded ?? 0;
+    message.damageDealt = object.damageDealt ?? 0;
+    message.targetHp = object.targetHp ?? 0;
+    message.targetMaxHp = object.targetMaxHp ?? 0;
+    message.arcanaLevel = object.arcanaLevel ?? 0;
+    return message;
   },
 };
 
@@ -17776,6 +19967,23 @@ export const CDOTAUserMsgWRArcanaSummary = {
     message.success !== undefined && (obj.success = message.success);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgWRArcanaSummary>): CDOTAUserMsgWRArcanaSummary {
+    return CDOTAUserMsgWRArcanaSummary.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgWRArcanaSummary>): CDOTAUserMsgWRArcanaSummary {
+    const message = createBaseCDOTAUserMsgWRArcanaSummary();
+    message.ehandle = object.ehandle ?? 0;
+    message.targetEhandle = object.targetEhandle ?? 0;
+    message.arrowsLanded = object.arrowsLanded ?? 0;
+    message.damageDealt = object.damageDealt ?? 0;
+    message.targetHp = object.targetHp ?? 0;
+    message.targetMaxHp = object.targetMaxHp ?? 0;
+    message.arcanaLevel = object.arcanaLevel ?? 0;
+    message.success = object.success ?? false;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgEmptyItemSlotAlert(): CDOTAUserMsgEmptyItemSlotAlert {
@@ -17859,6 +20067,19 @@ export const CDOTAUserMsgEmptyItemSlotAlert = {
     message.slotIndex !== undefined && (obj.slotIndex = Math.round(message.slotIndex));
     message.cooldownSeconds !== undefined && (obj.cooldownSeconds = Math.round(message.cooldownSeconds));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgEmptyItemSlotAlert>): CDOTAUserMsgEmptyItemSlotAlert {
+    return CDOTAUserMsgEmptyItemSlotAlert.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgEmptyItemSlotAlert>): CDOTAUserMsgEmptyItemSlotAlert {
+    const message = createBaseCDOTAUserMsgEmptyItemSlotAlert();
+    message.sourcePlayerId = object.sourcePlayerId ?? 0;
+    message.targetPlayerId = object.targetPlayerId ?? 0;
+    message.slotIndex = object.slotIndex ?? 0;
+    message.cooldownSeconds = object.cooldownSeconds ?? 0;
+    return message;
   },
 };
 
@@ -17968,6 +20189,21 @@ export const CDOTAUserMsgAghsStatusAlert = {
     message.hasShard !== undefined && (obj.hasShard = message.hasShard);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgAghsStatusAlert>): CDOTAUserMsgAghsStatusAlert {
+    return CDOTAUserMsgAghsStatusAlert.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgAghsStatusAlert>): CDOTAUserMsgAghsStatusAlert {
+    const message = createBaseCDOTAUserMsgAghsStatusAlert();
+    message.sourcePlayerId = object.sourcePlayerId ?? 0;
+    message.targetPlayerId = object.targetPlayerId ?? 0;
+    message.targetEntindex = object.targetEntindex ?? 0;
+    message.alertType = object.alertType ?? 0;
+    message.hasScepter = object.hasScepter ?? false;
+    message.hasShard = object.hasShard ?? false;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgMutedPlayers(): CDOTAUserMsgMutedPlayers {
@@ -18061,6 +20297,17 @@ export const CDOTAUserMsgMutedPlayers = {
       obj.voiceMutedPlayerIds = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgMutedPlayers>): CDOTAUserMsgMutedPlayers {
+    return CDOTAUserMsgMutedPlayers.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgMutedPlayers>): CDOTAUserMsgMutedPlayers {
+    const message = createBaseCDOTAUserMsgMutedPlayers();
+    message.textMutedPlayerIds = object.textMutedPlayerIds?.map((e) => e) || [];
+    message.voiceMutedPlayerIds = object.voiceMutedPlayerIds?.map((e) => e) || [];
+    return message;
   },
 };
 
@@ -18308,6 +20555,30 @@ export const CDOTAUserMsgContextualTip = {
     message.panoramaSnippet !== undefined && (obj.panoramaSnippet = message.panoramaSnippet);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgContextualTip>): CDOTAUserMsgContextualTip {
+    return CDOTAUserMsgContextualTip.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgContextualTip>): CDOTAUserMsgContextualTip {
+    const message = createBaseCDOTAUserMsgContextualTip();
+    message.tipId = object.tipId ?? 0;
+    message.referencedAbilities = object.referencedAbilities?.map((e) => e) || [];
+    message.referencedUnits = object.referencedUnits?.map((e) => e) || [];
+    message.panoramaClasses = object.panoramaClasses?.map((e) => e) || [];
+    message.forceAnnotation = object.forceAnnotation ?? false;
+    message.variant = object.variant ?? 0;
+    message.intParam = object.intParam ?? 0;
+    message.intParam2 = object.intParam2 ?? 0;
+    message.floatParam = object.floatParam ?? 0;
+    message.floatParam2 = object.floatParam2 ?? 0;
+    message.stringParam = object.stringParam ?? "";
+    message.stringParam2 = object.stringParam2 ?? "";
+    message.tipTextOverride = object.tipTextOverride ?? "";
+    message.tipAnnotationOverride = object.tipAnnotationOverride ?? "";
+    message.panoramaSnippet = object.panoramaSnippet ?? "";
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgChatMessage(): CDOTAUserMsgChatMessage {
@@ -18380,6 +20651,18 @@ export const CDOTAUserMsgChatMessage = {
     message.messageText !== undefined && (obj.messageText = message.messageText);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgChatMessage>): CDOTAUserMsgChatMessage {
+    return CDOTAUserMsgChatMessage.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgChatMessage>): CDOTAUserMsgChatMessage {
+    const message = createBaseCDOTAUserMsgChatMessage();
+    message.sourcePlayerId = object.sourcePlayerId ?? 0;
+    message.channelType = object.channelType ?? 0;
+    message.messageText = object.messageText ?? "";
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgRockPaperScissorsStarted(): CDOTAUserMsgRockPaperScissorsStarted {
@@ -18439,6 +20722,17 @@ export const CDOTAUserMsgRockPaperScissorsStarted = {
     message.playerIdSource !== undefined && (obj.playerIdSource = Math.round(message.playerIdSource));
     message.playerIdTarget !== undefined && (obj.playerIdTarget = Math.round(message.playerIdTarget));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgRockPaperScissorsStarted>): CDOTAUserMsgRockPaperScissorsStarted {
+    return CDOTAUserMsgRockPaperScissorsStarted.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgRockPaperScissorsStarted>): CDOTAUserMsgRockPaperScissorsStarted {
+    const message = createBaseCDOTAUserMsgRockPaperScissorsStarted();
+    message.playerIdSource = object.playerIdSource ?? 0;
+    message.playerIdTarget = object.playerIdTarget ?? 0;
+    return message;
   },
 };
 
@@ -18524,6 +20818,19 @@ export const CDOTAUserMsgRockPaperScissorsFinished = {
     message.player2Choice !== undefined && (obj.player2Choice = Math.round(message.player2Choice));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgRockPaperScissorsFinished>): CDOTAUserMsgRockPaperScissorsFinished {
+    return CDOTAUserMsgRockPaperScissorsFinished.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgRockPaperScissorsFinished>): CDOTAUserMsgRockPaperScissorsFinished {
+    const message = createBaseCDOTAUserMsgRockPaperScissorsFinished();
+    message.playerId1 = object.playerId1 ?? 0;
+    message.playerId2 = object.playerId2 ?? 0;
+    message.player1Choice = object.player1Choice ?? 0;
+    message.player2Choice = object.player2Choice ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgDuelOpponentKilled(): CDOTAUserMsgDuelOpponentKilled {
@@ -18583,6 +20890,17 @@ export const CDOTAUserMsgDuelOpponentKilled = {
     message.playerIdWinner !== undefined && (obj.playerIdWinner = Math.round(message.playerIdWinner));
     message.playerIdLoser !== undefined && (obj.playerIdLoser = Math.round(message.playerIdLoser));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgDuelOpponentKilled>): CDOTAUserMsgDuelOpponentKilled {
+    return CDOTAUserMsgDuelOpponentKilled.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgDuelOpponentKilled>): CDOTAUserMsgDuelOpponentKilled {
+    const message = createBaseCDOTAUserMsgDuelOpponentKilled();
+    message.playerIdWinner = object.playerIdWinner ?? 0;
+    message.playerIdLoser = object.playerIdLoser ?? 0;
+    return message;
   },
 };
 
@@ -18644,6 +20962,17 @@ export const CDOTAUserMsgDuelAccepted = {
     message.playerId2 !== undefined && (obj.playerId2 = Math.round(message.playerId2));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgDuelAccepted>): CDOTAUserMsgDuelAccepted {
+    return CDOTAUserMsgDuelAccepted.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgDuelAccepted>): CDOTAUserMsgDuelAccepted {
+    const message = createBaseCDOTAUserMsgDuelAccepted();
+    message.playerId1 = object.playerId1 ?? 0;
+    message.playerId2 = object.playerId2 ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgDuelRequested(): CDOTAUserMsgDuelRequested {
@@ -18689,6 +21018,16 @@ export const CDOTAUserMsgDuelRequested = {
     const obj: any = {};
     message.playerIdRequestor !== undefined && (obj.playerIdRequestor = Math.round(message.playerIdRequestor));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgDuelRequested>): CDOTAUserMsgDuelRequested {
+    return CDOTAUserMsgDuelRequested.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgDuelRequested>): CDOTAUserMsgDuelRequested {
+    const message = createBaseCDOTAUserMsgDuelRequested();
+    message.playerIdRequestor = object.playerIdRequestor ?? 0;
+    return message;
   },
 };
 
@@ -18789,6 +21128,24 @@ export const CDOTAUserMsgMuertaReleaseEventAssignedTargetKilled = {
     message.lastHit !== undefined && (obj.lastHit = message.lastHit);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CDOTAUserMsgMuertaReleaseEventAssignedTargetKilled>,
+  ): CDOTAUserMsgMuertaReleaseEventAssignedTargetKilled {
+    return CDOTAUserMsgMuertaReleaseEventAssignedTargetKilled.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CDOTAUserMsgMuertaReleaseEventAssignedTargetKilled>,
+  ): CDOTAUserMsgMuertaReleaseEventAssignedTargetKilled {
+    const message = createBaseCDOTAUserMsgMuertaReleaseEventAssignedTargetKilled();
+    message.playerIdKiller = object.playerIdKiller ?? 0;
+    message.playerIdTarget = object.playerIdTarget ?? 0;
+    message.points = object.points ?? 0;
+    message.pointsTotal = object.pointsTotal ?? 0;
+    message.lastHit = object.lastHit ?? false;
+    return message;
+  },
 };
 
 function createBaseCDOTAUserMsgPlayerDraftSuggestPick(): CDOTAUserMsgPlayerDraftSuggestPick {
@@ -18848,6 +21205,17 @@ export const CDOTAUserMsgPlayerDraftSuggestPick = {
     message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
     message.suggestionPlayerId !== undefined && (obj.suggestionPlayerId = Math.round(message.suggestionPlayerId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAUserMsgPlayerDraftSuggestPick>): CDOTAUserMsgPlayerDraftSuggestPick {
+    return CDOTAUserMsgPlayerDraftSuggestPick.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgPlayerDraftSuggestPick>): CDOTAUserMsgPlayerDraftSuggestPick {
+    const message = createBaseCDOTAUserMsgPlayerDraftSuggestPick();
+    message.playerId = object.playerId ?? 0;
+    message.suggestionPlayerId = object.suggestionPlayerId ?? 0;
+    return message;
   },
 };
 
@@ -18921,6 +21289,18 @@ export const CDOTAUserMsgPlayerDraftPick = {
     message.team !== undefined && (obj.team = Math.round(message.team));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAUserMsgPlayerDraftPick>): CDOTAUserMsgPlayerDraftPick {
+    return CDOTAUserMsgPlayerDraftPick.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAUserMsgPlayerDraftPick>): CDOTAUserMsgPlayerDraftPick {
+    const message = createBaseCDOTAUserMsgPlayerDraftPick();
+    message.playerIdCaptain = object.playerIdCaptain ?? 0;
+    message.playerIdTarget = object.playerIdTarget ?? 0;
+    message.team = object.team ?? 0;
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -18966,6 +21346,13 @@ function base64FromBytes(arr: Uint8Array): string {
     return tsProtoGlobalThis.btoa(bin.join(""));
   }
 }
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

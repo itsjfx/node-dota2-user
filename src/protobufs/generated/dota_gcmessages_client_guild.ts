@@ -2716,6 +2716,32 @@ export const CMsgGuildInfo = {
     message.guildMotd !== undefined && (obj.guildMotd = message.guildMotd);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGuildInfo>): CMsgGuildInfo {
+    return CMsgGuildInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGuildInfo>): CMsgGuildInfo {
+    const message = createBaseCMsgGuildInfo();
+    message.guildName = object.guildName ?? "";
+    message.guildTag = object.guildTag ?? "";
+    message.createdTimestamp = object.createdTimestamp ?? 0;
+    message.guildLanguage = object.guildLanguage ?? 0;
+    message.guildFlags = object.guildFlags ?? 0;
+    message.guildLogo = object.guildLogo ?? "0";
+    message.guildRegion = object.guildRegion ?? 0;
+    message.guildChatGroupId = object.guildChatGroupId ?? "0";
+    message.guildDescription = object.guildDescription ?? "";
+    message.defaultChatChannelId = object.defaultChatChannelId ?? "0";
+    message.guildPrimaryColor = object.guildPrimaryColor ?? 0;
+    message.guildSecondaryColor = object.guildSecondaryColor ?? 0;
+    message.guildPattern = object.guildPattern ?? 0;
+    message.guildRefreshTimeOffset = object.guildRefreshTimeOffset ?? 0;
+    message.guildRequiredRankTier = object.guildRequiredRankTier ?? 0;
+    message.guildMotdTimestamp = object.guildMotdTimestamp ?? 0;
+    message.guildMotd = object.guildMotd ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgGuildSummary(): CMsgGuildSummary {
@@ -2794,6 +2820,20 @@ export const CMsgGuildSummary = {
       obj.eventPoints = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGuildSummary>): CMsgGuildSummary {
+    return CMsgGuildSummary.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGuildSummary>): CMsgGuildSummary {
+    const message = createBaseCMsgGuildSummary();
+    message.guildInfo = (object.guildInfo !== undefined && object.guildInfo !== null)
+      ? CMsgGuildInfo.fromPartial(object.guildInfo)
+      : undefined;
+    message.memberCount = object.memberCount ?? 0;
+    message.eventPoints = object.eventPoints?.map((e) => CMsgGuildSummary_EventPoints.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -2912,6 +2952,21 @@ export const CMsgGuildSummary_EventPoints = {
       (obj.guildCurrentPercentile = Math.round(message.guildCurrentPercentile));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGuildSummary_EventPoints>): CMsgGuildSummary_EventPoints {
+    return CMsgGuildSummary_EventPoints.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGuildSummary_EventPoints>): CMsgGuildSummary_EventPoints {
+    const message = createBaseCMsgGuildSummary_EventPoints();
+    message.eventId = object.eventId ?? 0;
+    message.guildPoints = object.guildPoints ?? 0;
+    message.guildRank = object.guildRank ?? 0;
+    message.guildWeeklyRank = object.guildWeeklyRank ?? 0;
+    message.guildWeeklyPercentile = object.guildWeeklyPercentile ?? 0;
+    message.guildCurrentPercentile = object.guildCurrentPercentile ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGuildRole(): CMsgGuildRole {
@@ -2995,6 +3050,19 @@ export const CMsgGuildRole = {
     message.roleFlags !== undefined && (obj.roleFlags = Math.round(message.roleFlags));
     message.roleOrder !== undefined && (obj.roleOrder = Math.round(message.roleOrder));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGuildRole>): CMsgGuildRole {
+    return CMsgGuildRole.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGuildRole>): CMsgGuildRole {
+    const message = createBaseCMsgGuildRole();
+    message.roleId = object.roleId ?? 0;
+    message.roleName = object.roleName ?? "";
+    message.roleFlags = object.roleFlags ?? 0;
+    message.roleOrder = object.roleOrder ?? 0;
+    return message;
   },
 };
 
@@ -3082,6 +3150,19 @@ export const CMsgGuildMember = {
       (obj.memberLastActiveTimestamp = Math.round(message.memberLastActiveTimestamp));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGuildMember>): CMsgGuildMember {
+    return CMsgGuildMember.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGuildMember>): CMsgGuildMember {
+    const message = createBaseCMsgGuildMember();
+    message.memberAccountId = object.memberAccountId ?? 0;
+    message.memberRoleId = object.memberRoleId ?? 0;
+    message.memberJoinedTimestamp = object.memberJoinedTimestamp ?? 0;
+    message.memberLastActiveTimestamp = object.memberLastActiveTimestamp ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGuildInvite(): CMsgGuildInvite {
@@ -3153,6 +3234,18 @@ export const CMsgGuildInvite = {
     message.targetAccountId !== undefined && (obj.targetAccountId = Math.round(message.targetAccountId));
     message.timestampSent !== undefined && (obj.timestampSent = Math.round(message.timestampSent));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGuildInvite>): CMsgGuildInvite {
+    return CMsgGuildInvite.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGuildInvite>): CMsgGuildInvite {
+    const message = createBaseCMsgGuildInvite();
+    message.requesterAccountId = object.requesterAccountId ?? 0;
+    message.targetAccountId = object.targetAccountId ?? 0;
+    message.timestampSent = object.timestampSent ?? 0;
+    return message;
   },
 };
 
@@ -3267,6 +3360,22 @@ export const CMsgGuildData = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGuildData>): CMsgGuildData {
+    return CMsgGuildData.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGuildData>): CMsgGuildData {
+    const message = createBaseCMsgGuildData();
+    message.guildId = object.guildId ?? 0;
+    message.guildInfo = (object.guildInfo !== undefined && object.guildInfo !== null)
+      ? CMsgGuildInfo.fromPartial(object.guildInfo)
+      : undefined;
+    message.guildRoles = object.guildRoles?.map((e) => CMsgGuildRole.fromPartial(e)) || [];
+    message.guildMembers = object.guildMembers?.map((e) => CMsgGuildMember.fromPartial(e)) || [];
+    message.guildInvites = object.guildInvites?.map((e) => CMsgGuildInvite.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgAccountGuildInvite(): CMsgAccountGuildInvite {
@@ -3338,6 +3447,18 @@ export const CMsgAccountGuildInvite = {
     message.requesterAccountId !== undefined && (obj.requesterAccountId = Math.round(message.requesterAccountId));
     message.timestampSent !== undefined && (obj.timestampSent = Math.round(message.timestampSent));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgAccountGuildInvite>): CMsgAccountGuildInvite {
+    return CMsgAccountGuildInvite.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgAccountGuildInvite>): CMsgAccountGuildInvite {
+    const message = createBaseCMsgAccountGuildInvite();
+    message.guildId = object.guildId ?? 0;
+    message.requesterAccountId = object.requesterAccountId ?? 0;
+    message.timestampSent = object.timestampSent ?? 0;
+    return message;
   },
 };
 
@@ -3420,6 +3541,17 @@ export const CMsgAccountGuildMemberships = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgAccountGuildMemberships>): CMsgAccountGuildMemberships {
+    return CMsgAccountGuildMemberships.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgAccountGuildMemberships>): CMsgAccountGuildMemberships {
+    const message = createBaseCMsgAccountGuildMemberships();
+    message.guildIds = object.guildIds?.map((e) => e) || [];
+    message.guildInvites = object.guildInvites?.map((e) => CMsgAccountGuildInvite.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgGuildPersonaInfo(): CMsgGuildPersonaInfo {
@@ -3492,6 +3624,18 @@ export const CMsgGuildPersonaInfo = {
     message.guildFlags !== undefined && (obj.guildFlags = Math.round(message.guildFlags));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGuildPersonaInfo>): CMsgGuildPersonaInfo {
+    return CMsgGuildPersonaInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGuildPersonaInfo>): CMsgGuildPersonaInfo {
+    const message = createBaseCMsgGuildPersonaInfo();
+    message.guildId = object.guildId ?? 0;
+    message.guildTag = object.guildTag ?? "";
+    message.guildFlags = object.guildFlags ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgAccountGuildsPersonaInfo(): CMsgAccountGuildsPersonaInfo {
@@ -3545,6 +3689,16 @@ export const CMsgAccountGuildsPersonaInfo = {
       obj.guildPersonaInfos = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgAccountGuildsPersonaInfo>): CMsgAccountGuildsPersonaInfo {
+    return CMsgAccountGuildsPersonaInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgAccountGuildsPersonaInfo>): CMsgAccountGuildsPersonaInfo {
+    const message = createBaseCMsgAccountGuildsPersonaInfo();
+    message.guildPersonaInfos = object.guildPersonaInfos?.map((e) => CMsgGuildPersonaInfo.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -3654,6 +3808,21 @@ export const CMsgGuildFeedEvent = {
     message.paramUint3 !== undefined && (obj.paramUint3 = Math.round(message.paramUint3));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGuildFeedEvent>): CMsgGuildFeedEvent {
+    return CMsgGuildFeedEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGuildFeedEvent>): CMsgGuildFeedEvent {
+    const message = createBaseCMsgGuildFeedEvent();
+    message.feedEventId = object.feedEventId ?? "0";
+    message.timestamp = object.timestamp ?? 0;
+    message.eventType = object.eventType ?? 0;
+    message.paramUint1 = object.paramUint1 ?? 0;
+    message.paramUint2 = object.paramUint2 ?? 0;
+    message.paramUint3 = object.paramUint3 ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCreateGuild(): CMsgClientToGCCreateGuild {
@@ -3715,6 +3884,19 @@ export const CMsgClientToGCCreateGuild = {
     message.guildChatType !== undefined && (obj.guildChatType = eGuildChatTypeToJSON(message.guildChatType));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCCreateGuild>): CMsgClientToGCCreateGuild {
+    return CMsgClientToGCCreateGuild.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCCreateGuild>): CMsgClientToGCCreateGuild {
+    const message = createBaseCMsgClientToGCCreateGuild();
+    message.guildInfo = (object.guildInfo !== undefined && object.guildInfo !== null)
+      ? CMsgGuildInfo.fromPartial(object.guildInfo)
+      : undefined;
+    message.guildChatType = object.guildChatType ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCreateGuildResponse(): CMsgClientToGCCreateGuildResponse {
@@ -3774,6 +3956,17 @@ export const CMsgClientToGCCreateGuildResponse = {
     message.result !== undefined && (obj.result = cMsgClientToGCCreateGuildResponse_EResponseToJSON(message.result));
     message.guildId !== undefined && (obj.guildId = Math.round(message.guildId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCCreateGuildResponse>): CMsgClientToGCCreateGuildResponse {
+    return CMsgClientToGCCreateGuildResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCCreateGuildResponse>): CMsgClientToGCCreateGuildResponse {
+    const message = createBaseCMsgClientToGCCreateGuildResponse();
+    message.result = object.result ?? 0;
+    message.guildId = object.guildId ?? 0;
+    return message;
   },
 };
 
@@ -3848,6 +4041,20 @@ export const CMsgClientToGCSetGuildInfo = {
     message.guildChatType !== undefined && (obj.guildChatType = eGuildChatTypeToJSON(message.guildChatType));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCSetGuildInfo>): CMsgClientToGCSetGuildInfo {
+    return CMsgClientToGCSetGuildInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCSetGuildInfo>): CMsgClientToGCSetGuildInfo {
+    const message = createBaseCMsgClientToGCSetGuildInfo();
+    message.guildId = object.guildId ?? 0;
+    message.guildInfo = (object.guildInfo !== undefined && object.guildInfo !== null)
+      ? CMsgGuildInfo.fromPartial(object.guildInfo)
+      : undefined;
+    message.guildChatType = object.guildChatType ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCSetGuildInfoResponse(): CMsgClientToGCSetGuildInfoResponse {
@@ -3894,6 +4101,16 @@ export const CMsgClientToGCSetGuildInfoResponse = {
     message.result !== undefined && (obj.result = cMsgClientToGCSetGuildInfoResponse_EResponseToJSON(message.result));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCSetGuildInfoResponse>): CMsgClientToGCSetGuildInfoResponse {
+    return CMsgClientToGCSetGuildInfoResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCSetGuildInfoResponse>): CMsgClientToGCSetGuildInfoResponse {
+    const message = createBaseCMsgClientToGCSetGuildInfoResponse();
+    message.result = object.result ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCRequestGuildData(): CMsgClientToGCRequestGuildData {
@@ -3939,6 +4156,16 @@ export const CMsgClientToGCRequestGuildData = {
     const obj: any = {};
     message.guildId !== undefined && (obj.guildId = Math.round(message.guildId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCRequestGuildData>): CMsgClientToGCRequestGuildData {
+    return CMsgClientToGCRequestGuildData.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCRequestGuildData>): CMsgClientToGCRequestGuildData {
+    const message = createBaseCMsgClientToGCRequestGuildData();
+    message.guildId = object.guildId ?? 0;
+    return message;
   },
 };
 
@@ -4002,6 +4229,19 @@ export const CMsgClientToGCRequestGuildDataResponse = {
       (obj.guildData = message.guildData ? CMsgGuildData.toJSON(message.guildData) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCRequestGuildDataResponse>): CMsgClientToGCRequestGuildDataResponse {
+    return CMsgClientToGCRequestGuildDataResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCRequestGuildDataResponse>): CMsgClientToGCRequestGuildDataResponse {
+    const message = createBaseCMsgClientToGCRequestGuildDataResponse();
+    message.result = object.result ?? 0;
+    message.guildData = (object.guildData !== undefined && object.guildData !== null)
+      ? CMsgGuildData.fromPartial(object.guildData)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientGuildDataUpdated(): CMsgGCToClientGuildDataUpdated {
@@ -4062,6 +4302,19 @@ export const CMsgGCToClientGuildDataUpdated = {
       (obj.guildData = message.guildData ? CMsgGuildData.toJSON(message.guildData) : undefined);
     message.updateFlags !== undefined && (obj.updateFlags = Math.round(message.updateFlags));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToClientGuildDataUpdated>): CMsgGCToClientGuildDataUpdated {
+    return CMsgGCToClientGuildDataUpdated.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientGuildDataUpdated>): CMsgGCToClientGuildDataUpdated {
+    const message = createBaseCMsgGCToClientGuildDataUpdated();
+    message.guildData = (object.guildData !== undefined && object.guildData !== null)
+      ? CMsgGuildData.fromPartial(object.guildData)
+      : undefined;
+    message.updateFlags = object.updateFlags ?? 0;
+    return message;
   },
 };
 
@@ -4129,6 +4382,17 @@ export const CMsgGCToClientGuildMembersDataUpdated = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientGuildMembersDataUpdated>): CMsgGCToClientGuildMembersDataUpdated {
+    return CMsgGCToClientGuildMembersDataUpdated.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientGuildMembersDataUpdated>): CMsgGCToClientGuildMembersDataUpdated {
+    const message = createBaseCMsgGCToClientGuildMembersDataUpdated();
+    message.guildId = object.guildId ?? 0;
+    message.membersData = object.membersData?.map((e) => CMsgGuildMember.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCRequestGuildMembership(): CMsgClientToGCRequestGuildMembership {
@@ -4163,6 +4427,15 @@ export const CMsgClientToGCRequestGuildMembership = {
   toJSON(_: CMsgClientToGCRequestGuildMembership): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCRequestGuildMembership>): CMsgClientToGCRequestGuildMembership {
+    return CMsgClientToGCRequestGuildMembership.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgClientToGCRequestGuildMembership>): CMsgClientToGCRequestGuildMembership {
+    const message = createBaseCMsgClientToGCRequestGuildMembership();
+    return message;
   },
 };
 
@@ -4229,6 +4502,23 @@ export const CMsgClientToGCRequestGuildMembershipResponse = {
       : undefined);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCRequestGuildMembershipResponse>,
+  ): CMsgClientToGCRequestGuildMembershipResponse {
+    return CMsgClientToGCRequestGuildMembershipResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCRequestGuildMembershipResponse>,
+  ): CMsgClientToGCRequestGuildMembershipResponse {
+    const message = createBaseCMsgClientToGCRequestGuildMembershipResponse();
+    message.result = object.result ?? 0;
+    message.guildMemberships = (object.guildMemberships !== undefined && object.guildMemberships !== null)
+      ? CMsgAccountGuildMemberships.fromPartial(object.guildMemberships)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientGuildMembershipUpdated(): CMsgGCToClientGuildMembershipUpdated {
@@ -4281,6 +4571,18 @@ export const CMsgGCToClientGuildMembershipUpdated = {
       : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientGuildMembershipUpdated>): CMsgGCToClientGuildMembershipUpdated {
+    return CMsgGCToClientGuildMembershipUpdated.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientGuildMembershipUpdated>): CMsgGCToClientGuildMembershipUpdated {
+    const message = createBaseCMsgGCToClientGuildMembershipUpdated();
+    message.guildMemberships = (object.guildMemberships !== undefined && object.guildMemberships !== null)
+      ? CMsgAccountGuildMemberships.fromPartial(object.guildMemberships)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCJoinGuild(): CMsgClientToGCJoinGuild {
@@ -4326,6 +4628,16 @@ export const CMsgClientToGCJoinGuild = {
     const obj: any = {};
     message.guildId !== undefined && (obj.guildId = Math.round(message.guildId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCJoinGuild>): CMsgClientToGCJoinGuild {
+    return CMsgClientToGCJoinGuild.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCJoinGuild>): CMsgClientToGCJoinGuild {
+    const message = createBaseCMsgClientToGCJoinGuild();
+    message.guildId = object.guildId ?? 0;
+    return message;
   },
 };
 
@@ -4373,6 +4685,16 @@ export const CMsgClientToGCJoinGuildResponse = {
     message.result !== undefined && (obj.result = cMsgClientToGCJoinGuildResponse_EResponseToJSON(message.result));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCJoinGuildResponse>): CMsgClientToGCJoinGuildResponse {
+    return CMsgClientToGCJoinGuildResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCJoinGuildResponse>): CMsgClientToGCJoinGuildResponse {
+    const message = createBaseCMsgClientToGCJoinGuildResponse();
+    message.result = object.result ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCLeaveGuild(): CMsgClientToGCLeaveGuild {
@@ -4419,6 +4741,16 @@ export const CMsgClientToGCLeaveGuild = {
     message.guildId !== undefined && (obj.guildId = Math.round(message.guildId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCLeaveGuild>): CMsgClientToGCLeaveGuild {
+    return CMsgClientToGCLeaveGuild.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCLeaveGuild>): CMsgClientToGCLeaveGuild {
+    const message = createBaseCMsgClientToGCLeaveGuild();
+    message.guildId = object.guildId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCLeaveGuildResponse(): CMsgClientToGCLeaveGuildResponse {
@@ -4464,6 +4796,16 @@ export const CMsgClientToGCLeaveGuildResponse = {
     const obj: any = {};
     message.result !== undefined && (obj.result = cMsgClientToGCLeaveGuildResponse_EResponseToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCLeaveGuildResponse>): CMsgClientToGCLeaveGuildResponse {
+    return CMsgClientToGCLeaveGuildResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCLeaveGuildResponse>): CMsgClientToGCLeaveGuildResponse {
+    const message = createBaseCMsgClientToGCLeaveGuildResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -4525,6 +4867,17 @@ export const CMsgClientToGCKickGuildMember = {
     message.targetAccountId !== undefined && (obj.targetAccountId = Math.round(message.targetAccountId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCKickGuildMember>): CMsgClientToGCKickGuildMember {
+    return CMsgClientToGCKickGuildMember.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCKickGuildMember>): CMsgClientToGCKickGuildMember {
+    const message = createBaseCMsgClientToGCKickGuildMember();
+    message.guildId = object.guildId ?? 0;
+    message.targetAccountId = object.targetAccountId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCKickGuildMemberResponse(): CMsgClientToGCKickGuildMemberResponse {
@@ -4573,6 +4926,16 @@ export const CMsgClientToGCKickGuildMemberResponse = {
     message.result !== undefined &&
       (obj.result = cMsgClientToGCKickGuildMemberResponse_EResponseToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCKickGuildMemberResponse>): CMsgClientToGCKickGuildMemberResponse {
+    return CMsgClientToGCKickGuildMemberResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCKickGuildMemberResponse>): CMsgClientToGCKickGuildMemberResponse {
+    const message = createBaseCMsgClientToGCKickGuildMemberResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -4646,6 +5009,18 @@ export const CMsgClientToGCSetGuildMemberRole = {
     message.targetRoleId !== undefined && (obj.targetRoleId = Math.round(message.targetRoleId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCSetGuildMemberRole>): CMsgClientToGCSetGuildMemberRole {
+    return CMsgClientToGCSetGuildMemberRole.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCSetGuildMemberRole>): CMsgClientToGCSetGuildMemberRole {
+    const message = createBaseCMsgClientToGCSetGuildMemberRole();
+    message.guildId = object.guildId ?? 0;
+    message.targetAccountId = object.targetAccountId ?? 0;
+    message.targetRoleId = object.targetRoleId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCSetGuildMemberRoleResponse(): CMsgClientToGCSetGuildMemberRoleResponse {
@@ -4694,6 +5069,16 @@ export const CMsgClientToGCSetGuildMemberRoleResponse = {
     message.result !== undefined &&
       (obj.result = cMsgClientToGCSetGuildMemberRoleResponse_EResponseToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCSetGuildMemberRoleResponse>): CMsgClientToGCSetGuildMemberRoleResponse {
+    return CMsgClientToGCSetGuildMemberRoleResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCSetGuildMemberRoleResponse>): CMsgClientToGCSetGuildMemberRoleResponse {
+    const message = createBaseCMsgClientToGCSetGuildMemberRoleResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -4755,6 +5140,17 @@ export const CMsgClientToGCInviteToGuild = {
     message.targetAccountId !== undefined && (obj.targetAccountId = Math.round(message.targetAccountId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCInviteToGuild>): CMsgClientToGCInviteToGuild {
+    return CMsgClientToGCInviteToGuild.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCInviteToGuild>): CMsgClientToGCInviteToGuild {
+    const message = createBaseCMsgClientToGCInviteToGuild();
+    message.guildId = object.guildId ?? 0;
+    message.targetAccountId = object.targetAccountId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCInviteToGuildResponse(): CMsgClientToGCInviteToGuildResponse {
@@ -4801,6 +5197,16 @@ export const CMsgClientToGCInviteToGuildResponse = {
     message.result !== undefined && (obj.result = cMsgClientToGCInviteToGuildResponse_EResponseToJSON(message.result));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCInviteToGuildResponse>): CMsgClientToGCInviteToGuildResponse {
+    return CMsgClientToGCInviteToGuildResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCInviteToGuildResponse>): CMsgClientToGCInviteToGuildResponse {
+    const message = createBaseCMsgClientToGCInviteToGuildResponse();
+    message.result = object.result ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCDeclineInviteToGuild(): CMsgClientToGCDeclineInviteToGuild {
@@ -4846,6 +5252,16 @@ export const CMsgClientToGCDeclineInviteToGuild = {
     const obj: any = {};
     message.guildId !== undefined && (obj.guildId = Math.round(message.guildId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCDeclineInviteToGuild>): CMsgClientToGCDeclineInviteToGuild {
+    return CMsgClientToGCDeclineInviteToGuild.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCDeclineInviteToGuild>): CMsgClientToGCDeclineInviteToGuild {
+    const message = createBaseCMsgClientToGCDeclineInviteToGuild();
+    message.guildId = object.guildId ?? 0;
+    return message;
   },
 };
 
@@ -4896,6 +5312,18 @@ export const CMsgClientToGCDeclineInviteToGuildResponse = {
       (obj.result = cMsgClientToGCDeclineInviteToGuildResponse_EResponseToJSON(message.result));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCDeclineInviteToGuildResponse>): CMsgClientToGCDeclineInviteToGuildResponse {
+    return CMsgClientToGCDeclineInviteToGuildResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCDeclineInviteToGuildResponse>,
+  ): CMsgClientToGCDeclineInviteToGuildResponse {
+    const message = createBaseCMsgClientToGCDeclineInviteToGuildResponse();
+    message.result = object.result ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCAcceptInviteToGuild(): CMsgClientToGCAcceptInviteToGuild {
@@ -4941,6 +5369,16 @@ export const CMsgClientToGCAcceptInviteToGuild = {
     const obj: any = {};
     message.guildId !== undefined && (obj.guildId = Math.round(message.guildId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCAcceptInviteToGuild>): CMsgClientToGCAcceptInviteToGuild {
+    return CMsgClientToGCAcceptInviteToGuild.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCAcceptInviteToGuild>): CMsgClientToGCAcceptInviteToGuild {
+    const message = createBaseCMsgClientToGCAcceptInviteToGuild();
+    message.guildId = object.guildId ?? 0;
+    return message;
   },
 };
 
@@ -4990,6 +5428,18 @@ export const CMsgClientToGCAcceptInviteToGuildResponse = {
     message.result !== undefined &&
       (obj.result = cMsgClientToGCAcceptInviteToGuildResponse_EResponseToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCAcceptInviteToGuildResponse>): CMsgClientToGCAcceptInviteToGuildResponse {
+    return CMsgClientToGCAcceptInviteToGuildResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCAcceptInviteToGuildResponse>,
+  ): CMsgClientToGCAcceptInviteToGuildResponse {
+    const message = createBaseCMsgClientToGCAcceptInviteToGuildResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -5051,6 +5501,17 @@ export const CMsgClientToGCCancelInviteToGuild = {
     message.targetAccountId !== undefined && (obj.targetAccountId = Math.round(message.targetAccountId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCCancelInviteToGuild>): CMsgClientToGCCancelInviteToGuild {
+    return CMsgClientToGCCancelInviteToGuild.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCCancelInviteToGuild>): CMsgClientToGCCancelInviteToGuild {
+    const message = createBaseCMsgClientToGCCancelInviteToGuild();
+    message.guildId = object.guildId ?? 0;
+    message.targetAccountId = object.targetAccountId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCancelInviteToGuildResponse(): CMsgClientToGCCancelInviteToGuildResponse {
@@ -5099,6 +5560,18 @@ export const CMsgClientToGCCancelInviteToGuildResponse = {
     message.result !== undefined &&
       (obj.result = cMsgClientToGCCancelInviteToGuildResponse_EResponseToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCCancelInviteToGuildResponse>): CMsgClientToGCCancelInviteToGuildResponse {
+    return CMsgClientToGCCancelInviteToGuildResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCancelInviteToGuildResponse>,
+  ): CMsgClientToGCCancelInviteToGuildResponse {
+    const message = createBaseCMsgClientToGCCancelInviteToGuildResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -5172,6 +5645,18 @@ export const CMsgClientToGCAddGuildRole = {
     message.roleFlags !== undefined && (obj.roleFlags = Math.round(message.roleFlags));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCAddGuildRole>): CMsgClientToGCAddGuildRole {
+    return CMsgClientToGCAddGuildRole.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCAddGuildRole>): CMsgClientToGCAddGuildRole {
+    const message = createBaseCMsgClientToGCAddGuildRole();
+    message.guildId = object.guildId ?? 0;
+    message.roleName = object.roleName ?? "";
+    message.roleFlags = object.roleFlags ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCAddGuildRoleResponse(): CMsgClientToGCAddGuildRoleResponse {
@@ -5231,6 +5716,17 @@ export const CMsgClientToGCAddGuildRoleResponse = {
     message.result !== undefined && (obj.result = cMsgClientToGCAddGuildRoleResponse_EResponseToJSON(message.result));
     message.roleId !== undefined && (obj.roleId = Math.round(message.roleId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCAddGuildRoleResponse>): CMsgClientToGCAddGuildRoleResponse {
+    return CMsgClientToGCAddGuildRoleResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCAddGuildRoleResponse>): CMsgClientToGCAddGuildRoleResponse {
+    const message = createBaseCMsgClientToGCAddGuildRoleResponse();
+    message.result = object.result ?? 0;
+    message.roleId = object.roleId ?? 0;
+    return message;
   },
 };
 
@@ -5316,6 +5812,19 @@ export const CMsgClientToGCModifyGuildRole = {
     message.roleFlags !== undefined && (obj.roleFlags = Math.round(message.roleFlags));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCModifyGuildRole>): CMsgClientToGCModifyGuildRole {
+    return CMsgClientToGCModifyGuildRole.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCModifyGuildRole>): CMsgClientToGCModifyGuildRole {
+    const message = createBaseCMsgClientToGCModifyGuildRole();
+    message.guildId = object.guildId ?? 0;
+    message.roleId = object.roleId ?? 0;
+    message.roleName = object.roleName ?? "";
+    message.roleFlags = object.roleFlags ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCModifyGuildRoleResponse(): CMsgClientToGCModifyGuildRoleResponse {
@@ -5364,6 +5873,16 @@ export const CMsgClientToGCModifyGuildRoleResponse = {
     message.result !== undefined &&
       (obj.result = cMsgClientToGCModifyGuildRoleResponse_EResponseToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCModifyGuildRoleResponse>): CMsgClientToGCModifyGuildRoleResponse {
+    return CMsgClientToGCModifyGuildRoleResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCModifyGuildRoleResponse>): CMsgClientToGCModifyGuildRoleResponse {
+    const message = createBaseCMsgClientToGCModifyGuildRoleResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -5425,6 +5944,17 @@ export const CMsgClientToGCRemoveGuildRole = {
     message.roleId !== undefined && (obj.roleId = Math.round(message.roleId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCRemoveGuildRole>): CMsgClientToGCRemoveGuildRole {
+    return CMsgClientToGCRemoveGuildRole.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCRemoveGuildRole>): CMsgClientToGCRemoveGuildRole {
+    const message = createBaseCMsgClientToGCRemoveGuildRole();
+    message.guildId = object.guildId ?? 0;
+    message.roleId = object.roleId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCRemoveGuildRoleResponse(): CMsgClientToGCRemoveGuildRoleResponse {
@@ -5473,6 +6003,16 @@ export const CMsgClientToGCRemoveGuildRoleResponse = {
     message.result !== undefined &&
       (obj.result = cMsgClientToGCRemoveGuildRoleResponse_EResponseToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCRemoveGuildRoleResponse>): CMsgClientToGCRemoveGuildRoleResponse {
+    return CMsgClientToGCRemoveGuildRoleResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCRemoveGuildRoleResponse>): CMsgClientToGCRemoveGuildRoleResponse {
+    const message = createBaseCMsgClientToGCRemoveGuildRoleResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -5578,6 +6118,18 @@ export const CMsgClientToGCSetGuildRoleOrder = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCSetGuildRoleOrder>): CMsgClientToGCSetGuildRoleOrder {
+    return CMsgClientToGCSetGuildRoleOrder.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCSetGuildRoleOrder>): CMsgClientToGCSetGuildRoleOrder {
+    const message = createBaseCMsgClientToGCSetGuildRoleOrder();
+    message.guildId = object.guildId ?? 0;
+    message.requestedRoleIds = object.requestedRoleIds?.map((e) => e) || [];
+    message.previousRoleIds = object.previousRoleIds?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCSetGuildRoleOrderResponse(): CMsgClientToGCSetGuildRoleOrderResponse {
@@ -5656,6 +6208,17 @@ export const CMsgClientToGCSetGuildRoleOrderResponse = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCSetGuildRoleOrderResponse>): CMsgClientToGCSetGuildRoleOrderResponse {
+    return CMsgClientToGCSetGuildRoleOrderResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCSetGuildRoleOrderResponse>): CMsgClientToGCSetGuildRoleOrderResponse {
+    const message = createBaseCMsgClientToGCSetGuildRoleOrderResponse();
+    message.result = object.result ?? 0;
+    message.confirmedRoleIds = object.confirmedRoleIds?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCGuildFeedRequest(): CMsgClientToGCGuildFeedRequest {
@@ -5715,6 +6278,17 @@ export const CMsgClientToGCGuildFeedRequest = {
     message.guildId !== undefined && (obj.guildId = Math.round(message.guildId));
     message.lastSeenId !== undefined && (obj.lastSeenId = message.lastSeenId);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCGuildFeedRequest>): CMsgClientToGCGuildFeedRequest {
+    return CMsgClientToGCGuildFeedRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCGuildFeedRequest>): CMsgClientToGCGuildFeedRequest {
+    const message = createBaseCMsgClientToGCGuildFeedRequest();
+    message.guildId = object.guildId ?? 0;
+    message.lastSeenId = object.lastSeenId ?? "0";
+    return message;
   },
 };
 
@@ -5795,6 +6369,18 @@ export const CMsgClientToGCRequestGuildFeedResponse = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCRequestGuildFeedResponse>): CMsgClientToGCRequestGuildFeedResponse {
+    return CMsgClientToGCRequestGuildFeedResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCRequestGuildFeedResponse>): CMsgClientToGCRequestGuildFeedResponse {
+    const message = createBaseCMsgClientToGCRequestGuildFeedResponse();
+    message.result = object.result ?? 0;
+    message.guildId = object.guildId ?? 0;
+    message.feedEvents = object.feedEvents?.map((e) => CMsgGuildFeedEvent.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientGuildFeedUpdated(): CMsgGCToClientGuildFeedUpdated {
@@ -5841,6 +6427,16 @@ export const CMsgGCToClientGuildFeedUpdated = {
     message.guildId !== undefined && (obj.guildId = Math.round(message.guildId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientGuildFeedUpdated>): CMsgGCToClientGuildFeedUpdated {
+    return CMsgGCToClientGuildFeedUpdated.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientGuildFeedUpdated>): CMsgGCToClientGuildFeedUpdated {
+    const message = createBaseCMsgGCToClientGuildFeedUpdated();
+    message.guildId = object.guildId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCAddPlayerToGuildChat(): CMsgClientToGCAddPlayerToGuildChat {
@@ -5886,6 +6482,16 @@ export const CMsgClientToGCAddPlayerToGuildChat = {
     const obj: any = {};
     message.guildId !== undefined && (obj.guildId = Math.round(message.guildId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCAddPlayerToGuildChat>): CMsgClientToGCAddPlayerToGuildChat {
+    return CMsgClientToGCAddPlayerToGuildChat.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCAddPlayerToGuildChat>): CMsgClientToGCAddPlayerToGuildChat {
+    const message = createBaseCMsgClientToGCAddPlayerToGuildChat();
+    message.guildId = object.guildId ?? 0;
+    return message;
   },
 };
 
@@ -5935,6 +6541,18 @@ export const CMsgClientToGCAddPlayerToGuildChatResponse = {
     message.result !== undefined &&
       (obj.result = cMsgClientToGCAddPlayerToGuildChatResponse_EResponseToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCAddPlayerToGuildChatResponse>): CMsgClientToGCAddPlayerToGuildChatResponse {
+    return CMsgClientToGCAddPlayerToGuildChatResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCAddPlayerToGuildChatResponse>,
+  ): CMsgClientToGCAddPlayerToGuildChatResponse {
+    const message = createBaseCMsgClientToGCAddPlayerToGuildChatResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -6008,6 +6626,20 @@ export const CMsgFindGuildByTagResponse = {
     message.guildSummary !== undefined &&
       (obj.guildSummary = message.guildSummary ? CMsgGuildSummary.toJSON(message.guildSummary) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgFindGuildByTagResponse>): CMsgFindGuildByTagResponse {
+    return CMsgFindGuildByTagResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgFindGuildByTagResponse>): CMsgFindGuildByTagResponse {
+    const message = createBaseCMsgFindGuildByTagResponse();
+    message.result = object.result ?? 0;
+    message.guildId = object.guildId ?? 0;
+    message.guildSummary = (object.guildSummary !== undefined && object.guildSummary !== null)
+      ? CMsgGuildSummary.fromPartial(object.guildSummary)
+      : undefined;
+    return message;
   },
 };
 
@@ -6089,6 +6721,19 @@ export const CMsgSearchForOpenGuildsResponse = {
     message.useWhitelist !== undefined && (obj.useWhitelist = message.useWhitelist);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSearchForOpenGuildsResponse>): CMsgSearchForOpenGuildsResponse {
+    return CMsgSearchForOpenGuildsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSearchForOpenGuildsResponse>): CMsgSearchForOpenGuildsResponse {
+    const message = createBaseCMsgSearchForOpenGuildsResponse();
+    message.result = object.result ?? 0;
+    message.searchResults =
+      object.searchResults?.map((e) => CMsgSearchForOpenGuildsResponse_SearchResult.fromPartial(e)) || [];
+    message.useWhitelist = object.useWhitelist ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgSearchForOpenGuildsResponse_SearchResult(): CMsgSearchForOpenGuildsResponse_SearchResult {
@@ -6150,6 +6795,23 @@ export const CMsgSearchForOpenGuildsResponse_SearchResult = {
       (obj.guildSummary = message.guildSummary ? CMsgGuildSummary.toJSON(message.guildSummary) : undefined);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgSearchForOpenGuildsResponse_SearchResult>,
+  ): CMsgSearchForOpenGuildsResponse_SearchResult {
+    return CMsgSearchForOpenGuildsResponse_SearchResult.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSearchForOpenGuildsResponse_SearchResult>,
+  ): CMsgSearchForOpenGuildsResponse_SearchResult {
+    const message = createBaseCMsgSearchForOpenGuildsResponse_SearchResult();
+    message.guildId = object.guildId ?? 0;
+    message.guildSummary = (object.guildSummary !== undefined && object.guildSummary !== null)
+      ? CMsgGuildSummary.fromPartial(object.guildSummary)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCReportGuildContent(): CMsgClientToGCReportGuildContent {
@@ -6210,6 +6872,17 @@ export const CMsgClientToGCReportGuildContent = {
     message.guildContentFlags !== undefined && (obj.guildContentFlags = Math.round(message.guildContentFlags));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCReportGuildContent>): CMsgClientToGCReportGuildContent {
+    return CMsgClientToGCReportGuildContent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCReportGuildContent>): CMsgClientToGCReportGuildContent {
+    const message = createBaseCMsgClientToGCReportGuildContent();
+    message.guildId = object.guildId ?? 0;
+    message.guildContentFlags = object.guildContentFlags ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCReportGuildContentResponse(): CMsgClientToGCReportGuildContentResponse {
@@ -6259,6 +6932,16 @@ export const CMsgClientToGCReportGuildContentResponse = {
       (obj.result = cMsgClientToGCReportGuildContentResponse_EResponseToJSON(message.result));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCReportGuildContentResponse>): CMsgClientToGCReportGuildContentResponse {
+    return CMsgClientToGCReportGuildContentResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCReportGuildContentResponse>): CMsgClientToGCReportGuildContentResponse {
+    const message = createBaseCMsgClientToGCReportGuildContentResponse();
+    message.result = object.result ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCRequestAccountGuildPersonaInfo(): CMsgClientToGCRequestAccountGuildPersonaInfo {
@@ -6304,6 +6987,20 @@ export const CMsgClientToGCRequestAccountGuildPersonaInfo = {
     const obj: any = {};
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCRequestAccountGuildPersonaInfo>,
+  ): CMsgClientToGCRequestAccountGuildPersonaInfo {
+    return CMsgClientToGCRequestAccountGuildPersonaInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCRequestAccountGuildPersonaInfo>,
+  ): CMsgClientToGCRequestAccountGuildPersonaInfo {
+    const message = createBaseCMsgClientToGCRequestAccountGuildPersonaInfo();
+    message.accountId = object.accountId ?? 0;
+    return message;
   },
 };
 
@@ -6372,6 +7069,23 @@ export const CMsgClientToGCRequestAccountGuildPersonaInfoResponse = {
       (obj.personaInfo = message.personaInfo ? CMsgAccountGuildsPersonaInfo.toJSON(message.personaInfo) : undefined);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCRequestAccountGuildPersonaInfoResponse>,
+  ): CMsgClientToGCRequestAccountGuildPersonaInfoResponse {
+    return CMsgClientToGCRequestAccountGuildPersonaInfoResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCRequestAccountGuildPersonaInfoResponse>,
+  ): CMsgClientToGCRequestAccountGuildPersonaInfoResponse {
+    const message = createBaseCMsgClientToGCRequestAccountGuildPersonaInfoResponse();
+    message.result = object.result ?? 0;
+    message.personaInfo = (object.personaInfo !== undefined && object.personaInfo !== null)
+      ? CMsgAccountGuildsPersonaInfo.fromPartial(object.personaInfo)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCRequestAccountGuildPersonaInfoBatch(): CMsgClientToGCRequestAccountGuildPersonaInfoBatch {
@@ -6435,6 +7149,20 @@ export const CMsgClientToGCRequestAccountGuildPersonaInfoBatch = {
       obj.accountIds = [];
     }
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCRequestAccountGuildPersonaInfoBatch>,
+  ): CMsgClientToGCRequestAccountGuildPersonaInfoBatch {
+    return CMsgClientToGCRequestAccountGuildPersonaInfoBatch.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCRequestAccountGuildPersonaInfoBatch>,
+  ): CMsgClientToGCRequestAccountGuildPersonaInfoBatch {
+    const message = createBaseCMsgClientToGCRequestAccountGuildPersonaInfoBatch();
+    message.accountIds = object.accountIds?.map((e) => e) || [];
+    return message;
   },
 };
 
@@ -6508,6 +7236,21 @@ export const CMsgClientToGCRequestAccountGuildPersonaInfoBatchResponse = {
     }
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCRequestAccountGuildPersonaInfoBatchResponse>,
+  ): CMsgClientToGCRequestAccountGuildPersonaInfoBatchResponse {
+    return CMsgClientToGCRequestAccountGuildPersonaInfoBatchResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCRequestAccountGuildPersonaInfoBatchResponse>,
+  ): CMsgClientToGCRequestAccountGuildPersonaInfoBatchResponse {
+    const message = createBaseCMsgClientToGCRequestAccountGuildPersonaInfoBatchResponse();
+    message.result = object.result ?? 0;
+    message.personaInfos = object.personaInfos?.map((e) => CMsgAccountGuildsPersonaInfo.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -6528,6 +7271,13 @@ var tsProtoGlobalThis: any = (() => {
   }
   throw "Unable to locate global object";
 })();
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

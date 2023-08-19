@@ -606,6 +606,57 @@ export const CDOTAModifierBuffTableEntry = {
     message.customEntity !== undefined && (obj.customEntity = Math.round(message.customEntity));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAModifierBuffTableEntry>): CDOTAModifierBuffTableEntry {
+    return CDOTAModifierBuffTableEntry.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAModifierBuffTableEntry>): CDOTAModifierBuffTableEntry {
+    const message = createBaseCDOTAModifierBuffTableEntry();
+    message.entryType = object.entryType ?? 1;
+    message.parent = object.parent ?? 0;
+    message.index = object.index ?? 0;
+    message.serialNum = object.serialNum ?? 0;
+    message.modifierClass = object.modifierClass ?? 0;
+    message.abilityLevel = object.abilityLevel ?? 0;
+    message.stackCount = object.stackCount ?? 0;
+    message.creationTime = object.creationTime ?? 0;
+    message.duration = object.duration ?? 0;
+    message.caster = object.caster ?? 0;
+    message.ability = object.ability ?? 0;
+    message.armor = object.armor ?? 0;
+    message.fadeTime = object.fadeTime ?? 0;
+    message.subtle = object.subtle ?? false;
+    message.channelTime = object.channelTime ?? 0;
+    message.vStart = (object.vStart !== undefined && object.vStart !== null)
+      ? CMsgVector.fromPartial(object.vStart)
+      : undefined;
+    message.vEnd = (object.vEnd !== undefined && object.vEnd !== null)
+      ? CMsgVector.fromPartial(object.vEnd)
+      : undefined;
+    message.portalLoopAppear = object.portalLoopAppear ?? "";
+    message.portalLoopDisappear = object.portalLoopDisappear ?? "";
+    message.heroLoopAppear = object.heroLoopAppear ?? "";
+    message.heroLoopDisappear = object.heroLoopDisappear ?? "";
+    message.movementSpeed = object.movementSpeed ?? 0;
+    message.aura = object.aura ?? false;
+    message.activity = object.activity ?? 0;
+    message.damage = object.damage ?? 0;
+    message.range = object.range ?? 0;
+    message.ddModifierIndex = object.ddModifierIndex ?? 0;
+    message.ddAbilityId = object.ddAbilityId ?? 0;
+    message.illusionLabel = object.illusionLabel ?? "";
+    message.active = object.active ?? false;
+    message.playerIds = object.playerIds ?? "";
+    message.luaName = object.luaName ?? "";
+    message.attackSpeed = object.attackSpeed ?? 0;
+    message.auraOwner = object.auraOwner ?? 0;
+    message.bonusAllStats = object.bonusAllStats ?? 0;
+    message.bonusHealth = object.bonusHealth ?? 0;
+    message.bonusMana = object.bonusMana ?? 0;
+    message.customEntity = object.customEntity ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTALuaModifierEntry(): CDOTALuaModifierEntry {
@@ -666,6 +717,17 @@ export const CDOTALuaModifierEntry = {
     message.modifierFilename !== undefined && (obj.modifierFilename = message.modifierFilename);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTALuaModifierEntry>): CDOTALuaModifierEntry {
+    return CDOTALuaModifierEntry.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTALuaModifierEntry>): CDOTALuaModifierEntry {
+    const message = createBaseCDOTALuaModifierEntry();
+    message.modifierType = object.modifierType ?? 0;
+    message.modifierFilename = object.modifierFilename ?? "";
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -686,6 +748,13 @@ var tsProtoGlobalThis: any = (() => {
   }
   throw "Unable to locate global object";
 })();
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function isSet(value: any): boolean {
   return value !== null && value !== undefined;

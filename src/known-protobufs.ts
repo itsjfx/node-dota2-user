@@ -1,11 +1,21 @@
 import * as _m0 from 'protobufjs/minimal';
 import { ClientProtobufs, GCProtobufs } from './protobufs/protobuf-mappings';
 
+// from ts-proto output
+// eslint-disable-next-line
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+export type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends object ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
+
 export interface MessageType<Message = UnknownMessage> {
     encode(message: Message, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Message;
     fromJSON(object: any): Message;
     toJSON(message: Message): unknown;
+    create(base?: DeepPartial<Message>): Message;
+    fromPartial(object: DeepPartial<Message>): Message;
 }
 export type UnknownMessage = any;
 const _protobufMap = { ...ClientProtobufs, ...GCProtobufs };

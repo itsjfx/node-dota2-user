@@ -54,6 +54,16 @@ export const COAuthTokenImplicitGrantNoPromptRequest = {
     message.clientid !== undefined && (obj.clientid = message.clientid);
     return obj;
   },
+
+  create(base?: DeepPartial<COAuthTokenImplicitGrantNoPromptRequest>): COAuthTokenImplicitGrantNoPromptRequest {
+    return COAuthTokenImplicitGrantNoPromptRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<COAuthTokenImplicitGrantNoPromptRequest>): COAuthTokenImplicitGrantNoPromptRequest {
+    const message = createBaseCOAuthTokenImplicitGrantNoPromptRequest();
+    message.clientid = object.clientid ?? "";
+    return message;
+  },
 };
 
 function createBaseCOAuthTokenImplicitGrantNoPromptResponse(): COAuthTokenImplicitGrantNoPromptResponse {
@@ -114,6 +124,17 @@ export const COAuthTokenImplicitGrantNoPromptResponse = {
     message.redirectUri !== undefined && (obj.redirectUri = message.redirectUri);
     return obj;
   },
+
+  create(base?: DeepPartial<COAuthTokenImplicitGrantNoPromptResponse>): COAuthTokenImplicitGrantNoPromptResponse {
+    return COAuthTokenImplicitGrantNoPromptResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<COAuthTokenImplicitGrantNoPromptResponse>): COAuthTokenImplicitGrantNoPromptResponse {
+    const message = createBaseCOAuthTokenImplicitGrantNoPromptResponse();
+    message.accessToken = object.accessToken ?? "";
+    message.redirectUri = object.redirectUri ?? "";
+    return message;
+  },
 };
 
 export interface OAuthToken {
@@ -142,6 +163,13 @@ export class OAuthTokenClientImpl implements OAuthToken {
 interface Rpc {
   request(service: string, method: string, data: Uint8Array): Promise<Uint8Array>;
 }
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function isSet(value: any): boolean {
   return value !== null && value !== undefined;

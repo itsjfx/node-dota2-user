@@ -1115,6 +1115,17 @@ export const CMsgSteamNetworkingIPAddress = {
     message.v6 !== undefined && (obj.v6 = base64FromBytes(message.v6 !== undefined ? message.v6 : Buffer.alloc(0)));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamNetworkingIPAddress>): CMsgSteamNetworkingIPAddress {
+    return CMsgSteamNetworkingIPAddress.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamNetworkingIPAddress>): CMsgSteamNetworkingIPAddress {
+    const message = createBaseCMsgSteamNetworkingIPAddress();
+    message.v4 = object.v4 ?? 0;
+    message.v6 = object.v6 ?? Buffer.alloc(0);
+    return message;
+  },
 };
 
 function createBaseCMsgSteamDatagramSignedMessageGeneric(): CMsgSteamDatagramSignedMessageGeneric {
@@ -1202,6 +1213,21 @@ export const CMsgSteamDatagramSignedMessageGeneric = {
     message.dummyPad !== undefined &&
       (obj.dummyPad = base64FromBytes(message.dummyPad !== undefined ? message.dummyPad : Buffer.alloc(0)));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamDatagramSignedMessageGeneric>): CMsgSteamDatagramSignedMessageGeneric {
+    return CMsgSteamDatagramSignedMessageGeneric.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramSignedMessageGeneric>): CMsgSteamDatagramSignedMessageGeneric {
+    const message = createBaseCMsgSteamDatagramSignedMessageGeneric();
+    message.cert = (object.cert !== undefined && object.cert !== null)
+      ? CMsgSteamDatagramCertificateSigned.fromPartial(object.cert)
+      : undefined;
+    message.signedData = object.signedData ?? Buffer.alloc(0);
+    message.signature = object.signature ?? Buffer.alloc(0);
+    message.dummyPad = object.dummyPad ?? Buffer.alloc(0);
+    return message;
   },
 };
 
@@ -1520,6 +1546,32 @@ export const CMsgSteamDatagramRouterPingReply = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamDatagramRouterPingReply>): CMsgSteamDatagramRouterPingReply {
+    return CMsgSteamDatagramRouterPingReply.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramRouterPingReply>): CMsgSteamDatagramRouterPingReply {
+    const message = createBaseCMsgSteamDatagramRouterPingReply();
+    message.clientTimestamp = object.clientTimestamp ?? 0;
+    message.latencyDatacenterIds = object.latencyDatacenterIds?.map((e) => e) || [];
+    message.latencyPingMs = object.latencyPingMs?.map((e) => e) || [];
+    message.latencyDatacenterIdsP2p = object.latencyDatacenterIdsP2p?.map((e) => e) || [];
+    message.latencyPingMsP2p = object.latencyPingMsP2p?.map((e) => e) || [];
+    message.yourPublicIp = object.yourPublicIp ?? 0;
+    message.yourPublicPort = object.yourPublicPort ?? 0;
+    message.serverTime = object.serverTime ?? 0;
+    message.challenge = object.challenge ?? "0";
+    message.secondsUntilShutdown = object.secondsUntilShutdown ?? 0;
+    message.clientCookie = object.clientCookie ?? 0;
+    message.scoringPenaltyRelayCluster = object.scoringPenaltyRelayCluster ?? 0;
+    message.flags = object.flags ?? 0;
+    message.routeExceptions =
+      object.routeExceptions?.map((e) => CMsgSteamDatagramRouterPingReply_RouteException.fromPartial(e)) || [];
+    message.altAddresses =
+      object.altAddresses?.map((e) => CMsgSteamDatagramRouterPingReply_AltAddress.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgSteamDatagramRouterPingReply_RouteException(): CMsgSteamDatagramRouterPingReply_RouteException {
@@ -1594,6 +1646,22 @@ export const CMsgSteamDatagramRouterPingReply_RouteException = {
     message.flags !== undefined && (obj.flags = Math.round(message.flags));
     message.penalty !== undefined && (obj.penalty = Math.round(message.penalty));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamDatagramRouterPingReply_RouteException>,
+  ): CMsgSteamDatagramRouterPingReply_RouteException {
+    return CMsgSteamDatagramRouterPingReply_RouteException.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamDatagramRouterPingReply_RouteException>,
+  ): CMsgSteamDatagramRouterPingReply_RouteException {
+    const message = createBaseCMsgSteamDatagramRouterPingReply_RouteException();
+    message.dataCenterId = object.dataCenterId ?? 0;
+    message.flags = object.flags ?? 0;
+    message.penalty = object.penalty ?? 0;
+    return message;
   },
 };
 
@@ -1693,6 +1761,22 @@ export const CMsgSteamDatagramRouterPingReply_AltAddress = {
       (obj.protocol = cMsgSteamDatagramRouterPingReply_AltAddress_ProtocolToJSON(message.protocol));
     message.id !== undefined && (obj.id = message.id);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamDatagramRouterPingReply_AltAddress>): CMsgSteamDatagramRouterPingReply_AltAddress {
+    return CMsgSteamDatagramRouterPingReply_AltAddress.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamDatagramRouterPingReply_AltAddress>,
+  ): CMsgSteamDatagramRouterPingReply_AltAddress {
+    const message = createBaseCMsgSteamDatagramRouterPingReply_AltAddress();
+    message.ipv4 = object.ipv4 ?? 0;
+    message.port = object.port ?? 0;
+    message.penalty = object.penalty ?? 0;
+    message.protocol = object.protocol ?? 0;
+    message.id = object.id ?? "";
+    return message;
   },
 };
 
@@ -1827,6 +1911,26 @@ export const CMsgSteamDatagramGameserverPingRequestBody = {
     message.echo !== undefined &&
       (obj.echo = base64FromBytes(message.echo !== undefined ? message.echo : Buffer.alloc(0)));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamDatagramGameserverPingRequestBody>): CMsgSteamDatagramGameserverPingRequestBody {
+    return CMsgSteamDatagramGameserverPingRequestBody.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamDatagramGameserverPingRequestBody>,
+  ): CMsgSteamDatagramGameserverPingRequestBody {
+    const message = createBaseCMsgSteamDatagramGameserverPingRequestBody();
+    message.relayPopid = object.relayPopid ?? 0;
+    message.yourPublicIp = (object.yourPublicIp !== undefined && object.yourPublicIp !== null)
+      ? CMsgSteamNetworkingIPAddress.fromPartial(object.yourPublicIp)
+      : undefined;
+    message.yourPublicPort = object.yourPublicPort ?? 0;
+    message.relayUnixTime = object.relayUnixTime ?? "0";
+    message.routingSecret = object.routingSecret ?? "0";
+    message.myIps = object.myIps?.map((e) => CMsgSteamNetworkingIPAddress.fromPartial(e)) || [];
+    message.echo = object.echo ?? Buffer.alloc(0);
+    return message;
   },
 };
 
@@ -1989,6 +2093,30 @@ export const CMsgSteamDatagramGameserverPingRequestEnvelope = {
     message.dummyPad !== undefined &&
       (obj.dummyPad = base64FromBytes(message.dummyPad !== undefined ? message.dummyPad : Buffer.alloc(0)));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamDatagramGameserverPingRequestEnvelope>,
+  ): CMsgSteamDatagramGameserverPingRequestEnvelope {
+    return CMsgSteamDatagramGameserverPingRequestEnvelope.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamDatagramGameserverPingRequestEnvelope>,
+  ): CMsgSteamDatagramGameserverPingRequestEnvelope {
+    const message = createBaseCMsgSteamDatagramGameserverPingRequestEnvelope();
+    message.cert = (object.cert !== undefined && object.cert !== null)
+      ? CMsgSteamDatagramCertificateSigned.fromPartial(object.cert)
+      : undefined;
+    message.signedData = object.signedData ?? Buffer.alloc(0);
+    message.signature = object.signature ?? Buffer.alloc(0);
+    message.legacyYourPublicIp = object.legacyYourPublicIp ?? 0;
+    message.legacyYourPublicPort = object.legacyYourPublicPort ?? 0;
+    message.legacyRelayUnixTime = object.legacyRelayUnixTime ?? 0;
+    message.legacyChallenge = object.legacyChallenge ?? "0";
+    message.legacyRouterTimestamp = object.legacyRouterTimestamp ?? 0;
+    message.dummyPad = object.dummyPad ?? Buffer.alloc(0);
+    return message;
   },
 };
 
@@ -2159,6 +2287,25 @@ export const CMsgSteamDatagramGameserverPingReplyData = {
     message.myUnixTime !== undefined && (obj.myUnixTime = Math.round(message.myUnixTime));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamDatagramGameserverPingReplyData>): CMsgSteamDatagramGameserverPingReplyData {
+    return CMsgSteamDatagramGameserverPingReplyData.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramGameserverPingReplyData>): CMsgSteamDatagramGameserverPingReplyData {
+    const message = createBaseCMsgSteamDatagramGameserverPingReplyData();
+    message.echoRelayUnixTime = object.echoRelayUnixTime ?? 0;
+    message.echo = object.echo ?? Buffer.alloc(0);
+    message.legacyChallenge = object.legacyChallenge ?? "0";
+    message.legacyRouterTimestamp = object.legacyRouterTimestamp ?? 0;
+    message.dataCenterId = object.dataCenterId ?? 0;
+    message.appid = object.appid ?? 0;
+    message.protocolVersion = object.protocolVersion ?? 0;
+    message.build = object.build ?? "";
+    message.networkConfigVersion = object.networkConfigVersion ?? "0";
+    message.myUnixTime = object.myUnixTime ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgSteamDatagramNoSessionRelayToClient(): CMsgSteamDatagramNoSessionRelayToClient {
@@ -2274,6 +2421,21 @@ export const CMsgSteamDatagramNoSessionRelayToClient = {
     message.secondsUntilShutdown !== undefined && (obj.secondsUntilShutdown = Math.round(message.secondsUntilShutdown));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamDatagramNoSessionRelayToClient>): CMsgSteamDatagramNoSessionRelayToClient {
+    return CMsgSteamDatagramNoSessionRelayToClient.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramNoSessionRelayToClient>): CMsgSteamDatagramNoSessionRelayToClient {
+    const message = createBaseCMsgSteamDatagramNoSessionRelayToClient();
+    message.connectionId = object.connectionId ?? 0;
+    message.yourPublicIp = object.yourPublicIp ?? 0;
+    message.yourPublicPort = object.yourPublicPort ?? 0;
+    message.serverTime = object.serverTime ?? 0;
+    message.challenge = object.challenge ?? "0";
+    message.secondsUntilShutdown = object.secondsUntilShutdown ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgSteamDatagramNoSessionRelayToPeer(): CMsgSteamDatagramNoSessionRelayToPeer {
@@ -2358,6 +2520,19 @@ export const CMsgSteamDatagramNoSessionRelayToPeer = {
     message.kludgePad !== undefined && (obj.kludgePad = message.kludgePad);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamDatagramNoSessionRelayToPeer>): CMsgSteamDatagramNoSessionRelayToPeer {
+    return CMsgSteamDatagramNoSessionRelayToPeer.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramNoSessionRelayToPeer>): CMsgSteamDatagramNoSessionRelayToPeer {
+    const message = createBaseCMsgSteamDatagramNoSessionRelayToPeer();
+    message.legacyRelaySessionId = object.legacyRelaySessionId ?? 0;
+    message.fromRelaySessionId = object.fromRelaySessionId ?? 0;
+    message.fromConnectionId = object.fromConnectionId ?? 0;
+    message.kludgePad = object.kludgePad ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgSteamDatagramClientPingSampleRequest(): CMsgSteamDatagramClientPingSampleRequest {
@@ -2403,6 +2578,16 @@ export const CMsgSteamDatagramClientPingSampleRequest = {
     const obj: any = {};
     message.connectionId !== undefined && (obj.connectionId = Math.round(message.connectionId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamDatagramClientPingSampleRequest>): CMsgSteamDatagramClientPingSampleRequest {
+    return CMsgSteamDatagramClientPingSampleRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramClientPingSampleRequest>): CMsgSteamDatagramClientPingSampleRequest {
+    const message = createBaseCMsgSteamDatagramClientPingSampleRequest();
+    message.connectionId = object.connectionId ?? 0;
+    return message;
   },
 };
 
@@ -2503,6 +2688,21 @@ export const CMsgSteamDatagramClientPingSampleReply = {
       obj.legacyDataCenters = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamDatagramClientPingSampleReply>): CMsgSteamDatagramClientPingSampleReply {
+    return CMsgSteamDatagramClientPingSampleReply.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramClientPingSampleReply>): CMsgSteamDatagramClientPingSampleReply {
+    const message = createBaseCMsgSteamDatagramClientPingSampleReply();
+    message.connectionId = object.connectionId ?? 0;
+    message.overrideActive = object.overrideActive ?? false;
+    message.pops = object.pops?.map((e) => CMsgSteamDatagramClientPingSampleReply_POP.fromPartial(e)) || [];
+    message.legacyDataCenters =
+      object.legacyDataCenters?.map((e) => CMsgSteamDatagramClientPingSampleReply_LegacyDataCenter.fromPartial(e)) ||
+      [];
+    return message;
   },
 };
 
@@ -2760,6 +2960,34 @@ export const CMsgSteamDatagramClientPingSampleReply_POP = {
     message.testDcViaRelayPopId !== undefined && (obj.testDcViaRelayPopId = Math.round(message.testDcViaRelayPopId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamDatagramClientPingSampleReply_POP>): CMsgSteamDatagramClientPingSampleReply_POP {
+    return CMsgSteamDatagramClientPingSampleReply_POP.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamDatagramClientPingSampleReply_POP>,
+  ): CMsgSteamDatagramClientPingSampleReply_POP {
+    const message = createBaseCMsgSteamDatagramClientPingSampleReply_POP();
+    message.popId = object.popId ?? 0;
+    message.defaultFrontPingMs = object.defaultFrontPingMs ?? 0;
+    message.clusterPenalty = object.clusterPenalty ?? 0;
+    message.altAddresses =
+      object.altAddresses?.map((e) => CMsgSteamDatagramClientPingSampleReply_POP_AltAddress.fromPartial(e)) || [];
+    message.defaultE2ePingMs = object.defaultE2ePingMs ?? 0;
+    message.defaultE2eScore = object.defaultE2eScore ?? 0;
+    message.p2pViaPeerRelayPopId = object.p2pViaPeerRelayPopId ?? 0;
+    message.bestDcPingMs = object.bestDcPingMs ?? 0;
+    message.bestDcScore = object.bestDcScore ?? 0;
+    message.bestDcViaRelayPopId = object.bestDcViaRelayPopId ?? 0;
+    message.defaultDcPingMs = object.defaultDcPingMs ?? 0;
+    message.defaultDcScore = object.defaultDcScore ?? 0;
+    message.defaultDcViaRelayPopId = object.defaultDcViaRelayPopId ?? 0;
+    message.testDcPingMs = object.testDcPingMs ?? 0;
+    message.testDcScore = object.testDcScore ?? 0;
+    message.testDcViaRelayPopId = object.testDcViaRelayPopId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgSteamDatagramClientPingSampleReply_POP_AltAddress(): CMsgSteamDatagramClientPingSampleReply_POP_AltAddress {
@@ -2835,6 +3063,22 @@ export const CMsgSteamDatagramClientPingSampleReply_POP_AltAddress = {
     message.penalty !== undefined && (obj.penalty = Math.round(message.penalty));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgSteamDatagramClientPingSampleReply_POP_AltAddress>,
+  ): CMsgSteamDatagramClientPingSampleReply_POP_AltAddress {
+    return CMsgSteamDatagramClientPingSampleReply_POP_AltAddress.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamDatagramClientPingSampleReply_POP_AltAddress>,
+  ): CMsgSteamDatagramClientPingSampleReply_POP_AltAddress {
+    const message = createBaseCMsgSteamDatagramClientPingSampleReply_POP_AltAddress();
+    message.id = object.id ?? "";
+    message.frontPingMs = object.frontPingMs ?? 0;
+    message.penalty = object.penalty ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgSteamDatagramClientPingSampleReply_LegacyDataCenter(): CMsgSteamDatagramClientPingSampleReply_LegacyDataCenter {
@@ -2909,6 +3153,22 @@ export const CMsgSteamDatagramClientPingSampleReply_LegacyDataCenter = {
     message.bestDcViaRelayPopId !== undefined && (obj.bestDcViaRelayPopId = Math.round(message.bestDcViaRelayPopId));
     message.bestDcPingMs !== undefined && (obj.bestDcPingMs = Math.round(message.bestDcPingMs));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamDatagramClientPingSampleReply_LegacyDataCenter>,
+  ): CMsgSteamDatagramClientPingSampleReply_LegacyDataCenter {
+    return CMsgSteamDatagramClientPingSampleReply_LegacyDataCenter.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamDatagramClientPingSampleReply_LegacyDataCenter>,
+  ): CMsgSteamDatagramClientPingSampleReply_LegacyDataCenter {
+    const message = createBaseCMsgSteamDatagramClientPingSampleReply_LegacyDataCenter();
+    message.dataCenterId = object.dataCenterId ?? 0;
+    message.bestDcViaRelayPopId = object.bestDcViaRelayPopId ?? 0;
+    message.bestDcPingMs = object.bestDcPingMs ?? 0;
+    return message;
   },
 };
 
@@ -3127,6 +3387,35 @@ export const CMsgSteamDatagramClientSwitchedPrimary = {
       : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamDatagramClientSwitchedPrimary>): CMsgSteamDatagramClientSwitchedPrimary {
+    return CMsgSteamDatagramClientSwitchedPrimary.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramClientSwitchedPrimary>): CMsgSteamDatagramClientSwitchedPrimary {
+    const message = createBaseCMsgSteamDatagramClientSwitchedPrimary();
+    message.connectionId = object.connectionId ?? 0;
+    message.fromIp = object.fromIp ?? 0;
+    message.fromPort = object.fromPort ?? 0;
+    message.fromRouterCluster = object.fromRouterCluster ?? 0;
+    message.fromActiveTime = object.fromActiveTime ?? 0;
+    message.fromActivePacketsRecv = object.fromActivePacketsRecv ?? 0;
+    message.fromDroppedReason = object.fromDroppedReason ?? "";
+    message.gapMs = object.gapMs ?? 0;
+    message.fromQualityNow = (object.fromQualityNow !== undefined && object.fromQualityNow !== null)
+      ? CMsgSteamDatagramClientSwitchedPrimary_RouterQuality.fromPartial(object.fromQualityNow)
+      : undefined;
+    message.toQualityNow = (object.toQualityNow !== undefined && object.toQualityNow !== null)
+      ? CMsgSteamDatagramClientSwitchedPrimary_RouterQuality.fromPartial(object.toQualityNow)
+      : undefined;
+    message.fromQualityThen = (object.fromQualityThen !== undefined && object.fromQualityThen !== null)
+      ? CMsgSteamDatagramClientSwitchedPrimary_RouterQuality.fromPartial(object.fromQualityThen)
+      : undefined;
+    message.toQualityThen = (object.toQualityThen !== undefined && object.toQualityThen !== null)
+      ? CMsgSteamDatagramClientSwitchedPrimary_RouterQuality.fromPartial(object.toQualityThen)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgSteamDatagramClientSwitchedPrimary_RouterQuality(): CMsgSteamDatagramClientSwitchedPrimary_RouterQuality {
@@ -3213,6 +3502,23 @@ export const CMsgSteamDatagramClientSwitchedPrimary_RouterQuality = {
     message.backPing !== undefined && (obj.backPing = Math.round(message.backPing));
     message.secondsUntilDown !== undefined && (obj.secondsUntilDown = Math.round(message.secondsUntilDown));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamDatagramClientSwitchedPrimary_RouterQuality>,
+  ): CMsgSteamDatagramClientSwitchedPrimary_RouterQuality {
+    return CMsgSteamDatagramClientSwitchedPrimary_RouterQuality.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamDatagramClientSwitchedPrimary_RouterQuality>,
+  ): CMsgSteamDatagramClientSwitchedPrimary_RouterQuality {
+    const message = createBaseCMsgSteamDatagramClientSwitchedPrimary_RouterQuality();
+    message.score = object.score ?? 0;
+    message.frontPing = object.frontPing ?? 0;
+    message.backPing = object.backPing ?? 0;
+    message.secondsUntilDown = object.secondsUntilDown ?? 0;
+    return message;
   },
 };
 
@@ -3371,6 +3677,28 @@ export const CMsgSteamDatagramConnectRequest = {
     message.legacyClientSteamId !== undefined && (obj.legacyClientSteamId = message.legacyClientSteamId);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamDatagramConnectRequest>): CMsgSteamDatagramConnectRequest {
+    return CMsgSteamDatagramConnectRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramConnectRequest>): CMsgSteamDatagramConnectRequest {
+    const message = createBaseCMsgSteamDatagramConnectRequest();
+    message.connectionId = object.connectionId ?? 0;
+    message.myTimestamp = object.myTimestamp ?? "0";
+    message.pingEstMs = object.pingEstMs ?? 0;
+    message.virtualPort = object.virtualPort ?? 0;
+    message.gameserverRelaySessionId = object.gameserverRelaySessionId ?? 0;
+    message.crypt = (object.crypt !== undefined && object.crypt !== null)
+      ? CMsgSteamDatagramSessionCryptInfoSigned.fromPartial(object.crypt)
+      : undefined;
+    message.cert = (object.cert !== undefined && object.cert !== null)
+      ? CMsgSteamDatagramCertificateSigned.fromPartial(object.cert)
+      : undefined;
+    message.routingSecret = object.routingSecret ?? "0";
+    message.legacyClientSteamId = object.legacyClientSteamId ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgSteamDatagramConnectOK(): CMsgSteamDatagramConnectOK {
@@ -3501,6 +3829,26 @@ export const CMsgSteamDatagramConnectOK = {
     message.cert !== undefined &&
       (obj.cert = message.cert ? CMsgSteamDatagramCertificateSigned.toJSON(message.cert) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamDatagramConnectOK>): CMsgSteamDatagramConnectOK {
+    return CMsgSteamDatagramConnectOK.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramConnectOK>): CMsgSteamDatagramConnectOK {
+    const message = createBaseCMsgSteamDatagramConnectOK();
+    message.clientConnectionId = object.clientConnectionId ?? 0;
+    message.serverConnectionId = object.serverConnectionId ?? 0;
+    message.yourTimestamp = object.yourTimestamp ?? "0";
+    message.delayTimeUsec = object.delayTimeUsec ?? 0;
+    message.gameserverRelaySessionId = object.gameserverRelaySessionId ?? 0;
+    message.crypt = (object.crypt !== undefined && object.crypt !== null)
+      ? CMsgSteamDatagramSessionCryptInfoSigned.fromPartial(object.crypt)
+      : undefined;
+    message.cert = (object.cert !== undefined && object.cert !== null)
+      ? CMsgSteamDatagramCertificateSigned.fromPartial(object.cert)
+      : undefined;
+    return message;
   },
 };
 
@@ -3736,6 +4084,30 @@ export const CMsgSteamNetworkingP2PSDRRoutingSummary = {
     message.selectedSeconds !== undefined && (obj.selectedSeconds = Math.round(message.selectedSeconds));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamNetworkingP2PSDRRoutingSummary>): CMsgSteamNetworkingP2PSDRRoutingSummary {
+    return CMsgSteamNetworkingP2PSDRRoutingSummary.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamNetworkingP2PSDRRoutingSummary>): CMsgSteamNetworkingP2PSDRRoutingSummary {
+    const message = createBaseCMsgSteamNetworkingP2PSDRRoutingSummary();
+    message.initialPing = object.initialPing ?? 0;
+    message.initialPingFrontLocal = object.initialPingFrontLocal ?? 0;
+    message.initialPingFrontRemote = object.initialPingFrontRemote ?? 0;
+    message.initialScore = object.initialScore ?? 0;
+    message.initialPopLocal = object.initialPopLocal ?? 0;
+    message.initialPopRemote = object.initialPopRemote ?? 0;
+    message.bestPing = object.bestPing ?? 0;
+    message.bestPingFrontLocal = object.bestPingFrontLocal ?? 0;
+    message.bestPingFrontRemote = object.bestPingFrontRemote ?? 0;
+    message.bestScore = object.bestScore ?? 0;
+    message.bestPopLocal = object.bestPopLocal ?? 0;
+    message.bestPopRemote = object.bestPopRemote ?? 0;
+    message.bestTime = object.bestTime ?? 0;
+    message.negotiationMs = object.negotiationMs ?? 0;
+    message.selectedSeconds = object.selectedSeconds ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgSteamDatagramP2PRoutingSummary(): CMsgSteamDatagramP2PRoutingSummary {
@@ -3797,6 +4169,21 @@ export const CMsgSteamDatagramP2PRoutingSummary = {
     message.sdr !== undefined &&
       (obj.sdr = message.sdr ? CMsgSteamNetworkingP2PSDRRoutingSummary.toJSON(message.sdr) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamDatagramP2PRoutingSummary>): CMsgSteamDatagramP2PRoutingSummary {
+    return CMsgSteamDatagramP2PRoutingSummary.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramP2PRoutingSummary>): CMsgSteamDatagramP2PRoutingSummary {
+    const message = createBaseCMsgSteamDatagramP2PRoutingSummary();
+    message.ice = (object.ice !== undefined && object.ice !== null)
+      ? CMsgSteamNetworkingICESessionSummary.fromPartial(object.ice)
+      : undefined;
+    message.sdr = (object.sdr !== undefined && object.sdr !== null)
+      ? CMsgSteamNetworkingP2PSDRRoutingSummary.fromPartial(object.sdr)
+      : undefined;
+    return message;
   },
 };
 
@@ -4106,6 +4493,43 @@ export const CMsgSteamDatagramConnectionClosed = {
       : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamDatagramConnectionClosed>): CMsgSteamDatagramConnectionClosed {
+    return CMsgSteamDatagramConnectionClosed.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramConnectionClosed>): CMsgSteamDatagramConnectionClosed {
+    const message = createBaseCMsgSteamDatagramConnectionClosed();
+    message.toConnectionId = object.toConnectionId ?? 0;
+    message.fromConnectionId = object.fromConnectionId ?? 0;
+    message.fromIdentityString = object.fromIdentityString ?? "";
+    message.legacyFromIdentityBinary =
+      (object.legacyFromIdentityBinary !== undefined && object.legacyFromIdentityBinary !== null)
+        ? CMsgSteamNetworkingIdentityLegacyBinary.fromPartial(object.legacyFromIdentityBinary)
+        : undefined;
+    message.legacyFromSteamId = object.legacyFromSteamId ?? "0";
+    message.legacyGameserverRelaySessionId = object.legacyGameserverRelaySessionId ?? 0;
+    message.toRelaySessionId = object.toRelaySessionId ?? 0;
+    message.fromRelaySessionId = object.fromRelaySessionId ?? 0;
+    message.forwardTargetRelayRoutingToken = object.forwardTargetRelayRoutingToken ?? Buffer.alloc(0);
+    message.forwardTargetRevision = object.forwardTargetRevision ?? 0;
+    message.relayMode = object.relayMode ?? 0;
+    message.debug = object.debug ?? "";
+    message.reasonCode = object.reasonCode ?? 0;
+    message.routingSecret = object.routingSecret ?? "0";
+    message.notPrimarySession = object.notPrimarySession ?? false;
+    message.notPrimaryTransport = object.notPrimaryTransport ?? false;
+    message.qualityRelay = (object.qualityRelay !== undefined && object.qualityRelay !== null)
+      ? CMsgSteamDatagramConnectionQuality.fromPartial(object.qualityRelay)
+      : undefined;
+    message.qualityE2e = (object.qualityE2e !== undefined && object.qualityE2e !== null)
+      ? CMsgSteamDatagramConnectionQuality.fromPartial(object.qualityE2e)
+      : undefined;
+    message.p2pRoutingSummary = (object.p2pRoutingSummary !== undefined && object.p2pRoutingSummary !== null)
+      ? CMsgSteamDatagramP2PRoutingSummary.fromPartial(object.p2pRoutingSummary)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgSteamDatagramNoConnection(): CMsgSteamDatagramNoConnection {
@@ -4350,6 +4774,36 @@ export const CMsgSteamDatagramNoConnection = {
     message.dummyPad !== undefined && (obj.dummyPad = Math.round(message.dummyPad));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamDatagramNoConnection>): CMsgSteamDatagramNoConnection {
+    return CMsgSteamDatagramNoConnection.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramNoConnection>): CMsgSteamDatagramNoConnection {
+    const message = createBaseCMsgSteamDatagramNoConnection();
+    message.toConnectionId = object.toConnectionId ?? 0;
+    message.fromConnectionId = object.fromConnectionId ?? 0;
+    message.legacyGameserverRelaySessionId = object.legacyGameserverRelaySessionId ?? 0;
+    message.toRelaySessionId = object.toRelaySessionId ?? 0;
+    message.fromRelaySessionId = object.fromRelaySessionId ?? 0;
+    message.fromIdentityString = object.fromIdentityString ?? "";
+    message.legacyFromSteamId = object.legacyFromSteamId ?? "0";
+    message.endToEnd = object.endToEnd ?? false;
+    message.notPrimarySession = object.notPrimarySession ?? false;
+    message.notPrimaryTransport = object.notPrimaryTransport ?? false;
+    message.qualityRelay = (object.qualityRelay !== undefined && object.qualityRelay !== null)
+      ? CMsgSteamDatagramConnectionQuality.fromPartial(object.qualityRelay)
+      : undefined;
+    message.qualityE2e = (object.qualityE2e !== undefined && object.qualityE2e !== null)
+      ? CMsgSteamDatagramConnectionQuality.fromPartial(object.qualityE2e)
+      : undefined;
+    message.p2pRoutingSummary = (object.p2pRoutingSummary !== undefined && object.p2pRoutingSummary !== null)
+      ? CMsgSteamDatagramP2PRoutingSummary.fromPartial(object.p2pRoutingSummary)
+      : undefined;
+    message.routingSecret = object.routingSecret ?? "0";
+    message.dummyPad = object.dummyPad ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgSteamDatagramGameserverSessionRequest(): CMsgSteamDatagramGameserverSessionRequest {
@@ -4535,6 +4989,30 @@ export const CMsgSteamDatagramGameserverSessionRequest = {
       : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamDatagramGameserverSessionRequest>): CMsgSteamDatagramGameserverSessionRequest {
+    return CMsgSteamDatagramGameserverSessionRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamDatagramGameserverSessionRequest>,
+  ): CMsgSteamDatagramGameserverSessionRequest {
+    const message = createBaseCMsgSteamDatagramGameserverSessionRequest();
+    message.ticket = object.ticket ?? Buffer.alloc(0);
+    message.challengeTime = object.challengeTime ?? 0;
+    message.challenge = object.challenge ?? "0";
+    message.clientConnectionId = object.clientConnectionId ?? 0;
+    message.serverConnectionId = object.serverConnectionId ?? 0;
+    message.networkConfigVersion = object.networkConfigVersion ?? "0";
+    message.protocolVersion = object.protocolVersion ?? 0;
+    message.platform = object.platform ?? "";
+    message.build = object.build ?? "";
+    message.devGameserverIdentity = object.devGameserverIdentity ?? "";
+    message.devClientCert = (object.devClientCert !== undefined && object.devClientCert !== null)
+      ? CMsgSteamDatagramCertificateSigned.fromPartial(object.devClientCert)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgSteamDatagramGameserverSessionEstablished(): CMsgSteamDatagramGameserverSessionEstablished {
@@ -4654,6 +5132,25 @@ export const CMsgSteamDatagramGameserverSessionEstablished = {
       ));
     message.legacyGameserverSteamid !== undefined && (obj.legacyGameserverSteamid = message.legacyGameserverSteamid);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamDatagramGameserverSessionEstablished>,
+  ): CMsgSteamDatagramGameserverSessionEstablished {
+    return CMsgSteamDatagramGameserverSessionEstablished.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamDatagramGameserverSessionEstablished>,
+  ): CMsgSteamDatagramGameserverSessionEstablished {
+    const message = createBaseCMsgSteamDatagramGameserverSessionEstablished();
+    message.connectionId = object.connectionId ?? 0;
+    message.gameserverIdentityString = object.gameserverIdentityString ?? "";
+    message.secondsUntilShutdown = object.secondsUntilShutdown ?? 0;
+    message.seqNumR2c = object.seqNumR2c ?? 0;
+    message.dummyLegacyIdentityBinary = object.dummyLegacyIdentityBinary ?? Buffer.alloc(0);
+    message.legacyGameserverSteamid = object.legacyGameserverSteamid ?? "0";
+    return message;
   },
 };
 
@@ -4833,6 +5330,31 @@ export const CMsgSteamDatagramConnectionStatsClientToRouter = {
     message.seqNumC2r !== undefined && (obj.seqNumC2r = Math.round(message.seqNumC2r));
     message.seqNumE2e !== undefined && (obj.seqNumE2e = Math.round(message.seqNumE2e));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamDatagramConnectionStatsClientToRouter>,
+  ): CMsgSteamDatagramConnectionStatsClientToRouter {
+    return CMsgSteamDatagramConnectionStatsClientToRouter.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamDatagramConnectionStatsClientToRouter>,
+  ): CMsgSteamDatagramConnectionStatsClientToRouter {
+    const message = createBaseCMsgSteamDatagramConnectionStatsClientToRouter();
+    message.qualityRelay = (object.qualityRelay !== undefined && object.qualityRelay !== null)
+      ? CMsgSteamDatagramConnectionQuality.fromPartial(object.qualityRelay)
+      : undefined;
+    message.qualityE2e = (object.qualityE2e !== undefined && object.qualityE2e !== null)
+      ? CMsgSteamDatagramConnectionQuality.fromPartial(object.qualityE2e)
+      : undefined;
+    message.ackRelay = object.ackRelay?.map((e) => e) || [];
+    message.legacyAckE2e = object.legacyAckE2e?.map((e) => e) || [];
+    message.flags = object.flags ?? 0;
+    message.clientConnectionId = object.clientConnectionId ?? 0;
+    message.seqNumC2r = object.seqNumC2r ?? 0;
+    message.seqNumE2e = object.seqNumE2e ?? 0;
+    return message;
   },
 };
 
@@ -5067,6 +5589,35 @@ export const CMsgSteamDatagramConnectionStatsRouterToClient = {
     message.seqNumR2c !== undefined && (obj.seqNumR2c = Math.round(message.seqNumR2c));
     message.seqNumE2e !== undefined && (obj.seqNumE2e = Math.round(message.seqNumE2e));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamDatagramConnectionStatsRouterToClient>,
+  ): CMsgSteamDatagramConnectionStatsRouterToClient {
+    return CMsgSteamDatagramConnectionStatsRouterToClient.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamDatagramConnectionStatsRouterToClient>,
+  ): CMsgSteamDatagramConnectionStatsRouterToClient {
+    const message = createBaseCMsgSteamDatagramConnectionStatsRouterToClient();
+    message.qualityRelay = (object.qualityRelay !== undefined && object.qualityRelay !== null)
+      ? CMsgSteamDatagramConnectionQuality.fromPartial(object.qualityRelay)
+      : undefined;
+    message.qualityE2e = (object.qualityE2e !== undefined && object.qualityE2e !== null)
+      ? CMsgSteamDatagramConnectionQuality.fromPartial(object.qualityE2e)
+      : undefined;
+    message.secondsUntilShutdown = object.secondsUntilShutdown ?? 0;
+    message.migrateRequestIp = object.migrateRequestIp ?? 0;
+    message.migrateRequestPort = object.migrateRequestPort ?? 0;
+    message.scoringPenaltyRelayCluster = object.scoringPenaltyRelayCluster ?? 0;
+    message.ackRelay = object.ackRelay?.map((e) => e) || [];
+    message.legacyAckE2e = object.legacyAckE2e?.map((e) => e) || [];
+    message.flags = object.flags ?? 0;
+    message.clientConnectionId = object.clientConnectionId ?? 0;
+    message.seqNumR2c = object.seqNumR2c ?? 0;
+    message.seqNumE2e = object.seqNumE2e ?? 0;
+    return message;
   },
 };
 
@@ -5312,6 +5863,36 @@ export const CMsgSteamDatagramConnectionStatsRouterToServer = {
     message.routingSecret !== undefined && (obj.routingSecret = message.routingSecret);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgSteamDatagramConnectionStatsRouterToServer>,
+  ): CMsgSteamDatagramConnectionStatsRouterToServer {
+    return CMsgSteamDatagramConnectionStatsRouterToServer.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamDatagramConnectionStatsRouterToServer>,
+  ): CMsgSteamDatagramConnectionStatsRouterToServer {
+    const message = createBaseCMsgSteamDatagramConnectionStatsRouterToServer();
+    message.qualityRelay = (object.qualityRelay !== undefined && object.qualityRelay !== null)
+      ? CMsgSteamDatagramConnectionQuality.fromPartial(object.qualityRelay)
+      : undefined;
+    message.qualityE2e = (object.qualityE2e !== undefined && object.qualityE2e !== null)
+      ? CMsgSteamDatagramConnectionQuality.fromPartial(object.qualityE2e)
+      : undefined;
+    message.ackRelay = object.ackRelay?.map((e) => e) || [];
+    message.legacyAckE2e = object.legacyAckE2e?.map((e) => e) || [];
+    message.flags = object.flags ?? 0;
+    message.seqNumR2s = object.seqNumR2s ?? 0;
+    message.seqNumE2e = object.seqNumE2e ?? 0;
+    message.clientIdentityString = object.clientIdentityString ?? "";
+    message.legacyClientSteamId = object.legacyClientSteamId ?? "0";
+    message.relaySessionId = object.relaySessionId ?? 0;
+    message.clientConnectionId = object.clientConnectionId ?? 0;
+    message.serverConnectionId = object.serverConnectionId ?? 0;
+    message.routingSecret = object.routingSecret ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgSteamDatagramConnectionStatsServerToRouter(): CMsgSteamDatagramConnectionStatsServerToRouter {
@@ -5516,6 +6097,33 @@ export const CMsgSteamDatagramConnectionStatsServerToRouter = {
     message.clientConnectionId !== undefined && (obj.clientConnectionId = Math.round(message.clientConnectionId));
     message.serverConnectionId !== undefined && (obj.serverConnectionId = Math.round(message.serverConnectionId));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamDatagramConnectionStatsServerToRouter>,
+  ): CMsgSteamDatagramConnectionStatsServerToRouter {
+    return CMsgSteamDatagramConnectionStatsServerToRouter.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamDatagramConnectionStatsServerToRouter>,
+  ): CMsgSteamDatagramConnectionStatsServerToRouter {
+    const message = createBaseCMsgSteamDatagramConnectionStatsServerToRouter();
+    message.qualityRelay = (object.qualityRelay !== undefined && object.qualityRelay !== null)
+      ? CMsgSteamDatagramConnectionQuality.fromPartial(object.qualityRelay)
+      : undefined;
+    message.qualityE2e = (object.qualityE2e !== undefined && object.qualityE2e !== null)
+      ? CMsgSteamDatagramConnectionQuality.fromPartial(object.qualityE2e)
+      : undefined;
+    message.ackRelay = object.ackRelay?.map((e) => e) || [];
+    message.legacyAckE2e = object.legacyAckE2e?.map((e) => e) || [];
+    message.flags = object.flags ?? 0;
+    message.seqNumS2r = object.seqNumS2r ?? 0;
+    message.seqNumE2e = object.seqNumE2e ?? 0;
+    message.relaySessionId = object.relaySessionId ?? 0;
+    message.clientConnectionId = object.clientConnectionId ?? 0;
+    message.serverConnectionId = object.serverConnectionId ?? 0;
+    return message;
   },
 };
 
@@ -5734,6 +6342,28 @@ export const CMsgSteamDatagramP2PSessionRequestBody = {
     message.build !== undefined && (obj.build = message.build);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamDatagramP2PSessionRequestBody>): CMsgSteamDatagramP2PSessionRequestBody {
+    return CMsgSteamDatagramP2PSessionRequestBody.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramP2PSessionRequestBody>): CMsgSteamDatagramP2PSessionRequestBody {
+    const message = createBaseCMsgSteamDatagramP2PSessionRequestBody();
+    message.challengeTime = object.challengeTime ?? 0;
+    message.challenge = object.challenge ?? "0";
+    message.clientConnectionId = object.clientConnectionId ?? 0;
+    message.legacyPeerSteamId = object.legacyPeerSteamId ?? "0";
+    message.peerIdentityString = object.peerIdentityString ?? "";
+    message.peerConnectionId = object.peerConnectionId ?? 0;
+    message.encryptedData = object.encryptedData ?? Buffer.alloc(0);
+    message.encryptionYourPublicKeyLeadByte = object.encryptionYourPublicKeyLeadByte ?? 0;
+    message.encryptionMyEphemeralPublicKey = object.encryptionMyEphemeralPublicKey ?? Buffer.alloc(0);
+    message.protocolVersion = object.protocolVersion ?? 0;
+    message.networkConfigVersion = object.networkConfigVersion ?? "0";
+    message.platform = object.platform ?? "";
+    message.build = object.build ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgSteamDatagramP2PSessionRequestBody_EncryptedData(): CMsgSteamDatagramP2PSessionRequestBody_EncryptedData {
@@ -5782,6 +6412,20 @@ export const CMsgSteamDatagramP2PSessionRequestBody_EncryptedData = {
     const obj: any = {};
     message.peerIdentityString !== undefined && (obj.peerIdentityString = message.peerIdentityString);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamDatagramP2PSessionRequestBody_EncryptedData>,
+  ): CMsgSteamDatagramP2PSessionRequestBody_EncryptedData {
+    return CMsgSteamDatagramP2PSessionRequestBody_EncryptedData.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamDatagramP2PSessionRequestBody_EncryptedData>,
+  ): CMsgSteamDatagramP2PSessionRequestBody_EncryptedData {
+    const message = createBaseCMsgSteamDatagramP2PSessionRequestBody_EncryptedData();
+    message.peerIdentityString = object.peerIdentityString ?? "";
+    return message;
   },
 };
 
@@ -5857,6 +6501,20 @@ export const CMsgSteamDatagramP2PSessionRequest = {
     message.signature !== undefined &&
       (obj.signature = base64FromBytes(message.signature !== undefined ? message.signature : Buffer.alloc(0)));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamDatagramP2PSessionRequest>): CMsgSteamDatagramP2PSessionRequest {
+    return CMsgSteamDatagramP2PSessionRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramP2PSessionRequest>): CMsgSteamDatagramP2PSessionRequest {
+    const message = createBaseCMsgSteamDatagramP2PSessionRequest();
+    message.cert = (object.cert !== undefined && object.cert !== null)
+      ? CMsgSteamDatagramCertificateSigned.fromPartial(object.cert)
+      : undefined;
+    message.body = object.body ?? Buffer.alloc(0);
+    message.signature = object.signature ?? Buffer.alloc(0);
+    return message;
   },
 };
 
@@ -5946,6 +6604,19 @@ export const CMsgSteamDatagramP2PSessionEstablished = {
       ));
     message.seqNumR2c !== undefined && (obj.seqNumR2c = Math.round(message.seqNumR2c));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamDatagramP2PSessionEstablished>): CMsgSteamDatagramP2PSessionEstablished {
+    return CMsgSteamDatagramP2PSessionEstablished.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramP2PSessionEstablished>): CMsgSteamDatagramP2PSessionEstablished {
+    const message = createBaseCMsgSteamDatagramP2PSessionEstablished();
+    message.connectionId = object.connectionId ?? 0;
+    message.secondsUntilShutdown = object.secondsUntilShutdown ?? 0;
+    message.relayRoutingToken = object.relayRoutingToken ?? Buffer.alloc(0);
+    message.seqNumR2c = object.seqNumR2c ?? 0;
+    return message;
   },
 };
 
@@ -6202,6 +6873,38 @@ export const CMsgSteamDatagramConnectionStatsP2PClientToRouter = {
     message.seqNumC2r !== undefined && (obj.seqNumC2r = Math.round(message.seqNumC2r));
     message.seqNumE2e !== undefined && (obj.seqNumE2e = Math.round(message.seqNumE2e));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamDatagramConnectionStatsP2PClientToRouter>,
+  ): CMsgSteamDatagramConnectionStatsP2PClientToRouter {
+    return CMsgSteamDatagramConnectionStatsP2PClientToRouter.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamDatagramConnectionStatsP2PClientToRouter>,
+  ): CMsgSteamDatagramConnectionStatsP2PClientToRouter {
+    const message = createBaseCMsgSteamDatagramConnectionStatsP2PClientToRouter();
+    message.qualityRelay = (object.qualityRelay !== undefined && object.qualityRelay !== null)
+      ? CMsgSteamDatagramConnectionQuality.fromPartial(object.qualityRelay)
+      : undefined;
+    message.qualityE2e = (object.qualityE2e !== undefined && object.qualityE2e !== null)
+      ? CMsgSteamDatagramConnectionQuality.fromPartial(object.qualityE2e)
+      : undefined;
+    message.p2pRoutingSummary = (object.p2pRoutingSummary !== undefined && object.p2pRoutingSummary !== null)
+      ? CMsgSteamDatagramP2PRoutingSummary.fromPartial(object.p2pRoutingSummary)
+      : undefined;
+    message.ackRelay = object.ackRelay?.map((e) => e) || [];
+    message.legacyAckE2e = object.legacyAckE2e?.map((e) => e) || [];
+    message.flags = object.flags ?? 0;
+    message.forwardTargetRelayRoutingToken = object.forwardTargetRelayRoutingToken ?? Buffer.alloc(0);
+    message.forwardTargetRevision = object.forwardTargetRevision ?? 0;
+    message.routes = object.routes ?? Buffer.alloc(0);
+    message.ackPeerRoutesRevision = object.ackPeerRoutesRevision ?? 0;
+    message.connectionId = object.connectionId ?? 0;
+    message.seqNumC2r = object.seqNumC2r ?? 0;
+    message.seqNumE2e = object.seqNumE2e ?? 0;
+    return message;
   },
 };
 
@@ -6479,6 +7182,38 @@ export const CMsgSteamDatagramConnectionStatsP2PRouterToClient = {
     message.seqNumE2e !== undefined && (obj.seqNumE2e = Math.round(message.seqNumE2e));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgSteamDatagramConnectionStatsP2PRouterToClient>,
+  ): CMsgSteamDatagramConnectionStatsP2PRouterToClient {
+    return CMsgSteamDatagramConnectionStatsP2PRouterToClient.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamDatagramConnectionStatsP2PRouterToClient>,
+  ): CMsgSteamDatagramConnectionStatsP2PRouterToClient {
+    const message = createBaseCMsgSteamDatagramConnectionStatsP2PRouterToClient();
+    message.qualityRelay = (object.qualityRelay !== undefined && object.qualityRelay !== null)
+      ? CMsgSteamDatagramConnectionQuality.fromPartial(object.qualityRelay)
+      : undefined;
+    message.qualityE2e = (object.qualityE2e !== undefined && object.qualityE2e !== null)
+      ? CMsgSteamDatagramConnectionQuality.fromPartial(object.qualityE2e)
+      : undefined;
+    message.secondsUntilShutdown = object.secondsUntilShutdown ?? 0;
+    message.migrateRequestIp = object.migrateRequestIp ?? 0;
+    message.migrateRequestPort = object.migrateRequestPort ?? 0;
+    message.scoringPenaltyRelayCluster = object.scoringPenaltyRelayCluster ?? 0;
+    message.ackRelay = object.ackRelay?.map((e) => e) || [];
+    message.legacyAckE2e = object.legacyAckE2e?.map((e) => e) || [];
+    message.flags = object.flags ?? 0;
+    message.ackForwardTargetRevision = object.ackForwardTargetRevision ?? 0;
+    message.routes = object.routes ?? Buffer.alloc(0);
+    message.ackPeerRoutesRevision = object.ackPeerRoutesRevision ?? 0;
+    message.connectionId = object.connectionId ?? 0;
+    message.seqNumR2c = object.seqNumR2c ?? 0;
+    message.seqNumE2e = object.seqNumE2e ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgSteamDatagramP2PBadRouteRouterToClient(): CMsgSteamDatagramP2PBadRouteRouterToClient {
@@ -6569,6 +7304,21 @@ export const CMsgSteamDatagramP2PBadRouteRouterToClient = {
     message.kludgePad !== undefined && (obj.kludgePad = message.kludgePad);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamDatagramP2PBadRouteRouterToClient>): CMsgSteamDatagramP2PBadRouteRouterToClient {
+    return CMsgSteamDatagramP2PBadRouteRouterToClient.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamDatagramP2PBadRouteRouterToClient>,
+  ): CMsgSteamDatagramP2PBadRouteRouterToClient {
+    const message = createBaseCMsgSteamDatagramP2PBadRouteRouterToClient();
+    message.connectionId = object.connectionId ?? 0;
+    message.failedRelayRoutingToken = object.failedRelayRoutingToken ?? Buffer.alloc(0);
+    message.ackForwardTargetRevision = object.ackForwardTargetRevision ?? 0;
+    message.kludgePad = object.kludgePad ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgSteamDatagramP2PRoutes(): CMsgSteamDatagramP2PRoutes {
@@ -6654,6 +7404,19 @@ export const CMsgSteamDatagramP2PRoutes = {
     }
     message.revision !== undefined && (obj.revision = Math.round(message.revision));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamDatagramP2PRoutes>): CMsgSteamDatagramP2PRoutes {
+    return CMsgSteamDatagramP2PRoutes.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramP2PRoutes>): CMsgSteamDatagramP2PRoutes {
+    const message = createBaseCMsgSteamDatagramP2PRoutes();
+    message.relayClusters = object.relayClusters?.map((e) => CMsgSteamDatagramP2PRoutes_RelayCluster.fromPartial(e)) ||
+      [];
+    message.routes = object.routes?.map((e) => CMsgSteamDatagramP2PRoutes_Route.fromPartial(e)) || [];
+    message.revision = object.revision ?? 0;
+    return message;
   },
 };
 
@@ -6744,6 +7507,19 @@ export const CMsgSteamDatagramP2PRoutes_RelayCluster = {
       ));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamDatagramP2PRoutes_RelayCluster>): CMsgSteamDatagramP2PRoutes_RelayCluster {
+    return CMsgSteamDatagramP2PRoutes_RelayCluster.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramP2PRoutes_RelayCluster>): CMsgSteamDatagramP2PRoutes_RelayCluster {
+    const message = createBaseCMsgSteamDatagramP2PRoutes_RelayCluster();
+    message.popId = object.popId ?? 0;
+    message.pingMs = object.pingMs ?? 0;
+    message.scorePenalty = object.scorePenalty ?? 0;
+    message.sessionRelayRoutingToken = object.sessionRelayRoutingToken ?? Buffer.alloc(0);
+    return message;
+  },
 };
 
 function createBaseCMsgSteamDatagramP2PRoutes_Route(): CMsgSteamDatagramP2PRoutes_Route {
@@ -6827,6 +7603,19 @@ export const CMsgSteamDatagramP2PRoutes_Route = {
     message.legacyScore !== undefined && (obj.legacyScore = Math.round(message.legacyScore));
     message.interiorScore !== undefined && (obj.interiorScore = Math.round(message.interiorScore));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamDatagramP2PRoutes_Route>): CMsgSteamDatagramP2PRoutes_Route {
+    return CMsgSteamDatagramP2PRoutes_Route.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramP2PRoutes_Route>): CMsgSteamDatagramP2PRoutes_Route {
+    const message = createBaseCMsgSteamDatagramP2PRoutes_Route();
+    message.myPopId = object.myPopId ?? 0;
+    message.yourPopId = object.yourPopId ?? 0;
+    message.legacyScore = object.legacyScore ?? 0;
+    message.interiorScore = object.interiorScore ?? 0;
+    return message;
   },
 };
 
@@ -6944,6 +7733,23 @@ export const CMsgSteamDatagramSetSecondaryAddressRequest = {
       (obj.kludgePad = base64FromBytes(message.kludgePad !== undefined ? message.kludgePad : Buffer.alloc(0)));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamDatagramSetSecondaryAddressRequest>): CMsgSteamDatagramSetSecondaryAddressRequest {
+    return CMsgSteamDatagramSetSecondaryAddressRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamDatagramSetSecondaryAddressRequest>,
+  ): CMsgSteamDatagramSetSecondaryAddressRequest {
+    const message = createBaseCMsgSteamDatagramSetSecondaryAddressRequest();
+    message.clientMainIp = object.clientMainIp ?? 0;
+    message.clientMainPort = object.clientMainPort ?? 0;
+    message.clientConnectionId = object.clientConnectionId ?? 0;
+    message.clientIdentity = object.clientIdentity ?? "";
+    message.requestSendDuplication = object.requestSendDuplication ?? false;
+    message.kludgePad = object.kludgePad ?? Buffer.alloc(0);
+    return message;
+  },
 };
 
 function createBaseCMsgSteamDatagramSetSecondaryAddressResult(): CMsgSteamDatagramSetSecondaryAddressResult {
@@ -7004,6 +7810,19 @@ export const CMsgSteamDatagramSetSecondaryAddressResult = {
     message.message !== undefined && (obj.message = message.message);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamDatagramSetSecondaryAddressResult>): CMsgSteamDatagramSetSecondaryAddressResult {
+    return CMsgSteamDatagramSetSecondaryAddressResult.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamDatagramSetSecondaryAddressResult>,
+  ): CMsgSteamDatagramSetSecondaryAddressResult {
+    const message = createBaseCMsgSteamDatagramSetSecondaryAddressResult();
+    message.success = object.success ?? false;
+    message.message = object.message ?? "";
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -7049,6 +7868,13 @@ function base64FromBytes(arr: Uint8Array): string {
     return tsProtoGlobalThis.btoa(bin.join(""));
   }
 }
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

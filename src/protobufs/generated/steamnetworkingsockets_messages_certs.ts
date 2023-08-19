@@ -169,6 +169,20 @@ export const CMsgSteamNetworkingIdentityLegacyBinary = {
       (obj.ipv6AndPort = base64FromBytes(message.ipv6AndPort !== undefined ? message.ipv6AndPort : Buffer.alloc(0)));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamNetworkingIdentityLegacyBinary>): CMsgSteamNetworkingIdentityLegacyBinary {
+    return CMsgSteamNetworkingIdentityLegacyBinary.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamNetworkingIdentityLegacyBinary>): CMsgSteamNetworkingIdentityLegacyBinary {
+    const message = createBaseCMsgSteamNetworkingIdentityLegacyBinary();
+    message.steamId = object.steamId ?? "0";
+    message.xboxPairwiseId = object.xboxPairwiseId ?? "";
+    message.genericBytes = object.genericBytes ?? Buffer.alloc(0);
+    message.genericString = object.genericString ?? "";
+    message.ipv6AndPort = object.ipv6AndPort ?? Buffer.alloc(0);
+    return message;
+  },
 };
 
 function createBaseCMsgSteamDatagramCertificate(): CMsgSteamDatagramCertificate {
@@ -377,6 +391,27 @@ export const CMsgSteamDatagramCertificate = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamDatagramCertificate>): CMsgSteamDatagramCertificate {
+    return CMsgSteamDatagramCertificate.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramCertificate>): CMsgSteamDatagramCertificate {
+    const message = createBaseCMsgSteamDatagramCertificate();
+    message.keyType = object.keyType ?? 0;
+    message.keyData = object.keyData ?? Buffer.alloc(0);
+    message.legacySteamId = object.legacySteamId ?? "0";
+    message.legacyIdentityBinary = (object.legacyIdentityBinary !== undefined && object.legacyIdentityBinary !== null)
+      ? CMsgSteamNetworkingIdentityLegacyBinary.fromPartial(object.legacyIdentityBinary)
+      : undefined;
+    message.identityString = object.identityString ?? "";
+    message.gameserverDatacenterIds = object.gameserverDatacenterIds?.map((e) => e) || [];
+    message.timeCreated = object.timeCreated ?? 0;
+    message.timeExpiry = object.timeExpiry ?? 0;
+    message.appIds = object.appIds?.map((e) => e) || [];
+    message.ipAddresses = object.ipAddresses?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgSteamDatagramCertificateSigned(): CMsgSteamDatagramCertificateSigned {
@@ -468,6 +503,19 @@ export const CMsgSteamDatagramCertificateSigned = {
       ));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamDatagramCertificateSigned>): CMsgSteamDatagramCertificateSigned {
+    return CMsgSteamDatagramCertificateSigned.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramCertificateSigned>): CMsgSteamDatagramCertificateSigned {
+    const message = createBaseCMsgSteamDatagramCertificateSigned();
+    message.cert = object.cert ?? Buffer.alloc(0);
+    message.caKeyId = object.caKeyId ?? "0";
+    message.caSignature = object.caSignature ?? Buffer.alloc(0);
+    message.privateKeyData = object.privateKeyData ?? Buffer.alloc(0);
+    return message;
+  },
 };
 
 function createBaseCMsgSteamDatagramCertificateRequest(): CMsgSteamDatagramCertificateRequest {
@@ -515,6 +563,18 @@ export const CMsgSteamDatagramCertificateRequest = {
       (obj.cert = message.cert ? CMsgSteamDatagramCertificate.toJSON(message.cert) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamDatagramCertificateRequest>): CMsgSteamDatagramCertificateRequest {
+    return CMsgSteamDatagramCertificateRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramCertificateRequest>): CMsgSteamDatagramCertificateRequest {
+    const message = createBaseCMsgSteamDatagramCertificateRequest();
+    message.cert = (object.cert !== undefined && object.cert !== null)
+      ? CMsgSteamDatagramCertificate.fromPartial(object.cert)
+      : undefined;
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -560,6 +620,13 @@ function base64FromBytes(arr: Uint8Array): string {
     return tsProtoGlobalThis.btoa(bin.join(""));
   }
 }
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

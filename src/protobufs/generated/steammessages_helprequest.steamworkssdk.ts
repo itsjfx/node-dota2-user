@@ -98,6 +98,23 @@ export const CHelpRequestLogsUploadUserApplicationLogRequest = {
     message.logContents !== undefined && (obj.logContents = message.logContents);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CHelpRequestLogsUploadUserApplicationLogRequest>,
+  ): CHelpRequestLogsUploadUserApplicationLogRequest {
+    return CHelpRequestLogsUploadUserApplicationLogRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CHelpRequestLogsUploadUserApplicationLogRequest>,
+  ): CHelpRequestLogsUploadUserApplicationLogRequest {
+    const message = createBaseCHelpRequestLogsUploadUserApplicationLogRequest();
+    message.appid = object.appid ?? 0;
+    message.logType = object.logType ?? "";
+    message.versionString = object.versionString ?? "";
+    message.logContents = object.logContents ?? "";
+    return message;
+  },
 };
 
 function createBaseCHelpRequestLogsUploadUserApplicationLogResponse(): CHelpRequestLogsUploadUserApplicationLogResponse {
@@ -147,6 +164,20 @@ export const CHelpRequestLogsUploadUserApplicationLogResponse = {
     message.id !== undefined && (obj.id = message.id);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CHelpRequestLogsUploadUserApplicationLogResponse>,
+  ): CHelpRequestLogsUploadUserApplicationLogResponse {
+    return CHelpRequestLogsUploadUserApplicationLogResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CHelpRequestLogsUploadUserApplicationLogResponse>,
+  ): CHelpRequestLogsUploadUserApplicationLogResponse {
+    const message = createBaseCHelpRequestLogsUploadUserApplicationLogResponse();
+    message.id = object.id ?? "0";
+    return message;
+  },
 };
 
 export interface HelpRequestLogs {
@@ -175,6 +206,13 @@ export class HelpRequestLogsClientImpl implements HelpRequestLogs {
 interface Rpc {
   request(service: string, method: string, data: Uint8Array): Promise<Uint8Array>;
 }
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

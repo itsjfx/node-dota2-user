@@ -180,7 +180,33 @@ export const CEngineGotvSyncPacket = {
     message.cdndelay !== undefined && (obj.cdndelay = Math.round(message.cdndelay));
     return obj;
   },
+
+  create(base?: DeepPartial<CEngineGotvSyncPacket>): CEngineGotvSyncPacket {
+    return CEngineGotvSyncPacket.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CEngineGotvSyncPacket>): CEngineGotvSyncPacket {
+    const message = createBaseCEngineGotvSyncPacket();
+    message.matchId = object.matchId ?? "0";
+    message.instanceId = object.instanceId ?? 0;
+    message.signupfragment = object.signupfragment ?? 0;
+    message.currentfragment = object.currentfragment ?? 0;
+    message.tickrate = object.tickrate ?? 0;
+    message.tick = object.tick ?? 0;
+    message.rtdelay = object.rtdelay ?? 0;
+    message.rcvage = object.rcvage ?? 0;
+    message.keyframeInterval = object.keyframeInterval ?? 0;
+    message.cdndelay = object.cdndelay ?? 0;
+    return message;
+  },
 };
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

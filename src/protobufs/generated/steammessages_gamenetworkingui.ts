@@ -74,6 +74,15 @@ export const CGameNetworkingUIGlobalState = {
     const obj: any = {};
     return obj;
   },
+
+  create(base?: DeepPartial<CGameNetworkingUIGlobalState>): CGameNetworkingUIGlobalState {
+    return CGameNetworkingUIGlobalState.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CGameNetworkingUIGlobalState>): CGameNetworkingUIGlobalState {
+    const message = createBaseCGameNetworkingUIGlobalState();
+    return message;
+  },
 };
 
 function createBaseCGameNetworkingUIConnectionState(): CGameNetworkingUIConnectionState {
@@ -492,6 +501,52 @@ export const CGameNetworkingUIConnectionState = {
       (obj.frontQualityRemoteLifetimeTime = message.frontQualityRemoteLifetimeTime);
     return obj;
   },
+
+  create(base?: DeepPartial<CGameNetworkingUIConnectionState>): CGameNetworkingUIConnectionState {
+    return CGameNetworkingUIConnectionState.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CGameNetworkingUIConnectionState>): CGameNetworkingUIConnectionState {
+    const message = createBaseCGameNetworkingUIConnectionState();
+    message.connectionKey = object.connectionKey ?? "";
+    message.appid = object.appid ?? 0;
+    message.connectionIdLocal = object.connectionIdLocal ?? 0;
+    message.identityLocal = object.identityLocal ?? "";
+    message.identityRemote = object.identityRemote ?? "";
+    message.connectionState = object.connectionState ?? 0;
+    message.startTime = object.startTime ?? 0;
+    message.closeTime = object.closeTime ?? 0;
+    message.closeReason = object.closeReason ?? 0;
+    message.closeMessage = object.closeMessage ?? "";
+    message.statusLocToken = object.statusLocToken ?? "";
+    message.transportKind = object.transportKind ?? 0;
+    message.sdrpopidLocal = object.sdrpopidLocal ?? "";
+    message.sdrpopidRemote = object.sdrpopidRemote ?? "";
+    message.addressRemote = object.addressRemote ?? "";
+    message.p2pRouting = (object.p2pRouting !== undefined && object.p2pRouting !== null)
+      ? CMsgSteamDatagramP2PRoutingSummary.fromPartial(object.p2pRouting)
+      : undefined;
+    message.pingInterior = object.pingInterior ?? 0;
+    message.pingRemoteFront = object.pingRemoteFront ?? 0;
+    message.pingDefaultInternetRoute = object.pingDefaultInternetRoute ?? 0;
+    message.e2eQualityLocal = (object.e2eQualityLocal !== undefined && object.e2eQualityLocal !== null)
+      ? CMsgSteamDatagramConnectionQuality.fromPartial(object.e2eQualityLocal)
+      : undefined;
+    message.e2eQualityRemote = (object.e2eQualityRemote !== undefined && object.e2eQualityRemote !== null)
+      ? CMsgSteamDatagramConnectionQuality.fromPartial(object.e2eQualityRemote)
+      : undefined;
+    message.e2eQualityRemoteInstantaneousTime = object.e2eQualityRemoteInstantaneousTime ?? "0";
+    message.e2eQualityRemoteLifetimeTime = object.e2eQualityRemoteLifetimeTime ?? "0";
+    message.frontQualityLocal = (object.frontQualityLocal !== undefined && object.frontQualityLocal !== null)
+      ? CMsgSteamDatagramConnectionQuality.fromPartial(object.frontQualityLocal)
+      : undefined;
+    message.frontQualityRemote = (object.frontQualityRemote !== undefined && object.frontQualityRemote !== null)
+      ? CMsgSteamDatagramConnectionQuality.fromPartial(object.frontQualityRemote)
+      : undefined;
+    message.frontQualityRemoteInstantaneousTime = object.frontQualityRemoteInstantaneousTime ?? "0";
+    message.frontQualityRemoteLifetimeTime = object.frontQualityRemoteLifetimeTime ?? "0";
+    return message;
+  },
 };
 
 function createBaseCGameNetworkingUIMessage(): CGameNetworkingUIMessage {
@@ -548,7 +603,24 @@ export const CGameNetworkingUIMessage = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CGameNetworkingUIMessage>): CGameNetworkingUIMessage {
+    return CGameNetworkingUIMessage.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CGameNetworkingUIMessage>): CGameNetworkingUIMessage {
+    const message = createBaseCGameNetworkingUIMessage();
+    message.connectionState = object.connectionState?.map((e) => CGameNetworkingUIConnectionState.fromPartial(e)) || [];
+    return message;
+  },
 };
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

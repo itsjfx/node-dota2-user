@@ -280,6 +280,17 @@ export const CScenarioPosition = {
     message.y !== undefined && (obj.y = message.y);
     return obj;
   },
+
+  create(base?: DeepPartial<CScenarioPosition>): CScenarioPosition {
+    return CScenarioPosition.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CScenarioPosition>): CScenarioPosition {
+    const message = createBaseCScenarioPosition();
+    message.x = object.x ?? 0;
+    message.y = object.y ?? 0;
+    return message;
+  },
 };
 
 function createBaseCScenarioGameRoshanSpawner(): CScenarioGameRoshanSpawner {
@@ -352,6 +363,18 @@ export const CScenarioGameRoshanSpawner = {
     message.cooldown !== undefined && (obj.cooldown = message.cooldown);
     return obj;
   },
+
+  create(base?: DeepPartial<CScenarioGameRoshanSpawner>): CScenarioGameRoshanSpawner {
+    return CScenarioGameRoshanSpawner.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CScenarioGameRoshanSpawner>): CScenarioGameRoshanSpawner {
+    const message = createBaseCScenarioGameRoshanSpawner();
+    message.killCount = object.killCount ?? 0;
+    message.state = object.state ?? 0;
+    message.cooldown = object.cooldown ?? 0;
+    return message;
+  },
 };
 
 function createBaseCScenarioEntCourier(): CScenarioEntCourier {
@@ -423,6 +446,18 @@ export const CScenarioEntCourier = {
     message.ownerPlayerId !== undefined && (obj.ownerPlayerId = Math.round(message.ownerPlayerId));
     message.cooldown !== undefined && (obj.cooldown = message.cooldown);
     return obj;
+  },
+
+  create(base?: DeepPartial<CScenarioEntCourier>): CScenarioEntCourier {
+    return CScenarioEntCourier.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CScenarioEntCourier>): CScenarioEntCourier {
+    const message = createBaseCScenarioEntCourier();
+    message.teamNumber = object.teamNumber ?? 0;
+    message.ownerPlayerId = object.ownerPlayerId ?? 0;
+    message.cooldown = object.cooldown ?? 0;
+    return message;
   },
 };
 
@@ -557,6 +592,26 @@ export const CScenarioEntNPC = {
     message.invadeGoal !== undefined && (obj.invadeGoal = message.invadeGoal);
     return obj;
   },
+
+  create(base?: DeepPartial<CScenarioEntNPC>): CScenarioEntNPC {
+    return CScenarioEntNPC.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CScenarioEntNPC>): CScenarioEntNPC {
+    const message = createBaseCScenarioEntNPC();
+    message.position = (object.position !== undefined && object.position !== null)
+      ? CScenarioPosition.fromPartial(object.position)
+      : undefined;
+    message.unitName = object.unitName ?? "";
+    message.teamNumber = object.teamNumber ?? 0;
+    message.healthFrac = object.healthFrac ?? 0;
+    message.owningCamp = object.owningCamp ?? "";
+    message.owningCampPosition = (object.owningCampPosition !== undefined && object.owningCampPosition !== null)
+      ? CScenarioPosition.fromPartial(object.owningCampPosition)
+      : undefined;
+    message.invadeGoal = object.invadeGoal ?? "";
+    return message;
+  },
 };
 
 function createBaseCScenarioEntSpiritBear(): CScenarioEntSpiritBear {
@@ -617,6 +672,17 @@ export const CScenarioEntSpiritBear = {
     message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
     return obj;
   },
+
+  create(base?: DeepPartial<CScenarioEntSpiritBear>): CScenarioEntSpiritBear {
+    return CScenarioEntSpiritBear.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CScenarioEntSpiritBear>): CScenarioEntSpiritBear {
+    const message = createBaseCScenarioEntSpiritBear();
+    message.ownerId = object.ownerId ?? 0;
+    message.teamId = object.teamId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCScenarioEntDroppedItem(): CScenarioEntDroppedItem {
@@ -663,6 +729,18 @@ export const CScenarioEntDroppedItem = {
     message.position !== undefined &&
       (obj.position = message.position ? CScenarioPosition.toJSON(message.position) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CScenarioEntDroppedItem>): CScenarioEntDroppedItem {
+    return CScenarioEntDroppedItem.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CScenarioEntDroppedItem>): CScenarioEntDroppedItem {
+    const message = createBaseCScenarioEntDroppedItem();
+    message.position = (object.position !== undefined && object.position !== null)
+      ? CScenarioPosition.fromPartial(object.position)
+      : undefined;
+    return message;
   },
 };
 
@@ -852,6 +930,26 @@ export const CMsgDotaScenario = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDotaScenario>): CMsgDotaScenario {
+    return CMsgDotaScenario.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDotaScenario>): CMsgDotaScenario {
+    const message = createBaseCMsgDotaScenario();
+    message.lobbyId = object.lobbyId ?? "0";
+    message.game = (object.game !== undefined && object.game !== null)
+      ? CMsgDotaScenario_Game.fromPartial(object.game)
+      : undefined;
+    message.teams = object.teams?.map((e) => CMsgDotaScenario_Team.fromPartial(e)) || [];
+    message.heroes = object.heroes?.map((e) => CMsgDotaScenario_Hero.fromPartial(e)) || [];
+    message.stock = object.stock?.map((e) => CMsgDotaScenario_Stock.fromPartial(e)) || [];
+    message.buildings = object.buildings?.map((e) => CMsgDotaScenario_Building.fromPartial(e)) || [];
+    message.entities = object.entities?.map((e) => CMsgDotaScenario_Entity.fromPartial(e)) || [];
+    message.items = object.items?.map((e) => CMsgDotaScenario_Item.fromPartial(e)) || [];
+    message.modifiers = object.modifiers?.map((e) => CMsgDotaScenario_Modifier.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgDotaScenario_EntityRef(): CMsgDotaScenario_EntityRef {
@@ -947,6 +1045,20 @@ export const CMsgDotaScenario_EntityRef = {
     message.roshan !== undefined && (obj.roshan = message.roshan);
     message.abilityName !== undefined && (obj.abilityName = message.abilityName);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDotaScenario_EntityRef>): CMsgDotaScenario_EntityRef {
+    return CMsgDotaScenario_EntityRef.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDotaScenario_EntityRef>): CMsgDotaScenario_EntityRef {
+    const message = createBaseCMsgDotaScenario_EntityRef();
+    message.playerId = object.playerId ?? 0;
+    message.neutralStashId = object.neutralStashId ?? 0;
+    message.entityIdx = object.entityIdx ?? 0;
+    message.roshan = object.roshan ?? false;
+    message.abilityName = object.abilityName ?? "";
+    return message;
   },
 };
 
@@ -1045,6 +1157,22 @@ export const CMsgDotaScenario_Game = {
       (obj.roshan = message.roshan ? CScenarioGameRoshanSpawner.toJSON(message.roshan) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDotaScenario_Game>): CMsgDotaScenario_Game {
+    return CMsgDotaScenario_Game.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDotaScenario_Game>): CMsgDotaScenario_Game {
+    const message = createBaseCMsgDotaScenario_Game();
+    message.matchId = object.matchId ?? "0";
+    message.gameMode = object.gameMode ?? 0;
+    message.clockTime = object.clockTime ?? 0;
+    message.internalTime = object.internalTime ?? 0;
+    message.roshan = (object.roshan !== undefined && object.roshan !== null)
+      ? CScenarioGameRoshanSpawner.fromPartial(object.roshan)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgDotaScenario_TeamNeutralItem(): CMsgDotaScenario_TeamNeutralItem {
@@ -1104,6 +1232,17 @@ export const CMsgDotaScenario_TeamNeutralItem = {
     message.name !== undefined && (obj.name = message.name);
     message.consumed !== undefined && (obj.consumed = message.consumed);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDotaScenario_TeamNeutralItem>): CMsgDotaScenario_TeamNeutralItem {
+    return CMsgDotaScenario_TeamNeutralItem.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDotaScenario_TeamNeutralItem>): CMsgDotaScenario_TeamNeutralItem {
+    const message = createBaseCMsgDotaScenario_TeamNeutralItem();
+    message.name = object.name ?? "";
+    message.consumed = object.consumed ?? false;
+    return message;
   },
 };
 
@@ -1239,6 +1378,22 @@ export const CMsgDotaScenario_Team = {
     message.radarCooldown !== undefined && (obj.radarCooldown = message.radarCooldown);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDotaScenario_Team>): CMsgDotaScenario_Team {
+    return CMsgDotaScenario_Team.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDotaScenario_Team>): CMsgDotaScenario_Team {
+    const message = createBaseCMsgDotaScenario_Team();
+    message.teamNumber = object.teamNumber ?? 0;
+    message.neutralItems = object.neutralItems?.map((e) => CMsgDotaScenario_TeamNeutralItem.fromPartial(e)) || [];
+    message.heroKills = object.heroKills ?? 0;
+    message.towerKills = object.towerKills ?? 0;
+    message.barracksKills = object.barracksKills ?? 0;
+    message.glyphCooldown = object.glyphCooldown ?? 0;
+    message.radarCooldown = object.radarCooldown ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDotaScenario_HeroHeroInt(): CMsgDotaScenario_HeroHeroInt {
@@ -1299,6 +1454,17 @@ export const CMsgDotaScenario_HeroHeroInt = {
     message.value !== undefined && (obj.value = Math.round(message.value));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDotaScenario_HeroHeroInt>): CMsgDotaScenario_HeroHeroInt {
+    return CMsgDotaScenario_HeroHeroInt.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDotaScenario_HeroHeroInt>): CMsgDotaScenario_HeroHeroInt {
+    const message = createBaseCMsgDotaScenario_HeroHeroInt();
+    message.playerId = object.playerId ?? 0;
+    message.value = object.value ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDotaScenario_HeroHeroFloat(): CMsgDotaScenario_HeroHeroFloat {
@@ -1358,6 +1524,17 @@ export const CMsgDotaScenario_HeroHeroFloat = {
     message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
     message.value !== undefined && (obj.value = message.value);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDotaScenario_HeroHeroFloat>): CMsgDotaScenario_HeroHeroFloat {
+    return CMsgDotaScenario_HeroHeroFloat.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDotaScenario_HeroHeroFloat>): CMsgDotaScenario_HeroHeroFloat {
+    const message = createBaseCMsgDotaScenario_HeroHeroFloat();
+    message.playerId = object.playerId ?? 0;
+    message.value = object.value ?? 0;
+    return message;
   },
 };
 
@@ -1463,6 +1640,20 @@ export const CMsgDotaScenario_DamageStatsByType = {
       (obj.outgoingPostReduction = Math.round(message.outgoingPostReduction));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDotaScenario_DamageStatsByType>): CMsgDotaScenario_DamageStatsByType {
+    return CMsgDotaScenario_DamageStatsByType.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDotaScenario_DamageStatsByType>): CMsgDotaScenario_DamageStatsByType {
+    const message = createBaseCMsgDotaScenario_DamageStatsByType();
+    message.damageType = object.damageType ?? 0;
+    message.receivedPreReduction = object.receivedPreReduction ?? 0;
+    message.receivedPostReduction = object.receivedPostReduction ?? 0;
+    message.outgoingPreReduction = object.outgoingPreReduction ?? 0;
+    message.outgoingPostReduction = object.outgoingPostReduction ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDotaScenario_HeroAbility(): CMsgDotaScenario_HeroAbility {
@@ -1522,6 +1713,17 @@ export const CMsgDotaScenario_HeroAbility = {
     message.name !== undefined && (obj.name = message.name);
     message.level !== undefined && (obj.level = Math.round(message.level));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDotaScenario_HeroAbility>): CMsgDotaScenario_HeroAbility {
+    return CMsgDotaScenario_HeroAbility.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDotaScenario_HeroAbility>): CMsgDotaScenario_HeroAbility {
+    const message = createBaseCMsgDotaScenario_HeroAbility();
+    message.name = object.name ?? "";
+    message.level = object.level ?? 0;
+    return message;
   },
 };
 
@@ -2400,6 +2602,80 @@ export const CMsgDotaScenario_Hero = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDotaScenario_Hero>): CMsgDotaScenario_Hero {
+    return CMsgDotaScenario_Hero.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDotaScenario_Hero>): CMsgDotaScenario_Hero {
+    const message = createBaseCMsgDotaScenario_Hero();
+    message.steamId = object.steamId ?? "0";
+    message.playerId = object.playerId ?? 0;
+    message.teamId = object.teamId ?? 0;
+    message.hero = object.hero ?? "";
+    message.totalXp = object.totalXp ?? 0;
+    message.bkbChargesUsed = object.bkbChargesUsed ?? 0;
+    message.aeonChargesUsed = object.aeonChargesUsed ?? 0;
+    message.reliableGold = object.reliableGold ?? 0;
+    message.unreliableGold = object.unreliableGold ?? 0;
+    message.totalEarnedGold = object.totalEarnedGold ?? 0;
+    message.sharedGold = object.sharedGold ?? 0;
+    message.heroKillGold = object.heroKillGold ?? 0;
+    message.creepKillGold = object.creepKillGold ?? 0;
+    message.neutralKillGold = object.neutralKillGold ?? 0;
+    message.courierGold = object.courierGold ?? 0;
+    message.bountyGold = object.bountyGold ?? 0;
+    message.roshanGold = object.roshanGold ?? 0;
+    message.buildingGold = object.buildingGold ?? 0;
+    message.otherGold = object.otherGold ?? 0;
+    message.incomeGold = object.incomeGold ?? 0;
+    message.wardKillGold = object.wardKillGold ?? 0;
+    message.abilityGold = object.abilityGold ?? 0;
+    message.denies = object.denies ?? 0;
+    message.lastHits = object.lastHits ?? 0;
+    message.lastHitStreak = object.lastHitStreak ?? 0;
+    message.lastHitMultikill = object.lastHitMultikill ?? 0;
+    message.nearbyCreepDeathCount = object.nearbyCreepDeathCount ?? 0;
+    message.claimedDenyCount = object.claimedDenyCount ?? 0;
+    message.claimedMissCount = object.claimedMissCount ?? 0;
+    message.missCount = object.missCount ?? 0;
+    message.buybackCooldownTime = object.buybackCooldownTime ?? 0;
+    message.buybackGoldLimitTime = object.buybackGoldLimitTime ?? 0;
+    message.stunDuration = object.stunDuration ?? 0;
+    message.healing = object.healing ?? 0;
+    message.towerKills = object.towerKills ?? 0;
+    message.roshanKills = object.roshanKills ?? 0;
+    message.observerWardsPlaced = object.observerWardsPlaced ?? 0;
+    message.sentryWardsPlaced = object.sentryWardsPlaced ?? 0;
+    message.creepsStacked = object.creepsStacked ?? 0;
+    message.campsStacked = object.campsStacked ?? 0;
+    message.runePickups = object.runePickups ?? 0;
+    message.goldSpentOnSupport = object.goldSpentOnSupport ?? 0;
+    message.heroDamage = object.heroDamage ?? 0;
+    message.wardsPurchased = object.wardsPurchased ?? 0;
+    message.wardsDestroyed = object.wardsDestroyed ?? 0;
+    message.goldSpentOnConsumables = object.goldSpentOnConsumables ?? 0;
+    message.goldSpentOnItems = object.goldSpentOnItems ?? 0;
+    message.goldSpentOnBuybacks = object.goldSpentOnBuybacks ?? 0;
+    message.goldLostToDeath = object.goldLostToDeath ?? 0;
+    message.kills = object.kills ?? 0;
+    message.assists = object.assists ?? 0;
+    message.deaths = object.deaths ?? 0;
+    message.killStreak = object.killStreak ?? 0;
+    message.respawnSeconds = object.respawnSeconds ?? 0;
+    message.lastBuybackTime = object.lastBuybackTime ?? 0;
+    message.firstBloodClaimed = object.firstBloodClaimed ?? false;
+    message.firstBloodGiven = object.firstBloodGiven ?? false;
+    message.bountyRunes = object.bountyRunes ?? 0;
+    message.outpostsCaptured = object.outpostsCaptured ?? 0;
+    message.position = (object.position !== undefined && object.position !== null)
+      ? CScenarioPosition.fromPartial(object.position)
+      : undefined;
+    message.enemyKills = object.enemyKills?.map((e) => CMsgDotaScenario_HeroHeroInt.fromPartial(e)) || [];
+    message.damageStats = object.damageStats?.map((e) => CMsgDotaScenario_DamageStatsByType.fromPartial(e)) || [];
+    message.abilities = object.abilities?.map((e) => CMsgDotaScenario_HeroAbility.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgDotaScenario_Stock(): CMsgDotaScenario_Stock {
@@ -2508,6 +2784,21 @@ export const CMsgDotaScenario_Stock = {
     message.bonusStock !== undefined && (obj.bonusStock = Math.round(message.bonusStock));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDotaScenario_Stock>): CMsgDotaScenario_Stock {
+    return CMsgDotaScenario_Stock.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDotaScenario_Stock>): CMsgDotaScenario_Stock {
+    const message = createBaseCMsgDotaScenario_Stock();
+    message.name = object.name ?? "";
+    message.teamNumber = object.teamNumber ?? 0;
+    message.playerId = object.playerId ?? 0;
+    message.currentStock = object.currentStock ?? 0;
+    message.cooldown = object.cooldown ?? 0;
+    message.bonusStock = object.bonusStock ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDotaScenario_Building(): CMsgDotaScenario_Building {
@@ -2604,6 +2895,20 @@ export const CMsgDotaScenario_Building = {
     message.healthFrac !== undefined && (obj.healthFrac = message.healthFrac);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDotaScenario_Building>): CMsgDotaScenario_Building {
+    return CMsgDotaScenario_Building.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDotaScenario_Building>): CMsgDotaScenario_Building {
+    const message = createBaseCMsgDotaScenario_Building();
+    message.entityName = object.entityName ?? "";
+    message.entityClass = object.entityClass ?? "";
+    message.teamId = object.teamId ?? 0;
+    message.isDestroyed = object.isDestroyed ?? false;
+    message.healthFrac = object.healthFrac ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDotaScenario_Entity(): CMsgDotaScenario_Entity {
@@ -2690,6 +2995,27 @@ export const CMsgDotaScenario_Entity = {
     message.droppedItem !== undefined &&
       (obj.droppedItem = message.droppedItem ? CScenarioEntDroppedItem.toJSON(message.droppedItem) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDotaScenario_Entity>): CMsgDotaScenario_Entity {
+    return CMsgDotaScenario_Entity.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDotaScenario_Entity>): CMsgDotaScenario_Entity {
+    const message = createBaseCMsgDotaScenario_Entity();
+    message.courier = (object.courier !== undefined && object.courier !== null)
+      ? CScenarioEntCourier.fromPartial(object.courier)
+      : undefined;
+    message.npc = (object.npc !== undefined && object.npc !== null)
+      ? CScenarioEntNPC.fromPartial(object.npc)
+      : undefined;
+    message.spiritBear = (object.spiritBear !== undefined && object.spiritBear !== null)
+      ? CScenarioEntSpiritBear.fromPartial(object.spiritBear)
+      : undefined;
+    message.droppedItem = (object.droppedItem !== undefined && object.droppedItem !== null)
+      ? CScenarioEntDroppedItem.fromPartial(object.droppedItem)
+      : undefined;
+    return message;
   },
 };
 
@@ -2845,6 +3171,26 @@ export const CMsgDotaScenario_Item = {
     message.lifetime !== undefined && (obj.lifetime = message.lifetime);
     message.storedRuneType !== undefined && (obj.storedRuneType = Math.round(message.storedRuneType));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDotaScenario_Item>): CMsgDotaScenario_Item {
+    return CMsgDotaScenario_Item.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDotaScenario_Item>): CMsgDotaScenario_Item {
+    const message = createBaseCMsgDotaScenario_Item();
+    message.name = object.name ?? "";
+    message.location = (object.location !== undefined && object.location !== null)
+      ? CMsgDotaScenario_EntityRef.fromPartial(object.location)
+      : undefined;
+    message.ownerId = object.ownerId ?? 0;
+    message.itemSlot = object.itemSlot ?? 0;
+    message.neutralDropTeam = object.neutralDropTeam ?? 0;
+    message.charges = object.charges ?? 0;
+    message.secondaryCharges = object.secondaryCharges ?? 0;
+    message.lifetime = object.lifetime ?? 0;
+    message.storedRuneType = object.storedRuneType ?? 0;
+    return message;
   },
 };
 
@@ -3111,7 +3457,45 @@ export const CMsgDotaScenario_Modifier = {
       (obj.ultimateScepterConsumedAlchemistBonusMana = Math.round(message.ultimateScepterConsumedAlchemistBonusMana));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDotaScenario_Modifier>): CMsgDotaScenario_Modifier {
+    return CMsgDotaScenario_Modifier.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDotaScenario_Modifier>): CMsgDotaScenario_Modifier {
+    const message = createBaseCMsgDotaScenario_Modifier();
+    message.name = object.name ?? "";
+    message.parent = (object.parent !== undefined && object.parent !== null)
+      ? CMsgDotaScenario_EntityRef.fromPartial(object.parent)
+      : undefined;
+    message.caster = (object.caster !== undefined && object.caster !== null)
+      ? CMsgDotaScenario_EntityRef.fromPartial(object.caster)
+      : undefined;
+    message.ability = (object.ability !== undefined && object.ability !== null)
+      ? CMsgDotaScenario_EntityRef.fromPartial(object.ability)
+      : undefined;
+    message.duration = object.duration ?? 0;
+    message.lifetimeRemaining = object.lifetimeRemaining ?? 0;
+    message.stackCount = object.stackCount ?? 0;
+    message.createEvenIfExisting = object.createEvenIfExisting ?? false;
+    message.createWithoutCaster = object.createWithoutCaster ?? false;
+    message.createWithoutAbility = object.createWithoutAbility ?? false;
+    message.moonshardConsumedBonus = object.moonshardConsumedBonus ?? 0;
+    message.moonshardConsumedBonusNightVision = object.moonshardConsumedBonusNightVision ?? 0;
+    message.wardtruesightRange = object.wardtruesightRange ?? 0;
+    message.ultimateScepterConsumedAlchemistBonusAllStats = object.ultimateScepterConsumedAlchemistBonusAllStats ?? 0;
+    message.ultimateScepterConsumedAlchemistBonusHealth = object.ultimateScepterConsumedAlchemistBonusHealth ?? 0;
+    message.ultimateScepterConsumedAlchemistBonusMana = object.ultimateScepterConsumedAlchemistBonusMana ?? 0;
+    return message;
+  },
 };
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

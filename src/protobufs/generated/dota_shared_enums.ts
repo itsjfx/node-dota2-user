@@ -3898,6 +3898,21 @@ export const CDOTAClientHardwareSpecs = {
     message.preferNotHost !== undefined && (obj.preferNotHost = message.preferNotHost);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAClientHardwareSpecs>): CDOTAClientHardwareSpecs {
+    return CDOTAClientHardwareSpecs.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAClientHardwareSpecs>): CDOTAClientHardwareSpecs {
+    const message = createBaseCDOTAClientHardwareSpecs();
+    message.logicalProcessors = object.logicalProcessors ?? 0;
+    message.cpuCyclesPerSecond = object.cpuCyclesPerSecond ?? "0";
+    message.totalPhysicalMemory = object.totalPhysicalMemory ?? "0";
+    message.is64BitOs = object.is64BitOs ?? false;
+    message.uploadMeasurement = object.uploadMeasurement ?? "0";
+    message.preferNotHost = object.preferNotHost ?? false;
+    return message;
+  },
 };
 
 function createBaseCDOTASaveGame(): CDOTASaveGame {
@@ -3992,6 +4007,19 @@ export const CDOTASaveGame = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTASaveGame>): CDOTASaveGame {
+    return CDOTASaveGame.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTASaveGame>): CDOTASaveGame {
+    const message = createBaseCDOTASaveGame();
+    message.matchId = object.matchId ?? "0";
+    message.saveTime = object.saveTime ?? 0;
+    message.players = object.players?.map((e) => CDOTASaveGame_Player.fromPartial(e)) || [];
+    message.saveInstances = object.saveInstances?.map((e) => CDOTASaveGame_SaveInstance.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCDOTASaveGame_Player(): CDOTASaveGame_Player {
@@ -4063,6 +4091,18 @@ export const CDOTASaveGame_Player = {
     message.name !== undefined && (obj.name = message.name);
     message.hero !== undefined && (obj.hero = message.hero);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTASaveGame_Player>): CDOTASaveGame_Player {
+    return CDOTASaveGame_Player.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTASaveGame_Player>): CDOTASaveGame_Player {
+    const message = createBaseCDOTASaveGame_Player();
+    message.team = object.team ?? 0;
+    message.name = object.name ?? "";
+    message.hero = object.hero ?? "";
+    return message;
   },
 };
 
@@ -4180,6 +4220,22 @@ export const CDOTASaveGame_SaveInstance = {
     message.saveTime !== undefined && (obj.saveTime = Math.round(message.saveTime));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTASaveGame_SaveInstance>): CDOTASaveGame_SaveInstance {
+    return CDOTASaveGame_SaveInstance.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTASaveGame_SaveInstance>): CDOTASaveGame_SaveInstance {
+    const message = createBaseCDOTASaveGame_SaveInstance();
+    message.gameTime = object.gameTime ?? 0;
+    message.team1Score = object.team1Score ?? 0;
+    message.team2Score = object.team2Score ?? 0;
+    message.playerPositions =
+      object.playerPositions?.map((e) => CDOTASaveGame_SaveInstance_PlayerPositions.fromPartial(e)) || [];
+    message.saveId = object.saveId ?? 0;
+    message.saveTime = object.saveTime ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTASaveGame_SaveInstance_PlayerPositions(): CDOTASaveGame_SaveInstance_PlayerPositions {
@@ -4236,6 +4292,19 @@ export const CDOTASaveGame_SaveInstance_PlayerPositions = {
     message.x !== undefined && (obj.x = message.x);
     message.y !== undefined && (obj.y = message.y);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTASaveGame_SaveInstance_PlayerPositions>): CDOTASaveGame_SaveInstance_PlayerPositions {
+    return CDOTASaveGame_SaveInstance_PlayerPositions.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CDOTASaveGame_SaveInstance_PlayerPositions>,
+  ): CDOTASaveGame_SaveInstance_PlayerPositions {
+    const message = createBaseCDOTASaveGame_SaveInstance_PlayerPositions();
+    message.x = object.x ?? 0;
+    message.y = object.y ?? 0;
+    return message;
   },
 };
 
@@ -5322,6 +5391,94 @@ export const CMsgDOTACombatLogEntry = {
     message.usesCharges !== undefined && (obj.usesCharges = message.usesCharges);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTACombatLogEntry>): CMsgDOTACombatLogEntry {
+    return CMsgDOTACombatLogEntry.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTACombatLogEntry>): CMsgDOTACombatLogEntry {
+    const message = createBaseCMsgDOTACombatLogEntry();
+    message.type = object.type ?? 0;
+    message.targetName = object.targetName ?? 0;
+    message.targetSourceName = object.targetSourceName ?? 0;
+    message.attackerName = object.attackerName ?? 0;
+    message.damageSourceName = object.damageSourceName ?? 0;
+    message.inflictorName = object.inflictorName ?? 0;
+    message.isAttackerIllusion = object.isAttackerIllusion ?? false;
+    message.isAttackerHero = object.isAttackerHero ?? false;
+    message.isTargetIllusion = object.isTargetIllusion ?? false;
+    message.isTargetHero = object.isTargetHero ?? false;
+    message.isVisibleRadiant = object.isVisibleRadiant ?? false;
+    message.isVisibleDire = object.isVisibleDire ?? false;
+    message.value = object.value ?? 0;
+    message.health = object.health ?? 0;
+    message.timestamp = object.timestamp ?? 0;
+    message.stunDuration = object.stunDuration ?? 0;
+    message.slowDuration = object.slowDuration ?? 0;
+    message.isAbilityToggleOn = object.isAbilityToggleOn ?? false;
+    message.isAbilityToggleOff = object.isAbilityToggleOff ?? false;
+    message.abilityLevel = object.abilityLevel ?? 0;
+    message.locationX = object.locationX ?? 0;
+    message.locationY = object.locationY ?? 0;
+    message.goldReason = object.goldReason ?? 0;
+    message.timestampRaw = object.timestampRaw ?? 0;
+    message.modifierDuration = object.modifierDuration ?? 0;
+    message.xpReason = object.xpReason ?? 0;
+    message.lastHits = object.lastHits ?? 0;
+    message.attackerTeam = object.attackerTeam ?? 0;
+    message.targetTeam = object.targetTeam ?? 0;
+    message.obsWardsPlaced = object.obsWardsPlaced ?? 0;
+    message.assistPlayer0 = object.assistPlayer0 ?? 0;
+    message.assistPlayer1 = object.assistPlayer1 ?? 0;
+    message.assistPlayer2 = object.assistPlayer2 ?? 0;
+    message.assistPlayer3 = object.assistPlayer3 ?? 0;
+    message.stackCount = object.stackCount ?? 0;
+    message.hiddenModifier = object.hiddenModifier ?? false;
+    message.isTargetBuilding = object.isTargetBuilding ?? false;
+    message.neutralCampType = object.neutralCampType ?? 0;
+    message.runeType = object.runeType ?? 0;
+    message.assistPlayers = object.assistPlayers?.map((e) => e) || [];
+    message.isHealSave = object.isHealSave ?? false;
+    message.isUltimateAbility = object.isUltimateAbility ?? false;
+    message.attackerHeroLevel = object.attackerHeroLevel ?? 0;
+    message.targetHeroLevel = object.targetHeroLevel ?? 0;
+    message.xpm = object.xpm ?? 0;
+    message.gpm = object.gpm ?? 0;
+    message.eventLocation = object.eventLocation ?? 0;
+    message.targetIsSelf = object.targetIsSelf ?? false;
+    message.damageType = object.damageType ?? 0;
+    message.invisibilityModifier = object.invisibilityModifier ?? false;
+    message.damageCategory = object.damageCategory ?? 0;
+    message.networth = object.networth ?? 0;
+    message.buildingType = object.buildingType ?? 0;
+    message.modifierElapsedDuration = object.modifierElapsedDuration ?? 0;
+    message.silenceModifier = object.silenceModifier ?? false;
+    message.healFromLifesteal = object.healFromLifesteal ?? false;
+    message.modifierPurged = object.modifierPurged ?? false;
+    message.spellEvaded = object.spellEvaded ?? false;
+    message.motionControllerModifier = object.motionControllerModifier ?? false;
+    message.longRangeKill = object.longRangeKill ?? false;
+    message.modifierPurgeAbility = object.modifierPurgeAbility ?? 0;
+    message.modifierPurgeNpc = object.modifierPurgeNpc ?? 0;
+    message.rootModifier = object.rootModifier ?? false;
+    message.totalUnitDeathCount = object.totalUnitDeathCount ?? 0;
+    message.auraModifier = object.auraModifier ?? false;
+    message.armorDebuffModifier = object.armorDebuffModifier ?? false;
+    message.noPhysicalDamageModifier = object.noPhysicalDamageModifier ?? false;
+    message.modifierAbility = object.modifierAbility ?? 0;
+    message.modifierHidden = object.modifierHidden ?? false;
+    message.inflictorIsStolenAbility = object.inflictorIsStolenAbility ?? false;
+    message.killEaterEvent = object.killEaterEvent ?? 0;
+    message.unitStatusLabel = object.unitStatusLabel ?? 0;
+    message.spellGeneratedAttack = object.spellGeneratedAttack ?? false;
+    message.atNightTime = object.atNightTime ?? false;
+    message.attackerHasScepter = object.attackerHasScepter ?? false;
+    message.neutralCampTeam = object.neutralCampTeam ?? 0;
+    message.regeneratedHealth = object.regeneratedHealth ?? 0;
+    message.willReincarnate = object.willReincarnate ?? false;
+    message.usesCharges = object.usesCharges ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgPendingEventAward(): CMsgPendingEventAward {
@@ -5430,6 +5587,21 @@ export const CMsgPendingEventAward = {
     message.auditData !== undefined && (obj.auditData = message.auditData);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgPendingEventAward>): CMsgPendingEventAward {
+    return CMsgPendingEventAward.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPendingEventAward>): CMsgPendingEventAward {
+    const message = createBaseCMsgPendingEventAward();
+    message.eventId = object.eventId ?? 0;
+    message.actionId = object.actionId ?? 0;
+    message.numToGrant = object.numToGrant ?? 0;
+    message.scoreMode = object.scoreMode ?? 0;
+    message.auditAction = object.auditAction ?? 0;
+    message.auditData = object.auditData ?? "0";
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -5450,6 +5622,13 @@ var tsProtoGlobalThis: any = (() => {
   }
   throw "Unable to locate global object";
 })();
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

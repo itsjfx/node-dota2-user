@@ -1393,6 +1393,18 @@ export const CMsgClientToGCGetBattleReport = {
     message.duration !== undefined && (obj.duration = Math.round(message.duration));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCGetBattleReport>): CMsgClientToGCGetBattleReport {
+    return CMsgClientToGCGetBattleReport.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCGetBattleReport>): CMsgClientToGCGetBattleReport {
+    const message = createBaseCMsgClientToGCGetBattleReport();
+    message.accountId = object.accountId ?? 0;
+    message.timestamp = object.timestamp ?? 0;
+    message.duration = object.duration ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgBattleReportGame(): CMsgBattleReportGame {
@@ -2071,6 +2083,64 @@ export const CMsgBattleReportGame = {
     message.item5 !== undefined && (obj.item5 = Math.round(message.item5));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgBattleReportGame>): CMsgBattleReportGame {
+    return CMsgBattleReportGame.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgBattleReportGame>): CMsgBattleReportGame {
+    const message = createBaseCMsgBattleReportGame();
+    message.heroId = object.heroId ?? 0;
+    message.kills = object.kills ?? 0;
+    message.deaths = object.deaths ?? 0;
+    message.assists = object.assists ?? 0;
+    message.rankChange = object.rankChange ?? 0;
+    message.lastHits = object.lastHits ?? 0;
+    message.denies = object.denies ?? 0;
+    message.gpm = object.gpm ?? 0;
+    message.xpm = object.xpm ?? 0;
+    message.role = object.role ?? 0;
+    message.outcome = object.outcome ?? 0;
+    message.laneOutcome = object.laneOutcome ?? 0;
+    message.ranked = object.ranked ?? false;
+    message.matchId = object.matchId ?? "0";
+    message.laneSelectionFlags = object.laneSelectionFlags ?? 0;
+    message.predictedPosition = object.predictedPosition ?? 0;
+    message.secondsDead = object.secondsDead ?? 0;
+    message.winningTeam = object.winningTeam ?? 0;
+    message.playerSlot = object.playerSlot ?? 0;
+    message.partyGame = object.partyGame ?? false;
+    message.startTime = object.startTime ?? 0;
+    message.bountyRunes = object.bountyRunes ?? 0;
+    message.waterRunes = object.waterRunes ?? 0;
+    message.powerRunes = object.powerRunes ?? 0;
+    message.timeEnemyT1TowerDestroyed = object.timeEnemyT1TowerDestroyed ?? 0;
+    message.timeFriendlyT1TowerDestroyed = object.timeFriendlyT1TowerDestroyed ?? 0;
+    message.enemyRoshanKills = object.enemyRoshanKills ?? 0;
+    message.teleportsUsed = object.teleportsUsed ?? 0;
+    message.dewards = object.dewards ?? 0;
+    message.campsStacked = object.campsStacked ?? 0;
+    message.supportGold = object.supportGold ?? 0;
+    message.heroDamage = object.heroDamage ?? 0;
+    message.heroHealing = object.heroHealing ?? 0;
+    message.towerDamage = object.towerDamage ?? 0;
+    message.successfulSmokes = object.successfulSmokes ?? 0;
+    message.stunDuration = object.stunDuration ?? 0;
+    message.duration = object.duration ?? 0;
+    message.friendlyRoshanKills = object.friendlyRoshanKills ?? 0;
+    message.previousRank = object.previousRank ?? 0;
+    message.gameMode = object.gameMode ?? 0;
+    message.lobbyType = object.lobbyType ?? 0;
+    message.timePurchasedShard = object.timePurchasedShard ?? 0;
+    message.timePurchasedScepter = object.timePurchasedScepter ?? 0;
+    message.item0 = object.item0 ?? 0;
+    message.item1 = object.item1 ?? 0;
+    message.item2 = object.item2 ?? 0;
+    message.item3 = object.item3 ?? 0;
+    message.item4 = object.item4 ?? 0;
+    message.item5 = object.item5 ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgBattleReportGameList(): CMsgBattleReportGameList {
@@ -2122,6 +2192,16 @@ export const CMsgBattleReportGameList = {
       obj.games = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgBattleReportGameList>): CMsgBattleReportGameList {
+    return CMsgBattleReportGameList.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgBattleReportGameList>): CMsgBattleReportGameList {
+    const message = createBaseCMsgBattleReportGameList();
+    message.games = object.games?.map((e) => CMsgBattleReportGame.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -2187,6 +2267,19 @@ export const CMsgBattleReport = {
     message.highlights !== undefined &&
       (obj.highlights = message.highlights ? CMsgBattleReportHighlights.toJSON(message.highlights) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgBattleReport>): CMsgBattleReport {
+    return CMsgBattleReport.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgBattleReport>): CMsgBattleReport {
+    const message = createBaseCMsgBattleReport();
+    message.games = object.games?.map((e) => CMsgBattleReportGame.fromPartial(e)) || [];
+    message.highlights = (object.highlights !== undefined && object.highlights !== null)
+      ? CMsgBattleReportHighlights.fromPartial(object.highlights)
+      : undefined;
+    return message;
   },
 };
 
@@ -2271,6 +2364,19 @@ export const CMsgBattleReport_HighlightGeneral = {
     message.mmrDelta !== undefined && (obj.mmrDelta = Math.round(message.mmrDelta));
     message.highlightScore !== undefined && (obj.highlightScore = message.highlightScore);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgBattleReport_HighlightGeneral>): CMsgBattleReport_HighlightGeneral {
+    return CMsgBattleReport_HighlightGeneral.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgBattleReport_HighlightGeneral>): CMsgBattleReport_HighlightGeneral {
+    const message = createBaseCMsgBattleReport_HighlightGeneral();
+    message.winLossWindow = object.winLossWindow ?? 0;
+    message.winPercent = object.winPercent ?? 0;
+    message.mmrDelta = object.mmrDelta ?? 0;
+    message.highlightScore = object.highlightScore ?? 0;
+    return message;
   },
 };
 
@@ -2439,6 +2545,25 @@ export const CMsgBattleReport_Highlight = {
     message.context !== undefined && (obj.context = cMsgBattleReportCompareContextToJSON(message.context));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgBattleReport_Highlight>): CMsgBattleReport_Highlight {
+    return CMsgBattleReport_Highlight.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgBattleReport_Highlight>): CMsgBattleReport_Highlight {
+    const message = createBaseCMsgBattleReport_Highlight();
+    message.highlightId = object.highlightId ?? 0;
+    message.category = object.category ?? 0;
+    message.tier = object.tier ?? 0;
+    message.rarity = object.rarity ?? 0;
+    message.score = object.score ?? 0;
+    message.confidence = object.confidence ?? 0;
+    message.heroId = object.heroId ?? 0;
+    message.role = object.role ?? 0;
+    message.comparisonDeltaValue = object.comparisonDeltaValue ?? 0;
+    message.context = object.context ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgBattleReportInfo(): CMsgBattleReportInfo {
@@ -2582,6 +2707,22 @@ export const CMsgBattleReportInfo = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgBattleReportInfo>): CMsgBattleReportInfo {
+    return CMsgBattleReportInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgBattleReportInfo>): CMsgBattleReportInfo {
+    const message = createBaseCMsgBattleReportInfo();
+    message.timestamp = object.timestamp ?? 0;
+    message.duration = object.duration ?? 0;
+    message.acknowledged = object.acknowledged ?? false;
+    message.featuredHeroId = object.featuredHeroId ?? 0;
+    message.featuredPosition = object.featuredPosition ?? 0;
+    message.gamesPlayed = object.gamesPlayed ?? 0;
+    message.medalCounts = object.medalCounts?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgBattleReportInfoList(): CMsgBattleReportInfoList {
@@ -2636,6 +2777,16 @@ export const CMsgBattleReportInfoList = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgBattleReportInfoList>): CMsgBattleReportInfoList {
+    return CMsgBattleReportInfoList.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgBattleReportInfoList>): CMsgBattleReportInfoList {
+    const message = createBaseCMsgBattleReportInfoList();
+    message.battleReportInfo = object.battleReportInfo?.map((e) => CMsgBattleReportInfo.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgBattleReportHighlights(): CMsgBattleReportHighlights {
@@ -2689,6 +2840,16 @@ export const CMsgBattleReportHighlights = {
       obj.highlights = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgBattleReportHighlights>): CMsgBattleReportHighlights {
+    return CMsgBattleReportHighlights.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgBattleReportHighlights>): CMsgBattleReportHighlights {
+    const message = createBaseCMsgBattleReportHighlights();
+    message.highlights = object.highlights?.map((e) => CMsgBattleReport_Highlight.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -2745,6 +2906,17 @@ export const CMsgBattleReportAggregateStats = {
       obj.result = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgBattleReportAggregateStats>): CMsgBattleReportAggregateStats {
+    return CMsgBattleReportAggregateStats.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgBattleReportAggregateStats>): CMsgBattleReportAggregateStats {
+    const message = createBaseCMsgBattleReportAggregateStats();
+    message.result =
+      object.result?.map((e) => CMsgBattleReportAggregateStats_CMsgBattleReportAggregate.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -2808,6 +2980,21 @@ export const CMsgBattleReportAggregateStats_CMsgBattleReportStat = {
     message.mean !== undefined && (obj.mean = message.mean);
     message.stdev !== undefined && (obj.stdev = message.stdev);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgBattleReportAggregateStats_CMsgBattleReportStat>,
+  ): CMsgBattleReportAggregateStats_CMsgBattleReportStat {
+    return CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgBattleReportAggregateStats_CMsgBattleReportStat>,
+  ): CMsgBattleReportAggregateStats_CMsgBattleReportStat {
+    const message = createBaseCMsgBattleReportAggregateStats_CMsgBattleReportStat();
+    message.mean = object.mean ?? 0;
+    message.stdev = object.stdev ?? 0;
+    return message;
   },
 };
 
@@ -3388,6 +3575,104 @@ export const CMsgBattleReportAggregateStats_CMsgBattleReportAggregate = {
       : undefined);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgBattleReportAggregateStats_CMsgBattleReportAggregate>,
+  ): CMsgBattleReportAggregateStats_CMsgBattleReportAggregate {
+    return CMsgBattleReportAggregateStats_CMsgBattleReportAggregate.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgBattleReportAggregateStats_CMsgBattleReportAggregate>,
+  ): CMsgBattleReportAggregateStats_CMsgBattleReportAggregate {
+    const message = createBaseCMsgBattleReportAggregateStats_CMsgBattleReportAggregate();
+    message.heroId = object.heroId ?? 0;
+    message.predictedPosition = object.predictedPosition ?? 0;
+    message.gameCount = object.gameCount ?? 0;
+    message.winCount = object.winCount ?? 0;
+    message.laneWinCount = object.laneWinCount ?? 0;
+    message.kills = (object.kills !== undefined && object.kills !== null)
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromPartial(object.kills)
+      : undefined;
+    message.deaths = (object.deaths !== undefined && object.deaths !== null)
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromPartial(object.deaths)
+      : undefined;
+    message.assists = (object.assists !== undefined && object.assists !== null)
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromPartial(object.assists)
+      : undefined;
+    message.rankChange = (object.rankChange !== undefined && object.rankChange !== null)
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromPartial(object.rankChange)
+      : undefined;
+    message.lastHits = (object.lastHits !== undefined && object.lastHits !== null)
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromPartial(object.lastHits)
+      : undefined;
+    message.denies = (object.denies !== undefined && object.denies !== null)
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromPartial(object.denies)
+      : undefined;
+    message.gpm = (object.gpm !== undefined && object.gpm !== null)
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromPartial(object.gpm)
+      : undefined;
+    message.xpm = (object.xpm !== undefined && object.xpm !== null)
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromPartial(object.xpm)
+      : undefined;
+    message.secondsDead = (object.secondsDead !== undefined && object.secondsDead !== null)
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromPartial(object.secondsDead)
+      : undefined;
+    message.bountyRunes = (object.bountyRunes !== undefined && object.bountyRunes !== null)
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromPartial(object.bountyRunes)
+      : undefined;
+    message.waterRunes = (object.waterRunes !== undefined && object.waterRunes !== null)
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromPartial(object.waterRunes)
+      : undefined;
+    message.powerRunes = (object.powerRunes !== undefined && object.powerRunes !== null)
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromPartial(object.powerRunes)
+      : undefined;
+    message.timeEnemyT1TowerDestroyed =
+      (object.timeEnemyT1TowerDestroyed !== undefined && object.timeEnemyT1TowerDestroyed !== null)
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromPartial(object.timeEnemyT1TowerDestroyed)
+        : undefined;
+    message.timeFriendlyT1TowerDestroyed =
+      (object.timeFriendlyT1TowerDestroyed !== undefined && object.timeFriendlyT1TowerDestroyed !== null)
+        ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromPartial(object.timeFriendlyT1TowerDestroyed)
+        : undefined;
+    message.enemyRoshanKills = (object.enemyRoshanKills !== undefined && object.enemyRoshanKills !== null)
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromPartial(object.enemyRoshanKills)
+      : undefined;
+    message.teleportsUsed = (object.teleportsUsed !== undefined && object.teleportsUsed !== null)
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromPartial(object.teleportsUsed)
+      : undefined;
+    message.dewards = (object.dewards !== undefined && object.dewards !== null)
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromPartial(object.dewards)
+      : undefined;
+    message.campsStacked = (object.campsStacked !== undefined && object.campsStacked !== null)
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromPartial(object.campsStacked)
+      : undefined;
+    message.supportGold = (object.supportGold !== undefined && object.supportGold !== null)
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromPartial(object.supportGold)
+      : undefined;
+    message.heroDamage = (object.heroDamage !== undefined && object.heroDamage !== null)
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromPartial(object.heroDamage)
+      : undefined;
+    message.heroHealing = (object.heroHealing !== undefined && object.heroHealing !== null)
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromPartial(object.heroHealing)
+      : undefined;
+    message.towerDamage = (object.towerDamage !== undefined && object.towerDamage !== null)
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromPartial(object.towerDamage)
+      : undefined;
+    message.successfulSmokes = (object.successfulSmokes !== undefined && object.successfulSmokes !== null)
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromPartial(object.successfulSmokes)
+      : undefined;
+    message.stunDuration = (object.stunDuration !== undefined && object.stunDuration !== null)
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromPartial(object.stunDuration)
+      : undefined;
+    message.duration = (object.duration !== undefined && object.duration !== null)
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromPartial(object.duration)
+      : undefined;
+    message.friendlyRoshanKills = (object.friendlyRoshanKills !== undefined && object.friendlyRoshanKills !== null)
+      ? CMsgBattleReportAggregateStats_CMsgBattleReportStat.fromPartial(object.friendlyRoshanKills)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgBattleReportAggregatedGeneralStats(): CMsgBattleReportAggregatedGeneralStats {
@@ -3422,6 +3707,15 @@ export const CMsgBattleReportAggregatedGeneralStats = {
   toJSON(_: CMsgBattleReportAggregatedGeneralStats): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgBattleReportAggregatedGeneralStats>): CMsgBattleReportAggregatedGeneralStats {
+    return CMsgBattleReportAggregatedGeneralStats.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgBattleReportAggregatedGeneralStats>): CMsgBattleReportAggregatedGeneralStats {
+    const message = createBaseCMsgBattleReportAggregatedGeneralStats();
+    return message;
   },
 };
 
@@ -3511,6 +3805,25 @@ export const CMsgClientToGCGetBattleReportResponse = {
       : undefined);
     message.info !== undefined && (obj.info = message.info ? CMsgBattleReportInfo.toJSON(message.info) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCGetBattleReportResponse>): CMsgClientToGCGetBattleReportResponse {
+    return CMsgClientToGCGetBattleReportResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCGetBattleReportResponse>): CMsgClientToGCGetBattleReportResponse {
+    const message = createBaseCMsgClientToGCGetBattleReportResponse();
+    message.report = (object.report !== undefined && object.report !== null)
+      ? CMsgBattleReport.fromPartial(object.report)
+      : undefined;
+    message.response = object.response ?? 0;
+    message.aggregateStats = (object.aggregateStats !== undefined && object.aggregateStats !== null)
+      ? CMsgBattleReportAggregateStats.fromPartial(object.aggregateStats)
+      : undefined;
+    message.info = (object.info !== undefined && object.info !== null)
+      ? CMsgBattleReportInfo.fromPartial(object.info)
+      : undefined;
+    return message;
   },
 };
 
@@ -3609,6 +3922,24 @@ export const CMsgClientToGCGetBattleReportAggregateStats = {
     message.rank !== undefined && (obj.rank = Math.round(message.rank));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCGetBattleReportAggregateStats>): CMsgClientToGCGetBattleReportAggregateStats {
+    return CMsgClientToGCGetBattleReportAggregateStats.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCGetBattleReportAggregateStats>,
+  ): CMsgClientToGCGetBattleReportAggregateStats {
+    const message = createBaseCMsgClientToGCGetBattleReportAggregateStats();
+    message.aggregateKeys =
+      object.aggregateKeys?.map((e) =>
+        CMsgClientToGCGetBattleReportAggregateStats_CMsgBattleReportAggregateKey.fromPartial(e)
+      ) || [];
+    message.timestamp = object.timestamp ?? 0;
+    message.duration = object.duration ?? 0;
+    message.rank = object.rank ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCGetBattleReportAggregateStats_CMsgBattleReportAggregateKey(): CMsgClientToGCGetBattleReportAggregateStats_CMsgBattleReportAggregateKey {
@@ -3674,6 +4005,21 @@ export const CMsgClientToGCGetBattleReportAggregateStats_CMsgBattleReportAggrega
     message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
     message.predictedPosition !== undefined && (obj.predictedPosition = Math.round(message.predictedPosition));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCGetBattleReportAggregateStats_CMsgBattleReportAggregateKey>,
+  ): CMsgClientToGCGetBattleReportAggregateStats_CMsgBattleReportAggregateKey {
+    return CMsgClientToGCGetBattleReportAggregateStats_CMsgBattleReportAggregateKey.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCGetBattleReportAggregateStats_CMsgBattleReportAggregateKey>,
+  ): CMsgClientToGCGetBattleReportAggregateStats_CMsgBattleReportAggregateKey {
+    const message = createBaseCMsgClientToGCGetBattleReportAggregateStats_CMsgBattleReportAggregateKey();
+    message.heroId = object.heroId ?? 0;
+    message.predictedPosition = object.predictedPosition ?? 0;
+    return message;
   },
 };
 
@@ -3745,6 +4091,23 @@ export const CMsgClientToGCGetBattleReportAggregateStatsResponse = {
       (obj.response = cMsgClientToGCGetBattleReportAggregateStatsResponse_EResponseToJSON(message.response));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCGetBattleReportAggregateStatsResponse>,
+  ): CMsgClientToGCGetBattleReportAggregateStatsResponse {
+    return CMsgClientToGCGetBattleReportAggregateStatsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCGetBattleReportAggregateStatsResponse>,
+  ): CMsgClientToGCGetBattleReportAggregateStatsResponse {
+    const message = createBaseCMsgClientToGCGetBattleReportAggregateStatsResponse();
+    message.aggregateStats = (object.aggregateStats !== undefined && object.aggregateStats !== null)
+      ? CMsgBattleReportAggregateStats.fromPartial(object.aggregateStats)
+      : undefined;
+    message.response = object.response ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCGetBattleReportInfo(): CMsgClientToGCGetBattleReportInfo {
@@ -3790,6 +4153,16 @@ export const CMsgClientToGCGetBattleReportInfo = {
     const obj: any = {};
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCGetBattleReportInfo>): CMsgClientToGCGetBattleReportInfo {
+    return CMsgClientToGCGetBattleReportInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCGetBattleReportInfo>): CMsgClientToGCGetBattleReportInfo {
+    const message = createBaseCMsgClientToGCGetBattleReportInfo();
+    message.accountId = object.accountId ?? 0;
+    return message;
   },
 };
 
@@ -3857,6 +4230,21 @@ export const CMsgClientToGCGetBattleReportInfoResponse = {
     message.response !== undefined &&
       (obj.response = cMsgClientToGCGetBattleReportInfoResponse_EResponseToJSON(message.response));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCGetBattleReportInfoResponse>): CMsgClientToGCGetBattleReportInfoResponse {
+    return CMsgClientToGCGetBattleReportInfoResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCGetBattleReportInfoResponse>,
+  ): CMsgClientToGCGetBattleReportInfoResponse {
+    const message = createBaseCMsgClientToGCGetBattleReportInfoResponse();
+    message.battleReportInfoList = (object.battleReportInfoList !== undefined && object.battleReportInfoList !== null)
+      ? CMsgBattleReportInfoList.fromPartial(object.battleReportInfoList)
+      : undefined;
+    message.response = object.response ?? 0;
+    return message;
   },
 };
 
@@ -3930,6 +4318,18 @@ export const CMsgClientToGCAcknowledgeBattleReport = {
     message.duration !== undefined && (obj.duration = Math.round(message.duration));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCAcknowledgeBattleReport>): CMsgClientToGCAcknowledgeBattleReport {
+    return CMsgClientToGCAcknowledgeBattleReport.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCAcknowledgeBattleReport>): CMsgClientToGCAcknowledgeBattleReport {
+    const message = createBaseCMsgClientToGCAcknowledgeBattleReport();
+    message.accountId = object.accountId ?? 0;
+    message.timestamp = object.timestamp ?? 0;
+    message.duration = object.duration ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCAcknowledgeBattleReportResponse(): CMsgClientToGCAcknowledgeBattleReportResponse {
@@ -3992,6 +4392,21 @@ export const CMsgClientToGCAcknowledgeBattleReportResponse = {
       (obj.response = cMsgClientToGCAcknowledgeBattleReportResponse_EResponseToJSON(message.response));
     message.shardsAwarded !== undefined && (obj.shardsAwarded = Math.round(message.shardsAwarded));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCAcknowledgeBattleReportResponse>,
+  ): CMsgClientToGCAcknowledgeBattleReportResponse {
+    return CMsgClientToGCAcknowledgeBattleReportResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCAcknowledgeBattleReportResponse>,
+  ): CMsgClientToGCAcknowledgeBattleReportResponse {
+    const message = createBaseCMsgClientToGCAcknowledgeBattleReportResponse();
+    message.response = object.response ?? 0;
+    message.shardsAwarded = object.shardsAwarded ?? 0;
+    return message;
   },
 };
 
@@ -4065,6 +4480,20 @@ export const CMsgClientToGCGetBattleReportMatchHistory = {
     message.duration !== undefined && (obj.duration = Math.round(message.duration));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCGetBattleReportMatchHistory>): CMsgClientToGCGetBattleReportMatchHistory {
+    return CMsgClientToGCGetBattleReportMatchHistory.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCGetBattleReportMatchHistory>,
+  ): CMsgClientToGCGetBattleReportMatchHistory {
+    const message = createBaseCMsgClientToGCGetBattleReportMatchHistory();
+    message.accountId = object.accountId ?? 0;
+    message.timestamp = object.timestamp ?? 0;
+    message.duration = object.duration ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCGetBattleReportMatchHistoryResponse(): CMsgClientToGCGetBattleReportMatchHistoryResponse {
@@ -4132,6 +4561,23 @@ export const CMsgClientToGCGetBattleReportMatchHistoryResponse = {
       (obj.games = message.games ? CMsgBattleReportGameList.toJSON(message.games) : undefined);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCGetBattleReportMatchHistoryResponse>,
+  ): CMsgClientToGCGetBattleReportMatchHistoryResponse {
+    return CMsgClientToGCGetBattleReportMatchHistoryResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCGetBattleReportMatchHistoryResponse>,
+  ): CMsgClientToGCGetBattleReportMatchHistoryResponse {
+    const message = createBaseCMsgClientToGCGetBattleReportMatchHistoryResponse();
+    message.response = object.response ?? 0;
+    message.games = (object.games !== undefined && object.games !== null)
+      ? CMsgBattleReportGameList.fromPartial(object.games)
+      : undefined;
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -4152,6 +4598,13 @@ var tsProtoGlobalThis: any = (() => {
   }
   throw "Unable to locate global object";
 })();
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

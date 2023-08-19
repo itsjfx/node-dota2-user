@@ -577,6 +577,21 @@ export const CDOTAMsgLocationPing = {
     message.pingSource !== undefined && (obj.pingSource = ePingSourceToJSON(message.pingSource));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAMsgLocationPing>): CDOTAMsgLocationPing {
+    return CDOTAMsgLocationPing.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAMsgLocationPing>): CDOTAMsgLocationPing {
+    const message = createBaseCDOTAMsgLocationPing();
+    message.x = object.x ?? 0;
+    message.y = object.y ?? 0;
+    message.target = object.target ?? 0;
+    message.directPing = object.directPing ?? false;
+    message.type = object.type ?? 0;
+    message.pingSource = object.pingSource ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAMsgItemAlert(): CDOTAMsgItemAlert {
@@ -649,6 +664,18 @@ export const CDOTAMsgItemAlert = {
     message.itemAbilityId !== undefined && (obj.itemAbilityId = Math.round(message.itemAbilityId));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAMsgItemAlert>): CDOTAMsgItemAlert {
+    return CDOTAMsgItemAlert.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAMsgItemAlert>): CDOTAMsgItemAlert {
+    const message = createBaseCDOTAMsgItemAlert();
+    message.x = object.x ?? 0;
+    message.y = object.y ?? 0;
+    message.itemAbilityId = object.itemAbilityId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAMsgMapLine(): CDOTAMsgMapLine {
@@ -720,6 +747,18 @@ export const CDOTAMsgMapLine = {
     message.y !== undefined && (obj.y = Math.round(message.y));
     message.initial !== undefined && (obj.initial = message.initial);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAMsgMapLine>): CDOTAMsgMapLine {
+    return CDOTAMsgMapLine.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAMsgMapLine>): CDOTAMsgMapLine {
+    const message = createBaseCDOTAMsgMapLine();
+    message.x = object.x ?? 0;
+    message.y = object.y ?? 0;
+    message.initial = object.initial ?? false;
+    return message;
   },
 };
 
@@ -816,6 +855,20 @@ export const CDOTAMsgWorldLine = {
     message.initial !== undefined && (obj.initial = message.initial);
     message.end !== undefined && (obj.end = message.end);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAMsgWorldLine>): CDOTAMsgWorldLine {
+    return CDOTAMsgWorldLine.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAMsgWorldLine>): CDOTAMsgWorldLine {
+    const message = createBaseCDOTAMsgWorldLine();
+    message.x = object.x ?? 0;
+    message.y = object.y ?? 0;
+    message.z = object.z ?? 0;
+    message.initial = object.initial ?? false;
+    message.end = object.end ?? false;
+    return message;
   },
 };
 
@@ -971,6 +1024,22 @@ export const CDOTAMsgSendStatPopup = {
     message.movieName !== undefined && (obj.movieName = message.movieName);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAMsgSendStatPopup>): CDOTAMsgSendStatPopup {
+    return CDOTAMsgSendStatPopup.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAMsgSendStatPopup>): CDOTAMsgSendStatPopup {
+    const message = createBaseCDOTAMsgSendStatPopup();
+    message.style = object.style ?? 0;
+    message.statStrings = object.statStrings?.map((e) => e) || [];
+    message.statImages = object.statImages?.map((e) => e) || [];
+    message.statImageTypes = object.statImageTypes?.map((e) => e) || [];
+    message.duration = object.duration ?? 0;
+    message.useHtml = object.useHtml ?? false;
+    message.movieName = object.movieName ?? "";
+    return message;
+  },
 };
 
 function createBaseCDOTAMsgDismissAllStatPopups(): CDOTAMsgDismissAllStatPopups {
@@ -1016,6 +1085,16 @@ export const CDOTAMsgDismissAllStatPopups = {
     const obj: any = {};
     message.timeDelay !== undefined && (obj.timeDelay = message.timeDelay);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAMsgDismissAllStatPopups>): CDOTAMsgDismissAllStatPopups {
+    return CDOTAMsgDismissAllStatPopups.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAMsgDismissAllStatPopups>): CDOTAMsgDismissAllStatPopups {
+    const message = createBaseCDOTAMsgDismissAllStatPopups();
+    message.timeDelay = object.timeDelay ?? 0;
+    return message;
   },
 };
 
@@ -1088,6 +1167,18 @@ export const CDOTAMsgCoachHUDPing = {
     message.y !== undefined && (obj.y = Math.round(message.y));
     message.tgtpath !== undefined && (obj.tgtpath = message.tgtpath);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAMsgCoachHUDPing>): CDOTAMsgCoachHUDPing {
+    return CDOTAMsgCoachHUDPing.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAMsgCoachHUDPing>): CDOTAMsgCoachHUDPing {
+    const message = createBaseCDOTAMsgCoachHUDPing();
+    message.x = object.x ?? 0;
+    message.y = object.y ?? 0;
+    message.tgtpath = object.tgtpath ?? "";
+    return message;
   },
 };
 
@@ -1225,6 +1316,24 @@ export const CDOTAMsgUnitOrder = {
     message.flags !== undefined && (obj.flags = Math.round(message.flags));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAMsgUnitOrder>): CDOTAMsgUnitOrder {
+    return CDOTAMsgUnitOrder.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAMsgUnitOrder>): CDOTAMsgUnitOrder {
+    const message = createBaseCDOTAMsgUnitOrder();
+    message.orderType = object.orderType ?? 0;
+    message.units = object.units?.map((e) => e) || [];
+    message.targetIndex = object.targetIndex ?? 0;
+    message.abilityIndex = object.abilityIndex ?? 0;
+    message.position = (object.position !== undefined && object.position !== null)
+      ? CMsgVector.fromPartial(object.position)
+      : undefined;
+    message.sequenceNumber = object.sequenceNumber ?? 0;
+    message.flags = object.flags ?? 0;
+    return message;
+  },
 };
 
 function createBaseVersusScenePlayActivity(): VersusScenePlayActivity {
@@ -1290,6 +1399,17 @@ export const VersusScenePlayActivity = {
     }
     message.playbackRate !== undefined && (obj.playbackRate = message.playbackRate);
     return obj;
+  },
+
+  create(base?: DeepPartial<VersusScenePlayActivity>): VersusScenePlayActivity {
+    return VersusScenePlayActivity.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<VersusScenePlayActivity>): VersusScenePlayActivity {
+    const message = createBaseVersusScenePlayActivity();
+    message.activities = object.activities?.map((e) => VersusScenePlayActivity_ActivityInfo.fromPartial(e)) || [];
+    message.playbackRate = object.playbackRate ?? 0;
+    return message;
   },
 };
 
@@ -1363,6 +1483,18 @@ export const VersusScenePlayActivity_ActivityInfo = {
     message.forceLooping !== undefined && (obj.forceLooping = message.forceLooping);
     return obj;
   },
+
+  create(base?: DeepPartial<VersusScenePlayActivity_ActivityInfo>): VersusScenePlayActivity_ActivityInfo {
+    return VersusScenePlayActivity_ActivityInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<VersusScenePlayActivity_ActivityInfo>): VersusScenePlayActivity_ActivityInfo {
+    const message = createBaseVersusScenePlayActivity_ActivityInfo();
+    message.activity = object.activity ?? "";
+    message.disableAutoKill = object.disableAutoKill ?? false;
+    message.forceLooping = object.forceLooping ?? false;
+    return message;
+  },
 };
 
 function createBaseVersusSceneChatWheel(): VersusSceneChatWheel {
@@ -1423,6 +1555,17 @@ export const VersusSceneChatWheel = {
     message.emoticonId !== undefined && (obj.emoticonId = Math.round(message.emoticonId));
     return obj;
   },
+
+  create(base?: DeepPartial<VersusSceneChatWheel>): VersusSceneChatWheel {
+    return VersusSceneChatWheel.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<VersusSceneChatWheel>): VersusSceneChatWheel {
+    const message = createBaseVersusSceneChatWheel();
+    message.chatMessageId = object.chatMessageId ?? 0;
+    message.emoticonId = object.emoticonId ?? 0;
+    return message;
+  },
 };
 
 function createBaseVersusScenePlaybackRate(): VersusScenePlaybackRate {
@@ -1469,6 +1612,16 @@ export const VersusScenePlaybackRate = {
     message.rate !== undefined && (obj.rate = message.rate);
     return obj;
   },
+
+  create(base?: DeepPartial<VersusScenePlaybackRate>): VersusScenePlaybackRate {
+    return VersusScenePlaybackRate.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<VersusScenePlaybackRate>): VersusScenePlaybackRate {
+    const message = createBaseVersusScenePlaybackRate();
+    message.rate = object.rate ?? 0;
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -1489,6 +1642,13 @@ var tsProtoGlobalThis: any = (() => {
   }
   throw "Unable to locate global object";
 })();
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function isSet(value: any): boolean {
   return value !== null && value !== undefined;

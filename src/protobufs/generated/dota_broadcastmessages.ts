@@ -114,6 +114,17 @@ export const CDOTABroadcastMsg = {
     message.msg !== undefined && (obj.msg = base64FromBytes(message.msg !== undefined ? message.msg : Buffer.alloc(0)));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTABroadcastMsg>): CDOTABroadcastMsg {
+    return CDOTABroadcastMsg.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTABroadcastMsg>): CDOTABroadcastMsg {
+    const message = createBaseCDOTABroadcastMsg();
+    message.type = object.type ?? 1;
+    message.msg = object.msg ?? Buffer.alloc(0);
+    return message;
+  },
 };
 
 function createBaseCDOTABroadcastMsgLANLobbyRequest(): CDOTABroadcastMsgLANLobbyRequest {
@@ -148,6 +159,15 @@ export const CDOTABroadcastMsgLANLobbyRequest = {
   toJSON(_: CDOTABroadcastMsgLANLobbyRequest): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTABroadcastMsgLANLobbyRequest>): CDOTABroadcastMsgLANLobbyRequest {
+    return CDOTABroadcastMsgLANLobbyRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CDOTABroadcastMsgLANLobbyRequest>): CDOTABroadcastMsgLANLobbyRequest {
+    const message = createBaseCDOTABroadcastMsgLANLobbyRequest();
+    return message;
   },
 };
 
@@ -309,6 +329,24 @@ export const CDOTABroadcastMsgLANLobbyReply = {
     message.players !== undefined && (obj.players = Math.round(message.players));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTABroadcastMsgLANLobbyReply>): CDOTABroadcastMsgLANLobbyReply {
+    return CDOTABroadcastMsgLANLobbyReply.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTABroadcastMsgLANLobbyReply>): CDOTABroadcastMsgLANLobbyReply {
+    const message = createBaseCDOTABroadcastMsgLANLobbyReply();
+    message.id = object.id ?? "0";
+    message.tournamentId = object.tournamentId ?? 0;
+    message.tournamentGameId = object.tournamentGameId ?? 0;
+    message.members = object.members?.map((e) => CDOTABroadcastMsgLANLobbyReply_CLobbyMember.fromPartial(e)) || [];
+    message.requiresPassKey = object.requiresPassKey ?? false;
+    message.leaderAccountId = object.leaderAccountId ?? 0;
+    message.gameMode = object.gameMode ?? 0;
+    message.name = object.name ?? "";
+    message.players = object.players ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTABroadcastMsgLANLobbyReply_CLobbyMember(): CDOTABroadcastMsgLANLobbyReply_CLobbyMember {
@@ -369,6 +407,19 @@ export const CDOTABroadcastMsgLANLobbyReply_CLobbyMember = {
     message.playerName !== undefined && (obj.playerName = message.playerName);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTABroadcastMsgLANLobbyReply_CLobbyMember>): CDOTABroadcastMsgLANLobbyReply_CLobbyMember {
+    return CDOTABroadcastMsgLANLobbyReply_CLobbyMember.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CDOTABroadcastMsgLANLobbyReply_CLobbyMember>,
+  ): CDOTABroadcastMsgLANLobbyReply_CLobbyMember {
+    const message = createBaseCDOTABroadcastMsgLANLobbyReply_CLobbyMember();
+    message.accountId = object.accountId ?? 0;
+    message.playerName = object.playerName ?? "";
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -414,6 +465,13 @@ function base64FromBytes(arr: Uint8Array): string {
     return tsProtoGlobalThis.btoa(bin.join(""));
   }
 }
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

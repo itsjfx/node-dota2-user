@@ -6,7 +6,7 @@ const debug = require('debug')('dota2-user');
 
 import { Router } from './router';
 import { EGCBaseClientMsg, GCConnectionStatus } from './protobufs';
-import { ProtobufDataMapType } from './known-protobufs';
+import { ProtobufDataMapType, DeepPartial } from './known-protobufs';
 import { Dota2UserError, getProtobufForMessage } from './utils';
 import * as Package from '../package.json';
 
@@ -128,13 +128,13 @@ export class Dota2User extends EventEmitter {
         return this.sendRawBuffer(messageId, buffer);
     }
 
-    // send a "partial" message, where all payload properties are optional, and missing values are filled in best effort
-    sendPartial<T extends keyof ProtobufDataMapType>(messageId: T, body: Partial<ProtobufDataMapType[T]>): void {
+    // send a partial message, where all payload properties are optional, and missing values are filled in best effort
+    sendPartial<T extends keyof ProtobufDataMapType>(messageId: T, body: DeepPartial<ProtobufDataMapType[T]>): void {
         const protobuf = getProtobufForMessage(messageId);
         if (!protobuf) {
             throw new Dota2UserError(`Unable to find protobuf for message: ${messageId}`);
         }
-        const buffer = Buffer.from(protobuf.encode(protobuf.fromJSON(body)).finish());
+        const buffer = Buffer.from(protobuf.encode(protobuf.fromPartial(body)).finish());
         return this.sendRawBuffer(messageId, buffer);
     }
 

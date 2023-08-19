@@ -7146,6 +7146,16 @@ export const CMsgClientSuspended = {
     message.timeEnd !== undefined && (obj.timeEnd = Math.round(message.timeEnd));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientSuspended>): CMsgClientSuspended {
+    return CMsgClientSuspended.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientSuspended>): CMsgClientSuspended {
+    const message = createBaseCMsgClientSuspended();
+    message.timeEnd = object.timeEnd ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgBalancedShuffleLobby(): CMsgBalancedShuffleLobby {
@@ -7180,6 +7190,15 @@ export const CMsgBalancedShuffleLobby = {
   toJSON(_: CMsgBalancedShuffleLobby): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgBalancedShuffleLobby>): CMsgBalancedShuffleLobby {
+    return CMsgBalancedShuffleLobby.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgBalancedShuffleLobby>): CMsgBalancedShuffleLobby {
+    const message = createBaseCMsgBalancedShuffleLobby();
+    return message;
   },
 };
 
@@ -7226,6 +7245,16 @@ export const CMsgInitialQuestionnaireResponse = {
     const obj: any = {};
     message.initialSkill !== undefined && (obj.initialSkill = Math.round(message.initialSkill));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgInitialQuestionnaireResponse>): CMsgInitialQuestionnaireResponse {
+    return CMsgInitialQuestionnaireResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgInitialQuestionnaireResponse>): CMsgInitialQuestionnaireResponse {
+    const message = createBaseCMsgInitialQuestionnaireResponse();
+    message.initialSkill = object.initialSkill ?? 0;
+    return message;
   },
 };
 
@@ -7333,6 +7362,20 @@ export const CMsgDOTARequestMatchesResponse = {
     message.resultsRemaining !== undefined && (obj.resultsRemaining = Math.round(message.resultsRemaining));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTARequestMatchesResponse>): CMsgDOTARequestMatchesResponse {
+    return CMsgDOTARequestMatchesResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTARequestMatchesResponse>): CMsgDOTARequestMatchesResponse {
+    const message = createBaseCMsgDOTARequestMatchesResponse();
+    message.matches = object.matches?.map((e) => CMsgDOTAMatch.fromPartial(e)) || [];
+    message.series = object.series?.map((e) => CMsgDOTARequestMatchesResponse_Series.fromPartial(e)) || [];
+    message.requestId = object.requestId ?? 0;
+    message.totalResults = object.totalResults ?? 0;
+    message.resultsRemaining = object.resultsRemaining ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTARequestMatchesResponse_Series(): CMsgDOTARequestMatchesResponse_Series {
@@ -7408,6 +7451,18 @@ export const CMsgDOTARequestMatchesResponse_Series = {
     message.seriesId !== undefined && (obj.seriesId = Math.round(message.seriesId));
     message.seriesType !== undefined && (obj.seriesType = Math.round(message.seriesType));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTARequestMatchesResponse_Series>): CMsgDOTARequestMatchesResponse_Series {
+    return CMsgDOTARequestMatchesResponse_Series.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTARequestMatchesResponse_Series>): CMsgDOTARequestMatchesResponse_Series {
+    const message = createBaseCMsgDOTARequestMatchesResponse_Series();
+    message.matches = object.matches?.map((e) => CMsgDOTAMatch.fromPartial(e)) || [];
+    message.seriesId = object.seriesId ?? 0;
+    message.seriesType = object.seriesType ?? 0;
+    return message;
   },
 };
 
@@ -7572,6 +7627,24 @@ export const CMsgDOTAPopup = {
     message.debugText !== undefined && (obj.debugText = message.debugText);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAPopup>): CMsgDOTAPopup {
+    return CMsgDOTAPopup.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAPopup>): CMsgDOTAPopup {
+    const message = createBaseCMsgDOTAPopup();
+    message.id = object.id ?? 0;
+    message.customText = object.customText ?? "";
+    message.intData = object.intData ?? 0;
+    message.popupData = object.popupData ?? Buffer.alloc(0);
+    message.locTokenHeader = object.locTokenHeader ?? "";
+    message.locTokenMsg = object.locTokenMsg ?? "";
+    message.varNames = object.varNames?.map((e) => e) || [];
+    message.varValues = object.varValues?.map((e) => e) || [];
+    message.debugText = object.debugText ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAReportsRemainingRequest(): CMsgDOTAReportsRemainingRequest {
@@ -7606,6 +7679,15 @@ export const CMsgDOTAReportsRemainingRequest = {
   toJSON(_: CMsgDOTAReportsRemainingRequest): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAReportsRemainingRequest>): CMsgDOTAReportsRemainingRequest {
+    return CMsgDOTAReportsRemainingRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgDOTAReportsRemainingRequest>): CMsgDOTAReportsRemainingRequest {
+    const message = createBaseCMsgDOTAReportsRemainingRequest();
+    return message;
   },
 };
 
@@ -7731,6 +7813,21 @@ export const CMsgDOTAReportsRemainingResponse = {
     message.numCommsReportsTotal !== undefined && (obj.numCommsReportsTotal = Math.round(message.numCommsReportsTotal));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAReportsRemainingResponse>): CMsgDOTAReportsRemainingResponse {
+    return CMsgDOTAReportsRemainingResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAReportsRemainingResponse>): CMsgDOTAReportsRemainingResponse {
+    const message = createBaseCMsgDOTAReportsRemainingResponse();
+    message.numPositiveReportsRemaining = object.numPositiveReportsRemaining ?? 0;
+    message.numNegativeReportsRemaining = object.numNegativeReportsRemaining ?? 0;
+    message.numPositiveReportsTotal = object.numPositiveReportsTotal ?? 0;
+    message.numNegativeReportsTotal = object.numNegativeReportsTotal ?? 0;
+    message.numCommsReportsRemaining = object.numCommsReportsRemaining ?? 0;
+    message.numCommsReportsTotal = object.numCommsReportsTotal ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTASubmitPlayerReport(): CMsgDOTASubmitPlayerReport {
@@ -7814,6 +7911,19 @@ export const CMsgDOTASubmitPlayerReport = {
     message.lobbyId !== undefined && (obj.lobbyId = message.lobbyId);
     message.comment !== undefined && (obj.comment = message.comment);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTASubmitPlayerReport>): CMsgDOTASubmitPlayerReport {
+    return CMsgDOTASubmitPlayerReport.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTASubmitPlayerReport>): CMsgDOTASubmitPlayerReport {
+    const message = createBaseCMsgDOTASubmitPlayerReport();
+    message.targetAccountId = object.targetAccountId ?? 0;
+    message.reportFlags = object.reportFlags ?? 0;
+    message.lobbyId = object.lobbyId ?? "0";
+    message.comment = object.comment ?? "";
+    return message;
   },
 };
 
@@ -7900,6 +8010,19 @@ export const CMsgDOTASubmitPlayerReportResponse = {
       (obj.enumResult = cMsgDOTASubmitPlayerReportResponse_EResultToJSON(message.enumResult));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTASubmitPlayerReportResponse>): CMsgDOTASubmitPlayerReportResponse {
+    return CMsgDOTASubmitPlayerReportResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTASubmitPlayerReportResponse>): CMsgDOTASubmitPlayerReportResponse {
+    const message = createBaseCMsgDOTASubmitPlayerReportResponse();
+    message.targetAccountId = object.targetAccountId ?? 0;
+    message.reportFlags = object.reportFlags ?? 0;
+    message.debugMessage = object.debugMessage ?? "";
+    message.enumResult = object.enumResult ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTASubmitPlayerAvoidRequest(): CMsgDOTASubmitPlayerAvoidRequest {
@@ -7971,6 +8094,18 @@ export const CMsgDOTASubmitPlayerAvoidRequest = {
     message.lobbyId !== undefined && (obj.lobbyId = message.lobbyId);
     message.userNote !== undefined && (obj.userNote = message.userNote);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTASubmitPlayerAvoidRequest>): CMsgDOTASubmitPlayerAvoidRequest {
+    return CMsgDOTASubmitPlayerAvoidRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTASubmitPlayerAvoidRequest>): CMsgDOTASubmitPlayerAvoidRequest {
+    const message = createBaseCMsgDOTASubmitPlayerAvoidRequest();
+    message.targetAccountId = object.targetAccountId ?? 0;
+    message.lobbyId = object.lobbyId ?? "0";
+    message.userNote = object.userNote ?? "";
+    return message;
   },
 };
 
@@ -8044,6 +8179,18 @@ export const CMsgDOTASubmitPlayerAvoidRequestResponse = {
     message.debugMessage !== undefined && (obj.debugMessage = message.debugMessage);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTASubmitPlayerAvoidRequestResponse>): CMsgDOTASubmitPlayerAvoidRequestResponse {
+    return CMsgDOTASubmitPlayerAvoidRequestResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTASubmitPlayerAvoidRequestResponse>): CMsgDOTASubmitPlayerAvoidRequestResponse {
+    const message = createBaseCMsgDOTASubmitPlayerAvoidRequestResponse();
+    message.targetAccountId = object.targetAccountId ?? 0;
+    message.result = object.result ?? 0;
+    message.debugMessage = object.debugMessage ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgDOTASubmitLobbyMVPVote(): CMsgDOTASubmitLobbyMVPVote {
@@ -8089,6 +8236,16 @@ export const CMsgDOTASubmitLobbyMVPVote = {
     const obj: any = {};
     message.targetAccountId !== undefined && (obj.targetAccountId = Math.round(message.targetAccountId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTASubmitLobbyMVPVote>): CMsgDOTASubmitLobbyMVPVote {
+    return CMsgDOTASubmitLobbyMVPVote.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTASubmitLobbyMVPVote>): CMsgDOTASubmitLobbyMVPVote {
+    const message = createBaseCMsgDOTASubmitLobbyMVPVote();
+    message.targetAccountId = object.targetAccountId ?? 0;
+    return message;
   },
 };
 
@@ -8149,6 +8306,17 @@ export const CMsgDOTASubmitLobbyMVPVoteResponse = {
     message.targetAccountId !== undefined && (obj.targetAccountId = Math.round(message.targetAccountId));
     message.eresult !== undefined && (obj.eresult = Math.round(message.eresult));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTASubmitLobbyMVPVoteResponse>): CMsgDOTASubmitLobbyMVPVoteResponse {
+    return CMsgDOTASubmitLobbyMVPVoteResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTASubmitLobbyMVPVoteResponse>): CMsgDOTASubmitLobbyMVPVoteResponse {
+    const message = createBaseCMsgDOTASubmitLobbyMVPVoteResponse();
+    message.targetAccountId = object.targetAccountId ?? 0;
+    message.eresult = object.eresult ?? 0;
+    return message;
   },
 };
 
@@ -8225,6 +8393,17 @@ export const CMsgDOTALobbyMVPAwarded = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTALobbyMVPAwarded>): CMsgDOTALobbyMVPAwarded {
+    return CMsgDOTALobbyMVPAwarded.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTALobbyMVPAwarded>): CMsgDOTALobbyMVPAwarded {
+    const message = createBaseCMsgDOTALobbyMVPAwarded();
+    message.matchId = object.matchId ?? "0";
+    message.mvpAccountId = object.mvpAccountId?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAKickedFromMatchmakingQueue(): CMsgDOTAKickedFromMatchmakingQueue {
@@ -8271,6 +8450,16 @@ export const CMsgDOTAKickedFromMatchmakingQueue = {
     message.matchType !== undefined && (obj.matchType = matchTypeToJSON(message.matchType));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAKickedFromMatchmakingQueue>): CMsgDOTAKickedFromMatchmakingQueue {
+    return CMsgDOTAKickedFromMatchmakingQueue.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAKickedFromMatchmakingQueue>): CMsgDOTAKickedFromMatchmakingQueue {
+    const message = createBaseCMsgDOTAKickedFromMatchmakingQueue();
+    message.matchType = object.matchType ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCMatchDetailsRequest(): CMsgGCMatchDetailsRequest {
@@ -8316,6 +8505,16 @@ export const CMsgGCMatchDetailsRequest = {
     const obj: any = {};
     message.matchId !== undefined && (obj.matchId = message.matchId);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCMatchDetailsRequest>): CMsgGCMatchDetailsRequest {
+    return CMsgGCMatchDetailsRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCMatchDetailsRequest>): CMsgGCMatchDetailsRequest {
+    const message = createBaseCMsgGCMatchDetailsRequest();
+    message.matchId = object.matchId ?? "0";
+    return message;
   },
 };
 
@@ -8388,6 +8587,20 @@ export const CMsgGCMatchDetailsResponse = {
     message.match !== undefined && (obj.match = message.match ? CMsgDOTAMatch.toJSON(message.match) : undefined);
     message.vote !== undefined && (obj.vote = dOTAMatchVoteToJSON(message.vote));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCMatchDetailsResponse>): CMsgGCMatchDetailsResponse {
+    return CMsgGCMatchDetailsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCMatchDetailsResponse>): CMsgGCMatchDetailsResponse {
+    const message = createBaseCMsgGCMatchDetailsResponse();
+    message.result = object.result ?? 0;
+    message.match = (object.match !== undefined && object.match !== null)
+      ? CMsgDOTAMatch.fromPartial(object.match)
+      : undefined;
+    message.vote = object.vote ?? 0;
+    return message;
   },
 };
 
@@ -8467,6 +8680,18 @@ export const CMsgDOTAProfileTickets = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAProfileTickets>): CMsgDOTAProfileTickets {
+    return CMsgDOTAProfileTickets.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAProfileTickets>): CMsgDOTAProfileTickets {
+    const message = createBaseCMsgDOTAProfileTickets();
+    message.result = object.result ?? 0;
+    message.accountId = object.accountId ?? 0;
+    message.leaguePasses = object.leaguePasses?.map((e) => CMsgDOTAProfileTickets_LeaguePass.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAProfileTickets_LeaguePass(): CMsgDOTAProfileTickets_LeaguePass {
@@ -8527,6 +8752,17 @@ export const CMsgDOTAProfileTickets_LeaguePass = {
     message.itemDef !== undefined && (obj.itemDef = Math.round(message.itemDef));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAProfileTickets_LeaguePass>): CMsgDOTAProfileTickets_LeaguePass {
+    return CMsgDOTAProfileTickets_LeaguePass.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAProfileTickets_LeaguePass>): CMsgDOTAProfileTickets_LeaguePass {
+    const message = createBaseCMsgDOTAProfileTickets_LeaguePass();
+    message.leagueId = object.leagueId ?? 0;
+    message.itemDef = object.itemDef ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCGetProfileTickets(): CMsgClientToGCGetProfileTickets {
@@ -8572,6 +8808,16 @@ export const CMsgClientToGCGetProfileTickets = {
     const obj: any = {};
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCGetProfileTickets>): CMsgClientToGCGetProfileTickets {
+    return CMsgClientToGCGetProfileTickets.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCGetProfileTickets>): CMsgClientToGCGetProfileTickets {
+    const message = createBaseCMsgClientToGCGetProfileTickets();
+    message.accountId = object.accountId ?? 0;
+    return message;
   },
 };
 
@@ -8626,6 +8872,16 @@ export const CMsgGCToClientPartySearchInvites = {
       obj.invites = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToClientPartySearchInvites>): CMsgGCToClientPartySearchInvites {
+    return CMsgGCToClientPartySearchInvites.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientPartySearchInvites>): CMsgGCToClientPartySearchInvites {
+    const message = createBaseCMsgGCToClientPartySearchInvites();
+    message.invites = object.invites?.map((e) => CMsgGCToClientPartySearchInvite.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -8928,6 +9184,36 @@ export const CMsgDOTAWelcome = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAWelcome>): CMsgDOTAWelcome {
+    return CMsgDOTAWelcome.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAWelcome>): CMsgDOTAWelcome {
+    const message = createBaseCMsgDOTAWelcome();
+    message.storeItemHash = object.storeItemHash ?? 0;
+    message.timeplayedconsecutively = object.timeplayedconsecutively ?? 0;
+    message.allow3rdPartyMatchHistory = object.allow3rdPartyMatchHistory ?? false;
+    message.lastIpAddress = object.lastIpAddress ?? 0;
+    message.profilePrivate = object.profilePrivate ?? false;
+    message.currency = object.currency ?? 0;
+    message.shouldRequestPlayerOrigin = object.shouldRequestPlayerOrigin ?? false;
+    message.gcSocacheFileVersion = object.gcSocacheFileVersion ?? 0;
+    message.isPerfectWorldTestAccount = object.isPerfectWorldTestAccount ?? false;
+    message.extraMessages = object.extraMessages?.map((e) => CMsgDOTAWelcome_CExtraMsg.fromPartial(e)) || [];
+    message.minimumRecentItemId = object.minimumRecentItemId ?? "0";
+    message.activeEvent = object.activeEvent ?? 0;
+    message.additionalUserMessage = object.additionalUserMessage ?? 0;
+    message.customGameWhitelistVersion = object.customGameWhitelistVersion ?? 0;
+    message.partySearchFriendInvites =
+      (object.partySearchFriendInvites !== undefined && object.partySearchFriendInvites !== null)
+        ? CMsgGCToClientPartySearchInvites.fromPartial(object.partySearchFriendInvites)
+        : undefined;
+    message.remainingPlaytime = object.remainingPlaytime ?? 0;
+    message.disableGuildPersonaInfo = object.disableGuildPersonaInfo ?? false;
+    message.extraMessageBlocks = object.extraMessageBlocks?.map((e) => CExtraMsgBlock.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAWelcome_CExtraMsg(): CMsgDOTAWelcome_CExtraMsg {
@@ -8989,6 +9275,17 @@ export const CMsgDOTAWelcome_CExtraMsg = {
       (obj.contents = base64FromBytes(message.contents !== undefined ? message.contents : Buffer.alloc(0)));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAWelcome_CExtraMsg>): CMsgDOTAWelcome_CExtraMsg {
+    return CMsgDOTAWelcome_CExtraMsg.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAWelcome_CExtraMsg>): CMsgDOTAWelcome_CExtraMsg {
+    const message = createBaseCMsgDOTAWelcome_CExtraMsg();
+    message.id = object.id ?? 0;
+    message.contents = object.contents ?? Buffer.alloc(0);
+    return message;
+  },
 };
 
 function createBaseCSODOTAGameHeroFavorites(): CSODOTAGameHeroFavorites {
@@ -9048,6 +9345,17 @@ export const CSODOTAGameHeroFavorites = {
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CSODOTAGameHeroFavorites>): CSODOTAGameHeroFavorites {
+    return CSODOTAGameHeroFavorites.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSODOTAGameHeroFavorites>): CSODOTAGameHeroFavorites {
+    const message = createBaseCSODOTAGameHeroFavorites();
+    message.accountId = object.accountId ?? 0;
+    message.heroId = object.heroId ?? 0;
+    return message;
   },
 };
 
@@ -9115,6 +9423,17 @@ export const CMsgDOTAMatchVotes = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAMatchVotes>): CMsgDOTAMatchVotes {
+    return CMsgDOTAMatchVotes.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAMatchVotes>): CMsgDOTAMatchVotes {
+    const message = createBaseCMsgDOTAMatchVotes();
+    message.matchId = object.matchId ?? "0";
+    message.votes = object.votes?.map((e) => CMsgDOTAMatchVotes_PlayerVote.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAMatchVotes_PlayerVote(): CMsgDOTAMatchVotes_PlayerVote {
@@ -9174,6 +9493,17 @@ export const CMsgDOTAMatchVotes_PlayerVote = {
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     message.vote !== undefined && (obj.vote = Math.round(message.vote));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAMatchVotes_PlayerVote>): CMsgDOTAMatchVotes_PlayerVote {
+    return CMsgDOTAMatchVotes_PlayerVote.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAMatchVotes_PlayerVote>): CMsgDOTAMatchVotes_PlayerVote {
+    const message = createBaseCMsgDOTAMatchVotes_PlayerVote();
+    message.accountId = object.accountId ?? 0;
+    message.vote = object.vote ?? 0;
+    return message;
   },
 };
 
@@ -9265,6 +9595,19 @@ export const CMsgMatchmakingMatchGroupInfo = {
     message.status !== undefined && (obj.status = eMatchGroupServerStatusToJSON(message.status));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgMatchmakingMatchGroupInfo>): CMsgMatchmakingMatchGroupInfo {
+    return CMsgMatchmakingMatchGroupInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgMatchmakingMatchGroupInfo>): CMsgMatchmakingMatchGroupInfo {
+    const message = createBaseCMsgMatchmakingMatchGroupInfo();
+    message.playersSearching = object.playersSearching ?? 0;
+    message.autoRegionSelectPingPenalty = object.autoRegionSelectPingPenalty ?? 0;
+    message.autoRegionSelectPingPenaltyCustom = object.autoRegionSelectPingPenaltyCustom ?? 0;
+    message.status = object.status ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAMatchmakingStatsRequest(): CMsgDOTAMatchmakingStatsRequest {
@@ -9299,6 +9642,15 @@ export const CMsgDOTAMatchmakingStatsRequest = {
   toJSON(_: CMsgDOTAMatchmakingStatsRequest): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAMatchmakingStatsRequest>): CMsgDOTAMatchmakingStatsRequest {
+    return CMsgDOTAMatchmakingStatsRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgDOTAMatchmakingStatsRequest>): CMsgDOTAMatchmakingStatsRequest {
+    const message = createBaseCMsgDOTAMatchmakingStatsRequest();
+    return message;
   },
 };
 
@@ -9395,6 +9747,18 @@ export const CMsgDOTAMatchmakingStatsResponse = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAMatchmakingStatsResponse>): CMsgDOTAMatchmakingStatsResponse {
+    return CMsgDOTAMatchmakingStatsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAMatchmakingStatsResponse>): CMsgDOTAMatchmakingStatsResponse {
+    const message = createBaseCMsgDOTAMatchmakingStatsResponse();
+    message.matchgroupsVersion = object.matchgroupsVersion ?? 0;
+    message.legacySearchingPlayersByGroupSource2 = object.legacySearchingPlayersByGroupSource2?.map((e) => e) || [];
+    message.matchGroups = object.matchGroups?.map((e) => CMsgMatchmakingMatchGroupInfo.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAUpdateMatchmakingStats(): CMsgDOTAUpdateMatchmakingStats {
@@ -9442,6 +9806,18 @@ export const CMsgDOTAUpdateMatchmakingStats = {
       (obj.stats = message.stats ? CMsgDOTAMatchmakingStatsResponse.toJSON(message.stats) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAUpdateMatchmakingStats>): CMsgDOTAUpdateMatchmakingStats {
+    return CMsgDOTAUpdateMatchmakingStats.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAUpdateMatchmakingStats>): CMsgDOTAUpdateMatchmakingStats {
+    const message = createBaseCMsgDOTAUpdateMatchmakingStats();
+    message.stats = (object.stats !== undefined && object.stats !== null)
+      ? CMsgDOTAMatchmakingStatsResponse.fromPartial(object.stats)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAUpdateMatchManagementStats(): CMsgDOTAUpdateMatchManagementStats {
@@ -9488,6 +9864,18 @@ export const CMsgDOTAUpdateMatchManagementStats = {
     message.stats !== undefined &&
       (obj.stats = message.stats ? CMsgDOTAMatchmakingStatsResponse.toJSON(message.stats) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAUpdateMatchManagementStats>): CMsgDOTAUpdateMatchManagementStats {
+    return CMsgDOTAUpdateMatchManagementStats.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAUpdateMatchManagementStats>): CMsgDOTAUpdateMatchManagementStats {
+    const message = createBaseCMsgDOTAUpdateMatchManagementStats();
+    message.stats = (object.stats !== undefined && object.stats !== null)
+      ? CMsgDOTAMatchmakingStatsResponse.fromPartial(object.stats)
+      : undefined;
+    return message;
   },
 };
 
@@ -9540,6 +9928,16 @@ export const CMsgDOTASetMatchHistoryAccess = {
       (obj.allow3rdPartyMatchHistory = message.allow3rdPartyMatchHistory);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTASetMatchHistoryAccess>): CMsgDOTASetMatchHistoryAccess {
+    return CMsgDOTASetMatchHistoryAccess.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTASetMatchHistoryAccess>): CMsgDOTASetMatchHistoryAccess {
+    const message = createBaseCMsgDOTASetMatchHistoryAccess();
+    message.allow3rdPartyMatchHistory = object.allow3rdPartyMatchHistory ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTASetMatchHistoryAccessResponse(): CMsgDOTASetMatchHistoryAccessResponse {
@@ -9585,6 +9983,16 @@ export const CMsgDOTASetMatchHistoryAccessResponse = {
     const obj: any = {};
     message.eresult !== undefined && (obj.eresult = Math.round(message.eresult));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTASetMatchHistoryAccessResponse>): CMsgDOTASetMatchHistoryAccessResponse {
+    return CMsgDOTASetMatchHistoryAccessResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTASetMatchHistoryAccessResponse>): CMsgDOTASetMatchHistoryAccessResponse {
+    const message = createBaseCMsgDOTASetMatchHistoryAccessResponse();
+    message.eresult = object.eresult ?? 0;
+    return message;
   },
 };
 
@@ -9646,6 +10054,17 @@ export const CMsgDOTANotifyAccountFlagsChange = {
     message.accountFlags !== undefined && (obj.accountFlags = Math.round(message.accountFlags));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTANotifyAccountFlagsChange>): CMsgDOTANotifyAccountFlagsChange {
+    return CMsgDOTANotifyAccountFlagsChange.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTANotifyAccountFlagsChange>): CMsgDOTANotifyAccountFlagsChange {
+    const message = createBaseCMsgDOTANotifyAccountFlagsChange();
+    message.accountid = object.accountid ?? 0;
+    message.accountFlags = object.accountFlags ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTASetProfilePrivacy(): CMsgDOTASetProfilePrivacy {
@@ -9692,6 +10111,16 @@ export const CMsgDOTASetProfilePrivacy = {
     message.profilePrivate !== undefined && (obj.profilePrivate = message.profilePrivate);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTASetProfilePrivacy>): CMsgDOTASetProfilePrivacy {
+    return CMsgDOTASetProfilePrivacy.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTASetProfilePrivacy>): CMsgDOTASetProfilePrivacy {
+    const message = createBaseCMsgDOTASetProfilePrivacy();
+    message.profilePrivate = object.profilePrivate ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTASetProfilePrivacyResponse(): CMsgDOTASetProfilePrivacyResponse {
@@ -9737,6 +10166,16 @@ export const CMsgDOTASetProfilePrivacyResponse = {
     const obj: any = {};
     message.eresult !== undefined && (obj.eresult = Math.round(message.eresult));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTASetProfilePrivacyResponse>): CMsgDOTASetProfilePrivacyResponse {
+    return CMsgDOTASetProfilePrivacyResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTASetProfilePrivacyResponse>): CMsgDOTASetProfilePrivacyResponse {
+    const message = createBaseCMsgDOTASetProfilePrivacyResponse();
+    message.eresult = object.eresult ?? 0;
+    return message;
   },
 };
 
@@ -9798,6 +10237,17 @@ export const CMsgUpgradeLeagueItem = {
     message.leagueId !== undefined && (obj.leagueId = Math.round(message.leagueId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgUpgradeLeagueItem>): CMsgUpgradeLeagueItem {
+    return CMsgUpgradeLeagueItem.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgUpgradeLeagueItem>): CMsgUpgradeLeagueItem {
+    const message = createBaseCMsgUpgradeLeagueItem();
+    message.matchId = object.matchId ?? "0";
+    message.leagueId = object.leagueId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgUpgradeLeagueItemResponse(): CMsgUpgradeLeagueItemResponse {
@@ -9832,6 +10282,15 @@ export const CMsgUpgradeLeagueItemResponse = {
   toJSON(_: CMsgUpgradeLeagueItemResponse): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgUpgradeLeagueItemResponse>): CMsgUpgradeLeagueItemResponse {
+    return CMsgUpgradeLeagueItemResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgUpgradeLeagueItemResponse>): CMsgUpgradeLeagueItemResponse {
+    const message = createBaseCMsgUpgradeLeagueItemResponse();
+    return message;
   },
 };
 
@@ -9893,6 +10352,17 @@ export const CMsgGCWatchDownloadedReplay = {
     message.watchType !== undefined && (obj.watchType = dOTAWatchReplayTypeToJSON(message.watchType));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCWatchDownloadedReplay>): CMsgGCWatchDownloadedReplay {
+    return CMsgGCWatchDownloadedReplay.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCWatchDownloadedReplay>): CMsgGCWatchDownloadedReplay {
+    const message = createBaseCMsgGCWatchDownloadedReplay();
+    message.matchId = object.matchId ?? "0";
+    message.watchType = object.watchType ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientsRejoinChatChannels(): CMsgClientsRejoinChatChannels {
@@ -9928,6 +10398,15 @@ export const CMsgClientsRejoinChatChannels = {
     const obj: any = {};
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientsRejoinChatChannels>): CMsgClientsRejoinChatChannels {
+    return CMsgClientsRejoinChatChannels.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgClientsRejoinChatChannels>): CMsgClientsRejoinChatChannels {
+    const message = createBaseCMsgClientsRejoinChatChannels();
+    return message;
+  },
 };
 
 function createBaseCMsgGCGetHeroStandings(): CMsgGCGetHeroStandings {
@@ -9962,6 +10441,15 @@ export const CMsgGCGetHeroStandings = {
   toJSON(_: CMsgGCGetHeroStandings): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCGetHeroStandings>): CMsgGCGetHeroStandings {
+    return CMsgGCGetHeroStandings.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgGCGetHeroStandings>): CMsgGCGetHeroStandings {
+    const message = createBaseCMsgGCGetHeroStandings();
+    return message;
   },
 };
 
@@ -10016,6 +10504,16 @@ export const CMsgGCGetHeroStandingsResponse = {
       obj.standings = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCGetHeroStandingsResponse>): CMsgGCGetHeroStandingsResponse {
+    return CMsgGCGetHeroStandingsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCGetHeroStandingsResponse>): CMsgGCGetHeroStandingsResponse {
+    const message = createBaseCMsgGCGetHeroStandingsResponse();
+    message.standings = object.standings?.map((e) => CMsgGCGetHeroStandingsResponse_Hero.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -10405,6 +10903,42 @@ export const CMsgGCGetHeroStandingsResponse_Hero = {
     message.avgDenies !== undefined && (obj.avgDenies = message.avgDenies);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCGetHeroStandingsResponse_Hero>): CMsgGCGetHeroStandingsResponse_Hero {
+    return CMsgGCGetHeroStandingsResponse_Hero.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCGetHeroStandingsResponse_Hero>): CMsgGCGetHeroStandingsResponse_Hero {
+    const message = createBaseCMsgGCGetHeroStandingsResponse_Hero();
+    message.heroId = object.heroId ?? 0;
+    message.wins = object.wins ?? 0;
+    message.losses = object.losses ?? 0;
+    message.winStreak = object.winStreak ?? 0;
+    message.bestWinStreak = object.bestWinStreak ?? 0;
+    message.avgKills = object.avgKills ?? 0;
+    message.avgDeaths = object.avgDeaths ?? 0;
+    message.avgAssists = object.avgAssists ?? 0;
+    message.avgGpm = object.avgGpm ?? 0;
+    message.avgXpm = object.avgXpm ?? 0;
+    message.bestKills = object.bestKills ?? 0;
+    message.bestAssists = object.bestAssists ?? 0;
+    message.bestGpm = object.bestGpm ?? 0;
+    message.bestXpm = object.bestXpm ?? 0;
+    message.performance = object.performance ?? 0;
+    message.winsWithAlly = object.winsWithAlly ?? 0;
+    message.lossesWithAlly = object.lossesWithAlly ?? 0;
+    message.winsAgainstEnemy = object.winsAgainstEnemy ?? 0;
+    message.lossesAgainstEnemy = object.lossesAgainstEnemy ?? 0;
+    message.networthPeak = object.networthPeak ?? 0;
+    message.lasthitPeak = object.lasthitPeak ?? 0;
+    message.denyPeak = object.denyPeak ?? 0;
+    message.damagePeak = object.damagePeak ?? 0;
+    message.longestGamePeak = object.longestGamePeak ?? 0;
+    message.healingPeak = object.healingPeak ?? 0;
+    message.avgLasthits = object.avgLasthits ?? 0;
+    message.avgDenies = object.avgDenies ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMatchPlayerTimedStatAverages(): CMatchPlayerTimedStatAverages {
@@ -10610,6 +11144,28 @@ export const CMatchPlayerTimedStatAverages = {
     message.tripleKills !== undefined && (obj.tripleKills = message.tripleKills);
     message.rampages !== undefined && (obj.rampages = message.rampages);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMatchPlayerTimedStatAverages>): CMatchPlayerTimedStatAverages {
+    return CMatchPlayerTimedStatAverages.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMatchPlayerTimedStatAverages>): CMatchPlayerTimedStatAverages {
+    const message = createBaseCMatchPlayerTimedStatAverages();
+    message.kills = object.kills ?? 0;
+    message.deaths = object.deaths ?? 0;
+    message.assists = object.assists ?? 0;
+    message.netWorth = object.netWorth ?? 0;
+    message.lastHits = object.lastHits ?? 0;
+    message.denies = object.denies ?? 0;
+    message.itemValue = object.itemValue ?? 0;
+    message.supportGoldSpent = object.supportGoldSpent ?? 0;
+    message.campsStacked = object.campsStacked ?? 0;
+    message.wardsPlaced = object.wardsPlaced ?? 0;
+    message.dewards = object.dewards ?? 0;
+    message.tripleKills = object.tripleKills ?? 0;
+    message.rampages = object.rampages ?? 0;
+    return message;
   },
 };
 
@@ -10817,6 +11373,28 @@ export const CMatchPlayerTimedStatStdDeviations = {
     message.rampages !== undefined && (obj.rampages = message.rampages);
     return obj;
   },
+
+  create(base?: DeepPartial<CMatchPlayerTimedStatStdDeviations>): CMatchPlayerTimedStatStdDeviations {
+    return CMatchPlayerTimedStatStdDeviations.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMatchPlayerTimedStatStdDeviations>): CMatchPlayerTimedStatStdDeviations {
+    const message = createBaseCMatchPlayerTimedStatStdDeviations();
+    message.kills = object.kills ?? 0;
+    message.deaths = object.deaths ?? 0;
+    message.assists = object.assists ?? 0;
+    message.netWorth = object.netWorth ?? 0;
+    message.lastHits = object.lastHits ?? 0;
+    message.denies = object.denies ?? 0;
+    message.itemValue = object.itemValue ?? 0;
+    message.supportGoldSpent = object.supportGoldSpent ?? 0;
+    message.campsStacked = object.campsStacked ?? 0;
+    message.wardsPlaced = object.wardsPlaced ?? 0;
+    message.dewards = object.dewards ?? 0;
+    message.tripleKills = object.tripleKills ?? 0;
+    message.rampages = object.rampages ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCGetHeroTimedStatsResponse(): CMsgGCGetHeroTimedStatsResponse {
@@ -10886,6 +11464,18 @@ export const CMsgGCGetHeroTimedStatsResponse = {
       obj.rankChunkedStats = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCGetHeroTimedStatsResponse>): CMsgGCGetHeroTimedStatsResponse {
+    return CMsgGCGetHeroTimedStatsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCGetHeroTimedStatsResponse>): CMsgGCGetHeroTimedStatsResponse {
+    const message = createBaseCMsgGCGetHeroTimedStatsResponse();
+    message.heroId = object.heroId ?? 0;
+    message.rankChunkedStats =
+      object.rankChunkedStats?.map((e) => CMsgGCGetHeroTimedStatsResponse_RankChunkedStats.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -11020,6 +11610,35 @@ export const CMsgGCGetHeroTimedStatsResponse_TimedStatsContainer = {
       : undefined);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCGetHeroTimedStatsResponse_TimedStatsContainer>,
+  ): CMsgGCGetHeroTimedStatsResponse_TimedStatsContainer {
+    return CMsgGCGetHeroTimedStatsResponse_TimedStatsContainer.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCGetHeroTimedStatsResponse_TimedStatsContainer>,
+  ): CMsgGCGetHeroTimedStatsResponse_TimedStatsContainer {
+    const message = createBaseCMsgGCGetHeroTimedStatsResponse_TimedStatsContainer();
+    message.time = object.time ?? 0;
+    message.allStats = (object.allStats !== undefined && object.allStats !== null)
+      ? CMatchPlayerTimedStatAverages.fromPartial(object.allStats)
+      : undefined;
+    message.winningStats = (object.winningStats !== undefined && object.winningStats !== null)
+      ? CMatchPlayerTimedStatAverages.fromPartial(object.winningStats)
+      : undefined;
+    message.losingStats = (object.losingStats !== undefined && object.losingStats !== null)
+      ? CMatchPlayerTimedStatAverages.fromPartial(object.losingStats)
+      : undefined;
+    message.winningStddevs = (object.winningStddevs !== undefined && object.winningStddevs !== null)
+      ? CMatchPlayerTimedStatStdDeviations.fromPartial(object.winningStddevs)
+      : undefined;
+    message.losingStddevs = (object.losingStddevs !== undefined && object.losingStddevs !== null)
+      ? CMatchPlayerTimedStatStdDeviations.fromPartial(object.losingStddevs)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgGCGetHeroTimedStatsResponse_RankChunkedStats(): CMsgGCGetHeroTimedStatsResponse_RankChunkedStats {
@@ -11091,6 +11710,22 @@ export const CMsgGCGetHeroTimedStatsResponse_RankChunkedStats = {
     }
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCGetHeroTimedStatsResponse_RankChunkedStats>,
+  ): CMsgGCGetHeroTimedStatsResponse_RankChunkedStats {
+    return CMsgGCGetHeroTimedStatsResponse_RankChunkedStats.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCGetHeroTimedStatsResponse_RankChunkedStats>,
+  ): CMsgGCGetHeroTimedStatsResponse_RankChunkedStats {
+    const message = createBaseCMsgGCGetHeroTimedStatsResponse_RankChunkedStats();
+    message.rankChunk = object.rankChunk ?? 0;
+    message.timedStats =
+      object.timedStats?.map((e) => CMsgGCGetHeroTimedStatsResponse_TimedStatsContainer.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgGCItemEditorReservationsRequest(): CMsgGCItemEditorReservationsRequest {
@@ -11125,6 +11760,15 @@ export const CMsgGCItemEditorReservationsRequest = {
   toJSON(_: CMsgGCItemEditorReservationsRequest): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCItemEditorReservationsRequest>): CMsgGCItemEditorReservationsRequest {
+    return CMsgGCItemEditorReservationsRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgGCItemEditorReservationsRequest>): CMsgGCItemEditorReservationsRequest {
+    const message = createBaseCMsgGCItemEditorReservationsRequest();
+    return message;
   },
 };
 
@@ -11186,6 +11830,17 @@ export const CMsgGCItemEditorReservation = {
     message.name !== undefined && (obj.name = message.name);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCItemEditorReservation>): CMsgGCItemEditorReservation {
+    return CMsgGCItemEditorReservation.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCItemEditorReservation>): CMsgGCItemEditorReservation {
+    const message = createBaseCMsgGCItemEditorReservation();
+    message.defIndex = object.defIndex ?? 0;
+    message.name = object.name ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgGCItemEditorReservationsResponse(): CMsgGCItemEditorReservationsResponse {
@@ -11239,6 +11894,16 @@ export const CMsgGCItemEditorReservationsResponse = {
       obj.reservations = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCItemEditorReservationsResponse>): CMsgGCItemEditorReservationsResponse {
+    return CMsgGCItemEditorReservationsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCItemEditorReservationsResponse>): CMsgGCItemEditorReservationsResponse {
+    const message = createBaseCMsgGCItemEditorReservationsResponse();
+    message.reservations = object.reservations?.map((e) => CMsgGCItemEditorReservation.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -11299,6 +11964,17 @@ export const CMsgGCItemEditorReserveItemDef = {
     message.defIndex !== undefined && (obj.defIndex = Math.round(message.defIndex));
     message.username !== undefined && (obj.username = message.username);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCItemEditorReserveItemDef>): CMsgGCItemEditorReserveItemDef {
+    return CMsgGCItemEditorReserveItemDef.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCItemEditorReserveItemDef>): CMsgGCItemEditorReserveItemDef {
+    const message = createBaseCMsgGCItemEditorReserveItemDef();
+    message.defIndex = object.defIndex ?? 0;
+    message.username = object.username ?? "";
+    return message;
   },
 };
 
@@ -11372,6 +12048,18 @@ export const CMsgGCItemEditorReserveItemDefResponse = {
     message.result !== undefined && (obj.result = Math.round(message.result));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCItemEditorReserveItemDefResponse>): CMsgGCItemEditorReserveItemDefResponse {
+    return CMsgGCItemEditorReserveItemDefResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCItemEditorReserveItemDefResponse>): CMsgGCItemEditorReserveItemDefResponse {
+    const message = createBaseCMsgGCItemEditorReserveItemDefResponse();
+    message.defIndex = object.defIndex ?? 0;
+    message.username = object.username ?? "";
+    message.result = object.result ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCItemEditorReleaseReservation(): CMsgGCItemEditorReleaseReservation {
@@ -11431,6 +12119,17 @@ export const CMsgGCItemEditorReleaseReservation = {
     message.defIndex !== undefined && (obj.defIndex = Math.round(message.defIndex));
     message.username !== undefined && (obj.username = message.username);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCItemEditorReleaseReservation>): CMsgGCItemEditorReleaseReservation {
+    return CMsgGCItemEditorReleaseReservation.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCItemEditorReleaseReservation>): CMsgGCItemEditorReleaseReservation {
+    const message = createBaseCMsgGCItemEditorReleaseReservation();
+    message.defIndex = object.defIndex ?? 0;
+    message.username = object.username ?? "";
+    return message;
   },
 };
 
@@ -11492,6 +12191,19 @@ export const CMsgGCItemEditorReleaseReservationResponse = {
     message.released !== undefined && (obj.released = message.released);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCItemEditorReleaseReservationResponse>): CMsgGCItemEditorReleaseReservationResponse {
+    return CMsgGCItemEditorReleaseReservationResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCItemEditorReleaseReservationResponse>,
+  ): CMsgGCItemEditorReleaseReservationResponse {
+    const message = createBaseCMsgGCItemEditorReleaseReservationResponse();
+    message.defIndex = object.defIndex ?? 0;
+    message.released = object.released ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTARewardTutorialPrizes(): CMsgDOTARewardTutorialPrizes {
@@ -11552,6 +12264,17 @@ export const CMsgDOTARewardTutorialPrizes = {
     message.trackingOnly !== undefined && (obj.trackingOnly = message.trackingOnly);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTARewardTutorialPrizes>): CMsgDOTARewardTutorialPrizes {
+    return CMsgDOTARewardTutorialPrizes.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTARewardTutorialPrizes>): CMsgDOTARewardTutorialPrizes {
+    const message = createBaseCMsgDOTARewardTutorialPrizes();
+    message.locationId = object.locationId ?? 0;
+    message.trackingOnly = object.trackingOnly ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgFlipLobbyTeams(): CMsgFlipLobbyTeams {
@@ -11586,6 +12309,15 @@ export const CMsgFlipLobbyTeams = {
   toJSON(_: CMsgFlipLobbyTeams): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgFlipLobbyTeams>): CMsgFlipLobbyTeams {
+    return CMsgFlipLobbyTeams.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgFlipLobbyTeams>): CMsgFlipLobbyTeams {
+    const message = createBaseCMsgFlipLobbyTeams();
+    return message;
   },
 };
 
@@ -11671,6 +12403,19 @@ export const CMsgGCLobbyUpdateBroadcastChannelInfo = {
     message.languageCode !== undefined && (obj.languageCode = message.languageCode);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCLobbyUpdateBroadcastChannelInfo>): CMsgGCLobbyUpdateBroadcastChannelInfo {
+    return CMsgGCLobbyUpdateBroadcastChannelInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCLobbyUpdateBroadcastChannelInfo>): CMsgGCLobbyUpdateBroadcastChannelInfo {
+    const message = createBaseCMsgGCLobbyUpdateBroadcastChannelInfo();
+    message.channelId = object.channelId ?? 0;
+    message.countryCode = object.countryCode ?? "";
+    message.description = object.description ?? "";
+    message.languageCode = object.languageCode ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAClaimEventActionData(): CMsgDOTAClaimEventActionData {
@@ -11723,6 +12468,18 @@ export const CMsgDOTAClaimEventActionData = {
       ? CMsgDOTAClaimEventActionData_GrantItemGiftData.toJSON(message.grantItemGiftData)
       : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAClaimEventActionData>): CMsgDOTAClaimEventActionData {
+    return CMsgDOTAClaimEventActionData.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAClaimEventActionData>): CMsgDOTAClaimEventActionData {
+    const message = createBaseCMsgDOTAClaimEventActionData();
+    message.grantItemGiftData = (object.grantItemGiftData !== undefined && object.grantItemGiftData !== null)
+      ? CMsgDOTAClaimEventActionData_GrantItemGiftData.fromPartial(object.grantItemGiftData)
+      : undefined;
+    return message;
   },
 };
 
@@ -11786,6 +12543,21 @@ export const CMsgDOTAClaimEventActionData_GrantItemGiftData = {
     message.giveToAccountId !== undefined && (obj.giveToAccountId = Math.round(message.giveToAccountId));
     message.giftMessage !== undefined && (obj.giftMessage = message.giftMessage);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgDOTAClaimEventActionData_GrantItemGiftData>,
+  ): CMsgDOTAClaimEventActionData_GrantItemGiftData {
+    return CMsgDOTAClaimEventActionData_GrantItemGiftData.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgDOTAClaimEventActionData_GrantItemGiftData>,
+  ): CMsgDOTAClaimEventActionData_GrantItemGiftData {
+    const message = createBaseCMsgDOTAClaimEventActionData_GrantItemGiftData();
+    message.giveToAccountId = object.giveToAccountId ?? 0;
+    message.giftMessage = object.giftMessage ?? "";
+    return message;
   },
 };
 
@@ -11872,6 +12644,21 @@ export const CMsgDOTAClaimEventAction = {
       (obj.data = message.data ? CMsgDOTAClaimEventActionData.toJSON(message.data) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAClaimEventAction>): CMsgDOTAClaimEventAction {
+    return CMsgDOTAClaimEventAction.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAClaimEventAction>): CMsgDOTAClaimEventAction {
+    const message = createBaseCMsgDOTAClaimEventAction();
+    message.eventId = object.eventId ?? 0;
+    message.actionId = object.actionId ?? 0;
+    message.quantity = object.quantity ?? 0;
+    message.data = (object.data !== undefined && object.data !== null)
+      ? CMsgDOTAClaimEventActionData.fromPartial(object.data)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAClaimEventActionResponse(): CMsgDOTAClaimEventActionResponse {
@@ -11942,6 +12729,18 @@ export const CMsgDOTAClaimEventActionResponse = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAClaimEventActionResponse>): CMsgDOTAClaimEventActionResponse {
+    return CMsgDOTAClaimEventActionResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAClaimEventActionResponse>): CMsgDOTAClaimEventActionResponse {
+    const message = createBaseCMsgDOTAClaimEventActionResponse();
+    message.result = object.result ?? 0;
+    message.rewardResults =
+      object.rewardResults?.map((e) => CMsgDOTAClaimEventActionResponse_GrantedRewardData.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAClaimEventActionResponse_MysteryItemRewardData(): CMsgDOTAClaimEventActionResponse_MysteryItemRewardData {
@@ -12004,6 +12803,21 @@ export const CMsgDOTAClaimEventActionResponse_MysteryItemRewardData = {
     message.itemDef !== undefined && (obj.itemDef = Math.round(message.itemDef));
     message.itemCategory !== undefined && (obj.itemCategory = Math.round(message.itemCategory));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgDOTAClaimEventActionResponse_MysteryItemRewardData>,
+  ): CMsgDOTAClaimEventActionResponse_MysteryItemRewardData {
+    return CMsgDOTAClaimEventActionResponse_MysteryItemRewardData.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgDOTAClaimEventActionResponse_MysteryItemRewardData>,
+  ): CMsgDOTAClaimEventActionResponse_MysteryItemRewardData {
+    const message = createBaseCMsgDOTAClaimEventActionResponse_MysteryItemRewardData();
+    message.itemDef = object.itemDef ?? 0;
+    message.itemCategory = object.itemCategory ?? 0;
+    return message;
   },
 };
 
@@ -12068,6 +12882,20 @@ export const CMsgDOTAClaimEventActionResponse_LootListRewardData = {
       obj.itemDef = [];
     }
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgDOTAClaimEventActionResponse_LootListRewardData>,
+  ): CMsgDOTAClaimEventActionResponse_LootListRewardData {
+    return CMsgDOTAClaimEventActionResponse_LootListRewardData.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgDOTAClaimEventActionResponse_LootListRewardData>,
+  ): CMsgDOTAClaimEventActionResponse_LootListRewardData {
+    const message = createBaseCMsgDOTAClaimEventActionResponse_LootListRewardData();
+    message.itemDef = object.itemDef?.map((e) => e) || [];
+    return message;
   },
 };
 
@@ -12136,6 +12964,21 @@ export const CMsgDOTAClaimEventActionResponse_ActionListRewardData = {
         message.resultRewardData !== undefined ? message.resultRewardData : Buffer.alloc(0),
       ));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgDOTAClaimEventActionResponse_ActionListRewardData>,
+  ): CMsgDOTAClaimEventActionResponse_ActionListRewardData {
+    return CMsgDOTAClaimEventActionResponse_ActionListRewardData.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgDOTAClaimEventActionResponse_ActionListRewardData>,
+  ): CMsgDOTAClaimEventActionResponse_ActionListRewardData {
+    const message = createBaseCMsgDOTAClaimEventActionResponse_ActionListRewardData();
+    message.actionId = object.actionId ?? 0;
+    message.resultRewardData = object.resultRewardData ?? Buffer.alloc(0);
+    return message;
   },
 };
 
@@ -12225,6 +13068,23 @@ export const CMsgDOTAClaimEventActionResponse_GrantedRewardData = {
       (obj.rewardData = base64FromBytes(message.rewardData !== undefined ? message.rewardData : Buffer.alloc(0)));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgDOTAClaimEventActionResponse_GrantedRewardData>,
+  ): CMsgDOTAClaimEventActionResponse_GrantedRewardData {
+    return CMsgDOTAClaimEventActionResponse_GrantedRewardData.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgDOTAClaimEventActionResponse_GrantedRewardData>,
+  ): CMsgDOTAClaimEventActionResponse_GrantedRewardData {
+    const message = createBaseCMsgDOTAClaimEventActionResponse_GrantedRewardData();
+    message.grantIndex = object.grantIndex ?? 0;
+    message.scoreIndex = object.scoreIndex ?? 0;
+    message.rewardIndex = object.rewardIndex ?? 0;
+    message.rewardData = object.rewardData ?? Buffer.alloc(0);
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCClaimEventActionUsingItem(): CMsgClientToGCClaimEventActionUsingItem {
@@ -12309,6 +13169,19 @@ export const CMsgClientToGCClaimEventActionUsingItem = {
     message.quantity !== undefined && (obj.quantity = Math.round(message.quantity));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCClaimEventActionUsingItem>): CMsgClientToGCClaimEventActionUsingItem {
+    return CMsgClientToGCClaimEventActionUsingItem.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCClaimEventActionUsingItem>): CMsgClientToGCClaimEventActionUsingItem {
+    const message = createBaseCMsgClientToGCClaimEventActionUsingItem();
+    message.eventId = object.eventId ?? 0;
+    message.actionId = object.actionId ?? 0;
+    message.itemId = object.itemId ?? "0";
+    message.quantity = object.quantity ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCClaimEventActionUsingItemResponse(): CMsgClientToGCClaimEventActionUsingItemResponse {
@@ -12363,6 +13236,22 @@ export const CMsgClientToGCClaimEventActionUsingItemResponse = {
       ? CMsgDOTAClaimEventActionResponse.toJSON(message.actionResults)
       : undefined);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCClaimEventActionUsingItemResponse>,
+  ): CMsgClientToGCClaimEventActionUsingItemResponse {
+    return CMsgClientToGCClaimEventActionUsingItemResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCClaimEventActionUsingItemResponse>,
+  ): CMsgClientToGCClaimEventActionUsingItemResponse {
+    const message = createBaseCMsgClientToGCClaimEventActionUsingItemResponse();
+    message.actionResults = (object.actionResults !== undefined && object.actionResults !== null)
+      ? CMsgDOTAClaimEventActionResponse.fromPartial(object.actionResults)
+      : undefined;
+    return message;
   },
 };
 
@@ -12431,6 +13320,23 @@ export const CMsgGCToClientClaimEventActionUsingItemCompleted = {
       : undefined);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientClaimEventActionUsingItemCompleted>,
+  ): CMsgGCToClientClaimEventActionUsingItemCompleted {
+    return CMsgGCToClientClaimEventActionUsingItemCompleted.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientClaimEventActionUsingItemCompleted>,
+  ): CMsgGCToClientClaimEventActionUsingItemCompleted {
+    const message = createBaseCMsgGCToClientClaimEventActionUsingItemCompleted();
+    message.itemId = object.itemId ?? "0";
+    message.actionResults = (object.actionResults !== undefined && object.actionResults !== null)
+      ? CMsgDOTAClaimEventActionResponse.fromPartial(object.actionResults)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAGetEventPoints(): CMsgDOTAGetEventPoints {
@@ -12490,6 +13396,17 @@ export const CMsgDOTAGetEventPoints = {
     message.eventId !== undefined && (obj.eventId = Math.round(message.eventId));
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAGetEventPoints>): CMsgDOTAGetEventPoints {
+    return CMsgDOTAGetEventPoints.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAGetEventPoints>): CMsgDOTAGetEventPoints {
+    const message = createBaseCMsgDOTAGetEventPoints();
+    message.eventId = object.eventId ?? 0;
+    message.accountId = object.accountId ?? 0;
+    return message;
   },
 };
 
@@ -12666,6 +13583,26 @@ export const CMsgDOTAGetEventPointsResponse = {
     message.activeSeasonId !== undefined && (obj.activeSeasonId = Math.round(message.activeSeasonId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAGetEventPointsResponse>): CMsgDOTAGetEventPointsResponse {
+    return CMsgDOTAGetEventPointsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAGetEventPointsResponse>): CMsgDOTAGetEventPointsResponse {
+    const message = createBaseCMsgDOTAGetEventPointsResponse();
+    message.totalPoints = object.totalPoints ?? 0;
+    message.totalPremiumPoints = object.totalPremiumPoints ?? 0;
+    message.eventId = object.eventId ?? 0;
+    message.points = object.points ?? 0;
+    message.premiumPoints = object.premiumPoints ?? 0;
+    message.completedActions =
+      object.completedActions?.map((e) => CMsgDOTAGetEventPointsResponse_Action.fromPartial(e)) || [];
+    message.accountId = object.accountId ?? 0;
+    message.owned = object.owned ?? false;
+    message.auditAction = object.auditAction ?? 0;
+    message.activeSeasonId = object.activeSeasonId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAGetEventPointsResponse_Action(): CMsgDOTAGetEventPointsResponse_Action {
@@ -12725,6 +13662,17 @@ export const CMsgDOTAGetEventPointsResponse_Action = {
     message.actionId !== undefined && (obj.actionId = Math.round(message.actionId));
     message.timesCompleted !== undefined && (obj.timesCompleted = Math.round(message.timesCompleted));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAGetEventPointsResponse_Action>): CMsgDOTAGetEventPointsResponse_Action {
+    return CMsgDOTAGetEventPointsResponse_Action.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAGetEventPointsResponse_Action>): CMsgDOTAGetEventPointsResponse_Action {
+    const message = createBaseCMsgDOTAGetEventPointsResponse_Action();
+    message.actionId = object.actionId ?? 0;
+    message.timesCompleted = object.timesCompleted ?? 0;
+    return message;
   },
 };
 
@@ -12798,6 +13746,18 @@ export const CMsgDOTAGetPeriodicResource = {
     message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAGetPeriodicResource>): CMsgDOTAGetPeriodicResource {
+    return CMsgDOTAGetPeriodicResource.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAGetPeriodicResource>): CMsgDOTAGetPeriodicResource {
+    const message = createBaseCMsgDOTAGetPeriodicResource();
+    message.accountId = object.accountId ?? 0;
+    message.periodicResourceId = object.periodicResourceId ?? 0;
+    message.timestamp = object.timestamp ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAGetPeriodicResourceResponse(): CMsgDOTAGetPeriodicResourceResponse {
@@ -12857,6 +13817,17 @@ export const CMsgDOTAGetPeriodicResourceResponse = {
     message.periodicResourceMax !== undefined && (obj.periodicResourceMax = Math.round(message.periodicResourceMax));
     message.periodicResourceUsed !== undefined && (obj.periodicResourceUsed = Math.round(message.periodicResourceUsed));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAGetPeriodicResourceResponse>): CMsgDOTAGetPeriodicResourceResponse {
+    return CMsgDOTAGetPeriodicResourceResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAGetPeriodicResourceResponse>): CMsgDOTAGetPeriodicResourceResponse {
+    const message = createBaseCMsgDOTAGetPeriodicResourceResponse();
+    message.periodicResourceMax = object.periodicResourceMax ?? 0;
+    message.periodicResourceUsed = object.periodicResourceUsed ?? 0;
+    return message;
   },
 };
 
@@ -12925,6 +13896,22 @@ export const CMsgDOTAPeriodicResourceUpdated = {
       ? CMsgDOTAGetPeriodicResourceResponse.toJSON(message.periodicResourceValue)
       : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAPeriodicResourceUpdated>): CMsgDOTAPeriodicResourceUpdated {
+    return CMsgDOTAPeriodicResourceUpdated.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAPeriodicResourceUpdated>): CMsgDOTAPeriodicResourceUpdated {
+    const message = createBaseCMsgDOTAPeriodicResourceUpdated();
+    message.periodicResourceKey = (object.periodicResourceKey !== undefined && object.periodicResourceKey !== null)
+      ? CMsgDOTAGetPeriodicResource.fromPartial(object.periodicResourceKey)
+      : undefined;
+    message.periodicResourceValue =
+      (object.periodicResourceValue !== undefined && object.periodicResourceValue !== null)
+        ? CMsgDOTAGetPeriodicResourceResponse.fromPartial(object.periodicResourceValue)
+        : undefined;
+    return message;
   },
 };
 
@@ -12998,6 +13985,18 @@ export const CMsgDOTACompendiumSelection = {
     message.leagueid !== undefined && (obj.leagueid = Math.round(message.leagueid));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTACompendiumSelection>): CMsgDOTACompendiumSelection {
+    return CMsgDOTACompendiumSelection.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTACompendiumSelection>): CMsgDOTACompendiumSelection {
+    const message = createBaseCMsgDOTACompendiumSelection();
+    message.selectionIndex = object.selectionIndex ?? 0;
+    message.selection = object.selection ?? 0;
+    message.leagueid = object.leagueid ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTACompendiumSelectionResponse(): CMsgDOTACompendiumSelectionResponse {
@@ -13043,6 +14042,16 @@ export const CMsgDOTACompendiumSelectionResponse = {
     const obj: any = {};
     message.eresult !== undefined && (obj.eresult = Math.round(message.eresult));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTACompendiumSelectionResponse>): CMsgDOTACompendiumSelectionResponse {
+    return CMsgDOTACompendiumSelectionResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTACompendiumSelectionResponse>): CMsgDOTACompendiumSelectionResponse {
+    const message = createBaseCMsgDOTACompendiumSelectionResponse();
+    message.eresult = object.eresult ?? 0;
+    return message;
   },
 };
 
@@ -13097,6 +14106,16 @@ export const CMsgDOTACompendiumData = {
       obj.selections = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTACompendiumData>): CMsgDOTACompendiumData {
+    return CMsgDOTACompendiumData.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTACompendiumData>): CMsgDOTACompendiumData {
+    const message = createBaseCMsgDOTACompendiumData();
+    message.selections = object.selections?.map((e) => CMsgDOTACompendiumSelection.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -13157,6 +14176,17 @@ export const CMsgDOTACompendiumDataRequest = {
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     message.leagueid !== undefined && (obj.leagueid = Math.round(message.leagueid));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTACompendiumDataRequest>): CMsgDOTACompendiumDataRequest {
+    return CMsgDOTACompendiumDataRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTACompendiumDataRequest>): CMsgDOTACompendiumDataRequest {
+    const message = createBaseCMsgDOTACompendiumDataRequest();
+    message.accountId = object.accountId ?? 0;
+    message.leagueid = object.leagueid ?? 0;
+    return message;
   },
 };
 
@@ -13242,6 +14272,21 @@ export const CMsgDOTACompendiumDataResponse = {
     message.compendiumData !== undefined &&
       (obj.compendiumData = message.compendiumData ? CMsgDOTACompendiumData.toJSON(message.compendiumData) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTACompendiumDataResponse>): CMsgDOTACompendiumDataResponse {
+    return CMsgDOTACompendiumDataResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTACompendiumDataResponse>): CMsgDOTACompendiumDataResponse {
+    const message = createBaseCMsgDOTACompendiumDataResponse();
+    message.accountId = object.accountId ?? 0;
+    message.leagueid = object.leagueid ?? 0;
+    message.result = object.result ?? 0;
+    message.compendiumData = (object.compendiumData !== undefined && object.compendiumData !== null)
+      ? CMsgDOTACompendiumData.fromPartial(object.compendiumData)
+      : undefined;
+    return message;
   },
 };
 
@@ -13384,6 +14429,23 @@ export const CMsgDOTAGetPlayerMatchHistory = {
     message.includeEventGames !== undefined && (obj.includeEventGames = message.includeEventGames);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAGetPlayerMatchHistory>): CMsgDOTAGetPlayerMatchHistory {
+    return CMsgDOTAGetPlayerMatchHistory.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAGetPlayerMatchHistory>): CMsgDOTAGetPlayerMatchHistory {
+    const message = createBaseCMsgDOTAGetPlayerMatchHistory();
+    message.accountId = object.accountId ?? 0;
+    message.startAtMatchId = object.startAtMatchId ?? "0";
+    message.matchesRequested = object.matchesRequested ?? 0;
+    message.heroId = object.heroId ?? 0;
+    message.requestId = object.requestId ?? 0;
+    message.includePracticeMatches = object.includePracticeMatches ?? false;
+    message.includeCustomGames = object.includeCustomGames ?? false;
+    message.includeEventGames = object.includeEventGames ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAGetPlayerMatchHistoryResponse(): CMsgDOTAGetPlayerMatchHistoryResponse {
@@ -13449,6 +14511,17 @@ export const CMsgDOTAGetPlayerMatchHistoryResponse = {
     }
     message.requestId !== undefined && (obj.requestId = Math.round(message.requestId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAGetPlayerMatchHistoryResponse>): CMsgDOTAGetPlayerMatchHistoryResponse {
+    return CMsgDOTAGetPlayerMatchHistoryResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAGetPlayerMatchHistoryResponse>): CMsgDOTAGetPlayerMatchHistoryResponse {
+    const message = createBaseCMsgDOTAGetPlayerMatchHistoryResponse();
+    message.matches = object.matches?.map((e) => CMsgDOTAGetPlayerMatchHistoryResponse_Match.fromPartial(e)) || [];
+    message.requestId = object.requestId ?? 0;
+    return message;
   },
 };
 
@@ -13760,6 +14833,38 @@ export const CMsgDOTAGetPlayerMatchHistoryResponse_Match = {
     message.ugcTeamUiLogo !== undefined && (obj.ugcTeamUiLogo = message.ugcTeamUiLogo);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAGetPlayerMatchHistoryResponse_Match>): CMsgDOTAGetPlayerMatchHistoryResponse_Match {
+    return CMsgDOTAGetPlayerMatchHistoryResponse_Match.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgDOTAGetPlayerMatchHistoryResponse_Match>,
+  ): CMsgDOTAGetPlayerMatchHistoryResponse_Match {
+    const message = createBaseCMsgDOTAGetPlayerMatchHistoryResponse_Match();
+    message.matchId = object.matchId ?? "0";
+    message.startTime = object.startTime ?? 0;
+    message.heroId = object.heroId ?? 0;
+    message.winner = object.winner ?? false;
+    message.gameMode = object.gameMode ?? 0;
+    message.rankChange = object.rankChange ?? 0;
+    message.previousRank = object.previousRank ?? 0;
+    message.lobbyType = object.lobbyType ?? 0;
+    message.soloRank = object.soloRank ?? false;
+    message.abandon = object.abandon ?? false;
+    message.duration = object.duration ?? 0;
+    message.engine = object.engine ?? 0;
+    message.activePlusSubscription = object.activePlusSubscription ?? false;
+    message.seasonalRank = object.seasonalRank ?? false;
+    message.tourneyId = object.tourneyId ?? 0;
+    message.tourneyRound = object.tourneyRound ?? 0;
+    message.tourneyTier = object.tourneyTier ?? 0;
+    message.tourneyDivision = object.tourneyDivision ?? 0;
+    message.teamId = object.teamId ?? 0;
+    message.teamName = object.teamName ?? "";
+    message.ugcTeamUiLogo = object.ugcTeamUiLogo ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgGCNotificationsRequest(): CMsgGCNotificationsRequest {
@@ -13794,6 +14899,15 @@ export const CMsgGCNotificationsRequest = {
   toJSON(_: CMsgGCNotificationsRequest): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCNotificationsRequest>): CMsgGCNotificationsRequest {
+    return CMsgGCNotificationsRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgGCNotificationsRequest>): CMsgGCNotificationsRequest {
+    const message = createBaseCMsgGCNotificationsRequest();
+    return message;
   },
 };
 
@@ -13927,6 +15041,23 @@ export const CMsgGCNotificationsNotification = {
     message.unread !== undefined && (obj.unread = message.unread);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCNotificationsNotification>): CMsgGCNotificationsNotification {
+    return CMsgGCNotificationsNotification.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCNotificationsNotification>): CMsgGCNotificationsNotification {
+    const message = createBaseCMsgGCNotificationsNotification();
+    message.id = object.id ?? "0";
+    message.type = object.type ?? 0;
+    message.timestamp = object.timestamp ?? 0;
+    message.referenceA = object.referenceA ?? 0;
+    message.referenceB = object.referenceB ?? 0;
+    message.referenceC = object.referenceC ?? 0;
+    message.message = object.message ?? "";
+    message.unread = object.unread ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgGCNotificationsUpdate(): CMsgGCNotificationsUpdate {
@@ -13993,6 +15124,17 @@ export const CMsgGCNotificationsUpdate = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCNotificationsUpdate>): CMsgGCNotificationsUpdate {
+    return CMsgGCNotificationsUpdate.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCNotificationsUpdate>): CMsgGCNotificationsUpdate {
+    const message = createBaseCMsgGCNotificationsUpdate();
+    message.result = object.result ?? 0;
+    message.notifications = object.notifications?.map((e) => CMsgGCNotificationsNotification.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgGCNotificationsResponse(): CMsgGCNotificationsResponse {
@@ -14040,6 +15182,18 @@ export const CMsgGCNotificationsResponse = {
       (obj.update = message.update ? CMsgGCNotificationsUpdate.toJSON(message.update) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCNotificationsResponse>): CMsgGCNotificationsResponse {
+    return CMsgGCNotificationsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCNotificationsResponse>): CMsgGCNotificationsResponse {
+    const message = createBaseCMsgGCNotificationsResponse();
+    message.update = (object.update !== undefined && object.update !== null)
+      ? CMsgGCNotificationsUpdate.fromPartial(object.update)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgGCNotificationsMarkReadRequest(): CMsgGCNotificationsMarkReadRequest {
@@ -14074,6 +15228,15 @@ export const CMsgGCNotificationsMarkReadRequest = {
   toJSON(_: CMsgGCNotificationsMarkReadRequest): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCNotificationsMarkReadRequest>): CMsgGCNotificationsMarkReadRequest {
+    return CMsgGCNotificationsMarkReadRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgGCNotificationsMarkReadRequest>): CMsgGCNotificationsMarkReadRequest {
+    const message = createBaseCMsgGCNotificationsMarkReadRequest();
+    return message;
   },
 };
 
@@ -14171,6 +15334,20 @@ export const CMsgGCPlayerInfoSubmit = {
     message.sponsor !== undefined && (obj.sponsor = message.sponsor);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCPlayerInfoSubmit>): CMsgGCPlayerInfoSubmit {
+    return CMsgGCPlayerInfoSubmit.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCPlayerInfoSubmit>): CMsgGCPlayerInfoSubmit {
+    const message = createBaseCMsgGCPlayerInfoSubmit();
+    message.name = object.name ?? "";
+    message.countryCode = object.countryCode ?? "";
+    message.fantasyRole = object.fantasyRole ?? 0;
+    message.teamId = object.teamId ?? 0;
+    message.sponsor = object.sponsor ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgGCPlayerInfoSubmitResponse(): CMsgGCPlayerInfoSubmitResponse {
@@ -14216,6 +15393,16 @@ export const CMsgGCPlayerInfoSubmitResponse = {
     const obj: any = {};
     message.result !== undefined && (obj.result = cMsgGCPlayerInfoSubmitResponse_EResultToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCPlayerInfoSubmitResponse>): CMsgGCPlayerInfoSubmitResponse {
+    return CMsgGCPlayerInfoSubmitResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCPlayerInfoSubmitResponse>): CMsgGCPlayerInfoSubmitResponse {
+    const message = createBaseCMsgGCPlayerInfoSubmitResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -14282,6 +15469,17 @@ export const CMsgDOTAEmoticonAccessSDO = {
       ));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAEmoticonAccessSDO>): CMsgDOTAEmoticonAccessSDO {
+    return CMsgDOTAEmoticonAccessSDO.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAEmoticonAccessSDO>): CMsgDOTAEmoticonAccessSDO {
+    const message = createBaseCMsgDOTAEmoticonAccessSDO();
+    message.accountId = object.accountId ?? 0;
+    message.unlockedEmoticons = object.unlockedEmoticons ?? Buffer.alloc(0);
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCEmoticonDataRequest(): CMsgClientToGCEmoticonDataRequest {
@@ -14316,6 +15514,15 @@ export const CMsgClientToGCEmoticonDataRequest = {
   toJSON(_: CMsgClientToGCEmoticonDataRequest): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCEmoticonDataRequest>): CMsgClientToGCEmoticonDataRequest {
+    return CMsgClientToGCEmoticonDataRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgClientToGCEmoticonDataRequest>): CMsgClientToGCEmoticonDataRequest {
+    const message = createBaseCMsgClientToGCEmoticonDataRequest();
+    return message;
   },
 };
 
@@ -14368,6 +15575,18 @@ export const CMsgGCToClientEmoticonData = {
       ? CMsgDOTAEmoticonAccessSDO.toJSON(message.emoticonAccess)
       : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToClientEmoticonData>): CMsgGCToClientEmoticonData {
+    return CMsgGCToClientEmoticonData.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientEmoticonData>): CMsgGCToClientEmoticonData {
+    const message = createBaseCMsgGCToClientEmoticonData();
+    message.emoticonAccess = (object.emoticonAccess !== undefined && object.emoticonAccess !== null)
+      ? CMsgDOTAEmoticonAccessSDO.fromPartial(object.emoticonAccess)
+      : undefined;
+    return message;
   },
 };
 
@@ -14429,6 +15648,17 @@ export const CMsgGCToClientTournamentItemDrop = {
     message.eventType !== undefined && (obj.eventType = Math.round(message.eventType));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientTournamentItemDrop>): CMsgGCToClientTournamentItemDrop {
+    return CMsgGCToClientTournamentItemDrop.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientTournamentItemDrop>): CMsgGCToClientTournamentItemDrop {
+    const message = createBaseCMsgGCToClientTournamentItemDrop();
+    message.itemDef = object.itemDef ?? 0;
+    message.eventType = object.eventType ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCGetAllHeroOrder(): CMsgClientToGCGetAllHeroOrder {
@@ -14463,6 +15693,15 @@ export const CMsgClientToGCGetAllHeroOrder = {
   toJSON(_: CMsgClientToGCGetAllHeroOrder): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCGetAllHeroOrder>): CMsgClientToGCGetAllHeroOrder {
+    return CMsgClientToGCGetAllHeroOrder.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgClientToGCGetAllHeroOrder>): CMsgClientToGCGetAllHeroOrder {
+    const message = createBaseCMsgClientToGCGetAllHeroOrder();
+    return message;
   },
 };
 
@@ -14525,6 +15764,16 @@ export const CMsgClientToGCGetAllHeroOrderResponse = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCGetAllHeroOrderResponse>): CMsgClientToGCGetAllHeroOrderResponse {
+    return CMsgClientToGCGetAllHeroOrderResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCGetAllHeroOrderResponse>): CMsgClientToGCGetAllHeroOrderResponse {
+    const message = createBaseCMsgClientToGCGetAllHeroOrderResponse();
+    message.heroIds = object.heroIds?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCGetAllHeroProgress(): CMsgClientToGCGetAllHeroProgress {
@@ -14570,6 +15819,16 @@ export const CMsgClientToGCGetAllHeroProgress = {
     const obj: any = {};
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCGetAllHeroProgress>): CMsgClientToGCGetAllHeroProgress {
+    return CMsgClientToGCGetAllHeroProgress.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCGetAllHeroProgress>): CMsgClientToGCGetAllHeroProgress {
+    const message = createBaseCMsgClientToGCGetAllHeroProgress();
+    message.accountId = object.accountId ?? 0;
+    return message;
   },
 };
 
@@ -14868,6 +16127,35 @@ export const CMsgClientToGCGetAllHeroProgressResponse = {
     message.startHeroId !== undefined && (obj.startHeroId = Math.round(message.startHeroId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCGetAllHeroProgressResponse>): CMsgClientToGCGetAllHeroProgressResponse {
+    return CMsgClientToGCGetAllHeroProgressResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCGetAllHeroProgressResponse>): CMsgClientToGCGetAllHeroProgressResponse {
+    const message = createBaseCMsgClientToGCGetAllHeroProgressResponse();
+    message.accountId = object.accountId ?? 0;
+    message.currHeroId = object.currHeroId ?? 0;
+    message.lapsCompleted = object.lapsCompleted ?? 0;
+    message.currHeroGames = object.currHeroGames ?? 0;
+    message.currLapTimeStarted = object.currLapTimeStarted ?? 0;
+    message.currLapGames = object.currLapGames ?? 0;
+    message.bestLapGames = object.bestLapGames ?? 0;
+    message.bestLapTime = object.bestLapTime ?? 0;
+    message.lapHeroesCompleted = object.lapHeroesCompleted ?? 0;
+    message.lapHeroesRemaining = object.lapHeroesRemaining ?? 0;
+    message.nextHeroId = object.nextHeroId ?? 0;
+    message.prevHeroId = object.prevHeroId ?? 0;
+    message.prevHeroGames = object.prevHeroGames ?? 0;
+    message.prevAvgTries = object.prevAvgTries ?? 0;
+    message.currAvgTries = object.currAvgTries ?? 0;
+    message.nextAvgTries = object.nextAvgTries ?? 0;
+    message.fullLapAvgTries = object.fullLapAvgTries ?? 0;
+    message.currLapAvgTries = object.currLapAvgTries ?? 0;
+    message.profileName = object.profileName ?? "";
+    message.startHeroId = object.startHeroId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCGetTrophyList(): CMsgClientToGCGetTrophyList {
@@ -14913,6 +16201,16 @@ export const CMsgClientToGCGetTrophyList = {
     const obj: any = {};
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCGetTrophyList>): CMsgClientToGCGetTrophyList {
+    return CMsgClientToGCGetTrophyList.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCGetTrophyList>): CMsgClientToGCGetTrophyList {
+    const message = createBaseCMsgClientToGCGetTrophyList();
+    message.accountId = object.accountId ?? 0;
+    return message;
   },
 };
 
@@ -14967,6 +16265,16 @@ export const CMsgClientToGCGetTrophyListResponse = {
       obj.trophies = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCGetTrophyListResponse>): CMsgClientToGCGetTrophyListResponse {
+    return CMsgClientToGCGetTrophyListResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCGetTrophyListResponse>): CMsgClientToGCGetTrophyListResponse {
+    const message = createBaseCMsgClientToGCGetTrophyListResponse();
+    message.trophies = object.trophies?.map((e) => CMsgClientToGCGetTrophyListResponse_Trophy.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -15039,6 +16347,20 @@ export const CMsgClientToGCGetTrophyListResponse_Trophy = {
     message.trophyScore !== undefined && (obj.trophyScore = Math.round(message.trophyScore));
     message.lastUpdated !== undefined && (obj.lastUpdated = Math.round(message.lastUpdated));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCGetTrophyListResponse_Trophy>): CMsgClientToGCGetTrophyListResponse_Trophy {
+    return CMsgClientToGCGetTrophyListResponse_Trophy.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCGetTrophyListResponse_Trophy>,
+  ): CMsgClientToGCGetTrophyListResponse_Trophy {
+    const message = createBaseCMsgClientToGCGetTrophyListResponse_Trophy();
+    message.trophyId = object.trophyId ?? 0;
+    message.trophyScore = object.trophyScore ?? 0;
+    message.lastUpdated = object.lastUpdated ?? 0;
+    return message;
   },
 };
 
@@ -15124,6 +16446,19 @@ export const CMsgGCToClientTrophyAwarded = {
     message.lastUpdated !== undefined && (obj.lastUpdated = Math.round(message.lastUpdated));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientTrophyAwarded>): CMsgGCToClientTrophyAwarded {
+    return CMsgGCToClientTrophyAwarded.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientTrophyAwarded>): CMsgGCToClientTrophyAwarded {
+    const message = createBaseCMsgGCToClientTrophyAwarded();
+    message.trophyId = object.trophyId ?? 0;
+    message.trophyScore = object.trophyScore ?? 0;
+    message.trophyOldScore = object.trophyOldScore ?? 0;
+    message.lastUpdated = object.lastUpdated ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCRankRequest(): CMsgClientToGCRankRequest {
@@ -15169,6 +16504,16 @@ export const CMsgClientToGCRankRequest = {
     const obj: any = {};
     message.rankType !== undefined && (obj.rankType = eRankTypeToJSON(message.rankType));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCRankRequest>): CMsgClientToGCRankRequest {
+    return CMsgClientToGCRankRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCRankRequest>): CMsgClientToGCRankRequest {
+    const message = createBaseCMsgClientToGCRankRequest();
+    message.rankType = object.rankType ?? 0;
+    return message;
   },
 };
 
@@ -15266,6 +16611,20 @@ export const CMsgGCToClientRankResponse = {
     message.rankData3 !== undefined && (obj.rankData3 = Math.round(message.rankData3));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientRankResponse>): CMsgGCToClientRankResponse {
+    return CMsgGCToClientRankResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientRankResponse>): CMsgGCToClientRankResponse {
+    const message = createBaseCMsgGCToClientRankResponse();
+    message.result = object.result ?? 0;
+    message.rankValue = object.rankValue ?? 0;
+    message.rankData1 = object.rankData1 ?? 0;
+    message.rankData2 = object.rankData2 ?? 0;
+    message.rankData3 = object.rankData3 ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientRankUpdate(): CMsgGCToClientRankUpdate {
@@ -15327,6 +16686,19 @@ export const CMsgGCToClientRankUpdate = {
       (obj.rankInfo = message.rankInfo ? CMsgGCToClientRankResponse.toJSON(message.rankInfo) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientRankUpdate>): CMsgGCToClientRankUpdate {
+    return CMsgGCToClientRankUpdate.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientRankUpdate>): CMsgGCToClientRankUpdate {
+    const message = createBaseCMsgGCToClientRankUpdate();
+    message.rankType = object.rankType ?? 0;
+    message.rankInfo = (object.rankInfo !== undefined && object.rankInfo !== null)
+      ? CMsgGCToClientRankResponse.fromPartial(object.rankInfo)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCGetProfileCard(): CMsgClientToGCGetProfileCard {
@@ -15372,6 +16744,16 @@ export const CMsgClientToGCGetProfileCard = {
     const obj: any = {};
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCGetProfileCard>): CMsgClientToGCGetProfileCard {
+    return CMsgClientToGCGetProfileCard.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCGetProfileCard>): CMsgClientToGCGetProfileCard {
+    const message = createBaseCMsgClientToGCGetProfileCard();
+    message.accountId = object.accountId ?? 0;
+    return message;
   },
 };
 
@@ -15426,6 +16808,16 @@ export const CMsgClientToGCSetProfileCardSlots = {
       obj.slots = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCSetProfileCardSlots>): CMsgClientToGCSetProfileCardSlots {
+    return CMsgClientToGCSetProfileCardSlots.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCSetProfileCardSlots>): CMsgClientToGCSetProfileCardSlots {
+    const message = createBaseCMsgClientToGCSetProfileCardSlots();
+    message.slots = object.slots?.map((e) => CMsgClientToGCSetProfileCardSlots_CardSlot.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -15499,6 +16891,20 @@ export const CMsgClientToGCSetProfileCardSlots_CardSlot = {
     message.slotValue !== undefined && (obj.slotValue = message.slotValue);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCSetProfileCardSlots_CardSlot>): CMsgClientToGCSetProfileCardSlots_CardSlot {
+    return CMsgClientToGCSetProfileCardSlots_CardSlot.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCSetProfileCardSlots_CardSlot>,
+  ): CMsgClientToGCSetProfileCardSlots_CardSlot {
+    const message = createBaseCMsgClientToGCSetProfileCardSlots_CardSlot();
+    message.slotId = object.slotId ?? 0;
+    message.slotType = object.slotType ?? 0;
+    message.slotValue = object.slotValue ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCGetProfileCardStats(): CMsgClientToGCGetProfileCardStats {
@@ -15533,6 +16939,15 @@ export const CMsgClientToGCGetProfileCardStats = {
   toJSON(_: CMsgClientToGCGetProfileCardStats): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCGetProfileCardStats>): CMsgClientToGCGetProfileCardStats {
+    return CMsgClientToGCGetProfileCardStats.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgClientToGCGetProfileCardStats>): CMsgClientToGCGetProfileCardStats {
+    const message = createBaseCMsgClientToGCGetProfileCardStats();
+    return message;
   },
 };
 
@@ -15718,6 +17133,24 @@ export const CMsgClientToGCCreateHeroStatue = {
     message.tournamentDrop !== undefined && (obj.tournamentDrop = message.tournamentDrop);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCCreateHeroStatue>): CMsgClientToGCCreateHeroStatue {
+    return CMsgClientToGCCreateHeroStatue.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCCreateHeroStatue>): CMsgClientToGCCreateHeroStatue {
+    const message = createBaseCMsgClientToGCCreateHeroStatue();
+    message.sourceItemId = object.sourceItemId ?? "0";
+    message.heroId = object.heroId ?? 0;
+    message.sequenceName = object.sequenceName ?? "";
+    message.cycle = object.cycle ?? 0;
+    message.wearables = object.wearables?.map((e) => e) || [];
+    message.inscription = object.inscription ?? "";
+    message.styles = object.styles?.map((e) => e) || [];
+    message.reforgerItemId = object.reforgerItemId ?? "0";
+    message.tournamentDrop = object.tournamentDrop ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientHeroStatueCreateResult(): CMsgGCToClientHeroStatueCreateResult {
@@ -15764,6 +17197,16 @@ export const CMsgGCToClientHeroStatueCreateResult = {
     message.resultingItemId !== undefined && (obj.resultingItemId = message.resultingItemId);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientHeroStatueCreateResult>): CMsgGCToClientHeroStatueCreateResult {
+    return CMsgGCToClientHeroStatueCreateResult.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientHeroStatueCreateResult>): CMsgGCToClientHeroStatueCreateResult {
+    const message = createBaseCMsgGCToClientHeroStatueCreateResult();
+    message.resultingItemId = object.resultingItemId ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCPlayerStatsRequest(): CMsgClientToGCPlayerStatsRequest {
@@ -15809,6 +17252,16 @@ export const CMsgClientToGCPlayerStatsRequest = {
     const obj: any = {};
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCPlayerStatsRequest>): CMsgClientToGCPlayerStatsRequest {
+    return CMsgClientToGCPlayerStatsRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCPlayerStatsRequest>): CMsgClientToGCPlayerStatsRequest {
+    const message = createBaseCMsgClientToGCPlayerStatsRequest();
+    message.accountId = object.accountId ?? 0;
+    return message;
   },
 };
 
@@ -16161,6 +17614,38 @@ export const CMsgGCToClientPlayerStatsResponse = {
     message.rapiersPurchased !== undefined && (obj.rapiersPurchased = Math.round(message.rapiersPurchased));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientPlayerStatsResponse>): CMsgGCToClientPlayerStatsResponse {
+    return CMsgGCToClientPlayerStatsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientPlayerStatsResponse>): CMsgGCToClientPlayerStatsResponse {
+    const message = createBaseCMsgGCToClientPlayerStatsResponse();
+    message.accountId = object.accountId ?? 0;
+    message.playerStats = object.playerStats?.map((e) => e) || [];
+    message.matchCount = object.matchCount ?? 0;
+    message.meanGpm = object.meanGpm ?? 0;
+    message.meanXppm = object.meanXppm ?? 0;
+    message.meanLasthits = object.meanLasthits ?? 0;
+    message.rampages = object.rampages ?? 0;
+    message.tripleKills = object.tripleKills ?? 0;
+    message.firstBloodClaimed = object.firstBloodClaimed ?? 0;
+    message.firstBloodGiven = object.firstBloodGiven ?? 0;
+    message.couriersKilled = object.couriersKilled ?? 0;
+    message.aegisesSnatched = object.aegisesSnatched ?? 0;
+    message.cheesesEaten = object.cheesesEaten ?? 0;
+    message.creepsStacked = object.creepsStacked ?? 0;
+    message.fightScore = object.fightScore ?? 0;
+    message.farmScore = object.farmScore ?? 0;
+    message.supportScore = object.supportScore ?? 0;
+    message.pushScore = object.pushScore ?? 0;
+    message.versatilityScore = object.versatilityScore ?? 0;
+    message.meanNetworth = object.meanNetworth ?? 0;
+    message.meanDamage = object.meanDamage ?? 0;
+    message.meanHeals = object.meanHeals ?? 0;
+    message.rapiersPurchased = object.rapiersPurchased ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCustomGamesFriendsPlayedRequest(): CMsgClientToGCCustomGamesFriendsPlayedRequest {
@@ -16195,6 +17680,19 @@ export const CMsgClientToGCCustomGamesFriendsPlayedRequest = {
   toJSON(_: CMsgClientToGCCustomGamesFriendsPlayedRequest): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCCustomGamesFriendsPlayedRequest>,
+  ): CMsgClientToGCCustomGamesFriendsPlayedRequest {
+    return CMsgClientToGCCustomGamesFriendsPlayedRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    _: DeepPartial<CMsgClientToGCCustomGamesFriendsPlayedRequest>,
+  ): CMsgClientToGCCustomGamesFriendsPlayedRequest {
+    const message = createBaseCMsgClientToGCCustomGamesFriendsPlayedRequest();
+    return message;
   },
 };
 
@@ -16266,6 +17764,22 @@ export const CMsgGCToClientCustomGamesFriendsPlayedResponse = {
       obj.games = [];
     }
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientCustomGamesFriendsPlayedResponse>,
+  ): CMsgGCToClientCustomGamesFriendsPlayedResponse {
+    return CMsgGCToClientCustomGamesFriendsPlayedResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientCustomGamesFriendsPlayedResponse>,
+  ): CMsgGCToClientCustomGamesFriendsPlayedResponse {
+    const message = createBaseCMsgGCToClientCustomGamesFriendsPlayedResponse();
+    message.accountId = object.accountId ?? 0;
+    message.games =
+      object.games?.map((e) => CMsgGCToClientCustomGamesFriendsPlayedResponse_CustomGame.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -16345,6 +17859,21 @@ export const CMsgGCToClientCustomGamesFriendsPlayedResponse_CustomGame = {
     }
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientCustomGamesFriendsPlayedResponse_CustomGame>,
+  ): CMsgGCToClientCustomGamesFriendsPlayedResponse_CustomGame {
+    return CMsgGCToClientCustomGamesFriendsPlayedResponse_CustomGame.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientCustomGamesFriendsPlayedResponse_CustomGame>,
+  ): CMsgGCToClientCustomGamesFriendsPlayedResponse_CustomGame {
+    const message = createBaseCMsgGCToClientCustomGamesFriendsPlayedResponse_CustomGame();
+    message.customGameId = object.customGameId ?? "0";
+    message.accountIds = object.accountIds?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCSocialFeedPostCommentRequest(): CMsgClientToGCSocialFeedPostCommentRequest {
@@ -16405,6 +17934,19 @@ export const CMsgClientToGCSocialFeedPostCommentRequest = {
     message.comment !== undefined && (obj.comment = message.comment);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCSocialFeedPostCommentRequest>): CMsgClientToGCSocialFeedPostCommentRequest {
+    return CMsgClientToGCSocialFeedPostCommentRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCSocialFeedPostCommentRequest>,
+  ): CMsgClientToGCSocialFeedPostCommentRequest {
+    const message = createBaseCMsgClientToGCSocialFeedPostCommentRequest();
+    message.eventId = object.eventId ?? "0";
+    message.comment = object.comment ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientSocialFeedPostCommentResponse(): CMsgGCToClientSocialFeedPostCommentResponse {
@@ -16450,6 +17992,18 @@ export const CMsgGCToClientSocialFeedPostCommentResponse = {
     const obj: any = {};
     message.success !== undefined && (obj.success = message.success);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToClientSocialFeedPostCommentResponse>): CMsgGCToClientSocialFeedPostCommentResponse {
+    return CMsgGCToClientSocialFeedPostCommentResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientSocialFeedPostCommentResponse>,
+  ): CMsgGCToClientSocialFeedPostCommentResponse {
+    const message = createBaseCMsgGCToClientSocialFeedPostCommentResponse();
+    message.success = object.success ?? false;
+    return message;
   },
 };
 
@@ -16523,6 +18077,20 @@ export const CMsgClientToGCSocialFeedPostMessageRequest = {
     message.matchTimestamp !== undefined && (obj.matchTimestamp = Math.round(message.matchTimestamp));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCSocialFeedPostMessageRequest>): CMsgClientToGCSocialFeedPostMessageRequest {
+    return CMsgClientToGCSocialFeedPostMessageRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCSocialFeedPostMessageRequest>,
+  ): CMsgClientToGCSocialFeedPostMessageRequest {
+    const message = createBaseCMsgClientToGCSocialFeedPostMessageRequest();
+    message.message = object.message ?? "";
+    message.matchId = object.matchId ?? "0";
+    message.matchTimestamp = object.matchTimestamp ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientSocialFeedPostMessageResponse(): CMsgGCToClientSocialFeedPostMessageResponse {
@@ -16569,6 +18137,18 @@ export const CMsgGCToClientSocialFeedPostMessageResponse = {
     message.success !== undefined && (obj.success = message.success);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientSocialFeedPostMessageResponse>): CMsgGCToClientSocialFeedPostMessageResponse {
+    return CMsgGCToClientSocialFeedPostMessageResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientSocialFeedPostMessageResponse>,
+  ): CMsgGCToClientSocialFeedPostMessageResponse {
+    const message = createBaseCMsgGCToClientSocialFeedPostMessageResponse();
+    message.success = object.success ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCFriendsPlayedCustomGameRequest(): CMsgClientToGCFriendsPlayedCustomGameRequest {
@@ -16614,6 +18194,20 @@ export const CMsgClientToGCFriendsPlayedCustomGameRequest = {
     const obj: any = {};
     message.customGameId !== undefined && (obj.customGameId = message.customGameId);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCFriendsPlayedCustomGameRequest>,
+  ): CMsgClientToGCFriendsPlayedCustomGameRequest {
+    return CMsgClientToGCFriendsPlayedCustomGameRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCFriendsPlayedCustomGameRequest>,
+  ): CMsgClientToGCFriendsPlayedCustomGameRequest {
+    const message = createBaseCMsgClientToGCFriendsPlayedCustomGameRequest();
+    message.customGameId = object.customGameId ?? "0";
+    return message;
   },
 };
 
@@ -16689,6 +18283,21 @@ export const CMsgGCToClientFriendsPlayedCustomGameResponse = {
       obj.accountIds = [];
     }
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientFriendsPlayedCustomGameResponse>,
+  ): CMsgGCToClientFriendsPlayedCustomGameResponse {
+    return CMsgGCToClientFriendsPlayedCustomGameResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientFriendsPlayedCustomGameResponse>,
+  ): CMsgGCToClientFriendsPlayedCustomGameResponse {
+    const message = createBaseCMsgGCToClientFriendsPlayedCustomGameResponse();
+    message.customGameId = object.customGameId ?? "0";
+    message.accountIds = object.accountIds?.map((e) => e) || [];
+    return message;
   },
 };
 
@@ -16854,6 +18463,26 @@ export const CMsgDOTAPartyRichPresence = {
       : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAPartyRichPresence>): CMsgDOTAPartyRichPresence {
+    return CMsgDOTAPartyRichPresence.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAPartyRichPresence>): CMsgDOTAPartyRichPresence {
+    const message = createBaseCMsgDOTAPartyRichPresence();
+    message.partyId = object.partyId ?? "0";
+    message.partyState = object.partyState ?? 0;
+    message.open = object.open ?? false;
+    message.lowPriority = object.lowPriority ?? false;
+    message.teamId = object.teamId ?? 0;
+    message.teamName = object.teamName ?? "";
+    message.ugcTeamUiLogo = object.ugcTeamUiLogo ?? "0";
+    message.members = object.members?.map((e) => CMsgDOTAPartyRichPresence_Member.fromPartial(e)) || [];
+    message.weekendTourney = (object.weekendTourney !== undefined && object.weekendTourney !== null)
+      ? CMsgDOTAPartyRichPresence_WeekendTourney.fromPartial(object.weekendTourney)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAPartyRichPresence_Member(): CMsgDOTAPartyRichPresence_Member {
@@ -16913,6 +18542,17 @@ export const CMsgDOTAPartyRichPresence_Member = {
     message.steamId !== undefined && (obj.steamId = message.steamId);
     message.coach !== undefined && (obj.coach = message.coach);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAPartyRichPresence_Member>): CMsgDOTAPartyRichPresence_Member {
+    return CMsgDOTAPartyRichPresence_Member.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAPartyRichPresence_Member>): CMsgDOTAPartyRichPresence_Member {
+    const message = createBaseCMsgDOTAPartyRichPresence_Member();
+    message.steamId = object.steamId ?? "0";
+    message.coach = object.coach ?? false;
+    return message;
   },
 };
 
@@ -17033,6 +18673,22 @@ export const CMsgDOTAPartyRichPresence_WeekendTourney = {
     message.event !== undefined && (obj.event = eWeekendTourneyRichPresenceEventToJSON(message.event));
     message.eventRound !== undefined && (obj.eventRound = Math.round(message.eventRound));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAPartyRichPresence_WeekendTourney>): CMsgDOTAPartyRichPresence_WeekendTourney {
+    return CMsgDOTAPartyRichPresence_WeekendTourney.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAPartyRichPresence_WeekendTourney>): CMsgDOTAPartyRichPresence_WeekendTourney {
+    const message = createBaseCMsgDOTAPartyRichPresence_WeekendTourney();
+    message.division = object.division ?? 0;
+    message.skillLevel = object.skillLevel ?? 0;
+    message.round = object.round ?? 0;
+    message.tournamentId = object.tournamentId ?? 0;
+    message.stateSeqNum = object.stateSeqNum ?? 0;
+    message.event = object.event ?? 0;
+    message.eventRound = object.eventRound ?? 0;
+    return message;
   },
 };
 
@@ -17188,6 +18844,24 @@ export const CMsgDOTALobbyRichPresence = {
     message.lobbyType !== undefined && (obj.lobbyType = Math.round(message.lobbyType));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTALobbyRichPresence>): CMsgDOTALobbyRichPresence {
+    return CMsgDOTALobbyRichPresence.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTALobbyRichPresence>): CMsgDOTALobbyRichPresence {
+    const message = createBaseCMsgDOTALobbyRichPresence();
+    message.lobbyId = object.lobbyId ?? "0";
+    message.lobbyState = object.lobbyState ?? 0;
+    message.password = object.password ?? false;
+    message.gameMode = object.gameMode ?? 0;
+    message.memberCount = object.memberCount ?? 0;
+    message.maxMemberCount = object.maxMemberCount ?? 0;
+    message.customGameId = object.customGameId ?? "0";
+    message.name = object.name ?? "";
+    message.lobbyType = object.lobbyType ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTACustomGameListenServerStartedLoading(): CMsgDOTACustomGameListenServerStartedLoading {
@@ -17286,6 +18960,23 @@ export const CMsgDOTACustomGameListenServerStartedLoading = {
     }
     message.startTime !== undefined && (obj.startTime = Math.round(message.startTime));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgDOTACustomGameListenServerStartedLoading>,
+  ): CMsgDOTACustomGameListenServerStartedLoading {
+    return CMsgDOTACustomGameListenServerStartedLoading.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgDOTACustomGameListenServerStartedLoading>,
+  ): CMsgDOTACustomGameListenServerStartedLoading {
+    const message = createBaseCMsgDOTACustomGameListenServerStartedLoading();
+    message.lobbyId = object.lobbyId ?? "0";
+    message.customGameId = object.customGameId ?? "0";
+    message.lobbyMembers = object.lobbyMembers?.map((e) => e) || [];
+    message.startTime = object.startTime ?? 0;
+    return message;
   },
 };
 
@@ -17395,6 +19086,21 @@ export const CMsgDOTACustomGameClientFinishedLoading = {
     message.comment !== undefined && (obj.comment = message.comment);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTACustomGameClientFinishedLoading>): CMsgDOTACustomGameClientFinishedLoading {
+    return CMsgDOTACustomGameClientFinishedLoading.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTACustomGameClientFinishedLoading>): CMsgDOTACustomGameClientFinishedLoading {
+    const message = createBaseCMsgDOTACustomGameClientFinishedLoading();
+    message.lobbyId = object.lobbyId ?? "0";
+    message.loadingDuration = object.loadingDuration ?? 0;
+    message.resultCode = object.resultCode ?? 0;
+    message.resultString = object.resultString ?? "";
+    message.signonStates = object.signonStates ?? 0;
+    message.comment = object.comment ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCApplyGemCombiner(): CMsgClientToGCApplyGemCombiner {
@@ -17455,6 +19161,17 @@ export const CMsgClientToGCApplyGemCombiner = {
     message.itemId2 !== undefined && (obj.itemId2 = message.itemId2);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCApplyGemCombiner>): CMsgClientToGCApplyGemCombiner {
+    return CMsgClientToGCApplyGemCombiner.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCApplyGemCombiner>): CMsgClientToGCApplyGemCombiner {
+    const message = createBaseCMsgClientToGCApplyGemCombiner();
+    message.itemId1 = object.itemId1 ?? "0";
+    message.itemId2 = object.itemId2 ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCH264Unsupported(): CMsgClientToGCH264Unsupported {
@@ -17489,6 +19206,15 @@ export const CMsgClientToGCH264Unsupported = {
   toJSON(_: CMsgClientToGCH264Unsupported): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCH264Unsupported>): CMsgClientToGCH264Unsupported {
+    return CMsgClientToGCH264Unsupported.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgClientToGCH264Unsupported>): CMsgClientToGCH264Unsupported {
+    const message = createBaseCMsgClientToGCH264Unsupported();
+    return message;
   },
 };
 
@@ -17550,6 +19276,16 @@ export const CMsgClientToGCGetQuestProgress = {
       obj.questIds = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCGetQuestProgress>): CMsgClientToGCGetQuestProgress {
+    return CMsgClientToGCGetQuestProgress.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCGetQuestProgress>): CMsgClientToGCGetQuestProgress {
+    const message = createBaseCMsgClientToGCGetQuestProgress();
+    message.questIds = object.questIds?.map((e) => e) || [];
+    return message;
   },
 };
 
@@ -17616,6 +19352,17 @@ export const CMsgClientToGCGetQuestProgressResponse = {
       obj.quests = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCGetQuestProgressResponse>): CMsgClientToGCGetQuestProgressResponse {
+    return CMsgClientToGCGetQuestProgressResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCGetQuestProgressResponse>): CMsgClientToGCGetQuestProgressResponse {
+    const message = createBaseCMsgClientToGCGetQuestProgressResponse();
+    message.success = object.success ?? false;
+    message.quests = object.quests?.map((e) => CMsgClientToGCGetQuestProgressResponse_Quest.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -17728,6 +19475,25 @@ export const CMsgClientToGCGetQuestProgressResponse_Challenge = {
     message.questRank !== undefined && (obj.questRank = Math.round(message.questRank));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCGetQuestProgressResponse_Challenge>,
+  ): CMsgClientToGCGetQuestProgressResponse_Challenge {
+    return CMsgClientToGCGetQuestProgressResponse_Challenge.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCGetQuestProgressResponse_Challenge>,
+  ): CMsgClientToGCGetQuestProgressResponse_Challenge {
+    const message = createBaseCMsgClientToGCGetQuestProgressResponse_Challenge();
+    message.challengeId = object.challengeId ?? 0;
+    message.timeCompleted = object.timeCompleted ?? 0;
+    message.attempts = object.attempts ?? 0;
+    message.heroId = object.heroId ?? 0;
+    message.templateId = object.templateId ?? 0;
+    message.questRank = object.questRank ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCGetQuestProgressResponse_Quest(): CMsgClientToGCGetQuestProgressResponse_Quest {
@@ -17798,6 +19564,22 @@ export const CMsgClientToGCGetQuestProgressResponse_Quest = {
     }
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCGetQuestProgressResponse_Quest>,
+  ): CMsgClientToGCGetQuestProgressResponse_Quest {
+    return CMsgClientToGCGetQuestProgressResponse_Quest.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCGetQuestProgressResponse_Quest>,
+  ): CMsgClientToGCGetQuestProgressResponse_Quest {
+    const message = createBaseCMsgClientToGCGetQuestProgressResponse_Quest();
+    message.questId = object.questId ?? 0;
+    message.completedChallenges =
+      object.completedChallenges?.map((e) => CMsgClientToGCGetQuestProgressResponse_Challenge.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientMatchSignedOut(): CMsgGCToClientMatchSignedOut {
@@ -17844,6 +19626,16 @@ export const CMsgGCToClientMatchSignedOut = {
     message.matchId !== undefined && (obj.matchId = message.matchId);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientMatchSignedOut>): CMsgGCToClientMatchSignedOut {
+    return CMsgGCToClientMatchSignedOut.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientMatchSignedOut>): CMsgGCToClientMatchSignedOut {
+    const message = createBaseCMsgGCToClientMatchSignedOut();
+    message.matchId = object.matchId ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgGCGetHeroStatsHistory(): CMsgGCGetHeroStatsHistory {
@@ -17889,6 +19681,16 @@ export const CMsgGCGetHeroStatsHistory = {
     const obj: any = {};
     message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCGetHeroStatsHistory>): CMsgGCGetHeroStatsHistory {
+    return CMsgGCGetHeroStatsHistory.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCGetHeroStatsHistory>): CMsgGCGetHeroStatsHistory {
+    const message = createBaseCMsgGCGetHeroStatsHistory();
+    message.heroId = object.heroId ?? 0;
+    return message;
   },
 };
 
@@ -17956,6 +19758,17 @@ export const CMsgGCGetHeroStatsHistoryResponse = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCGetHeroStatsHistoryResponse>): CMsgGCGetHeroStatsHistoryResponse {
+    return CMsgGCGetHeroStatsHistoryResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCGetHeroStatsHistoryResponse>): CMsgGCGetHeroStatsHistoryResponse {
+    const message = createBaseCMsgGCGetHeroStatsHistoryResponse();
+    message.heroId = object.heroId ?? 0;
+    message.records = object.records?.map((e) => CMsgDOTASDOHeroStatsHistory.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgPlayerConductScorecardRequest(): CMsgPlayerConductScorecardRequest {
@@ -17990,6 +19803,15 @@ export const CMsgPlayerConductScorecardRequest = {
   toJSON(_: CMsgPlayerConductScorecardRequest): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgPlayerConductScorecardRequest>): CMsgPlayerConductScorecardRequest {
+    return CMsgPlayerConductScorecardRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgPlayerConductScorecardRequest>): CMsgPlayerConductScorecardRequest {
+    const message = createBaseCMsgPlayerConductScorecardRequest();
+    return message;
   },
 };
 
@@ -18252,6 +20074,32 @@ export const CMsgPlayerConductScorecard = {
       (obj.behaviorRating = cMsgPlayerConductScorecard_EBehaviorRatingToJSON(message.behaviorRating));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgPlayerConductScorecard>): CMsgPlayerConductScorecard {
+    return CMsgPlayerConductScorecard.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPlayerConductScorecard>): CMsgPlayerConductScorecard {
+    const message = createBaseCMsgPlayerConductScorecard();
+    message.accountId = object.accountId ?? 0;
+    message.matchId = object.matchId ?? "0";
+    message.seqNum = object.seqNum ?? 0;
+    message.reasons = object.reasons ?? 0;
+    message.matchesInReport = object.matchesInReport ?? 0;
+    message.matchesClean = object.matchesClean ?? 0;
+    message.matchesReported = object.matchesReported ?? 0;
+    message.matchesAbandoned = object.matchesAbandoned ?? 0;
+    message.reportsCount = object.reportsCount ?? 0;
+    message.reportsParties = object.reportsParties ?? 0;
+    message.commendCount = object.commendCount ?? 0;
+    message.date = object.date ?? 0;
+    message.rawBehaviorScore = object.rawBehaviorScore ?? 0;
+    message.oldRawBehaviorScore = object.oldRawBehaviorScore ?? 0;
+    message.commsReports = object.commsReports ?? 0;
+    message.commsParties = object.commsParties ?? 0;
+    message.behaviorRating = object.behaviorRating ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCWageringRequest(): CMsgClientToGCWageringRequest {
@@ -18297,6 +20145,16 @@ export const CMsgClientToGCWageringRequest = {
     const obj: any = {};
     message.eventId !== undefined && (obj.eventId = Math.round(message.eventId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCWageringRequest>): CMsgClientToGCWageringRequest {
+    return CMsgClientToGCWageringRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCWageringRequest>): CMsgClientToGCWageringRequest {
+    const message = createBaseCMsgClientToGCWageringRequest();
+    message.eventId = object.eventId ?? 0;
+    return message;
   },
 };
 
@@ -18505,6 +20363,28 @@ export const CMsgGCToClientWageringResponse = {
     message.bountiesMax !== undefined && (obj.bountiesMax = Math.round(message.bountiesMax));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientWageringResponse>): CMsgGCToClientWageringResponse {
+    return CMsgGCToClientWageringResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientWageringResponse>): CMsgGCToClientWageringResponse {
+    const message = createBaseCMsgGCToClientWageringResponse();
+    message.coinsRemaining = object.coinsRemaining ?? 0;
+    message.totalPointsWon = object.totalPointsWon ?? 0;
+    message.totalPointsWagered = object.totalPointsWagered ?? 0;
+    message.totalPointsTipped = object.totalPointsTipped ?? 0;
+    message.successRate = object.successRate ?? 0;
+    message.totalGamesWagered = object.totalGamesWagered ?? 0;
+    message.coinsMax = object.coinsMax ?? 0;
+    message.rankWagersRemaining = object.rankWagersRemaining ?? 0;
+    message.rankWagersMax = object.rankWagersMax ?? 0;
+    message.predictionTokensRemaining = object.predictionTokensRemaining ?? 0;
+    message.predictionTokensMax = object.predictionTokensMax ?? 0;
+    message.bountiesRemaining = object.bountiesRemaining ?? 0;
+    message.bountiesMax = object.bountiesMax ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientWageringUpdate(): CMsgGCToClientWageringUpdate {
@@ -18570,6 +20450,19 @@ export const CMsgGCToClientWageringUpdate = {
         : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientWageringUpdate>): CMsgGCToClientWageringUpdate {
+    return CMsgGCToClientWageringUpdate.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientWageringUpdate>): CMsgGCToClientWageringUpdate {
+    const message = createBaseCMsgGCToClientWageringUpdate();
+    message.eventId = object.eventId ?? 0;
+    message.wageringInfo = (object.wageringInfo !== undefined && object.wageringInfo !== null)
+      ? CMsgGCToClientWageringResponse.fromPartial(object.wageringInfo)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientArcanaVotesUpdate(): CMsgGCToClientArcanaVotesUpdate {
@@ -18634,6 +20527,19 @@ export const CMsgGCToClientArcanaVotesUpdate = {
       : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientArcanaVotesUpdate>): CMsgGCToClientArcanaVotesUpdate {
+    return CMsgGCToClientArcanaVotesUpdate.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientArcanaVotesUpdate>): CMsgGCToClientArcanaVotesUpdate {
+    const message = createBaseCMsgGCToClientArcanaVotesUpdate();
+    message.eventId = object.eventId ?? 0;
+    message.arcanaVotes = (object.arcanaVotes !== undefined && object.arcanaVotes !== null)
+      ? CMsgClientToGCRequestArcanaVotesRemainingResponse.fromPartial(object.arcanaVotes)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCGetEventGoals(): CMsgClientToGCGetEventGoals {
@@ -18695,6 +20601,16 @@ export const CMsgClientToGCGetEventGoals = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCGetEventGoals>): CMsgClientToGCGetEventGoals {
+    return CMsgClientToGCGetEventGoals.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCGetEventGoals>): CMsgClientToGCGetEventGoals {
+    const message = createBaseCMsgClientToGCGetEventGoals();
+    message.eventIds = object.eventIds?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgEventGoals(): CMsgEventGoals {
@@ -18748,6 +20664,16 @@ export const CMsgEventGoals = {
       obj.eventGoals = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgEventGoals>): CMsgEventGoals {
+    return CMsgEventGoals.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgEventGoals>): CMsgEventGoals {
+    const message = createBaseCMsgEventGoals();
+    message.eventGoals = object.eventGoals?.map((e) => CMsgEventGoals_EventGoal.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -18821,6 +20747,18 @@ export const CMsgEventGoals_EventGoal = {
     message.value !== undefined && (obj.value = message.value);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgEventGoals_EventGoal>): CMsgEventGoals_EventGoal {
+    return CMsgEventGoals_EventGoal.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgEventGoals_EventGoal>): CMsgEventGoals_EventGoal {
+    const message = createBaseCMsgEventGoals_EventGoal();
+    message.eventId = object.eventId ?? 0;
+    message.goalId = object.goalId ?? 0;
+    message.value = object.value ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgGCToGCLeaguePredictions(): CMsgGCToGCLeaguePredictions {
@@ -18866,6 +20804,16 @@ export const CMsgGCToGCLeaguePredictions = {
     const obj: any = {};
     message.leagueId !== undefined && (obj.leagueId = Math.round(message.leagueId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToGCLeaguePredictions>): CMsgGCToGCLeaguePredictions {
+    return CMsgGCToGCLeaguePredictions.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToGCLeaguePredictions>): CMsgGCToGCLeaguePredictions {
+    const message = createBaseCMsgGCToGCLeaguePredictions();
+    message.leagueId = object.leagueId ?? 0;
+    return message;
   },
 };
 
@@ -18920,6 +20868,16 @@ export const CMsgPredictionRankings = {
       obj.predictions = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgPredictionRankings>): CMsgPredictionRankings {
+    return CMsgPredictionRankings.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPredictionRankings>): CMsgPredictionRankings {
+    const message = createBaseCMsgPredictionRankings();
+    message.predictions = object.predictions?.map((e) => CMsgPredictionRankings_Prediction.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -19005,6 +20963,19 @@ export const CMsgPredictionRankings_PredictionLine = {
     message.answerValue !== undefined && (obj.answerValue = message.answerValue);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgPredictionRankings_PredictionLine>): CMsgPredictionRankings_PredictionLine {
+    return CMsgPredictionRankings_PredictionLine.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPredictionRankings_PredictionLine>): CMsgPredictionRankings_PredictionLine {
+    const message = createBaseCMsgPredictionRankings_PredictionLine();
+    message.answerId = object.answerId ?? 0;
+    message.answerName = object.answerName ?? "";
+    message.answerLogo = object.answerLogo ?? "0";
+    message.answerValue = object.answerValue ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgPredictionRankings_Prediction(): CMsgPredictionRankings_Prediction {
@@ -19073,6 +21044,18 @@ export const CMsgPredictionRankings_Prediction = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgPredictionRankings_Prediction>): CMsgPredictionRankings_Prediction {
+    return CMsgPredictionRankings_Prediction.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPredictionRankings_Prediction>): CMsgPredictionRankings_Prediction {
+    const message = createBaseCMsgPredictionRankings_Prediction();
+    message.selectionId = object.selectionId ?? 0;
+    message.predictionLines =
+      object.predictionLines?.map((e) => CMsgPredictionRankings_PredictionLine.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgPredictionResults(): CMsgPredictionResults {
@@ -19126,6 +21109,16 @@ export const CMsgPredictionResults = {
       obj.results = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgPredictionResults>): CMsgPredictionResults {
+    return CMsgPredictionResults.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPredictionResults>): CMsgPredictionResults {
+    const message = createBaseCMsgPredictionResults();
+    message.results = object.results?.map((e) => CMsgPredictionResults_Result.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -19186,6 +21179,17 @@ export const CMsgPredictionResults_ResultBreakdown = {
     message.answerSelection !== undefined && (obj.answerSelection = Math.round(message.answerSelection));
     message.answerValue !== undefined && (obj.answerValue = message.answerValue);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgPredictionResults_ResultBreakdown>): CMsgPredictionResults_ResultBreakdown {
+    return CMsgPredictionResults_ResultBreakdown.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPredictionResults_ResultBreakdown>): CMsgPredictionResults_ResultBreakdown {
+    const message = createBaseCMsgPredictionResults_ResultBreakdown();
+    message.answerSelection = object.answerSelection ?? 0;
+    message.answerValue = object.answerValue ?? 0;
+    return message;
   },
 };
 
@@ -19255,6 +21259,18 @@ export const CMsgPredictionResults_Result = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgPredictionResults_Result>): CMsgPredictionResults_Result {
+    return CMsgPredictionResults_Result.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPredictionResults_Result>): CMsgPredictionResults_Result {
+    const message = createBaseCMsgPredictionResults_Result();
+    message.selectionId = object.selectionId ?? 0;
+    message.resultBreakdown =
+      object.resultBreakdown?.map((e) => CMsgPredictionResults_ResultBreakdown.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCHasPlayerVotedForMVP(): CMsgClientToGCHasPlayerVotedForMVP {
@@ -19301,6 +21317,16 @@ export const CMsgClientToGCHasPlayerVotedForMVP = {
     message.matchId !== undefined && (obj.matchId = message.matchId);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCHasPlayerVotedForMVP>): CMsgClientToGCHasPlayerVotedForMVP {
+    return CMsgClientToGCHasPlayerVotedForMVP.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCHasPlayerVotedForMVP>): CMsgClientToGCHasPlayerVotedForMVP {
+    const message = createBaseCMsgClientToGCHasPlayerVotedForMVP();
+    message.matchId = object.matchId ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCHasPlayerVotedForMVPResponse(): CMsgClientToGCHasPlayerVotedForMVPResponse {
@@ -19346,6 +21372,18 @@ export const CMsgClientToGCHasPlayerVotedForMVPResponse = {
     const obj: any = {};
     message.result !== undefined && (obj.result = message.result);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCHasPlayerVotedForMVPResponse>): CMsgClientToGCHasPlayerVotedForMVPResponse {
+    return CMsgClientToGCHasPlayerVotedForMVPResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCHasPlayerVotedForMVPResponse>,
+  ): CMsgClientToGCHasPlayerVotedForMVPResponse {
+    const message = createBaseCMsgClientToGCHasPlayerVotedForMVPResponse();
+    message.result = object.result ?? false;
+    return message;
   },
 };
 
@@ -19407,6 +21445,17 @@ export const CMsgClientToGCVoteForMVP = {
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCVoteForMVP>): CMsgClientToGCVoteForMVP {
+    return CMsgClientToGCVoteForMVP.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCVoteForMVP>): CMsgClientToGCVoteForMVP {
+    const message = createBaseCMsgClientToGCVoteForMVP();
+    message.matchId = object.matchId ?? "0";
+    message.accountId = object.accountId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCVoteForMVPResponse(): CMsgClientToGCVoteForMVPResponse {
@@ -19452,6 +21501,16 @@ export const CMsgClientToGCVoteForMVPResponse = {
     const obj: any = {};
     message.result !== undefined && (obj.result = message.result);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCVoteForMVPResponse>): CMsgClientToGCVoteForMVPResponse {
+    return CMsgClientToGCVoteForMVPResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCVoteForMVPResponse>): CMsgClientToGCVoteForMVPResponse {
+    const message = createBaseCMsgClientToGCVoteForMVPResponse();
+    message.result = object.result ?? false;
+    return message;
   },
 };
 
@@ -19499,6 +21558,16 @@ export const CMsgClientToGCMVPVoteTimeout = {
     message.matchId !== undefined && (obj.matchId = message.matchId);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCMVPVoteTimeout>): CMsgClientToGCMVPVoteTimeout {
+    return CMsgClientToGCMVPVoteTimeout.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCMVPVoteTimeout>): CMsgClientToGCMVPVoteTimeout {
+    const message = createBaseCMsgClientToGCMVPVoteTimeout();
+    message.matchId = object.matchId ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCMVPVoteTimeoutResponse(): CMsgClientToGCMVPVoteTimeoutResponse {
@@ -19545,6 +21614,16 @@ export const CMsgClientToGCMVPVoteTimeoutResponse = {
     message.result !== undefined && (obj.result = message.result);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCMVPVoteTimeoutResponse>): CMsgClientToGCMVPVoteTimeoutResponse {
+    return CMsgClientToGCMVPVoteTimeoutResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCMVPVoteTimeoutResponse>): CMsgClientToGCMVPVoteTimeoutResponse {
+    const message = createBaseCMsgClientToGCMVPVoteTimeoutResponse();
+    message.result = object.result ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCTeammateStatsRequest(): CMsgClientToGCTeammateStatsRequest {
@@ -19579,6 +21658,15 @@ export const CMsgClientToGCTeammateStatsRequest = {
   toJSON(_: CMsgClientToGCTeammateStatsRequest): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCTeammateStatsRequest>): CMsgClientToGCTeammateStatsRequest {
+    return CMsgClientToGCTeammateStatsRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgClientToGCTeammateStatsRequest>): CMsgClientToGCTeammateStatsRequest {
+    const message = createBaseCMsgClientToGCTeammateStatsRequest();
+    return message;
   },
 };
 
@@ -19647,6 +21735,18 @@ export const CMsgClientToGCTeammateStatsResponse = {
       obj.teammateStats = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCTeammateStatsResponse>): CMsgClientToGCTeammateStatsResponse {
+    return CMsgClientToGCTeammateStatsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCTeammateStatsResponse>): CMsgClientToGCTeammateStatsResponse {
+    const message = createBaseCMsgClientToGCTeammateStatsResponse();
+    message.success = object.success ?? false;
+    message.teammateStats =
+      object.teammateStats?.map((e) => CMsgClientToGCTeammateStatsResponse_TeammateStat.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -19760,6 +21860,25 @@ export const CMsgClientToGCTeammateStatsResponse_TeammateStat = {
     message.performance !== undefined && (obj.performance = message.performance);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCTeammateStatsResponse_TeammateStat>,
+  ): CMsgClientToGCTeammateStatsResponse_TeammateStat {
+    return CMsgClientToGCTeammateStatsResponse_TeammateStat.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCTeammateStatsResponse_TeammateStat>,
+  ): CMsgClientToGCTeammateStatsResponse_TeammateStat {
+    const message = createBaseCMsgClientToGCTeammateStatsResponse_TeammateStat();
+    message.accountId = object.accountId ?? 0;
+    message.games = object.games ?? 0;
+    message.wins = object.wins ?? 0;
+    message.mostRecentGameTimestamp = object.mostRecentGameTimestamp ?? 0;
+    message.mostRecentGameMatchId = object.mostRecentGameMatchId ?? "0";
+    message.performance = object.performance ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCVoteForArcana(): CMsgClientToGCVoteForArcana {
@@ -19814,6 +21933,16 @@ export const CMsgClientToGCVoteForArcana = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCVoteForArcana>): CMsgClientToGCVoteForArcana {
+    return CMsgClientToGCVoteForArcana.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCVoteForArcana>): CMsgClientToGCVoteForArcana {
+    const message = createBaseCMsgClientToGCVoteForArcana();
+    message.matches = object.matches?.map((e) => CMsgArcanaVoteMatchVotes.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCVoteForArcanaResponse(): CMsgClientToGCVoteForArcanaResponse {
@@ -19860,6 +21989,16 @@ export const CMsgClientToGCVoteForArcanaResponse = {
     message.result !== undefined && (obj.result = cMsgClientToGCVoteForArcanaResponse_ResultToJSON(message.result));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCVoteForArcanaResponse>): CMsgClientToGCVoteForArcanaResponse {
+    return CMsgClientToGCVoteForArcanaResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCVoteForArcanaResponse>): CMsgClientToGCVoteForArcanaResponse {
+    const message = createBaseCMsgClientToGCVoteForArcanaResponse();
+    message.result = object.result ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCRequestArcanaVotesRemaining(): CMsgClientToGCRequestArcanaVotesRemaining {
@@ -19894,6 +22033,15 @@ export const CMsgClientToGCRequestArcanaVotesRemaining = {
   toJSON(_: CMsgClientToGCRequestArcanaVotesRemaining): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCRequestArcanaVotesRemaining>): CMsgClientToGCRequestArcanaVotesRemaining {
+    return CMsgClientToGCRequestArcanaVotesRemaining.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgClientToGCRequestArcanaVotesRemaining>): CMsgClientToGCRequestArcanaVotesRemaining {
+    const message = createBaseCMsgClientToGCRequestArcanaVotesRemaining();
+    return message;
   },
 };
 
@@ -19990,6 +22138,24 @@ export const CMsgClientToGCRequestArcanaVotesRemainingResponse = {
     }
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCRequestArcanaVotesRemainingResponse>,
+  ): CMsgClientToGCRequestArcanaVotesRemainingResponse {
+    return CMsgClientToGCRequestArcanaVotesRemainingResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCRequestArcanaVotesRemainingResponse>,
+  ): CMsgClientToGCRequestArcanaVotesRemainingResponse {
+    const message = createBaseCMsgClientToGCRequestArcanaVotesRemainingResponse();
+    message.result = object.result ?? false;
+    message.votesRemaining = object.votesRemaining ?? 0;
+    message.votesTotal = object.votesTotal ?? 0;
+    message.matchesPreviouslyVotedFor =
+      object.matchesPreviouslyVotedFor?.map((e) => CMsgArcanaVoteMatchVotes.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCRequestEventPointLogV2(): CMsgClientToGCRequestEventPointLogV2 {
@@ -20035,6 +22201,16 @@ export const CMsgClientToGCRequestEventPointLogV2 = {
     const obj: any = {};
     message.eventId !== undefined && (obj.eventId = Math.round(message.eventId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCRequestEventPointLogV2>): CMsgClientToGCRequestEventPointLogV2 {
+    return CMsgClientToGCRequestEventPointLogV2.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCRequestEventPointLogV2>): CMsgClientToGCRequestEventPointLogV2 {
+    const message = createBaseCMsgClientToGCRequestEventPointLogV2();
+    message.eventId = object.eventId ?? 0;
+    return message;
   },
 };
 
@@ -20117,6 +22293,23 @@ export const CMsgClientToGCRequestEventPointLogResponseV2 = {
       obj.logEntries = [];
     }
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCRequestEventPointLogResponseV2>,
+  ): CMsgClientToGCRequestEventPointLogResponseV2 {
+    return CMsgClientToGCRequestEventPointLogResponseV2.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCRequestEventPointLogResponseV2>,
+  ): CMsgClientToGCRequestEventPointLogResponseV2 {
+    const message = createBaseCMsgClientToGCRequestEventPointLogResponseV2();
+    message.result = object.result ?? false;
+    message.eventId = object.eventId ?? 0;
+    message.logEntries =
+      object.logEntries?.map((e) => CMsgClientToGCRequestEventPointLogResponseV2_LogEntry.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -20205,6 +22398,23 @@ export const CMsgClientToGCRequestEventPointLogResponseV2_LogEntry = {
     message.auditData !== undefined && (obj.auditData = message.auditData);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCRequestEventPointLogResponseV2_LogEntry>,
+  ): CMsgClientToGCRequestEventPointLogResponseV2_LogEntry {
+    return CMsgClientToGCRequestEventPointLogResponseV2_LogEntry.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCRequestEventPointLogResponseV2_LogEntry>,
+  ): CMsgClientToGCRequestEventPointLogResponseV2_LogEntry {
+    const message = createBaseCMsgClientToGCRequestEventPointLogResponseV2_LogEntry();
+    message.timestamp = object.timestamp ?? 0;
+    message.auditAction = object.auditAction ?? 0;
+    message.eventPoints = object.eventPoints ?? 0;
+    message.auditData = object.auditData ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCPublishUserStat(): CMsgClientToGCPublishUserStat {
@@ -20264,6 +22474,17 @@ export const CMsgClientToGCPublishUserStat = {
     message.userStatsEvent !== undefined && (obj.userStatsEvent = Math.round(message.userStatsEvent));
     message.referenceData !== undefined && (obj.referenceData = message.referenceData);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCPublishUserStat>): CMsgClientToGCPublishUserStat {
+    return CMsgClientToGCPublishUserStat.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCPublishUserStat>): CMsgClientToGCPublishUserStat {
+    const message = createBaseCMsgClientToGCPublishUserStat();
+    message.userStatsEvent = object.userStatsEvent ?? 0;
+    message.referenceData = object.referenceData ?? "0";
+    return message;
   },
 };
 
@@ -20337,6 +22558,18 @@ export const CMsgClientToGCRequestSlarkGameResult = {
     message.week !== undefined && (obj.week = Math.round(message.week));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCRequestSlarkGameResult>): CMsgClientToGCRequestSlarkGameResult {
+    return CMsgClientToGCRequestSlarkGameResult.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCRequestSlarkGameResult>): CMsgClientToGCRequestSlarkGameResult {
+    const message = createBaseCMsgClientToGCRequestSlarkGameResult();
+    message.eventId = object.eventId ?? 0;
+    message.slotChosen = object.slotChosen ?? 0;
+    message.week = object.week ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCRequestSlarkGameResultResponse(): CMsgClientToGCRequestSlarkGameResultResponse {
@@ -20396,6 +22629,21 @@ export const CMsgClientToGCRequestSlarkGameResultResponse = {
     message.pointsWon !== undefined && (obj.pointsWon = Math.round(message.pointsWon));
     message.auraWon !== undefined && (obj.auraWon = message.auraWon);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCRequestSlarkGameResultResponse>,
+  ): CMsgClientToGCRequestSlarkGameResultResponse {
+    return CMsgClientToGCRequestSlarkGameResultResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCRequestSlarkGameResultResponse>,
+  ): CMsgClientToGCRequestSlarkGameResultResponse {
+    const message = createBaseCMsgClientToGCRequestSlarkGameResultResponse();
+    message.pointsWon = object.pointsWon ?? 0;
+    message.auraWon = object.auraWon ?? false;
+    return message;
   },
 };
 
@@ -20466,6 +22714,18 @@ export const CMsgGCToClientQuestProgressUpdated = {
       obj.completedChallenges = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToClientQuestProgressUpdated>): CMsgGCToClientQuestProgressUpdated {
+    return CMsgGCToClientQuestProgressUpdated.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientQuestProgressUpdated>): CMsgGCToClientQuestProgressUpdated {
+    const message = createBaseCMsgGCToClientQuestProgressUpdated();
+    message.questId = object.questId ?? 0;
+    message.completedChallenges =
+      object.completedChallenges?.map((e) => CMsgGCToClientQuestProgressUpdated_Challenge.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -20587,6 +22847,26 @@ export const CMsgGCToClientQuestProgressUpdated_Challenge = {
     message.maxQuestRank !== undefined && (obj.maxQuestRank = Math.round(message.maxQuestRank));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientQuestProgressUpdated_Challenge>,
+  ): CMsgGCToClientQuestProgressUpdated_Challenge {
+    return CMsgGCToClientQuestProgressUpdated_Challenge.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientQuestProgressUpdated_Challenge>,
+  ): CMsgGCToClientQuestProgressUpdated_Challenge {
+    const message = createBaseCMsgGCToClientQuestProgressUpdated_Challenge();
+    message.challengeId = object.challengeId ?? 0;
+    message.timeCompleted = object.timeCompleted ?? 0;
+    message.attempts = object.attempts ?? 0;
+    message.heroId = object.heroId ?? 0;
+    message.templateId = object.templateId ?? 0;
+    message.questRank = object.questRank ?? 0;
+    message.maxQuestRank = object.maxQuestRank ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTARedeemItem(): CMsgDOTARedeemItem {
@@ -20647,6 +22927,17 @@ export const CMsgDOTARedeemItem = {
     message.purchaseDef !== undefined && (obj.purchaseDef = Math.round(message.purchaseDef));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTARedeemItem>): CMsgDOTARedeemItem {
+    return CMsgDOTARedeemItem.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTARedeemItem>): CMsgDOTARedeemItem {
+    const message = createBaseCMsgDOTARedeemItem();
+    message.currencyId = object.currencyId ?? "0";
+    message.purchaseDef = object.purchaseDef ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTARedeemItemResponse(): CMsgDOTARedeemItemResponse {
@@ -20692,6 +22983,16 @@ export const CMsgDOTARedeemItemResponse = {
     const obj: any = {};
     message.response !== undefined && (obj.response = cMsgDOTARedeemItemResponse_EResultCodeToJSON(message.response));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTARedeemItemResponse>): CMsgDOTARedeemItemResponse {
+    return CMsgDOTARedeemItemResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTARedeemItemResponse>): CMsgDOTARedeemItemResponse {
+    const message = createBaseCMsgDOTARedeemItemResponse();
+    message.response = object.response ?? 0;
+    return message;
   },
 };
 
@@ -20778,6 +23079,23 @@ export const CMsgClientToGCSelectCompendiumInGamePrediction = {
     message.leagueId !== undefined && (obj.leagueId = Math.round(message.leagueId));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCSelectCompendiumInGamePrediction>,
+  ): CMsgClientToGCSelectCompendiumInGamePrediction {
+    return CMsgClientToGCSelectCompendiumInGamePrediction.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCSelectCompendiumInGamePrediction>,
+  ): CMsgClientToGCSelectCompendiumInGamePrediction {
+    const message = createBaseCMsgClientToGCSelectCompendiumInGamePrediction();
+    message.matchId = object.matchId ?? "0";
+    message.predictions =
+      object.predictions?.map((e) => CMsgClientToGCSelectCompendiumInGamePrediction_Prediction.fromPartial(e)) || [];
+    message.leagueId = object.leagueId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCSelectCompendiumInGamePrediction_Prediction(): CMsgClientToGCSelectCompendiumInGamePrediction_Prediction {
@@ -20841,6 +23159,21 @@ export const CMsgClientToGCSelectCompendiumInGamePrediction_Prediction = {
     message.predictionValue !== undefined && (obj.predictionValue = Math.round(message.predictionValue));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCSelectCompendiumInGamePrediction_Prediction>,
+  ): CMsgClientToGCSelectCompendiumInGamePrediction_Prediction {
+    return CMsgClientToGCSelectCompendiumInGamePrediction_Prediction.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCSelectCompendiumInGamePrediction_Prediction>,
+  ): CMsgClientToGCSelectCompendiumInGamePrediction_Prediction {
+    const message = createBaseCMsgClientToGCSelectCompendiumInGamePrediction_Prediction();
+    message.predictionId = object.predictionId ?? 0;
+    message.predictionValue = object.predictionValue ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCSelectCompendiumInGamePredictionResponse(): CMsgClientToGCSelectCompendiumInGamePredictionResponse {
@@ -20894,6 +23227,20 @@ export const CMsgClientToGCSelectCompendiumInGamePredictionResponse = {
     message.result !== undefined &&
       (obj.result = cMsgClientToGCSelectCompendiumInGamePredictionResponse_EResultToJSON(message.result));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCSelectCompendiumInGamePredictionResponse>,
+  ): CMsgClientToGCSelectCompendiumInGamePredictionResponse {
+    return CMsgClientToGCSelectCompendiumInGamePredictionResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCSelectCompendiumInGamePredictionResponse>,
+  ): CMsgClientToGCSelectCompendiumInGamePredictionResponse {
+    const message = createBaseCMsgClientToGCSelectCompendiumInGamePredictionResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -20979,6 +23326,19 @@ export const CMsgClientToGCOpenPlayerCardPack = {
     message.region !== undefined && (obj.region = eLeagueRegionToJSON(message.region));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCOpenPlayerCardPack>): CMsgClientToGCOpenPlayerCardPack {
+    return CMsgClientToGCOpenPlayerCardPack.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCOpenPlayerCardPack>): CMsgClientToGCOpenPlayerCardPack {
+    const message = createBaseCMsgClientToGCOpenPlayerCardPack();
+    message.playerCardPackItemId = object.playerCardPackItemId ?? "0";
+    message.teamId = object.teamId ?? 0;
+    message.deprecatedLeagueId = object.deprecatedLeagueId ?? 0;
+    message.region = object.region ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCOpenPlayerCardPackResponse(): CMsgClientToGCOpenPlayerCardPackResponse {
@@ -21057,6 +23417,17 @@ export const CMsgClientToGCOpenPlayerCardPackResponse = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCOpenPlayerCardPackResponse>): CMsgClientToGCOpenPlayerCardPackResponse {
+    return CMsgClientToGCOpenPlayerCardPackResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCOpenPlayerCardPackResponse>): CMsgClientToGCOpenPlayerCardPackResponse {
+    const message = createBaseCMsgClientToGCOpenPlayerCardPackResponse();
+    message.result = object.result ?? 1;
+    message.playerCardItemIds = object.playerCardItemIds?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCRecyclePlayerCard(): CMsgClientToGCRecyclePlayerCard {
@@ -21134,6 +23505,17 @@ export const CMsgClientToGCRecyclePlayerCard = {
     message.eventId !== undefined && (obj.eventId = Math.round(message.eventId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCRecyclePlayerCard>): CMsgClientToGCRecyclePlayerCard {
+    return CMsgClientToGCRecyclePlayerCard.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCRecyclePlayerCard>): CMsgClientToGCRecyclePlayerCard {
+    const message = createBaseCMsgClientToGCRecyclePlayerCard();
+    message.playerCardItemIds = object.playerCardItemIds?.map((e) => e) || [];
+    message.eventId = object.eventId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCRecyclePlayerCardResponse(): CMsgClientToGCRecyclePlayerCardResponse {
@@ -21193,6 +23575,17 @@ export const CMsgClientToGCRecyclePlayerCardResponse = {
     message.result !== undefined && (obj.result = cMsgClientToGCRecyclePlayerCardResponse_ResultToJSON(message.result));
     message.dustAmount !== undefined && (obj.dustAmount = Math.round(message.dustAmount));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCRecyclePlayerCardResponse>): CMsgClientToGCRecyclePlayerCardResponse {
+    return CMsgClientToGCRecyclePlayerCardResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCRecyclePlayerCardResponse>): CMsgClientToGCRecyclePlayerCardResponse {
+    const message = createBaseCMsgClientToGCRecyclePlayerCardResponse();
+    message.result = object.result ?? 1;
+    message.dustAmount = object.dustAmount ?? 0;
+    return message;
   },
 };
 
@@ -21266,6 +23659,18 @@ export const CMsgClientToGCCreatePlayerCardPack = {
     message.premiumPack !== undefined && (obj.premiumPack = message.premiumPack);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCCreatePlayerCardPack>): CMsgClientToGCCreatePlayerCardPack {
+    return CMsgClientToGCCreatePlayerCardPack.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCCreatePlayerCardPack>): CMsgClientToGCCreatePlayerCardPack {
+    const message = createBaseCMsgClientToGCCreatePlayerCardPack();
+    message.cardDustItemId = object.cardDustItemId ?? "0";
+    message.eventId = object.eventId ?? 0;
+    message.premiumPack = object.premiumPack ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCreatePlayerCardPackResponse(): CMsgClientToGCCreatePlayerCardPackResponse {
@@ -21314,6 +23719,18 @@ export const CMsgClientToGCCreatePlayerCardPackResponse = {
     message.result !== undefined &&
       (obj.result = cMsgClientToGCCreatePlayerCardPackResponse_ResultToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCCreatePlayerCardPackResponse>): CMsgClientToGCCreatePlayerCardPackResponse {
+    return CMsgClientToGCCreatePlayerCardPackResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCreatePlayerCardPackResponse>,
+  ): CMsgClientToGCCreatePlayerCardPackResponse {
+    const message = createBaseCMsgClientToGCCreatePlayerCardPackResponse();
+    message.result = object.result ?? 1;
+    return message;
   },
 };
 
@@ -21399,6 +23816,19 @@ export const CMsgClientToGCCreateTeamPlayerCardPack = {
     message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCCreateTeamPlayerCardPack>): CMsgClientToGCCreateTeamPlayerCardPack {
+    return CMsgClientToGCCreateTeamPlayerCardPack.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCCreateTeamPlayerCardPack>): CMsgClientToGCCreateTeamPlayerCardPack {
+    const message = createBaseCMsgClientToGCCreateTeamPlayerCardPack();
+    message.cardDustItemId = object.cardDustItemId ?? "0";
+    message.eventId = object.eventId ?? 0;
+    message.premiumPack = object.premiumPack ?? false;
+    message.teamId = object.teamId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCreateTeamPlayerCardPackResponse(): CMsgClientToGCCreateTeamPlayerCardPackResponse {
@@ -21450,6 +23880,20 @@ export const CMsgClientToGCCreateTeamPlayerCardPackResponse = {
     message.result !== undefined &&
       (obj.result = cMsgClientToGCCreateTeamPlayerCardPackResponse_ResultToJSON(message.result));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCCreateTeamPlayerCardPackResponse>,
+  ): CMsgClientToGCCreateTeamPlayerCardPackResponse {
+    return CMsgClientToGCCreateTeamPlayerCardPackResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCreateTeamPlayerCardPackResponse>,
+  ): CMsgClientToGCCreateTeamPlayerCardPackResponse {
+    const message = createBaseCMsgClientToGCCreateTeamPlayerCardPackResponse();
+    message.result = object.result ?? 1;
+    return message;
   },
 };
 
@@ -21671,6 +24115,42 @@ export const CMsgGCToClientBattlePassRollupInternational2016 = {
       : undefined);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupInternational2016>,
+  ): CMsgGCToClientBattlePassRollupInternational2016 {
+    return CMsgGCToClientBattlePassRollupInternational2016.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupInternational2016>,
+  ): CMsgGCToClientBattlePassRollupInternational2016 {
+    const message = createBaseCMsgGCToClientBattlePassRollupInternational2016();
+    message.battlePassLevel = object.battlePassLevel ?? 0;
+    message.questlines =
+      object.questlines?.map((e) => CMsgGCToClientBattlePassRollupInternational2016_Questlines.fromPartial(e)) || [];
+    message.wagering = (object.wagering !== undefined && object.wagering !== null)
+      ? CMsgGCToClientBattlePassRollupInternational2016_Wagering.fromPartial(object.wagering)
+      : undefined;
+    message.achievements = (object.achievements !== undefined && object.achievements !== null)
+      ? CMsgGCToClientBattlePassRollupInternational2016_Achievements.fromPartial(object.achievements)
+      : undefined;
+    message.battleCup = (object.battleCup !== undefined && object.battleCup !== null)
+      ? CMsgGCToClientBattlePassRollupInternational2016_BattleCup.fromPartial(object.battleCup)
+      : undefined;
+    message.predictions = (object.predictions !== undefined && object.predictions !== null)
+      ? CMsgGCToClientBattlePassRollupInternational2016_Predictions.fromPartial(object.predictions)
+      : undefined;
+    message.bracket = (object.bracket !== undefined && object.bracket !== null)
+      ? CMsgGCToClientBattlePassRollupInternational2016_Bracket.fromPartial(object.bracket)
+      : undefined;
+    message.playerCards =
+      object.playerCards?.map((e) => CMsgGCToClientBattlePassRollupInternational2016_PlayerCard.fromPartial(e)) || [];
+    message.fantasyChallenge = (object.fantasyChallenge !== undefined && object.fantasyChallenge !== null)
+      ? CMsgGCToClientBattlePassRollupInternational2016_FantasyChallenge.fromPartial(object.fantasyChallenge)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientBattlePassRollupInternational2016_Questlines(): CMsgGCToClientBattlePassRollupInternational2016_Questlines {
@@ -21769,6 +24249,24 @@ export const CMsgGCToClientBattlePassRollupInternational2016_Questlines = {
     message.threestar !== undefined && (obj.threestar = Math.round(message.threestar));
     message.total !== undefined && (obj.total = Math.round(message.total));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupInternational2016_Questlines>,
+  ): CMsgGCToClientBattlePassRollupInternational2016_Questlines {
+    return CMsgGCToClientBattlePassRollupInternational2016_Questlines.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupInternational2016_Questlines>,
+  ): CMsgGCToClientBattlePassRollupInternational2016_Questlines {
+    const message = createBaseCMsgGCToClientBattlePassRollupInternational2016_Questlines();
+    message.name = object.name ?? "";
+    message.onestar = object.onestar ?? 0;
+    message.twostar = object.twostar ?? 0;
+    message.threestar = object.threestar ?? 0;
+    message.total = object.total ?? 0;
+    return message;
   },
 };
 
@@ -21869,6 +24367,24 @@ export const CMsgGCToClientBattlePassRollupInternational2016_Wagering = {
     message.totalTips !== undefined && (obj.totalTips = Math.round(message.totalTips));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupInternational2016_Wagering>,
+  ): CMsgGCToClientBattlePassRollupInternational2016_Wagering {
+    return CMsgGCToClientBattlePassRollupInternational2016_Wagering.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupInternational2016_Wagering>,
+  ): CMsgGCToClientBattlePassRollupInternational2016_Wagering {
+    const message = createBaseCMsgGCToClientBattlePassRollupInternational2016_Wagering();
+    message.totalWagered = object.totalWagered ?? 0;
+    message.totalWon = object.totalWon ?? 0;
+    message.averageWon = object.averageWon ?? 0;
+    message.successRate = object.successRate ?? 0;
+    message.totalTips = object.totalTips ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientBattlePassRollupInternational2016_Achievements(): CMsgGCToClientBattlePassRollupInternational2016_Achievements {
@@ -21947,6 +24463,22 @@ export const CMsgGCToClientBattlePassRollupInternational2016_Achievements = {
     message.points !== undefined && (obj.points = Math.round(message.points));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupInternational2016_Achievements>,
+  ): CMsgGCToClientBattlePassRollupInternational2016_Achievements {
+    return CMsgGCToClientBattlePassRollupInternational2016_Achievements.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupInternational2016_Achievements>,
+  ): CMsgGCToClientBattlePassRollupInternational2016_Achievements {
+    const message = createBaseCMsgGCToClientBattlePassRollupInternational2016_Achievements();
+    message.completed = object.completed ?? 0;
+    message.total = object.total ?? 0;
+    message.points = object.points ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientBattlePassRollupInternational2016_BattleCup(): CMsgGCToClientBattlePassRollupInternational2016_BattleCup {
@@ -22009,6 +24541,21 @@ export const CMsgGCToClientBattlePassRollupInternational2016_BattleCup = {
     message.wins !== undefined && (obj.wins = Math.round(message.wins));
     message.score !== undefined && (obj.score = Math.round(message.score));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupInternational2016_BattleCup>,
+  ): CMsgGCToClientBattlePassRollupInternational2016_BattleCup {
+    return CMsgGCToClientBattlePassRollupInternational2016_BattleCup.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupInternational2016_BattleCup>,
+  ): CMsgGCToClientBattlePassRollupInternational2016_BattleCup {
+    const message = createBaseCMsgGCToClientBattlePassRollupInternational2016_BattleCup();
+    message.wins = object.wins ?? 0;
+    message.score = object.score ?? 0;
+    return message;
   },
 };
 
@@ -22085,6 +24632,22 @@ export const CMsgGCToClientBattlePassRollupInternational2016_Predictions = {
     message.points !== undefined && (obj.points = Math.round(message.points));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupInternational2016_Predictions>,
+  ): CMsgGCToClientBattlePassRollupInternational2016_Predictions {
+    return CMsgGCToClientBattlePassRollupInternational2016_Predictions.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupInternational2016_Predictions>,
+  ): CMsgGCToClientBattlePassRollupInternational2016_Predictions {
+    const message = createBaseCMsgGCToClientBattlePassRollupInternational2016_Predictions();
+    message.correct = object.correct ?? 0;
+    message.total = object.total ?? 0;
+    message.points = object.points ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientBattlePassRollupInternational2016_Bracket(): CMsgGCToClientBattlePassRollupInternational2016_Bracket {
@@ -22148,6 +24711,21 @@ export const CMsgGCToClientBattlePassRollupInternational2016_Bracket = {
     message.points !== undefined && (obj.points = Math.round(message.points));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupInternational2016_Bracket>,
+  ): CMsgGCToClientBattlePassRollupInternational2016_Bracket {
+    return CMsgGCToClientBattlePassRollupInternational2016_Bracket.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupInternational2016_Bracket>,
+  ): CMsgGCToClientBattlePassRollupInternational2016_Bracket {
+    const message = createBaseCMsgGCToClientBattlePassRollupInternational2016_Bracket();
+    message.correct = object.correct ?? 0;
+    message.points = object.points ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientBattlePassRollupInternational2016_PlayerCard(): CMsgGCToClientBattlePassRollupInternational2016_PlayerCard {
@@ -22210,6 +24788,21 @@ export const CMsgGCToClientBattlePassRollupInternational2016_PlayerCard = {
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     message.quality !== undefined && (obj.quality = Math.round(message.quality));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupInternational2016_PlayerCard>,
+  ): CMsgGCToClientBattlePassRollupInternational2016_PlayerCard {
+    return CMsgGCToClientBattlePassRollupInternational2016_PlayerCard.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupInternational2016_PlayerCard>,
+  ): CMsgGCToClientBattlePassRollupInternational2016_PlayerCard {
+    const message = createBaseCMsgGCToClientBattlePassRollupInternational2016_PlayerCard();
+    message.accountId = object.accountId ?? 0;
+    message.quality = object.quality ?? 0;
+    return message;
   },
 };
 
@@ -22276,6 +24869,21 @@ export const CMsgGCToClientBattlePassRollupInternational2016_FantasyChallenge = 
     message.totalScore !== undefined && (obj.totalScore = message.totalScore);
     message.percentile !== undefined && (obj.percentile = message.percentile);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupInternational2016_FantasyChallenge>,
+  ): CMsgGCToClientBattlePassRollupInternational2016_FantasyChallenge {
+    return CMsgGCToClientBattlePassRollupInternational2016_FantasyChallenge.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupInternational2016_FantasyChallenge>,
+  ): CMsgGCToClientBattlePassRollupInternational2016_FantasyChallenge {
+    const message = createBaseCMsgGCToClientBattlePassRollupInternational2016_FantasyChallenge();
+    message.totalScore = object.totalScore ?? 0;
+    message.percentile = object.percentile ?? 0;
+    return message;
   },
 };
 
@@ -22476,6 +25084,38 @@ export const CMsgGCToClientBattlePassRollupFall2016 = {
       : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientBattlePassRollupFall2016>): CMsgGCToClientBattlePassRollupFall2016 {
+    return CMsgGCToClientBattlePassRollupFall2016.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientBattlePassRollupFall2016>): CMsgGCToClientBattlePassRollupFall2016 {
+    const message = createBaseCMsgGCToClientBattlePassRollupFall2016();
+    message.battlePassLevel = object.battlePassLevel ?? 0;
+    message.questlines =
+      object.questlines?.map((e) => CMsgGCToClientBattlePassRollupFall2016_Questlines.fromPartial(e)) || [];
+    message.wagering = (object.wagering !== undefined && object.wagering !== null)
+      ? CMsgGCToClientBattlePassRollupFall2016_Wagering.fromPartial(object.wagering)
+      : undefined;
+    message.achievements = (object.achievements !== undefined && object.achievements !== null)
+      ? CMsgGCToClientBattlePassRollupFall2016_Achievements.fromPartial(object.achievements)
+      : undefined;
+    message.battleCup = (object.battleCup !== undefined && object.battleCup !== null)
+      ? CMsgGCToClientBattlePassRollupFall2016_BattleCup.fromPartial(object.battleCup)
+      : undefined;
+    message.predictions = (object.predictions !== undefined && object.predictions !== null)
+      ? CMsgGCToClientBattlePassRollupFall2016_Predictions.fromPartial(object.predictions)
+      : undefined;
+    message.bracket = (object.bracket !== undefined && object.bracket !== null)
+      ? CMsgGCToClientBattlePassRollupFall2016_Bracket.fromPartial(object.bracket)
+      : undefined;
+    message.playerCards =
+      object.playerCards?.map((e) => CMsgGCToClientBattlePassRollupFall2016_PlayerCard.fromPartial(e)) || [];
+    message.fantasyChallenge = (object.fantasyChallenge !== undefined && object.fantasyChallenge !== null)
+      ? CMsgGCToClientBattlePassRollupFall2016_FantasyChallenge.fromPartial(object.fantasyChallenge)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientBattlePassRollupFall2016_Questlines(): CMsgGCToClientBattlePassRollupFall2016_Questlines {
@@ -22574,6 +25214,24 @@ export const CMsgGCToClientBattlePassRollupFall2016_Questlines = {
     message.threestar !== undefined && (obj.threestar = Math.round(message.threestar));
     message.total !== undefined && (obj.total = Math.round(message.total));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupFall2016_Questlines>,
+  ): CMsgGCToClientBattlePassRollupFall2016_Questlines {
+    return CMsgGCToClientBattlePassRollupFall2016_Questlines.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupFall2016_Questlines>,
+  ): CMsgGCToClientBattlePassRollupFall2016_Questlines {
+    const message = createBaseCMsgGCToClientBattlePassRollupFall2016_Questlines();
+    message.name = object.name ?? "";
+    message.onestar = object.onestar ?? 0;
+    message.twostar = object.twostar ?? 0;
+    message.threestar = object.threestar ?? 0;
+    message.total = object.total ?? 0;
+    return message;
   },
 };
 
@@ -22674,6 +25332,24 @@ export const CMsgGCToClientBattlePassRollupFall2016_Wagering = {
     message.totalTips !== undefined && (obj.totalTips = Math.round(message.totalTips));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupFall2016_Wagering>,
+  ): CMsgGCToClientBattlePassRollupFall2016_Wagering {
+    return CMsgGCToClientBattlePassRollupFall2016_Wagering.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupFall2016_Wagering>,
+  ): CMsgGCToClientBattlePassRollupFall2016_Wagering {
+    const message = createBaseCMsgGCToClientBattlePassRollupFall2016_Wagering();
+    message.totalWagered = object.totalWagered ?? 0;
+    message.totalWon = object.totalWon ?? 0;
+    message.averageWon = object.averageWon ?? 0;
+    message.successRate = object.successRate ?? 0;
+    message.totalTips = object.totalTips ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientBattlePassRollupFall2016_Achievements(): CMsgGCToClientBattlePassRollupFall2016_Achievements {
@@ -22749,6 +25425,22 @@ export const CMsgGCToClientBattlePassRollupFall2016_Achievements = {
     message.points !== undefined && (obj.points = Math.round(message.points));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupFall2016_Achievements>,
+  ): CMsgGCToClientBattlePassRollupFall2016_Achievements {
+    return CMsgGCToClientBattlePassRollupFall2016_Achievements.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupFall2016_Achievements>,
+  ): CMsgGCToClientBattlePassRollupFall2016_Achievements {
+    const message = createBaseCMsgGCToClientBattlePassRollupFall2016_Achievements();
+    message.completed = object.completed ?? 0;
+    message.total = object.total ?? 0;
+    message.points = object.points ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientBattlePassRollupFall2016_BattleCup(): CMsgGCToClientBattlePassRollupFall2016_BattleCup {
@@ -22811,6 +25503,21 @@ export const CMsgGCToClientBattlePassRollupFall2016_BattleCup = {
     message.wins !== undefined && (obj.wins = Math.round(message.wins));
     message.score !== undefined && (obj.score = Math.round(message.score));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupFall2016_BattleCup>,
+  ): CMsgGCToClientBattlePassRollupFall2016_BattleCup {
+    return CMsgGCToClientBattlePassRollupFall2016_BattleCup.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupFall2016_BattleCup>,
+  ): CMsgGCToClientBattlePassRollupFall2016_BattleCup {
+    const message = createBaseCMsgGCToClientBattlePassRollupFall2016_BattleCup();
+    message.wins = object.wins ?? 0;
+    message.score = object.score ?? 0;
+    return message;
   },
 };
 
@@ -22887,6 +25594,22 @@ export const CMsgGCToClientBattlePassRollupFall2016_Predictions = {
     message.points !== undefined && (obj.points = Math.round(message.points));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupFall2016_Predictions>,
+  ): CMsgGCToClientBattlePassRollupFall2016_Predictions {
+    return CMsgGCToClientBattlePassRollupFall2016_Predictions.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupFall2016_Predictions>,
+  ): CMsgGCToClientBattlePassRollupFall2016_Predictions {
+    const message = createBaseCMsgGCToClientBattlePassRollupFall2016_Predictions();
+    message.correct = object.correct ?? 0;
+    message.total = object.total ?? 0;
+    message.points = object.points ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientBattlePassRollupFall2016_Bracket(): CMsgGCToClientBattlePassRollupFall2016_Bracket {
@@ -22949,6 +25672,21 @@ export const CMsgGCToClientBattlePassRollupFall2016_Bracket = {
     message.correct !== undefined && (obj.correct = Math.round(message.correct));
     message.points !== undefined && (obj.points = Math.round(message.points));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupFall2016_Bracket>,
+  ): CMsgGCToClientBattlePassRollupFall2016_Bracket {
+    return CMsgGCToClientBattlePassRollupFall2016_Bracket.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupFall2016_Bracket>,
+  ): CMsgGCToClientBattlePassRollupFall2016_Bracket {
+    const message = createBaseCMsgGCToClientBattlePassRollupFall2016_Bracket();
+    message.correct = object.correct ?? 0;
+    message.points = object.points ?? 0;
+    return message;
   },
 };
 
@@ -23013,6 +25751,21 @@ export const CMsgGCToClientBattlePassRollupFall2016_PlayerCard = {
     message.quality !== undefined && (obj.quality = Math.round(message.quality));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupFall2016_PlayerCard>,
+  ): CMsgGCToClientBattlePassRollupFall2016_PlayerCard {
+    return CMsgGCToClientBattlePassRollupFall2016_PlayerCard.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupFall2016_PlayerCard>,
+  ): CMsgGCToClientBattlePassRollupFall2016_PlayerCard {
+    const message = createBaseCMsgGCToClientBattlePassRollupFall2016_PlayerCard();
+    message.accountId = object.accountId ?? 0;
+    message.quality = object.quality ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientBattlePassRollupFall2016_FantasyChallenge(): CMsgGCToClientBattlePassRollupFall2016_FantasyChallenge {
@@ -23075,6 +25828,21 @@ export const CMsgGCToClientBattlePassRollupFall2016_FantasyChallenge = {
     message.totalScore !== undefined && (obj.totalScore = message.totalScore);
     message.percentile !== undefined && (obj.percentile = message.percentile);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupFall2016_FantasyChallenge>,
+  ): CMsgGCToClientBattlePassRollupFall2016_FantasyChallenge {
+    return CMsgGCToClientBattlePassRollupFall2016_FantasyChallenge.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupFall2016_FantasyChallenge>,
+  ): CMsgGCToClientBattlePassRollupFall2016_FantasyChallenge {
+    const message = createBaseCMsgGCToClientBattlePassRollupFall2016_FantasyChallenge();
+    message.totalScore = object.totalScore ?? 0;
+    message.percentile = object.percentile ?? 0;
+    return message;
   },
 };
 
@@ -23278,6 +26046,38 @@ export const CMsgGCToClientBattlePassRollupWinter2017 = {
       : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientBattlePassRollupWinter2017>): CMsgGCToClientBattlePassRollupWinter2017 {
+    return CMsgGCToClientBattlePassRollupWinter2017.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientBattlePassRollupWinter2017>): CMsgGCToClientBattlePassRollupWinter2017 {
+    const message = createBaseCMsgGCToClientBattlePassRollupWinter2017();
+    message.battlePassLevel = object.battlePassLevel ?? 0;
+    message.questlines =
+      object.questlines?.map((e) => CMsgGCToClientBattlePassRollupWinter2017_Questlines.fromPartial(e)) || [];
+    message.wagering = (object.wagering !== undefined && object.wagering !== null)
+      ? CMsgGCToClientBattlePassRollupWinter2017_Wagering.fromPartial(object.wagering)
+      : undefined;
+    message.achievements = (object.achievements !== undefined && object.achievements !== null)
+      ? CMsgGCToClientBattlePassRollupWinter2017_Achievements.fromPartial(object.achievements)
+      : undefined;
+    message.battleCup = (object.battleCup !== undefined && object.battleCup !== null)
+      ? CMsgGCToClientBattlePassRollupWinter2017_BattleCup.fromPartial(object.battleCup)
+      : undefined;
+    message.predictions = (object.predictions !== undefined && object.predictions !== null)
+      ? CMsgGCToClientBattlePassRollupWinter2017_Predictions.fromPartial(object.predictions)
+      : undefined;
+    message.bracket = (object.bracket !== undefined && object.bracket !== null)
+      ? CMsgGCToClientBattlePassRollupWinter2017_Bracket.fromPartial(object.bracket)
+      : undefined;
+    message.playerCards =
+      object.playerCards?.map((e) => CMsgGCToClientBattlePassRollupWinter2017_PlayerCard.fromPartial(e)) || [];
+    message.fantasyChallenge = (object.fantasyChallenge !== undefined && object.fantasyChallenge !== null)
+      ? CMsgGCToClientBattlePassRollupWinter2017_FantasyChallenge.fromPartial(object.fantasyChallenge)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientBattlePassRollupWinter2017_Questlines(): CMsgGCToClientBattlePassRollupWinter2017_Questlines {
@@ -23376,6 +26176,24 @@ export const CMsgGCToClientBattlePassRollupWinter2017_Questlines = {
     message.threestar !== undefined && (obj.threestar = Math.round(message.threestar));
     message.total !== undefined && (obj.total = Math.round(message.total));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupWinter2017_Questlines>,
+  ): CMsgGCToClientBattlePassRollupWinter2017_Questlines {
+    return CMsgGCToClientBattlePassRollupWinter2017_Questlines.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupWinter2017_Questlines>,
+  ): CMsgGCToClientBattlePassRollupWinter2017_Questlines {
+    const message = createBaseCMsgGCToClientBattlePassRollupWinter2017_Questlines();
+    message.name = object.name ?? "";
+    message.onestar = object.onestar ?? 0;
+    message.twostar = object.twostar ?? 0;
+    message.threestar = object.threestar ?? 0;
+    message.total = object.total ?? 0;
+    return message;
   },
 };
 
@@ -23476,6 +26294,24 @@ export const CMsgGCToClientBattlePassRollupWinter2017_Wagering = {
     message.totalTips !== undefined && (obj.totalTips = Math.round(message.totalTips));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupWinter2017_Wagering>,
+  ): CMsgGCToClientBattlePassRollupWinter2017_Wagering {
+    return CMsgGCToClientBattlePassRollupWinter2017_Wagering.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupWinter2017_Wagering>,
+  ): CMsgGCToClientBattlePassRollupWinter2017_Wagering {
+    const message = createBaseCMsgGCToClientBattlePassRollupWinter2017_Wagering();
+    message.totalWagered = object.totalWagered ?? 0;
+    message.totalWon = object.totalWon ?? 0;
+    message.averageWon = object.averageWon ?? 0;
+    message.successRate = object.successRate ?? 0;
+    message.totalTips = object.totalTips ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientBattlePassRollupWinter2017_Achievements(): CMsgGCToClientBattlePassRollupWinter2017_Achievements {
@@ -23551,6 +26387,22 @@ export const CMsgGCToClientBattlePassRollupWinter2017_Achievements = {
     message.points !== undefined && (obj.points = Math.round(message.points));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupWinter2017_Achievements>,
+  ): CMsgGCToClientBattlePassRollupWinter2017_Achievements {
+    return CMsgGCToClientBattlePassRollupWinter2017_Achievements.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupWinter2017_Achievements>,
+  ): CMsgGCToClientBattlePassRollupWinter2017_Achievements {
+    const message = createBaseCMsgGCToClientBattlePassRollupWinter2017_Achievements();
+    message.completed = object.completed ?? 0;
+    message.total = object.total ?? 0;
+    message.points = object.points ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientBattlePassRollupWinter2017_BattleCup(): CMsgGCToClientBattlePassRollupWinter2017_BattleCup {
@@ -23613,6 +26465,21 @@ export const CMsgGCToClientBattlePassRollupWinter2017_BattleCup = {
     message.wins !== undefined && (obj.wins = Math.round(message.wins));
     message.score !== undefined && (obj.score = Math.round(message.score));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupWinter2017_BattleCup>,
+  ): CMsgGCToClientBattlePassRollupWinter2017_BattleCup {
+    return CMsgGCToClientBattlePassRollupWinter2017_BattleCup.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupWinter2017_BattleCup>,
+  ): CMsgGCToClientBattlePassRollupWinter2017_BattleCup {
+    const message = createBaseCMsgGCToClientBattlePassRollupWinter2017_BattleCup();
+    message.wins = object.wins ?? 0;
+    message.score = object.score ?? 0;
+    return message;
   },
 };
 
@@ -23689,6 +26556,22 @@ export const CMsgGCToClientBattlePassRollupWinter2017_Predictions = {
     message.points !== undefined && (obj.points = Math.round(message.points));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupWinter2017_Predictions>,
+  ): CMsgGCToClientBattlePassRollupWinter2017_Predictions {
+    return CMsgGCToClientBattlePassRollupWinter2017_Predictions.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupWinter2017_Predictions>,
+  ): CMsgGCToClientBattlePassRollupWinter2017_Predictions {
+    const message = createBaseCMsgGCToClientBattlePassRollupWinter2017_Predictions();
+    message.correct = object.correct ?? 0;
+    message.total = object.total ?? 0;
+    message.points = object.points ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientBattlePassRollupWinter2017_Bracket(): CMsgGCToClientBattlePassRollupWinter2017_Bracket {
@@ -23751,6 +26634,21 @@ export const CMsgGCToClientBattlePassRollupWinter2017_Bracket = {
     message.correct !== undefined && (obj.correct = Math.round(message.correct));
     message.points !== undefined && (obj.points = Math.round(message.points));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupWinter2017_Bracket>,
+  ): CMsgGCToClientBattlePassRollupWinter2017_Bracket {
+    return CMsgGCToClientBattlePassRollupWinter2017_Bracket.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupWinter2017_Bracket>,
+  ): CMsgGCToClientBattlePassRollupWinter2017_Bracket {
+    const message = createBaseCMsgGCToClientBattlePassRollupWinter2017_Bracket();
+    message.correct = object.correct ?? 0;
+    message.points = object.points ?? 0;
+    return message;
   },
 };
 
@@ -23815,6 +26713,21 @@ export const CMsgGCToClientBattlePassRollupWinter2017_PlayerCard = {
     message.quality !== undefined && (obj.quality = Math.round(message.quality));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupWinter2017_PlayerCard>,
+  ): CMsgGCToClientBattlePassRollupWinter2017_PlayerCard {
+    return CMsgGCToClientBattlePassRollupWinter2017_PlayerCard.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupWinter2017_PlayerCard>,
+  ): CMsgGCToClientBattlePassRollupWinter2017_PlayerCard {
+    const message = createBaseCMsgGCToClientBattlePassRollupWinter2017_PlayerCard();
+    message.accountId = object.accountId ?? 0;
+    message.quality = object.quality ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientBattlePassRollupWinter2017_FantasyChallenge(): CMsgGCToClientBattlePassRollupWinter2017_FantasyChallenge {
@@ -23877,6 +26790,21 @@ export const CMsgGCToClientBattlePassRollupWinter2017_FantasyChallenge = {
     message.totalScore !== undefined && (obj.totalScore = message.totalScore);
     message.percentile !== undefined && (obj.percentile = message.percentile);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupWinter2017_FantasyChallenge>,
+  ): CMsgGCToClientBattlePassRollupWinter2017_FantasyChallenge {
+    return CMsgGCToClientBattlePassRollupWinter2017_FantasyChallenge.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupWinter2017_FantasyChallenge>,
+  ): CMsgGCToClientBattlePassRollupWinter2017_FantasyChallenge {
+    const message = createBaseCMsgGCToClientBattlePassRollupWinter2017_FantasyChallenge();
+    message.totalScore = object.totalScore ?? 0;
+    message.percentile = object.percentile ?? 0;
+    return message;
   },
 };
 
@@ -24071,6 +26999,38 @@ export const CMsgGCToClientBattlePassRollupTI7 = {
       : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientBattlePassRollupTI7>): CMsgGCToClientBattlePassRollupTI7 {
+    return CMsgGCToClientBattlePassRollupTI7.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientBattlePassRollupTI7>): CMsgGCToClientBattlePassRollupTI7 {
+    const message = createBaseCMsgGCToClientBattlePassRollupTI7();
+    message.battlePassLevel = object.battlePassLevel ?? 0;
+    message.questlines = object.questlines?.map((e) => CMsgGCToClientBattlePassRollupTI7_Questlines.fromPartial(e)) ||
+      [];
+    message.wagering = (object.wagering !== undefined && object.wagering !== null)
+      ? CMsgGCToClientBattlePassRollupTI7_Wagering.fromPartial(object.wagering)
+      : undefined;
+    message.achievements = (object.achievements !== undefined && object.achievements !== null)
+      ? CMsgGCToClientBattlePassRollupTI7_Achievements.fromPartial(object.achievements)
+      : undefined;
+    message.battleCup = (object.battleCup !== undefined && object.battleCup !== null)
+      ? CMsgGCToClientBattlePassRollupTI7_BattleCup.fromPartial(object.battleCup)
+      : undefined;
+    message.predictions = (object.predictions !== undefined && object.predictions !== null)
+      ? CMsgGCToClientBattlePassRollupTI7_Predictions.fromPartial(object.predictions)
+      : undefined;
+    message.bracket = (object.bracket !== undefined && object.bracket !== null)
+      ? CMsgGCToClientBattlePassRollupTI7_Bracket.fromPartial(object.bracket)
+      : undefined;
+    message.playerCards = object.playerCards?.map((e) => CMsgGCToClientBattlePassRollupTI7_PlayerCard.fromPartial(e)) ||
+      [];
+    message.fantasyChallenge = (object.fantasyChallenge !== undefined && object.fantasyChallenge !== null)
+      ? CMsgGCToClientBattlePassRollupTI7_FantasyChallenge.fromPartial(object.fantasyChallenge)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientBattlePassRollupTI7_Questlines(): CMsgGCToClientBattlePassRollupTI7_Questlines {
@@ -24166,6 +27126,24 @@ export const CMsgGCToClientBattlePassRollupTI7_Questlines = {
     message.threestar !== undefined && (obj.threestar = Math.round(message.threestar));
     message.total !== undefined && (obj.total = Math.round(message.total));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupTI7_Questlines>,
+  ): CMsgGCToClientBattlePassRollupTI7_Questlines {
+    return CMsgGCToClientBattlePassRollupTI7_Questlines.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupTI7_Questlines>,
+  ): CMsgGCToClientBattlePassRollupTI7_Questlines {
+    const message = createBaseCMsgGCToClientBattlePassRollupTI7_Questlines();
+    message.name = object.name ?? "";
+    message.onestar = object.onestar ?? 0;
+    message.twostar = object.twostar ?? 0;
+    message.threestar = object.threestar ?? 0;
+    message.total = object.total ?? 0;
+    return message;
   },
 };
 
@@ -24263,6 +27241,22 @@ export const CMsgGCToClientBattlePassRollupTI7_Wagering = {
     message.totalTips !== undefined && (obj.totalTips = Math.round(message.totalTips));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientBattlePassRollupTI7_Wagering>): CMsgGCToClientBattlePassRollupTI7_Wagering {
+    return CMsgGCToClientBattlePassRollupTI7_Wagering.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupTI7_Wagering>,
+  ): CMsgGCToClientBattlePassRollupTI7_Wagering {
+    const message = createBaseCMsgGCToClientBattlePassRollupTI7_Wagering();
+    message.totalWagered = object.totalWagered ?? 0;
+    message.totalWon = object.totalWon ?? 0;
+    message.averageWon = object.averageWon ?? 0;
+    message.successRate = object.successRate ?? 0;
+    message.totalTips = object.totalTips ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientBattlePassRollupTI7_Achievements(): CMsgGCToClientBattlePassRollupTI7_Achievements {
@@ -24338,6 +27332,22 @@ export const CMsgGCToClientBattlePassRollupTI7_Achievements = {
     message.points !== undefined && (obj.points = Math.round(message.points));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupTI7_Achievements>,
+  ): CMsgGCToClientBattlePassRollupTI7_Achievements {
+    return CMsgGCToClientBattlePassRollupTI7_Achievements.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupTI7_Achievements>,
+  ): CMsgGCToClientBattlePassRollupTI7_Achievements {
+    const message = createBaseCMsgGCToClientBattlePassRollupTI7_Achievements();
+    message.completed = object.completed ?? 0;
+    message.total = object.total ?? 0;
+    message.points = object.points ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientBattlePassRollupTI7_BattleCup(): CMsgGCToClientBattlePassRollupTI7_BattleCup {
@@ -24397,6 +27407,19 @@ export const CMsgGCToClientBattlePassRollupTI7_BattleCup = {
     message.wins !== undefined && (obj.wins = Math.round(message.wins));
     message.score !== undefined && (obj.score = Math.round(message.score));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToClientBattlePassRollupTI7_BattleCup>): CMsgGCToClientBattlePassRollupTI7_BattleCup {
+    return CMsgGCToClientBattlePassRollupTI7_BattleCup.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupTI7_BattleCup>,
+  ): CMsgGCToClientBattlePassRollupTI7_BattleCup {
+    const message = createBaseCMsgGCToClientBattlePassRollupTI7_BattleCup();
+    message.wins = object.wins ?? 0;
+    message.score = object.score ?? 0;
+    return message;
   },
 };
 
@@ -24470,6 +27493,22 @@ export const CMsgGCToClientBattlePassRollupTI7_Predictions = {
     message.points !== undefined && (obj.points = Math.round(message.points));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupTI7_Predictions>,
+  ): CMsgGCToClientBattlePassRollupTI7_Predictions {
+    return CMsgGCToClientBattlePassRollupTI7_Predictions.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupTI7_Predictions>,
+  ): CMsgGCToClientBattlePassRollupTI7_Predictions {
+    const message = createBaseCMsgGCToClientBattlePassRollupTI7_Predictions();
+    message.correct = object.correct ?? 0;
+    message.total = object.total ?? 0;
+    message.points = object.points ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientBattlePassRollupTI7_Bracket(): CMsgGCToClientBattlePassRollupTI7_Bracket {
@@ -24530,6 +27569,19 @@ export const CMsgGCToClientBattlePassRollupTI7_Bracket = {
     message.points !== undefined && (obj.points = Math.round(message.points));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientBattlePassRollupTI7_Bracket>): CMsgGCToClientBattlePassRollupTI7_Bracket {
+    return CMsgGCToClientBattlePassRollupTI7_Bracket.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupTI7_Bracket>,
+  ): CMsgGCToClientBattlePassRollupTI7_Bracket {
+    const message = createBaseCMsgGCToClientBattlePassRollupTI7_Bracket();
+    message.correct = object.correct ?? 0;
+    message.points = object.points ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientBattlePassRollupTI7_PlayerCard(): CMsgGCToClientBattlePassRollupTI7_PlayerCard {
@@ -24589,6 +27641,21 @@ export const CMsgGCToClientBattlePassRollupTI7_PlayerCard = {
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     message.quality !== undefined && (obj.quality = Math.round(message.quality));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupTI7_PlayerCard>,
+  ): CMsgGCToClientBattlePassRollupTI7_PlayerCard {
+    return CMsgGCToClientBattlePassRollupTI7_PlayerCard.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupTI7_PlayerCard>,
+  ): CMsgGCToClientBattlePassRollupTI7_PlayerCard {
+    const message = createBaseCMsgGCToClientBattlePassRollupTI7_PlayerCard();
+    message.accountId = object.accountId ?? 0;
+    message.quality = object.quality ?? 0;
+    return message;
   },
 };
 
@@ -24652,6 +27719,21 @@ export const CMsgGCToClientBattlePassRollupTI7_FantasyChallenge = {
     message.totalScore !== undefined && (obj.totalScore = message.totalScore);
     message.percentile !== undefined && (obj.percentile = message.percentile);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupTI7_FantasyChallenge>,
+  ): CMsgGCToClientBattlePassRollupTI7_FantasyChallenge {
+    return CMsgGCToClientBattlePassRollupTI7_FantasyChallenge.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupTI7_FantasyChallenge>,
+  ): CMsgGCToClientBattlePassRollupTI7_FantasyChallenge {
+    const message = createBaseCMsgGCToClientBattlePassRollupTI7_FantasyChallenge();
+    message.totalScore = object.totalScore ?? 0;
+    message.percentile = object.percentile ?? 0;
+    return message;
   },
 };
 
@@ -24825,6 +27907,36 @@ export const CMsgGCToClientBattlePassRollupTI8 = {
       : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientBattlePassRollupTI8>): CMsgGCToClientBattlePassRollupTI8 {
+    return CMsgGCToClientBattlePassRollupTI8.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientBattlePassRollupTI8>): CMsgGCToClientBattlePassRollupTI8 {
+    const message = createBaseCMsgGCToClientBattlePassRollupTI8();
+    message.battlePassLevel = object.battlePassLevel ?? 0;
+    message.cavernCrawl = (object.cavernCrawl !== undefined && object.cavernCrawl !== null)
+      ? CMsgGCToClientBattlePassRollupTI8_CavernCrawl.fromPartial(object.cavernCrawl)
+      : undefined;
+    message.wagering = (object.wagering !== undefined && object.wagering !== null)
+      ? CMsgGCToClientBattlePassRollupTI8_Wagering.fromPartial(object.wagering)
+      : undefined;
+    message.achievements = (object.achievements !== undefined && object.achievements !== null)
+      ? CMsgGCToClientBattlePassRollupTI8_Achievements.fromPartial(object.achievements)
+      : undefined;
+    message.predictions = (object.predictions !== undefined && object.predictions !== null)
+      ? CMsgGCToClientBattlePassRollupTI8_Predictions.fromPartial(object.predictions)
+      : undefined;
+    message.bracket = (object.bracket !== undefined && object.bracket !== null)
+      ? CMsgGCToClientBattlePassRollupTI8_Bracket.fromPartial(object.bracket)
+      : undefined;
+    message.playerCards = object.playerCards?.map((e) => CMsgGCToClientBattlePassRollupTI8_PlayerCard.fromPartial(e)) ||
+      [];
+    message.fantasyChallenge = (object.fantasyChallenge !== undefined && object.fantasyChallenge !== null)
+      ? CMsgGCToClientBattlePassRollupTI8_FantasyChallenge.fromPartial(object.fantasyChallenge)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientBattlePassRollupTI8_CavernCrawl(): CMsgGCToClientBattlePassRollupTI8_CavernCrawl {
@@ -24908,6 +28020,23 @@ export const CMsgGCToClientBattlePassRollupTI8_CavernCrawl = {
     message.supportCompleted !== undefined && (obj.supportCompleted = message.supportCompleted);
     message.utilityCompleted !== undefined && (obj.utilityCompleted = message.utilityCompleted);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupTI8_CavernCrawl>,
+  ): CMsgGCToClientBattlePassRollupTI8_CavernCrawl {
+    return CMsgGCToClientBattlePassRollupTI8_CavernCrawl.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupTI8_CavernCrawl>,
+  ): CMsgGCToClientBattlePassRollupTI8_CavernCrawl {
+    const message = createBaseCMsgGCToClientBattlePassRollupTI8_CavernCrawl();
+    message.roomsCleared = object.roomsCleared ?? 0;
+    message.carryCompleted = object.carryCompleted ?? false;
+    message.supportCompleted = object.supportCompleted ?? false;
+    message.utilityCompleted = object.utilityCompleted ?? false;
+    return message;
   },
 };
 
@@ -25005,6 +28134,22 @@ export const CMsgGCToClientBattlePassRollupTI8_Wagering = {
     message.totalTips !== undefined && (obj.totalTips = Math.round(message.totalTips));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientBattlePassRollupTI8_Wagering>): CMsgGCToClientBattlePassRollupTI8_Wagering {
+    return CMsgGCToClientBattlePassRollupTI8_Wagering.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupTI8_Wagering>,
+  ): CMsgGCToClientBattlePassRollupTI8_Wagering {
+    const message = createBaseCMsgGCToClientBattlePassRollupTI8_Wagering();
+    message.totalWagered = object.totalWagered ?? 0;
+    message.totalWon = object.totalWon ?? 0;
+    message.averageWon = object.averageWon ?? 0;
+    message.successRate = object.successRate ?? 0;
+    message.totalTips = object.totalTips ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientBattlePassRollupTI8_Achievements(): CMsgGCToClientBattlePassRollupTI8_Achievements {
@@ -25080,6 +28225,22 @@ export const CMsgGCToClientBattlePassRollupTI8_Achievements = {
     message.points !== undefined && (obj.points = Math.round(message.points));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupTI8_Achievements>,
+  ): CMsgGCToClientBattlePassRollupTI8_Achievements {
+    return CMsgGCToClientBattlePassRollupTI8_Achievements.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupTI8_Achievements>,
+  ): CMsgGCToClientBattlePassRollupTI8_Achievements {
+    const message = createBaseCMsgGCToClientBattlePassRollupTI8_Achievements();
+    message.completed = object.completed ?? 0;
+    message.total = object.total ?? 0;
+    message.points = object.points ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientBattlePassRollupTI8_Predictions(): CMsgGCToClientBattlePassRollupTI8_Predictions {
@@ -25152,6 +28313,22 @@ export const CMsgGCToClientBattlePassRollupTI8_Predictions = {
     message.points !== undefined && (obj.points = Math.round(message.points));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupTI8_Predictions>,
+  ): CMsgGCToClientBattlePassRollupTI8_Predictions {
+    return CMsgGCToClientBattlePassRollupTI8_Predictions.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupTI8_Predictions>,
+  ): CMsgGCToClientBattlePassRollupTI8_Predictions {
+    const message = createBaseCMsgGCToClientBattlePassRollupTI8_Predictions();
+    message.correct = object.correct ?? 0;
+    message.total = object.total ?? 0;
+    message.points = object.points ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientBattlePassRollupTI8_Bracket(): CMsgGCToClientBattlePassRollupTI8_Bracket {
@@ -25212,6 +28389,19 @@ export const CMsgGCToClientBattlePassRollupTI8_Bracket = {
     message.points !== undefined && (obj.points = Math.round(message.points));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientBattlePassRollupTI8_Bracket>): CMsgGCToClientBattlePassRollupTI8_Bracket {
+    return CMsgGCToClientBattlePassRollupTI8_Bracket.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupTI8_Bracket>,
+  ): CMsgGCToClientBattlePassRollupTI8_Bracket {
+    const message = createBaseCMsgGCToClientBattlePassRollupTI8_Bracket();
+    message.correct = object.correct ?? 0;
+    message.points = object.points ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientBattlePassRollupTI8_PlayerCard(): CMsgGCToClientBattlePassRollupTI8_PlayerCard {
@@ -25271,6 +28461,21 @@ export const CMsgGCToClientBattlePassRollupTI8_PlayerCard = {
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     message.quality !== undefined && (obj.quality = Math.round(message.quality));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupTI8_PlayerCard>,
+  ): CMsgGCToClientBattlePassRollupTI8_PlayerCard {
+    return CMsgGCToClientBattlePassRollupTI8_PlayerCard.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupTI8_PlayerCard>,
+  ): CMsgGCToClientBattlePassRollupTI8_PlayerCard {
+    const message = createBaseCMsgGCToClientBattlePassRollupTI8_PlayerCard();
+    message.accountId = object.accountId ?? 0;
+    message.quality = object.quality ?? 0;
+    return message;
   },
 };
 
@@ -25335,6 +28540,21 @@ export const CMsgGCToClientBattlePassRollupTI8_FantasyChallenge = {
     message.percentile !== undefined && (obj.percentile = message.percentile);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupTI8_FantasyChallenge>,
+  ): CMsgGCToClientBattlePassRollupTI8_FantasyChallenge {
+    return CMsgGCToClientBattlePassRollupTI8_FantasyChallenge.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupTI8_FantasyChallenge>,
+  ): CMsgGCToClientBattlePassRollupTI8_FantasyChallenge {
+    const message = createBaseCMsgGCToClientBattlePassRollupTI8_FantasyChallenge();
+    message.totalScore = object.totalScore ?? 0;
+    message.percentile = object.percentile ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientBattlePassRollupTI9(): CMsgGCToClientBattlePassRollupTI9 {
@@ -25381,6 +28601,16 @@ export const CMsgGCToClientBattlePassRollupTI9 = {
     message.battlePassLevel !== undefined && (obj.battlePassLevel = Math.round(message.battlePassLevel));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientBattlePassRollupTI9>): CMsgGCToClientBattlePassRollupTI9 {
+    return CMsgGCToClientBattlePassRollupTI9.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientBattlePassRollupTI9>): CMsgGCToClientBattlePassRollupTI9 {
+    const message = createBaseCMsgGCToClientBattlePassRollupTI9();
+    message.battlePassLevel = object.battlePassLevel ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientBattlePassRollupTI10(): CMsgGCToClientBattlePassRollupTI10 {
@@ -25426,6 +28656,16 @@ export const CMsgGCToClientBattlePassRollupTI10 = {
     const obj: any = {};
     message.battlePassLevel !== undefined && (obj.battlePassLevel = Math.round(message.battlePassLevel));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToClientBattlePassRollupTI10>): CMsgGCToClientBattlePassRollupTI10 {
+    return CMsgGCToClientBattlePassRollupTI10.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientBattlePassRollupTI10>): CMsgGCToClientBattlePassRollupTI10 {
+    const message = createBaseCMsgGCToClientBattlePassRollupTI10();
+    message.battlePassLevel = object.battlePassLevel ?? 0;
+    return message;
   },
 };
 
@@ -25486,6 +28726,17 @@ export const CMsgGCToClientBattlePassRollupRequest = {
     message.eventId !== undefined && (obj.eventId = Math.round(message.eventId));
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToClientBattlePassRollupRequest>): CMsgGCToClientBattlePassRollupRequest {
+    return CMsgGCToClientBattlePassRollupRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientBattlePassRollupRequest>): CMsgGCToClientBattlePassRollupRequest {
+    const message = createBaseCMsgGCToClientBattlePassRollupRequest();
+    message.eventId = object.eventId ?? 0;
+    message.accountId = object.accountId ?? 0;
+    return message;
   },
 };
 
@@ -25631,6 +28882,36 @@ export const CMsgGCToClientBattlePassRollupResponse = {
       (obj.eventTi10 = message.eventTi10 ? CMsgGCToClientBattlePassRollupTI10.toJSON(message.eventTi10) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientBattlePassRollupResponse>): CMsgGCToClientBattlePassRollupResponse {
+    return CMsgGCToClientBattlePassRollupResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientBattlePassRollupResponse>): CMsgGCToClientBattlePassRollupResponse {
+    const message = createBaseCMsgGCToClientBattlePassRollupResponse();
+    message.eventTi6 = (object.eventTi6 !== undefined && object.eventTi6 !== null)
+      ? CMsgGCToClientBattlePassRollupInternational2016.fromPartial(object.eventTi6)
+      : undefined;
+    message.eventFall2016 = (object.eventFall2016 !== undefined && object.eventFall2016 !== null)
+      ? CMsgGCToClientBattlePassRollupFall2016.fromPartial(object.eventFall2016)
+      : undefined;
+    message.eventWinter2017 = (object.eventWinter2017 !== undefined && object.eventWinter2017 !== null)
+      ? CMsgGCToClientBattlePassRollupWinter2017.fromPartial(object.eventWinter2017)
+      : undefined;
+    message.eventTi7 = (object.eventTi7 !== undefined && object.eventTi7 !== null)
+      ? CMsgGCToClientBattlePassRollupTI7.fromPartial(object.eventTi7)
+      : undefined;
+    message.eventTi8 = (object.eventTi8 !== undefined && object.eventTi8 !== null)
+      ? CMsgGCToClientBattlePassRollupTI8.fromPartial(object.eventTi8)
+      : undefined;
+    message.eventTi9 = (object.eventTi9 !== undefined && object.eventTi9 !== null)
+      ? CMsgGCToClientBattlePassRollupTI9.fromPartial(object.eventTi9)
+      : undefined;
+    message.eventTi10 = (object.eventTi10 !== undefined && object.eventTi10 !== null)
+      ? CMsgGCToClientBattlePassRollupTI10.fromPartial(object.eventTi10)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientBattlePassRollupListRequest(): CMsgGCToClientBattlePassRollupListRequest {
@@ -25676,6 +28957,18 @@ export const CMsgGCToClientBattlePassRollupListRequest = {
     const obj: any = {};
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToClientBattlePassRollupListRequest>): CMsgGCToClientBattlePassRollupListRequest {
+    return CMsgGCToClientBattlePassRollupListRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupListRequest>,
+  ): CMsgGCToClientBattlePassRollupListRequest {
+    const message = createBaseCMsgGCToClientBattlePassRollupListRequest();
+    message.accountId = object.accountId ?? 0;
+    return message;
   },
 };
 
@@ -25732,6 +29025,19 @@ export const CMsgGCToClientBattlePassRollupListResponse = {
       obj.eventInfo = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToClientBattlePassRollupListResponse>): CMsgGCToClientBattlePassRollupListResponse {
+    return CMsgGCToClientBattlePassRollupListResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupListResponse>,
+  ): CMsgGCToClientBattlePassRollupListResponse {
+    const message = createBaseCMsgGCToClientBattlePassRollupListResponse();
+    message.eventInfo =
+      object.eventInfo?.map((e) => CMsgGCToClientBattlePassRollupListResponse_EventInfo.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -25796,6 +29102,21 @@ export const CMsgGCToClientBattlePassRollupListResponse_EventInfo = {
     message.level !== undefined && (obj.level = Math.round(message.level));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientBattlePassRollupListResponse_EventInfo>,
+  ): CMsgGCToClientBattlePassRollupListResponse_EventInfo {
+    return CMsgGCToClientBattlePassRollupListResponse_EventInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientBattlePassRollupListResponse_EventInfo>,
+  ): CMsgGCToClientBattlePassRollupListResponse_EventInfo {
+    const message = createBaseCMsgGCToClientBattlePassRollupListResponse_EventInfo();
+    message.eventId = object.eventId ?? 0;
+    message.level = object.level ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCTransferSeasonalMMRRequest(): CMsgClientToGCTransferSeasonalMMRRequest {
@@ -25841,6 +29162,16 @@ export const CMsgClientToGCTransferSeasonalMMRRequest = {
     const obj: any = {};
     message.isParty !== undefined && (obj.isParty = message.isParty);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCTransferSeasonalMMRRequest>): CMsgClientToGCTransferSeasonalMMRRequest {
+    return CMsgClientToGCTransferSeasonalMMRRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCTransferSeasonalMMRRequest>): CMsgClientToGCTransferSeasonalMMRRequest {
+    const message = createBaseCMsgClientToGCTransferSeasonalMMRRequest();
+    message.isParty = object.isParty ?? false;
+    return message;
   },
 };
 
@@ -25888,6 +29219,18 @@ export const CMsgClientToGCTransferSeasonalMMRResponse = {
     message.success !== undefined && (obj.success = message.success);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCTransferSeasonalMMRResponse>): CMsgClientToGCTransferSeasonalMMRResponse {
+    return CMsgClientToGCTransferSeasonalMMRResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCTransferSeasonalMMRResponse>,
+  ): CMsgClientToGCTransferSeasonalMMRResponse {
+    const message = createBaseCMsgClientToGCTransferSeasonalMMRResponse();
+    message.success = object.success ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientPlaytestStatus(): CMsgGCToClientPlaytestStatus {
@@ -25933,6 +29276,16 @@ export const CMsgGCToClientPlaytestStatus = {
     const obj: any = {};
     message.active !== undefined && (obj.active = message.active);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToClientPlaytestStatus>): CMsgGCToClientPlaytestStatus {
+    return CMsgGCToClientPlaytestStatus.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientPlaytestStatus>): CMsgGCToClientPlaytestStatus {
+    const message = createBaseCMsgGCToClientPlaytestStatus();
+    message.active = object.active ?? false;
+    return message;
   },
 };
 
@@ -25980,6 +29333,16 @@ export const CMsgClientToGCJoinPlaytest = {
     message.clientVersion !== undefined && (obj.clientVersion = Math.round(message.clientVersion));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCJoinPlaytest>): CMsgClientToGCJoinPlaytest {
+    return CMsgClientToGCJoinPlaytest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCJoinPlaytest>): CMsgClientToGCJoinPlaytest {
+    const message = createBaseCMsgClientToGCJoinPlaytest();
+    message.clientVersion = object.clientVersion ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCJoinPlaytestResponse(): CMsgClientToGCJoinPlaytestResponse {
@@ -26025,6 +29388,16 @@ export const CMsgClientToGCJoinPlaytestResponse = {
     const obj: any = {};
     message.error !== undefined && (obj.error = message.error);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCJoinPlaytestResponse>): CMsgClientToGCJoinPlaytestResponse {
+    return CMsgClientToGCJoinPlaytestResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCJoinPlaytestResponse>): CMsgClientToGCJoinPlaytestResponse {
+    const message = createBaseCMsgClientToGCJoinPlaytestResponse();
+    message.error = object.error ?? "";
+    return message;
   },
 };
 
@@ -26085,6 +29458,17 @@ export const CMsgDOTASetFavoriteTeam = {
     message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
     message.eventId !== undefined && (obj.eventId = Math.round(message.eventId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTASetFavoriteTeam>): CMsgDOTASetFavoriteTeam {
+    return CMsgDOTASetFavoriteTeam.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTASetFavoriteTeam>): CMsgDOTASetFavoriteTeam {
+    const message = createBaseCMsgDOTASetFavoriteTeam();
+    message.teamId = object.teamId ?? 0;
+    message.eventId = object.eventId ?? 0;
+    return message;
   },
 };
 
@@ -26152,6 +29536,17 @@ export const CMsgDOTATriviaCurrentQuestions = {
     message.triviaEnabled !== undefined && (obj.triviaEnabled = message.triviaEnabled);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTATriviaCurrentQuestions>): CMsgDOTATriviaCurrentQuestions {
+    return CMsgDOTATriviaCurrentQuestions.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTATriviaCurrentQuestions>): CMsgDOTATriviaCurrentQuestions {
+    const message = createBaseCMsgDOTATriviaCurrentQuestions();
+    message.questions = object.questions?.map((e) => CMsgDOTATriviaQuestion.fromPartial(e)) || [];
+    message.triviaEnabled = object.triviaEnabled ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTASubmitTriviaQuestionAnswer(): CMsgDOTASubmitTriviaQuestionAnswer {
@@ -26212,6 +29607,17 @@ export const CMsgDOTASubmitTriviaQuestionAnswer = {
     message.answerIndex !== undefined && (obj.answerIndex = Math.round(message.answerIndex));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTASubmitTriviaQuestionAnswer>): CMsgDOTASubmitTriviaQuestionAnswer {
+    return CMsgDOTASubmitTriviaQuestionAnswer.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTASubmitTriviaQuestionAnswer>): CMsgDOTASubmitTriviaQuestionAnswer {
+    const message = createBaseCMsgDOTASubmitTriviaQuestionAnswer();
+    message.questionId = object.questionId ?? 0;
+    message.answerIndex = object.answerIndex ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTASubmitTriviaQuestionAnswerResponse(): CMsgDOTASubmitTriviaQuestionAnswerResponse {
@@ -26258,6 +29664,18 @@ export const CMsgDOTASubmitTriviaQuestionAnswerResponse = {
     message.result !== undefined && (obj.result = eDOTATriviaAnswerResultToJSON(message.result));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTASubmitTriviaQuestionAnswerResponse>): CMsgDOTASubmitTriviaQuestionAnswerResponse {
+    return CMsgDOTASubmitTriviaQuestionAnswerResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgDOTASubmitTriviaQuestionAnswerResponse>,
+  ): CMsgDOTASubmitTriviaQuestionAnswerResponse {
+    const message = createBaseCMsgDOTASubmitTriviaQuestionAnswerResponse();
+    message.result = object.result ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAStartTriviaSession(): CMsgDOTAStartTriviaSession {
@@ -26292,6 +29710,15 @@ export const CMsgDOTAStartTriviaSession = {
   toJSON(_: CMsgDOTAStartTriviaSession): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAStartTriviaSession>): CMsgDOTAStartTriviaSession {
+    return CMsgDOTAStartTriviaSession.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgDOTAStartTriviaSession>): CMsgDOTAStartTriviaSession {
+    const message = createBaseCMsgDOTAStartTriviaSession();
+    return message;
   },
 };
 
@@ -26353,6 +29780,17 @@ export const CMsgDOTAStartTriviaSessionResponse = {
     message.currentTimestamp !== undefined && (obj.currentTimestamp = Math.round(message.currentTimestamp));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAStartTriviaSessionResponse>): CMsgDOTAStartTriviaSessionResponse {
+    return CMsgDOTAStartTriviaSessionResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAStartTriviaSessionResponse>): CMsgDOTAStartTriviaSessionResponse {
+    const message = createBaseCMsgDOTAStartTriviaSessionResponse();
+    message.triviaEnabled = object.triviaEnabled ?? false;
+    message.currentTimestamp = object.currentTimestamp ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAAnchorPhoneNumberRequest(): CMsgDOTAAnchorPhoneNumberRequest {
@@ -26387,6 +29825,15 @@ export const CMsgDOTAAnchorPhoneNumberRequest = {
   toJSON(_: CMsgDOTAAnchorPhoneNumberRequest): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAAnchorPhoneNumberRequest>): CMsgDOTAAnchorPhoneNumberRequest {
+    return CMsgDOTAAnchorPhoneNumberRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgDOTAAnchorPhoneNumberRequest>): CMsgDOTAAnchorPhoneNumberRequest {
+    const message = createBaseCMsgDOTAAnchorPhoneNumberRequest();
+    return message;
   },
 };
 
@@ -26434,6 +29881,16 @@ export const CMsgDOTAAnchorPhoneNumberResponse = {
     message.result !== undefined && (obj.result = cMsgDOTAAnchorPhoneNumberResponse_ResultToJSON(message.result));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAAnchorPhoneNumberResponse>): CMsgDOTAAnchorPhoneNumberResponse {
+    return CMsgDOTAAnchorPhoneNumberResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAAnchorPhoneNumberResponse>): CMsgDOTAAnchorPhoneNumberResponse {
+    const message = createBaseCMsgDOTAAnchorPhoneNumberResponse();
+    message.result = object.result ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAUnanchorPhoneNumberRequest(): CMsgDOTAUnanchorPhoneNumberRequest {
@@ -26468,6 +29925,15 @@ export const CMsgDOTAUnanchorPhoneNumberRequest = {
   toJSON(_: CMsgDOTAUnanchorPhoneNumberRequest): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAUnanchorPhoneNumberRequest>): CMsgDOTAUnanchorPhoneNumberRequest {
+    return CMsgDOTAUnanchorPhoneNumberRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgDOTAUnanchorPhoneNumberRequest>): CMsgDOTAUnanchorPhoneNumberRequest {
+    const message = createBaseCMsgDOTAUnanchorPhoneNumberRequest();
+    return message;
   },
 };
 
@@ -26514,6 +29980,16 @@ export const CMsgDOTAUnanchorPhoneNumberResponse = {
     const obj: any = {};
     message.result !== undefined && (obj.result = cMsgDOTAUnanchorPhoneNumberResponse_ResultToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAUnanchorPhoneNumberResponse>): CMsgDOTAUnanchorPhoneNumberResponse {
+    return CMsgDOTAUnanchorPhoneNumberResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAUnanchorPhoneNumberResponse>): CMsgDOTAUnanchorPhoneNumberResponse {
+    const message = createBaseCMsgDOTAUnanchorPhoneNumberResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -26586,6 +30062,18 @@ export const CMsgGCToClientCommendNotification = {
     message.commenderName !== undefined && (obj.commenderName = message.commenderName);
     message.flags !== undefined && (obj.flags = Math.round(message.flags));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToClientCommendNotification>): CMsgGCToClientCommendNotification {
+    return CMsgGCToClientCommendNotification.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientCommendNotification>): CMsgGCToClientCommendNotification {
+    const message = createBaseCMsgGCToClientCommendNotification();
+    message.commenderAccountId = object.commenderAccountId ?? 0;
+    message.commenderName = object.commenderName ?? "";
+    message.flags = object.flags ?? 0;
+    return message;
   },
 };
 
@@ -26670,6 +30158,19 @@ export const CMsgDOTAClientToGCQuickStatsRequest = {
     message.itemId !== undefined && (obj.itemId = Math.round(message.itemId));
     message.leagueId !== undefined && (obj.leagueId = Math.round(message.leagueId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAClientToGCQuickStatsRequest>): CMsgDOTAClientToGCQuickStatsRequest {
+    return CMsgDOTAClientToGCQuickStatsRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAClientToGCQuickStatsRequest>): CMsgDOTAClientToGCQuickStatsRequest {
+    const message = createBaseCMsgDOTAClientToGCQuickStatsRequest();
+    message.playerAccountId = object.playerAccountId ?? 0;
+    message.heroId = object.heroId ?? 0;
+    message.itemId = object.itemId ?? 0;
+    message.leagueId = object.leagueId ?? 0;
+    return message;
   },
 };
 
@@ -26829,6 +30330,36 @@ export const CMsgDOTAClientToGCQuickStatsResponse = {
       : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAClientToGCQuickStatsResponse>): CMsgDOTAClientToGCQuickStatsResponse {
+    return CMsgDOTAClientToGCQuickStatsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAClientToGCQuickStatsResponse>): CMsgDOTAClientToGCQuickStatsResponse {
+    const message = createBaseCMsgDOTAClientToGCQuickStatsResponse();
+    message.originalRequest = (object.originalRequest !== undefined && object.originalRequest !== null)
+      ? CMsgDOTAClientToGCQuickStatsRequest.fromPartial(object.originalRequest)
+      : undefined;
+    message.heroStats = (object.heroStats !== undefined && object.heroStats !== null)
+      ? CMsgDOTAClientToGCQuickStatsResponse_SimpleStats.fromPartial(object.heroStats)
+      : undefined;
+    message.itemStats = (object.itemStats !== undefined && object.itemStats !== null)
+      ? CMsgDOTAClientToGCQuickStatsResponse_SimpleStats.fromPartial(object.itemStats)
+      : undefined;
+    message.itemHeroStats = (object.itemHeroStats !== undefined && object.itemHeroStats !== null)
+      ? CMsgDOTAClientToGCQuickStatsResponse_SimpleStats.fromPartial(object.itemHeroStats)
+      : undefined;
+    message.itemPlayerStats = (object.itemPlayerStats !== undefined && object.itemPlayerStats !== null)
+      ? CMsgDOTAClientToGCQuickStatsResponse_SimpleStats.fromPartial(object.itemPlayerStats)
+      : undefined;
+    message.heroPlayerStats = (object.heroPlayerStats !== undefined && object.heroPlayerStats !== null)
+      ? CMsgDOTAClientToGCQuickStatsResponse_SimpleStats.fromPartial(object.heroPlayerStats)
+      : undefined;
+    message.fullSetStats = (object.fullSetStats !== undefined && object.fullSetStats !== null)
+      ? CMsgDOTAClientToGCQuickStatsResponse_SimpleStats.fromPartial(object.fullSetStats)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAClientToGCQuickStatsResponse_SimpleStats(): CMsgDOTAClientToGCQuickStatsResponse_SimpleStats {
@@ -26916,6 +30447,23 @@ export const CMsgDOTAClientToGCQuickStatsResponse_SimpleStats = {
     message.pickCount !== undefined && (obj.pickCount = Math.round(message.pickCount));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgDOTAClientToGCQuickStatsResponse_SimpleStats>,
+  ): CMsgDOTAClientToGCQuickStatsResponse_SimpleStats {
+    return CMsgDOTAClientToGCQuickStatsResponse_SimpleStats.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgDOTAClientToGCQuickStatsResponse_SimpleStats>,
+  ): CMsgDOTAClientToGCQuickStatsResponse_SimpleStats {
+    const message = createBaseCMsgDOTAClientToGCQuickStatsResponse_SimpleStats();
+    message.winPercent = object.winPercent ?? 0;
+    message.pickPercent = object.pickPercent ?? 0;
+    message.winCount = object.winCount ?? 0;
+    message.pickCount = object.pickCount ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTASelectionPriorityChoiceRequest(): CMsgDOTASelectionPriorityChoiceRequest {
@@ -26961,6 +30509,16 @@ export const CMsgDOTASelectionPriorityChoiceRequest = {
     const obj: any = {};
     message.choice !== undefined && (obj.choice = dOTASelectionPriorityChoiceToJSON(message.choice));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTASelectionPriorityChoiceRequest>): CMsgDOTASelectionPriorityChoiceRequest {
+    return CMsgDOTASelectionPriorityChoiceRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTASelectionPriorityChoiceRequest>): CMsgDOTASelectionPriorityChoiceRequest {
+    const message = createBaseCMsgDOTASelectionPriorityChoiceRequest();
+    message.choice = object.choice ?? 0;
+    return message;
   },
 };
 
@@ -27008,6 +30566,16 @@ export const CMsgDOTASelectionPriorityChoiceResponse = {
     message.result !== undefined && (obj.result = cMsgDOTASelectionPriorityChoiceResponse_ResultToJSON(message.result));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTASelectionPriorityChoiceResponse>): CMsgDOTASelectionPriorityChoiceResponse {
+    return CMsgDOTASelectionPriorityChoiceResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTASelectionPriorityChoiceResponse>): CMsgDOTASelectionPriorityChoiceResponse {
+    const message = createBaseCMsgDOTASelectionPriorityChoiceResponse();
+    message.result = object.result ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAGameAutographReward(): CMsgDOTAGameAutographReward {
@@ -27053,6 +30621,16 @@ export const CMsgDOTAGameAutographReward = {
     const obj: any = {};
     message.badgeId !== undefined && (obj.badgeId = message.badgeId);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAGameAutographReward>): CMsgDOTAGameAutographReward {
+    return CMsgDOTAGameAutographReward.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAGameAutographReward>): CMsgDOTAGameAutographReward {
+    const message = createBaseCMsgDOTAGameAutographReward();
+    message.badgeId = object.badgeId ?? "";
+    return message;
   },
 };
 
@@ -27100,6 +30678,16 @@ export const CMsgDOTAGameAutographRewardResponse = {
     message.result !== undefined && (obj.result = cMsgDOTAGameAutographRewardResponse_ResultToJSON(message.result));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAGameAutographRewardResponse>): CMsgDOTAGameAutographRewardResponse {
+    return CMsgDOTAGameAutographRewardResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAGameAutographRewardResponse>): CMsgDOTAGameAutographRewardResponse {
+    const message = createBaseCMsgDOTAGameAutographRewardResponse();
+    message.result = object.result ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTADestroyLobbyRequest(): CMsgDOTADestroyLobbyRequest {
@@ -27134,6 +30722,15 @@ export const CMsgDOTADestroyLobbyRequest = {
   toJSON(_: CMsgDOTADestroyLobbyRequest): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTADestroyLobbyRequest>): CMsgDOTADestroyLobbyRequest {
+    return CMsgDOTADestroyLobbyRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgDOTADestroyLobbyRequest>): CMsgDOTADestroyLobbyRequest {
+    const message = createBaseCMsgDOTADestroyLobbyRequest();
+    return message;
   },
 };
 
@@ -27181,6 +30778,16 @@ export const CMsgDOTADestroyLobbyResponse = {
     message.result !== undefined && (obj.result = cMsgDOTADestroyLobbyResponse_ResultToJSON(message.result));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTADestroyLobbyResponse>): CMsgDOTADestroyLobbyResponse {
+    return CMsgDOTADestroyLobbyResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTADestroyLobbyResponse>): CMsgDOTADestroyLobbyResponse {
+    const message = createBaseCMsgDOTADestroyLobbyResponse();
+    message.result = object.result ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAGetRecentPlayTimeFriendsRequest(): CMsgDOTAGetRecentPlayTimeFriendsRequest {
@@ -27215,6 +30822,15 @@ export const CMsgDOTAGetRecentPlayTimeFriendsRequest = {
   toJSON(_: CMsgDOTAGetRecentPlayTimeFriendsRequest): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAGetRecentPlayTimeFriendsRequest>): CMsgDOTAGetRecentPlayTimeFriendsRequest {
+    return CMsgDOTAGetRecentPlayTimeFriendsRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgDOTAGetRecentPlayTimeFriendsRequest>): CMsgDOTAGetRecentPlayTimeFriendsRequest {
+    const message = createBaseCMsgDOTAGetRecentPlayTimeFriendsRequest();
+    return message;
   },
 };
 
@@ -27276,6 +30892,16 @@ export const CMsgDOTAGetRecentPlayTimeFriendsResponse = {
       obj.accountIds = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAGetRecentPlayTimeFriendsResponse>): CMsgDOTAGetRecentPlayTimeFriendsResponse {
+    return CMsgDOTAGetRecentPlayTimeFriendsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAGetRecentPlayTimeFriendsResponse>): CMsgDOTAGetRecentPlayTimeFriendsResponse {
+    const message = createBaseCMsgDOTAGetRecentPlayTimeFriendsResponse();
+    message.accountIds = object.accountIds?.map((e) => e) || [];
+    return message;
   },
 };
 
@@ -27361,6 +30987,19 @@ export const CMsgPurchaseItemWithEventPoints = {
     message.usePremiumPoints !== undefined && (obj.usePremiumPoints = message.usePremiumPoints);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgPurchaseItemWithEventPoints>): CMsgPurchaseItemWithEventPoints {
+    return CMsgPurchaseItemWithEventPoints.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPurchaseItemWithEventPoints>): CMsgPurchaseItemWithEventPoints {
+    const message = createBaseCMsgPurchaseItemWithEventPoints();
+    message.itemDef = object.itemDef ?? 0;
+    message.quantity = object.quantity ?? 0;
+    message.eventId = object.eventId ?? 0;
+    message.usePremiumPoints = object.usePremiumPoints ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgPurchaseItemWithEventPointsResponse(): CMsgPurchaseItemWithEventPointsResponse {
@@ -27406,6 +31045,16 @@ export const CMsgPurchaseItemWithEventPointsResponse = {
     const obj: any = {};
     message.result !== undefined && (obj.result = cMsgPurchaseItemWithEventPointsResponse_ResultToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgPurchaseItemWithEventPointsResponse>): CMsgPurchaseItemWithEventPointsResponse {
+    return CMsgPurchaseItemWithEventPointsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPurchaseItemWithEventPointsResponse>): CMsgPurchaseItemWithEventPointsResponse {
+    const message = createBaseCMsgPurchaseItemWithEventPointsResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -27467,6 +31116,17 @@ export const CMsgPurchaseHeroRandomRelic = {
     message.relicRarity !== undefined && (obj.relicRarity = eHeroRelicRarityToJSON(message.relicRarity));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgPurchaseHeroRandomRelic>): CMsgPurchaseHeroRandomRelic {
+    return CMsgPurchaseHeroRandomRelic.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPurchaseHeroRandomRelic>): CMsgPurchaseHeroRandomRelic {
+    const message = createBaseCMsgPurchaseHeroRandomRelic();
+    message.heroId = object.heroId ?? 0;
+    message.relicRarity = object.relicRarity ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgPurchaseHeroRandomRelicResponse(): CMsgPurchaseHeroRandomRelicResponse {
@@ -27526,6 +31186,17 @@ export const CMsgPurchaseHeroRandomRelicResponse = {
     message.result !== undefined && (obj.result = ePurchaseHeroRelicResultToJSON(message.result));
     message.killEaterType !== undefined && (obj.killEaterType = Math.round(message.killEaterType));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgPurchaseHeroRandomRelicResponse>): CMsgPurchaseHeroRandomRelicResponse {
+    return CMsgPurchaseHeroRandomRelicResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPurchaseHeroRandomRelicResponse>): CMsgPurchaseHeroRandomRelicResponse {
+    const message = createBaseCMsgPurchaseHeroRandomRelicResponse();
+    message.result = object.result ?? 0;
+    message.killEaterType = object.killEaterType ?? 0;
+    return message;
   },
 };
 
@@ -27590,6 +31261,21 @@ export const CMsgClientToGCRequestPlusWeeklyChallengeResult = {
     message.week !== undefined && (obj.week = Math.round(message.week));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCRequestPlusWeeklyChallengeResult>,
+  ): CMsgClientToGCRequestPlusWeeklyChallengeResult {
+    return CMsgClientToGCRequestPlusWeeklyChallengeResult.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCRequestPlusWeeklyChallengeResult>,
+  ): CMsgClientToGCRequestPlusWeeklyChallengeResult {
+    const message = createBaseCMsgClientToGCRequestPlusWeeklyChallengeResult();
+    message.eventId = object.eventId ?? 0;
+    message.week = object.week ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCRequestPlusWeeklyChallengeResultResponse(): CMsgClientToGCRequestPlusWeeklyChallengeResultResponse {
@@ -27627,6 +31313,19 @@ export const CMsgClientToGCRequestPlusWeeklyChallengeResultResponse = {
   toJSON(_: CMsgClientToGCRequestPlusWeeklyChallengeResultResponse): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCRequestPlusWeeklyChallengeResultResponse>,
+  ): CMsgClientToGCRequestPlusWeeklyChallengeResultResponse {
+    return CMsgClientToGCRequestPlusWeeklyChallengeResultResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    _: DeepPartial<CMsgClientToGCRequestPlusWeeklyChallengeResultResponse>,
+  ): CMsgClientToGCRequestPlusWeeklyChallengeResultResponse {
+    const message = createBaseCMsgClientToGCRequestPlusWeeklyChallengeResultResponse();
+    return message;
   },
 };
 
@@ -27673,6 +31372,16 @@ export const CMsgProfileRequest = {
     const obj: any = {};
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgProfileRequest>): CMsgProfileRequest {
+    return CMsgProfileRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgProfileRequest>): CMsgProfileRequest {
+    const message = createBaseCMsgProfileRequest();
+    message.accountId = object.accountId ?? 0;
+    return message;
   },
 };
 
@@ -27828,6 +31537,28 @@ export const CMsgProfileResponse = {
       (obj.stickerbookPage = message.stickerbookPage ? CMsgStickerbookPage.toJSON(message.stickerbookPage) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgProfileResponse>): CMsgProfileResponse {
+    return CMsgProfileResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgProfileResponse>): CMsgProfileResponse {
+    const message = createBaseCMsgProfileResponse();
+    message.backgroundItem = (object.backgroundItem !== undefined && object.backgroundItem !== null)
+      ? CSOEconItem.fromPartial(object.backgroundItem)
+      : undefined;
+    message.featuredHeroes = object.featuredHeroes?.map((e) => CMsgProfileResponse_FeaturedHero.fromPartial(e)) || [];
+    message.recentMatches = object.recentMatches?.map((e) => CMsgProfileResponse_MatchInfo.fromPartial(e)) || [];
+    message.successfulHeroes = object.successfulHeroes?.map((e) => CMsgSuccessfulHero.fromPartial(e)) || [];
+    message.recentMatchDetails = (object.recentMatchDetails !== undefined && object.recentMatchDetails !== null)
+      ? CMsgRecentMatchInfo.fromPartial(object.recentMatchDetails)
+      : undefined;
+    message.result = object.result ?? 0;
+    message.stickerbookPage = (object.stickerbookPage !== undefined && object.stickerbookPage !== null)
+      ? CMsgStickerbookPage.fromPartial(object.stickerbookPage)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgProfileResponse_FeaturedHero(): CMsgProfileResponse_FeaturedHero {
@@ -27935,6 +31666,22 @@ export const CMsgProfileResponse_FeaturedHero = {
         : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgProfileResponse_FeaturedHero>): CMsgProfileResponse_FeaturedHero {
+    return CMsgProfileResponse_FeaturedHero.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgProfileResponse_FeaturedHero>): CMsgProfileResponse_FeaturedHero {
+    const message = createBaseCMsgProfileResponse_FeaturedHero();
+    message.heroId = object.heroId ?? 0;
+    message.equippedEconItems = object.equippedEconItems?.map((e) => CSOEconItem.fromPartial(e)) || [];
+    message.manuallySet = object.manuallySet ?? false;
+    message.plusHeroXp = object.plusHeroXp ?? 0;
+    message.plusHeroRelicsItem = (object.plusHeroRelicsItem !== undefined && object.plusHeroRelicsItem !== null)
+      ? CSOEconItem.fromPartial(object.plusHeroRelicsItem)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgProfileResponse_MatchInfo(): CMsgProfileResponse_MatchInfo {
@@ -28031,6 +31778,20 @@ export const CMsgProfileResponse_MatchInfo = {
     message.wonMatch !== undefined && (obj.wonMatch = message.wonMatch);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgProfileResponse_MatchInfo>): CMsgProfileResponse_MatchInfo {
+    return CMsgProfileResponse_MatchInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgProfileResponse_MatchInfo>): CMsgProfileResponse_MatchInfo {
+    const message = createBaseCMsgProfileResponse_MatchInfo();
+    message.matchId = object.matchId ?? "0";
+    message.matchTimestamp = object.matchTimestamp ?? 0;
+    message.performanceRating = object.performanceRating ?? 0;
+    message.heroId = object.heroId ?? 0;
+    message.wonMatch = object.wonMatch ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgProfileUpdate(): CMsgProfileUpdate {
@@ -28106,6 +31867,17 @@ export const CMsgProfileUpdate = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgProfileUpdate>): CMsgProfileUpdate {
+    return CMsgProfileUpdate.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgProfileUpdate>): CMsgProfileUpdate {
+    const message = createBaseCMsgProfileUpdate();
+    message.backgroundItemId = object.backgroundItemId ?? "0";
+    message.featuredHeroIds = object.featuredHeroIds?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgProfileUpdateResponse(): CMsgProfileUpdateResponse {
@@ -28151,6 +31923,16 @@ export const CMsgProfileUpdateResponse = {
     const obj: any = {};
     message.result !== undefined && (obj.result = cMsgProfileUpdateResponse_ResultToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgProfileUpdateResponse>): CMsgProfileUpdateResponse {
+    return CMsgProfileUpdateResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgProfileUpdateResponse>): CMsgProfileUpdateResponse {
+    const message = createBaseCMsgProfileUpdateResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -28235,6 +32017,19 @@ export const CMsgTalentWinRates = {
     message.gameCount !== undefined && (obj.gameCount = Math.round(message.gameCount));
     message.winCount !== undefined && (obj.winCount = Math.round(message.winCount));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgTalentWinRates>): CMsgTalentWinRates {
+    return CMsgTalentWinRates.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTalentWinRates>): CMsgTalentWinRates {
+    const message = createBaseCMsgTalentWinRates();
+    message.lastRun = object.lastRun ?? 0;
+    message.abilityId = object.abilityId ?? 0;
+    message.gameCount = object.gameCount ?? 0;
+    message.winCount = object.winCount ?? 0;
+    return message;
   },
 };
 
@@ -28390,6 +32185,24 @@ export const CMsgGlobalHeroAverages = {
     message.avgNetWorth !== undefined && (obj.avgNetWorth = Math.round(message.avgNetWorth));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGlobalHeroAverages>): CMsgGlobalHeroAverages {
+    return CMsgGlobalHeroAverages.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGlobalHeroAverages>): CMsgGlobalHeroAverages {
+    const message = createBaseCMsgGlobalHeroAverages();
+    message.lastRun = object.lastRun ?? 0;
+    message.avgGoldPerMin = object.avgGoldPerMin ?? 0;
+    message.avgXpPerMin = object.avgXpPerMin ?? 0;
+    message.avgKills = object.avgKills ?? 0;
+    message.avgDeaths = object.avgDeaths ?? 0;
+    message.avgAssists = object.avgAssists ?? 0;
+    message.avgLastHits = object.avgLastHits ?? 0;
+    message.avgDenies = object.avgDenies ?? 0;
+    message.avgNetWorth = object.avgNetWorth ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgHeroGlobalDataRequest(): CMsgHeroGlobalDataRequest {
@@ -28435,6 +32248,16 @@ export const CMsgHeroGlobalDataRequest = {
     const obj: any = {};
     message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgHeroGlobalDataRequest>): CMsgHeroGlobalDataRequest {
+    return CMsgHeroGlobalDataRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgHeroGlobalDataRequest>): CMsgHeroGlobalDataRequest {
+    const message = createBaseCMsgHeroGlobalDataRequest();
+    message.heroId = object.heroId ?? 0;
+    return message;
   },
 };
 
@@ -28505,6 +32328,18 @@ export const CMsgHeroGlobalDataResponse = {
       obj.heroDataPerChunk = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgHeroGlobalDataResponse>): CMsgHeroGlobalDataResponse {
+    return CMsgHeroGlobalDataResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgHeroGlobalDataResponse>): CMsgHeroGlobalDataResponse {
+    const message = createBaseCMsgHeroGlobalDataResponse();
+    message.heroId = object.heroId ?? 0;
+    message.heroDataPerChunk =
+      object.heroDataPerChunk?.map((e) => CMsgHeroGlobalDataResponse_HeroDataPerRankChunk.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -28590,6 +32425,19 @@ export const CMsgHeroGlobalDataResponse_GraphData = {
     message.banPercent !== undefined && (obj.banPercent = message.banPercent);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgHeroGlobalDataResponse_GraphData>): CMsgHeroGlobalDataResponse_GraphData {
+    return CMsgHeroGlobalDataResponse_GraphData.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgHeroGlobalDataResponse_GraphData>): CMsgHeroGlobalDataResponse_GraphData {
+    const message = createBaseCMsgHeroGlobalDataResponse_GraphData();
+    message.day = object.day ?? 0;
+    message.winPercent = object.winPercent ?? 0;
+    message.pickPercent = object.pickPercent ?? 0;
+    message.banPercent = object.banPercent ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgHeroGlobalDataResponse_WeekData(): CMsgHeroGlobalDataResponse_WeekData {
@@ -28673,6 +32521,19 @@ export const CMsgHeroGlobalDataResponse_WeekData = {
     message.pickPercent !== undefined && (obj.pickPercent = message.pickPercent);
     message.banPercent !== undefined && (obj.banPercent = message.banPercent);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgHeroGlobalDataResponse_WeekData>): CMsgHeroGlobalDataResponse_WeekData {
+    return CMsgHeroGlobalDataResponse_WeekData.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgHeroGlobalDataResponse_WeekData>): CMsgHeroGlobalDataResponse_WeekData {
+    const message = createBaseCMsgHeroGlobalDataResponse_WeekData();
+    message.week = object.week ?? 0;
+    message.winPercent = object.winPercent ?? 0;
+    message.pickPercent = object.pickPercent ?? 0;
+    message.banPercent = object.banPercent ?? 0;
+    return message;
   },
 };
 
@@ -28792,6 +32653,26 @@ export const CMsgHeroGlobalDataResponse_HeroDataPerRankChunk = {
     }
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgHeroGlobalDataResponse_HeroDataPerRankChunk>,
+  ): CMsgHeroGlobalDataResponse_HeroDataPerRankChunk {
+    return CMsgHeroGlobalDataResponse_HeroDataPerRankChunk.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgHeroGlobalDataResponse_HeroDataPerRankChunk>,
+  ): CMsgHeroGlobalDataResponse_HeroDataPerRankChunk {
+    const message = createBaseCMsgHeroGlobalDataResponse_HeroDataPerRankChunk();
+    message.rankChunk = object.rankChunk ?? 0;
+    message.talentWinRates = object.talentWinRates?.map((e) => CMsgTalentWinRates.fromPartial(e)) || [];
+    message.heroAverages = (object.heroAverages !== undefined && object.heroAverages !== null)
+      ? CMsgGlobalHeroAverages.fromPartial(object.heroAverages)
+      : undefined;
+    message.graphData = object.graphData?.map((e) => CMsgHeroGlobalDataResponse_GraphData.fromPartial(e)) || [];
+    message.weekData = object.weekData?.map((e) => CMsgHeroGlobalDataResponse_WeekData.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgHeroGlobalDataAllHeroes(): CMsgHeroGlobalDataAllHeroes {
@@ -28845,6 +32726,16 @@ export const CMsgHeroGlobalDataAllHeroes = {
       obj.heroes = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgHeroGlobalDataAllHeroes>): CMsgHeroGlobalDataAllHeroes {
+    return CMsgHeroGlobalDataAllHeroes.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgHeroGlobalDataAllHeroes>): CMsgHeroGlobalDataAllHeroes {
+    const message = createBaseCMsgHeroGlobalDataAllHeroes();
+    message.heroes = object.heroes?.map((e) => CMsgHeroGlobalDataResponse.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -28903,6 +32794,17 @@ export const CMsgHeroGlobalDataHeroesAlliesAndEnemies = {
       obj.rankedHeroData = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgHeroGlobalDataHeroesAlliesAndEnemies>): CMsgHeroGlobalDataHeroesAlliesAndEnemies {
+    return CMsgHeroGlobalDataHeroesAlliesAndEnemies.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgHeroGlobalDataHeroesAlliesAndEnemies>): CMsgHeroGlobalDataHeroesAlliesAndEnemies {
+    const message = createBaseCMsgHeroGlobalDataHeroesAlliesAndEnemies();
+    message.rankedHeroData =
+      object.rankedHeroData?.map((e) => CMsgHeroGlobalDataHeroesAlliesAndEnemies_RankedHeroData.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -29033,6 +32935,24 @@ export const CMsgHeroGlobalDataHeroesAlliesAndEnemies_HeroData = {
     }
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgHeroGlobalDataHeroesAlliesAndEnemies_HeroData>,
+  ): CMsgHeroGlobalDataHeroesAlliesAndEnemies_HeroData {
+    return CMsgHeroGlobalDataHeroesAlliesAndEnemies_HeroData.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgHeroGlobalDataHeroesAlliesAndEnemies_HeroData>,
+  ): CMsgHeroGlobalDataHeroesAlliesAndEnemies_HeroData {
+    const message = createBaseCMsgHeroGlobalDataHeroesAlliesAndEnemies_HeroData();
+    message.heroId = object.heroId ?? 0;
+    message.winRate = object.winRate ?? 0;
+    message.firstOtherHeroId = object.firstOtherHeroId ?? 0;
+    message.allyWinRate = object.allyWinRate?.map((e) => e) || [];
+    message.enemyWinRate = object.enemyWinRate?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgHeroGlobalDataHeroesAlliesAndEnemies_RankedHeroData(): CMsgHeroGlobalDataHeroesAlliesAndEnemies_RankedHeroData {
@@ -29104,6 +33024,22 @@ export const CMsgHeroGlobalDataHeroesAlliesAndEnemies_RankedHeroData = {
     }
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgHeroGlobalDataHeroesAlliesAndEnemies_RankedHeroData>,
+  ): CMsgHeroGlobalDataHeroesAlliesAndEnemies_RankedHeroData {
+    return CMsgHeroGlobalDataHeroesAlliesAndEnemies_RankedHeroData.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgHeroGlobalDataHeroesAlliesAndEnemies_RankedHeroData>,
+  ): CMsgHeroGlobalDataHeroesAlliesAndEnemies_RankedHeroData {
+    const message = createBaseCMsgHeroGlobalDataHeroesAlliesAndEnemies_RankedHeroData();
+    message.rank = object.rank ?? 0;
+    message.heroData = object.heroData?.map((e) => CMsgHeroGlobalDataHeroesAlliesAndEnemies_HeroData.fromPartial(e)) ||
+      [];
+    return message;
+  },
 };
 
 function createBaseCMsgPrivateMetadataKeyRequest(): CMsgPrivateMetadataKeyRequest {
@@ -29149,6 +33085,16 @@ export const CMsgPrivateMetadataKeyRequest = {
     const obj: any = {};
     message.matchId !== undefined && (obj.matchId = message.matchId);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgPrivateMetadataKeyRequest>): CMsgPrivateMetadataKeyRequest {
+    return CMsgPrivateMetadataKeyRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPrivateMetadataKeyRequest>): CMsgPrivateMetadataKeyRequest {
+    const message = createBaseCMsgPrivateMetadataKeyRequest();
+    message.matchId = object.matchId ?? "0";
+    return message;
   },
 };
 
@@ -29196,6 +33142,16 @@ export const CMsgPrivateMetadataKeyResponse = {
     message.privateKey !== undefined && (obj.privateKey = Math.round(message.privateKey));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgPrivateMetadataKeyResponse>): CMsgPrivateMetadataKeyResponse {
+    return CMsgPrivateMetadataKeyResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPrivateMetadataKeyResponse>): CMsgPrivateMetadataKeyResponse {
+    const message = createBaseCMsgPrivateMetadataKeyResponse();
+    message.privateKey = object.privateKey ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgActivatePlusFreeTrialResponse(): CMsgActivatePlusFreeTrialResponse {
@@ -29241,6 +33197,16 @@ export const CMsgActivatePlusFreeTrialResponse = {
     const obj: any = {};
     message.result !== undefined && (obj.result = cMsgActivatePlusFreeTrialResponse_ResultToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgActivatePlusFreeTrialResponse>): CMsgActivatePlusFreeTrialResponse {
+    return CMsgActivatePlusFreeTrialResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgActivatePlusFreeTrialResponse>): CMsgActivatePlusFreeTrialResponse {
+    const message = createBaseCMsgActivatePlusFreeTrialResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -29336,6 +33302,23 @@ export const CMsgGCToClientCavernCrawlMapPathCompleted = {
     message.mapVariant !== undefined && (obj.mapVariant = Math.round(message.mapVariant));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientCavernCrawlMapPathCompleted>): CMsgGCToClientCavernCrawlMapPathCompleted {
+    return CMsgGCToClientCavernCrawlMapPathCompleted.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientCavernCrawlMapPathCompleted>,
+  ): CMsgGCToClientCavernCrawlMapPathCompleted {
+    const message = createBaseCMsgGCToClientCavernCrawlMapPathCompleted();
+    message.eventId = object.eventId ?? 0;
+    message.heroIdCompleted = object.heroIdCompleted ?? 0;
+    message.completedPaths =
+      object.completedPaths?.map((e) => CMsgGCToClientCavernCrawlMapPathCompleted_CompletedPathInfo.fromPartial(e)) ||
+      [];
+    message.mapVariant = object.mapVariant ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientCavernCrawlMapPathCompleted_CompletedPathInfo(): CMsgGCToClientCavernCrawlMapPathCompleted_CompletedPathInfo {
@@ -29411,6 +33394,22 @@ export const CMsgGCToClientCavernCrawlMapPathCompleted_CompletedPathInfo = {
     message.halfCompleted !== undefined && (obj.halfCompleted = message.halfCompleted);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientCavernCrawlMapPathCompleted_CompletedPathInfo>,
+  ): CMsgGCToClientCavernCrawlMapPathCompleted_CompletedPathInfo {
+    return CMsgGCToClientCavernCrawlMapPathCompleted_CompletedPathInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientCavernCrawlMapPathCompleted_CompletedPathInfo>,
+  ): CMsgGCToClientCavernCrawlMapPathCompleted_CompletedPathInfo {
+    const message = createBaseCMsgGCToClientCavernCrawlMapPathCompleted_CompletedPathInfo();
+    message.pathIdCompleted = object.pathIdCompleted ?? 0;
+    message.receivedUltraRareReward = object.receivedUltraRareReward ?? false;
+    message.halfCompleted = object.halfCompleted ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientCavernCrawlMapUpdated(): CMsgGCToClientCavernCrawlMapUpdated {
@@ -29456,6 +33455,16 @@ export const CMsgGCToClientCavernCrawlMapUpdated = {
     const obj: any = {};
     message.eventId !== undefined && (obj.eventId = Math.round(message.eventId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToClientCavernCrawlMapUpdated>): CMsgGCToClientCavernCrawlMapUpdated {
+    return CMsgGCToClientCavernCrawlMapUpdated.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientCavernCrawlMapUpdated>): CMsgGCToClientCavernCrawlMapUpdated {
+    const message = createBaseCMsgGCToClientCavernCrawlMapUpdated();
+    message.eventId = object.eventId ?? 0;
+    return message;
   },
 };
 
@@ -29529,6 +33538,18 @@ export const CMsgClientToGCCavernCrawlClaimRoom = {
     message.mapVariant !== undefined && (obj.mapVariant = Math.round(message.mapVariant));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCCavernCrawlClaimRoom>): CMsgClientToGCCavernCrawlClaimRoom {
+    return CMsgClientToGCCavernCrawlClaimRoom.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCCavernCrawlClaimRoom>): CMsgClientToGCCavernCrawlClaimRoom {
+    const message = createBaseCMsgClientToGCCavernCrawlClaimRoom();
+    message.eventId = object.eventId ?? 0;
+    message.roomId = object.roomId ?? 0;
+    message.mapVariant = object.mapVariant ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCavernCrawlClaimRoomResponse(): CMsgClientToGCCavernCrawlClaimRoomResponse {
@@ -29577,6 +33598,18 @@ export const CMsgClientToGCCavernCrawlClaimRoomResponse = {
     message.result !== undefined &&
       (obj.result = cMsgClientToGCCavernCrawlClaimRoomResponse_ResultToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCCavernCrawlClaimRoomResponse>): CMsgClientToGCCavernCrawlClaimRoomResponse {
+    return CMsgClientToGCCavernCrawlClaimRoomResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCavernCrawlClaimRoomResponse>,
+  ): CMsgClientToGCCavernCrawlClaimRoomResponse {
+    const message = createBaseCMsgClientToGCCavernCrawlClaimRoomResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -29662,6 +33695,19 @@ export const CMsgClientToGCCavernCrawlUseItemOnRoom = {
     message.mapVariant !== undefined && (obj.mapVariant = Math.round(message.mapVariant));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCCavernCrawlUseItemOnRoom>): CMsgClientToGCCavernCrawlUseItemOnRoom {
+    return CMsgClientToGCCavernCrawlUseItemOnRoom.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCCavernCrawlUseItemOnRoom>): CMsgClientToGCCavernCrawlUseItemOnRoom {
+    const message = createBaseCMsgClientToGCCavernCrawlUseItemOnRoom();
+    message.eventId = object.eventId ?? 0;
+    message.roomId = object.roomId ?? 0;
+    message.itemType = object.itemType ?? 0;
+    message.mapVariant = object.mapVariant ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCavernCrawlUseItemOnRoomResponse(): CMsgClientToGCCavernCrawlUseItemOnRoomResponse {
@@ -29713,6 +33759,20 @@ export const CMsgClientToGCCavernCrawlUseItemOnRoomResponse = {
     message.result !== undefined &&
       (obj.result = cMsgClientToGCCavernCrawlUseItemOnRoomResponse_ResultToJSON(message.result));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCCavernCrawlUseItemOnRoomResponse>,
+  ): CMsgClientToGCCavernCrawlUseItemOnRoomResponse {
+    return CMsgClientToGCCavernCrawlUseItemOnRoomResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCavernCrawlUseItemOnRoomResponse>,
+  ): CMsgClientToGCCavernCrawlUseItemOnRoomResponse {
+    const message = createBaseCMsgClientToGCCavernCrawlUseItemOnRoomResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -29798,6 +33858,19 @@ export const CMsgClientToGCCavernCrawlUseItemOnPath = {
     message.mapVariant !== undefined && (obj.mapVariant = Math.round(message.mapVariant));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCCavernCrawlUseItemOnPath>): CMsgClientToGCCavernCrawlUseItemOnPath {
+    return CMsgClientToGCCavernCrawlUseItemOnPath.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCCavernCrawlUseItemOnPath>): CMsgClientToGCCavernCrawlUseItemOnPath {
+    const message = createBaseCMsgClientToGCCavernCrawlUseItemOnPath();
+    message.eventId = object.eventId ?? 0;
+    message.pathId = object.pathId ?? 0;
+    message.itemType = object.itemType ?? 0;
+    message.mapVariant = object.mapVariant ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCavernCrawlUseItemOnPathResponse(): CMsgClientToGCCavernCrawlUseItemOnPathResponse {
@@ -29850,6 +33923,20 @@ export const CMsgClientToGCCavernCrawlUseItemOnPathResponse = {
       (obj.result = cMsgClientToGCCavernCrawlUseItemOnPathResponse_ResultToJSON(message.result));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCCavernCrawlUseItemOnPathResponse>,
+  ): CMsgClientToGCCavernCrawlUseItemOnPathResponse {
+    return CMsgClientToGCCavernCrawlUseItemOnPathResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCavernCrawlUseItemOnPathResponse>,
+  ): CMsgClientToGCCavernCrawlUseItemOnPathResponse {
+    const message = createBaseCMsgClientToGCCavernCrawlUseItemOnPathResponse();
+    message.result = object.result ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCavernCrawlRequestMapState(): CMsgClientToGCCavernCrawlRequestMapState {
@@ -29895,6 +33982,16 @@ export const CMsgClientToGCCavernCrawlRequestMapState = {
     const obj: any = {};
     message.eventId !== undefined && (obj.eventId = Math.round(message.eventId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCCavernCrawlRequestMapState>): CMsgClientToGCCavernCrawlRequestMapState {
+    return CMsgClientToGCCavernCrawlRequestMapState.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCCavernCrawlRequestMapState>): CMsgClientToGCCavernCrawlRequestMapState {
+    const message = createBaseCMsgClientToGCCavernCrawlRequestMapState();
+    message.eventId = object.eventId ?? 0;
+    return message;
   },
 };
 
@@ -30007,6 +34104,26 @@ export const CMsgClientToGCCavernCrawlRequestMapStateResponse = {
     }
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCCavernCrawlRequestMapStateResponse>,
+  ): CMsgClientToGCCavernCrawlRequestMapStateResponse {
+    return CMsgClientToGCCavernCrawlRequestMapStateResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCavernCrawlRequestMapStateResponse>,
+  ): CMsgClientToGCCavernCrawlRequestMapStateResponse {
+    const message = createBaseCMsgClientToGCCavernCrawlRequestMapStateResponse();
+    message.result = object.result ?? 0;
+    message.availableMapVariantsMask = object.availableMapVariantsMask ?? 0;
+    message.inventoryItem =
+      object.inventoryItem?.map((e) => CMsgClientToGCCavernCrawlRequestMapStateResponse_InventoryItem.fromPartial(e)) ||
+      [];
+    message.mapVariants =
+      object.mapVariants?.map((e) => CMsgClientToGCCavernCrawlRequestMapStateResponse_MapVariant.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCavernCrawlRequestMapStateResponse_SwappedChallenge(): CMsgClientToGCCavernCrawlRequestMapStateResponse_SwappedChallenge {
@@ -30072,6 +34189,21 @@ export const CMsgClientToGCCavernCrawlRequestMapStateResponse_SwappedChallenge =
     message.pathId1 !== undefined && (obj.pathId1 = Math.round(message.pathId1));
     message.pathId2 !== undefined && (obj.pathId2 = Math.round(message.pathId2));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCCavernCrawlRequestMapStateResponse_SwappedChallenge>,
+  ): CMsgClientToGCCavernCrawlRequestMapStateResponse_SwappedChallenge {
+    return CMsgClientToGCCavernCrawlRequestMapStateResponse_SwappedChallenge.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCavernCrawlRequestMapStateResponse_SwappedChallenge>,
+  ): CMsgClientToGCCavernCrawlRequestMapStateResponse_SwappedChallenge {
+    const message = createBaseCMsgClientToGCCavernCrawlRequestMapStateResponse_SwappedChallenge();
+    message.pathId1 = object.pathId1 ?? 0;
+    message.pathId2 = object.pathId2 ?? 0;
+    return message;
   },
 };
 
@@ -30139,6 +34271,21 @@ export const CMsgClientToGCCavernCrawlRequestMapStateResponse_InventoryItem = {
     message.count !== undefined && (obj.count = Math.round(message.count));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCCavernCrawlRequestMapStateResponse_InventoryItem>,
+  ): CMsgClientToGCCavernCrawlRequestMapStateResponse_InventoryItem {
+    return CMsgClientToGCCavernCrawlRequestMapStateResponse_InventoryItem.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCavernCrawlRequestMapStateResponse_InventoryItem>,
+  ): CMsgClientToGCCavernCrawlRequestMapStateResponse_InventoryItem {
+    const message = createBaseCMsgClientToGCCavernCrawlRequestMapStateResponse_InventoryItem();
+    message.itemType = object.itemType ?? 0;
+    message.count = object.count ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCavernCrawlRequestMapStateResponse_TreasureMap(): CMsgClientToGCCavernCrawlRequestMapStateResponse_TreasureMap {
@@ -30204,6 +34351,21 @@ export const CMsgClientToGCCavernCrawlRequestMapStateResponse_TreasureMap = {
     message.mapRoomId !== undefined && (obj.mapRoomId = Math.round(message.mapRoomId));
     message.revealedRoomId !== undefined && (obj.revealedRoomId = Math.round(message.revealedRoomId));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCCavernCrawlRequestMapStateResponse_TreasureMap>,
+  ): CMsgClientToGCCavernCrawlRequestMapStateResponse_TreasureMap {
+    return CMsgClientToGCCavernCrawlRequestMapStateResponse_TreasureMap.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCavernCrawlRequestMapStateResponse_TreasureMap>,
+  ): CMsgClientToGCCavernCrawlRequestMapStateResponse_TreasureMap {
+    const message = createBaseCMsgClientToGCCavernCrawlRequestMapStateResponse_TreasureMap();
+    message.mapRoomId = object.mapRoomId ?? 0;
+    message.revealedRoomId = object.revealedRoomId ?? 0;
+    return message;
   },
 };
 
@@ -30476,6 +34638,39 @@ export const CMsgClientToGCCavernCrawlRequestMapStateResponse_MapVariant = {
     }
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCCavernCrawlRequestMapStateResponse_MapVariant>,
+  ): CMsgClientToGCCavernCrawlRequestMapStateResponse_MapVariant {
+    return CMsgClientToGCCavernCrawlRequestMapStateResponse_MapVariant.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCavernCrawlRequestMapStateResponse_MapVariant>,
+  ): CMsgClientToGCCavernCrawlRequestMapStateResponse_MapVariant {
+    const message = createBaseCMsgClientToGCCavernCrawlRequestMapStateResponse_MapVariant();
+    message.mapVariant = object.mapVariant ?? 0;
+    message.claimedRooms1 = object.claimedRooms1 ?? "0";
+    message.claimedRooms2 = object.claimedRooms2 ?? "0";
+    message.revealedRooms1 = object.revealedRooms1 ?? "0";
+    message.revealedRooms2 = object.revealedRooms2 ?? "0";
+    message.completedPaths1 = object.completedPaths1 ?? "0";
+    message.completedPaths2 = object.completedPaths2 ?? "0";
+    message.completedPaths3 = object.completedPaths3 ?? "0";
+    message.completedPaths4 = object.completedPaths4 ?? "0";
+    message.halfCompletedPaths1 = object.halfCompletedPaths1 ?? "0";
+    message.halfCompletedPaths2 = object.halfCompletedPaths2 ?? "0";
+    message.halfCompletedPaths3 = object.halfCompletedPaths3 ?? "0";
+    message.halfCompletedPaths4 = object.halfCompletedPaths4 ?? "0";
+    message.swappedChallenge =
+      object.swappedChallenge?.map((e) =>
+        CMsgClientToGCCavernCrawlRequestMapStateResponse_SwappedChallenge.fromPartial(e)
+      ) || [];
+    message.ultraRareRewardRoomNumber = object.ultraRareRewardRoomNumber ?? 0;
+    message.treasureMap =
+      object.treasureMap?.map((e) => CMsgClientToGCCavernCrawlRequestMapStateResponse_TreasureMap.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCavernCrawlGetClaimedRoomCount(): CMsgClientToGCCavernCrawlGetClaimedRoomCount {
@@ -30521,6 +34716,20 @@ export const CMsgClientToGCCavernCrawlGetClaimedRoomCount = {
     const obj: any = {};
     message.eventId !== undefined && (obj.eventId = Math.round(message.eventId));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCCavernCrawlGetClaimedRoomCount>,
+  ): CMsgClientToGCCavernCrawlGetClaimedRoomCount {
+    return CMsgClientToGCCavernCrawlGetClaimedRoomCount.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCavernCrawlGetClaimedRoomCount>,
+  ): CMsgClientToGCCavernCrawlGetClaimedRoomCount {
+    const message = createBaseCMsgClientToGCCavernCrawlGetClaimedRoomCount();
+    message.eventId = object.eventId ?? 0;
+    return message;
   },
 };
 
@@ -30613,6 +34822,24 @@ export const CMsgClientToGCCavernCrawlGetClaimedRoomCountResponse = {
       (obj.availableMapVariantsMask = Math.round(message.availableMapVariantsMask));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCCavernCrawlGetClaimedRoomCountResponse>,
+  ): CMsgClientToGCCavernCrawlGetClaimedRoomCountResponse {
+    return CMsgClientToGCCavernCrawlGetClaimedRoomCountResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCavernCrawlGetClaimedRoomCountResponse>,
+  ): CMsgClientToGCCavernCrawlGetClaimedRoomCountResponse {
+    const message = createBaseCMsgClientToGCCavernCrawlGetClaimedRoomCountResponse();
+    message.result = object.result ?? 0;
+    message.mapVariants =
+      object.mapVariants?.map((e) => CMsgClientToGCCavernCrawlGetClaimedRoomCountResponse_MapVariant.fromPartial(e)) ||
+      [];
+    message.availableMapVariantsMask = object.availableMapVariantsMask ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCavernCrawlGetClaimedRoomCountResponse_MapVariant(): CMsgClientToGCCavernCrawlGetClaimedRoomCountResponse_MapVariant {
@@ -30679,6 +34906,21 @@ export const CMsgClientToGCCavernCrawlGetClaimedRoomCountResponse_MapVariant = {
     message.count !== undefined && (obj.count = Math.round(message.count));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCCavernCrawlGetClaimedRoomCountResponse_MapVariant>,
+  ): CMsgClientToGCCavernCrawlGetClaimedRoomCountResponse_MapVariant {
+    return CMsgClientToGCCavernCrawlGetClaimedRoomCountResponse_MapVariant.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCavernCrawlGetClaimedRoomCountResponse_MapVariant>,
+  ): CMsgClientToGCCavernCrawlGetClaimedRoomCountResponse_MapVariant {
+    const message = createBaseCMsgClientToGCCavernCrawlGetClaimedRoomCountResponse_MapVariant();
+    message.mapVariant = object.mapVariant ?? 0;
+    message.count = object.count ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAMutationList(): CMsgDOTAMutationList {
@@ -30732,6 +34974,16 @@ export const CMsgDOTAMutationList = {
       obj.mutations = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAMutationList>): CMsgDOTAMutationList {
+    return CMsgDOTAMutationList.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAMutationList>): CMsgDOTAMutationList {
+    const message = createBaseCMsgDOTAMutationList();
+    message.mutations = object.mutations?.map((e) => CMsgDOTAMutationList_Mutation.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -30805,6 +35057,18 @@ export const CMsgDOTAMutationList_Mutation = {
     message.description !== undefined && (obj.description = message.description);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAMutationList_Mutation>): CMsgDOTAMutationList_Mutation {
+    return CMsgDOTAMutationList_Mutation.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAMutationList_Mutation>): CMsgDOTAMutationList_Mutation {
+    const message = createBaseCMsgDOTAMutationList_Mutation();
+    message.id = object.id ?? 0;
+    message.name = object.name ?? "";
+    message.description = object.description ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgEventTipsSummaryRequest(): CMsgEventTipsSummaryRequest {
@@ -30864,6 +35128,17 @@ export const CMsgEventTipsSummaryRequest = {
     message.eventId !== undefined && (obj.eventId = eEventToJSON(message.eventId));
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgEventTipsSummaryRequest>): CMsgEventTipsSummaryRequest {
+    return CMsgEventTipsSummaryRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgEventTipsSummaryRequest>): CMsgEventTipsSummaryRequest {
+    const message = createBaseCMsgEventTipsSummaryRequest();
+    message.eventId = object.eventId ?? 0;
+    message.accountId = object.accountId ?? 0;
+    return message;
   },
 };
 
@@ -30931,6 +35206,17 @@ export const CMsgEventTipsSummaryResponse = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgEventTipsSummaryResponse>): CMsgEventTipsSummaryResponse {
+    return CMsgEventTipsSummaryResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgEventTipsSummaryResponse>): CMsgEventTipsSummaryResponse {
+    const message = createBaseCMsgEventTipsSummaryResponse();
+    message.result = object.result ?? false;
+    message.tipsReceived = object.tipsReceived?.map((e) => CMsgEventTipsSummaryResponse_Tipper.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgEventTipsSummaryResponse_Tipper(): CMsgEventTipsSummaryResponse_Tipper {
@@ -30991,6 +35277,17 @@ export const CMsgEventTipsSummaryResponse_Tipper = {
     message.tipCount !== undefined && (obj.tipCount = Math.round(message.tipCount));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgEventTipsSummaryResponse_Tipper>): CMsgEventTipsSummaryResponse_Tipper {
+    return CMsgEventTipsSummaryResponse_Tipper.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgEventTipsSummaryResponse_Tipper>): CMsgEventTipsSummaryResponse_Tipper {
+    const message = createBaseCMsgEventTipsSummaryResponse_Tipper();
+    message.tipperAccountId = object.tipperAccountId ?? 0;
+    message.tipCount = object.tipCount ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgSocialFeedRequest(): CMsgSocialFeedRequest {
@@ -31050,6 +35347,17 @@ export const CMsgSocialFeedRequest = {
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     message.selfOnly !== undefined && (obj.selfOnly = message.selfOnly);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSocialFeedRequest>): CMsgSocialFeedRequest {
+    return CMsgSocialFeedRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSocialFeedRequest>): CMsgSocialFeedRequest {
+    const message = createBaseCMsgSocialFeedRequest();
+    message.accountId = object.accountId ?? 0;
+    message.selfOnly = object.selfOnly ?? false;
+    return message;
   },
 };
 
@@ -31116,6 +35424,17 @@ export const CMsgSocialFeedResponse = {
       obj.feedEvents = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSocialFeedResponse>): CMsgSocialFeedResponse {
+    return CMsgSocialFeedResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSocialFeedResponse>): CMsgSocialFeedResponse {
+    const message = createBaseCMsgSocialFeedResponse();
+    message.result = object.result ?? 0;
+    message.feedEvents = object.feedEvents?.map((e) => CMsgSocialFeedResponse_FeedEvent.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -31297,6 +35616,26 @@ export const CMsgSocialFeedResponse_FeedEvent = {
     message.paramString !== undefined && (obj.paramString = message.paramString);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSocialFeedResponse_FeedEvent>): CMsgSocialFeedResponse_FeedEvent {
+    return CMsgSocialFeedResponse_FeedEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSocialFeedResponse_FeedEvent>): CMsgSocialFeedResponse_FeedEvent {
+    const message = createBaseCMsgSocialFeedResponse_FeedEvent();
+    message.feedEventId = object.feedEventId ?? "0";
+    message.accountId = object.accountId ?? 0;
+    message.timestamp = object.timestamp ?? 0;
+    message.commentCount = object.commentCount ?? 0;
+    message.eventType = object.eventType ?? 0;
+    message.eventSubType = object.eventSubType ?? 0;
+    message.paramBigInt1 = object.paramBigInt1 ?? "0";
+    message.paramInt1 = object.paramInt1 ?? 0;
+    message.paramInt2 = object.paramInt2 ?? 0;
+    message.paramInt3 = object.paramInt3 ?? 0;
+    message.paramString = object.paramString ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgSocialFeedCommentsRequest(): CMsgSocialFeedCommentsRequest {
@@ -31342,6 +35681,16 @@ export const CMsgSocialFeedCommentsRequest = {
     const obj: any = {};
     message.feedEventId !== undefined && (obj.feedEventId = message.feedEventId);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSocialFeedCommentsRequest>): CMsgSocialFeedCommentsRequest {
+    return CMsgSocialFeedCommentsRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSocialFeedCommentsRequest>): CMsgSocialFeedCommentsRequest {
+    const message = createBaseCMsgSocialFeedCommentsRequest();
+    message.feedEventId = object.feedEventId ?? "0";
+    return message;
   },
 };
 
@@ -31410,6 +35759,18 @@ export const CMsgSocialFeedCommentsResponse = {
       obj.feedComments = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSocialFeedCommentsResponse>): CMsgSocialFeedCommentsResponse {
+    return CMsgSocialFeedCommentsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSocialFeedCommentsResponse>): CMsgSocialFeedCommentsResponse {
+    const message = createBaseCMsgSocialFeedCommentsResponse();
+    message.result = object.result ?? 0;
+    message.feedComments = object.feedComments?.map((e) => CMsgSocialFeedCommentsResponse_FeedComment.fromPartial(e)) ||
+      [];
+    return message;
   },
 };
 
@@ -31482,6 +35843,20 @@ export const CMsgSocialFeedCommentsResponse_FeedComment = {
     message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
     message.commentText !== undefined && (obj.commentText = message.commentText);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSocialFeedCommentsResponse_FeedComment>): CMsgSocialFeedCommentsResponse_FeedComment {
+    return CMsgSocialFeedCommentsResponse_FeedComment.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSocialFeedCommentsResponse_FeedComment>,
+  ): CMsgSocialFeedCommentsResponse_FeedComment {
+    const message = createBaseCMsgSocialFeedCommentsResponse_FeedComment();
+    message.commenterAccountId = object.commenterAccountId ?? 0;
+    message.timestamp = object.timestamp ?? 0;
+    message.commentText = object.commentText ?? "";
+    return message;
   },
 };
 
@@ -31558,6 +35933,22 @@ export const CMsgClientToGCPlayerCardSpecificPurchaseRequest = {
     message.cardDustItemId !== undefined && (obj.cardDustItemId = message.cardDustItemId);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCPlayerCardSpecificPurchaseRequest>,
+  ): CMsgClientToGCPlayerCardSpecificPurchaseRequest {
+    return CMsgClientToGCPlayerCardSpecificPurchaseRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCPlayerCardSpecificPurchaseRequest>,
+  ): CMsgClientToGCPlayerCardSpecificPurchaseRequest {
+    const message = createBaseCMsgClientToGCPlayerCardSpecificPurchaseRequest();
+    message.playerAccountId = object.playerAccountId ?? 0;
+    message.eventId = object.eventId ?? 0;
+    message.cardDustItemId = object.cardDustItemId ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCPlayerCardSpecificPurchaseResponse(): CMsgClientToGCPlayerCardSpecificPurchaseResponse {
@@ -31622,6 +36013,21 @@ export const CMsgClientToGCPlayerCardSpecificPurchaseResponse = {
     message.itemId !== undefined && (obj.itemId = message.itemId);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCPlayerCardSpecificPurchaseResponse>,
+  ): CMsgClientToGCPlayerCardSpecificPurchaseResponse {
+    return CMsgClientToGCPlayerCardSpecificPurchaseResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCPlayerCardSpecificPurchaseResponse>,
+  ): CMsgClientToGCPlayerCardSpecificPurchaseResponse {
+    const message = createBaseCMsgClientToGCPlayerCardSpecificPurchaseResponse();
+    message.result = object.result ?? 1;
+    message.itemId = object.itemId ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCRequestContestVotes(): CMsgClientToGCRequestContestVotes {
@@ -31667,6 +36073,16 @@ export const CMsgClientToGCRequestContestVotes = {
     const obj: any = {};
     message.contestId !== undefined && (obj.contestId = Math.round(message.contestId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCRequestContestVotes>): CMsgClientToGCRequestContestVotes {
+    return CMsgClientToGCRequestContestVotes.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCRequestContestVotes>): CMsgClientToGCRequestContestVotes {
+    const message = createBaseCMsgClientToGCRequestContestVotes();
+    message.contestId = object.contestId ?? 0;
+    return message;
   },
 };
 
@@ -31737,6 +36153,19 @@ export const CMsgClientToGCRequestContestVotesResponse = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCRequestContestVotesResponse>): CMsgClientToGCRequestContestVotesResponse {
+    return CMsgClientToGCRequestContestVotesResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCRequestContestVotesResponse>,
+  ): CMsgClientToGCRequestContestVotesResponse {
+    const message = createBaseCMsgClientToGCRequestContestVotesResponse();
+    message.result = object.result ?? 0;
+    message.votes = object.votes?.map((e) => CMsgClientToGCRequestContestVotesResponse_ItemVote.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCRequestContestVotesResponse_ItemVote(): CMsgClientToGCRequestContestVotesResponse_ItemVote {
@@ -31799,6 +36228,21 @@ export const CMsgClientToGCRequestContestVotesResponse_ItemVote = {
     message.contestItemId !== undefined && (obj.contestItemId = message.contestItemId);
     message.vote !== undefined && (obj.vote = Math.round(message.vote));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCRequestContestVotesResponse_ItemVote>,
+  ): CMsgClientToGCRequestContestVotesResponse_ItemVote {
+    return CMsgClientToGCRequestContestVotesResponse_ItemVote.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCRequestContestVotesResponse_ItemVote>,
+  ): CMsgClientToGCRequestContestVotesResponse_ItemVote {
+    const message = createBaseCMsgClientToGCRequestContestVotesResponse_ItemVote();
+    message.contestItemId = object.contestItemId ?? "0";
+    message.vote = object.vote ?? 0;
+    return message;
   },
 };
 
@@ -31872,6 +36316,18 @@ export const CMsgClientToGCRecordContestVote = {
     message.vote !== undefined && (obj.vote = Math.round(message.vote));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCRecordContestVote>): CMsgClientToGCRecordContestVote {
+    return CMsgClientToGCRecordContestVote.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCRecordContestVote>): CMsgClientToGCRecordContestVote {
+    const message = createBaseCMsgClientToGCRecordContestVote();
+    message.contestId = object.contestId ?? 0;
+    message.contestItemId = object.contestItemId ?? "0";
+    message.vote = object.vote ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientRecordContestVoteResponse(): CMsgGCToClientRecordContestVoteResponse {
@@ -31920,6 +36376,16 @@ export const CMsgGCToClientRecordContestVoteResponse = {
     message.eresult !== undefined &&
       (obj.eresult = cMsgGCToClientRecordContestVoteResponse_EResultToJSON(message.eresult));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToClientRecordContestVoteResponse>): CMsgGCToClientRecordContestVoteResponse {
+    return CMsgGCToClientRecordContestVoteResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientRecordContestVoteResponse>): CMsgGCToClientRecordContestVoteResponse {
+    const message = createBaseCMsgGCToClientRecordContestVoteResponse();
+    message.eresult = object.eresult ?? 0;
+    return message;
   },
 };
 
@@ -31993,6 +36459,18 @@ export const CMsgDevGrantEventPoints = {
     message.premiumPoints !== undefined && (obj.premiumPoints = Math.round(message.premiumPoints));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDevGrantEventPoints>): CMsgDevGrantEventPoints {
+    return CMsgDevGrantEventPoints.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDevGrantEventPoints>): CMsgDevGrantEventPoints {
+    const message = createBaseCMsgDevGrantEventPoints();
+    message.eventId = object.eventId ?? 0;
+    message.eventPoints = object.eventPoints ?? 0;
+    message.premiumPoints = object.premiumPoints ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDevGrantEventPointsResponse(): CMsgDevGrantEventPointsResponse {
@@ -32038,6 +36516,16 @@ export const CMsgDevGrantEventPointsResponse = {
     const obj: any = {};
     message.result !== undefined && (obj.result = eDevEventRequestResultToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDevGrantEventPointsResponse>): CMsgDevGrantEventPointsResponse {
+    return CMsgDevGrantEventPointsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDevGrantEventPointsResponse>): CMsgDevGrantEventPointsResponse {
+    const message = createBaseCMsgDevGrantEventPointsResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -32111,6 +36599,18 @@ export const CMsgDevGrantEventAction = {
     message.actionScore !== undefined && (obj.actionScore = Math.round(message.actionScore));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDevGrantEventAction>): CMsgDevGrantEventAction {
+    return CMsgDevGrantEventAction.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDevGrantEventAction>): CMsgDevGrantEventAction {
+    const message = createBaseCMsgDevGrantEventAction();
+    message.eventId = object.eventId ?? 0;
+    message.actionId = object.actionId ?? 0;
+    message.actionScore = object.actionScore ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDevGrantEventActionResponse(): CMsgDevGrantEventActionResponse {
@@ -32156,6 +36656,16 @@ export const CMsgDevGrantEventActionResponse = {
     const obj: any = {};
     message.result !== undefined && (obj.result = eDevEventRequestResultToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDevGrantEventActionResponse>): CMsgDevGrantEventActionResponse {
+    return CMsgDevGrantEventActionResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDevGrantEventActionResponse>): CMsgDevGrantEventActionResponse {
+    const message = createBaseCMsgDevGrantEventActionResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -32241,6 +36751,19 @@ export const CMsgDevDeleteEventActions = {
     message.removeAudit !== undefined && (obj.removeAudit = message.removeAudit);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDevDeleteEventActions>): CMsgDevDeleteEventActions {
+    return CMsgDevDeleteEventActions.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDevDeleteEventActions>): CMsgDevDeleteEventActions {
+    const message = createBaseCMsgDevDeleteEventActions();
+    message.eventId = object.eventId ?? 0;
+    message.startActionId = object.startActionId ?? 0;
+    message.endActionId = object.endActionId ?? 0;
+    message.removeAudit = object.removeAudit ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgDevDeleteEventActionsResponse(): CMsgDevDeleteEventActionsResponse {
@@ -32286,6 +36809,16 @@ export const CMsgDevDeleteEventActionsResponse = {
     const obj: any = {};
     message.result !== undefined && (obj.result = eDevEventRequestResultToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDevDeleteEventActionsResponse>): CMsgDevDeleteEventActionsResponse {
+    return CMsgDevDeleteEventActionsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDevDeleteEventActionsResponse>): CMsgDevDeleteEventActionsResponse {
+    const message = createBaseCMsgDevDeleteEventActionsResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -32347,6 +36880,17 @@ export const CMsgDevResetEventState = {
     message.removeAudit !== undefined && (obj.removeAudit = message.removeAudit);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDevResetEventState>): CMsgDevResetEventState {
+    return CMsgDevResetEventState.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDevResetEventState>): CMsgDevResetEventState {
+    const message = createBaseCMsgDevResetEventState();
+    message.eventId = object.eventId ?? 0;
+    message.removeAudit = object.removeAudit ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgDevResetEventStateResponse(): CMsgDevResetEventStateResponse {
@@ -32392,6 +36936,16 @@ export const CMsgDevResetEventStateResponse = {
     const obj: any = {};
     message.result !== undefined && (obj.result = eDevEventRequestResultToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDevResetEventStateResponse>): CMsgDevResetEventStateResponse {
+    return CMsgDevResetEventStateResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDevResetEventStateResponse>): CMsgDevResetEventStateResponse {
+    const message = createBaseCMsgDevResetEventStateResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -32439,6 +36993,16 @@ export const CMsgConsumeEventSupportGrantItem = {
     message.itemId !== undefined && (obj.itemId = message.itemId);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgConsumeEventSupportGrantItem>): CMsgConsumeEventSupportGrantItem {
+    return CMsgConsumeEventSupportGrantItem.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgConsumeEventSupportGrantItem>): CMsgConsumeEventSupportGrantItem {
+    const message = createBaseCMsgConsumeEventSupportGrantItem();
+    message.itemId = object.itemId ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgConsumeEventSupportGrantItemResponse(): CMsgConsumeEventSupportGrantItemResponse {
@@ -32485,6 +37049,16 @@ export const CMsgConsumeEventSupportGrantItemResponse = {
     message.result !== undefined && (obj.result = eSupportEventRequestResultToJSON(message.result));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgConsumeEventSupportGrantItemResponse>): CMsgConsumeEventSupportGrantItemResponse {
+    return CMsgConsumeEventSupportGrantItemResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgConsumeEventSupportGrantItemResponse>): CMsgConsumeEventSupportGrantItemResponse {
+    const message = createBaseCMsgConsumeEventSupportGrantItemResponse();
+    message.result = object.result ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCGetFilteredPlayers(): CMsgClientToGCGetFilteredPlayers {
@@ -32519,6 +37093,15 @@ export const CMsgClientToGCGetFilteredPlayers = {
   toJSON(_: CMsgClientToGCGetFilteredPlayers): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCGetFilteredPlayers>): CMsgClientToGCGetFilteredPlayers {
+    return CMsgClientToGCGetFilteredPlayers.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgClientToGCGetFilteredPlayers>): CMsgClientToGCGetFilteredPlayers {
+    const message = createBaseCMsgClientToGCGetFilteredPlayers();
+    return message;
   },
 };
 
@@ -32627,6 +37210,21 @@ export const CMsgGCToClientGetFilteredPlayersResponse = {
     message.nextSlotCost !== undefined && (obj.nextSlotCost = Math.round(message.nextSlotCost));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientGetFilteredPlayersResponse>): CMsgGCToClientGetFilteredPlayersResponse {
+    return CMsgGCToClientGetFilteredPlayersResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientGetFilteredPlayersResponse>): CMsgGCToClientGetFilteredPlayersResponse {
+    const message = createBaseCMsgGCToClientGetFilteredPlayersResponse();
+    message.result = object.result ?? 0;
+    message.filteredPlayers =
+      object.filteredPlayers?.map((e) => CMsgGCToClientGetFilteredPlayersResponse_CFilterEntry.fromPartial(e)) || [];
+    message.baseSlots = object.baseSlots ?? 0;
+    message.additionalSlots = object.additionalSlots ?? 0;
+    message.nextSlotCost = object.nextSlotCost ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientGetFilteredPlayersResponse_CFilterEntry(): CMsgGCToClientGetFilteredPlayersResponse_CFilterEntry {
@@ -32714,6 +37312,23 @@ export const CMsgGCToClientGetFilteredPlayersResponse_CFilterEntry = {
     message.note !== undefined && (obj.note = message.note);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientGetFilteredPlayersResponse_CFilterEntry>,
+  ): CMsgGCToClientGetFilteredPlayersResponse_CFilterEntry {
+    return CMsgGCToClientGetFilteredPlayersResponse_CFilterEntry.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientGetFilteredPlayersResponse_CFilterEntry>,
+  ): CMsgGCToClientGetFilteredPlayersResponse_CFilterEntry {
+    const message = createBaseCMsgGCToClientGetFilteredPlayersResponse_CFilterEntry();
+    message.accountId = object.accountId ?? 0;
+    message.timeAdded = object.timeAdded ?? 0;
+    message.timeExpires = object.timeExpires ?? 0;
+    message.note = object.note ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCRemoveFilteredPlayer(): CMsgClientToGCRemoveFilteredPlayer {
@@ -32759,6 +37374,16 @@ export const CMsgClientToGCRemoveFilteredPlayer = {
     const obj: any = {};
     message.accountIdToRemove !== undefined && (obj.accountIdToRemove = Math.round(message.accountIdToRemove));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCRemoveFilteredPlayer>): CMsgClientToGCRemoveFilteredPlayer {
+    return CMsgClientToGCRemoveFilteredPlayer.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCRemoveFilteredPlayer>): CMsgClientToGCRemoveFilteredPlayer {
+    const message = createBaseCMsgClientToGCRemoveFilteredPlayer();
+    message.accountIdToRemove = object.accountIdToRemove ?? 0;
+    return message;
   },
 };
 
@@ -32809,6 +37434,18 @@ export const CMsgGCToClientRemoveFilteredPlayerResponse = {
       (obj.result = cMsgGCToClientRemoveFilteredPlayerResponse_ResultToJSON(message.result));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientRemoveFilteredPlayerResponse>): CMsgGCToClientRemoveFilteredPlayerResponse {
+    return CMsgGCToClientRemoveFilteredPlayerResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientRemoveFilteredPlayerResponse>,
+  ): CMsgGCToClientRemoveFilteredPlayerResponse {
+    const message = createBaseCMsgGCToClientRemoveFilteredPlayerResponse();
+    message.result = object.result ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCPurchaseFilteredPlayerSlot(): CMsgClientToGCPurchaseFilteredPlayerSlot {
@@ -32855,6 +37492,16 @@ export const CMsgClientToGCPurchaseFilteredPlayerSlot = {
     message.additionalSlotsCurrent !== undefined &&
       (obj.additionalSlotsCurrent = Math.round(message.additionalSlotsCurrent));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCPurchaseFilteredPlayerSlot>): CMsgClientToGCPurchaseFilteredPlayerSlot {
+    return CMsgClientToGCPurchaseFilteredPlayerSlot.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCPurchaseFilteredPlayerSlot>): CMsgClientToGCPurchaseFilteredPlayerSlot {
+    const message = createBaseCMsgClientToGCPurchaseFilteredPlayerSlot();
+    message.additionalSlotsCurrent = object.additionalSlotsCurrent ?? 0;
+    return message;
   },
 };
 
@@ -32932,6 +37579,22 @@ export const CMsgGCToClientPurchaseFilteredPlayerSlotResponse = {
     message.nextSlotCost !== undefined && (obj.nextSlotCost = Math.round(message.nextSlotCost));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientPurchaseFilteredPlayerSlotResponse>,
+  ): CMsgGCToClientPurchaseFilteredPlayerSlotResponse {
+    return CMsgGCToClientPurchaseFilteredPlayerSlotResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientPurchaseFilteredPlayerSlotResponse>,
+  ): CMsgGCToClientPurchaseFilteredPlayerSlotResponse {
+    const message = createBaseCMsgGCToClientPurchaseFilteredPlayerSlotResponse();
+    message.result = object.result ?? 0;
+    message.additionalSlots = object.additionalSlots ?? 0;
+    message.nextSlotCost = object.nextSlotCost ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCUpdateFilteredPlayerNote(): CMsgClientToGCUpdateFilteredPlayerNote {
@@ -32992,6 +37655,17 @@ export const CMsgClientToGCUpdateFilteredPlayerNote = {
     message.newNote !== undefined && (obj.newNote = message.newNote);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCUpdateFilteredPlayerNote>): CMsgClientToGCUpdateFilteredPlayerNote {
+    return CMsgClientToGCUpdateFilteredPlayerNote.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCUpdateFilteredPlayerNote>): CMsgClientToGCUpdateFilteredPlayerNote {
+    const message = createBaseCMsgClientToGCUpdateFilteredPlayerNote();
+    message.targetAccountId = object.targetAccountId ?? 0;
+    message.newNote = object.newNote ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientUpdateFilteredPlayerNoteResponse(): CMsgGCToClientUpdateFilteredPlayerNoteResponse {
@@ -33043,6 +37717,20 @@ export const CMsgGCToClientUpdateFilteredPlayerNoteResponse = {
     message.result !== undefined &&
       (obj.result = cMsgGCToClientUpdateFilteredPlayerNoteResponse_ResultToJSON(message.result));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientUpdateFilteredPlayerNoteResponse>,
+  ): CMsgGCToClientUpdateFilteredPlayerNoteResponse {
+    return CMsgGCToClientUpdateFilteredPlayerNoteResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientUpdateFilteredPlayerNoteResponse>,
+  ): CMsgGCToClientUpdateFilteredPlayerNoteResponse {
+    const message = createBaseCMsgGCToClientUpdateFilteredPlayerNoteResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -33116,6 +37804,18 @@ export const CMsgPartySearchPlayer = {
     message.creationTime !== undefined && (obj.creationTime = Math.round(message.creationTime));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgPartySearchPlayer>): CMsgPartySearchPlayer {
+    return CMsgPartySearchPlayer.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPartySearchPlayer>): CMsgPartySearchPlayer {
+    const message = createBaseCMsgPartySearchPlayer();
+    message.accountId = object.accountId ?? 0;
+    message.matchId = object.matchId ?? "0";
+    message.creationTime = object.creationTime ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientPlayerBeaconState(): CMsgGCToClientPlayerBeaconState {
@@ -33180,6 +37880,16 @@ export const CMsgGCToClientPlayerBeaconState = {
       obj.numActiveBeacons = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToClientPlayerBeaconState>): CMsgGCToClientPlayerBeaconState {
+    return CMsgGCToClientPlayerBeaconState.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientPlayerBeaconState>): CMsgGCToClientPlayerBeaconState {
+    const message = createBaseCMsgGCToClientPlayerBeaconState();
+    message.numActiveBeacons = object.numActiveBeacons?.map((e) => e) || [];
+    return message;
   },
 };
 
@@ -33253,6 +37963,18 @@ export const CMsgGCToClientPartyBeaconUpdate = {
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientPartyBeaconUpdate>): CMsgGCToClientPartyBeaconUpdate {
+    return CMsgGCToClientPartyBeaconUpdate.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientPartyBeaconUpdate>): CMsgGCToClientPartyBeaconUpdate {
+    const message = createBaseCMsgGCToClientPartyBeaconUpdate();
+    message.beaconAdded = object.beaconAdded ?? false;
+    message.beaconType = object.beaconType ?? 0;
+    message.accountId = object.accountId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCUpdatePartyBeacon(): CMsgClientToGCUpdatePartyBeacon {
@@ -33299,6 +38021,16 @@ export const CMsgClientToGCUpdatePartyBeacon = {
     message.action !== undefined && (obj.action = cMsgClientToGCUpdatePartyBeacon_ActionToJSON(message.action));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCUpdatePartyBeacon>): CMsgClientToGCUpdatePartyBeacon {
+    return CMsgClientToGCUpdatePartyBeacon.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCUpdatePartyBeacon>): CMsgClientToGCUpdatePartyBeacon {
+    const message = createBaseCMsgClientToGCUpdatePartyBeacon();
+    message.action = object.action ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCRequestActiveBeaconParties(): CMsgClientToGCRequestActiveBeaconParties {
@@ -33333,6 +38065,15 @@ export const CMsgClientToGCRequestActiveBeaconParties = {
   toJSON(_: CMsgClientToGCRequestActiveBeaconParties): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCRequestActiveBeaconParties>): CMsgClientToGCRequestActiveBeaconParties {
+    return CMsgClientToGCRequestActiveBeaconParties.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgClientToGCRequestActiveBeaconParties>): CMsgClientToGCRequestActiveBeaconParties {
+    const message = createBaseCMsgClientToGCRequestActiveBeaconParties();
+    return message;
   },
 };
 
@@ -33406,6 +38147,21 @@ export const CMsgGCToClientRequestActiveBeaconPartiesResponse = {
     }
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientRequestActiveBeaconPartiesResponse>,
+  ): CMsgGCToClientRequestActiveBeaconPartiesResponse {
+    return CMsgGCToClientRequestActiveBeaconPartiesResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientRequestActiveBeaconPartiesResponse>,
+  ): CMsgGCToClientRequestActiveBeaconPartiesResponse {
+    const message = createBaseCMsgGCToClientRequestActiveBeaconPartiesResponse();
+    message.response = object.response ?? 0;
+    message.activeParties = object.activeParties?.map((e) => CPartySearchClientParty.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCJoinPartyFromBeacon(): CMsgClientToGCJoinPartyFromBeacon {
@@ -33478,6 +38234,18 @@ export const CMsgClientToGCJoinPartyFromBeacon = {
     message.beaconType !== undefined && (obj.beaconType = Math.round(message.beaconType));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCJoinPartyFromBeacon>): CMsgClientToGCJoinPartyFromBeacon {
+    return CMsgClientToGCJoinPartyFromBeacon.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCJoinPartyFromBeacon>): CMsgClientToGCJoinPartyFromBeacon {
+    const message = createBaseCMsgClientToGCJoinPartyFromBeacon();
+    message.partyId = object.partyId ?? "0";
+    message.accountId = object.accountId ?? 0;
+    message.beaconType = object.beaconType ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientJoinPartyFromBeaconResponse(): CMsgGCToClientJoinPartyFromBeaconResponse {
@@ -33528,6 +38296,18 @@ export const CMsgGCToClientJoinPartyFromBeaconResponse = {
     message.response !== undefined &&
       (obj.response = cMsgGCToClientJoinPartyFromBeaconResponse_EResponseToJSON(message.response));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToClientJoinPartyFromBeaconResponse>): CMsgGCToClientJoinPartyFromBeaconResponse {
+    return CMsgGCToClientJoinPartyFromBeaconResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientJoinPartyFromBeaconResponse>,
+  ): CMsgGCToClientJoinPartyFromBeaconResponse {
+    const message = createBaseCMsgGCToClientJoinPartyFromBeaconResponse();
+    message.response = object.response ?? 0;
+    return message;
   },
 };
 
@@ -33637,6 +38417,21 @@ export const CMsgClientToGCManageFavorites = {
     message.lobbyId !== undefined && (obj.lobbyId = message.lobbyId);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCManageFavorites>): CMsgClientToGCManageFavorites {
+    return CMsgClientToGCManageFavorites.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCManageFavorites>): CMsgClientToGCManageFavorites {
+    const message = createBaseCMsgClientToGCManageFavorites();
+    message.action = object.action ?? 0;
+    message.accountId = object.accountId ?? 0;
+    message.favoriteName = object.favoriteName ?? "";
+    message.inviteResponse = object.inviteResponse ?? false;
+    message.fromFriendlist = object.fromFriendlist ?? false;
+    message.lobbyId = object.lobbyId ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientManageFavoritesResponse(): CMsgGCToClientManageFavoritesResponse {
@@ -33711,6 +38506,20 @@ export const CMsgGCToClientManageFavoritesResponse = {
       (obj.player = message.player ? CMsgPartySearchPlayer.toJSON(message.player) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientManageFavoritesResponse>): CMsgGCToClientManageFavoritesResponse {
+    return CMsgGCToClientManageFavoritesResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientManageFavoritesResponse>): CMsgGCToClientManageFavoritesResponse {
+    const message = createBaseCMsgGCToClientManageFavoritesResponse();
+    message.response = object.response ?? 0;
+    message.debugMessage = object.debugMessage ?? "";
+    message.player = (object.player !== undefined && object.player !== null)
+      ? CMsgPartySearchPlayer.fromPartial(object.player)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCGetFavoritePlayers(): CMsgClientToGCGetFavoritePlayers {
@@ -33770,6 +38579,17 @@ export const CMsgClientToGCGetFavoritePlayers = {
     message.paginationKey !== undefined && (obj.paginationKey = message.paginationKey);
     message.paginationCount !== undefined && (obj.paginationCount = Math.round(message.paginationCount));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCGetFavoritePlayers>): CMsgClientToGCGetFavoritePlayers {
+    return CMsgClientToGCGetFavoritePlayers.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCGetFavoritePlayers>): CMsgClientToGCGetFavoritePlayers {
+    const message = createBaseCMsgClientToGCGetFavoritePlayers();
+    message.paginationKey = object.paginationKey ?? "0";
+    message.paginationCount = object.paginationCount ?? 0;
+    return message;
   },
 };
 
@@ -33850,6 +38670,18 @@ export const CMsgGCToClientGetFavoritePlayersResponse = {
     message.nextPaginationKey !== undefined && (obj.nextPaginationKey = message.nextPaginationKey);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientGetFavoritePlayersResponse>): CMsgGCToClientGetFavoritePlayersResponse {
+    return CMsgGCToClientGetFavoritePlayersResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientGetFavoritePlayersResponse>): CMsgGCToClientGetFavoritePlayersResponse {
+    const message = createBaseCMsgGCToClientGetFavoritePlayersResponse();
+    message.response = object.response ?? 0;
+    message.players = object.players?.map((e) => CMsgPartySearchPlayer.fromPartial(e)) || [];
+    message.nextPaginationKey = object.nextPaginationKey ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientPartySearchInvite(): CMsgGCToClientPartySearchInvite {
@@ -33895,6 +38727,16 @@ export const CMsgGCToClientPartySearchInvite = {
     const obj: any = {};
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToClientPartySearchInvite>): CMsgGCToClientPartySearchInvite {
+    return CMsgGCToClientPartySearchInvite.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientPartySearchInvite>): CMsgGCToClientPartySearchInvite {
+    const message = createBaseCMsgGCToClientPartySearchInvite();
+    message.accountId = object.accountId ?? 0;
+    return message;
   },
 };
 
@@ -33957,6 +38799,16 @@ export const CMsgClientToGCVerifyFavoritePlayers = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCVerifyFavoritePlayers>): CMsgClientToGCVerifyFavoritePlayers {
+    return CMsgClientToGCVerifyFavoritePlayers.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCVerifyFavoritePlayers>): CMsgClientToGCVerifyFavoritePlayers {
+    const message = createBaseCMsgClientToGCVerifyFavoritePlayers();
+    message.accountIds = object.accountIds?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientVerifyFavoritePlayersResponse(): CMsgGCToClientVerifyFavoritePlayersResponse {
@@ -34012,6 +38864,19 @@ export const CMsgGCToClientVerifyFavoritePlayersResponse = {
       obj.results = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToClientVerifyFavoritePlayersResponse>): CMsgGCToClientVerifyFavoritePlayersResponse {
+    return CMsgGCToClientVerifyFavoritePlayersResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientVerifyFavoritePlayersResponse>,
+  ): CMsgGCToClientVerifyFavoritePlayersResponse {
+    const message = createBaseCMsgGCToClientVerifyFavoritePlayersResponse();
+    message.results = object.results?.map((e) => CMsgGCToClientVerifyFavoritePlayersResponse_Result.fromPartial(e)) ||
+      [];
+    return message;
   },
 };
 
@@ -34077,6 +38942,23 @@ export const CMsgGCToClientVerifyFavoritePlayersResponse_Result = {
     message.isFavorite !== undefined && (obj.isFavorite = message.isFavorite);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientVerifyFavoritePlayersResponse_Result>,
+  ): CMsgGCToClientVerifyFavoritePlayersResponse_Result {
+    return CMsgGCToClientVerifyFavoritePlayersResponse_Result.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientVerifyFavoritePlayersResponse_Result>,
+  ): CMsgGCToClientVerifyFavoritePlayersResponse_Result {
+    const message = createBaseCMsgGCToClientVerifyFavoritePlayersResponse_Result();
+    message.player = (object.player !== undefined && object.player !== null)
+      ? CMsgPartySearchPlayer.fromPartial(object.player)
+      : undefined;
+    message.isFavorite = object.isFavorite ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCRequestPlayerRecentAccomplishments(): CMsgClientToGCRequestPlayerRecentAccomplishments {
@@ -34125,6 +39007,20 @@ export const CMsgClientToGCRequestPlayerRecentAccomplishments = {
     const obj: any = {};
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCRequestPlayerRecentAccomplishments>,
+  ): CMsgClientToGCRequestPlayerRecentAccomplishments {
+    return CMsgClientToGCRequestPlayerRecentAccomplishments.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCRequestPlayerRecentAccomplishments>,
+  ): CMsgClientToGCRequestPlayerRecentAccomplishments {
+    const message = createBaseCMsgClientToGCRequestPlayerRecentAccomplishments();
+    message.accountId = object.accountId ?? 0;
+    return message;
   },
 };
 
@@ -34196,6 +39092,24 @@ export const CMsgClientToGCRequestPlayerRecentAccomplishmentsResponse = {
       : undefined);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCRequestPlayerRecentAccomplishmentsResponse>,
+  ): CMsgClientToGCRequestPlayerRecentAccomplishmentsResponse {
+    return CMsgClientToGCRequestPlayerRecentAccomplishmentsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCRequestPlayerRecentAccomplishmentsResponse>,
+  ): CMsgClientToGCRequestPlayerRecentAccomplishmentsResponse {
+    const message = createBaseCMsgClientToGCRequestPlayerRecentAccomplishmentsResponse();
+    message.result = object.result ?? 0;
+    message.playerAccomplishments =
+      (object.playerAccomplishments !== undefined && object.playerAccomplishments !== null)
+        ? CMsgPlayerRecentAccomplishments.fromPartial(object.playerAccomplishments)
+        : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCRequestPlayerHeroRecentAccomplishments(): CMsgClientToGCRequestPlayerHeroRecentAccomplishments {
@@ -34258,6 +39172,21 @@ export const CMsgClientToGCRequestPlayerHeroRecentAccomplishments = {
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCRequestPlayerHeroRecentAccomplishments>,
+  ): CMsgClientToGCRequestPlayerHeroRecentAccomplishments {
+    return CMsgClientToGCRequestPlayerHeroRecentAccomplishments.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCRequestPlayerHeroRecentAccomplishments>,
+  ): CMsgClientToGCRequestPlayerHeroRecentAccomplishments {
+    const message = createBaseCMsgClientToGCRequestPlayerHeroRecentAccomplishments();
+    message.accountId = object.accountId ?? 0;
+    message.heroId = object.heroId ?? 0;
+    return message;
   },
 };
 
@@ -34332,6 +39261,23 @@ export const CMsgClientToGCRequestPlayerHeroRecentAccomplishmentsResponse = {
       : undefined);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCRequestPlayerHeroRecentAccomplishmentsResponse>,
+  ): CMsgClientToGCRequestPlayerHeroRecentAccomplishmentsResponse {
+    return CMsgClientToGCRequestPlayerHeroRecentAccomplishmentsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCRequestPlayerHeroRecentAccomplishmentsResponse>,
+  ): CMsgClientToGCRequestPlayerHeroRecentAccomplishmentsResponse {
+    const message = createBaseCMsgClientToGCRequestPlayerHeroRecentAccomplishmentsResponse();
+    message.result = object.result ?? 0;
+    message.heroAccomplishments = (object.heroAccomplishments !== undefined && object.heroAccomplishments !== null)
+      ? CMsgPlayerHeroRecentAccomplishments.fromPartial(object.heroAccomplishments)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCSubmitPlayerMatchSurvey(): CMsgClientToGCSubmitPlayerMatchSurvey {
@@ -34404,6 +39350,18 @@ export const CMsgClientToGCSubmitPlayerMatchSurvey = {
     message.flags !== undefined && (obj.flags = Math.round(message.flags));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCSubmitPlayerMatchSurvey>): CMsgClientToGCSubmitPlayerMatchSurvey {
+    return CMsgClientToGCSubmitPlayerMatchSurvey.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCSubmitPlayerMatchSurvey>): CMsgClientToGCSubmitPlayerMatchSurvey {
+    const message = createBaseCMsgClientToGCSubmitPlayerMatchSurvey();
+    message.matchId = object.matchId ?? "0";
+    message.rating = object.rating ?? 0;
+    message.flags = object.flags ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCSubmitPlayerMatchSurveyResponse(): CMsgClientToGCSubmitPlayerMatchSurveyResponse {
@@ -34467,6 +39425,21 @@ export const CMsgClientToGCSubmitPlayerMatchSurveyResponse = {
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCSubmitPlayerMatchSurveyResponse>,
+  ): CMsgClientToGCSubmitPlayerMatchSurveyResponse {
+    return CMsgClientToGCSubmitPlayerMatchSurveyResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCSubmitPlayerMatchSurveyResponse>,
+  ): CMsgClientToGCSubmitPlayerMatchSurveyResponse {
+    const message = createBaseCMsgClientToGCSubmitPlayerMatchSurveyResponse();
+    message.eresult = object.eresult ?? 0;
+    message.accountId = object.accountId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientVACReminder(): CMsgGCToClientVACReminder {
@@ -34501,6 +39474,15 @@ export const CMsgGCToClientVACReminder = {
   toJSON(_: CMsgGCToClientVACReminder): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToClientVACReminder>): CMsgGCToClientVACReminder {
+    return CMsgGCToClientVACReminder.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgGCToClientVACReminder>): CMsgGCToClientVACReminder {
+    const message = createBaseCMsgGCToClientVACReminder();
+    return message;
   },
 };
 
@@ -34561,6 +39543,17 @@ export const CMsgClientToGCUnderDraftRequest = {
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     message.eventId !== undefined && (obj.eventId = Math.round(message.eventId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCUnderDraftRequest>): CMsgClientToGCUnderDraftRequest {
+    return CMsgClientToGCUnderDraftRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCUnderDraftRequest>): CMsgClientToGCUnderDraftRequest {
+    const message = createBaseCMsgClientToGCUnderDraftRequest();
+    message.accountId = object.accountId ?? 0;
+    message.eventId = object.eventId ?? 0;
+    return message;
   },
 };
 
@@ -34647,6 +39640,21 @@ export const CMsgClientToGCUnderDraftResponse = {
       (obj.draftData = message.draftData ? CMsgUnderDraftData.toJSON(message.draftData) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCUnderDraftResponse>): CMsgClientToGCUnderDraftResponse {
+    return CMsgClientToGCUnderDraftResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCUnderDraftResponse>): CMsgClientToGCUnderDraftResponse {
+    const message = createBaseCMsgClientToGCUnderDraftResponse();
+    message.result = object.result ?? 0;
+    message.accountId = object.accountId ?? 0;
+    message.eventId = object.eventId ?? 0;
+    message.draftData = (object.draftData !== undefined && object.draftData !== null)
+      ? CMsgUnderDraftData.fromPartial(object.draftData)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCUnderDraftReroll(): CMsgClientToGCUnderDraftReroll {
@@ -34692,6 +39700,16 @@ export const CMsgClientToGCUnderDraftReroll = {
     const obj: any = {};
     message.eventId !== undefined && (obj.eventId = Math.round(message.eventId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCUnderDraftReroll>): CMsgClientToGCUnderDraftReroll {
+    return CMsgClientToGCUnderDraftReroll.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCUnderDraftReroll>): CMsgClientToGCUnderDraftReroll {
+    const message = createBaseCMsgClientToGCUnderDraftReroll();
+    message.eventId = object.eventId ?? 0;
+    return message;
   },
 };
 
@@ -34766,6 +39784,20 @@ export const CMsgClientToGCUnderDraftRerollResponse = {
       (obj.draftData = message.draftData ? CMsgUnderDraftData.toJSON(message.draftData) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCUnderDraftRerollResponse>): CMsgClientToGCUnderDraftRerollResponse {
+    return CMsgClientToGCUnderDraftRerollResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCUnderDraftRerollResponse>): CMsgClientToGCUnderDraftRerollResponse {
+    const message = createBaseCMsgClientToGCUnderDraftRerollResponse();
+    message.result = object.result ?? 0;
+    message.eventId = object.eventId ?? 0;
+    message.draftData = (object.draftData !== undefined && object.draftData !== null)
+      ? CMsgUnderDraftData.fromPartial(object.draftData)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCUnderDraftBuy(): CMsgClientToGCUnderDraftBuy {
@@ -34826,6 +39858,17 @@ export const CMsgClientToGCUnderDraftBuy = {
     message.slotId !== undefined && (obj.slotId = Math.round(message.slotId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCUnderDraftBuy>): CMsgClientToGCUnderDraftBuy {
+    return CMsgClientToGCUnderDraftBuy.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCUnderDraftBuy>): CMsgClientToGCUnderDraftBuy {
+    const message = createBaseCMsgClientToGCUnderDraftBuy();
+    message.eventId = object.eventId ?? 0;
+    message.slotId = object.slotId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientGuildUnderDraftGoldUpdated(): CMsgGCToClientGuildUnderDraftGoldUpdated {
@@ -34871,6 +39914,16 @@ export const CMsgGCToClientGuildUnderDraftGoldUpdated = {
     const obj: any = {};
     message.eventId !== undefined && (obj.eventId = Math.round(message.eventId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToClientGuildUnderDraftGoldUpdated>): CMsgGCToClientGuildUnderDraftGoldUpdated {
+    return CMsgGCToClientGuildUnderDraftGoldUpdated.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientGuildUnderDraftGoldUpdated>): CMsgGCToClientGuildUnderDraftGoldUpdated {
+    const message = createBaseCMsgGCToClientGuildUnderDraftGoldUpdated();
+    message.eventId = object.eventId ?? 0;
+    return message;
   },
 };
 
@@ -34957,6 +40010,21 @@ export const CMsgClientToGCUnderDraftBuyResponse = {
       (obj.draftData = message.draftData ? CMsgUnderDraftData.toJSON(message.draftData) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCUnderDraftBuyResponse>): CMsgClientToGCUnderDraftBuyResponse {
+    return CMsgClientToGCUnderDraftBuyResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCUnderDraftBuyResponse>): CMsgClientToGCUnderDraftBuyResponse {
+    const message = createBaseCMsgClientToGCUnderDraftBuyResponse();
+    message.result = object.result ?? 0;
+    message.eventId = object.eventId ?? 0;
+    message.slotId = object.slotId ?? 0;
+    message.draftData = (object.draftData !== undefined && object.draftData !== null)
+      ? CMsgUnderDraftData.fromPartial(object.draftData)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCUnderDraftRollBackBench(): CMsgClientToGCUnderDraftRollBackBench {
@@ -35002,6 +40070,16 @@ export const CMsgClientToGCUnderDraftRollBackBench = {
     const obj: any = {};
     message.eventId !== undefined && (obj.eventId = Math.round(message.eventId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCUnderDraftRollBackBench>): CMsgClientToGCUnderDraftRollBackBench {
+    return CMsgClientToGCUnderDraftRollBackBench.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCUnderDraftRollBackBench>): CMsgClientToGCUnderDraftRollBackBench {
+    const message = createBaseCMsgClientToGCUnderDraftRollBackBench();
+    message.eventId = object.eventId ?? 0;
+    return message;
   },
 };
 
@@ -35076,6 +40154,24 @@ export const CMsgClientToGCUnderDraftRollBackBenchResponse = {
       (obj.draftData = message.draftData ? CMsgUnderDraftData.toJSON(message.draftData) : undefined);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCUnderDraftRollBackBenchResponse>,
+  ): CMsgClientToGCUnderDraftRollBackBenchResponse {
+    return CMsgClientToGCUnderDraftRollBackBenchResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCUnderDraftRollBackBenchResponse>,
+  ): CMsgClientToGCUnderDraftRollBackBenchResponse {
+    const message = createBaseCMsgClientToGCUnderDraftRollBackBenchResponse();
+    message.result = object.result ?? 0;
+    message.eventId = object.eventId ?? 0;
+    message.draftData = (object.draftData !== undefined && object.draftData !== null)
+      ? CMsgUnderDraftData.fromPartial(object.draftData)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCUnderDraftSell(): CMsgClientToGCUnderDraftSell {
@@ -35135,6 +40231,17 @@ export const CMsgClientToGCUnderDraftSell = {
     message.eventId !== undefined && (obj.eventId = Math.round(message.eventId));
     message.slotId !== undefined && (obj.slotId = Math.round(message.slotId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCUnderDraftSell>): CMsgClientToGCUnderDraftSell {
+    return CMsgClientToGCUnderDraftSell.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCUnderDraftSell>): CMsgClientToGCUnderDraftSell {
+    const message = createBaseCMsgClientToGCUnderDraftSell();
+    message.eventId = object.eventId ?? 0;
+    message.slotId = object.slotId ?? 0;
+    return message;
   },
 };
 
@@ -35221,6 +40328,21 @@ export const CMsgClientToGCUnderDraftSellResponse = {
       (obj.draftData = message.draftData ? CMsgUnderDraftData.toJSON(message.draftData) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCUnderDraftSellResponse>): CMsgClientToGCUnderDraftSellResponse {
+    return CMsgClientToGCUnderDraftSellResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCUnderDraftSellResponse>): CMsgClientToGCUnderDraftSellResponse {
+    const message = createBaseCMsgClientToGCUnderDraftSellResponse();
+    message.result = object.result ?? 0;
+    message.eventId = object.eventId ?? 0;
+    message.slotId = object.slotId ?? 0;
+    message.draftData = (object.draftData !== undefined && object.draftData !== null)
+      ? CMsgUnderDraftData.fromPartial(object.draftData)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCUnderDraftRedeemReward(): CMsgClientToGCUnderDraftRedeemReward {
@@ -35281,6 +40403,17 @@ export const CMsgClientToGCUnderDraftRedeemReward = {
     message.actionId !== undefined && (obj.actionId = Math.round(message.actionId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCUnderDraftRedeemReward>): CMsgClientToGCUnderDraftRedeemReward {
+    return CMsgClientToGCUnderDraftRedeemReward.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCUnderDraftRedeemReward>): CMsgClientToGCUnderDraftRedeemReward {
+    const message = createBaseCMsgClientToGCUnderDraftRedeemReward();
+    message.eventId = object.eventId ?? 0;
+    message.actionId = object.actionId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCUnderDraftRedeemRewardResponse(): CMsgClientToGCUnderDraftRedeemRewardResponse {
@@ -35326,6 +40459,20 @@ export const CMsgClientToGCUnderDraftRedeemRewardResponse = {
     const obj: any = {};
     message.result !== undefined && (obj.result = eUnderDraftResponseToJSON(message.result));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCUnderDraftRedeemRewardResponse>,
+  ): CMsgClientToGCUnderDraftRedeemRewardResponse {
+    return CMsgClientToGCUnderDraftRedeemRewardResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCUnderDraftRedeemRewardResponse>,
+  ): CMsgClientToGCUnderDraftRedeemRewardResponse {
+    const message = createBaseCMsgClientToGCUnderDraftRedeemRewardResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -35399,6 +40546,20 @@ export const CMsgClientToGCSubmitDraftTriviaMatchAnswer = {
     message.endTime !== undefined && (obj.endTime = Math.round(message.endTime));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCSubmitDraftTriviaMatchAnswer>): CMsgClientToGCSubmitDraftTriviaMatchAnswer {
+    return CMsgClientToGCSubmitDraftTriviaMatchAnswer.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCSubmitDraftTriviaMatchAnswer>,
+  ): CMsgClientToGCSubmitDraftTriviaMatchAnswer {
+    const message = createBaseCMsgClientToGCSubmitDraftTriviaMatchAnswer();
+    message.choseRadiantAsWinner = object.choseRadiantAsWinner ?? false;
+    message.eventId = object.eventId ?? 0;
+    message.endTime = object.endTime ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCSubmitDraftTriviaMatchAnswerResponse(): CMsgClientToGCSubmitDraftTriviaMatchAnswerResponse {
@@ -35447,6 +40608,20 @@ export const CMsgClientToGCSubmitDraftTriviaMatchAnswerResponse = {
     const obj: any = {};
     message.result !== undefined && (obj.result = eDOTADraftTriviaAnswerResultToJSON(message.result));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCSubmitDraftTriviaMatchAnswerResponse>,
+  ): CMsgClientToGCSubmitDraftTriviaMatchAnswerResponse {
+    return CMsgClientToGCSubmitDraftTriviaMatchAnswerResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCSubmitDraftTriviaMatchAnswerResponse>,
+  ): CMsgClientToGCSubmitDraftTriviaMatchAnswerResponse {
+    const message = createBaseCMsgClientToGCSubmitDraftTriviaMatchAnswerResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -35520,6 +40695,18 @@ export const CMsgDraftTriviaVoteCount = {
     message.direVotes !== undefined && (obj.direVotes = Math.round(message.direVotes));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDraftTriviaVoteCount>): CMsgDraftTriviaVoteCount {
+    return CMsgDraftTriviaVoteCount.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDraftTriviaVoteCount>): CMsgDraftTriviaVoteCount {
+    const message = createBaseCMsgDraftTriviaVoteCount();
+    message.totalVotes = object.totalVotes ?? 0;
+    message.radiantVotes = object.radiantVotes ?? 0;
+    message.direVotes = object.direVotes ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCRecalibrateMMR(): CMsgClientToGCRecalibrateMMR {
@@ -35554,6 +40741,15 @@ export const CMsgClientToGCRecalibrateMMR = {
   toJSON(_: CMsgClientToGCRecalibrateMMR): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCRecalibrateMMR>): CMsgClientToGCRecalibrateMMR {
+    return CMsgClientToGCRecalibrateMMR.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgClientToGCRecalibrateMMR>): CMsgClientToGCRecalibrateMMR {
+    const message = createBaseCMsgClientToGCRecalibrateMMR();
+    return message;
   },
 };
 
@@ -35600,6 +40796,16 @@ export const CMsgClientToGCRecalibrateMMRResponse = {
     const obj: any = {};
     message.result !== undefined && (obj.result = cMsgClientToGCRecalibrateMMRResponse_EResponseToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCRecalibrateMMRResponse>): CMsgClientToGCRecalibrateMMRResponse {
+    return CMsgClientToGCRecalibrateMMRResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCRecalibrateMMRResponse>): CMsgClientToGCRecalibrateMMRResponse {
+    const message = createBaseCMsgClientToGCRecalibrateMMRResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -35688,6 +40894,18 @@ export const CMsgDOTAPostGameItemAwardNotification = {
     message.actionId !== undefined && (obj.actionId = Math.round(message.actionId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAPostGameItemAwardNotification>): CMsgDOTAPostGameItemAwardNotification {
+    return CMsgDOTAPostGameItemAwardNotification.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAPostGameItemAwardNotification>): CMsgDOTAPostGameItemAwardNotification {
+    const message = createBaseCMsgDOTAPostGameItemAwardNotification();
+    message.receiverAccountId = object.receiverAccountId ?? 0;
+    message.itemDefIndex = object.itemDefIndex?.map((e) => e) || [];
+    message.actionId = object.actionId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCGetOWMatchDetails(): CMsgClientToGCGetOWMatchDetails {
@@ -35722,6 +40940,15 @@ export const CMsgClientToGCGetOWMatchDetails = {
   toJSON(_: CMsgClientToGCGetOWMatchDetails): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCGetOWMatchDetails>): CMsgClientToGCGetOWMatchDetails {
+    return CMsgClientToGCGetOWMatchDetails.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgClientToGCGetOWMatchDetails>): CMsgClientToGCGetOWMatchDetails {
+    const message = createBaseCMsgClientToGCGetOWMatchDetails();
+    return message;
   },
 };
 
@@ -35912,6 +41139,26 @@ export const CMsgClientToGCGetOWMatchDetailsResponse = {
     message.laneSelectionFlags !== undefined && (obj.laneSelectionFlags = Math.round(message.laneSelectionFlags));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCGetOWMatchDetailsResponse>): CMsgClientToGCGetOWMatchDetailsResponse {
+    return CMsgClientToGCGetOWMatchDetailsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCGetOWMatchDetailsResponse>): CMsgClientToGCGetOWMatchDetailsResponse {
+    const message = createBaseCMsgClientToGCGetOWMatchDetailsResponse();
+    message.result = object.result ?? 0;
+    message.overwatchReplayId = object.overwatchReplayId ?? "0";
+    message.decryptionKey = object.decryptionKey ?? "0";
+    message.cluster = object.cluster ?? 0;
+    message.overwatchSalt = object.overwatchSalt ?? 0;
+    message.targetPlayerSlot = object.targetPlayerSlot ?? 0;
+    message.markers = object.markers?.map((e) => CMsgClientToGCGetOWMatchDetailsResponse_Marker.fromPartial(e)) || [];
+    message.reportReason = object.reportReason ?? 0;
+    message.targetHeroId = object.targetHeroId ?? 0;
+    message.rankTier = object.rankTier ?? 0;
+    message.laneSelectionFlags = object.laneSelectionFlags ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCGetOWMatchDetailsResponse_Marker(): CMsgClientToGCGetOWMatchDetailsResponse_Marker {
@@ -35974,6 +41221,21 @@ export const CMsgClientToGCGetOWMatchDetailsResponse_Marker = {
     message.startGameTimeS !== undefined && (obj.startGameTimeS = Math.round(message.startGameTimeS));
     message.endGameTimeS !== undefined && (obj.endGameTimeS = Math.round(message.endGameTimeS));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCGetOWMatchDetailsResponse_Marker>,
+  ): CMsgClientToGCGetOWMatchDetailsResponse_Marker {
+    return CMsgClientToGCGetOWMatchDetailsResponse_Marker.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCGetOWMatchDetailsResponse_Marker>,
+  ): CMsgClientToGCGetOWMatchDetailsResponse_Marker {
+    const message = createBaseCMsgClientToGCGetOWMatchDetailsResponse_Marker();
+    message.startGameTimeS = object.startGameTimeS ?? 0;
+    message.endGameTimeS = object.endGameTimeS ?? 0;
+    return message;
   },
 };
 
@@ -36065,6 +41327,19 @@ export const CMsgClientToGCSubmitOWConviction = {
       (obj.griefingConviction = eOverwatchConvictionToJSON(message.griefingConviction));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCSubmitOWConviction>): CMsgClientToGCSubmitOWConviction {
+    return CMsgClientToGCSubmitOWConviction.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCSubmitOWConviction>): CMsgClientToGCSubmitOWConviction {
+    const message = createBaseCMsgClientToGCSubmitOWConviction();
+    message.overwatchReplayId = object.overwatchReplayId ?? "0";
+    message.targetPlayerSlot = object.targetPlayerSlot ?? 0;
+    message.cheatingConviction = object.cheatingConviction ?? 0;
+    message.griefingConviction = object.griefingConviction ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCSubmitOWConvictionResponse(): CMsgClientToGCSubmitOWConvictionResponse {
@@ -36126,6 +41401,17 @@ export const CMsgClientToGCSubmitOWConvictionResponse = {
     message.overwatchReplayId !== undefined && (obj.overwatchReplayId = message.overwatchReplayId);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCSubmitOWConvictionResponse>): CMsgClientToGCSubmitOWConvictionResponse {
+    return CMsgClientToGCSubmitOWConvictionResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCSubmitOWConvictionResponse>): CMsgClientToGCSubmitOWConvictionResponse {
+    const message = createBaseCMsgClientToGCSubmitOWConvictionResponse();
+    message.result = object.result ?? 0;
+    message.overwatchReplayId = object.overwatchReplayId ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCChinaSSAURLRequest(): CMsgClientToGCChinaSSAURLRequest {
@@ -36160,6 +41446,15 @@ export const CMsgClientToGCChinaSSAURLRequest = {
   toJSON(_: CMsgClientToGCChinaSSAURLRequest): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCChinaSSAURLRequest>): CMsgClientToGCChinaSSAURLRequest {
+    return CMsgClientToGCChinaSSAURLRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgClientToGCChinaSSAURLRequest>): CMsgClientToGCChinaSSAURLRequest {
+    const message = createBaseCMsgClientToGCChinaSSAURLRequest();
+    return message;
   },
 };
 
@@ -36207,6 +41502,16 @@ export const CMsgClientToGCChinaSSAURLResponse = {
     message.agreementUrl !== undefined && (obj.agreementUrl = message.agreementUrl);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCChinaSSAURLResponse>): CMsgClientToGCChinaSSAURLResponse {
+    return CMsgClientToGCChinaSSAURLResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCChinaSSAURLResponse>): CMsgClientToGCChinaSSAURLResponse {
+    const message = createBaseCMsgClientToGCChinaSSAURLResponse();
+    message.agreementUrl = object.agreementUrl ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCChinaSSAAcceptedRequest(): CMsgClientToGCChinaSSAAcceptedRequest {
@@ -36241,6 +41546,15 @@ export const CMsgClientToGCChinaSSAAcceptedRequest = {
   toJSON(_: CMsgClientToGCChinaSSAAcceptedRequest): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCChinaSSAAcceptedRequest>): CMsgClientToGCChinaSSAAcceptedRequest {
+    return CMsgClientToGCChinaSSAAcceptedRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgClientToGCChinaSSAAcceptedRequest>): CMsgClientToGCChinaSSAAcceptedRequest {
+    const message = createBaseCMsgClientToGCChinaSSAAcceptedRequest();
+    return message;
   },
 };
 
@@ -36288,6 +41602,16 @@ export const CMsgClientToGCChinaSSAAcceptedResponse = {
     message.agreementAccepted !== undefined && (obj.agreementAccepted = message.agreementAccepted);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCChinaSSAAcceptedResponse>): CMsgClientToGCChinaSSAAcceptedResponse {
+    return CMsgClientToGCChinaSSAAcceptedResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCChinaSSAAcceptedResponse>): CMsgClientToGCChinaSSAAcceptedResponse {
+    const message = createBaseCMsgClientToGCChinaSSAAcceptedResponse();
+    message.agreementAccepted = object.agreementAccepted ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientOverwatchCasesAvailable(): CMsgGCToClientOverwatchCasesAvailable {
@@ -36333,6 +41657,16 @@ export const CMsgGCToClientOverwatchCasesAvailable = {
     const obj: any = {};
     message.expireTime !== undefined && (obj.expireTime = Math.round(message.expireTime));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToClientOverwatchCasesAvailable>): CMsgGCToClientOverwatchCasesAvailable {
+    return CMsgGCToClientOverwatchCasesAvailable.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientOverwatchCasesAvailable>): CMsgGCToClientOverwatchCasesAvailable {
+    const message = createBaseCMsgGCToClientOverwatchCasesAvailable();
+    message.expireTime = object.expireTime ?? 0;
+    return message;
   },
 };
 
@@ -36394,6 +41728,17 @@ export const CMsgClientToGCStartWatchingOverwatch = {
     message.targetPlayerSlot !== undefined && (obj.targetPlayerSlot = Math.round(message.targetPlayerSlot));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCStartWatchingOverwatch>): CMsgClientToGCStartWatchingOverwatch {
+    return CMsgClientToGCStartWatchingOverwatch.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCStartWatchingOverwatch>): CMsgClientToGCStartWatchingOverwatch {
+    const message = createBaseCMsgClientToGCStartWatchingOverwatch();
+    message.overwatchReplayId = object.overwatchReplayId ?? "0";
+    message.targetPlayerSlot = object.targetPlayerSlot ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCStopWatchingOverwatch(): CMsgClientToGCStopWatchingOverwatch {
@@ -36454,6 +41799,17 @@ export const CMsgClientToGCStopWatchingOverwatch = {
     message.targetPlayerSlot !== undefined && (obj.targetPlayerSlot = Math.round(message.targetPlayerSlot));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCStopWatchingOverwatch>): CMsgClientToGCStopWatchingOverwatch {
+    return CMsgClientToGCStopWatchingOverwatch.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCStopWatchingOverwatch>): CMsgClientToGCStopWatchingOverwatch {
+    const message = createBaseCMsgClientToGCStopWatchingOverwatch();
+    message.overwatchReplayId = object.overwatchReplayId ?? "0";
+    message.targetPlayerSlot = object.targetPlayerSlot ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCOverwatchReplayError(): CMsgClientToGCOverwatchReplayError {
@@ -36500,6 +41856,16 @@ export const CMsgClientToGCOverwatchReplayError = {
     message.overwatchReplayId !== undefined && (obj.overwatchReplayId = message.overwatchReplayId);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCOverwatchReplayError>): CMsgClientToGCOverwatchReplayError {
+    return CMsgClientToGCOverwatchReplayError.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCOverwatchReplayError>): CMsgClientToGCOverwatchReplayError {
+    const message = createBaseCMsgClientToGCOverwatchReplayError();
+    message.overwatchReplayId = object.overwatchReplayId ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCGetDPCFavorites(): CMsgClientToGCGetDPCFavorites {
@@ -36534,6 +41900,15 @@ export const CMsgClientToGCGetDPCFavorites = {
   toJSON(_: CMsgClientToGCGetDPCFavorites): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCGetDPCFavorites>): CMsgClientToGCGetDPCFavorites {
+    return CMsgClientToGCGetDPCFavorites.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgClientToGCGetDPCFavorites>): CMsgClientToGCGetDPCFavorites {
+    const message = createBaseCMsgClientToGCGetDPCFavorites();
+    return message;
   },
 };
 
@@ -36604,6 +41979,18 @@ export const CMsgClientToGCGetDPCFavoritesResponse = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCGetDPCFavoritesResponse>): CMsgClientToGCGetDPCFavoritesResponse {
+    return CMsgClientToGCGetDPCFavoritesResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCGetDPCFavoritesResponse>): CMsgClientToGCGetDPCFavoritesResponse {
+    const message = createBaseCMsgClientToGCGetDPCFavoritesResponse();
+    message.result = object.result ?? 0;
+    message.favorites = object.favorites?.map((e) => CMsgClientToGCGetDPCFavoritesResponse_Favorite.fromPartial(e)) ||
+      [];
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCGetDPCFavoritesResponse_Favorite(): CMsgClientToGCGetDPCFavoritesResponse_Favorite {
@@ -36666,6 +42053,21 @@ export const CMsgClientToGCGetDPCFavoritesResponse_Favorite = {
     message.favoriteType !== undefined && (obj.favoriteType = eDPCFavoriteTypeToJSON(message.favoriteType));
     message.favoriteId !== undefined && (obj.favoriteId = Math.round(message.favoriteId));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCGetDPCFavoritesResponse_Favorite>,
+  ): CMsgClientToGCGetDPCFavoritesResponse_Favorite {
+    return CMsgClientToGCGetDPCFavoritesResponse_Favorite.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCGetDPCFavoritesResponse_Favorite>,
+  ): CMsgClientToGCGetDPCFavoritesResponse_Favorite {
+    const message = createBaseCMsgClientToGCGetDPCFavoritesResponse_Favorite();
+    message.favoriteType = object.favoriteType ?? 0;
+    message.favoriteId = object.favoriteId ?? 0;
+    return message;
   },
 };
 
@@ -36739,6 +42141,18 @@ export const CMsgClientToGCSetDPCFavoriteState = {
     message.enabled !== undefined && (obj.enabled = message.enabled);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCSetDPCFavoriteState>): CMsgClientToGCSetDPCFavoriteState {
+    return CMsgClientToGCSetDPCFavoriteState.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCSetDPCFavoriteState>): CMsgClientToGCSetDPCFavoriteState {
+    const message = createBaseCMsgClientToGCSetDPCFavoriteState();
+    message.favoriteType = object.favoriteType ?? 0;
+    message.favoriteId = object.favoriteId ?? 0;
+    message.enabled = object.enabled ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCSetDPCFavoriteStateResponse(): CMsgClientToGCSetDPCFavoriteStateResponse {
@@ -36787,6 +42201,18 @@ export const CMsgClientToGCSetDPCFavoriteStateResponse = {
     message.result !== undefined &&
       (obj.result = cMsgClientToGCSetDPCFavoriteStateResponse_EResponseToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCSetDPCFavoriteStateResponse>): CMsgClientToGCSetDPCFavoriteStateResponse {
+    return CMsgClientToGCSetDPCFavoriteStateResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCSetDPCFavoriteStateResponse>,
+  ): CMsgClientToGCSetDPCFavoriteStateResponse {
+    const message = createBaseCMsgClientToGCSetDPCFavoriteStateResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -36848,6 +42274,17 @@ export const CMsgClientToGCSetEventActiveSeasonID = {
     message.activeSeasonId !== undefined && (obj.activeSeasonId = Math.round(message.activeSeasonId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCSetEventActiveSeasonID>): CMsgClientToGCSetEventActiveSeasonID {
+    return CMsgClientToGCSetEventActiveSeasonID.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCSetEventActiveSeasonID>): CMsgClientToGCSetEventActiveSeasonID {
+    const message = createBaseCMsgClientToGCSetEventActiveSeasonID();
+    message.eventId = object.eventId ?? 0;
+    message.activeSeasonId = object.activeSeasonId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCSetEventActiveSeasonIDResponse(): CMsgClientToGCSetEventActiveSeasonIDResponse {
@@ -36896,6 +42333,20 @@ export const CMsgClientToGCSetEventActiveSeasonIDResponse = {
     message.result !== undefined &&
       (obj.result = cMsgClientToGCSetEventActiveSeasonIDResponse_EResponseToJSON(message.result));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCSetEventActiveSeasonIDResponse>,
+  ): CMsgClientToGCSetEventActiveSeasonIDResponse {
+    return CMsgClientToGCSetEventActiveSeasonIDResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCSetEventActiveSeasonIDResponse>,
+  ): CMsgClientToGCSetEventActiveSeasonIDResponse {
+    const message = createBaseCMsgClientToGCSetEventActiveSeasonIDResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -36996,6 +42447,19 @@ export const CMsgClientToGCPurchaseLabyrinthBlessings = {
     message.debugRemove !== undefined && (obj.debugRemove = message.debugRemove);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCPurchaseLabyrinthBlessings>): CMsgClientToGCPurchaseLabyrinthBlessings {
+    return CMsgClientToGCPurchaseLabyrinthBlessings.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCPurchaseLabyrinthBlessings>): CMsgClientToGCPurchaseLabyrinthBlessings {
+    const message = createBaseCMsgClientToGCPurchaseLabyrinthBlessings();
+    message.eventId = object.eventId ?? 0;
+    message.blessingIds = object.blessingIds?.map((e) => e) || [];
+    message.debug = object.debug ?? false;
+    message.debugRemove = object.debugRemove ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCPurchaseLabyrinthBlessingsResponse(): CMsgClientToGCPurchaseLabyrinthBlessingsResponse {
@@ -37050,6 +42514,20 @@ export const CMsgClientToGCPurchaseLabyrinthBlessingsResponse = {
       (obj.result = cMsgClientToGCPurchaseLabyrinthBlessingsResponse_EResponseToJSON(message.result));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCPurchaseLabyrinthBlessingsResponse>,
+  ): CMsgClientToGCPurchaseLabyrinthBlessingsResponse {
+    return CMsgClientToGCPurchaseLabyrinthBlessingsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCPurchaseLabyrinthBlessingsResponse>,
+  ): CMsgClientToGCPurchaseLabyrinthBlessingsResponse {
+    const message = createBaseCMsgClientToGCPurchaseLabyrinthBlessingsResponse();
+    message.result = object.result ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCGetStickerbookRequest(): CMsgClientToGCGetStickerbookRequest {
@@ -37095,6 +42573,16 @@ export const CMsgClientToGCGetStickerbookRequest = {
     const obj: any = {};
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCGetStickerbookRequest>): CMsgClientToGCGetStickerbookRequest {
+    return CMsgClientToGCGetStickerbookRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCGetStickerbookRequest>): CMsgClientToGCGetStickerbookRequest {
+    const message = createBaseCMsgClientToGCGetStickerbookRequest();
+    message.accountId = object.accountId ?? 0;
+    return message;
   },
 };
 
@@ -37157,6 +42645,19 @@ export const CMsgClientToGCGetStickerbookResponse = {
     message.stickerbook !== undefined &&
       (obj.stickerbook = message.stickerbook ? CMsgStickerbook.toJSON(message.stickerbook) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCGetStickerbookResponse>): CMsgClientToGCGetStickerbookResponse {
+    return CMsgClientToGCGetStickerbookResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCGetStickerbookResponse>): CMsgClientToGCGetStickerbookResponse {
+    const message = createBaseCMsgClientToGCGetStickerbookResponse();
+    message.response = object.response ?? 0;
+    message.stickerbook = (object.stickerbook !== undefined && object.stickerbook !== null)
+      ? CMsgStickerbook.fromPartial(object.stickerbook)
+      : undefined;
+    return message;
   },
 };
 
@@ -37230,6 +42731,20 @@ export const CMsgClientToGCCreateStickerbookPageRequest = {
     message.pageType !== undefined && (obj.pageType = eStickerbookPageTypeToJSON(message.pageType));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCCreateStickerbookPageRequest>): CMsgClientToGCCreateStickerbookPageRequest {
+    return CMsgClientToGCCreateStickerbookPageRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCreateStickerbookPageRequest>,
+  ): CMsgClientToGCCreateStickerbookPageRequest {
+    const message = createBaseCMsgClientToGCCreateStickerbookPageRequest();
+    message.teamId = object.teamId ?? 0;
+    message.eventId = object.eventId ?? 0;
+    message.pageType = object.pageType ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCreateStickerbookPageResponse(): CMsgClientToGCCreateStickerbookPageResponse {
@@ -37292,6 +42807,19 @@ export const CMsgClientToGCCreateStickerbookPageResponse = {
       (obj.response = cMsgClientToGCCreateStickerbookPageResponse_EResponseToJSON(message.response));
     message.pageNumber !== undefined && (obj.pageNumber = Math.round(message.pageNumber));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCCreateStickerbookPageResponse>): CMsgClientToGCCreateStickerbookPageResponse {
+    return CMsgClientToGCCreateStickerbookPageResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCreateStickerbookPageResponse>,
+  ): CMsgClientToGCCreateStickerbookPageResponse {
+    const message = createBaseCMsgClientToGCCreateStickerbookPageResponse();
+    message.response = object.response ?? 0;
+    message.pageNumber = object.pageNumber ?? 0;
+    return message;
   },
 };
 
@@ -37365,6 +42893,20 @@ export const CMsgClientToGCDeleteStickerbookPageRequest = {
     message.stickerMax !== undefined && (obj.stickerMax = Math.round(message.stickerMax));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCDeleteStickerbookPageRequest>): CMsgClientToGCDeleteStickerbookPageRequest {
+    return CMsgClientToGCDeleteStickerbookPageRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCDeleteStickerbookPageRequest>,
+  ): CMsgClientToGCDeleteStickerbookPageRequest {
+    const message = createBaseCMsgClientToGCDeleteStickerbookPageRequest();
+    message.pageNum = object.pageNum ?? 0;
+    message.stickerCount = object.stickerCount ?? 0;
+    message.stickerMax = object.stickerMax ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCDeleteStickerbookPageResponse(): CMsgClientToGCDeleteStickerbookPageResponse {
@@ -37415,6 +42957,18 @@ export const CMsgClientToGCDeleteStickerbookPageResponse = {
     message.response !== undefined &&
       (obj.response = cMsgClientToGCDeleteStickerbookPageResponse_EResponseToJSON(message.response));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCDeleteStickerbookPageResponse>): CMsgClientToGCDeleteStickerbookPageResponse {
+    return CMsgClientToGCDeleteStickerbookPageResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCDeleteStickerbookPageResponse>,
+  ): CMsgClientToGCDeleteStickerbookPageResponse {
+    const message = createBaseCMsgClientToGCDeleteStickerbookPageResponse();
+    message.response = object.response ?? 0;
+    return message;
   },
 };
 
@@ -37471,6 +43025,17 @@ export const CMsgClientToGCPlaceStickersRequest = {
       obj.stickerItems = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCPlaceStickersRequest>): CMsgClientToGCPlaceStickersRequest {
+    return CMsgClientToGCPlaceStickersRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCPlaceStickersRequest>): CMsgClientToGCPlaceStickersRequest {
+    const message = createBaseCMsgClientToGCPlaceStickersRequest();
+    message.stickerItems =
+      object.stickerItems?.map((e) => CMsgClientToGCPlaceStickersRequest_StickerItem.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -37536,6 +43101,23 @@ export const CMsgClientToGCPlaceStickersRequest_StickerItem = {
       (obj.sticker = message.sticker ? CMsgStickerbookSticker.toJSON(message.sticker) : undefined);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCPlaceStickersRequest_StickerItem>,
+  ): CMsgClientToGCPlaceStickersRequest_StickerItem {
+    return CMsgClientToGCPlaceStickersRequest_StickerItem.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCPlaceStickersRequest_StickerItem>,
+  ): CMsgClientToGCPlaceStickersRequest_StickerItem {
+    const message = createBaseCMsgClientToGCPlaceStickersRequest_StickerItem();
+    message.pageNum = object.pageNum ?? 0;
+    message.sticker = (object.sticker !== undefined && object.sticker !== null)
+      ? CMsgStickerbookSticker.fromPartial(object.sticker)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCPlaceStickersResponse(): CMsgClientToGCPlaceStickersResponse {
@@ -37584,6 +43166,16 @@ export const CMsgClientToGCPlaceStickersResponse = {
     message.response !== undefined &&
       (obj.response = cMsgClientToGCPlaceStickersResponse_EResponseToJSON(message.response));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCPlaceStickersResponse>): CMsgClientToGCPlaceStickersResponse {
+    return CMsgClientToGCPlaceStickersResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCPlaceStickersResponse>): CMsgClientToGCPlaceStickersResponse {
+    const message = createBaseCMsgClientToGCPlaceStickersResponse();
+    message.response = object.response ?? 0;
+    return message;
   },
 };
 
@@ -37638,6 +43230,20 @@ export const CMsgClientToGCPlaceCollectionStickersRequest = {
       obj.slots = [];
     }
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCPlaceCollectionStickersRequest>,
+  ): CMsgClientToGCPlaceCollectionStickersRequest {
+    return CMsgClientToGCPlaceCollectionStickersRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCPlaceCollectionStickersRequest>,
+  ): CMsgClientToGCPlaceCollectionStickersRequest {
+    const message = createBaseCMsgClientToGCPlaceCollectionStickersRequest();
+    message.slots = object.slots?.map((e) => CMsgClientToGCPlaceCollectionStickersRequest_Slot.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -37738,6 +43344,24 @@ export const CMsgClientToGCPlaceCollectionStickersRequest_Slot = {
     message.oldQuality !== undefined && (obj.oldQuality = Math.round(message.oldQuality));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCPlaceCollectionStickersRequest_Slot>,
+  ): CMsgClientToGCPlaceCollectionStickersRequest_Slot {
+    return CMsgClientToGCPlaceCollectionStickersRequest_Slot.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCPlaceCollectionStickersRequest_Slot>,
+  ): CMsgClientToGCPlaceCollectionStickersRequest_Slot {
+    const message = createBaseCMsgClientToGCPlaceCollectionStickersRequest_Slot();
+    message.pageNum = object.pageNum ?? 0;
+    message.slot = object.slot ?? 0;
+    message.newItemId = object.newItemId ?? "0";
+    message.oldItemDefId = object.oldItemDefId ?? 0;
+    message.oldQuality = object.oldQuality ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCPlaceCollectionStickersResponse(): CMsgClientToGCPlaceCollectionStickersResponse {
@@ -37788,6 +43412,20 @@ export const CMsgClientToGCPlaceCollectionStickersResponse = {
     message.response !== undefined &&
       (obj.response = cMsgClientToGCPlaceCollectionStickersResponse_EResponseToJSON(message.response));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCPlaceCollectionStickersResponse>,
+  ): CMsgClientToGCPlaceCollectionStickersResponse {
+    return CMsgClientToGCPlaceCollectionStickersResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCPlaceCollectionStickersResponse>,
+  ): CMsgClientToGCPlaceCollectionStickersResponse {
+    const message = createBaseCMsgClientToGCPlaceCollectionStickersResponse();
+    message.response = object.response ?? 0;
+    return message;
   },
 };
 
@@ -37840,6 +43478,22 @@ export const CMsgClientToGCOrderStickerbookTeamPageRequest = {
       ? CMsgStickerbookTeamPageOrderSequence.toJSON(message.pageOrderSequence)
       : undefined);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCOrderStickerbookTeamPageRequest>,
+  ): CMsgClientToGCOrderStickerbookTeamPageRequest {
+    return CMsgClientToGCOrderStickerbookTeamPageRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCOrderStickerbookTeamPageRequest>,
+  ): CMsgClientToGCOrderStickerbookTeamPageRequest {
+    const message = createBaseCMsgClientToGCOrderStickerbookTeamPageRequest();
+    message.pageOrderSequence = (object.pageOrderSequence !== undefined && object.pageOrderSequence !== null)
+      ? CMsgStickerbookTeamPageOrderSequence.fromPartial(object.pageOrderSequence)
+      : undefined;
+    return message;
   },
 };
 
@@ -37894,6 +43548,20 @@ export const CMsgClientToGCOrderStickerbookTeamPageResponse = {
     message.response !== undefined &&
       (obj.response = cMsgClientToGCOrderStickerbookTeamPageResponse_EResponseToJSON(message.response));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCOrderStickerbookTeamPageResponse>,
+  ): CMsgClientToGCOrderStickerbookTeamPageResponse {
+    return CMsgClientToGCOrderStickerbookTeamPageResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCOrderStickerbookTeamPageResponse>,
+  ): CMsgClientToGCOrderStickerbookTeamPageResponse {
+    const message = createBaseCMsgClientToGCOrderStickerbookTeamPageResponse();
+    message.response = object.response ?? 0;
+    return message;
   },
 };
 
@@ -37967,6 +43635,18 @@ export const CMsgClientToGCSetHeroSticker = {
     message.oldItemId !== undefined && (obj.oldItemId = message.oldItemId);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCSetHeroSticker>): CMsgClientToGCSetHeroSticker {
+    return CMsgClientToGCSetHeroSticker.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCSetHeroSticker>): CMsgClientToGCSetHeroSticker {
+    const message = createBaseCMsgClientToGCSetHeroSticker();
+    message.heroId = object.heroId ?? 0;
+    message.newItemId = object.newItemId ?? "0";
+    message.oldItemId = object.oldItemId ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCSetHeroStickerResponse(): CMsgClientToGCSetHeroStickerResponse {
@@ -38016,6 +43696,16 @@ export const CMsgClientToGCSetHeroStickerResponse = {
       (obj.response = cMsgClientToGCSetHeroStickerResponse_EResponseToJSON(message.response));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCSetHeroStickerResponse>): CMsgClientToGCSetHeroStickerResponse {
+    return CMsgClientToGCSetHeroStickerResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCSetHeroStickerResponse>): CMsgClientToGCSetHeroStickerResponse {
+    const message = createBaseCMsgClientToGCSetHeroStickerResponse();
+    message.response = object.response ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCGetHeroStickers(): CMsgClientToGCGetHeroStickers {
@@ -38050,6 +43740,15 @@ export const CMsgClientToGCGetHeroStickers = {
   toJSON(_: CMsgClientToGCGetHeroStickers): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCGetHeroStickers>): CMsgClientToGCGetHeroStickers {
+    return CMsgClientToGCGetHeroStickers.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgClientToGCGetHeroStickers>): CMsgClientToGCGetHeroStickers {
+    const message = createBaseCMsgClientToGCGetHeroStickers();
+    return message;
   },
 };
 
@@ -38113,6 +43812,19 @@ export const CMsgClientToGCGetHeroStickersResponse = {
       (obj.stickerHeroes = message.stickerHeroes ? CMsgStickerHeroes.toJSON(message.stickerHeroes) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCGetHeroStickersResponse>): CMsgClientToGCGetHeroStickersResponse {
+    return CMsgClientToGCGetHeroStickersResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCGetHeroStickersResponse>): CMsgClientToGCGetHeroStickersResponse {
+    const message = createBaseCMsgClientToGCGetHeroStickersResponse();
+    message.response = object.response ?? 0;
+    message.stickerHeroes = (object.stickerHeroes !== undefined && object.stickerHeroes !== null)
+      ? CMsgStickerHeroes.fromPartial(object.stickerHeroes)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCSetFavoritePage(): CMsgClientToGCSetFavoritePage {
@@ -38173,6 +43885,17 @@ export const CMsgClientToGCSetFavoritePage = {
     message.clear !== undefined && (obj.clear = message.clear);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCSetFavoritePage>): CMsgClientToGCSetFavoritePage {
+    return CMsgClientToGCSetFavoritePage.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCSetFavoritePage>): CMsgClientToGCSetFavoritePage {
+    const message = createBaseCMsgClientToGCSetFavoritePage();
+    message.pageNum = object.pageNum ?? 0;
+    message.clear = object.clear ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCSetFavoritePageResponse(): CMsgClientToGCSetFavoritePageResponse {
@@ -38221,6 +43944,16 @@ export const CMsgClientToGCSetFavoritePageResponse = {
     message.response !== undefined &&
       (obj.response = cMsgClientToGCSetFavoritePageResponse_EResponseToJSON(message.response));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCSetFavoritePageResponse>): CMsgClientToGCSetFavoritePageResponse {
+    return CMsgClientToGCSetFavoritePageResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCSetFavoritePageResponse>): CMsgClientToGCSetFavoritePageResponse {
+    const message = createBaseCMsgClientToGCSetFavoritePageResponse();
+    message.response = object.response ?? 0;
+    return message;
   },
 };
 
@@ -38294,6 +44027,18 @@ export const CMsgClientToGCClaimSwag = {
     message.data !== undefined && (obj.data = Math.round(message.data));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCClaimSwag>): CMsgClientToGCClaimSwag {
+    return CMsgClientToGCClaimSwag.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCClaimSwag>): CMsgClientToGCClaimSwag {
+    const message = createBaseCMsgClientToGCClaimSwag();
+    message.eventId = object.eventId ?? 0;
+    message.actionId = object.actionId ?? 0;
+    message.data = object.data ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCClaimSwagResponse(): CMsgClientToGCClaimSwagResponse {
@@ -38343,6 +44088,16 @@ export const CMsgClientToGCClaimSwagResponse = {
       (obj.response = cMsgClientToGCClaimSwagResponse_EResponseToJSON(message.response));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCClaimSwagResponse>): CMsgClientToGCClaimSwagResponse {
+    return CMsgClientToGCClaimSwagResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCClaimSwagResponse>): CMsgClientToGCClaimSwagResponse {
+    const message = createBaseCMsgClientToGCClaimSwagResponse();
+    message.response = object.response ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCollectorsCacheAvailableDataRequest(): CMsgClientToGCCollectorsCacheAvailableDataRequest {
@@ -38391,6 +44146,20 @@ export const CMsgClientToGCCollectorsCacheAvailableDataRequest = {
     const obj: any = {};
     message.contestId !== undefined && (obj.contestId = Math.round(message.contestId));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCCollectorsCacheAvailableDataRequest>,
+  ): CMsgClientToGCCollectorsCacheAvailableDataRequest {
+    return CMsgClientToGCCollectorsCacheAvailableDataRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCollectorsCacheAvailableDataRequest>,
+  ): CMsgClientToGCCollectorsCacheAvailableDataRequest {
+    const message = createBaseCMsgClientToGCCollectorsCacheAvailableDataRequest();
+    message.contestId = object.contestId ?? 0;
+    return message;
   },
 };
 
@@ -38450,6 +44219,21 @@ export const CMsgGCToClientCollectorsCacheAvailableDataResponse = {
       obj.votes = [];
     }
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientCollectorsCacheAvailableDataResponse>,
+  ): CMsgGCToClientCollectorsCacheAvailableDataResponse {
+    return CMsgGCToClientCollectorsCacheAvailableDataResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientCollectorsCacheAvailableDataResponse>,
+  ): CMsgGCToClientCollectorsCacheAvailableDataResponse {
+    const message = createBaseCMsgGCToClientCollectorsCacheAvailableDataResponse();
+    message.votes = object.votes?.map((e) => CMsgGCToClientCollectorsCacheAvailableDataResponse_Vote.fromPartial(e)) ||
+      [];
+    return message;
   },
 };
 
@@ -38517,6 +44301,21 @@ export const CMsgGCToClientCollectorsCacheAvailableDataResponse_Vote = {
       (obj.voteType = cMsgGCToClientCollectorsCacheAvailableDataResponse_Vote_EVoteTypeToJSON(message.voteType));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientCollectorsCacheAvailableDataResponse_Vote>,
+  ): CMsgGCToClientCollectorsCacheAvailableDataResponse_Vote {
+    return CMsgGCToClientCollectorsCacheAvailableDataResponse_Vote.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientCollectorsCacheAvailableDataResponse_Vote>,
+  ): CMsgGCToClientCollectorsCacheAvailableDataResponse_Vote {
+    const message = createBaseCMsgGCToClientCollectorsCacheAvailableDataResponse_Vote();
+    message.itemDef = object.itemDef ?? 0;
+    message.voteType = object.voteType ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCUploadMatchClip(): CMsgClientToGCUploadMatchClip {
@@ -38563,6 +44362,18 @@ export const CMsgClientToGCUploadMatchClip = {
     message.matchClip !== undefined &&
       (obj.matchClip = message.matchClip ? CMatchClip.toJSON(message.matchClip) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCUploadMatchClip>): CMsgClientToGCUploadMatchClip {
+    return CMsgClientToGCUploadMatchClip.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCUploadMatchClip>): CMsgClientToGCUploadMatchClip {
+    const message = createBaseCMsgClientToGCUploadMatchClip();
+    message.matchClip = (object.matchClip !== undefined && object.matchClip !== null)
+      ? CMatchClip.fromPartial(object.matchClip)
+      : undefined;
+    return message;
   },
 };
 
@@ -38613,6 +44424,16 @@ export const CMsgGCToClientUploadMatchClipResponse = {
       (obj.response = cMsgGCToClientUploadMatchClipResponse_EResponseToJSON(message.response));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientUploadMatchClipResponse>): CMsgGCToClientUploadMatchClipResponse {
+    return CMsgGCToClientUploadMatchClipResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientUploadMatchClipResponse>): CMsgGCToClientUploadMatchClipResponse {
+    const message = createBaseCMsgGCToClientUploadMatchClipResponse();
+    message.response = object.response ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCMapStatsRequest(): CMsgClientToGCMapStatsRequest {
@@ -38647,6 +44468,15 @@ export const CMsgClientToGCMapStatsRequest = {
   toJSON(_: CMsgClientToGCMapStatsRequest): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCMapStatsRequest>): CMsgClientToGCMapStatsRequest {
+    return CMsgClientToGCMapStatsRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgClientToGCMapStatsRequest>): CMsgClientToGCMapStatsRequest {
+    const message = createBaseCMsgClientToGCMapStatsRequest();
+    return message;
   },
 };
 
@@ -38722,6 +44552,22 @@ export const CMsgGCToClientMapStatsResponse = {
       (obj.globalStats = message.globalStats ? CMsgGlobalMapStats.toJSON(message.globalStats) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientMapStatsResponse>): CMsgGCToClientMapStatsResponse {
+    return CMsgGCToClientMapStatsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientMapStatsResponse>): CMsgGCToClientMapStatsResponse {
+    const message = createBaseCMsgGCToClientMapStatsResponse();
+    message.response = object.response ?? 0;
+    message.personalStats = (object.personalStats !== undefined && object.personalStats !== null)
+      ? CMsgMapStatsSnapshot.fromPartial(object.personalStats)
+      : undefined;
+    message.globalStats = (object.globalStats !== undefined && object.globalStats !== null)
+      ? CMsgGlobalMapStats.fromPartial(object.globalStats)
+      : undefined;
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -38767,6 +44613,13 @@ function base64FromBytes(arr: Uint8Array): string {
     return tsProtoGlobalThis.btoa(bin.join(""));
   }
 }
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

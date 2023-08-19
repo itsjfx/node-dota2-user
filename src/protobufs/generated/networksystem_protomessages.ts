@@ -63,6 +63,16 @@ export const NetMessageSplitscreenUserChanged = {
     message.slot !== undefined && (obj.slot = Math.round(message.slot));
     return obj;
   },
+
+  create(base?: DeepPartial<NetMessageSplitscreenUserChanged>): NetMessageSplitscreenUserChanged {
+    return NetMessageSplitscreenUserChanged.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<NetMessageSplitscreenUserChanged>): NetMessageSplitscreenUserChanged {
+    const message = createBaseNetMessageSplitscreenUserChanged();
+    message.slot = object.slot ?? 0;
+    return message;
+  },
 };
 
 function createBaseNetMessageConnectionClosed(): NetMessageConnectionClosed {
@@ -108,6 +118,16 @@ export const NetMessageConnectionClosed = {
     const obj: any = {};
     message.reason !== undefined && (obj.reason = Math.round(message.reason));
     return obj;
+  },
+
+  create(base?: DeepPartial<NetMessageConnectionClosed>): NetMessageConnectionClosed {
+    return NetMessageConnectionClosed.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<NetMessageConnectionClosed>): NetMessageConnectionClosed {
+    const message = createBaseNetMessageConnectionClosed();
+    message.reason = object.reason ?? 0;
+    return message;
   },
 };
 
@@ -155,6 +175,16 @@ export const NetMessageConnectionCrashed = {
     message.reason !== undefined && (obj.reason = Math.round(message.reason));
     return obj;
   },
+
+  create(base?: DeepPartial<NetMessageConnectionCrashed>): NetMessageConnectionCrashed {
+    return NetMessageConnectionCrashed.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<NetMessageConnectionCrashed>): NetMessageConnectionCrashed {
+    const message = createBaseNetMessageConnectionCrashed();
+    message.reason = object.reason ?? 0;
+    return message;
+  },
 };
 
 function createBaseNetMessagePacketStart(): NetMessagePacketStart {
@@ -189,6 +219,15 @@ export const NetMessagePacketStart = {
   toJSON(_: NetMessagePacketStart): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<NetMessagePacketStart>): NetMessagePacketStart {
+    return NetMessagePacketStart.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<NetMessagePacketStart>): NetMessagePacketStart {
+    const message = createBaseNetMessagePacketStart();
+    return message;
   },
 };
 
@@ -225,7 +264,23 @@ export const NetMessagePacketEnd = {
     const obj: any = {};
     return obj;
   },
+
+  create(base?: DeepPartial<NetMessagePacketEnd>): NetMessagePacketEnd {
+    return NetMessagePacketEnd.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<NetMessagePacketEnd>): NetMessagePacketEnd {
+    const message = createBaseNetMessagePacketEnd();
+    return message;
+  },
 };
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function isSet(value: any): boolean {
   return value !== null && value !== undefined;

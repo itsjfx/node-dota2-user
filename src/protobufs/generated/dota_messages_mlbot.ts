@@ -216,6 +216,20 @@ export const CMsgMLBotMatchMetadata = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgMLBotMatchMetadata>): CMsgMLBotMatchMetadata {
+    return CMsgMLBotMatchMetadata.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgMLBotMatchMetadata>): CMsgMLBotMatchMetadata {
+    const message = createBaseCMsgMLBotMatchMetadata();
+    message.matchId = object.matchId ?? "0";
+    message.lobbyId = object.lobbyId ?? "0";
+    message.lobbyType = object.lobbyType ?? 0;
+    message.gameMode = object.gameMode ?? 0;
+    message.players = object.players?.map((e) => CMsgMLBotMatchMetadata_Player.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgMLBotMatchMetadata_Player(): CMsgMLBotMatchMetadata_Player {
@@ -300,6 +314,19 @@ export const CMsgMLBotMatchMetadata_Player = {
     message.rank !== undefined && (obj.rank = Math.round(message.rank));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgMLBotMatchMetadata_Player>): CMsgMLBotMatchMetadata_Player {
+    return CMsgMLBotMatchMetadata_Player.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgMLBotMatchMetadata_Player>): CMsgMLBotMatchMetadata_Player {
+    const message = createBaseCMsgMLBotMatchMetadata_Player();
+    message.playerId = object.playerId ?? 0;
+    message.teamId = object.teamId ?? 0;
+    message.heroId = object.heroId ?? 0;
+    message.rank = object.rank ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgMLBotTickBoundary(): CMsgMLBotTickBoundary {
@@ -345,6 +372,16 @@ export const CMsgMLBotTickBoundary = {
     const obj: any = {};
     message.tickNumber !== undefined && (obj.tickNumber = Math.round(message.tickNumber));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgMLBotTickBoundary>): CMsgMLBotTickBoundary {
+    return CMsgMLBotTickBoundary.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgMLBotTickBoundary>): CMsgMLBotTickBoundary {
+    const message = createBaseCMsgMLBotTickBoundary();
+    message.tickNumber = object.tickNumber ?? 0;
+    return message;
   },
 };
 
@@ -556,6 +593,27 @@ export const CMsgMLBotPlayerOrder = {
     message.queue !== undefined && (obj.queue = message.queue);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgMLBotPlayerOrder>): CMsgMLBotPlayerOrder {
+    return CMsgMLBotPlayerOrder.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgMLBotPlayerOrder>): CMsgMLBotPlayerOrder {
+    const message = createBaseCMsgMLBotPlayerOrder();
+    message.playerId = object.playerId ?? 0;
+    message.teamId = object.teamId ?? 0;
+    message.orderType = object.orderType ?? 0;
+    message.selectedUnitHandles = object.selectedUnitHandles?.map((e) => e) || [];
+    message.targetIndex = object.targetIndex ?? 0;
+    message.targetHandle = object.targetHandle ?? 0;
+    message.abilityIndex = object.abilityIndex ?? 0;
+    message.abilityHandle = object.abilityHandle ?? 0;
+    message.posX = object.posX ?? 0;
+    message.posY = object.posY ?? 0;
+    message.posZ = object.posZ ?? 0;
+    message.queue = object.queue ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgMLBotTeamInference(): CMsgMLBotTeamInference {
@@ -644,6 +702,20 @@ export const CMsgMLBotTeamInference = {
       (obj.worldState = message.worldState ? CMsgBotWorldState.toJSON(message.worldState) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgMLBotTeamInference>): CMsgMLBotTeamInference {
+    return CMsgMLBotTeamInference.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgMLBotTeamInference>): CMsgMLBotTeamInference {
+    const message = createBaseCMsgMLBotTeamInference();
+    message.teamId = object.teamId ?? 0;
+    message.botPlayerIds = object.botPlayerIds?.map((e) => e) || [];
+    message.worldState = (object.worldState !== undefined && object.worldState !== null)
+      ? CMsgBotWorldState.fromPartial(object.worldState)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgMLBotTeamInferenceResponse(): CMsgMLBotTeamInferenceResponse {
@@ -695,6 +767,16 @@ export const CMsgMLBotTeamInferenceResponse = {
       obj.orders = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgMLBotTeamInferenceResponse>): CMsgMLBotTeamInferenceResponse {
+    return CMsgMLBotTeamInferenceResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgMLBotTeamInferenceResponse>): CMsgMLBotTeamInferenceResponse {
+    const message = createBaseCMsgMLBotTeamInferenceResponse();
+    message.orders = object.orders?.map((e) => CMsgMLBotPlayerOrder.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -750,6 +832,16 @@ export const CMsgMLBotTeamInferenceList = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgMLBotTeamInferenceList>): CMsgMLBotTeamInferenceList {
+    return CMsgMLBotTeamInferenceList.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgMLBotTeamInferenceList>): CMsgMLBotTeamInferenceList {
+    const message = createBaseCMsgMLBotTeamInferenceList();
+    message.messages = object.messages?.map((e) => CMsgMLBotTeamInference.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -770,6 +862,13 @@ var tsProtoGlobalThis: any = (() => {
   }
   throw "Unable to locate global object";
 })();
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

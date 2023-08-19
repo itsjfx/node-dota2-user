@@ -187,6 +187,15 @@ export const CMsgClientHeartBeat = {
     const obj: any = {};
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientHeartBeat>): CMsgClientHeartBeat {
+    return CMsgClientHeartBeat.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgClientHeartBeat>): CMsgClientHeartBeat {
+    const message = createBaseCMsgClientHeartBeat();
+    return message;
+  },
 };
 
 function createBaseCMsgClientServerTimestampRequest(): CMsgClientServerTimestampRequest {
@@ -234,6 +243,16 @@ export const CMsgClientServerTimestampRequest = {
     const obj: any = {};
     message.clientRequestTimestamp !== undefined && (obj.clientRequestTimestamp = message.clientRequestTimestamp);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientServerTimestampRequest>): CMsgClientServerTimestampRequest {
+    return CMsgClientServerTimestampRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientServerTimestampRequest>): CMsgClientServerTimestampRequest {
+    const message = createBaseCMsgClientServerTimestampRequest();
+    message.clientRequestTimestamp = object.clientRequestTimestamp ?? "0";
+    return message;
   },
 };
 
@@ -294,6 +313,17 @@ export const CMsgClientServerTimestampResponse = {
     message.clientRequestTimestamp !== undefined && (obj.clientRequestTimestamp = message.clientRequestTimestamp);
     message.serverTimestampMs !== undefined && (obj.serverTimestampMs = message.serverTimestampMs);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientServerTimestampResponse>): CMsgClientServerTimestampResponse {
+    return CMsgClientServerTimestampResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientServerTimestampResponse>): CMsgClientServerTimestampResponse {
+    const message = createBaseCMsgClientServerTimestampResponse();
+    message.clientRequestTimestamp = object.clientRequestTimestamp ?? "0";
+    message.serverTimestampMs = object.serverTimestampMs ?? "0";
+    return message;
   },
 };
 
@@ -391,6 +421,20 @@ export const CMsgClientSecret = {
     message.hmac !== undefined &&
       (obj.hmac = base64FromBytes(message.hmac !== undefined ? message.hmac : Buffer.alloc(0)));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientSecret>): CMsgClientSecret {
+    return CMsgClientSecret.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientSecret>): CMsgClientSecret {
+    const message = createBaseCMsgClientSecret();
+    message.version = object.version ?? 0;
+    message.appid = object.appid ?? 0;
+    message.deviceid = object.deviceid ?? 0;
+    message.nonce = object.nonce ?? "0";
+    message.hmac = object.hmac ?? Buffer.alloc(0);
+    return message;
   },
 };
 
@@ -1145,6 +1189,73 @@ export const CMsgClientLogon = {
       : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientLogon>): CMsgClientLogon {
+    return CMsgClientLogon.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientLogon>): CMsgClientLogon {
+    const message = createBaseCMsgClientLogon();
+    message.protocolVersion = object.protocolVersion ?? 0;
+    message.deprecatedObfustucatedPrivateIp = object.deprecatedObfustucatedPrivateIp ?? 0;
+    message.cellId = object.cellId ?? 0;
+    message.lastSessionId = object.lastSessionId ?? 0;
+    message.clientPackageVersion = object.clientPackageVersion ?? 0;
+    message.clientLanguage = object.clientLanguage ?? "";
+    message.clientOsType = object.clientOsType ?? 0;
+    message.shouldRememberPassword = object.shouldRememberPassword ?? false;
+    message.wineVersion = object.wineVersion ?? "";
+    message.deprecated10 = object.deprecated10 ?? 0;
+    message.obfuscatedPrivateIp = (object.obfuscatedPrivateIp !== undefined && object.obfuscatedPrivateIp !== null)
+      ? CMsgIPAddress.fromPartial(object.obfuscatedPrivateIp)
+      : undefined;
+    message.deprecatedPublicIp = object.deprecatedPublicIp ?? 0;
+    message.qosLevel = object.qosLevel ?? 0;
+    message.clientSuppliedSteamId = object.clientSuppliedSteamId ?? "0";
+    message.publicIp = (object.publicIp !== undefined && object.publicIp !== null)
+      ? CMsgIPAddress.fromPartial(object.publicIp)
+      : undefined;
+    message.machineId = object.machineId ?? Buffer.alloc(0);
+    message.launcherType = object.launcherType ?? 0;
+    message.uiMode = object.uiMode ?? 0;
+    message.chatMode = object.chatMode ?? 0;
+    message.steam2AuthTicket = object.steam2AuthTicket ?? Buffer.alloc(0);
+    message.emailAddress = object.emailAddress ?? "";
+    message.rtime32AccountCreation = object.rtime32AccountCreation ?? 0;
+    message.accountName = object.accountName ?? "";
+    message.password = object.password ?? "";
+    message.gameServerToken = object.gameServerToken ?? "";
+    message.loginKey = object.loginKey ?? "";
+    message.wasConvertedDeprecatedMsg = object.wasConvertedDeprecatedMsg ?? false;
+    message.anonUserTargetAccountName = object.anonUserTargetAccountName ?? "";
+    message.resolvedUserSteamId = object.resolvedUserSteamId ?? "0";
+    message.eresultSentryfile = object.eresultSentryfile ?? 0;
+    message.shaSentryfile = object.shaSentryfile ?? Buffer.alloc(0);
+    message.authCode = object.authCode ?? "";
+    message.otpType = object.otpType ?? 0;
+    message.otpValue = object.otpValue ?? 0;
+    message.otpIdentifier = object.otpIdentifier ?? "";
+    message.steam2TicketRequest = object.steam2TicketRequest ?? false;
+    message.sonyPsnTicket = object.sonyPsnTicket ?? Buffer.alloc(0);
+    message.sonyPsnServiceId = object.sonyPsnServiceId ?? "";
+    message.createNewPsnLinkedAccountIfNeeded = object.createNewPsnLinkedAccountIfNeeded ?? false;
+    message.sonyPsnName = object.sonyPsnName ?? "";
+    message.gameServerAppId = object.gameServerAppId ?? 0;
+    message.steamguardDontRememberComputer = object.steamguardDontRememberComputer ?? false;
+    message.machineName = object.machineName ?? "";
+    message.machineNameUserchosen = object.machineNameUserchosen ?? "";
+    message.countryOverride = object.countryOverride ?? "";
+    message.isSteamBox = object.isSteamBox ?? false;
+    message.clientInstanceId = object.clientInstanceId ?? "0";
+    message.twoFactorCode = object.twoFactorCode ?? "";
+    message.supportsRateLimitResponse = object.supportsRateLimitResponse ?? false;
+    message.webLogonNonce = object.webLogonNonce ?? "";
+    message.priorityReason = object.priorityReason ?? 0;
+    message.embeddedClientSecret = (object.embeddedClientSecret !== undefined && object.embeddedClientSecret !== null)
+      ? CMsgClientSecret.fromPartial(object.embeddedClientSecret)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgClientLogonResponse(): CMsgClientLogonResponse {
@@ -1516,6 +1627,41 @@ export const CMsgClientLogonResponse = {
     message.forceClientUpdateCheck !== undefined && (obj.forceClientUpdateCheck = message.forceClientUpdateCheck);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientLogonResponse>): CMsgClientLogonResponse {
+    return CMsgClientLogonResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientLogonResponse>): CMsgClientLogonResponse {
+    const message = createBaseCMsgClientLogonResponse();
+    message.eresult = object.eresult ?? 0;
+    message.outOfGameHeartbeatSeconds = object.outOfGameHeartbeatSeconds ?? 0;
+    message.inGameHeartbeatSeconds = object.inGameHeartbeatSeconds ?? 0;
+    message.deprecatedPublicIp = object.deprecatedPublicIp ?? 0;
+    message.rtime32ServerTime = object.rtime32ServerTime ?? 0;
+    message.accountFlags = object.accountFlags ?? 0;
+    message.cellId = object.cellId ?? 0;
+    message.emailDomain = object.emailDomain ?? "";
+    message.steam2Ticket = object.steam2Ticket ?? Buffer.alloc(0);
+    message.eresultExtended = object.eresultExtended ?? 0;
+    message.webapiAuthenticateUserNonce = object.webapiAuthenticateUserNonce ?? "";
+    message.cellIdPingThreshold = object.cellIdPingThreshold ?? 0;
+    message.usePics = object.usePics ?? false;
+    message.vanityUrl = object.vanityUrl ?? "";
+    message.publicIp = (object.publicIp !== undefined && object.publicIp !== null)
+      ? CMsgIPAddress.fromPartial(object.publicIp)
+      : undefined;
+    message.clientSuppliedSteamid = object.clientSuppliedSteamid ?? "0";
+    message.ipCountryCode = object.ipCountryCode ?? "";
+    message.parentalSettings = object.parentalSettings ?? Buffer.alloc(0);
+    message.parentalSettingSignature = object.parentalSettingSignature ?? Buffer.alloc(0);
+    message.countLoginfailuresToMigrate = object.countLoginfailuresToMigrate ?? 0;
+    message.countDisconnectsToMigrate = object.countDisconnectsToMigrate ?? 0;
+    message.ogsDataReportTimeWindow = object.ogsDataReportTimeWindow ?? 0;
+    message.clientInstanceId = object.clientInstanceId ?? "0";
+    message.forceClientUpdateCheck = object.forceClientUpdateCheck ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgClientRequestWebAPIAuthenticateUserNonce(): CMsgClientRequestWebAPIAuthenticateUserNonce {
@@ -1561,6 +1707,20 @@ export const CMsgClientRequestWebAPIAuthenticateUserNonce = {
     const obj: any = {};
     message.tokenType !== undefined && (obj.tokenType = Math.round(message.tokenType));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientRequestWebAPIAuthenticateUserNonce>,
+  ): CMsgClientRequestWebAPIAuthenticateUserNonce {
+    return CMsgClientRequestWebAPIAuthenticateUserNonce.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientRequestWebAPIAuthenticateUserNonce>,
+  ): CMsgClientRequestWebAPIAuthenticateUserNonce {
+    const message = createBaseCMsgClientRequestWebAPIAuthenticateUserNonce();
+    message.tokenType = object.tokenType ?? 0;
+    return message;
   },
 };
 
@@ -1640,6 +1800,22 @@ export const CMsgClientRequestWebAPIAuthenticateUserNonceResponse = {
     message.tokenType !== undefined && (obj.tokenType = Math.round(message.tokenType));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientRequestWebAPIAuthenticateUserNonceResponse>,
+  ): CMsgClientRequestWebAPIAuthenticateUserNonceResponse {
+    return CMsgClientRequestWebAPIAuthenticateUserNonceResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientRequestWebAPIAuthenticateUserNonceResponse>,
+  ): CMsgClientRequestWebAPIAuthenticateUserNonceResponse {
+    const message = createBaseCMsgClientRequestWebAPIAuthenticateUserNonceResponse();
+    message.eresult = object.eresult ?? 0;
+    message.webapiAuthenticateUserNonce = object.webapiAuthenticateUserNonce ?? "";
+    message.tokenType = object.tokenType ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientLogOff(): CMsgClientLogOff {
@@ -1674,6 +1850,15 @@ export const CMsgClientLogOff = {
   toJSON(_: CMsgClientLogOff): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientLogOff>): CMsgClientLogOff {
+    return CMsgClientLogOff.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgClientLogOff>): CMsgClientLogOff {
+    const message = createBaseCMsgClientLogOff();
+    return message;
   },
 };
 
@@ -1720,6 +1905,16 @@ export const CMsgClientLoggedOff = {
     const obj: any = {};
     message.eresult !== undefined && (obj.eresult = Math.round(message.eresult));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientLoggedOff>): CMsgClientLoggedOff {
+    return CMsgClientLoggedOff.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientLoggedOff>): CMsgClientLoggedOff {
+    const message = createBaseCMsgClientLoggedOff();
+    message.eresult = object.eresult ?? 0;
+    return message;
   },
 };
 
@@ -1781,6 +1976,17 @@ export const CMsgClientNewLoginKey = {
     message.loginKey !== undefined && (obj.loginKey = message.loginKey);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientNewLoginKey>): CMsgClientNewLoginKey {
+    return CMsgClientNewLoginKey.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientNewLoginKey>): CMsgClientNewLoginKey {
+    const message = createBaseCMsgClientNewLoginKey();
+    message.uniqueId = object.uniqueId ?? 0;
+    message.loginKey = object.loginKey ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgClientNewLoginKeyAccepted(): CMsgClientNewLoginKeyAccepted {
@@ -1826,6 +2032,16 @@ export const CMsgClientNewLoginKeyAccepted = {
     const obj: any = {};
     message.uniqueId !== undefined && (obj.uniqueId = Math.round(message.uniqueId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientNewLoginKeyAccepted>): CMsgClientNewLoginKeyAccepted {
+    return CMsgClientNewLoginKeyAccepted.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientNewLoginKeyAccepted>): CMsgClientNewLoginKeyAccepted {
+    const message = createBaseCMsgClientNewLoginKeyAccepted();
+    message.uniqueId = object.uniqueId ?? 0;
+    return message;
   },
 };
 
@@ -2026,6 +2242,27 @@ export const CMsgClientAccountInfo = {
     message.isPhoneNeedingReverify !== undefined && (obj.isPhoneNeedingReverify = message.isPhoneNeedingReverify);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientAccountInfo>): CMsgClientAccountInfo {
+    return CMsgClientAccountInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientAccountInfo>): CMsgClientAccountInfo {
+    const message = createBaseCMsgClientAccountInfo();
+    message.personaName = object.personaName ?? "";
+    message.ipCountry = object.ipCountry ?? "";
+    message.countAuthedComputers = object.countAuthedComputers ?? 0;
+    message.accountFlags = object.accountFlags ?? 0;
+    message.facebookId = object.facebookId ?? "0";
+    message.facebookName = object.facebookName ?? "";
+    message.steamguardNotifyNewmachines = object.steamguardNotifyNewmachines ?? false;
+    message.steamguardMachineNameUserChosen = object.steamguardMachineNameUserChosen ?? "";
+    message.isPhoneVerified = object.isPhoneVerified ?? false;
+    message.twoFactorState = object.twoFactorState ?? 0;
+    message.isPhoneIdentifying = object.isPhoneIdentifying ?? false;
+    message.isPhoneNeedingReverify = object.isPhoneNeedingReverify ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgClientChallengeRequest(): CMsgClientChallengeRequest {
@@ -2071,6 +2308,16 @@ export const CMsgClientChallengeRequest = {
     const obj: any = {};
     message.steamid !== undefined && (obj.steamid = message.steamid);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientChallengeRequest>): CMsgClientChallengeRequest {
+    return CMsgClientChallengeRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientChallengeRequest>): CMsgClientChallengeRequest {
+    const message = createBaseCMsgClientChallengeRequest();
+    message.steamid = object.steamid ?? "0";
+    return message;
   },
 };
 
@@ -2118,6 +2365,16 @@ export const CMsgClientChallengeResponse = {
     message.challenge !== undefined && (obj.challenge = message.challenge);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientChallengeResponse>): CMsgClientChallengeResponse {
+    return CMsgClientChallengeResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientChallengeResponse>): CMsgClientChallengeResponse {
+    const message = createBaseCMsgClientChallengeResponse();
+    message.challenge = object.challenge ?? "0";
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -2163,6 +2420,13 @@ function base64FromBytes(arr: Uint8Array): string {
     return tsProtoGlobalThis.btoa(bin.join(""));
   }
 }
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

@@ -439,6 +439,21 @@ export const CDOTAMatchMetadataFile = {
       ));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAMatchMetadataFile>): CDOTAMatchMetadataFile {
+    return CDOTAMatchMetadataFile.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAMatchMetadataFile>): CDOTAMatchMetadataFile {
+    const message = createBaseCDOTAMatchMetadataFile();
+    message.version = object.version ?? 0;
+    message.matchId = object.matchId ?? "0";
+    message.metadata = (object.metadata !== undefined && object.metadata !== null)
+      ? CDOTAMatchMetadata.fromPartial(object.metadata)
+      : undefined;
+    message.privateMetadata = object.privateMetadata ?? Buffer.alloc(0);
+    return message;
+  },
 };
 
 function createBaseCDOTAMatchMetadata(): CDOTAMatchMetadata {
@@ -640,6 +655,30 @@ export const CDOTAMatchMetadata = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAMatchMetadata>): CDOTAMatchMetadata {
+    return CDOTAMatchMetadata.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAMatchMetadata>): CDOTAMatchMetadata {
+    const message = createBaseCDOTAMatchMetadata();
+    message.teams = object.teams?.map((e) => CDOTAMatchMetadata_Team.fromPartial(e)) || [];
+    message.lobbyId = object.lobbyId ?? "0";
+    message.reportUntilTime = object.reportUntilTime ?? "0";
+    message.eventGameCustomTable = object.eventGameCustomTable ?? Buffer.alloc(0);
+    message.primaryEventId = object.primaryEventId ?? 0;
+    message.matchmakingStats = (object.matchmakingStats !== undefined && object.matchmakingStats !== null)
+      ? CMsgMatchMatchmakingStats.fromPartial(object.matchmakingStats)
+      : undefined;
+    message.mvpData = (object.mvpData !== undefined && object.mvpData !== null)
+      ? CMvpData.fromPartial(object.mvpData)
+      : undefined;
+    message.guildChallengeProgress =
+      object.guildChallengeProgress?.map((e) => CDOTAMatchMetadata_GuildChallengeProgress.fromPartial(e)) || [];
+    message.customPostGameTable = object.customPostGameTable ?? Buffer.alloc(0);
+    message.matchTips = object.matchTips?.map((e) => CDOTAMatchMetadata_Tip.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCDOTAMatchMetadata_EconItem(): CDOTAMatchMetadata_EconItem {
@@ -747,6 +786,20 @@ export const CDOTAMatchMetadata_EconItem = {
       obj.equippedState = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAMatchMetadata_EconItem>): CDOTAMatchMetadata_EconItem {
+    return CDOTAMatchMetadata_EconItem.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAMatchMetadata_EconItem>): CDOTAMatchMetadata_EconItem {
+    const message = createBaseCDOTAMatchMetadata_EconItem();
+    message.defIndex = object.defIndex ?? 0;
+    message.quality = object.quality ?? 0;
+    message.attribute = object.attribute?.map((e) => CSOEconItemAttribute.fromPartial(e)) || [];
+    message.style = object.style ?? 0;
+    message.equippedState = object.equippedState?.map((e) => CSOEconItemEquipped.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -940,6 +993,23 @@ export const CDOTAMatchMetadata_Team = {
     message.cmPenalty !== undefined && (obj.cmPenalty = Math.round(message.cmPenalty));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAMatchMetadata_Team>): CDOTAMatchMetadata_Team {
+    return CDOTAMatchMetadata_Team.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAMatchMetadata_Team>): CDOTAMatchMetadata_Team {
+    const message = createBaseCDOTAMatchMetadata_Team();
+    message.dotaTeam = object.dotaTeam ?? 0;
+    message.players = object.players?.map((e) => CDOTAMatchMetadata_Team_Player.fromPartial(e)) || [];
+    message.graphExperience = object.graphExperience?.map((e) => e) || [];
+    message.graphGoldEarned = object.graphGoldEarned?.map((e) => e) || [];
+    message.graphNetWorth = object.graphNetWorth?.map((e) => e) || [];
+    message.cmFirstPick = object.cmFirstPick ?? false;
+    message.cmCaptainPlayerId = object.cmCaptainPlayerId ?? 0;
+    message.cmPenalty = object.cmPenalty ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAMatchMetadata_Team_PlayerKill(): CDOTAMatchMetadata_Team_PlayerKill {
@@ -1000,6 +1070,17 @@ export const CDOTAMatchMetadata_Team_PlayerKill = {
     message.count !== undefined && (obj.count = Math.round(message.count));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAMatchMetadata_Team_PlayerKill>): CDOTAMatchMetadata_Team_PlayerKill {
+    return CDOTAMatchMetadata_Team_PlayerKill.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAMatchMetadata_Team_PlayerKill>): CDOTAMatchMetadata_Team_PlayerKill {
+    const message = createBaseCDOTAMatchMetadata_Team_PlayerKill();
+    message.victimSlot = object.victimSlot ?? 0;
+    message.count = object.count ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAMatchMetadata_Team_ItemPurchase(): CDOTAMatchMetadata_Team_ItemPurchase {
@@ -1059,6 +1140,17 @@ export const CDOTAMatchMetadata_Team_ItemPurchase = {
     message.itemId !== undefined && (obj.itemId = Math.round(message.itemId));
     message.purchaseTime !== undefined && (obj.purchaseTime = Math.round(message.purchaseTime));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAMatchMetadata_Team_ItemPurchase>): CDOTAMatchMetadata_Team_ItemPurchase {
+    return CDOTAMatchMetadata_Team_ItemPurchase.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAMatchMetadata_Team_ItemPurchase>): CDOTAMatchMetadata_Team_ItemPurchase {
+    const message = createBaseCDOTAMatchMetadata_Team_ItemPurchase();
+    message.itemId = object.itemId ?? 0;
+    message.purchaseTime = object.purchaseTime ?? 0;
+    return message;
   },
 };
 
@@ -1222,6 +1314,25 @@ export const CDOTAMatchMetadata_Team_InventorySnapshot = {
     message.neutralItemId !== undefined && (obj.neutralItemId = Math.round(message.neutralItemId));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAMatchMetadata_Team_InventorySnapshot>): CDOTAMatchMetadata_Team_InventorySnapshot {
+    return CDOTAMatchMetadata_Team_InventorySnapshot.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CDOTAMatchMetadata_Team_InventorySnapshot>,
+  ): CDOTAMatchMetadata_Team_InventorySnapshot {
+    const message = createBaseCDOTAMatchMetadata_Team_InventorySnapshot();
+    message.itemId = object.itemId?.map((e) => e) || [];
+    message.gameTime = object.gameTime ?? 0;
+    message.kills = object.kills ?? 0;
+    message.deaths = object.deaths ?? 0;
+    message.assists = object.assists ?? 0;
+    message.level = object.level ?? 0;
+    message.backpackItemId = object.backpackItemId?.map((e) => e) || [];
+    message.neutralItemId = object.neutralItemId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAMatchMetadata_Team_AutoStyleCriteria(): CDOTAMatchMetadata_Team_AutoStyleCriteria {
@@ -1281,6 +1392,19 @@ export const CDOTAMatchMetadata_Team_AutoStyleCriteria = {
     message.nameToken !== undefined && (obj.nameToken = Math.round(message.nameToken));
     message.value !== undefined && (obj.value = message.value);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAMatchMetadata_Team_AutoStyleCriteria>): CDOTAMatchMetadata_Team_AutoStyleCriteria {
+    return CDOTAMatchMetadata_Team_AutoStyleCriteria.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CDOTAMatchMetadata_Team_AutoStyleCriteria>,
+  ): CDOTAMatchMetadata_Team_AutoStyleCriteria {
+    const message = createBaseCDOTAMatchMetadata_Team_AutoStyleCriteria();
+    message.nameToken = object.nameToken ?? 0;
+    message.value = object.value ?? 0;
+    return message;
   },
 };
 
@@ -1410,6 +1534,24 @@ export const CDOTAMatchMetadata_Team_StrangeGemProgress = {
     message.ownerItemId !== undefined && (obj.ownerItemId = message.ownerItemId);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAMatchMetadata_Team_StrangeGemProgress>): CDOTAMatchMetadata_Team_StrangeGemProgress {
+    return CDOTAMatchMetadata_Team_StrangeGemProgress.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CDOTAMatchMetadata_Team_StrangeGemProgress>,
+  ): CDOTAMatchMetadata_Team_StrangeGemProgress {
+    const message = createBaseCDOTAMatchMetadata_Team_StrangeGemProgress();
+    message.killEaterType = object.killEaterType ?? 0;
+    message.gemItemDefIndex = object.gemItemDefIndex ?? 0;
+    message.requiredHeroId = object.requiredHeroId ?? 0;
+    message.startingValue = object.startingValue ?? 0;
+    message.endingValue = object.endingValue ?? 0;
+    message.ownerItemDefIndex = object.ownerItemDefIndex ?? 0;
+    message.ownerItemId = object.ownerItemId ?? "0";
+    return message;
+  },
 };
 
 function createBaseCDOTAMatchMetadata_Team_VictoryPrediction(): CDOTAMatchMetadata_Team_VictoryPrediction {
@@ -1493,6 +1635,21 @@ export const CDOTAMatchMetadata_Team_VictoryPrediction = {
     message.startingValue !== undefined && (obj.startingValue = Math.round(message.startingValue));
     message.isVictory !== undefined && (obj.isVictory = message.isVictory);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAMatchMetadata_Team_VictoryPrediction>): CDOTAMatchMetadata_Team_VictoryPrediction {
+    return CDOTAMatchMetadata_Team_VictoryPrediction.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CDOTAMatchMetadata_Team_VictoryPrediction>,
+  ): CDOTAMatchMetadata_Team_VictoryPrediction {
+    const message = createBaseCDOTAMatchMetadata_Team_VictoryPrediction();
+    message.itemId = object.itemId ?? "0";
+    message.itemDefIndex = object.itemDefIndex ?? 0;
+    message.startingValue = object.startingValue ?? 0;
+    message.isVictory = object.isVictory ?? false;
+    return message;
   },
 };
 
@@ -1578,6 +1735,19 @@ export const CDOTAMatchMetadata_Team_SubChallenge = {
     message.completed !== undefined && (obj.completed = message.completed);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAMatchMetadata_Team_SubChallenge>): CDOTAMatchMetadata_Team_SubChallenge {
+    return CDOTAMatchMetadata_Team_SubChallenge.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAMatchMetadata_Team_SubChallenge>): CDOTAMatchMetadata_Team_SubChallenge {
+    const message = createBaseCDOTAMatchMetadata_Team_SubChallenge();
+    message.slotId = object.slotId ?? 0;
+    message.startValue = object.startValue ?? 0;
+    message.endValue = object.endValue ?? 0;
+    message.completed = object.completed ?? false;
+    return message;
+  },
 };
 
 function createBaseCDOTAMatchMetadata_Team_CavernChallengeResult(): CDOTAMatchMetadata_Team_CavernChallengeResult {
@@ -1637,6 +1807,21 @@ export const CDOTAMatchMetadata_Team_CavernChallengeResult = {
     message.completedPathId !== undefined && (obj.completedPathId = Math.round(message.completedPathId));
     message.claimedRoomId !== undefined && (obj.claimedRoomId = Math.round(message.claimedRoomId));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CDOTAMatchMetadata_Team_CavernChallengeResult>,
+  ): CDOTAMatchMetadata_Team_CavernChallengeResult {
+    return CDOTAMatchMetadata_Team_CavernChallengeResult.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CDOTAMatchMetadata_Team_CavernChallengeResult>,
+  ): CDOTAMatchMetadata_Team_CavernChallengeResult {
+    const message = createBaseCDOTAMatchMetadata_Team_CavernChallengeResult();
+    message.completedPathId = object.completedPathId ?? 0;
+    message.claimedRoomId = object.claimedRoomId ?? 0;
+    return message;
   },
 };
 
@@ -1734,6 +1919,20 @@ export const CDOTAMatchMetadata_Team_ActionGrant = {
     message.auditData !== undefined && (obj.auditData = message.auditData);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAMatchMetadata_Team_ActionGrant>): CDOTAMatchMetadata_Team_ActionGrant {
+    return CDOTAMatchMetadata_Team_ActionGrant.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAMatchMetadata_Team_ActionGrant>): CDOTAMatchMetadata_Team_ActionGrant {
+    const message = createBaseCDOTAMatchMetadata_Team_ActionGrant();
+    message.actionId = object.actionId ?? 0;
+    message.quantity = object.quantity ?? 0;
+    message.audit = object.audit ?? 0;
+    message.requiresWin = object.requiresWin ?? false;
+    message.auditData = object.auditData ?? "0";
+    return message;
+  },
 };
 
 function createBaseCDOTAMatchMetadata_Team_CandyGrant(): CDOTAMatchMetadata_Team_CandyGrant {
@@ -1793,6 +1992,17 @@ export const CDOTAMatchMetadata_Team_CandyGrant = {
     message.points !== undefined && (obj.points = Math.round(message.points));
     message.reason !== undefined && (obj.reason = Math.round(message.reason));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAMatchMetadata_Team_CandyGrant>): CDOTAMatchMetadata_Team_CandyGrant {
+    return CDOTAMatchMetadata_Team_CandyGrant.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAMatchMetadata_Team_CandyGrant>): CDOTAMatchMetadata_Team_CandyGrant {
+    const message = createBaseCDOTAMatchMetadata_Team_CandyGrant();
+    message.points = object.points ?? 0;
+    message.reason = object.reason ?? 0;
+    return message;
   },
 };
 
@@ -1865,6 +2075,22 @@ export const CDOTAMatchMetadata_Team_PeriodicResourceData = {
     message.remaining !== undefined && (obj.remaining = Math.round(message.remaining));
     message.max !== undefined && (obj.max = Math.round(message.max));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CDOTAMatchMetadata_Team_PeriodicResourceData>,
+  ): CDOTAMatchMetadata_Team_PeriodicResourceData {
+    return CDOTAMatchMetadata_Team_PeriodicResourceData.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CDOTAMatchMetadata_Team_PeriodicResourceData>,
+  ): CDOTAMatchMetadata_Team_PeriodicResourceData {
+    const message = createBaseCDOTAMatchMetadata_Team_PeriodicResourceData();
+    message.periodicResourceId = object.periodicResourceId ?? 0;
+    message.remaining = object.remaining ?? 0;
+    message.max = object.max ?? 0;
+    return message;
   },
 };
 
@@ -2281,6 +2507,45 @@ export const CDOTAMatchMetadata_Team_EventData = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAMatchMetadata_Team_EventData>): CDOTAMatchMetadata_Team_EventData {
+    return CDOTAMatchMetadata_Team_EventData.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAMatchMetadata_Team_EventData>): CDOTAMatchMetadata_Team_EventData {
+    const message = createBaseCDOTAMatchMetadata_Team_EventData();
+    message.eventId = object.eventId ?? 0;
+    message.eventPoints = object.eventPoints ?? 0;
+    message.challengeInstanceId = object.challengeInstanceId ?? 0;
+    message.challengeQuestId = object.challengeQuestId ?? 0;
+    message.challengeQuestChallengeId = object.challengeQuestChallengeId ?? 0;
+    message.challengeCompleted = object.challengeCompleted ?? false;
+    message.challengeRankCompleted = object.challengeRankCompleted ?? 0;
+    message.challengeRankPreviouslyCompleted = object.challengeRankPreviouslyCompleted ?? 0;
+    message.eventOwned = object.eventOwned ?? false;
+    message.subChallengesWithProgress =
+      object.subChallengesWithProgress?.map((e) => CDOTAMatchMetadata_Team_SubChallenge.fromPartial(e)) || [];
+    message.wagerWinnings = object.wagerWinnings ?? 0;
+    message.cavernChallengeActive = object.cavernChallengeActive ?? false;
+    message.cavernChallengeWinnings = object.cavernChallengeWinnings ?? 0;
+    message.amountWagered = object.amountWagered ?? 0;
+    message.periodicPointAdjustments = object.periodicPointAdjustments ?? 0;
+    message.cavernChallengeMapResults =
+      object.cavernChallengeMapResults?.map((e) => CDOTAMatchMetadata_Team_CavernChallengeResult.fromPartial(e)) || [];
+    message.cavernChallengePlusShardWinnings = object.cavernChallengePlusShardWinnings ?? 0;
+    message.actionsGranted = object.actionsGranted?.map((e) => CDOTAMatchMetadata_Team_ActionGrant.fromPartial(e)) ||
+      [];
+    message.cavernCrawlMapVariant = object.cavernCrawlMapVariant ?? 0;
+    message.teamWagerBonusPct = object.teamWagerBonusPct ?? 0;
+    message.wagerStreakPct = object.wagerStreakPct ?? 0;
+    message.candyPointsGranted =
+      object.candyPointsGranted?.map((e) => CDOTAMatchMetadata_Team_CandyGrant.fromPartial(e)) || [];
+    message.activeSeasonId = object.activeSeasonId ?? 0;
+    message.cavernCrawlHalfCredit = object.cavernCrawlHalfCredit ?? false;
+    message.periodicResources =
+      object.periodicResources?.map((e) => CDOTAMatchMetadata_Team_PeriodicResourceData.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCDOTAMatchMetadata_Team_FeaturedGamemodeProgress(): CDOTAMatchMetadata_Team_FeaturedGamemodeProgress {
@@ -2355,6 +2620,22 @@ export const CDOTAMatchMetadata_Team_FeaturedGamemodeProgress = {
     message.endValue !== undefined && (obj.endValue = Math.round(message.endValue));
     message.maxValue !== undefined && (obj.maxValue = Math.round(message.maxValue));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CDOTAMatchMetadata_Team_FeaturedGamemodeProgress>,
+  ): CDOTAMatchMetadata_Team_FeaturedGamemodeProgress {
+    return CDOTAMatchMetadata_Team_FeaturedGamemodeProgress.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CDOTAMatchMetadata_Team_FeaturedGamemodeProgress>,
+  ): CDOTAMatchMetadata_Team_FeaturedGamemodeProgress {
+    const message = createBaseCDOTAMatchMetadata_Team_FeaturedGamemodeProgress();
+    message.startValue = object.startValue ?? 0;
+    message.endValue = object.endValue ?? 0;
+    message.maxValue = object.maxValue ?? 0;
+    return message;
   },
 };
 
@@ -3229,6 +3510,75 @@ export const CDOTAMatchMetadata_Team_Player = {
     message.gamePlayerId !== undefined && (obj.gamePlayerId = Math.round(message.gamePlayerId));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAMatchMetadata_Team_Player>): CDOTAMatchMetadata_Team_Player {
+    return CDOTAMatchMetadata_Team_Player.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAMatchMetadata_Team_Player>): CDOTAMatchMetadata_Team_Player {
+    const message = createBaseCDOTAMatchMetadata_Team_Player();
+    message.abilityUpgrades = object.abilityUpgrades?.map((e) => e) || [];
+    message.playerSlot = object.playerSlot ?? 0;
+    message.kills = object.kills?.map((e) => CDOTAMatchMetadata_Team_PlayerKill.fromPartial(e)) || [];
+    message.items = object.items?.map((e) => CDOTAMatchMetadata_Team_ItemPurchase.fromPartial(e)) || [];
+    message.avgKillsX16 = object.avgKillsX16 ?? 0;
+    message.avgDeathsX16 = object.avgDeathsX16 ?? 0;
+    message.avgAssistsX16 = object.avgAssistsX16 ?? 0;
+    message.avgGpmX16 = object.avgGpmX16 ?? 0;
+    message.avgXpmX16 = object.avgXpmX16 ?? 0;
+    message.bestKillsX16 = object.bestKillsX16 ?? 0;
+    message.bestAssistsX16 = object.bestAssistsX16 ?? 0;
+    message.bestGpmX16 = object.bestGpmX16 ?? 0;
+    message.bestXpmX16 = object.bestXpmX16 ?? 0;
+    message.winStreak = object.winStreak ?? 0;
+    message.bestWinStreak = object.bestWinStreak ?? 0;
+    message.fightScore = object.fightScore ?? 0;
+    message.farmScore = object.farmScore ?? 0;
+    message.supportScore = object.supportScore ?? 0;
+    message.pushScore = object.pushScore ?? 0;
+    message.levelUpTimes = object.levelUpTimes?.map((e) => e) || [];
+    message.graphNetWorth = object.graphNetWorth?.map((e) => e) || [];
+    message.inventorySnapshot =
+      object.inventorySnapshot?.map((e) => CDOTAMatchMetadata_Team_InventorySnapshot.fromPartial(e)) || [];
+    message.avgStatsCalibrated = object.avgStatsCalibrated ?? false;
+    message.autoStyleCriteria =
+      object.autoStyleCriteria?.map((e) => CDOTAMatchMetadata_Team_AutoStyleCriteria.fromPartial(e)) || [];
+    message.eventData = object.eventData?.map((e) => CDOTAMatchMetadata_Team_EventData.fromPartial(e)) || [];
+    message.strangeGemProgress =
+      object.strangeGemProgress?.map((e) => CDOTAMatchMetadata_Team_StrangeGemProgress.fromPartial(e)) || [];
+    message.heroXp = object.heroXp ?? 0;
+    message.campsStacked = object.campsStacked ?? 0;
+    message.victoryPrediction =
+      object.victoryPrediction?.map((e) => CDOTAMatchMetadata_Team_VictoryPrediction.fromPartial(e)) || [];
+    message.laneSelectionFlags = object.laneSelectionFlags ?? 0;
+    message.rampages = object.rampages ?? 0;
+    message.tripleKills = object.tripleKills ?? 0;
+    message.aegisSnatched = object.aegisSnatched ?? 0;
+    message.rapiersPurchased = object.rapiersPurchased ?? 0;
+    message.couriersKilled = object.couriersKilled ?? 0;
+    message.netWorthRank = object.netWorthRank ?? 0;
+    message.supportGoldSpent = object.supportGoldSpent ?? 0;
+    message.observerWardsPlaced = object.observerWardsPlaced ?? 0;
+    message.sentryWardsPlaced = object.sentryWardsPlaced ?? 0;
+    message.wardsDewarded = object.wardsDewarded ?? 0;
+    message.stunDuration = object.stunDuration ?? 0;
+    message.rankMmrBoostType = object.rankMmrBoostType ?? 0;
+    message.contractProgress =
+      object.contractProgress?.map((e) => CDOTAMatchMetadata_Team_Player_ContractProgress.fromPartial(e)) || [];
+    message.guildIds = object.guildIds?.map((e) => e) || [];
+    message.graphHeroDamage = object.graphHeroDamage?.map((e) => e) || [];
+    message.teamNumber = object.teamNumber ?? 0;
+    message.teamSlot = object.teamSlot ?? 0;
+    message.featuredGamemodeProgress =
+      (object.featuredGamemodeProgress !== undefined && object.featuredGamemodeProgress !== null)
+        ? CDOTAMatchMetadata_Team_FeaturedGamemodeProgress.fromPartial(object.featuredGamemodeProgress)
+        : undefined;
+    message.featuredHeroStickerIndex = object.featuredHeroStickerIndex ?? 0;
+    message.featuredHeroStickerQuality = object.featuredHeroStickerQuality ?? 0;
+    message.equippedEconItems = object.equippedEconItems?.map((e) => CDOTAMatchMetadata_EconItem.fromPartial(e)) || [];
+    message.gamePlayerId = object.gamePlayerId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAMatchMetadata_Team_Player_ContractProgress(): CDOTAMatchMetadata_Team_Player_ContractProgress {
@@ -3359,6 +3709,26 @@ export const CDOTAMatchMetadata_Team_Player_ContractProgress = {
     message.contractSlot !== undefined && (obj.contractSlot = Math.round(message.contractSlot));
     message.completed !== undefined && (obj.completed = message.completed);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CDOTAMatchMetadata_Team_Player_ContractProgress>,
+  ): CDOTAMatchMetadata_Team_Player_ContractProgress {
+    return CDOTAMatchMetadata_Team_Player_ContractProgress.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CDOTAMatchMetadata_Team_Player_ContractProgress>,
+  ): CDOTAMatchMetadata_Team_Player_ContractProgress {
+    const message = createBaseCDOTAMatchMetadata_Team_Player_ContractProgress();
+    message.guildId = object.guildId ?? 0;
+    message.eventId = object.eventId ?? 0;
+    message.challengeInstanceId = object.challengeInstanceId ?? 0;
+    message.challengeParameter = object.challengeParameter ?? 0;
+    message.contractStars = object.contractStars ?? 0;
+    message.contractSlot = object.contractSlot ?? 0;
+    message.completed = object.completed ?? false;
+    return message;
   },
 };
 
@@ -3517,6 +3887,28 @@ export const CDOTAMatchMetadata_GuildChallengeProgress = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAMatchMetadata_GuildChallengeProgress>): CDOTAMatchMetadata_GuildChallengeProgress {
+    return CDOTAMatchMetadata_GuildChallengeProgress.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CDOTAMatchMetadata_GuildChallengeProgress>,
+  ): CDOTAMatchMetadata_GuildChallengeProgress {
+    const message = createBaseCDOTAMatchMetadata_GuildChallengeProgress();
+    message.guildId = object.guildId ?? 0;
+    message.eventId = object.eventId ?? 0;
+    message.challengeInstanceId = object.challengeInstanceId ?? 0;
+    message.challengeParameter = object.challengeParameter ?? 0;
+    message.challengeTimestamp = object.challengeTimestamp ?? 0;
+    message.challengeProgressAtStart = object.challengeProgressAtStart ?? 0;
+    message.challengeProgressAccumulated = object.challengeProgressAccumulated ?? 0;
+    message.individualProgress =
+      object.individualProgress?.map((e) =>
+        CDOTAMatchMetadata_GuildChallengeProgress_IndividualProgress.fromPartial(e)
+      ) || [];
+    return message;
+  },
 };
 
 function createBaseCDOTAMatchMetadata_GuildChallengeProgress_IndividualProgress(): CDOTAMatchMetadata_GuildChallengeProgress_IndividualProgress {
@@ -3582,6 +3974,21 @@ export const CDOTAMatchMetadata_GuildChallengeProgress_IndividualProgress = {
     message.progress !== undefined && (obj.progress = Math.round(message.progress));
     message.playerSlot !== undefined && (obj.playerSlot = Math.round(message.playerSlot));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CDOTAMatchMetadata_GuildChallengeProgress_IndividualProgress>,
+  ): CDOTAMatchMetadata_GuildChallengeProgress_IndividualProgress {
+    return CDOTAMatchMetadata_GuildChallengeProgress_IndividualProgress.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CDOTAMatchMetadata_GuildChallengeProgress_IndividualProgress>,
+  ): CDOTAMatchMetadata_GuildChallengeProgress_IndividualProgress {
+    const message = createBaseCDOTAMatchMetadata_GuildChallengeProgress_IndividualProgress();
+    message.progress = object.progress ?? 0;
+    message.playerSlot = object.playerSlot ?? 0;
+    return message;
   },
 };
 
@@ -3666,6 +4073,19 @@ export const CDOTAMatchMetadata_Tip = {
     message.tipAmount !== undefined && (obj.tipAmount = Math.round(message.tipAmount));
     message.eventId !== undefined && (obj.eventId = eEventToJSON(message.eventId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAMatchMetadata_Tip>): CDOTAMatchMetadata_Tip {
+    return CDOTAMatchMetadata_Tip.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAMatchMetadata_Tip>): CDOTAMatchMetadata_Tip {
+    const message = createBaseCDOTAMatchMetadata_Tip();
+    message.sourcePlayerSlot = object.sourcePlayerSlot ?? 0;
+    message.targetPlayerSlot = object.targetPlayerSlot ?? 0;
+    message.tipAmount = object.tipAmount ?? 0;
+    message.eventId = object.eventId ?? 0;
+    return message;
   },
 };
 
@@ -3768,6 +4188,18 @@ export const CDOTAMatchPrivateMetadata = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAMatchPrivateMetadata>): CDOTAMatchPrivateMetadata {
+    return CDOTAMatchPrivateMetadata.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAMatchPrivateMetadata>): CDOTAMatchPrivateMetadata {
+    const message = createBaseCDOTAMatchPrivateMetadata();
+    message.teams = object.teams?.map((e) => CDOTAMatchPrivateMetadata_Team.fromPartial(e)) || [];
+    message.graphWinProbability = object.graphWinProbability?.map((e) => e) || [];
+    message.stringNames = object.stringNames?.map((e) => CDOTAMatchPrivateMetadata_StringName.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCDOTAMatchPrivateMetadata_StringName(): CDOTAMatchPrivateMetadata_StringName {
@@ -3824,6 +4256,17 @@ export const CDOTAMatchPrivateMetadata_StringName = {
     message.id !== undefined && (obj.id = Math.round(message.id));
     message.name !== undefined && (obj.name = message.name);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAMatchPrivateMetadata_StringName>): CDOTAMatchPrivateMetadata_StringName {
+    return CDOTAMatchPrivateMetadata_StringName.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAMatchPrivateMetadata_StringName>): CDOTAMatchPrivateMetadata_StringName {
+    const message = createBaseCDOTAMatchPrivateMetadata_StringName();
+    message.id = object.id ?? 0;
+    message.name = object.name ?? "";
+    return message;
   },
 };
 
@@ -3908,6 +4351,18 @@ export const CDOTAMatchPrivateMetadata_Team = {
       obj.buildings = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAMatchPrivateMetadata_Team>): CDOTAMatchPrivateMetadata_Team {
+    return CDOTAMatchPrivateMetadata_Team.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAMatchPrivateMetadata_Team>): CDOTAMatchPrivateMetadata_Team {
+    const message = createBaseCDOTAMatchPrivateMetadata_Team();
+    message.dotaTeam = object.dotaTeam ?? 0;
+    message.players = object.players?.map((e) => CDOTAMatchPrivateMetadata_Team_Player.fromPartial(e)) || [];
+    message.buildings = object.buildings?.map((e) => CDOTAMatchPrivateMetadata_Team_Building.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -4239,6 +4694,35 @@ export const CDOTAMatchPrivateMetadata_Team_Player = {
     message.teamSlot !== undefined && (obj.teamSlot = Math.round(message.teamSlot));
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAMatchPrivateMetadata_Team_Player>): CDOTAMatchPrivateMetadata_Team_Player {
+    return CDOTAMatchPrivateMetadata_Team_Player.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAMatchPrivateMetadata_Team_Player>): CDOTAMatchPrivateMetadata_Team_Player {
+    const message = createBaseCDOTAMatchPrivateMetadata_Team_Player();
+    message.playerSlot = object.playerSlot ?? 0;
+    message.positionStream = object.positionStream ?? Buffer.alloc(0);
+    message.combatSegments =
+      object.combatSegments?.map((e) => CDOTAMatchPrivateMetadata_Team_Player_CombatSegment.fromPartial(e)) || [];
+    message.damageUnitNames = object.damageUnitNames?.map((e) => e) || [];
+    message.buffRecords =
+      object.buffRecords?.map((e) => CDOTAMatchPrivateMetadata_Team_Player_BuffRecord.fromPartial(e)) || [];
+    message.graphKills = object.graphKills?.map((e) => e) || [];
+    message.graphDeaths = object.graphDeaths?.map((e) => e) || [];
+    message.graphAssists = object.graphAssists?.map((e) => e) || [];
+    message.graphLasthits = object.graphLasthits?.map((e) => e) || [];
+    message.graphDenies = object.graphDenies?.map((e) => e) || [];
+    message.goldReceived = (object.goldReceived !== undefined && object.goldReceived !== null)
+      ? CDOTAMatchPrivateMetadata_Team_Player_GoldReceived.fromPartial(object.goldReceived)
+      : undefined;
+    message.xpReceived = (object.xpReceived !== undefined && object.xpReceived !== null)
+      ? CDOTAMatchPrivateMetadata_Team_Player_XPReceived.fromPartial(object.xpReceived)
+      : undefined;
+    message.teamNumber = object.teamNumber ?? 0;
+    message.teamSlot = object.teamSlot ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAMatchPrivateMetadata_Team_Player_CombatSegment(): CDOTAMatchPrivateMetadata_Team_Player_CombatSegment {
@@ -4339,6 +4823,28 @@ export const CDOTAMatchPrivateMetadata_Team_Player_CombatSegment = {
     }
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CDOTAMatchPrivateMetadata_Team_Player_CombatSegment>,
+  ): CDOTAMatchPrivateMetadata_Team_Player_CombatSegment {
+    return CDOTAMatchPrivateMetadata_Team_Player_CombatSegment.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CDOTAMatchPrivateMetadata_Team_Player_CombatSegment>,
+  ): CDOTAMatchPrivateMetadata_Team_Player_CombatSegment {
+    const message = createBaseCDOTAMatchPrivateMetadata_Team_Player_CombatSegment();
+    message.gameTime = object.gameTime ?? 0;
+    message.damageByAbility =
+      object.damageByAbility?.map((e) =>
+        CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility.fromPartial(e)
+      ) || [];
+    message.healingByAbility =
+      object.healingByAbility?.map((e) =>
+        CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbility.fromPartial(e)
+      ) || [];
+    return message;
+  },
 };
 
 function createBaseCDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility(): CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility {
@@ -4435,6 +4941,25 @@ export const CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility
     }
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility>,
+  ): CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility {
+    return CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility>,
+  ): CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility {
+    const message = createBaseCDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility();
+    message.sourceUnitIndex = object.sourceUnitIndex ?? 0;
+    message.abilityId = object.abilityId ?? 0;
+    message.byHeroTargets =
+      object.byHeroTargets?.map((e) =>
+        CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility_ByHeroTarget.fromPartial(e)
+      ) || [];
+    return message;
+  },
 };
 
 function createBaseCDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility_ByHeroTarget(): CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility_ByHeroTarget {
@@ -4500,6 +5025,21 @@ export const CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility
     message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
     message.damage !== undefined && (obj.damage = Math.round(message.damage));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility_ByHeroTarget>,
+  ): CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility_ByHeroTarget {
+    return CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility_ByHeroTarget.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility_ByHeroTarget>,
+  ): CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility_ByHeroTarget {
+    const message = createBaseCDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility_ByHeroTarget();
+    message.heroId = object.heroId ?? 0;
+    message.damage = object.damage ?? 0;
+    return message;
   },
 };
 
@@ -4597,6 +5137,25 @@ export const CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbilit
     }
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbility>,
+  ): CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbility {
+    return CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbility.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbility>,
+  ): CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbility {
+    const message = createBaseCDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbility();
+    message.sourceUnitIndex = object.sourceUnitIndex ?? 0;
+    message.abilityId = object.abilityId ?? 0;
+    message.byHeroTargets =
+      object.byHeroTargets?.map((e) =>
+        CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbility_ByHeroTarget.fromPartial(e)
+      ) || [];
+    return message;
+  },
 };
 
 function createBaseCDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbility_ByHeroTarget(): CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbility_ByHeroTarget {
@@ -4662,6 +5221,21 @@ export const CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbilit
     message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
     message.healing !== undefined && (obj.healing = Math.round(message.healing));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbility_ByHeroTarget>,
+  ): CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbility_ByHeroTarget {
+    return CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbility_ByHeroTarget.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbility_ByHeroTarget>,
+  ): CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbility_ByHeroTarget {
+    const message = createBaseCDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbility_ByHeroTarget();
+    message.heroId = object.heroId ?? 0;
+    message.healing = object.healing ?? 0;
+    return message;
   },
 };
 
@@ -4750,6 +5324,24 @@ export const CDOTAMatchPrivateMetadata_Team_Player_BuffRecord = {
     }
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CDOTAMatchPrivateMetadata_Team_Player_BuffRecord>,
+  ): CDOTAMatchPrivateMetadata_Team_Player_BuffRecord {
+    return CDOTAMatchPrivateMetadata_Team_Player_BuffRecord.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CDOTAMatchPrivateMetadata_Team_Player_BuffRecord>,
+  ): CDOTAMatchPrivateMetadata_Team_Player_BuffRecord {
+    const message = createBaseCDOTAMatchPrivateMetadata_Team_Player_BuffRecord();
+    message.buffAbilityId = object.buffAbilityId ?? 0;
+    message.buffModifierName = object.buffModifierName ?? "";
+    message.byHeroTargets =
+      object.byHeroTargets?.map((e) => CDOTAMatchPrivateMetadata_Team_Player_BuffRecord_ByHeroTarget.fromPartial(e)) ||
+      [];
+    return message;
+  },
 };
 
 function createBaseCDOTAMatchPrivateMetadata_Team_Player_BuffRecord_ByHeroTarget(): CDOTAMatchPrivateMetadata_Team_Player_BuffRecord_ByHeroTarget {
@@ -4827,6 +5419,22 @@ export const CDOTAMatchPrivateMetadata_Team_Player_BuffRecord_ByHeroTarget = {
     message.elapsedDuration !== undefined && (obj.elapsedDuration = message.elapsedDuration);
     message.isHidden !== undefined && (obj.isHidden = message.isHidden);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CDOTAMatchPrivateMetadata_Team_Player_BuffRecord_ByHeroTarget>,
+  ): CDOTAMatchPrivateMetadata_Team_Player_BuffRecord_ByHeroTarget {
+    return CDOTAMatchPrivateMetadata_Team_Player_BuffRecord_ByHeroTarget.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CDOTAMatchPrivateMetadata_Team_Player_BuffRecord_ByHeroTarget>,
+  ): CDOTAMatchPrivateMetadata_Team_Player_BuffRecord_ByHeroTarget {
+    const message = createBaseCDOTAMatchPrivateMetadata_Team_Player_BuffRecord_ByHeroTarget();
+    message.heroId = object.heroId ?? 0;
+    message.elapsedDuration = object.elapsedDuration ?? 0;
+    message.isHidden = object.isHidden ?? false;
+    return message;
   },
 };
 
@@ -4963,6 +5571,27 @@ export const CDOTAMatchPrivateMetadata_Team_Player_GoldReceived = {
     message.other !== undefined && (obj.other = Math.round(message.other));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CDOTAMatchPrivateMetadata_Team_Player_GoldReceived>,
+  ): CDOTAMatchPrivateMetadata_Team_Player_GoldReceived {
+    return CDOTAMatchPrivateMetadata_Team_Player_GoldReceived.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CDOTAMatchPrivateMetadata_Team_Player_GoldReceived>,
+  ): CDOTAMatchPrivateMetadata_Team_Player_GoldReceived {
+    const message = createBaseCDOTAMatchPrivateMetadata_Team_Player_GoldReceived();
+    message.creep = object.creep ?? 0;
+    message.heroes = object.heroes ?? 0;
+    message.bountyRunes = object.bountyRunes ?? 0;
+    message.passive = object.passive ?? 0;
+    message.buildings = object.buildings ?? 0;
+    message.abilities = object.abilities ?? 0;
+    message.wards = object.wards ?? 0;
+    message.other = object.other ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAMatchPrivateMetadata_Team_Player_XPReceived(): CDOTAMatchPrivateMetadata_Team_Player_XPReceived {
@@ -5074,6 +5703,25 @@ export const CDOTAMatchPrivateMetadata_Team_Player_XPReceived = {
     message.other !== undefined && (obj.other = Math.round(message.other));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CDOTAMatchPrivateMetadata_Team_Player_XPReceived>,
+  ): CDOTAMatchPrivateMetadata_Team_Player_XPReceived {
+    return CDOTAMatchPrivateMetadata_Team_Player_XPReceived.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CDOTAMatchPrivateMetadata_Team_Player_XPReceived>,
+  ): CDOTAMatchPrivateMetadata_Team_Player_XPReceived {
+    const message = createBaseCDOTAMatchPrivateMetadata_Team_Player_XPReceived();
+    message.creep = object.creep ?? 0;
+    message.heroes = object.heroes ?? 0;
+    message.roshan = object.roshan ?? 0;
+    message.tomeOfKnowledge = object.tomeOfKnowledge ?? 0;
+    message.outpost = object.outpost ?? 0;
+    message.other = object.other ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDOTAMatchPrivateMetadata_Team_Building(): CDOTAMatchPrivateMetadata_Team_Building {
@@ -5158,6 +5806,19 @@ export const CDOTAMatchPrivateMetadata_Team_Building = {
     message.deathTime !== undefined && (obj.deathTime = message.deathTime);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAMatchPrivateMetadata_Team_Building>): CDOTAMatchPrivateMetadata_Team_Building {
+    return CDOTAMatchPrivateMetadata_Team_Building.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAMatchPrivateMetadata_Team_Building>): CDOTAMatchPrivateMetadata_Team_Building {
+    const message = createBaseCDOTAMatchPrivateMetadata_Team_Building();
+    message.unitName = object.unitName ?? "";
+    message.positionQuantX = object.positionQuantX ?? 0;
+    message.positionQuantY = object.positionQuantY ?? 0;
+    message.deathTime = object.deathTime ?? 0;
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -5203,6 +5864,13 @@ function base64FromBytes(arr: Uint8Array): string {
     return tsProtoGlobalThis.btoa(bin.join(""));
   }
 }
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

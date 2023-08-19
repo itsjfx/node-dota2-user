@@ -1012,6 +1012,37 @@ export const CMsgStartFindingMatch = {
     message.botScriptIndexMask !== undefined && (obj.botScriptIndexMask = Math.round(message.botScriptIndexMask));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgStartFindingMatch>): CMsgStartFindingMatch {
+    return CMsgStartFindingMatch.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgStartFindingMatch>): CMsgStartFindingMatch {
+    const message = createBaseCMsgStartFindingMatch();
+    message.key = object.key ?? "";
+    message.matchgroups = object.matchgroups ?? 0;
+    message.clientVersion = object.clientVersion ?? 0;
+    message.gameModes = object.gameModes ?? 0;
+    message.matchType = object.matchType ?? 0;
+    message.matchlanguages = object.matchlanguages ?? 0;
+    message.teamId = object.teamId ?? 0;
+    message.gameLanguageEnum = object.gameLanguageEnum ?? 0;
+    message.gameLanguageName = object.gameLanguageName ?? "";
+    message.pingData = (object.pingData !== undefined && object.pingData !== null)
+      ? CMsgClientPingData.fromPartial(object.pingData)
+      : undefined;
+    message.regionSelectFlags = object.regionSelectFlags ?? 0;
+    message.soloQueue = object.soloQueue ?? false;
+    message.steamClanAccountId = object.steamClanAccountId ?? 0;
+    message.isChallengeMatch = object.isChallengeMatch ?? false;
+    message.laneSelectionFlags = object.laneSelectionFlags ?? 0;
+    message.highPriorityDisabled = object.highPriorityDisabled ?? false;
+    message.disableExperimentalGameplay = object.disableExperimentalGameplay ?? false;
+    message.customGameDifficultyMask = object.customGameDifficultyMask ?? 0;
+    message.botDifficultyMask = object.botDifficultyMask ?? 0;
+    message.botScriptIndexMask = object.botScriptIndexMask ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgStartFindingMatchResult(): CMsgStartFindingMatchResult {
@@ -1144,6 +1175,21 @@ export const CMsgStartFindingMatchResult = {
     message.resultMetadata !== undefined && (obj.resultMetadata = Math.round(message.resultMetadata));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgStartFindingMatchResult>): CMsgStartFindingMatchResult {
+    return CMsgStartFindingMatchResult.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgStartFindingMatchResult>): CMsgStartFindingMatchResult {
+    const message = createBaseCMsgStartFindingMatchResult();
+    message.legacyGenericEresult = object.legacyGenericEresult ?? 0;
+    message.result = object.result ?? 0;
+    message.errorToken = object.errorToken ?? "";
+    message.debugMessage = object.debugMessage ?? "";
+    message.responsiblePartyMembers = object.responsiblePartyMembers?.map((e) => e) || [];
+    message.resultMetadata = object.resultMetadata ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgStopFindingMatch(): CMsgStopFindingMatch {
@@ -1189,6 +1235,16 @@ export const CMsgStopFindingMatch = {
     const obj: any = {};
     message.acceptCooldown !== undefined && (obj.acceptCooldown = message.acceptCooldown);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgStopFindingMatch>): CMsgStopFindingMatch {
+    return CMsgStopFindingMatch.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgStopFindingMatch>): CMsgStopFindingMatch {
+    const message = createBaseCMsgStopFindingMatch();
+    message.acceptCooldown = object.acceptCooldown ?? false;
+    return message;
   },
 };
 
@@ -1286,6 +1342,20 @@ export const CMsgPartyBuilderOptions = {
     message.language !== undefined && (obj.language = matchLanguagesToJSON(message.language));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgPartyBuilderOptions>): CMsgPartyBuilderOptions {
+    return CMsgPartyBuilderOptions.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPartyBuilderOptions>): CMsgPartyBuilderOptions {
+    const message = createBaseCMsgPartyBuilderOptions();
+    message.additionalSlots = object.additionalSlots ?? 0;
+    message.matchType = object.matchType ?? 0;
+    message.matchgroups = object.matchgroups ?? 0;
+    message.clientVersion = object.clientVersion ?? 0;
+    message.language = object.language ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgReadyUp(): CMsgReadyUp {
@@ -1358,6 +1428,20 @@ export const CMsgReadyUp = {
     message.hardwareSpecs !== undefined &&
       (obj.hardwareSpecs = message.hardwareSpecs ? CDOTAClientHardwareSpecs.toJSON(message.hardwareSpecs) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgReadyUp>): CMsgReadyUp {
+    return CMsgReadyUp.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgReadyUp>): CMsgReadyUp {
+    const message = createBaseCMsgReadyUp();
+    message.state = object.state ?? 0;
+    message.readyUpKey = object.readyUpKey ?? "0";
+    message.hardwareSpecs = (object.hardwareSpecs !== undefined && object.hardwareSpecs !== null)
+      ? CDOTAClientHardwareSpecs.fromPartial(object.hardwareSpecs)
+      : undefined;
+    return message;
   },
 };
 
@@ -1461,6 +1545,18 @@ export const CMsgReadyUpStatus = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgReadyUpStatus>): CMsgReadyUpStatus {
+    return CMsgReadyUpStatus.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgReadyUpStatus>): CMsgReadyUpStatus {
+    const message = createBaseCMsgReadyUpStatus();
+    message.lobbyId = object.lobbyId ?? "0";
+    message.acceptedIds = object.acceptedIds?.map((e) => e) || [];
+    message.declinedIds = object.declinedIds?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgAbandonCurrentGame(): CMsgAbandonCurrentGame {
@@ -1495,6 +1591,15 @@ export const CMsgAbandonCurrentGame = {
   toJSON(_: CMsgAbandonCurrentGame): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgAbandonCurrentGame>): CMsgAbandonCurrentGame {
+    return CMsgAbandonCurrentGame.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgAbandonCurrentGame>): CMsgAbandonCurrentGame {
+    const message = createBaseCMsgAbandonCurrentGame();
+    return message;
   },
 };
 
@@ -1556,6 +1661,17 @@ export const CMsgLobbyScenarioSave = {
     message.data !== undefined &&
       (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgLobbyScenarioSave>): CMsgLobbyScenarioSave {
+    return CMsgLobbyScenarioSave.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgLobbyScenarioSave>): CMsgLobbyScenarioSave {
+    const message = createBaseCMsgLobbyScenarioSave();
+    message.version = object.version ?? 0;
+    message.data = object.data ?? Buffer.alloc(0);
+    return message;
   },
 };
 
@@ -2208,6 +2324,64 @@ export const CMsgPracticeLobbySetDetails = {
     message.doPlayerDraft !== undefined && (obj.doPlayerDraft = message.doPlayerDraft);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgPracticeLobbySetDetails>): CMsgPracticeLobbySetDetails {
+    return CMsgPracticeLobbySetDetails.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPracticeLobbySetDetails>): CMsgPracticeLobbySetDetails {
+    const message = createBaseCMsgPracticeLobbySetDetails();
+    message.lobbyId = object.lobbyId ?? "0";
+    message.gameName = object.gameName ?? "";
+    message.teamDetails = object.teamDetails?.map((e) => CLobbyTeamDetails.fromPartial(e)) || [];
+    message.serverRegion = object.serverRegion ?? 0;
+    message.gameMode = object.gameMode ?? 0;
+    message.cmPick = object.cmPick ?? 0;
+    message.botDifficultyRadiant = object.botDifficultyRadiant ?? 0;
+    message.allowCheats = object.allowCheats ?? false;
+    message.fillWithBots = object.fillWithBots ?? false;
+    message.introMode = object.introMode ?? false;
+    message.allowSpectating = object.allowSpectating ?? false;
+    message.passKey = object.passKey ?? "";
+    message.leagueid = object.leagueid ?? 0;
+    message.penaltyLevelRadiant = object.penaltyLevelRadiant ?? 0;
+    message.penaltyLevelDire = object.penaltyLevelDire ?? 0;
+    message.loadGameId = object.loadGameId ?? 0;
+    message.seriesType = object.seriesType ?? 0;
+    message.radiantSeriesWins = object.radiantSeriesWins ?? 0;
+    message.direSeriesWins = object.direSeriesWins ?? 0;
+    message.allchat = object.allchat ?? false;
+    message.dotaTvDelay = object.dotaTvDelay ?? 0;
+    message.lan = object.lan ?? false;
+    message.customGameMode = object.customGameMode ?? "";
+    message.customMapName = object.customMapName ?? "";
+    message.customDifficulty = object.customDifficulty ?? 0;
+    message.customGameId = object.customGameId ?? "0";
+    message.customMinPlayers = object.customMinPlayers ?? 0;
+    message.customMaxPlayers = object.customMaxPlayers ?? 0;
+    message.visibility = object.visibility ?? 0;
+    message.customGameCrc = object.customGameCrc ?? "0";
+    message.customGameTimestamp = object.customGameTimestamp ?? 0;
+    message.previousMatchOverride = object.previousMatchOverride ?? "0";
+    message.pauseSetting = object.pauseSetting ?? 0;
+    message.botDifficultyDire = object.botDifficultyDire ?? 0;
+    message.botRadiant = object.botRadiant ?? "0";
+    message.botDire = object.botDire ?? "0";
+    message.selectionPriorityRules = object.selectionPriorityRules ?? 0;
+    message.customGamePenalties = object.customGamePenalties ?? false;
+    message.lanHostPingLocation = object.lanHostPingLocation ?? "";
+    message.leagueNodeId = object.leagueNodeId ?? 0;
+    message.requestedHeroIds = object.requestedHeroIds?.map((e) => e) || [];
+    message.scenarioSave = (object.scenarioSave !== undefined && object.scenarioSave !== null)
+      ? CMsgLobbyScenarioSave.fromPartial(object.scenarioSave)
+      : undefined;
+    message.abilityDraftSpecificDetails =
+      (object.abilityDraftSpecificDetails !== undefined && object.abilityDraftSpecificDetails !== null)
+        ? CMsgPracticeLobbySetDetails_AbilityDraftSpecificDetails.fromPartial(object.abilityDraftSpecificDetails)
+        : undefined;
+    message.doPlayerDraft = object.doPlayerDraft ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgPracticeLobbySetDetails_AbilityDraftSpecificDetails(): CMsgPracticeLobbySetDetails_AbilityDraftSpecificDetails {
@@ -2256,6 +2430,20 @@ export const CMsgPracticeLobbySetDetails_AbilityDraftSpecificDetails = {
     const obj: any = {};
     message.shuffleDraftOrder !== undefined && (obj.shuffleDraftOrder = message.shuffleDraftOrder);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgPracticeLobbySetDetails_AbilityDraftSpecificDetails>,
+  ): CMsgPracticeLobbySetDetails_AbilityDraftSpecificDetails {
+    return CMsgPracticeLobbySetDetails_AbilityDraftSpecificDetails.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgPracticeLobbySetDetails_AbilityDraftSpecificDetails>,
+  ): CMsgPracticeLobbySetDetails_AbilityDraftSpecificDetails {
+    const message = createBaseCMsgPracticeLobbySetDetails_AbilityDraftSpecificDetails();
+    message.shuffleDraftOrder = object.shuffleDraftOrder ?? false;
+    return message;
   },
 };
 
@@ -2355,6 +2543,24 @@ export const CMsgPracticeLobbyCreate = {
       (obj.saveGame = message.saveGame ? CMsgPracticeLobbyCreate_SaveGame.toJSON(message.saveGame) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgPracticeLobbyCreate>): CMsgPracticeLobbyCreate {
+    return CMsgPracticeLobbyCreate.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPracticeLobbyCreate>): CMsgPracticeLobbyCreate {
+    const message = createBaseCMsgPracticeLobbyCreate();
+    message.searchKey = object.searchKey ?? "";
+    message.passKey = object.passKey ?? "";
+    message.clientVersion = object.clientVersion ?? 0;
+    message.lobbyDetails = (object.lobbyDetails !== undefined && object.lobbyDetails !== null)
+      ? CMsgPracticeLobbySetDetails.fromPartial(object.lobbyDetails)
+      : undefined;
+    message.saveGame = (object.saveGame !== undefined && object.saveGame !== null)
+      ? CMsgPracticeLobbyCreate_SaveGame.fromPartial(object.saveGame)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgPracticeLobbyCreate_SaveGame(): CMsgPracticeLobbyCreate_SaveGame {
@@ -2440,6 +2646,19 @@ export const CMsgPracticeLobbyCreate_SaveGame = {
     message.signature !== undefined && (obj.signature = message.signature);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgPracticeLobbyCreate_SaveGame>): CMsgPracticeLobbyCreate_SaveGame {
+    return CMsgPracticeLobbyCreate_SaveGame.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPracticeLobbyCreate_SaveGame>): CMsgPracticeLobbyCreate_SaveGame {
+    const message = createBaseCMsgPracticeLobbyCreate_SaveGame();
+    message.data = object.data ?? Buffer.alloc(0);
+    message.version = object.version ?? 0;
+    message.steamId = object.steamId ?? "0";
+    message.signature = object.signature ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgPracticeLobbySetTeamSlot(): CMsgPracticeLobbySetTeamSlot {
@@ -2512,6 +2731,18 @@ export const CMsgPracticeLobbySetTeamSlot = {
     message.botDifficulty !== undefined && (obj.botDifficulty = dOTABotDifficultyToJSON(message.botDifficulty));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgPracticeLobbySetTeamSlot>): CMsgPracticeLobbySetTeamSlot {
+    return CMsgPracticeLobbySetTeamSlot.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPracticeLobbySetTeamSlot>): CMsgPracticeLobbySetTeamSlot {
+    const message = createBaseCMsgPracticeLobbySetTeamSlot();
+    message.team = object.team ?? 0;
+    message.slot = object.slot ?? 0;
+    message.botDifficulty = object.botDifficulty ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgPracticeLobbySetCoach(): CMsgPracticeLobbySetCoach {
@@ -2557,6 +2788,16 @@ export const CMsgPracticeLobbySetCoach = {
     const obj: any = {};
     message.team !== undefined && (obj.team = dotaGcTeamToJSON(message.team));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgPracticeLobbySetCoach>): CMsgPracticeLobbySetCoach {
+    return CMsgPracticeLobbySetCoach.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPracticeLobbySetCoach>): CMsgPracticeLobbySetCoach {
+    const message = createBaseCMsgPracticeLobbySetCoach();
+    message.team = object.team ?? 0;
+    return message;
   },
 };
 
@@ -2642,6 +2883,19 @@ export const CMsgPracticeLobbyJoinBroadcastChannel = {
     message.preferredLanguageCode !== undefined && (obj.preferredLanguageCode = message.preferredLanguageCode);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgPracticeLobbyJoinBroadcastChannel>): CMsgPracticeLobbyJoinBroadcastChannel {
+    return CMsgPracticeLobbyJoinBroadcastChannel.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPracticeLobbyJoinBroadcastChannel>): CMsgPracticeLobbyJoinBroadcastChannel {
+    const message = createBaseCMsgPracticeLobbyJoinBroadcastChannel();
+    message.channel = object.channel ?? 0;
+    message.preferredDescription = object.preferredDescription ?? "";
+    message.preferredCountryCode = object.preferredCountryCode ?? "";
+    message.preferredLanguageCode = object.preferredLanguageCode ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgPracticeLobbyCloseBroadcastChannel(): CMsgPracticeLobbyCloseBroadcastChannel {
@@ -2688,6 +2942,16 @@ export const CMsgPracticeLobbyCloseBroadcastChannel = {
     message.channel !== undefined && (obj.channel = Math.round(message.channel));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgPracticeLobbyCloseBroadcastChannel>): CMsgPracticeLobbyCloseBroadcastChannel {
+    return CMsgPracticeLobbyCloseBroadcastChannel.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPracticeLobbyCloseBroadcastChannel>): CMsgPracticeLobbyCloseBroadcastChannel {
+    const message = createBaseCMsgPracticeLobbyCloseBroadcastChannel();
+    message.channel = object.channel ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgPracticeLobbyToggleBroadcastChannelCameramanStatus(): CMsgPracticeLobbyToggleBroadcastChannelCameramanStatus {
@@ -2725,6 +2989,19 @@ export const CMsgPracticeLobbyToggleBroadcastChannelCameramanStatus = {
   toJSON(_: CMsgPracticeLobbyToggleBroadcastChannelCameramanStatus): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgPracticeLobbyToggleBroadcastChannelCameramanStatus>,
+  ): CMsgPracticeLobbyToggleBroadcastChannelCameramanStatus {
+    return CMsgPracticeLobbyToggleBroadcastChannelCameramanStatus.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    _: DeepPartial<CMsgPracticeLobbyToggleBroadcastChannelCameramanStatus>,
+  ): CMsgPracticeLobbyToggleBroadcastChannelCameramanStatus {
+    const message = createBaseCMsgPracticeLobbyToggleBroadcastChannelCameramanStatus();
+    return message;
   },
 };
 
@@ -2772,6 +3049,16 @@ export const CMsgPracticeLobbyKick = {
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgPracticeLobbyKick>): CMsgPracticeLobbyKick {
+    return CMsgPracticeLobbyKick.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPracticeLobbyKick>): CMsgPracticeLobbyKick {
+    const message = createBaseCMsgPracticeLobbyKick();
+    message.accountId = object.accountId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgPracticeLobbyKickFromTeam(): CMsgPracticeLobbyKickFromTeam {
@@ -2818,6 +3105,16 @@ export const CMsgPracticeLobbyKickFromTeam = {
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgPracticeLobbyKickFromTeam>): CMsgPracticeLobbyKickFromTeam {
+    return CMsgPracticeLobbyKickFromTeam.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPracticeLobbyKickFromTeam>): CMsgPracticeLobbyKickFromTeam {
+    const message = createBaseCMsgPracticeLobbyKickFromTeam();
+    message.accountId = object.accountId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgPracticeLobbyLeave(): CMsgPracticeLobbyLeave {
@@ -2852,6 +3149,15 @@ export const CMsgPracticeLobbyLeave = {
   toJSON(_: CMsgPracticeLobbyLeave): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgPracticeLobbyLeave>): CMsgPracticeLobbyLeave {
+    return CMsgPracticeLobbyLeave.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgPracticeLobbyLeave>): CMsgPracticeLobbyLeave {
+    const message = createBaseCMsgPracticeLobbyLeave();
+    return message;
   },
 };
 
@@ -2899,6 +3205,16 @@ export const CMsgPracticeLobbyLaunch = {
     message.clientVersion !== undefined && (obj.clientVersion = Math.round(message.clientVersion));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgPracticeLobbyLaunch>): CMsgPracticeLobbyLaunch {
+    return CMsgPracticeLobbyLaunch.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPracticeLobbyLaunch>): CMsgPracticeLobbyLaunch {
+    const message = createBaseCMsgPracticeLobbyLaunch();
+    message.clientVersion = object.clientVersion ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgApplyTeamToPracticeLobby(): CMsgApplyTeamToPracticeLobby {
@@ -2944,6 +3260,16 @@ export const CMsgApplyTeamToPracticeLobby = {
     const obj: any = {};
     message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgApplyTeamToPracticeLobby>): CMsgApplyTeamToPracticeLobby {
+    return CMsgApplyTeamToPracticeLobby.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgApplyTeamToPracticeLobby>): CMsgApplyTeamToPracticeLobby {
+    const message = createBaseCMsgApplyTeamToPracticeLobby();
+    message.teamId = object.teamId ?? 0;
+    return message;
   },
 };
 
@@ -3016,6 +3342,18 @@ export const CMsgPracticeLobbyList = {
     message.region !== undefined && (obj.region = Math.round(message.region));
     message.gameMode !== undefined && (obj.gameMode = dOTAGameModeToJSON(message.gameMode));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgPracticeLobbyList>): CMsgPracticeLobbyList {
+    return CMsgPracticeLobbyList.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPracticeLobbyList>): CMsgPracticeLobbyList {
+    const message = createBaseCMsgPracticeLobbyList();
+    message.passKey = object.passKey ?? "";
+    message.region = object.region ?? 0;
+    message.gameMode = object.gameMode ?? 0;
+    return message;
   },
 };
 
@@ -3270,6 +3608,31 @@ export const CMsgPracticeLobbyListResponseEntry = {
     message.penaltiesEnabled !== undefined && (obj.penaltiesEnabled = message.penaltiesEnabled);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgPracticeLobbyListResponseEntry>): CMsgPracticeLobbyListResponseEntry {
+    return CMsgPracticeLobbyListResponseEntry.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPracticeLobbyListResponseEntry>): CMsgPracticeLobbyListResponseEntry {
+    const message = createBaseCMsgPracticeLobbyListResponseEntry();
+    message.id = object.id ?? "0";
+    message.members = object.members?.map((e) => CMsgPracticeLobbyListResponseEntry_CLobbyMember.fromPartial(e)) || [];
+    message.requiresPassKey = object.requiresPassKey ?? false;
+    message.leaderAccountId = object.leaderAccountId ?? 0;
+    message.name = object.name ?? "";
+    message.customGameMode = object.customGameMode ?? "";
+    message.gameMode = object.gameMode ?? 0;
+    message.friendPresent = object.friendPresent ?? false;
+    message.players = object.players ?? 0;
+    message.customMapName = object.customMapName ?? "";
+    message.maxPlayerCount = object.maxPlayerCount ?? 0;
+    message.serverRegion = object.serverRegion ?? 0;
+    message.leagueId = object.leagueId ?? 0;
+    message.lanHostPingLocation = object.lanHostPingLocation ?? "";
+    message.minPlayerCount = object.minPlayerCount ?? 0;
+    message.penaltiesEnabled = object.penaltiesEnabled ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgPracticeLobbyListResponseEntry_CLobbyMember(): CMsgPracticeLobbyListResponseEntry_CLobbyMember {
@@ -3333,6 +3696,21 @@ export const CMsgPracticeLobbyListResponseEntry_CLobbyMember = {
     message.playerName !== undefined && (obj.playerName = message.playerName);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgPracticeLobbyListResponseEntry_CLobbyMember>,
+  ): CMsgPracticeLobbyListResponseEntry_CLobbyMember {
+    return CMsgPracticeLobbyListResponseEntry_CLobbyMember.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgPracticeLobbyListResponseEntry_CLobbyMember>,
+  ): CMsgPracticeLobbyListResponseEntry_CLobbyMember {
+    const message = createBaseCMsgPracticeLobbyListResponseEntry_CLobbyMember();
+    message.accountId = object.accountId ?? 0;
+    message.playerName = object.playerName ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgPracticeLobbyListResponse(): CMsgPracticeLobbyListResponse {
@@ -3386,6 +3764,16 @@ export const CMsgPracticeLobbyListResponse = {
       obj.lobbies = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgPracticeLobbyListResponse>): CMsgPracticeLobbyListResponse {
+    return CMsgPracticeLobbyListResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPracticeLobbyListResponse>): CMsgPracticeLobbyListResponse {
+    const message = createBaseCMsgPracticeLobbyListResponse();
+    message.lobbies = object.lobbies?.map((e) => CMsgPracticeLobbyListResponseEntry.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -3447,6 +3835,17 @@ export const CMsgLobbyList = {
     message.gameMode !== undefined && (obj.gameMode = dOTAGameModeToJSON(message.gameMode));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgLobbyList>): CMsgLobbyList {
+    return CMsgLobbyList.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgLobbyList>): CMsgLobbyList {
+    const message = createBaseCMsgLobbyList();
+    message.serverRegion = object.serverRegion ?? 0;
+    message.gameMode = object.gameMode ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgLobbyListResponse(): CMsgLobbyListResponse {
@@ -3500,6 +3899,16 @@ export const CMsgLobbyListResponse = {
       obj.lobbies = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgLobbyListResponse>): CMsgLobbyListResponse {
+    return CMsgLobbyListResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgLobbyListResponse>): CMsgLobbyListResponse {
+    const message = createBaseCMsgLobbyListResponse();
+    message.lobbies = object.lobbies?.map((e) => CMsgPracticeLobbyListResponseEntry.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -3597,6 +4006,20 @@ export const CMsgPracticeLobbyJoin = {
     message.customGameTimestamp !== undefined && (obj.customGameTimestamp = Math.round(message.customGameTimestamp));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgPracticeLobbyJoin>): CMsgPracticeLobbyJoin {
+    return CMsgPracticeLobbyJoin.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPracticeLobbyJoin>): CMsgPracticeLobbyJoin {
+    const message = createBaseCMsgPracticeLobbyJoin();
+    message.lobbyId = object.lobbyId ?? "0";
+    message.clientVersion = object.clientVersion ?? 0;
+    message.passKey = object.passKey ?? "";
+    message.customGameCrc = object.customGameCrc ?? "0";
+    message.customGameTimestamp = object.customGameTimestamp ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgPracticeLobbyJoinResponse(): CMsgPracticeLobbyJoinResponse {
@@ -3642,6 +4065,16 @@ export const CMsgPracticeLobbyJoinResponse = {
     const obj: any = {};
     message.result !== undefined && (obj.result = dOTAJoinLobbyResultToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgPracticeLobbyJoinResponse>): CMsgPracticeLobbyJoinResponse {
+    return CMsgPracticeLobbyJoinResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPracticeLobbyJoinResponse>): CMsgPracticeLobbyJoinResponse {
+    const message = createBaseCMsgPracticeLobbyJoinResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -3704,6 +4137,16 @@ export const CMsgFriendPracticeLobbyListRequest = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgFriendPracticeLobbyListRequest>): CMsgFriendPracticeLobbyListRequest {
+    return CMsgFriendPracticeLobbyListRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgFriendPracticeLobbyListRequest>): CMsgFriendPracticeLobbyListRequest {
+    const message = createBaseCMsgFriendPracticeLobbyListRequest();
+    message.friends = object.friends?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgFriendPracticeLobbyListResponse(): CMsgFriendPracticeLobbyListResponse {
@@ -3758,6 +4201,16 @@ export const CMsgFriendPracticeLobbyListResponse = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgFriendPracticeLobbyListResponse>): CMsgFriendPracticeLobbyListResponse {
+    return CMsgFriendPracticeLobbyListResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgFriendPracticeLobbyListResponse>): CMsgFriendPracticeLobbyListResponse {
+    const message = createBaseCMsgFriendPracticeLobbyListResponse();
+    message.lobbies = object.lobbies?.map((e) => CMsgPracticeLobbyListResponseEntry.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgJoinableCustomGameModesRequest(): CMsgJoinableCustomGameModesRequest {
@@ -3803,6 +4256,16 @@ export const CMsgJoinableCustomGameModesRequest = {
     const obj: any = {};
     message.serverRegion !== undefined && (obj.serverRegion = Math.round(message.serverRegion));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgJoinableCustomGameModesRequest>): CMsgJoinableCustomGameModesRequest {
+    return CMsgJoinableCustomGameModesRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgJoinableCustomGameModesRequest>): CMsgJoinableCustomGameModesRequest {
+    const message = createBaseCMsgJoinableCustomGameModesRequest();
+    message.serverRegion = object.serverRegion ?? 0;
+    return message;
   },
 };
 
@@ -3876,6 +4339,18 @@ export const CMsgJoinableCustomGameModesResponseEntry = {
     message.playerCount !== undefined && (obj.playerCount = Math.round(message.playerCount));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgJoinableCustomGameModesResponseEntry>): CMsgJoinableCustomGameModesResponseEntry {
+    return CMsgJoinableCustomGameModesResponseEntry.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgJoinableCustomGameModesResponseEntry>): CMsgJoinableCustomGameModesResponseEntry {
+    const message = createBaseCMsgJoinableCustomGameModesResponseEntry();
+    message.customGameId = object.customGameId ?? "0";
+    message.lobbyCount = object.lobbyCount ?? 0;
+    message.playerCount = object.playerCount ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgJoinableCustomGameModesResponse(): CMsgJoinableCustomGameModesResponse {
@@ -3929,6 +4404,16 @@ export const CMsgJoinableCustomGameModesResponse = {
       obj.gameModes = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgJoinableCustomGameModesResponse>): CMsgJoinableCustomGameModesResponse {
+    return CMsgJoinableCustomGameModesResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgJoinableCustomGameModesResponse>): CMsgJoinableCustomGameModesResponse {
+    const message = createBaseCMsgJoinableCustomGameModesResponse();
+    message.gameModes = object.gameModes?.map((e) => CMsgJoinableCustomGameModesResponseEntry.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -3989,6 +4474,17 @@ export const CMsgJoinableCustomLobbiesRequest = {
     message.serverRegion !== undefined && (obj.serverRegion = Math.round(message.serverRegion));
     message.customGameId !== undefined && (obj.customGameId = message.customGameId);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgJoinableCustomLobbiesRequest>): CMsgJoinableCustomLobbiesRequest {
+    return CMsgJoinableCustomLobbiesRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgJoinableCustomLobbiesRequest>): CMsgJoinableCustomLobbiesRequest {
+    const message = createBaseCMsgJoinableCustomLobbiesRequest();
+    message.serverRegion = object.serverRegion ?? 0;
+    message.customGameId = object.customGameId ?? "0";
+    return message;
   },
 };
 
@@ -4235,6 +4731,31 @@ export const CMsgJoinableCustomLobbiesResponseEntry = {
     message.penaltiesEnabled !== undefined && (obj.penaltiesEnabled = message.penaltiesEnabled);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgJoinableCustomLobbiesResponseEntry>): CMsgJoinableCustomLobbiesResponseEntry {
+    return CMsgJoinableCustomLobbiesResponseEntry.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgJoinableCustomLobbiesResponseEntry>): CMsgJoinableCustomLobbiesResponseEntry {
+    const message = createBaseCMsgJoinableCustomLobbiesResponseEntry();
+    message.lobbyId = object.lobbyId ?? "0";
+    message.customGameId = object.customGameId ?? "0";
+    message.lobbyName = object.lobbyName ?? "";
+    message.memberCount = object.memberCount ?? 0;
+    message.leaderAccountId = object.leaderAccountId ?? 0;
+    message.leaderName = object.leaderName ?? "";
+    message.customMapName = object.customMapName ?? "";
+    message.maxPlayerCount = object.maxPlayerCount ?? 0;
+    message.serverRegion = object.serverRegion ?? 0;
+    message.hasPassKey = object.hasPassKey ?? false;
+    message.lanHostPingLocation = object.lanHostPingLocation ?? "";
+    message.lobbyCreationTime = object.lobbyCreationTime ?? 0;
+    message.customGameTimestamp = object.customGameTimestamp ?? 0;
+    message.customGameCrc = object.customGameCrc ?? "0";
+    message.minPlayerCount = object.minPlayerCount ?? 0;
+    message.penaltiesEnabled = object.penaltiesEnabled ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgJoinableCustomLobbiesResponse(): CMsgJoinableCustomLobbiesResponse {
@@ -4288,6 +4809,16 @@ export const CMsgJoinableCustomLobbiesResponse = {
       obj.lobbies = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgJoinableCustomLobbiesResponse>): CMsgJoinableCustomLobbiesResponse {
+    return CMsgJoinableCustomLobbiesResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgJoinableCustomLobbiesResponse>): CMsgJoinableCustomLobbiesResponse {
+    const message = createBaseCMsgJoinableCustomLobbiesResponse();
+    message.lobbies = object.lobbies?.map((e) => CMsgJoinableCustomLobbiesResponseEntry.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -4430,6 +4961,27 @@ export const CMsgQuickJoinCustomLobby = {
       (obj.pingData = message.pingData ? CMsgClientPingData.toJSON(message.pingData) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgQuickJoinCustomLobby>): CMsgQuickJoinCustomLobby {
+    return CMsgQuickJoinCustomLobby.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgQuickJoinCustomLobby>): CMsgQuickJoinCustomLobby {
+    const message = createBaseCMsgQuickJoinCustomLobby();
+    message.legacyServerRegion = object.legacyServerRegion ?? 0;
+    message.customGameId = object.customGameId ?? "0";
+    message.clientVersion = object.clientVersion ?? 0;
+    message.createLobbyDetails = (object.createLobbyDetails !== undefined && object.createLobbyDetails !== null)
+      ? CMsgPracticeLobbySetDetails.fromPartial(object.createLobbyDetails)
+      : undefined;
+    message.allowAnyMap = object.allowAnyMap ?? false;
+    message.legacyRegionPings =
+      object.legacyRegionPings?.map((e) => CMsgQuickJoinCustomLobby_LegacyRegionPing.fromPartial(e)) || [];
+    message.pingData = (object.pingData !== undefined && object.pingData !== null)
+      ? CMsgClientPingData.fromPartial(object.pingData)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgQuickJoinCustomLobby_LegacyRegionPing(): CMsgQuickJoinCustomLobby_LegacyRegionPing {
@@ -4502,6 +5054,20 @@ export const CMsgQuickJoinCustomLobby_LegacyRegionPing = {
     message.regionCode !== undefined && (obj.regionCode = Math.round(message.regionCode));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgQuickJoinCustomLobby_LegacyRegionPing>): CMsgQuickJoinCustomLobby_LegacyRegionPing {
+    return CMsgQuickJoinCustomLobby_LegacyRegionPing.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgQuickJoinCustomLobby_LegacyRegionPing>,
+  ): CMsgQuickJoinCustomLobby_LegacyRegionPing {
+    const message = createBaseCMsgQuickJoinCustomLobby_LegacyRegionPing();
+    message.serverRegion = object.serverRegion ?? 0;
+    message.ping = object.ping ?? 0;
+    message.regionCode = object.regionCode ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgQuickJoinCustomLobbyResponse(): CMsgQuickJoinCustomLobbyResponse {
@@ -4547,6 +5113,16 @@ export const CMsgQuickJoinCustomLobbyResponse = {
     const obj: any = {};
     message.result !== undefined && (obj.result = dOTAJoinLobbyResultToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgQuickJoinCustomLobbyResponse>): CMsgQuickJoinCustomLobbyResponse {
+    return CMsgQuickJoinCustomLobbyResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgQuickJoinCustomLobbyResponse>): CMsgQuickJoinCustomLobbyResponse {
+    const message = createBaseCMsgQuickJoinCustomLobbyResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -4657,6 +5233,21 @@ export const CMsgBotGameCreate = {
     message.difficultyDire !== undefined && (obj.difficultyDire = dOTABotDifficultyToJSON(message.difficultyDire));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgBotGameCreate>): CMsgBotGameCreate {
+    return CMsgBotGameCreate.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgBotGameCreate>): CMsgBotGameCreate {
+    const message = createBaseCMsgBotGameCreate();
+    message.searchKey = object.searchKey ?? "";
+    message.clientVersion = object.clientVersion ?? 0;
+    message.difficultyRadiant = object.difficultyRadiant ?? 0;
+    message.team = object.team ?? 0;
+    message.gameMode = object.gameMode ?? 0;
+    message.difficultyDire = object.difficultyDire ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAPartyMemberSetCoach(): CMsgDOTAPartyMemberSetCoach {
@@ -4703,6 +5294,16 @@ export const CMsgDOTAPartyMemberSetCoach = {
     message.wantsCoach !== undefined && (obj.wantsCoach = message.wantsCoach);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAPartyMemberSetCoach>): CMsgDOTAPartyMemberSetCoach {
+    return CMsgDOTAPartyMemberSetCoach.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAPartyMemberSetCoach>): CMsgDOTAPartyMemberSetCoach {
+    const message = createBaseCMsgDOTAPartyMemberSetCoach();
+    message.wantsCoach = object.wantsCoach ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTASetGroupLeader(): CMsgDOTASetGroupLeader {
@@ -4748,6 +5349,16 @@ export const CMsgDOTASetGroupLeader = {
     const obj: any = {};
     message.newLeaderSteamid !== undefined && (obj.newLeaderSteamid = message.newLeaderSteamid);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTASetGroupLeader>): CMsgDOTASetGroupLeader {
+    return CMsgDOTASetGroupLeader.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTASetGroupLeader>): CMsgDOTASetGroupLeader {
+    const message = createBaseCMsgDOTASetGroupLeader();
+    message.newLeaderSteamid = object.newLeaderSteamid ?? "0";
+    return message;
   },
 };
 
@@ -4839,6 +5450,17 @@ export const CMsgDOTACancelGroupInvites = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTACancelGroupInvites>): CMsgDOTACancelGroupInvites {
+    return CMsgDOTACancelGroupInvites.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTACancelGroupInvites>): CMsgDOTACancelGroupInvites {
+    const message = createBaseCMsgDOTACancelGroupInvites();
+    message.invitedSteamids = object.invitedSteamids?.map((e) => e) || [];
+    message.invitedGroupids = object.invitedGroupids?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgDOTASetGroupOpenStatus(): CMsgDOTASetGroupOpenStatus {
@@ -4885,6 +5507,16 @@ export const CMsgDOTASetGroupOpenStatus = {
     message.open !== undefined && (obj.open = message.open);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTASetGroupOpenStatus>): CMsgDOTASetGroupOpenStatus {
+    return CMsgDOTASetGroupOpenStatus.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTASetGroupOpenStatus>): CMsgDOTASetGroupOpenStatus {
+    const message = createBaseCMsgDOTASetGroupOpenStatus();
+    message.open = object.open ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAGroupMergeInvite(): CMsgDOTAGroupMergeInvite {
@@ -4930,6 +5562,16 @@ export const CMsgDOTAGroupMergeInvite = {
     const obj: any = {};
     message.otherGroupId !== undefined && (obj.otherGroupId = message.otherGroupId);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAGroupMergeInvite>): CMsgDOTAGroupMergeInvite {
+    return CMsgDOTAGroupMergeInvite.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAGroupMergeInvite>): CMsgDOTAGroupMergeInvite {
+    const message = createBaseCMsgDOTAGroupMergeInvite();
+    message.otherGroupId = object.otherGroupId ?? "0";
+    return message;
   },
 };
 
@@ -4991,6 +5633,17 @@ export const CMsgDOTAGroupMergeResponse = {
     message.accept !== undefined && (obj.accept = message.accept);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAGroupMergeResponse>): CMsgDOTAGroupMergeResponse {
+    return CMsgDOTAGroupMergeResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAGroupMergeResponse>): CMsgDOTAGroupMergeResponse {
+    const message = createBaseCMsgDOTAGroupMergeResponse();
+    message.initiatorGroupId = object.initiatorGroupId ?? "0";
+    message.accept = object.accept ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAGroupMergeReply(): CMsgDOTAGroupMergeReply {
@@ -5036,6 +5689,16 @@ export const CMsgDOTAGroupMergeReply = {
     const obj: any = {};
     message.result !== undefined && (obj.result = eDOTAGroupMergeResultToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAGroupMergeReply>): CMsgDOTAGroupMergeReply {
+    return CMsgDOTAGroupMergeReply.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAGroupMergeReply>): CMsgDOTAGroupMergeReply {
+    const message = createBaseCMsgDOTAGroupMergeReply();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -5209,6 +5872,29 @@ export const CMsgSpectatorLobbyGameDetails = {
       (obj.direTeam = message.direTeam ? CMsgSpectatorLobbyGameDetails_Team.toJSON(message.direTeam) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSpectatorLobbyGameDetails>): CMsgSpectatorLobbyGameDetails {
+    return CMsgSpectatorLobbyGameDetails.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSpectatorLobbyGameDetails>): CMsgSpectatorLobbyGameDetails {
+    const message = createBaseCMsgSpectatorLobbyGameDetails();
+    message.language = object.language ?? 0;
+    message.matchId = object.matchId ?? "0";
+    message.serverSteamId = object.serverSteamId ?? "0";
+    message.streamUrl = object.streamUrl ?? "";
+    message.streamName = object.streamName ?? "";
+    message.leagueId = object.leagueId ?? 0;
+    message.seriesType = object.seriesType ?? 0;
+    message.seriesGame = object.seriesGame ?? 0;
+    message.radiantTeam = (object.radiantTeam !== undefined && object.radiantTeam !== null)
+      ? CMsgSpectatorLobbyGameDetails_Team.fromPartial(object.radiantTeam)
+      : undefined;
+    message.direTeam = (object.direTeam !== undefined && object.direTeam !== null)
+      ? CMsgSpectatorLobbyGameDetails_Team.fromPartial(object.direTeam)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgSpectatorLobbyGameDetails_Team(): CMsgSpectatorLobbyGameDetails_Team {
@@ -5280,6 +5966,18 @@ export const CMsgSpectatorLobbyGameDetails_Team = {
     message.teamName !== undefined && (obj.teamName = message.teamName);
     message.teamLogo !== undefined && (obj.teamLogo = message.teamLogo);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSpectatorLobbyGameDetails_Team>): CMsgSpectatorLobbyGameDetails_Team {
+    return CMsgSpectatorLobbyGameDetails_Team.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSpectatorLobbyGameDetails_Team>): CMsgSpectatorLobbyGameDetails_Team {
+    const message = createBaseCMsgSpectatorLobbyGameDetails_Team();
+    message.teamId = object.teamId ?? 0;
+    message.teamName = object.teamName ?? "";
+    message.teamLogo = object.teamLogo ?? "0";
+    return message;
   },
 };
 
@@ -5366,6 +6064,21 @@ export const CMsgSetSpectatorLobbyDetails = {
       (obj.gameDetails = message.gameDetails ? CMsgSpectatorLobbyGameDetails.toJSON(message.gameDetails) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSetSpectatorLobbyDetails>): CMsgSetSpectatorLobbyDetails {
+    return CMsgSetSpectatorLobbyDetails.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSetSpectatorLobbyDetails>): CMsgSetSpectatorLobbyDetails {
+    const message = createBaseCMsgSetSpectatorLobbyDetails();
+    message.lobbyId = object.lobbyId ?? "0";
+    message.lobbyName = object.lobbyName ?? "";
+    message.passKey = object.passKey ?? "";
+    message.gameDetails = (object.gameDetails !== undefined && object.gameDetails !== null)
+      ? CMsgSpectatorLobbyGameDetails.fromPartial(object.gameDetails)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgCreateSpectatorLobby(): CMsgCreateSpectatorLobby {
@@ -5427,6 +6140,19 @@ export const CMsgCreateSpectatorLobby = {
       (obj.details = message.details ? CMsgSetSpectatorLobbyDetails.toJSON(message.details) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgCreateSpectatorLobby>): CMsgCreateSpectatorLobby {
+    return CMsgCreateSpectatorLobby.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgCreateSpectatorLobby>): CMsgCreateSpectatorLobby {
+    const message = createBaseCMsgCreateSpectatorLobby();
+    message.clientVersion = object.clientVersion ?? 0;
+    message.details = (object.details !== undefined && object.details !== null)
+      ? CMsgSetSpectatorLobbyDetails.fromPartial(object.details)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgSpectatorLobbyList(): CMsgSpectatorLobbyList {
@@ -5461,6 +6187,15 @@ export const CMsgSpectatorLobbyList = {
   toJSON(_: CMsgSpectatorLobbyList): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSpectatorLobbyList>): CMsgSpectatorLobbyList {
+    return CMsgSpectatorLobbyList.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgSpectatorLobbyList>): CMsgSpectatorLobbyList {
+    const message = createBaseCMsgSpectatorLobbyList();
+    return message;
   },
 };
 
@@ -5515,6 +6250,16 @@ export const CMsgSpectatorLobbyListResponse = {
       obj.lobbies = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSpectatorLobbyListResponse>): CMsgSpectatorLobbyListResponse {
+    return CMsgSpectatorLobbyListResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSpectatorLobbyListResponse>): CMsgSpectatorLobbyListResponse {
+    const message = createBaseCMsgSpectatorLobbyListResponse();
+    message.lobbies = object.lobbies?.map((e) => CMsgSpectatorLobbyListResponse_SpectatorLobby.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -5632,6 +6377,27 @@ export const CMsgSpectatorLobbyListResponse_SpectatorLobby = {
       (obj.gameDetails = message.gameDetails ? CMsgSpectatorLobbyGameDetails.toJSON(message.gameDetails) : undefined);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgSpectatorLobbyListResponse_SpectatorLobby>,
+  ): CMsgSpectatorLobbyListResponse_SpectatorLobby {
+    return CMsgSpectatorLobbyListResponse_SpectatorLobby.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSpectatorLobbyListResponse_SpectatorLobby>,
+  ): CMsgSpectatorLobbyListResponse_SpectatorLobby {
+    const message = createBaseCMsgSpectatorLobbyListResponse_SpectatorLobby();
+    message.lobbyId = object.lobbyId ?? "0";
+    message.gameName = object.gameName ?? "";
+    message.requiresPassKey = object.requiresPassKey ?? false;
+    message.leaderAccountId = object.leaderAccountId ?? 0;
+    message.memberCount = object.memberCount ?? 0;
+    message.gameDetails = (object.gameDetails !== undefined && object.gameDetails !== null)
+      ? CMsgSpectatorLobbyGameDetails.fromPartial(object.gameDetails)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCRequestSteamDatagramTicket(): CMsgClientToGCRequestSteamDatagramTicket {
@@ -5677,6 +6443,16 @@ export const CMsgClientToGCRequestSteamDatagramTicket = {
     const obj: any = {};
     message.serverSteamId !== undefined && (obj.serverSteamId = message.serverSteamId);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCRequestSteamDatagramTicket>): CMsgClientToGCRequestSteamDatagramTicket {
+    return CMsgClientToGCRequestSteamDatagramTicket.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCRequestSteamDatagramTicket>): CMsgClientToGCRequestSteamDatagramTicket {
+    const message = createBaseCMsgClientToGCRequestSteamDatagramTicket();
+    message.serverSteamId = object.serverSteamId ?? "0";
+    return message;
   },
 };
 
@@ -5745,6 +6521,21 @@ export const CMsgClientToGCRequestSteamDatagramTicketResponse = {
       ));
     message.message !== undefined && (obj.message = message.message);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCRequestSteamDatagramTicketResponse>,
+  ): CMsgClientToGCRequestSteamDatagramTicketResponse {
+    return CMsgClientToGCRequestSteamDatagramTicketResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCRequestSteamDatagramTicketResponse>,
+  ): CMsgClientToGCRequestSteamDatagramTicketResponse {
+    const message = createBaseCMsgClientToGCRequestSteamDatagramTicketResponse();
+    message.serializedTicket = object.serializedTicket ?? Buffer.alloc(0);
+    message.message = object.message ?? "";
+    return message;
   },
 };
 
@@ -5919,6 +6710,24 @@ export const CMsgGCToClientSteamDatagramTicket = {
       ));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientSteamDatagramTicket>): CMsgGCToClientSteamDatagramTicket {
+    return CMsgGCToClientSteamDatagramTicket.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientSteamDatagramTicket>): CMsgGCToClientSteamDatagramTicket {
+    const message = createBaseCMsgGCToClientSteamDatagramTicket();
+    message.legacyTimeExpiry = object.legacyTimeExpiry ?? 0;
+    message.legacyAuthorizedSteamId = object.legacyAuthorizedSteamId ?? "0";
+    message.legacyAuthorizedPublicIp = object.legacyAuthorizedPublicIp ?? 0;
+    message.legacyGameserverSteamId = object.legacyGameserverSteamId ?? "0";
+    message.legacyGameserverNetId = object.legacyGameserverNetId ?? "0";
+    message.legacySignature = object.legacySignature ?? Buffer.alloc(0);
+    message.legacyAppId = object.legacyAppId ?? 0;
+    message.legacyExtraFields = object.legacyExtraFields?.map((e) => e) || [];
+    message.serializedTicket = object.serializedTicket ?? Buffer.alloc(0);
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientRequestLaneSelection(): CMsgGCToClientRequestLaneSelection {
@@ -5953,6 +6762,15 @@ export const CMsgGCToClientRequestLaneSelection = {
   toJSON(_: CMsgGCToClientRequestLaneSelection): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToClientRequestLaneSelection>): CMsgGCToClientRequestLaneSelection {
+    return CMsgGCToClientRequestLaneSelection.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgGCToClientRequestLaneSelection>): CMsgGCToClientRequestLaneSelection {
+    const message = createBaseCMsgGCToClientRequestLaneSelection();
+    return message;
   },
 };
 
@@ -6014,6 +6832,19 @@ export const CMsgGCToClientRequestLaneSelectionResponse = {
     message.highPriorityDisabled !== undefined && (obj.highPriorityDisabled = message.highPriorityDisabled);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientRequestLaneSelectionResponse>): CMsgGCToClientRequestLaneSelectionResponse {
+    return CMsgGCToClientRequestLaneSelectionResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientRequestLaneSelectionResponse>,
+  ): CMsgGCToClientRequestLaneSelectionResponse {
+    const message = createBaseCMsgGCToClientRequestLaneSelectionResponse();
+    message.laneSelectionFlags = object.laneSelectionFlags ?? 0;
+    message.highPriorityDisabled = object.highPriorityDisabled ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientRequestMMInfo(): CMsgGCToClientRequestMMInfo {
@@ -6048,6 +6879,15 @@ export const CMsgGCToClientRequestMMInfo = {
   toJSON(_: CMsgGCToClientRequestMMInfo): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToClientRequestMMInfo>): CMsgGCToClientRequestMMInfo {
+    return CMsgGCToClientRequestMMInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgGCToClientRequestMMInfo>): CMsgGCToClientRequestMMInfo {
+    const message = createBaseCMsgGCToClientRequestMMInfo();
+    return message;
   },
 };
 
@@ -6109,6 +6949,17 @@ export const CMsgClientToGCMMInfo = {
     message.highPriorityDisabled !== undefined && (obj.highPriorityDisabled = message.highPriorityDisabled);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCMMInfo>): CMsgClientToGCMMInfo {
+    return CMsgClientToGCMMInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCMMInfo>): CMsgClientToGCMMInfo {
+    const message = createBaseCMsgClientToGCMMInfo();
+    message.laneSelectionFlags = object.laneSelectionFlags ?? 0;
+    message.highPriorityDisabled = object.highPriorityDisabled ?? false;
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -6154,6 +7005,13 @@ function base64FromBytes(arr: Uint8Array): string {
     return tsProtoGlobalThis.btoa(bin.join(""));
   }
 }
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

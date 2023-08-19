@@ -673,6 +673,17 @@ export const CMsgIPAddress = {
     message.v6 !== undefined && (obj.v6 = message.v6 !== undefined ? base64FromBytes(message.v6) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgIPAddress>): CMsgIPAddress {
+    return CMsgIPAddress.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgIPAddress>): CMsgIPAddress {
+    const message = createBaseCMsgIPAddress();
+    message.v4 = object.v4 ?? undefined;
+    message.v6 = object.v6 ?? undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgIPAddressBucket(): CMsgIPAddressBucket {
@@ -734,6 +745,19 @@ export const CMsgIPAddressBucket = {
     message.bucket !== undefined && (obj.bucket = message.bucket);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgIPAddressBucket>): CMsgIPAddressBucket {
+    return CMsgIPAddressBucket.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgIPAddressBucket>): CMsgIPAddressBucket {
+    const message = createBaseCMsgIPAddressBucket();
+    message.originalIpAddress = (object.originalIpAddress !== undefined && object.originalIpAddress !== null)
+      ? CMsgIPAddress.fromPartial(object.originalIpAddress)
+      : undefined;
+    message.bucket = object.bucket ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgGCRoutingProtoBufHeader(): CMsgGCRoutingProtoBufHeader {
@@ -793,6 +817,17 @@ export const CMsgGCRoutingProtoBufHeader = {
     message.dstGcidQueue !== undefined && (obj.dstGcidQueue = message.dstGcidQueue);
     message.dstGcDirIndex !== undefined && (obj.dstGcDirIndex = Math.round(message.dstGcDirIndex));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCRoutingProtoBufHeader>): CMsgGCRoutingProtoBufHeader {
+    return CMsgGCRoutingProtoBufHeader.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCRoutingProtoBufHeader>): CMsgGCRoutingProtoBufHeader {
+    const message = createBaseCMsgGCRoutingProtoBufHeader();
+    message.dstGcidQueue = object.dstGcidQueue ?? "0";
+    message.dstGcDirIndex = object.dstGcDirIndex ?? 0;
+    return message;
   },
 };
 
@@ -1280,6 +1315,50 @@ export const CMsgProtoBufHeader = {
     message.ipV6 !== undefined && (obj.ipV6 = message.ipV6 !== undefined ? base64FromBytes(message.ipV6) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgProtoBufHeader>): CMsgProtoBufHeader {
+    return CMsgProtoBufHeader.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgProtoBufHeader>): CMsgProtoBufHeader {
+    const message = createBaseCMsgProtoBufHeader();
+    message.steamid = object.steamid ?? "0";
+    message.clientSessionid = object.clientSessionid ?? 0;
+    message.routingAppid = object.routingAppid ?? 0;
+    message.jobidSource = object.jobidSource ?? "0";
+    message.jobidTarget = object.jobidTarget ?? "0";
+    message.targetJobName = object.targetJobName ?? "";
+    message.seqNum = object.seqNum ?? 0;
+    message.eresult = object.eresult ?? 0;
+    message.errorMessage = object.errorMessage ?? "";
+    message.authAccountFlags = object.authAccountFlags ?? 0;
+    message.tokenSource = object.tokenSource ?? 0;
+    message.adminSpoofingUser = object.adminSpoofingUser ?? false;
+    message.transportError = object.transportError ?? 0;
+    message.messageid = object.messageid ?? "0";
+    message.publisherGroupId = object.publisherGroupId ?? 0;
+    message.sysid = object.sysid ?? 0;
+    message.traceTag = object.traceTag ?? "0";
+    message.webapiKeyId = object.webapiKeyId ?? 0;
+    message.isFromExternalSource = object.isFromExternalSource ?? false;
+    message.forwardToSysid = object.forwardToSysid?.map((e) => e) || [];
+    message.cmSysid = object.cmSysid ?? 0;
+    message.launcherType = object.launcherType ?? 0;
+    message.realm = object.realm ?? 0;
+    message.timeoutMs = object.timeoutMs ?? 0;
+    message.debugSource = object.debugSource ?? "";
+    message.debugSourceStringIndex = object.debugSourceStringIndex ?? 0;
+    message.tokenId = object.tokenId ?? "0";
+    message.routingGc = (object.routingGc !== undefined && object.routingGc !== null)
+      ? CMsgGCRoutingProtoBufHeader.fromPartial(object.routingGc)
+      : undefined;
+    message.sessionDisposition = object.sessionDisposition ?? 0;
+    message.wgToken = object.wgToken ?? "";
+    message.webuiAuthKey = object.webuiAuthKey ?? "";
+    message.ip = object.ip ?? undefined;
+    message.ipV6 = object.ipV6 ?? undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgMulti(): CMsgMulti {
@@ -1341,6 +1420,17 @@ export const CMsgMulti = {
       (obj.messageBody = base64FromBytes(message.messageBody !== undefined ? message.messageBody : Buffer.alloc(0)));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgMulti>): CMsgMulti {
+    return CMsgMulti.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgMulti>): CMsgMulti {
+    const message = createBaseCMsgMulti();
+    message.sizeUnzipped = object.sizeUnzipped ?? 0;
+    message.messageBody = object.messageBody ?? Buffer.alloc(0);
+    return message;
+  },
 };
 
 function createBaseCMsgProtobufWrapped(): CMsgProtobufWrapped {
@@ -1389,6 +1479,16 @@ export const CMsgProtobufWrapped = {
     message.messageBody !== undefined &&
       (obj.messageBody = base64FromBytes(message.messageBody !== undefined ? message.messageBody : Buffer.alloc(0)));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgProtobufWrapped>): CMsgProtobufWrapped {
+    return CMsgProtobufWrapped.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgProtobufWrapped>): CMsgProtobufWrapped {
+    const message = createBaseCMsgProtobufWrapped();
+    message.messageBody = object.messageBody ?? Buffer.alloc(0);
+    return message;
   },
 };
 
@@ -1545,6 +1645,24 @@ export const CMsgAuthTicket = {
       (obj.serverSecret = base64FromBytes(message.serverSecret !== undefined ? message.serverSecret : Buffer.alloc(0)));
     message.ticketType !== undefined && (obj.ticketType = Math.round(message.ticketType));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgAuthTicket>): CMsgAuthTicket {
+    return CMsgAuthTicket.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgAuthTicket>): CMsgAuthTicket {
+    const message = createBaseCMsgAuthTicket();
+    message.estate = object.estate ?? 0;
+    message.eresult = object.eresult ?? 0;
+    message.steamid = object.steamid ?? "0";
+    message.gameid = object.gameid ?? "0";
+    message.hSteamPipe = object.hSteamPipe ?? 0;
+    message.ticketCrc = object.ticketCrc ?? 0;
+    message.ticket = object.ticket ?? Buffer.alloc(0);
+    message.serverSecret = object.serverSecret ?? Buffer.alloc(0);
+    message.ticketType = object.ticketType ?? 0;
+    return message;
   },
 };
 
@@ -1794,6 +1912,30 @@ export const CCDDBAppDetailCommon = {
       obj.contentDescriptorids = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CCDDBAppDetailCommon>): CCDDBAppDetailCommon {
+    return CCDDBAppDetailCommon.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CCDDBAppDetailCommon>): CCDDBAppDetailCommon {
+    const message = createBaseCCDDBAppDetailCommon();
+    message.appid = object.appid ?? 0;
+    message.name = object.name ?? "";
+    message.icon = object.icon ?? "";
+    message.tool = object.tool ?? false;
+    message.demo = object.demo ?? false;
+    message.media = object.media ?? false;
+    message.communityVisibleStats = object.communityVisibleStats ?? false;
+    message.friendlyName = object.friendlyName ?? "";
+    message.propagation = object.propagation ?? "";
+    message.hasAdultContent = object.hasAdultContent ?? false;
+    message.isVisibleInSteamChina = object.isVisibleInSteamChina ?? false;
+    message.appType = object.appType ?? 0;
+    message.hasAdultContentSex = object.hasAdultContentSex ?? false;
+    message.hasAdultContentViolence = object.hasAdultContentViolence ?? false;
+    message.contentDescriptorids = object.contentDescriptorids?.map((e) => e) || [];
+    return message;
   },
 };
 
@@ -2055,6 +2197,32 @@ export const CMsgAppRights = {
     message.editStoreDisplayContent !== undefined && (obj.editStoreDisplayContent = message.editStoreDisplayContent);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgAppRights>): CMsgAppRights {
+    return CMsgAppRights.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgAppRights>): CMsgAppRights {
+    const message = createBaseCMsgAppRights();
+    message.editInfo = object.editInfo ?? false;
+    message.publish = object.publish ?? false;
+    message.viewErrorData = object.viewErrorData ?? false;
+    message.download = object.download ?? false;
+    message.uploadCdkeys = object.uploadCdkeys ?? false;
+    message.generateCdkeys = object.generateCdkeys ?? false;
+    message.viewFinancials = object.viewFinancials ?? false;
+    message.manageCeg = object.manageCeg ?? false;
+    message.manageSigning = object.manageSigning ?? false;
+    message.manageCdkeys = object.manageCdkeys ?? false;
+    message.editMarketing = object.editMarketing ?? false;
+    message.economySupport = object.economySupport ?? false;
+    message.economySupportSupervisor = object.economySupportSupervisor ?? false;
+    message.managePricing = object.managePricing ?? false;
+    message.broadcastLive = object.broadcastLive ?? false;
+    message.viewMarketingTraffic = object.viewMarketingTraffic ?? false;
+    message.editStoreDisplayContent = object.editStoreDisplayContent ?? false;
+    return message;
+  },
 };
 
 function createBaseCCuratorPreferences(): CCuratorPreferences {
@@ -2304,6 +2472,29 @@ export const CCuratorPreferences = {
     message.showBroadcast !== undefined && (obj.showBroadcast = message.showBroadcast);
     return obj;
   },
+
+  create(base?: DeepPartial<CCuratorPreferences>): CCuratorPreferences {
+    return CCuratorPreferences.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CCuratorPreferences>): CCuratorPreferences {
+    const message = createBaseCCuratorPreferences();
+    message.supportedLanguages = object.supportedLanguages ?? 0;
+    message.platformWindows = object.platformWindows ?? false;
+    message.platformMac = object.platformMac ?? false;
+    message.platformLinux = object.platformLinux ?? false;
+    message.vrContent = object.vrContent ?? false;
+    message.adultContentViolence = object.adultContentViolence ?? false;
+    message.adultContentSex = object.adultContentSex ?? false;
+    message.timestampUpdated = object.timestampUpdated ?? 0;
+    message.tagidsCurated = object.tagidsCurated?.map((e) => e) || [];
+    message.tagidsFiltered = object.tagidsFiltered?.map((e) => e) || [];
+    message.websiteTitle = object.websiteTitle ?? "";
+    message.websiteUrl = object.websiteUrl ?? "";
+    message.discussionUrl = object.discussionUrl ?? "";
+    message.showBroadcast = object.showBroadcast ?? false;
+    return message;
+  },
 };
 
 function createBaseCLocalizationToken(): CLocalizationToken {
@@ -2363,6 +2554,17 @@ export const CLocalizationToken = {
     message.language !== undefined && (obj.language = Math.round(message.language));
     message.localizedString !== undefined && (obj.localizedString = message.localizedString);
     return obj;
+  },
+
+  create(base?: DeepPartial<CLocalizationToken>): CLocalizationToken {
+    return CLocalizationToken.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CLocalizationToken>): CLocalizationToken {
+    const message = createBaseCLocalizationToken();
+    message.language = object.language ?? 0;
+    message.localizedString = object.localizedString ?? "";
+    return message;
   },
 };
 
@@ -2531,6 +2733,25 @@ export const CClanEventUserNewsTuple = {
     message.rtime32LastModified !== undefined && (obj.rtime32LastModified = Math.round(message.rtime32LastModified));
     return obj;
   },
+
+  create(base?: DeepPartial<CClanEventUserNewsTuple>): CClanEventUserNewsTuple {
+    return CClanEventUserNewsTuple.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CClanEventUserNewsTuple>): CClanEventUserNewsTuple {
+    const message = createBaseCClanEventUserNewsTuple();
+    message.clanid = object.clanid ?? 0;
+    message.eventGid = object.eventGid ?? "0";
+    message.announcementGid = object.announcementGid ?? "0";
+    message.rtimeStart = object.rtimeStart ?? 0;
+    message.rtimeEnd = object.rtimeEnd ?? 0;
+    message.priorityScore = object.priorityScore ?? 0;
+    message.type = object.type ?? 0;
+    message.clampRangeSlot = object.clampRangeSlot ?? 0;
+    message.appid = object.appid ?? 0;
+    message.rtime32LastModified = object.rtime32LastModified ?? 0;
+    return message;
+  },
 };
 
 function createBaseCClanMatchEventByRange(): CClanMatchEventByRange {
@@ -2618,6 +2839,19 @@ export const CClanMatchEventByRange = {
       obj.events = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CClanMatchEventByRange>): CClanMatchEventByRange {
+    return CClanMatchEventByRange.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CClanMatchEventByRange>): CClanMatchEventByRange {
+    const message = createBaseCClanMatchEventByRange();
+    message.rtimeBefore = object.rtimeBefore ?? 0;
+    message.rtimeAfter = object.rtimeAfter ?? 0;
+    message.qualified = object.qualified ?? 0;
+    message.events = object.events?.map((e) => CClanEventUserNewsTuple.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -2880,6 +3114,32 @@ export const CCommunityClanAnnouncementInfo = {
     message.banCheckResult !== undefined && (obj.banCheckResult = eBanContentCheckResultToJSON(message.banCheckResult));
     message.banned !== undefined && (obj.banned = message.banned);
     return obj;
+  },
+
+  create(base?: DeepPartial<CCommunityClanAnnouncementInfo>): CCommunityClanAnnouncementInfo {
+    return CCommunityClanAnnouncementInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CCommunityClanAnnouncementInfo>): CCommunityClanAnnouncementInfo {
+    const message = createBaseCCommunityClanAnnouncementInfo();
+    message.gid = object.gid ?? "0";
+    message.clanid = object.clanid ?? "0";
+    message.posterid = object.posterid ?? "0";
+    message.headline = object.headline ?? "";
+    message.posttime = object.posttime ?? 0;
+    message.updatetime = object.updatetime ?? 0;
+    message.body = object.body ?? "";
+    message.commentcount = object.commentcount ?? 0;
+    message.tags = object.tags?.map((e) => e) || [];
+    message.language = object.language ?? 0;
+    message.hidden = object.hidden ?? false;
+    message.forumTopicId = object.forumTopicId ?? "0";
+    message.eventGid = object.eventGid ?? "0";
+    message.voteupcount = object.voteupcount ?? 0;
+    message.votedowncount = object.votedowncount ?? 0;
+    message.banCheckResult = object.banCheckResult ?? 0;
+    message.banned = object.banned ?? false;
+    return message;
   },
 };
 
@@ -3330,6 +3590,47 @@ export const CClanEventData = {
     message.buildBranch !== undefined && (obj.buildBranch = message.buildBranch);
     return obj;
   },
+
+  create(base?: DeepPartial<CClanEventData>): CClanEventData {
+    return CClanEventData.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CClanEventData>): CClanEventData {
+    const message = createBaseCClanEventData();
+    message.gid = object.gid ?? "0";
+    message.clanSteamid = object.clanSteamid ?? "0";
+    message.eventName = object.eventName ?? "";
+    message.eventType = object.eventType ?? 1;
+    message.appid = object.appid ?? 0;
+    message.serverAddress = object.serverAddress ?? "";
+    message.serverPassword = object.serverPassword ?? "";
+    message.rtime32StartTime = object.rtime32StartTime ?? 0;
+    message.rtime32EndTime = object.rtime32EndTime ?? 0;
+    message.commentCount = object.commentCount ?? 0;
+    message.creatorSteamid = object.creatorSteamid ?? "0";
+    message.lastUpdateSteamid = object.lastUpdateSteamid ?? "0";
+    message.eventNotes = object.eventNotes ?? "";
+    message.jsondata = object.jsondata ?? "";
+    message.announcementBody = (object.announcementBody !== undefined && object.announcementBody !== null)
+      ? CCommunityClanAnnouncementInfo.fromPartial(object.announcementBody)
+      : undefined;
+    message.published = object.published ?? false;
+    message.hidden = object.hidden ?? false;
+    message.rtime32VisibilityStart = object.rtime32VisibilityStart ?? 0;
+    message.rtime32VisibilityEnd = object.rtime32VisibilityEnd ?? 0;
+    message.broadcasterAccountid = object.broadcasterAccountid ?? 0;
+    message.followerCount = object.followerCount ?? 0;
+    message.ignoreCount = object.ignoreCount ?? 0;
+    message.forumTopicId = object.forumTopicId ?? "0";
+    message.rtime32LastModified = object.rtime32LastModified ?? 0;
+    message.newsPostGid = object.newsPostGid ?? "0";
+    message.rtimeModReviewed = object.rtimeModReviewed ?? 0;
+    message.featuredAppTagid = object.featuredAppTagid ?? 0;
+    message.referencedAppids = object.referencedAppids?.map((e) => e) || [];
+    message.buildId = object.buildId ?? 0;
+    message.buildBranch = object.buildBranch ?? "";
+    return message;
+  },
 };
 
 function createBaseCBillingAddress(): CBillingAddress {
@@ -3497,6 +3798,25 @@ export const CBillingAddress = {
     message.phone !== undefined && (obj.phone = message.phone);
     return obj;
   },
+
+  create(base?: DeepPartial<CBillingAddress>): CBillingAddress {
+    return CBillingAddress.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CBillingAddress>): CBillingAddress {
+    const message = createBaseCBillingAddress();
+    message.firstName = object.firstName ?? "";
+    message.lastName = object.lastName ?? "";
+    message.address1 = object.address1 ?? "";
+    message.address2 = object.address2 ?? "";
+    message.city = object.city ?? "";
+    message.usState = object.usState ?? "";
+    message.countryCode = object.countryCode ?? "";
+    message.postcode = object.postcode ?? "";
+    message.zipPlus4 = object.zipPlus4 ?? 0;
+    message.phone = object.phone ?? "";
+    return message;
+  },
 };
 
 function createBaseCPackageReservationStatus(): CPackageReservationStatus {
@@ -3638,6 +3958,23 @@ export const CPackageReservationStatus = {
     message.timeReserved !== undefined && (obj.timeReserved = Math.round(message.timeReserved));
     return obj;
   },
+
+  create(base?: DeepPartial<CPackageReservationStatus>): CPackageReservationStatus {
+    return CPackageReservationStatus.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPackageReservationStatus>): CPackageReservationStatus {
+    const message = createBaseCPackageReservationStatus();
+    message.packageid = object.packageid ?? 0;
+    message.reservationState = object.reservationState ?? 0;
+    message.queuePosition = object.queuePosition ?? 0;
+    message.totalQueueSize = object.totalQueueSize ?? 0;
+    message.reservationCountryCode = object.reservationCountryCode ?? "";
+    message.expired = object.expired ?? false;
+    message.timeExpires = object.timeExpires ?? 0;
+    message.timeReserved = object.timeReserved ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgKeyValuePair(): CMsgKeyValuePair {
@@ -3698,6 +4035,17 @@ export const CMsgKeyValuePair = {
     message.value !== undefined && (obj.value = message.value);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgKeyValuePair>): CMsgKeyValuePair {
+    return CMsgKeyValuePair.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgKeyValuePair>): CMsgKeyValuePair {
+    const message = createBaseCMsgKeyValuePair();
+    message.name = object.name ?? "";
+    message.value = object.value ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgKeyValueSet(): CMsgKeyValueSet {
@@ -3747,6 +4095,16 @@ export const CMsgKeyValueSet = {
       obj.pairs = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgKeyValueSet>): CMsgKeyValueSet {
+    return CMsgKeyValueSet.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgKeyValueSet>): CMsgKeyValueSet {
+    const message = createBaseCMsgKeyValueSet();
+    message.pairs = object.pairs?.map((e) => CMsgKeyValuePair.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -3807,6 +4165,19 @@ export const UserContentDescriptorPreferences = {
       obj.contentDescriptorsToExclude = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<UserContentDescriptorPreferences>): UserContentDescriptorPreferences {
+    return UserContentDescriptorPreferences.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<UserContentDescriptorPreferences>): UserContentDescriptorPreferences {
+    const message = createBaseUserContentDescriptorPreferences();
+    message.contentDescriptorsToExclude =
+      object.contentDescriptorsToExclude?.map((e) =>
+        UserContentDescriptorPreferences_ContentDescriptor.fromPartial(e)
+      ) || [];
+    return message;
   },
 };
 
@@ -3871,6 +4242,21 @@ export const UserContentDescriptorPreferences_ContentDescriptor = {
     message.timestampAdded !== undefined && (obj.timestampAdded = Math.round(message.timestampAdded));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<UserContentDescriptorPreferences_ContentDescriptor>,
+  ): UserContentDescriptorPreferences_ContentDescriptor {
+    return UserContentDescriptorPreferences_ContentDescriptor.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<UserContentDescriptorPreferences_ContentDescriptor>,
+  ): UserContentDescriptorPreferences_ContentDescriptor {
+    const message = createBaseUserContentDescriptorPreferences_ContentDescriptor();
+    message.contentDescriptorid = object.contentDescriptorid ?? 0;
+    message.timestampAdded = object.timestampAdded ?? 0;
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -3916,6 +4302,13 @@ function base64FromBytes(arr: Uint8Array): string {
     return tsProtoGlobalThis.btoa(bin.join(""));
   }
 }
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

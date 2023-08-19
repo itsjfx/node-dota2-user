@@ -251,6 +251,19 @@ export const CPlayerGetMutualFriendsForIncomingInvitesRequest = {
     const obj: any = {};
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CPlayerGetMutualFriendsForIncomingInvitesRequest>,
+  ): CPlayerGetMutualFriendsForIncomingInvitesRequest {
+    return CPlayerGetMutualFriendsForIncomingInvitesRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    _: DeepPartial<CPlayerGetMutualFriendsForIncomingInvitesRequest>,
+  ): CPlayerGetMutualFriendsForIncomingInvitesRequest {
+    const message = createBaseCPlayerGetMutualFriendsForIncomingInvitesRequest();
+    return message;
+  },
 };
 
 function createBaseCPlayerIncomingInviteMutualFriendList(): CPlayerIncomingInviteMutualFriendList {
@@ -328,6 +341,17 @@ export const CPlayerIncomingInviteMutualFriendList = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CPlayerIncomingInviteMutualFriendList>): CPlayerIncomingInviteMutualFriendList {
+    return CPlayerIncomingInviteMutualFriendList.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPlayerIncomingInviteMutualFriendList>): CPlayerIncomingInviteMutualFriendList {
+    const message = createBaseCPlayerIncomingInviteMutualFriendList();
+    message.steamid = object.steamid ?? "0";
+    message.mutualFriendAccountIds = object.mutualFriendAccountIds?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCPlayerGetMutualFriendsForIncomingInvitesResponse(): CPlayerGetMutualFriendsForIncomingInvitesResponse {
@@ -389,6 +413,21 @@ export const CPlayerGetMutualFriendsForIncomingInvitesResponse = {
     }
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CPlayerGetMutualFriendsForIncomingInvitesResponse>,
+  ): CPlayerGetMutualFriendsForIncomingInvitesResponse {
+    return CPlayerGetMutualFriendsForIncomingInvitesResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CPlayerGetMutualFriendsForIncomingInvitesResponse>,
+  ): CPlayerGetMutualFriendsForIncomingInvitesResponse {
+    const message = createBaseCPlayerGetMutualFriendsForIncomingInvitesResponse();
+    message.incomingInviteMutualFriendsLists =
+      object.incomingInviteMutualFriendsLists?.map((e) => CPlayerIncomingInviteMutualFriendList.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCPlayerGetFriendsGameplayInfoRequest(): CPlayerGetFriendsGameplayInfoRequest {
@@ -434,6 +473,16 @@ export const CPlayerGetFriendsGameplayInfoRequest = {
     const obj: any = {};
     message.appid !== undefined && (obj.appid = Math.round(message.appid));
     return obj;
+  },
+
+  create(base?: DeepPartial<CPlayerGetFriendsGameplayInfoRequest>): CPlayerGetFriendsGameplayInfoRequest {
+    return CPlayerGetFriendsGameplayInfoRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPlayerGetFriendsGameplayInfoRequest>): CPlayerGetFriendsGameplayInfoRequest {
+    const message = createBaseCPlayerGetFriendsGameplayInfoRequest();
+    message.appid = object.appid ?? 0;
+    return message;
   },
 };
 
@@ -595,6 +644,28 @@ export const CPlayerGetFriendsGameplayInfoResponse = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CPlayerGetFriendsGameplayInfoResponse>): CPlayerGetFriendsGameplayInfoResponse {
+    return CPlayerGetFriendsGameplayInfoResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPlayerGetFriendsGameplayInfoResponse>): CPlayerGetFriendsGameplayInfoResponse {
+    const message = createBaseCPlayerGetFriendsGameplayInfoResponse();
+    message.yourInfo = (object.yourInfo !== undefined && object.yourInfo !== null)
+      ? CPlayerGetFriendsGameplayInfoResponse_OwnGameplayInfo.fromPartial(object.yourInfo)
+      : undefined;
+    message.inGame =
+      object.inGame?.map((e) => CPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo.fromPartial(e)) || [];
+    message.playedRecently =
+      object.playedRecently?.map((e) => CPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo.fromPartial(e)) || [];
+    message.playedEver =
+      object.playedEver?.map((e) => CPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo.fromPartial(e)) || [];
+    message.owns = object.owns?.map((e) => CPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo.fromPartial(e)) ||
+      [];
+    message.inWishlist =
+      object.inWishlist?.map((e) => CPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo(): CPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo {
@@ -669,6 +740,22 @@ export const CPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo = {
     message.minutesPlayed !== undefined && (obj.minutesPlayed = Math.round(message.minutesPlayed));
     message.minutesPlayedForever !== undefined && (obj.minutesPlayedForever = Math.round(message.minutesPlayedForever));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo>,
+  ): CPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo {
+    return CPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo>,
+  ): CPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo {
+    const message = createBaseCPlayerGetFriendsGameplayInfoResponse_FriendsGameplayInfo();
+    message.steamid = object.steamid ?? "0";
+    message.minutesPlayed = object.minutesPlayed ?? 0;
+    message.minutesPlayedForever = object.minutesPlayedForever ?? 0;
+    return message;
   },
 };
 
@@ -769,6 +856,24 @@ export const CPlayerGetFriendsGameplayInfoResponse_OwnGameplayInfo = {
     message.owned !== undefined && (obj.owned = message.owned);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CPlayerGetFriendsGameplayInfoResponse_OwnGameplayInfo>,
+  ): CPlayerGetFriendsGameplayInfoResponse_OwnGameplayInfo {
+    return CPlayerGetFriendsGameplayInfoResponse_OwnGameplayInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CPlayerGetFriendsGameplayInfoResponse_OwnGameplayInfo>,
+  ): CPlayerGetFriendsGameplayInfoResponse_OwnGameplayInfo {
+    const message = createBaseCPlayerGetFriendsGameplayInfoResponse_OwnGameplayInfo();
+    message.steamid = object.steamid ?? "0";
+    message.minutesPlayed = object.minutesPlayed ?? 0;
+    message.minutesPlayedForever = object.minutesPlayedForever ?? 0;
+    message.inWishlist = object.inWishlist ?? false;
+    message.owned = object.owned ?? false;
+    return message;
+  },
 };
 
 function createBaseCPlayerGetGameBadgeLevelsRequest(): CPlayerGetGameBadgeLevelsRequest {
@@ -814,6 +919,16 @@ export const CPlayerGetGameBadgeLevelsRequest = {
     const obj: any = {};
     message.appid !== undefined && (obj.appid = Math.round(message.appid));
     return obj;
+  },
+
+  create(base?: DeepPartial<CPlayerGetGameBadgeLevelsRequest>): CPlayerGetGameBadgeLevelsRequest {
+    return CPlayerGetGameBadgeLevelsRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPlayerGetGameBadgeLevelsRequest>): CPlayerGetGameBadgeLevelsRequest {
+    const message = createBaseCPlayerGetGameBadgeLevelsRequest();
+    message.appid = object.appid ?? 0;
+    return message;
   },
 };
 
@@ -880,6 +995,17 @@ export const CPlayerGetGameBadgeLevelsResponse = {
       obj.badges = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CPlayerGetGameBadgeLevelsResponse>): CPlayerGetGameBadgeLevelsResponse {
+    return CPlayerGetGameBadgeLevelsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPlayerGetGameBadgeLevelsResponse>): CPlayerGetGameBadgeLevelsResponse {
+    const message = createBaseCPlayerGetGameBadgeLevelsResponse();
+    message.playerLevel = object.playerLevel ?? 0;
+    message.badges = object.badges?.map((e) => CPlayerGetGameBadgeLevelsResponse_Badge.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -953,6 +1079,18 @@ export const CPlayerGetGameBadgeLevelsResponse_Badge = {
     message.borderColor !== undefined && (obj.borderColor = Math.round(message.borderColor));
     return obj;
   },
+
+  create(base?: DeepPartial<CPlayerGetGameBadgeLevelsResponse_Badge>): CPlayerGetGameBadgeLevelsResponse_Badge {
+    return CPlayerGetGameBadgeLevelsResponse_Badge.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPlayerGetGameBadgeLevelsResponse_Badge>): CPlayerGetGameBadgeLevelsResponse_Badge {
+    const message = createBaseCPlayerGetGameBadgeLevelsResponse_Badge();
+    message.level = object.level ?? 0;
+    message.series = object.series ?? 0;
+    message.borderColor = object.borderColor ?? 0;
+    return message;
+  },
 };
 
 function createBaseCPlayerGetLastPlayedTimesRequest(): CPlayerGetLastPlayedTimesRequest {
@@ -998,6 +1136,16 @@ export const CPlayerGetLastPlayedTimesRequest = {
     const obj: any = {};
     message.minLastPlayed !== undefined && (obj.minLastPlayed = Math.round(message.minLastPlayed));
     return obj;
+  },
+
+  create(base?: DeepPartial<CPlayerGetLastPlayedTimesRequest>): CPlayerGetLastPlayedTimesRequest {
+    return CPlayerGetLastPlayedTimesRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPlayerGetLastPlayedTimesRequest>): CPlayerGetLastPlayedTimesRequest {
+    const message = createBaseCPlayerGetLastPlayedTimesRequest();
+    message.minLastPlayed = object.minLastPlayed ?? 0;
+    return message;
   },
 };
 
@@ -1052,6 +1200,16 @@ export const CPlayerGetLastPlayedTimesResponse = {
       obj.games = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CPlayerGetLastPlayedTimesResponse>): CPlayerGetLastPlayedTimesResponse {
+    return CPlayerGetLastPlayedTimesResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPlayerGetLastPlayedTimesResponse>): CPlayerGetLastPlayedTimesResponse {
+    const message = createBaseCPlayerGetLastPlayedTimesResponse();
+    message.games = object.games?.map((e) => CPlayerGetLastPlayedTimesResponse_Game.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -1149,6 +1307,20 @@ export const CPlayerGetLastPlayedTimesResponse_Game = {
     message.firstPlaytime !== undefined && (obj.firstPlaytime = Math.round(message.firstPlaytime));
     return obj;
   },
+
+  create(base?: DeepPartial<CPlayerGetLastPlayedTimesResponse_Game>): CPlayerGetLastPlayedTimesResponse_Game {
+    return CPlayerGetLastPlayedTimesResponse_Game.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPlayerGetLastPlayedTimesResponse_Game>): CPlayerGetLastPlayedTimesResponse_Game {
+    const message = createBaseCPlayerGetLastPlayedTimesResponse_Game();
+    message.appid = object.appid ?? 0;
+    message.lastPlaytime = object.lastPlaytime ?? 0;
+    message.playtime2weeks = object.playtime2weeks ?? 0;
+    message.playtimeForever = object.playtimeForever ?? 0;
+    message.firstPlaytime = object.firstPlaytime ?? 0;
+    return message;
+  },
 };
 
 function createBaseCPlayerAcceptSSARequest(): CPlayerAcceptSSARequest {
@@ -1183,6 +1355,15 @@ export const CPlayerAcceptSSARequest = {
   toJSON(_: CPlayerAcceptSSARequest): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CPlayerAcceptSSARequest>): CPlayerAcceptSSARequest {
+    return CPlayerAcceptSSARequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CPlayerAcceptSSARequest>): CPlayerAcceptSSARequest {
+    const message = createBaseCPlayerAcceptSSARequest();
+    return message;
   },
 };
 
@@ -1219,6 +1400,15 @@ export const CPlayerAcceptSSAResponse = {
     const obj: any = {};
     return obj;
   },
+
+  create(base?: DeepPartial<CPlayerAcceptSSAResponse>): CPlayerAcceptSSAResponse {
+    return CPlayerAcceptSSAResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CPlayerAcceptSSAResponse>): CPlayerAcceptSSAResponse {
+    const message = createBaseCPlayerAcceptSSAResponse();
+    return message;
+  },
 };
 
 function createBaseCPlayerGetNicknameListRequest(): CPlayerGetNicknameListRequest {
@@ -1253,6 +1443,15 @@ export const CPlayerGetNicknameListRequest = {
   toJSON(_: CPlayerGetNicknameListRequest): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CPlayerGetNicknameListRequest>): CPlayerGetNicknameListRequest {
+    return CPlayerGetNicknameListRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CPlayerGetNicknameListRequest>): CPlayerGetNicknameListRequest {
+    const message = createBaseCPlayerGetNicknameListRequest();
+    return message;
   },
 };
 
@@ -1309,6 +1508,17 @@ export const CPlayerGetNicknameListResponse = {
       obj.nicknames = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CPlayerGetNicknameListResponse>): CPlayerGetNicknameListResponse {
+    return CPlayerGetNicknameListResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPlayerGetNicknameListResponse>): CPlayerGetNicknameListResponse {
+    const message = createBaseCPlayerGetNicknameListResponse();
+    message.nicknames = object.nicknames?.map((e) => CPlayerGetNicknameListResponse_PlayerNickname.fromPartial(e)) ||
+      [];
+    return message;
   },
 };
 
@@ -1370,6 +1580,21 @@ export const CPlayerGetNicknameListResponse_PlayerNickname = {
     message.nickname !== undefined && (obj.nickname = message.nickname);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CPlayerGetNicknameListResponse_PlayerNickname>,
+  ): CPlayerGetNicknameListResponse_PlayerNickname {
+    return CPlayerGetNicknameListResponse_PlayerNickname.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CPlayerGetNicknameListResponse_PlayerNickname>,
+  ): CPlayerGetNicknameListResponse_PlayerNickname {
+    const message = createBaseCPlayerGetNicknameListResponse_PlayerNickname();
+    message.accountid = object.accountid ?? 0;
+    message.nickname = object.nickname ?? "";
+    return message;
+  },
 };
 
 function createBaseCPlayerGetPerFriendPreferencesRequest(): CPlayerGetPerFriendPreferencesRequest {
@@ -1404,6 +1629,15 @@ export const CPlayerGetPerFriendPreferencesRequest = {
   toJSON(_: CPlayerGetPerFriendPreferencesRequest): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CPlayerGetPerFriendPreferencesRequest>): CPlayerGetPerFriendPreferencesRequest {
+    return CPlayerGetPerFriendPreferencesRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CPlayerGetPerFriendPreferencesRequest>): CPlayerGetPerFriendPreferencesRequest {
+    const message = createBaseCPlayerGetPerFriendPreferencesRequest();
+    return message;
   },
 };
 
@@ -1576,6 +1810,24 @@ export const PerFriendPreferences = {
       (obj.notificationsSendmobile = eNotificationSettingToJSON(message.notificationsSendmobile));
     return obj;
   },
+
+  create(base?: DeepPartial<PerFriendPreferences>): PerFriendPreferences {
+    return PerFriendPreferences.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<PerFriendPreferences>): PerFriendPreferences {
+    const message = createBasePerFriendPreferences();
+    message.accountid = object.accountid ?? 0;
+    message.nickname = object.nickname ?? "";
+    message.notificationsShowingame = object.notificationsShowingame ?? 0;
+    message.notificationsShowonline = object.notificationsShowonline ?? 0;
+    message.notificationsShowmessages = object.notificationsShowmessages ?? 0;
+    message.soundsShowingame = object.soundsShowingame ?? 0;
+    message.soundsShowonline = object.soundsShowonline ?? 0;
+    message.soundsShowmessages = object.soundsShowmessages ?? 0;
+    message.notificationsSendmobile = object.notificationsSendmobile ?? 0;
+    return message;
+  },
 };
 
 function createBaseCPlayerGetPerFriendPreferencesResponse(): CPlayerGetPerFriendPreferencesResponse {
@@ -1630,6 +1882,16 @@ export const CPlayerGetPerFriendPreferencesResponse = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CPlayerGetPerFriendPreferencesResponse>): CPlayerGetPerFriendPreferencesResponse {
+    return CPlayerGetPerFriendPreferencesResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPlayerGetPerFriendPreferencesResponse>): CPlayerGetPerFriendPreferencesResponse {
+    const message = createBaseCPlayerGetPerFriendPreferencesResponse();
+    message.preferences = object.preferences?.map((e) => PerFriendPreferences.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCPlayerSetPerFriendPreferencesRequest(): CPlayerSetPerFriendPreferencesRequest {
@@ -1677,6 +1939,18 @@ export const CPlayerSetPerFriendPreferencesRequest = {
       (obj.preferences = message.preferences ? PerFriendPreferences.toJSON(message.preferences) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CPlayerSetPerFriendPreferencesRequest>): CPlayerSetPerFriendPreferencesRequest {
+    return CPlayerSetPerFriendPreferencesRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPlayerSetPerFriendPreferencesRequest>): CPlayerSetPerFriendPreferencesRequest {
+    const message = createBaseCPlayerSetPerFriendPreferencesRequest();
+    message.preferences = (object.preferences !== undefined && object.preferences !== null)
+      ? PerFriendPreferences.fromPartial(object.preferences)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCPlayerSetPerFriendPreferencesResponse(): CPlayerSetPerFriendPreferencesResponse {
@@ -1711,6 +1985,15 @@ export const CPlayerSetPerFriendPreferencesResponse = {
   toJSON(_: CPlayerSetPerFriendPreferencesResponse): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CPlayerSetPerFriendPreferencesResponse>): CPlayerSetPerFriendPreferencesResponse {
+    return CPlayerSetPerFriendPreferencesResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CPlayerSetPerFriendPreferencesResponse>): CPlayerSetPerFriendPreferencesResponse {
+    const message = createBaseCPlayerSetPerFriendPreferencesResponse();
+    return message;
   },
 };
 
@@ -1757,6 +2040,16 @@ export const CPlayerAddFriendRequest = {
     const obj: any = {};
     message.steamid !== undefined && (obj.steamid = message.steamid);
     return obj;
+  },
+
+  create(base?: DeepPartial<CPlayerAddFriendRequest>): CPlayerAddFriendRequest {
+    return CPlayerAddFriendRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPlayerAddFriendRequest>): CPlayerAddFriendRequest {
+    const message = createBaseCPlayerAddFriendRequest();
+    message.steamid = object.steamid ?? "0";
+    return message;
   },
 };
 
@@ -1818,6 +2111,17 @@ export const CPlayerAddFriendResponse = {
     message.friendRelationship !== undefined && (obj.friendRelationship = Math.round(message.friendRelationship));
     return obj;
   },
+
+  create(base?: DeepPartial<CPlayerAddFriendResponse>): CPlayerAddFriendResponse {
+    return CPlayerAddFriendResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPlayerAddFriendResponse>): CPlayerAddFriendResponse {
+    const message = createBaseCPlayerAddFriendResponse();
+    message.inviteSent = object.inviteSent ?? false;
+    message.friendRelationship = object.friendRelationship ?? 0;
+    return message;
+  },
 };
 
 function createBaseCPlayerRemoveFriendRequest(): CPlayerRemoveFriendRequest {
@@ -1864,6 +2168,16 @@ export const CPlayerRemoveFriendRequest = {
     message.steamid !== undefined && (obj.steamid = message.steamid);
     return obj;
   },
+
+  create(base?: DeepPartial<CPlayerRemoveFriendRequest>): CPlayerRemoveFriendRequest {
+    return CPlayerRemoveFriendRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPlayerRemoveFriendRequest>): CPlayerRemoveFriendRequest {
+    const message = createBaseCPlayerRemoveFriendRequest();
+    message.steamid = object.steamid ?? "0";
+    return message;
+  },
 };
 
 function createBaseCPlayerRemoveFriendResponse(): CPlayerRemoveFriendResponse {
@@ -1909,6 +2223,16 @@ export const CPlayerRemoveFriendResponse = {
     const obj: any = {};
     message.friendRelationship !== undefined && (obj.friendRelationship = Math.round(message.friendRelationship));
     return obj;
+  },
+
+  create(base?: DeepPartial<CPlayerRemoveFriendResponse>): CPlayerRemoveFriendResponse {
+    return CPlayerRemoveFriendResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPlayerRemoveFriendResponse>): CPlayerRemoveFriendResponse {
+    const message = createBaseCPlayerRemoveFriendResponse();
+    message.friendRelationship = object.friendRelationship ?? 0;
+    return message;
   },
 };
 
@@ -1970,6 +2294,17 @@ export const CPlayerIgnoreFriendRequest = {
     message.unignore !== undefined && (obj.unignore = message.unignore);
     return obj;
   },
+
+  create(base?: DeepPartial<CPlayerIgnoreFriendRequest>): CPlayerIgnoreFriendRequest {
+    return CPlayerIgnoreFriendRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPlayerIgnoreFriendRequest>): CPlayerIgnoreFriendRequest {
+    const message = createBaseCPlayerIgnoreFriendRequest();
+    message.steamid = object.steamid ?? "0";
+    message.unignore = object.unignore ?? false;
+    return message;
+  },
 };
 
 function createBaseCPlayerIgnoreFriendResponse(): CPlayerIgnoreFriendResponse {
@@ -2016,6 +2351,16 @@ export const CPlayerIgnoreFriendResponse = {
     message.friendRelationship !== undefined && (obj.friendRelationship = Math.round(message.friendRelationship));
     return obj;
   },
+
+  create(base?: DeepPartial<CPlayerIgnoreFriendResponse>): CPlayerIgnoreFriendResponse {
+    return CPlayerIgnoreFriendResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPlayerIgnoreFriendResponse>): CPlayerIgnoreFriendResponse {
+    const message = createBaseCPlayerIgnoreFriendResponse();
+    message.friendRelationship = object.friendRelationship ?? 0;
+    return message;
+  },
 };
 
 function createBaseCPlayerGetCommunityPreferencesRequest(): CPlayerGetCommunityPreferencesRequest {
@@ -2050,6 +2395,15 @@ export const CPlayerGetCommunityPreferencesRequest = {
   toJSON(_: CPlayerGetCommunityPreferencesRequest): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CPlayerGetCommunityPreferencesRequest>): CPlayerGetCommunityPreferencesRequest {
+    return CPlayerGetCommunityPreferencesRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CPlayerGetCommunityPreferencesRequest>): CPlayerGetCommunityPreferencesRequest {
+    const message = createBaseCPlayerGetCommunityPreferencesRequest();
+    return message;
   },
 };
 
@@ -2142,6 +2496,19 @@ export const CPlayerCommunityPreferences = {
     message.timestampUpdated !== undefined && (obj.timestampUpdated = Math.round(message.timestampUpdated));
     return obj;
   },
+
+  create(base?: DeepPartial<CPlayerCommunityPreferences>): CPlayerCommunityPreferences {
+    return CPlayerCommunityPreferences.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPlayerCommunityPreferences>): CPlayerCommunityPreferences {
+    const message = createBaseCPlayerCommunityPreferences();
+    message.hideAdultContentViolence = object.hideAdultContentViolence ?? false;
+    message.hideAdultContentSex = object.hideAdultContentSex ?? false;
+    message.parenthesizeNicknames = object.parenthesizeNicknames ?? false;
+    message.timestampUpdated = object.timestampUpdated ?? 0;
+    return message;
+  },
 };
 
 function createBaseCPlayerGetCommunityPreferencesResponse(): CPlayerGetCommunityPreferencesResponse {
@@ -2190,6 +2557,18 @@ export const CPlayerGetCommunityPreferencesResponse = {
     message.preferences !== undefined &&
       (obj.preferences = message.preferences ? CPlayerCommunityPreferences.toJSON(message.preferences) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CPlayerGetCommunityPreferencesResponse>): CPlayerGetCommunityPreferencesResponse {
+    return CPlayerGetCommunityPreferencesResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPlayerGetCommunityPreferencesResponse>): CPlayerGetCommunityPreferencesResponse {
+    const message = createBaseCPlayerGetCommunityPreferencesResponse();
+    message.preferences = (object.preferences !== undefined && object.preferences !== null)
+      ? CPlayerCommunityPreferences.fromPartial(object.preferences)
+      : undefined;
+    return message;
   },
 };
 
@@ -2240,6 +2619,18 @@ export const CPlayerSetCommunityPreferencesRequest = {
       (obj.preferences = message.preferences ? CPlayerCommunityPreferences.toJSON(message.preferences) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CPlayerSetCommunityPreferencesRequest>): CPlayerSetCommunityPreferencesRequest {
+    return CPlayerSetCommunityPreferencesRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPlayerSetCommunityPreferencesRequest>): CPlayerSetCommunityPreferencesRequest {
+    const message = createBaseCPlayerSetCommunityPreferencesRequest();
+    message.preferences = (object.preferences !== undefined && object.preferences !== null)
+      ? CPlayerCommunityPreferences.fromPartial(object.preferences)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCPlayerSetCommunityPreferencesResponse(): CPlayerSetCommunityPreferencesResponse {
@@ -2274,6 +2665,15 @@ export const CPlayerSetCommunityPreferencesResponse = {
   toJSON(_: CPlayerSetCommunityPreferencesResponse): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CPlayerSetCommunityPreferencesResponse>): CPlayerSetCommunityPreferencesResponse {
+    return CPlayerSetCommunityPreferencesResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CPlayerSetCommunityPreferencesResponse>): CPlayerSetCommunityPreferencesResponse {
+    const message = createBaseCPlayerSetCommunityPreferencesResponse();
+    return message;
   },
 };
 
@@ -2320,6 +2720,18 @@ export const CPlayerGetNewSteamAnnouncementStateRequest = {
     const obj: any = {};
     message.language !== undefined && (obj.language = Math.round(message.language));
     return obj;
+  },
+
+  create(base?: DeepPartial<CPlayerGetNewSteamAnnouncementStateRequest>): CPlayerGetNewSteamAnnouncementStateRequest {
+    return CPlayerGetNewSteamAnnouncementStateRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CPlayerGetNewSteamAnnouncementStateRequest>,
+  ): CPlayerGetNewSteamAnnouncementStateRequest {
+    const message = createBaseCPlayerGetNewSteamAnnouncementStateRequest();
+    message.language = object.language ?? 0;
+    return message;
   },
 };
 
@@ -2417,6 +2829,22 @@ export const CPlayerGetNewSteamAnnouncementStateResponse = {
     message.announcementGid !== undefined && (obj.announcementGid = message.announcementGid);
     return obj;
   },
+
+  create(base?: DeepPartial<CPlayerGetNewSteamAnnouncementStateResponse>): CPlayerGetNewSteamAnnouncementStateResponse {
+    return CPlayerGetNewSteamAnnouncementStateResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CPlayerGetNewSteamAnnouncementStateResponse>,
+  ): CPlayerGetNewSteamAnnouncementStateResponse {
+    const message = createBaseCPlayerGetNewSteamAnnouncementStateResponse();
+    message.state = object.state ?? 0;
+    message.announcementHeadline = object.announcementHeadline ?? "";
+    message.announcementUrl = object.announcementUrl ?? "";
+    message.timePosted = object.timePosted ?? 0;
+    message.announcementGid = object.announcementGid ?? "0";
+    return message;
+  },
 };
 
 function createBaseCPlayerUpdateSteamAnnouncementLastReadRequest(): CPlayerUpdateSteamAnnouncementLastReadRequest {
@@ -2477,6 +2905,21 @@ export const CPlayerUpdateSteamAnnouncementLastReadRequest = {
     message.timePosted !== undefined && (obj.timePosted = Math.round(message.timePosted));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CPlayerUpdateSteamAnnouncementLastReadRequest>,
+  ): CPlayerUpdateSteamAnnouncementLastReadRequest {
+    return CPlayerUpdateSteamAnnouncementLastReadRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CPlayerUpdateSteamAnnouncementLastReadRequest>,
+  ): CPlayerUpdateSteamAnnouncementLastReadRequest {
+    const message = createBaseCPlayerUpdateSteamAnnouncementLastReadRequest();
+    message.announcementGid = object.announcementGid ?? "0";
+    message.timePosted = object.timePosted ?? 0;
+    return message;
+  },
 };
 
 function createBaseCPlayerUpdateSteamAnnouncementLastReadResponse(): CPlayerUpdateSteamAnnouncementLastReadResponse {
@@ -2511,6 +2954,19 @@ export const CPlayerUpdateSteamAnnouncementLastReadResponse = {
   toJSON(_: CPlayerUpdateSteamAnnouncementLastReadResponse): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CPlayerUpdateSteamAnnouncementLastReadResponse>,
+  ): CPlayerUpdateSteamAnnouncementLastReadResponse {
+    return CPlayerUpdateSteamAnnouncementLastReadResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    _: DeepPartial<CPlayerUpdateSteamAnnouncementLastReadResponse>,
+  ): CPlayerUpdateSteamAnnouncementLastReadResponse {
+    const message = createBaseCPlayerUpdateSteamAnnouncementLastReadResponse();
+    return message;
   },
 };
 
@@ -2697,6 +3153,13 @@ var tsProtoGlobalThis: any = (() => {
   }
   throw "Unable to locate global object";
 })();
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

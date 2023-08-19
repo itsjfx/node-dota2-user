@@ -518,6 +518,19 @@ export const CMsgVector = {
     message.w !== undefined && (obj.w = message.w);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgVector>): CMsgVector {
+    return CMsgVector.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgVector>): CMsgVector {
+    const message = createBaseCMsgVector();
+    message.x = object.x ?? 0;
+    message.y = object.y ?? 0;
+    message.z = object.z ?? 0;
+    message.w = object.w ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgVector2D(): CMsgVector2D {
@@ -574,6 +587,17 @@ export const CMsgVector2D = {
     message.x !== undefined && (obj.x = message.x);
     message.y !== undefined && (obj.y = message.y);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgVector2D>): CMsgVector2D {
+    return CMsgVector2D.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgVector2D>): CMsgVector2D {
+    const message = createBaseCMsgVector2D();
+    message.x = object.x ?? 0;
+    message.y = object.y ?? 0;
+    return message;
   },
 };
 
@@ -646,6 +670,18 @@ export const CMsgQAngle = {
     message.y !== undefined && (obj.y = message.y);
     message.z !== undefined && (obj.z = message.z);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgQAngle>): CMsgQAngle {
+    return CMsgQAngle.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgQAngle>): CMsgQAngle {
+    const message = createBaseCMsgQAngle();
+    message.x = object.x ?? 0;
+    message.y = object.y ?? 0;
+    message.z = object.z ?? 0;
+    return message;
   },
 };
 
@@ -731,6 +767,19 @@ export const CMsgQuaternion = {
     message.w !== undefined && (obj.w = message.w);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgQuaternion>): CMsgQuaternion {
+    return CMsgQuaternion.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgQuaternion>): CMsgQuaternion {
+    const message = createBaseCMsgQuaternion();
+    message.x = object.x ?? 0;
+    message.y = object.y ?? 0;
+    message.z = object.z ?? 0;
+    message.w = object.w ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgTransform(): CMsgTransform {
@@ -804,6 +853,22 @@ export const CMsgTransform = {
     message.orientation !== undefined &&
       (obj.orientation = message.orientation ? CMsgQuaternion.toJSON(message.orientation) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgTransform>): CMsgTransform {
+    return CMsgTransform.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTransform>): CMsgTransform {
+    const message = createBaseCMsgTransform();
+    message.position = (object.position !== undefined && object.position !== null)
+      ? CMsgVector.fromPartial(object.position)
+      : undefined;
+    message.scale = object.scale ?? 0;
+    message.orientation = (object.orientation !== undefined && object.orientation !== null)
+      ? CMsgQuaternion.fromPartial(object.orientation)
+      : undefined;
+    return message;
   },
 };
 
@@ -888,6 +953,19 @@ export const CMsgRGBA = {
     message.b !== undefined && (obj.b = Math.round(message.b));
     message.a !== undefined && (obj.a = Math.round(message.a));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgRGBA>): CMsgRGBA {
+    return CMsgRGBA.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgRGBA>): CMsgRGBA {
+    const message = createBaseCMsgRGBA();
+    message.r = object.r ?? 0;
+    message.g = object.g ?? 0;
+    message.b = object.b ?? 0;
+    message.a = object.a ?? 0;
+    return message;
   },
 };
 
@@ -997,6 +1075,21 @@ export const CMsgPlayerInfo = {
     message.ishltv !== undefined && (obj.ishltv = message.ishltv);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgPlayerInfo>): CMsgPlayerInfo {
+    return CMsgPlayerInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPlayerInfo>): CMsgPlayerInfo {
+    const message = createBaseCMsgPlayerInfo();
+    message.name = object.name ?? "";
+    message.xuid = object.xuid ?? "0";
+    message.userid = object.userid ?? 0;
+    message.steamid = object.steamid ?? "0";
+    message.fakeplayer = object.fakeplayer ?? false;
+    message.ishltv = object.ishltv ?? false;
+    return message;
+  },
 };
 
 function createBaseCEntityMsg(): CEntityMsg {
@@ -1042,6 +1135,16 @@ export const CEntityMsg = {
     const obj: any = {};
     message.targetEntity !== undefined && (obj.targetEntity = Math.round(message.targetEntity));
     return obj;
+  },
+
+  create(base?: DeepPartial<CEntityMsg>): CEntityMsg {
+    return CEntityMsg.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CEntityMsg>): CEntityMsg {
+    const message = createBaseCEntityMsg();
+    message.targetEntity = object.targetEntity ?? 0;
+    return message;
   },
 };
 
@@ -1092,6 +1195,16 @@ export const CMsgCVars = {
       obj.cvars = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgCVars>): CMsgCVars {
+    return CMsgCVars.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgCVars>): CMsgCVars {
+    const message = createBaseCMsgCVars();
+    message.cvars = object.cvars?.map((e) => CMsgCVars_CVar.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -1153,6 +1266,17 @@ export const CMsgCVars_CVar = {
     message.value !== undefined && (obj.value = message.value);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgCVars_CVar>): CMsgCVars_CVar {
+    return CMsgCVars_CVar.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgCVars_CVar>): CMsgCVars_CVar {
+    const message = createBaseCMsgCVars_CVar();
+    message.name = object.name ?? "";
+    message.value = object.value ?? "";
+    return message;
+  },
 };
 
 function createBaseCNETMsgNOP(): CNETMsgNOP {
@@ -1187,6 +1311,15 @@ export const CNETMsgNOP = {
   toJSON(_: CNETMsgNOP): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CNETMsgNOP>): CNETMsgNOP {
+    return CNETMsgNOP.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CNETMsgNOP>): CNETMsgNOP {
+    const message = createBaseCNETMsgNOP();
+    return message;
   },
 };
 
@@ -1234,6 +1367,16 @@ export const CNETMsgSplitScreenUser = {
     message.slot !== undefined && (obj.slot = Math.round(message.slot));
     return obj;
   },
+
+  create(base?: DeepPartial<CNETMsgSplitScreenUser>): CNETMsgSplitScreenUser {
+    return CNETMsgSplitScreenUser.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CNETMsgSplitScreenUser>): CNETMsgSplitScreenUser {
+    const message = createBaseCNETMsgSplitScreenUser();
+    message.slot = object.slot ?? 0;
+    return message;
+  },
 };
 
 function createBaseCNETMsgDisconnect(): CNETMsgDisconnect {
@@ -1279,6 +1422,16 @@ export const CNETMsgDisconnect = {
     const obj: any = {};
     message.reason !== undefined && (obj.reason = eNetworkDisconnectionReasonToJSON(message.reason));
     return obj;
+  },
+
+  create(base?: DeepPartial<CNETMsgDisconnect>): CNETMsgDisconnect {
+    return CNETMsgDisconnect.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CNETMsgDisconnect>): CNETMsgDisconnect {
+    const message = createBaseCNETMsgDisconnect();
+    message.reason = object.reason ?? 0;
+    return message;
   },
 };
 
@@ -1442,6 +1595,24 @@ export const CNETMsgTick = {
     message.hltvReplayFlags !== undefined && (obj.hltvReplayFlags = Math.round(message.hltvReplayFlags));
     return obj;
   },
+
+  create(base?: DeepPartial<CNETMsgTick>): CNETMsgTick {
+    return CNETMsgTick.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CNETMsgTick>): CNETMsgTick {
+    const message = createBaseCNETMsgTick();
+    message.tick = object.tick ?? 0;
+    message.hostFrametime = object.hostFrametime ?? 0;
+    message.hostFrametimeStdDeviation = object.hostFrametimeStdDeviation ?? 0;
+    message.hostComputationtime = object.hostComputationtime ?? 0;
+    message.hostComputationtimeStdDeviation = object.hostComputationtimeStdDeviation ?? 0;
+    message.hostFramestarttimeStdDeviation = object.hostFramestarttimeStdDeviation ?? 0;
+    message.hostLoss = object.hostLoss ?? 0;
+    message.hostUnfilteredFrametime = object.hostUnfilteredFrametime ?? 0;
+    message.hltvReplayFlags = object.hltvReplayFlags ?? 0;
+    return message;
+  },
 };
 
 function createBaseCNETMsgStringCmd(): CNETMsgStringCmd {
@@ -1488,6 +1659,16 @@ export const CNETMsgStringCmd = {
     message.command !== undefined && (obj.command = message.command);
     return obj;
   },
+
+  create(base?: DeepPartial<CNETMsgStringCmd>): CNETMsgStringCmd {
+    return CNETMsgStringCmd.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CNETMsgStringCmd>): CNETMsgStringCmd {
+    const message = createBaseCNETMsgStringCmd();
+    message.command = object.command ?? "";
+    return message;
+  },
 };
 
 function createBaseCNETMsgSetConVar(): CNETMsgSetConVar {
@@ -1533,6 +1714,18 @@ export const CNETMsgSetConVar = {
     const obj: any = {};
     message.convars !== undefined && (obj.convars = message.convars ? CMsgCVars.toJSON(message.convars) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CNETMsgSetConVar>): CNETMsgSetConVar {
+    return CNETMsgSetConVar.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CNETMsgSetConVar>): CNETMsgSetConVar {
+    const message = createBaseCNETMsgSetConVar();
+    message.convars = (object.convars !== undefined && object.convars !== null)
+      ? CMsgCVars.fromPartial(object.convars)
+      : undefined;
+    return message;
   },
 };
 
@@ -1648,6 +1841,21 @@ export const CNETMsgSignonState = {
     message.addons !== undefined && (obj.addons = message.addons);
     return obj;
   },
+
+  create(base?: DeepPartial<CNETMsgSignonState>): CNETMsgSignonState {
+    return CNETMsgSignonState.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CNETMsgSignonState>): CNETMsgSignonState {
+    const message = createBaseCNETMsgSignonState();
+    message.signonState = object.signonState ?? 0;
+    message.spawnCount = object.spawnCount ?? 0;
+    message.numServerPlayers = object.numServerPlayers ?? 0;
+    message.playersNetworkids = object.playersNetworkids?.map((e) => e) || [];
+    message.mapName = object.mapName ?? "";
+    message.addons = object.addons ?? "";
+    return message;
+  },
 };
 
 function createBaseCSVCMsgGameEvent(): CSVCMsgGameEvent {
@@ -1723,6 +1931,18 @@ export const CSVCMsgGameEvent = {
       obj.keys = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CSVCMsgGameEvent>): CSVCMsgGameEvent {
+    return CSVCMsgGameEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgGameEvent>): CSVCMsgGameEvent {
+    const message = createBaseCSVCMsgGameEvent();
+    message.eventName = object.eventName ?? "";
+    message.eventid = object.eventid ?? 0;
+    message.keys = object.keys?.map((e) => CSVCMsgGameEvent_keyT.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -1856,6 +2076,23 @@ export const CSVCMsgGameEvent_keyT = {
     message.valUint64 !== undefined && (obj.valUint64 = message.valUint64);
     return obj;
   },
+
+  create(base?: DeepPartial<CSVCMsgGameEvent_keyT>): CSVCMsgGameEvent_keyT {
+    return CSVCMsgGameEvent_keyT.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgGameEvent_keyT>): CSVCMsgGameEvent_keyT {
+    const message = createBaseCSVCMsgGameEvent_keyT();
+    message.type = object.type ?? 0;
+    message.valString = object.valString ?? "";
+    message.valFloat = object.valFloat ?? 0;
+    message.valLong = object.valLong ?? 0;
+    message.valShort = object.valShort ?? 0;
+    message.valByte = object.valByte ?? 0;
+    message.valBool = object.valBool ?? false;
+    message.valUint64 = object.valUint64 ?? "0";
+    return message;
+  },
 };
 
 function createBaseCSVCMsgListGameEvents(): CSVCMsgListGameEvents {
@@ -1909,6 +2146,16 @@ export const CSVCMsgListGameEvents = {
       obj.events = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CSVCMsgListGameEvents>): CSVCMsgListGameEvents {
+    return CSVCMsgListGameEvents.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgListGameEvents>): CSVCMsgListGameEvents {
+    const message = createBaseCSVCMsgListGameEvents();
+    message.events = object.events?.map((e) => CSVCMsgListGameEvents_eventT.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -1969,6 +2216,19 @@ export const CSVCMsgListGameEvents_eventT = {
     message.tick !== undefined && (obj.tick = Math.round(message.tick));
     message.event !== undefined && (obj.event = message.event ? CSVCMsgGameEvent.toJSON(message.event) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CSVCMsgListGameEvents_eventT>): CSVCMsgListGameEvents_eventT {
+    return CSVCMsgListGameEvents_eventT.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgListGameEvents_eventT>): CSVCMsgListGameEvents_eventT {
+    const message = createBaseCSVCMsgListGameEvents_eventT();
+    message.tick = object.tick ?? 0;
+    message.event = (object.event !== undefined && object.event !== null)
+      ? CSVCMsgGameEvent.fromPartial(object.event)
+      : undefined;
+    return message;
   },
 };
 
@@ -2276,6 +2536,39 @@ export const CNETMsgSpawnGroupLoad = {
     message.worldgroupname !== undefined && (obj.worldgroupname = message.worldgroupname);
     return obj;
   },
+
+  create(base?: DeepPartial<CNETMsgSpawnGroupLoad>): CNETMsgSpawnGroupLoad {
+    return CNETMsgSpawnGroupLoad.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CNETMsgSpawnGroupLoad>): CNETMsgSpawnGroupLoad {
+    const message = createBaseCNETMsgSpawnGroupLoad();
+    message.worldname = object.worldname ?? "";
+    message.entitylumpname = object.entitylumpname ?? "";
+    message.entityfiltername = object.entityfiltername ?? "";
+    message.spawngrouphandle = object.spawngrouphandle ?? 0;
+    message.spawngroupownerhandle = object.spawngroupownerhandle ?? 0;
+    message.worldOffsetPos = (object.worldOffsetPos !== undefined && object.worldOffsetPos !== null)
+      ? CMsgVector.fromPartial(object.worldOffsetPos)
+      : undefined;
+    message.worldOffsetAngle = (object.worldOffsetAngle !== undefined && object.worldOffsetAngle !== null)
+      ? CMsgQAngle.fromPartial(object.worldOffsetAngle)
+      : undefined;
+    message.spawngroupmanifest = object.spawngroupmanifest ?? Buffer.alloc(0);
+    message.flags = object.flags ?? 0;
+    message.tickcount = object.tickcount ?? 0;
+    message.manifestincomplete = object.manifestincomplete ?? false;
+    message.localnamefixup = object.localnamefixup ?? "";
+    message.parentnamefixup = object.parentnamefixup ?? "";
+    message.manifestloadpriority = object.manifestloadpriority ?? 0;
+    message.worldgroupid = object.worldgroupid ?? 0;
+    message.creationsequence = object.creationsequence ?? 0;
+    message.savegamefilename = object.savegamefilename ?? "";
+    message.spawngroupparenthandle = object.spawngroupparenthandle ?? 0;
+    message.leveltransition = object.leveltransition ?? false;
+    message.worldgroupname = object.worldgroupname ?? "";
+    return message;
+  },
 };
 
 function createBaseCNETMsgSpawnGroupManifestUpdate(): CNETMsgSpawnGroupManifestUpdate {
@@ -2353,6 +2646,18 @@ export const CNETMsgSpawnGroupManifestUpdate = {
     message.manifestincomplete !== undefined && (obj.manifestincomplete = message.manifestincomplete);
     return obj;
   },
+
+  create(base?: DeepPartial<CNETMsgSpawnGroupManifestUpdate>): CNETMsgSpawnGroupManifestUpdate {
+    return CNETMsgSpawnGroupManifestUpdate.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CNETMsgSpawnGroupManifestUpdate>): CNETMsgSpawnGroupManifestUpdate {
+    const message = createBaseCNETMsgSpawnGroupManifestUpdate();
+    message.spawngrouphandle = object.spawngrouphandle ?? 0;
+    message.spawngroupmanifest = object.spawngroupmanifest ?? Buffer.alloc(0);
+    message.manifestincomplete = object.manifestincomplete ?? false;
+    return message;
+  },
 };
 
 function createBaseCNETMsgSpawnGroupSetCreationTick(): CNETMsgSpawnGroupSetCreationTick {
@@ -2424,6 +2729,18 @@ export const CNETMsgSpawnGroupSetCreationTick = {
     message.tickcount !== undefined && (obj.tickcount = Math.round(message.tickcount));
     message.creationsequence !== undefined && (obj.creationsequence = Math.round(message.creationsequence));
     return obj;
+  },
+
+  create(base?: DeepPartial<CNETMsgSpawnGroupSetCreationTick>): CNETMsgSpawnGroupSetCreationTick {
+    return CNETMsgSpawnGroupSetCreationTick.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CNETMsgSpawnGroupSetCreationTick>): CNETMsgSpawnGroupSetCreationTick {
+    const message = createBaseCNETMsgSpawnGroupSetCreationTick();
+    message.spawngrouphandle = object.spawngrouphandle ?? 0;
+    message.tickcount = object.tickcount ?? 0;
+    message.creationsequence = object.creationsequence ?? 0;
+    return message;
   },
 };
 
@@ -2497,6 +2814,18 @@ export const CNETMsgSpawnGroupUnload = {
     message.tickcount !== undefined && (obj.tickcount = Math.round(message.tickcount));
     return obj;
   },
+
+  create(base?: DeepPartial<CNETMsgSpawnGroupUnload>): CNETMsgSpawnGroupUnload {
+    return CNETMsgSpawnGroupUnload.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CNETMsgSpawnGroupUnload>): CNETMsgSpawnGroupUnload {
+    const message = createBaseCNETMsgSpawnGroupUnload();
+    message.spawngrouphandle = object.spawngrouphandle ?? 0;
+    message.flags = object.flags ?? 0;
+    message.tickcount = object.tickcount ?? 0;
+    return message;
+  },
 };
 
 function createBaseCNETMsgSpawnGroupLoadCompleted(): CNETMsgSpawnGroupLoadCompleted {
@@ -2542,6 +2871,16 @@ export const CNETMsgSpawnGroupLoadCompleted = {
     const obj: any = {};
     message.spawngrouphandle !== undefined && (obj.spawngrouphandle = Math.round(message.spawngrouphandle));
     return obj;
+  },
+
+  create(base?: DeepPartial<CNETMsgSpawnGroupLoadCompleted>): CNETMsgSpawnGroupLoadCompleted {
+    return CNETMsgSpawnGroupLoadCompleted.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CNETMsgSpawnGroupLoadCompleted>): CNETMsgSpawnGroupLoadCompleted {
+    const message = createBaseCNETMsgSpawnGroupLoadCompleted();
+    message.spawngrouphandle = object.spawngrouphandle ?? 0;
+    return message;
   },
 };
 
@@ -2828,6 +3167,34 @@ export const CSVCMsgGameSessionConfiguration = {
     message.landmarkname !== undefined && (obj.landmarkname = message.landmarkname);
     return obj;
   },
+
+  create(base?: DeepPartial<CSVCMsgGameSessionConfiguration>): CSVCMsgGameSessionConfiguration {
+    return CSVCMsgGameSessionConfiguration.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgGameSessionConfiguration>): CSVCMsgGameSessionConfiguration {
+    const message = createBaseCSVCMsgGameSessionConfiguration();
+    message.isMultiplayer = object.isMultiplayer ?? false;
+    message.isLoadsavegame = object.isLoadsavegame ?? false;
+    message.isBackgroundMap = object.isBackgroundMap ?? false;
+    message.isHeadless = object.isHeadless ?? false;
+    message.minClientLimit = object.minClientLimit ?? 0;
+    message.maxClientLimit = object.maxClientLimit ?? 0;
+    message.maxClients = object.maxClients ?? 0;
+    message.tickInterval = object.tickInterval ?? 0;
+    message.hostname = object.hostname ?? "";
+    message.savegamename = object.savegamename ?? "";
+    message.s1Mapname = object.s1Mapname ?? "";
+    message.gamemode = object.gamemode ?? "";
+    message.serverIpAddress = object.serverIpAddress ?? "";
+    message.data = object.data ?? Buffer.alloc(0);
+    message.isLocalonly = object.isLocalonly ?? false;
+    message.noSteamServer = object.noSteamServer ?? false;
+    message.isTransition = object.isTransition ?? false;
+    message.previouslevel = object.previouslevel ?? "";
+    message.landmarkname = object.landmarkname ?? "";
+    return message;
+  },
 };
 
 function createBaseCNETMsgDebugOverlay(): CNETMsgDebugOverlay {
@@ -3032,6 +3399,23 @@ export const CNETMsgDebugOverlay = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CNETMsgDebugOverlay>): CNETMsgDebugOverlay {
+    return CNETMsgDebugOverlay.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CNETMsgDebugOverlay>): CNETMsgDebugOverlay {
+    const message = createBaseCNETMsgDebugOverlay();
+    message.etype = object.etype ?? 0;
+    message.vectors = object.vectors?.map((e) => CMsgVector.fromPartial(e)) || [];
+    message.colors = object.colors?.map((e) => CMsgRGBA.fromPartial(e)) || [];
+    message.dimensions = object.dimensions?.map((e) => e) || [];
+    message.times = object.times?.map((e) => e) || [];
+    message.bools = object.bools?.map((e) => e) || [];
+    message.uint64s = object.uint64s?.map((e) => e) || [];
+    message.strings = object.strings?.map((e) => e) || [];
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -3077,6 +3461,13 @@ function base64FromBytes(arr: Uint8Array): string {
     return tsProtoGlobalThis.btoa(bin.join(""));
   }
 }
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

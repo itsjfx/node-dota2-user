@@ -93,6 +93,16 @@ export const CCloudGetUploadServerInfoRequest = {
     message.appid !== undefined && (obj.appid = Math.round(message.appid));
     return obj;
   },
+
+  create(base?: DeepPartial<CCloudGetUploadServerInfoRequest>): CCloudGetUploadServerInfoRequest {
+    return CCloudGetUploadServerInfoRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CCloudGetUploadServerInfoRequest>): CCloudGetUploadServerInfoRequest {
+    const message = createBaseCCloudGetUploadServerInfoRequest();
+    message.appid = object.appid ?? 0;
+    return message;
+  },
 };
 
 function createBaseCCloudGetUploadServerInfoResponse(): CCloudGetUploadServerInfoResponse {
@@ -138,6 +148,16 @@ export const CCloudGetUploadServerInfoResponse = {
     const obj: any = {};
     message.serverUrl !== undefined && (obj.serverUrl = message.serverUrl);
     return obj;
+  },
+
+  create(base?: DeepPartial<CCloudGetUploadServerInfoResponse>): CCloudGetUploadServerInfoResponse {
+    return CCloudGetUploadServerInfoResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CCloudGetUploadServerInfoResponse>): CCloudGetUploadServerInfoResponse {
+    const message = createBaseCCloudGetUploadServerInfoResponse();
+    message.serverUrl = object.serverUrl ?? "";
+    return message;
   },
 };
 
@@ -198,6 +218,17 @@ export const CCloudGetFileDetailsRequest = {
     message.ugcid !== undefined && (obj.ugcid = message.ugcid);
     message.appid !== undefined && (obj.appid = Math.round(message.appid));
     return obj;
+  },
+
+  create(base?: DeepPartial<CCloudGetFileDetailsRequest>): CCloudGetFileDetailsRequest {
+    return CCloudGetFileDetailsRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CCloudGetFileDetailsRequest>): CCloudGetFileDetailsRequest {
+    const message = createBaseCCloudGetFileDetailsRequest();
+    message.ugcid = object.ugcid ?? "0";
+    message.appid = object.appid ?? 0;
+    return message;
   },
 };
 
@@ -319,6 +350,22 @@ export const CCloudUserFile = {
     message.steamidCreator !== undefined && (obj.steamidCreator = message.steamidCreator);
     return obj;
   },
+
+  create(base?: DeepPartial<CCloudUserFile>): CCloudUserFile {
+    return CCloudUserFile.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CCloudUserFile>): CCloudUserFile {
+    const message = createBaseCCloudUserFile();
+    message.appid = object.appid ?? 0;
+    message.ugcid = object.ugcid ?? "0";
+    message.filename = object.filename ?? "";
+    message.timestamp = object.timestamp ?? "0";
+    message.fileSize = object.fileSize ?? 0;
+    message.url = object.url ?? "";
+    message.steamidCreator = object.steamidCreator ?? "0";
+    return message;
+  },
 };
 
 function createBaseCCloudGetFileDetailsResponse(): CCloudGetFileDetailsResponse {
@@ -365,6 +412,18 @@ export const CCloudGetFileDetailsResponse = {
     message.details !== undefined &&
       (obj.details = message.details ? CCloudUserFile.toJSON(message.details) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CCloudGetFileDetailsResponse>): CCloudGetFileDetailsResponse {
+    return CCloudGetFileDetailsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CCloudGetFileDetailsResponse>): CCloudGetFileDetailsResponse {
+    const message = createBaseCCloudGetFileDetailsResponse();
+    message.details = (object.details !== undefined && object.details !== null)
+      ? CCloudUserFile.fromPartial(object.details)
+      : undefined;
+    return message;
   },
 };
 
@@ -450,6 +509,19 @@ export const CCloudEnumerateUserFilesRequest = {
     message.startIndex !== undefined && (obj.startIndex = Math.round(message.startIndex));
     return obj;
   },
+
+  create(base?: DeepPartial<CCloudEnumerateUserFilesRequest>): CCloudEnumerateUserFilesRequest {
+    return CCloudEnumerateUserFilesRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CCloudEnumerateUserFilesRequest>): CCloudEnumerateUserFilesRequest {
+    const message = createBaseCCloudEnumerateUserFilesRequest();
+    message.appid = object.appid ?? 0;
+    message.extendedDetails = object.extendedDetails ?? false;
+    message.count = object.count ?? 0;
+    message.startIndex = object.startIndex ?? 0;
+    return message;
+  },
 };
 
 function createBaseCCloudEnumerateUserFilesResponse(): CCloudEnumerateUserFilesResponse {
@@ -514,6 +586,17 @@ export const CCloudEnumerateUserFilesResponse = {
     message.totalFiles !== undefined && (obj.totalFiles = Math.round(message.totalFiles));
     return obj;
   },
+
+  create(base?: DeepPartial<CCloudEnumerateUserFilesResponse>): CCloudEnumerateUserFilesResponse {
+    return CCloudEnumerateUserFilesResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CCloudEnumerateUserFilesResponse>): CCloudEnumerateUserFilesResponse {
+    const message = createBaseCCloudEnumerateUserFilesResponse();
+    message.files = object.files?.map((e) => CCloudUserFile.fromPartial(e)) || [];
+    message.totalFiles = object.totalFiles ?? 0;
+    return message;
+  },
 };
 
 function createBaseCCloudDeleteRequest(): CCloudDeleteRequest {
@@ -574,6 +657,17 @@ export const CCloudDeleteRequest = {
     message.appid !== undefined && (obj.appid = Math.round(message.appid));
     return obj;
   },
+
+  create(base?: DeepPartial<CCloudDeleteRequest>): CCloudDeleteRequest {
+    return CCloudDeleteRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CCloudDeleteRequest>): CCloudDeleteRequest {
+    const message = createBaseCCloudDeleteRequest();
+    message.filename = object.filename ?? "";
+    message.appid = object.appid ?? 0;
+    return message;
+  },
 };
 
 function createBaseCCloudDeleteResponse(): CCloudDeleteResponse {
@@ -608,6 +702,15 @@ export const CCloudDeleteResponse = {
   toJSON(_: CCloudDeleteResponse): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CCloudDeleteResponse>): CCloudDeleteResponse {
+    return CCloudDeleteResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CCloudDeleteResponse>): CCloudDeleteResponse {
+    const message = createBaseCCloudDeleteResponse();
+    return message;
   },
 };
 
@@ -657,6 +760,13 @@ export class CloudClientImpl implements Cloud {
 interface Rpc {
   request(service: string, method: string, data: Uint8Array): Promise<Uint8Array>;
 }
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

@@ -1112,6 +1112,46 @@ export const CMsgDOTATeamInfo = {
     message.teamCaptain !== undefined && (obj.teamCaptain = Math.round(message.teamCaptain));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTATeamInfo>): CMsgDOTATeamInfo {
+    return CMsgDOTATeamInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTATeamInfo>): CMsgDOTATeamInfo {
+    const message = createBaseCMsgDOTATeamInfo();
+    message.members = object.members?.map((e) => CMsgDOTATeamInfo_Member.fromPartial(e)) || [];
+    message.teamId = object.teamId ?? 0;
+    message.name = object.name ?? "";
+    message.tag = object.tag ?? "";
+    message.timeCreated = object.timeCreated ?? 0;
+    message.pro = object.pro ?? false;
+    message.pickupTeam = object.pickupTeam ?? false;
+    message.ugcLogo = object.ugcLogo ?? "0";
+    message.ugcBaseLogo = object.ugcBaseLogo ?? "0";
+    message.ugcBannerLogo = object.ugcBannerLogo ?? "0";
+    message.ugcSponsorLogo = object.ugcSponsorLogo ?? "0";
+    message.countryCode = object.countryCode ?? "";
+    message.url = object.url ?? "";
+    message.wins = object.wins ?? 0;
+    message.losses = object.losses ?? 0;
+    message.gamesPlayedTotal = object.gamesPlayedTotal ?? 0;
+    message.gamesPlayedMatchmaking = object.gamesPlayedMatchmaking ?? 0;
+    message.urlLogo = object.urlLogo ?? "";
+    message.registeredMemberAccountIds = object.registeredMemberAccountIds?.map((e) => e) || [];
+    message.coachAccountId = object.coachAccountId ?? 0;
+    message.auditEntries = object.auditEntries?.map((e) => CMsgDOTATeamInfo_AuditEntry.fromPartial(e)) || [];
+    message.region = object.region ?? 0;
+    message.abbreviation = object.abbreviation ?? "";
+    message.memberStats = object.memberStats?.map((e) => CMsgDOTATeamInfo_MemberStats.fromPartial(e)) || [];
+    message.teamStats = (object.teamStats !== undefined && object.teamStats !== null)
+      ? CMsgDOTATeamInfo_TeamStats.fromPartial(object.teamStats)
+      : undefined;
+    message.dpcResults = object.dpcResults?.map((e) => CMsgDOTATeamInfo_DPCResult.fromPartial(e)) || [];
+    message.colorPrimary = object.colorPrimary ?? "";
+    message.colorSecondary = object.colorSecondary ?? "";
+    message.teamCaptain = object.teamCaptain ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTATeamInfo_HeroStats(): CMsgDOTATeamInfo_HeroStats {
@@ -1256,6 +1296,24 @@ export const CMsgDOTATeamInfo_HeroStats = {
     message.avgXpm !== undefined && (obj.avgXpm = message.avgXpm);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTATeamInfo_HeroStats>): CMsgDOTATeamInfo_HeroStats {
+    return CMsgDOTATeamInfo_HeroStats.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTATeamInfo_HeroStats>): CMsgDOTATeamInfo_HeroStats {
+    const message = createBaseCMsgDOTATeamInfo_HeroStats();
+    message.heroId = object.heroId ?? 0;
+    message.picks = object.picks ?? 0;
+    message.wins = object.wins ?? 0;
+    message.bans = object.bans ?? 0;
+    message.avgKills = object.avgKills ?? 0;
+    message.avgDeaths = object.avgDeaths ?? 0;
+    message.avgAssists = object.avgAssists ?? 0;
+    message.avgGpm = object.avgGpm ?? 0;
+    message.avgXpm = object.avgXpm ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTATeamInfo_MemberStats(): CMsgDOTATeamInfo_MemberStats {
@@ -1381,6 +1439,22 @@ export const CMsgDOTATeamInfo_MemberStats = {
     message.avgDeaths !== undefined && (obj.avgDeaths = message.avgDeaths);
     message.avgAssists !== undefined && (obj.avgAssists = message.avgAssists);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTATeamInfo_MemberStats>): CMsgDOTATeamInfo_MemberStats {
+    return CMsgDOTATeamInfo_MemberStats.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTATeamInfo_MemberStats>): CMsgDOTATeamInfo_MemberStats {
+    const message = createBaseCMsgDOTATeamInfo_MemberStats();
+    message.accountId = object.accountId ?? 0;
+    message.winsWithTeam = object.winsWithTeam ?? 0;
+    message.lossesWithTeam = object.lossesWithTeam ?? 0;
+    message.topHeroes = object.topHeroes?.map((e) => CMsgDOTATeamInfo_HeroStats.fromPartial(e)) || [];
+    message.avgKills = object.avgKills ?? 0;
+    message.avgDeaths = object.avgDeaths ?? 0;
+    message.avgAssists = object.avgAssists ?? 0;
+    return message;
   },
 };
 
@@ -1508,6 +1582,22 @@ export const CMsgDOTATeamInfo_TeamStats = {
     message.avgDuration !== undefined && (obj.avgDuration = message.avgDuration);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTATeamInfo_TeamStats>): CMsgDOTATeamInfo_TeamStats {
+    return CMsgDOTATeamInfo_TeamStats.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTATeamInfo_TeamStats>): CMsgDOTATeamInfo_TeamStats {
+    const message = createBaseCMsgDOTATeamInfo_TeamStats();
+    message.playedHeroes = object.playedHeroes?.map((e) => CMsgDOTATeamInfo_HeroStats.fromPartial(e)) || [];
+    message.farming = object.farming ?? 0;
+    message.fighting = object.fighting ?? 0;
+    message.versatility = object.versatility ?? 0;
+    message.avgKills = object.avgKills ?? 0;
+    message.avgDeaths = object.avgDeaths ?? 0;
+    message.avgDuration = object.avgDuration ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTATeamInfo_DPCResult(): CMsgDOTATeamInfo_DPCResult {
@@ -1603,6 +1693,20 @@ export const CMsgDOTATeamInfo_DPCResult = {
     message.earnings !== undefined && (obj.earnings = Math.round(message.earnings));
     message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTATeamInfo_DPCResult>): CMsgDOTATeamInfo_DPCResult {
+    return CMsgDOTATeamInfo_DPCResult.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTATeamInfo_DPCResult>): CMsgDOTATeamInfo_DPCResult {
+    const message = createBaseCMsgDOTATeamInfo_DPCResult();
+    message.leagueId = object.leagueId ?? 0;
+    message.standing = object.standing ?? 0;
+    message.points = object.points ?? 0;
+    message.earnings = object.earnings ?? 0;
+    message.timestamp = object.timestamp ?? 0;
+    return message;
   },
 };
 
@@ -1712,6 +1816,21 @@ export const CMsgDOTATeamInfo_Member = {
     message.realName !== undefined && (obj.realName = message.realName);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTATeamInfo_Member>): CMsgDOTATeamInfo_Member {
+    return CMsgDOTATeamInfo_Member.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTATeamInfo_Member>): CMsgDOTATeamInfo_Member {
+    const message = createBaseCMsgDOTATeamInfo_Member();
+    message.accountId = object.accountId ?? 0;
+    message.timeJoined = object.timeJoined ?? 0;
+    message.admin = object.admin ?? false;
+    message.proName = object.proName ?? "";
+    message.role = object.role ?? 0;
+    message.realName = object.realName ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgDOTATeamInfo_AuditEntry(): CMsgDOTATeamInfo_AuditEntry {
@@ -1784,6 +1903,18 @@ export const CMsgDOTATeamInfo_AuditEntry = {
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTATeamInfo_AuditEntry>): CMsgDOTATeamInfo_AuditEntry {
+    return CMsgDOTATeamInfo_AuditEntry.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTATeamInfo_AuditEntry>): CMsgDOTATeamInfo_AuditEntry {
+    const message = createBaseCMsgDOTATeamInfo_AuditEntry();
+    message.auditAction = object.auditAction ?? 0;
+    message.timestamp = object.timestamp ?? 0;
+    message.accountId = object.accountId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTATeamsInfo(): CMsgDOTATeamsInfo {
@@ -1848,6 +1979,17 @@ export const CMsgDOTATeamsInfo = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTATeamsInfo>): CMsgDOTATeamsInfo {
+    return CMsgDOTATeamsInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTATeamsInfo>): CMsgDOTATeamsInfo {
+    const message = createBaseCMsgDOTATeamsInfo();
+    message.leagueId = object.leagueId ?? 0;
+    message.teams = object.teams?.map((e) => CMsgDOTATeamInfo.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgDOTATeamInfoList(): CMsgDOTATeamInfoList {
@@ -1898,6 +2040,16 @@ export const CMsgDOTATeamInfoList = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTATeamInfoList>): CMsgDOTATeamInfoList {
+    return CMsgDOTATeamInfoList.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTATeamInfoList>): CMsgDOTATeamInfoList {
+    const message = createBaseCMsgDOTATeamInfoList();
+    message.teams = object.teams?.map((e) => CMsgDOTATeamInfo.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAMyTeamInfoRequest(): CMsgDOTAMyTeamInfoRequest {
@@ -1932,6 +2084,15 @@ export const CMsgDOTAMyTeamInfoRequest = {
   toJSON(_: CMsgDOTAMyTeamInfoRequest): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAMyTeamInfoRequest>): CMsgDOTAMyTeamInfoRequest {
+    return CMsgDOTAMyTeamInfoRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgDOTAMyTeamInfoRequest>): CMsgDOTAMyTeamInfoRequest {
+    const message = createBaseCMsgDOTAMyTeamInfoRequest();
+    return message;
   },
 };
 
@@ -2100,6 +2261,25 @@ export const CMsgDOTACreateTeam = {
     message.abbreviation !== undefined && (obj.abbreviation = message.abbreviation);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTACreateTeam>): CMsgDOTACreateTeam {
+    return CMsgDOTACreateTeam.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTACreateTeam>): CMsgDOTACreateTeam {
+    const message = createBaseCMsgDOTACreateTeam();
+    message.name = object.name ?? "";
+    message.tag = object.tag ?? "";
+    message.logo = object.logo ?? "0";
+    message.baseLogo = object.baseLogo ?? "0";
+    message.bannerLogo = object.bannerLogo ?? "0";
+    message.sponsorLogo = object.sponsorLogo ?? "0";
+    message.countryCode = object.countryCode ?? "";
+    message.url = object.url ?? "";
+    message.pickupTeam = object.pickupTeam ?? false;
+    message.abbreviation = object.abbreviation ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgDOTACreateTeamResponse(): CMsgDOTACreateTeamResponse {
@@ -2159,6 +2339,17 @@ export const CMsgDOTACreateTeamResponse = {
     message.result !== undefined && (obj.result = cMsgDOTACreateTeamResponse_ResultToJSON(message.result));
     message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTACreateTeamResponse>): CMsgDOTACreateTeamResponse {
+    return CMsgDOTACreateTeamResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTACreateTeamResponse>): CMsgDOTACreateTeamResponse {
+    const message = createBaseCMsgDOTACreateTeamResponse();
+    message.result = object.result ?? 0;
+    message.teamId = object.teamId ?? 0;
+    return message;
   },
 };
 
@@ -2340,6 +2531,26 @@ export const CMsgDOTAEditTeamDetails = {
     message.abbreviation !== undefined && (obj.abbreviation = message.abbreviation);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAEditTeamDetails>): CMsgDOTAEditTeamDetails {
+    return CMsgDOTAEditTeamDetails.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAEditTeamDetails>): CMsgDOTAEditTeamDetails {
+    const message = createBaseCMsgDOTAEditTeamDetails();
+    message.teamId = object.teamId ?? 0;
+    message.name = object.name ?? "";
+    message.tag = object.tag ?? "";
+    message.logo = object.logo ?? "0";
+    message.baseLogo = object.baseLogo ?? "0";
+    message.bannerLogo = object.bannerLogo ?? "0";
+    message.sponsorLogo = object.sponsorLogo ?? "0";
+    message.countryCode = object.countryCode ?? "";
+    message.url = object.url ?? "";
+    message.inUseByParty = object.inUseByParty ?? false;
+    message.abbreviation = object.abbreviation ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAEditTeamDetailsResponse(): CMsgDOTAEditTeamDetailsResponse {
@@ -2385,6 +2596,16 @@ export const CMsgDOTAEditTeamDetailsResponse = {
     const obj: any = {};
     message.result !== undefined && (obj.result = cMsgDOTAEditTeamDetailsResponse_ResultToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAEditTeamDetailsResponse>): CMsgDOTAEditTeamDetailsResponse {
+    return CMsgDOTAEditTeamDetailsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAEditTeamDetailsResponse>): CMsgDOTAEditTeamDetailsResponse {
+    const message = createBaseCMsgDOTAEditTeamDetailsResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -2445,6 +2666,17 @@ export const CMsgDOTATeamInviteInviterToGC = {
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTATeamInviteInviterToGC>): CMsgDOTATeamInviteInviterToGC {
+    return CMsgDOTATeamInviteInviterToGC.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTATeamInviteInviterToGC>): CMsgDOTATeamInviteInviterToGC {
+    const message = createBaseCMsgDOTATeamInviteInviterToGC();
+    message.accountId = object.accountId ?? 0;
+    message.teamId = object.teamId ?? 0;
+    return message;
   },
 };
 
@@ -2520,6 +2752,22 @@ export const CMsgDOTATeamInviteGCImmediateResponseToInviter = {
     message.inviteeName !== undefined && (obj.inviteeName = message.inviteeName);
     message.requiredPlayTime !== undefined && (obj.requiredPlayTime = Math.round(message.requiredPlayTime));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgDOTATeamInviteGCImmediateResponseToInviter>,
+  ): CMsgDOTATeamInviteGCImmediateResponseToInviter {
+    return CMsgDOTATeamInviteGCImmediateResponseToInviter.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgDOTATeamInviteGCImmediateResponseToInviter>,
+  ): CMsgDOTATeamInviteGCImmediateResponseToInviter {
+    const message = createBaseCMsgDOTATeamInviteGCImmediateResponseToInviter();
+    message.result = object.result ?? 0;
+    message.inviteeName = object.inviteeName ?? "";
+    message.requiredPlayTime = object.requiredPlayTime ?? 0;
+    return message;
   },
 };
 
@@ -2605,6 +2853,19 @@ export const CMsgDOTATeamInviteGCRequestToInvitee = {
     message.logo !== undefined && (obj.logo = message.logo);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTATeamInviteGCRequestToInvitee>): CMsgDOTATeamInviteGCRequestToInvitee {
+    return CMsgDOTATeamInviteGCRequestToInvitee.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTATeamInviteGCRequestToInvitee>): CMsgDOTATeamInviteGCRequestToInvitee {
+    const message = createBaseCMsgDOTATeamInviteGCRequestToInvitee();
+    message.inviterAccountId = object.inviterAccountId ?? 0;
+    message.teamName = object.teamName ?? "";
+    message.teamTag = object.teamTag ?? "";
+    message.logo = object.logo ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgDOTATeamInviteInviteeResponseToGC(): CMsgDOTATeamInviteInviteeResponseToGC {
@@ -2650,6 +2911,16 @@ export const CMsgDOTATeamInviteInviteeResponseToGC = {
     const obj: any = {};
     message.result !== undefined && (obj.result = eTeamInviteResultToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTATeamInviteInviteeResponseToGC>): CMsgDOTATeamInviteInviteeResponseToGC {
+    return CMsgDOTATeamInviteInviteeResponseToGC.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTATeamInviteInviteeResponseToGC>): CMsgDOTATeamInviteInviteeResponseToGC {
+    const message = createBaseCMsgDOTATeamInviteInviteeResponseToGC();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -2711,6 +2982,17 @@ export const CMsgDOTATeamInviteGCResponseToInviter = {
     message.inviteeName !== undefined && (obj.inviteeName = message.inviteeName);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTATeamInviteGCResponseToInviter>): CMsgDOTATeamInviteGCResponseToInviter {
+    return CMsgDOTATeamInviteGCResponseToInviter.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTATeamInviteGCResponseToInviter>): CMsgDOTATeamInviteGCResponseToInviter {
+    const message = createBaseCMsgDOTATeamInviteGCResponseToInviter();
+    message.result = object.result ?? 0;
+    message.inviteeName = object.inviteeName ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgDOTATeamInviteGCResponseToInvitee(): CMsgDOTATeamInviteGCResponseToInvitee {
@@ -2770,6 +3052,17 @@ export const CMsgDOTATeamInviteGCResponseToInvitee = {
     message.result !== undefined && (obj.result = eTeamInviteResultToJSON(message.result));
     message.teamName !== undefined && (obj.teamName = message.teamName);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTATeamInviteGCResponseToInvitee>): CMsgDOTATeamInviteGCResponseToInvitee {
+    return CMsgDOTATeamInviteGCResponseToInvitee.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTATeamInviteGCResponseToInvitee>): CMsgDOTATeamInviteGCResponseToInvitee {
+    const message = createBaseCMsgDOTATeamInviteGCResponseToInvitee();
+    message.result = object.result ?? 0;
+    message.teamName = object.teamName ?? "";
+    return message;
   },
 };
 
@@ -2831,6 +3124,17 @@ export const CMsgDOTAKickTeamMember = {
     message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAKickTeamMember>): CMsgDOTAKickTeamMember {
+    return CMsgDOTAKickTeamMember.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAKickTeamMember>): CMsgDOTAKickTeamMember {
+    const message = createBaseCMsgDOTAKickTeamMember();
+    message.accountId = object.accountId ?? 0;
+    message.teamId = object.teamId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAKickTeamMemberResponse(): CMsgDOTAKickTeamMemberResponse {
@@ -2876,6 +3180,16 @@ export const CMsgDOTAKickTeamMemberResponse = {
     const obj: any = {};
     message.result !== undefined && (obj.result = cMsgDOTAKickTeamMemberResponse_ResultToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAKickTeamMemberResponse>): CMsgDOTAKickTeamMemberResponse {
+    return CMsgDOTAKickTeamMemberResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAKickTeamMemberResponse>): CMsgDOTAKickTeamMemberResponse {
+    const message = createBaseCMsgDOTAKickTeamMemberResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -2937,6 +3251,17 @@ export const CMsgDOTATransferTeamAdmin = {
     message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTATransferTeamAdmin>): CMsgDOTATransferTeamAdmin {
+    return CMsgDOTATransferTeamAdmin.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTATransferTeamAdmin>): CMsgDOTATransferTeamAdmin {
+    const message = createBaseCMsgDOTATransferTeamAdmin();
+    message.newAdminAccountId = object.newAdminAccountId ?? 0;
+    message.teamId = object.teamId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTATransferTeamAdminResponse(): CMsgDOTATransferTeamAdminResponse {
@@ -2982,6 +3307,16 @@ export const CMsgDOTATransferTeamAdminResponse = {
     const obj: any = {};
     message.result !== undefined && (obj.result = cMsgDOTATransferTeamAdminResponse_ResultToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTATransferTeamAdminResponse>): CMsgDOTATransferTeamAdminResponse {
+    return CMsgDOTATransferTeamAdminResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTATransferTeamAdminResponse>): CMsgDOTATransferTeamAdminResponse {
+    const message = createBaseCMsgDOTATransferTeamAdminResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -3029,6 +3364,16 @@ export const CMsgDOTALeaveTeam = {
     message.teamId !== undefined && (obj.teamId = Math.round(message.teamId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTALeaveTeam>): CMsgDOTALeaveTeam {
+    return CMsgDOTALeaveTeam.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTALeaveTeam>): CMsgDOTALeaveTeam {
+    const message = createBaseCMsgDOTALeaveTeam();
+    message.teamId = object.teamId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTALeaveTeamResponse(): CMsgDOTALeaveTeamResponse {
@@ -3074,6 +3419,16 @@ export const CMsgDOTALeaveTeamResponse = {
     const obj: any = {};
     message.result !== undefined && (obj.result = cMsgDOTALeaveTeamResponse_ResultToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTALeaveTeamResponse>): CMsgDOTALeaveTeamResponse {
+    return CMsgDOTALeaveTeamResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTALeaveTeamResponse>): CMsgDOTALeaveTeamResponse {
+    const message = createBaseCMsgDOTALeaveTeamResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -3121,6 +3476,16 @@ export const CMsgDOTABetaParticipation = {
     message.accessRights !== undefined && (obj.accessRights = Math.round(message.accessRights));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTABetaParticipation>): CMsgDOTABetaParticipation {
+    return CMsgDOTABetaParticipation.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTABetaParticipation>): CMsgDOTABetaParticipation {
+    const message = createBaseCMsgDOTABetaParticipation();
+    message.accessRights = object.accessRights ?? 0;
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -3141,6 +3506,13 @@ var tsProtoGlobalThis: any = (() => {
   }
   throw "Unable to locate global object";
 })();
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

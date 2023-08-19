@@ -1225,6 +1225,16 @@ export const CUserMessageAchievementEvent = {
     message.achievement !== undefined && (obj.achievement = Math.round(message.achievement));
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMessageAchievementEvent>): CUserMessageAchievementEvent {
+    return CUserMessageAchievementEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageAchievementEvent>): CUserMessageAchievementEvent {
+    const message = createBaseCUserMessageAchievementEvent();
+    message.achievement = object.achievement ?? 0;
+    return message;
+  },
 };
 
 function createBaseCUserMessageCloseCaption(): CUserMessageCloseCaption {
@@ -1308,6 +1318,19 @@ export const CUserMessageCloseCaption = {
     message.fromPlayer !== undefined && (obj.fromPlayer = message.fromPlayer);
     message.entIndex !== undefined && (obj.entIndex = Math.round(message.entIndex));
     return obj;
+  },
+
+  create(base?: DeepPartial<CUserMessageCloseCaption>): CUserMessageCloseCaption {
+    return CUserMessageCloseCaption.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageCloseCaption>): CUserMessageCloseCaption {
+    const message = createBaseCUserMessageCloseCaption();
+    message.hash = object.hash ?? 0;
+    message.duration = object.duration ?? 0;
+    message.fromPlayer = object.fromPlayer ?? false;
+    message.entIndex = object.entIndex ?? 0;
+    return message;
   },
 };
 
@@ -1393,6 +1416,19 @@ export const CUserMessageCloseCaptionDirect = {
     message.entIndex !== undefined && (obj.entIndex = Math.round(message.entIndex));
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMessageCloseCaptionDirect>): CUserMessageCloseCaptionDirect {
+    return CUserMessageCloseCaptionDirect.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageCloseCaptionDirect>): CUserMessageCloseCaptionDirect {
+    const message = createBaseCUserMessageCloseCaptionDirect();
+    message.hash = object.hash ?? 0;
+    message.duration = object.duration ?? 0;
+    message.fromPlayer = object.fromPlayer ?? false;
+    message.entIndex = object.entIndex ?? 0;
+    return message;
+  },
 };
 
 function createBaseCUserMessageCloseCaptionPlaceholder(): CUserMessageCloseCaptionPlaceholder {
@@ -1477,6 +1513,19 @@ export const CUserMessageCloseCaptionPlaceholder = {
     message.entIndex !== undefined && (obj.entIndex = Math.round(message.entIndex));
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMessageCloseCaptionPlaceholder>): CUserMessageCloseCaptionPlaceholder {
+    return CUserMessageCloseCaptionPlaceholder.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageCloseCaptionPlaceholder>): CUserMessageCloseCaptionPlaceholder {
+    const message = createBaseCUserMessageCloseCaptionPlaceholder();
+    message.string = object.string ?? "";
+    message.duration = object.duration ?? 0;
+    message.fromPlayer = object.fromPlayer ?? false;
+    message.entIndex = object.entIndex ?? 0;
+    return message;
+  },
 };
 
 function createBaseCUserMessageCurrentTimescale(): CUserMessageCurrentTimescale {
@@ -1522,6 +1571,16 @@ export const CUserMessageCurrentTimescale = {
     const obj: any = {};
     message.current !== undefined && (obj.current = message.current);
     return obj;
+  },
+
+  create(base?: DeepPartial<CUserMessageCurrentTimescale>): CUserMessageCurrentTimescale {
+    return CUserMessageCurrentTimescale.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageCurrentTimescale>): CUserMessageCurrentTimescale {
+    const message = createBaseCUserMessageCurrentTimescale();
+    message.current = object.current ?? 0;
+    return message;
   },
 };
 
@@ -1607,6 +1666,19 @@ export const CUserMessageDesiredTimescale = {
     message.blenddeltamultiplier !== undefined && (obj.blenddeltamultiplier = message.blenddeltamultiplier);
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMessageDesiredTimescale>): CUserMessageDesiredTimescale {
+    return CUserMessageDesiredTimescale.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageDesiredTimescale>): CUserMessageDesiredTimescale {
+    const message = createBaseCUserMessageDesiredTimescale();
+    message.desired = object.desired ?? 0;
+    message.acceleration = object.acceleration ?? 0;
+    message.minblendrate = object.minblendrate ?? 0;
+    message.blenddeltamultiplier = object.blenddeltamultiplier ?? 0;
+    return message;
+  },
 };
 
 function createBaseCUserMessageFade(): CUserMessageFade {
@@ -1690,6 +1762,19 @@ export const CUserMessageFade = {
     message.flags !== undefined && (obj.flags = Math.round(message.flags));
     message.color !== undefined && (obj.color = Math.round(message.color));
     return obj;
+  },
+
+  create(base?: DeepPartial<CUserMessageFade>): CUserMessageFade {
+    return CUserMessageFade.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageFade>): CUserMessageFade {
+    const message = createBaseCUserMessageFade();
+    message.duration = object.duration ?? 0;
+    message.holdTime = object.holdTime ?? 0;
+    message.flags = object.flags ?? 0;
+    message.color = object.color ?? 0;
+    return message;
   },
 };
 
@@ -1775,6 +1860,19 @@ export const CUserMessageShake = {
     message.duration !== undefined && (obj.duration = message.duration);
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMessageShake>): CUserMessageShake {
+    return CUserMessageShake.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageShake>): CUserMessageShake {
+    const message = createBaseCUserMessageShake();
+    message.command = object.command ?? 0;
+    message.amplitude = object.amplitude ?? 0;
+    message.frequency = object.frequency ?? 0;
+    message.duration = object.duration ?? 0;
+    return message;
+  },
 };
 
 function createBaseCUserMessageShakeDir(): CUserMessageShakeDir {
@@ -1835,6 +1933,21 @@ export const CUserMessageShakeDir = {
     message.direction !== undefined &&
       (obj.direction = message.direction ? CMsgVector.toJSON(message.direction) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CUserMessageShakeDir>): CUserMessageShakeDir {
+    return CUserMessageShakeDir.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageShakeDir>): CUserMessageShakeDir {
+    const message = createBaseCUserMessageShakeDir();
+    message.shake = (object.shake !== undefined && object.shake !== null)
+      ? CUserMessageShake.fromPartial(object.shake)
+      : undefined;
+    message.direction = (object.direction !== undefined && object.direction !== null)
+      ? CMsgVector.fromPartial(object.direction)
+      : undefined;
+    return message;
   },
 };
 
@@ -1932,6 +2045,22 @@ export const CUserMessageScreenTilt = {
     message.time !== undefined && (obj.time = message.time);
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMessageScreenTilt>): CUserMessageScreenTilt {
+    return CUserMessageScreenTilt.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageScreenTilt>): CUserMessageScreenTilt {
+    const message = createBaseCUserMessageScreenTilt();
+    message.command = object.command ?? 0;
+    message.easeInOut = object.easeInOut ?? false;
+    message.angle = (object.angle !== undefined && object.angle !== null)
+      ? CMsgVector.fromPartial(object.angle)
+      : undefined;
+    message.duration = object.duration ?? 0;
+    message.time = object.time ?? 0;
+    return message;
+  },
 };
 
 function createBaseCUserMessageSayText(): CUserMessageSayText {
@@ -2003,6 +2132,18 @@ export const CUserMessageSayText = {
     message.text !== undefined && (obj.text = message.text);
     message.chat !== undefined && (obj.chat = message.chat);
     return obj;
+  },
+
+  create(base?: DeepPartial<CUserMessageSayText>): CUserMessageSayText {
+    return CUserMessageSayText.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageSayText>): CUserMessageSayText {
+    const message = createBaseCUserMessageSayText();
+    message.playerindex = object.playerindex ?? 0;
+    message.text = object.text ?? "";
+    message.chat = object.chat ?? false;
+    return message;
   },
 };
 
@@ -2124,6 +2265,22 @@ export const CUserMessageSayText2 = {
     message.param4 !== undefined && (obj.param4 = message.param4);
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMessageSayText2>): CUserMessageSayText2 {
+    return CUserMessageSayText2.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageSayText2>): CUserMessageSayText2 {
+    const message = createBaseCUserMessageSayText2();
+    message.entityindex = object.entityindex ?? 0;
+    message.chat = object.chat ?? false;
+    message.messagename = object.messagename ?? "";
+    message.param1 = object.param1 ?? "";
+    message.param2 = object.param2 ?? "";
+    message.param3 = object.param3 ?? "";
+    message.param4 = object.param4 ?? "";
+    return message;
+  },
 };
 
 function createBaseCUserMessageHudMsg(): CUserMessageHudMsg {
@@ -2244,6 +2401,22 @@ export const CUserMessageHudMsg = {
     message.message !== undefined && (obj.message = message.message);
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMessageHudMsg>): CUserMessageHudMsg {
+    return CUserMessageHudMsg.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageHudMsg>): CUserMessageHudMsg {
+    const message = createBaseCUserMessageHudMsg();
+    message.channel = object.channel ?? 0;
+    message.x = object.x ?? 0;
+    message.y = object.y ?? 0;
+    message.color1 = object.color1 ?? 0;
+    message.color2 = object.color2 ?? 0;
+    message.effect = object.effect ?? 0;
+    message.message = object.message ?? "";
+    return message;
+  },
 };
 
 function createBaseCUserMessageHudText(): CUserMessageHudText {
@@ -2289,6 +2462,16 @@ export const CUserMessageHudText = {
     const obj: any = {};
     message.message !== undefined && (obj.message = message.message);
     return obj;
+  },
+
+  create(base?: DeepPartial<CUserMessageHudText>): CUserMessageHudText {
+    return CUserMessageHudText.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageHudText>): CUserMessageHudText {
+    const message = createBaseCUserMessageHudText();
+    message.message = object.message ?? "";
+    return message;
   },
 };
 
@@ -2354,6 +2537,17 @@ export const CUserMessageTextMsg = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMessageTextMsg>): CUserMessageTextMsg {
+    return CUserMessageTextMsg.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageTextMsg>): CUserMessageTextMsg {
+    const message = createBaseCUserMessageTextMsg();
+    message.dest = object.dest ?? 0;
+    message.param = object.param?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCUserMessageGameTitle(): CUserMessageGameTitle {
@@ -2389,6 +2583,15 @@ export const CUserMessageGameTitle = {
     const obj: any = {};
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMessageGameTitle>): CUserMessageGameTitle {
+    return CUserMessageGameTitle.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CUserMessageGameTitle>): CUserMessageGameTitle {
+    const message = createBaseCUserMessageGameTitle();
+    return message;
+  },
 };
 
 function createBaseCUserMessageResetHUD(): CUserMessageResetHUD {
@@ -2423,6 +2626,15 @@ export const CUserMessageResetHUD = {
   toJSON(_: CUserMessageResetHUD): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CUserMessageResetHUD>): CUserMessageResetHUD {
+    return CUserMessageResetHUD.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CUserMessageResetHUD>): CUserMessageResetHUD {
+    const message = createBaseCUserMessageResetHUD();
+    return message;
   },
 };
 
@@ -2483,6 +2695,17 @@ export const CUserMessageSendAudio = {
     message.soundname !== undefined && (obj.soundname = message.soundname);
     message.stop !== undefined && (obj.stop = message.stop);
     return obj;
+  },
+
+  create(base?: DeepPartial<CUserMessageSendAudio>): CUserMessageSendAudio {
+    return CUserMessageSendAudio.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageSendAudio>): CUserMessageSendAudio {
+    const message = createBaseCUserMessageSendAudio();
+    message.soundname = object.soundname ?? "";
+    message.stop = object.stop ?? false;
+    return message;
   },
 };
 
@@ -2567,6 +2790,19 @@ export const CUserMessageAudioParameter = {
     message.value !== undefined && (obj.value = message.value);
     message.intValue !== undefined && (obj.intValue = Math.round(message.intValue));
     return obj;
+  },
+
+  create(base?: DeepPartial<CUserMessageAudioParameter>): CUserMessageAudioParameter {
+    return CUserMessageAudioParameter.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageAudioParameter>): CUserMessageAudioParameter {
+    const message = createBaseCUserMessageAudioParameter();
+    message.parameterType = object.parameterType ?? 0;
+    message.nameHashCode = object.nameHashCode ?? 0;
+    message.value = object.value ?? 0;
+    message.intValue = object.intValue ?? 0;
+    return message;
   },
 };
 
@@ -2670,6 +2906,18 @@ export const CUserMessageVoiceMask = {
     message.modEnable !== undefined && (obj.modEnable = message.modEnable);
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMessageVoiceMask>): CUserMessageVoiceMask {
+    return CUserMessageVoiceMask.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageVoiceMask>): CUserMessageVoiceMask {
+    const message = createBaseCUserMessageVoiceMask();
+    message.gamerulesMasks = object.gamerulesMasks?.map((e) => e) || [];
+    message.banMasks = object.banMasks?.map((e) => e) || [];
+    message.modEnable = object.modEnable ?? false;
+    return message;
+  },
 };
 
 function createBaseCUserMessageRequestState(): CUserMessageRequestState {
@@ -2704,6 +2952,15 @@ export const CUserMessageRequestState = {
   toJSON(_: CUserMessageRequestState): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CUserMessageRequestState>): CUserMessageRequestState {
+    return CUserMessageRequestState.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CUserMessageRequestState>): CUserMessageRequestState {
+    const message = createBaseCUserMessageRequestState();
+    return message;
   },
 };
 
@@ -2777,6 +3034,18 @@ export const CUserMessageRumble = {
     message.flags !== undefined && (obj.flags = Math.round(message.flags));
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMessageRumble>): CUserMessageRumble {
+    return CUserMessageRumble.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageRumble>): CUserMessageRumble {
+    const message = createBaseCUserMessageRumble();
+    message.index = object.index ?? 0;
+    message.data = object.data ?? 0;
+    message.flags = object.flags ?? 0;
+    return message;
+  },
 };
 
 function createBaseCUserMessageSayTextChannel(): CUserMessageSayTextChannel {
@@ -2848,6 +3117,18 @@ export const CUserMessageSayTextChannel = {
     message.channel !== undefined && (obj.channel = Math.round(message.channel));
     message.text !== undefined && (obj.text = message.text);
     return obj;
+  },
+
+  create(base?: DeepPartial<CUserMessageSayTextChannel>): CUserMessageSayTextChannel {
+    return CUserMessageSayTextChannel.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageSayTextChannel>): CUserMessageSayTextChannel {
+    const message = createBaseCUserMessageSayTextChannel();
+    message.player = object.player ?? 0;
+    message.channel = object.channel ?? 0;
+    message.text = object.text ?? "";
+    return message;
   },
 };
 
@@ -2957,6 +3238,21 @@ export const CUserMessageColoredText = {
     message.contextTeamId !== undefined && (obj.contextTeamId = Math.round(message.contextTeamId));
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMessageColoredText>): CUserMessageColoredText {
+    return CUserMessageColoredText.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageColoredText>): CUserMessageColoredText {
+    const message = createBaseCUserMessageColoredText();
+    message.color = object.color ?? 0;
+    message.text = object.text ?? "";
+    message.reset = object.reset ?? false;
+    message.contextPlayerSlot = object.contextPlayerSlot ?? 0;
+    message.contextValue = object.contextValue ?? 0;
+    message.contextTeamId = object.contextTeamId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCUserMessageItemPickup(): CUserMessageItemPickup {
@@ -3003,6 +3299,16 @@ export const CUserMessageItemPickup = {
     message.itemname !== undefined && (obj.itemname = message.itemname);
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMessageItemPickup>): CUserMessageItemPickup {
+    return CUserMessageItemPickup.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageItemPickup>): CUserMessageItemPickup {
+    const message = createBaseCUserMessageItemPickup();
+    message.itemname = object.itemname ?? "";
+    return message;
+  },
 };
 
 function createBaseCUserMessageAmmoDenied(): CUserMessageAmmoDenied {
@@ -3048,6 +3354,16 @@ export const CUserMessageAmmoDenied = {
     const obj: any = {};
     message.ammoId !== undefined && (obj.ammoId = Math.round(message.ammoId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CUserMessageAmmoDenied>): CUserMessageAmmoDenied {
+    return CUserMessageAmmoDenied.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageAmmoDenied>): CUserMessageAmmoDenied {
+    const message = createBaseCUserMessageAmmoDenied();
+    message.ammoId = object.ammoId ?? 0;
+    return message;
   },
 };
 
@@ -3133,6 +3449,19 @@ export const CUserMessageShowMenu = {
     message.menustring !== undefined && (obj.menustring = message.menustring);
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMessageShowMenu>): CUserMessageShowMenu {
+    return CUserMessageShowMenu.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageShowMenu>): CUserMessageShowMenu {
+    const message = createBaseCUserMessageShowMenu();
+    message.validslots = object.validslots ?? 0;
+    message.displaytime = object.displaytime ?? 0;
+    message.needmore = object.needmore ?? false;
+    message.menustring = object.menustring ?? "";
+    return message;
+  },
 };
 
 function createBaseCUserMessageCreditsMsg(): CUserMessageCreditsMsg {
@@ -3193,6 +3522,17 @@ export const CUserMessageCreditsMsg = {
     message.logoLength !== undefined && (obj.logoLength = message.logoLength);
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMessageCreditsMsg>): CUserMessageCreditsMsg {
+    return CUserMessageCreditsMsg.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageCreditsMsg>): CUserMessageCreditsMsg {
+    const message = createBaseCUserMessageCreditsMsg();
+    message.rolltype = object.rolltype ?? 0;
+    message.logoLength = object.logoLength ?? 0;
+    return message;
+  },
 };
 
 function createBaseCEntityMessagePlayJingle(): CEntityMessagePlayJingle {
@@ -3239,6 +3579,18 @@ export const CEntityMessagePlayJingle = {
     message.entityMsg !== undefined &&
       (obj.entityMsg = message.entityMsg ? CEntityMsg.toJSON(message.entityMsg) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CEntityMessagePlayJingle>): CEntityMessagePlayJingle {
+    return CEntityMessagePlayJingle.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CEntityMessagePlayJingle>): CEntityMessagePlayJingle {
+    const message = createBaseCEntityMessagePlayJingle();
+    message.entityMsg = (object.entityMsg !== undefined && object.entityMsg !== null)
+      ? CEntityMsg.fromPartial(object.entityMsg)
+      : undefined;
+    return message;
   },
 };
 
@@ -3301,6 +3653,19 @@ export const CEntityMessageScreenOverlay = {
       (obj.entityMsg = message.entityMsg ? CEntityMsg.toJSON(message.entityMsg) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CEntityMessageScreenOverlay>): CEntityMessageScreenOverlay {
+    return CEntityMessageScreenOverlay.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CEntityMessageScreenOverlay>): CEntityMessageScreenOverlay {
+    const message = createBaseCEntityMessageScreenOverlay();
+    message.startEffect = object.startEffect ?? false;
+    message.entityMsg = (object.entityMsg !== undefined && object.entityMsg !== null)
+      ? CEntityMsg.fromPartial(object.entityMsg)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCEntityMessageRemoveAllDecals(): CEntityMessageRemoveAllDecals {
@@ -3362,6 +3727,19 @@ export const CEntityMessageRemoveAllDecals = {
       (obj.entityMsg = message.entityMsg ? CEntityMsg.toJSON(message.entityMsg) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CEntityMessageRemoveAllDecals>): CEntityMessageRemoveAllDecals {
+    return CEntityMessageRemoveAllDecals.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CEntityMessageRemoveAllDecals>): CEntityMessageRemoveAllDecals {
+    const message = createBaseCEntityMessageRemoveAllDecals();
+    message.removeDecals = object.removeDecals ?? false;
+    message.entityMsg = (object.entityMsg !== undefined && object.entityMsg !== null)
+      ? CEntityMsg.fromPartial(object.entityMsg)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCEntityMessagePropagateForce(): CEntityMessagePropagateForce {
@@ -3422,6 +3800,21 @@ export const CEntityMessagePropagateForce = {
     message.entityMsg !== undefined &&
       (obj.entityMsg = message.entityMsg ? CEntityMsg.toJSON(message.entityMsg) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CEntityMessagePropagateForce>): CEntityMessagePropagateForce {
+    return CEntityMessagePropagateForce.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CEntityMessagePropagateForce>): CEntityMessagePropagateForce {
+    const message = createBaseCEntityMessagePropagateForce();
+    message.impulse = (object.impulse !== undefined && object.impulse !== null)
+      ? CMsgVector.fromPartial(object.impulse)
+      : undefined;
+    message.entityMsg = (object.entityMsg !== undefined && object.entityMsg !== null)
+      ? CEntityMsg.fromPartial(object.entityMsg)
+      : undefined;
+    return message;
   },
 };
 
@@ -3565,6 +3958,27 @@ export const CEntityMessageDoSpark = {
       (obj.entityMsg = message.entityMsg ? CEntityMsg.toJSON(message.entityMsg) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CEntityMessageDoSpark>): CEntityMessageDoSpark {
+    return CEntityMessageDoSpark.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CEntityMessageDoSpark>): CEntityMessageDoSpark {
+    const message = createBaseCEntityMessageDoSpark();
+    message.origin = (object.origin !== undefined && object.origin !== null)
+      ? CMsgVector.fromPartial(object.origin)
+      : undefined;
+    message.entityindex = object.entityindex ?? 0;
+    message.radius = object.radius ?? 0;
+    message.color = object.color ?? 0;
+    message.beams = object.beams ?? 0;
+    message.thick = object.thick ?? 0;
+    message.duration = object.duration ?? 0;
+    message.entityMsg = (object.entityMsg !== undefined && object.entityMsg !== null)
+      ? CEntityMsg.fromPartial(object.entityMsg)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCEntityMessageFixAngle(): CEntityMessageFixAngle {
@@ -3637,6 +4051,22 @@ export const CEntityMessageFixAngle = {
     message.entityMsg !== undefined &&
       (obj.entityMsg = message.entityMsg ? CEntityMsg.toJSON(message.entityMsg) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CEntityMessageFixAngle>): CEntityMessageFixAngle {
+    return CEntityMessageFixAngle.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CEntityMessageFixAngle>): CEntityMessageFixAngle {
+    const message = createBaseCEntityMessageFixAngle();
+    message.relative = object.relative ?? false;
+    message.angle = (object.angle !== undefined && object.angle !== null)
+      ? CMsgQAngle.fromPartial(object.angle)
+      : undefined;
+    message.entityMsg = (object.entityMsg !== undefined && object.entityMsg !== null)
+      ? CEntityMsg.fromPartial(object.entityMsg)
+      : undefined;
+    return message;
   },
 };
 
@@ -3715,6 +4145,20 @@ export const CUserMessageCameraTransition = {
       : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMessageCameraTransition>): CUserMessageCameraTransition {
+    return CUserMessageCameraTransition.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageCameraTransition>): CUserMessageCameraTransition {
+    const message = createBaseCUserMessageCameraTransition();
+    message.cameraType = object.cameraType ?? 0;
+    message.duration = object.duration ?? 0;
+    message.paramsDataDriven = (object.paramsDataDriven !== undefined && object.paramsDataDriven !== null)
+      ? CUserMessageCameraTransition_TransitionDataDriven.fromPartial(object.paramsDataDriven)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCUserMessageCameraTransition_TransitionDataDriven(): CUserMessageCameraTransition_TransitionDataDriven {
@@ -3789,6 +4233,22 @@ export const CUserMessageCameraTransition_TransitionDataDriven = {
     message.attachEntIndex !== undefined && (obj.attachEntIndex = Math.round(message.attachEntIndex));
     message.duration !== undefined && (obj.duration = message.duration);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CUserMessageCameraTransition_TransitionDataDriven>,
+  ): CUserMessageCameraTransition_TransitionDataDriven {
+    return CUserMessageCameraTransition_TransitionDataDriven.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMessageCameraTransition_TransitionDataDriven>,
+  ): CUserMessageCameraTransition_TransitionDataDriven {
+    const message = createBaseCUserMessageCameraTransition_TransitionDataDriven();
+    message.filename = object.filename ?? "";
+    message.attachEntIndex = object.attachEntIndex ?? 0;
+    message.duration = object.duration ?? 0;
+    return message;
   },
 };
 
@@ -4417,6 +4877,113 @@ export const CUserMsgParticleManager = {
         : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMsgParticleManager>): CUserMsgParticleManager {
+    return CUserMsgParticleManager.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMsgParticleManager>): CUserMsgParticleManager {
+    const message = createBaseCUserMsgParticleManager();
+    message.type = object.type ?? 0;
+    message.index = object.index ?? 0;
+    message.releaseParticleIndex = (object.releaseParticleIndex !== undefined && object.releaseParticleIndex !== null)
+      ? CUserMsgParticleManager_ReleaseParticleIndex.fromPartial(object.releaseParticleIndex)
+      : undefined;
+    message.createParticle = (object.createParticle !== undefined && object.createParticle !== null)
+      ? CUserMsgParticleManager_CreateParticle.fromPartial(object.createParticle)
+      : undefined;
+    message.destroyParticle = (object.destroyParticle !== undefined && object.destroyParticle !== null)
+      ? CUserMsgParticleManager_DestroyParticle.fromPartial(object.destroyParticle)
+      : undefined;
+    message.destroyParticleInvolving =
+      (object.destroyParticleInvolving !== undefined && object.destroyParticleInvolving !== null)
+        ? CUserMsgParticleManager_DestroyParticleInvolving.fromPartial(object.destroyParticleInvolving)
+        : undefined;
+    message.updateParticle = (object.updateParticle !== undefined && object.updateParticle !== null)
+      ? CUserMsgParticleManager_UpdateParticleOBSOLETE.fromPartial(object.updateParticle)
+      : undefined;
+    message.updateParticleFwd = (object.updateParticleFwd !== undefined && object.updateParticleFwd !== null)
+      ? CUserMsgParticleManager_UpdateParticleFwdOBSOLETE.fromPartial(object.updateParticleFwd)
+      : undefined;
+    message.updateParticleOrient = (object.updateParticleOrient !== undefined && object.updateParticleOrient !== null)
+      ? CUserMsgParticleManager_UpdateParticleOrientOBSOLETE.fromPartial(object.updateParticleOrient)
+      : undefined;
+    message.updateParticleFallback =
+      (object.updateParticleFallback !== undefined && object.updateParticleFallback !== null)
+        ? CUserMsgParticleManager_UpdateParticleFallback.fromPartial(object.updateParticleFallback)
+        : undefined;
+    message.updateParticleOffset = (object.updateParticleOffset !== undefined && object.updateParticleOffset !== null)
+      ? CUserMsgParticleManager_UpdateParticleOffset.fromPartial(object.updateParticleOffset)
+      : undefined;
+    message.updateParticleEnt = (object.updateParticleEnt !== undefined && object.updateParticleEnt !== null)
+      ? CUserMsgParticleManager_UpdateParticleEnt.fromPartial(object.updateParticleEnt)
+      : undefined;
+    message.updateParticleShouldDraw =
+      (object.updateParticleShouldDraw !== undefined && object.updateParticleShouldDraw !== null)
+        ? CUserMsgParticleManager_UpdateParticleShouldDraw.fromPartial(object.updateParticleShouldDraw)
+        : undefined;
+    message.updateParticleSetFrozen =
+      (object.updateParticleSetFrozen !== undefined && object.updateParticleSetFrozen !== null)
+        ? CUserMsgParticleManager_UpdateParticleSetFrozen.fromPartial(object.updateParticleSetFrozen)
+        : undefined;
+    message.changeControlPointAttachment =
+      (object.changeControlPointAttachment !== undefined && object.changeControlPointAttachment !== null)
+        ? CUserMsgParticleManager_ChangeControlPointAttachment.fromPartial(object.changeControlPointAttachment)
+        : undefined;
+    message.updateEntityPosition = (object.updateEntityPosition !== undefined && object.updateEntityPosition !== null)
+      ? CUserMsgParticleManager_UpdateEntityPosition.fromPartial(object.updateEntityPosition)
+      : undefined;
+    message.setParticleFowProperties =
+      (object.setParticleFowProperties !== undefined && object.setParticleFowProperties !== null)
+        ? CUserMsgParticleManager_SetParticleFoWProperties.fromPartial(object.setParticleFowProperties)
+        : undefined;
+    message.setParticleText = (object.setParticleText !== undefined && object.setParticleText !== null)
+      ? CUserMsgParticleManager_SetParticleText.fromPartial(object.setParticleText)
+      : undefined;
+    message.setParticleShouldCheckFow =
+      (object.setParticleShouldCheckFow !== undefined && object.setParticleShouldCheckFow !== null)
+        ? CUserMsgParticleManager_SetParticleShouldCheckFoW.fromPartial(object.setParticleShouldCheckFow)
+        : undefined;
+    message.setControlPointModel = (object.setControlPointModel !== undefined && object.setControlPointModel !== null)
+      ? CUserMsgParticleManager_SetControlPointModel.fromPartial(object.setControlPointModel)
+      : undefined;
+    message.setControlPointSnapshot =
+      (object.setControlPointSnapshot !== undefined && object.setControlPointSnapshot !== null)
+        ? CUserMsgParticleManager_SetControlPointSnapshot.fromPartial(object.setControlPointSnapshot)
+        : undefined;
+    message.setTextureAttribute = (object.setTextureAttribute !== undefined && object.setTextureAttribute !== null)
+      ? CUserMsgParticleManager_SetTextureAttribute.fromPartial(object.setTextureAttribute)
+      : undefined;
+    message.setSceneObjectGenericFlag =
+      (object.setSceneObjectGenericFlag !== undefined && object.setSceneObjectGenericFlag !== null)
+        ? CUserMsgParticleManager_SetSceneObjectGenericFlag.fromPartial(object.setSceneObjectGenericFlag)
+        : undefined;
+    message.setSceneObjectTintAndDesat =
+      (object.setSceneObjectTintAndDesat !== undefined && object.setSceneObjectTintAndDesat !== null)
+        ? CUserMsgParticleManager_SetSceneObjectTintAndDesat.fromPartial(object.setSceneObjectTintAndDesat)
+        : undefined;
+    message.destroyParticleNamed = (object.destroyParticleNamed !== undefined && object.destroyParticleNamed !== null)
+      ? CUserMsgParticleManager_DestroyParticleNamed.fromPartial(object.destroyParticleNamed)
+      : undefined;
+    message.particleSkipToTime = (object.particleSkipToTime !== undefined && object.particleSkipToTime !== null)
+      ? CUserMsgParticleManager_ParticleSkipToTime.fromPartial(object.particleSkipToTime)
+      : undefined;
+    message.particleCanFreeze = (object.particleCanFreeze !== undefined && object.particleCanFreeze !== null)
+      ? CUserMsgParticleManager_ParticleCanFreeze.fromPartial(object.particleCanFreeze)
+      : undefined;
+    message.setNamedValueContext = (object.setNamedValueContext !== undefined && object.setNamedValueContext !== null)
+      ? CUserMsgParticleManager_SetParticleNamedValueContext.fromPartial(object.setNamedValueContext)
+      : undefined;
+    message.updateParticleTransform =
+      (object.updateParticleTransform !== undefined && object.updateParticleTransform !== null)
+        ? CUserMsgParticleManager_UpdateParticleTransform.fromPartial(object.updateParticleTransform)
+        : undefined;
+    message.particleFreezeTransitionOverride =
+      (object.particleFreezeTransitionOverride !== undefined && object.particleFreezeTransitionOverride !== null)
+        ? CUserMsgParticleManager_ParticleFreezeTransitionOverride.fromPartial(object.particleFreezeTransitionOverride)
+        : undefined;
+    return message;
+  },
 };
 
 function createBaseCUserMsgParticleManager_ReleaseParticleIndex(): CUserMsgParticleManager_ReleaseParticleIndex {
@@ -4451,6 +5018,19 @@ export const CUserMsgParticleManager_ReleaseParticleIndex = {
   toJSON(_: CUserMsgParticleManager_ReleaseParticleIndex): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CUserMsgParticleManager_ReleaseParticleIndex>,
+  ): CUserMsgParticleManager_ReleaseParticleIndex {
+    return CUserMsgParticleManager_ReleaseParticleIndex.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    _: DeepPartial<CUserMsgParticleManager_ReleaseParticleIndex>,
+  ): CUserMsgParticleManager_ReleaseParticleIndex {
+    const message = createBaseCUserMsgParticleManager_ReleaseParticleIndex();
+    return message;
   },
 };
 
@@ -4584,6 +5164,22 @@ export const CUserMsgParticleManager_CreateParticle = {
       (obj.controlPointConfiguration = message.controlPointConfiguration);
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMsgParticleManager_CreateParticle>): CUserMsgParticleManager_CreateParticle {
+    return CUserMsgParticleManager_CreateParticle.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMsgParticleManager_CreateParticle>): CUserMsgParticleManager_CreateParticle {
+    const message = createBaseCUserMsgParticleManager_CreateParticle();
+    message.particleNameIndex = object.particleNameIndex ?? "0";
+    message.attachType = object.attachType ?? 0;
+    message.entityHandle = object.entityHandle ?? 0;
+    message.entityHandleForModifiers = object.entityHandleForModifiers ?? 0;
+    message.applyVoiceBanRules = object.applyVoiceBanRules ?? false;
+    message.teamBehavior = object.teamBehavior ?? 0;
+    message.controlPointConfiguration = object.controlPointConfiguration ?? "";
+    return message;
+  },
 };
 
 function createBaseCUserMsgParticleManager_DestroyParticle(): CUserMsgParticleManager_DestroyParticle {
@@ -4629,6 +5225,16 @@ export const CUserMsgParticleManager_DestroyParticle = {
     const obj: any = {};
     message.destroyImmediately !== undefined && (obj.destroyImmediately = message.destroyImmediately);
     return obj;
+  },
+
+  create(base?: DeepPartial<CUserMsgParticleManager_DestroyParticle>): CUserMsgParticleManager_DestroyParticle {
+    return CUserMsgParticleManager_DestroyParticle.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMsgParticleManager_DestroyParticle>): CUserMsgParticleManager_DestroyParticle {
+    const message = createBaseCUserMsgParticleManager_DestroyParticle();
+    message.destroyImmediately = object.destroyImmediately ?? false;
+    return message;
   },
 };
 
@@ -4692,6 +5298,21 @@ export const CUserMsgParticleManager_DestroyParticleInvolving = {
     message.destroyImmediately !== undefined && (obj.destroyImmediately = message.destroyImmediately);
     message.entityHandle !== undefined && (obj.entityHandle = Math.round(message.entityHandle));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CUserMsgParticleManager_DestroyParticleInvolving>,
+  ): CUserMsgParticleManager_DestroyParticleInvolving {
+    return CUserMsgParticleManager_DestroyParticleInvolving.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMsgParticleManager_DestroyParticleInvolving>,
+  ): CUserMsgParticleManager_DestroyParticleInvolving {
+    const message = createBaseCUserMsgParticleManager_DestroyParticleInvolving();
+    message.destroyImmediately = object.destroyImmediately ?? false;
+    message.entityHandle = object.entityHandle ?? 0;
+    return message;
   },
 };
 
@@ -4777,6 +5398,23 @@ export const CUserMsgParticleManager_DestroyParticleNamed = {
     message.playEndcap !== undefined && (obj.playEndcap = message.playEndcap);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CUserMsgParticleManager_DestroyParticleNamed>,
+  ): CUserMsgParticleManager_DestroyParticleNamed {
+    return CUserMsgParticleManager_DestroyParticleNamed.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMsgParticleManager_DestroyParticleNamed>,
+  ): CUserMsgParticleManager_DestroyParticleNamed {
+    const message = createBaseCUserMsgParticleManager_DestroyParticleNamed();
+    message.particleNameIndex = object.particleNameIndex ?? "0";
+    message.entityHandle = object.entityHandle ?? 0;
+    message.destroyImmediately = object.destroyImmediately ?? false;
+    message.playEndcap = object.playEndcap ?? false;
+    return message;
+  },
 };
 
 function createBaseCUserMsgParticleManager_UpdateParticleOBSOLETE(): CUserMsgParticleManager_UpdateParticleOBSOLETE {
@@ -4841,6 +5479,23 @@ export const CUserMsgParticleManager_UpdateParticleOBSOLETE = {
       (obj.position = message.position ? CMsgVector.toJSON(message.position) : undefined);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CUserMsgParticleManager_UpdateParticleOBSOLETE>,
+  ): CUserMsgParticleManager_UpdateParticleOBSOLETE {
+    return CUserMsgParticleManager_UpdateParticleOBSOLETE.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMsgParticleManager_UpdateParticleOBSOLETE>,
+  ): CUserMsgParticleManager_UpdateParticleOBSOLETE {
+    const message = createBaseCUserMsgParticleManager_UpdateParticleOBSOLETE();
+    message.controlPoint = object.controlPoint ?? 0;
+    message.position = (object.position !== undefined && object.position !== null)
+      ? CMsgVector.fromPartial(object.position)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCUserMsgParticleManager_UpdateParticleFwdOBSOLETE(): CUserMsgParticleManager_UpdateParticleFwdOBSOLETE {
@@ -4903,6 +5558,23 @@ export const CUserMsgParticleManager_UpdateParticleFwdOBSOLETE = {
     message.controlPoint !== undefined && (obj.controlPoint = Math.round(message.controlPoint));
     message.forward !== undefined && (obj.forward = message.forward ? CMsgVector.toJSON(message.forward) : undefined);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CUserMsgParticleManager_UpdateParticleFwdOBSOLETE>,
+  ): CUserMsgParticleManager_UpdateParticleFwdOBSOLETE {
+    return CUserMsgParticleManager_UpdateParticleFwdOBSOLETE.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMsgParticleManager_UpdateParticleFwdOBSOLETE>,
+  ): CUserMsgParticleManager_UpdateParticleFwdOBSOLETE {
+    const message = createBaseCUserMsgParticleManager_UpdateParticleFwdOBSOLETE();
+    message.controlPoint = object.controlPoint ?? 0;
+    message.forward = (object.forward !== undefined && object.forward !== null)
+      ? CMsgVector.fromPartial(object.forward)
+      : undefined;
+    return message;
   },
 };
 
@@ -5004,6 +5676,30 @@ export const CUserMsgParticleManager_UpdateParticleOrientOBSOLETE = {
     message.left !== undefined && (obj.left = message.left ? CMsgVector.toJSON(message.left) : undefined);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CUserMsgParticleManager_UpdateParticleOrientOBSOLETE>,
+  ): CUserMsgParticleManager_UpdateParticleOrientOBSOLETE {
+    return CUserMsgParticleManager_UpdateParticleOrientOBSOLETE.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMsgParticleManager_UpdateParticleOrientOBSOLETE>,
+  ): CUserMsgParticleManager_UpdateParticleOrientOBSOLETE {
+    const message = createBaseCUserMsgParticleManager_UpdateParticleOrientOBSOLETE();
+    message.controlPoint = object.controlPoint ?? 0;
+    message.forward = (object.forward !== undefined && object.forward !== null)
+      ? CMsgVector.fromPartial(object.forward)
+      : undefined;
+    message.deprecatedRight = (object.deprecatedRight !== undefined && object.deprecatedRight !== null)
+      ? CMsgVector.fromPartial(object.deprecatedRight)
+      : undefined;
+    message.up = (object.up !== undefined && object.up !== null) ? CMsgVector.fromPartial(object.up) : undefined;
+    message.left = (object.left !== undefined && object.left !== null)
+      ? CMsgVector.fromPartial(object.left)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCUserMsgParticleManager_UpdateParticleTransform(): CUserMsgParticleManager_UpdateParticleTransform {
@@ -5093,6 +5789,27 @@ export const CUserMsgParticleManager_UpdateParticleTransform = {
     message.interpolationInterval !== undefined && (obj.interpolationInterval = message.interpolationInterval);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CUserMsgParticleManager_UpdateParticleTransform>,
+  ): CUserMsgParticleManager_UpdateParticleTransform {
+    return CUserMsgParticleManager_UpdateParticleTransform.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMsgParticleManager_UpdateParticleTransform>,
+  ): CUserMsgParticleManager_UpdateParticleTransform {
+    const message = createBaseCUserMsgParticleManager_UpdateParticleTransform();
+    message.controlPoint = object.controlPoint ?? 0;
+    message.position = (object.position !== undefined && object.position !== null)
+      ? CMsgVector.fromPartial(object.position)
+      : undefined;
+    message.orientation = (object.orientation !== undefined && object.orientation !== null)
+      ? CMsgQuaternion.fromPartial(object.orientation)
+      : undefined;
+    message.interpolationInterval = object.interpolationInterval ?? 0;
+    return message;
+  },
 };
 
 function createBaseCUserMsgParticleManager_UpdateParticleFallback(): CUserMsgParticleManager_UpdateParticleFallback {
@@ -5156,6 +5873,23 @@ export const CUserMsgParticleManager_UpdateParticleFallback = {
     message.position !== undefined &&
       (obj.position = message.position ? CMsgVector.toJSON(message.position) : undefined);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CUserMsgParticleManager_UpdateParticleFallback>,
+  ): CUserMsgParticleManager_UpdateParticleFallback {
+    return CUserMsgParticleManager_UpdateParticleFallback.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMsgParticleManager_UpdateParticleFallback>,
+  ): CUserMsgParticleManager_UpdateParticleFallback {
+    const message = createBaseCUserMsgParticleManager_UpdateParticleFallback();
+    message.controlPoint = object.controlPoint ?? 0;
+    message.position = (object.position !== undefined && object.position !== null)
+      ? CMsgVector.fromPartial(object.position)
+      : undefined;
+    return message;
   },
 };
 
@@ -5230,6 +5964,26 @@ export const CUserMsgParticleManager_UpdateParticleOffset = {
     message.angleOffset !== undefined &&
       (obj.angleOffset = message.angleOffset ? CMsgQAngle.toJSON(message.angleOffset) : undefined);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CUserMsgParticleManager_UpdateParticleOffset>,
+  ): CUserMsgParticleManager_UpdateParticleOffset {
+    return CUserMsgParticleManager_UpdateParticleOffset.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMsgParticleManager_UpdateParticleOffset>,
+  ): CUserMsgParticleManager_UpdateParticleOffset {
+    const message = createBaseCUserMsgParticleManager_UpdateParticleOffset();
+    message.controlPoint = object.controlPoint ?? 0;
+    message.originOffset = (object.originOffset !== undefined && object.originOffset !== null)
+      ? CMsgVector.fromPartial(object.originOffset)
+      : undefined;
+    message.angleOffset = (object.angleOffset !== undefined && object.angleOffset !== null)
+      ? CMsgQAngle.fromPartial(object.angleOffset)
+      : undefined;
+    return message;
   },
 };
 
@@ -5375,6 +6129,31 @@ export const CUserMsgParticleManager_UpdateParticleEnt = {
       (obj.offsetAngles = message.offsetAngles ? CMsgQAngle.toJSON(message.offsetAngles) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMsgParticleManager_UpdateParticleEnt>): CUserMsgParticleManager_UpdateParticleEnt {
+    return CUserMsgParticleManager_UpdateParticleEnt.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMsgParticleManager_UpdateParticleEnt>,
+  ): CUserMsgParticleManager_UpdateParticleEnt {
+    const message = createBaseCUserMsgParticleManager_UpdateParticleEnt();
+    message.controlPoint = object.controlPoint ?? 0;
+    message.entityHandle = object.entityHandle ?? 0;
+    message.attachType = object.attachType ?? 0;
+    message.attachment = object.attachment ?? 0;
+    message.fallbackPosition = (object.fallbackPosition !== undefined && object.fallbackPosition !== null)
+      ? CMsgVector.fromPartial(object.fallbackPosition)
+      : undefined;
+    message.includeWearables = object.includeWearables ?? false;
+    message.offsetPosition = (object.offsetPosition !== undefined && object.offsetPosition !== null)
+      ? CMsgVector.fromPartial(object.offsetPosition)
+      : undefined;
+    message.offsetAngles = (object.offsetAngles !== undefined && object.offsetAngles !== null)
+      ? CMsgQAngle.fromPartial(object.offsetAngles)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCUserMsgParticleManager_UpdateParticleSetFrozen(): CUserMsgParticleManager_UpdateParticleSetFrozen {
@@ -5438,6 +6217,21 @@ export const CUserMsgParticleManager_UpdateParticleSetFrozen = {
     message.transitionDuration !== undefined && (obj.transitionDuration = message.transitionDuration);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CUserMsgParticleManager_UpdateParticleSetFrozen>,
+  ): CUserMsgParticleManager_UpdateParticleSetFrozen {
+    return CUserMsgParticleManager_UpdateParticleSetFrozen.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMsgParticleManager_UpdateParticleSetFrozen>,
+  ): CUserMsgParticleManager_UpdateParticleSetFrozen {
+    const message = createBaseCUserMsgParticleManager_UpdateParticleSetFrozen();
+    message.setFrozen = object.setFrozen ?? false;
+    message.transitionDuration = object.transitionDuration ?? 0;
+    return message;
+  },
 };
 
 function createBaseCUserMsgParticleManager_UpdateParticleShouldDraw(): CUserMsgParticleManager_UpdateParticleShouldDraw {
@@ -5486,6 +6280,20 @@ export const CUserMsgParticleManager_UpdateParticleShouldDraw = {
     const obj: any = {};
     message.shouldDraw !== undefined && (obj.shouldDraw = message.shouldDraw);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CUserMsgParticleManager_UpdateParticleShouldDraw>,
+  ): CUserMsgParticleManager_UpdateParticleShouldDraw {
+    return CUserMsgParticleManager_UpdateParticleShouldDraw.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMsgParticleManager_UpdateParticleShouldDraw>,
+  ): CUserMsgParticleManager_UpdateParticleShouldDraw {
+    const message = createBaseCUserMsgParticleManager_UpdateParticleShouldDraw();
+    message.shouldDraw = object.shouldDraw ?? false;
+    return message;
   },
 };
 
@@ -5562,6 +6370,22 @@ export const CUserMsgParticleManager_ChangeControlPointAttachment = {
     message.entityHandle !== undefined && (obj.entityHandle = Math.round(message.entityHandle));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CUserMsgParticleManager_ChangeControlPointAttachment>,
+  ): CUserMsgParticleManager_ChangeControlPointAttachment {
+    return CUserMsgParticleManager_ChangeControlPointAttachment.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMsgParticleManager_ChangeControlPointAttachment>,
+  ): CUserMsgParticleManager_ChangeControlPointAttachment {
+    const message = createBaseCUserMsgParticleManager_ChangeControlPointAttachment();
+    message.attachmentOld = object.attachmentOld ?? 0;
+    message.attachmentNew = object.attachmentNew ?? 0;
+    message.entityHandle = object.entityHandle ?? 0;
+    return message;
+  },
 };
 
 function createBaseCUserMsgParticleManager_UpdateEntityPosition(): CUserMsgParticleManager_UpdateEntityPosition {
@@ -5622,6 +6446,23 @@ export const CUserMsgParticleManager_UpdateEntityPosition = {
     message.position !== undefined &&
       (obj.position = message.position ? CMsgVector.toJSON(message.position) : undefined);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CUserMsgParticleManager_UpdateEntityPosition>,
+  ): CUserMsgParticleManager_UpdateEntityPosition {
+    return CUserMsgParticleManager_UpdateEntityPosition.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMsgParticleManager_UpdateEntityPosition>,
+  ): CUserMsgParticleManager_UpdateEntityPosition {
+    const message = createBaseCUserMsgParticleManager_UpdateEntityPosition();
+    message.entityHandle = object.entityHandle ?? 0;
+    message.position = (object.position !== undefined && object.position !== null)
+      ? CMsgVector.fromPartial(object.position)
+      : undefined;
+    return message;
   },
 };
 
@@ -5698,6 +6539,22 @@ export const CUserMsgParticleManager_SetParticleFoWProperties = {
     message.fowRadius !== undefined && (obj.fowRadius = message.fowRadius);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CUserMsgParticleManager_SetParticleFoWProperties>,
+  ): CUserMsgParticleManager_SetParticleFoWProperties {
+    return CUserMsgParticleManager_SetParticleFoWProperties.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMsgParticleManager_SetParticleFoWProperties>,
+  ): CUserMsgParticleManager_SetParticleFoWProperties {
+    const message = createBaseCUserMsgParticleManager_SetParticleFoWProperties();
+    message.fowControlPoint = object.fowControlPoint ?? 0;
+    message.fowControlPoint2 = object.fowControlPoint2 ?? 0;
+    message.fowRadius = object.fowRadius ?? 0;
+    return message;
+  },
 };
 
 function createBaseCUserMsgParticleManager_SetParticleShouldCheckFoW(): CUserMsgParticleManager_SetParticleShouldCheckFoW {
@@ -5746,6 +6603,20 @@ export const CUserMsgParticleManager_SetParticleShouldCheckFoW = {
     const obj: any = {};
     message.checkFow !== undefined && (obj.checkFow = message.checkFow);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CUserMsgParticleManager_SetParticleShouldCheckFoW>,
+  ): CUserMsgParticleManager_SetParticleShouldCheckFoW {
+    return CUserMsgParticleManager_SetParticleShouldCheckFoW.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMsgParticleManager_SetParticleShouldCheckFoW>,
+  ): CUserMsgParticleManager_SetParticleShouldCheckFoW {
+    const message = createBaseCUserMsgParticleManager_SetParticleShouldCheckFoW();
+    message.checkFow = object.checkFow ?? false;
+    return message;
   },
 };
 
@@ -5806,6 +6677,21 @@ export const CUserMsgParticleManager_SetControlPointModel = {
     message.controlPoint !== undefined && (obj.controlPoint = Math.round(message.controlPoint));
     message.modelName !== undefined && (obj.modelName = message.modelName);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CUserMsgParticleManager_SetControlPointModel>,
+  ): CUserMsgParticleManager_SetControlPointModel {
+    return CUserMsgParticleManager_SetControlPointModel.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMsgParticleManager_SetControlPointModel>,
+  ): CUserMsgParticleManager_SetControlPointModel {
+    const message = createBaseCUserMsgParticleManager_SetControlPointModel();
+    message.controlPoint = object.controlPoint ?? 0;
+    message.modelName = object.modelName ?? "";
+    return message;
   },
 };
 
@@ -5870,6 +6756,21 @@ export const CUserMsgParticleManager_SetControlPointSnapshot = {
     message.snapshotName !== undefined && (obj.snapshotName = message.snapshotName);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CUserMsgParticleManager_SetControlPointSnapshot>,
+  ): CUserMsgParticleManager_SetControlPointSnapshot {
+    return CUserMsgParticleManager_SetControlPointSnapshot.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMsgParticleManager_SetControlPointSnapshot>,
+  ): CUserMsgParticleManager_SetControlPointSnapshot {
+    const message = createBaseCUserMsgParticleManager_SetControlPointSnapshot();
+    message.controlPoint = object.controlPoint ?? 0;
+    message.snapshotName = object.snapshotName ?? "";
+    return message;
+  },
 };
 
 function createBaseCUserMsgParticleManager_SetParticleText(): CUserMsgParticleManager_SetParticleText {
@@ -5915,6 +6816,16 @@ export const CUserMsgParticleManager_SetParticleText = {
     const obj: any = {};
     message.text !== undefined && (obj.text = message.text);
     return obj;
+  },
+
+  create(base?: DeepPartial<CUserMsgParticleManager_SetParticleText>): CUserMsgParticleManager_SetParticleText {
+    return CUserMsgParticleManager_SetParticleText.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMsgParticleManager_SetParticleText>): CUserMsgParticleManager_SetParticleText {
+    const message = createBaseCUserMsgParticleManager_SetParticleText();
+    message.text = object.text ?? "";
+    return message;
   },
 };
 
@@ -5976,6 +6887,19 @@ export const CUserMsgParticleManager_SetTextureAttribute = {
     message.textureName !== undefined && (obj.textureName = message.textureName);
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMsgParticleManager_SetTextureAttribute>): CUserMsgParticleManager_SetTextureAttribute {
+    return CUserMsgParticleManager_SetTextureAttribute.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMsgParticleManager_SetTextureAttribute>,
+  ): CUserMsgParticleManager_SetTextureAttribute {
+    const message = createBaseCUserMsgParticleManager_SetTextureAttribute();
+    message.attributeName = object.attributeName ?? "";
+    message.textureName = object.textureName ?? "";
+    return message;
+  },
 };
 
 function createBaseCUserMsgParticleManager_SetSceneObjectGenericFlag(): CUserMsgParticleManager_SetSceneObjectGenericFlag {
@@ -6024,6 +6948,20 @@ export const CUserMsgParticleManager_SetSceneObjectGenericFlag = {
     const obj: any = {};
     message.flagValue !== undefined && (obj.flagValue = message.flagValue);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CUserMsgParticleManager_SetSceneObjectGenericFlag>,
+  ): CUserMsgParticleManager_SetSceneObjectGenericFlag {
+    return CUserMsgParticleManager_SetSceneObjectGenericFlag.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMsgParticleManager_SetSceneObjectGenericFlag>,
+  ): CUserMsgParticleManager_SetSceneObjectGenericFlag {
+    const message = createBaseCUserMsgParticleManager_SetSceneObjectGenericFlag();
+    message.flagValue = object.flagValue ?? false;
+    return message;
   },
 };
 
@@ -6088,6 +7026,21 @@ export const CUserMsgParticleManager_SetSceneObjectTintAndDesat = {
     message.desat !== undefined && (obj.desat = message.desat);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CUserMsgParticleManager_SetSceneObjectTintAndDesat>,
+  ): CUserMsgParticleManager_SetSceneObjectTintAndDesat {
+    return CUserMsgParticleManager_SetSceneObjectTintAndDesat.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMsgParticleManager_SetSceneObjectTintAndDesat>,
+  ): CUserMsgParticleManager_SetSceneObjectTintAndDesat {
+    const message = createBaseCUserMsgParticleManager_SetSceneObjectTintAndDesat();
+    message.tint = object.tint ?? 0;
+    message.desat = object.desat ?? 0;
+    return message;
+  },
 };
 
 function createBaseCUserMsgParticleManager_ParticleSkipToTime(): CUserMsgParticleManager_ParticleSkipToTime {
@@ -6134,6 +7087,18 @@ export const CUserMsgParticleManager_ParticleSkipToTime = {
     message.skipToTime !== undefined && (obj.skipToTime = message.skipToTime);
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMsgParticleManager_ParticleSkipToTime>): CUserMsgParticleManager_ParticleSkipToTime {
+    return CUserMsgParticleManager_ParticleSkipToTime.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMsgParticleManager_ParticleSkipToTime>,
+  ): CUserMsgParticleManager_ParticleSkipToTime {
+    const message = createBaseCUserMsgParticleManager_ParticleSkipToTime();
+    message.skipToTime = object.skipToTime ?? 0;
+    return message;
+  },
 };
 
 function createBaseCUserMsgParticleManager_ParticleCanFreeze(): CUserMsgParticleManager_ParticleCanFreeze {
@@ -6179,6 +7144,18 @@ export const CUserMsgParticleManager_ParticleCanFreeze = {
     const obj: any = {};
     message.canFreeze !== undefined && (obj.canFreeze = message.canFreeze);
     return obj;
+  },
+
+  create(base?: DeepPartial<CUserMsgParticleManager_ParticleCanFreeze>): CUserMsgParticleManager_ParticleCanFreeze {
+    return CUserMsgParticleManager_ParticleCanFreeze.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMsgParticleManager_ParticleCanFreeze>,
+  ): CUserMsgParticleManager_ParticleCanFreeze {
+    const message = createBaseCUserMsgParticleManager_ParticleCanFreeze();
+    message.canFreeze = object.canFreeze ?? false;
+    return message;
   },
 };
 
@@ -6230,6 +7207,20 @@ export const CUserMsgParticleManager_ParticleFreezeTransitionOverride = {
     const obj: any = {};
     message.freezeTransitionOverride !== undefined && (obj.freezeTransitionOverride = message.freezeTransitionOverride);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CUserMsgParticleManager_ParticleFreezeTransitionOverride>,
+  ): CUserMsgParticleManager_ParticleFreezeTransitionOverride {
+    return CUserMsgParticleManager_ParticleFreezeTransitionOverride.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMsgParticleManager_ParticleFreezeTransitionOverride>,
+  ): CUserMsgParticleManager_ParticleFreezeTransitionOverride {
+    const message = createBaseCUserMsgParticleManager_ParticleFreezeTransitionOverride();
+    message.freezeTransitionOverride = object.freezeTransitionOverride ?? 0;
+    return message;
   },
 };
 
@@ -6369,6 +7360,35 @@ export const CUserMsgParticleManager_SetParticleNamedValueContext = {
     }
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CUserMsgParticleManager_SetParticleNamedValueContext>,
+  ): CUserMsgParticleManager_SetParticleNamedValueContext {
+    return CUserMsgParticleManager_SetParticleNamedValueContext.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMsgParticleManager_SetParticleNamedValueContext>,
+  ): CUserMsgParticleManager_SetParticleNamedValueContext {
+    const message = createBaseCUserMsgParticleManager_SetParticleNamedValueContext();
+    message.floatValues =
+      object.floatValues?.map((e) =>
+        CUserMsgParticleManager_SetParticleNamedValueContext_FloatContextValue.fromPartial(e)
+      ) || [];
+    message.vectorValues =
+      object.vectorValues?.map((e) =>
+        CUserMsgParticleManager_SetParticleNamedValueContext_VectorContextValue.fromPartial(e)
+      ) || [];
+    message.transformValues =
+      object.transformValues?.map((e) =>
+        CUserMsgParticleManager_SetParticleNamedValueContext_TransformContextValue.fromPartial(e)
+      ) || [];
+    message.ehandleValues =
+      object.ehandleValues?.map((e) =>
+        CUserMsgParticleManager_SetParticleNamedValueContext_EHandleContext.fromPartial(e)
+      ) || [];
+    return message;
+  },
 };
 
 function createBaseCUserMsgParticleManager_SetParticleNamedValueContext_FloatContextValue(): CUserMsgParticleManager_SetParticleNamedValueContext_FloatContextValue {
@@ -6435,6 +7455,21 @@ export const CUserMsgParticleManager_SetParticleNamedValueContext_FloatContextVa
     message.value !== undefined && (obj.value = message.value);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CUserMsgParticleManager_SetParticleNamedValueContext_FloatContextValue>,
+  ): CUserMsgParticleManager_SetParticleNamedValueContext_FloatContextValue {
+    return CUserMsgParticleManager_SetParticleNamedValueContext_FloatContextValue.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMsgParticleManager_SetParticleNamedValueContext_FloatContextValue>,
+  ): CUserMsgParticleManager_SetParticleNamedValueContext_FloatContextValue {
+    const message = createBaseCUserMsgParticleManager_SetParticleNamedValueContext_FloatContextValue();
+    message.valueNameHash = object.valueNameHash ?? 0;
+    message.value = object.value ?? 0;
+    return message;
+  },
 };
 
 function createBaseCUserMsgParticleManager_SetParticleNamedValueContext_VectorContextValue(): CUserMsgParticleManager_SetParticleNamedValueContext_VectorContextValue {
@@ -6500,6 +7535,23 @@ export const CUserMsgParticleManager_SetParticleNamedValueContext_VectorContextV
     message.valueNameHash !== undefined && (obj.valueNameHash = Math.round(message.valueNameHash));
     message.value !== undefined && (obj.value = message.value ? CMsgVector.toJSON(message.value) : undefined);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CUserMsgParticleManager_SetParticleNamedValueContext_VectorContextValue>,
+  ): CUserMsgParticleManager_SetParticleNamedValueContext_VectorContextValue {
+    return CUserMsgParticleManager_SetParticleNamedValueContext_VectorContextValue.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMsgParticleManager_SetParticleNamedValueContext_VectorContextValue>,
+  ): CUserMsgParticleManager_SetParticleNamedValueContext_VectorContextValue {
+    const message = createBaseCUserMsgParticleManager_SetParticleNamedValueContext_VectorContextValue();
+    message.valueNameHash = object.valueNameHash ?? 0;
+    message.value = (object.value !== undefined && object.value !== null)
+      ? CMsgVector.fromPartial(object.value)
+      : undefined;
+    return message;
   },
 };
 
@@ -6580,6 +7632,26 @@ export const CUserMsgParticleManager_SetParticleNamedValueContext_TransformConte
       (obj.translation = message.translation ? CMsgVector.toJSON(message.translation) : undefined);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CUserMsgParticleManager_SetParticleNamedValueContext_TransformContextValue>,
+  ): CUserMsgParticleManager_SetParticleNamedValueContext_TransformContextValue {
+    return CUserMsgParticleManager_SetParticleNamedValueContext_TransformContextValue.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMsgParticleManager_SetParticleNamedValueContext_TransformContextValue>,
+  ): CUserMsgParticleManager_SetParticleNamedValueContext_TransformContextValue {
+    const message = createBaseCUserMsgParticleManager_SetParticleNamedValueContext_TransformContextValue();
+    message.valueNameHash = object.valueNameHash ?? 0;
+    message.angles = (object.angles !== undefined && object.angles !== null)
+      ? CMsgQAngle.fromPartial(object.angles)
+      : undefined;
+    message.translation = (object.translation !== undefined && object.translation !== null)
+      ? CMsgVector.fromPartial(object.translation)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCUserMsgParticleManager_SetParticleNamedValueContext_EHandleContext(): CUserMsgParticleManager_SetParticleNamedValueContext_EHandleContext {
@@ -6646,6 +7718,21 @@ export const CUserMsgParticleManager_SetParticleNamedValueContext_EHandleContext
     message.entIndex !== undefined && (obj.entIndex = Math.round(message.entIndex));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CUserMsgParticleManager_SetParticleNamedValueContext_EHandleContext>,
+  ): CUserMsgParticleManager_SetParticleNamedValueContext_EHandleContext {
+    return CUserMsgParticleManager_SetParticleNamedValueContext_EHandleContext.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMsgParticleManager_SetParticleNamedValueContext_EHandleContext>,
+  ): CUserMsgParticleManager_SetParticleNamedValueContext_EHandleContext {
+    const message = createBaseCUserMsgParticleManager_SetParticleNamedValueContext_EHandleContext();
+    message.valueNameHash = object.valueNameHash ?? 0;
+    message.entIndex = object.entIndex ?? 0;
+    return message;
+  },
 };
 
 function createBaseCUserMsgHudError(): CUserMsgHudError {
@@ -6691,6 +7778,16 @@ export const CUserMsgHudError = {
     const obj: any = {};
     message.orderId !== undefined && (obj.orderId = Math.round(message.orderId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CUserMsgHudError>): CUserMsgHudError {
+    return CUserMsgHudError.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMsgHudError>): CUserMsgHudError {
+    const message = createBaseCUserMsgHudError();
+    message.orderId = object.orderId ?? 0;
+    return message;
   },
 };
 
@@ -6752,6 +7849,17 @@ export const CUserMsgCustomGameEvent = {
     message.data !== undefined &&
       (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
     return obj;
+  },
+
+  create(base?: DeepPartial<CUserMsgCustomGameEvent>): CUserMsgCustomGameEvent {
+    return CUserMsgCustomGameEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMsgCustomGameEvent>): CUserMsgCustomGameEvent {
+    const message = createBaseCUserMsgCustomGameEvent();
+    message.eventName = object.eventName ?? "";
+    message.data = object.data ?? Buffer.alloc(0);
+    return message;
   },
 };
 
@@ -6837,6 +7945,19 @@ export const CUserMessageHapticsManagerPulse = {
     message.effectDuration !== undefined && (obj.effectDuration = message.effectDuration);
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMessageHapticsManagerPulse>): CUserMessageHapticsManagerPulse {
+    return CUserMessageHapticsManagerPulse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageHapticsManagerPulse>): CUserMessageHapticsManagerPulse {
+    const message = createBaseCUserMessageHapticsManagerPulse();
+    message.handId = object.handId ?? 0;
+    message.effectAmplitude = object.effectAmplitude ?? 0;
+    message.effectFrequency = object.effectFrequency ?? 0;
+    message.effectDuration = object.effectDuration ?? 0;
+    return message;
+  },
 };
 
 function createBaseCUserMessageHapticsManagerEffect(): CUserMessageHapticsManagerEffect {
@@ -6909,6 +8030,18 @@ export const CUserMessageHapticsManagerEffect = {
     message.effectScale !== undefined && (obj.effectScale = message.effectScale);
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMessageHapticsManagerEffect>): CUserMessageHapticsManagerEffect {
+    return CUserMessageHapticsManagerEffect.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageHapticsManagerEffect>): CUserMessageHapticsManagerEffect {
+    const message = createBaseCUserMessageHapticsManagerEffect();
+    message.handId = object.handId ?? 0;
+    message.effectNameHashCode = object.effectNameHashCode ?? 0;
+    message.effectScale = object.effectScale ?? 0;
+    return message;
+  },
 };
 
 function createBaseCUserMessageAnimStateGraphState(): CUserMessageAnimStateGraphState {
@@ -6969,6 +8102,17 @@ export const CUserMessageAnimStateGraphState = {
     message.data !== undefined &&
       (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
     return obj;
+  },
+
+  create(base?: DeepPartial<CUserMessageAnimStateGraphState>): CUserMessageAnimStateGraphState {
+    return CUserMessageAnimStateGraphState.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageAnimStateGraphState>): CUserMessageAnimStateGraphState {
+    const message = createBaseCUserMessageAnimStateGraphState();
+    message.entityIndex = object.entityIndex ?? 0;
+    message.data = object.data ?? Buffer.alloc(0);
+    return message;
   },
 };
 
@@ -7034,6 +8178,19 @@ export const CUserMessageCommandQueueState = {
       ? CUserMessageCommandQueueState_commandQueueInfoT.toJSON(message.commandQueueInfo)
       : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CUserMessageCommandQueueState>): CUserMessageCommandQueueState {
+    return CUserMessageCommandQueueState.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageCommandQueueState>): CUserMessageCommandQueueState {
+    const message = createBaseCUserMessageCommandQueueState();
+    message.playerSlot = object.playerSlot ?? 0;
+    message.commandQueueInfo = (object.commandQueueInfo !== undefined && object.commandQueueInfo !== null)
+      ? CUserMessageCommandQueueState_commandQueueInfoT.fromPartial(object.commandQueueInfo)
+      : undefined;
+    return message;
   },
 };
 
@@ -7123,6 +8280,23 @@ export const CUserMessageCommandQueueState_commandQueueInfoT = {
     message.timeDilationPercent !== undefined && (obj.timeDilationPercent = Math.round(message.timeDilationPercent));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CUserMessageCommandQueueState_commandQueueInfoT>,
+  ): CUserMessageCommandQueueState_commandQueueInfoT {
+    return CUserMessageCommandQueueState_commandQueueInfoT.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMessageCommandQueueState_commandQueueInfoT>,
+  ): CUserMessageCommandQueueState_commandQueueInfoT {
+    const message = createBaseCUserMessageCommandQueueState_commandQueueInfoT();
+    message.commandsQueued = object.commandsQueued ?? 0;
+    message.commandQueueDesiredSize = object.commandQueueDesiredSize ?? 0;
+    message.starvedCommandTicks = object.starvedCommandTicks ?? 0;
+    message.timeDilationPercent = object.timeDilationPercent ?? 0;
+    return message;
+  },
 };
 
 function createBaseCUserMessageUpdateCssClasses(): CUserMessageUpdateCssClasses {
@@ -7195,6 +8369,18 @@ export const CUserMessageUpdateCssClasses = {
     message.isAdd !== undefined && (obj.isAdd = message.isAdd);
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMessageUpdateCssClasses>): CUserMessageUpdateCssClasses {
+    return CUserMessageUpdateCssClasses.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageUpdateCssClasses>): CUserMessageUpdateCssClasses {
+    const message = createBaseCUserMessageUpdateCssClasses();
+    message.targetWorldPanel = object.targetWorldPanel ?? 0;
+    message.cssClasses = object.cssClasses ?? "";
+    message.isAdd = object.isAdd ?? false;
+    return message;
+  },
 };
 
 function createBaseCUserMessageServerFrameTime(): CUserMessageServerFrameTime {
@@ -7241,6 +8427,16 @@ export const CUserMessageServerFrameTime = {
     message.frameTime !== undefined && (obj.frameTime = message.frameTime);
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMessageServerFrameTime>): CUserMessageServerFrameTime {
+    return CUserMessageServerFrameTime.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageServerFrameTime>): CUserMessageServerFrameTime {
+    const message = createBaseCUserMessageServerFrameTime();
+    message.frameTime = object.frameTime ?? 0;
+    return message;
+  },
 };
 
 function createBaseCUserMessageLagCompensationError(): CUserMessageLagCompensationError {
@@ -7286,6 +8482,16 @@ export const CUserMessageLagCompensationError = {
     const obj: any = {};
     message.distance !== undefined && (obj.distance = message.distance);
     return obj;
+  },
+
+  create(base?: DeepPartial<CUserMessageLagCompensationError>): CUserMessageLagCompensationError {
+    return CUserMessageLagCompensationError.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageLagCompensationError>): CUserMessageLagCompensationError {
+    const message = createBaseCUserMessageLagCompensationError();
+    message.distance = object.distance ?? 0;
+    return message;
   },
 };
 
@@ -7346,6 +8552,17 @@ export const CUserMessageRequestDllStatus = {
     message.dllAction !== undefined && (obj.dllAction = message.dllAction);
     message.fullReport !== undefined && (obj.fullReport = message.fullReport);
     return obj;
+  },
+
+  create(base?: DeepPartial<CUserMessageRequestDllStatus>): CUserMessageRequestDllStatus {
+    return CUserMessageRequestDllStatus.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageRequestDllStatus>): CUserMessageRequestDllStatus {
+    const message = createBaseCUserMessageRequestDllStatus();
+    message.dllAction = object.dllAction ?? "";
+    message.fullReport = object.fullReport ?? false;
+    return message;
   },
 };
 
@@ -7442,6 +8659,20 @@ export const CUserMessageRequestUtilAction = {
     message.util4 !== undefined && (obj.util4 = Math.round(message.util4));
     message.util5 !== undefined && (obj.util5 = Math.round(message.util5));
     return obj;
+  },
+
+  create(base?: DeepPartial<CUserMessageRequestUtilAction>): CUserMessageRequestUtilAction {
+    return CUserMessageRequestUtilAction.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageRequestUtilAction>): CUserMessageRequestUtilAction {
+    const message = createBaseCUserMessageRequestUtilAction();
+    message.util1 = object.util1 ?? 0;
+    message.util2 = object.util2 ?? 0;
+    message.util3 = object.util3 ?? 0;
+    message.util4 = object.util4 ?? 0;
+    message.util5 = object.util5 ?? 0;
+    return message;
   },
 };
 
@@ -7674,6 +8905,27 @@ export const CUserMessageUtilMsgResponse = {
     message.totalCount2 !== undefined && (obj.totalCount2 = Math.round(message.totalCount2));
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMessageUtilMsgResponse>): CUserMessageUtilMsgResponse {
+    return CUserMessageUtilMsgResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageUtilMsgResponse>): CUserMessageUtilMsgResponse {
+    const message = createBaseCUserMessageUtilMsgResponse();
+    message.crc = object.crc ?? 0;
+    message.itemCount = object.itemCount ?? 0;
+    message.crc2 = object.crc2 ?? 0;
+    message.itemCount2 = object.itemCount2 ?? 0;
+    message.crcPart = object.crcPart?.map((e) => e) || [];
+    message.crcPart2 = object.crcPart2?.map((e) => e) || [];
+    message.clientTimestamp = object.clientTimestamp ?? 0;
+    message.platform = object.platform ?? 0;
+    message.itemdetails = object.itemdetails?.map((e) => CUserMessageUtilMsgResponse_ItemDetail.fromPartial(e)) || [];
+    message.itemgroup = object.itemgroup ?? 0;
+    message.totalCount = object.totalCount ?? 0;
+    message.totalCount2 = object.totalCount2 ?? 0;
+    return message;
+  },
 };
 
 function createBaseCUserMessageUtilMsgResponse_ItemDetail(): CUserMessageUtilMsgResponse_ItemDetail {
@@ -7757,6 +9009,19 @@ export const CUserMessageUtilMsgResponse_ItemDetail = {
     message.crc !== undefined && (obj.crc = Math.round(message.crc));
     message.name !== undefined && (obj.name = message.name);
     return obj;
+  },
+
+  create(base?: DeepPartial<CUserMessageUtilMsgResponse_ItemDetail>): CUserMessageUtilMsgResponse_ItemDetail {
+    return CUserMessageUtilMsgResponse_ItemDetail.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageUtilMsgResponse_ItemDetail>): CUserMessageUtilMsgResponse_ItemDetail {
+    const message = createBaseCUserMessageUtilMsgResponse_ItemDetail();
+    message.index = object.index ?? 0;
+    message.hash = object.hash ?? 0;
+    message.crc = object.crc ?? 0;
+    message.name = object.name ?? "";
+    return message;
   },
 };
 
@@ -7892,6 +9157,22 @@ export const CUserMessageDllStatus = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMessageDllStatus>): CUserMessageDllStatus {
+    return CUserMessageDllStatus.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageDllStatus>): CUserMessageDllStatus {
+    const message = createBaseCUserMessageDllStatus();
+    message.fileReport = object.fileReport ?? "";
+    message.commandLine = object.commandLine ?? "";
+    message.totalFiles = object.totalFiles ?? 0;
+    message.processId = object.processId ?? 0;
+    message.osversion = object.osversion ?? 0;
+    message.clientTime = object.clientTime ?? "0";
+    message.diagnostics = object.diagnostics?.map((e) => CUserMessageDllStatus_CVDiagnostic.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCUserMessageDllStatus_CVDiagnostic(): CUserMessageDllStatus_CVDiagnostic {
@@ -7976,6 +9257,19 @@ export const CUserMessageDllStatus_CVDiagnostic = {
     message.stringValue !== undefined && (obj.stringValue = message.stringValue);
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMessageDllStatus_CVDiagnostic>): CUserMessageDllStatus_CVDiagnostic {
+    return CUserMessageDllStatus_CVDiagnostic.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageDllStatus_CVDiagnostic>): CUserMessageDllStatus_CVDiagnostic {
+    const message = createBaseCUserMessageDllStatus_CVDiagnostic();
+    message.id = object.id ?? 0;
+    message.extended = object.extended ?? 0;
+    message.value = object.value ?? "0";
+    message.stringValue = object.stringValue ?? "";
+    return message;
+  },
 };
 
 function createBaseCUserMessageRequestInventory(): CUserMessageRequestInventory {
@@ -8047,6 +9341,18 @@ export const CUserMessageRequestInventory = {
     message.offset !== undefined && (obj.offset = Math.round(message.offset));
     message.options !== undefined && (obj.options = Math.round(message.options));
     return obj;
+  },
+
+  create(base?: DeepPartial<CUserMessageRequestInventory>): CUserMessageRequestInventory {
+    return CUserMessageRequestInventory.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageRequestInventory>): CUserMessageRequestInventory {
+    const message = createBaseCUserMessageRequestInventory();
+    message.inventory = object.inventory ?? 0;
+    message.offset = object.offset ?? 0;
+    message.options = object.options ?? 0;
+    return message;
   },
 };
 
@@ -8244,6 +9550,28 @@ export const CUserMessageInventoryResponse = {
     message.instance !== undefined && (obj.instance = Math.round(message.instance));
     return obj;
   },
+
+  create(base?: DeepPartial<CUserMessageInventoryResponse>): CUserMessageInventoryResponse {
+    return CUserMessageInventoryResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CUserMessageInventoryResponse>): CUserMessageInventoryResponse {
+    const message = createBaseCUserMessageInventoryResponse();
+    message.crc = object.crc ?? 0;
+    message.itemCount = object.itemCount ?? 0;
+    message.osversion = object.osversion ?? 0;
+    message.perfTime = object.perfTime ?? 0;
+    message.clientTimestamp = object.clientTimestamp ?? 0;
+    message.platform = object.platform ?? 0;
+    message.inventories =
+      object.inventories?.map((e) => CUserMessageInventoryResponse_InventoryDetail.fromPartial(e)) || [];
+    message.inventories2 =
+      object.inventories2?.map((e) => CUserMessageInventoryResponse_InventoryDetail.fromPartial(e)) || [];
+    message.invType = object.invType ?? 0;
+    message.buildVersion = object.buildVersion ?? 0;
+    message.instance = object.instance ?? 0;
+    return message;
+  },
 };
 
 function createBaseCUserMessageInventoryResponse_InventoryDetail(): CUserMessageInventoryResponse_InventoryDetail {
@@ -8411,6 +9739,29 @@ export const CUserMessageInventoryResponse_InventoryDetail = {
     message.baseHash !== undefined && (obj.baseHash = Math.round(message.baseHash));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CUserMessageInventoryResponse_InventoryDetail>,
+  ): CUserMessageInventoryResponse_InventoryDetail {
+    return CUserMessageInventoryResponse_InventoryDetail.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CUserMessageInventoryResponse_InventoryDetail>,
+  ): CUserMessageInventoryResponse_InventoryDetail {
+    const message = createBaseCUserMessageInventoryResponse_InventoryDetail();
+    message.index = object.index ?? 0;
+    message.primary = object.primary ?? "0";
+    message.offset = object.offset ?? "0";
+    message.first = object.first ?? "0";
+    message.base = object.base ?? "0";
+    message.name = object.name ?? "";
+    message.baseName = object.baseName ?? "";
+    message.baseDetail = object.baseDetail ?? 0;
+    message.baseTime = object.baseTime ?? 0;
+    message.baseHash = object.baseHash ?? 0;
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -8456,6 +9807,13 @@ function base64FromBytes(arr: Uint8Array): string {
     return tsProtoGlobalThis.btoa(bin.join(""));
   }
 }
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

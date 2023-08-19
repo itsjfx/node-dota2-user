@@ -198,6 +198,25 @@ export const C2SCONNECTMessage = {
     message.useSnp !== undefined && (obj.useSnp = Math.round(message.useSnp));
     return obj;
   },
+
+  create(base?: DeepPartial<C2SCONNECTMessage>): C2SCONNECTMessage {
+    return C2SCONNECTMessage.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<C2SCONNECTMessage>): C2SCONNECTMessage {
+    const message = createBaseC2SCONNECTMessage();
+    message.hostVersion = object.hostVersion ?? 0;
+    message.authProtocol = object.authProtocol ?? 0;
+    message.challengeNumber = object.challengeNumber ?? 0;
+    message.reservationCookie = object.reservationCookie ?? "0";
+    message.lowViolence = object.lowViolence ?? false;
+    message.encryptedPassword = object.encryptedPassword ?? Buffer.alloc(0);
+    message.splitplayers = object.splitplayers?.map((e) => CCLCMsgSplitPlayerConnect.fromPartial(e)) || [];
+    message.authSteam = object.authSteam ?? Buffer.alloc(0);
+    message.challengeContext = object.challengeContext ?? "";
+    message.useSnp = object.useSnp ?? 0;
+    return message;
+  },
 };
 
 function createBaseC2SCONNECTIONMessage(): C2SCONNECTIONMessage {
@@ -258,6 +277,17 @@ export const C2SCONNECTIONMessage = {
     message.useSnp !== undefined && (obj.useSnp = message.useSnp);
     return obj;
   },
+
+  create(base?: DeepPartial<C2SCONNECTIONMessage>): C2SCONNECTIONMessage {
+    return C2SCONNECTIONMessage.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<C2SCONNECTIONMessage>): C2SCONNECTIONMessage {
+    const message = createBaseC2SCONNECTIONMessage();
+    message.addonName = object.addonName ?? "";
+    message.useSnp = object.useSnp ?? false;
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -303,6 +333,13 @@ function base64FromBytes(arr: Uint8Array): string {
     return tsProtoGlobalThis.btoa(bin.join(""));
   }
 }
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

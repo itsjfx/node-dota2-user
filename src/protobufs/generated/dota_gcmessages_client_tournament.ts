@@ -295,6 +295,15 @@ export const CMsgRequestWeekendTourneySchedule = {
     const obj: any = {};
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgRequestWeekendTourneySchedule>): CMsgRequestWeekendTourneySchedule {
+    return CMsgRequestWeekendTourneySchedule.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgRequestWeekendTourneySchedule>): CMsgRequestWeekendTourneySchedule {
+    const message = createBaseCMsgRequestWeekendTourneySchedule();
+    return message;
+  },
 };
 
 function createBaseCMsgWeekendTourneySchedule(): CMsgWeekendTourneySchedule {
@@ -348,6 +357,16 @@ export const CMsgWeekendTourneySchedule = {
       obj.divisions = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgWeekendTourneySchedule>): CMsgWeekendTourneySchedule {
+    return CMsgWeekendTourneySchedule.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgWeekendTourneySchedule>): CMsgWeekendTourneySchedule {
+    const message = createBaseCMsgWeekendTourneySchedule();
+    message.divisions = object.divisions?.map((e) => CMsgWeekendTourneySchedule_Division.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -463,6 +482,21 @@ export const CMsgWeekendTourneySchedule_Division = {
     message.trophyId !== undefined && (obj.trophyId = Math.round(message.trophyId));
     message.freeWeekend !== undefined && (obj.freeWeekend = message.freeWeekend);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgWeekendTourneySchedule_Division>): CMsgWeekendTourneySchedule_Division {
+    return CMsgWeekendTourneySchedule_Division.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgWeekendTourneySchedule_Division>): CMsgWeekendTourneySchedule_Division {
+    const message = createBaseCMsgWeekendTourneySchedule_Division();
+    message.divisionCode = object.divisionCode ?? 0;
+    message.timeWindowOpen = object.timeWindowOpen ?? 0;
+    message.timeWindowClose = object.timeWindowClose ?? 0;
+    message.timeWindowOpenNext = object.timeWindowOpenNext ?? 0;
+    message.trophyId = object.trophyId ?? 0;
+    message.freeWeekend = object.freeWeekend ?? false;
+    return message;
   },
 };
 
@@ -605,6 +639,23 @@ export const CMsgWeekendTourneyOpts = {
     message.pickupTeamLogo !== undefined && (obj.pickupTeamLogo = message.pickupTeamLogo);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgWeekendTourneyOpts>): CMsgWeekendTourneyOpts {
+    return CMsgWeekendTourneyOpts.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgWeekendTourneyOpts>): CMsgWeekendTourneyOpts {
+    const message = createBaseCMsgWeekendTourneyOpts();
+    message.participating = object.participating ?? false;
+    message.divisionId = object.divisionId ?? 0;
+    message.buyin = object.buyin ?? 0;
+    message.skillLevel = object.skillLevel ?? 0;
+    message.matchGroups = object.matchGroups ?? 0;
+    message.teamId = object.teamId ?? 0;
+    message.pickupTeamName = object.pickupTeamName ?? "";
+    message.pickupTeamLogo = object.pickupTeamLogo ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgWeekendTourneyLeave(): CMsgWeekendTourneyLeave {
@@ -639,6 +690,15 @@ export const CMsgWeekendTourneyLeave = {
   toJSON(_: CMsgWeekendTourneyLeave): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgWeekendTourneyLeave>): CMsgWeekendTourneyLeave {
+    return CMsgWeekendTourneyLeave.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgWeekendTourneyLeave>): CMsgWeekendTourneyLeave {
+    const message = createBaseCMsgWeekendTourneyLeave();
+    return message;
   },
 };
 
@@ -832,6 +892,26 @@ export const CMsgDOTATournament = {
       obj.nodes = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTATournament>): CMsgDOTATournament {
+    return CMsgDOTATournament.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTATournament>): CMsgDOTATournament {
+    const message = createBaseCMsgDOTATournament();
+    message.tournamentId = object.tournamentId ?? 0;
+    message.divisionId = object.divisionId ?? 0;
+    message.scheduleTime = object.scheduleTime ?? 0;
+    message.skillLevel = object.skillLevel ?? 0;
+    message.tournamentTemplate = object.tournamentTemplate ?? 0;
+    message.state = object.state ?? 0;
+    message.stateSeqNum = object.stateSeqNum ?? 0;
+    message.seasonTrophyId = object.seasonTrophyId ?? 0;
+    message.teams = object.teams?.map((e) => CMsgDOTATournament_Team.fromPartial(e)) || [];
+    message.games = object.games?.map((e) => CMsgDOTATournament_Game.fromPartial(e)) || [];
+    message.nodes = object.nodes?.map((e) => CMsgDOTATournament_Node.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -1047,6 +1127,25 @@ export const CMsgDOTATournament_Team = {
     message.teamUiLogo !== undefined && (obj.teamUiLogo = message.teamUiLogo);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTATournament_Team>): CMsgDOTATournament_Team {
+    return CMsgDOTATournament_Team.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTATournament_Team>): CMsgDOTATournament_Team {
+    const message = createBaseCMsgDOTATournament_Team();
+    message.teamGid = object.teamGid ?? "0";
+    message.nodeOrState = object.nodeOrState ?? 0;
+    message.players = object.players?.map((e) => e) || [];
+    message.playerBuyin = object.playerBuyin?.map((e) => e) || [];
+    message.playerSkillLevel = object.playerSkillLevel?.map((e) => e) || [];
+    message.matchGroupMask = object.matchGroupMask ?? 0;
+    message.teamId = object.teamId ?? 0;
+    message.teamName = object.teamName ?? "";
+    message.teamBaseLogo = object.teamBaseLogo ?? "0";
+    message.teamUiLogo = object.teamUiLogo ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgDOTATournament_Game(): CMsgDOTATournament_Game {
@@ -1155,6 +1254,21 @@ export const CMsgDOTATournament_Game = {
     message.startTime !== undefined && (obj.startTime = Math.round(message.startTime));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTATournament_Game>): CMsgDOTATournament_Game {
+    return CMsgDOTATournament_Game.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTATournament_Game>): CMsgDOTATournament_Game {
+    const message = createBaseCMsgDOTATournament_Game();
+    message.nodeIdx = object.nodeIdx ?? 0;
+    message.lobbyId = object.lobbyId ?? "0";
+    message.matchId = object.matchId ?? "0";
+    message.teamAGood = object.teamAGood ?? false;
+    message.state = object.state ?? 0;
+    message.startTime = object.startTime ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTATournament_Node(): CMsgDOTATournament_Node {
@@ -1238,6 +1352,19 @@ export const CMsgDOTATournament_Node = {
     message.teamIdxB !== undefined && (obj.teamIdxB = Math.round(message.teamIdxB));
     message.nodeState !== undefined && (obj.nodeState = eTournamentNodeStateToJSON(message.nodeState));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTATournament_Node>): CMsgDOTATournament_Node {
+    return CMsgDOTATournament_Node.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTATournament_Node>): CMsgDOTATournament_Node {
+    const message = createBaseCMsgDOTATournament_Node();
+    message.nodeId = object.nodeId ?? 0;
+    message.teamIdxA = object.teamIdxA ?? 0;
+    message.teamIdxB = object.teamIdxB ?? 0;
+    message.nodeState = object.nodeState ?? 0;
+    return message;
   },
 };
 
@@ -1401,6 +1528,22 @@ export const CMsgDOTATournamentStateChange = {
     message.stateSeqNum !== undefined && (obj.stateSeqNum = Math.round(message.stateSeqNum));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTATournamentStateChange>): CMsgDOTATournamentStateChange {
+    return CMsgDOTATournamentStateChange.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTATournamentStateChange>): CMsgDOTATournamentStateChange {
+    const message = createBaseCMsgDOTATournamentStateChange();
+    message.newTournamentId = object.newTournamentId ?? 0;
+    message.event = object.event ?? 0;
+    message.newTournamentState = object.newTournamentState ?? 0;
+    message.gameChanges = object.gameChanges?.map((e) => CMsgDOTATournamentStateChange_GameChange.fromPartial(e)) || [];
+    message.teamChanges = object.teamChanges?.map((e) => CMsgDOTATournamentStateChange_TeamChange.fromPartial(e)) || [];
+    message.mergedTournamentIds = object.mergedTournamentIds?.map((e) => e) || [];
+    message.stateSeqNum = object.stateSeqNum ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTATournamentStateChange_GameChange(): CMsgDOTATournamentStateChange_GameChange {
@@ -1460,6 +1603,17 @@ export const CMsgDOTATournamentStateChange_GameChange = {
     message.matchId !== undefined && (obj.matchId = message.matchId);
     message.newState !== undefined && (obj.newState = eTournamentGameStateToJSON(message.newState));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTATournamentStateChange_GameChange>): CMsgDOTATournamentStateChange_GameChange {
+    return CMsgDOTATournamentStateChange_GameChange.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTATournamentStateChange_GameChange>): CMsgDOTATournamentStateChange_GameChange {
+    const message = createBaseCMsgDOTATournamentStateChange_GameChange();
+    message.matchId = object.matchId ?? "0";
+    message.newState = object.newState ?? 0;
+    return message;
   },
 };
 
@@ -1532,6 +1686,18 @@ export const CMsgDOTATournamentStateChange_TeamChange = {
     message.newNodeOrState !== undefined && (obj.newNodeOrState = Math.round(message.newNodeOrState));
     message.oldNodeOrState !== undefined && (obj.oldNodeOrState = Math.round(message.oldNodeOrState));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTATournamentStateChange_TeamChange>): CMsgDOTATournamentStateChange_TeamChange {
+    return CMsgDOTATournamentStateChange_TeamChange.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTATournamentStateChange_TeamChange>): CMsgDOTATournamentStateChange_TeamChange {
+    const message = createBaseCMsgDOTATournamentStateChange_TeamChange();
+    message.teamGid = object.teamGid ?? "0";
+    message.newNodeOrState = object.newNodeOrState ?? 0;
+    message.oldNodeOrState = object.oldNodeOrState ?? 0;
+    return message;
   },
 };
 
@@ -1700,6 +1866,27 @@ export const CMsgDOTAWeekendTourneyPlayerSkillLevelStats = {
     message.score !== undefined && (obj.score = Math.round(message.score));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAWeekendTourneyPlayerSkillLevelStats>): CMsgDOTAWeekendTourneyPlayerSkillLevelStats {
+    return CMsgDOTAWeekendTourneyPlayerSkillLevelStats.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgDOTAWeekendTourneyPlayerSkillLevelStats>,
+  ): CMsgDOTAWeekendTourneyPlayerSkillLevelStats {
+    const message = createBaseCMsgDOTAWeekendTourneyPlayerSkillLevelStats();
+    message.skillLevel = object.skillLevel ?? 0;
+    message.timesWon0 = object.timesWon0 ?? 0;
+    message.timesWon1 = object.timesWon1 ?? 0;
+    message.timesWon2 = object.timesWon2 ?? 0;
+    message.timesWon3 = object.timesWon3 ?? 0;
+    message.timesByeAndLost = object.timesByeAndLost ?? 0;
+    message.timesByeAndWon = object.timesByeAndWon ?? 0;
+    message.timesUnusualChamp = object.timesUnusualChamp ?? 0;
+    message.totalGamesWon = object.totalGamesWon ?? 0;
+    message.score = object.score ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAWeekendTourneyPlayerStats(): CMsgDOTAWeekendTourneyPlayerStats {
@@ -1792,6 +1979,20 @@ export const CMsgDOTAWeekendTourneyPlayerStats = {
     message.currentTier !== undefined && (obj.currentTier = Math.round(message.currentTier));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAWeekendTourneyPlayerStats>): CMsgDOTAWeekendTourneyPlayerStats {
+    return CMsgDOTAWeekendTourneyPlayerStats.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAWeekendTourneyPlayerStats>): CMsgDOTAWeekendTourneyPlayerStats {
+    const message = createBaseCMsgDOTAWeekendTourneyPlayerStats();
+    message.accountId = object.accountId ?? 0;
+    message.seasonTrophyId = object.seasonTrophyId ?? 0;
+    message.skillLevels = object.skillLevels?.map((e) => CMsgDOTAWeekendTourneyPlayerSkillLevelStats.fromPartial(e)) ||
+      [];
+    message.currentTier = object.currentTier ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAWeekendTourneyPlayerStatsRequest(): CMsgDOTAWeekendTourneyPlayerStatsRequest {
@@ -1851,6 +2052,17 @@ export const CMsgDOTAWeekendTourneyPlayerStatsRequest = {
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     message.seasonTrophyId !== undefined && (obj.seasonTrophyId = Math.round(message.seasonTrophyId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAWeekendTourneyPlayerStatsRequest>): CMsgDOTAWeekendTourneyPlayerStatsRequest {
+    return CMsgDOTAWeekendTourneyPlayerStatsRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAWeekendTourneyPlayerStatsRequest>): CMsgDOTAWeekendTourneyPlayerStatsRequest {
+    const message = createBaseCMsgDOTAWeekendTourneyPlayerStatsRequest();
+    message.accountId = object.accountId ?? 0;
+    message.seasonTrophyId = object.seasonTrophyId ?? 0;
+    return message;
   },
 };
 
@@ -1919,6 +2131,18 @@ export const CMsgDOTAWeekendTourneyPlayerHistory = {
       obj.tournaments = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAWeekendTourneyPlayerHistory>): CMsgDOTAWeekendTourneyPlayerHistory {
+    return CMsgDOTAWeekendTourneyPlayerHistory.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAWeekendTourneyPlayerHistory>): CMsgDOTAWeekendTourneyPlayerHistory {
+    const message = createBaseCMsgDOTAWeekendTourneyPlayerHistory();
+    message.accountId = object.accountId ?? 0;
+    message.tournaments =
+      object.tournaments?.map((e) => CMsgDOTAWeekendTourneyPlayerHistory_Tournament.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -2092,6 +2316,28 @@ export const CMsgDOTAWeekendTourneyPlayerHistory_Tournament = {
     message.seasonTrophyId !== undefined && (obj.seasonTrophyId = Math.round(message.seasonTrophyId));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgDOTAWeekendTourneyPlayerHistory_Tournament>,
+  ): CMsgDOTAWeekendTourneyPlayerHistory_Tournament {
+    return CMsgDOTAWeekendTourneyPlayerHistory_Tournament.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgDOTAWeekendTourneyPlayerHistory_Tournament>,
+  ): CMsgDOTAWeekendTourneyPlayerHistory_Tournament {
+    const message = createBaseCMsgDOTAWeekendTourneyPlayerHistory_Tournament();
+    message.tournamentId = object.tournamentId ?? 0;
+    message.startTime = object.startTime ?? 0;
+    message.tournamentTier = object.tournamentTier ?? 0;
+    message.teamId = object.teamId ?? 0;
+    message.teamDate = object.teamDate ?? 0;
+    message.teamResult = object.teamResult ?? 0;
+    message.accountId = object.accountId?.map((e) => e) || [];
+    message.teamName = object.teamName ?? "";
+    message.seasonTrophyId = object.seasonTrophyId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAWeekendTourneyParticipationDetails(): CMsgDOTAWeekendTourneyParticipationDetails {
@@ -2147,6 +2393,19 @@ export const CMsgDOTAWeekendTourneyParticipationDetails = {
       obj.divisions = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAWeekendTourneyParticipationDetails>): CMsgDOTAWeekendTourneyParticipationDetails {
+    return CMsgDOTAWeekendTourneyParticipationDetails.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgDOTAWeekendTourneyParticipationDetails>,
+  ): CMsgDOTAWeekendTourneyParticipationDetails {
+    const message = createBaseCMsgDOTAWeekendTourneyParticipationDetails();
+    message.divisions =
+      object.divisions?.map((e) => CMsgDOTAWeekendTourneyParticipationDetails_Division.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -2292,6 +2551,27 @@ export const CMsgDOTAWeekendTourneyParticipationDetails_Tier = {
     message.playersStreak5 !== undefined && (obj.playersStreak5 = Math.round(message.playersStreak5));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgDOTAWeekendTourneyParticipationDetails_Tier>,
+  ): CMsgDOTAWeekendTourneyParticipationDetails_Tier {
+    return CMsgDOTAWeekendTourneyParticipationDetails_Tier.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgDOTAWeekendTourneyParticipationDetails_Tier>,
+  ): CMsgDOTAWeekendTourneyParticipationDetails_Tier {
+    const message = createBaseCMsgDOTAWeekendTourneyParticipationDetails_Tier();
+    message.tier = object.tier ?? 0;
+    message.players = object.players ?? 0;
+    message.teams = object.teams ?? 0;
+    message.winningTeams = object.winningTeams ?? 0;
+    message.playersStreak2 = object.playersStreak2 ?? 0;
+    message.playersStreak3 = object.playersStreak3 ?? 0;
+    message.playersStreak4 = object.playersStreak4 ?? 0;
+    message.playersStreak5 = object.playersStreak5 ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAWeekendTourneyParticipationDetails_Division(): CMsgDOTAWeekendTourneyParticipationDetails_Division {
@@ -2373,6 +2653,22 @@ export const CMsgDOTAWeekendTourneyParticipationDetails_Division = {
     }
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgDOTAWeekendTourneyParticipationDetails_Division>,
+  ): CMsgDOTAWeekendTourneyParticipationDetails_Division {
+    return CMsgDOTAWeekendTourneyParticipationDetails_Division.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgDOTAWeekendTourneyParticipationDetails_Division>,
+  ): CMsgDOTAWeekendTourneyParticipationDetails_Division {
+    const message = createBaseCMsgDOTAWeekendTourneyParticipationDetails_Division();
+    message.divisionId = object.divisionId ?? 0;
+    message.scheduleTime = object.scheduleTime ?? 0;
+    message.tiers = object.tiers?.map((e) => CMsgDOTAWeekendTourneyParticipationDetails_Tier.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -2393,6 +2689,13 @@ var tsProtoGlobalThis: any = (() => {
   }
   throw "Unable to locate global object";
 })();
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

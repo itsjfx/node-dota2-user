@@ -121,6 +121,16 @@ export const ChangeMapToolEvent = {
     message.mapname !== undefined && (obj.mapname = message.mapname);
     return obj;
   },
+
+  create(base?: DeepPartial<ChangeMapToolEvent>): ChangeMapToolEvent {
+    return ChangeMapToolEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<ChangeMapToolEvent>): ChangeMapToolEvent {
+    const message = createBaseChangeMapToolEvent();
+    message.mapname = object.mapname ?? "";
+    return message;
+  },
 };
 
 function createBaseTraceRayServerToolEvent(): TraceRayServerToolEvent {
@@ -180,6 +190,19 @@ export const TraceRayServerToolEvent = {
     message.start !== undefined && (obj.start = message.start ? CMsgVector.toJSON(message.start) : undefined);
     message.end !== undefined && (obj.end = message.end ? CMsgVector.toJSON(message.end) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<TraceRayServerToolEvent>): TraceRayServerToolEvent {
+    return TraceRayServerToolEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<TraceRayServerToolEvent>): TraceRayServerToolEvent {
+    const message = createBaseTraceRayServerToolEvent();
+    message.start = (object.start !== undefined && object.start !== null)
+      ? CMsgVector.fromPartial(object.start)
+      : undefined;
+    message.end = (object.end !== undefined && object.end !== null) ? CMsgVector.fromPartial(object.end) : undefined;
+    return message;
   },
 };
 
@@ -289,6 +312,25 @@ export const ToolTraceRayResult = {
     message.ehandle !== undefined && (obj.ehandle = Math.round(message.ehandle));
     return obj;
   },
+
+  create(base?: DeepPartial<ToolTraceRayResult>): ToolTraceRayResult {
+    return ToolTraceRayResult.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<ToolTraceRayResult>): ToolTraceRayResult {
+    const message = createBaseToolTraceRayResult();
+    message.hit = object.hit ?? false;
+    message.impact = (object.impact !== undefined && object.impact !== null)
+      ? CMsgVector.fromPartial(object.impact)
+      : undefined;
+    message.normal = (object.normal !== undefined && object.normal !== null)
+      ? CMsgVector.fromPartial(object.normal)
+      : undefined;
+    message.distance = object.distance ?? 0;
+    message.fraction = object.fraction ?? 0;
+    message.ehandle = object.ehandle ?? 0;
+    return message;
+  },
 };
 
 function createBaseSpawnEntityToolEvent(): SpawnEntityToolEvent {
@@ -354,6 +396,17 @@ export const SpawnEntityToolEvent = {
     message.clientsideentity !== undefined && (obj.clientsideentity = message.clientsideentity);
     return obj;
   },
+
+  create(base?: DeepPartial<SpawnEntityToolEvent>): SpawnEntityToolEvent {
+    return SpawnEntityToolEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<SpawnEntityToolEvent>): SpawnEntityToolEvent {
+    const message = createBaseSpawnEntityToolEvent();
+    message.entityKeyvalues = object.entityKeyvalues ?? Buffer.alloc(0);
+    message.clientsideentity = object.clientsideentity ?? false;
+    return message;
+  },
 };
 
 function createBaseSpawnEntityToolEventResult(): SpawnEntityToolEventResult {
@@ -399,6 +452,16 @@ export const SpawnEntityToolEventResult = {
     const obj: any = {};
     message.ehandle !== undefined && (obj.ehandle = Math.round(message.ehandle));
     return obj;
+  },
+
+  create(base?: DeepPartial<SpawnEntityToolEventResult>): SpawnEntityToolEventResult {
+    return SpawnEntityToolEventResult.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<SpawnEntityToolEventResult>): SpawnEntityToolEventResult {
+    const message = createBaseSpawnEntityToolEventResult();
+    message.ehandle = object.ehandle ?? 0;
+    return message;
   },
 };
 
@@ -446,6 +509,16 @@ export const DestroyEntityToolEvent = {
     message.ehandle !== undefined && (obj.ehandle = Math.round(message.ehandle));
     return obj;
   },
+
+  create(base?: DeepPartial<DestroyEntityToolEvent>): DestroyEntityToolEvent {
+    return DestroyEntityToolEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<DestroyEntityToolEvent>): DestroyEntityToolEvent {
+    const message = createBaseDestroyEntityToolEvent();
+    message.ehandle = object.ehandle ?? 0;
+    return message;
+  },
 };
 
 function createBaseDestroyAllEntitiesToolEvent(): DestroyAllEntitiesToolEvent {
@@ -481,6 +554,15 @@ export const DestroyAllEntitiesToolEvent = {
     const obj: any = {};
     return obj;
   },
+
+  create(base?: DeepPartial<DestroyAllEntitiesToolEvent>): DestroyAllEntitiesToolEvent {
+    return DestroyAllEntitiesToolEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<DestroyAllEntitiesToolEvent>): DestroyAllEntitiesToolEvent {
+    const message = createBaseDestroyAllEntitiesToolEvent();
+    return message;
+  },
 };
 
 function createBaseRestartMapToolEvent(): RestartMapToolEvent {
@@ -515,6 +597,15 @@ export const RestartMapToolEvent = {
   toJSON(_: RestartMapToolEvent): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<RestartMapToolEvent>): RestartMapToolEvent {
+    return RestartMapToolEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<RestartMapToolEvent>): RestartMapToolEvent {
+    const message = createBaseRestartMapToolEvent();
+    return message;
   },
 };
 
@@ -575,6 +666,17 @@ export const ToolEventGetEntityInfo = {
     message.ehandle !== undefined && (obj.ehandle = Math.round(message.ehandle));
     message.clientsideentity !== undefined && (obj.clientsideentity = message.clientsideentity);
     return obj;
+  },
+
+  create(base?: DeepPartial<ToolEventGetEntityInfo>): ToolEventGetEntityInfo {
+    return ToolEventGetEntityInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<ToolEventGetEntityInfo>): ToolEventGetEntityInfo {
+    const message = createBaseToolEventGetEntityInfo();
+    message.ehandle = object.ehandle ?? 0;
+    message.clientsideentity = object.clientsideentity ?? false;
+    return message;
   },
 };
 
@@ -684,6 +786,27 @@ export const ToolEventGetEntityInfoResult = {
     message.maxs !== undefined && (obj.maxs = message.maxs ? CMsgVector.toJSON(message.maxs) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<ToolEventGetEntityInfoResult>): ToolEventGetEntityInfoResult {
+    return ToolEventGetEntityInfoResult.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<ToolEventGetEntityInfoResult>): ToolEventGetEntityInfoResult {
+    const message = createBaseToolEventGetEntityInfoResult();
+    message.cppclass = object.cppclass ?? "";
+    message.classname = object.classname ?? "";
+    message.name = object.name ?? "";
+    message.origin = (object.origin !== undefined && object.origin !== null)
+      ? CMsgVector.fromPartial(object.origin)
+      : undefined;
+    message.mins = (object.mins !== undefined && object.mins !== null)
+      ? CMsgVector.fromPartial(object.mins)
+      : undefined;
+    message.maxs = (object.maxs !== undefined && object.maxs !== null)
+      ? CMsgVector.fromPartial(object.maxs)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseToolEventGetEntityInputs(): ToolEventGetEntityInputs {
@@ -744,6 +867,17 @@ export const ToolEventGetEntityInputs = {
     message.clientsideentity !== undefined && (obj.clientsideentity = message.clientsideentity);
     return obj;
   },
+
+  create(base?: DeepPartial<ToolEventGetEntityInputs>): ToolEventGetEntityInputs {
+    return ToolEventGetEntityInputs.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<ToolEventGetEntityInputs>): ToolEventGetEntityInputs {
+    const message = createBaseToolEventGetEntityInputs();
+    message.ehandle = object.ehandle ?? 0;
+    message.clientsideentity = object.clientsideentity ?? false;
+    return message;
+  },
 };
 
 function createBaseToolEventGetEntityInputsResult(): ToolEventGetEntityInputsResult {
@@ -793,6 +927,16 @@ export const ToolEventGetEntityInputsResult = {
       obj.inputList = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<ToolEventGetEntityInputsResult>): ToolEventGetEntityInputsResult {
+    return ToolEventGetEntityInputsResult.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<ToolEventGetEntityInputsResult>): ToolEventGetEntityInputsResult {
+    const message = createBaseToolEventGetEntityInputsResult();
+    message.inputList = object.inputList?.map((e) => e) || [];
+    return message;
   },
 };
 
@@ -878,6 +1022,19 @@ export const ToolEventFireEntityInput = {
     message.inputParam !== undefined && (obj.inputParam = message.inputParam);
     return obj;
   },
+
+  create(base?: DeepPartial<ToolEventFireEntityInput>): ToolEventFireEntityInput {
+    return ToolEventFireEntityInput.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<ToolEventFireEntityInput>): ToolEventFireEntityInput {
+    const message = createBaseToolEventFireEntityInput();
+    message.ehandle = object.ehandle ?? 0;
+    message.clientsideentity = object.clientsideentity ?? false;
+    message.inputName = object.inputName ?? "";
+    message.inputParam = object.inputParam ?? "";
+    return message;
+  },
 };
 
 function createBaseToolEventSFMRecordingStateChanged(): ToolEventSFMRecordingStateChanged {
@@ -923,6 +1080,16 @@ export const ToolEventSFMRecordingStateChanged = {
     const obj: any = {};
     message.isrecording !== undefined && (obj.isrecording = message.isrecording);
     return obj;
+  },
+
+  create(base?: DeepPartial<ToolEventSFMRecordingStateChanged>): ToolEventSFMRecordingStateChanged {
+    return ToolEventSFMRecordingStateChanged.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<ToolEventSFMRecordingStateChanged>): ToolEventSFMRecordingStateChanged {
+    const message = createBaseToolEventSFMRecordingStateChanged();
+    message.isrecording = object.isrecording ?? false;
+    return message;
   },
 };
 
@@ -970,6 +1137,16 @@ export const ToolEventSFMToolActiveStateChanged = {
     message.isactive !== undefined && (obj.isactive = message.isactive);
     return obj;
   },
+
+  create(base?: DeepPartial<ToolEventSFMToolActiveStateChanged>): ToolEventSFMToolActiveStateChanged {
+    return ToolEventSFMToolActiveStateChanged.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<ToolEventSFMToolActiveStateChanged>): ToolEventSFMToolActiveStateChanged {
+    const message = createBaseToolEventSFMToolActiveStateChanged();
+    message.isactive = object.isactive ?? false;
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -1015,6 +1192,13 @@ function base64FromBytes(arr: Uint8Array): string {
     return tsProtoGlobalThis.btoa(bin.join(""));
   }
 }
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function isSet(value: any): boolean {
   return value !== null && value !== undefined;

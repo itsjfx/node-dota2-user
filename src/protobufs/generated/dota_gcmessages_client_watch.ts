@@ -812,6 +812,46 @@ export const CSourceTVGameSmall = {
     message.customGameDifficulty !== undefined && (obj.customGameDifficulty = Math.round(message.customGameDifficulty));
     return obj;
   },
+
+  create(base?: DeepPartial<CSourceTVGameSmall>): CSourceTVGameSmall {
+    return CSourceTVGameSmall.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSourceTVGameSmall>): CSourceTVGameSmall {
+    const message = createBaseCSourceTVGameSmall();
+    message.activateTime = object.activateTime ?? 0;
+    message.deactivateTime = object.deactivateTime ?? 0;
+    message.serverSteamId = object.serverSteamId ?? "0";
+    message.lobbyId = object.lobbyId ?? "0";
+    message.leagueId = object.leagueId ?? 0;
+    message.lobbyType = object.lobbyType ?? 0;
+    message.gameTime = object.gameTime ?? 0;
+    message.delay = object.delay ?? 0;
+    message.spectators = object.spectators ?? 0;
+    message.gameMode = object.gameMode ?? 0;
+    message.averageMmr = object.averageMmr ?? 0;
+    message.matchId = object.matchId ?? "0";
+    message.seriesId = object.seriesId ?? 0;
+    message.teamNameRadiant = object.teamNameRadiant ?? "";
+    message.teamNameDire = object.teamNameDire ?? "";
+    message.teamLogoRadiant = object.teamLogoRadiant ?? "0";
+    message.teamLogoDire = object.teamLogoDire ?? "0";
+    message.teamIdRadiant = object.teamIdRadiant ?? 0;
+    message.teamIdDire = object.teamIdDire ?? 0;
+    message.sortScore = object.sortScore ?? 0;
+    message.lastUpdateTime = object.lastUpdateTime ?? 0;
+    message.radiantLead = object.radiantLead ?? 0;
+    message.radiantScore = object.radiantScore ?? 0;
+    message.direScore = object.direScore ?? 0;
+    message.players = object.players?.map((e) => CSourceTVGameSmall_Player.fromPartial(e)) || [];
+    message.buildingState = object.buildingState ?? 0;
+    message.weekendTourneyTournamentId = object.weekendTourneyTournamentId ?? 0;
+    message.weekendTourneyDivision = object.weekendTourneyDivision ?? 0;
+    message.weekendTourneySkillLevel = object.weekendTourneySkillLevel ?? 0;
+    message.weekendTourneyBracketRound = object.weekendTourneyBracketRound ?? 0;
+    message.customGameDifficulty = object.customGameDifficulty ?? 0;
+    return message;
+  },
 };
 
 function createBaseCSourceTVGameSmall_Player(): CSourceTVGameSmall_Player {
@@ -871,6 +911,17 @@ export const CSourceTVGameSmall_Player = {
     message.accountId !== undefined && (obj.accountId = Math.round(message.accountId));
     message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CSourceTVGameSmall_Player>): CSourceTVGameSmall_Player {
+    return CSourceTVGameSmall_Player.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSourceTVGameSmall_Player>): CSourceTVGameSmall_Player {
+    const message = createBaseCSourceTVGameSmall_Player();
+    message.accountId = object.accountId ?? 0;
+    message.heroId = object.heroId ?? 0;
+    return message;
   },
 };
 
@@ -994,6 +1045,21 @@ export const CMsgClientToGCFindTopSourceTVGames = {
       obj.lobbyIds = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCFindTopSourceTVGames>): CMsgClientToGCFindTopSourceTVGames {
+    return CMsgClientToGCFindTopSourceTVGames.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCFindTopSourceTVGames>): CMsgClientToGCFindTopSourceTVGames {
+    const message = createBaseCMsgClientToGCFindTopSourceTVGames();
+    message.searchKey = object.searchKey ?? "";
+    message.leagueId = object.leagueId ?? 0;
+    message.heroId = object.heroId ?? 0;
+    message.startGame = object.startGame ?? 0;
+    message.gameListIndex = object.gameListIndex ?? 0;
+    message.lobbyIds = object.lobbyIds?.map((e) => e) || [];
+    return message;
   },
 };
 
@@ -1154,6 +1220,28 @@ export const CMsgGCToClientFindTopSourceTVGamesResponse = {
       (obj.botGame = message.botGame ? CSourceTVGameSmall.toJSON(message.botGame) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientFindTopSourceTVGamesResponse>): CMsgGCToClientFindTopSourceTVGamesResponse {
+    return CMsgGCToClientFindTopSourceTVGamesResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientFindTopSourceTVGamesResponse>,
+  ): CMsgGCToClientFindTopSourceTVGamesResponse {
+    const message = createBaseCMsgGCToClientFindTopSourceTVGamesResponse();
+    message.searchKey = object.searchKey ?? "";
+    message.leagueId = object.leagueId ?? 0;
+    message.heroId = object.heroId ?? 0;
+    message.startGame = object.startGame ?? 0;
+    message.numGames = object.numGames ?? 0;
+    message.gameListIndex = object.gameListIndex ?? 0;
+    message.gameList = object.gameList?.map((e) => CSourceTVGameSmall.fromPartial(e)) || [];
+    message.specificGames = object.specificGames ?? false;
+    message.botGame = (object.botGame !== undefined && object.botGame !== null)
+      ? CSourceTVGameSmall.fromPartial(object.botGame)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientTopWeekendTourneyGames(): CMsgGCToClientTopWeekendTourneyGames {
@@ -1208,6 +1296,16 @@ export const CMsgGCToClientTopWeekendTourneyGames = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientTopWeekendTourneyGames>): CMsgGCToClientTopWeekendTourneyGames {
+    return CMsgGCToClientTopWeekendTourneyGames.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientTopWeekendTourneyGames>): CMsgGCToClientTopWeekendTourneyGames {
+    const message = createBaseCMsgGCToClientTopWeekendTourneyGames();
+    message.liveGames = object.liveGames?.map((e) => CSourceTVGameSmall.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCTopLeagueMatchesRequest(): CMsgClientToGCTopLeagueMatchesRequest {
@@ -1243,6 +1341,15 @@ export const CMsgClientToGCTopLeagueMatchesRequest = {
     const obj: any = {};
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCTopLeagueMatchesRequest>): CMsgClientToGCTopLeagueMatchesRequest {
+    return CMsgClientToGCTopLeagueMatchesRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgClientToGCTopLeagueMatchesRequest>): CMsgClientToGCTopLeagueMatchesRequest {
+    const message = createBaseCMsgClientToGCTopLeagueMatchesRequest();
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCTopFriendMatchesRequest(): CMsgClientToGCTopFriendMatchesRequest {
@@ -1277,6 +1384,15 @@ export const CMsgClientToGCTopFriendMatchesRequest = {
   toJSON(_: CMsgClientToGCTopFriendMatchesRequest): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCTopFriendMatchesRequest>): CMsgClientToGCTopFriendMatchesRequest {
+    return CMsgClientToGCTopFriendMatchesRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgClientToGCTopFriendMatchesRequest>): CMsgClientToGCTopFriendMatchesRequest {
+    const message = createBaseCMsgClientToGCTopFriendMatchesRequest();
+    return message;
   },
 };
 
@@ -1338,6 +1454,16 @@ export const CMsgClientToGCMatchesMinimalRequest = {
       obj.matchIds = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCMatchesMinimalRequest>): CMsgClientToGCMatchesMinimalRequest {
+    return CMsgClientToGCMatchesMinimalRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCMatchesMinimalRequest>): CMsgClientToGCMatchesMinimalRequest {
+    const message = createBaseCMsgClientToGCMatchesMinimalRequest();
+    message.matchIds = object.matchIds?.map((e) => e) || [];
+    return message;
   },
 };
 
@@ -1403,6 +1529,17 @@ export const CMsgClientToGCMatchesMinimalResponse = {
     message.lastMatch !== undefined && (obj.lastMatch = message.lastMatch);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCMatchesMinimalResponse>): CMsgClientToGCMatchesMinimalResponse {
+    return CMsgClientToGCMatchesMinimalResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCMatchesMinimalResponse>): CMsgClientToGCMatchesMinimalResponse {
+    const message = createBaseCMsgClientToGCMatchesMinimalResponse();
+    message.matches = object.matches?.map((e) => CMsgDOTAMatchMinimal.fromPartial(e)) || [];
+    message.lastMatch = object.lastMatch ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientTopLeagueMatchesResponse(): CMsgGCToClientTopLeagueMatchesResponse {
@@ -1455,6 +1592,16 @@ export const CMsgGCToClientTopLeagueMatchesResponse = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientTopLeagueMatchesResponse>): CMsgGCToClientTopLeagueMatchesResponse {
+    return CMsgGCToClientTopLeagueMatchesResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientTopLeagueMatchesResponse>): CMsgGCToClientTopLeagueMatchesResponse {
+    const message = createBaseCMsgGCToClientTopLeagueMatchesResponse();
+    message.matches = object.matches?.map((e) => CMsgDOTAMatchMinimal.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientTopFriendMatchesResponse(): CMsgGCToClientTopFriendMatchesResponse {
@@ -1506,6 +1653,16 @@ export const CMsgGCToClientTopFriendMatchesResponse = {
       obj.matches = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToClientTopFriendMatchesResponse>): CMsgGCToClientTopFriendMatchesResponse {
+    return CMsgGCToClientTopFriendMatchesResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientTopFriendMatchesResponse>): CMsgGCToClientTopFriendMatchesResponse {
+    const message = createBaseCMsgGCToClientTopFriendMatchesResponse();
+    message.matches = object.matches?.map((e) => CMsgDOTAMatchMinimal.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -1566,6 +1723,17 @@ export const CMsgSpectateFriendGame = {
     message.steamId !== undefined && (obj.steamId = message.steamId);
     message.live !== undefined && (obj.live = message.live);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSpectateFriendGame>): CMsgSpectateFriendGame {
+    return CMsgSpectateFriendGame.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSpectateFriendGame>): CMsgSpectateFriendGame {
+    const message = createBaseCMsgSpectateFriendGame();
+    message.steamId = object.steamId ?? "0";
+    message.live = object.live ?? false;
+    return message;
   },
 };
 
@@ -1629,6 +1797,17 @@ export const CMsgSpectateFriendGameResponse = {
     message.watchLiveResult !== undefined &&
       (obj.watchLiveResult = cMsgSpectateFriendGameResponse_EWatchLiveResultToJSON(message.watchLiveResult));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSpectateFriendGameResponse>): CMsgSpectateFriendGameResponse {
+    return CMsgSpectateFriendGameResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSpectateFriendGameResponse>): CMsgSpectateFriendGameResponse {
+    const message = createBaseCMsgSpectateFriendGameResponse();
+    message.serverSteamid = object.serverSteamid ?? "0";
+    message.watchLiveResult = object.watchLiveResult ?? 0;
+    return message;
   },
 };
 
@@ -1742,6 +1921,23 @@ export const CDOTAReplayDownloadInfo = {
     message.existsOnDisk !== undefined && (obj.existsOnDisk = message.existsOnDisk);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTAReplayDownloadInfo>): CDOTAReplayDownloadInfo {
+    return CDOTAReplayDownloadInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAReplayDownloadInfo>): CDOTAReplayDownloadInfo {
+    const message = createBaseCDOTAReplayDownloadInfo();
+    message.match = (object.match !== undefined && object.match !== null)
+      ? CMsgDOTAMatchMinimal.fromPartial(object.match)
+      : undefined;
+    message.title = object.title ?? "";
+    message.description = object.description ?? "";
+    message.size = object.size ?? 0;
+    message.tags = object.tags?.map((e) => e) || [];
+    message.existsOnDisk = object.existsOnDisk ?? false;
+    return message;
+  },
 };
 
 function createBaseCDOTAReplayDownloadInfo_Highlight(): CDOTAReplayDownloadInfo_Highlight {
@@ -1801,6 +1997,17 @@ export const CDOTAReplayDownloadInfo_Highlight = {
     message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
     message.description !== undefined && (obj.description = message.description);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDOTAReplayDownloadInfo_Highlight>): CDOTAReplayDownloadInfo_Highlight {
+    return CDOTAReplayDownloadInfo_Highlight.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTAReplayDownloadInfo_Highlight>): CDOTAReplayDownloadInfo_Highlight {
+    const message = createBaseCDOTAReplayDownloadInfo_Highlight();
+    message.timestamp = object.timestamp ?? 0;
+    message.description = object.description ?? "";
+    return message;
   },
 };
 
@@ -1913,6 +2120,20 @@ export const CMsgWatchGame = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgWatchGame>): CMsgWatchGame {
+    return CMsgWatchGame.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgWatchGame>): CMsgWatchGame {
+    const message = createBaseCMsgWatchGame();
+    message.serverSteamid = object.serverSteamid ?? "0";
+    message.clientVersion = object.clientVersion ?? 0;
+    message.watchServerSteamid = object.watchServerSteamid ?? "0";
+    message.lobbyId = object.lobbyId ?? "0";
+    message.regions = object.regions?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgCancelWatchGame(): CMsgCancelWatchGame {
@@ -1947,6 +2168,15 @@ export const CMsgCancelWatchGame = {
   toJSON(_: CMsgCancelWatchGame): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgCancelWatchGame>): CMsgCancelWatchGame {
+    return CMsgCancelWatchGame.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgCancelWatchGame>): CMsgCancelWatchGame {
+    const message = createBaseCMsgCancelWatchGame();
+    return message;
   },
 };
 
@@ -2079,6 +2309,22 @@ export const CMsgWatchGameResponse = {
     message.watchTvUniqueSecretCode !== undefined && (obj.watchTvUniqueSecretCode = message.watchTvUniqueSecretCode);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgWatchGameResponse>): CMsgWatchGameResponse {
+    return CMsgWatchGameResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgWatchGameResponse>): CMsgWatchGameResponse {
+    const message = createBaseCMsgWatchGameResponse();
+    message.watchGameResult = object.watchGameResult ?? 0;
+    message.sourceTvPublicAddr = object.sourceTvPublicAddr ?? 0;
+    message.sourceTvPrivateAddr = object.sourceTvPrivateAddr ?? 0;
+    message.sourceTvPort = object.sourceTvPort ?? 0;
+    message.gameServerSteamid = object.gameServerSteamid ?? "0";
+    message.watchServerSteamid = object.watchServerSteamid ?? "0";
+    message.watchTvUniqueSecretCode = object.watchTvUniqueSecretCode ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgPartyLeaderWatchGamePrompt(): CMsgPartyLeaderWatchGamePrompt {
@@ -2124,6 +2370,16 @@ export const CMsgPartyLeaderWatchGamePrompt = {
     const obj: any = {};
     message.gameServerSteamid !== undefined && (obj.gameServerSteamid = message.gameServerSteamid);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgPartyLeaderWatchGamePrompt>): CMsgPartyLeaderWatchGamePrompt {
+    return CMsgPartyLeaderWatchGamePrompt.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPartyLeaderWatchGamePrompt>): CMsgPartyLeaderWatchGamePrompt {
+    const message = createBaseCMsgPartyLeaderWatchGamePrompt();
+    message.gameServerSteamid = object.gameServerSteamid ?? "0";
+    return message;
   },
 };
 
@@ -2295,6 +2551,25 @@ export const CDOTABroadcasterInfo = {
     message.nodeName !== undefined && (obj.nodeName = message.nodeName);
     return obj;
   },
+
+  create(base?: DeepPartial<CDOTABroadcasterInfo>): CDOTABroadcasterInfo {
+    return CDOTABroadcasterInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDOTABroadcasterInfo>): CDOTABroadcasterInfo {
+    const message = createBaseCDOTABroadcasterInfo();
+    message.accountId = object.accountId ?? 0;
+    message.serverSteamId = object.serverSteamId ?? "0";
+    message.live = object.live ?? false;
+    message.teamNameRadiant = object.teamNameRadiant ?? "";
+    message.teamNameDire = object.teamNameDire ?? "";
+    message.seriesGame = object.seriesGame ?? 0;
+    message.upcomingBroadcastTimestamp = object.upcomingBroadcastTimestamp ?? 0;
+    message.allowLiveVideo = object.allowLiveVideo ?? false;
+    message.nodeType = object.nodeType ?? 0;
+    message.nodeName = object.nodeName ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgDOTASeries(): CMsgDOTASeries {
@@ -2412,6 +2687,27 @@ export const CMsgDOTASeries = {
       (obj.liveGame = message.liveGame ? CMsgDOTASeries_LiveGame.toJSON(message.liveGame) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTASeries>): CMsgDOTASeries {
+    return CMsgDOTASeries.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTASeries>): CMsgDOTASeries {
+    const message = createBaseCMsgDOTASeries();
+    message.seriesId = object.seriesId ?? 0;
+    message.seriesType = object.seriesType ?? 0;
+    message.team1 = (object.team1 !== undefined && object.team1 !== null)
+      ? CMsgDOTASeries_TeamInfo.fromPartial(object.team1)
+      : undefined;
+    message.team2 = (object.team2 !== undefined && object.team2 !== null)
+      ? CMsgDOTASeries_TeamInfo.fromPartial(object.team2)
+      : undefined;
+    message.matchMinimal = object.matchMinimal?.map((e) => CMsgDOTAMatchMinimal.fromPartial(e)) || [];
+    message.liveGame = (object.liveGame !== undefined && object.liveGame !== null)
+      ? CMsgDOTASeries_LiveGame.fromPartial(object.liveGame)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTASeries_TeamInfo(): CMsgDOTASeries_TeamInfo {
@@ -2495,6 +2791,19 @@ export const CMsgDOTASeries_TeamInfo = {
     message.teamLogoUrl !== undefined && (obj.teamLogoUrl = message.teamLogoUrl);
     message.wagerCount !== undefined && (obj.wagerCount = Math.round(message.wagerCount));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTASeries_TeamInfo>): CMsgDOTASeries_TeamInfo {
+    return CMsgDOTASeries_TeamInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTASeries_TeamInfo>): CMsgDOTASeries_TeamInfo {
+    const message = createBaseCMsgDOTASeries_TeamInfo();
+    message.teamId = object.teamId ?? 0;
+    message.teamName = object.teamName ?? "";
+    message.teamLogoUrl = object.teamLogoUrl ?? "";
+    message.wagerCount = object.wagerCount ?? 0;
+    return message;
   },
 };
 
@@ -2594,6 +2903,24 @@ export const CMsgDOTASeries_LiveGame = {
     message.teamDireScore !== undefined && (obj.teamDireScore = Math.round(message.teamDireScore));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTASeries_LiveGame>): CMsgDOTASeries_LiveGame {
+    return CMsgDOTASeries_LiveGame.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTASeries_LiveGame>): CMsgDOTASeries_LiveGame {
+    const message = createBaseCMsgDOTASeries_LiveGame();
+    message.serverSteamId = object.serverSteamId ?? "0";
+    message.teamRadiant = (object.teamRadiant !== undefined && object.teamRadiant !== null)
+      ? CMsgDOTASeries_TeamInfo.fromPartial(object.teamRadiant)
+      : undefined;
+    message.teamDire = (object.teamDire !== undefined && object.teamDire !== null)
+      ? CMsgDOTASeries_TeamInfo.fromPartial(object.teamDire)
+      : undefined;
+    message.teamRadiantScore = object.teamRadiantScore ?? 0;
+    message.teamDireScore = object.teamDireScore ?? 0;
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -2614,6 +2941,13 @@ var tsProtoGlobalThis: any = (() => {
   }
   throw "Unable to locate global object";
 })();
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

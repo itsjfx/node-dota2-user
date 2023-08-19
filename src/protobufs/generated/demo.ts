@@ -482,6 +482,29 @@ export const CDemoFileHeader = {
     message.game !== undefined && (obj.game = message.game);
     return obj;
   },
+
+  create(base?: DeepPartial<CDemoFileHeader>): CDemoFileHeader {
+    return CDemoFileHeader.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDemoFileHeader>): CDemoFileHeader {
+    const message = createBaseCDemoFileHeader();
+    message.demoFileStamp = object.demoFileStamp ?? "";
+    message.networkProtocol = object.networkProtocol ?? 0;
+    message.serverName = object.serverName ?? "";
+    message.clientName = object.clientName ?? "";
+    message.mapName = object.mapName ?? "";
+    message.gameDirectory = object.gameDirectory ?? "";
+    message.fullpacketsVersion = object.fullpacketsVersion ?? 0;
+    message.allowClientsideEntities = object.allowClientsideEntities ?? false;
+    message.allowClientsideParticles = object.allowClientsideParticles ?? false;
+    message.addons = object.addons ?? "";
+    message.demoVersionName = object.demoVersionName ?? "";
+    message.demoVersionGuid = object.demoVersionGuid ?? "";
+    message.buildNum = object.buildNum ?? 0;
+    message.game = object.game ?? "";
+    return message;
+  },
 };
 
 function createBaseCGameInfo(): CGameInfo {
@@ -527,6 +550,18 @@ export const CGameInfo = {
     const obj: any = {};
     message.dota !== undefined && (obj.dota = message.dota ? CGameInfo_CDotaGameInfo.toJSON(message.dota) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CGameInfo>): CGameInfo {
+    return CGameInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CGameInfo>): CGameInfo {
+    const message = createBaseCGameInfo();
+    message.dota = (object.dota !== undefined && object.dota !== null)
+      ? CGameInfo_CDotaGameInfo.fromPartial(object.dota)
+      : undefined;
+    return message;
   },
 };
 
@@ -720,6 +755,26 @@ export const CGameInfo_CDotaGameInfo = {
     message.endTime !== undefined && (obj.endTime = Math.round(message.endTime));
     return obj;
   },
+
+  create(base?: DeepPartial<CGameInfo_CDotaGameInfo>): CGameInfo_CDotaGameInfo {
+    return CGameInfo_CDotaGameInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CGameInfo_CDotaGameInfo>): CGameInfo_CDotaGameInfo {
+    const message = createBaseCGameInfo_CDotaGameInfo();
+    message.matchId = object.matchId ?? "0";
+    message.gameMode = object.gameMode ?? 0;
+    message.gameWinner = object.gameWinner ?? 0;
+    message.playerInfo = object.playerInfo?.map((e) => CGameInfo_CDotaGameInfo_CPlayerInfo.fromPartial(e)) || [];
+    message.leagueid = object.leagueid ?? 0;
+    message.picksBans = object.picksBans?.map((e) => CGameInfo_CDotaGameInfo_CHeroSelectEvent.fromPartial(e)) || [];
+    message.radiantTeamId = object.radiantTeamId ?? 0;
+    message.direTeamId = object.direTeamId ?? 0;
+    message.radiantTeamTag = object.radiantTeamTag ?? "";
+    message.direTeamTag = object.direTeamTag ?? "";
+    message.endTime = object.endTime ?? 0;
+    return message;
+  },
 };
 
 function createBaseCGameInfo_CDotaGameInfo_CPlayerInfo(): CGameInfo_CDotaGameInfo_CPlayerInfo {
@@ -816,6 +871,20 @@ export const CGameInfo_CDotaGameInfo_CPlayerInfo = {
     message.gameTeam !== undefined && (obj.gameTeam = Math.round(message.gameTeam));
     return obj;
   },
+
+  create(base?: DeepPartial<CGameInfo_CDotaGameInfo_CPlayerInfo>): CGameInfo_CDotaGameInfo_CPlayerInfo {
+    return CGameInfo_CDotaGameInfo_CPlayerInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CGameInfo_CDotaGameInfo_CPlayerInfo>): CGameInfo_CDotaGameInfo_CPlayerInfo {
+    const message = createBaseCGameInfo_CDotaGameInfo_CPlayerInfo();
+    message.heroName = object.heroName ?? "";
+    message.playerName = object.playerName ?? "";
+    message.isFakeClient = object.isFakeClient ?? false;
+    message.steamid = object.steamid ?? "0";
+    message.gameTeam = object.gameTeam ?? 0;
+    return message;
+  },
 };
 
 function createBaseCGameInfo_CDotaGameInfo_CHeroSelectEvent(): CGameInfo_CDotaGameInfo_CHeroSelectEvent {
@@ -887,6 +956,18 @@ export const CGameInfo_CDotaGameInfo_CHeroSelectEvent = {
     message.team !== undefined && (obj.team = Math.round(message.team));
     message.heroId !== undefined && (obj.heroId = Math.round(message.heroId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CGameInfo_CDotaGameInfo_CHeroSelectEvent>): CGameInfo_CDotaGameInfo_CHeroSelectEvent {
+    return CGameInfo_CDotaGameInfo_CHeroSelectEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CGameInfo_CDotaGameInfo_CHeroSelectEvent>): CGameInfo_CDotaGameInfo_CHeroSelectEvent {
+    const message = createBaseCGameInfo_CDotaGameInfo_CHeroSelectEvent();
+    message.isPick = object.isPick ?? false;
+    message.team = object.team ?? 0;
+    message.heroId = object.heroId ?? 0;
+    return message;
   },
 };
 
@@ -973,6 +1054,21 @@ export const CDemoFileInfo = {
       (obj.gameInfo = message.gameInfo ? CGameInfo.toJSON(message.gameInfo) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CDemoFileInfo>): CDemoFileInfo {
+    return CDemoFileInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDemoFileInfo>): CDemoFileInfo {
+    const message = createBaseCDemoFileInfo();
+    message.playbackTime = object.playbackTime ?? 0;
+    message.playbackTicks = object.playbackTicks ?? 0;
+    message.playbackFrames = object.playbackFrames ?? 0;
+    message.gameInfo = (object.gameInfo !== undefined && object.gameInfo !== null)
+      ? CGameInfo.fromPartial(object.gameInfo)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCDemoPacket(): CDemoPacket {
@@ -1019,6 +1115,16 @@ export const CDemoPacket = {
     message.data !== undefined &&
       (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDemoPacket>): CDemoPacket {
+    return CDemoPacket.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDemoPacket>): CDemoPacket {
+    const message = createBaseCDemoPacket();
+    message.data = object.data ?? Buffer.alloc(0);
+    return message;
   },
 };
 
@@ -1080,6 +1186,21 @@ export const CDemoFullPacket = {
       (obj.stringTable = message.stringTable ? CDemoStringTables.toJSON(message.stringTable) : undefined);
     message.packet !== undefined && (obj.packet = message.packet ? CDemoPacket.toJSON(message.packet) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CDemoFullPacket>): CDemoFullPacket {
+    return CDemoFullPacket.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDemoFullPacket>): CDemoFullPacket {
+    const message = createBaseCDemoFullPacket();
+    message.stringTable = (object.stringTable !== undefined && object.stringTable !== null)
+      ? CDemoStringTables.fromPartial(object.stringTable)
+      : undefined;
+    message.packet = (object.packet !== undefined && object.packet !== null)
+      ? CDemoPacket.fromPartial(object.packet)
+      : undefined;
+    return message;
   },
 };
 
@@ -1166,6 +1287,19 @@ export const CDemoSaveGame = {
     message.version !== undefined && (obj.version = Math.round(message.version));
     return obj;
   },
+
+  create(base?: DeepPartial<CDemoSaveGame>): CDemoSaveGame {
+    return CDemoSaveGame.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDemoSaveGame>): CDemoSaveGame {
+    const message = createBaseCDemoSaveGame();
+    message.data = object.data ?? Buffer.alloc(0);
+    message.steamId = object.steamId ?? "0";
+    message.signature = object.signature ?? "0";
+    message.version = object.version ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDemoSyncTick(): CDemoSyncTick {
@@ -1200,6 +1334,15 @@ export const CDemoSyncTick = {
   toJSON(_: CDemoSyncTick): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CDemoSyncTick>): CDemoSyncTick {
+    return CDemoSyncTick.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CDemoSyncTick>): CDemoSyncTick {
+    const message = createBaseCDemoSyncTick();
+    return message;
   },
 };
 
@@ -1247,6 +1390,16 @@ export const CDemoConsoleCmd = {
     message.cmdstring !== undefined && (obj.cmdstring = message.cmdstring);
     return obj;
   },
+
+  create(base?: DeepPartial<CDemoConsoleCmd>): CDemoConsoleCmd {
+    return CDemoConsoleCmd.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDemoConsoleCmd>): CDemoConsoleCmd {
+    const message = createBaseCDemoConsoleCmd();
+    message.cmdstring = object.cmdstring ?? "";
+    return message;
+  },
 };
 
 function createBaseCDemoSendTables(): CDemoSendTables {
@@ -1293,6 +1446,16 @@ export const CDemoSendTables = {
     message.data !== undefined &&
       (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDemoSendTables>): CDemoSendTables {
+    return CDemoSendTables.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDemoSendTables>): CDemoSendTables {
+    const message = createBaseCDemoSendTables();
+    message.data = object.data ?? Buffer.alloc(0);
+    return message;
   },
 };
 
@@ -1345,6 +1508,16 @@ export const CDemoClassInfo = {
       obj.classes = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CDemoClassInfo>): CDemoClassInfo {
+    return CDemoClassInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDemoClassInfo>): CDemoClassInfo {
+    const message = createBaseCDemoClassInfo();
+    message.classes = object.classes?.map((e) => CDemoClassInfo_classT.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -1418,6 +1591,18 @@ export const CDemoClassInfo_classT = {
     message.tableName !== undefined && (obj.tableName = message.tableName);
     return obj;
   },
+
+  create(base?: DeepPartial<CDemoClassInfo_classT>): CDemoClassInfo_classT {
+    return CDemoClassInfo_classT.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDemoClassInfo_classT>): CDemoClassInfo_classT {
+    const message = createBaseCDemoClassInfo_classT();
+    message.classId = object.classId ?? 0;
+    message.networkName = object.networkName ?? "";
+    message.tableName = object.tableName ?? "";
+    return message;
+  },
 };
 
 function createBaseCDemoCustomData(): CDemoCustomData {
@@ -1479,6 +1664,17 @@ export const CDemoCustomData = {
       (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
     return obj;
   },
+
+  create(base?: DeepPartial<CDemoCustomData>): CDemoCustomData {
+    return CDemoCustomData.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDemoCustomData>): CDemoCustomData {
+    const message = createBaseCDemoCustomData();
+    message.callbackIndex = object.callbackIndex ?? 0;
+    message.data = object.data ?? Buffer.alloc(0);
+    return message;
+  },
 };
 
 function createBaseCDemoCustomDataCallbacks(): CDemoCustomDataCallbacks {
@@ -1528,6 +1724,16 @@ export const CDemoCustomDataCallbacks = {
       obj.saveId = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CDemoCustomDataCallbacks>): CDemoCustomDataCallbacks {
+    return CDemoCustomDataCallbacks.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDemoCustomDataCallbacks>): CDemoCustomDataCallbacks {
+    const message = createBaseCDemoCustomDataCallbacks();
+    message.saveId = object.saveId?.map((e) => e) || [];
+    return message;
   },
 };
 
@@ -1580,6 +1786,16 @@ export const CDemoStringTables = {
       obj.tables = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CDemoStringTables>): CDemoStringTables {
+    return CDemoStringTables.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDemoStringTables>): CDemoStringTables {
+    const message = createBaseCDemoStringTables();
+    message.tables = object.tables?.map((e) => CDemoStringTables_tableT.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -1641,6 +1857,17 @@ export const CDemoStringTables_itemsT = {
     message.data !== undefined &&
       (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
     return obj;
+  },
+
+  create(base?: DeepPartial<CDemoStringTables_itemsT>): CDemoStringTables_itemsT {
+    return CDemoStringTables_itemsT.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDemoStringTables_itemsT>): CDemoStringTables_itemsT {
+    const message = createBaseCDemoStringTables_itemsT();
+    message.str = object.str ?? "";
+    message.data = object.data ?? Buffer.alloc(0);
+    return message;
   },
 };
 
@@ -1736,6 +1963,19 @@ export const CDemoStringTables_tableT = {
     message.tableFlags !== undefined && (obj.tableFlags = Math.round(message.tableFlags));
     return obj;
   },
+
+  create(base?: DeepPartial<CDemoStringTables_tableT>): CDemoStringTables_tableT {
+    return CDemoStringTables_tableT.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDemoStringTables_tableT>): CDemoStringTables_tableT {
+    const message = createBaseCDemoStringTables_tableT();
+    message.tableName = object.tableName ?? "";
+    message.items = object.items?.map((e) => CDemoStringTables_itemsT.fromPartial(e)) || [];
+    message.itemsClientside = object.itemsClientside?.map((e) => CDemoStringTables_itemsT.fromPartial(e)) || [];
+    message.tableFlags = object.tableFlags ?? 0;
+    return message;
+  },
 };
 
 function createBaseCDemoStop(): CDemoStop {
@@ -1770,6 +2010,15 @@ export const CDemoStop = {
   toJSON(_: CDemoStop): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CDemoStop>): CDemoStop {
+    return CDemoStop.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CDemoStop>): CDemoStop {
+    const message = createBaseCDemoStop();
+    return message;
   },
 };
 
@@ -1832,6 +2081,17 @@ export const CDemoUserCmd = {
       (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
     return obj;
   },
+
+  create(base?: DeepPartial<CDemoUserCmd>): CDemoUserCmd {
+    return CDemoUserCmd.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDemoUserCmd>): CDemoUserCmd {
+    const message = createBaseCDemoUserCmd();
+    message.cmdNumber = object.cmdNumber ?? 0;
+    message.data = object.data ?? Buffer.alloc(0);
+    return message;
+  },
 };
 
 function createBaseCDemoSpawnGroups(): CDemoSpawnGroups {
@@ -1882,6 +2142,16 @@ export const CDemoSpawnGroups = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CDemoSpawnGroups>): CDemoSpawnGroups {
+    return CDemoSpawnGroups.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CDemoSpawnGroups>): CDemoSpawnGroups {
+    const message = createBaseCDemoSpawnGroups();
+    message.msgs = object.msgs?.map((e) => e) || [];
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -1927,6 +2197,13 @@ function base64FromBytes(arr: Uint8Array): string {
     return tsProtoGlobalThis.btoa(bin.join(""));
   }
 }
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

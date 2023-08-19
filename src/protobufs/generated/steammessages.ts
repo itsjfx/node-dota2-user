@@ -344,6 +344,25 @@ export const CMsgProtoBufHeader = {
     message.gcDirIndexSource !== undefined && (obj.gcDirIndexSource = Math.round(message.gcDirIndexSource));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgProtoBufHeader>): CMsgProtoBufHeader {
+    return CMsgProtoBufHeader.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgProtoBufHeader>): CMsgProtoBufHeader {
+    const message = createBaseCMsgProtoBufHeader();
+    message.clientSteamId = object.clientSteamId ?? "0";
+    message.clientSessionId = object.clientSessionId ?? 0;
+    message.sourceAppId = object.sourceAppId ?? 0;
+    message.jobIdSource = object.jobIdSource ?? "0";
+    message.jobIdTarget = object.jobIdTarget ?? "0";
+    message.targetJobName = object.targetJobName ?? "";
+    message.eresult = object.eresult ?? 0;
+    message.errorMessage = object.errorMessage ?? "";
+    message.gcMsgSrc = object.gcMsgSrc ?? 0;
+    message.gcDirIndexSource = object.gcDirIndexSource ?? 0;
+    return message;
+  },
 };
 
 function createBaseCGCSystemMsgGetAccountDetails(): CGCSystemMsgGetAccountDetails {
@@ -403,6 +422,17 @@ export const CGCSystemMsgGetAccountDetails = {
     message.steamid !== undefined && (obj.steamid = message.steamid);
     message.appid !== undefined && (obj.appid = Math.round(message.appid));
     return obj;
+  },
+
+  create(base?: DeepPartial<CGCSystemMsgGetAccountDetails>): CGCSystemMsgGetAccountDetails {
+    return CGCSystemMsgGetAccountDetails.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CGCSystemMsgGetAccountDetails>): CGCSystemMsgGetAccountDetails {
+    const message = createBaseCGCSystemMsgGetAccountDetails();
+    message.steamid = object.steamid ?? "0";
+    message.appid = object.appid ?? 0;
+    return message;
   },
 };
 
@@ -923,6 +953,52 @@ export const CGCSystemMsgGetAccountDetailsResponse = {
     message.isBannedSteamChina !== undefined && (obj.isBannedSteamChina = message.isBannedSteamChina);
     return obj;
   },
+
+  create(base?: DeepPartial<CGCSystemMsgGetAccountDetailsResponse>): CGCSystemMsgGetAccountDetailsResponse {
+    return CGCSystemMsgGetAccountDetailsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CGCSystemMsgGetAccountDetailsResponse>): CGCSystemMsgGetAccountDetailsResponse {
+    const message = createBaseCGCSystemMsgGetAccountDetailsResponse();
+    message.eresultDeprecated = object.eresultDeprecated ?? 0;
+    message.accountName = object.accountName ?? "";
+    message.personaName = object.personaName ?? "";
+    message.isProfileCreated = object.isProfileCreated ?? false;
+    message.isProfilePublic = object.isProfilePublic ?? false;
+    message.isInventoryPublic = object.isInventoryPublic ?? false;
+    message.isVacBanned = object.isVacBanned ?? false;
+    message.isCyberCafe = object.isCyberCafe ?? false;
+    message.isSchoolAccount = object.isSchoolAccount ?? false;
+    message.isLimited = object.isLimited ?? false;
+    message.isSubscribed = object.isSubscribed ?? false;
+    message.package = object.package ?? 0;
+    message.isFreeTrialAccount = object.isFreeTrialAccount ?? false;
+    message.freeTrialExpiration = object.freeTrialExpiration ?? 0;
+    message.isLowViolence = object.isLowViolence ?? false;
+    message.isAccountLockedDown = object.isAccountLockedDown ?? false;
+    message.isCommunityBanned = object.isCommunityBanned ?? false;
+    message.isTradeBanned = object.isTradeBanned ?? false;
+    message.tradeBanExpiration = object.tradeBanExpiration ?? 0;
+    message.accountid = object.accountid ?? 0;
+    message.suspensionEndTime = object.suspensionEndTime ?? 0;
+    message.currency = object.currency ?? "";
+    message.steamLevel = object.steamLevel ?? 0;
+    message.friendCount = object.friendCount ?? 0;
+    message.accountCreationTime = object.accountCreationTime ?? 0;
+    message.isSteamguardEnabled = object.isSteamguardEnabled ?? false;
+    message.isPhoneVerified = object.isPhoneVerified ?? false;
+    message.isTwoFactorAuthEnabled = object.isTwoFactorAuthEnabled ?? false;
+    message.twoFactorEnabledTime = object.twoFactorEnabledTime ?? 0;
+    message.phoneVerificationTime = object.phoneVerificationTime ?? 0;
+    message.phoneId = object.phoneId ?? "0";
+    message.isPhoneIdentifying = object.isPhoneIdentifying ?? false;
+    message.rtIdentityLinked = object.rtIdentityLinked ?? 0;
+    message.rtBirthDate = object.rtBirthDate ?? 0;
+    message.txnCountryCode = object.txnCountryCode ?? "";
+    message.hasAcceptedChinaSsa = object.hasAcceptedChinaSsa ?? false;
+    message.isBannedSteamChina = object.isBannedSteamChina ?? false;
+    return message;
+  },
 };
 
 function createBaseCIPLocationInfo(): CIPLocationInfo {
@@ -1031,6 +1107,21 @@ export const CIPLocationInfo = {
     message.city !== undefined && (obj.city = message.city);
     return obj;
   },
+
+  create(base?: DeepPartial<CIPLocationInfo>): CIPLocationInfo {
+    return CIPLocationInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CIPLocationInfo>): CIPLocationInfo {
+    const message = createBaseCIPLocationInfo();
+    message.ip = object.ip ?? 0;
+    message.latitude = object.latitude ?? 0;
+    message.longitude = object.longitude ?? 0;
+    message.country = object.country ?? "";
+    message.state = object.state ?? "";
+    message.city = object.city ?? "";
+    return message;
+  },
 };
 
 function createBaseCGCMsgGetIPLocationResponse(): CGCMsgGetIPLocationResponse {
@@ -1081,6 +1172,16 @@ export const CGCMsgGetIPLocationResponse = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CGCMsgGetIPLocationResponse>): CGCMsgGetIPLocationResponse {
+    return CGCMsgGetIPLocationResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CGCMsgGetIPLocationResponse>): CGCMsgGetIPLocationResponse {
+    const message = createBaseCGCMsgGetIPLocationResponse();
+    message.infos = object.infos?.map((e) => CIPLocationInfo.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -1101,6 +1202,13 @@ var tsProtoGlobalThis: any = (() => {
   }
   throw "Unable to locate global object";
 })();
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

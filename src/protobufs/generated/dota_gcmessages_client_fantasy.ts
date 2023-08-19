@@ -1337,6 +1337,31 @@ export const CMsgDOTAPlayerInfo = {
     message.teamAbbreviation !== undefined && (obj.teamAbbreviation = message.teamAbbreviation);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAPlayerInfo>): CMsgDOTAPlayerInfo {
+    return CMsgDOTAPlayerInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAPlayerInfo>): CMsgDOTAPlayerInfo {
+    const message = createBaseCMsgDOTAPlayerInfo();
+    message.accountId = object.accountId ?? 0;
+    message.name = object.name ?? "";
+    message.countryCode = object.countryCode ?? "";
+    message.fantasyRole = object.fantasyRole ?? 0;
+    message.teamId = object.teamId ?? 0;
+    message.teamName = object.teamName ?? "";
+    message.teamTag = object.teamTag ?? "";
+    message.sponsor = object.sponsor ?? "";
+    message.isLocked = object.isLocked ?? false;
+    message.isPro = object.isPro ?? false;
+    message.realName = object.realName ?? "";
+    message.totalEarnings = object.totalEarnings ?? 0;
+    message.results = object.results?.map((e) => CMsgDOTAPlayerInfo_Results.fromPartial(e)) || [];
+    message.teamUrlLogo = object.teamUrlLogo ?? "";
+    message.auditEntries = object.auditEntries?.map((e) => CMsgDOTAPlayerInfo_AuditEntry.fromPartial(e)) || [];
+    message.teamAbbreviation = object.teamAbbreviation ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAPlayerInfo_Results(): CMsgDOTAPlayerInfo_Results {
@@ -1408,6 +1433,18 @@ export const CMsgDOTAPlayerInfo_Results = {
     message.placement !== undefined && (obj.placement = Math.round(message.placement));
     message.earnings !== undefined && (obj.earnings = Math.round(message.earnings));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAPlayerInfo_Results>): CMsgDOTAPlayerInfo_Results {
+    return CMsgDOTAPlayerInfo_Results.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAPlayerInfo_Results>): CMsgDOTAPlayerInfo_Results {
+    const message = createBaseCMsgDOTAPlayerInfo_Results();
+    message.leagueId = object.leagueId ?? 0;
+    message.placement = object.placement ?? 0;
+    message.earnings = object.earnings ?? 0;
+    return message;
   },
 };
 
@@ -1517,6 +1554,21 @@ export const CMsgDOTAPlayerInfo_AuditEntry = {
     message.teamUrlLogo !== undefined && (obj.teamUrlLogo = message.teamUrlLogo);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAPlayerInfo_AuditEntry>): CMsgDOTAPlayerInfo_AuditEntry {
+    return CMsgDOTAPlayerInfo_AuditEntry.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAPlayerInfo_AuditEntry>): CMsgDOTAPlayerInfo_AuditEntry {
+    const message = createBaseCMsgDOTAPlayerInfo_AuditEntry();
+    message.startTimestamp = object.startTimestamp ?? 0;
+    message.endTimestamp = object.endTimestamp ?? 0;
+    message.teamId = object.teamId ?? 0;
+    message.teamName = object.teamName ?? "";
+    message.teamTag = object.teamTag ?? "";
+    message.teamUrlLogo = object.teamUrlLogo ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAPlayerInfoList(): CMsgDOTAPlayerInfoList {
@@ -1570,6 +1622,16 @@ export const CMsgDOTAPlayerInfoList = {
       obj.playerInfos = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAPlayerInfoList>): CMsgDOTAPlayerInfoList {
+    return CMsgDOTAPlayerInfoList.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAPlayerInfoList>): CMsgDOTAPlayerInfoList {
+    const message = createBaseCMsgDOTAPlayerInfoList();
+    message.playerInfos = object.playerInfos?.map((e) => CMsgDOTAPlayerInfo.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -1671,6 +1733,19 @@ export const CMsgDOTATeamRoster = {
     }
     message.coachAccountId !== undefined && (obj.coachAccountId = Math.round(message.coachAccountId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTATeamRoster>): CMsgDOTATeamRoster {
+    return CMsgDOTATeamRoster.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTATeamRoster>): CMsgDOTATeamRoster {
+    const message = createBaseCMsgDOTATeamRoster();
+    message.timestamp = object.timestamp ?? 0;
+    message.teamId = object.teamId ?? 0;
+    message.memberAccountIds = object.memberAccountIds?.map((e) => e) || [];
+    message.coachAccountId = object.coachAccountId ?? 0;
+    return message;
   },
 };
 
@@ -1782,6 +1857,25 @@ export const CMsgDOTADPCProfileInfo = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTADPCProfileInfo>): CMsgDOTADPCProfileInfo {
+    return CMsgDOTADPCProfileInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTADPCProfileInfo>): CMsgDOTADPCProfileInfo {
+    const message = createBaseCMsgDOTADPCProfileInfo();
+    message.playerInfo = (object.playerInfo !== undefined && object.playerInfo !== null)
+      ? CMsgDOTAPlayerInfo.fromPartial(object.playerInfo)
+      : undefined;
+    message.predictionInfo = (object.predictionInfo !== undefined && object.predictionInfo !== null)
+      ? CMsgDOTADPCProfileInfo_PredictionInfo.fromPartial(object.predictionInfo)
+      : undefined;
+    message.fantasyInfo = (object.fantasyInfo !== undefined && object.fantasyInfo !== null)
+      ? CMsgDOTADPCProfileInfo_FantasyInfo.fromPartial(object.fantasyInfo)
+      : undefined;
+    message.disabledNotifications = object.disabledNotifications?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgDOTADPCProfileInfo_PredictionInfo(): CMsgDOTADPCProfileInfo_PredictionInfo {
@@ -1841,6 +1935,17 @@ export const CMsgDOTADPCProfileInfo_PredictionInfo = {
     message.percent !== undefined && (obj.percent = Math.round(message.percent));
     message.shardWinnings !== undefined && (obj.shardWinnings = Math.round(message.shardWinnings));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTADPCProfileInfo_PredictionInfo>): CMsgDOTADPCProfileInfo_PredictionInfo {
+    return CMsgDOTADPCProfileInfo_PredictionInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTADPCProfileInfo_PredictionInfo>): CMsgDOTADPCProfileInfo_PredictionInfo {
+    const message = createBaseCMsgDOTADPCProfileInfo_PredictionInfo();
+    message.percent = object.percent ?? 0;
+    message.shardWinnings = object.shardWinnings ?? 0;
+    return message;
   },
 };
 
@@ -1926,6 +2031,19 @@ export const CMsgDOTADPCProfileInfo_FantasyInfo = {
     message.shardWinnings !== undefined && (obj.shardWinnings = Math.round(message.shardWinnings));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTADPCProfileInfo_FantasyInfo>): CMsgDOTADPCProfileInfo_FantasyInfo {
+    return CMsgDOTADPCProfileInfo_FantasyInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTADPCProfileInfo_FantasyInfo>): CMsgDOTADPCProfileInfo_FantasyInfo {
+    const message = createBaseCMsgDOTADPCProfileInfo_FantasyInfo();
+    message.top90Finishes = object.top90Finishes ?? 0;
+    message.top75Finishes = object.top75Finishes ?? 0;
+    message.top50Finishes = object.top50Finishes ?? 0;
+    message.shardWinnings = object.shardWinnings ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTALeaderboards(): CMsgDOTALeaderboards {
@@ -1981,6 +2099,16 @@ export const CMsgDOTALeaderboards = {
       obj.leaderboards = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTALeaderboards>): CMsgDOTALeaderboards {
+    return CMsgDOTALeaderboards.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTALeaderboards>): CMsgDOTALeaderboards {
+    const message = createBaseCMsgDOTALeaderboards();
+    message.leaderboards = object.leaderboards?.map((e) => CMsgDOTALeaderboards_RegionLeaderboard.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -2057,6 +2185,17 @@ export const CMsgDOTALeaderboards_RegionLeaderboard = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTALeaderboards_RegionLeaderboard>): CMsgDOTALeaderboards_RegionLeaderboard {
+    return CMsgDOTALeaderboards_RegionLeaderboard.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTALeaderboards_RegionLeaderboard>): CMsgDOTALeaderboards_RegionLeaderboard {
+    const message = createBaseCMsgDOTALeaderboards_RegionLeaderboard();
+    message.division = object.division ?? 0;
+    message.accountIds = object.accountIds?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAPassportVoteTeamGuess(): CMsgDOTAPassportVoteTeamGuess {
@@ -2129,6 +2268,18 @@ export const CMsgDOTAPassportVoteTeamGuess = {
     message.runnerupId !== undefined && (obj.runnerupId = Math.round(message.runnerupId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAPassportVoteTeamGuess>): CMsgDOTAPassportVoteTeamGuess {
+    return CMsgDOTAPassportVoteTeamGuess.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAPassportVoteTeamGuess>): CMsgDOTAPassportVoteTeamGuess {
+    const message = createBaseCMsgDOTAPassportVoteTeamGuess();
+    message.leagueId = object.leagueId ?? 0;
+    message.winnerId = object.winnerId ?? 0;
+    message.runnerupId = object.runnerupId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAPassportVoteGenericSelection(): CMsgDOTAPassportVoteGenericSelection {
@@ -2192,6 +2343,17 @@ export const CMsgDOTAPassportVoteGenericSelection = {
     message.selection !== undefined && (obj.selection = Math.round(message.selection));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAPassportVoteGenericSelection>): CMsgDOTAPassportVoteGenericSelection {
+    return CMsgDOTAPassportVoteGenericSelection.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAPassportVoteGenericSelection>): CMsgDOTAPassportVoteGenericSelection {
+    const message = createBaseCMsgDOTAPassportVoteGenericSelection();
+    message.selectionIndex = object.selectionIndex ?? 0;
+    message.selection = object.selection ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAPassportStampedPlayer(): CMsgDOTAPassportStampedPlayer {
@@ -2252,6 +2414,17 @@ export const CMsgDOTAPassportStampedPlayer = {
     message.stampLevel !== undefined && (obj.stampLevel = Math.round(message.stampLevel));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAPassportStampedPlayer>): CMsgDOTAPassportStampedPlayer {
+    return CMsgDOTAPassportStampedPlayer.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAPassportStampedPlayer>): CMsgDOTAPassportStampedPlayer {
+    const message = createBaseCMsgDOTAPassportStampedPlayer();
+    message.steamId = object.steamId ?? "0";
+    message.stampLevel = object.stampLevel ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTAPassportPlayerCardChallenge(): CMsgDOTAPassportPlayerCardChallenge {
@@ -2297,6 +2470,16 @@ export const CMsgDOTAPassportPlayerCardChallenge = {
     const obj: any = {};
     message.challengeId !== undefined && (obj.challengeId = Math.round(message.challengeId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAPassportPlayerCardChallenge>): CMsgDOTAPassportPlayerCardChallenge {
+    return CMsgDOTAPassportPlayerCardChallenge.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAPassportPlayerCardChallenge>): CMsgDOTAPassportPlayerCardChallenge {
+    const message = createBaseCMsgDOTAPassportPlayerCardChallenge();
+    message.challengeId = object.challengeId ?? 0;
+    return message;
   },
 };
 
@@ -2410,6 +2593,21 @@ export const CMsgDOTAPassportVote = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAPassportVote>): CMsgDOTAPassportVote {
+    return CMsgDOTAPassportVote.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAPassportVote>): CMsgDOTAPassportVote {
+    const message = createBaseCMsgDOTAPassportVote();
+    message.teamVotes = object.teamVotes?.map((e) => CMsgDOTAPassportVoteTeamGuess.fromPartial(e)) || [];
+    message.genericSelections =
+      object.genericSelections?.map((e) => CMsgDOTAPassportVoteGenericSelection.fromPartial(e)) || [];
+    message.stampedPlayers = object.stampedPlayers?.map((e) => CMsgDOTAPassportStampedPlayer.fromPartial(e)) || [];
+    message.playerCardChallenges =
+      object.playerCardChallenges?.map((e) => CMsgDOTAPassportPlayerCardChallenge.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCGetPlayerCardRosterRequest(): CMsgClientToGCGetPlayerCardRosterRequest {
@@ -2469,6 +2667,17 @@ export const CMsgClientToGCGetPlayerCardRosterRequest = {
     message.leagueId !== undefined && (obj.leagueId = Math.round(message.leagueId));
     message.fantasyPeriod !== undefined && (obj.fantasyPeriod = Math.round(message.fantasyPeriod));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCGetPlayerCardRosterRequest>): CMsgClientToGCGetPlayerCardRosterRequest {
+    return CMsgClientToGCGetPlayerCardRosterRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCGetPlayerCardRosterRequest>): CMsgClientToGCGetPlayerCardRosterRequest {
+    const message = createBaseCMsgClientToGCGetPlayerCardRosterRequest();
+    message.leagueId = object.leagueId ?? 0;
+    message.fantasyPeriod = object.fantasyPeriod ?? 0;
+    return message;
   },
 };
 
@@ -2584,6 +2793,22 @@ export const CMsgClientToGCGetPlayerCardRosterResponse = {
     message.percentile !== undefined && (obj.percentile = message.percentile);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCGetPlayerCardRosterResponse>): CMsgClientToGCGetPlayerCardRosterResponse {
+    return CMsgClientToGCGetPlayerCardRosterResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCGetPlayerCardRosterResponse>,
+  ): CMsgClientToGCGetPlayerCardRosterResponse {
+    const message = createBaseCMsgClientToGCGetPlayerCardRosterResponse();
+    message.result = object.result ?? 0;
+    message.playerCardItemId = object.playerCardItemId?.map((e) => e) || [];
+    message.score = object.score ?? 0;
+    message.finalized = object.finalized ?? false;
+    message.percentile = object.percentile ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCBatchGetPlayerCardRosterRequest(): CMsgClientToGCBatchGetPlayerCardRosterRequest {
@@ -2643,6 +2868,23 @@ export const CMsgClientToGCBatchGetPlayerCardRosterRequest = {
       obj.leagueTimestamps = [];
     }
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCBatchGetPlayerCardRosterRequest>,
+  ): CMsgClientToGCBatchGetPlayerCardRosterRequest {
+    return CMsgClientToGCBatchGetPlayerCardRosterRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCBatchGetPlayerCardRosterRequest>,
+  ): CMsgClientToGCBatchGetPlayerCardRosterRequest {
+    const message = createBaseCMsgClientToGCBatchGetPlayerCardRosterRequest();
+    message.leagueTimestamps =
+      object.leagueTimestamps?.map((e) =>
+        CMsgClientToGCBatchGetPlayerCardRosterRequest_LeagueTimestamp.fromPartial(e)
+      ) || [];
+    return message;
   },
 };
 
@@ -2710,6 +2952,21 @@ export const CMsgClientToGCBatchGetPlayerCardRosterRequest_LeagueTimestamp = {
     message.fantasyPeriod !== undefined && (obj.fantasyPeriod = Math.round(message.fantasyPeriod));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCBatchGetPlayerCardRosterRequest_LeagueTimestamp>,
+  ): CMsgClientToGCBatchGetPlayerCardRosterRequest_LeagueTimestamp {
+    return CMsgClientToGCBatchGetPlayerCardRosterRequest_LeagueTimestamp.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCBatchGetPlayerCardRosterRequest_LeagueTimestamp>,
+  ): CMsgClientToGCBatchGetPlayerCardRosterRequest_LeagueTimestamp {
+    const message = createBaseCMsgClientToGCBatchGetPlayerCardRosterRequest_LeagueTimestamp();
+    message.leagueId = object.leagueId ?? 0;
+    message.fantasyPeriod = object.fantasyPeriod ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCBatchGetPlayerCardRosterResponse(): CMsgClientToGCBatchGetPlayerCardRosterResponse {
@@ -2770,6 +3027,21 @@ export const CMsgClientToGCBatchGetPlayerCardRosterResponse = {
       obj.responses = [];
     }
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCBatchGetPlayerCardRosterResponse>,
+  ): CMsgClientToGCBatchGetPlayerCardRosterResponse {
+    return CMsgClientToGCBatchGetPlayerCardRosterResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCBatchGetPlayerCardRosterResponse>,
+  ): CMsgClientToGCBatchGetPlayerCardRosterResponse {
+    const message = createBaseCMsgClientToGCBatchGetPlayerCardRosterResponse();
+    message.responses =
+      object.responses?.map((e) => CMsgClientToGCBatchGetPlayerCardRosterResponse_RosterResponse.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -2936,6 +3208,27 @@ export const CMsgClientToGCBatchGetPlayerCardRosterResponse_RosterResponse = {
     message.fantasyPeriod !== undefined && (obj.fantasyPeriod = Math.round(message.fantasyPeriod));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCBatchGetPlayerCardRosterResponse_RosterResponse>,
+  ): CMsgClientToGCBatchGetPlayerCardRosterResponse_RosterResponse {
+    return CMsgClientToGCBatchGetPlayerCardRosterResponse_RosterResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCBatchGetPlayerCardRosterResponse_RosterResponse>,
+  ): CMsgClientToGCBatchGetPlayerCardRosterResponse_RosterResponse {
+    const message = createBaseCMsgClientToGCBatchGetPlayerCardRosterResponse_RosterResponse();
+    message.leagueId = object.leagueId ?? 0;
+    message.deprecatedTimestamp = object.deprecatedTimestamp ?? 0;
+    message.result = object.result ?? 0;
+    message.playerCardItemId = object.playerCardItemId?.map((e) => e) || [];
+    message.score = object.score ?? 0;
+    message.finalized = object.finalized ?? false;
+    message.percentile = object.percentile ?? 0;
+    message.fantasyPeriod = object.fantasyPeriod ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCSetPlayerCardRosterRequest(): CMsgClientToGCSetPlayerCardRosterRequest {
@@ -3044,6 +3337,21 @@ export const CMsgClientToGCSetPlayerCardRosterRequest = {
     message.fantasyPeriod !== undefined && (obj.fantasyPeriod = Math.round(message.fantasyPeriod));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCSetPlayerCardRosterRequest>): CMsgClientToGCSetPlayerCardRosterRequest {
+    return CMsgClientToGCSetPlayerCardRosterRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCSetPlayerCardRosterRequest>): CMsgClientToGCSetPlayerCardRosterRequest {
+    const message = createBaseCMsgClientToGCSetPlayerCardRosterRequest();
+    message.leagueId = object.leagueId ?? 0;
+    message.deprecatedTimestamp = object.deprecatedTimestamp ?? 0;
+    message.slot = object.slot ?? 0;
+    message.playerCardItemId = object.playerCardItemId ?? "0";
+    message.eventId = object.eventId ?? 0;
+    message.fantasyPeriod = object.fantasyPeriod ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCSetPlayerCardRosterResponse(): CMsgClientToGCSetPlayerCardRosterResponse {
@@ -3092,6 +3400,18 @@ export const CMsgClientToGCSetPlayerCardRosterResponse = {
     message.result !== undefined &&
       (obj.result = cMsgClientToGCSetPlayerCardRosterResponse_ResultToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCSetPlayerCardRosterResponse>): CMsgClientToGCSetPlayerCardRosterResponse {
+    return CMsgClientToGCSetPlayerCardRosterResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCSetPlayerCardRosterResponse>,
+  ): CMsgClientToGCSetPlayerCardRosterResponse {
+    const message = createBaseCMsgClientToGCSetPlayerCardRosterResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -3148,6 +3468,17 @@ export const CMsgDOTAFantasyDPCLeagueStatus = {
       obj.leagueInfos = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTAFantasyDPCLeagueStatus>): CMsgDOTAFantasyDPCLeagueStatus {
+    return CMsgDOTAFantasyDPCLeagueStatus.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTAFantasyDPCLeagueStatus>): CMsgDOTAFantasyDPCLeagueStatus {
+    const message = createBaseCMsgDOTAFantasyDPCLeagueStatus();
+    message.leagueInfos = object.leagueInfos?.map((e) => CMsgDOTAFantasyDPCLeagueStatus_LeagueInfo.fromPartial(e)) ||
+      [];
+    return message;
   },
 };
 
@@ -3272,6 +3603,23 @@ export const CMsgDOTAFantasyDPCLeagueStatus_LeagueInfo = {
     message.status !== undefined && (obj.status = cMsgDOTAFantasyDPCLeagueStatus_ERosterStatusToJSON(message.status));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTAFantasyDPCLeagueStatus_LeagueInfo>): CMsgDOTAFantasyDPCLeagueStatus_LeagueInfo {
+    return CMsgDOTAFantasyDPCLeagueStatus_LeagueInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgDOTAFantasyDPCLeagueStatus_LeagueInfo>,
+  ): CMsgDOTAFantasyDPCLeagueStatus_LeagueInfo {
+    const message = createBaseCMsgDOTAFantasyDPCLeagueStatus_LeagueInfo();
+    message.leagueId = object.leagueId ?? 0;
+    message.leagueName = object.leagueName ?? "";
+    message.startTimestamp = object.startTimestamp ?? 0;
+    message.endTimestamp = object.endTimestamp ?? 0;
+    message.dayTimestamps = object.dayTimestamps?.map((e) => e) || [];
+    message.status = object.status ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgDOTADPCSearchResults(): CMsgDOTADPCSearchResults {
@@ -3362,6 +3710,18 @@ export const CMsgDOTADPCSearchResults = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTADPCSearchResults>): CMsgDOTADPCSearchResults {
+    return CMsgDOTADPCSearchResults.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTADPCSearchResults>): CMsgDOTADPCSearchResults {
+    const message = createBaseCMsgDOTADPCSearchResults();
+    message.players = object.players?.map((e) => CMsgDOTADPCSearchResults_Player.fromPartial(e)) || [];
+    message.teams = object.teams?.map((e) => CMsgDOTADPCSearchResults_Team.fromPartial(e)) || [];
+    message.leagues = object.leagues?.map((e) => CMsgDOTADPCSearchResults_League.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgDOTADPCSearchResults_Player(): CMsgDOTADPCSearchResults_Player {
@@ -3433,6 +3793,18 @@ export const CMsgDOTADPCSearchResults_Player = {
     message.name !== undefined && (obj.name = message.name);
     message.realName !== undefined && (obj.realName = message.realName);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTADPCSearchResults_Player>): CMsgDOTADPCSearchResults_Player {
+    return CMsgDOTADPCSearchResults_Player.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTADPCSearchResults_Player>): CMsgDOTADPCSearchResults_Player {
+    const message = createBaseCMsgDOTADPCSearchResults_Player();
+    message.id = object.id ?? 0;
+    message.name = object.name ?? "";
+    message.realName = object.realName ?? "";
+    return message;
   },
 };
 
@@ -3506,6 +3878,18 @@ export const CMsgDOTADPCSearchResults_Team = {
     message.url !== undefined && (obj.url = message.url);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTADPCSearchResults_Team>): CMsgDOTADPCSearchResults_Team {
+    return CMsgDOTADPCSearchResults_Team.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTADPCSearchResults_Team>): CMsgDOTADPCSearchResults_Team {
+    const message = createBaseCMsgDOTADPCSearchResults_Team();
+    message.id = object.id ?? 0;
+    message.name = object.name ?? "";
+    message.url = object.url ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgDOTADPCSearchResults_League(): CMsgDOTADPCSearchResults_League {
@@ -3563,6 +3947,17 @@ export const CMsgDOTADPCSearchResults_League = {
     message.name !== undefined && (obj.name = message.name);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTADPCSearchResults_League>): CMsgDOTADPCSearchResults_League {
+    return CMsgDOTADPCSearchResults_League.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTADPCSearchResults_League>): CMsgDOTADPCSearchResults_League {
+    const message = createBaseCMsgDOTADPCSearchResults_League();
+    message.id = object.id ?? 0;
+    message.name = object.name ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgDOTADPCTeamFavoriteRankings(): CMsgDOTADPCTeamFavoriteRankings {
@@ -3616,6 +4011,16 @@ export const CMsgDOTADPCTeamFavoriteRankings = {
       obj.teams = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTADPCTeamFavoriteRankings>): CMsgDOTADPCTeamFavoriteRankings {
+    return CMsgDOTADPCTeamFavoriteRankings.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTADPCTeamFavoriteRankings>): CMsgDOTADPCTeamFavoriteRankings {
+    const message = createBaseCMsgDOTADPCTeamFavoriteRankings();
+    message.teams = object.teams?.map((e) => CMsgDOTADPCTeamFavoriteRankings_Team.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -3677,6 +4082,17 @@ export const CMsgDOTADPCTeamFavoriteRankings_Team = {
     message.favorites !== undefined && (obj.favorites = Math.round(message.favorites));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgDOTADPCTeamFavoriteRankings_Team>): CMsgDOTADPCTeamFavoriteRankings_Team {
+    return CMsgDOTADPCTeamFavoriteRankings_Team.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgDOTADPCTeamFavoriteRankings_Team>): CMsgDOTADPCTeamFavoriteRankings_Team {
+    const message = createBaseCMsgDOTADPCTeamFavoriteRankings_Team();
+    message.teamId = object.teamId ?? 0;
+    message.favorites = object.favorites ?? 0;
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -3697,6 +4113,13 @@ var tsProtoGlobalThis: any = (() => {
   }
   throw "Unable to locate global object";
 })();
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

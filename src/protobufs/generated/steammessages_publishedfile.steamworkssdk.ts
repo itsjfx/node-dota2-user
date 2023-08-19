@@ -284,6 +284,19 @@ export const CPublishedFileSubscribeRequest = {
     message.notifyClient !== undefined && (obj.notifyClient = message.notifyClient);
     return obj;
   },
+
+  create(base?: DeepPartial<CPublishedFileSubscribeRequest>): CPublishedFileSubscribeRequest {
+    return CPublishedFileSubscribeRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPublishedFileSubscribeRequest>): CPublishedFileSubscribeRequest {
+    const message = createBaseCPublishedFileSubscribeRequest();
+    message.publishedfileid = object.publishedfileid ?? "0";
+    message.listType = object.listType ?? 0;
+    message.appid = object.appid ?? 0;
+    message.notifyClient = object.notifyClient ?? false;
+    return message;
+  },
 };
 
 function createBaseCPublishedFileSubscribeResponse(): CPublishedFileSubscribeResponse {
@@ -318,6 +331,15 @@ export const CPublishedFileSubscribeResponse = {
   toJSON(_: CPublishedFileSubscribeResponse): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CPublishedFileSubscribeResponse>): CPublishedFileSubscribeResponse {
+    return CPublishedFileSubscribeResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CPublishedFileSubscribeResponse>): CPublishedFileSubscribeResponse {
+    const message = createBaseCPublishedFileSubscribeResponse();
+    return message;
   },
 };
 
@@ -403,6 +425,19 @@ export const CPublishedFileUnsubscribeRequest = {
     message.notifyClient !== undefined && (obj.notifyClient = message.notifyClient);
     return obj;
   },
+
+  create(base?: DeepPartial<CPublishedFileUnsubscribeRequest>): CPublishedFileUnsubscribeRequest {
+    return CPublishedFileUnsubscribeRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPublishedFileUnsubscribeRequest>): CPublishedFileUnsubscribeRequest {
+    const message = createBaseCPublishedFileUnsubscribeRequest();
+    message.publishedfileid = object.publishedfileid ?? "0";
+    message.listType = object.listType ?? 0;
+    message.appid = object.appid ?? 0;
+    message.notifyClient = object.notifyClient ?? false;
+    return message;
+  },
 };
 
 function createBaseCPublishedFileUnsubscribeResponse(): CPublishedFileUnsubscribeResponse {
@@ -437,6 +472,15 @@ export const CPublishedFileUnsubscribeResponse = {
   toJSON(_: CPublishedFileUnsubscribeResponse): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CPublishedFileUnsubscribeResponse>): CPublishedFileUnsubscribeResponse {
+    return CPublishedFileUnsubscribeResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CPublishedFileUnsubscribeResponse>): CPublishedFileUnsubscribeResponse {
+    const message = createBaseCPublishedFileUnsubscribeResponse();
+    return message;
   },
 };
 
@@ -687,6 +731,31 @@ export const CPublishedFilePublishRequest = {
     message.url !== undefined && (obj.url = message.url);
     return obj;
   },
+
+  create(base?: DeepPartial<CPublishedFilePublishRequest>): CPublishedFilePublishRequest {
+    return CPublishedFilePublishRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPublishedFilePublishRequest>): CPublishedFilePublishRequest {
+    const message = createBaseCPublishedFilePublishRequest();
+    message.appid = object.appid ?? 0;
+    message.consumerAppid = object.consumerAppid ?? 0;
+    message.cloudfilename = object.cloudfilename ?? "";
+    message.previewCloudfilename = object.previewCloudfilename ?? "";
+    message.title = object.title ?? "";
+    message.fileDescription = object.fileDescription ?? "";
+    message.fileType = object.fileType ?? 0;
+    message.consumerShortcutName = object.consumerShortcutName ?? "";
+    message.youtubeUsername = object.youtubeUsername ?? "";
+    message.youtubeVideoid = object.youtubeVideoid ?? "";
+    message.visibility = object.visibility ?? 0;
+    message.redirectUri = object.redirectUri ?? "";
+    message.tags = object.tags?.map((e) => e) || [];
+    message.collectionType = object.collectionType ?? "";
+    message.gameType = object.gameType ?? "";
+    message.url = object.url ?? "";
+    return message;
+  },
 };
 
 function createBaseCPublishedFilePublishResponse(): CPublishedFilePublishResponse {
@@ -746,6 +815,17 @@ export const CPublishedFilePublishResponse = {
     message.publishedfileid !== undefined && (obj.publishedfileid = message.publishedfileid);
     message.redirectUri !== undefined && (obj.redirectUri = message.redirectUri);
     return obj;
+  },
+
+  create(base?: DeepPartial<CPublishedFilePublishResponse>): CPublishedFilePublishResponse {
+    return CPublishedFilePublishResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPublishedFilePublishResponse>): CPublishedFilePublishResponse {
+    const message = createBaseCPublishedFilePublishResponse();
+    message.publishedfileid = object.publishedfileid ?? "0";
+    message.redirectUri = object.redirectUri ?? "";
+    return message;
   },
 };
 
@@ -894,6 +974,22 @@ export const CPublishedFileGetDetailsRequest = {
     message.includevotes !== undefined && (obj.includevotes = message.includevotes);
     message.shortDescription !== undefined && (obj.shortDescription = message.shortDescription);
     return obj;
+  },
+
+  create(base?: DeepPartial<CPublishedFileGetDetailsRequest>): CPublishedFileGetDetailsRequest {
+    return CPublishedFileGetDetailsRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPublishedFileGetDetailsRequest>): CPublishedFileGetDetailsRequest {
+    const message = createBaseCPublishedFileGetDetailsRequest();
+    message.publishedfileids = object.publishedfileids?.map((e) => e) || [];
+    message.includetags = object.includetags ?? false;
+    message.includeadditionalpreviews = object.includeadditionalpreviews ?? false;
+    message.includechildren = object.includechildren ?? false;
+    message.includekvtags = object.includekvtags ?? false;
+    message.includevotes = object.includevotes ?? false;
+    message.shortDescription = object.shortDescription ?? false;
+    return message;
   },
 };
 
@@ -1684,6 +1780,73 @@ export const PublishedFileDetails = {
     message.timeSubscribed !== undefined && (obj.timeSubscribed = Math.round(message.timeSubscribed));
     return obj;
   },
+
+  create(base?: DeepPartial<PublishedFileDetails>): PublishedFileDetails {
+    return PublishedFileDetails.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<PublishedFileDetails>): PublishedFileDetails {
+    const message = createBasePublishedFileDetails();
+    message.result = object.result ?? 0;
+    message.publishedfileid = object.publishedfileid ?? "0";
+    message.creator = object.creator ?? "0";
+    message.creatorAppid = object.creatorAppid ?? 0;
+    message.consumerAppid = object.consumerAppid ?? 0;
+    message.consumerShortcutid = object.consumerShortcutid ?? 0;
+    message.filename = object.filename ?? "";
+    message.fileSize = object.fileSize ?? "0";
+    message.previewFileSize = object.previewFileSize ?? "0";
+    message.fileUrl = object.fileUrl ?? "";
+    message.previewUrl = object.previewUrl ?? "";
+    message.youtubevideoid = object.youtubevideoid ?? "";
+    message.url = object.url ?? "";
+    message.hcontentFile = object.hcontentFile ?? "0";
+    message.hcontentPreview = object.hcontentPreview ?? "0";
+    message.title = object.title ?? "";
+    message.fileDescription = object.fileDescription ?? "";
+    message.shortDescription = object.shortDescription ?? "";
+    message.timeCreated = object.timeCreated ?? 0;
+    message.timeUpdated = object.timeUpdated ?? 0;
+    message.visibility = object.visibility ?? 0;
+    message.flags = object.flags ?? 0;
+    message.workshopFile = object.workshopFile ?? false;
+    message.workshopAccepted = object.workshopAccepted ?? false;
+    message.showSubscribeAll = object.showSubscribeAll ?? false;
+    message.numCommentsDeveloper = object.numCommentsDeveloper ?? 0;
+    message.numCommentsPublic = object.numCommentsPublic ?? 0;
+    message.banned = object.banned ?? false;
+    message.banReason = object.banReason ?? "";
+    message.banner = object.banner ?? "0";
+    message.canBeDeleted = object.canBeDeleted ?? false;
+    message.incompatible = object.incompatible ?? false;
+    message.appName = object.appName ?? "";
+    message.fileType = object.fileType ?? 0;
+    message.canSubscribe = object.canSubscribe ?? false;
+    message.subscriptions = object.subscriptions ?? 0;
+    message.favorited = object.favorited ?? 0;
+    message.followers = object.followers ?? 0;
+    message.lifetimeSubscriptions = object.lifetimeSubscriptions ?? 0;
+    message.lifetimeFavorited = object.lifetimeFavorited ?? 0;
+    message.lifetimeFollowers = object.lifetimeFollowers ?? 0;
+    message.views = object.views ?? 0;
+    message.imageWidth = object.imageWidth ?? 0;
+    message.imageHeight = object.imageHeight ?? 0;
+    message.imageUrl = object.imageUrl ?? "";
+    message.spoilerTag = object.spoilerTag ?? false;
+    message.shortcutid = object.shortcutid ?? 0;
+    message.shortcutname = object.shortcutname ?? "";
+    message.numChildren = object.numChildren ?? 0;
+    message.numReports = object.numReports ?? 0;
+    message.previews = object.previews?.map((e) => PublishedFileDetails_Preview.fromPartial(e)) || [];
+    message.tags = object.tags?.map((e) => PublishedFileDetails_Tag.fromPartial(e)) || [];
+    message.children = object.children?.map((e) => PublishedFileDetails_Child.fromPartial(e)) || [];
+    message.kvtags = object.kvtags?.map((e) => PublishedFileDetails_KVTag.fromPartial(e)) || [];
+    message.voteData = (object.voteData !== undefined && object.voteData !== null)
+      ? PublishedFileDetails_VoteData.fromPartial(object.voteData)
+      : undefined;
+    message.timeSubscribed = object.timeSubscribed ?? 0;
+    return message;
+  },
 };
 
 function createBasePublishedFileDetails_Tag(): PublishedFileDetails_Tag {
@@ -1743,6 +1906,17 @@ export const PublishedFileDetails_Tag = {
     message.tag !== undefined && (obj.tag = message.tag);
     message.adminonly !== undefined && (obj.adminonly = message.adminonly);
     return obj;
+  },
+
+  create(base?: DeepPartial<PublishedFileDetails_Tag>): PublishedFileDetails_Tag {
+    return PublishedFileDetails_Tag.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<PublishedFileDetails_Tag>): PublishedFileDetails_Tag {
+    const message = createBasePublishedFileDetails_Tag();
+    message.tag = object.tag ?? "";
+    message.adminonly = object.adminonly ?? false;
+    return message;
   },
 };
 
@@ -1852,6 +2026,21 @@ export const PublishedFileDetails_Preview = {
     message.youtubevideoid !== undefined && (obj.youtubevideoid = message.youtubevideoid);
     return obj;
   },
+
+  create(base?: DeepPartial<PublishedFileDetails_Preview>): PublishedFileDetails_Preview {
+    return PublishedFileDetails_Preview.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<PublishedFileDetails_Preview>): PublishedFileDetails_Preview {
+    const message = createBasePublishedFileDetails_Preview();
+    message.previewid = object.previewid ?? "0";
+    message.sortorder = object.sortorder ?? 0;
+    message.url = object.url ?? "";
+    message.size = object.size ?? 0;
+    message.filename = object.filename ?? "";
+    message.youtubevideoid = object.youtubevideoid ?? "";
+    return message;
+  },
 };
 
 function createBasePublishedFileDetails_Child(): PublishedFileDetails_Child {
@@ -1924,6 +2113,18 @@ export const PublishedFileDetails_Child = {
     message.fileType !== undefined && (obj.fileType = Math.round(message.fileType));
     return obj;
   },
+
+  create(base?: DeepPartial<PublishedFileDetails_Child>): PublishedFileDetails_Child {
+    return PublishedFileDetails_Child.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<PublishedFileDetails_Child>): PublishedFileDetails_Child {
+    const message = createBasePublishedFileDetails_Child();
+    message.publishedfileid = object.publishedfileid ?? "0";
+    message.sortorder = object.sortorder ?? 0;
+    message.fileType = object.fileType ?? 0;
+    return message;
+  },
 };
 
 function createBasePublishedFileDetails_KVTag(): PublishedFileDetails_KVTag {
@@ -1980,6 +2181,17 @@ export const PublishedFileDetails_KVTag = {
     message.key !== undefined && (obj.key = message.key);
     message.value !== undefined && (obj.value = message.value);
     return obj;
+  },
+
+  create(base?: DeepPartial<PublishedFileDetails_KVTag>): PublishedFileDetails_KVTag {
+    return PublishedFileDetails_KVTag.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<PublishedFileDetails_KVTag>): PublishedFileDetails_KVTag {
+    const message = createBasePublishedFileDetails_KVTag();
+    message.key = object.key ?? "";
+    message.value = object.value ?? "";
+    return message;
   },
 };
 
@@ -2053,6 +2265,18 @@ export const PublishedFileDetails_VoteData = {
     message.votesDown !== undefined && (obj.votesDown = Math.round(message.votesDown));
     return obj;
   },
+
+  create(base?: DeepPartial<PublishedFileDetails_VoteData>): PublishedFileDetails_VoteData {
+    return PublishedFileDetails_VoteData.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<PublishedFileDetails_VoteData>): PublishedFileDetails_VoteData {
+    const message = createBasePublishedFileDetails_VoteData();
+    message.score = object.score ?? 0;
+    message.votesUp = object.votesUp ?? 0;
+    message.votesDown = object.votesDown ?? 0;
+    return message;
+  },
 };
 
 function createBaseCPublishedFileGetDetailsResponse(): CPublishedFileGetDetailsResponse {
@@ -2108,6 +2332,16 @@ export const CPublishedFileGetDetailsResponse = {
       obj.publishedfiledetails = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CPublishedFileGetDetailsResponse>): CPublishedFileGetDetailsResponse {
+    return CPublishedFileGetDetailsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPublishedFileGetDetailsResponse>): CPublishedFileGetDetailsResponse {
+    const message = createBaseCPublishedFileGetDetailsResponse();
+    message.publishedfiledetails = object.publishedfiledetails?.map((e) => PublishedFileDetails.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -2271,6 +2505,24 @@ export const CPublishedFileGetUserFilesRequest = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CPublishedFileGetUserFilesRequest>): CPublishedFileGetUserFilesRequest {
+    return CPublishedFileGetUserFilesRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPublishedFileGetUserFilesRequest>): CPublishedFileGetUserFilesRequest {
+    const message = createBaseCPublishedFileGetUserFilesRequest();
+    message.appid = object.appid ?? 0;
+    message.page = object.page ?? 0;
+    message.numperpage = object.numperpage ?? 0;
+    message.sortmethod = object.sortmethod ?? "";
+    message.totalonly = object.totalonly ?? false;
+    message.privacy = object.privacy ?? 0;
+    message.idsOnly = object.idsOnly ?? false;
+    message.requiredtags = object.requiredtags?.map((e) => e) || [];
+    message.excludedtags = object.excludedtags?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCPublishedFileGetUserFilesResponse(): CPublishedFileGetUserFilesResponse {
@@ -2369,6 +2621,19 @@ export const CPublishedFileGetUserFilesResponse = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CPublishedFileGetUserFilesResponse>): CPublishedFileGetUserFilesResponse {
+    return CPublishedFileGetUserFilesResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPublishedFileGetUserFilesResponse>): CPublishedFileGetUserFilesResponse {
+    const message = createBaseCPublishedFileGetUserFilesResponse();
+    message.total = object.total ?? 0;
+    message.startindex = object.startindex ?? 0;
+    message.publishedfiledetails = object.publishedfiledetails?.map((e) => PublishedFileDetails.fromPartial(e)) || [];
+    message.apps = object.apps?.map((e) => CPublishedFileGetUserFilesResponse_App.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCPublishedFileGetUserFilesResponse_App(): CPublishedFileGetUserFilesResponse_App {
@@ -2452,6 +2717,19 @@ export const CPublishedFileGetUserFilesResponse_App = {
     message.shortcutid !== undefined && (obj.shortcutid = Math.round(message.shortcutid));
     message.private !== undefined && (obj.private = message.private);
     return obj;
+  },
+
+  create(base?: DeepPartial<CPublishedFileGetUserFilesResponse_App>): CPublishedFileGetUserFilesResponse_App {
+    return CPublishedFileGetUserFilesResponse_App.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPublishedFileGetUserFilesResponse_App>): CPublishedFileGetUserFilesResponse_App {
+    const message = createBaseCPublishedFileGetUserFilesResponse_App();
+    message.appid = object.appid ?? 0;
+    message.name = object.name ?? "";
+    message.shortcutid = object.shortcutid ?? 0;
+    message.private = object.private ?? false;
+    return message;
   },
 };
 
@@ -2598,6 +2876,23 @@ export const CPublishedFileUpdateRequest = {
     message.previewFilename !== undefined && (obj.previewFilename = message.previewFilename);
     return obj;
   },
+
+  create(base?: DeepPartial<CPublishedFileUpdateRequest>): CPublishedFileUpdateRequest {
+    return CPublishedFileUpdateRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPublishedFileUpdateRequest>): CPublishedFileUpdateRequest {
+    const message = createBaseCPublishedFileUpdateRequest();
+    message.appid = object.appid ?? 0;
+    message.publishedfileid = object.publishedfileid ?? "0";
+    message.title = object.title ?? "";
+    message.fileDescription = object.fileDescription ?? "";
+    message.visibility = object.visibility ?? 0;
+    message.tags = object.tags?.map((e) => e) || [];
+    message.filename = object.filename ?? "";
+    message.previewFilename = object.previewFilename ?? "";
+    return message;
+  },
 };
 
 function createBaseCPublishedFileUpdateResponse(): CPublishedFileUpdateResponse {
@@ -2632,6 +2927,15 @@ export const CPublishedFileUpdateResponse = {
   toJSON(_: CPublishedFileUpdateResponse): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CPublishedFileUpdateResponse>): CPublishedFileUpdateResponse {
+    return CPublishedFileUpdateResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CPublishedFileUpdateResponse>): CPublishedFileUpdateResponse {
+    const message = createBaseCPublishedFileUpdateResponse();
+    return message;
   },
 };
 
@@ -2749,6 +3053,21 @@ export const CPublishedFileRefreshVotingQueueRequest = {
     message.desiredQueueSize !== undefined && (obj.desiredQueueSize = Math.round(message.desiredQueueSize));
     return obj;
   },
+
+  create(base?: DeepPartial<CPublishedFileRefreshVotingQueueRequest>): CPublishedFileRefreshVotingQueueRequest {
+    return CPublishedFileRefreshVotingQueueRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CPublishedFileRefreshVotingQueueRequest>): CPublishedFileRefreshVotingQueueRequest {
+    const message = createBaseCPublishedFileRefreshVotingQueueRequest();
+    message.appid = object.appid ?? 0;
+    message.matchingFileType = object.matchingFileType ?? 0;
+    message.tags = object.tags?.map((e) => e) || [];
+    message.matchAllTags = object.matchAllTags ?? false;
+    message.excludedTags = object.excludedTags?.map((e) => e) || [];
+    message.desiredQueueSize = object.desiredQueueSize ?? 0;
+    return message;
+  },
 };
 
 function createBaseCPublishedFileRefreshVotingQueueResponse(): CPublishedFileRefreshVotingQueueResponse {
@@ -2783,6 +3102,15 @@ export const CPublishedFileRefreshVotingQueueResponse = {
   toJSON(_: CPublishedFileRefreshVotingQueueResponse): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CPublishedFileRefreshVotingQueueResponse>): CPublishedFileRefreshVotingQueueResponse {
+    return CPublishedFileRefreshVotingQueueResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CPublishedFileRefreshVotingQueueResponse>): CPublishedFileRefreshVotingQueueResponse {
+    const message = createBaseCPublishedFileRefreshVotingQueueResponse();
+    return message;
   },
 };
 
@@ -2860,6 +3188,13 @@ export class PublishedFileClientImpl implements PublishedFile {
 interface Rpc {
   request(service: string, method: string, data: Uint8Array): Promise<Uint8Array>;
 }
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

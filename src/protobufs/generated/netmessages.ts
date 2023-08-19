@@ -1240,6 +1240,20 @@ export const CCLCMsgClientInfo = {
     message.friendsName !== undefined && (obj.friendsName = message.friendsName);
     return obj;
   },
+
+  create(base?: DeepPartial<CCLCMsgClientInfo>): CCLCMsgClientInfo {
+    return CCLCMsgClientInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CCLCMsgClientInfo>): CCLCMsgClientInfo {
+    const message = createBaseCCLCMsgClientInfo();
+    message.sendTableCrc = object.sendTableCrc ?? 0;
+    message.serverCount = object.serverCount ?? 0;
+    message.isHltv = object.isHltv ?? false;
+    message.friendsId = object.friendsId ?? 0;
+    message.friendsName = object.friendsName ?? "";
+    return message;
+  },
 };
 
 function createBaseCCLCMsgMove(): CCLCMsgMove {
@@ -1312,6 +1326,18 @@ export const CCLCMsgMove = {
     message.commandNumber !== undefined && (obj.commandNumber = Math.round(message.commandNumber));
     message.numCommands !== undefined && (obj.numCommands = Math.round(message.numCommands));
     return obj;
+  },
+
+  create(base?: DeepPartial<CCLCMsgMove>): CCLCMsgMove {
+    return CCLCMsgMove.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CCLCMsgMove>): CCLCMsgMove {
+    const message = createBaseCCLCMsgMove();
+    message.data = object.data ?? Buffer.alloc(0);
+    message.commandNumber = object.commandNumber ?? 0;
+    message.numCommands = object.numCommands ?? 0;
+    return message;
   },
 };
 
@@ -1430,6 +1456,21 @@ export const CMsgVoiceAudio = {
       (obj.uncompressedSampleOffset = Math.round(message.uncompressedSampleOffset));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgVoiceAudio>): CMsgVoiceAudio {
+    return CMsgVoiceAudio.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgVoiceAudio>): CMsgVoiceAudio {
+    const message = createBaseCMsgVoiceAudio();
+    message.format = object.format ?? 0;
+    message.voiceData = object.voiceData ?? Buffer.alloc(0);
+    message.sequenceBytes = object.sequenceBytes ?? 0;
+    message.sectionNumber = object.sectionNumber ?? 0;
+    message.sampleRate = object.sampleRate ?? 0;
+    message.uncompressedSampleOffset = object.uncompressedSampleOffset ?? 0;
+    return message;
+  },
 };
 
 function createBaseCCLCMsgVoiceData(): CCLCMsgVoiceData {
@@ -1502,6 +1543,20 @@ export const CCLCMsgVoiceData = {
     message.tick !== undefined && (obj.tick = Math.round(message.tick));
     return obj;
   },
+
+  create(base?: DeepPartial<CCLCMsgVoiceData>): CCLCMsgVoiceData {
+    return CCLCMsgVoiceData.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CCLCMsgVoiceData>): CCLCMsgVoiceData {
+    const message = createBaseCCLCMsgVoiceData();
+    message.audio = (object.audio !== undefined && object.audio !== null)
+      ? CMsgVoiceAudio.fromPartial(object.audio)
+      : undefined;
+    message.xuid = object.xuid ?? "0";
+    message.tick = object.tick ?? 0;
+    return message;
+  },
 };
 
 function createBaseCCLCMsgBaselineAck(): CCLCMsgBaselineAck {
@@ -1561,6 +1616,17 @@ export const CCLCMsgBaselineAck = {
     message.baselineTick !== undefined && (obj.baselineTick = Math.round(message.baselineTick));
     message.baselineNr !== undefined && (obj.baselineNr = Math.round(message.baselineNr));
     return obj;
+  },
+
+  create(base?: DeepPartial<CCLCMsgBaselineAck>): CCLCMsgBaselineAck {
+    return CCLCMsgBaselineAck.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CCLCMsgBaselineAck>): CCLCMsgBaselineAck {
+    const message = createBaseCCLCMsgBaselineAck();
+    message.baselineTick = object.baselineTick ?? 0;
+    message.baselineNr = object.baselineNr ?? 0;
+    return message;
   },
 };
 
@@ -1622,6 +1688,16 @@ export const CCLCMsgListenEvents = {
       obj.eventMask = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CCLCMsgListenEvents>): CCLCMsgListenEvents {
+    return CCLCMsgListenEvents.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CCLCMsgListenEvents>): CCLCMsgListenEvents {
+    const message = createBaseCCLCMsgListenEvents();
+    message.eventMask = object.eventMask?.map((e) => e) || [];
+    return message;
   },
 };
 
@@ -1706,6 +1782,19 @@ export const CCLCMsgRespondCvarValue = {
     message.name !== undefined && (obj.name = message.name);
     message.value !== undefined && (obj.value = message.value);
     return obj;
+  },
+
+  create(base?: DeepPartial<CCLCMsgRespondCvarValue>): CCLCMsgRespondCvarValue {
+    return CCLCMsgRespondCvarValue.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CCLCMsgRespondCvarValue>): CCLCMsgRespondCvarValue {
+    const message = createBaseCCLCMsgRespondCvarValue();
+    message.cookie = object.cookie ?? 0;
+    message.statusCode = object.statusCode ?? 0;
+    message.name = object.name ?? "";
+    message.value = object.value ?? "";
+    return message;
   },
 };
 
@@ -1803,6 +1892,20 @@ export const CCLCMsgFileCRCCheck = {
     message.crc !== undefined && (obj.crc = Math.round(message.crc));
     return obj;
   },
+
+  create(base?: DeepPartial<CCLCMsgFileCRCCheck>): CCLCMsgFileCRCCheck {
+    return CCLCMsgFileCRCCheck.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CCLCMsgFileCRCCheck>): CCLCMsgFileCRCCheck {
+    const message = createBaseCCLCMsgFileCRCCheck();
+    message.codePath = object.codePath ?? 0;
+    message.path = object.path ?? "";
+    message.codeFilename = object.codeFilename ?? 0;
+    message.filename = object.filename ?? "";
+    message.crc = object.crc ?? 0;
+    return message;
+  },
 };
 
 function createBaseCCLCMsgLoadingProgress(): CCLCMsgLoadingProgress {
@@ -1849,6 +1952,16 @@ export const CCLCMsgLoadingProgress = {
     message.progress !== undefined && (obj.progress = Math.round(message.progress));
     return obj;
   },
+
+  create(base?: DeepPartial<CCLCMsgLoadingProgress>): CCLCMsgLoadingProgress {
+    return CCLCMsgLoadingProgress.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CCLCMsgLoadingProgress>): CCLCMsgLoadingProgress {
+    const message = createBaseCCLCMsgLoadingProgress();
+    message.progress = object.progress ?? 0;
+    return message;
+  },
 };
 
 function createBaseCCLCMsgSplitPlayerConnect(): CCLCMsgSplitPlayerConnect {
@@ -1894,6 +2007,16 @@ export const CCLCMsgSplitPlayerConnect = {
     const obj: any = {};
     message.playername !== undefined && (obj.playername = message.playername);
     return obj;
+  },
+
+  create(base?: DeepPartial<CCLCMsgSplitPlayerConnect>): CCLCMsgSplitPlayerConnect {
+    return CCLCMsgSplitPlayerConnect.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CCLCMsgSplitPlayerConnect>): CCLCMsgSplitPlayerConnect {
+    const message = createBaseCCLCMsgSplitPlayerConnect();
+    message.playername = object.playername ?? "";
+    return message;
   },
 };
 
@@ -1956,6 +2079,17 @@ export const CCLCMsgClientMessage = {
       (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
     return obj;
   },
+
+  create(base?: DeepPartial<CCLCMsgClientMessage>): CCLCMsgClientMessage {
+    return CCLCMsgClientMessage.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CCLCMsgClientMessage>): CCLCMsgClientMessage {
+    const message = createBaseCCLCMsgClientMessage();
+    message.msgType = object.msgType ?? 0;
+    message.data = object.data ?? Buffer.alloc(0);
+    return message;
+  },
 };
 
 function createBaseCCLCMsgSplitPlayerDisconnect(): CCLCMsgSplitPlayerDisconnect {
@@ -2001,6 +2135,16 @@ export const CCLCMsgSplitPlayerDisconnect = {
     const obj: any = {};
     message.slot !== undefined && (obj.slot = Math.round(message.slot));
     return obj;
+  },
+
+  create(base?: DeepPartial<CCLCMsgSplitPlayerDisconnect>): CCLCMsgSplitPlayerDisconnect {
+    return CCLCMsgSplitPlayerDisconnect.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CCLCMsgSplitPlayerDisconnect>): CCLCMsgSplitPlayerDisconnect {
+    const message = createBaseCCLCMsgSplitPlayerDisconnect();
+    message.slot = object.slot ?? 0;
+    return message;
   },
 };
 
@@ -2048,6 +2192,16 @@ export const CCLCMsgServerStatus = {
     message.simplified !== undefined && (obj.simplified = message.simplified);
     return obj;
   },
+
+  create(base?: DeepPartial<CCLCMsgServerStatus>): CCLCMsgServerStatus {
+    return CCLCMsgServerStatus.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CCLCMsgServerStatus>): CCLCMsgServerStatus {
+    const message = createBaseCCLCMsgServerStatus();
+    message.simplified = object.simplified ?? false;
+    return message;
+  },
 };
 
 function createBaseCCLCMsgServerPing(): CCLCMsgServerPing {
@@ -2082,6 +2236,15 @@ export const CCLCMsgServerPing = {
   toJSON(_: CCLCMsgServerPing): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CCLCMsgServerPing>): CCLCMsgServerPing {
+    return CCLCMsgServerPing.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CCLCMsgServerPing>): CCLCMsgServerPing {
+    const message = createBaseCCLCMsgServerPing();
+    return message;
   },
 };
 
@@ -2143,6 +2306,17 @@ export const CCLCMsgRequestPause = {
     message.pauseGroup !== undefined && (obj.pauseGroup = Math.round(message.pauseGroup));
     return obj;
   },
+
+  create(base?: DeepPartial<CCLCMsgRequestPause>): CCLCMsgRequestPause {
+    return CCLCMsgRequestPause.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CCLCMsgRequestPause>): CCLCMsgRequestPause {
+    const message = createBaseCCLCMsgRequestPause();
+    message.pauseType = object.pauseType ?? 0;
+    message.pauseGroup = object.pauseGroup ?? 0;
+    return message;
+  },
 };
 
 function createBaseCCLCMsgCmdKeyValues(): CCLCMsgCmdKeyValues {
@@ -2190,6 +2364,16 @@ export const CCLCMsgCmdKeyValues = {
       (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
     return obj;
   },
+
+  create(base?: DeepPartial<CCLCMsgCmdKeyValues>): CCLCMsgCmdKeyValues {
+    return CCLCMsgCmdKeyValues.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CCLCMsgCmdKeyValues>): CCLCMsgCmdKeyValues {
+    const message = createBaseCCLCMsgCmdKeyValues();
+    message.data = object.data ?? Buffer.alloc(0);
+    return message;
+  },
 };
 
 function createBaseCCLCMsgRconServerDetails(): CCLCMsgRconServerDetails {
@@ -2236,6 +2420,16 @@ export const CCLCMsgRconServerDetails = {
     message.token !== undefined &&
       (obj.token = base64FromBytes(message.token !== undefined ? message.token : Buffer.alloc(0)));
     return obj;
+  },
+
+  create(base?: DeepPartial<CCLCMsgRconServerDetails>): CCLCMsgRconServerDetails {
+    return CCLCMsgRconServerDetails.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CCLCMsgRconServerDetails>): CCLCMsgRconServerDetails {
+    const message = createBaseCCLCMsgRconServerDetails();
+    message.token = object.token ?? Buffer.alloc(0);
+    return message;
   },
 };
 
@@ -2491,6 +2685,33 @@ export const CSVCMsgServerInfo = {
       ));
     return obj;
   },
+
+  create(base?: DeepPartial<CSVCMsgServerInfo>): CSVCMsgServerInfo {
+    return CSVCMsgServerInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgServerInfo>): CSVCMsgServerInfo {
+    const message = createBaseCSVCMsgServerInfo();
+    message.protocol = object.protocol ?? 0;
+    message.serverCount = object.serverCount ?? 0;
+    message.isDedicated = object.isDedicated ?? false;
+    message.isHltv = object.isHltv ?? false;
+    message.cOs = object.cOs ?? 0;
+    message.maxClients = object.maxClients ?? 0;
+    message.maxClasses = object.maxClasses ?? 0;
+    message.playerSlot = object.playerSlot ?? 0;
+    message.tickInterval = object.tickInterval ?? 0;
+    message.gameDir = object.gameDir ?? "";
+    message.mapName = object.mapName ?? "";
+    message.skyName = object.skyName ?? "";
+    message.hostName = object.hostName ?? "";
+    message.addonName = object.addonName ?? "";
+    message.gameSessionConfig = (object.gameSessionConfig !== undefined && object.gameSessionConfig !== null)
+      ? CSVCMsgGameSessionConfiguration.fromPartial(object.gameSessionConfig)
+      : undefined;
+    message.gameSessionManifest = object.gameSessionManifest ?? Buffer.alloc(0);
+    return message;
+  },
 };
 
 function createBaseCSVCMsgClassInfo(): CSVCMsgClassInfo {
@@ -2556,6 +2777,17 @@ export const CSVCMsgClassInfo = {
       obj.classes = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CSVCMsgClassInfo>): CSVCMsgClassInfo {
+    return CSVCMsgClassInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgClassInfo>): CSVCMsgClassInfo {
+    const message = createBaseCSVCMsgClassInfo();
+    message.createOnClient = object.createOnClient ?? false;
+    message.classes = object.classes?.map((e) => CSVCMsgClassInfo_classT.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -2629,6 +2861,18 @@ export const CSVCMsgClassInfo_classT = {
     message.className !== undefined && (obj.className = message.className);
     return obj;
   },
+
+  create(base?: DeepPartial<CSVCMsgClassInfo_classT>): CSVCMsgClassInfo_classT {
+    return CSVCMsgClassInfo_classT.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgClassInfo_classT>): CSVCMsgClassInfo_classT {
+    const message = createBaseCSVCMsgClassInfo_classT();
+    message.classId = object.classId ?? 0;
+    message.dataTableName = object.dataTableName ?? "";
+    message.className = object.className ?? "";
+    return message;
+  },
 };
 
 function createBaseCSVCMsgSetPause(): CSVCMsgSetPause {
@@ -2674,6 +2918,16 @@ export const CSVCMsgSetPause = {
     const obj: any = {};
     message.paused !== undefined && (obj.paused = message.paused);
     return obj;
+  },
+
+  create(base?: DeepPartial<CSVCMsgSetPause>): CSVCMsgSetPause {
+    return CSVCMsgSetPause.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgSetPause>): CSVCMsgSetPause {
+    const message = createBaseCSVCMsgSetPause();
+    message.paused = object.paused ?? false;
+    return message;
   },
 };
 
@@ -2747,6 +3001,18 @@ export const CSVCMsgVoiceInit = {
     message.version !== undefined && (obj.version = Math.round(message.version));
     return obj;
   },
+
+  create(base?: DeepPartial<CSVCMsgVoiceInit>): CSVCMsgVoiceInit {
+    return CSVCMsgVoiceInit.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgVoiceInit>): CSVCMsgVoiceInit {
+    const message = createBaseCSVCMsgVoiceInit();
+    message.quality = object.quality ?? 0;
+    message.codec = object.codec ?? "";
+    message.version = object.version ?? 0;
+    return message;
+  },
 };
 
 function createBaseCSVCMsgPrint(): CSVCMsgPrint {
@@ -2792,6 +3058,16 @@ export const CSVCMsgPrint = {
     const obj: any = {};
     message.text !== undefined && (obj.text = message.text);
     return obj;
+  },
+
+  create(base?: DeepPartial<CSVCMsgPrint>): CSVCMsgPrint {
+    return CSVCMsgPrint.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgPrint>): CSVCMsgPrint {
+    const message = createBaseCSVCMsgPrint();
+    message.text = object.text ?? "";
+    return message;
   },
 };
 
@@ -2856,6 +3132,17 @@ export const CSVCMsgSounds = {
       obj.sounds = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CSVCMsgSounds>): CSVCMsgSounds {
+    return CSVCMsgSounds.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgSounds>): CSVCMsgSounds {
+    const message = createBaseCSVCMsgSounds();
+    message.reliableSound = object.reliableSound ?? false;
+    message.sounds = object.sounds?.map((e) => CSVCMsgSounds_sounddataT.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -3141,6 +3428,34 @@ export const CSVCMsgSounds_sounddataT = {
     message.soundResourceId !== undefined && (obj.soundResourceId = message.soundResourceId);
     return obj;
   },
+
+  create(base?: DeepPartial<CSVCMsgSounds_sounddataT>): CSVCMsgSounds_sounddataT {
+    return CSVCMsgSounds_sounddataT.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgSounds_sounddataT>): CSVCMsgSounds_sounddataT {
+    const message = createBaseCSVCMsgSounds_sounddataT();
+    message.originX = object.originX ?? 0;
+    message.originY = object.originY ?? 0;
+    message.originZ = object.originZ ?? 0;
+    message.volume = object.volume ?? 0;
+    message.delayValue = object.delayValue ?? 0;
+    message.sequenceNumber = object.sequenceNumber ?? 0;
+    message.entityIndex = object.entityIndex ?? 0;
+    message.channel = object.channel ?? 0;
+    message.pitch = object.pitch ?? 0;
+    message.flags = object.flags ?? 0;
+    message.soundNum = object.soundNum ?? 0;
+    message.soundNumHandle = object.soundNumHandle ?? 0;
+    message.speakerEntity = object.speakerEntity ?? 0;
+    message.randomSeed = object.randomSeed ?? 0;
+    message.soundLevel = object.soundLevel ?? 0;
+    message.isSentence = object.isSentence ?? false;
+    message.isAmbient = object.isAmbient ?? false;
+    message.guid = object.guid ?? 0;
+    message.soundResourceId = object.soundResourceId ?? "0";
+    return message;
+  },
 };
 
 function createBaseCSVCMsgPrefetch(): CSVCMsgPrefetch {
@@ -3200,6 +3515,17 @@ export const CSVCMsgPrefetch = {
     message.soundIndex !== undefined && (obj.soundIndex = Math.round(message.soundIndex));
     message.resourceType !== undefined && (obj.resourceType = prefetchTypeToJSON(message.resourceType));
     return obj;
+  },
+
+  create(base?: DeepPartial<CSVCMsgPrefetch>): CSVCMsgPrefetch {
+    return CSVCMsgPrefetch.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgPrefetch>): CSVCMsgPrefetch {
+    const message = createBaseCSVCMsgPrefetch();
+    message.soundIndex = object.soundIndex ?? 0;
+    message.resourceType = object.resourceType ?? 0;
+    return message;
   },
 };
 
@@ -3261,6 +3587,17 @@ export const CSVCMsgSetView = {
     message.slot !== undefined && (obj.slot = Math.round(message.slot));
     return obj;
   },
+
+  create(base?: DeepPartial<CSVCMsgSetView>): CSVCMsgSetView {
+    return CSVCMsgSetView.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgSetView>): CSVCMsgSetView {
+    const message = createBaseCSVCMsgSetView();
+    message.entityIndex = object.entityIndex ?? 0;
+    message.slot = object.slot ?? 0;
+    return message;
+  },
 };
 
 function createBaseCSVCMsgFixAngle(): CSVCMsgFixAngle {
@@ -3321,6 +3658,19 @@ export const CSVCMsgFixAngle = {
     message.angle !== undefined && (obj.angle = message.angle ? CMsgQAngle.toJSON(message.angle) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CSVCMsgFixAngle>): CSVCMsgFixAngle {
+    return CSVCMsgFixAngle.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgFixAngle>): CSVCMsgFixAngle {
+    const message = createBaseCSVCMsgFixAngle();
+    message.relative = object.relative ?? false;
+    message.angle = (object.angle !== undefined && object.angle !== null)
+      ? CMsgQAngle.fromPartial(object.angle)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCSVCMsgCrosshairAngle(): CSVCMsgCrosshairAngle {
@@ -3366,6 +3716,18 @@ export const CSVCMsgCrosshairAngle = {
     const obj: any = {};
     message.angle !== undefined && (obj.angle = message.angle ? CMsgQAngle.toJSON(message.angle) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CSVCMsgCrosshairAngle>): CSVCMsgCrosshairAngle {
+    return CSVCMsgCrosshairAngle.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgCrosshairAngle>): CSVCMsgCrosshairAngle {
+    const message = createBaseCSVCMsgCrosshairAngle();
+    message.angle = (object.angle !== undefined && object.angle !== null)
+      ? CMsgQAngle.fromPartial(object.angle)
+      : undefined;
+    return message;
   },
 };
 
@@ -3463,6 +3825,20 @@ export const CSVCMsgBSPDecal = {
     message.lowPriority !== undefined && (obj.lowPriority = message.lowPriority);
     return obj;
   },
+
+  create(base?: DeepPartial<CSVCMsgBSPDecal>): CSVCMsgBSPDecal {
+    return CSVCMsgBSPDecal.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgBSPDecal>): CSVCMsgBSPDecal {
+    const message = createBaseCSVCMsgBSPDecal();
+    message.pos = (object.pos !== undefined && object.pos !== null) ? CMsgVector.fromPartial(object.pos) : undefined;
+    message.decalTextureIndex = object.decalTextureIndex ?? 0;
+    message.entityIndex = object.entityIndex ?? 0;
+    message.modelIndex = object.modelIndex ?? 0;
+    message.lowPriority = object.lowPriority ?? false;
+    return message;
+  },
 };
 
 function createBaseCSVCMsgSplitScreen(): CSVCMsgSplitScreen {
@@ -3535,6 +3911,18 @@ export const CSVCMsgSplitScreen = {
     message.playerIndex !== undefined && (obj.playerIndex = Math.round(message.playerIndex));
     return obj;
   },
+
+  create(base?: DeepPartial<CSVCMsgSplitScreen>): CSVCMsgSplitScreen {
+    return CSVCMsgSplitScreen.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgSplitScreen>): CSVCMsgSplitScreen {
+    const message = createBaseCSVCMsgSplitScreen();
+    message.type = object.type ?? 0;
+    message.slot = object.slot ?? 0;
+    message.playerIndex = object.playerIndex ?? 0;
+    return message;
+  },
 };
 
 function createBaseCSVCMsgGetCvarValue(): CSVCMsgGetCvarValue {
@@ -3594,6 +3982,17 @@ export const CSVCMsgGetCvarValue = {
     message.cookie !== undefined && (obj.cookie = Math.round(message.cookie));
     message.cvarName !== undefined && (obj.cvarName = message.cvarName);
     return obj;
+  },
+
+  create(base?: DeepPartial<CSVCMsgGetCvarValue>): CSVCMsgGetCvarValue {
+    return CSVCMsgGetCvarValue.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgGetCvarValue>): CSVCMsgGetCvarValue {
+    const message = createBaseCSVCMsgGetCvarValue();
+    message.cookie = object.cookie ?? 0;
+    message.cvarName = object.cvarName ?? "";
+    return message;
   },
 };
 
@@ -3657,6 +4056,17 @@ export const CSVCMsgMenu = {
         message.menuKeyValues !== undefined ? message.menuKeyValues : Buffer.alloc(0),
       ));
     return obj;
+  },
+
+  create(base?: DeepPartial<CSVCMsgMenu>): CSVCMsgMenu {
+    return CSVCMsgMenu.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgMenu>): CSVCMsgMenu {
+    const message = createBaseCSVCMsgMenu();
+    message.dialogType = object.dialogType ?? 0;
+    message.menuKeyValues = object.menuKeyValues ?? Buffer.alloc(0);
+    return message;
   },
 };
 
@@ -3730,6 +4140,18 @@ export const CSVCMsgUserMessage = {
       (obj.msgData = base64FromBytes(message.msgData !== undefined ? message.msgData : Buffer.alloc(0)));
     message.passthrough !== undefined && (obj.passthrough = Math.round(message.passthrough));
     return obj;
+  },
+
+  create(base?: DeepPartial<CSVCMsgUserMessage>): CSVCMsgUserMessage {
+    return CSVCMsgUserMessage.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgUserMessage>): CSVCMsgUserMessage {
+    const message = createBaseCSVCMsgUserMessage();
+    message.msgType = object.msgType ?? 0;
+    message.msgData = object.msgData ?? Buffer.alloc(0);
+    message.passthrough = object.passthrough ?? 0;
+    return message;
   },
 };
 
@@ -3818,6 +4240,19 @@ export const CSVCMsgSendTable = {
       obj.props = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CSVCMsgSendTable>): CSVCMsgSendTable {
+    return CSVCMsgSendTable.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgSendTable>): CSVCMsgSendTable {
+    const message = createBaseCSVCMsgSendTable();
+    message.isEnd = object.isEnd ?? false;
+    message.netTableName = object.netTableName ?? "";
+    message.needsDecoder = object.needsDecoder ?? false;
+    message.props = object.props?.map((e) => CSVCMsgSendTable_sendpropT.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -3973,6 +4408,24 @@ export const CSVCMsgSendTable_sendpropT = {
     message.numBits !== undefined && (obj.numBits = Math.round(message.numBits));
     return obj;
   },
+
+  create(base?: DeepPartial<CSVCMsgSendTable_sendpropT>): CSVCMsgSendTable_sendpropT {
+    return CSVCMsgSendTable_sendpropT.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgSendTable_sendpropT>): CSVCMsgSendTable_sendpropT {
+    const message = createBaseCSVCMsgSendTable_sendpropT();
+    message.type = object.type ?? 0;
+    message.varName = object.varName ?? "";
+    message.flags = object.flags ?? 0;
+    message.priority = object.priority ?? 0;
+    message.dtName = object.dtName ?? "";
+    message.numElements = object.numElements ?? 0;
+    message.lowValue = object.lowValue ?? 0;
+    message.highValue = object.highValue ?? 0;
+    message.numBits = object.numBits ?? 0;
+    return message;
+  },
 };
 
 function createBaseCSVCMsgGameEventList(): CSVCMsgGameEventList {
@@ -4026,6 +4479,16 @@ export const CSVCMsgGameEventList = {
       obj.descriptors = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CSVCMsgGameEventList>): CSVCMsgGameEventList {
+    return CSVCMsgGameEventList.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgGameEventList>): CSVCMsgGameEventList {
+    const message = createBaseCSVCMsgGameEventList();
+    message.descriptors = object.descriptors?.map((e) => CSVCMsgGameEventList_descriptorT.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -4083,6 +4546,17 @@ export const CSVCMsgGameEventList_keyT = {
     message.type !== undefined && (obj.type = Math.round(message.type));
     message.name !== undefined && (obj.name = message.name);
     return obj;
+  },
+
+  create(base?: DeepPartial<CSVCMsgGameEventList_keyT>): CSVCMsgGameEventList_keyT {
+    return CSVCMsgGameEventList_keyT.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgGameEventList_keyT>): CSVCMsgGameEventList_keyT {
+    const message = createBaseCSVCMsgGameEventList_keyT();
+    message.type = object.type ?? 0;
+    message.name = object.name ?? "";
+    return message;
   },
 };
 
@@ -4159,6 +4633,18 @@ export const CSVCMsgGameEventList_descriptorT = {
       obj.keys = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CSVCMsgGameEventList_descriptorT>): CSVCMsgGameEventList_descriptorT {
+    return CSVCMsgGameEventList_descriptorT.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgGameEventList_descriptorT>): CSVCMsgGameEventList_descriptorT {
+    const message = createBaseCSVCMsgGameEventList_descriptorT();
+    message.eventid = object.eventid ?? 0;
+    message.name = object.name ?? "";
+    message.keys = object.keys?.map((e) => CSVCMsgGameEventList_keyT.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -4414,6 +4900,33 @@ export const CSVCMsgPacketEntities = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CSVCMsgPacketEntities>): CSVCMsgPacketEntities {
+    return CSVCMsgPacketEntities.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgPacketEntities>): CSVCMsgPacketEntities {
+    const message = createBaseCSVCMsgPacketEntities();
+    message.maxEntries = object.maxEntries ?? 0;
+    message.updatedEntries = object.updatedEntries ?? 0;
+    message.isDelta = object.isDelta ?? false;
+    message.updateBaseline = object.updateBaseline ?? false;
+    message.baseline = object.baseline ?? 0;
+    message.deltaFrom = object.deltaFrom ?? 0;
+    message.entityData = object.entityData ?? Buffer.alloc(0);
+    message.pendingFullFrame = object.pendingFullFrame ?? false;
+    message.activeSpawngroupHandle = object.activeSpawngroupHandle ?? 0;
+    message.maxSpawngroupCreationsequence = object.maxSpawngroupCreationsequence ?? 0;
+    message.lastCmdNumber = object.lastCmdNumber ?? 0;
+    message.serverTick = object.serverTick ?? 0;
+    message.serializedEntities = object.serializedEntities ?? Buffer.alloc(0);
+    message.commandQueueInfo = (object.commandQueueInfo !== undefined && object.commandQueueInfo !== null)
+      ? CSVCMsgPacketEntities_commandQueueInfoT.fromPartial(object.commandQueueInfo)
+      : undefined;
+    message.alternateBaselines =
+      object.alternateBaselines?.map((e) => CSVCMsgPacketEntities_alternateBaselineT.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCSVCMsgPacketEntities_commandQueueInfoT(): CSVCMsgPacketEntities_commandQueueInfoT {
@@ -4518,6 +5031,20 @@ export const CSVCMsgPacketEntities_commandQueueInfoT = {
       (obj.discardedCommandTicks = Math.round(message.discardedCommandTicks));
     return obj;
   },
+
+  create(base?: DeepPartial<CSVCMsgPacketEntities_commandQueueInfoT>): CSVCMsgPacketEntities_commandQueueInfoT {
+    return CSVCMsgPacketEntities_commandQueueInfoT.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgPacketEntities_commandQueueInfoT>): CSVCMsgPacketEntities_commandQueueInfoT {
+    const message = createBaseCSVCMsgPacketEntities_commandQueueInfoT();
+    message.commandsQueued = object.commandsQueued ?? 0;
+    message.commandQueueDesiredSize = object.commandQueueDesiredSize ?? 0;
+    message.starvedCommandTicks = object.starvedCommandTicks ?? 0;
+    message.timeDilationPercent = object.timeDilationPercent ?? 0;
+    message.discardedCommandTicks = object.discardedCommandTicks ?? 0;
+    return message;
+  },
 };
 
 function createBaseCSVCMsgPacketEntities_alternateBaselineT(): CSVCMsgPacketEntities_alternateBaselineT {
@@ -4577,6 +5104,17 @@ export const CSVCMsgPacketEntities_alternateBaselineT = {
     message.entityIndex !== undefined && (obj.entityIndex = Math.round(message.entityIndex));
     message.baselineIndex !== undefined && (obj.baselineIndex = Math.round(message.baselineIndex));
     return obj;
+  },
+
+  create(base?: DeepPartial<CSVCMsgPacketEntities_alternateBaselineT>): CSVCMsgPacketEntities_alternateBaselineT {
+    return CSVCMsgPacketEntities_alternateBaselineT.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgPacketEntities_alternateBaselineT>): CSVCMsgPacketEntities_alternateBaselineT {
+    const message = createBaseCSVCMsgPacketEntities_alternateBaselineT();
+    message.entityIndex = object.entityIndex ?? 0;
+    message.baselineIndex = object.baselineIndex ?? 0;
+    return message;
   },
 };
 
@@ -4650,6 +5188,18 @@ export const CSVCMsgTempEntities = {
     message.entityData !== undefined &&
       (obj.entityData = base64FromBytes(message.entityData !== undefined ? message.entityData : Buffer.alloc(0)));
     return obj;
+  },
+
+  create(base?: DeepPartial<CSVCMsgTempEntities>): CSVCMsgTempEntities {
+    return CSVCMsgTempEntities.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgTempEntities>): CSVCMsgTempEntities {
+    const message = createBaseCSVCMsgTempEntities();
+    message.reliable = object.reliable ?? false;
+    message.numEntries = object.numEntries ?? 0;
+    message.entityData = object.entityData ?? Buffer.alloc(0);
+    return message;
   },
 };
 
@@ -4819,6 +5369,25 @@ export const CSVCMsgCreateStringTable = {
     message.usingVarintBitcounts !== undefined && (obj.usingVarintBitcounts = message.usingVarintBitcounts);
     return obj;
   },
+
+  create(base?: DeepPartial<CSVCMsgCreateStringTable>): CSVCMsgCreateStringTable {
+    return CSVCMsgCreateStringTable.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgCreateStringTable>): CSVCMsgCreateStringTable {
+    const message = createBaseCSVCMsgCreateStringTable();
+    message.name = object.name ?? "";
+    message.numEntries = object.numEntries ?? 0;
+    message.userDataFixedSize = object.userDataFixedSize ?? false;
+    message.userDataSize = object.userDataSize ?? 0;
+    message.userDataSizeBits = object.userDataSizeBits ?? 0;
+    message.flags = object.flags ?? 0;
+    message.stringData = object.stringData ?? Buffer.alloc(0);
+    message.uncompressedSize = object.uncompressedSize ?? 0;
+    message.dataCompressed = object.dataCompressed ?? false;
+    message.usingVarintBitcounts = object.usingVarintBitcounts ?? false;
+    return message;
+  },
 };
 
 function createBaseCSVCMsgUpdateStringTable(): CSVCMsgUpdateStringTable {
@@ -4891,6 +5460,18 @@ export const CSVCMsgUpdateStringTable = {
     message.stringData !== undefined &&
       (obj.stringData = base64FromBytes(message.stringData !== undefined ? message.stringData : Buffer.alloc(0)));
     return obj;
+  },
+
+  create(base?: DeepPartial<CSVCMsgUpdateStringTable>): CSVCMsgUpdateStringTable {
+    return CSVCMsgUpdateStringTable.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgUpdateStringTable>): CSVCMsgUpdateStringTable {
+    const message = createBaseCSVCMsgUpdateStringTable();
+    message.tableId = object.tableId ?? 0;
+    message.numChangedEntries = object.numChangedEntries ?? 0;
+    message.stringData = object.stringData ?? Buffer.alloc(0);
+    return message;
   },
 };
 
@@ -5000,6 +5581,23 @@ export const CSVCMsgVoiceData = {
     message.tick !== undefined && (obj.tick = Math.round(message.tick));
     return obj;
   },
+
+  create(base?: DeepPartial<CSVCMsgVoiceData>): CSVCMsgVoiceData {
+    return CSVCMsgVoiceData.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgVoiceData>): CSVCMsgVoiceData {
+    const message = createBaseCSVCMsgVoiceData();
+    message.audio = (object.audio !== undefined && object.audio !== null)
+      ? CMsgVoiceAudio.fromPartial(object.audio)
+      : undefined;
+    message.client = object.client ?? 0;
+    message.proximity = object.proximity ?? false;
+    message.xuid = object.xuid ?? "0";
+    message.audibleMask = object.audibleMask ?? 0;
+    message.tick = object.tick ?? 0;
+    return message;
+  },
 };
 
 function createBaseCSVCMsgPacketReliable(): CSVCMsgPacketReliable {
@@ -5071,6 +5669,18 @@ export const CSVCMsgPacketReliable = {
     message.messagessize !== undefined && (obj.messagessize = Math.round(message.messagessize));
     message.state !== undefined && (obj.state = message.state);
     return obj;
+  },
+
+  create(base?: DeepPartial<CSVCMsgPacketReliable>): CSVCMsgPacketReliable {
+    return CSVCMsgPacketReliable.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgPacketReliable>): CSVCMsgPacketReliable {
+    const message = createBaseCSVCMsgPacketReliable();
+    message.tick = object.tick ?? 0;
+    message.messagessize = object.messagessize ?? 0;
+    message.state = object.state ?? false;
+    return message;
   },
 };
 
@@ -5157,6 +5767,19 @@ export const CSVCMsgFullFrameSplit = {
       (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
     return obj;
   },
+
+  create(base?: DeepPartial<CSVCMsgFullFrameSplit>): CSVCMsgFullFrameSplit {
+    return CSVCMsgFullFrameSplit.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgFullFrameSplit>): CSVCMsgFullFrameSplit {
+    const message = createBaseCSVCMsgFullFrameSplit();
+    message.tick = object.tick ?? 0;
+    message.section = object.section ?? 0;
+    message.total = object.total ?? 0;
+    message.data = object.data ?? Buffer.alloc(0);
+    return message;
+  },
 };
 
 function createBaseCSVCMsgHLTVStatus(): CSVCMsgHLTVStatus {
@@ -5241,6 +5864,19 @@ export const CSVCMsgHLTVStatus = {
     message.proxies !== undefined && (obj.proxies = Math.round(message.proxies));
     return obj;
   },
+
+  create(base?: DeepPartial<CSVCMsgHLTVStatus>): CSVCMsgHLTVStatus {
+    return CSVCMsgHLTVStatus.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgHLTVStatus>): CSVCMsgHLTVStatus {
+    const message = createBaseCSVCMsgHLTVStatus();
+    message.master = object.master ?? "";
+    message.clients = object.clients ?? 0;
+    message.slots = object.slots ?? 0;
+    message.proxies = object.proxies ?? 0;
+    return message;
+  },
 };
 
 function createBaseCSVCMsgServerSteamID(): CSVCMsgServerSteamID {
@@ -5286,6 +5922,16 @@ export const CSVCMsgServerSteamID = {
     const obj: any = {};
     message.steamId !== undefined && (obj.steamId = message.steamId);
     return obj;
+  },
+
+  create(base?: DeepPartial<CSVCMsgServerSteamID>): CSVCMsgServerSteamID {
+    return CSVCMsgServerSteamID.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgServerSteamID>): CSVCMsgServerSteamID {
+    const message = createBaseCSVCMsgServerSteamID();
+    message.steamId = object.steamId ?? "0";
+    return message;
   },
 };
 
@@ -5333,6 +5979,16 @@ export const CSVCMsgCmdKeyValues = {
     message.data !== undefined &&
       (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
     return obj;
+  },
+
+  create(base?: DeepPartial<CSVCMsgCmdKeyValues>): CSVCMsgCmdKeyValues {
+    return CSVCMsgCmdKeyValues.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgCmdKeyValues>): CSVCMsgCmdKeyValues {
+    const message = createBaseCSVCMsgCmdKeyValues();
+    message.data = object.data ?? Buffer.alloc(0);
+    return message;
   },
 };
 
@@ -5395,6 +6051,17 @@ export const CSVCMsgRconServerDetails = {
     message.details !== undefined && (obj.details = message.details);
     return obj;
   },
+
+  create(base?: DeepPartial<CSVCMsgRconServerDetails>): CSVCMsgRconServerDetails {
+    return CSVCMsgRconServerDetails.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgRconServerDetails>): CSVCMsgRconServerDetails {
+    const message = createBaseCSVCMsgRconServerDetails();
+    message.token = object.token ?? Buffer.alloc(0);
+    message.details = object.details ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgIPCAddress(): CMsgIPCAddress {
@@ -5454,6 +6121,17 @@ export const CMsgIPCAddress = {
     message.computerGuid !== undefined && (obj.computerGuid = message.computerGuid);
     message.processId !== undefined && (obj.processId = Math.round(message.processId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgIPCAddress>): CMsgIPCAddress {
+    return CMsgIPCAddress.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgIPCAddress>): CMsgIPCAddress {
+    const message = createBaseCMsgIPCAddress();
+    message.computerGuid = object.computerGuid ?? "0";
+    message.processId = object.processId ?? 0;
+    return message;
   },
 };
 
@@ -5570,6 +6248,23 @@ export const CMsgServerPeer = {
     message.isListenserverHost !== undefined && (obj.isListenserverHost = message.isListenserverHost);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgServerPeer>): CMsgServerPeer {
+    return CMsgServerPeer.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgServerPeer>): CMsgServerPeer {
+    const message = createBaseCMsgServerPeer();
+    message.playerSlot = object.playerSlot ?? 0;
+    message.steamid = object.steamid ?? "0";
+    message.ipc = (object.ipc !== undefined && object.ipc !== null)
+      ? CMsgIPCAddress.fromPartial(object.ipc)
+      : undefined;
+    message.theyHearYou = object.theyHearYou ?? false;
+    message.youHearThem = object.youHearThem ?? false;
+    message.isListenserverHost = object.isListenserverHost ?? false;
+    return message;
+  },
 };
 
 function createBaseCSVCMsgPeerList(): CSVCMsgPeerList {
@@ -5620,6 +6315,16 @@ export const CSVCMsgPeerList = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CSVCMsgPeerList>): CSVCMsgPeerList {
+    return CSVCMsgPeerList.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgPeerList>): CSVCMsgPeerList {
+    const message = createBaseCSVCMsgPeerList();
+    message.peer = object.peer?.map((e) => CMsgServerPeer.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCSVCMsgClearAllStringTables(): CSVCMsgClearAllStringTables {
@@ -5665,6 +6370,16 @@ export const CSVCMsgClearAllStringTables = {
     const obj: any = {};
     message.mapname !== undefined && (obj.mapname = message.mapname);
     return obj;
+  },
+
+  create(base?: DeepPartial<CSVCMsgClearAllStringTables>): CSVCMsgClearAllStringTables {
+    return CSVCMsgClearAllStringTables.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgClearAllStringTables>): CSVCMsgClearAllStringTables {
+    const message = createBaseCSVCMsgClearAllStringTables();
+    message.mapname = object.mapname ?? "";
+    return message;
   },
 };
 
@@ -5835,6 +6550,25 @@ export const ProtoFlattenedSerializerFieldT = {
     message.varEncoderSym !== undefined && (obj.varEncoderSym = Math.round(message.varEncoderSym));
     return obj;
   },
+
+  create(base?: DeepPartial<ProtoFlattenedSerializerFieldT>): ProtoFlattenedSerializerFieldT {
+    return ProtoFlattenedSerializerFieldT.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<ProtoFlattenedSerializerFieldT>): ProtoFlattenedSerializerFieldT {
+    const message = createBaseProtoFlattenedSerializerFieldT();
+    message.varTypeSym = object.varTypeSym ?? 0;
+    message.varNameSym = object.varNameSym ?? 0;
+    message.bitCount = object.bitCount ?? 0;
+    message.lowValue = object.lowValue ?? 0;
+    message.highValue = object.highValue ?? 0;
+    message.encodeFlags = object.encodeFlags ?? 0;
+    message.fieldSerializerNameSym = object.fieldSerializerNameSym ?? 0;
+    message.fieldSerializerVersion = object.fieldSerializerVersion ?? 0;
+    message.sendNodeSym = object.sendNodeSym ?? 0;
+    message.varEncoderSym = object.varEncoderSym ?? 0;
+    return message;
+  },
 };
 
 function createBaseProtoFlattenedSerializerT(): ProtoFlattenedSerializerT {
@@ -5921,6 +6655,18 @@ export const ProtoFlattenedSerializerT = {
       obj.fieldsIndex = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<ProtoFlattenedSerializerT>): ProtoFlattenedSerializerT {
+    return ProtoFlattenedSerializerT.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<ProtoFlattenedSerializerT>): ProtoFlattenedSerializerT {
+    const message = createBaseProtoFlattenedSerializerT();
+    message.serializerNameSym = object.serializerNameSym ?? 0;
+    message.serializerVersion = object.serializerVersion ?? 0;
+    message.fieldsIndex = object.fieldsIndex?.map((e) => e) || [];
+    return message;
   },
 };
 
@@ -6010,6 +6756,18 @@ export const CSVCMsgFlattenedSerializer = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CSVCMsgFlattenedSerializer>): CSVCMsgFlattenedSerializer {
+    return CSVCMsgFlattenedSerializer.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgFlattenedSerializer>): CSVCMsgFlattenedSerializer {
+    const message = createBaseCSVCMsgFlattenedSerializer();
+    message.serializers = object.serializers?.map((e) => ProtoFlattenedSerializerT.fromPartial(e)) || [];
+    message.symbols = object.symbols?.map((e) => e) || [];
+    message.fields = object.fields?.map((e) => ProtoFlattenedSerializerFieldT.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCSVCMsgStopSound(): CSVCMsgStopSound {
@@ -6055,6 +6813,16 @@ export const CSVCMsgStopSound = {
     const obj: any = {};
     message.guid !== undefined && (obj.guid = Math.round(message.guid));
     return obj;
+  },
+
+  create(base?: DeepPartial<CSVCMsgStopSound>): CSVCMsgStopSound {
+    return CSVCMsgStopSound.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgStopSound>): CSVCMsgStopSound {
+    const message = createBaseCSVCMsgStopSound();
+    message.guid = object.guid ?? 0;
+    return message;
   },
 };
 
@@ -6140,6 +6908,19 @@ export const CBidirMsgRebroadcastGameEvent = {
     message.receivingclients !== undefined && (obj.receivingclients = message.receivingclients);
     return obj;
   },
+
+  create(base?: DeepPartial<CBidirMsgRebroadcastGameEvent>): CBidirMsgRebroadcastGameEvent {
+    return CBidirMsgRebroadcastGameEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CBidirMsgRebroadcastGameEvent>): CBidirMsgRebroadcastGameEvent {
+    const message = createBaseCBidirMsgRebroadcastGameEvent();
+    message.posttoserver = object.posttoserver ?? false;
+    message.buftype = object.buftype ?? 0;
+    message.clientbitcount = object.clientbitcount ?? 0;
+    message.receivingclients = object.receivingclients ?? "0";
+    return message;
+  },
 };
 
 function createBaseCBidirMsgRebroadcastSource(): CBidirMsgRebroadcastSource {
@@ -6185,6 +6966,16 @@ export const CBidirMsgRebroadcastSource = {
     const obj: any = {};
     message.eventsource !== undefined && (obj.eventsource = Math.round(message.eventsource));
     return obj;
+  },
+
+  create(base?: DeepPartial<CBidirMsgRebroadcastSource>): CBidirMsgRebroadcastSource {
+    return CBidirMsgRebroadcastSource.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CBidirMsgRebroadcastSource>): CBidirMsgRebroadcastSource {
+    const message = createBaseCBidirMsgRebroadcastSource();
+    message.eventsource = object.eventsource ?? 0;
+    return message;
   },
 };
 
@@ -6558,6 +7349,40 @@ export const CMsgServerNetworkStats = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgServerNetworkStats>): CMsgServerNetworkStats {
+    return CMsgServerNetworkStats.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgServerNetworkStats>): CMsgServerNetworkStats {
+    const message = createBaseCMsgServerNetworkStats();
+    message.dedicated = object.dedicated ?? false;
+    message.cpuUsage = object.cpuUsage ?? 0;
+    message.memoryUsedMb = object.memoryUsedMb ?? 0;
+    message.memoryFreeMb = object.memoryFreeMb ?? 0;
+    message.uptime = object.uptime ?? 0;
+    message.spawnCount = object.spawnCount ?? 0;
+    message.numClients = object.numClients ?? 0;
+    message.numBots = object.numBots ?? 0;
+    message.numSpectators = object.numSpectators ?? 0;
+    message.numTvRelays = object.numTvRelays ?? 0;
+    message.fps = object.fps ?? 0;
+    message.ports = object.ports?.map((e) => CMsgServerNetworkStats_Port.fromPartial(e)) || [];
+    message.avgLatencyOut = object.avgLatencyOut ?? 0;
+    message.avgLatencyIn = object.avgLatencyIn ?? 0;
+    message.avgPacketsOut = object.avgPacketsOut ?? 0;
+    message.avgPacketsIn = object.avgPacketsIn ?? 0;
+    message.avgLossOut = object.avgLossOut ?? 0;
+    message.avgLossIn = object.avgLossIn ?? 0;
+    message.avgDataOut = object.avgDataOut ?? 0;
+    message.avgDataIn = object.avgDataIn ?? 0;
+    message.totalDataIn = object.totalDataIn ?? "0";
+    message.totalPacketsIn = object.totalPacketsIn ?? "0";
+    message.totalDataOut = object.totalDataOut ?? "0";
+    message.totalPacketsOut = object.totalPacketsOut ?? "0";
+    message.players = object.players?.map((e) => CMsgServerNetworkStats_Player.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgServerNetworkStats_Port(): CMsgServerNetworkStats_Port {
@@ -6614,6 +7439,17 @@ export const CMsgServerNetworkStats_Port = {
     message.port !== undefined && (obj.port = Math.round(message.port));
     message.name !== undefined && (obj.name = message.name);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgServerNetworkStats_Port>): CMsgServerNetworkStats_Port {
+    return CMsgServerNetworkStats_Port.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgServerNetworkStats_Port>): CMsgServerNetworkStats_Port {
+    const message = createBaseCMsgServerNetworkStats_Port();
+    message.port = object.port ?? 0;
+    message.name = object.name ?? "";
+    return message;
   },
 };
 
@@ -6722,6 +7558,21 @@ export const CMsgServerNetworkStats_Player = {
     message.packetLossPct !== undefined && (obj.packetLossPct = message.packetLossPct);
     message.isBot !== undefined && (obj.isBot = message.isBot);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgServerNetworkStats_Player>): CMsgServerNetworkStats_Player {
+    return CMsgServerNetworkStats_Player.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgServerNetworkStats_Player>): CMsgServerNetworkStats_Player {
+    const message = createBaseCMsgServerNetworkStats_Player();
+    message.steamid = object.steamid ?? "0";
+    message.remoteAddr = object.remoteAddr ?? "";
+    message.pingStddevMs = object.pingStddevMs ?? 0;
+    message.pingAvgMs = object.pingAvgMs ?? 0;
+    message.packetLossPct = object.packetLossPct ?? 0;
+    message.isBot = object.isBot ?? false;
+    return message;
   },
 };
 
@@ -6864,6 +7715,23 @@ export const CSVCMsgHltvReplay = {
     message.reason !== undefined && (obj.reason = Math.round(message.reason));
     return obj;
   },
+
+  create(base?: DeepPartial<CSVCMsgHltvReplay>): CSVCMsgHltvReplay {
+    return CSVCMsgHltvReplay.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgHltvReplay>): CSVCMsgHltvReplay {
+    const message = createBaseCSVCMsgHltvReplay();
+    message.delay = object.delay ?? 0;
+    message.primaryTarget = object.primaryTarget ?? 0;
+    message.replayStopAt = object.replayStopAt ?? 0;
+    message.replayStartAt = object.replayStartAt ?? 0;
+    message.replaySlowdownBegin = object.replaySlowdownBegin ?? 0;
+    message.replaySlowdownEnd = object.replaySlowdownEnd ?? 0;
+    message.replaySlowdownRate = object.replaySlowdownRate ?? 0;
+    message.reason = object.reason ?? 0;
+    return message;
+  },
 };
 
 function createBaseCCLCMsgHltvReplay(): CCLCMsgHltvReplay {
@@ -6960,6 +7828,20 @@ export const CCLCMsgHltvReplay = {
     message.eventTime !== undefined && (obj.eventTime = message.eventTime);
     return obj;
   },
+
+  create(base?: DeepPartial<CCLCMsgHltvReplay>): CCLCMsgHltvReplay {
+    return CCLCMsgHltvReplay.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CCLCMsgHltvReplay>): CCLCMsgHltvReplay {
+    const message = createBaseCCLCMsgHltvReplay();
+    message.request = object.request ?? 0;
+    message.slowdownLength = object.slowdownLength ?? 0;
+    message.slowdownRate = object.slowdownRate ?? 0;
+    message.primaryTarget = object.primaryTarget ?? 0;
+    message.eventTime = object.eventTime ?? 0;
+    return message;
+  },
 };
 
 function createBaseCSVCMsgBroadcastCommand(): CSVCMsgBroadcastCommand {
@@ -7005,6 +7887,16 @@ export const CSVCMsgBroadcastCommand = {
     const obj: any = {};
     message.cmd !== undefined && (obj.cmd = message.cmd);
     return obj;
+  },
+
+  create(base?: DeepPartial<CSVCMsgBroadcastCommand>): CSVCMsgBroadcastCommand {
+    return CSVCMsgBroadcastCommand.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgBroadcastCommand>): CSVCMsgBroadcastCommand {
+    const message = createBaseCSVCMsgBroadcastCommand();
+    message.cmd = object.cmd ?? "";
+    return message;
   },
 };
 
@@ -7150,6 +8042,29 @@ export const CCLCMsgHltvFixupOperatorTick = {
       (obj.viewOffset = message.viewOffset ? CMsgVector.toJSON(message.viewOffset) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CCLCMsgHltvFixupOperatorTick>): CCLCMsgHltvFixupOperatorTick {
+    return CCLCMsgHltvFixupOperatorTick.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CCLCMsgHltvFixupOperatorTick>): CCLCMsgHltvFixupOperatorTick {
+    const message = createBaseCCLCMsgHltvFixupOperatorTick();
+    message.tick = object.tick ?? 0;
+    message.propsData = object.propsData ?? Buffer.alloc(0);
+    message.origin = (object.origin !== undefined && object.origin !== null)
+      ? CMsgVector.fromPartial(object.origin)
+      : undefined;
+    message.eyeAngles = (object.eyeAngles !== undefined && object.eyeAngles !== null)
+      ? CMsgQAngle.fromPartial(object.eyeAngles)
+      : undefined;
+    message.observerMode = object.observerMode ?? 0;
+    message.cameramanScoreboard = object.cameramanScoreboard ?? false;
+    message.observerTarget = object.observerTarget ?? 0;
+    message.viewOffset = (object.viewOffset !== undefined && object.viewOffset !== null)
+      ? CMsgVector.fromPartial(object.viewOffset)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCSVCMsgHltvFixupOperatorStatus(): CSVCMsgHltvFixupOperatorStatus {
@@ -7210,6 +8125,17 @@ export const CSVCMsgHltvFixupOperatorStatus = {
     message.overrideOperatorName !== undefined && (obj.overrideOperatorName = message.overrideOperatorName);
     return obj;
   },
+
+  create(base?: DeepPartial<CSVCMsgHltvFixupOperatorStatus>): CSVCMsgHltvFixupOperatorStatus {
+    return CSVCMsgHltvFixupOperatorStatus.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSVCMsgHltvFixupOperatorStatus>): CSVCMsgHltvFixupOperatorStatus {
+    const message = createBaseCSVCMsgHltvFixupOperatorStatus();
+    message.mode = object.mode ?? 0;
+    message.overrideOperatorName = object.overrideOperatorName ?? "";
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -7255,6 +8181,13 @@ function base64FromBytes(arr: Uint8Array): string {
     return tsProtoGlobalThis.btoa(bin.join(""));
   }
 }
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

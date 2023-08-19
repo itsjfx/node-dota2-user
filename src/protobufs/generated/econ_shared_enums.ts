@@ -259,6 +259,17 @@ export const CMsgGenericResult = {
     message.debugMessage !== undefined && (obj.debugMessage = message.debugMessage);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGenericResult>): CMsgGenericResult {
+    return CMsgGenericResult.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGenericResult>): CMsgGenericResult {
+    const message = createBaseCMsgGenericResult();
+    message.eresult = object.eresult ?? 0;
+    message.debugMessage = object.debugMessage ?? "";
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -279,6 +290,13 @@ var tsProtoGlobalThis: any = (() => {
   }
   throw "Unable to locate global object";
 })();
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function isSet(value: any): boolean {
   return value !== null && value !== undefined;

@@ -2441,6 +2441,29 @@ export const CSODOTAPartyMember = {
     message.isSteamChina !== undefined && (obj.isSteamChina = message.isSteamChina);
     return obj;
   },
+
+  create(base?: DeepPartial<CSODOTAPartyMember>): CSODOTAPartyMember {
+    return CSODOTAPartyMember.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSODOTAPartyMember>): CSODOTAPartyMember {
+    const message = createBaseCSODOTAPartyMember();
+    message.isCoach = object.isCoach ?? false;
+    message.regionPingCodes = object.regionPingCodes?.map((e) => e) || [];
+    message.regionPingTimes = object.regionPingTimes?.map((e) => e) || [];
+    message.regionPingFailedBitmask = object.regionPingFailedBitmask ?? 0;
+    message.isPlusSubscriber = object.isPlusSubscriber ?? false;
+    message.tourneySkillLevel = object.tourneySkillLevel ?? 0;
+    message.tourneyBuyin = object.tourneyBuyin ?? 0;
+    message.tourneyPreventUntil = object.tourneyPreventUntil ?? 0;
+    message.mmDataValid = object.mmDataValid ?? false;
+    message.laneSelectionFlags = object.laneSelectionFlags ?? 0;
+    message.highPriorityDisabled = object.highPriorityDisabled ?? false;
+    message.hasHpResource = object.hasHpResource ?? false;
+    message.joinedFromPartyfinder = object.joinedFromPartyfinder ?? false;
+    message.isSteamChina = object.isSteamChina ?? false;
+    return message;
+  },
 };
 
 function createBaseCSODOTAParty(): CSODOTAParty {
@@ -3199,6 +3222,68 @@ export const CSODOTAParty = {
     message.botScriptIndexMask !== undefined && (obj.botScriptIndexMask = Math.round(message.botScriptIndexMask));
     return obj;
   },
+
+  create(base?: DeepPartial<CSODOTAParty>): CSODOTAParty {
+    return CSODOTAParty.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSODOTAParty>): CSODOTAParty {
+    const message = createBaseCSODOTAParty();
+    message.partyId = object.partyId ?? "0";
+    message.leaderId = object.leaderId ?? "0";
+    message.memberIds = object.memberIds?.map((e) => e) || [];
+    message.gameModes = object.gameModes ?? 0;
+    message.state = object.state ?? 0;
+    message.effectiveStartedMatchmakingTime = object.effectiveStartedMatchmakingTime ?? 0;
+    message.rawStartedMatchmakingTime = object.rawStartedMatchmakingTime ?? 0;
+    message.attemptStartTime = object.attemptStartTime ?? 0;
+    message.attemptNum = object.attemptNum ?? 0;
+    message.matchgroups = object.matchgroups ?? 0;
+    message.lowPriorityAccountId = object.lowPriorityAccountId ?? 0;
+    message.matchType = object.matchType ?? 0;
+    message.teamId = object.teamId ?? 0;
+    message.teamName = object.teamName ?? "";
+    message.teamUiLogo = object.teamUiLogo ?? "0";
+    message.teamBaseLogo = object.teamBaseLogo ?? "0";
+    message.matchDisabledUntilDate = object.matchDisabledUntilDate ?? 0;
+    message.matchDisabledAccountId = object.matchDisabledAccountId ?? 0;
+    message.matchmakingMaxRangeMinutes = object.matchmakingMaxRangeMinutes ?? 0;
+    message.matchlanguages = object.matchlanguages ?? 0;
+    message.members = object.members?.map((e) => CSODOTAPartyMember.fromPartial(e)) || [];
+    message.lowPriorityGamesRemaining = object.lowPriorityGamesRemaining ?? 0;
+    message.openForJoinRequests = object.openForJoinRequests ?? false;
+    message.sentInvites = object.sentInvites?.map((e) => CSODOTAPartyInvite.fromPartial(e)) || [];
+    message.recvInvites = object.recvInvites?.map((e) => CSODOTAPartyInvite.fromPartial(e)) || [];
+    message.accountFlags = object.accountFlags ?? 0;
+    message.regionSelectFlags = object.regionSelectFlags ?? 0;
+    message.exclusiveTournamentId = object.exclusiveTournamentId ?? 0;
+    message.tourneyDivisionId = object.tourneyDivisionId ?? 0;
+    message.tourneyScheduleTime = object.tourneyScheduleTime ?? 0;
+    message.tourneySkillLevel = object.tourneySkillLevel ?? 0;
+    message.tourneyBracketRound = object.tourneyBracketRound ?? 0;
+    message.tourneyQueueDeadlineTime = object.tourneyQueueDeadlineTime ?? 0;
+    message.tourneyQueueDeadlineState = object.tourneyQueueDeadlineState ?? 0;
+    message.partyBuilderSlotsToFill = object.partyBuilderSlotsToFill ?? 0;
+    message.partyBuilderMatchGroups = object.partyBuilderMatchGroups ?? 0;
+    message.partyBuilderStartTime = object.partyBuilderStartTime ?? 0;
+    message.soloQueue = object.soloQueue ?? false;
+    message.steamClanAccountId = object.steamClanAccountId ?? 0;
+    message.readyCheck = (object.readyCheck !== undefined && object.readyCheck !== null)
+      ? CMsgReadyCheckStatus.fromPartial(object.readyCheck)
+      : undefined;
+    message.customGameDisabledUntilDate = object.customGameDisabledUntilDate ?? 0;
+    message.customGameDisabledAccountId = object.customGameDisabledAccountId ?? 0;
+    message.isChallengeMatch = object.isChallengeMatch ?? false;
+    message.partySearchBeaconActive = object.partySearchBeaconActive ?? false;
+    message.matchmakingFlags = object.matchmakingFlags ?? 0;
+    message.highPriorityState = object.highPriorityState ?? 0;
+    message.laneSelectionsEnabled = object.laneSelectionsEnabled ?? false;
+    message.customGameDifficultyMask = object.customGameDifficultyMask ?? 0;
+    message.isSteamChina = object.isSteamChina ?? false;
+    message.botDifficultyMask = object.botDifficultyMask ?? 0;
+    message.botScriptIndexMask = object.botScriptIndexMask ?? 0;
+    return message;
+  },
 };
 
 function createBaseCSODOTAPartyInvite(): CSODOTAPartyInvite {
@@ -3346,6 +3431,23 @@ export const CSODOTAPartyInvite = {
     message.inviteGid !== undefined && (obj.inviteGid = message.inviteGid);
     return obj;
   },
+
+  create(base?: DeepPartial<CSODOTAPartyInvite>): CSODOTAPartyInvite {
+    return CSODOTAPartyInvite.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSODOTAPartyInvite>): CSODOTAPartyInvite {
+    const message = createBaseCSODOTAPartyInvite();
+    message.groupId = object.groupId ?? "0";
+    message.senderId = object.senderId ?? "0";
+    message.senderName = object.senderName ?? "";
+    message.members = object.members?.map((e) => CSODOTAPartyInvite_PartyMember.fromPartial(e)) || [];
+    message.teamId = object.teamId ?? 0;
+    message.lowPriorityStatus = object.lowPriorityStatus ?? false;
+    message.asCoach = object.asCoach ?? false;
+    message.inviteGid = object.inviteGid ?? "0";
+    return message;
+  },
 };
 
 function createBaseCSODOTAPartyInvite_PartyMember(): CSODOTAPartyInvite_PartyMember {
@@ -3417,6 +3519,18 @@ export const CSODOTAPartyInvite_PartyMember = {
     message.steamId !== undefined && (obj.steamId = message.steamId);
     message.isCoach !== undefined && (obj.isCoach = message.isCoach);
     return obj;
+  },
+
+  create(base?: DeepPartial<CSODOTAPartyInvite_PartyMember>): CSODOTAPartyInvite_PartyMember {
+    return CSODOTAPartyInvite_PartyMember.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSODOTAPartyInvite_PartyMember>): CSODOTAPartyInvite_PartyMember {
+    const message = createBaseCSODOTAPartyInvite_PartyMember();
+    message.name = object.name ?? "";
+    message.steamId = object.steamId ?? "0";
+    message.isCoach = object.isCoach ?? false;
+    return message;
   },
 };
 
@@ -3533,6 +3647,21 @@ export const CMsgLeaverState = {
     message.massDisconnect !== undefined && (obj.massDisconnect = message.massDisconnect);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgLeaverState>): CMsgLeaverState {
+    return CMsgLeaverState.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgLeaverState>): CMsgLeaverState {
+    const message = createBaseCMsgLeaverState();
+    message.lobbyState = object.lobbyState ?? 0;
+    message.gameState = object.gameState ?? 0;
+    message.leaverDetected = object.leaverDetected ?? false;
+    message.firstBloodHappened = object.firstBloodHappened ?? false;
+    message.discardMatchResults = object.discardMatchResults ?? false;
+    message.massDisconnect = object.massDisconnect ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgReadyCheckStatus(): CMsgReadyCheckStatus {
@@ -3623,6 +3752,19 @@ export const CMsgReadyCheckStatus = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgReadyCheckStatus>): CMsgReadyCheckStatus {
+    return CMsgReadyCheckStatus.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgReadyCheckStatus>): CMsgReadyCheckStatus {
+    const message = createBaseCMsgReadyCheckStatus();
+    message.startTimestamp = object.startTimestamp ?? 0;
+    message.finishTimestamp = object.finishTimestamp ?? 0;
+    message.initiatorAccountId = object.initiatorAccountId ?? 0;
+    message.readyMembers = object.readyMembers?.map((e) => CMsgReadyCheckStatus_ReadyMember.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgReadyCheckStatus_ReadyMember(): CMsgReadyCheckStatus_ReadyMember {
@@ -3683,6 +3825,17 @@ export const CMsgReadyCheckStatus_ReadyMember = {
     message.readyStatus !== undefined && (obj.readyStatus = eReadyCheckStatusToJSON(message.readyStatus));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgReadyCheckStatus_ReadyMember>): CMsgReadyCheckStatus_ReadyMember {
+    return CMsgReadyCheckStatus_ReadyMember.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgReadyCheckStatus_ReadyMember>): CMsgReadyCheckStatus_ReadyMember {
+    const message = createBaseCMsgReadyCheckStatus_ReadyMember();
+    message.accountId = object.accountId ?? 0;
+    message.readyStatus = object.readyStatus ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgPartyReadyCheckRequest(): CMsgPartyReadyCheckRequest {
@@ -3717,6 +3870,15 @@ export const CMsgPartyReadyCheckRequest = {
   toJSON(_: CMsgPartyReadyCheckRequest): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgPartyReadyCheckRequest>): CMsgPartyReadyCheckRequest {
+    return CMsgPartyReadyCheckRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgPartyReadyCheckRequest>): CMsgPartyReadyCheckRequest {
+    const message = createBaseCMsgPartyReadyCheckRequest();
+    return message;
   },
 };
 
@@ -3764,6 +3926,16 @@ export const CMsgPartyReadyCheckResponse = {
     message.result !== undefined && (obj.result = eReadyCheckRequestResultToJSON(message.result));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgPartyReadyCheckResponse>): CMsgPartyReadyCheckResponse {
+    return CMsgPartyReadyCheckResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPartyReadyCheckResponse>): CMsgPartyReadyCheckResponse {
+    const message = createBaseCMsgPartyReadyCheckResponse();
+    message.result = object.result ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgPartyReadyCheckAcknowledge(): CMsgPartyReadyCheckAcknowledge {
@@ -3809,6 +3981,16 @@ export const CMsgPartyReadyCheckAcknowledge = {
     const obj: any = {};
     message.readyStatus !== undefined && (obj.readyStatus = eReadyCheckStatusToJSON(message.readyStatus));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgPartyReadyCheckAcknowledge>): CMsgPartyReadyCheckAcknowledge {
+    return CMsgPartyReadyCheckAcknowledge.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPartyReadyCheckAcknowledge>): CMsgPartyReadyCheckAcknowledge {
+    const message = createBaseCMsgPartyReadyCheckAcknowledge();
+    message.readyStatus = object.readyStatus ?? 0;
+    return message;
   },
 };
 
@@ -3856,6 +4038,16 @@ export const CMsgLobbyEventGameDetails = {
     message.kvData !== undefined &&
       (obj.kvData = base64FromBytes(message.kvData !== undefined ? message.kvData : Buffer.alloc(0)));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgLobbyEventGameDetails>): CMsgLobbyEventGameDetails {
+    return CMsgLobbyEventGameDetails.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgLobbyEventGameDetails>): CMsgLobbyEventGameDetails {
+    const message = createBaseCMsgLobbyEventGameDetails();
+    message.kvData = object.kvData ?? Buffer.alloc(0);
+    return message;
   },
 };
 
@@ -3932,6 +4124,18 @@ export const CMsgMatchMatchmakingStats = {
       (obj.behaviorScoreVariance = eMatchBehaviorScoreVarianceToJSON(message.behaviorScoreVariance));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgMatchMatchmakingStats>): CMsgMatchMatchmakingStats {
+    return CMsgMatchMatchmakingStats.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgMatchMatchmakingStats>): CMsgMatchMatchmakingStats {
+    const message = createBaseCMsgMatchMatchmakingStats();
+    message.averageQueueTime = object.averageQueueTime ?? 0;
+    message.maximumQueueTime = object.maximumQueueTime ?? 0;
+    message.behaviorScoreVariance = object.behaviorScoreVariance ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMvpData(): CMvpData {
@@ -3981,6 +4185,16 @@ export const CMvpData = {
       obj.mvps = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMvpData>): CMvpData {
+    return CMvpData.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMvpData>): CMvpData {
+    const message = createBaseCMvpData();
+    message.mvps = object.mvps?.map((e) => CMvpData_MvpDatum.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -4048,6 +4262,17 @@ export const CMvpData_MvpDatum = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMvpData_MvpDatum>): CMvpData_MvpDatum {
+    return CMvpData_MvpDatum.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMvpData_MvpDatum>): CMvpData_MvpDatum {
+    const message = createBaseCMvpData_MvpDatum();
+    message.playerSlot = object.playerSlot ?? 0;
+    message.accolades = object.accolades?.map((e) => CMvpData_MvpDatum_MvpAccolade.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMvpData_MvpDatum_MvpAccolade(): CMvpData_MvpDatum_MvpAccolade {
@@ -4108,6 +4333,17 @@ export const CMvpData_MvpDatum_MvpAccolade = {
     message.detailValue !== undefined && (obj.detailValue = message.detailValue);
     return obj;
   },
+
+  create(base?: DeepPartial<CMvpData_MvpDatum_MvpAccolade>): CMvpData_MvpDatum_MvpAccolade {
+    return CMvpData_MvpDatum_MvpAccolade.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMvpData_MvpDatum_MvpAccolade>): CMvpData_MvpDatum_MvpAccolade {
+    const message = createBaseCMvpData_MvpDatum_MvpAccolade();
+    message.type = object.type ?? 1;
+    message.detailValue = object.detailValue ?? 0;
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -4153,6 +4389,13 @@ function base64FromBytes(arr: Uint8Array): string {
     return tsProtoGlobalThis.btoa(bin.join(""));
   }
 }
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

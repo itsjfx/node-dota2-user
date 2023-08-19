@@ -460,6 +460,17 @@ export const CMsgTEArmorRicochet = {
     message.dir !== undefined && (obj.dir = message.dir ? CMsgVector.toJSON(message.dir) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgTEArmorRicochet>): CMsgTEArmorRicochet {
+    return CMsgTEArmorRicochet.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTEArmorRicochet>): CMsgTEArmorRicochet {
+    const message = createBaseCMsgTEArmorRicochet();
+    message.pos = (object.pos !== undefined && object.pos !== null) ? CMsgVector.fromPartial(object.pos) : undefined;
+    message.dir = (object.dir !== undefined && object.dir !== null) ? CMsgVector.fromPartial(object.dir) : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgTEBaseBeam(): CMsgTEBaseBeam {
@@ -653,6 +664,27 @@ export const CMsgTEBaseBeam = {
     message.flags !== undefined && (obj.flags = Math.round(message.flags));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgTEBaseBeam>): CMsgTEBaseBeam {
+    return CMsgTEBaseBeam.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTEBaseBeam>): CMsgTEBaseBeam {
+    const message = createBaseCMsgTEBaseBeam();
+    message.modelindex = object.modelindex ?? "0";
+    message.haloindex = object.haloindex ?? "0";
+    message.startframe = object.startframe ?? 0;
+    message.framerate = object.framerate ?? 0;
+    message.life = object.life ?? 0;
+    message.width = object.width ?? 0;
+    message.endwidth = object.endwidth ?? 0;
+    message.fadelength = object.fadelength ?? 0;
+    message.amplitude = object.amplitude ?? 0;
+    message.color = object.color ?? 0;
+    message.speed = object.speed ?? 0;
+    message.flags = object.flags ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgTEBeamEntPoint(): CMsgTEBeamEntPoint {
@@ -749,6 +781,24 @@ export const CMsgTEBeamEntPoint = {
     message.end !== undefined && (obj.end = message.end ? CMsgVector.toJSON(message.end) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgTEBeamEntPoint>): CMsgTEBeamEntPoint {
+    return CMsgTEBeamEntPoint.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTEBeamEntPoint>): CMsgTEBeamEntPoint {
+    const message = createBaseCMsgTEBeamEntPoint();
+    message.base = (object.base !== undefined && object.base !== null)
+      ? CMsgTEBaseBeam.fromPartial(object.base)
+      : undefined;
+    message.startentity = object.startentity ?? 0;
+    message.endentity = object.endentity ?? 0;
+    message.start = (object.start !== undefined && object.start !== null)
+      ? CMsgVector.fromPartial(object.start)
+      : undefined;
+    message.end = (object.end !== undefined && object.end !== null) ? CMsgVector.fromPartial(object.end) : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgTEBeamEnts(): CMsgTEBeamEnts {
@@ -820,6 +870,20 @@ export const CMsgTEBeamEnts = {
     message.startentity !== undefined && (obj.startentity = Math.round(message.startentity));
     message.endentity !== undefined && (obj.endentity = Math.round(message.endentity));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgTEBeamEnts>): CMsgTEBeamEnts {
+    return CMsgTEBeamEnts.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTEBeamEnts>): CMsgTEBeamEnts {
+    const message = createBaseCMsgTEBeamEnts();
+    message.base = (object.base !== undefined && object.base !== null)
+      ? CMsgTEBaseBeam.fromPartial(object.base)
+      : undefined;
+    message.startentity = object.startentity ?? 0;
+    message.endentity = object.endentity ?? 0;
+    return message;
   },
 };
 
@@ -893,6 +957,22 @@ export const CMsgTEBeamPoints = {
     message.end !== undefined && (obj.end = message.end ? CMsgVector.toJSON(message.end) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgTEBeamPoints>): CMsgTEBeamPoints {
+    return CMsgTEBeamPoints.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTEBeamPoints>): CMsgTEBeamPoints {
+    const message = createBaseCMsgTEBeamPoints();
+    message.base = (object.base !== undefined && object.base !== null)
+      ? CMsgTEBaseBeam.fromPartial(object.base)
+      : undefined;
+    message.start = (object.start !== undefined && object.start !== null)
+      ? CMsgVector.fromPartial(object.start)
+      : undefined;
+    message.end = (object.end !== undefined && object.end !== null) ? CMsgVector.fromPartial(object.end) : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgTEBeamRing(): CMsgTEBeamRing {
@@ -964,6 +1044,20 @@ export const CMsgTEBeamRing = {
     message.startentity !== undefined && (obj.startentity = Math.round(message.startentity));
     message.endentity !== undefined && (obj.endentity = Math.round(message.endentity));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgTEBeamRing>): CMsgTEBeamRing {
+    return CMsgTEBeamRing.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTEBeamRing>): CMsgTEBeamRing {
+    const message = createBaseCMsgTEBeamRing();
+    message.base = (object.base !== undefined && object.base !== null)
+      ? CMsgTEBaseBeam.fromPartial(object.base)
+      : undefined;
+    message.startentity = object.startentity ?? 0;
+    message.endentity = object.endentity ?? 0;
+    return message;
   },
 };
 
@@ -1061,6 +1155,26 @@ export const CMsgTEBSPDecal = {
     message.index !== undefined && (obj.index = Math.round(message.index));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgTEBSPDecal>): CMsgTEBSPDecal {
+    return CMsgTEBSPDecal.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTEBSPDecal>): CMsgTEBSPDecal {
+    const message = createBaseCMsgTEBSPDecal();
+    message.origin = (object.origin !== undefined && object.origin !== null)
+      ? CMsgVector.fromPartial(object.origin)
+      : undefined;
+    message.normal = (object.normal !== undefined && object.normal !== null)
+      ? CMsgVector.fromPartial(object.normal)
+      : undefined;
+    message.saxis = (object.saxis !== undefined && object.saxis !== null)
+      ? CMsgVector.fromPartial(object.saxis)
+      : undefined;
+    message.entity = object.entity ?? 0;
+    message.index = object.index ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgTEBubbles(): CMsgTEBubbles {
@@ -1156,6 +1270,24 @@ export const CMsgTEBubbles = {
     message.count !== undefined && (obj.count = Math.round(message.count));
     message.speed !== undefined && (obj.speed = message.speed);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgTEBubbles>): CMsgTEBubbles {
+    return CMsgTEBubbles.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTEBubbles>): CMsgTEBubbles {
+    const message = createBaseCMsgTEBubbles();
+    message.mins = (object.mins !== undefined && object.mins !== null)
+      ? CMsgVector.fromPartial(object.mins)
+      : undefined;
+    message.maxs = (object.maxs !== undefined && object.maxs !== null)
+      ? CMsgVector.fromPartial(object.maxs)
+      : undefined;
+    message.height = object.height ?? 0;
+    message.count = object.count ?? 0;
+    message.speed = object.speed ?? 0;
+    return message;
   },
 };
 
@@ -1253,6 +1385,24 @@ export const CMsgTEBubbleTrail = {
     message.speed !== undefined && (obj.speed = message.speed);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgTEBubbleTrail>): CMsgTEBubbleTrail {
+    return CMsgTEBubbleTrail.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTEBubbleTrail>): CMsgTEBubbleTrail {
+    const message = createBaseCMsgTEBubbleTrail();
+    message.mins = (object.mins !== undefined && object.mins !== null)
+      ? CMsgVector.fromPartial(object.mins)
+      : undefined;
+    message.maxs = (object.maxs !== undefined && object.maxs !== null)
+      ? CMsgVector.fromPartial(object.maxs)
+      : undefined;
+    message.waterz = object.waterz ?? 0;
+    message.count = object.count ?? 0;
+    message.speed = object.speed ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgTEDecal(): CMsgTEDecal {
@@ -1348,6 +1498,24 @@ export const CMsgTEDecal = {
     message.hitbox !== undefined && (obj.hitbox = Math.round(message.hitbox));
     message.index !== undefined && (obj.index = Math.round(message.index));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgTEDecal>): CMsgTEDecal {
+    return CMsgTEDecal.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTEDecal>): CMsgTEDecal {
+    const message = createBaseCMsgTEDecal();
+    message.origin = (object.origin !== undefined && object.origin !== null)
+      ? CMsgVector.fromPartial(object.origin)
+      : undefined;
+    message.start = (object.start !== undefined && object.start !== null)
+      ? CMsgVector.fromPartial(object.start)
+      : undefined;
+    message.entity = object.entity ?? 0;
+    message.hitbox = object.hitbox ?? 0;
+    message.index = object.index ?? 0;
+    return message;
   },
 };
 
@@ -1633,6 +1801,42 @@ export const CMsgEffectData = {
     message.attachmentname !== undefined && (obj.attachmentname = Math.round(message.attachmentname));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgEffectData>): CMsgEffectData {
+    return CMsgEffectData.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgEffectData>): CMsgEffectData {
+    const message = createBaseCMsgEffectData();
+    message.origin = (object.origin !== undefined && object.origin !== null)
+      ? CMsgVector.fromPartial(object.origin)
+      : undefined;
+    message.start = (object.start !== undefined && object.start !== null)
+      ? CMsgVector.fromPartial(object.start)
+      : undefined;
+    message.normal = (object.normal !== undefined && object.normal !== null)
+      ? CMsgVector.fromPartial(object.normal)
+      : undefined;
+    message.angles = (object.angles !== undefined && object.angles !== null)
+      ? CMsgQAngle.fromPartial(object.angles)
+      : undefined;
+    message.entity = object.entity ?? 0;
+    message.otherentity = object.otherentity ?? 0;
+    message.scale = object.scale ?? 0;
+    message.magnitude = object.magnitude ?? 0;
+    message.radius = object.radius ?? 0;
+    message.surfaceprop = object.surfaceprop ?? 0;
+    message.effectindex = object.effectindex ?? "0";
+    message.damagetype = object.damagetype ?? 0;
+    message.material = object.material ?? 0;
+    message.hitbox = object.hitbox ?? 0;
+    message.color = object.color ?? 0;
+    message.flags = object.flags ?? 0;
+    message.attachmentindex = object.attachmentindex ?? 0;
+    message.effectname = object.effectname ?? 0;
+    message.attachmentname = object.attachmentname ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgTEEffectDispatch(): CMsgTEEffectDispatch {
@@ -1679,6 +1883,18 @@ export const CMsgTEEffectDispatch = {
     message.effectdata !== undefined &&
       (obj.effectdata = message.effectdata ? CMsgEffectData.toJSON(message.effectdata) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgTEEffectDispatch>): CMsgTEEffectDispatch {
+    return CMsgTEEffectDispatch.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTEEffectDispatch>): CMsgTEEffectDispatch {
+    const message = createBaseCMsgTEEffectDispatch();
+    message.effectdata = (object.effectdata !== undefined && object.effectdata !== null)
+      ? CMsgEffectData.fromPartial(object.effectdata)
+      : undefined;
+    return message;
   },
 };
 
@@ -1752,6 +1968,18 @@ export const CMsgTEEnergySplash = {
     message.explosive !== undefined && (obj.explosive = message.explosive);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgTEEnergySplash>): CMsgTEEnergySplash {
+    return CMsgTEEnergySplash.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTEEnergySplash>): CMsgTEEnergySplash {
+    const message = createBaseCMsgTEEnergySplash();
+    message.pos = (object.pos !== undefined && object.pos !== null) ? CMsgVector.fromPartial(object.pos) : undefined;
+    message.dir = (object.dir !== undefined && object.dir !== null) ? CMsgVector.fromPartial(object.dir) : undefined;
+    message.explosive = object.explosive ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgTEFizz(): CMsgTEFizz {
@@ -1823,6 +2051,18 @@ export const CMsgTEFizz = {
     message.density !== undefined && (obj.density = Math.round(message.density));
     message.current !== undefined && (obj.current = Math.round(message.current));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgTEFizz>): CMsgTEFizz {
+    return CMsgTEFizz.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTEFizz>): CMsgTEFizz {
+    const message = createBaseCMsgTEFizz();
+    message.entity = object.entity ?? 0;
+    message.density = object.density ?? 0;
+    message.current = object.current ?? 0;
+    return message;
   },
 };
 
@@ -1992,6 +2232,33 @@ export const CMsgTEShatterSurface = {
     message.backcolor !== undefined && (obj.backcolor = Math.round(message.backcolor));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgTEShatterSurface>): CMsgTEShatterSurface {
+    return CMsgTEShatterSurface.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTEShatterSurface>): CMsgTEShatterSurface {
+    const message = createBaseCMsgTEShatterSurface();
+    message.origin = (object.origin !== undefined && object.origin !== null)
+      ? CMsgVector.fromPartial(object.origin)
+      : undefined;
+    message.angles = (object.angles !== undefined && object.angles !== null)
+      ? CMsgQAngle.fromPartial(object.angles)
+      : undefined;
+    message.force = (object.force !== undefined && object.force !== null)
+      ? CMsgVector.fromPartial(object.force)
+      : undefined;
+    message.forcepos = (object.forcepos !== undefined && object.forcepos !== null)
+      ? CMsgVector.fromPartial(object.forcepos)
+      : undefined;
+    message.width = object.width ?? 0;
+    message.height = object.height ?? 0;
+    message.shardsize = object.shardsize ?? 0;
+    message.surfacetype = object.surfacetype ?? 0;
+    message.frontcolor = object.frontcolor ?? 0;
+    message.backcolor = object.backcolor ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgTEGlowSprite(): CMsgTEGlowSprite {
@@ -2076,6 +2343,21 @@ export const CMsgTEGlowSprite = {
     message.brightness !== undefined && (obj.brightness = Math.round(message.brightness));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgTEGlowSprite>): CMsgTEGlowSprite {
+    return CMsgTEGlowSprite.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTEGlowSprite>): CMsgTEGlowSprite {
+    const message = createBaseCMsgTEGlowSprite();
+    message.origin = (object.origin !== undefined && object.origin !== null)
+      ? CMsgVector.fromPartial(object.origin)
+      : undefined;
+    message.scale = object.scale ?? 0;
+    message.life = object.life ?? 0;
+    message.brightness = object.brightness ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgTEImpact(): CMsgTEImpact {
@@ -2147,6 +2429,22 @@ export const CMsgTEImpact = {
     message.normal !== undefined && (obj.normal = message.normal ? CMsgVector.toJSON(message.normal) : undefined);
     message.type !== undefined && (obj.type = Math.round(message.type));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgTEImpact>): CMsgTEImpact {
+    return CMsgTEImpact.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTEImpact>): CMsgTEImpact {
+    const message = createBaseCMsgTEImpact();
+    message.origin = (object.origin !== undefined && object.origin !== null)
+      ? CMsgVector.fromPartial(object.origin)
+      : undefined;
+    message.normal = (object.normal !== undefined && object.normal !== null)
+      ? CMsgVector.fromPartial(object.normal)
+      : undefined;
+    message.type = object.type ?? 0;
+    return message;
   },
 };
 
@@ -2232,6 +2530,23 @@ export const CMsgTEMuzzleFlash = {
     message.type !== undefined && (obj.type = Math.round(message.type));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgTEMuzzleFlash>): CMsgTEMuzzleFlash {
+    return CMsgTEMuzzleFlash.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTEMuzzleFlash>): CMsgTEMuzzleFlash {
+    const message = createBaseCMsgTEMuzzleFlash();
+    message.origin = (object.origin !== undefined && object.origin !== null)
+      ? CMsgVector.fromPartial(object.origin)
+      : undefined;
+    message.angles = (object.angles !== undefined && object.angles !== null)
+      ? CMsgQAngle.fromPartial(object.angles)
+      : undefined;
+    message.scale = object.scale ?? 0;
+    message.type = object.type ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgTEBloodStream(): CMsgTEBloodStream {
@@ -2316,6 +2631,23 @@ export const CMsgTEBloodStream = {
     message.color !== undefined && (obj.color = Math.round(message.color));
     message.amount !== undefined && (obj.amount = Math.round(message.amount));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgTEBloodStream>): CMsgTEBloodStream {
+    return CMsgTEBloodStream.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTEBloodStream>): CMsgTEBloodStream {
+    const message = createBaseCMsgTEBloodStream();
+    message.origin = (object.origin !== undefined && object.origin !== null)
+      ? CMsgVector.fromPartial(object.origin)
+      : undefined;
+    message.direction = (object.direction !== undefined && object.direction !== null)
+      ? CMsgVector.fromPartial(object.direction)
+      : undefined;
+    message.color = object.color ?? 0;
+    message.amount = object.amount ?? 0;
+    return message;
   },
 };
 
@@ -2497,6 +2829,30 @@ export const CMsgTEExplosion = {
     message.explosionType !== undefined && (obj.explosionType = Math.round(message.explosionType));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgTEExplosion>): CMsgTEExplosion {
+    return CMsgTEExplosion.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTEExplosion>): CMsgTEExplosion {
+    const message = createBaseCMsgTEExplosion();
+    message.origin = (object.origin !== undefined && object.origin !== null)
+      ? CMsgVector.fromPartial(object.origin)
+      : undefined;
+    message.framerate = object.framerate ?? 0;
+    message.flags = object.flags ?? 0;
+    message.normal = (object.normal !== undefined && object.normal !== null)
+      ? CMsgVector.fromPartial(object.normal)
+      : undefined;
+    message.materialtype = object.materialtype ?? 0;
+    message.radius = object.radius ?? 0;
+    message.magnitude = object.magnitude ?? 0;
+    message.scale = object.scale ?? 0;
+    message.affectRagdolls = object.affectRagdolls ?? false;
+    message.effectName = object.effectName ?? "";
+    message.explosionType = object.explosionType ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgTEDust(): CMsgTEDust {
@@ -2582,6 +2938,23 @@ export const CMsgTEDust = {
       (obj.direction = message.direction ? CMsgVector.toJSON(message.direction) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgTEDust>): CMsgTEDust {
+    return CMsgTEDust.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTEDust>): CMsgTEDust {
+    const message = createBaseCMsgTEDust();
+    message.origin = (object.origin !== undefined && object.origin !== null)
+      ? CMsgVector.fromPartial(object.origin)
+      : undefined;
+    message.size = object.size ?? 0;
+    message.speed = object.speed ?? 0;
+    message.direction = (object.direction !== undefined && object.direction !== null)
+      ? CMsgVector.fromPartial(object.direction)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgTELargeFunnel(): CMsgTELargeFunnel {
@@ -2641,6 +3014,19 @@ export const CMsgTELargeFunnel = {
     message.origin !== undefined && (obj.origin = message.origin ? CMsgVector.toJSON(message.origin) : undefined);
     message.reversed !== undefined && (obj.reversed = Math.round(message.reversed));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgTELargeFunnel>): CMsgTELargeFunnel {
+    return CMsgTELargeFunnel.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTELargeFunnel>): CMsgTELargeFunnel {
+    const message = createBaseCMsgTELargeFunnel();
+    message.origin = (object.origin !== undefined && object.origin !== null)
+      ? CMsgVector.fromPartial(object.origin)
+      : undefined;
+    message.reversed = object.reversed ?? 0;
+    return message;
   },
 };
 
@@ -2726,6 +3112,23 @@ export const CMsgTESparks = {
     message.direction !== undefined &&
       (obj.direction = message.direction ? CMsgVector.toJSON(message.direction) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgTESparks>): CMsgTESparks {
+    return CMsgTESparks.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTESparks>): CMsgTESparks {
+    const message = createBaseCMsgTESparks();
+    message.origin = (object.origin !== undefined && object.origin !== null)
+      ? CMsgVector.fromPartial(object.origin)
+      : undefined;
+    message.magnitude = object.magnitude ?? 0;
+    message.length = object.length ?? 0;
+    message.direction = (object.direction !== undefined && object.direction !== null)
+      ? CMsgVector.fromPartial(object.direction)
+      : undefined;
+    return message;
   },
 };
 
@@ -2898,6 +3301,31 @@ export const CMsgTEPhysicsProp = {
     message.scale !== undefined && (obj.scale = message.scale);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgTEPhysicsProp>): CMsgTEPhysicsProp {
+    return CMsgTEPhysicsProp.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTEPhysicsProp>): CMsgTEPhysicsProp {
+    const message = createBaseCMsgTEPhysicsProp();
+    message.origin = (object.origin !== undefined && object.origin !== null)
+      ? CMsgVector.fromPartial(object.origin)
+      : undefined;
+    message.velocity = (object.velocity !== undefined && object.velocity !== null)
+      ? CMsgVector.fromPartial(object.velocity)
+      : undefined;
+    message.angles = (object.angles !== undefined && object.angles !== null)
+      ? CMsgQAngle.fromPartial(object.angles)
+      : undefined;
+    message.skin = object.skin ?? 0;
+    message.flags = object.flags ?? 0;
+    message.effects = object.effects ?? 0;
+    message.color = object.color ?? 0;
+    message.modelindex = object.modelindex ?? "0";
+    message.unusedBreakmodelsnottomake = object.unusedBreakmodelsnottomake ?? 0;
+    message.scale = object.scale ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgTEPlayerDecal(): CMsgTEPlayerDecal {
@@ -2969,6 +3397,20 @@ export const CMsgTEPlayerDecal = {
     message.player !== undefined && (obj.player = Math.round(message.player));
     message.entity !== undefined && (obj.entity = Math.round(message.entity));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgTEPlayerDecal>): CMsgTEPlayerDecal {
+    return CMsgTEPlayerDecal.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTEPlayerDecal>): CMsgTEPlayerDecal {
+    const message = createBaseCMsgTEPlayerDecal();
+    message.origin = (object.origin !== undefined && object.origin !== null)
+      ? CMsgVector.fromPartial(object.origin)
+      : undefined;
+    message.player = object.player ?? 0;
+    message.entity = object.entity ?? 0;
+    return message;
   },
 };
 
@@ -3054,6 +3496,23 @@ export const CMsgTEProjectedDecal = {
     message.distance !== undefined && (obj.distance = message.distance);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgTEProjectedDecal>): CMsgTEProjectedDecal {
+    return CMsgTEProjectedDecal.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTEProjectedDecal>): CMsgTEProjectedDecal {
+    const message = createBaseCMsgTEProjectedDecal();
+    message.origin = (object.origin !== undefined && object.origin !== null)
+      ? CMsgVector.fromPartial(object.origin)
+      : undefined;
+    message.angles = (object.angles !== undefined && object.angles !== null)
+      ? CMsgQAngle.fromPartial(object.angles)
+      : undefined;
+    message.index = object.index ?? 0;
+    message.distance = object.distance ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgTESmoke(): CMsgTESmoke {
@@ -3113,6 +3572,19 @@ export const CMsgTESmoke = {
     message.origin !== undefined && (obj.origin = message.origin ? CMsgVector.toJSON(message.origin) : undefined);
     message.scale !== undefined && (obj.scale = message.scale);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgTESmoke>): CMsgTESmoke {
+    return CMsgTESmoke.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTESmoke>): CMsgTESmoke {
+    const message = createBaseCMsgTESmoke();
+    message.origin = (object.origin !== undefined && object.origin !== null)
+      ? CMsgVector.fromPartial(object.origin)
+      : undefined;
+    message.scale = object.scale ?? 0;
+    return message;
   },
 };
 
@@ -3186,6 +3658,22 @@ export const CMsgTEWorldDecal = {
     message.index !== undefined && (obj.index = Math.round(message.index));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgTEWorldDecal>): CMsgTEWorldDecal {
+    return CMsgTEWorldDecal.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgTEWorldDecal>): CMsgTEWorldDecal {
+    const message = createBaseCMsgTEWorldDecal();
+    message.origin = (object.origin !== undefined && object.origin !== null)
+      ? CMsgVector.fromPartial(object.origin)
+      : undefined;
+    message.normal = (object.normal !== undefined && object.normal !== null)
+      ? CMsgVector.fromPartial(object.normal)
+      : undefined;
+    message.index = object.index ?? 0;
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -3206,6 +3694,13 @@ var tsProtoGlobalThis: any = (() => {
   }
   throw "Unable to locate global object";
 })();
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

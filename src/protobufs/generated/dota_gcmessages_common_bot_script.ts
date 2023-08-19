@@ -876,6 +876,42 @@ export const CMsgBotWorldState = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgBotWorldState>): CMsgBotWorldState {
+    return CMsgBotWorldState.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgBotWorldState>): CMsgBotWorldState {
+    const message = createBaseCMsgBotWorldState();
+    message.teamId = object.teamId ?? 0;
+    message.gameTime = object.gameTime ?? 0;
+    message.dotaTime = object.dotaTime ?? 0;
+    message.gameState = object.gameState ?? 0;
+    message.heroPickState = object.heroPickState ?? 0;
+    message.timeOfDay = object.timeOfDay ?? 0;
+    message.glyphCooldown = object.glyphCooldown ?? 0;
+    message.glyphCooldownEnemy = object.glyphCooldownEnemy ?? 0;
+    message.players = object.players?.map((e) => CMsgBotWorldState_Player.fromPartial(e)) || [];
+    message.units = object.units?.map((e) => CMsgBotWorldState_Unit.fromPartial(e)) || [];
+    message.droppedItems = object.droppedItems?.map((e) => CMsgBotWorldState_DroppedItem.fromPartial(e)) || [];
+    message.droppedItemsDeltas = object.droppedItemsDeltas?.map((e) => e) || [];
+    message.runeInfos = object.runeInfos?.map((e) => CMsgBotWorldState_RuneInfo.fromPartial(e)) || [];
+    message.runeInfosDeltas = object.runeInfosDeltas?.map((e) => e) || [];
+    message.incomingTeleports = object.incomingTeleports?.map((e) => CMsgBotWorldState_TeleportInfo.fromPartial(e)) ||
+      [];
+    message.linearProjectiles =
+      object.linearProjectiles?.map((e) => CMsgBotWorldState_LinearProjectile.fromPartial(e)) || [];
+    message.avoidanceZones = object.avoidanceZones?.map((e) => CMsgBotWorldState_AvoidanceZone.fromPartial(e)) || [];
+    message.couriers = object.couriers?.map((e) => CMsgBotWorldState_Courier.fromPartial(e)) || [];
+    message.abilityEvents = object.abilityEvents?.map((e) => CMsgBotWorldState_EventAbility.fromPartial(e)) || [];
+    message.damageEvents = object.damageEvents?.map((e) => CMsgBotWorldState_EventDamage.fromPartial(e)) || [];
+    message.courierKilledEvents =
+      object.courierKilledEvents?.map((e) => CMsgBotWorldState_EventCourierKilled.fromPartial(e)) || [];
+    message.roshanKilledEvents =
+      object.roshanKilledEvents?.map((e) => CMsgBotWorldState_EventRoshanKilled.fromPartial(e)) || [];
+    message.treeEvents = object.treeEvents?.map((e) => CMsgBotWorldState_EventTree.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgBotWorldState_Vector(): CMsgBotWorldState_Vector {
@@ -947,6 +983,18 @@ export const CMsgBotWorldState_Vector = {
     message.y !== undefined && (obj.y = message.y);
     message.z !== undefined && (obj.z = message.z);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgBotWorldState_Vector>): CMsgBotWorldState_Vector {
+    return CMsgBotWorldState_Vector.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgBotWorldState_Vector>): CMsgBotWorldState_Vector {
+    const message = createBaseCMsgBotWorldState_Vector();
+    message.x = object.x ?? 0;
+    message.y = object.y ?? 0;
+    message.z = object.z ?? 0;
+    return message;
   },
 };
 
@@ -1128,6 +1176,28 @@ export const CMsgBotWorldState_Player = {
     message.location !== undefined &&
       (obj.location = message.location ? CMsgBotWorldState_Vector.toJSON(message.location) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgBotWorldState_Player>): CMsgBotWorldState_Player {
+    return CMsgBotWorldState_Player.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgBotWorldState_Player>): CMsgBotWorldState_Player {
+    const message = createBaseCMsgBotWorldState_Player();
+    message.playerId = object.playerId ?? 0;
+    message.heroId = object.heroId ?? 0;
+    message.isAlive = object.isAlive ?? false;
+    message.respawnTime = object.respawnTime ?? 0;
+    message.kills = object.kills ?? 0;
+    message.deaths = object.deaths ?? 0;
+    message.assists = object.assists ?? 0;
+    message.teamId = object.teamId ?? 0;
+    message.primaryUnitHandle = object.primaryUnitHandle ?? 0;
+    message.mmr = object.mmr ?? 0;
+    message.location = (object.location !== undefined && object.location !== null)
+      ? CMsgBotWorldState_Vector.fromPartial(object.location)
+      : undefined;
+    return message;
   },
 };
 
@@ -1400,6 +1470,33 @@ export const CMsgBotWorldState_Ability = {
     message.powerTreadsStat !== undefined && (obj.powerTreadsStat = Math.round(message.powerTreadsStat));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgBotWorldState_Ability>): CMsgBotWorldState_Ability {
+    return CMsgBotWorldState_Ability.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgBotWorldState_Ability>): CMsgBotWorldState_Ability {
+    const message = createBaseCMsgBotWorldState_Ability();
+    message.handle = object.handle ?? 0;
+    message.abilityId = object.abilityId ?? 0;
+    message.slot = object.slot ?? 0;
+    message.casterHandle = object.casterHandle ?? 0;
+    message.level = object.level ?? 0;
+    message.castRange = object.castRange ?? 0;
+    message.channelTime = object.channelTime ?? 0;
+    message.cooldownRemaining = object.cooldownRemaining ?? 0;
+    message.isActivated = object.isActivated ?? false;
+    message.isToggled = object.isToggled ?? false;
+    message.isInAbilityPhase = object.isInAbilityPhase ?? false;
+    message.isChanneling = object.isChanneling ?? false;
+    message.isStolen = object.isStolen ?? false;
+    message.isFullyCastable = object.isFullyCastable ?? false;
+    message.charges = object.charges ?? 0;
+    message.secondaryCharges = object.secondaryCharges ?? 0;
+    message.isCombinedLocked = object.isCombinedLocked ?? false;
+    message.powerTreadsStat = object.powerTreadsStat ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgBotWorldState_DroppedItem(): CMsgBotWorldState_DroppedItem {
@@ -1460,6 +1557,19 @@ export const CMsgBotWorldState_DroppedItem = {
     message.location !== undefined &&
       (obj.location = message.location ? CMsgBotWorldState_Vector.toJSON(message.location) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgBotWorldState_DroppedItem>): CMsgBotWorldState_DroppedItem {
+    return CMsgBotWorldState_DroppedItem.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgBotWorldState_DroppedItem>): CMsgBotWorldState_DroppedItem {
+    const message = createBaseCMsgBotWorldState_DroppedItem();
+    message.itemId = object.itemId ?? 0;
+    message.location = (object.location !== undefined && object.location !== null)
+      ? CMsgBotWorldState_Vector.fromPartial(object.location)
+      : undefined;
+    return message;
   },
 };
 
@@ -1546,6 +1656,21 @@ export const CMsgBotWorldState_RuneInfo = {
     message.timeSinceSeen !== undefined && (obj.timeSinceSeen = message.timeSinceSeen);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgBotWorldState_RuneInfo>): CMsgBotWorldState_RuneInfo {
+    return CMsgBotWorldState_RuneInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgBotWorldState_RuneInfo>): CMsgBotWorldState_RuneInfo {
+    const message = createBaseCMsgBotWorldState_RuneInfo();
+    message.type = object.type ?? 0;
+    message.location = (object.location !== undefined && object.location !== null)
+      ? CMsgBotWorldState_Vector.fromPartial(object.location)
+      : undefined;
+    message.status = object.status ?? 0;
+    message.timeSinceSeen = object.timeSinceSeen ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgBotWorldState_TeleportInfo(): CMsgBotWorldState_TeleportInfo {
@@ -1618,6 +1743,20 @@ export const CMsgBotWorldState_TeleportInfo = {
       (obj.location = message.location ? CMsgBotWorldState_Vector.toJSON(message.location) : undefined);
     message.timeRemaining !== undefined && (obj.timeRemaining = message.timeRemaining);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgBotWorldState_TeleportInfo>): CMsgBotWorldState_TeleportInfo {
+    return CMsgBotWorldState_TeleportInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgBotWorldState_TeleportInfo>): CMsgBotWorldState_TeleportInfo {
+    const message = createBaseCMsgBotWorldState_TeleportInfo();
+    message.playerId = object.playerId ?? 0;
+    message.location = (object.location !== undefined && object.location !== null)
+      ? CMsgBotWorldState_Vector.fromPartial(object.location)
+      : undefined;
+    message.timeRemaining = object.timeRemaining ?? 0;
+    return message;
   },
 };
 
@@ -1763,6 +1902,22 @@ export const CMsgBotWorldState_Modifier = {
       obj.auxiliaryUnitsHandles = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgBotWorldState_Modifier>): CMsgBotWorldState_Modifier {
+    return CMsgBotWorldState_Modifier.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgBotWorldState_Modifier>): CMsgBotWorldState_Modifier {
+    const message = createBaseCMsgBotWorldState_Modifier();
+    message.handle = object.handle ?? 0;
+    message.name = object.name ?? "";
+    message.stackCount = object.stackCount ?? 0;
+    message.abilityHandle = object.abilityHandle ?? 0;
+    message.abilityId = object.abilityId ?? 0;
+    message.remainingDuration = object.remainingDuration ?? 0;
+    message.auxiliaryUnitsHandles = object.auxiliaryUnitsHandles?.map((e) => e) || [];
+    return message;
   },
 };
 
@@ -1920,6 +2075,28 @@ export const CMsgBotWorldState_LinearProjectile = {
       (obj.velocity = message.velocity ? CMsgBotWorldState_Vector.toJSON(message.velocity) : undefined);
     message.radius !== undefined && (obj.radius = Math.round(message.radius));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgBotWorldState_LinearProjectile>): CMsgBotWorldState_LinearProjectile {
+    return CMsgBotWorldState_LinearProjectile.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgBotWorldState_LinearProjectile>): CMsgBotWorldState_LinearProjectile {
+    const message = createBaseCMsgBotWorldState_LinearProjectile();
+    message.handle = object.handle ?? 0;
+    message.casterHandle = object.casterHandle ?? 0;
+    message.casterUnitType = object.casterUnitType ?? 0;
+    message.casterPlayerId = object.casterPlayerId ?? 0;
+    message.abilityHandle = object.abilityHandle ?? 0;
+    message.abilityId = object.abilityId ?? 0;
+    message.location = (object.location !== undefined && object.location !== null)
+      ? CMsgBotWorldState_Vector.fromPartial(object.location)
+      : undefined;
+    message.velocity = (object.velocity !== undefined && object.velocity !== null)
+      ? CMsgBotWorldState_Vector.fromPartial(object.velocity)
+      : undefined;
+    message.radius = object.radius ?? 0;
+    return message;
   },
 };
 
@@ -2090,6 +2267,27 @@ export const CMsgBotWorldState_TrackingProjectile = {
     message.isAttack !== undefined && (obj.isAttack = message.isAttack);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgBotWorldState_TrackingProjectile>): CMsgBotWorldState_TrackingProjectile {
+    return CMsgBotWorldState_TrackingProjectile.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgBotWorldState_TrackingProjectile>): CMsgBotWorldState_TrackingProjectile {
+    const message = createBaseCMsgBotWorldState_TrackingProjectile();
+    message.handle = object.handle ?? 0;
+    message.casterHandle = object.casterHandle ?? 0;
+    message.casterUnitType = object.casterUnitType ?? 0;
+    message.casterPlayerId = object.casterPlayerId ?? 0;
+    message.abilityHandle = object.abilityHandle ?? 0;
+    message.abilityId = object.abilityId ?? 0;
+    message.location = (object.location !== undefined && object.location !== null)
+      ? CMsgBotWorldState_Vector.fromPartial(object.location)
+      : undefined;
+    message.velocity = object.velocity ?? 0;
+    message.isDodgeable = object.isDodgeable ?? false;
+    message.isAttack = object.isAttack ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgBotWorldState_AvoidanceZone(): CMsgBotWorldState_AvoidanceZone {
@@ -2220,6 +2418,24 @@ export const CMsgBotWorldState_AvoidanceZone = {
     message.radius !== undefined && (obj.radius = Math.round(message.radius));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgBotWorldState_AvoidanceZone>): CMsgBotWorldState_AvoidanceZone {
+    return CMsgBotWorldState_AvoidanceZone.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgBotWorldState_AvoidanceZone>): CMsgBotWorldState_AvoidanceZone {
+    const message = createBaseCMsgBotWorldState_AvoidanceZone();
+    message.location = (object.location !== undefined && object.location !== null)
+      ? CMsgBotWorldState_Vector.fromPartial(object.location)
+      : undefined;
+    message.casterHandle = object.casterHandle ?? 0;
+    message.casterUnitType = object.casterUnitType ?? 0;
+    message.casterPlayerId = object.casterPlayerId ?? 0;
+    message.abilityHandle = object.abilityHandle ?? 0;
+    message.abilityId = object.abilityId ?? 0;
+    message.radius = object.radius ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgBotWorldState_Courier(): CMsgBotWorldState_Courier {
@@ -2291,6 +2507,18 @@ export const CMsgBotWorldState_Courier = {
     message.state !== undefined && (obj.state = cMsgBotWorldState_CourierStateToJSON(message.state));
     message.playerId !== undefined && (obj.playerId = Math.round(message.playerId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgBotWorldState_Courier>): CMsgBotWorldState_Courier {
+    return CMsgBotWorldState_Courier.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgBotWorldState_Courier>): CMsgBotWorldState_Courier {
+    const message = createBaseCMsgBotWorldState_Courier();
+    message.handle = object.handle ?? 0;
+    message.state = object.state ?? 0;
+    message.playerId = object.playerId ?? 0;
+    return message;
   },
 };
 
@@ -2388,6 +2616,22 @@ export const CMsgBotWorldState_EventAbility = {
       (obj.location = message.location ? CMsgBotWorldState_Vector.toJSON(message.location) : undefined);
     message.isChannelStart !== undefined && (obj.isChannelStart = message.isChannelStart);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgBotWorldState_EventAbility>): CMsgBotWorldState_EventAbility {
+    return CMsgBotWorldState_EventAbility.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgBotWorldState_EventAbility>): CMsgBotWorldState_EventAbility {
+    const message = createBaseCMsgBotWorldState_EventAbility();
+    message.abilityId = object.abilityId ?? 0;
+    message.playerId = object.playerId ?? 0;
+    message.unitHandle = object.unitHandle ?? 0;
+    message.location = (object.location !== undefined && object.location !== null)
+      ? CMsgBotWorldState_Vector.fromPartial(object.location)
+      : undefined;
+    message.isChannelStart = object.isChannelStart ?? false;
+    return message;
   },
 };
 
@@ -2504,6 +2748,21 @@ export const CMsgBotWorldState_EventDamage = {
     message.abilityId !== undefined && (obj.abilityId = Math.round(message.abilityId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgBotWorldState_EventDamage>): CMsgBotWorldState_EventDamage {
+    return CMsgBotWorldState_EventDamage.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgBotWorldState_EventDamage>): CMsgBotWorldState_EventDamage {
+    const message = createBaseCMsgBotWorldState_EventDamage();
+    message.damage = object.damage ?? 0;
+    message.victimPlayerId = object.victimPlayerId ?? 0;
+    message.victimUnitHandle = object.victimUnitHandle ?? 0;
+    message.attackerPlayerId = object.attackerPlayerId ?? 0;
+    message.attackerUnitHandle = object.attackerUnitHandle ?? 0;
+    message.abilityId = object.abilityId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgBotWorldState_EventCourierKilled(): CMsgBotWorldState_EventCourierKilled {
@@ -2588,6 +2847,19 @@ export const CMsgBotWorldState_EventCourierKilled = {
     message.killerUnitHandle !== undefined && (obj.killerUnitHandle = Math.round(message.killerUnitHandle));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgBotWorldState_EventCourierKilled>): CMsgBotWorldState_EventCourierKilled {
+    return CMsgBotWorldState_EventCourierKilled.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgBotWorldState_EventCourierKilled>): CMsgBotWorldState_EventCourierKilled {
+    const message = createBaseCMsgBotWorldState_EventCourierKilled();
+    message.teamId = object.teamId ?? 0;
+    message.courierUnitHandle = object.courierUnitHandle ?? 0;
+    message.killerPlayerId = object.killerPlayerId ?? 0;
+    message.killerUnitHandle = object.killerUnitHandle ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgBotWorldState_EventRoshanKilled(): CMsgBotWorldState_EventRoshanKilled {
@@ -2647,6 +2919,17 @@ export const CMsgBotWorldState_EventRoshanKilled = {
     message.killerPlayerId !== undefined && (obj.killerPlayerId = Math.round(message.killerPlayerId));
     message.killerUnitHandle !== undefined && (obj.killerUnitHandle = Math.round(message.killerUnitHandle));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgBotWorldState_EventRoshanKilled>): CMsgBotWorldState_EventRoshanKilled {
+    return CMsgBotWorldState_EventRoshanKilled.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgBotWorldState_EventRoshanKilled>): CMsgBotWorldState_EventRoshanKilled {
+    const message = createBaseCMsgBotWorldState_EventRoshanKilled();
+    message.killerPlayerId = object.killerPlayerId ?? 0;
+    message.killerUnitHandle = object.killerUnitHandle ?? 0;
+    return message;
   },
 };
 
@@ -2744,6 +3027,22 @@ export const CMsgBotWorldState_EventTree = {
       (obj.location = message.location ? CMsgBotWorldState_Vector.toJSON(message.location) : undefined);
     message.delayed !== undefined && (obj.delayed = message.delayed);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgBotWorldState_EventTree>): CMsgBotWorldState_EventTree {
+    return CMsgBotWorldState_EventTree.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgBotWorldState_EventTree>): CMsgBotWorldState_EventTree {
+    const message = createBaseCMsgBotWorldState_EventTree();
+    message.treeId = object.treeId ?? 0;
+    message.destroyed = object.destroyed ?? false;
+    message.respawned = object.respawned ?? false;
+    message.location = (object.location !== undefined && object.location !== null)
+      ? CMsgBotWorldState_Vector.fromPartial(object.location)
+      : undefined;
+    message.delayed = object.delayed ?? false;
+    return message;
   },
 };
 
@@ -3994,6 +4293,109 @@ export const CMsgBotWorldState_Unit = {
     message.isShrineHealing !== undefined && (obj.isShrineHealing = message.isShrineHealing);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgBotWorldState_Unit>): CMsgBotWorldState_Unit {
+    return CMsgBotWorldState_Unit.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgBotWorldState_Unit>): CMsgBotWorldState_Unit {
+    const message = createBaseCMsgBotWorldState_Unit();
+    message.handle = object.handle ?? 0;
+    message.unitType = object.unitType ?? 0;
+    message.name = object.name ?? "";
+    message.teamId = object.teamId ?? 0;
+    message.level = object.level ?? 0;
+    message.location = (object.location !== undefined && object.location !== null)
+      ? CMsgBotWorldState_Vector.fromPartial(object.location)
+      : undefined;
+    message.isAlive = object.isAlive ?? false;
+    message.playerId = object.playerId ?? 0;
+    message.boundingRadius = object.boundingRadius ?? 0;
+    message.facing = object.facing ?? 0;
+    message.groundHeight = object.groundHeight ?? 0;
+    message.visionRangeDaytime = object.visionRangeDaytime ?? 0;
+    message.visionRangeNighttime = object.visionRangeNighttime ?? 0;
+    message.health = object.health ?? 0;
+    message.healthMax = object.healthMax ?? 0;
+    message.healthRegen = object.healthRegen ?? 0;
+    message.mana = object.mana ?? 0;
+    message.manaMax = object.manaMax ?? 0;
+    message.manaRegen = object.manaRegen ?? 0;
+    message.baseMovementSpeed = object.baseMovementSpeed ?? 0;
+    message.currentMovementSpeed = object.currentMovementSpeed ?? 0;
+    message.animActivity = object.animActivity ?? 0;
+    message.animCycle = object.animCycle ?? 0;
+    message.baseDamage = object.baseDamage ?? 0;
+    message.baseDamageVariance = object.baseDamageVariance ?? 0;
+    message.bonusDamage = object.bonusDamage ?? 0;
+    message.attackDamage = object.attackDamage ?? 0;
+    message.attackRange = object.attackRange ?? 0;
+    message.attackSpeed = object.attackSpeed ?? 0;
+    message.attackAnimPoint = object.attackAnimPoint ?? 0;
+    message.attackAcquisitionRange = object.attackAcquisitionRange ?? 0;
+    message.attackProjectileSpeed = object.attackProjectileSpeed ?? 0;
+    message.attackTargetHandle = object.attackTargetHandle ?? 0;
+    message.attackTargetName = object.attackTargetName ?? "";
+    message.attacksPerSecond = object.attacksPerSecond ?? 0;
+    message.lastAttackTime = object.lastAttackTime ?? 0;
+    message.bountyXp = object.bountyXp ?? 0;
+    message.bountyGoldMin = object.bountyGoldMin ?? 0;
+    message.bountyGoldMax = object.bountyGoldMax ?? 0;
+    message.isChanneling = object.isChanneling ?? false;
+    message.activeAbilityHandle = object.activeAbilityHandle ?? 0;
+    message.isAttackImmune = object.isAttackImmune ?? false;
+    message.isBlind = object.isBlind ?? false;
+    message.isBlockDisabled = object.isBlockDisabled ?? false;
+    message.isDisarmed = object.isDisarmed ?? false;
+    message.isDominated = object.isDominated ?? false;
+    message.isEvadeDisabled = object.isEvadeDisabled ?? false;
+    message.isHexed = object.isHexed ?? false;
+    message.isInvisible = object.isInvisible ?? false;
+    message.isInvulnerable = object.isInvulnerable ?? false;
+    message.isMagicImmune = object.isMagicImmune ?? false;
+    message.isMuted = object.isMuted ?? false;
+    message.isNightmared = object.isNightmared ?? false;
+    message.isRooted = object.isRooted ?? false;
+    message.isSilenced = object.isSilenced ?? false;
+    message.isSpeciallyDeniable = object.isSpeciallyDeniable ?? false;
+    message.isStunned = object.isStunned ?? false;
+    message.isUnableToMiss = object.isUnableToMiss ?? false;
+    message.hasScepter = object.hasScepter ?? false;
+    message.isSpeciallyUndeniable = object.isSpeciallyUndeniable ?? false;
+    message.abilities = object.abilities?.map((e) => CMsgBotWorldState_Ability.fromPartial(e)) || [];
+    message.items = object.items?.map((e) => CMsgBotWorldState_Ability.fromPartial(e)) || [];
+    message.modifiers = object.modifiers?.map((e) => CMsgBotWorldState_Modifier.fromPartial(e)) || [];
+    message.incomingTrackingProjectiles =
+      object.incomingTrackingProjectiles?.map((e) => CMsgBotWorldState_TrackingProjectile.fromPartial(e)) || [];
+    message.actionType = object.actionType ?? 0;
+    message.abilityTargetHandle = object.abilityTargetHandle ?? 0;
+    message.abilityTargetName = object.abilityTargetName ?? "";
+    message.isUsingAbility = object.isUsingAbility ?? false;
+    message.primaryAttribute = object.primaryAttribute ?? 0;
+    message.isIllusion = object.isIllusion ?? false;
+    message.respawnTime = object.respawnTime ?? 0;
+    message.buybackCost = object.buybackCost ?? 0;
+    message.buybackCooldown = object.buybackCooldown ?? 0;
+    message.spellAmplification = object.spellAmplification ?? 0;
+    message.armor = object.armor ?? 0;
+    message.magicResist = object.magicResist ?? 0;
+    message.evasion = object.evasion ?? 0;
+    message.xpNeededToLevel = object.xpNeededToLevel ?? 0;
+    message.abilityPoints = object.abilityPoints ?? 0;
+    message.reliableGold = object.reliableGold ?? 0;
+    message.unreliableGold = object.unreliableGold ?? 0;
+    message.lastHits = object.lastHits ?? 0;
+    message.denies = object.denies ?? 0;
+    message.netWorth = object.netWorth ?? 0;
+    message.strength = object.strength ?? 0;
+    message.agility = object.agility ?? 0;
+    message.intelligence = object.intelligence ?? 0;
+    message.remainingLifespan = object.remainingLifespan ?? 0;
+    message.flyingCourier = object.flyingCourier ?? false;
+    message.shrineCooldown = object.shrineCooldown ?? 0;
+    message.isShrineHealing = object.isShrineHealing ?? false;
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -4014,6 +4416,13 @@ var tsProtoGlobalThis: any = (() => {
   }
   throw "Unable to locate global object";
 })();
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function isSet(value: any): boolean {
   return value !== null && value !== undefined;

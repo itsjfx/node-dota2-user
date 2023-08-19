@@ -227,6 +227,18 @@ export const CMsgSteamSocketsUDPChallengeRequest = {
     message.protocolVersion !== undefined && (obj.protocolVersion = Math.round(message.protocolVersion));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamSocketsUDPChallengeRequest>): CMsgSteamSocketsUDPChallengeRequest {
+    return CMsgSteamSocketsUDPChallengeRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamSocketsUDPChallengeRequest>): CMsgSteamSocketsUDPChallengeRequest {
+    const message = createBaseCMsgSteamSocketsUDPChallengeRequest();
+    message.connectionId = object.connectionId ?? 0;
+    message.myTimestamp = object.myTimestamp ?? "0";
+    message.protocolVersion = object.protocolVersion ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgSteamSocketsUDPChallengeReply(): CMsgSteamSocketsUDPChallengeReply {
@@ -310,6 +322,19 @@ export const CMsgSteamSocketsUDPChallengeReply = {
     message.yourTimestamp !== undefined && (obj.yourTimestamp = message.yourTimestamp);
     message.protocolVersion !== undefined && (obj.protocolVersion = Math.round(message.protocolVersion));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamSocketsUDPChallengeReply>): CMsgSteamSocketsUDPChallengeReply {
+    return CMsgSteamSocketsUDPChallengeReply.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamSocketsUDPChallengeReply>): CMsgSteamSocketsUDPChallengeReply {
+    const message = createBaseCMsgSteamSocketsUDPChallengeReply();
+    message.connectionId = object.connectionId ?? 0;
+    message.challenge = object.challenge ?? "0";
+    message.yourTimestamp = object.yourTimestamp ?? "0";
+    message.protocolVersion = object.protocolVersion ?? 0;
+    return message;
   },
 };
 
@@ -485,6 +510,31 @@ export const CMsgSteamSocketsUDPConnectRequest = {
       : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamSocketsUDPConnectRequest>): CMsgSteamSocketsUDPConnectRequest {
+    return CMsgSteamSocketsUDPConnectRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamSocketsUDPConnectRequest>): CMsgSteamSocketsUDPConnectRequest {
+    const message = createBaseCMsgSteamSocketsUDPConnectRequest();
+    message.clientConnectionId = object.clientConnectionId ?? 0;
+    message.challenge = object.challenge ?? "0";
+    message.myTimestamp = object.myTimestamp ?? "0";
+    message.pingEstMs = object.pingEstMs ?? 0;
+    message.crypt = (object.crypt !== undefined && object.crypt !== null)
+      ? CMsgSteamDatagramSessionCryptInfoSigned.fromPartial(object.crypt)
+      : undefined;
+    message.cert = (object.cert !== undefined && object.cert !== null)
+      ? CMsgSteamDatagramCertificateSigned.fromPartial(object.cert)
+      : undefined;
+    message.legacyProtocolVersion = object.legacyProtocolVersion ?? 0;
+    message.identityString = object.identityString ?? "";
+    message.legacyClientSteamId = object.legacyClientSteamId ?? "0";
+    message.legacyIdentityBinary = (object.legacyIdentityBinary !== undefined && object.legacyIdentityBinary !== null)
+      ? CMsgSteamNetworkingIdentityLegacyBinary.fromPartial(object.legacyIdentityBinary)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgSteamSocketsUDPConnectOK(): CMsgSteamSocketsUDPConnectOK {
@@ -645,6 +695,30 @@ export const CMsgSteamSocketsUDPConnectOK = {
       : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamSocketsUDPConnectOK>): CMsgSteamSocketsUDPConnectOK {
+    return CMsgSteamSocketsUDPConnectOK.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamSocketsUDPConnectOK>): CMsgSteamSocketsUDPConnectOK {
+    const message = createBaseCMsgSteamSocketsUDPConnectOK();
+    message.clientConnectionId = object.clientConnectionId ?? 0;
+    message.serverConnectionId = object.serverConnectionId ?? 0;
+    message.yourTimestamp = object.yourTimestamp ?? "0";
+    message.delayTimeUsec = object.delayTimeUsec ?? 0;
+    message.crypt = (object.crypt !== undefined && object.crypt !== null)
+      ? CMsgSteamDatagramSessionCryptInfoSigned.fromPartial(object.crypt)
+      : undefined;
+    message.cert = (object.cert !== undefined && object.cert !== null)
+      ? CMsgSteamDatagramCertificateSigned.fromPartial(object.cert)
+      : undefined;
+    message.identityString = object.identityString ?? "";
+    message.legacyServerSteamId = object.legacyServerSteamId ?? "0";
+    message.legacyIdentityBinary = (object.legacyIdentityBinary !== undefined && object.legacyIdentityBinary !== null)
+      ? CMsgSteamNetworkingIdentityLegacyBinary.fromPartial(object.legacyIdentityBinary)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgSteamSocketsUDPConnectionClosed(): CMsgSteamSocketsUDPConnectionClosed {
@@ -729,6 +803,19 @@ export const CMsgSteamSocketsUDPConnectionClosed = {
     message.reasonCode !== undefined && (obj.reasonCode = Math.round(message.reasonCode));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamSocketsUDPConnectionClosed>): CMsgSteamSocketsUDPConnectionClosed {
+    return CMsgSteamSocketsUDPConnectionClosed.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamSocketsUDPConnectionClosed>): CMsgSteamSocketsUDPConnectionClosed {
+    const message = createBaseCMsgSteamSocketsUDPConnectionClosed();
+    message.toConnectionId = object.toConnectionId ?? 0;
+    message.fromConnectionId = object.fromConnectionId ?? 0;
+    message.debug = object.debug ?? "";
+    message.reasonCode = object.reasonCode ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgSteamSocketsUDPNoConnection(): CMsgSteamSocketsUDPNoConnection {
@@ -788,6 +875,17 @@ export const CMsgSteamSocketsUDPNoConnection = {
     message.fromConnectionId !== undefined && (obj.fromConnectionId = Math.round(message.fromConnectionId));
     message.toConnectionId !== undefined && (obj.toConnectionId = Math.round(message.toConnectionId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamSocketsUDPNoConnection>): CMsgSteamSocketsUDPNoConnection {
+    return CMsgSteamSocketsUDPNoConnection.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamSocketsUDPNoConnection>): CMsgSteamSocketsUDPNoConnection {
+    const message = createBaseCMsgSteamSocketsUDPNoConnection();
+    message.fromConnectionId = object.fromConnectionId ?? 0;
+    message.toConnectionId = object.toConnectionId ?? 0;
+    return message;
   },
 };
 
@@ -850,6 +948,19 @@ export const CMsgSteamSocketsUDPStats = {
     message.flags !== undefined && (obj.flags = Math.round(message.flags));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamSocketsUDPStats>): CMsgSteamSocketsUDPStats {
+    return CMsgSteamSocketsUDPStats.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamSocketsUDPStats>): CMsgSteamSocketsUDPStats {
+    const message = createBaseCMsgSteamSocketsUDPStats();
+    message.stats = (object.stats !== undefined && object.stats !== null)
+      ? CMsgSteamDatagramConnectionQuality.fromPartial(object.stats)
+      : undefined;
+    message.flags = object.flags ?? 0;
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -870,6 +981,13 @@ var tsProtoGlobalThis: any = (() => {
   }
   throw "Unable to locate global object";
 })();
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

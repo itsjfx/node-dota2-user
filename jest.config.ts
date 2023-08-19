@@ -11,7 +11,7 @@ const config: Config = {
     ].filter((file) => !process.argv.includes(file)),
     transform: {
         '^.+\\.(ts|tsx)$': ['ts-jest', {
-            isolatedModules: process.env.FAST_JEST=='1',
+            isolatedModules: process.env.FAST_JEST==='1',
         }],
     },
     resetMocks: true,

@@ -891,6 +891,20 @@ export const CGCStorePurchaseInitLineItem = {
     message.sourceReferenceId !== undefined && (obj.sourceReferenceId = message.sourceReferenceId);
     return obj;
   },
+
+  create(base?: DeepPartial<CGCStorePurchaseInitLineItem>): CGCStorePurchaseInitLineItem {
+    return CGCStorePurchaseInitLineItem.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CGCStorePurchaseInitLineItem>): CGCStorePurchaseInitLineItem {
+    const message = createBaseCGCStorePurchaseInitLineItem();
+    message.itemDefId = object.itemDefId ?? 0;
+    message.quantity = object.quantity ?? 0;
+    message.costInLocalCurrency = object.costInLocalCurrency ?? 0;
+    message.purchaseType = object.purchaseType ?? 0;
+    message.sourceReferenceId = object.sourceReferenceId ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgGCStorePurchaseInit(): CMsgGCStorePurchaseInit {
@@ -981,6 +995,19 @@ export const CMsgGCStorePurchaseInit = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCStorePurchaseInit>): CMsgGCStorePurchaseInit {
+    return CMsgGCStorePurchaseInit.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCStorePurchaseInit>): CMsgGCStorePurchaseInit {
+    const message = createBaseCMsgGCStorePurchaseInit();
+    message.country = object.country ?? "";
+    message.language = object.language ?? 0;
+    message.currency = object.currency ?? 0;
+    message.lineItems = object.lineItems?.map((e) => CGCStorePurchaseInitLineItem.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgGCStorePurchaseInitResponse(): CMsgGCStorePurchaseInitResponse {
@@ -1040,6 +1067,17 @@ export const CMsgGCStorePurchaseInitResponse = {
     message.result !== undefined && (obj.result = Math.round(message.result));
     message.txnId !== undefined && (obj.txnId = message.txnId);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCStorePurchaseInitResponse>): CMsgGCStorePurchaseInitResponse {
+    return CMsgGCStorePurchaseInitResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCStorePurchaseInitResponse>): CMsgGCStorePurchaseInitResponse {
+    const message = createBaseCMsgGCStorePurchaseInitResponse();
+    message.result = object.result ?? 0;
+    message.txnId = object.txnId ?? "0";
+    return message;
   },
 };
 
@@ -1198,6 +1236,20 @@ export const CMsgClientPingData = {
       (obj.regionPingFailedBitmask = Math.round(message.regionPingFailedBitmask));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientPingData>): CMsgClientPingData {
+    return CMsgClientPingData.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientPingData>): CMsgClientPingData {
+    const message = createBaseCMsgClientPingData();
+    message.relayCodes = object.relayCodes?.map((e) => e) || [];
+    message.relayPings = object.relayPings?.map((e) => e) || [];
+    message.regionCodes = object.regionCodes?.map((e) => e) || [];
+    message.regionPings = object.regionPings?.map((e) => e) || [];
+    message.regionPingFailedBitmask = object.regionPingFailedBitmask ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgInviteToParty(): CMsgInviteToParty {
@@ -1295,6 +1347,22 @@ export const CMsgInviteToParty = {
       (obj.pingData = message.pingData ? CMsgClientPingData.toJSON(message.pingData) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgInviteToParty>): CMsgInviteToParty {
+    return CMsgInviteToParty.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgInviteToParty>): CMsgInviteToParty {
+    const message = createBaseCMsgInviteToParty();
+    message.steamId = object.steamId ?? "0";
+    message.clientVersion = object.clientVersion ?? 0;
+    message.teamId = object.teamId ?? 0;
+    message.asCoach = object.asCoach ?? false;
+    message.pingData = (object.pingData !== undefined && object.pingData !== null)
+      ? CMsgClientPingData.fromPartial(object.pingData)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgInviteToLobby(): CMsgInviteToLobby {
@@ -1354,6 +1422,17 @@ export const CMsgInviteToLobby = {
     message.steamId !== undefined && (obj.steamId = message.steamId);
     message.clientVersion !== undefined && (obj.clientVersion = Math.round(message.clientVersion));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgInviteToLobby>): CMsgInviteToLobby {
+    return CMsgInviteToLobby.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgInviteToLobby>): CMsgInviteToLobby {
+    const message = createBaseCMsgInviteToLobby();
+    message.steamId = object.steamId ?? "0";
+    message.clientVersion = object.clientVersion ?? 0;
+    return message;
   },
 };
 
@@ -1426,6 +1505,18 @@ export const CMsgInvitationCreated = {
     message.steamId !== undefined && (obj.steamId = message.steamId);
     message.userOffline !== undefined && (obj.userOffline = message.userOffline);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgInvitationCreated>): CMsgInvitationCreated {
+    return CMsgInvitationCreated.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgInvitationCreated>): CMsgInvitationCreated {
+    const message = createBaseCMsgInvitationCreated();
+    message.groupId = object.groupId ?? "0";
+    message.steamId = object.steamId ?? "0";
+    message.userOffline = object.userOffline ?? false;
+    return message;
   },
 };
 
@@ -1511,6 +1602,21 @@ export const CMsgPartyInviteResponse = {
     message.pingData !== undefined &&
       (obj.pingData = message.pingData ? CMsgClientPingData.toJSON(message.pingData) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgPartyInviteResponse>): CMsgPartyInviteResponse {
+    return CMsgPartyInviteResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPartyInviteResponse>): CMsgPartyInviteResponse {
+    const message = createBaseCMsgPartyInviteResponse();
+    message.partyId = object.partyId ?? "0";
+    message.accept = object.accept ?? false;
+    message.clientVersion = object.clientVersion ?? 0;
+    message.pingData = (object.pingData !== undefined && object.pingData !== null)
+      ? CMsgClientPingData.fromPartial(object.pingData)
+      : undefined;
+    return message;
   },
 };
 
@@ -1608,6 +1714,20 @@ export const CMsgLobbyInviteResponse = {
     message.customGameTimestamp !== undefined && (obj.customGameTimestamp = Math.round(message.customGameTimestamp));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgLobbyInviteResponse>): CMsgLobbyInviteResponse {
+    return CMsgLobbyInviteResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgLobbyInviteResponse>): CMsgLobbyInviteResponse {
+    const message = createBaseCMsgLobbyInviteResponse();
+    message.lobbyId = object.lobbyId ?? "0";
+    message.accept = object.accept ?? false;
+    message.clientVersion = object.clientVersion ?? 0;
+    message.customGameCrc = object.customGameCrc ?? "0";
+    message.customGameTimestamp = object.customGameTimestamp ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgKickFromParty(): CMsgKickFromParty {
@@ -1654,6 +1774,16 @@ export const CMsgKickFromParty = {
     message.steamId !== undefined && (obj.steamId = message.steamId);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgKickFromParty>): CMsgKickFromParty {
+    return CMsgKickFromParty.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgKickFromParty>): CMsgKickFromParty {
+    const message = createBaseCMsgKickFromParty();
+    message.steamId = object.steamId ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgLeaveParty(): CMsgLeaveParty {
@@ -1688,6 +1818,15 @@ export const CMsgLeaveParty = {
   toJSON(_: CMsgLeaveParty): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgLeaveParty>): CMsgLeaveParty {
+    return CMsgLeaveParty.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgLeaveParty>): CMsgLeaveParty {
+    const message = createBaseCMsgLeaveParty();
+    return message;
   },
 };
 
@@ -1762,6 +1901,18 @@ export const CMsgCustomGameInstallStatus = {
       (obj.latestTimestampFromSteam = Math.round(message.latestTimestampFromSteam));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgCustomGameInstallStatus>): CMsgCustomGameInstallStatus {
+    return CMsgCustomGameInstallStatus.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgCustomGameInstallStatus>): CMsgCustomGameInstallStatus {
+    const message = createBaseCMsgCustomGameInstallStatus();
+    message.status = object.status ?? 0;
+    message.message = object.message ?? "";
+    message.latestTimestampFromSteam = object.latestTimestampFromSteam ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgServerAvailable(): CMsgServerAvailable {
@@ -1814,6 +1965,19 @@ export const CMsgServerAvailable = {
       : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgServerAvailable>): CMsgServerAvailable {
+    return CMsgServerAvailable.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgServerAvailable>): CMsgServerAvailable {
+    const message = createBaseCMsgServerAvailable();
+    message.customGameInstallStatus =
+      (object.customGameInstallStatus !== undefined && object.customGameInstallStatus !== null)
+        ? CMsgCustomGameInstallStatus.fromPartial(object.customGameInstallStatus)
+        : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgLANServerAvailable(): CMsgLANServerAvailable {
@@ -1859,6 +2023,16 @@ export const CMsgLANServerAvailable = {
     const obj: any = {};
     message.lobbyId !== undefined && (obj.lobbyId = message.lobbyId);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgLANServerAvailable>): CMsgLANServerAvailable {
+    return CMsgLANServerAvailable.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgLANServerAvailable>): CMsgLANServerAvailable {
+    const message = createBaseCMsgLANServerAvailable();
+    message.lobbyId = object.lobbyId ?? "0";
+    return message;
   },
 };
 
@@ -2005,6 +2179,23 @@ export const CSOEconGameAccountClient = {
     message.madeFirstPurchase !== undefined && (obj.madeFirstPurchase = message.madeFirstPurchase);
     return obj;
   },
+
+  create(base?: DeepPartial<CSOEconGameAccountClient>): CSOEconGameAccountClient {
+    return CSOEconGameAccountClient.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSOEconGameAccountClient>): CSOEconGameAccountClient {
+    const message = createBaseCSOEconGameAccountClient();
+    message.additionalBackpackSlots = object.additionalBackpackSlots ?? 0;
+    message.trialAccount = object.trialAccount ?? false;
+    message.eligibleForOnlinePlay = object.eligibleForOnlinePlay ?? false;
+    message.needToChooseMostHelpfulFriend = object.needToChooseMostHelpfulFriend ?? false;
+    message.inCoachesList = object.inCoachesList ?? false;
+    message.tradeBanExpiration = object.tradeBanExpiration ?? 0;
+    message.duelBanExpiration = object.duelBanExpiration ?? 0;
+    message.madeFirstPurchase = object.madeFirstPurchase ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgApplyStrangePart(): CMsgApplyStrangePart {
@@ -2064,6 +2255,17 @@ export const CMsgApplyStrangePart = {
     message.strangePartItemId !== undefined && (obj.strangePartItemId = message.strangePartItemId);
     message.itemItemId !== undefined && (obj.itemItemId = message.itemItemId);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgApplyStrangePart>): CMsgApplyStrangePart {
+    return CMsgApplyStrangePart.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgApplyStrangePart>): CMsgApplyStrangePart {
+    const message = createBaseCMsgApplyStrangePart();
+    message.strangePartItemId = object.strangePartItemId ?? "0";
+    message.itemItemId = object.itemItemId ?? "0";
+    return message;
   },
 };
 
@@ -2125,6 +2327,17 @@ export const CMsgApplyPennantUpgrade = {
     message.pennantItemId !== undefined && (obj.pennantItemId = message.pennantItemId);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgApplyPennantUpgrade>): CMsgApplyPennantUpgrade {
+    return CMsgApplyPennantUpgrade.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgApplyPennantUpgrade>): CMsgApplyPennantUpgrade {
+    const message = createBaseCMsgApplyPennantUpgrade();
+    message.upgradeItemId = object.upgradeItemId ?? "0";
+    message.pennantItemId = object.pennantItemId ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgApplyEggEssence(): CMsgApplyEggEssence {
@@ -2184,6 +2397,17 @@ export const CMsgApplyEggEssence = {
     message.essenceItemId !== undefined && (obj.essenceItemId = message.essenceItemId);
     message.eggItemId !== undefined && (obj.eggItemId = message.eggItemId);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgApplyEggEssence>): CMsgApplyEggEssence {
+    return CMsgApplyEggEssence.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgApplyEggEssence>): CMsgApplyEggEssence {
+    const message = createBaseCMsgApplyEggEssence();
+    message.essenceItemId = object.essenceItemId ?? "0";
+    message.eggItemId = object.eggItemId ?? "0";
+    return message;
   },
 };
 
@@ -2258,6 +2482,18 @@ export const CSOEconItemAttribute = {
       (obj.valueBytes = base64FromBytes(message.valueBytes !== undefined ? message.valueBytes : Buffer.alloc(0)));
     return obj;
   },
+
+  create(base?: DeepPartial<CSOEconItemAttribute>): CSOEconItemAttribute {
+    return CSOEconItemAttribute.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSOEconItemAttribute>): CSOEconItemAttribute {
+    const message = createBaseCSOEconItemAttribute();
+    message.defIndex = object.defIndex ?? 0;
+    message.value = object.value ?? 0;
+    message.valueBytes = object.valueBytes ?? Buffer.alloc(0);
+    return message;
+  },
 };
 
 function createBaseCSOEconItemEquipped(): CSOEconItemEquipped {
@@ -2317,6 +2553,17 @@ export const CSOEconItemEquipped = {
     message.newClass !== undefined && (obj.newClass = Math.round(message.newClass));
     message.newSlot !== undefined && (obj.newSlot = Math.round(message.newSlot));
     return obj;
+  },
+
+  create(base?: DeepPartial<CSOEconItemEquipped>): CSOEconItemEquipped {
+    return CSOEconItemEquipped.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSOEconItemEquipped>): CSOEconItemEquipped {
+    const message = createBaseCSOEconItemEquipped();
+    message.newClass = object.newClass ?? 0;
+    message.newSlot = object.newSlot ?? 0;
+    return message;
   },
 };
 
@@ -2550,6 +2797,31 @@ export const CSOEconItem = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CSOEconItem>): CSOEconItem {
+    return CSOEconItem.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CSOEconItem>): CSOEconItem {
+    const message = createBaseCSOEconItem();
+    message.id = object.id ?? "0";
+    message.accountId = object.accountId ?? 0;
+    message.inventory = object.inventory ?? 0;
+    message.defIndex = object.defIndex ?? 0;
+    message.quantity = object.quantity ?? 0;
+    message.level = object.level ?? 0;
+    message.quality = object.quality ?? 0;
+    message.flags = object.flags ?? 0;
+    message.origin = object.origin ?? 0;
+    message.attribute = object.attribute?.map((e) => CSOEconItemAttribute.fromPartial(e)) || [];
+    message.interiorItem = (object.interiorItem !== undefined && object.interiorItem !== null)
+      ? CSOEconItem.fromPartial(object.interiorItem)
+      : undefined;
+    message.style = object.style ?? 0;
+    message.originalId = object.originalId ?? "0";
+    message.equippedState = object.equippedState?.map((e) => CSOEconItemEquipped.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgSortItems(): CMsgSortItems {
@@ -2595,6 +2867,16 @@ export const CMsgSortItems = {
     const obj: any = {};
     message.sortType !== undefined && (obj.sortType = Math.round(message.sortType));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSortItems>): CMsgSortItems {
+    return CMsgSortItems.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSortItems>): CMsgSortItems {
+    const message = createBaseCMsgSortItems();
+    message.sortType = object.sortType ?? 0;
+    return message;
   },
 };
 
@@ -2656,6 +2938,17 @@ export const CMsgConVarValue = {
     message.value !== undefined && (obj.value = message.value);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgConVarValue>): CMsgConVarValue {
+    return CMsgConVarValue.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgConVarValue>): CMsgConVarValue {
+    const message = createBaseCMsgConVarValue();
+    message.name = object.name ?? "";
+    message.value = object.value ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgReplicateConVars(): CMsgReplicateConVars {
@@ -2707,6 +3000,16 @@ export const CMsgReplicateConVars = {
       obj.convars = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgReplicateConVars>): CMsgReplicateConVars {
+    return CMsgReplicateConVars.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgReplicateConVars>): CMsgReplicateConVars {
+    const message = createBaseCMsgReplicateConVars();
+    message.convars = object.convars?.map((e) => CMsgConVarValue.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -2816,6 +3119,21 @@ export const CMsgItemAcknowledged = {
     message.origin !== undefined && (obj.origin = Math.round(message.origin));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgItemAcknowledged>): CMsgItemAcknowledged {
+    return CMsgItemAcknowledged.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgItemAcknowledged>): CMsgItemAcknowledged {
+    const message = createBaseCMsgItemAcknowledged();
+    message.accountId = object.accountId ?? 0;
+    message.inventory = object.inventory ?? 0;
+    message.defIndex = object.defIndex ?? 0;
+    message.quality = object.quality ?? 0;
+    message.rarity = object.rarity ?? 0;
+    message.origin = object.origin ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgSetItemPositions(): CMsgSetItemPositions {
@@ -2869,6 +3187,16 @@ export const CMsgSetItemPositions = {
       obj.itemPositions = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSetItemPositions>): CMsgSetItemPositions {
+    return CMsgSetItemPositions.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSetItemPositions>): CMsgSetItemPositions {
+    const message = createBaseCMsgSetItemPositions();
+    message.itemPositions = object.itemPositions?.map((e) => CMsgSetItemPositions_ItemPosition.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -2930,6 +3258,17 @@ export const CMsgSetItemPositions_ItemPosition = {
     message.position !== undefined && (obj.position = Math.round(message.position));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSetItemPositions_ItemPosition>): CMsgSetItemPositions_ItemPosition {
+    return CMsgSetItemPositions_ItemPosition.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSetItemPositions_ItemPosition>): CMsgSetItemPositions_ItemPosition {
+    const message = createBaseCMsgSetItemPositions_ItemPosition();
+    message.itemId = object.itemId ?? "0";
+    message.position = object.position ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCStorePurchaseCancel(): CMsgGCStorePurchaseCancel {
@@ -2975,6 +3314,16 @@ export const CMsgGCStorePurchaseCancel = {
     const obj: any = {};
     message.txnId !== undefined && (obj.txnId = message.txnId);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCStorePurchaseCancel>): CMsgGCStorePurchaseCancel {
+    return CMsgGCStorePurchaseCancel.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCStorePurchaseCancel>): CMsgGCStorePurchaseCancel {
+    const message = createBaseCMsgGCStorePurchaseCancel();
+    message.txnId = object.txnId ?? "0";
+    return message;
   },
 };
 
@@ -3022,6 +3371,16 @@ export const CMsgGCStorePurchaseCancelResponse = {
     message.result !== undefined && (obj.result = Math.round(message.result));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCStorePurchaseCancelResponse>): CMsgGCStorePurchaseCancelResponse {
+    return CMsgGCStorePurchaseCancelResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCStorePurchaseCancelResponse>): CMsgGCStorePurchaseCancelResponse {
+    const message = createBaseCMsgGCStorePurchaseCancelResponse();
+    message.result = object.result ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCStorePurchaseFinalize(): CMsgGCStorePurchaseFinalize {
@@ -3067,6 +3426,16 @@ export const CMsgGCStorePurchaseFinalize = {
     const obj: any = {};
     message.txnId !== undefined && (obj.txnId = message.txnId);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCStorePurchaseFinalize>): CMsgGCStorePurchaseFinalize {
+    return CMsgGCStorePurchaseFinalize.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCStorePurchaseFinalize>): CMsgGCStorePurchaseFinalize {
+    const message = createBaseCMsgGCStorePurchaseFinalize();
+    message.txnId = object.txnId ?? "0";
+    return message;
   },
 };
 
@@ -3143,6 +3512,17 @@ export const CMsgGCStorePurchaseFinalizeResponse = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCStorePurchaseFinalizeResponse>): CMsgGCStorePurchaseFinalizeResponse {
+    return CMsgGCStorePurchaseFinalizeResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCStorePurchaseFinalizeResponse>): CMsgGCStorePurchaseFinalizeResponse {
+    const message = createBaseCMsgGCStorePurchaseFinalizeResponse();
+    message.result = object.result ?? 0;
+    message.itemIds = object.itemIds?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgGCToGCBannedWordListUpdated(): CMsgGCToGCBannedWordListUpdated {
@@ -3188,6 +3568,16 @@ export const CMsgGCToGCBannedWordListUpdated = {
     const obj: any = {};
     message.groupId !== undefined && (obj.groupId = Math.round(message.groupId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToGCBannedWordListUpdated>): CMsgGCToGCBannedWordListUpdated {
+    return CMsgGCToGCBannedWordListUpdated.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToGCBannedWordListUpdated>): CMsgGCToGCBannedWordListUpdated {
+    const message = createBaseCMsgGCToGCBannedWordListUpdated();
+    message.groupId = object.groupId ?? 0;
+    return message;
   },
 };
 
@@ -3249,6 +3639,17 @@ export const CMsgGCToGCDirtySDOCache = {
     message.keyUint64 !== undefined && (obj.keyUint64 = message.keyUint64);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToGCDirtySDOCache>): CMsgGCToGCDirtySDOCache {
+    return CMsgGCToGCDirtySDOCache.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToGCDirtySDOCache>): CMsgGCToGCDirtySDOCache {
+    const message = createBaseCMsgGCToGCDirtySDOCache();
+    message.sdoType = object.sdoType ?? 0;
+    message.keyUint64 = object.keyUint64 ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgSDONoMemcached(): CMsgSDONoMemcached {
@@ -3283,6 +3684,15 @@ export const CMsgSDONoMemcached = {
   toJSON(_: CMsgSDONoMemcached): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSDONoMemcached>): CMsgSDONoMemcached {
+    return CMsgSDONoMemcached.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgSDONoMemcached>): CMsgSDONoMemcached {
+    const message = createBaseCMsgSDONoMemcached();
+    return message;
   },
 };
 
@@ -3330,6 +3740,16 @@ export const CMsgGCToGCUpdateSQLKeyValue = {
     message.keyName !== undefined && (obj.keyName = message.keyName);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToGCUpdateSQLKeyValue>): CMsgGCToGCUpdateSQLKeyValue {
+    return CMsgGCToGCUpdateSQLKeyValue.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToGCUpdateSQLKeyValue>): CMsgGCToGCUpdateSQLKeyValue {
+    const message = createBaseCMsgGCToGCUpdateSQLKeyValue();
+    message.keyName = object.keyName ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgGCServerVersionUpdated(): CMsgGCServerVersionUpdated {
@@ -3375,6 +3795,16 @@ export const CMsgGCServerVersionUpdated = {
     const obj: any = {};
     message.serverVersion !== undefined && (obj.serverVersion = Math.round(message.serverVersion));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCServerVersionUpdated>): CMsgGCServerVersionUpdated {
+    return CMsgGCServerVersionUpdated.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCServerVersionUpdated>): CMsgGCServerVersionUpdated {
+    const message = createBaseCMsgGCServerVersionUpdated();
+    message.serverVersion = object.serverVersion ?? 0;
+    return message;
   },
 };
 
@@ -3422,6 +3852,16 @@ export const CMsgGCClientVersionUpdated = {
     message.clientVersion !== undefined && (obj.clientVersion = Math.round(message.clientVersion));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCClientVersionUpdated>): CMsgGCClientVersionUpdated {
+    return CMsgGCClientVersionUpdated.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCClientVersionUpdated>): CMsgGCClientVersionUpdated {
+    const message = createBaseCMsgGCClientVersionUpdated();
+    message.clientVersion = object.clientVersion ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToGCWebAPIAccountChanged(): CMsgGCToGCWebAPIAccountChanged {
@@ -3456,6 +3896,15 @@ export const CMsgGCToGCWebAPIAccountChanged = {
   toJSON(_: CMsgGCToGCWebAPIAccountChanged): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToGCWebAPIAccountChanged>): CMsgGCToGCWebAPIAccountChanged {
+    return CMsgGCToGCWebAPIAccountChanged.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgGCToGCWebAPIAccountChanged>): CMsgGCToGCWebAPIAccountChanged {
+    const message = createBaseCMsgGCToGCWebAPIAccountChanged();
+    return message;
   },
 };
 
@@ -3529,6 +3978,18 @@ export const CMsgExtractGems = {
     message.itemSocketId !== undefined && (obj.itemSocketId = Math.round(message.itemSocketId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgExtractGems>): CMsgExtractGems {
+    return CMsgExtractGems.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgExtractGems>): CMsgExtractGems {
+    const message = createBaseCMsgExtractGems();
+    message.toolItemId = object.toolItemId ?? "0";
+    message.itemItemId = object.itemItemId ?? "0";
+    message.itemSocketId = object.itemSocketId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgExtractGemsResponse(): CMsgExtractGemsResponse {
@@ -3588,6 +4049,17 @@ export const CMsgExtractGemsResponse = {
     message.itemId !== undefined && (obj.itemId = message.itemId);
     message.response !== undefined && (obj.response = cMsgExtractGemsResponse_EExtractGemsToJSON(message.response));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgExtractGemsResponse>): CMsgExtractGemsResponse {
+    return CMsgExtractGemsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgExtractGemsResponse>): CMsgExtractGemsResponse {
+    const message = createBaseCMsgExtractGemsResponse();
+    message.itemId = object.itemId ?? "0";
+    message.response = object.response ?? 0;
+    return message;
   },
 };
 
@@ -3660,6 +4132,18 @@ export const CMsgAddSocket = {
     message.itemItemId !== undefined && (obj.itemItemId = message.itemItemId);
     message.unusual !== undefined && (obj.unusual = message.unusual);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgAddSocket>): CMsgAddSocket {
+    return CMsgAddSocket.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgAddSocket>): CMsgAddSocket {
+    const message = createBaseCMsgAddSocket();
+    message.toolItemId = object.toolItemId ?? "0";
+    message.itemItemId = object.itemItemId ?? "0";
+    message.unusual = object.unusual ?? false;
+    return message;
   },
 };
 
@@ -3750,6 +4234,18 @@ export const CMsgAddSocketResponse = {
     message.response !== undefined && (obj.response = cMsgAddSocketResponse_EAddSocketToJSON(message.response));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgAddSocketResponse>): CMsgAddSocketResponse {
+    return CMsgAddSocketResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgAddSocketResponse>): CMsgAddSocketResponse {
+    const message = createBaseCMsgAddSocketResponse();
+    message.itemId = object.itemId ?? "0";
+    message.updatedSocketIndex = object.updatedSocketIndex?.map((e) => e) || [];
+    message.response = object.response ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgAddItemToSocketData(): CMsgAddItemToSocketData {
@@ -3809,6 +4305,17 @@ export const CMsgAddItemToSocketData = {
     message.gemItemId !== undefined && (obj.gemItemId = message.gemItemId);
     message.socketIndex !== undefined && (obj.socketIndex = Math.round(message.socketIndex));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgAddItemToSocketData>): CMsgAddItemToSocketData {
+    return CMsgAddItemToSocketData.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgAddItemToSocketData>): CMsgAddItemToSocketData {
+    const message = createBaseCMsgAddItemToSocketData();
+    message.gemItemId = object.gemItemId ?? "0";
+    message.socketIndex = object.socketIndex ?? 0;
+    return message;
   },
 };
 
@@ -3875,6 +4382,17 @@ export const CMsgAddItemToSocket = {
       obj.gemsToSocket = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgAddItemToSocket>): CMsgAddItemToSocket {
+    return CMsgAddItemToSocket.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgAddItemToSocket>): CMsgAddItemToSocket {
+    const message = createBaseCMsgAddItemToSocket();
+    message.itemItemId = object.itemItemId ?? "0";
+    message.gemsToSocket = object.gemsToSocket?.map((e) => CMsgAddItemToSocketData.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -3965,6 +4483,18 @@ export const CMsgAddItemToSocketResponse = {
     message.response !== undefined && (obj.response = cMsgAddItemToSocketResponse_EAddGemToJSON(message.response));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgAddItemToSocketResponse>): CMsgAddItemToSocketResponse {
+    return CMsgAddItemToSocketResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgAddItemToSocketResponse>): CMsgAddItemToSocketResponse {
+    const message = createBaseCMsgAddItemToSocketResponse();
+    message.itemItemId = object.itemItemId ?? "0";
+    message.updatedSocketIndex = object.updatedSocketIndex?.map((e) => e) || [];
+    message.response = object.response ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgResetStrangeGemCount(): CMsgResetStrangeGemCount {
@@ -4025,6 +4555,17 @@ export const CMsgResetStrangeGemCount = {
     message.socketIndex !== undefined && (obj.socketIndex = Math.round(message.socketIndex));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgResetStrangeGemCount>): CMsgResetStrangeGemCount {
+    return CMsgResetStrangeGemCount.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgResetStrangeGemCount>): CMsgResetStrangeGemCount {
+    const message = createBaseCMsgResetStrangeGemCount();
+    message.itemItemId = object.itemItemId ?? "0";
+    message.socketIndex = object.socketIndex ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgResetStrangeGemCountResponse(): CMsgResetStrangeGemCountResponse {
@@ -4073,6 +4614,16 @@ export const CMsgResetStrangeGemCountResponse = {
     message.response !== undefined &&
       (obj.response = cMsgResetStrangeGemCountResponse_EResetGemToJSON(message.response));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgResetStrangeGemCountResponse>): CMsgResetStrangeGemCountResponse {
+    return CMsgResetStrangeGemCountResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgResetStrangeGemCountResponse>): CMsgResetStrangeGemCountResponse {
+    const message = createBaseCMsgResetStrangeGemCountResponse();
+    message.response = object.response ?? 0;
+    return message;
   },
 };
 
@@ -4146,6 +4697,18 @@ export const CMsgGCToClientPollFileRequest = {
     message.pollId !== undefined && (obj.pollId = Math.round(message.pollId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientPollFileRequest>): CMsgGCToClientPollFileRequest {
+    return CMsgGCToClientPollFileRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientPollFileRequest>): CMsgGCToClientPollFileRequest {
+    const message = createBaseCMsgGCToClientPollFileRequest();
+    message.fileName = object.fileName ?? "";
+    message.clientVersion = object.clientVersion ?? 0;
+    message.pollId = object.pollId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientPollFileResponse(): CMsgGCToClientPollFileResponse {
@@ -4218,6 +4781,18 @@ export const CMsgGCToClientPollFileResponse = {
     message.fileCrc !== undefined && (obj.fileCrc = Math.round(message.fileCrc));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientPollFileResponse>): CMsgGCToClientPollFileResponse {
+    return CMsgGCToClientPollFileResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientPollFileResponse>): CMsgGCToClientPollFileResponse {
+    const message = createBaseCMsgGCToClientPollFileResponse();
+    message.pollId = object.pollId ?? 0;
+    message.fileSize = object.fileSize ?? 0;
+    message.fileCrc = object.fileCrc ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToGCPerformManualOp(): CMsgGCToGCPerformManualOp {
@@ -4277,6 +4852,17 @@ export const CMsgGCToGCPerformManualOp = {
     message.opId !== undefined && (obj.opId = message.opId);
     message.groupCode !== undefined && (obj.groupCode = Math.round(message.groupCode));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToGCPerformManualOp>): CMsgGCToGCPerformManualOp {
+    return CMsgGCToGCPerformManualOp.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToGCPerformManualOp>): CMsgGCToGCPerformManualOp {
+    const message = createBaseCMsgGCToGCPerformManualOp();
+    message.opId = object.opId ?? "0";
+    message.groupCode = object.groupCode ?? 0;
+    return message;
   },
 };
 
@@ -4338,6 +4924,17 @@ export const CMsgGCToGCPerformManualOpCompleted = {
     message.sourceGc !== undefined && (obj.sourceGc = Math.round(message.sourceGc));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToGCPerformManualOpCompleted>): CMsgGCToGCPerformManualOpCompleted {
+    return CMsgGCToGCPerformManualOpCompleted.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToGCPerformManualOpCompleted>): CMsgGCToGCPerformManualOpCompleted {
+    const message = createBaseCMsgGCToGCPerformManualOpCompleted();
+    message.success = object.success ?? false;
+    message.sourceGc = object.sourceGc ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToGCReloadServerRegionSettings(): CMsgGCToGCReloadServerRegionSettings {
@@ -4372,6 +4969,15 @@ export const CMsgGCToGCReloadServerRegionSettings = {
   toJSON(_: CMsgGCToGCReloadServerRegionSettings): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToGCReloadServerRegionSettings>): CMsgGCToGCReloadServerRegionSettings {
+    return CMsgGCToGCReloadServerRegionSettings.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgGCToGCReloadServerRegionSettings>): CMsgGCToGCReloadServerRegionSettings {
+    const message = createBaseCMsgGCToGCReloadServerRegionSettings();
+    return message;
   },
 };
 
@@ -4427,6 +5033,16 @@ export const CMsgGCAdditionalWelcomeMsgList = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCAdditionalWelcomeMsgList>): CMsgGCAdditionalWelcomeMsgList {
+    return CMsgGCAdditionalWelcomeMsgList.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCAdditionalWelcomeMsgList>): CMsgGCAdditionalWelcomeMsgList {
+    const message = createBaseCMsgGCAdditionalWelcomeMsgList();
+    message.welcomeMessages = object.welcomeMessages?.map((e) => CExtraMsgBlock.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgApplyRemoteConVars(): CMsgApplyRemoteConVars {
@@ -4480,6 +5096,16 @@ export const CMsgApplyRemoteConVars = {
       obj.conVars = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgApplyRemoteConVars>): CMsgApplyRemoteConVars {
+    return CMsgApplyRemoteConVars.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgApplyRemoteConVars>): CMsgApplyRemoteConVars {
+    const message = createBaseCMsgApplyRemoteConVars();
+    message.conVars = object.conVars?.map((e) => CMsgApplyRemoteConVars_ConVar.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -4577,6 +5203,20 @@ export const CMsgApplyRemoteConVars_ConVar = {
     message.platform !== undefined && (obj.platform = eGCPlatformToJSON(message.platform));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgApplyRemoteConVars_ConVar>): CMsgApplyRemoteConVars_ConVar {
+    return CMsgApplyRemoteConVars_ConVar.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgApplyRemoteConVars_ConVar>): CMsgApplyRemoteConVars_ConVar {
+    const message = createBaseCMsgApplyRemoteConVars_ConVar();
+    message.name = object.name ?? "";
+    message.value = object.value ?? "";
+    message.versionMin = object.versionMin ?? 0;
+    message.versionMax = object.versionMax ?? 0;
+    message.platform = object.platform ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientApplyRemoteConVars(): CMsgGCToClientApplyRemoteConVars {
@@ -4623,6 +5263,18 @@ export const CMsgGCToClientApplyRemoteConVars = {
     message.msg !== undefined && (obj.msg = message.msg ? CMsgApplyRemoteConVars.toJSON(message.msg) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientApplyRemoteConVars>): CMsgGCToClientApplyRemoteConVars {
+    return CMsgGCToClientApplyRemoteConVars.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientApplyRemoteConVars>): CMsgGCToClientApplyRemoteConVars {
+    const message = createBaseCMsgGCToClientApplyRemoteConVars();
+    message.msg = (object.msg !== undefined && object.msg !== null)
+      ? CMsgApplyRemoteConVars.fromPartial(object.msg)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToServerApplyRemoteConVars(): CMsgGCToServerApplyRemoteConVars {
@@ -4668,6 +5320,18 @@ export const CMsgGCToServerApplyRemoteConVars = {
     const obj: any = {};
     message.msg !== undefined && (obj.msg = message.msg ? CMsgApplyRemoteConVars.toJSON(message.msg) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToServerApplyRemoteConVars>): CMsgGCToServerApplyRemoteConVars {
+    return CMsgGCToServerApplyRemoteConVars.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToServerApplyRemoteConVars>): CMsgGCToServerApplyRemoteConVars {
+    const message = createBaseCMsgGCToServerApplyRemoteConVars();
+    message.msg = (object.msg !== undefined && object.msg !== null)
+      ? CMsgApplyRemoteConVars.fromPartial(object.msg)
+      : undefined;
+    return message;
   },
 };
 
@@ -4748,6 +5412,18 @@ export const CMsgClientToGCIntegrityStatus = {
       obj.diagnostics = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCIntegrityStatus>): CMsgClientToGCIntegrityStatus {
+    return CMsgClientToGCIntegrityStatus.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCIntegrityStatus>): CMsgClientToGCIntegrityStatus {
+    const message = createBaseCMsgClientToGCIntegrityStatus();
+    message.report = object.report ?? "";
+    message.secureAllowed = object.secureAllowed ?? false;
+    message.diagnostics = object.diagnostics?.map((e) => CMsgClientToGCIntegrityStatus_keyvalue.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -4833,6 +5509,19 @@ export const CMsgClientToGCIntegrityStatus_keyvalue = {
     message.stringValue !== undefined && (obj.stringValue = message.stringValue);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCIntegrityStatus_keyvalue>): CMsgClientToGCIntegrityStatus_keyvalue {
+    return CMsgClientToGCIntegrityStatus_keyvalue.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCIntegrityStatus_keyvalue>): CMsgClientToGCIntegrityStatus_keyvalue {
+    const message = createBaseCMsgClientToGCIntegrityStatus_keyvalue();
+    message.id = object.id ?? 0;
+    message.extended = object.extended ?? 0;
+    message.value = object.value ?? "0";
+    message.stringValue = object.stringValue ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCAggregateMetrics(): CMsgClientToGCAggregateMetrics {
@@ -4886,6 +5575,16 @@ export const CMsgClientToGCAggregateMetrics = {
       obj.metrics = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCAggregateMetrics>): CMsgClientToGCAggregateMetrics {
+    return CMsgClientToGCAggregateMetrics.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCAggregateMetrics>): CMsgClientToGCAggregateMetrics {
+    const message = createBaseCMsgClientToGCAggregateMetrics();
+    message.metrics = object.metrics?.map((e) => CMsgClientToGCAggregateMetrics_SingleMetric.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -4947,6 +5646,19 @@ export const CMsgClientToGCAggregateMetrics_SingleMetric = {
     message.metricCount !== undefined && (obj.metricCount = Math.round(message.metricCount));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCAggregateMetrics_SingleMetric>): CMsgClientToGCAggregateMetrics_SingleMetric {
+    return CMsgClientToGCAggregateMetrics_SingleMetric.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCAggregateMetrics_SingleMetric>,
+  ): CMsgClientToGCAggregateMetrics_SingleMetric {
+    const message = createBaseCMsgClientToGCAggregateMetrics_SingleMetric();
+    message.metricName = object.metricName ?? "";
+    message.metricCount = object.metricCount ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientAggregateMetricsBackoff(): CMsgGCToClientAggregateMetricsBackoff {
@@ -4993,6 +5705,16 @@ export const CMsgGCToClientAggregateMetricsBackoff = {
     message.uploadRateModifier !== undefined && (obj.uploadRateModifier = message.uploadRateModifier);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientAggregateMetricsBackoff>): CMsgGCToClientAggregateMetricsBackoff {
+    return CMsgGCToClientAggregateMetricsBackoff.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientAggregateMetricsBackoff>): CMsgGCToClientAggregateMetricsBackoff {
+    const message = createBaseCMsgGCToClientAggregateMetricsBackoff();
+    message.uploadRateModifier = object.uploadRateModifier ?? 0;
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -5038,6 +5760,13 @@ function base64FromBytes(arr: Uint8Array): string {
     return tsProtoGlobalThis.btoa(bin.join(""));
   }
 }
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

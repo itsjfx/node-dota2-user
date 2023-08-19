@@ -1671,6 +1671,22 @@ export const CMsgPlayerCoachMatch = {
     message.coachFlags !== undefined && (obj.coachFlags = Math.round(message.coachFlags));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgPlayerCoachMatch>): CMsgPlayerCoachMatch {
+    return CMsgPlayerCoachMatch.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPlayerCoachMatch>): CMsgPlayerCoachMatch {
+    const message = createBaseCMsgPlayerCoachMatch();
+    message.matchId = object.matchId ?? "0";
+    message.matchOutcome = object.matchOutcome ?? 0;
+    message.coachedTeam = object.coachedTeam ?? 0;
+    message.startTime = object.startTime ?? 0;
+    message.duration = object.duration ?? 0;
+    message.teammateRatings = object.teammateRatings?.map((e) => e) || [];
+    message.coachFlags = object.coachFlags ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgPrivateCoachingSessionMember(): CMsgPrivateCoachingSessionMember {
@@ -1745,6 +1761,18 @@ export const CMsgPrivateCoachingSessionMember = {
     message.memberSessionRating !== undefined &&
       (obj.memberSessionRating = eCoachTeammateRatingToJSON(message.memberSessionRating));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgPrivateCoachingSessionMember>): CMsgPrivateCoachingSessionMember {
+    return CMsgPrivateCoachingSessionMember.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPrivateCoachingSessionMember>): CMsgPrivateCoachingSessionMember {
+    const message = createBaseCMsgPrivateCoachingSessionMember();
+    message.accountId = object.accountId ?? 0;
+    message.memberFlags = object.memberFlags ?? 0;
+    message.memberSessionRating = object.memberSessionRating ?? 0;
+    return message;
   },
 };
 
@@ -1911,6 +1939,24 @@ export const CMsgPrivateCoachingSession = {
     message.completedTimestamp !== undefined && (obj.completedTimestamp = Math.round(message.completedTimestamp));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgPrivateCoachingSession>): CMsgPrivateCoachingSession {
+    return CMsgPrivateCoachingSession.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPrivateCoachingSession>): CMsgPrivateCoachingSession {
+    const message = createBaseCMsgPrivateCoachingSession();
+    message.privateCoachingSessionId = object.privateCoachingSessionId ?? "0";
+    message.requestedTimestamp = object.requestedTimestamp ?? 0;
+    message.requestedLanguage = object.requestedLanguage ?? 0;
+    message.coachingSessionState = object.coachingSessionState ?? 0;
+    message.sessionMembers = object.sessionMembers?.map((e) => CMsgPrivateCoachingSessionMember.fromPartial(e)) || [];
+    message.currentLobbyId = object.currentLobbyId ?? "0";
+    message.currentServerSteamId = object.currentServerSteamId ?? "0";
+    message.acceptedTimestamp = object.acceptedTimestamp ?? 0;
+    message.completedTimestamp = object.completedTimestamp ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgPrivateCoachingSessionStatus(): CMsgPrivateCoachingSessionStatus {
@@ -1973,6 +2019,17 @@ export const CMsgPrivateCoachingSessionStatus = {
       (obj.requesterCompetitiveRankTier = Math.round(message.requesterCompetitiveRankTier));
     message.requesterGamesPlayed !== undefined && (obj.requesterGamesPlayed = Math.round(message.requesterGamesPlayed));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgPrivateCoachingSessionStatus>): CMsgPrivateCoachingSessionStatus {
+    return CMsgPrivateCoachingSessionStatus.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPrivateCoachingSessionStatus>): CMsgPrivateCoachingSessionStatus {
+    const message = createBaseCMsgPrivateCoachingSessionStatus();
+    message.requesterCompetitiveRankTier = object.requesterCompetitiveRankTier ?? 0;
+    message.requesterGamesPlayed = object.requesterGamesPlayed ?? 0;
+    return message;
   },
 };
 
@@ -2042,6 +2099,22 @@ export const CMsgAvailablePrivateCoachingSession = {
       : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgAvailablePrivateCoachingSession>): CMsgAvailablePrivateCoachingSession {
+    return CMsgAvailablePrivateCoachingSession.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgAvailablePrivateCoachingSession>): CMsgAvailablePrivateCoachingSession {
+    const message = createBaseCMsgAvailablePrivateCoachingSession();
+    message.coachingSession = (object.coachingSession !== undefined && object.coachingSession !== null)
+      ? CMsgPrivateCoachingSession.fromPartial(object.coachingSession)
+      : undefined;
+    message.coachingSessionStatus =
+      (object.coachingSessionStatus !== undefined && object.coachingSessionStatus !== null)
+        ? CMsgPrivateCoachingSessionStatus.fromPartial(object.coachingSessionStatus)
+        : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgAvailablePrivateCoachingSessionList(): CMsgAvailablePrivateCoachingSessionList {
@@ -2098,6 +2171,17 @@ export const CMsgAvailablePrivateCoachingSessionList = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgAvailablePrivateCoachingSessionList>): CMsgAvailablePrivateCoachingSessionList {
+    return CMsgAvailablePrivateCoachingSessionList.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgAvailablePrivateCoachingSessionList>): CMsgAvailablePrivateCoachingSessionList {
+    const message = createBaseCMsgAvailablePrivateCoachingSessionList();
+    message.availableCoachingSessions =
+      object.availableCoachingSessions?.map((e) => CMsgAvailablePrivateCoachingSession.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgAvailablePrivateCoachingSessionSummary(): CMsgAvailablePrivateCoachingSessionSummary {
@@ -2144,6 +2228,18 @@ export const CMsgAvailablePrivateCoachingSessionSummary = {
     message.coachingSessionCount !== undefined && (obj.coachingSessionCount = Math.round(message.coachingSessionCount));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgAvailablePrivateCoachingSessionSummary>): CMsgAvailablePrivateCoachingSessionSummary {
+    return CMsgAvailablePrivateCoachingSessionSummary.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgAvailablePrivateCoachingSessionSummary>,
+  ): CMsgAvailablePrivateCoachingSessionSummary {
+    const message = createBaseCMsgAvailablePrivateCoachingSessionSummary();
+    message.coachingSessionCount = object.coachingSessionCount ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCRequestPlayerCoachMatches(): CMsgClientToGCRequestPlayerCoachMatches {
@@ -2178,6 +2274,15 @@ export const CMsgClientToGCRequestPlayerCoachMatches = {
   toJSON(_: CMsgClientToGCRequestPlayerCoachMatches): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCRequestPlayerCoachMatches>): CMsgClientToGCRequestPlayerCoachMatches {
+    return CMsgClientToGCRequestPlayerCoachMatches.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgClientToGCRequestPlayerCoachMatches>): CMsgClientToGCRequestPlayerCoachMatches {
+    const message = createBaseCMsgClientToGCRequestPlayerCoachMatches();
+    return message;
   },
 };
 
@@ -2251,6 +2356,21 @@ export const CMsgClientToGCRequestPlayerCoachMatchesResponse = {
     }
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCRequestPlayerCoachMatchesResponse>,
+  ): CMsgClientToGCRequestPlayerCoachMatchesResponse {
+    return CMsgClientToGCRequestPlayerCoachMatchesResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCRequestPlayerCoachMatchesResponse>,
+  ): CMsgClientToGCRequestPlayerCoachMatchesResponse {
+    const message = createBaseCMsgClientToGCRequestPlayerCoachMatchesResponse();
+    message.result = object.result ?? 0;
+    message.coachMatches = object.coachMatches?.map((e) => CMsgPlayerCoachMatch.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCRequestPlayerCoachMatch(): CMsgClientToGCRequestPlayerCoachMatch {
@@ -2296,6 +2416,16 @@ export const CMsgClientToGCRequestPlayerCoachMatch = {
     const obj: any = {};
     message.matchId !== undefined && (obj.matchId = message.matchId);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCRequestPlayerCoachMatch>): CMsgClientToGCRequestPlayerCoachMatch {
+    return CMsgClientToGCRequestPlayerCoachMatch.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCRequestPlayerCoachMatch>): CMsgClientToGCRequestPlayerCoachMatch {
+    const message = createBaseCMsgClientToGCRequestPlayerCoachMatch();
+    message.matchId = object.matchId ?? "0";
+    return message;
   },
 };
 
@@ -2358,6 +2488,23 @@ export const CMsgClientToGCRequestPlayerCoachMatchResponse = {
     message.coachMatch !== undefined &&
       (obj.coachMatch = message.coachMatch ? CMsgPlayerCoachMatch.toJSON(message.coachMatch) : undefined);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCRequestPlayerCoachMatchResponse>,
+  ): CMsgClientToGCRequestPlayerCoachMatchResponse {
+    return CMsgClientToGCRequestPlayerCoachMatchResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCRequestPlayerCoachMatchResponse>,
+  ): CMsgClientToGCRequestPlayerCoachMatchResponse {
+    const message = createBaseCMsgClientToGCRequestPlayerCoachMatchResponse();
+    message.result = object.result ?? 0;
+    message.coachMatch = (object.coachMatch !== undefined && object.coachMatch !== null)
+      ? CMsgPlayerCoachMatch.fromPartial(object.coachMatch)
+      : undefined;
+    return message;
   },
 };
 
@@ -2443,6 +2590,19 @@ export const CMsgClientToGCSubmitCoachTeammateRating = {
     message.reason !== undefined && (obj.reason = message.reason);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCSubmitCoachTeammateRating>): CMsgClientToGCSubmitCoachTeammateRating {
+    return CMsgClientToGCSubmitCoachTeammateRating.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCSubmitCoachTeammateRating>): CMsgClientToGCSubmitCoachTeammateRating {
+    const message = createBaseCMsgClientToGCSubmitCoachTeammateRating();
+    message.matchId = object.matchId ?? "0";
+    message.coachAccountId = object.coachAccountId ?? 0;
+    message.rating = object.rating ?? 0;
+    message.reason = object.reason ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCSubmitCoachTeammateRatingResponse(): CMsgClientToGCSubmitCoachTeammateRatingResponse {
@@ -2497,6 +2657,20 @@ export const CMsgClientToGCSubmitCoachTeammateRatingResponse = {
       (obj.result = cMsgClientToGCSubmitCoachTeammateRatingResponse_EResponseToJSON(message.result));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCSubmitCoachTeammateRatingResponse>,
+  ): CMsgClientToGCSubmitCoachTeammateRatingResponse {
+    return CMsgClientToGCSubmitCoachTeammateRatingResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCSubmitCoachTeammateRatingResponse>,
+  ): CMsgClientToGCSubmitCoachTeammateRatingResponse {
+    const message = createBaseCMsgClientToGCSubmitCoachTeammateRatingResponse();
+    message.result = object.result ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientCoachTeammateRatingsChanged(): CMsgGCToClientCoachTeammateRatingsChanged {
@@ -2544,6 +2718,20 @@ export const CMsgGCToClientCoachTeammateRatingsChanged = {
       (obj.coachMatch = message.coachMatch ? CMsgPlayerCoachMatch.toJSON(message.coachMatch) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientCoachTeammateRatingsChanged>): CMsgGCToClientCoachTeammateRatingsChanged {
+    return CMsgGCToClientCoachTeammateRatingsChanged.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientCoachTeammateRatingsChanged>,
+  ): CMsgGCToClientCoachTeammateRatingsChanged {
+    const message = createBaseCMsgGCToClientCoachTeammateRatingsChanged();
+    message.coachMatch = (object.coachMatch !== undefined && object.coachMatch !== null)
+      ? CMsgPlayerCoachMatch.fromPartial(object.coachMatch)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCRequestPrivateCoachingSession(): CMsgClientToGCRequestPrivateCoachingSession {
@@ -2589,6 +2777,18 @@ export const CMsgClientToGCRequestPrivateCoachingSession = {
     const obj: any = {};
     message.language !== undefined && (obj.language = Math.round(message.language));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCRequestPrivateCoachingSession>): CMsgClientToGCRequestPrivateCoachingSession {
+    return CMsgClientToGCRequestPrivateCoachingSession.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCRequestPrivateCoachingSession>,
+  ): CMsgClientToGCRequestPrivateCoachingSession {
+    const message = createBaseCMsgClientToGCRequestPrivateCoachingSession();
+    message.language = object.language ?? 0;
+    return message;
   },
 };
 
@@ -2660,6 +2860,23 @@ export const CMsgClientToGCRequestPrivateCoachingSessionResponse = {
       : undefined);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCRequestPrivateCoachingSessionResponse>,
+  ): CMsgClientToGCRequestPrivateCoachingSessionResponse {
+    return CMsgClientToGCRequestPrivateCoachingSessionResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCRequestPrivateCoachingSessionResponse>,
+  ): CMsgClientToGCRequestPrivateCoachingSessionResponse {
+    const message = createBaseCMsgClientToGCRequestPrivateCoachingSessionResponse();
+    message.result = object.result ?? 0;
+    message.coachingSession = (object.coachingSession !== undefined && object.coachingSession !== null)
+      ? CMsgPrivateCoachingSession.fromPartial(object.coachingSession)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCAcceptPrivateCoachingSession(): CMsgClientToGCAcceptPrivateCoachingSession {
@@ -2705,6 +2922,18 @@ export const CMsgClientToGCAcceptPrivateCoachingSession = {
     const obj: any = {};
     message.coachingSessionId !== undefined && (obj.coachingSessionId = message.coachingSessionId);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCAcceptPrivateCoachingSession>): CMsgClientToGCAcceptPrivateCoachingSession {
+    return CMsgClientToGCAcceptPrivateCoachingSession.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCAcceptPrivateCoachingSession>,
+  ): CMsgClientToGCAcceptPrivateCoachingSession {
+    const message = createBaseCMsgClientToGCAcceptPrivateCoachingSession();
+    message.coachingSessionId = object.coachingSessionId ?? "0";
+    return message;
   },
 };
 
@@ -2776,6 +3005,23 @@ export const CMsgClientToGCAcceptPrivateCoachingSessionResponse = {
       : undefined);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCAcceptPrivateCoachingSessionResponse>,
+  ): CMsgClientToGCAcceptPrivateCoachingSessionResponse {
+    return CMsgClientToGCAcceptPrivateCoachingSessionResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCAcceptPrivateCoachingSessionResponse>,
+  ): CMsgClientToGCAcceptPrivateCoachingSessionResponse {
+    const message = createBaseCMsgClientToGCAcceptPrivateCoachingSessionResponse();
+    message.result = object.result ?? 0;
+    message.coachingSession = (object.coachingSession !== undefined && object.coachingSession !== null)
+      ? CMsgPrivateCoachingSession.fromPartial(object.coachingSession)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCLeavePrivateCoachingSession(): CMsgClientToGCLeavePrivateCoachingSession {
@@ -2810,6 +3056,15 @@ export const CMsgClientToGCLeavePrivateCoachingSession = {
   toJSON(_: CMsgClientToGCLeavePrivateCoachingSession): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCLeavePrivateCoachingSession>): CMsgClientToGCLeavePrivateCoachingSession {
+    return CMsgClientToGCLeavePrivateCoachingSession.fromPartial(base ?? {});
+  },
+
+  fromPartial(_: DeepPartial<CMsgClientToGCLeavePrivateCoachingSession>): CMsgClientToGCLeavePrivateCoachingSession {
+    const message = createBaseCMsgClientToGCLeavePrivateCoachingSession();
+    return message;
   },
 };
 
@@ -2865,6 +3120,20 @@ export const CMsgClientToGCLeavePrivateCoachingSessionResponse = {
       (obj.result = cMsgClientToGCLeavePrivateCoachingSessionResponse_EResponseToJSON(message.result));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCLeavePrivateCoachingSessionResponse>,
+  ): CMsgClientToGCLeavePrivateCoachingSessionResponse {
+    return CMsgClientToGCLeavePrivateCoachingSessionResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCLeavePrivateCoachingSessionResponse>,
+  ): CMsgClientToGCLeavePrivateCoachingSessionResponse {
+    const message = createBaseCMsgClientToGCLeavePrivateCoachingSessionResponse();
+    message.result = object.result ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCGetCurrentPrivateCoachingSession(): CMsgClientToGCGetCurrentPrivateCoachingSession {
@@ -2899,6 +3168,19 @@ export const CMsgClientToGCGetCurrentPrivateCoachingSession = {
   toJSON(_: CMsgClientToGCGetCurrentPrivateCoachingSession): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCGetCurrentPrivateCoachingSession>,
+  ): CMsgClientToGCGetCurrentPrivateCoachingSession {
+    return CMsgClientToGCGetCurrentPrivateCoachingSession.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    _: DeepPartial<CMsgClientToGCGetCurrentPrivateCoachingSession>,
+  ): CMsgClientToGCGetCurrentPrivateCoachingSession {
+    const message = createBaseCMsgClientToGCGetCurrentPrivateCoachingSession();
+    return message;
   },
 };
 
@@ -2970,6 +3252,23 @@ export const CMsgClientToGCGetCurrentPrivateCoachingSessionResponse = {
       : undefined);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCGetCurrentPrivateCoachingSessionResponse>,
+  ): CMsgClientToGCGetCurrentPrivateCoachingSessionResponse {
+    return CMsgClientToGCGetCurrentPrivateCoachingSessionResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCGetCurrentPrivateCoachingSessionResponse>,
+  ): CMsgClientToGCGetCurrentPrivateCoachingSessionResponse {
+    const message = createBaseCMsgClientToGCGetCurrentPrivateCoachingSessionResponse();
+    message.result = object.result ?? 0;
+    message.currentSession = (object.currentSession !== undefined && object.currentSession !== null)
+      ? CMsgPrivateCoachingSession.fromPartial(object.currentSession)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientPrivateCoachingSessionUpdated(): CMsgGCToClientPrivateCoachingSessionUpdated {
@@ -3021,6 +3320,20 @@ export const CMsgGCToClientPrivateCoachingSessionUpdated = {
       ? CMsgPrivateCoachingSession.toJSON(message.coachingSession)
       : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToClientPrivateCoachingSessionUpdated>): CMsgGCToClientPrivateCoachingSessionUpdated {
+    return CMsgGCToClientPrivateCoachingSessionUpdated.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientPrivateCoachingSessionUpdated>,
+  ): CMsgGCToClientPrivateCoachingSessionUpdated {
+    const message = createBaseCMsgGCToClientPrivateCoachingSessionUpdated();
+    message.coachingSession = (object.coachingSession !== undefined && object.coachingSession !== null)
+      ? CMsgPrivateCoachingSession.fromPartial(object.coachingSession)
+      : undefined;
+    return message;
   },
 };
 
@@ -3085,6 +3398,21 @@ export const CMsgClientToGCSubmitPrivateCoachingSessionRating = {
     message.sessionRating !== undefined && (obj.sessionRating = eCoachTeammateRatingToJSON(message.sessionRating));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCSubmitPrivateCoachingSessionRating>,
+  ): CMsgClientToGCSubmitPrivateCoachingSessionRating {
+    return CMsgClientToGCSubmitPrivateCoachingSessionRating.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCSubmitPrivateCoachingSessionRating>,
+  ): CMsgClientToGCSubmitPrivateCoachingSessionRating {
+    const message = createBaseCMsgClientToGCSubmitPrivateCoachingSessionRating();
+    message.coachingSessionId = object.coachingSessionId ?? "0";
+    message.sessionRating = object.sessionRating ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCSubmitPrivateCoachingSessionRatingResponse(): CMsgClientToGCSubmitPrivateCoachingSessionRatingResponse {
@@ -3139,6 +3467,20 @@ export const CMsgClientToGCSubmitPrivateCoachingSessionRatingResponse = {
       (obj.result = cMsgClientToGCSubmitPrivateCoachingSessionRatingResponse_EResponseToJSON(message.result));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCSubmitPrivateCoachingSessionRatingResponse>,
+  ): CMsgClientToGCSubmitPrivateCoachingSessionRatingResponse {
+    return CMsgClientToGCSubmitPrivateCoachingSessionRatingResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCSubmitPrivateCoachingSessionRatingResponse>,
+  ): CMsgClientToGCSubmitPrivateCoachingSessionRatingResponse {
+    const message = createBaseCMsgClientToGCSubmitPrivateCoachingSessionRatingResponse();
+    message.result = object.result ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCGetAvailablePrivateCoachingSessions(): CMsgClientToGCGetAvailablePrivateCoachingSessions {
@@ -3187,6 +3529,20 @@ export const CMsgClientToGCGetAvailablePrivateCoachingSessions = {
     const obj: any = {};
     message.language !== undefined && (obj.language = Math.round(message.language));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCGetAvailablePrivateCoachingSessions>,
+  ): CMsgClientToGCGetAvailablePrivateCoachingSessions {
+    return CMsgClientToGCGetAvailablePrivateCoachingSessions.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCGetAvailablePrivateCoachingSessions>,
+  ): CMsgClientToGCGetAvailablePrivateCoachingSessions {
+    const message = createBaseCMsgClientToGCGetAvailablePrivateCoachingSessions();
+    message.language = object.language ?? 0;
+    return message;
   },
 };
 
@@ -3258,6 +3614,24 @@ export const CMsgClientToGCGetAvailablePrivateCoachingSessionsResponse = {
       : undefined);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCGetAvailablePrivateCoachingSessionsResponse>,
+  ): CMsgClientToGCGetAvailablePrivateCoachingSessionsResponse {
+    return CMsgClientToGCGetAvailablePrivateCoachingSessionsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCGetAvailablePrivateCoachingSessionsResponse>,
+  ): CMsgClientToGCGetAvailablePrivateCoachingSessionsResponse {
+    const message = createBaseCMsgClientToGCGetAvailablePrivateCoachingSessionsResponse();
+    message.result = object.result ?? 0;
+    message.availableSessionsList =
+      (object.availableSessionsList !== undefined && object.availableSessionsList !== null)
+        ? CMsgAvailablePrivateCoachingSessionList.fromPartial(object.availableSessionsList)
+        : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCGetAvailablePrivateCoachingSessionsSummary(): CMsgClientToGCGetAvailablePrivateCoachingSessionsSummary {
@@ -3295,6 +3669,19 @@ export const CMsgClientToGCGetAvailablePrivateCoachingSessionsSummary = {
   toJSON(_: CMsgClientToGCGetAvailablePrivateCoachingSessionsSummary): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCGetAvailablePrivateCoachingSessionsSummary>,
+  ): CMsgClientToGCGetAvailablePrivateCoachingSessionsSummary {
+    return CMsgClientToGCGetAvailablePrivateCoachingSessionsSummary.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    _: DeepPartial<CMsgClientToGCGetAvailablePrivateCoachingSessionsSummary>,
+  ): CMsgClientToGCGetAvailablePrivateCoachingSessionsSummary {
+    const message = createBaseCMsgClientToGCGetAvailablePrivateCoachingSessionsSummary();
+    return message;
   },
 };
 
@@ -3370,6 +3757,24 @@ export const CMsgClientToGCGetAvailablePrivateCoachingSessionsSummaryResponse = 
       : undefined);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCGetAvailablePrivateCoachingSessionsSummaryResponse>,
+  ): CMsgClientToGCGetAvailablePrivateCoachingSessionsSummaryResponse {
+    return CMsgClientToGCGetAvailablePrivateCoachingSessionsSummaryResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCGetAvailablePrivateCoachingSessionsSummaryResponse>,
+  ): CMsgClientToGCGetAvailablePrivateCoachingSessionsSummaryResponse {
+    const message = createBaseCMsgClientToGCGetAvailablePrivateCoachingSessionsSummaryResponse();
+    message.result = object.result ?? 0;
+    message.coachingSessionSummary =
+      (object.coachingSessionSummary !== undefined && object.coachingSessionSummary !== null)
+        ? CMsgAvailablePrivateCoachingSessionSummary.fromPartial(object.coachingSessionSummary)
+        : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCJoinPrivateCoachingSessionLobby(): CMsgClientToGCJoinPrivateCoachingSessionLobby {
@@ -3404,6 +3809,19 @@ export const CMsgClientToGCJoinPrivateCoachingSessionLobby = {
   toJSON(_: CMsgClientToGCJoinPrivateCoachingSessionLobby): unknown {
     const obj: any = {};
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCJoinPrivateCoachingSessionLobby>,
+  ): CMsgClientToGCJoinPrivateCoachingSessionLobby {
+    return CMsgClientToGCJoinPrivateCoachingSessionLobby.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    _: DeepPartial<CMsgClientToGCJoinPrivateCoachingSessionLobby>,
+  ): CMsgClientToGCJoinPrivateCoachingSessionLobby {
+    const message = createBaseCMsgClientToGCJoinPrivateCoachingSessionLobby();
+    return message;
   },
 };
 
@@ -3459,6 +3877,20 @@ export const CMsgClientToGCJoinPrivateCoachingSessionLobbyResponse = {
       (obj.result = cMsgClientToGCJoinPrivateCoachingSessionLobbyResponse_EResponseToJSON(message.result));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCJoinPrivateCoachingSessionLobbyResponse>,
+  ): CMsgClientToGCJoinPrivateCoachingSessionLobbyResponse {
+    return CMsgClientToGCJoinPrivateCoachingSessionLobbyResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCJoinPrivateCoachingSessionLobbyResponse>,
+  ): CMsgClientToGCJoinPrivateCoachingSessionLobbyResponse {
+    const message = createBaseCMsgClientToGCJoinPrivateCoachingSessionLobbyResponse();
+    message.result = object.result ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCoachFriend(): CMsgClientToGCCoachFriend {
@@ -3505,6 +3937,16 @@ export const CMsgClientToGCCoachFriend = {
     message.targetAccountId !== undefined && (obj.targetAccountId = Math.round(message.targetAccountId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCCoachFriend>): CMsgClientToGCCoachFriend {
+    return CMsgClientToGCCoachFriend.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCCoachFriend>): CMsgClientToGCCoachFriend {
+    const message = createBaseCMsgClientToGCCoachFriend();
+    message.targetAccountId = object.targetAccountId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCoachFriendResponse(): CMsgClientToGCCoachFriendResponse {
@@ -3550,6 +3992,16 @@ export const CMsgClientToGCCoachFriendResponse = {
     const obj: any = {};
     message.result !== undefined && (obj.result = cMsgClientToGCCoachFriendResponse_EResponseToJSON(message.result));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCCoachFriendResponse>): CMsgClientToGCCoachFriendResponse {
+    return CMsgClientToGCCoachFriendResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCCoachFriendResponse>): CMsgClientToGCCoachFriendResponse {
+    const message = createBaseCMsgClientToGCCoachFriendResponse();
+    message.result = object.result ?? 0;
+    return message;
   },
 };
 
@@ -3611,6 +4063,19 @@ export const CMsgClientToGCRespondToCoachFriendRequest = {
     message.response !== undefined && (obj.response = eLobbyMemberCoachRequestStateToJSON(message.response));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCRespondToCoachFriendRequest>): CMsgClientToGCRespondToCoachFriendRequest {
+    return CMsgClientToGCRespondToCoachFriendRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCRespondToCoachFriendRequest>,
+  ): CMsgClientToGCRespondToCoachFriendRequest {
+    const message = createBaseCMsgClientToGCRespondToCoachFriendRequest();
+    message.coachAccountId = object.coachAccountId ?? 0;
+    message.response = object.response ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCRespondToCoachFriendRequestResponse(): CMsgClientToGCRespondToCoachFriendRequestResponse {
@@ -3665,6 +4130,20 @@ export const CMsgClientToGCRespondToCoachFriendRequestResponse = {
       (obj.result = cMsgClientToGCRespondToCoachFriendRequestResponse_EResponseToJSON(message.result));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCRespondToCoachFriendRequestResponse>,
+  ): CMsgClientToGCRespondToCoachFriendRequestResponse {
+    return CMsgClientToGCRespondToCoachFriendRequestResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCRespondToCoachFriendRequestResponse>,
+  ): CMsgClientToGCRespondToCoachFriendRequestResponse {
+    const message = createBaseCMsgClientToGCRespondToCoachFriendRequestResponse();
+    message.result = object.result ?? 0;
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -3685,6 +4164,13 @@ var tsProtoGlobalThis: any = (() => {
   }
   throw "Unable to locate global object";
 })();
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

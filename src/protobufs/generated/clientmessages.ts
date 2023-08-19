@@ -187,6 +187,17 @@ export const CClientMsgCustomGameEvent = {
       (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
     return obj;
   },
+
+  create(base?: DeepPartial<CClientMsgCustomGameEvent>): CClientMsgCustomGameEvent {
+    return CClientMsgCustomGameEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CClientMsgCustomGameEvent>): CClientMsgCustomGameEvent {
+    const message = createBaseCClientMsgCustomGameEvent();
+    message.eventName = object.eventName ?? "";
+    message.data = object.data ?? Buffer.alloc(0);
+    return message;
+  },
 };
 
 function createBaseCClientMsgCustomGameEventBounce(): CClientMsgCustomGameEventBounce {
@@ -259,6 +270,18 @@ export const CClientMsgCustomGameEventBounce = {
       (obj.data = base64FromBytes(message.data !== undefined ? message.data : Buffer.alloc(0)));
     message.playerSlot !== undefined && (obj.playerSlot = Math.round(message.playerSlot));
     return obj;
+  },
+
+  create(base?: DeepPartial<CClientMsgCustomGameEventBounce>): CClientMsgCustomGameEventBounce {
+    return CClientMsgCustomGameEventBounce.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CClientMsgCustomGameEventBounce>): CClientMsgCustomGameEventBounce {
+    const message = createBaseCClientMsgCustomGameEventBounce();
+    message.eventName = object.eventName ?? "";
+    message.data = object.data ?? Buffer.alloc(0);
+    message.playerSlot = object.playerSlot ?? 0;
+    return message;
   },
 };
 
@@ -356,6 +379,20 @@ export const CClientMsgClientUIEvent = {
     message.data2 !== undefined && (obj.data2 = message.data2);
     return obj;
   },
+
+  create(base?: DeepPartial<CClientMsgClientUIEvent>): CClientMsgClientUIEvent {
+    return CClientMsgClientUIEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CClientMsgClientUIEvent>): CClientMsgClientUIEvent {
+    const message = createBaseCClientMsgClientUIEvent();
+    message.event = object.event ?? 0;
+    message.entEhandle = object.entEhandle ?? 0;
+    message.clientEhandle = object.clientEhandle ?? 0;
+    message.data1 = object.data1 ?? "";
+    message.data2 = object.data2 ?? "";
+    return message;
+  },
 };
 
 function createBaseCClientMsgDevPaletteVisibilityChangedEvent(): CClientMsgDevPaletteVisibilityChangedEvent {
@@ -401,6 +438,18 @@ export const CClientMsgDevPaletteVisibilityChangedEvent = {
     const obj: any = {};
     message.visible !== undefined && (obj.visible = message.visible);
     return obj;
+  },
+
+  create(base?: DeepPartial<CClientMsgDevPaletteVisibilityChangedEvent>): CClientMsgDevPaletteVisibilityChangedEvent {
+    return CClientMsgDevPaletteVisibilityChangedEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CClientMsgDevPaletteVisibilityChangedEvent>,
+  ): CClientMsgDevPaletteVisibilityChangedEvent {
+    const message = createBaseCClientMsgDevPaletteVisibilityChangedEvent();
+    message.visible = object.visible ?? false;
+    return message;
   },
 };
 
@@ -477,6 +526,22 @@ export const CClientMsgWorldUIControllerHasPanelChangedEvent = {
     message.literalHandType !== undefined && (obj.literalHandType = Math.round(message.literalHandType));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CClientMsgWorldUIControllerHasPanelChangedEvent>,
+  ): CClientMsgWorldUIControllerHasPanelChangedEvent {
+    return CClientMsgWorldUIControllerHasPanelChangedEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CClientMsgWorldUIControllerHasPanelChangedEvent>,
+  ): CClientMsgWorldUIControllerHasPanelChangedEvent {
+    const message = createBaseCClientMsgWorldUIControllerHasPanelChangedEvent();
+    message.hasPanel = object.hasPanel ?? false;
+    message.clientEhandle = object.clientEhandle ?? 0;
+    message.literalHandType = object.literalHandType ?? 0;
+    return message;
+  },
 };
 
 function createBaseCClientMsgRotateAnchor(): CClientMsgRotateAnchor {
@@ -523,6 +588,16 @@ export const CClientMsgRotateAnchor = {
     message.angle !== undefined && (obj.angle = message.angle);
     return obj;
   },
+
+  create(base?: DeepPartial<CClientMsgRotateAnchor>): CClientMsgRotateAnchor {
+    return CClientMsgRotateAnchor.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CClientMsgRotateAnchor>): CClientMsgRotateAnchor {
+    const message = createBaseCClientMsgRotateAnchor();
+    message.angle = object.angle ?? 0;
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -568,6 +643,13 @@ function base64FromBytes(arr: Uint8Array): string {
     return tsProtoGlobalThis.btoa(bin.join(""));
   }
 }
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function isSet(value: any): boolean {
   return value !== null && value !== undefined;

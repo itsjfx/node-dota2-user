@@ -259,6 +259,17 @@ export const CMsgVDebugGameSessionIDEvent = {
     message.gamesessionid !== undefined && (obj.gamesessionid = message.gamesessionid);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgVDebugGameSessionIDEvent>): CMsgVDebugGameSessionIDEvent {
+    return CMsgVDebugGameSessionIDEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgVDebugGameSessionIDEvent>): CMsgVDebugGameSessionIDEvent {
+    const message = createBaseCMsgVDebugGameSessionIDEvent();
+    message.clientid = object.clientid ?? 0;
+    message.gamesessionid = object.gamesessionid ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgPlaceDecalEvent(): CMsgPlaceDecalEvent {
@@ -479,6 +490,35 @@ export const CMsgPlaceDecalEvent = {
     message.isAdjacent !== undefined && (obj.isAdjacent = message.isAdjacent);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgPlaceDecalEvent>): CMsgPlaceDecalEvent {
+    return CMsgPlaceDecalEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgPlaceDecalEvent>): CMsgPlaceDecalEvent {
+    const message = createBaseCMsgPlaceDecalEvent();
+    message.position = (object.position !== undefined && object.position !== null)
+      ? CMsgVector.fromPartial(object.position)
+      : undefined;
+    message.normal = (object.normal !== undefined && object.normal !== null)
+      ? CMsgVector.fromPartial(object.normal)
+      : undefined;
+    message.saxis = (object.saxis !== undefined && object.saxis !== null)
+      ? CMsgVector.fromPartial(object.saxis)
+      : undefined;
+    message.decalmaterialindex = object.decalmaterialindex ?? 0;
+    message.flags = object.flags ?? 0;
+    message.color = object.color ?? 0;
+    message.width = object.width ?? 0;
+    message.height = object.height ?? 0;
+    message.depth = object.depth ?? 0;
+    message.entityhandleindex = object.entityhandleindex ?? 0;
+    message.skeletoninstancehash = object.skeletoninstancehash ?? 0;
+    message.boneindex = object.boneindex ?? 0;
+    message.translucenthit = object.translucenthit ?? false;
+    message.isAdjacent = object.isAdjacent ?? false;
+    return message;
+  },
 };
 
 function createBaseCMsgClearWorldDecalsEvent(): CMsgClearWorldDecalsEvent {
@@ -525,6 +565,16 @@ export const CMsgClearWorldDecalsEvent = {
     message.flagstoclear !== undefined && (obj.flagstoclear = Math.round(message.flagstoclear));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClearWorldDecalsEvent>): CMsgClearWorldDecalsEvent {
+    return CMsgClearWorldDecalsEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClearWorldDecalsEvent>): CMsgClearWorldDecalsEvent {
+    const message = createBaseCMsgClearWorldDecalsEvent();
+    message.flagstoclear = object.flagstoclear ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClearEntityDecalsEvent(): CMsgClearEntityDecalsEvent {
@@ -570,6 +620,16 @@ export const CMsgClearEntityDecalsEvent = {
     const obj: any = {};
     message.flagstoclear !== undefined && (obj.flagstoclear = Math.round(message.flagstoclear));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClearEntityDecalsEvent>): CMsgClearEntityDecalsEvent {
+    return CMsgClearEntityDecalsEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClearEntityDecalsEvent>): CMsgClearEntityDecalsEvent {
+    const message = createBaseCMsgClearEntityDecalsEvent();
+    message.flagstoclear = object.flagstoclear ?? 0;
+    return message;
   },
 };
 
@@ -643,6 +703,18 @@ export const CMsgClearDecalsForSkeletonInstanceEvent = {
     message.skeletoninstancehash !== undefined && (obj.skeletoninstancehash = Math.round(message.skeletoninstancehash));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClearDecalsForSkeletonInstanceEvent>): CMsgClearDecalsForSkeletonInstanceEvent {
+    return CMsgClearDecalsForSkeletonInstanceEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClearDecalsForSkeletonInstanceEvent>): CMsgClearDecalsForSkeletonInstanceEvent {
+    const message = createBaseCMsgClearDecalsForSkeletonInstanceEvent();
+    message.flagstoclear = object.flagstoclear ?? 0;
+    message.entityhandleindex = object.entityhandleindex ?? 0;
+    message.skeletoninstancehash = object.skeletoninstancehash ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgSource1LegacyGameEventList(): CMsgSource1LegacyGameEventList {
@@ -698,6 +770,17 @@ export const CMsgSource1LegacyGameEventList = {
       obj.descriptors = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSource1LegacyGameEventList>): CMsgSource1LegacyGameEventList {
+    return CMsgSource1LegacyGameEventList.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSource1LegacyGameEventList>): CMsgSource1LegacyGameEventList {
+    const message = createBaseCMsgSource1LegacyGameEventList();
+    message.descriptors = object.descriptors?.map((e) => CMsgSource1LegacyGameEventList_descriptorT.fromPartial(e)) ||
+      [];
+    return message;
   },
 };
 
@@ -755,6 +838,17 @@ export const CMsgSource1LegacyGameEventList_keyT = {
     message.type !== undefined && (obj.type = Math.round(message.type));
     message.name !== undefined && (obj.name = message.name);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSource1LegacyGameEventList_keyT>): CMsgSource1LegacyGameEventList_keyT {
+    return CMsgSource1LegacyGameEventList_keyT.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSource1LegacyGameEventList_keyT>): CMsgSource1LegacyGameEventList_keyT {
+    const message = createBaseCMsgSource1LegacyGameEventList_keyT();
+    message.type = object.type ?? 0;
+    message.name = object.name ?? "";
+    return message;
   },
 };
 
@@ -834,6 +928,20 @@ export const CMsgSource1LegacyGameEventList_descriptorT = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSource1LegacyGameEventList_descriptorT>): CMsgSource1LegacyGameEventList_descriptorT {
+    return CMsgSource1LegacyGameEventList_descriptorT.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSource1LegacyGameEventList_descriptorT>,
+  ): CMsgSource1LegacyGameEventList_descriptorT {
+    const message = createBaseCMsgSource1LegacyGameEventList_descriptorT();
+    message.eventid = object.eventid ?? 0;
+    message.name = object.name ?? "";
+    message.keys = object.keys?.map((e) => CMsgSource1LegacyGameEventList_keyT.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgSource1LegacyListenEvents(): CMsgSource1LegacyListenEvents {
@@ -908,6 +1016,17 @@ export const CMsgSource1LegacyListenEvents = {
       obj.eventarraybits = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSource1LegacyListenEvents>): CMsgSource1LegacyListenEvents {
+    return CMsgSource1LegacyListenEvents.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSource1LegacyListenEvents>): CMsgSource1LegacyListenEvents {
+    const message = createBaseCMsgSource1LegacyListenEvents();
+    message.playerslot = object.playerslot ?? 0;
+    message.eventarraybits = object.eventarraybits?.map((e) => e) || [];
+    return message;
   },
 };
 
@@ -1008,6 +1127,20 @@ export const CMsgSource1LegacyGameEvent = {
     message.serverTick !== undefined && (obj.serverTick = Math.round(message.serverTick));
     message.passthrough !== undefined && (obj.passthrough = Math.round(message.passthrough));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSource1LegacyGameEvent>): CMsgSource1LegacyGameEvent {
+    return CMsgSource1LegacyGameEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSource1LegacyGameEvent>): CMsgSource1LegacyGameEvent {
+    const message = createBaseCMsgSource1LegacyGameEvent();
+    message.eventName = object.eventName ?? "";
+    message.eventid = object.eventid ?? 0;
+    message.keys = object.keys?.map((e) => CMsgSource1LegacyGameEvent_keyT.fromPartial(e)) || [];
+    message.serverTick = object.serverTick ?? 0;
+    message.passthrough = object.passthrough ?? 0;
+    return message;
   },
 };
 
@@ -1141,6 +1274,23 @@ export const CMsgSource1LegacyGameEvent_keyT = {
     message.valUint64 !== undefined && (obj.valUint64 = message.valUint64);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSource1LegacyGameEvent_keyT>): CMsgSource1LegacyGameEvent_keyT {
+    return CMsgSource1LegacyGameEvent_keyT.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSource1LegacyGameEvent_keyT>): CMsgSource1LegacyGameEvent_keyT {
+    const message = createBaseCMsgSource1LegacyGameEvent_keyT();
+    message.type = object.type ?? 0;
+    message.valString = object.valString ?? "";
+    message.valFloat = object.valFloat ?? 0;
+    message.valLong = object.valLong ?? 0;
+    message.valShort = object.valShort ?? 0;
+    message.valByte = object.valByte ?? 0;
+    message.valBool = object.valBool ?? false;
+    message.valUint64 = object.valUint64 ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgSosStartSoundEvent(): CMsgSosStartSoundEvent {
@@ -1257,6 +1407,21 @@ export const CMsgSosStartSoundEvent = {
     message.startTime !== undefined && (obj.startTime = message.startTime);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSosStartSoundEvent>): CMsgSosStartSoundEvent {
+    return CMsgSosStartSoundEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSosStartSoundEvent>): CMsgSosStartSoundEvent {
+    const message = createBaseCMsgSosStartSoundEvent();
+    message.soundeventGuid = object.soundeventGuid ?? 0;
+    message.soundeventHash = object.soundeventHash ?? 0;
+    message.sourceEntityIndex = object.sourceEntityIndex ?? 0;
+    message.seed = object.seed ?? 0;
+    message.packedParams = object.packedParams ?? Buffer.alloc(0);
+    message.startTime = object.startTime ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgSosStopSoundEvent(): CMsgSosStopSoundEvent {
@@ -1302,6 +1467,16 @@ export const CMsgSosStopSoundEvent = {
     const obj: any = {};
     message.soundeventGuid !== undefined && (obj.soundeventGuid = Math.round(message.soundeventGuid));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSosStopSoundEvent>): CMsgSosStopSoundEvent {
+    return CMsgSosStopSoundEvent.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSosStopSoundEvent>): CMsgSosStopSoundEvent {
+    const message = createBaseCMsgSosStopSoundEvent();
+    message.soundeventGuid = object.soundeventGuid ?? 0;
+    return message;
   },
 };
 
@@ -1362,6 +1537,17 @@ export const CMsgSosStopSoundEventHash = {
     message.soundeventHash !== undefined && (obj.soundeventHash = Math.round(message.soundeventHash));
     message.sourceEntityIndex !== undefined && (obj.sourceEntityIndex = Math.round(message.sourceEntityIndex));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSosStopSoundEventHash>): CMsgSosStopSoundEventHash {
+    return CMsgSosStopSoundEventHash.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSosStopSoundEventHash>): CMsgSosStopSoundEventHash {
+    const message = createBaseCMsgSosStopSoundEventHash();
+    message.soundeventHash = object.soundeventHash ?? 0;
+    message.sourceEntityIndex = object.sourceEntityIndex ?? 0;
+    return message;
   },
 };
 
@@ -1424,6 +1610,17 @@ export const CMsgSosSetSoundEventParams = {
       (obj.packedParams = base64FromBytes(message.packedParams !== undefined ? message.packedParams : Buffer.alloc(0)));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSosSetSoundEventParams>): CMsgSosSetSoundEventParams {
+    return CMsgSosSetSoundEventParams.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSosSetSoundEventParams>): CMsgSosSetSoundEventParams {
+    const message = createBaseCMsgSosSetSoundEventParams();
+    message.soundeventGuid = object.soundeventGuid ?? 0;
+    message.packedParams = object.packedParams ?? Buffer.alloc(0);
+    return message;
+  },
 };
 
 function createBaseCMsgSosSetLibraryStackFields(): CMsgSosSetLibraryStackFields {
@@ -1485,6 +1682,17 @@ export const CMsgSosSetLibraryStackFields = {
       (obj.packedFields = base64FromBytes(message.packedFields !== undefined ? message.packedFields : Buffer.alloc(0)));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSosSetLibraryStackFields>): CMsgSosSetLibraryStackFields {
+    return CMsgSosSetLibraryStackFields.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSosSetLibraryStackFields>): CMsgSosSetLibraryStackFields {
+    const message = createBaseCMsgSosSetLibraryStackFields();
+    message.stackHash = object.stackHash ?? 0;
+    message.packedFields = object.packedFields ?? Buffer.alloc(0);
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -1530,6 +1738,13 @@ function base64FromBytes(arr: Uint8Array): string {
     return tsProtoGlobalThis.btoa(bin.join(""));
   }
 }
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

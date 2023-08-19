@@ -769,6 +769,16 @@ export const CMsgSteamLearnDataSourceDescObject = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamLearnDataSourceDescObject>): CMsgSteamLearnDataSourceDescObject {
+    return CMsgSteamLearnDataSourceDescObject.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamLearnDataSourceDescObject>): CMsgSteamLearnDataSourceDescObject {
+    const message = createBaseCMsgSteamLearnDataSourceDescObject();
+    message.elements = object.elements?.map((e) => CMsgSteamLearnDataSourceDescElement.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgSteamLearnDataSourceDescElement(): CMsgSteamLearnDataSourceDescElement {
@@ -853,6 +863,21 @@ export const CMsgSteamLearnDataSourceDescElement = {
       (obj.object = message.object ? CMsgSteamLearnDataSourceDescObject.toJSON(message.object) : undefined);
     message.count !== undefined && (obj.count = Math.round(message.count));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamLearnDataSourceDescElement>): CMsgSteamLearnDataSourceDescElement {
+    return CMsgSteamLearnDataSourceDescElement.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamLearnDataSourceDescElement>): CMsgSteamLearnDataSourceDescElement {
+    const message = createBaseCMsgSteamLearnDataSourceDescElement();
+    message.name = object.name ?? "";
+    message.dataType = object.dataType ?? 0;
+    message.object = (object.object !== undefined && object.object !== null)
+      ? CMsgSteamLearnDataSourceDescObject.fromPartial(object.object)
+      : undefined;
+    message.count = object.count ?? 0;
+    return message;
   },
 };
 
@@ -983,6 +1008,24 @@ export const CMsgSteamLearnDataSource = {
     message.cacheDurationSeconds !== undefined && (obj.cacheDurationSeconds = Math.round(message.cacheDurationSeconds));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamLearnDataSource>): CMsgSteamLearnDataSource {
+    return CMsgSteamLearnDataSource.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamLearnDataSource>): CMsgSteamLearnDataSource {
+    const message = createBaseCMsgSteamLearnDataSource();
+    message.id = object.id ?? 0;
+    message.name = object.name ?? "";
+    message.version = object.version ?? 0;
+    message.sourceDescription = object.sourceDescription ?? "";
+    message.structure = (object.structure !== undefined && object.structure !== null)
+      ? CMsgSteamLearnDataSourceDescObject.fromPartial(object.structure)
+      : undefined;
+    message.structureCrc = object.structureCrc ?? 0;
+    message.cacheDurationSeconds = object.cacheDurationSeconds ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgSteamLearnDataObject(): CMsgSteamLearnDataObject {
@@ -1036,6 +1079,16 @@ export const CMsgSteamLearnDataObject = {
       obj.elements = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamLearnDataObject>): CMsgSteamLearnDataObject {
+    return CMsgSteamLearnDataObject.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamLearnDataObject>): CMsgSteamLearnDataObject {
+    const message = createBaseCMsgSteamLearnDataObject();
+    message.elements = object.elements?.map((e) => CMsgSteamLearnDataElement.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -1200,6 +1253,21 @@ export const CMsgSteamLearnDataElement = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamLearnDataElement>): CMsgSteamLearnDataElement {
+    return CMsgSteamLearnDataElement.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamLearnDataElement>): CMsgSteamLearnDataElement {
+    const message = createBaseCMsgSteamLearnDataElement();
+    message.name = object.name ?? "";
+    message.dataInt32s = object.dataInt32s?.map((e) => e) || [];
+    message.dataFloats = object.dataFloats?.map((e) => e) || [];
+    message.dataBools = object.dataBools?.map((e) => e) || [];
+    message.dataStrings = object.dataStrings?.map((e) => e) || [];
+    message.dataObjects = object.dataObjects?.map((e) => CMsgSteamLearnDataObject.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgSteamLearnData(): CMsgSteamLearnData {
@@ -1288,6 +1356,20 @@ export const CMsgSteamLearnData = {
       (obj.dataObject = message.dataObject ? CMsgSteamLearnDataObject.toJSON(message.dataObject) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamLearnData>): CMsgSteamLearnData {
+    return CMsgSteamLearnData.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamLearnData>): CMsgSteamLearnData {
+    const message = createBaseCMsgSteamLearnData();
+    message.dataSourceId = object.dataSourceId ?? 0;
+    message.keys = object.keys?.map((e) => e) || [];
+    message.dataObject = (object.dataObject !== undefined && object.dataObject !== null)
+      ? CMsgSteamLearnDataObject.fromPartial(object.dataObject)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgSteamLearnDataList(): CMsgSteamLearnDataList {
@@ -1337,6 +1419,16 @@ export const CMsgSteamLearnDataList = {
       obj.data = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamLearnDataList>): CMsgSteamLearnDataList {
+    return CMsgSteamLearnDataList.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamLearnDataList>): CMsgSteamLearnDataList {
+    const message = createBaseCMsgSteamLearnDataList();
+    message.data = object.data?.map((e) => CMsgSteamLearnData.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -1409,6 +1501,18 @@ export const CMsgSteamLearnAccessData = {
     message.timestamp !== undefined && (obj.timestamp = Math.round(message.timestamp));
     message.randomValue !== undefined && (obj.randomValue = message.randomValue);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamLearnAccessData>): CMsgSteamLearnAccessData {
+    return CMsgSteamLearnAccessData.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamLearnAccessData>): CMsgSteamLearnAccessData {
+    const message = createBaseCMsgSteamLearnAccessData();
+    message.publisherId = object.publisherId ?? 0;
+    message.timestamp = object.timestamp ?? 0;
+    message.randomValue = object.randomValue ?? "0";
+    return message;
   },
 };
 
@@ -1484,6 +1588,22 @@ export const CMsgSteamLearnRegisterDataSourceRequest = {
       (obj.dataSource = message.dataSource ? CMsgSteamLearnDataSource.toJSON(message.dataSource) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamLearnRegisterDataSourceRequest>): CMsgSteamLearnRegisterDataSourceRequest {
+    return CMsgSteamLearnRegisterDataSourceRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamLearnRegisterDataSourceRequest>): CMsgSteamLearnRegisterDataSourceRequest {
+    const message = createBaseCMsgSteamLearnRegisterDataSourceRequest();
+    message.accessToken = object.accessToken ?? "";
+    message.accessData = (object.accessData !== undefined && object.accessData !== null)
+      ? CMsgSteamLearnAccessData.fromPartial(object.accessData)
+      : undefined;
+    message.dataSource = (object.dataSource !== undefined && object.dataSource !== null)
+      ? CMsgSteamLearnDataSource.fromPartial(object.dataSource)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgSteamLearnRegisterDataSourceResponse(): CMsgSteamLearnRegisterDataSourceResponse {
@@ -1544,6 +1664,19 @@ export const CMsgSteamLearnRegisterDataSourceResponse = {
     message.dataSource !== undefined &&
       (obj.dataSource = message.dataSource ? CMsgSteamLearnDataSource.toJSON(message.dataSource) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamLearnRegisterDataSourceResponse>): CMsgSteamLearnRegisterDataSourceResponse {
+    return CMsgSteamLearnRegisterDataSourceResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamLearnRegisterDataSourceResponse>): CMsgSteamLearnRegisterDataSourceResponse {
+    const message = createBaseCMsgSteamLearnRegisterDataSourceResponse();
+    message.result = object.result ?? 0;
+    message.dataSource = (object.dataSource !== undefined && object.dataSource !== null)
+      ? CMsgSteamLearnDataSource.fromPartial(object.dataSource)
+      : undefined;
+    return message;
   },
 };
 
@@ -1618,6 +1751,22 @@ export const CMsgSteamLearnCacheDataRequest = {
     message.data !== undefined && (obj.data = message.data ? CMsgSteamLearnData.toJSON(message.data) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamLearnCacheDataRequest>): CMsgSteamLearnCacheDataRequest {
+    return CMsgSteamLearnCacheDataRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamLearnCacheDataRequest>): CMsgSteamLearnCacheDataRequest {
+    const message = createBaseCMsgSteamLearnCacheDataRequest();
+    message.accessToken = object.accessToken ?? "";
+    message.accessData = (object.accessData !== undefined && object.accessData !== null)
+      ? CMsgSteamLearnAccessData.fromPartial(object.accessData)
+      : undefined;
+    message.data = (object.data !== undefined && object.data !== null)
+      ? CMsgSteamLearnData.fromPartial(object.data)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgSteamLearnCacheDataResponse(): CMsgSteamLearnCacheDataResponse {
@@ -1666,6 +1815,16 @@ export const CMsgSteamLearnCacheDataResponse = {
     message.cacheDataResult !== undefined &&
       (obj.cacheDataResult = eSteamLearnCacheDataResultToJSON(message.cacheDataResult));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamLearnCacheDataResponse>): CMsgSteamLearnCacheDataResponse {
+    return CMsgSteamLearnCacheDataResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamLearnCacheDataResponse>): CMsgSteamLearnCacheDataResponse {
+    const message = createBaseCMsgSteamLearnCacheDataResponse();
+    message.cacheDataResult = object.cacheDataResult ?? 0;
+    return message;
   },
 };
 
@@ -1816,6 +1975,24 @@ export const CMsgSteamLearnSnapshotProjectRequest = {
       (obj.pendingDataLimitSeconds = Math.round(message.pendingDataLimitSeconds));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamLearnSnapshotProjectRequest>): CMsgSteamLearnSnapshotProjectRequest {
+    return CMsgSteamLearnSnapshotProjectRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamLearnSnapshotProjectRequest>): CMsgSteamLearnSnapshotProjectRequest {
+    const message = createBaseCMsgSteamLearnSnapshotProjectRequest();
+    message.accessToken = object.accessToken ?? "";
+    message.accessData = (object.accessData !== undefined && object.accessData !== null)
+      ? CMsgSteamLearnAccessData.fromPartial(object.accessData)
+      : undefined;
+    message.projectId = object.projectId ?? 0;
+    message.publishedVersion = object.publishedVersion ?? 0;
+    message.keys = object.keys?.map((e) => e) || [];
+    message.data = object.data?.map((e) => CMsgSteamLearnData.fromPartial(e)) || [];
+    message.pendingDataLimitSeconds = object.pendingDataLimitSeconds ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgSteamLearnSnapshotProjectResponse(): CMsgSteamLearnSnapshotProjectResponse {
@@ -1866,6 +2043,16 @@ export const CMsgSteamLearnSnapshotProjectResponse = {
     message.snapshotResult !== undefined &&
       (obj.snapshotResult = eSteamLearnSnapshotProjectResultToJSON(message.snapshotResult));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamLearnSnapshotProjectResponse>): CMsgSteamLearnSnapshotProjectResponse {
+    return CMsgSteamLearnSnapshotProjectResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamLearnSnapshotProjectResponse>): CMsgSteamLearnSnapshotProjectResponse {
+    const message = createBaseCMsgSteamLearnSnapshotProjectResponse();
+    message.snapshotResult = object.snapshotResult ?? 0;
+    return message;
   },
 };
 
@@ -1943,6 +2130,19 @@ export const CMsgSteamLearnBatchOperationRequest = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamLearnBatchOperationRequest>): CMsgSteamLearnBatchOperationRequest {
+    return CMsgSteamLearnBatchOperationRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamLearnBatchOperationRequest>): CMsgSteamLearnBatchOperationRequest {
+    const message = createBaseCMsgSteamLearnBatchOperationRequest();
+    message.cacheDataRequests = object.cacheDataRequests?.map((e) => CMsgSteamLearnCacheDataRequest.fromPartial(e)) ||
+      [];
+    message.snapshotRequests =
+      object.snapshotRequests?.map((e) => CMsgSteamLearnSnapshotProjectRequest.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgSteamLearnBatchOperationResponse(): CMsgSteamLearnBatchOperationResponse {
@@ -2018,6 +2218,19 @@ export const CMsgSteamLearnBatchOperationResponse = {
       obj.snapshotResponses = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamLearnBatchOperationResponse>): CMsgSteamLearnBatchOperationResponse {
+    return CMsgSteamLearnBatchOperationResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamLearnBatchOperationResponse>): CMsgSteamLearnBatchOperationResponse {
+    const message = createBaseCMsgSteamLearnBatchOperationResponse();
+    message.cacheDataResponses =
+      object.cacheDataResponses?.map((e) => CMsgSteamLearnCacheDataResponse.fromPartial(e)) || [];
+    message.snapshotResponses =
+      object.snapshotResponses?.map((e) => CMsgSteamLearnSnapshotProjectResponse.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -2107,6 +2320,19 @@ export const CMsgSteamLearnHMACKeys = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamLearnHMACKeys>): CMsgSteamLearnHMACKeys {
+    return CMsgSteamLearnHMACKeys.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamLearnHMACKeys>): CMsgSteamLearnHMACKeys {
+    const message = createBaseCMsgSteamLearnHMACKeys();
+    message.registerDataSourceKey = object.registerDataSourceKey ?? "";
+    message.cacheDataKeys = object.cacheDataKeys?.map((e) => CMsgSteamLearnHMACKeys_CacheDataKeys.fromPartial(e)) || [];
+    message.snapshotProjectKeys =
+      object.snapshotProjectKeys?.map((e) => CMsgSteamLearnHMACKeys_SnapshotProjectKeys.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgSteamLearnHMACKeys_CacheDataKeys(): CMsgSteamLearnHMACKeys_CacheDataKeys {
@@ -2178,6 +2404,18 @@ export const CMsgSteamLearnHMACKeys_CacheDataKeys = {
     message.version !== undefined && (obj.version = Math.round(message.version));
     message.key !== undefined && (obj.key = message.key);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamLearnHMACKeys_CacheDataKeys>): CMsgSteamLearnHMACKeys_CacheDataKeys {
+    return CMsgSteamLearnHMACKeys_CacheDataKeys.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamLearnHMACKeys_CacheDataKeys>): CMsgSteamLearnHMACKeys_CacheDataKeys {
+    const message = createBaseCMsgSteamLearnHMACKeys_CacheDataKeys();
+    message.dataSourceId = object.dataSourceId ?? 0;
+    message.version = object.version ?? 0;
+    message.key = object.key ?? "";
+    return message;
   },
 };
 
@@ -2251,6 +2489,20 @@ export const CMsgSteamLearnHMACKeys_SnapshotProjectKeys = {
     message.key !== undefined && (obj.key = message.key);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamLearnHMACKeys_SnapshotProjectKeys>): CMsgSteamLearnHMACKeys_SnapshotProjectKeys {
+    return CMsgSteamLearnHMACKeys_SnapshotProjectKeys.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamLearnHMACKeys_SnapshotProjectKeys>,
+  ): CMsgSteamLearnHMACKeys_SnapshotProjectKeys {
+    const message = createBaseCMsgSteamLearnHMACKeys_SnapshotProjectKeys();
+    message.projectId = object.projectId ?? 0;
+    message.publishedVersion = object.publishedVersion ?? 0;
+    message.key = object.key ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgSteamLearnGetHMACKeysRequest(): CMsgSteamLearnGetHMACKeysRequest {
@@ -2296,6 +2548,16 @@ export const CMsgSteamLearnGetHMACKeysRequest = {
     const obj: any = {};
     message.appid !== undefined && (obj.appid = Math.round(message.appid));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamLearnGetHMACKeysRequest>): CMsgSteamLearnGetHMACKeysRequest {
+    return CMsgSteamLearnGetHMACKeysRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamLearnGetHMACKeysRequest>): CMsgSteamLearnGetHMACKeysRequest {
+    const message = createBaseCMsgSteamLearnGetHMACKeysRequest();
+    message.appid = object.appid ?? 0;
+    return message;
   },
 };
 
@@ -2356,6 +2618,19 @@ export const CMsgSteamLearnGetHMACKeysResponse = {
     message.result !== undefined && (obj.result = eSteamLearnGetHMACKeysResultToJSON(message.result));
     message.keys !== undefined && (obj.keys = message.keys ? CMsgSteamLearnHMACKeys.toJSON(message.keys) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamLearnGetHMACKeysResponse>): CMsgSteamLearnGetHMACKeysResponse {
+    return CMsgSteamLearnGetHMACKeysResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamLearnGetHMACKeysResponse>): CMsgSteamLearnGetHMACKeysResponse {
+    const message = createBaseCMsgSteamLearnGetHMACKeysResponse();
+    message.result = object.result ?? 0;
+    message.keys = (object.keys !== undefined && object.keys !== null)
+      ? CMsgSteamLearnHMACKeys.fromPartial(object.keys)
+      : undefined;
+    return message;
   },
 };
 
@@ -2501,6 +2776,26 @@ export const CMsgSteamLearnInferenceRequest = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamLearnInferenceRequest>): CMsgSteamLearnInferenceRequest {
+    return CMsgSteamLearnInferenceRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamLearnInferenceRequest>): CMsgSteamLearnInferenceRequest {
+    const message = createBaseCMsgSteamLearnInferenceRequest();
+    message.accessToken = object.accessToken ?? "";
+    message.accessData = (object.accessData !== undefined && object.accessData !== null)
+      ? CMsgSteamLearnAccessData.fromPartial(object.accessData)
+      : undefined;
+    message.projectId = object.projectId ?? 0;
+    message.publishedVersion = object.publishedVersion ?? 0;
+    message.overrideTrainId = object.overrideTrainId ?? 0;
+    message.data = (object.data !== undefined && object.data !== null)
+      ? CMsgSteamLearnDataList.fromPartial(object.data)
+      : undefined;
+    message.additionalData = object.additionalData?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgSteamLearnInferenceMetadataRequest(): CMsgSteamLearnInferenceMetadataRequest {
@@ -2598,6 +2893,22 @@ export const CMsgSteamLearnInferenceMetadataRequest = {
     message.overrideTrainId !== undefined && (obj.overrideTrainId = Math.round(message.overrideTrainId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamLearnInferenceMetadataRequest>): CMsgSteamLearnInferenceMetadataRequest {
+    return CMsgSteamLearnInferenceMetadataRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamLearnInferenceMetadataRequest>): CMsgSteamLearnInferenceMetadataRequest {
+    const message = createBaseCMsgSteamLearnInferenceMetadataRequest();
+    message.accessToken = object.accessToken ?? "";
+    message.accessData = (object.accessData !== undefined && object.accessData !== null)
+      ? CMsgSteamLearnAccessData.fromPartial(object.accessData)
+      : undefined;
+    message.projectId = object.projectId ?? 0;
+    message.publishedVersion = object.publishedVersion ?? 0;
+    message.overrideTrainId = object.overrideTrainId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgSteamLearnInferenceMetadataBackendRequest(): CMsgSteamLearnInferenceMetadataBackendRequest {
@@ -2657,6 +2968,21 @@ export const CMsgSteamLearnInferenceMetadataBackendRequest = {
     message.projectId !== undefined && (obj.projectId = Math.round(message.projectId));
     message.fetchId !== undefined && (obj.fetchId = Math.round(message.fetchId));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamLearnInferenceMetadataBackendRequest>,
+  ): CMsgSteamLearnInferenceMetadataBackendRequest {
+    return CMsgSteamLearnInferenceMetadataBackendRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamLearnInferenceMetadataBackendRequest>,
+  ): CMsgSteamLearnInferenceMetadataBackendRequest {
+    const message = createBaseCMsgSteamLearnInferenceMetadataBackendRequest();
+    message.projectId = object.projectId ?? 0;
+    message.fetchId = object.fetchId ?? 0;
+    return message;
   },
 };
 
@@ -2833,6 +3159,27 @@ export const CMsgSteamLearnInferenceMetadataResponse = {
       : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamLearnInferenceMetadataResponse>): CMsgSteamLearnInferenceMetadataResponse {
+    return CMsgSteamLearnInferenceMetadataResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamLearnInferenceMetadataResponse>): CMsgSteamLearnInferenceMetadataResponse {
+    const message = createBaseCMsgSteamLearnInferenceMetadataResponse();
+    message.inferenceMetadataResult = object.inferenceMetadataResult ?? 0;
+    message.rowRange = (object.rowRange !== undefined && object.rowRange !== null)
+      ? CMsgSteamLearnInferenceMetadataResponse_RowRange.fromPartial(object.rowRange)
+      : undefined;
+    message.ranges = object.ranges?.map((e) => CMsgSteamLearnInferenceMetadataResponse_Range.fromPartial(e)) || [];
+    message.stdDevs = object.stdDevs?.map((e) => CMsgSteamLearnInferenceMetadataResponse_StdDev.fromPartial(e)) || [];
+    message.compactTables =
+      object.compactTables?.map((e) => CMsgSteamLearnInferenceMetadataResponse_CompactTable.fromPartial(e)) || [];
+    message.kmeans = object.kmeans?.map((e) => CMsgSteamLearnInferenceMetadataResponse_KMeans.fromPartial(e)) || [];
+    message.snapshotHistogram = (object.snapshotHistogram !== undefined && object.snapshotHistogram !== null)
+      ? CMsgSteamLearnInferenceMetadataResponse_SnapshotHistogram.fromPartial(object.snapshotHistogram)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgSteamLearnInferenceMetadataResponse_RowRange(): CMsgSteamLearnInferenceMetadataResponse_RowRange {
@@ -2895,6 +3242,21 @@ export const CMsgSteamLearnInferenceMetadataResponse_RowRange = {
     message.minRow !== undefined && (obj.minRow = message.minRow);
     message.maxRow !== undefined && (obj.maxRow = message.maxRow);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_RowRange>,
+  ): CMsgSteamLearnInferenceMetadataResponse_RowRange {
+    return CMsgSteamLearnInferenceMetadataResponse_RowRange.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_RowRange>,
+  ): CMsgSteamLearnInferenceMetadataResponse_RowRange {
+    const message = createBaseCMsgSteamLearnInferenceMetadataResponse_RowRange();
+    message.minRow = object.minRow ?? "0";
+    message.maxRow = object.maxRow ?? "0";
+    return message;
   },
 };
 
@@ -2967,6 +3329,22 @@ export const CMsgSteamLearnInferenceMetadataResponse_Range = {
     message.minValue !== undefined && (obj.minValue = Math.round(message.minValue));
     message.maxValues !== undefined && (obj.maxValues = Math.round(message.maxValues));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_Range>,
+  ): CMsgSteamLearnInferenceMetadataResponse_Range {
+    return CMsgSteamLearnInferenceMetadataResponse_Range.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_Range>,
+  ): CMsgSteamLearnInferenceMetadataResponse_Range {
+    const message = createBaseCMsgSteamLearnInferenceMetadataResponse_Range();
+    message.dataElementPath = object.dataElementPath ?? "";
+    message.minValue = object.minValue ?? 0;
+    message.maxValues = object.maxValues ?? 0;
+    return message;
   },
 };
 
@@ -3042,6 +3420,22 @@ export const CMsgSteamLearnInferenceMetadataResponse_StdDev = {
     message.mean !== undefined && (obj.mean = Math.round(message.mean));
     message.stdDev !== undefined && (obj.stdDev = Math.round(message.stdDev));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_StdDev>,
+  ): CMsgSteamLearnInferenceMetadataResponse_StdDev {
+    return CMsgSteamLearnInferenceMetadataResponse_StdDev.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_StdDev>,
+  ): CMsgSteamLearnInferenceMetadataResponse_StdDev {
+    const message = createBaseCMsgSteamLearnInferenceMetadataResponse_StdDev();
+    message.dataElementPath = object.dataElementPath ?? "";
+    message.mean = object.mean ?? 0;
+    message.stdDev = object.stdDev ?? 0;
+    return message;
   },
 };
 
@@ -3143,6 +3537,28 @@ export const CMsgSteamLearnInferenceMetadataResponse_CompactTable = {
     }
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_CompactTable>,
+  ): CMsgSteamLearnInferenceMetadataResponse_CompactTable {
+    return CMsgSteamLearnInferenceMetadataResponse_CompactTable.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_CompactTable>,
+  ): CMsgSteamLearnInferenceMetadataResponse_CompactTable {
+    const message = createBaseCMsgSteamLearnInferenceMetadataResponse_CompactTable();
+    message.name = object.name ?? "";
+    message.mapValues =
+      object.mapValues?.map((e) =>
+        CMsgSteamLearnInferenceMetadataResponse_CompactTable_MapValuesEntry.fromPartial(e)
+      ) || [];
+    message.mapMappings =
+      object.mapMappings?.map((e) =>
+        CMsgSteamLearnInferenceMetadataResponse_CompactTable_MapMappingsEntry.fromPartial(e)
+      ) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgSteamLearnInferenceMetadataResponse_CompactTable_Entry(): CMsgSteamLearnInferenceMetadataResponse_CompactTable_Entry {
@@ -3218,6 +3634,22 @@ export const CMsgSteamLearnInferenceMetadataResponse_CompactTable_Entry = {
     message.count !== undefined && (obj.count = message.count);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_CompactTable_Entry>,
+  ): CMsgSteamLearnInferenceMetadataResponse_CompactTable_Entry {
+    return CMsgSteamLearnInferenceMetadataResponse_CompactTable_Entry.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_CompactTable_Entry>,
+  ): CMsgSteamLearnInferenceMetadataResponse_CompactTable_Entry {
+    const message = createBaseCMsgSteamLearnInferenceMetadataResponse_CompactTable_Entry();
+    message.value = object.value ?? 0;
+    message.mapping = object.mapping ?? 0;
+    message.count = object.count ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgSteamLearnInferenceMetadataResponse_CompactTable_MapValuesEntry(): CMsgSteamLearnInferenceMetadataResponse_CompactTable_MapValuesEntry {
@@ -3288,6 +3720,23 @@ export const CMsgSteamLearnInferenceMetadataResponse_CompactTable_MapValuesEntry
       ? CMsgSteamLearnInferenceMetadataResponse_CompactTable_Entry.toJSON(message.value)
       : undefined);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_CompactTable_MapValuesEntry>,
+  ): CMsgSteamLearnInferenceMetadataResponse_CompactTable_MapValuesEntry {
+    return CMsgSteamLearnInferenceMetadataResponse_CompactTable_MapValuesEntry.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_CompactTable_MapValuesEntry>,
+  ): CMsgSteamLearnInferenceMetadataResponse_CompactTable_MapValuesEntry {
+    const message = createBaseCMsgSteamLearnInferenceMetadataResponse_CompactTable_MapValuesEntry();
+    message.key = object.key ?? 0;
+    message.value = (object.value !== undefined && object.value !== null)
+      ? CMsgSteamLearnInferenceMetadataResponse_CompactTable_Entry.fromPartial(object.value)
+      : undefined;
+    return message;
   },
 };
 
@@ -3360,6 +3809,23 @@ export const CMsgSteamLearnInferenceMetadataResponse_CompactTable_MapMappingsEnt
       : undefined);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_CompactTable_MapMappingsEntry>,
+  ): CMsgSteamLearnInferenceMetadataResponse_CompactTable_MapMappingsEntry {
+    return CMsgSteamLearnInferenceMetadataResponse_CompactTable_MapMappingsEntry.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_CompactTable_MapMappingsEntry>,
+  ): CMsgSteamLearnInferenceMetadataResponse_CompactTable_MapMappingsEntry {
+    const message = createBaseCMsgSteamLearnInferenceMetadataResponse_CompactTable_MapMappingsEntry();
+    message.key = object.key ?? 0;
+    message.value = (object.value !== undefined && object.value !== null)
+      ? CMsgSteamLearnInferenceMetadataResponse_CompactTable_Entry.fromPartial(object.value)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgSteamLearnInferenceMetadataResponse_KMeans(): CMsgSteamLearnInferenceMetadataResponse_KMeans {
@@ -3430,6 +3896,22 @@ export const CMsgSteamLearnInferenceMetadataResponse_KMeans = {
       obj.clusters = [];
     }
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_KMeans>,
+  ): CMsgSteamLearnInferenceMetadataResponse_KMeans {
+    return CMsgSteamLearnInferenceMetadataResponse_KMeans.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_KMeans>,
+  ): CMsgSteamLearnInferenceMetadataResponse_KMeans {
+    const message = createBaseCMsgSteamLearnInferenceMetadataResponse_KMeans();
+    message.name = object.name ?? "";
+    message.clusters =
+      object.clusters?.map((e) => CMsgSteamLearnInferenceMetadataResponse_KMeans_Cluster.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -3517,6 +3999,23 @@ export const CMsgSteamLearnInferenceMetadataResponse_KMeans_Cluster = {
     message.radius !== undefined && (obj.radius = message.radius);
     message.radius80pct !== undefined && (obj.radius80pct = message.radius80pct);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_KMeans_Cluster>,
+  ): CMsgSteamLearnInferenceMetadataResponse_KMeans_Cluster {
+    return CMsgSteamLearnInferenceMetadataResponse_KMeans_Cluster.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_KMeans_Cluster>,
+  ): CMsgSteamLearnInferenceMetadataResponse_KMeans_Cluster {
+    const message = createBaseCMsgSteamLearnInferenceMetadataResponse_KMeans_Cluster();
+    message.x = object.x ?? 0;
+    message.y = object.y ?? 0;
+    message.radius = object.radius ?? 0;
+    message.radius80pct = object.radius80pct ?? 0;
+    return message;
   },
 };
 
@@ -3620,6 +4119,23 @@ export const CMsgSteamLearnInferenceMetadataResponse_SnapshotHistogram = {
     }
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_SnapshotHistogram>,
+  ): CMsgSteamLearnInferenceMetadataResponse_SnapshotHistogram {
+    return CMsgSteamLearnInferenceMetadataResponse_SnapshotHistogram.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_SnapshotHistogram>,
+  ): CMsgSteamLearnInferenceMetadataResponse_SnapshotHistogram {
+    const message = createBaseCMsgSteamLearnInferenceMetadataResponse_SnapshotHistogram();
+    message.minValue = object.minValue ?? 0;
+    message.maxValue = object.maxValue ?? 0;
+    message.numBuckets = object.numBuckets ?? 0;
+    message.bucketCounts = object.bucketCounts?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgSteamLearnInferenceBackendResponse(): CMsgSteamLearnInferenceBackendResponse {
@@ -3674,6 +4190,16 @@ export const CMsgSteamLearnInferenceBackendResponse = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamLearnInferenceBackendResponse>): CMsgSteamLearnInferenceBackendResponse {
+    return CMsgSteamLearnInferenceBackendResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamLearnInferenceBackendResponse>): CMsgSteamLearnInferenceBackendResponse {
+    const message = createBaseCMsgSteamLearnInferenceBackendResponse();
+    message.outputs = object.outputs?.map((e) => CMsgSteamLearnInferenceBackendResponse_Output.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgSteamLearnInferenceBackendResponse_BinaryCrossEntropyOutput(): CMsgSteamLearnInferenceBackendResponse_BinaryCrossEntropyOutput {
@@ -3725,6 +4251,20 @@ export const CMsgSteamLearnInferenceBackendResponse_BinaryCrossEntropyOutput = {
     const obj: any = {};
     message.value !== undefined && (obj.value = message.value);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamLearnInferenceBackendResponse_BinaryCrossEntropyOutput>,
+  ): CMsgSteamLearnInferenceBackendResponse_BinaryCrossEntropyOutput {
+    return CMsgSteamLearnInferenceBackendResponse_BinaryCrossEntropyOutput.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamLearnInferenceBackendResponse_BinaryCrossEntropyOutput>,
+  ): CMsgSteamLearnInferenceBackendResponse_BinaryCrossEntropyOutput {
+    const message = createBaseCMsgSteamLearnInferenceBackendResponse_BinaryCrossEntropyOutput();
+    message.value = object.value ?? 0;
+    return message;
   },
 };
 
@@ -3822,6 +4362,21 @@ export const CMsgSteamLearnInferenceBackendResponse_MutliBinaryCrossEntropyOutpu
     }
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgSteamLearnInferenceBackendResponse_MutliBinaryCrossEntropyOutput>,
+  ): CMsgSteamLearnInferenceBackendResponse_MutliBinaryCrossEntropyOutput {
+    return CMsgSteamLearnInferenceBackendResponse_MutliBinaryCrossEntropyOutput.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamLearnInferenceBackendResponse_MutliBinaryCrossEntropyOutput>,
+  ): CMsgSteamLearnInferenceBackendResponse_MutliBinaryCrossEntropyOutput {
+    const message = createBaseCMsgSteamLearnInferenceBackendResponse_MutliBinaryCrossEntropyOutput();
+    message.weight = object.weight?.map((e) => e) || [];
+    message.value = object.value?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgSteamLearnInferenceBackendResponse_CategoricalCrossEntropyOutput(): CMsgSteamLearnInferenceBackendResponse_CategoricalCrossEntropyOutput {
@@ -3917,6 +4472,21 @@ export const CMsgSteamLearnInferenceBackendResponse_CategoricalCrossEntropyOutpu
       obj.value = [];
     }
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamLearnInferenceBackendResponse_CategoricalCrossEntropyOutput>,
+  ): CMsgSteamLearnInferenceBackendResponse_CategoricalCrossEntropyOutput {
+    return CMsgSteamLearnInferenceBackendResponse_CategoricalCrossEntropyOutput.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamLearnInferenceBackendResponse_CategoricalCrossEntropyOutput>,
+  ): CMsgSteamLearnInferenceBackendResponse_CategoricalCrossEntropyOutput {
+    const message = createBaseCMsgSteamLearnInferenceBackendResponse_CategoricalCrossEntropyOutput();
+    message.weight = object.weight?.map((e) => e) || [];
+    message.value = object.value?.map((e) => e) || [];
+    return message;
   },
 };
 
@@ -4020,6 +4590,34 @@ export const CMsgSteamLearnInferenceBackendResponse_Output = {
       : undefined);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgSteamLearnInferenceBackendResponse_Output>,
+  ): CMsgSteamLearnInferenceBackendResponse_Output {
+    return CMsgSteamLearnInferenceBackendResponse_Output.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamLearnInferenceBackendResponse_Output>,
+  ): CMsgSteamLearnInferenceBackendResponse_Output {
+    const message = createBaseCMsgSteamLearnInferenceBackendResponse_Output();
+    message.binaryCrossentropy = (object.binaryCrossentropy !== undefined && object.binaryCrossentropy !== null)
+      ? CMsgSteamLearnInferenceBackendResponse_BinaryCrossEntropyOutput.fromPartial(object.binaryCrossentropy)
+      : undefined;
+    message.categoricalCrossentropy =
+      (object.categoricalCrossentropy !== undefined && object.categoricalCrossentropy !== null)
+        ? CMsgSteamLearnInferenceBackendResponse_CategoricalCrossEntropyOutput.fromPartial(
+          object.categoricalCrossentropy,
+        )
+        : undefined;
+    message.multiBinaryCrossentropy =
+      (object.multiBinaryCrossentropy !== undefined && object.multiBinaryCrossentropy !== null)
+        ? CMsgSteamLearnInferenceBackendResponse_MutliBinaryCrossEntropyOutput.fromPartial(
+          object.multiBinaryCrossentropy,
+        )
+        : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgSteamLearnInferenceResponse(): CMsgSteamLearnInferenceResponse {
@@ -4084,6 +4682,19 @@ export const CMsgSteamLearnInferenceResponse = {
       ? CMsgSteamLearnInferenceBackendResponse.toJSON(message.backendResponse)
       : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamLearnInferenceResponse>): CMsgSteamLearnInferenceResponse {
+    return CMsgSteamLearnInferenceResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamLearnInferenceResponse>): CMsgSteamLearnInferenceResponse {
+    const message = createBaseCMsgSteamLearnInferenceResponse();
+    message.inferenceResult = object.inferenceResult ?? 0;
+    message.backendResponse = (object.backendResponse !== undefined && object.backendResponse !== null)
+      ? CMsgSteamLearnInferenceBackendResponse.fromPartial(object.backendResponse)
+      : undefined;
+    return message;
   },
 };
 
@@ -4180,6 +4791,13 @@ var tsProtoGlobalThis: any = (() => {
   }
   throw "Unable to locate global object";
 })();
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

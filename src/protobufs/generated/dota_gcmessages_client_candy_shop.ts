@@ -1141,6 +1141,17 @@ export const CMsgCandyShopCandyCount = {
     message.candyCount !== undefined && (obj.candyCount = Math.round(message.candyCount));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgCandyShopCandyCount>): CMsgCandyShopCandyCount {
+    return CMsgCandyShopCandyCount.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgCandyShopCandyCount>): CMsgCandyShopCandyCount {
+    const message = createBaseCMsgCandyShopCandyCount();
+    message.candyType = object.candyType ?? 0;
+    message.candyCount = object.candyCount ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgCandyShopCandyQuantity(): CMsgCandyShopCandyQuantity {
@@ -1194,6 +1205,16 @@ export const CMsgCandyShopCandyQuantity = {
       obj.candyCounts = [];
     }
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgCandyShopCandyQuantity>): CMsgCandyShopCandyQuantity {
+    return CMsgCandyShopCandyQuantity.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgCandyShopCandyQuantity>): CMsgCandyShopCandyQuantity {
+    const message = createBaseCMsgCandyShopCandyQuantity();
+    message.candyCounts = object.candyCounts?.map((e) => CMsgCandyShopCandyCount.fromPartial(e)) || [];
+    return message;
   },
 };
 
@@ -1269,6 +1290,22 @@ export const CMsgCandyShopExchangeRecipe = {
       (obj.output = message.output ? CMsgCandyShopCandyQuantity.toJSON(message.output) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgCandyShopExchangeRecipe>): CMsgCandyShopExchangeRecipe {
+    return CMsgCandyShopExchangeRecipe.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgCandyShopExchangeRecipe>): CMsgCandyShopExchangeRecipe {
+    const message = createBaseCMsgCandyShopExchangeRecipe();
+    message.recipeId = object.recipeId ?? 0;
+    message.input = (object.input !== undefined && object.input !== null)
+      ? CMsgCandyShopCandyQuantity.fromPartial(object.input)
+      : undefined;
+    message.output = (object.output !== undefined && object.output !== null)
+      ? CMsgCandyShopCandyQuantity.fromPartial(object.output)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgCandyShopRewardDataItem(): CMsgCandyShopRewardDataItem {
@@ -1314,6 +1351,16 @@ export const CMsgCandyShopRewardDataItem = {
     const obj: any = {};
     message.itemDef !== undefined && (obj.itemDef = Math.round(message.itemDef));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgCandyShopRewardDataItem>): CMsgCandyShopRewardDataItem {
+    return CMsgCandyShopRewardDataItem.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgCandyShopRewardDataItem>): CMsgCandyShopRewardDataItem {
+    const message = createBaseCMsgCandyShopRewardDataItem();
+    message.itemDef = object.itemDef ?? 0;
+    return message;
   },
 };
 
@@ -1387,6 +1434,18 @@ export const CMsgCandyShopRewardDataEventAction = {
     message.quantity !== undefined && (obj.quantity = Math.round(message.quantity));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgCandyShopRewardDataEventAction>): CMsgCandyShopRewardDataEventAction {
+    return CMsgCandyShopRewardDataEventAction.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgCandyShopRewardDataEventAction>): CMsgCandyShopRewardDataEventAction {
+    const message = createBaseCMsgCandyShopRewardDataEventAction();
+    message.eventId = object.eventId ?? 0;
+    message.actionId = object.actionId ?? 0;
+    message.quantity = object.quantity ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgCandyShopRewardDataEventPoints(): CMsgCandyShopRewardDataEventPoints {
@@ -1446,6 +1505,17 @@ export const CMsgCandyShopRewardDataEventPoints = {
     message.eventId !== undefined && (obj.eventId = eEventToJSON(message.eventId));
     message.points !== undefined && (obj.points = Math.round(message.points));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgCandyShopRewardDataEventPoints>): CMsgCandyShopRewardDataEventPoints {
+    return CMsgCandyShopRewardDataEventPoints.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgCandyShopRewardDataEventPoints>): CMsgCandyShopRewardDataEventPoints {
+    const message = createBaseCMsgCandyShopRewardDataEventPoints();
+    message.eventId = object.eventId ?? 0;
+    message.points = object.points ?? 0;
+    return message;
   },
 };
 
@@ -1585,6 +1655,30 @@ export const CMsgCandyShopReward = {
       : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgCandyShopReward>): CMsgCandyShopReward {
+    return CMsgCandyShopReward.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgCandyShopReward>): CMsgCandyShopReward {
+    const message = createBaseCMsgCandyShopReward();
+    message.rewardId = object.rewardId ?? 0;
+    message.rewardOptionId = object.rewardOptionId ?? 0;
+    message.price = (object.price !== undefined && object.price !== null)
+      ? CMsgCandyShopCandyQuantity.fromPartial(object.price)
+      : undefined;
+    message.rewardType = object.rewardType ?? 0;
+    message.itemData = (object.itemData !== undefined && object.itemData !== null)
+      ? CMsgCandyShopRewardDataItem.fromPartial(object.itemData)
+      : undefined;
+    message.eventActionData = (object.eventActionData !== undefined && object.eventActionData !== null)
+      ? CMsgCandyShopRewardDataEventAction.fromPartial(object.eventActionData)
+      : undefined;
+    message.eventPointsData = (object.eventPointsData !== undefined && object.eventPointsData !== null)
+      ? CMsgCandyShopRewardDataEventPoints.fromPartial(object.eventPointsData)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgCandyShopUserData(): CMsgCandyShopUserData {
@@ -1714,6 +1808,23 @@ export const CMsgCandyShopUserData = {
     message.rerollCharges !== undefined && (obj.rerollCharges = Math.round(message.rerollCharges));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgCandyShopUserData>): CMsgCandyShopUserData {
+    return CMsgCandyShopUserData.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgCandyShopUserData>): CMsgCandyShopUserData {
+    const message = createBaseCMsgCandyShopUserData();
+    message.inventorySize = object.inventorySize ?? 0;
+    message.inventory = (object.inventory !== undefined && object.inventory !== null)
+      ? CMsgCandyShopCandyQuantity.fromPartial(object.inventory)
+      : undefined;
+    message.exchangeResetTimestamp = object.exchangeResetTimestamp ?? 0;
+    message.exchangeRecipes = object.exchangeRecipes?.map((e) => CMsgCandyShopExchangeRecipe.fromPartial(e)) || [];
+    message.activeRewards = object.activeRewards?.map((e) => CMsgCandyShopReward.fromPartial(e)) || [];
+    message.rerollCharges = object.rerollCharges ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCandyShopGetUserData(): CMsgClientToGCCandyShopGetUserData {
@@ -1759,6 +1870,16 @@ export const CMsgClientToGCCandyShopGetUserData = {
     const obj: any = {};
     message.candyShopId !== undefined && (obj.candyShopId = Math.round(message.candyShopId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCCandyShopGetUserData>): CMsgClientToGCCandyShopGetUserData {
+    return CMsgClientToGCCandyShopGetUserData.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCCandyShopGetUserData>): CMsgClientToGCCandyShopGetUserData {
+    const message = createBaseCMsgClientToGCCandyShopGetUserData();
+    message.candyShopId = object.candyShopId ?? 0;
+    return message;
   },
 };
 
@@ -1824,6 +1945,21 @@ export const CMsgClientToGCCandyShopGetUserDataResponse = {
       (obj.userData = message.userData ? CMsgCandyShopUserData.toJSON(message.userData) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCCandyShopGetUserDataResponse>): CMsgClientToGCCandyShopGetUserDataResponse {
+    return CMsgClientToGCCandyShopGetUserDataResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCandyShopGetUserDataResponse>,
+  ): CMsgClientToGCCandyShopGetUserDataResponse {
+    const message = createBaseCMsgClientToGCCandyShopGetUserDataResponse();
+    message.response = object.response ?? 0;
+    message.userData = (object.userData !== undefined && object.userData !== null)
+      ? CMsgCandyShopUserData.fromPartial(object.userData)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgGCToClientCandyShopUserDataUpdated(): CMsgGCToClientCandyShopUserDataUpdated {
@@ -1885,6 +2021,19 @@ export const CMsgGCToClientCandyShopUserDataUpdated = {
       (obj.userData = message.userData ? CMsgCandyShopUserData.toJSON(message.userData) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgGCToClientCandyShopUserDataUpdated>): CMsgGCToClientCandyShopUserDataUpdated {
+    return CMsgGCToClientCandyShopUserDataUpdated.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgGCToClientCandyShopUserDataUpdated>): CMsgGCToClientCandyShopUserDataUpdated {
+    const message = createBaseCMsgGCToClientCandyShopUserDataUpdated();
+    message.candyShopId = object.candyShopId ?? 0;
+    message.userData = (object.userData !== undefined && object.userData !== null)
+      ? CMsgCandyShopUserData.fromPartial(object.userData)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCandyShopPurchaseReward(): CMsgClientToGCCandyShopPurchaseReward {
@@ -1945,6 +2094,17 @@ export const CMsgClientToGCCandyShopPurchaseReward = {
     message.rewardId !== undefined && (obj.rewardId = message.rewardId);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCCandyShopPurchaseReward>): CMsgClientToGCCandyShopPurchaseReward {
+    return CMsgClientToGCCandyShopPurchaseReward.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCCandyShopPurchaseReward>): CMsgClientToGCCandyShopPurchaseReward {
+    const message = createBaseCMsgClientToGCCandyShopPurchaseReward();
+    message.candyShopId = object.candyShopId ?? 0;
+    message.rewardId = object.rewardId ?? "0";
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCandyShopPurchaseRewardResponse(): CMsgClientToGCCandyShopPurchaseRewardResponse {
@@ -1995,6 +2155,20 @@ export const CMsgClientToGCCandyShopPurchaseRewardResponse = {
     message.response !== undefined &&
       (obj.response = cMsgClientToGCCandyShopPurchaseRewardResponse_EResponseToJSON(message.response));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCCandyShopPurchaseRewardResponse>,
+  ): CMsgClientToGCCandyShopPurchaseRewardResponse {
+    return CMsgClientToGCCandyShopPurchaseRewardResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCandyShopPurchaseRewardResponse>,
+  ): CMsgClientToGCCandyShopPurchaseRewardResponse {
+    const message = createBaseCMsgClientToGCCandyShopPurchaseRewardResponse();
+    message.response = object.response ?? 0;
+    return message;
   },
 };
 
@@ -2056,6 +2230,17 @@ export const CMsgClientToGCCandyShopOpenBags = {
     message.bagCount !== undefined && (obj.bagCount = Math.round(message.bagCount));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCCandyShopOpenBags>): CMsgClientToGCCandyShopOpenBags {
+    return CMsgClientToGCCandyShopOpenBags.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCCandyShopOpenBags>): CMsgClientToGCCandyShopOpenBags {
+    const message = createBaseCMsgClientToGCCandyShopOpenBags();
+    message.candyShopId = object.candyShopId ?? 0;
+    message.bagCount = object.bagCount ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCandyShopOpenBagsResponse(): CMsgClientToGCCandyShopOpenBagsResponse {
@@ -2104,6 +2289,16 @@ export const CMsgClientToGCCandyShopOpenBagsResponse = {
     message.response !== undefined &&
       (obj.response = cMsgClientToGCCandyShopOpenBagsResponse_EResponseToJSON(message.response));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCCandyShopOpenBagsResponse>): CMsgClientToGCCandyShopOpenBagsResponse {
+    return CMsgClientToGCCandyShopOpenBagsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCCandyShopOpenBagsResponse>): CMsgClientToGCCandyShopOpenBagsResponse {
+    const message = createBaseCMsgClientToGCCandyShopOpenBagsResponse();
+    message.response = object.response ?? 0;
+    return message;
   },
 };
 
@@ -2165,6 +2360,17 @@ export const CMsgClientToGCCandyShopDoExchange = {
     message.recipeId !== undefined && (obj.recipeId = Math.round(message.recipeId));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCCandyShopDoExchange>): CMsgClientToGCCandyShopDoExchange {
+    return CMsgClientToGCCandyShopDoExchange.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCCandyShopDoExchange>): CMsgClientToGCCandyShopDoExchange {
+    const message = createBaseCMsgClientToGCCandyShopDoExchange();
+    message.candyShopId = object.candyShopId ?? 0;
+    message.recipeId = object.recipeId ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCandyShopDoExchangeResponse(): CMsgClientToGCCandyShopDoExchangeResponse {
@@ -2215,6 +2421,18 @@ export const CMsgClientToGCCandyShopDoExchangeResponse = {
     message.response !== undefined &&
       (obj.response = cMsgClientToGCCandyShopDoExchangeResponse_EResponseToJSON(message.response));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCCandyShopDoExchangeResponse>): CMsgClientToGCCandyShopDoExchangeResponse {
+    return CMsgClientToGCCandyShopDoExchangeResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCandyShopDoExchangeResponse>,
+  ): CMsgClientToGCCandyShopDoExchangeResponse {
+    const message = createBaseCMsgClientToGCCandyShopDoExchangeResponse();
+    message.response = object.response ?? 0;
+    return message;
   },
 };
 
@@ -2290,6 +2508,24 @@ export const CMsgClientToGCCandyShopDoVariableExchange = {
       (obj.output = message.output ? CMsgCandyShopCandyQuantity.toJSON(message.output) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCCandyShopDoVariableExchange>): CMsgClientToGCCandyShopDoVariableExchange {
+    return CMsgClientToGCCandyShopDoVariableExchange.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCandyShopDoVariableExchange>,
+  ): CMsgClientToGCCandyShopDoVariableExchange {
+    const message = createBaseCMsgClientToGCCandyShopDoVariableExchange();
+    message.candyShopId = object.candyShopId ?? 0;
+    message.input = (object.input !== undefined && object.input !== null)
+      ? CMsgCandyShopCandyQuantity.fromPartial(object.input)
+      : undefined;
+    message.output = (object.output !== undefined && object.output !== null)
+      ? CMsgCandyShopCandyQuantity.fromPartial(object.output)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCandyShopDoVariableExchangeResponse(): CMsgClientToGCCandyShopDoVariableExchangeResponse {
@@ -2344,6 +2580,20 @@ export const CMsgClientToGCCandyShopDoVariableExchangeResponse = {
       (obj.response = cMsgClientToGCCandyShopDoVariableExchangeResponse_EResponseToJSON(message.response));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCCandyShopDoVariableExchangeResponse>,
+  ): CMsgClientToGCCandyShopDoVariableExchangeResponse {
+    return CMsgClientToGCCandyShopDoVariableExchangeResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCandyShopDoVariableExchangeResponse>,
+  ): CMsgClientToGCCandyShopDoVariableExchangeResponse {
+    const message = createBaseCMsgClientToGCCandyShopDoVariableExchangeResponse();
+    message.response = object.response ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCandyShopRerollRewards(): CMsgClientToGCCandyShopRerollRewards {
@@ -2389,6 +2639,16 @@ export const CMsgClientToGCCandyShopRerollRewards = {
     const obj: any = {};
     message.candyShopId !== undefined && (obj.candyShopId = Math.round(message.candyShopId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCCandyShopRerollRewards>): CMsgClientToGCCandyShopRerollRewards {
+    return CMsgClientToGCCandyShopRerollRewards.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCCandyShopRerollRewards>): CMsgClientToGCCandyShopRerollRewards {
+    const message = createBaseCMsgClientToGCCandyShopRerollRewards();
+    message.candyShopId = object.candyShopId ?? 0;
+    return message;
   },
 };
 
@@ -2440,6 +2700,20 @@ export const CMsgClientToGCCandyShopRerollRewardsResponse = {
     message.response !== undefined &&
       (obj.response = cMsgClientToGCCandyShopRerollRewardsResponse_EResponseToJSON(message.response));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCCandyShopRerollRewardsResponse>,
+  ): CMsgClientToGCCandyShopRerollRewardsResponse {
+    return CMsgClientToGCCandyShopRerollRewardsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCandyShopRerollRewardsResponse>,
+  ): CMsgClientToGCCandyShopRerollRewardsResponse {
+    const message = createBaseCMsgClientToGCCandyShopRerollRewardsResponse();
+    message.response = object.response ?? 0;
+    return message;
   },
 };
 
@@ -2506,6 +2780,19 @@ export const CMsgClientToGCCandyShopDevGrantCandy = {
         : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCCandyShopDevGrantCandy>): CMsgClientToGCCandyShopDevGrantCandy {
+    return CMsgClientToGCCandyShopDevGrantCandy.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCCandyShopDevGrantCandy>): CMsgClientToGCCandyShopDevGrantCandy {
+    const message = createBaseCMsgClientToGCCandyShopDevGrantCandy();
+    message.candyShopId = object.candyShopId ?? 0;
+    message.candyQuantity = (object.candyQuantity !== undefined && object.candyQuantity !== null)
+      ? CMsgCandyShopCandyQuantity.fromPartial(object.candyQuantity)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCandyShopDevGrantCandyResponse(): CMsgClientToGCCandyShopDevGrantCandyResponse {
@@ -2557,6 +2844,20 @@ export const CMsgClientToGCCandyShopDevGrantCandyResponse = {
       (obj.response = cMsgClientToGCCandyShopDevGrantCandyResponse_EResponseToJSON(message.response));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCCandyShopDevGrantCandyResponse>,
+  ): CMsgClientToGCCandyShopDevGrantCandyResponse {
+    return CMsgClientToGCCandyShopDevGrantCandyResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCandyShopDevGrantCandyResponse>,
+  ): CMsgClientToGCCandyShopDevGrantCandyResponse {
+    const message = createBaseCMsgClientToGCCandyShopDevGrantCandyResponse();
+    message.response = object.response ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCandyShopDevClearInventory(): CMsgClientToGCCandyShopDevClearInventory {
@@ -2602,6 +2903,16 @@ export const CMsgClientToGCCandyShopDevClearInventory = {
     const obj: any = {};
     message.candyShopId !== undefined && (obj.candyShopId = Math.round(message.candyShopId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCCandyShopDevClearInventory>): CMsgClientToGCCandyShopDevClearInventory {
+    return CMsgClientToGCCandyShopDevClearInventory.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCCandyShopDevClearInventory>): CMsgClientToGCCandyShopDevClearInventory {
+    const message = createBaseCMsgClientToGCCandyShopDevClearInventory();
+    message.candyShopId = object.candyShopId ?? 0;
+    return message;
   },
 };
 
@@ -2656,6 +2967,20 @@ export const CMsgClientToGCCandyShopDevClearInventoryResponse = {
     message.response !== undefined &&
       (obj.response = cMsgClientToGCCandyShopDevClearInventoryResponse_EResponseToJSON(message.response));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCCandyShopDevClearInventoryResponse>,
+  ): CMsgClientToGCCandyShopDevClearInventoryResponse {
+    return CMsgClientToGCCandyShopDevClearInventoryResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCandyShopDevClearInventoryResponse>,
+  ): CMsgClientToGCCandyShopDevClearInventoryResponse {
+    const message = createBaseCMsgClientToGCCandyShopDevClearInventoryResponse();
+    message.response = object.response ?? 0;
+    return message;
   },
 };
 
@@ -2717,6 +3042,17 @@ export const CMsgClientToGCCandyShopDevGrantCandyBags = {
     message.quantity !== undefined && (obj.quantity = Math.round(message.quantity));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgClientToGCCandyShopDevGrantCandyBags>): CMsgClientToGCCandyShopDevGrantCandyBags {
+    return CMsgClientToGCCandyShopDevGrantCandyBags.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgClientToGCCandyShopDevGrantCandyBags>): CMsgClientToGCCandyShopDevGrantCandyBags {
+    const message = createBaseCMsgClientToGCCandyShopDevGrantCandyBags();
+    message.candyShopId = object.candyShopId ?? 0;
+    message.quantity = object.quantity ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCandyShopDevGrantCandyBagsResponse(): CMsgClientToGCCandyShopDevGrantCandyBagsResponse {
@@ -2771,6 +3107,20 @@ export const CMsgClientToGCCandyShopDevGrantCandyBagsResponse = {
       (obj.response = cMsgClientToGCCandyShopDevGrantCandyBagsResponse_EResponseToJSON(message.response));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCCandyShopDevGrantCandyBagsResponse>,
+  ): CMsgClientToGCCandyShopDevGrantCandyBagsResponse {
+    return CMsgClientToGCCandyShopDevGrantCandyBagsResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCandyShopDevGrantCandyBagsResponse>,
+  ): CMsgClientToGCCandyShopDevGrantCandyBagsResponse {
+    const message = createBaseCMsgClientToGCCandyShopDevGrantCandyBagsResponse();
+    message.response = object.response ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCandyShopDevShuffleExchange(): CMsgClientToGCCandyShopDevShuffleExchange {
@@ -2816,6 +3166,18 @@ export const CMsgClientToGCCandyShopDevShuffleExchange = {
     const obj: any = {};
     message.candyShopId !== undefined && (obj.candyShopId = Math.round(message.candyShopId));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCCandyShopDevShuffleExchange>): CMsgClientToGCCandyShopDevShuffleExchange {
+    return CMsgClientToGCCandyShopDevShuffleExchange.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCandyShopDevShuffleExchange>,
+  ): CMsgClientToGCCandyShopDevShuffleExchange {
+    const message = createBaseCMsgClientToGCCandyShopDevShuffleExchange();
+    message.candyShopId = object.candyShopId ?? 0;
+    return message;
   },
 };
 
@@ -2870,6 +3232,20 @@ export const CMsgClientToGCCandyShopDevShuffleExchangeResponse = {
     message.response !== undefined &&
       (obj.response = cMsgClientToGCCandyShopDevShuffleExchangeResponse_EResponseToJSON(message.response));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCCandyShopDevShuffleExchangeResponse>,
+  ): CMsgClientToGCCandyShopDevShuffleExchangeResponse {
+    return CMsgClientToGCCandyShopDevShuffleExchangeResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCandyShopDevShuffleExchangeResponse>,
+  ): CMsgClientToGCCandyShopDevShuffleExchangeResponse {
+    const message = createBaseCMsgClientToGCCandyShopDevShuffleExchangeResponse();
+    message.response = object.response ?? 0;
+    return message;
   },
 };
 
@@ -2931,6 +3307,21 @@ export const CMsgClientToGCCandyShopDevGrantRerollCharges = {
     message.rerollCharges !== undefined && (obj.rerollCharges = Math.round(message.rerollCharges));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCCandyShopDevGrantRerollCharges>,
+  ): CMsgClientToGCCandyShopDevGrantRerollCharges {
+    return CMsgClientToGCCandyShopDevGrantRerollCharges.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCandyShopDevGrantRerollCharges>,
+  ): CMsgClientToGCCandyShopDevGrantRerollCharges {
+    const message = createBaseCMsgClientToGCCandyShopDevGrantRerollCharges();
+    message.candyShopId = object.candyShopId ?? 0;
+    message.rerollCharges = object.rerollCharges ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgClientToGCCandyShopDevGrantRerollChargesResponse(): CMsgClientToGCCandyShopDevGrantRerollChargesResponse {
@@ -2985,6 +3376,20 @@ export const CMsgClientToGCCandyShopDevGrantRerollChargesResponse = {
       (obj.response = cMsgClientToGCCandyShopDevGrantRerollChargesResponse_EResponseToJSON(message.response));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCCandyShopDevGrantRerollChargesResponse>,
+  ): CMsgClientToGCCandyShopDevGrantRerollChargesResponse {
+    return CMsgClientToGCCandyShopDevGrantRerollChargesResponse.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCandyShopDevGrantRerollChargesResponse>,
+  ): CMsgClientToGCCandyShopDevGrantRerollChargesResponse {
+    const message = createBaseCMsgClientToGCCandyShopDevGrantRerollChargesResponse();
+    message.response = object.response ?? 0;
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -3005,6 +3410,13 @@ var tsProtoGlobalThis: any = (() => {
   }
   throw "Unable to locate global object";
 })();
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();

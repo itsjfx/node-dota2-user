@@ -380,6 +380,20 @@ export const CMsgSteamDatagramSessionCryptInfo = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamDatagramSessionCryptInfo>): CMsgSteamDatagramSessionCryptInfo {
+    return CMsgSteamDatagramSessionCryptInfo.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramSessionCryptInfo>): CMsgSteamDatagramSessionCryptInfo {
+    const message = createBaseCMsgSteamDatagramSessionCryptInfo();
+    message.keyType = object.keyType ?? 0;
+    message.keyData = object.keyData ?? Buffer.alloc(0);
+    message.nonce = object.nonce ?? "0";
+    message.protocolVersion = object.protocolVersion ?? 0;
+    message.ciphers = object.ciphers?.map((e) => e) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgSteamDatagramSessionCryptInfoSigned(): CMsgSteamDatagramSessionCryptInfoSigned {
@@ -442,6 +456,17 @@ export const CMsgSteamDatagramSessionCryptInfoSigned = {
       (obj.signature = base64FromBytes(message.signature !== undefined ? message.signature : Buffer.alloc(0)));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamDatagramSessionCryptInfoSigned>): CMsgSteamDatagramSessionCryptInfoSigned {
+    return CMsgSteamDatagramSessionCryptInfoSigned.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramSessionCryptInfoSigned>): CMsgSteamDatagramSessionCryptInfoSigned {
+    const message = createBaseCMsgSteamDatagramSessionCryptInfoSigned();
+    message.info = object.info ?? Buffer.alloc(0);
+    message.signature = object.signature ?? Buffer.alloc(0);
+    return message;
+  },
 };
 
 function createBaseCMsgSteamDatagramDiagnostic(): CMsgSteamDatagramDiagnostic {
@@ -501,6 +526,17 @@ export const CMsgSteamDatagramDiagnostic = {
     message.severity !== undefined && (obj.severity = Math.round(message.severity));
     message.text !== undefined && (obj.text = message.text);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamDatagramDiagnostic>): CMsgSteamDatagramDiagnostic {
+    return CMsgSteamDatagramDiagnostic.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramDiagnostic>): CMsgSteamDatagramDiagnostic {
+    const message = createBaseCMsgSteamDatagramDiagnostic();
+    message.severity = object.severity ?? 0;
+    message.text = object.text ?? "";
+    return message;
   },
 };
 
@@ -643,6 +679,23 @@ export const CMsgSteamDatagramLinkInstantaneousStats = {
       (obj.packetsWeirdSequencePct = Math.round(message.packetsWeirdSequencePct));
     message.peakJitterUsec !== undefined && (obj.peakJitterUsec = Math.round(message.peakJitterUsec));
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamDatagramLinkInstantaneousStats>): CMsgSteamDatagramLinkInstantaneousStats {
+    return CMsgSteamDatagramLinkInstantaneousStats.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramLinkInstantaneousStats>): CMsgSteamDatagramLinkInstantaneousStats {
+    const message = createBaseCMsgSteamDatagramLinkInstantaneousStats();
+    message.outPacketsPerSecX10 = object.outPacketsPerSecX10 ?? 0;
+    message.outBytesPerSec = object.outBytesPerSec ?? 0;
+    message.inPacketsPerSecX10 = object.inPacketsPerSecX10 ?? 0;
+    message.inBytesPerSec = object.inBytesPerSec ?? 0;
+    message.pingMs = object.pingMs ?? 0;
+    message.packetsDroppedPct = object.packetsDroppedPct ?? 0;
+    message.packetsWeirdSequencePct = object.packetsWeirdSequencePct ?? 0;
+    message.peakJitterUsec = object.peakJitterUsec ?? 0;
+    return message;
   },
 };
 
@@ -1678,6 +1731,89 @@ export const CMsgSteamDatagramLinkLifetimeStats = {
     message.rxspeedNtile98th !== undefined && (obj.rxspeedNtile98th = Math.round(message.rxspeedNtile98th));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamDatagramLinkLifetimeStats>): CMsgSteamDatagramLinkLifetimeStats {
+    return CMsgSteamDatagramLinkLifetimeStats.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramLinkLifetimeStats>): CMsgSteamDatagramLinkLifetimeStats {
+    const message = createBaseCMsgSteamDatagramLinkLifetimeStats();
+    message.connectedSeconds = object.connectedSeconds ?? 0;
+    message.packetsSent = object.packetsSent ?? "0";
+    message.kbSent = object.kbSent ?? "0";
+    message.packetsRecv = object.packetsRecv ?? "0";
+    message.kbRecv = object.kbRecv ?? "0";
+    message.packetsRecvSequenced = object.packetsRecvSequenced ?? "0";
+    message.packetsRecvDropped = object.packetsRecvDropped ?? "0";
+    message.packetsRecvOutOfOrder = object.packetsRecvOutOfOrder ?? "0";
+    message.packetsRecvDuplicate = object.packetsRecvDuplicate ?? "0";
+    message.packetsRecvLurch = object.packetsRecvLurch ?? "0";
+    message.multipathPacketsRecvSequenced = object.multipathPacketsRecvSequenced?.map((e) => e) || [];
+    message.multipathPacketsRecvLater = object.multipathPacketsRecvLater?.map((e) => e) || [];
+    message.multipathSendEnabled = object.multipathSendEnabled ?? 0;
+    message.qualityHistogram100 = object.qualityHistogram100 ?? 0;
+    message.qualityHistogram99 = object.qualityHistogram99 ?? 0;
+    message.qualityHistogram97 = object.qualityHistogram97 ?? 0;
+    message.qualityHistogram95 = object.qualityHistogram95 ?? 0;
+    message.qualityHistogram90 = object.qualityHistogram90 ?? 0;
+    message.qualityHistogram75 = object.qualityHistogram75 ?? 0;
+    message.qualityHistogram50 = object.qualityHistogram50 ?? 0;
+    message.qualityHistogram1 = object.qualityHistogram1 ?? 0;
+    message.qualityHistogramDead = object.qualityHistogramDead ?? 0;
+    message.qualityNtile2nd = object.qualityNtile2nd ?? 0;
+    message.qualityNtile5th = object.qualityNtile5th ?? 0;
+    message.qualityNtile25th = object.qualityNtile25th ?? 0;
+    message.qualityNtile50th = object.qualityNtile50th ?? 0;
+    message.pingHistogram25 = object.pingHistogram25 ?? 0;
+    message.pingHistogram50 = object.pingHistogram50 ?? 0;
+    message.pingHistogram75 = object.pingHistogram75 ?? 0;
+    message.pingHistogram100 = object.pingHistogram100 ?? 0;
+    message.pingHistogram125 = object.pingHistogram125 ?? 0;
+    message.pingHistogram150 = object.pingHistogram150 ?? 0;
+    message.pingHistogram200 = object.pingHistogram200 ?? 0;
+    message.pingHistogram300 = object.pingHistogram300 ?? 0;
+    message.pingHistogramMax = object.pingHistogramMax ?? 0;
+    message.pingNtile5th = object.pingNtile5th ?? 0;
+    message.pingNtile50th = object.pingNtile50th ?? 0;
+    message.pingNtile75th = object.pingNtile75th ?? 0;
+    message.pingNtile95th = object.pingNtile95th ?? 0;
+    message.pingNtile98th = object.pingNtile98th ?? 0;
+    message.jitterHistogramNegligible = object.jitterHistogramNegligible ?? 0;
+    message.jitterHistogram1 = object.jitterHistogram1 ?? 0;
+    message.jitterHistogram2 = object.jitterHistogram2 ?? 0;
+    message.jitterHistogram5 = object.jitterHistogram5 ?? 0;
+    message.jitterHistogram10 = object.jitterHistogram10 ?? 0;
+    message.jitterHistogram20 = object.jitterHistogram20 ?? 0;
+    message.txspeedMax = object.txspeedMax ?? 0;
+    message.txspeedHistogram16 = object.txspeedHistogram16 ?? 0;
+    message.txspeedHistogram32 = object.txspeedHistogram32 ?? 0;
+    message.txspeedHistogram64 = object.txspeedHistogram64 ?? 0;
+    message.txspeedHistogram128 = object.txspeedHistogram128 ?? 0;
+    message.txspeedHistogram256 = object.txspeedHistogram256 ?? 0;
+    message.txspeedHistogram512 = object.txspeedHistogram512 ?? 0;
+    message.txspeedHistogram1024 = object.txspeedHistogram1024 ?? 0;
+    message.txspeedHistogramMax = object.txspeedHistogramMax ?? 0;
+    message.txspeedNtile5th = object.txspeedNtile5th ?? 0;
+    message.txspeedNtile50th = object.txspeedNtile50th ?? 0;
+    message.txspeedNtile75th = object.txspeedNtile75th ?? 0;
+    message.txspeedNtile95th = object.txspeedNtile95th ?? 0;
+    message.txspeedNtile98th = object.txspeedNtile98th ?? 0;
+    message.rxspeedMax = object.rxspeedMax ?? 0;
+    message.rxspeedHistogram16 = object.rxspeedHistogram16 ?? 0;
+    message.rxspeedHistogram32 = object.rxspeedHistogram32 ?? 0;
+    message.rxspeedHistogram64 = object.rxspeedHistogram64 ?? 0;
+    message.rxspeedHistogram128 = object.rxspeedHistogram128 ?? 0;
+    message.rxspeedHistogram256 = object.rxspeedHistogram256 ?? 0;
+    message.rxspeedHistogram512 = object.rxspeedHistogram512 ?? 0;
+    message.rxspeedHistogram1024 = object.rxspeedHistogram1024 ?? 0;
+    message.rxspeedHistogramMax = object.rxspeedHistogramMax ?? 0;
+    message.rxspeedNtile5th = object.rxspeedNtile5th ?? 0;
+    message.rxspeedNtile50th = object.rxspeedNtile50th ?? 0;
+    message.rxspeedNtile75th = object.rxspeedNtile75th ?? 0;
+    message.rxspeedNtile95th = object.rxspeedNtile95th ?? 0;
+    message.rxspeedNtile98th = object.rxspeedNtile98th ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgSteamDatagramConnectionQuality(): CMsgSteamDatagramConnectionQuality {
@@ -1743,6 +1879,21 @@ export const CMsgSteamDatagramConnectionQuality = {
       (obj.lifetime = message.lifetime ? CMsgSteamDatagramLinkLifetimeStats.toJSON(message.lifetime) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamDatagramConnectionQuality>): CMsgSteamDatagramConnectionQuality {
+    return CMsgSteamDatagramConnectionQuality.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamDatagramConnectionQuality>): CMsgSteamDatagramConnectionQuality {
+    const message = createBaseCMsgSteamDatagramConnectionQuality();
+    message.instantaneous = (object.instantaneous !== undefined && object.instantaneous !== null)
+      ? CMsgSteamDatagramLinkInstantaneousStats.fromPartial(object.instantaneous)
+      : undefined;
+    message.lifetime = (object.lifetime !== undefined && object.lifetime !== null)
+      ? CMsgSteamDatagramLinkLifetimeStats.fromPartial(object.lifetime)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgICECandidate(): CMsgICECandidate {
@@ -1788,6 +1939,16 @@ export const CMsgICECandidate = {
     const obj: any = {};
     message.candidate !== undefined && (obj.candidate = message.candidate);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgICECandidate>): CMsgICECandidate {
+    return CMsgICECandidate.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgICECandidate>): CMsgICECandidate {
+    const message = createBaseCMsgICECandidate();
+    message.candidate = object.candidate ?? "";
+    return message;
   },
 };
 
@@ -1850,6 +2011,21 @@ export const CMsgICERendezvous = {
       (obj.addCandidate = message.addCandidate ? CMsgICECandidate.toJSON(message.addCandidate) : undefined);
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgICERendezvous>): CMsgICERendezvous {
+    return CMsgICERendezvous.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgICERendezvous>): CMsgICERendezvous {
+    const message = createBaseCMsgICERendezvous();
+    message.auth = (object.auth !== undefined && object.auth !== null)
+      ? CMsgICERendezvous_Auth.fromPartial(object.auth)
+      : undefined;
+    message.addCandidate = (object.addCandidate !== undefined && object.addCandidate !== null)
+      ? CMsgICECandidate.fromPartial(object.addCandidate)
+      : undefined;
+    return message;
+  },
 };
 
 function createBaseCMsgICERendezvous_Auth(): CMsgICERendezvous_Auth {
@@ -1895,6 +2071,16 @@ export const CMsgICERendezvous_Auth = {
     const obj: any = {};
     message.pwdFrag !== undefined && (obj.pwdFrag = message.pwdFrag);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgICERendezvous_Auth>): CMsgICERendezvous_Auth {
+    return CMsgICERendezvous_Auth.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgICERendezvous_Auth>): CMsgICERendezvous_Auth {
+    const message = createBaseCMsgICERendezvous_Auth();
+    message.pwdFrag = object.pwdFrag ?? "";
+    return message;
   },
 };
 
@@ -2168,6 +2354,38 @@ export const CMsgSteamNetworkingP2PRendezvous = {
     }
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamNetworkingP2PRendezvous>): CMsgSteamNetworkingP2PRendezvous {
+    return CMsgSteamNetworkingP2PRendezvous.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamNetworkingP2PRendezvous>): CMsgSteamNetworkingP2PRendezvous {
+    const message = createBaseCMsgSteamNetworkingP2PRendezvous();
+    message.fromIdentity = object.fromIdentity ?? "";
+    message.fromConnectionId = object.fromConnectionId ?? 0;
+    message.toIdentity = object.toIdentity ?? "";
+    message.toConnectionId = object.toConnectionId ?? 0;
+    message.sdrRoutes = object.sdrRoutes ?? Buffer.alloc(0);
+    message.ackPeerRoutesRevision = object.ackPeerRoutesRevision ?? 0;
+    message.iceEnabled = object.iceEnabled ?? false;
+    message.hostedServerTicket = object.hostedServerTicket ?? Buffer.alloc(0);
+    message.connectRequest = (object.connectRequest !== undefined && object.connectRequest !== null)
+      ? CMsgSteamNetworkingP2PRendezvous_ConnectRequest.fromPartial(object.connectRequest)
+      : undefined;
+    message.connectOk = (object.connectOk !== undefined && object.connectOk !== null)
+      ? CMsgSteamNetworkingP2PRendezvous_ConnectOK.fromPartial(object.connectOk)
+      : undefined;
+    message.connectionClosed = (object.connectionClosed !== undefined && object.connectionClosed !== null)
+      ? CMsgSteamNetworkingP2PRendezvous_ConnectionClosed.fromPartial(object.connectionClosed)
+      : undefined;
+    message.ackReliableMsg = object.ackReliableMsg ?? 0;
+    message.firstReliableMsg = object.firstReliableMsg ?? 0;
+    message.reliableMessages =
+      object.reliableMessages?.map((e) => CMsgSteamNetworkingP2PRendezvous_ReliableMessage.fromPartial(e)) || [];
+    message.applicationMessages =
+      object.applicationMessages?.map((e) => CMsgSteamNetworkingP2PRendezvous_ApplicationMessage.fromPartial(e)) || [];
+    return message;
+  },
 };
 
 function createBaseCMsgSteamNetworkingP2PRendezvous_ConnectRequest(): CMsgSteamNetworkingP2PRendezvous_ConnectRequest {
@@ -2269,6 +2487,28 @@ export const CMsgSteamNetworkingP2PRendezvous_ConnectRequest = {
     message.fromFakeip !== undefined && (obj.fromFakeip = message.fromFakeip);
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgSteamNetworkingP2PRendezvous_ConnectRequest>,
+  ): CMsgSteamNetworkingP2PRendezvous_ConnectRequest {
+    return CMsgSteamNetworkingP2PRendezvous_ConnectRequest.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamNetworkingP2PRendezvous_ConnectRequest>,
+  ): CMsgSteamNetworkingP2PRendezvous_ConnectRequest {
+    const message = createBaseCMsgSteamNetworkingP2PRendezvous_ConnectRequest();
+    message.crypt = (object.crypt !== undefined && object.crypt !== null)
+      ? CMsgSteamDatagramSessionCryptInfoSigned.fromPartial(object.crypt)
+      : undefined;
+    message.cert = (object.cert !== undefined && object.cert !== null)
+      ? CMsgSteamDatagramCertificateSigned.fromPartial(object.cert)
+      : undefined;
+    message.toVirtualPort = object.toVirtualPort ?? 0;
+    message.fromVirtualPort = object.fromVirtualPort ?? 0;
+    message.fromFakeip = object.fromFakeip ?? "";
+    return message;
+  },
 };
 
 function createBaseCMsgSteamNetworkingP2PRendezvous_ConnectOK(): CMsgSteamNetworkingP2PRendezvous_ConnectOK {
@@ -2330,6 +2570,23 @@ export const CMsgSteamNetworkingP2PRendezvous_ConnectOK = {
     message.cert !== undefined &&
       (obj.cert = message.cert ? CMsgSteamDatagramCertificateSigned.toJSON(message.cert) : undefined);
     return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamNetworkingP2PRendezvous_ConnectOK>): CMsgSteamNetworkingP2PRendezvous_ConnectOK {
+    return CMsgSteamNetworkingP2PRendezvous_ConnectOK.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamNetworkingP2PRendezvous_ConnectOK>,
+  ): CMsgSteamNetworkingP2PRendezvous_ConnectOK {
+    const message = createBaseCMsgSteamNetworkingP2PRendezvous_ConnectOK();
+    message.crypt = (object.crypt !== undefined && object.crypt !== null)
+      ? CMsgSteamDatagramSessionCryptInfoSigned.fromPartial(object.crypt)
+      : undefined;
+    message.cert = (object.cert !== undefined && object.cert !== null)
+      ? CMsgSteamDatagramCertificateSigned.fromPartial(object.cert)
+      : undefined;
+    return message;
   },
 };
 
@@ -2394,6 +2651,21 @@ export const CMsgSteamNetworkingP2PRendezvous_ConnectionClosed = {
     message.reasonCode !== undefined && (obj.reasonCode = Math.round(message.reasonCode));
     return obj;
   },
+
+  create(
+    base?: DeepPartial<CMsgSteamNetworkingP2PRendezvous_ConnectionClosed>,
+  ): CMsgSteamNetworkingP2PRendezvous_ConnectionClosed {
+    return CMsgSteamNetworkingP2PRendezvous_ConnectionClosed.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamNetworkingP2PRendezvous_ConnectionClosed>,
+  ): CMsgSteamNetworkingP2PRendezvous_ConnectionClosed {
+    const message = createBaseCMsgSteamNetworkingP2PRendezvous_ConnectionClosed();
+    message.debug = object.debug ?? "";
+    message.reasonCode = object.reasonCode ?? 0;
+    return message;
+  },
 };
 
 function createBaseCMsgSteamNetworkingP2PRendezvous_ReliableMessage(): CMsgSteamNetworkingP2PRendezvous_ReliableMessage {
@@ -2442,6 +2714,22 @@ export const CMsgSteamNetworkingP2PRendezvous_ReliableMessage = {
     const obj: any = {};
     message.ice !== undefined && (obj.ice = message.ice ? CMsgICERendezvous.toJSON(message.ice) : undefined);
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamNetworkingP2PRendezvous_ReliableMessage>,
+  ): CMsgSteamNetworkingP2PRendezvous_ReliableMessage {
+    return CMsgSteamNetworkingP2PRendezvous_ReliableMessage.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamNetworkingP2PRendezvous_ReliableMessage>,
+  ): CMsgSteamNetworkingP2PRendezvous_ReliableMessage {
+    const message = createBaseCMsgSteamNetworkingP2PRendezvous_ReliableMessage();
+    message.ice = (object.ice !== undefined && object.ice !== null)
+      ? CMsgICERendezvous.fromPartial(object.ice)
+      : undefined;
+    return message;
   },
 };
 
@@ -2530,6 +2818,23 @@ export const CMsgSteamNetworkingP2PRendezvous_ApplicationMessage = {
     message.flags !== undefined && (obj.flags = Math.round(message.flags));
     message.laneIdx !== undefined && (obj.laneIdx = Math.round(message.laneIdx));
     return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamNetworkingP2PRendezvous_ApplicationMessage>,
+  ): CMsgSteamNetworkingP2PRendezvous_ApplicationMessage {
+    return CMsgSteamNetworkingP2PRendezvous_ApplicationMessage.fromPartial(base ?? {});
+  },
+
+  fromPartial(
+    object: DeepPartial<CMsgSteamNetworkingP2PRendezvous_ApplicationMessage>,
+  ): CMsgSteamNetworkingP2PRendezvous_ApplicationMessage {
+    const message = createBaseCMsgSteamNetworkingP2PRendezvous_ApplicationMessage();
+    message.data = object.data ?? Buffer.alloc(0);
+    message.msgNum = object.msgNum ?? "0";
+    message.flags = object.flags ?? 0;
+    message.laneIdx = object.laneIdx ?? 0;
+    return message;
   },
 };
 
@@ -2766,6 +3071,30 @@ export const CMsgSteamNetworkingICESessionSummary = {
       (obj.localCandidateTypesAllowed = Math.round(message.localCandidateTypesAllowed));
     return obj;
   },
+
+  create(base?: DeepPartial<CMsgSteamNetworkingICESessionSummary>): CMsgSteamNetworkingICESessionSummary {
+    return CMsgSteamNetworkingICESessionSummary.fromPartial(base ?? {});
+  },
+
+  fromPartial(object: DeepPartial<CMsgSteamNetworkingICESessionSummary>): CMsgSteamNetworkingICESessionSummary {
+    const message = createBaseCMsgSteamNetworkingICESessionSummary();
+    message.failureReasonCode = object.failureReasonCode ?? 0;
+    message.localCandidateTypes = object.localCandidateTypes ?? 0;
+    message.remoteCandidateTypes = object.remoteCandidateTypes ?? 0;
+    message.initialRouteKind = object.initialRouteKind ?? 0;
+    message.initialPing = object.initialPing ?? 0;
+    message.initialScore = object.initialScore ?? 0;
+    message.negotiationMs = object.negotiationMs ?? 0;
+    message.bestRouteKind = object.bestRouteKind ?? 0;
+    message.bestPing = object.bestPing ?? 0;
+    message.bestScore = object.bestScore ?? 0;
+    message.bestTime = object.bestTime ?? 0;
+    message.selectedSeconds = object.selectedSeconds ?? 0;
+    message.userSettings = object.userSettings ?? 0;
+    message.iceEnableVar = object.iceEnableVar ?? 0;
+    message.localCandidateTypesAllowed = object.localCandidateTypesAllowed ?? 0;
+    return message;
+  },
 };
 
 declare var self: any | undefined;
@@ -2811,6 +3140,13 @@ function base64FromBytes(arr: Uint8Array): string {
     return tsProtoGlobalThis.btoa(bin.join(""));
   }
 }
+
+type Builtin = Date | Function | Uint8Array | string | number | boolean | undefined;
+
+type DeepPartial<T> = T extends Builtin ? T
+  : T extends Array<infer U> ? Array<DeepPartial<U>> : T extends ReadonlyArray<infer U> ? ReadonlyArray<DeepPartial<U>>
+  : T extends {} ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : Partial<T>;
 
 function longToString(long: Long) {
   return long.toString();
