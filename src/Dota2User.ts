@@ -8,7 +8,6 @@ import { Router } from './router';
 import { EGCBaseClientMsg, GCConnectionStatus } from './protobufs';
 import { ProtobufDataMapType, DeepPartial } from './known-protobufs';
 import { Dota2UserError, getProtobufForMessage } from './utils';
-import * as Package from '../package.json';
 
 const INITIAL_HELLO_DELAY = 500;
 const DEFAULT_HELLO_DELAY = 1000;
@@ -42,14 +41,6 @@ export class Dota2User extends EventEmitter {
 
         this._hookSteamUserEvents();
         this._hookRouterEvents();
-    }
-
-    get packageName() {
-        return Package.name;
-    }
-
-    get packageVersion() {
-        return Package.version;
     }
 
     get inDota2(): boolean {
