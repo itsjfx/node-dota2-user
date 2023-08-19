@@ -24,7 +24,7 @@ export class Dota2User extends EventEmitter {
     _inDota2 = false;
     // TODO
     _helloTimer: NodeJS.Timer | undefined | null;
-    _helloTimerMs: number | undefined;
+    _helloTimerMs?: number | undefined;
 
     constructor(steam: SteamUser) {
         if (steam.packageName !== 'steam-user' || !('packageVersion' in steam) || !steam.constructor) {
