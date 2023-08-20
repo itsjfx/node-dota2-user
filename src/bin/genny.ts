@@ -30,9 +30,12 @@ interface Overrides {
 // there's a check to see if a value is valid, but no check whether a key is valid
 // TODO check if key is valid ?
 const OVERRIDES: Overrides = {
-    'ESOMsg.k_ESOMsg_Create': { CMsg: 'CMsgSOSingleObject' },
-    'ESOMsg.k_ESOMsg_Destroy': { CMsg: 'CMsgSOSingleObject' },
-    'ESOMsg.k_ESOMsg_UpdateMultiple': { CMsg: 'CMsgSOMultipleObjects' },
+    'ESOMsg.k_ESOMsg_Create': { CMsg: 'CMsgSOSingleObject', sender: MessageSender.GC },
+    'ESOMsg.k_ESOMsg_Destroy': { CMsg: 'CMsgSOSingleObject', sender: MessageSender.GC },
+    'ESOMsg.k_ESOMsg_UpdateMultiple': { CMsg: 'CMsgSOMultipleObjects', sender: MessageSender.GC },
+    'ESOMsg.k_ESOMsg_CacheSubscribed': { sender: MessageSender.GC },
+    'ESOMsg.k_ESOMsg_CacheUnsubscribed': { sender: MessageSender.GC },
+    'EDOTAGCMsg.k_EMsgGCPracticeLobbyResponse': { CMsg: 'CMsgGenericResult' },
     // TODO, probably scrap long term
     'EGCBaseClientMsg.k_EMsgGCClientConnectionStatus': { sender: MessageSender.GC },
     'EGCBaseClientMsg.k_EMsgGCClientWelcome': { sender: MessageSender.GC },
