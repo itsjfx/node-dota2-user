@@ -12,12 +12,13 @@ describe('Dota2User', () => {
         });
         describe('where a valid SteamUser instance is given', () => {
             let client: SteamUser;
-            const clientPackageVersionSpy = jest.spyOn(SteamUser.prototype, 'packageVersion', 'get');
+            let clientPackageVersionSpy: jest.SpyInstance;
             beforeEach(() => {
                 client = new SteamUser();
+                clientPackageVersionSpy = jest.spyOn(client, 'packageVersion', 'get');
             });
             test('throw an error if the major version is less than 4', () => {
-                clientPackageVersionSpy.mockReturnValue('3.0.0');
+                clientPackageVersionSpy.mockReturnValue('3.5.0');
                 expect(() => new Dota2User(client)).toThrow(Dota2UserError);
             });
             test('throw an error if the minor version is less than 2 where major is at least 4', () => {
@@ -31,7 +32,7 @@ describe('Dota2User', () => {
             test.each(['_hookSteamUserEvents', '_hookRouterEvents'])('%s should be called', (functionName) => {
                 const spy = jest.spyOn(Dota2User.prototype, functionName as any);
                 new Dota2User(client);
-                expect(spy).toBeCalled();
+                expect(spy).toHaveBeenCalled();
             });
         });
     });
