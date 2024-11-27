@@ -7,6 +7,10 @@ export class Router extends (ExtendedEventEmitter as new () => TypedEmitter<GCEv
     route(messageId: number, body: Buffer): void {
         // let msgName = getMessageName(msgType) || msgType;
         // TODO when we import all the protos, find message name instead of printing just the messageId
+        if (!(messageId in GCProtobufs)) {
+            debug("Not routing message %s as it's not a GC message", messageId);
+            return;
+        }
         const protobuf = getProtobufForMessage(messageId);
         if (!protobuf) {
             debug('No route available for GC message: %s', messageId);
