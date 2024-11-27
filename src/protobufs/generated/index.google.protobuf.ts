@@ -2,8 +2,7 @@
 // versions:
 //   protoc-gen-ts_proto  v2.4.1
 //   protoc               v5.28.3
-// source: valveextensions.proto
 
 /* eslint-disable */
 
-export {};
+export * from "./google/protobuf/descriptor";

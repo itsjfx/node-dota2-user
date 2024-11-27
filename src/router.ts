@@ -1,9 +1,9 @@
 const debug = require('debug')('dota2-user:router');
 
 import { ExtendedEventEmitter, TypedEmitter, getProtobufForMessage } from './utils';
-import { ProtobufEvents } from './known-protobufs';
+import { GCEvents, GCProtobufs } from './protobufs/protobuf-mappings';
 
-export class Router extends (ExtendedEventEmitter as new () => TypedEmitter<ProtobufEvents>) {
+export class Router extends (ExtendedEventEmitter as new () => TypedEmitter<GCEvents>) {
     route(messageId: number, body: Buffer): void {
         // let msgName = getMessageName(msgType) || msgType;
         // TODO when we import all the protos, find message name instead of printing just the messageId
@@ -14,6 +14,6 @@ export class Router extends (ExtendedEventEmitter as new () => TypedEmitter<Prot
         }
         const data = protobuf.decode(body);
         debug('Routing GC message: %s', messageId);
-        this.emit(messageId as keyof ProtobufEvents, data as any);
+        this.emit(messageId as keyof GCEvents, data as any);
     }
 }

@@ -7,7 +7,8 @@ const debug = require('debug')('dota2-user');
 
 import { Router } from './router';
 import { EGCBaseClientMsg, GCConnectionStatus } from './protobufs';
-import { ProtobufDataMapType, DeepPartial } from './known-protobufs';
+import type { DeepPartial } from './protobufs/protobuf-utils';
+import type { ClientProtobufsType } from './protobufs/protobuf-mappings';
 import { Dota2UserError, getProtobufForMessage } from './utils';
 
 const INITIAL_HELLO_DELAY = 500;
@@ -109,22 +110,22 @@ export class Dota2User extends EventEmitter {
         });
     }
 
-    send<T extends keyof ProtobufDataMapType>(messageId: T, body: ProtobufDataMapType[T]): void {
+    send<T extends keyof ClientProtobufsType>(messageId: T, body: ClientProtobufsType[T]): void {
         const protobuf = getProtobufForMessage(messageId);
         if (!protobuf) {
             throw new Dota2UserError(`Unable to find protobuf for message: ${messageId}`);
         }
-        const buffer = Buffer.from(protobuf.encode(body).finish());
+        const buffer = Buffer.from(protobuf.encode(body as any).finish());
         return this.sendRawBuffer(messageId, buffer);
     }
 
     // send a partial message, where all payload properties are optional, and missing values are filled in best effort
-    sendPartial<T extends keyof ProtobufDataMapType>(messageId: T, body: DeepPartial<ProtobufDataMapType[T]>): void {
+    sendPartial<T extends keyof ClientProtobufsType>(messageId: T, body: DeepPartial<ClientProtobufsType[T]>): void {
         const protobuf = getProtobufForMessage(messageId);
         if (!protobuf) {
             throw new Dota2UserError(`Unable to find protobuf for message: ${messageId}`);
         }
-        const buffer = Buffer.from(protobuf.encode(protobuf.fromPartial(body)).finish());
+        const buffer = Buffer.from(protobuf.encode(protobuf.fromPartial(body) as any).finish());
         return this.sendRawBuffer(messageId, buffer);
     }
 

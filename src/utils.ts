@@ -1,11 +1,16 @@
 import { EventEmitter } from 'node:events';
-import { protobufMap, ProtobufDataMapType } from './known-protobufs';
+import { AllProtobufs } from './protobufs/protobuf-mappings';
 
 export class Dota2UserError extends Error {}
 
 // TODO maybe this should be attached to Dota2User
-export const getProtobufForMessage = (messageId: keyof ProtobufDataMapType): typeof protobufMap[keyof typeof protobufMap] | undefined => {
-    return protobufMap[messageId];
+export const getProtobufForMessage = (messageId: keyof typeof AllProtobufs): typeof AllProtobufs[keyof typeof AllProtobufs] | undefined => {
+    return AllProtobufs[messageId];
+};
+
+export const getEnumValues = (_enum: Record<any, any>) => {
+    const keys = Object.keys(_enum);
+    return keys.splice(keys.length / 2);
 };
 
 // Extended version of https://github.com/binier/tiny-typed-emitter/blob/66c1b66bc159675352a6f38911e4c6cf2117f3e4/lib/index.d.ts#L1-L26 with onAny

@@ -1,587 +1,868 @@
 import * as protobufs from './index';
+import { MessageFns } from './protobuf-utils';
 export const ClientProtobufs = {
-    [protobufs.EDOTAGCMsg.k_EMsgGCJoinChatChannel]: protobufs.CMsgDOTAJoinChatChannel,
-    [protobufs.EDOTAGCMsg.k_EMsgGCStartFindingMatch]: protobufs.CMsgStartFindingMatch,
-    [protobufs.EDOTAGCMsg.k_EMsgGCConnectedPlayers]: protobufs.CMsgConnectedPlayers,
-    [protobufs.EDOTAGCMsg.k_EMsgGCAbandonCurrentGame]: protobufs.CMsgAbandonCurrentGame,
-    [protobufs.EDOTAGCMsg.k_EMsgGCStopFindingMatch]: protobufs.CMsgStopFindingMatch,
-    [protobufs.EDOTAGCMsg.k_EMsgGCPracticeLobbyCreate]: protobufs.CMsgPracticeLobbyCreate,
-    [protobufs.EDOTAGCMsg.k_EMsgGCPracticeLobbyLeave]: protobufs.CMsgPracticeLobbyLeave,
-    [protobufs.EDOTAGCMsg.k_EMsgGCPracticeLobbyLaunch]: protobufs.CMsgPracticeLobbyLaunch,
-    [protobufs.EDOTAGCMsg.k_EMsgGCPracticeLobbyList]: protobufs.CMsgPracticeLobbyList,
-    [protobufs.EDOTAGCMsg.k_EMsgGCPracticeLobbyJoin]: protobufs.CMsgPracticeLobbyJoin,
-    [protobufs.EDOTAGCMsg.k_EMsgGCPracticeLobbySetDetails]: protobufs.CMsgPracticeLobbySetDetails,
-    [protobufs.EDOTAGCMsg.k_EMsgGCPracticeLobbySetTeamSlot]: protobufs.CMsgPracticeLobbySetTeamSlot,
-    [protobufs.EDOTAGCMsg.k_EMsgGCBroadcastNotification]: protobufs.CMsgDOTABroadcastNotification,
-    [protobufs.EDOTAGCMsg.k_EMsgGCLiveScoreboardUpdate]: protobufs.CMsgDOTALiveScoreboardUpdate,
-    [protobufs.EDOTAGCMsg.k_EMsgGCRequestChatChannelList]: protobufs.CMsgDOTARequestChatChannelList,
-    [protobufs.EDOTAGCMsg.k_EMsgGCReadyUp]: protobufs.CMsgReadyUp,
-    [protobufs.EDOTAGCMsg.k_EMsgGCKickedFromMatchmakingQueue]: protobufs.CMsgDOTAKickedFromMatchmakingQueue,
-    [protobufs.EDOTAGCMsg.k_EMsgGCLeaverDetected]: protobufs.CMsgLeaverDetected,
-    [protobufs.EDOTAGCMsg.k_EMsgGCSpectateFriendGame]: protobufs.CMsgSpectateFriendGame,
-    [protobufs.EDOTAGCMsg.k_EMsgGCReportsRemainingRequest]: protobufs.CMsgDOTAReportsRemainingRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgGCSubmitPlayerReport]: protobufs.CMsgDOTASubmitPlayerReport,
-    [protobufs.EDOTAGCMsg.k_EMsgGCPracticeLobbyKick]: protobufs.CMsgPracticeLobbyKick,
-    [protobufs.EDOTAGCMsg.k_EMsgGCPlayerFailedToConnect]: protobufs.CMsgDOTAPlayerFailedToConnect,
-    [protobufs.EDOTAGCMsg.k_EMsgGCGCToRelayConnect]: protobufs.CMsgGCToRelayConnect,
-    [protobufs.EDOTAGCMsg.k_EMsgGCWatchGame]: protobufs.CMsgWatchGame,
-    [protobufs.EDOTAGCMsg.k_EMsgGCBanStatusRequest]: protobufs.CMsgGCBanStatusRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgGCMatchDetailsRequest]: protobufs.CMsgGCMatchDetailsRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgGCCancelWatchGame]: protobufs.CMsgCancelWatchGame,
-    [protobufs.EDOTAGCMsg.k_EMsgGCPopup]: protobufs.CMsgDOTAPopup,
-    [protobufs.EDOTAGCMsg.k_EMsgGCFriendPracticeLobbyListRequest]: protobufs.CMsgFriendPracticeLobbyListRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgGCCreateTeam]: protobufs.CMsgDOTACreateTeam,
-    [protobufs.EDOTAGCMsg.k_EMsgGCKickTeamMember]: protobufs.CMsgDOTAKickTeamMember,
-    [protobufs.EDOTAGCMsg.k_EMsgGCLeaveTeam]: protobufs.CMsgDOTALeaveTeam,
-    [protobufs.EDOTAGCMsg.k_EMsgGCApplyTeamToPracticeLobby]: protobufs.CMsgApplyTeamToPracticeLobby,
-    [protobufs.EDOTAGCMsg.k_EMsgGCTransferTeamAdmin]: protobufs.CMsgDOTATransferTeamAdmin,
-    [protobufs.EDOTAGCMsg.k_EMsgGCPracticeLobbyJoinBroadcastChannel]: protobufs.CMsgPracticeLobbyJoinBroadcastChannel,
-    [protobufs.EDOTAGCMsg.k_EMsgTeamFanfare]: protobufs.CMsgTeamFanfare,
-    [protobufs.EDOTAGCMsg.k_EMsgResponseTeamFanfare]: protobufs.CMsgResponseTeamFanfare,
-    [protobufs.EDOTAGCMsg.k_EMsgGCEditTeamDetails]: protobufs.CMsgDOTAEditTeamDetails,
-    [protobufs.EDOTAGCMsg.k_EMsgGCReadyUpStatus]: protobufs.CMsgReadyUpStatus,
-    [protobufs.EDOTAGCMsg.k_EMsgGCBalancedShuffleLobby]: protobufs.CMsgBalancedShuffleLobby,
-    [protobufs.EDOTAGCMsg.k_EMsgGCMatchmakingStatsRequest]: protobufs.CMsgDOTAMatchmakingStatsRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgGCBotGameCreate]: protobufs.CMsgBotGameCreate,
-    [protobufs.EDOTAGCMsg.k_EMsgGCSetMatchHistoryAccess]: protobufs.CMsgDOTASetMatchHistoryAccess,
-    [protobufs.EDOTAGCMsg.k_EMsgUpgradeLeagueItem]: protobufs.CMsgUpgradeLeagueItem,
-    [protobufs.EDOTAGCMsg.k_EMsgGCWatchDownloadedReplay]: protobufs.CMsgGCWatchDownloadedReplay,
-    [protobufs.EDOTAGCMsg.k_EMsgClientsRejoinChatChannels]: protobufs.CMsgClientsRejoinChatChannels,
-    [protobufs.EDOTAGCMsg.k_EMsgGCLeaveChatChannel]: protobufs.CMsgDOTALeaveChatChannel,
-    [protobufs.EDOTAGCMsg.k_EMsgGCChatMessage]: protobufs.CMsgDOTAChatMessage,
-    [protobufs.EDOTAGCMsg.k_EMsgGCGetHeroStandings]: protobufs.CMsgGCGetHeroStandings,
-    [protobufs.EDOTAGCMsg.k_EMsgGCItemEditorReservationsRequest]: protobufs.CMsgGCItemEditorReservationsRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgGCItemEditorReserveItemDef]: protobufs.CMsgGCItemEditorReserveItemDef,
-    [protobufs.EDOTAGCMsg.k_EMsgGCItemEditorReleaseReservation]: protobufs.CMsgGCItemEditorReleaseReservation,
-    [protobufs.EDOTAGCMsg.k_EMsgGCRewardTutorialPrizes]: protobufs.CMsgDOTARewardTutorialPrizes,
-    [protobufs.EDOTAGCMsg.k_EMsgGCFantasyLivePlayerStats]: protobufs.CMsgDOTAFantasyLivePlayerStats,
-    [protobufs.EDOTAGCMsg.k_EMsgGCFantasyFinalPlayerStats]: protobufs.CMsgDOTAFantasyFinalPlayerStats,
-    [protobufs.EDOTAGCMsg.k_EMsgGCFlipLobbyTeams]: protobufs.CMsgFlipLobbyTeams,
-    [protobufs.EDOTAGCMsg.k_EMsgGCNotifyAccountFlagsChange]: protobufs.CMsgDOTANotifyAccountFlagsChange,
-    [protobufs.EDOTAGCMsg.k_EMsgGCSetProfilePrivacy]: protobufs.CMsgDOTASetProfilePrivacy,
-    [protobufs.EDOTAGCMsg.k_EMsgGCClientSuspended]: protobufs.CMsgClientSuspended,
-    [protobufs.EDOTAGCMsg.k_EMsgGCPartyMemberSetCoach]: protobufs.CMsgDOTAPartyMemberSetCoach,
-    [protobufs.EDOTAGCMsg.k_EMsgGCPracticeLobbySetCoach]: protobufs.CMsgPracticeLobbySetCoach,
-    [protobufs.EDOTAGCMsg.k_EMsgGCChatModeratorBan]: protobufs.CMsgDOTAChatModeratorBan,
-    [protobufs.EDOTAGCMsg.k_EMsgGCLobbyUpdateBroadcastChannelInfo]: protobufs.CMsgGCLobbyUpdateBroadcastChannelInfo,
-    [protobufs.EDOTAGCMsg.k_EMsgDOTAAwardEventPoints]: protobufs.CMsgDOTAAwardEventPoints,
-    [protobufs.EDOTAGCMsg.k_EMsgDOTAGetEventPoints]: protobufs.CMsgDOTAGetEventPoints,
-    [protobufs.EDOTAGCMsg.k_EMsgGCPartyLeaderWatchGamePrompt]: protobufs.CMsgPartyLeaderWatchGamePrompt,
-    [protobufs.EDOTAGCMsg.k_EMsgGCCompendiumDataRequest]: protobufs.CMsgDOTACompendiumDataRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgDOTAGetPlayerMatchHistory]: protobufs.CMsgDOTAGetPlayerMatchHistory,
-    [protobufs.EDOTAGCMsg.k_EMsgGCNotificationsRequest]: protobufs.CMsgGCNotificationsRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgGCLeagueAdminList]: protobufs.CMsgLeagueAdminList,
-    [protobufs.EDOTAGCMsg.k_EMsgGCNotificationsMarkReadRequest]: protobufs.CMsgGCNotificationsMarkReadRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgGCPlayerInfoSubmit]: protobufs.CMsgGCPlayerInfoSubmit,
-    [protobufs.EDOTAGCMsg.k_EMsgDOTAWeekendTourneySchedule]: protobufs.CMsgWeekendTourneySchedule,
-    [protobufs.EDOTAGCMsg.k_EMsgGCJoinableCustomGameModesRequest]: protobufs.CMsgJoinableCustomGameModesRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgGCJoinableCustomLobbiesRequest]: protobufs.CMsgJoinableCustomLobbiesRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgGCQuickJoinCustomLobby]: protobufs.CMsgQuickJoinCustomLobby,
-    [protobufs.EDOTAGCMsg.k_EMsgGCHasItemQuery]: protobufs.CMsgDOTAHasItemQuery,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCEmoticonDataRequest]: protobufs.CMsgClientToGCEmoticonDataRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgGCPracticeLobbyToggleBroadcastChannelCameramanStatus]: protobufs.CMsgPracticeLobbyToggleBroadcastChannelCameramanStatus,
-    [protobufs.EDOTAGCMsg.k_EMsgDOTARedeemItem]: protobufs.CMsgDOTARedeemItem,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAllHeroProgress]: protobufs.CMsgClientToGCGetAllHeroProgress,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetTrophyList]: protobufs.CMsgClientToGCGetTrophyList,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetProfileCard]: protobufs.CMsgClientToGCGetProfileCard,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetBattleReport]: protobufs.CMsgClientToGCGetBattleReport,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetProfileCardSlots]: protobufs.CMsgClientToGCSetProfileCardSlots,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetBattleReportAggregateStats]: protobufs.CMsgClientToGCGetBattleReportAggregateStats,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetBattleReportInfo]: protobufs.CMsgClientToGCGetBattleReportInfo,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCreateHeroStatue]: protobufs.CMsgClientToGCCreateHeroStatue,
-    [protobufs.EDOTAGCMsg.k_EMsgGCGCToLANServerRelayConnect]: protobufs.CMsgGCGCToLANServerRelayConnect,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCAcknowledgeBattleReport]: protobufs.CMsgClientToGCAcknowledgeBattleReport,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetBattleReportMatchHistory]: protobufs.CMsgClientToGCGetBattleReportMatchHistory,
-    [protobufs.EDOTAGCMsg.k_EMsgLobbyEventPoints]: protobufs.CMsgLobbyEventPoints,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRerollPlayerChallenge]: protobufs.CMsgClientToGCRerollPlayerChallenge,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCApplyGemCombiner]: protobufs.CMsgClientToGCApplyGemCombiner,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAllHeroOrder]: protobufs.CMsgClientToGCGetAllHeroOrder,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPlayerCardSpecificPurchaseRequest]: protobufs.CMsgClientToGCPlayerCardSpecificPurchaseRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgGCtoServerTensorflowInstance]: protobufs.CMsgGCtoServerTensorflowInstance,
-    [protobufs.EDOTAGCMsg.k_EMsgDOTALeagueInfoListAdminsRequest]: protobufs.CMsgDOTALeagueInfoListAdminsRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgDOTALeagueAvailableLobbyNodesRequest]: protobufs.CMsgDOTALeagueAvailableLobbyNodesRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgDOTALeagueAvailableLobbyNodes]: protobufs.CMsgDOTALeagueAvailableLobbyNodes,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetFilteredPlayers]: protobufs.CMsgClientToGCGetFilteredPlayers,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRemoveFilteredPlayer]: protobufs.CMsgClientToGCRemoveFilteredPlayer,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUpdatePartyBeacon]: protobufs.CMsgClientToGCUpdatePartyBeacon,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestActiveBeaconParties]: protobufs.CMsgClientToGCRequestActiveBeaconParties,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCManageFavorites]: protobufs.CMsgClientToGCManageFavorites,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCJoinPartyFromBeacon]: protobufs.CMsgClientToGCJoinPartyFromBeacon,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetFavoritePlayers]: protobufs.CMsgClientToGCGetFavoritePlayers,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCVerifyFavoritePlayers]: protobufs.CMsgClientToGCVerifyFavoritePlayers,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCMMInfo]: protobufs.CMsgClientToGCMMInfo,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPurchaseLabyrinthBlessings]: protobufs.CMsgClientToGCPurchaseLabyrinthBlessings,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPurchaseFilteredPlayerSlot]: protobufs.CMsgClientToGCPurchaseFilteredPlayerSlot,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUpdateFilteredPlayerNote]: protobufs.CMsgClientToGCUpdateFilteredPlayerNote,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCClaimSwag]: protobufs.CMsgClientToGCClaimSwag,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPlayerStatsRequest]: protobufs.CMsgClientToGCPlayerStatsRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCFindTopSourceTVGames]: protobufs.CMsgClientToGCFindTopSourceTVGames,
-    [protobufs.EDOTAGCMsg.k_EMsgGCLobbyList]: protobufs.CMsgLobbyList,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSocialFeedPostCommentRequest]: protobufs.CMsgClientToGCSocialFeedPostCommentRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCustomGamesFriendsPlayedRequest]: protobufs.CMsgClientToGCCustomGamesFriendsPlayedRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCFriendsPlayedCustomGameRequest]: protobufs.CMsgClientToGCFriendsPlayedCustomGameRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgGCTopCustomGamesList]: protobufs.CMsgGCTopCustomGamesList,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetProfileCardStats]: protobufs.CMsgClientToGCGetProfileCardStats,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCTopLeagueMatchesRequest]: protobufs.CMsgClientToGCTopLeagueMatchesRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCTopFriendMatchesRequest]: protobufs.CMsgClientToGCTopFriendMatchesRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgGCPracticeLobbyKickFromTeam]: protobufs.CMsgPracticeLobbyKickFromTeam,
-    [protobufs.EDOTAGCMsg.k_EMsgDOTAChatGetMemberCount]: protobufs.CMsgDOTAChatGetMemberCount,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSocialFeedPostMessageRequest]: protobufs.CMsgClientToGCSocialFeedPostMessageRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgCustomGameListenServerStartedLoading]: protobufs.CMsgDOTACustomGameListenServerStartedLoading,
-    [protobufs.EDOTAGCMsg.k_EMsgCustomGameClientFinishedLoading]: protobufs.CMsgDOTACustomGameClientFinishedLoading,
-    [protobufs.EDOTAGCMsg.k_EMsgGCPracticeLobbyCloseBroadcastChannel]: protobufs.CMsgPracticeLobbyCloseBroadcastChannel,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCMatchesMinimalRequest]: protobufs.CMsgClientToGCMatchesMinimalRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetProfileTickets]: protobufs.CMsgClientToGCGetProfileTickets,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCH264Unsupported]: protobufs.CMsgClientToGCH264Unsupported,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetQuestProgress]: protobufs.CMsgClientToGCGetQuestProgress,
-    [protobufs.EDOTAGCMsg.k_EMsgGCGetHeroStatsHistory]: protobufs.CMsgGCGetHeroStatsHistory,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPrivateChatInvite]: protobufs.CMsgClientToGCPrivateChatInvite,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPrivateChatKick]: protobufs.CMsgClientToGCPrivateChatKick,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPrivateChatPromote]: protobufs.CMsgClientToGCPrivateChatPromote,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPrivateChatDemote]: protobufs.CMsgClientToGCPrivateChatDemote,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCWageringRequest]: protobufs.CMsgClientToGCWageringRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCHasPlayerVotedForMVP]: protobufs.CMsgClientToGCHasPlayerVotedForMVP,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCVoteForMVP]: protobufs.CMsgClientToGCVoteForMVP,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCWeekendTourneyOpts]: protobufs.CMsgWeekendTourneyOpts,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCWeekendTourneyLeave]: protobufs.CMsgWeekendTourneyLeave,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCTeammateStatsRequest]: protobufs.CMsgClientToGCTeammateStatsRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetGiftPermissions]: protobufs.CMsgClientToGCGetGiftPermissions,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCVoteForArcana]: protobufs.CMsgClientToGCVoteForArcana,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestArcanaVotesRemaining]: protobufs.CMsgClientToGCRequestArcanaVotesRemaining,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCMyTeamInfoRequest]: protobufs.CMsgDOTAMyTeamInfoRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPublishUserStat]: protobufs.CMsgClientToGCPublishUserStat,
-    [protobufs.EDOTAGCMsg.k_EMsgGCSubmitLobbyMVPVote]: protobufs.CMsgDOTASubmitLobbyMVPVote,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetSpectatorLobbyDetails]: protobufs.CMsgSetSpectatorLobbyDetails,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCreateSpectatorLobby]: protobufs.CMsgCreateSpectatorLobby,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSpectatorLobbyList]: protobufs.CMsgSpectatorLobbyList,
-    [protobufs.EDOTAGCMsg.k_EMsgSpectatorLobbyGameDetails]: protobufs.CMsgSpectatorLobbyGameDetails,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOpenPlayerCardPack]: protobufs.CMsgClientToGCOpenPlayerCardPack,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSelectCompendiumInGamePrediction]: protobufs.CMsgClientToGCSelectCompendiumInGamePrediction,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRecyclePlayerCard]: protobufs.CMsgClientToGCRecyclePlayerCard,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCreatePlayerCardPack]: protobufs.CMsgClientToGCCreatePlayerCardPack,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetPlayerCardRosterRequest]: protobufs.CMsgClientToGCGetPlayerCardRosterRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetPlayerCardRosterRequest]: protobufs.CMsgClientToGCSetPlayerCardRosterRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgGCGetPlayerCardItemInfo]: protobufs.CMsgGCGetPlayerCardItemInfo,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestSteamDatagramTicket]: protobufs.CMsgClientToGCRequestSteamDatagramTicket,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCTransferSeasonalMMRRequest]: protobufs.CMsgClientToGCTransferSeasonalMMRRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgGCChatReportPublicSpam]: protobufs.CMsgGCChatReportPublicSpam,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCJoinPlaytest]: protobufs.CMsgClientToGCJoinPlaytest,
-    [protobufs.EDOTAGCMsg.k_EMsgLobbyPlaytestDetails]: protobufs.CMsgLobbyPlaytestDetails,
-    [protobufs.EDOTAGCMsg.k_EMsgDOTASetFavoriteTeam]: protobufs.CMsgDOTASetFavoriteTeam,
-    [protobufs.EDOTAGCMsg.k_EMsgDOTAClaimEventAction]: protobufs.CMsgDOTAClaimEventAction,
-    [protobufs.EDOTAGCMsg.k_EMsgDOTAGetPeriodicResource]: protobufs.CMsgDOTAGetPeriodicResource,
-    [protobufs.EDOTAGCMsg.k_EMsgDOTAPeriodicResourceUpdated]: protobufs.CMsgDOTAPeriodicResourceUpdated,
-    [protobufs.EDOTAGCMsg.k_EMsgSubmitTriviaQuestionAnswer]: protobufs.CMsgDOTASubmitTriviaQuestionAnswer,
-    [protobufs.EDOTAGCMsg.k_EMsgStartTriviaSession]: protobufs.CMsgDOTAStartTriviaSession,
-    [protobufs.EDOTAGCMsg.k_EMsgAnchorPhoneNumberRequest]: protobufs.CMsgDOTAAnchorPhoneNumberRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgUnanchorPhoneNumberRequest]: protobufs.CMsgDOTAUnanchorPhoneNumberRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCQuickStatsRequest]: protobufs.CMsgDOTAClientToGCQuickStatsRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgSelectionPriorityChoiceRequest]: protobufs.CMsgDOTASelectionPriorityChoiceRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgGameAutographReward]: protobufs.CMsgDOTAGameAutographReward,
-    [protobufs.EDOTAGCMsg.k_EMsgDestroyLobbyRequest]: protobufs.CMsgDOTADestroyLobbyRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgPurchaseItemWithEventPoints]: protobufs.CMsgPurchaseItemWithEventPoints,
-    [protobufs.EDOTAGCMsg.k_EMsgPurchaseHeroRandomRelic]: protobufs.CMsgPurchaseHeroRandomRelic,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCClaimEventActionUsingItem]: protobufs.CMsgClientToGCClaimEventActionUsingItem,
-    [protobufs.EDOTAGCMsg.k_EMsgPartyReadyCheckRequest]: protobufs.CMsgPartyReadyCheckRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgPartyReadyCheckAcknowledge]: protobufs.CMsgPartyReadyCheckAcknowledge,
-    [protobufs.EDOTAGCMsg.k_EMsgGetRecentPlayTimeFriendsRequest]: protobufs.CMsgDOTAGetRecentPlayTimeFriendsRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgProfileRequest]: protobufs.CMsgProfileRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgProfileUpdate]: protobufs.CMsgProfileUpdate,
-    [protobufs.EDOTAGCMsg.k_EMsgHeroGlobalDataRequest]: protobufs.CMsgHeroGlobalDataRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestPlusWeeklyChallengeResult]: protobufs.CMsgClientToGCRequestPlusWeeklyChallengeResult,
-    [protobufs.EDOTAGCMsg.k_EMsgPrivateMetadataKeyRequest]: protobufs.CMsgPrivateMetadataKeyRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlClaimRoom]: protobufs.CMsgClientToGCCavernCrawlClaimRoom,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlUseItemOnRoom]: protobufs.CMsgClientToGCCavernCrawlUseItemOnRoom,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlUseItemOnPath]: protobufs.CMsgClientToGCCavernCrawlUseItemOnPath,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlRequestMapState]: protobufs.CMsgClientToGCCavernCrawlRequestMapState,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestEventPointLogV2]: protobufs.CMsgClientToGCRequestEventPointLogV2,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestEventPointLogResponseV2]: protobufs.CMsgClientToGCRequestEventPointLogResponseV2,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlGetClaimedRoomCount]: protobufs.CMsgClientToGCCavernCrawlGetClaimedRoomCount,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRecordContestVote]: protobufs.CMsgClientToGCRecordContestVote,
-    [protobufs.EDOTAGCMsg.k_EMsgLobbyEventGameDetails]: protobufs.CMsgLobbyEventGameDetails,
-    [protobufs.EDOTAGCMsg.k_EMsgDevGrantEventPoints]: protobufs.CMsgDevGrantEventPoints,
-    [protobufs.EDOTAGCMsg.k_EMsgDevGrantEventAction]: protobufs.CMsgDevGrantEventAction,
-    [protobufs.EDOTAGCMsg.k_EMsgDevResetEventState]: protobufs.CMsgDevResetEventState,
-    [protobufs.EDOTAGCMsg.k_EMsgConsumeEventSupportGrantItem]: protobufs.CMsgConsumeEventSupportGrantItem,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestPlayerRecentAccomplishments]: protobufs.CMsgClientToGCRequestPlayerRecentAccomplishments,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestPlayerHeroRecentAccomplishments]: protobufs.CMsgClientToGCRequestPlayerHeroRecentAccomplishments,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestPlayerCoachMatches]: protobufs.CMsgClientToGCRequestPlayerCoachMatches,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitCoachTeammateRating]: protobufs.CMsgClientToGCSubmitCoachTeammateRating,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestPlayerCoachMatch]: protobufs.CMsgClientToGCRequestPlayerCoachMatch,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestContestVotes]: protobufs.CMsgClientToGCRequestContestVotes,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCMVPVoteTimeout]: protobufs.CMsgClientToGCMVPVoteTimeout,
-    [protobufs.EDOTAGCMsg.k_EMsgDetailedGameStats]: protobufs.CMsgDetailedGameStats,
-    [protobufs.EDOTAGCMsg.k_EMsgMatchMatchmakingStats]: protobufs.CMsgMatchMatchmakingStats,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitPlayerMatchSurvey]: protobufs.CMsgClientToGCSubmitPlayerMatchSurvey,
-    [protobufs.EDOTAGCMsg.k_EMsgDevDeleteEventActions]: protobufs.CMsgDevDeleteEventActions,
-    [protobufs.EDOTAGCMsg.k_EMsgGCSubmitPlayerAvoidRequest]: protobufs.CMsgDOTASubmitPlayerAvoidRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgGCtoGCAssociatedExploiterAccountInfo]: protobufs.CMsgGCtoGCAssociatedExploiterAccountInfo,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftBuy]: protobufs.CMsgClientToGCUnderDraftBuy,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftReroll]: protobufs.CMsgClientToGCUnderDraftReroll,
-    [protobufs.EDOTAGCMsg.k_EMsgNeutralItemStats]: protobufs.CMsgNeutralItemStats,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCreateGuild]: protobufs.CMsgClientToGCCreateGuild,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetGuildInfo]: protobufs.CMsgClientToGCSetGuildInfo,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCAddGuildRole]: protobufs.CMsgClientToGCAddGuildRole,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCModifyGuildRole]: protobufs.CMsgClientToGCModifyGuildRole,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRemoveGuildRole]: protobufs.CMsgClientToGCRemoveGuildRole,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCJoinGuild]: protobufs.CMsgClientToGCJoinGuild,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCLeaveGuild]: protobufs.CMsgClientToGCLeaveGuild,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCInviteToGuild]: protobufs.CMsgClientToGCInviteToGuild,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCDeclineInviteToGuild]: protobufs.CMsgClientToGCDeclineInviteToGuild,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCancelInviteToGuild]: protobufs.CMsgClientToGCCancelInviteToGuild,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCKickGuildMember]: protobufs.CMsgClientToGCKickGuildMember,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetGuildMemberRole]: protobufs.CMsgClientToGCSetGuildMemberRole,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestGuildData]: protobufs.CMsgClientToGCRequestGuildData,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestGuildMembership]: protobufs.CMsgClientToGCRequestGuildMembership,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCAcceptInviteToGuild]: protobufs.CMsgClientToGCAcceptInviteToGuild,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetGuildRoleOrder]: protobufs.CMsgClientToGCSetGuildRoleOrder,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestAccountGuildEventData]: protobufs.CMsgClientToGCRequestAccountGuildEventData,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestActiveGuildContracts]: protobufs.CMsgClientToGCRequestActiveGuildContracts,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSelectGuildContract]: protobufs.CMsgClientToGCSelectGuildContract,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCAddPlayerToGuildChat]: protobufs.CMsgClientToGCAddPlayerToGuildChat,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftSell]: protobufs.CMsgClientToGCUnderDraftSell,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRequest]: protobufs.CMsgClientToGCUnderDraftRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRedeemReward]: protobufs.CMsgClientToGCUnderDraftRedeemReward,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestActiveGuildChallenge]: protobufs.CMsgClientToGCRequestActiveGuildChallenge,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestGuildEventMembers]: protobufs.CMsgClientToGCRequestGuildEventMembers,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCReportGuildContent]: protobufs.CMsgClientToGCReportGuildContent,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestAccountGuildPersonaInfo]: protobufs.CMsgClientToGCRequestAccountGuildPersonaInfo,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestAccountGuildPersonaInfoBatch]: protobufs.CMsgClientToGCRequestAccountGuildPersonaInfoBatch,
-    [protobufs.EDOTAGCMsg.k_EMsgLobbyFeaturedGamemodeProgress]: protobufs.CMsgLobbyFeaturedGamemodeProgress,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitDraftTriviaMatchAnswer]: protobufs.CMsgClientToGCSubmitDraftTriviaMatchAnswer,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRollBackBench]: protobufs.CMsgClientToGCUnderDraftRollBackBench,
-    [protobufs.EDOTAGCMsg.k_EMsgLobbyEventGameData]: protobufs.CMsgLobbyEventGameData,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetOWMatchDetails]: protobufs.CMsgClientToGCGetOWMatchDetails,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitOWConviction]: protobufs.CMsgClientToGCSubmitOWConviction,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCClaimLeaderboardRewards]: protobufs.CMsgClientToGCClaimLeaderboardRewards,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRecalibrateMMR]: protobufs.CMsgClientToGCRecalibrateMMR,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCChinaSSAURLRequest]: protobufs.CMsgClientToGCChinaSSAURLRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCChinaSSAAcceptedRequest]: protobufs.CMsgClientToGCChinaSSAAcceptedRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCStartWatchingOverwatch]: protobufs.CMsgClientToGCStartWatchingOverwatch,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCStopWatchingOverwatch]: protobufs.CMsgClientToGCStopWatchingOverwatch,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetDPCFavorites]: protobufs.CMsgClientToGCGetDPCFavorites,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetDPCFavoriteState]: protobufs.CMsgClientToGCSetDPCFavoriteState,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverwatchReplayError]: protobufs.CMsgClientToGCOverwatchReplayError,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCoachFriend]: protobufs.CMsgClientToGCCoachFriend,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestPrivateCoachingSession]: protobufs.CMsgClientToGCRequestPrivateCoachingSession,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCAcceptPrivateCoachingSession]: protobufs.CMsgClientToGCAcceptPrivateCoachingSession,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCLeavePrivateCoachingSession]: protobufs.CMsgClientToGCLeavePrivateCoachingSession,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetCurrentPrivateCoachingSession]: protobufs.CMsgClientToGCGetCurrentPrivateCoachingSession,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitPrivateCoachingSessionRating]: protobufs.CMsgClientToGCSubmitPrivateCoachingSessionRating,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAvailablePrivateCoachingSessions]: protobufs.CMsgClientToGCGetAvailablePrivateCoachingSessions,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAvailablePrivateCoachingSessionsSummary]: protobufs.CMsgClientToGCGetAvailablePrivateCoachingSessionsSummary,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCJoinPrivateCoachingSessionLobby]: protobufs.CMsgClientToGCJoinPrivateCoachingSessionLobby,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRespondToCoachFriendRequest]: protobufs.CMsgClientToGCRespondToCoachFriendRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetEventActiveSeasonID]: protobufs.CMsgClientToGCSetEventActiveSeasonID,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCreateTeamPlayerCardPack]: protobufs.CMsgClientToGCCreateTeamPlayerCardPack,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCBatchGetPlayerCardRosterRequest]: protobufs.CMsgClientToGCBatchGetPlayerCardRosterRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetStickerbookRequest]: protobufs.CMsgClientToGCGetStickerbookRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCreateStickerbookPageRequest]: protobufs.CMsgClientToGCCreateStickerbookPageRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCDeleteStickerbookPageRequest]: protobufs.CMsgClientToGCDeleteStickerbookPageRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPlaceStickersRequest]: protobufs.CMsgClientToGCPlaceStickersRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPlaceCollectionStickersRequest]: protobufs.CMsgClientToGCPlaceCollectionStickersRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOrderStickerbookTeamPageRequest]: protobufs.CMsgClientToGCOrderStickerbookTeamPageRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCandyShopGetUserData]: protobufs.CMsgClientToGCCandyShopGetUserData,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCandyShopPurchaseReward]: protobufs.CMsgClientToGCCandyShopPurchaseReward,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCandyShopDoExchange]: protobufs.CMsgClientToGCCandyShopDoExchange,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCandyShopDoVariableExchange]: protobufs.CMsgClientToGCCandyShopDoVariableExchange,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCandyShopRerollRewards]: protobufs.CMsgClientToGCCandyShopRerollRewards,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetHeroSticker]: protobufs.CMsgClientToGCSetHeroSticker,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetHeroStickers]: protobufs.CMsgClientToGCGetHeroStickers,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetFavoritePage]: protobufs.CMsgClientToGCSetFavoritePage,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCandyShopDevGrantCandy]: protobufs.CMsgClientToGCCandyShopDevGrantCandy,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCandyShopDevClearInventory]: protobufs.CMsgClientToGCCandyShopDevClearInventory,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCandyShopOpenBags]: protobufs.CMsgClientToGCCandyShopOpenBags,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCandyShopDevGrantCandyBags]: protobufs.CMsgClientToGCCandyShopDevGrantCandyBags,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCandyShopDevShuffleExchange]: protobufs.CMsgClientToGCCandyShopDevShuffleExchange,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCandyShopDevGrantRerollCharges]: protobufs.CMsgClientToGCCandyShopDevGrantRerollCharges,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCollectorsCacheAvailableDataRequest]: protobufs.CMsgClientToGCCollectorsCacheAvailableDataRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUploadMatchClip]: protobufs.CMsgClientToGCUploadMatchClip,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRankRequest]: protobufs.CMsgClientToGCRankRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCMapStatsRequest]: protobufs.CMsgClientToGCMapStatsRequest,
-    [protobufs.EGCBaseClientMsg.k_EMsgGCClientHello]: protobufs.CMsgClientHello,
-    [protobufs.EGCBaseClientMsg.k_EMsgGCServerConnectionStatus]: protobufs.CMsgConnectionStatus,
-    [protobufs.ESOMsg.k_ESOMsg_CacheSubscriptionRefresh]: protobufs.CMsgSOCacheSubscriptionRefresh,
-    [protobufs.ESOMsg.k_ESOMsg_CacheSubscribedUpToDate]: protobufs.CMsgSOCacheSubscribedUpToDate,
-    [protobufs.EGCBaseMsg.k_EMsgGCReplicateConVars]: protobufs.CMsgReplicateConVars,
-    [protobufs.EGCBaseMsg.k_EMsgGCInviteToParty]: protobufs.CMsgInviteToParty,
-    [protobufs.EGCBaseMsg.k_EMsgGCInvitationCreated]: protobufs.CMsgInvitationCreated,
-    [protobufs.EGCBaseMsg.k_EMsgGCKickFromParty]: protobufs.CMsgKickFromParty,
-    [protobufs.EGCBaseMsg.k_EMsgGCLeaveParty]: protobufs.CMsgLeaveParty,
-    [protobufs.EGCBaseMsg.k_EMsgGCServerAvailable]: protobufs.CMsgServerAvailable,
-    [protobufs.EGCBaseMsg.k_EMsgGCGameServerInfo]: protobufs.CMsgGameServerInfo,
-    [protobufs.EGCBaseMsg.k_EMsgGCLANServerAvailable]: protobufs.CMsgLANServerAvailable,
-    [protobufs.EGCBaseMsg.k_EMsgGCInviteToLobby]: protobufs.CMsgInviteToLobby,
-    [protobufs.EGCBaseMsg.k_EMsgGCAdditionalWelcomeMsgList]: protobufs.CMsgGCAdditionalWelcomeMsgList,
-    [protobufs.EGCBaseMsg.k_EMsgClientToGCIntegrityStatus]: protobufs.CMsgClientToGCIntegrityStatus,
-    [protobufs.EGCBaseMsg.k_EMsgClientToGCAggregateMetrics]: protobufs.CMsgClientToGCAggregateMetrics,
+    [protobufs.EDOTAGCMsg.k_EMsgGCBroadcastNotification]: protobufs.CMsgDOTABroadcastNotification as MessageFns<protobufs.CMsgDOTABroadcastNotification>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCKickedFromMatchmakingQueue]: protobufs.CMsgDOTAKickedFromMatchmakingQueue as MessageFns<protobufs.CMsgDOTAKickedFromMatchmakingQueue>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCReportsRemainingRequest]: protobufs.CMsgDOTAReportsRemainingRequest as MessageFns<protobufs.CMsgDOTAReportsRemainingRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCSubmitPlayerReport]: protobufs.CMsgDOTASubmitPlayerReport as MessageFns<protobufs.CMsgDOTASubmitPlayerReport>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCMatchDetailsRequest]: protobufs.CMsgGCMatchDetailsRequest as MessageFns<protobufs.CMsgGCMatchDetailsRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCPopup]: protobufs.CMsgDOTAPopup as MessageFns<protobufs.CMsgDOTAPopup>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCBalancedShuffleLobby]: protobufs.CMsgBalancedShuffleLobby as MessageFns<protobufs.CMsgBalancedShuffleLobby>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCMatchmakingStatsRequest]: protobufs.CMsgDOTAMatchmakingStatsRequest as MessageFns<protobufs.CMsgDOTAMatchmakingStatsRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCSetMatchHistoryAccess]: protobufs.CMsgDOTASetMatchHistoryAccess as MessageFns<protobufs.CMsgDOTASetMatchHistoryAccess>,
+    [protobufs.EDOTAGCMsg.k_EMsgUpgradeLeagueItem]: protobufs.CMsgUpgradeLeagueItem as MessageFns<protobufs.CMsgUpgradeLeagueItem>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCWatchDownloadedReplay]: protobufs.CMsgGCWatchDownloadedReplay as MessageFns<protobufs.CMsgGCWatchDownloadedReplay>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientsRejoinChatChannels]: protobufs.CMsgClientsRejoinChatChannels as MessageFns<protobufs.CMsgClientsRejoinChatChannels>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCGetHeroStandings]: protobufs.CMsgGCGetHeroStandings as MessageFns<protobufs.CMsgGCGetHeroStandings>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCItemEditorReservationsRequest]: protobufs.CMsgGCItemEditorReservationsRequest as MessageFns<protobufs.CMsgGCItemEditorReservationsRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCItemEditorReserveItemDef]: protobufs.CMsgGCItemEditorReserveItemDef as MessageFns<protobufs.CMsgGCItemEditorReserveItemDef>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCItemEditorReleaseReservation]: protobufs.CMsgGCItemEditorReleaseReservation as MessageFns<protobufs.CMsgGCItemEditorReleaseReservation>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCRewardTutorialPrizes]: protobufs.CMsgDOTARewardTutorialPrizes as MessageFns<protobufs.CMsgDOTARewardTutorialPrizes>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCFlipLobbyTeams]: protobufs.CMsgFlipLobbyTeams as MessageFns<protobufs.CMsgFlipLobbyTeams>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCNotifyAccountFlagsChange]: protobufs.CMsgDOTANotifyAccountFlagsChange as MessageFns<protobufs.CMsgDOTANotifyAccountFlagsChange>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCSetProfilePrivacy]: protobufs.CMsgDOTASetProfilePrivacy as MessageFns<protobufs.CMsgDOTASetProfilePrivacy>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCClientSuspended]: protobufs.CMsgClientSuspended as MessageFns<protobufs.CMsgClientSuspended>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCLobbyUpdateBroadcastChannelInfo]: protobufs.CMsgGCLobbyUpdateBroadcastChannelInfo as MessageFns<protobufs.CMsgGCLobbyUpdateBroadcastChannelInfo>,
+    [protobufs.EDOTAGCMsg.k_EMsgDOTAGetEventPoints]: protobufs.CMsgDOTAGetEventPoints as MessageFns<protobufs.CMsgDOTAGetEventPoints>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCCompendiumDataRequest]: protobufs.CMsgDOTACompendiumDataRequest as MessageFns<protobufs.CMsgDOTACompendiumDataRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgDOTAGetPlayerMatchHistory]: protobufs.CMsgDOTAGetPlayerMatchHistory as MessageFns<protobufs.CMsgDOTAGetPlayerMatchHistory>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCNotificationsRequest]: protobufs.CMsgGCNotificationsRequest as MessageFns<protobufs.CMsgGCNotificationsRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCLeagueAdminList]: protobufs.CMsgLeagueAdminList as MessageFns<protobufs.CMsgLeagueAdminList>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCNotificationsMarkReadRequest]: protobufs.CMsgGCNotificationsMarkReadRequest as MessageFns<protobufs.CMsgGCNotificationsMarkReadRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCPlayerInfoSubmit]: protobufs.CMsgGCPlayerInfoSubmit as MessageFns<protobufs.CMsgGCPlayerInfoSubmit>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCHasItemQuery]: protobufs.CMsgDOTAHasItemQuery as MessageFns<protobufs.CMsgDOTAHasItemQuery>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCEmoticonDataRequest]: protobufs.CMsgClientToGCEmoticonDataRequest as MessageFns<protobufs.CMsgClientToGCEmoticonDataRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgDOTARedeemItem]: protobufs.CMsgDOTARedeemItem as MessageFns<protobufs.CMsgDOTARedeemItem>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAllHeroProgress]: protobufs.CMsgClientToGCGetAllHeroProgress as MessageFns<protobufs.CMsgClientToGCGetAllHeroProgress>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetTrophyList]: protobufs.CMsgClientToGCGetTrophyList as MessageFns<protobufs.CMsgClientToGCGetTrophyList>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetProfileCard]: protobufs.CMsgClientToGCGetProfileCard as MessageFns<protobufs.CMsgClientToGCGetProfileCard>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetProfileCardSlots]: protobufs.CMsgClientToGCSetProfileCardSlots as MessageFns<protobufs.CMsgClientToGCSetProfileCardSlots>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCreateHeroStatue]: protobufs.CMsgClientToGCCreateHeroStatue as MessageFns<protobufs.CMsgClientToGCCreateHeroStatue>,
+    [protobufs.EDOTAGCMsg.k_EMsgLobbyEventPoints]: protobufs.CMsgLobbyEventPoints as MessageFns<protobufs.CMsgLobbyEventPoints>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRerollPlayerChallenge]: protobufs.CMsgClientToGCRerollPlayerChallenge as MessageFns<protobufs.CMsgClientToGCRerollPlayerChallenge>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCApplyGemCombiner]: protobufs.CMsgClientToGCApplyGemCombiner as MessageFns<protobufs.CMsgClientToGCApplyGemCombiner>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAllHeroOrder]: protobufs.CMsgClientToGCGetAllHeroOrder as MessageFns<protobufs.CMsgClientToGCGetAllHeroOrder>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPlayerCardSpecificPurchaseRequest]: protobufs.CMsgClientToGCPlayerCardSpecificPurchaseRequest as MessageFns<protobufs.CMsgClientToGCPlayerCardSpecificPurchaseRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetFilteredPlayers]: protobufs.CMsgClientToGCGetFilteredPlayers as MessageFns<protobufs.CMsgClientToGCGetFilteredPlayers>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRemoveFilteredPlayer]: protobufs.CMsgClientToGCRemoveFilteredPlayer as MessageFns<protobufs.CMsgClientToGCRemoveFilteredPlayer>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUpdatePartyBeacon]: protobufs.CMsgClientToGCUpdatePartyBeacon as MessageFns<protobufs.CMsgClientToGCUpdatePartyBeacon>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestActiveBeaconParties]: protobufs.CMsgClientToGCRequestActiveBeaconParties as MessageFns<protobufs.CMsgClientToGCRequestActiveBeaconParties>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCManageFavorites]: protobufs.CMsgClientToGCManageFavorites as MessageFns<protobufs.CMsgClientToGCManageFavorites>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCJoinPartyFromBeacon]: protobufs.CMsgClientToGCJoinPartyFromBeacon as MessageFns<protobufs.CMsgClientToGCJoinPartyFromBeacon>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetFavoritePlayers]: protobufs.CMsgClientToGCGetFavoritePlayers as MessageFns<protobufs.CMsgClientToGCGetFavoritePlayers>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCVerifyFavoritePlayers]: protobufs.CMsgClientToGCVerifyFavoritePlayers as MessageFns<protobufs.CMsgClientToGCVerifyFavoritePlayers>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPurchaseLabyrinthBlessings]: protobufs.CMsgClientToGCPurchaseLabyrinthBlessings as MessageFns<protobufs.CMsgClientToGCPurchaseLabyrinthBlessings>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPurchaseFilteredPlayerSlot]: protobufs.CMsgClientToGCPurchaseFilteredPlayerSlot as MessageFns<protobufs.CMsgClientToGCPurchaseFilteredPlayerSlot>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUpdateFilteredPlayerNote]: protobufs.CMsgClientToGCUpdateFilteredPlayerNote as MessageFns<protobufs.CMsgClientToGCUpdateFilteredPlayerNote>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCClaimSwag]: protobufs.CMsgClientToGCClaimSwag as MessageFns<protobufs.CMsgClientToGCClaimSwag>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPlayerStatsRequest]: protobufs.CMsgClientToGCPlayerStatsRequest as MessageFns<protobufs.CMsgClientToGCPlayerStatsRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSocialFeedPostCommentRequest]: protobufs.CMsgClientToGCSocialFeedPostCommentRequest as MessageFns<protobufs.CMsgClientToGCSocialFeedPostCommentRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCustomGamesFriendsPlayedRequest]: protobufs.CMsgClientToGCCustomGamesFriendsPlayedRequest as MessageFns<protobufs.CMsgClientToGCCustomGamesFriendsPlayedRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCFriendsPlayedCustomGameRequest]: protobufs.CMsgClientToGCFriendsPlayedCustomGameRequest as MessageFns<protobufs.CMsgClientToGCFriendsPlayedCustomGameRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCTopCustomGamesList]: protobufs.CMsgGCTopCustomGamesList as MessageFns<protobufs.CMsgGCTopCustomGamesList>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetProfileCardStats]: protobufs.CMsgClientToGCGetProfileCardStats as MessageFns<protobufs.CMsgClientToGCGetProfileCardStats>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSocialFeedPostMessageRequest]: protobufs.CMsgClientToGCSocialFeedPostMessageRequest as MessageFns<protobufs.CMsgClientToGCSocialFeedPostMessageRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgCustomGameListenServerStartedLoading]: protobufs.CMsgDOTACustomGameListenServerStartedLoading as MessageFns<protobufs.CMsgDOTACustomGameListenServerStartedLoading>,
+    [protobufs.EDOTAGCMsg.k_EMsgCustomGameClientFinishedLoading]: protobufs.CMsgDOTACustomGameClientFinishedLoading as MessageFns<protobufs.CMsgDOTACustomGameClientFinishedLoading>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetProfileTickets]: protobufs.CMsgClientToGCGetProfileTickets as MessageFns<protobufs.CMsgClientToGCGetProfileTickets>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCH264Unsupported]: protobufs.CMsgClientToGCH264Unsupported as MessageFns<protobufs.CMsgClientToGCH264Unsupported>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetQuestProgress]: protobufs.CMsgClientToGCGetQuestProgress as MessageFns<protobufs.CMsgClientToGCGetQuestProgress>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCGetHeroStatsHistory]: protobufs.CMsgGCGetHeroStatsHistory as MessageFns<protobufs.CMsgGCGetHeroStatsHistory>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCWageringRequest]: protobufs.CMsgClientToGCWageringRequest as MessageFns<protobufs.CMsgClientToGCWageringRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCHasPlayerVotedForMVP]: protobufs.CMsgClientToGCHasPlayerVotedForMVP as MessageFns<protobufs.CMsgClientToGCHasPlayerVotedForMVP>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCVoteForMVP]: protobufs.CMsgClientToGCVoteForMVP as MessageFns<protobufs.CMsgClientToGCVoteForMVP>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCTeammateStatsRequest]: protobufs.CMsgClientToGCTeammateStatsRequest as MessageFns<protobufs.CMsgClientToGCTeammateStatsRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetGiftPermissions]: protobufs.CMsgClientToGCGetGiftPermissions as MessageFns<protobufs.CMsgClientToGCGetGiftPermissions>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCVoteForArcana]: protobufs.CMsgClientToGCVoteForArcana as MessageFns<protobufs.CMsgClientToGCVoteForArcana>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestArcanaVotesRemaining]: protobufs.CMsgClientToGCRequestArcanaVotesRemaining as MessageFns<protobufs.CMsgClientToGCRequestArcanaVotesRemaining>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPublishUserStat]: protobufs.CMsgClientToGCPublishUserStat as MessageFns<protobufs.CMsgClientToGCPublishUserStat>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCSubmitLobbyMVPVote]: protobufs.CMsgDOTASubmitLobbyMVPVote as MessageFns<protobufs.CMsgDOTASubmitLobbyMVPVote>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOpenPlayerCardPack]: protobufs.CMsgClientToGCOpenPlayerCardPack as MessageFns<protobufs.CMsgClientToGCOpenPlayerCardPack>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSelectCompendiumInGamePrediction]: protobufs.CMsgClientToGCSelectCompendiumInGamePrediction as MessageFns<protobufs.CMsgClientToGCSelectCompendiumInGamePrediction>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRecyclePlayerCard]: protobufs.CMsgClientToGCRecyclePlayerCard as MessageFns<protobufs.CMsgClientToGCRecyclePlayerCard>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCreatePlayerCardPack]: protobufs.CMsgClientToGCCreatePlayerCardPack as MessageFns<protobufs.CMsgClientToGCCreatePlayerCardPack>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCGetPlayerCardItemInfo]: protobufs.CMsgGCGetPlayerCardItemInfo as MessageFns<protobufs.CMsgGCGetPlayerCardItemInfo>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCTransferSeasonalMMRRequest]: protobufs.CMsgClientToGCTransferSeasonalMMRRequest as MessageFns<protobufs.CMsgClientToGCTransferSeasonalMMRRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCJoinPlaytest]: protobufs.CMsgClientToGCJoinPlaytest as MessageFns<protobufs.CMsgClientToGCJoinPlaytest>,
+    [protobufs.EDOTAGCMsg.k_EMsgLobbyPlaytestDetails]: protobufs.CMsgLobbyPlaytestDetails as MessageFns<protobufs.CMsgLobbyPlaytestDetails>,
+    [protobufs.EDOTAGCMsg.k_EMsgDOTASetFavoriteTeam]: protobufs.CMsgDOTASetFavoriteTeam as MessageFns<protobufs.CMsgDOTASetFavoriteTeam>,
+    [protobufs.EDOTAGCMsg.k_EMsgDOTAClaimEventAction]: protobufs.CMsgDOTAClaimEventAction as MessageFns<protobufs.CMsgDOTAClaimEventAction>,
+    [protobufs.EDOTAGCMsg.k_EMsgDOTAGetPeriodicResource]: protobufs.CMsgDOTAGetPeriodicResource as MessageFns<protobufs.CMsgDOTAGetPeriodicResource>,
+    [protobufs.EDOTAGCMsg.k_EMsgDOTAPeriodicResourceUpdated]: protobufs.CMsgDOTAPeriodicResourceUpdated as MessageFns<protobufs.CMsgDOTAPeriodicResourceUpdated>,
+    [protobufs.EDOTAGCMsg.k_EMsgSubmitTriviaQuestionAnswer]: protobufs.CMsgDOTASubmitTriviaQuestionAnswer as MessageFns<protobufs.CMsgDOTASubmitTriviaQuestionAnswer>,
+    [protobufs.EDOTAGCMsg.k_EMsgStartTriviaSession]: protobufs.CMsgDOTAStartTriviaSession as MessageFns<protobufs.CMsgDOTAStartTriviaSession>,
+    [protobufs.EDOTAGCMsg.k_EMsgAnchorPhoneNumberRequest]: protobufs.CMsgDOTAAnchorPhoneNumberRequest as MessageFns<protobufs.CMsgDOTAAnchorPhoneNumberRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgUnanchorPhoneNumberRequest]: protobufs.CMsgDOTAUnanchorPhoneNumberRequest as MessageFns<protobufs.CMsgDOTAUnanchorPhoneNumberRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCQuickStatsRequest]: protobufs.CMsgDOTAClientToGCQuickStatsRequest as MessageFns<protobufs.CMsgDOTAClientToGCQuickStatsRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgSelectionPriorityChoiceRequest]: protobufs.CMsgDOTASelectionPriorityChoiceRequest as MessageFns<protobufs.CMsgDOTASelectionPriorityChoiceRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgGameAutographReward]: protobufs.CMsgDOTAGameAutographReward as MessageFns<protobufs.CMsgDOTAGameAutographReward>,
+    [protobufs.EDOTAGCMsg.k_EMsgDestroyLobbyRequest]: protobufs.CMsgDOTADestroyLobbyRequest as MessageFns<protobufs.CMsgDOTADestroyLobbyRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgPurchaseItemWithEventPoints]: protobufs.CMsgPurchaseItemWithEventPoints as MessageFns<protobufs.CMsgPurchaseItemWithEventPoints>,
+    [protobufs.EDOTAGCMsg.k_EMsgPurchaseHeroRandomRelic]: protobufs.CMsgPurchaseHeroRandomRelic as MessageFns<protobufs.CMsgPurchaseHeroRandomRelic>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCClaimEventActionUsingItem]: protobufs.CMsgClientToGCClaimEventActionUsingItem as MessageFns<protobufs.CMsgClientToGCClaimEventActionUsingItem>,
+    [protobufs.EDOTAGCMsg.k_EMsgPartyReadyCheckRequest]: protobufs.CMsgPartyReadyCheckRequest as MessageFns<protobufs.CMsgPartyReadyCheckRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgPartyReadyCheckAcknowledge]: protobufs.CMsgPartyReadyCheckAcknowledge as MessageFns<protobufs.CMsgPartyReadyCheckAcknowledge>,
+    [protobufs.EDOTAGCMsg.k_EMsgGetRecentPlayTimeFriendsRequest]: protobufs.CMsgDOTAGetRecentPlayTimeFriendsRequest as MessageFns<protobufs.CMsgDOTAGetRecentPlayTimeFriendsRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgProfileRequest]: protobufs.CMsgProfileRequest as MessageFns<protobufs.CMsgProfileRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgProfileUpdate]: protobufs.CMsgProfileUpdate as MessageFns<protobufs.CMsgProfileUpdate>,
+    [protobufs.EDOTAGCMsg.k_EMsgHeroGlobalDataRequest]: protobufs.CMsgHeroGlobalDataRequest as MessageFns<protobufs.CMsgHeroGlobalDataRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestPlusWeeklyChallengeResult]: protobufs.CMsgClientToGCRequestPlusWeeklyChallengeResult as MessageFns<protobufs.CMsgClientToGCRequestPlusWeeklyChallengeResult>,
+    [protobufs.EDOTAGCMsg.k_EMsgPrivateMetadataKeyRequest]: protobufs.CMsgPrivateMetadataKeyRequest as MessageFns<protobufs.CMsgPrivateMetadataKeyRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlClaimRoom]: protobufs.CMsgClientToGCCavernCrawlClaimRoom as MessageFns<protobufs.CMsgClientToGCCavernCrawlClaimRoom>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlUseItemOnRoom]: protobufs.CMsgClientToGCCavernCrawlUseItemOnRoom as MessageFns<protobufs.CMsgClientToGCCavernCrawlUseItemOnRoom>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlUseItemOnPath]: protobufs.CMsgClientToGCCavernCrawlUseItemOnPath as MessageFns<protobufs.CMsgClientToGCCavernCrawlUseItemOnPath>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlRequestMapState]: protobufs.CMsgClientToGCCavernCrawlRequestMapState as MessageFns<protobufs.CMsgClientToGCCavernCrawlRequestMapState>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestEventPointLogV2]: protobufs.CMsgClientToGCRequestEventPointLogV2 as MessageFns<protobufs.CMsgClientToGCRequestEventPointLogV2>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestEventPointLogResponseV2]: protobufs.CMsgClientToGCRequestEventPointLogResponseV2 as MessageFns<protobufs.CMsgClientToGCRequestEventPointLogResponseV2>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlGetClaimedRoomCount]: protobufs.CMsgClientToGCCavernCrawlGetClaimedRoomCount as MessageFns<protobufs.CMsgClientToGCCavernCrawlGetClaimedRoomCount>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRecordContestVote]: protobufs.CMsgClientToGCRecordContestVote as MessageFns<protobufs.CMsgClientToGCRecordContestVote>,
+    [protobufs.EDOTAGCMsg.k_EMsgLobbyEventGameDetails]: protobufs.CMsgLobbyEventGameDetails as MessageFns<protobufs.CMsgLobbyEventGameDetails>,
+    [protobufs.EDOTAGCMsg.k_EMsgDevGrantEventPoints]: protobufs.CMsgDevGrantEventPoints as MessageFns<protobufs.CMsgDevGrantEventPoints>,
+    [protobufs.EDOTAGCMsg.k_EMsgDevGrantEventAction]: protobufs.CMsgDevGrantEventAction as MessageFns<protobufs.CMsgDevGrantEventAction>,
+    [protobufs.EDOTAGCMsg.k_EMsgDevResetEventState]: protobufs.CMsgDevResetEventState as MessageFns<protobufs.CMsgDevResetEventState>,
+    [protobufs.EDOTAGCMsg.k_EMsgConsumeEventSupportGrantItem]: protobufs.CMsgConsumeEventSupportGrantItem as MessageFns<protobufs.CMsgConsumeEventSupportGrantItem>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestPlayerRecentAccomplishments]: protobufs.CMsgClientToGCRequestPlayerRecentAccomplishments as MessageFns<protobufs.CMsgClientToGCRequestPlayerRecentAccomplishments>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestPlayerHeroRecentAccomplishments]: protobufs.CMsgClientToGCRequestPlayerHeroRecentAccomplishments as MessageFns<protobufs.CMsgClientToGCRequestPlayerHeroRecentAccomplishments>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestContestVotes]: protobufs.CMsgClientToGCRequestContestVotes as MessageFns<protobufs.CMsgClientToGCRequestContestVotes>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCMVPVoteTimeout]: protobufs.CMsgClientToGCMVPVoteTimeout as MessageFns<protobufs.CMsgClientToGCMVPVoteTimeout>,
+    [protobufs.EDOTAGCMsg.k_EMsgMatchMatchmakingStats]: protobufs.CMsgMatchMatchmakingStats as MessageFns<protobufs.CMsgMatchMatchmakingStats>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitPlayerMatchSurvey]: protobufs.CMsgClientToGCSubmitPlayerMatchSurvey as MessageFns<protobufs.CMsgClientToGCSubmitPlayerMatchSurvey>,
+    [protobufs.EDOTAGCMsg.k_EMsgDevDeleteEventActions]: protobufs.CMsgDevDeleteEventActions as MessageFns<protobufs.CMsgDevDeleteEventActions>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCSubmitPlayerAvoidRequest]: protobufs.CMsgDOTASubmitPlayerAvoidRequest as MessageFns<protobufs.CMsgDOTASubmitPlayerAvoidRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCtoGCAssociatedExploiterAccountInfo]: protobufs.CMsgGCtoGCAssociatedExploiterAccountInfo as MessageFns<protobufs.CMsgGCtoGCAssociatedExploiterAccountInfo>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftBuy]: protobufs.CMsgClientToGCUnderDraftBuy as MessageFns<protobufs.CMsgClientToGCUnderDraftBuy>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftReroll]: protobufs.CMsgClientToGCUnderDraftReroll as MessageFns<protobufs.CMsgClientToGCUnderDraftReroll>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftSell]: protobufs.CMsgClientToGCUnderDraftSell as MessageFns<protobufs.CMsgClientToGCUnderDraftSell>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRequest]: protobufs.CMsgClientToGCUnderDraftRequest as MessageFns<protobufs.CMsgClientToGCUnderDraftRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRedeemReward]: protobufs.CMsgClientToGCUnderDraftRedeemReward as MessageFns<protobufs.CMsgClientToGCUnderDraftRedeemReward>,
+    [protobufs.EDOTAGCMsg.k_EMsgLobbyFeaturedGamemodeProgress]: protobufs.CMsgLobbyFeaturedGamemodeProgress as MessageFns<protobufs.CMsgLobbyFeaturedGamemodeProgress>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitDraftTriviaMatchAnswer]: protobufs.CMsgClientToGCSubmitDraftTriviaMatchAnswer as MessageFns<protobufs.CMsgClientToGCSubmitDraftTriviaMatchAnswer>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRollBackBench]: protobufs.CMsgClientToGCUnderDraftRollBackBench as MessageFns<protobufs.CMsgClientToGCUnderDraftRollBackBench>,
+    [protobufs.EDOTAGCMsg.k_EMsgLobbyEventGameData]: protobufs.CMsgLobbyEventGameData as MessageFns<protobufs.CMsgLobbyEventGameData>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetOWMatchDetails]: protobufs.CMsgClientToGCGetOWMatchDetails as MessageFns<protobufs.CMsgClientToGCGetOWMatchDetails>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitOWConviction]: protobufs.CMsgClientToGCSubmitOWConviction as MessageFns<protobufs.CMsgClientToGCSubmitOWConviction>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRecalibrateMMR]: protobufs.CMsgClientToGCRecalibrateMMR as MessageFns<protobufs.CMsgClientToGCRecalibrateMMR>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCChinaSSAURLRequest]: protobufs.CMsgClientToGCChinaSSAURLRequest as MessageFns<protobufs.CMsgClientToGCChinaSSAURLRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCChinaSSAAcceptedRequest]: protobufs.CMsgClientToGCChinaSSAAcceptedRequest as MessageFns<protobufs.CMsgClientToGCChinaSSAAcceptedRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCStartWatchingOverwatch]: protobufs.CMsgClientToGCStartWatchingOverwatch as MessageFns<protobufs.CMsgClientToGCStartWatchingOverwatch>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCStopWatchingOverwatch]: protobufs.CMsgClientToGCStopWatchingOverwatch as MessageFns<protobufs.CMsgClientToGCStopWatchingOverwatch>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetDPCFavorites]: protobufs.CMsgClientToGCGetDPCFavorites as MessageFns<protobufs.CMsgClientToGCGetDPCFavorites>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetDPCFavoriteState]: protobufs.CMsgClientToGCSetDPCFavoriteState as MessageFns<protobufs.CMsgClientToGCSetDPCFavoriteState>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverwatchReplayError]: protobufs.CMsgClientToGCOverwatchReplayError as MessageFns<protobufs.CMsgClientToGCOverwatchReplayError>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetEventActiveSeasonID]: protobufs.CMsgClientToGCSetEventActiveSeasonID as MessageFns<protobufs.CMsgClientToGCSetEventActiveSeasonID>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCreateTeamPlayerCardPack]: protobufs.CMsgClientToGCCreateTeamPlayerCardPack as MessageFns<protobufs.CMsgClientToGCCreateTeamPlayerCardPack>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetStickerbookRequest]: protobufs.CMsgClientToGCGetStickerbookRequest as MessageFns<protobufs.CMsgClientToGCGetStickerbookRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCreateStickerbookPageRequest]: protobufs.CMsgClientToGCCreateStickerbookPageRequest as MessageFns<protobufs.CMsgClientToGCCreateStickerbookPageRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCDeleteStickerbookPageRequest]: protobufs.CMsgClientToGCDeleteStickerbookPageRequest as MessageFns<protobufs.CMsgClientToGCDeleteStickerbookPageRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPlaceStickersRequest]: protobufs.CMsgClientToGCPlaceStickersRequest as MessageFns<protobufs.CMsgClientToGCPlaceStickersRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPlaceCollectionStickersRequest]: protobufs.CMsgClientToGCPlaceCollectionStickersRequest as MessageFns<protobufs.CMsgClientToGCPlaceCollectionStickersRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOrderStickerbookTeamPageRequest]: protobufs.CMsgClientToGCOrderStickerbookTeamPageRequest as MessageFns<protobufs.CMsgClientToGCOrderStickerbookTeamPageRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetHeroSticker]: protobufs.CMsgClientToGCSetHeroSticker as MessageFns<protobufs.CMsgClientToGCSetHeroSticker>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetHeroStickers]: protobufs.CMsgClientToGCGetHeroStickers as MessageFns<protobufs.CMsgClientToGCGetHeroStickers>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetFavoritePage]: protobufs.CMsgClientToGCSetFavoritePage as MessageFns<protobufs.CMsgClientToGCSetFavoritePage>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCollectorsCacheAvailableDataRequest]: protobufs.CMsgClientToGCCollectorsCacheAvailableDataRequest as MessageFns<protobufs.CMsgClientToGCCollectorsCacheAvailableDataRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUploadMatchClip]: protobufs.CMsgClientToGCUploadMatchClip as MessageFns<protobufs.CMsgClientToGCUploadMatchClip>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRankRequest]: protobufs.CMsgClientToGCRankRequest as MessageFns<protobufs.CMsgClientToGCRankRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCMapStatsRequest]: protobufs.CMsgClientToGCMapStatsRequest as MessageFns<protobufs.CMsgClientToGCMapStatsRequest>,
+    [protobufs.EGCBaseClientMsg.k_EMsgGCClientHello]: protobufs.CMsgClientHello as MessageFns<protobufs.CMsgClientHello>,
+    [protobufs.EGCBaseClientMsg.k_EMsgGCServerConnectionStatus]: protobufs.CMsgConnectionStatus as MessageFns<protobufs.CMsgConnectionStatus>,
+    [protobufs.ESOMsg.k_ESOMsg_CacheSubscriptionRefresh]: protobufs.CMsgSOCacheSubscriptionRefresh as MessageFns<protobufs.CMsgSOCacheSubscriptionRefresh>,
+    [protobufs.ESOMsg.k_ESOMsg_CacheSubscribedUpToDate]: protobufs.CMsgSOCacheSubscribedUpToDate as MessageFns<protobufs.CMsgSOCacheSubscribedUpToDate>,
+    [protobufs.EGCBaseMsg.k_EMsgGCReplicateConVars]: protobufs.CMsgReplicateConVars as MessageFns<protobufs.CMsgReplicateConVars>,
+    [protobufs.EGCBaseMsg.k_EMsgGCInviteToParty]: protobufs.CMsgInviteToParty as MessageFns<protobufs.CMsgInviteToParty>,
+    [protobufs.EGCBaseMsg.k_EMsgGCInvitationCreated]: protobufs.CMsgInvitationCreated as MessageFns<protobufs.CMsgInvitationCreated>,
+    [protobufs.EGCBaseMsg.k_EMsgGCKickFromParty]: protobufs.CMsgKickFromParty as MessageFns<protobufs.CMsgKickFromParty>,
+    [protobufs.EGCBaseMsg.k_EMsgGCLeaveParty]: protobufs.CMsgLeaveParty as MessageFns<protobufs.CMsgLeaveParty>,
+    [protobufs.EGCBaseMsg.k_EMsgGCServerAvailable]: protobufs.CMsgServerAvailable as MessageFns<protobufs.CMsgServerAvailable>,
+    [protobufs.EGCBaseMsg.k_EMsgGCLANServerAvailable]: protobufs.CMsgLANServerAvailable as MessageFns<protobufs.CMsgLANServerAvailable>,
+    [protobufs.EGCBaseMsg.k_EMsgGCInviteToLobby]: protobufs.CMsgInviteToLobby as MessageFns<protobufs.CMsgInviteToLobby>,
+    [protobufs.EGCBaseMsg.k_EMsgGCAdditionalWelcomeMsgList]: protobufs.CMsgGCAdditionalWelcomeMsgList as MessageFns<protobufs.CMsgGCAdditionalWelcomeMsgList>,
+    [protobufs.EGCBaseMsg.k_EMsgClientToGCIntegrityStatus]: protobufs.CMsgClientToGCIntegrityStatus as MessageFns<protobufs.CMsgClientToGCIntegrityStatus>,
+    [protobufs.EGCBaseMsg.k_EMsgClientToGCAggregateMetrics]: protobufs.CMsgClientToGCAggregateMetrics as MessageFns<protobufs.CMsgClientToGCAggregateMetrics>,
 };
 Object.freeze(ClientProtobufs);
+export type ClientProtobufsType = {
+    [protobufs.EDOTAGCMsg.k_EMsgGCBroadcastNotification]: protobufs.CMsgDOTABroadcastNotification;
+    [protobufs.EDOTAGCMsg.k_EMsgGCKickedFromMatchmakingQueue]: protobufs.CMsgDOTAKickedFromMatchmakingQueue;
+    [protobufs.EDOTAGCMsg.k_EMsgGCReportsRemainingRequest]: protobufs.CMsgDOTAReportsRemainingRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgGCSubmitPlayerReport]: protobufs.CMsgDOTASubmitPlayerReport;
+    [protobufs.EDOTAGCMsg.k_EMsgGCMatchDetailsRequest]: protobufs.CMsgGCMatchDetailsRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgGCPopup]: protobufs.CMsgDOTAPopup;
+    [protobufs.EDOTAGCMsg.k_EMsgGCBalancedShuffleLobby]: protobufs.CMsgBalancedShuffleLobby;
+    [protobufs.EDOTAGCMsg.k_EMsgGCMatchmakingStatsRequest]: protobufs.CMsgDOTAMatchmakingStatsRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgGCSetMatchHistoryAccess]: protobufs.CMsgDOTASetMatchHistoryAccess;
+    [protobufs.EDOTAGCMsg.k_EMsgUpgradeLeagueItem]: protobufs.CMsgUpgradeLeagueItem;
+    [protobufs.EDOTAGCMsg.k_EMsgGCWatchDownloadedReplay]: protobufs.CMsgGCWatchDownloadedReplay;
+    [protobufs.EDOTAGCMsg.k_EMsgClientsRejoinChatChannels]: protobufs.CMsgClientsRejoinChatChannels;
+    [protobufs.EDOTAGCMsg.k_EMsgGCGetHeroStandings]: protobufs.CMsgGCGetHeroStandings;
+    [protobufs.EDOTAGCMsg.k_EMsgGCItemEditorReservationsRequest]: protobufs.CMsgGCItemEditorReservationsRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgGCItemEditorReserveItemDef]: protobufs.CMsgGCItemEditorReserveItemDef;
+    [protobufs.EDOTAGCMsg.k_EMsgGCItemEditorReleaseReservation]: protobufs.CMsgGCItemEditorReleaseReservation;
+    [protobufs.EDOTAGCMsg.k_EMsgGCRewardTutorialPrizes]: protobufs.CMsgDOTARewardTutorialPrizes;
+    [protobufs.EDOTAGCMsg.k_EMsgGCFlipLobbyTeams]: protobufs.CMsgFlipLobbyTeams;
+    [protobufs.EDOTAGCMsg.k_EMsgGCNotifyAccountFlagsChange]: protobufs.CMsgDOTANotifyAccountFlagsChange;
+    [protobufs.EDOTAGCMsg.k_EMsgGCSetProfilePrivacy]: protobufs.CMsgDOTASetProfilePrivacy;
+    [protobufs.EDOTAGCMsg.k_EMsgGCClientSuspended]: protobufs.CMsgClientSuspended;
+    [protobufs.EDOTAGCMsg.k_EMsgGCLobbyUpdateBroadcastChannelInfo]: protobufs.CMsgGCLobbyUpdateBroadcastChannelInfo;
+    [protobufs.EDOTAGCMsg.k_EMsgDOTAGetEventPoints]: protobufs.CMsgDOTAGetEventPoints;
+    [protobufs.EDOTAGCMsg.k_EMsgGCCompendiumDataRequest]: protobufs.CMsgDOTACompendiumDataRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgDOTAGetPlayerMatchHistory]: protobufs.CMsgDOTAGetPlayerMatchHistory;
+    [protobufs.EDOTAGCMsg.k_EMsgGCNotificationsRequest]: protobufs.CMsgGCNotificationsRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgGCLeagueAdminList]: protobufs.CMsgLeagueAdminList;
+    [protobufs.EDOTAGCMsg.k_EMsgGCNotificationsMarkReadRequest]: protobufs.CMsgGCNotificationsMarkReadRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgGCPlayerInfoSubmit]: protobufs.CMsgGCPlayerInfoSubmit;
+    [protobufs.EDOTAGCMsg.k_EMsgGCHasItemQuery]: protobufs.CMsgDOTAHasItemQuery;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCEmoticonDataRequest]: protobufs.CMsgClientToGCEmoticonDataRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgDOTARedeemItem]: protobufs.CMsgDOTARedeemItem;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAllHeroProgress]: protobufs.CMsgClientToGCGetAllHeroProgress;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetTrophyList]: protobufs.CMsgClientToGCGetTrophyList;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetProfileCard]: protobufs.CMsgClientToGCGetProfileCard;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetProfileCardSlots]: protobufs.CMsgClientToGCSetProfileCardSlots;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCreateHeroStatue]: protobufs.CMsgClientToGCCreateHeroStatue;
+    [protobufs.EDOTAGCMsg.k_EMsgLobbyEventPoints]: protobufs.CMsgLobbyEventPoints;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRerollPlayerChallenge]: protobufs.CMsgClientToGCRerollPlayerChallenge;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCApplyGemCombiner]: protobufs.CMsgClientToGCApplyGemCombiner;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAllHeroOrder]: protobufs.CMsgClientToGCGetAllHeroOrder;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPlayerCardSpecificPurchaseRequest]: protobufs.CMsgClientToGCPlayerCardSpecificPurchaseRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetFilteredPlayers]: protobufs.CMsgClientToGCGetFilteredPlayers;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRemoveFilteredPlayer]: protobufs.CMsgClientToGCRemoveFilteredPlayer;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUpdatePartyBeacon]: protobufs.CMsgClientToGCUpdatePartyBeacon;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestActiveBeaconParties]: protobufs.CMsgClientToGCRequestActiveBeaconParties;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCManageFavorites]: protobufs.CMsgClientToGCManageFavorites;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCJoinPartyFromBeacon]: protobufs.CMsgClientToGCJoinPartyFromBeacon;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetFavoritePlayers]: protobufs.CMsgClientToGCGetFavoritePlayers;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCVerifyFavoritePlayers]: protobufs.CMsgClientToGCVerifyFavoritePlayers;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPurchaseLabyrinthBlessings]: protobufs.CMsgClientToGCPurchaseLabyrinthBlessings;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPurchaseFilteredPlayerSlot]: protobufs.CMsgClientToGCPurchaseFilteredPlayerSlot;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUpdateFilteredPlayerNote]: protobufs.CMsgClientToGCUpdateFilteredPlayerNote;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCClaimSwag]: protobufs.CMsgClientToGCClaimSwag;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPlayerStatsRequest]: protobufs.CMsgClientToGCPlayerStatsRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSocialFeedPostCommentRequest]: protobufs.CMsgClientToGCSocialFeedPostCommentRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCustomGamesFriendsPlayedRequest]: protobufs.CMsgClientToGCCustomGamesFriendsPlayedRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCFriendsPlayedCustomGameRequest]: protobufs.CMsgClientToGCFriendsPlayedCustomGameRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgGCTopCustomGamesList]: protobufs.CMsgGCTopCustomGamesList;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetProfileCardStats]: protobufs.CMsgClientToGCGetProfileCardStats;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSocialFeedPostMessageRequest]: protobufs.CMsgClientToGCSocialFeedPostMessageRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgCustomGameListenServerStartedLoading]: protobufs.CMsgDOTACustomGameListenServerStartedLoading;
+    [protobufs.EDOTAGCMsg.k_EMsgCustomGameClientFinishedLoading]: protobufs.CMsgDOTACustomGameClientFinishedLoading;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetProfileTickets]: protobufs.CMsgClientToGCGetProfileTickets;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCH264Unsupported]: protobufs.CMsgClientToGCH264Unsupported;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetQuestProgress]: protobufs.CMsgClientToGCGetQuestProgress;
+    [protobufs.EDOTAGCMsg.k_EMsgGCGetHeroStatsHistory]: protobufs.CMsgGCGetHeroStatsHistory;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCWageringRequest]: protobufs.CMsgClientToGCWageringRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCHasPlayerVotedForMVP]: protobufs.CMsgClientToGCHasPlayerVotedForMVP;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCVoteForMVP]: protobufs.CMsgClientToGCVoteForMVP;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCTeammateStatsRequest]: protobufs.CMsgClientToGCTeammateStatsRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetGiftPermissions]: protobufs.CMsgClientToGCGetGiftPermissions;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCVoteForArcana]: protobufs.CMsgClientToGCVoteForArcana;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestArcanaVotesRemaining]: protobufs.CMsgClientToGCRequestArcanaVotesRemaining;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPublishUserStat]: protobufs.CMsgClientToGCPublishUserStat;
+    [protobufs.EDOTAGCMsg.k_EMsgGCSubmitLobbyMVPVote]: protobufs.CMsgDOTASubmitLobbyMVPVote;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOpenPlayerCardPack]: protobufs.CMsgClientToGCOpenPlayerCardPack;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSelectCompendiumInGamePrediction]: protobufs.CMsgClientToGCSelectCompendiumInGamePrediction;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRecyclePlayerCard]: protobufs.CMsgClientToGCRecyclePlayerCard;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCreatePlayerCardPack]: protobufs.CMsgClientToGCCreatePlayerCardPack;
+    [protobufs.EDOTAGCMsg.k_EMsgGCGetPlayerCardItemInfo]: protobufs.CMsgGCGetPlayerCardItemInfo;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCTransferSeasonalMMRRequest]: protobufs.CMsgClientToGCTransferSeasonalMMRRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCJoinPlaytest]: protobufs.CMsgClientToGCJoinPlaytest;
+    [protobufs.EDOTAGCMsg.k_EMsgLobbyPlaytestDetails]: protobufs.CMsgLobbyPlaytestDetails;
+    [protobufs.EDOTAGCMsg.k_EMsgDOTASetFavoriteTeam]: protobufs.CMsgDOTASetFavoriteTeam;
+    [protobufs.EDOTAGCMsg.k_EMsgDOTAClaimEventAction]: protobufs.CMsgDOTAClaimEventAction;
+    [protobufs.EDOTAGCMsg.k_EMsgDOTAGetPeriodicResource]: protobufs.CMsgDOTAGetPeriodicResource;
+    [protobufs.EDOTAGCMsg.k_EMsgDOTAPeriodicResourceUpdated]: protobufs.CMsgDOTAPeriodicResourceUpdated;
+    [protobufs.EDOTAGCMsg.k_EMsgSubmitTriviaQuestionAnswer]: protobufs.CMsgDOTASubmitTriviaQuestionAnswer;
+    [protobufs.EDOTAGCMsg.k_EMsgStartTriviaSession]: protobufs.CMsgDOTAStartTriviaSession;
+    [protobufs.EDOTAGCMsg.k_EMsgAnchorPhoneNumberRequest]: protobufs.CMsgDOTAAnchorPhoneNumberRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgUnanchorPhoneNumberRequest]: protobufs.CMsgDOTAUnanchorPhoneNumberRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCQuickStatsRequest]: protobufs.CMsgDOTAClientToGCQuickStatsRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgSelectionPriorityChoiceRequest]: protobufs.CMsgDOTASelectionPriorityChoiceRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgGameAutographReward]: protobufs.CMsgDOTAGameAutographReward;
+    [protobufs.EDOTAGCMsg.k_EMsgDestroyLobbyRequest]: protobufs.CMsgDOTADestroyLobbyRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgPurchaseItemWithEventPoints]: protobufs.CMsgPurchaseItemWithEventPoints;
+    [protobufs.EDOTAGCMsg.k_EMsgPurchaseHeroRandomRelic]: protobufs.CMsgPurchaseHeroRandomRelic;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCClaimEventActionUsingItem]: protobufs.CMsgClientToGCClaimEventActionUsingItem;
+    [protobufs.EDOTAGCMsg.k_EMsgPartyReadyCheckRequest]: protobufs.CMsgPartyReadyCheckRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgPartyReadyCheckAcknowledge]: protobufs.CMsgPartyReadyCheckAcknowledge;
+    [protobufs.EDOTAGCMsg.k_EMsgGetRecentPlayTimeFriendsRequest]: protobufs.CMsgDOTAGetRecentPlayTimeFriendsRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgProfileRequest]: protobufs.CMsgProfileRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgProfileUpdate]: protobufs.CMsgProfileUpdate;
+    [protobufs.EDOTAGCMsg.k_EMsgHeroGlobalDataRequest]: protobufs.CMsgHeroGlobalDataRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestPlusWeeklyChallengeResult]: protobufs.CMsgClientToGCRequestPlusWeeklyChallengeResult;
+    [protobufs.EDOTAGCMsg.k_EMsgPrivateMetadataKeyRequest]: protobufs.CMsgPrivateMetadataKeyRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlClaimRoom]: protobufs.CMsgClientToGCCavernCrawlClaimRoom;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlUseItemOnRoom]: protobufs.CMsgClientToGCCavernCrawlUseItemOnRoom;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlUseItemOnPath]: protobufs.CMsgClientToGCCavernCrawlUseItemOnPath;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlRequestMapState]: protobufs.CMsgClientToGCCavernCrawlRequestMapState;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestEventPointLogV2]: protobufs.CMsgClientToGCRequestEventPointLogV2;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestEventPointLogResponseV2]: protobufs.CMsgClientToGCRequestEventPointLogResponseV2;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlGetClaimedRoomCount]: protobufs.CMsgClientToGCCavernCrawlGetClaimedRoomCount;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRecordContestVote]: protobufs.CMsgClientToGCRecordContestVote;
+    [protobufs.EDOTAGCMsg.k_EMsgLobbyEventGameDetails]: protobufs.CMsgLobbyEventGameDetails;
+    [protobufs.EDOTAGCMsg.k_EMsgDevGrantEventPoints]: protobufs.CMsgDevGrantEventPoints;
+    [protobufs.EDOTAGCMsg.k_EMsgDevGrantEventAction]: protobufs.CMsgDevGrantEventAction;
+    [protobufs.EDOTAGCMsg.k_EMsgDevResetEventState]: protobufs.CMsgDevResetEventState;
+    [protobufs.EDOTAGCMsg.k_EMsgConsumeEventSupportGrantItem]: protobufs.CMsgConsumeEventSupportGrantItem;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestPlayerRecentAccomplishments]: protobufs.CMsgClientToGCRequestPlayerRecentAccomplishments;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestPlayerHeroRecentAccomplishments]: protobufs.CMsgClientToGCRequestPlayerHeroRecentAccomplishments;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestContestVotes]: protobufs.CMsgClientToGCRequestContestVotes;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCMVPVoteTimeout]: protobufs.CMsgClientToGCMVPVoteTimeout;
+    [protobufs.EDOTAGCMsg.k_EMsgMatchMatchmakingStats]: protobufs.CMsgMatchMatchmakingStats;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitPlayerMatchSurvey]: protobufs.CMsgClientToGCSubmitPlayerMatchSurvey;
+    [protobufs.EDOTAGCMsg.k_EMsgDevDeleteEventActions]: protobufs.CMsgDevDeleteEventActions;
+    [protobufs.EDOTAGCMsg.k_EMsgGCSubmitPlayerAvoidRequest]: protobufs.CMsgDOTASubmitPlayerAvoidRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgGCtoGCAssociatedExploiterAccountInfo]: protobufs.CMsgGCtoGCAssociatedExploiterAccountInfo;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftBuy]: protobufs.CMsgClientToGCUnderDraftBuy;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftReroll]: protobufs.CMsgClientToGCUnderDraftReroll;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftSell]: protobufs.CMsgClientToGCUnderDraftSell;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRequest]: protobufs.CMsgClientToGCUnderDraftRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRedeemReward]: protobufs.CMsgClientToGCUnderDraftRedeemReward;
+    [protobufs.EDOTAGCMsg.k_EMsgLobbyFeaturedGamemodeProgress]: protobufs.CMsgLobbyFeaturedGamemodeProgress;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitDraftTriviaMatchAnswer]: protobufs.CMsgClientToGCSubmitDraftTriviaMatchAnswer;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRollBackBench]: protobufs.CMsgClientToGCUnderDraftRollBackBench;
+    [protobufs.EDOTAGCMsg.k_EMsgLobbyEventGameData]: protobufs.CMsgLobbyEventGameData;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetOWMatchDetails]: protobufs.CMsgClientToGCGetOWMatchDetails;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitOWConviction]: protobufs.CMsgClientToGCSubmitOWConviction;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRecalibrateMMR]: protobufs.CMsgClientToGCRecalibrateMMR;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCChinaSSAURLRequest]: protobufs.CMsgClientToGCChinaSSAURLRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCChinaSSAAcceptedRequest]: protobufs.CMsgClientToGCChinaSSAAcceptedRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCStartWatchingOverwatch]: protobufs.CMsgClientToGCStartWatchingOverwatch;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCStopWatchingOverwatch]: protobufs.CMsgClientToGCStopWatchingOverwatch;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetDPCFavorites]: protobufs.CMsgClientToGCGetDPCFavorites;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetDPCFavoriteState]: protobufs.CMsgClientToGCSetDPCFavoriteState;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverwatchReplayError]: protobufs.CMsgClientToGCOverwatchReplayError;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetEventActiveSeasonID]: protobufs.CMsgClientToGCSetEventActiveSeasonID;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCreateTeamPlayerCardPack]: protobufs.CMsgClientToGCCreateTeamPlayerCardPack;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetStickerbookRequest]: protobufs.CMsgClientToGCGetStickerbookRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCreateStickerbookPageRequest]: protobufs.CMsgClientToGCCreateStickerbookPageRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCDeleteStickerbookPageRequest]: protobufs.CMsgClientToGCDeleteStickerbookPageRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPlaceStickersRequest]: protobufs.CMsgClientToGCPlaceStickersRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPlaceCollectionStickersRequest]: protobufs.CMsgClientToGCPlaceCollectionStickersRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOrderStickerbookTeamPageRequest]: protobufs.CMsgClientToGCOrderStickerbookTeamPageRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetHeroSticker]: protobufs.CMsgClientToGCSetHeroSticker;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetHeroStickers]: protobufs.CMsgClientToGCGetHeroStickers;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetFavoritePage]: protobufs.CMsgClientToGCSetFavoritePage;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCollectorsCacheAvailableDataRequest]: protobufs.CMsgClientToGCCollectorsCacheAvailableDataRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUploadMatchClip]: protobufs.CMsgClientToGCUploadMatchClip;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRankRequest]: protobufs.CMsgClientToGCRankRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCMapStatsRequest]: protobufs.CMsgClientToGCMapStatsRequest;
+    [protobufs.EGCBaseClientMsg.k_EMsgGCClientHello]: protobufs.CMsgClientHello;
+    [protobufs.EGCBaseClientMsg.k_EMsgGCServerConnectionStatus]: protobufs.CMsgConnectionStatus;
+    [protobufs.ESOMsg.k_ESOMsg_CacheSubscriptionRefresh]: protobufs.CMsgSOCacheSubscriptionRefresh;
+    [protobufs.ESOMsg.k_ESOMsg_CacheSubscribedUpToDate]: protobufs.CMsgSOCacheSubscribedUpToDate;
+    [protobufs.EGCBaseMsg.k_EMsgGCReplicateConVars]: protobufs.CMsgReplicateConVars;
+    [protobufs.EGCBaseMsg.k_EMsgGCInviteToParty]: protobufs.CMsgInviteToParty;
+    [protobufs.EGCBaseMsg.k_EMsgGCInvitationCreated]: protobufs.CMsgInvitationCreated;
+    [protobufs.EGCBaseMsg.k_EMsgGCKickFromParty]: protobufs.CMsgKickFromParty;
+    [protobufs.EGCBaseMsg.k_EMsgGCLeaveParty]: protobufs.CMsgLeaveParty;
+    [protobufs.EGCBaseMsg.k_EMsgGCServerAvailable]: protobufs.CMsgServerAvailable;
+    [protobufs.EGCBaseMsg.k_EMsgGCLANServerAvailable]: protobufs.CMsgLANServerAvailable;
+    [protobufs.EGCBaseMsg.k_EMsgGCInviteToLobby]: protobufs.CMsgInviteToLobby;
+    [protobufs.EGCBaseMsg.k_EMsgGCAdditionalWelcomeMsgList]: protobufs.CMsgGCAdditionalWelcomeMsgList;
+    [protobufs.EGCBaseMsg.k_EMsgClientToGCIntegrityStatus]: protobufs.CMsgClientToGCIntegrityStatus;
+    [protobufs.EGCBaseMsg.k_EMsgClientToGCAggregateMetrics]: protobufs.CMsgClientToGCAggregateMetrics;
+};
 export const GCProtobufs = {
-    [protobufs.EDOTAGCMsg.k_EMsgGCJoinChatChannelResponse]: protobufs.CMsgDOTAJoinChatChannelResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCPracticeLobbyListResponse]: protobufs.CMsgPracticeLobbyListResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCInitialQuestionnaireResponse]: protobufs.CMsgInitialQuestionnaireResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCPracticeLobbyResponse]: protobufs.CMsgGenericResult,
-    [protobufs.EDOTAGCMsg.k_EMsgGCRequestChatChannelListResponse]: protobufs.CMsgDOTARequestChatChannelListResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCSpectateFriendGameResponse]: protobufs.CMsgSpectateFriendGameResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCReportsRemainingResponse]: protobufs.CMsgDOTAReportsRemainingResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCSubmitPlayerReportResponse]: protobufs.CMsgDOTASubmitPlayerReportResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCLeaverDetectedResponse]: protobufs.CMsgLeaverDetectedResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCWatchGameResponse]: protobufs.CMsgWatchGameResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCBanStatusResponse]: protobufs.CMsgGCBanStatusResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCMatchDetailsResponse]: protobufs.CMsgGCMatchDetailsResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCFriendPracticeLobbyListResponse]: protobufs.CMsgFriendPracticeLobbyListResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCPracticeLobbyJoinResponse]: protobufs.CMsgPracticeLobbyJoinResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCCreateTeamResponse]: protobufs.CMsgDOTACreateTeamResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCKickTeamMemberResponse]: protobufs.CMsgDOTAKickTeamMemberResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCLeaveTeamResponse]: protobufs.CMsgDOTALeaveTeamResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCEditTeamDetailsResponse]: protobufs.CMsgDOTAEditTeamDetailsResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCMatchmakingStatsResponse]: protobufs.CMsgDOTAMatchmakingStatsResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCSetMatchHistoryAccessResponse]: protobufs.CMsgDOTASetMatchHistoryAccessResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgUpgradeLeagueItemResponse]: protobufs.CMsgUpgradeLeagueItemResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCGetHeroStandingsResponse]: protobufs.CMsgGCGetHeroStandingsResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCItemEditorReservationsResponse]: protobufs.CMsgGCItemEditorReservationsResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCItemEditorReserveItemDefResponse]: protobufs.CMsgGCItemEditorReserveItemDefResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCItemEditorReleaseReservationResponse]: protobufs.CMsgGCItemEditorReleaseReservationResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCSetProfilePrivacyResponse]: protobufs.CMsgDOTASetProfilePrivacyResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgDOTAGetEventPointsResponse]: protobufs.CMsgDOTAGetEventPointsResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCCompendiumDataResponse]: protobufs.CMsgDOTACompendiumDataResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgDOTAGetPlayerMatchHistoryResponse]: protobufs.CMsgDOTAGetPlayerMatchHistoryResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCNotificationsResponse]: protobufs.CMsgGCNotificationsResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCPlayerInfoSubmitResponse]: protobufs.CMsgGCPlayerInfoSubmitResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCJoinableCustomGameModesResponse]: protobufs.CMsgJoinableCustomGameModesResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCJoinableCustomLobbiesResponse]: protobufs.CMsgJoinableCustomLobbiesResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCQuickJoinCustomLobbyResponse]: protobufs.CMsgQuickJoinCustomLobbyResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCHasItemResponse]: protobufs.CMsgDOTAHasItemResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientTournamentItemDrop]: protobufs.CMsgGCToClientTournamentItemDrop,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientEmoticonData]: protobufs.CMsgGCToClientEmoticonData,
-    [protobufs.EDOTAGCMsg.k_EMsgDOTARedeemItemResponse]: protobufs.CMsgDOTARedeemItemResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAllHeroProgressResponse]: protobufs.CMsgClientToGCGetAllHeroProgressResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetTrophyListResponse]: protobufs.CMsgClientToGCGetTrophyListResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientTrophyAwarded]: protobufs.CMsgGCToClientTrophyAwarded,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetBattleReportResponse]: protobufs.CMsgClientToGCGetBattleReportResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetBattleReportAggregateStatsResponse]: protobufs.CMsgClientToGCGetBattleReportAggregateStatsResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetBattleReportInfoResponse]: protobufs.CMsgClientToGCGetBattleReportInfoResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientHeroStatueCreateResult]: protobufs.CMsgGCToClientHeroStatueCreateResult,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCAcknowledgeBattleReportResponse]: protobufs.CMsgClientToGCAcknowledgeBattleReportResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetBattleReportMatchHistoryResponse]: protobufs.CMsgClientToGCGetBattleReportMatchHistoryResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientSteamDatagramTicket]: protobufs.CMsgGCToClientSteamDatagramTicket,
-    [protobufs.EDOTAGCMsg.k_EMsgGCRerollPlayerChallengeResponse]: protobufs.CMsgGCRerollPlayerChallengeResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAllHeroOrderResponse]: protobufs.CMsgClientToGCGetAllHeroOrderResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientRequestLaneSelection]: protobufs.CMsgGCToClientRequestLaneSelection,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientRequestLaneSelectionResponse]: protobufs.CMsgGCToClientRequestLaneSelectionResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPlayerCardSpecificPurchaseResponse]: protobufs.CMsgClientToGCPlayerCardSpecificPurchaseResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientGetFilteredPlayersResponse]: protobufs.CMsgGCToClientGetFilteredPlayersResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientRemoveFilteredPlayerResponse]: protobufs.CMsgGCToClientRemoveFilteredPlayerResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPlayerBeaconState]: protobufs.CMsgGCToClientPlayerBeaconState,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPartyBeaconUpdate]: protobufs.CMsgGCToClientPartyBeaconUpdate,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPartySearchInvite]: protobufs.CMsgGCToClientPartySearchInvite,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientRequestActiveBeaconPartiesResponse]: protobufs.CMsgGCToClientRequestActiveBeaconPartiesResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientManageFavoritesResponse]: protobufs.CMsgGCToClientManageFavoritesResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientJoinPartyFromBeaconResponse]: protobufs.CMsgGCToClientJoinPartyFromBeaconResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientGetFavoritePlayersResponse]: protobufs.CMsgGCToClientGetFavoritePlayersResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientVerifyFavoritePlayersResponse]: protobufs.CMsgGCToClientVerifyFavoritePlayersResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPartySearchInvites]: protobufs.CMsgGCToClientPartySearchInvites,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientRequestMMInfo]: protobufs.CMsgGCToClientRequestMMInfo,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPurchaseLabyrinthBlessingsResponse]: protobufs.CMsgClientToGCPurchaseLabyrinthBlessingsResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPurchaseFilteredPlayerSlotResponse]: protobufs.CMsgGCToClientPurchaseFilteredPlayerSlotResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientUpdateFilteredPlayerNoteResponse]: protobufs.CMsgGCToClientUpdateFilteredPlayerNoteResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPlayerStatsResponse]: protobufs.CMsgGCToClientPlayerStatsResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientFindTopSourceTVGamesResponse]: protobufs.CMsgGCToClientFindTopSourceTVGamesResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCLobbyListResponse]: protobufs.CMsgLobbyListResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientSocialFeedPostCommentResponse]: protobufs.CMsgGCToClientSocialFeedPostCommentResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientCustomGamesFriendsPlayedResponse]: protobufs.CMsgGCToClientCustomGamesFriendsPlayedResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientFriendsPlayedCustomGameResponse]: protobufs.CMsgGCToClientFriendsPlayedCustomGameResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgDOTAChatGetMemberCountResponse]: protobufs.CMsgDOTAChatGetMemberCountResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientSocialFeedPostMessageResponse]: protobufs.CMsgGCToClientSocialFeedPostMessageResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCStartFindingMatchResponse]: protobufs.CMsgStartFindingMatchResult,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientTopLeagueMatchesResponse]: protobufs.CMsgGCToClientTopLeagueMatchesResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientTopFriendMatchesResponse]: protobufs.CMsgGCToClientTopFriendMatchesResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCMatchesMinimalResponse]: protobufs.CMsgClientToGCMatchesMinimalResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientMatchGroupsVersion]: protobufs.CMsgGCToClientMatchGroupsVersion,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetQuestProgressResponse]: protobufs.CMsgClientToGCGetQuestProgressResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientMatchSignedOut]: protobufs.CMsgGCToClientMatchSignedOut,
-    [protobufs.EDOTAGCMsg.k_EMsgGCGetHeroStatsHistoryResponse]: protobufs.CMsgGCGetHeroStatsHistoryResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPrivateChatResponse]: protobufs.CMsgGCToClientPrivateChatResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientWageringResponse]: protobufs.CMsgGCToClientWageringResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCHasPlayerVotedForMVPResponse]: protobufs.CMsgClientToGCHasPlayerVotedForMVPResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCVoteForMVPResponse]: protobufs.CMsgClientToGCVoteForMVPResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCTeammateStatsResponse]: protobufs.CMsgClientToGCTeammateStatsResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetGiftPermissionsResponse]: protobufs.CMsgClientToGCGetGiftPermissionsResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCVoteForArcanaResponse]: protobufs.CMsgClientToGCVoteForArcanaResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestArcanaVotesRemainingResponse]: protobufs.CMsgClientToGCRequestArcanaVotesRemainingResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCTransferTeamAdminResponse]: protobufs.CMsgDOTATransferTeamAdminResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCSubmitLobbyMVPVoteResponse]: protobufs.CMsgDOTASubmitLobbyMVPVoteResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientQuestProgressUpdated]: protobufs.CMsgGCToClientQuestProgressUpdated,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientWageringUpdate]: protobufs.CMsgGCToClientWageringUpdate,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientArcanaVotesUpdate]: protobufs.CMsgGCToClientArcanaVotesUpdate,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSpectatorLobbyListResponse]: protobufs.CMsgSpectatorLobbyListResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOpenPlayerCardPackResponse]: protobufs.CMsgClientToGCOpenPlayerCardPackResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSelectCompendiumInGamePredictionResponse]: protobufs.CMsgClientToGCSelectCompendiumInGamePredictionResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRecyclePlayerCardResponse]: protobufs.CMsgClientToGCRecyclePlayerCardResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCreatePlayerCardPackResponse]: protobufs.CMsgClientToGCCreatePlayerCardPackResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetPlayerCardRosterResponse]: protobufs.CMsgClientToGCGetPlayerCardRosterResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetPlayerCardRosterResponse]: protobufs.CMsgClientToGCSetPlayerCardRosterResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCGetPlayerCardItemInfoResponse]: protobufs.CMsgGCGetPlayerCardItemInfoResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestSteamDatagramTicketResponse]: protobufs.CMsgClientToGCRequestSteamDatagramTicketResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientBattlePassRollupRequest]: protobufs.CMsgGCToClientBattlePassRollupRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientBattlePassRollupResponse]: protobufs.CMsgGCToClientBattlePassRollupResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCTransferSeasonalMMRResponse]: protobufs.CMsgClientToGCTransferSeasonalMMRResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPlaytestStatus]: protobufs.CMsgGCToClientPlaytestStatus,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCJoinPlaytestResponse]: protobufs.CMsgClientToGCJoinPlaytestResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientBattlePassRollupListRequest]: protobufs.CMsgGCToClientBattlePassRollupListRequest,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientBattlePassRollupListResponse]: protobufs.CMsgGCToClientBattlePassRollupListResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgDOTAClaimEventActionResponse]: protobufs.CMsgDOTAClaimEventActionResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgDOTAGetPeriodicResourceResponse]: protobufs.CMsgDOTAGetPeriodicResourceResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgSubmitTriviaQuestionAnswerResponse]: protobufs.CMsgDOTASubmitTriviaQuestionAnswerResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgStartTriviaSessionResponse]: protobufs.CMsgDOTAStartTriviaSessionResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgAnchorPhoneNumberResponse]: protobufs.CMsgDOTAAnchorPhoneNumberResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgUnanchorPhoneNumberResponse]: protobufs.CMsgDOTAUnanchorPhoneNumberResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCQuickStatsResponse]: protobufs.CMsgDOTAClientToGCQuickStatsResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgSelectionPriorityChoiceResponse]: protobufs.CMsgDOTASelectionPriorityChoiceResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGameAutographRewardResponse]: protobufs.CMsgDOTAGameAutographRewardResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgDestroyLobbyResponse]: protobufs.CMsgDOTADestroyLobbyResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgPurchaseItemWithEventPointsResponse]: protobufs.CMsgPurchaseItemWithEventPointsResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgPurchaseHeroRandomRelicResponse]: protobufs.CMsgPurchaseHeroRandomRelicResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCClaimEventActionUsingItemResponse]: protobufs.CMsgClientToGCClaimEventActionUsingItemResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgPartyReadyCheckResponse]: protobufs.CMsgPartyReadyCheckResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGetRecentPlayTimeFriendsResponse]: protobufs.CMsgDOTAGetRecentPlayTimeFriendsResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientCommendNotification]: protobufs.CMsgGCToClientCommendNotification,
-    [protobufs.EDOTAGCMsg.k_EMsgProfileResponse]: protobufs.CMsgProfileResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgProfileUpdateResponse]: protobufs.CMsgProfileUpdateResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgHeroGlobalDataResponse]: protobufs.CMsgHeroGlobalDataResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestPlusWeeklyChallengeResultResponse]: protobufs.CMsgClientToGCRequestPlusWeeklyChallengeResultResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgPrivateMetadataKeyResponse]: protobufs.CMsgPrivateMetadataKeyResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientCavernCrawlMapPathCompleted]: protobufs.CMsgGCToClientCavernCrawlMapPathCompleted,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlClaimRoomResponse]: protobufs.CMsgClientToGCCavernCrawlClaimRoomResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlUseItemOnRoomResponse]: protobufs.CMsgClientToGCCavernCrawlUseItemOnRoomResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlUseItemOnPathResponse]: protobufs.CMsgClientToGCCavernCrawlUseItemOnPathResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlRequestMapStateResponse]: protobufs.CMsgClientToGCCavernCrawlRequestMapStateResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlGetClaimedRoomCountResponse]: protobufs.CMsgClientToGCCavernCrawlGetClaimedRoomCountResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientRecordContestVoteResponse]: protobufs.CMsgGCToClientRecordContestVoteResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgDevGrantEventPointsResponse]: protobufs.CMsgDevGrantEventPointsResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgDevGrantEventActionResponse]: protobufs.CMsgDevGrantEventActionResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgDevResetEventStateResponse]: protobufs.CMsgDevResetEventStateResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgConsumeEventSupportGrantItemResponse]: protobufs.CMsgConsumeEventSupportGrantItemResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientClaimEventActionUsingItemCompleted]: protobufs.CMsgGCToClientClaimEventActionUsingItemCompleted,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientCavernCrawlMapUpdated]: protobufs.CMsgGCToClientCavernCrawlMapUpdated,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestPlayerRecentAccomplishmentsResponse]: protobufs.CMsgClientToGCRequestPlayerRecentAccomplishmentsResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestPlayerHeroRecentAccomplishmentsResponse]: protobufs.CMsgClientToGCRequestPlayerHeroRecentAccomplishmentsResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestPlayerCoachMatchesResponse]: protobufs.CMsgClientToGCRequestPlayerCoachMatchesResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitCoachTeammateRatingResponse]: protobufs.CMsgClientToGCSubmitCoachTeammateRatingResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientCoachTeammateRatingsChanged]: protobufs.CMsgGCToClientCoachTeammateRatingsChanged,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestPlayerCoachMatchResponse]: protobufs.CMsgClientToGCRequestPlayerCoachMatchResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestContestVotesResponse]: protobufs.CMsgClientToGCRequestContestVotesResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCMVPVoteTimeoutResponse]: protobufs.CMsgClientToGCMVPVoteTimeoutResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitPlayerMatchSurveyResponse]: protobufs.CMsgClientToGCSubmitPlayerMatchSurveyResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgDevDeleteEventActionsResponse]: protobufs.CMsgDevDeleteEventActionsResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCSubmitPlayerAvoidRequestResponse]: protobufs.CMsgDOTASubmitPlayerAvoidRequestResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCtoGCAssociatedExploiterAccountInfoResponse]: protobufs.CMsgGCtoGCAssociatedExploiterAccountInfoResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientVACReminder]: protobufs.CMsgGCToClientVACReminder,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftBuyResponse]: protobufs.CMsgClientToGCUnderDraftBuyResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRerollResponse]: protobufs.CMsgClientToGCUnderDraftRerollResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCreateGuildResponse]: protobufs.CMsgClientToGCCreateGuildResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetGuildInfoResponse]: protobufs.CMsgClientToGCSetGuildInfoResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCAddGuildRoleResponse]: protobufs.CMsgClientToGCAddGuildRoleResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCModifyGuildRoleResponse]: protobufs.CMsgClientToGCModifyGuildRoleResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRemoveGuildRoleResponse]: protobufs.CMsgClientToGCRemoveGuildRoleResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCJoinGuildResponse]: protobufs.CMsgClientToGCJoinGuildResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCLeaveGuildResponse]: protobufs.CMsgClientToGCLeaveGuildResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCInviteToGuildResponse]: protobufs.CMsgClientToGCInviteToGuildResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCDeclineInviteToGuildResponse]: protobufs.CMsgClientToGCDeclineInviteToGuildResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCancelInviteToGuildResponse]: protobufs.CMsgClientToGCCancelInviteToGuildResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCKickGuildMemberResponse]: protobufs.CMsgClientToGCKickGuildMemberResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetGuildMemberRoleResponse]: protobufs.CMsgClientToGCSetGuildMemberRoleResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestGuildDataResponse]: protobufs.CMsgClientToGCRequestGuildDataResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientGuildDataUpdated]: protobufs.CMsgGCToClientGuildDataUpdated,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestGuildMembershipResponse]: protobufs.CMsgClientToGCRequestGuildMembershipResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientGuildMembershipUpdated]: protobufs.CMsgGCToClientGuildMembershipUpdated,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCAcceptInviteToGuildResponse]: protobufs.CMsgClientToGCAcceptInviteToGuildResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetGuildRoleOrderResponse]: protobufs.CMsgClientToGCSetGuildRoleOrderResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestGuildFeedResponse]: protobufs.CMsgClientToGCRequestGuildFeedResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestAccountGuildEventDataResponse]: protobufs.CMsgClientToGCRequestAccountGuildEventDataResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientAccountGuildEventDataUpdated]: protobufs.CMsgGCToClientAccountGuildEventDataUpdated,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestActiveGuildContractsResponse]: protobufs.CMsgClientToGCRequestActiveGuildContractsResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientActiveGuildContractsUpdated]: protobufs.CMsgGCToClientActiveGuildContractsUpdated,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientGuildFeedUpdated]: protobufs.CMsgGCToClientGuildFeedUpdated,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSelectGuildContractResponse]: protobufs.CMsgClientToGCSelectGuildContractResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCAddPlayerToGuildChatResponse]: protobufs.CMsgClientToGCAddPlayerToGuildChatResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftSellResponse]: protobufs.CMsgClientToGCUnderDraftSellResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftResponse]: protobufs.CMsgClientToGCUnderDraftResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRedeemRewardResponse]: protobufs.CMsgClientToGCUnderDraftRedeemRewardResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestActiveGuildChallengeResponse]: protobufs.CMsgClientToGCRequestActiveGuildChallengeResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientActiveGuildChallengeUpdated]: protobufs.CMsgGCToClientActiveGuildChallengeUpdated,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestGuildEventMembersResponse]: protobufs.CMsgClientToGCRequestGuildEventMembersResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCReportGuildContentResponse]: protobufs.CMsgClientToGCReportGuildContentResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestAccountGuildPersonaInfoResponse]: protobufs.CMsgClientToGCRequestAccountGuildPersonaInfoResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestAccountGuildPersonaInfoBatchResponse]: protobufs.CMsgClientToGCRequestAccountGuildPersonaInfoBatchResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitDraftTriviaMatchAnswerResponse]: protobufs.CMsgClientToGCSubmitDraftTriviaMatchAnswerResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRollBackBenchResponse]: protobufs.CMsgClientToGCUnderDraftRollBackBenchResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientGuildMembersDataUpdated]: protobufs.CMsgGCToClientGuildMembersDataUpdated,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetOWMatchDetailsResponse]: protobufs.CMsgClientToGCGetOWMatchDetailsResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitOWConvictionResponse]: protobufs.CMsgClientToGCSubmitOWConvictionResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCClaimLeaderboardRewardsResponse]: protobufs.CMsgClientToGCClaimLeaderboardRewardsResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRecalibrateMMRResponse]: protobufs.CMsgClientToGCRecalibrateMMRResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCChinaSSAURLResponse]: protobufs.CMsgClientToGCChinaSSAURLResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCChinaSSAAcceptedResponse]: protobufs.CMsgClientToGCChinaSSAAcceptedResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientOverwatchCasesAvailable]: protobufs.CMsgGCToClientOverwatchCasesAvailable,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetDPCFavoritesResponse]: protobufs.CMsgClientToGCGetDPCFavoritesResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetDPCFavoriteStateResponse]: protobufs.CMsgClientToGCSetDPCFavoriteStateResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCoachFriendResponse]: protobufs.CMsgClientToGCCoachFriendResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestPrivateCoachingSessionResponse]: protobufs.CMsgClientToGCRequestPrivateCoachingSessionResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCAcceptPrivateCoachingSessionResponse]: protobufs.CMsgClientToGCAcceptPrivateCoachingSessionResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCLeavePrivateCoachingSessionResponse]: protobufs.CMsgClientToGCLeavePrivateCoachingSessionResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetCurrentPrivateCoachingSessionResponse]: protobufs.CMsgClientToGCGetCurrentPrivateCoachingSessionResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPrivateCoachingSessionUpdated]: protobufs.CMsgGCToClientPrivateCoachingSessionUpdated,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitPrivateCoachingSessionRatingResponse]: protobufs.CMsgClientToGCSubmitPrivateCoachingSessionRatingResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAvailablePrivateCoachingSessionsResponse]: protobufs.CMsgClientToGCGetAvailablePrivateCoachingSessionsResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAvailablePrivateCoachingSessionsSummaryResponse]: protobufs.CMsgClientToGCGetAvailablePrivateCoachingSessionsSummaryResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCJoinPrivateCoachingSessionLobbyResponse]: protobufs.CMsgClientToGCJoinPrivateCoachingSessionLobbyResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRespondToCoachFriendRequestResponse]: protobufs.CMsgClientToGCRespondToCoachFriendRequestResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetEventActiveSeasonIDResponse]: protobufs.CMsgClientToGCSetEventActiveSeasonIDResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCreateTeamPlayerCardPackResponse]: protobufs.CMsgClientToGCCreateTeamPlayerCardPackResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCBatchGetPlayerCardRosterResponse]: protobufs.CMsgClientToGCBatchGetPlayerCardRosterResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetStickerbookResponse]: protobufs.CMsgClientToGCGetStickerbookResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCreateStickerbookPageResponse]: protobufs.CMsgClientToGCCreateStickerbookPageResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCDeleteStickerbookPageResponse]: protobufs.CMsgClientToGCDeleteStickerbookPageResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPlaceStickersResponse]: protobufs.CMsgClientToGCPlaceStickersResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPlaceCollectionStickersResponse]: protobufs.CMsgClientToGCPlaceCollectionStickersResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOrderStickerbookTeamPageResponse]: protobufs.CMsgClientToGCOrderStickerbookTeamPageResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCandyShopGetUserDataResponse]: protobufs.CMsgClientToGCCandyShopGetUserDataResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientCandyShopUserDataUpdated]: protobufs.CMsgGCToClientCandyShopUserDataUpdated,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCandyShopPurchaseRewardResponse]: protobufs.CMsgClientToGCCandyShopPurchaseRewardResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCandyShopDoExchangeResponse]: protobufs.CMsgClientToGCCandyShopDoExchangeResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCandyShopDoVariableExchangeResponse]: protobufs.CMsgClientToGCCandyShopDoVariableExchangeResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCandyShopRerollRewardsResponse]: protobufs.CMsgClientToGCCandyShopRerollRewardsResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetHeroStickerResponse]: protobufs.CMsgClientToGCSetHeroStickerResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetHeroStickersResponse]: protobufs.CMsgClientToGCGetHeroStickersResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetFavoritePageResponse]: protobufs.CMsgClientToGCSetFavoritePageResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCandyShopDevGrantCandyResponse]: protobufs.CMsgClientToGCCandyShopDevGrantCandyResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCandyShopDevClearInventoryResponse]: protobufs.CMsgClientToGCCandyShopDevClearInventoryResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCandyShopOpenBagsResponse]: protobufs.CMsgClientToGCCandyShopOpenBagsResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCandyShopDevGrantCandyBagsResponse]: protobufs.CMsgClientToGCCandyShopDevGrantCandyBagsResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCandyShopDevShuffleExchangeResponse]: protobufs.CMsgClientToGCCandyShopDevShuffleExchangeResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCandyShopDevGrantRerollChargesResponse]: protobufs.CMsgClientToGCCandyShopDevGrantRerollChargesResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientCollectorsCacheAvailableDataResponse]: protobufs.CMsgGCToClientCollectorsCacheAvailableDataResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientUploadMatchClipResponse]: protobufs.CMsgGCToClientUploadMatchClipResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientRankResponse]: protobufs.CMsgGCToClientRankResponse,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientRankUpdate]: protobufs.CMsgGCToClientRankUpdate,
-    [protobufs.EDOTAGCMsg.k_EMsgGCToClientMapStatsResponse]: protobufs.CMsgGCToClientMapStatsResponse,
-    [protobufs.EGCBaseClientMsg.k_EMsgGCToClientPollConvarRequest]: protobufs.CMsgGCToClientPollConvarRequest,
-    [protobufs.EGCBaseClientMsg.k_EMsgGCToClientPollConvarResponse]: protobufs.CMsgGCToClientPollConvarResponse,
-    [protobufs.EGCBaseClientMsg.k_EMsgGCToClientRequestDropped]: protobufs.CMsgGCToClientRequestDropped,
-    [protobufs.EGCBaseClientMsg.k_EMsgGCClientWelcome]: protobufs.CMsgClientWelcome,
-    [protobufs.EGCBaseClientMsg.k_EMsgGCClientConnectionStatus]: protobufs.CMsgConnectionStatus,
-    [protobufs.ESOMsg.k_ESOMsg_Create]: protobufs.CMsgSOSingleObject,
-    [protobufs.ESOMsg.k_ESOMsg_Destroy]: protobufs.CMsgSOSingleObject,
-    [protobufs.ESOMsg.k_ESOMsg_CacheSubscribed]: protobufs.CMsgSOCacheSubscribed,
-    [protobufs.ESOMsg.k_ESOMsg_CacheUnsubscribed]: protobufs.CMsgSOCacheUnsubscribed,
-    [protobufs.ESOMsg.k_ESOMsg_UpdateMultiple]: protobufs.CMsgSOMultipleObjects,
-    [protobufs.EGCBaseMsg.k_EMsgGCPartyInviteResponse]: protobufs.CMsgPartyInviteResponse,
-    [protobufs.EGCBaseMsg.k_EMsgGCLobbyInviteResponse]: protobufs.CMsgLobbyInviteResponse,
-    [protobufs.EGCBaseMsg.k_EMsgGCToClientPollFileRequest]: protobufs.CMsgGCToClientPollFileRequest,
-    [protobufs.EGCBaseMsg.k_EMsgGCToClientPollFileResponse]: protobufs.CMsgGCToClientPollFileResponse,
-    [protobufs.EGCBaseMsg.k_EMsgGCToClientApplyRemoteConVars]: protobufs.CMsgGCToClientApplyRemoteConVars,
-    [protobufs.EGCBaseMsg.k_EMsgGCToClientAggregateMetricsBackoff]: protobufs.CMsgGCToClientAggregateMetricsBackoff,
+    [protobufs.EDOTAGCMsg.k_EMsgGCInitialQuestionnaireResponse]: protobufs.CMsgInitialQuestionnaireResponse as MessageFns<protobufs.CMsgInitialQuestionnaireResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCPracticeLobbyResponse]: protobufs.CMsgGenericResult as MessageFns<protobufs.CMsgGenericResult>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCReportsRemainingResponse]: protobufs.CMsgDOTAReportsRemainingResponse as MessageFns<protobufs.CMsgDOTAReportsRemainingResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCSubmitPlayerReportResponse]: protobufs.CMsgDOTASubmitPlayerReportResponse as MessageFns<protobufs.CMsgDOTASubmitPlayerReportResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCMatchDetailsResponse]: protobufs.CMsgGCMatchDetailsResponse as MessageFns<protobufs.CMsgGCMatchDetailsResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCMatchmakingStatsResponse]: protobufs.CMsgDOTAMatchmakingStatsResponse as MessageFns<protobufs.CMsgDOTAMatchmakingStatsResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCSetMatchHistoryAccessResponse]: protobufs.CMsgDOTASetMatchHistoryAccessResponse as MessageFns<protobufs.CMsgDOTASetMatchHistoryAccessResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgUpgradeLeagueItemResponse]: protobufs.CMsgUpgradeLeagueItemResponse as MessageFns<protobufs.CMsgUpgradeLeagueItemResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCGetHeroStandingsResponse]: protobufs.CMsgGCGetHeroStandingsResponse as MessageFns<protobufs.CMsgGCGetHeroStandingsResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCItemEditorReservationsResponse]: protobufs.CMsgGCItemEditorReservationsResponse as MessageFns<protobufs.CMsgGCItemEditorReservationsResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCItemEditorReserveItemDefResponse]: protobufs.CMsgGCItemEditorReserveItemDefResponse as MessageFns<protobufs.CMsgGCItemEditorReserveItemDefResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCItemEditorReleaseReservationResponse]: protobufs.CMsgGCItemEditorReleaseReservationResponse as MessageFns<protobufs.CMsgGCItemEditorReleaseReservationResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCSetProfilePrivacyResponse]: protobufs.CMsgDOTASetProfilePrivacyResponse as MessageFns<protobufs.CMsgDOTASetProfilePrivacyResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgDOTAGetEventPointsResponse]: protobufs.CMsgDOTAGetEventPointsResponse as MessageFns<protobufs.CMsgDOTAGetEventPointsResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCCompendiumDataResponse]: protobufs.CMsgDOTACompendiumDataResponse as MessageFns<protobufs.CMsgDOTACompendiumDataResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgDOTAGetPlayerMatchHistoryResponse]: protobufs.CMsgDOTAGetPlayerMatchHistoryResponse as MessageFns<protobufs.CMsgDOTAGetPlayerMatchHistoryResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCNotificationsResponse]: protobufs.CMsgGCNotificationsResponse as MessageFns<protobufs.CMsgGCNotificationsResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCPlayerInfoSubmitResponse]: protobufs.CMsgGCPlayerInfoSubmitResponse as MessageFns<protobufs.CMsgGCPlayerInfoSubmitResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCHasItemResponse]: protobufs.CMsgDOTAHasItemResponse as MessageFns<protobufs.CMsgDOTAHasItemResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientTournamentItemDrop]: protobufs.CMsgGCToClientTournamentItemDrop as MessageFns<protobufs.CMsgGCToClientTournamentItemDrop>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientEmoticonData]: protobufs.CMsgGCToClientEmoticonData as MessageFns<protobufs.CMsgGCToClientEmoticonData>,
+    [protobufs.EDOTAGCMsg.k_EMsgDOTARedeemItemResponse]: protobufs.CMsgDOTARedeemItemResponse as MessageFns<protobufs.CMsgDOTARedeemItemResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAllHeroProgressResponse]: protobufs.CMsgClientToGCGetAllHeroProgressResponse as MessageFns<protobufs.CMsgClientToGCGetAllHeroProgressResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetTrophyListResponse]: protobufs.CMsgClientToGCGetTrophyListResponse as MessageFns<protobufs.CMsgClientToGCGetTrophyListResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientTrophyAwarded]: protobufs.CMsgGCToClientTrophyAwarded as MessageFns<protobufs.CMsgGCToClientTrophyAwarded>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientHeroStatueCreateResult]: protobufs.CMsgGCToClientHeroStatueCreateResult as MessageFns<protobufs.CMsgGCToClientHeroStatueCreateResult>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCRerollPlayerChallengeResponse]: protobufs.CMsgGCRerollPlayerChallengeResponse as MessageFns<protobufs.CMsgGCRerollPlayerChallengeResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAllHeroOrderResponse]: protobufs.CMsgClientToGCGetAllHeroOrderResponse as MessageFns<protobufs.CMsgClientToGCGetAllHeroOrderResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPlayerCardSpecificPurchaseResponse]: protobufs.CMsgClientToGCPlayerCardSpecificPurchaseResponse as MessageFns<protobufs.CMsgClientToGCPlayerCardSpecificPurchaseResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientGetFilteredPlayersResponse]: protobufs.CMsgGCToClientGetFilteredPlayersResponse as MessageFns<protobufs.CMsgGCToClientGetFilteredPlayersResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientRemoveFilteredPlayerResponse]: protobufs.CMsgGCToClientRemoveFilteredPlayerResponse as MessageFns<protobufs.CMsgGCToClientRemoveFilteredPlayerResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPlayerBeaconState]: protobufs.CMsgGCToClientPlayerBeaconState as MessageFns<protobufs.CMsgGCToClientPlayerBeaconState>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPartyBeaconUpdate]: protobufs.CMsgGCToClientPartyBeaconUpdate as MessageFns<protobufs.CMsgGCToClientPartyBeaconUpdate>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPartySearchInvite]: protobufs.CMsgGCToClientPartySearchInvite as MessageFns<protobufs.CMsgGCToClientPartySearchInvite>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientRequestActiveBeaconPartiesResponse]: protobufs.CMsgGCToClientRequestActiveBeaconPartiesResponse as MessageFns<protobufs.CMsgGCToClientRequestActiveBeaconPartiesResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientManageFavoritesResponse]: protobufs.CMsgGCToClientManageFavoritesResponse as MessageFns<protobufs.CMsgGCToClientManageFavoritesResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientJoinPartyFromBeaconResponse]: protobufs.CMsgGCToClientJoinPartyFromBeaconResponse as MessageFns<protobufs.CMsgGCToClientJoinPartyFromBeaconResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientGetFavoritePlayersResponse]: protobufs.CMsgGCToClientGetFavoritePlayersResponse as MessageFns<protobufs.CMsgGCToClientGetFavoritePlayersResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientVerifyFavoritePlayersResponse]: protobufs.CMsgGCToClientVerifyFavoritePlayersResponse as MessageFns<protobufs.CMsgGCToClientVerifyFavoritePlayersResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPartySearchInvites]: protobufs.CMsgGCToClientPartySearchInvites as MessageFns<protobufs.CMsgGCToClientPartySearchInvites>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPurchaseLabyrinthBlessingsResponse]: protobufs.CMsgClientToGCPurchaseLabyrinthBlessingsResponse as MessageFns<protobufs.CMsgClientToGCPurchaseLabyrinthBlessingsResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPurchaseFilteredPlayerSlotResponse]: protobufs.CMsgGCToClientPurchaseFilteredPlayerSlotResponse as MessageFns<protobufs.CMsgGCToClientPurchaseFilteredPlayerSlotResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientUpdateFilteredPlayerNoteResponse]: protobufs.CMsgGCToClientUpdateFilteredPlayerNoteResponse as MessageFns<protobufs.CMsgGCToClientUpdateFilteredPlayerNoteResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPlayerStatsResponse]: protobufs.CMsgGCToClientPlayerStatsResponse as MessageFns<protobufs.CMsgGCToClientPlayerStatsResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientSocialFeedPostCommentResponse]: protobufs.CMsgGCToClientSocialFeedPostCommentResponse as MessageFns<protobufs.CMsgGCToClientSocialFeedPostCommentResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientCustomGamesFriendsPlayedResponse]: protobufs.CMsgGCToClientCustomGamesFriendsPlayedResponse as MessageFns<protobufs.CMsgGCToClientCustomGamesFriendsPlayedResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientFriendsPlayedCustomGameResponse]: protobufs.CMsgGCToClientFriendsPlayedCustomGameResponse as MessageFns<protobufs.CMsgGCToClientFriendsPlayedCustomGameResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientSocialFeedPostMessageResponse]: protobufs.CMsgGCToClientSocialFeedPostMessageResponse as MessageFns<protobufs.CMsgGCToClientSocialFeedPostMessageResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientMatchGroupsVersion]: protobufs.CMsgGCToClientMatchGroupsVersion as MessageFns<protobufs.CMsgGCToClientMatchGroupsVersion>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetQuestProgressResponse]: protobufs.CMsgClientToGCGetQuestProgressResponse as MessageFns<protobufs.CMsgClientToGCGetQuestProgressResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientMatchSignedOut]: protobufs.CMsgGCToClientMatchSignedOut as MessageFns<protobufs.CMsgGCToClientMatchSignedOut>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCGetHeroStatsHistoryResponse]: protobufs.CMsgGCGetHeroStatsHistoryResponse as MessageFns<protobufs.CMsgGCGetHeroStatsHistoryResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientWageringResponse]: protobufs.CMsgGCToClientWageringResponse as MessageFns<protobufs.CMsgGCToClientWageringResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCHasPlayerVotedForMVPResponse]: protobufs.CMsgClientToGCHasPlayerVotedForMVPResponse as MessageFns<protobufs.CMsgClientToGCHasPlayerVotedForMVPResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCVoteForMVPResponse]: protobufs.CMsgClientToGCVoteForMVPResponse as MessageFns<protobufs.CMsgClientToGCVoteForMVPResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCTeammateStatsResponse]: protobufs.CMsgClientToGCTeammateStatsResponse as MessageFns<protobufs.CMsgClientToGCTeammateStatsResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetGiftPermissionsResponse]: protobufs.CMsgClientToGCGetGiftPermissionsResponse as MessageFns<protobufs.CMsgClientToGCGetGiftPermissionsResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCVoteForArcanaResponse]: protobufs.CMsgClientToGCVoteForArcanaResponse as MessageFns<protobufs.CMsgClientToGCVoteForArcanaResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestArcanaVotesRemainingResponse]: protobufs.CMsgClientToGCRequestArcanaVotesRemainingResponse as MessageFns<protobufs.CMsgClientToGCRequestArcanaVotesRemainingResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCSubmitLobbyMVPVoteResponse]: protobufs.CMsgDOTASubmitLobbyMVPVoteResponse as MessageFns<protobufs.CMsgDOTASubmitLobbyMVPVoteResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientQuestProgressUpdated]: protobufs.CMsgGCToClientQuestProgressUpdated as MessageFns<protobufs.CMsgGCToClientQuestProgressUpdated>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientWageringUpdate]: protobufs.CMsgGCToClientWageringUpdate as MessageFns<protobufs.CMsgGCToClientWageringUpdate>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientArcanaVotesUpdate]: protobufs.CMsgGCToClientArcanaVotesUpdate as MessageFns<protobufs.CMsgGCToClientArcanaVotesUpdate>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOpenPlayerCardPackResponse]: protobufs.CMsgClientToGCOpenPlayerCardPackResponse as MessageFns<protobufs.CMsgClientToGCOpenPlayerCardPackResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSelectCompendiumInGamePredictionResponse]: protobufs.CMsgClientToGCSelectCompendiumInGamePredictionResponse as MessageFns<protobufs.CMsgClientToGCSelectCompendiumInGamePredictionResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRecyclePlayerCardResponse]: protobufs.CMsgClientToGCRecyclePlayerCardResponse as MessageFns<protobufs.CMsgClientToGCRecyclePlayerCardResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCreatePlayerCardPackResponse]: protobufs.CMsgClientToGCCreatePlayerCardPackResponse as MessageFns<protobufs.CMsgClientToGCCreatePlayerCardPackResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCGetPlayerCardItemInfoResponse]: protobufs.CMsgGCGetPlayerCardItemInfoResponse as MessageFns<protobufs.CMsgGCGetPlayerCardItemInfoResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientBattlePassRollupRequest]: protobufs.CMsgGCToClientBattlePassRollupRequest as MessageFns<protobufs.CMsgGCToClientBattlePassRollupRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientBattlePassRollupResponse]: protobufs.CMsgGCToClientBattlePassRollupResponse as MessageFns<protobufs.CMsgGCToClientBattlePassRollupResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCTransferSeasonalMMRResponse]: protobufs.CMsgClientToGCTransferSeasonalMMRResponse as MessageFns<protobufs.CMsgClientToGCTransferSeasonalMMRResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPlaytestStatus]: protobufs.CMsgGCToClientPlaytestStatus as MessageFns<protobufs.CMsgGCToClientPlaytestStatus>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCJoinPlaytestResponse]: protobufs.CMsgClientToGCJoinPlaytestResponse as MessageFns<protobufs.CMsgClientToGCJoinPlaytestResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientBattlePassRollupListRequest]: protobufs.CMsgGCToClientBattlePassRollupListRequest as MessageFns<protobufs.CMsgGCToClientBattlePassRollupListRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientBattlePassRollupListResponse]: protobufs.CMsgGCToClientBattlePassRollupListResponse as MessageFns<protobufs.CMsgGCToClientBattlePassRollupListResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgDOTAClaimEventActionResponse]: protobufs.CMsgDOTAClaimEventActionResponse as MessageFns<protobufs.CMsgDOTAClaimEventActionResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgDOTAGetPeriodicResourceResponse]: protobufs.CMsgDOTAGetPeriodicResourceResponse as MessageFns<protobufs.CMsgDOTAGetPeriodicResourceResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgSubmitTriviaQuestionAnswerResponse]: protobufs.CMsgDOTASubmitTriviaQuestionAnswerResponse as MessageFns<protobufs.CMsgDOTASubmitTriviaQuestionAnswerResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgStartTriviaSessionResponse]: protobufs.CMsgDOTAStartTriviaSessionResponse as MessageFns<protobufs.CMsgDOTAStartTriviaSessionResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgAnchorPhoneNumberResponse]: protobufs.CMsgDOTAAnchorPhoneNumberResponse as MessageFns<protobufs.CMsgDOTAAnchorPhoneNumberResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgUnanchorPhoneNumberResponse]: protobufs.CMsgDOTAUnanchorPhoneNumberResponse as MessageFns<protobufs.CMsgDOTAUnanchorPhoneNumberResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCQuickStatsResponse]: protobufs.CMsgDOTAClientToGCQuickStatsResponse as MessageFns<protobufs.CMsgDOTAClientToGCQuickStatsResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgSelectionPriorityChoiceResponse]: protobufs.CMsgDOTASelectionPriorityChoiceResponse as MessageFns<protobufs.CMsgDOTASelectionPriorityChoiceResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGameAutographRewardResponse]: protobufs.CMsgDOTAGameAutographRewardResponse as MessageFns<protobufs.CMsgDOTAGameAutographRewardResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgDestroyLobbyResponse]: protobufs.CMsgDOTADestroyLobbyResponse as MessageFns<protobufs.CMsgDOTADestroyLobbyResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgPurchaseItemWithEventPointsResponse]: protobufs.CMsgPurchaseItemWithEventPointsResponse as MessageFns<protobufs.CMsgPurchaseItemWithEventPointsResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgPurchaseHeroRandomRelicResponse]: protobufs.CMsgPurchaseHeroRandomRelicResponse as MessageFns<protobufs.CMsgPurchaseHeroRandomRelicResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCClaimEventActionUsingItemResponse]: protobufs.CMsgClientToGCClaimEventActionUsingItemResponse as MessageFns<protobufs.CMsgClientToGCClaimEventActionUsingItemResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgPartyReadyCheckResponse]: protobufs.CMsgPartyReadyCheckResponse as MessageFns<protobufs.CMsgPartyReadyCheckResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGetRecentPlayTimeFriendsResponse]: protobufs.CMsgDOTAGetRecentPlayTimeFriendsResponse as MessageFns<protobufs.CMsgDOTAGetRecentPlayTimeFriendsResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientCommendNotification]: protobufs.CMsgGCToClientCommendNotification as MessageFns<protobufs.CMsgGCToClientCommendNotification>,
+    [protobufs.EDOTAGCMsg.k_EMsgProfileResponse]: protobufs.CMsgProfileResponse as MessageFns<protobufs.CMsgProfileResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgProfileUpdateResponse]: protobufs.CMsgProfileUpdateResponse as MessageFns<protobufs.CMsgProfileUpdateResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgHeroGlobalDataResponse]: protobufs.CMsgHeroGlobalDataResponse as MessageFns<protobufs.CMsgHeroGlobalDataResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestPlusWeeklyChallengeResultResponse]: protobufs.CMsgClientToGCRequestPlusWeeklyChallengeResultResponse as MessageFns<protobufs.CMsgClientToGCRequestPlusWeeklyChallengeResultResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgPrivateMetadataKeyResponse]: protobufs.CMsgPrivateMetadataKeyResponse as MessageFns<protobufs.CMsgPrivateMetadataKeyResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientCavernCrawlMapPathCompleted]: protobufs.CMsgGCToClientCavernCrawlMapPathCompleted as MessageFns<protobufs.CMsgGCToClientCavernCrawlMapPathCompleted>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlClaimRoomResponse]: protobufs.CMsgClientToGCCavernCrawlClaimRoomResponse as MessageFns<protobufs.CMsgClientToGCCavernCrawlClaimRoomResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlUseItemOnRoomResponse]: protobufs.CMsgClientToGCCavernCrawlUseItemOnRoomResponse as MessageFns<protobufs.CMsgClientToGCCavernCrawlUseItemOnRoomResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlUseItemOnPathResponse]: protobufs.CMsgClientToGCCavernCrawlUseItemOnPathResponse as MessageFns<protobufs.CMsgClientToGCCavernCrawlUseItemOnPathResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlRequestMapStateResponse]: protobufs.CMsgClientToGCCavernCrawlRequestMapStateResponse as MessageFns<protobufs.CMsgClientToGCCavernCrawlRequestMapStateResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlGetClaimedRoomCountResponse]: protobufs.CMsgClientToGCCavernCrawlGetClaimedRoomCountResponse as MessageFns<protobufs.CMsgClientToGCCavernCrawlGetClaimedRoomCountResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientRecordContestVoteResponse]: protobufs.CMsgGCToClientRecordContestVoteResponse as MessageFns<protobufs.CMsgGCToClientRecordContestVoteResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgDevGrantEventPointsResponse]: protobufs.CMsgDevGrantEventPointsResponse as MessageFns<protobufs.CMsgDevGrantEventPointsResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgDevGrantEventActionResponse]: protobufs.CMsgDevGrantEventActionResponse as MessageFns<protobufs.CMsgDevGrantEventActionResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgDevResetEventStateResponse]: protobufs.CMsgDevResetEventStateResponse as MessageFns<protobufs.CMsgDevResetEventStateResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgConsumeEventSupportGrantItemResponse]: protobufs.CMsgConsumeEventSupportGrantItemResponse as MessageFns<protobufs.CMsgConsumeEventSupportGrantItemResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientClaimEventActionUsingItemCompleted]: protobufs.CMsgGCToClientClaimEventActionUsingItemCompleted as MessageFns<protobufs.CMsgGCToClientClaimEventActionUsingItemCompleted>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientCavernCrawlMapUpdated]: protobufs.CMsgGCToClientCavernCrawlMapUpdated as MessageFns<protobufs.CMsgGCToClientCavernCrawlMapUpdated>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestPlayerRecentAccomplishmentsResponse]: protobufs.CMsgClientToGCRequestPlayerRecentAccomplishmentsResponse as MessageFns<protobufs.CMsgClientToGCRequestPlayerRecentAccomplishmentsResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestPlayerHeroRecentAccomplishmentsResponse]: protobufs.CMsgClientToGCRequestPlayerHeroRecentAccomplishmentsResponse as MessageFns<protobufs.CMsgClientToGCRequestPlayerHeroRecentAccomplishmentsResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestContestVotesResponse]: protobufs.CMsgClientToGCRequestContestVotesResponse as MessageFns<protobufs.CMsgClientToGCRequestContestVotesResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCMVPVoteTimeoutResponse]: protobufs.CMsgClientToGCMVPVoteTimeoutResponse as MessageFns<protobufs.CMsgClientToGCMVPVoteTimeoutResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitPlayerMatchSurveyResponse]: protobufs.CMsgClientToGCSubmitPlayerMatchSurveyResponse as MessageFns<protobufs.CMsgClientToGCSubmitPlayerMatchSurveyResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgDevDeleteEventActionsResponse]: protobufs.CMsgDevDeleteEventActionsResponse as MessageFns<protobufs.CMsgDevDeleteEventActionsResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCSubmitPlayerAvoidRequestResponse]: protobufs.CMsgDOTASubmitPlayerAvoidRequestResponse as MessageFns<protobufs.CMsgDOTASubmitPlayerAvoidRequestResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCtoGCAssociatedExploiterAccountInfoResponse]: protobufs.CMsgGCtoGCAssociatedExploiterAccountInfoResponse as MessageFns<protobufs.CMsgGCtoGCAssociatedExploiterAccountInfoResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientVACReminder]: protobufs.CMsgGCToClientVACReminder as MessageFns<protobufs.CMsgGCToClientVACReminder>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftBuyResponse]: protobufs.CMsgClientToGCUnderDraftBuyResponse as MessageFns<protobufs.CMsgClientToGCUnderDraftBuyResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRerollResponse]: protobufs.CMsgClientToGCUnderDraftRerollResponse as MessageFns<protobufs.CMsgClientToGCUnderDraftRerollResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftSellResponse]: protobufs.CMsgClientToGCUnderDraftSellResponse as MessageFns<protobufs.CMsgClientToGCUnderDraftSellResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftResponse]: protobufs.CMsgClientToGCUnderDraftResponse as MessageFns<protobufs.CMsgClientToGCUnderDraftResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRedeemRewardResponse]: protobufs.CMsgClientToGCUnderDraftRedeemRewardResponse as MessageFns<protobufs.CMsgClientToGCUnderDraftRedeemRewardResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitDraftTriviaMatchAnswerResponse]: protobufs.CMsgClientToGCSubmitDraftTriviaMatchAnswerResponse as MessageFns<protobufs.CMsgClientToGCSubmitDraftTriviaMatchAnswerResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRollBackBenchResponse]: protobufs.CMsgClientToGCUnderDraftRollBackBenchResponse as MessageFns<protobufs.CMsgClientToGCUnderDraftRollBackBenchResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetOWMatchDetailsResponse]: protobufs.CMsgClientToGCGetOWMatchDetailsResponse as MessageFns<protobufs.CMsgClientToGCGetOWMatchDetailsResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitOWConvictionResponse]: protobufs.CMsgClientToGCSubmitOWConvictionResponse as MessageFns<protobufs.CMsgClientToGCSubmitOWConvictionResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRecalibrateMMRResponse]: protobufs.CMsgClientToGCRecalibrateMMRResponse as MessageFns<protobufs.CMsgClientToGCRecalibrateMMRResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCChinaSSAURLResponse]: protobufs.CMsgClientToGCChinaSSAURLResponse as MessageFns<protobufs.CMsgClientToGCChinaSSAURLResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCChinaSSAAcceptedResponse]: protobufs.CMsgClientToGCChinaSSAAcceptedResponse as MessageFns<protobufs.CMsgClientToGCChinaSSAAcceptedResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientOverwatchCasesAvailable]: protobufs.CMsgGCToClientOverwatchCasesAvailable as MessageFns<protobufs.CMsgGCToClientOverwatchCasesAvailable>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetDPCFavoritesResponse]: protobufs.CMsgClientToGCGetDPCFavoritesResponse as MessageFns<protobufs.CMsgClientToGCGetDPCFavoritesResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetDPCFavoriteStateResponse]: protobufs.CMsgClientToGCSetDPCFavoriteStateResponse as MessageFns<protobufs.CMsgClientToGCSetDPCFavoriteStateResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetEventActiveSeasonIDResponse]: protobufs.CMsgClientToGCSetEventActiveSeasonIDResponse as MessageFns<protobufs.CMsgClientToGCSetEventActiveSeasonIDResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCreateTeamPlayerCardPackResponse]: protobufs.CMsgClientToGCCreateTeamPlayerCardPackResponse as MessageFns<protobufs.CMsgClientToGCCreateTeamPlayerCardPackResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetStickerbookResponse]: protobufs.CMsgClientToGCGetStickerbookResponse as MessageFns<protobufs.CMsgClientToGCGetStickerbookResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCreateStickerbookPageResponse]: protobufs.CMsgClientToGCCreateStickerbookPageResponse as MessageFns<protobufs.CMsgClientToGCCreateStickerbookPageResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCDeleteStickerbookPageResponse]: protobufs.CMsgClientToGCDeleteStickerbookPageResponse as MessageFns<protobufs.CMsgClientToGCDeleteStickerbookPageResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPlaceStickersResponse]: protobufs.CMsgClientToGCPlaceStickersResponse as MessageFns<protobufs.CMsgClientToGCPlaceStickersResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPlaceCollectionStickersResponse]: protobufs.CMsgClientToGCPlaceCollectionStickersResponse as MessageFns<protobufs.CMsgClientToGCPlaceCollectionStickersResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOrderStickerbookTeamPageResponse]: protobufs.CMsgClientToGCOrderStickerbookTeamPageResponse as MessageFns<protobufs.CMsgClientToGCOrderStickerbookTeamPageResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetHeroStickerResponse]: protobufs.CMsgClientToGCSetHeroStickerResponse as MessageFns<protobufs.CMsgClientToGCSetHeroStickerResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetHeroStickersResponse]: protobufs.CMsgClientToGCGetHeroStickersResponse as MessageFns<protobufs.CMsgClientToGCGetHeroStickersResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetFavoritePageResponse]: protobufs.CMsgClientToGCSetFavoritePageResponse as MessageFns<protobufs.CMsgClientToGCSetFavoritePageResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientCollectorsCacheAvailableDataResponse]: protobufs.CMsgGCToClientCollectorsCacheAvailableDataResponse as MessageFns<protobufs.CMsgGCToClientCollectorsCacheAvailableDataResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientUploadMatchClipResponse]: protobufs.CMsgGCToClientUploadMatchClipResponse as MessageFns<protobufs.CMsgGCToClientUploadMatchClipResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientRankResponse]: protobufs.CMsgGCToClientRankResponse as MessageFns<protobufs.CMsgGCToClientRankResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientRankUpdate]: protobufs.CMsgGCToClientRankUpdate as MessageFns<protobufs.CMsgGCToClientRankUpdate>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientMapStatsResponse]: protobufs.CMsgGCToClientMapStatsResponse as MessageFns<protobufs.CMsgGCToClientMapStatsResponse>,
+    [protobufs.EGCBaseClientMsg.k_EMsgGCToClientPollConvarRequest]: protobufs.CMsgGCToClientPollConvarRequest as MessageFns<protobufs.CMsgGCToClientPollConvarRequest>,
+    [protobufs.EGCBaseClientMsg.k_EMsgGCToClientPollConvarResponse]: protobufs.CMsgGCToClientPollConvarResponse as MessageFns<protobufs.CMsgGCToClientPollConvarResponse>,
+    [protobufs.EGCBaseClientMsg.k_EMsgGCToClientRequestDropped]: protobufs.CMsgGCToClientRequestDropped as MessageFns<protobufs.CMsgGCToClientRequestDropped>,
+    [protobufs.EGCBaseClientMsg.k_EMsgGCClientWelcome]: protobufs.CMsgClientWelcome as MessageFns<protobufs.CMsgClientWelcome>,
+    [protobufs.EGCBaseClientMsg.k_EMsgGCClientConnectionStatus]: protobufs.CMsgConnectionStatus as MessageFns<protobufs.CMsgConnectionStatus>,
+    [protobufs.ESOMsg.k_ESOMsg_Create]: protobufs.CMsgSOSingleObject as MessageFns<protobufs.CMsgSOSingleObject>,
+    [protobufs.ESOMsg.k_ESOMsg_Destroy]: protobufs.CMsgSOSingleObject as MessageFns<protobufs.CMsgSOSingleObject>,
+    [protobufs.ESOMsg.k_ESOMsg_CacheSubscribed]: protobufs.CMsgSOCacheSubscribed as MessageFns<protobufs.CMsgSOCacheSubscribed>,
+    [protobufs.ESOMsg.k_ESOMsg_CacheUnsubscribed]: protobufs.CMsgSOCacheUnsubscribed as MessageFns<protobufs.CMsgSOCacheUnsubscribed>,
+    [protobufs.ESOMsg.k_ESOMsg_UpdateMultiple]: protobufs.CMsgSOMultipleObjects as MessageFns<protobufs.CMsgSOMultipleObjects>,
+    [protobufs.EGCBaseMsg.k_EMsgGCPartyInviteResponse]: protobufs.CMsgPartyInviteResponse as MessageFns<protobufs.CMsgPartyInviteResponse>,
+    [protobufs.EGCBaseMsg.k_EMsgGCLobbyInviteResponse]: protobufs.CMsgLobbyInviteResponse as MessageFns<protobufs.CMsgLobbyInviteResponse>,
+    [protobufs.EGCBaseMsg.k_EMsgGCToClientPollFileRequest]: protobufs.CMsgGCToClientPollFileRequest as MessageFns<protobufs.CMsgGCToClientPollFileRequest>,
+    [protobufs.EGCBaseMsg.k_EMsgGCToClientPollFileResponse]: protobufs.CMsgGCToClientPollFileResponse as MessageFns<protobufs.CMsgGCToClientPollFileResponse>,
+    [protobufs.EGCBaseMsg.k_EMsgGCToClientApplyRemoteConVars]: protobufs.CMsgGCToClientApplyRemoteConVars as MessageFns<protobufs.CMsgGCToClientApplyRemoteConVars>,
+    [protobufs.EGCBaseMsg.k_EMsgGCToClientAggregateMetricsBackoff]: protobufs.CMsgGCToClientAggregateMetricsBackoff as MessageFns<protobufs.CMsgGCToClientAggregateMetricsBackoff>,
 };
 Object.freeze(GCProtobufs);
+export type GCProtobufsType = {
+    [protobufs.EDOTAGCMsg.k_EMsgGCInitialQuestionnaireResponse]: protobufs.CMsgInitialQuestionnaireResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCPracticeLobbyResponse]: protobufs.CMsgGenericResult;
+    [protobufs.EDOTAGCMsg.k_EMsgGCReportsRemainingResponse]: protobufs.CMsgDOTAReportsRemainingResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCSubmitPlayerReportResponse]: protobufs.CMsgDOTASubmitPlayerReportResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCMatchDetailsResponse]: protobufs.CMsgGCMatchDetailsResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCMatchmakingStatsResponse]: protobufs.CMsgDOTAMatchmakingStatsResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCSetMatchHistoryAccessResponse]: protobufs.CMsgDOTASetMatchHistoryAccessResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgUpgradeLeagueItemResponse]: protobufs.CMsgUpgradeLeagueItemResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCGetHeroStandingsResponse]: protobufs.CMsgGCGetHeroStandingsResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCItemEditorReservationsResponse]: protobufs.CMsgGCItemEditorReservationsResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCItemEditorReserveItemDefResponse]: protobufs.CMsgGCItemEditorReserveItemDefResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCItemEditorReleaseReservationResponse]: protobufs.CMsgGCItemEditorReleaseReservationResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCSetProfilePrivacyResponse]: protobufs.CMsgDOTASetProfilePrivacyResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgDOTAGetEventPointsResponse]: protobufs.CMsgDOTAGetEventPointsResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCCompendiumDataResponse]: protobufs.CMsgDOTACompendiumDataResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgDOTAGetPlayerMatchHistoryResponse]: protobufs.CMsgDOTAGetPlayerMatchHistoryResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCNotificationsResponse]: protobufs.CMsgGCNotificationsResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCPlayerInfoSubmitResponse]: protobufs.CMsgGCPlayerInfoSubmitResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCHasItemResponse]: protobufs.CMsgDOTAHasItemResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientTournamentItemDrop]: protobufs.CMsgGCToClientTournamentItemDrop;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientEmoticonData]: protobufs.CMsgGCToClientEmoticonData;
+    [protobufs.EDOTAGCMsg.k_EMsgDOTARedeemItemResponse]: protobufs.CMsgDOTARedeemItemResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAllHeroProgressResponse]: protobufs.CMsgClientToGCGetAllHeroProgressResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetTrophyListResponse]: protobufs.CMsgClientToGCGetTrophyListResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientTrophyAwarded]: protobufs.CMsgGCToClientTrophyAwarded;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientHeroStatueCreateResult]: protobufs.CMsgGCToClientHeroStatueCreateResult;
+    [protobufs.EDOTAGCMsg.k_EMsgGCRerollPlayerChallengeResponse]: protobufs.CMsgGCRerollPlayerChallengeResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAllHeroOrderResponse]: protobufs.CMsgClientToGCGetAllHeroOrderResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPlayerCardSpecificPurchaseResponse]: protobufs.CMsgClientToGCPlayerCardSpecificPurchaseResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientGetFilteredPlayersResponse]: protobufs.CMsgGCToClientGetFilteredPlayersResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientRemoveFilteredPlayerResponse]: protobufs.CMsgGCToClientRemoveFilteredPlayerResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPlayerBeaconState]: protobufs.CMsgGCToClientPlayerBeaconState;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPartyBeaconUpdate]: protobufs.CMsgGCToClientPartyBeaconUpdate;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPartySearchInvite]: protobufs.CMsgGCToClientPartySearchInvite;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientRequestActiveBeaconPartiesResponse]: protobufs.CMsgGCToClientRequestActiveBeaconPartiesResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientManageFavoritesResponse]: protobufs.CMsgGCToClientManageFavoritesResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientJoinPartyFromBeaconResponse]: protobufs.CMsgGCToClientJoinPartyFromBeaconResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientGetFavoritePlayersResponse]: protobufs.CMsgGCToClientGetFavoritePlayersResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientVerifyFavoritePlayersResponse]: protobufs.CMsgGCToClientVerifyFavoritePlayersResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPartySearchInvites]: protobufs.CMsgGCToClientPartySearchInvites;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPurchaseLabyrinthBlessingsResponse]: protobufs.CMsgClientToGCPurchaseLabyrinthBlessingsResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPurchaseFilteredPlayerSlotResponse]: protobufs.CMsgGCToClientPurchaseFilteredPlayerSlotResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientUpdateFilteredPlayerNoteResponse]: protobufs.CMsgGCToClientUpdateFilteredPlayerNoteResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPlayerStatsResponse]: protobufs.CMsgGCToClientPlayerStatsResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientSocialFeedPostCommentResponse]: protobufs.CMsgGCToClientSocialFeedPostCommentResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientCustomGamesFriendsPlayedResponse]: protobufs.CMsgGCToClientCustomGamesFriendsPlayedResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientFriendsPlayedCustomGameResponse]: protobufs.CMsgGCToClientFriendsPlayedCustomGameResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientSocialFeedPostMessageResponse]: protobufs.CMsgGCToClientSocialFeedPostMessageResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientMatchGroupsVersion]: protobufs.CMsgGCToClientMatchGroupsVersion;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetQuestProgressResponse]: protobufs.CMsgClientToGCGetQuestProgressResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientMatchSignedOut]: protobufs.CMsgGCToClientMatchSignedOut;
+    [protobufs.EDOTAGCMsg.k_EMsgGCGetHeroStatsHistoryResponse]: protobufs.CMsgGCGetHeroStatsHistoryResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientWageringResponse]: protobufs.CMsgGCToClientWageringResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCHasPlayerVotedForMVPResponse]: protobufs.CMsgClientToGCHasPlayerVotedForMVPResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCVoteForMVPResponse]: protobufs.CMsgClientToGCVoteForMVPResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCTeammateStatsResponse]: protobufs.CMsgClientToGCTeammateStatsResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetGiftPermissionsResponse]: protobufs.CMsgClientToGCGetGiftPermissionsResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCVoteForArcanaResponse]: protobufs.CMsgClientToGCVoteForArcanaResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestArcanaVotesRemainingResponse]: protobufs.CMsgClientToGCRequestArcanaVotesRemainingResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCSubmitLobbyMVPVoteResponse]: protobufs.CMsgDOTASubmitLobbyMVPVoteResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientQuestProgressUpdated]: protobufs.CMsgGCToClientQuestProgressUpdated;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientWageringUpdate]: protobufs.CMsgGCToClientWageringUpdate;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientArcanaVotesUpdate]: protobufs.CMsgGCToClientArcanaVotesUpdate;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOpenPlayerCardPackResponse]: protobufs.CMsgClientToGCOpenPlayerCardPackResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSelectCompendiumInGamePredictionResponse]: protobufs.CMsgClientToGCSelectCompendiumInGamePredictionResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRecyclePlayerCardResponse]: protobufs.CMsgClientToGCRecyclePlayerCardResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCreatePlayerCardPackResponse]: protobufs.CMsgClientToGCCreatePlayerCardPackResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCGetPlayerCardItemInfoResponse]: protobufs.CMsgGCGetPlayerCardItemInfoResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientBattlePassRollupRequest]: protobufs.CMsgGCToClientBattlePassRollupRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientBattlePassRollupResponse]: protobufs.CMsgGCToClientBattlePassRollupResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCTransferSeasonalMMRResponse]: protobufs.CMsgClientToGCTransferSeasonalMMRResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPlaytestStatus]: protobufs.CMsgGCToClientPlaytestStatus;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCJoinPlaytestResponse]: protobufs.CMsgClientToGCJoinPlaytestResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientBattlePassRollupListRequest]: protobufs.CMsgGCToClientBattlePassRollupListRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientBattlePassRollupListResponse]: protobufs.CMsgGCToClientBattlePassRollupListResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgDOTAClaimEventActionResponse]: protobufs.CMsgDOTAClaimEventActionResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgDOTAGetPeriodicResourceResponse]: protobufs.CMsgDOTAGetPeriodicResourceResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgSubmitTriviaQuestionAnswerResponse]: protobufs.CMsgDOTASubmitTriviaQuestionAnswerResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgStartTriviaSessionResponse]: protobufs.CMsgDOTAStartTriviaSessionResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgAnchorPhoneNumberResponse]: protobufs.CMsgDOTAAnchorPhoneNumberResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgUnanchorPhoneNumberResponse]: protobufs.CMsgDOTAUnanchorPhoneNumberResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCQuickStatsResponse]: protobufs.CMsgDOTAClientToGCQuickStatsResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgSelectionPriorityChoiceResponse]: protobufs.CMsgDOTASelectionPriorityChoiceResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGameAutographRewardResponse]: protobufs.CMsgDOTAGameAutographRewardResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgDestroyLobbyResponse]: protobufs.CMsgDOTADestroyLobbyResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgPurchaseItemWithEventPointsResponse]: protobufs.CMsgPurchaseItemWithEventPointsResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgPurchaseHeroRandomRelicResponse]: protobufs.CMsgPurchaseHeroRandomRelicResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCClaimEventActionUsingItemResponse]: protobufs.CMsgClientToGCClaimEventActionUsingItemResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgPartyReadyCheckResponse]: protobufs.CMsgPartyReadyCheckResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGetRecentPlayTimeFriendsResponse]: protobufs.CMsgDOTAGetRecentPlayTimeFriendsResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientCommendNotification]: protobufs.CMsgGCToClientCommendNotification;
+    [protobufs.EDOTAGCMsg.k_EMsgProfileResponse]: protobufs.CMsgProfileResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgProfileUpdateResponse]: protobufs.CMsgProfileUpdateResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgHeroGlobalDataResponse]: protobufs.CMsgHeroGlobalDataResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestPlusWeeklyChallengeResultResponse]: protobufs.CMsgClientToGCRequestPlusWeeklyChallengeResultResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgPrivateMetadataKeyResponse]: protobufs.CMsgPrivateMetadataKeyResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientCavernCrawlMapPathCompleted]: protobufs.CMsgGCToClientCavernCrawlMapPathCompleted;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlClaimRoomResponse]: protobufs.CMsgClientToGCCavernCrawlClaimRoomResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlUseItemOnRoomResponse]: protobufs.CMsgClientToGCCavernCrawlUseItemOnRoomResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlUseItemOnPathResponse]: protobufs.CMsgClientToGCCavernCrawlUseItemOnPathResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlRequestMapStateResponse]: protobufs.CMsgClientToGCCavernCrawlRequestMapStateResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlGetClaimedRoomCountResponse]: protobufs.CMsgClientToGCCavernCrawlGetClaimedRoomCountResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientRecordContestVoteResponse]: protobufs.CMsgGCToClientRecordContestVoteResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgDevGrantEventPointsResponse]: protobufs.CMsgDevGrantEventPointsResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgDevGrantEventActionResponse]: protobufs.CMsgDevGrantEventActionResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgDevResetEventStateResponse]: protobufs.CMsgDevResetEventStateResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgConsumeEventSupportGrantItemResponse]: protobufs.CMsgConsumeEventSupportGrantItemResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientClaimEventActionUsingItemCompleted]: protobufs.CMsgGCToClientClaimEventActionUsingItemCompleted;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientCavernCrawlMapUpdated]: protobufs.CMsgGCToClientCavernCrawlMapUpdated;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestPlayerRecentAccomplishmentsResponse]: protobufs.CMsgClientToGCRequestPlayerRecentAccomplishmentsResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestPlayerHeroRecentAccomplishmentsResponse]: protobufs.CMsgClientToGCRequestPlayerHeroRecentAccomplishmentsResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestContestVotesResponse]: protobufs.CMsgClientToGCRequestContestVotesResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCMVPVoteTimeoutResponse]: protobufs.CMsgClientToGCMVPVoteTimeoutResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitPlayerMatchSurveyResponse]: protobufs.CMsgClientToGCSubmitPlayerMatchSurveyResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgDevDeleteEventActionsResponse]: protobufs.CMsgDevDeleteEventActionsResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCSubmitPlayerAvoidRequestResponse]: protobufs.CMsgDOTASubmitPlayerAvoidRequestResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCtoGCAssociatedExploiterAccountInfoResponse]: protobufs.CMsgGCtoGCAssociatedExploiterAccountInfoResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientVACReminder]: protobufs.CMsgGCToClientVACReminder;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftBuyResponse]: protobufs.CMsgClientToGCUnderDraftBuyResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRerollResponse]: protobufs.CMsgClientToGCUnderDraftRerollResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftSellResponse]: protobufs.CMsgClientToGCUnderDraftSellResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftResponse]: protobufs.CMsgClientToGCUnderDraftResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRedeemRewardResponse]: protobufs.CMsgClientToGCUnderDraftRedeemRewardResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitDraftTriviaMatchAnswerResponse]: protobufs.CMsgClientToGCSubmitDraftTriviaMatchAnswerResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRollBackBenchResponse]: protobufs.CMsgClientToGCUnderDraftRollBackBenchResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetOWMatchDetailsResponse]: protobufs.CMsgClientToGCGetOWMatchDetailsResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitOWConvictionResponse]: protobufs.CMsgClientToGCSubmitOWConvictionResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRecalibrateMMRResponse]: protobufs.CMsgClientToGCRecalibrateMMRResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCChinaSSAURLResponse]: protobufs.CMsgClientToGCChinaSSAURLResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCChinaSSAAcceptedResponse]: protobufs.CMsgClientToGCChinaSSAAcceptedResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientOverwatchCasesAvailable]: protobufs.CMsgGCToClientOverwatchCasesAvailable;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetDPCFavoritesResponse]: protobufs.CMsgClientToGCGetDPCFavoritesResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetDPCFavoriteStateResponse]: protobufs.CMsgClientToGCSetDPCFavoriteStateResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetEventActiveSeasonIDResponse]: protobufs.CMsgClientToGCSetEventActiveSeasonIDResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCreateTeamPlayerCardPackResponse]: protobufs.CMsgClientToGCCreateTeamPlayerCardPackResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetStickerbookResponse]: protobufs.CMsgClientToGCGetStickerbookResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCreateStickerbookPageResponse]: protobufs.CMsgClientToGCCreateStickerbookPageResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCDeleteStickerbookPageResponse]: protobufs.CMsgClientToGCDeleteStickerbookPageResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPlaceStickersResponse]: protobufs.CMsgClientToGCPlaceStickersResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPlaceCollectionStickersResponse]: protobufs.CMsgClientToGCPlaceCollectionStickersResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOrderStickerbookTeamPageResponse]: protobufs.CMsgClientToGCOrderStickerbookTeamPageResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetHeroStickerResponse]: protobufs.CMsgClientToGCSetHeroStickerResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetHeroStickersResponse]: protobufs.CMsgClientToGCGetHeroStickersResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetFavoritePageResponse]: protobufs.CMsgClientToGCSetFavoritePageResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientCollectorsCacheAvailableDataResponse]: protobufs.CMsgGCToClientCollectorsCacheAvailableDataResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientUploadMatchClipResponse]: protobufs.CMsgGCToClientUploadMatchClipResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientRankResponse]: protobufs.CMsgGCToClientRankResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientRankUpdate]: protobufs.CMsgGCToClientRankUpdate;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientMapStatsResponse]: protobufs.CMsgGCToClientMapStatsResponse;
+    [protobufs.EGCBaseClientMsg.k_EMsgGCToClientPollConvarRequest]: protobufs.CMsgGCToClientPollConvarRequest;
+    [protobufs.EGCBaseClientMsg.k_EMsgGCToClientPollConvarResponse]: protobufs.CMsgGCToClientPollConvarResponse;
+    [protobufs.EGCBaseClientMsg.k_EMsgGCToClientRequestDropped]: protobufs.CMsgGCToClientRequestDropped;
+    [protobufs.EGCBaseClientMsg.k_EMsgGCClientWelcome]: protobufs.CMsgClientWelcome;
+    [protobufs.EGCBaseClientMsg.k_EMsgGCClientConnectionStatus]: protobufs.CMsgConnectionStatus;
+    [protobufs.ESOMsg.k_ESOMsg_Create]: protobufs.CMsgSOSingleObject;
+    [protobufs.ESOMsg.k_ESOMsg_Destroy]: protobufs.CMsgSOSingleObject;
+    [protobufs.ESOMsg.k_ESOMsg_CacheSubscribed]: protobufs.CMsgSOCacheSubscribed;
+    [protobufs.ESOMsg.k_ESOMsg_CacheUnsubscribed]: protobufs.CMsgSOCacheUnsubscribed;
+    [protobufs.ESOMsg.k_ESOMsg_UpdateMultiple]: protobufs.CMsgSOMultipleObjects;
+    [protobufs.EGCBaseMsg.k_EMsgGCPartyInviteResponse]: protobufs.CMsgPartyInviteResponse;
+    [protobufs.EGCBaseMsg.k_EMsgGCLobbyInviteResponse]: protobufs.CMsgLobbyInviteResponse;
+    [protobufs.EGCBaseMsg.k_EMsgGCToClientPollFileRequest]: protobufs.CMsgGCToClientPollFileRequest;
+    [protobufs.EGCBaseMsg.k_EMsgGCToClientPollFileResponse]: protobufs.CMsgGCToClientPollFileResponse;
+    [protobufs.EGCBaseMsg.k_EMsgGCToClientApplyRemoteConVars]: protobufs.CMsgGCToClientApplyRemoteConVars;
+    [protobufs.EGCBaseMsg.k_EMsgGCToClientAggregateMetricsBackoff]: protobufs.CMsgGCToClientAggregateMetricsBackoff;
+};
+export type GCEvents = {
+    [protobufs.EDOTAGCMsg.k_EMsgGCInitialQuestionnaireResponse]: (data: protobufs.CMsgInitialQuestionnaireResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCPracticeLobbyResponse]: (data: protobufs.CMsgGenericResult) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCReportsRemainingResponse]: (data: protobufs.CMsgDOTAReportsRemainingResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCSubmitPlayerReportResponse]: (data: protobufs.CMsgDOTASubmitPlayerReportResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCMatchDetailsResponse]: (data: protobufs.CMsgGCMatchDetailsResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCMatchmakingStatsResponse]: (data: protobufs.CMsgDOTAMatchmakingStatsResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCSetMatchHistoryAccessResponse]: (data: protobufs.CMsgDOTASetMatchHistoryAccessResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgUpgradeLeagueItemResponse]: (data: protobufs.CMsgUpgradeLeagueItemResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCGetHeroStandingsResponse]: (data: protobufs.CMsgGCGetHeroStandingsResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCItemEditorReservationsResponse]: (data: protobufs.CMsgGCItemEditorReservationsResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCItemEditorReserveItemDefResponse]: (data: protobufs.CMsgGCItemEditorReserveItemDefResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCItemEditorReleaseReservationResponse]: (data: protobufs.CMsgGCItemEditorReleaseReservationResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCSetProfilePrivacyResponse]: (data: protobufs.CMsgDOTASetProfilePrivacyResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgDOTAGetEventPointsResponse]: (data: protobufs.CMsgDOTAGetEventPointsResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCCompendiumDataResponse]: (data: protobufs.CMsgDOTACompendiumDataResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgDOTAGetPlayerMatchHistoryResponse]: (data: protobufs.CMsgDOTAGetPlayerMatchHistoryResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCNotificationsResponse]: (data: protobufs.CMsgGCNotificationsResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCPlayerInfoSubmitResponse]: (data: protobufs.CMsgGCPlayerInfoSubmitResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCHasItemResponse]: (data: protobufs.CMsgDOTAHasItemResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientTournamentItemDrop]: (data: protobufs.CMsgGCToClientTournamentItemDrop) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientEmoticonData]: (data: protobufs.CMsgGCToClientEmoticonData) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgDOTARedeemItemResponse]: (data: protobufs.CMsgDOTARedeemItemResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAllHeroProgressResponse]: (data: protobufs.CMsgClientToGCGetAllHeroProgressResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetTrophyListResponse]: (data: protobufs.CMsgClientToGCGetTrophyListResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientTrophyAwarded]: (data: protobufs.CMsgGCToClientTrophyAwarded) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientHeroStatueCreateResult]: (data: protobufs.CMsgGCToClientHeroStatueCreateResult) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCRerollPlayerChallengeResponse]: (data: protobufs.CMsgGCRerollPlayerChallengeResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAllHeroOrderResponse]: (data: protobufs.CMsgClientToGCGetAllHeroOrderResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPlayerCardSpecificPurchaseResponse]: (data: protobufs.CMsgClientToGCPlayerCardSpecificPurchaseResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientGetFilteredPlayersResponse]: (data: protobufs.CMsgGCToClientGetFilteredPlayersResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientRemoveFilteredPlayerResponse]: (data: protobufs.CMsgGCToClientRemoveFilteredPlayerResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPlayerBeaconState]: (data: protobufs.CMsgGCToClientPlayerBeaconState) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPartyBeaconUpdate]: (data: protobufs.CMsgGCToClientPartyBeaconUpdate) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPartySearchInvite]: (data: protobufs.CMsgGCToClientPartySearchInvite) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientRequestActiveBeaconPartiesResponse]: (data: protobufs.CMsgGCToClientRequestActiveBeaconPartiesResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientManageFavoritesResponse]: (data: protobufs.CMsgGCToClientManageFavoritesResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientJoinPartyFromBeaconResponse]: (data: protobufs.CMsgGCToClientJoinPartyFromBeaconResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientGetFavoritePlayersResponse]: (data: protobufs.CMsgGCToClientGetFavoritePlayersResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientVerifyFavoritePlayersResponse]: (data: protobufs.CMsgGCToClientVerifyFavoritePlayersResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPartySearchInvites]: (data: protobufs.CMsgGCToClientPartySearchInvites) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPurchaseLabyrinthBlessingsResponse]: (data: protobufs.CMsgClientToGCPurchaseLabyrinthBlessingsResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPurchaseFilteredPlayerSlotResponse]: (data: protobufs.CMsgGCToClientPurchaseFilteredPlayerSlotResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientUpdateFilteredPlayerNoteResponse]: (data: protobufs.CMsgGCToClientUpdateFilteredPlayerNoteResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPlayerStatsResponse]: (data: protobufs.CMsgGCToClientPlayerStatsResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientSocialFeedPostCommentResponse]: (data: protobufs.CMsgGCToClientSocialFeedPostCommentResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientCustomGamesFriendsPlayedResponse]: (data: protobufs.CMsgGCToClientCustomGamesFriendsPlayedResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientFriendsPlayedCustomGameResponse]: (data: protobufs.CMsgGCToClientFriendsPlayedCustomGameResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientSocialFeedPostMessageResponse]: (data: protobufs.CMsgGCToClientSocialFeedPostMessageResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientMatchGroupsVersion]: (data: protobufs.CMsgGCToClientMatchGroupsVersion) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetQuestProgressResponse]: (data: protobufs.CMsgClientToGCGetQuestProgressResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientMatchSignedOut]: (data: protobufs.CMsgGCToClientMatchSignedOut) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCGetHeroStatsHistoryResponse]: (data: protobufs.CMsgGCGetHeroStatsHistoryResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientWageringResponse]: (data: protobufs.CMsgGCToClientWageringResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCHasPlayerVotedForMVPResponse]: (data: protobufs.CMsgClientToGCHasPlayerVotedForMVPResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCVoteForMVPResponse]: (data: protobufs.CMsgClientToGCVoteForMVPResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCTeammateStatsResponse]: (data: protobufs.CMsgClientToGCTeammateStatsResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetGiftPermissionsResponse]: (data: protobufs.CMsgClientToGCGetGiftPermissionsResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCVoteForArcanaResponse]: (data: protobufs.CMsgClientToGCVoteForArcanaResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestArcanaVotesRemainingResponse]: (data: protobufs.CMsgClientToGCRequestArcanaVotesRemainingResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCSubmitLobbyMVPVoteResponse]: (data: protobufs.CMsgDOTASubmitLobbyMVPVoteResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientQuestProgressUpdated]: (data: protobufs.CMsgGCToClientQuestProgressUpdated) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientWageringUpdate]: (data: protobufs.CMsgGCToClientWageringUpdate) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientArcanaVotesUpdate]: (data: protobufs.CMsgGCToClientArcanaVotesUpdate) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOpenPlayerCardPackResponse]: (data: protobufs.CMsgClientToGCOpenPlayerCardPackResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSelectCompendiumInGamePredictionResponse]: (data: protobufs.CMsgClientToGCSelectCompendiumInGamePredictionResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRecyclePlayerCardResponse]: (data: protobufs.CMsgClientToGCRecyclePlayerCardResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCreatePlayerCardPackResponse]: (data: protobufs.CMsgClientToGCCreatePlayerCardPackResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCGetPlayerCardItemInfoResponse]: (data: protobufs.CMsgGCGetPlayerCardItemInfoResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientBattlePassRollupRequest]: (data: protobufs.CMsgGCToClientBattlePassRollupRequest) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientBattlePassRollupResponse]: (data: protobufs.CMsgGCToClientBattlePassRollupResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCTransferSeasonalMMRResponse]: (data: protobufs.CMsgClientToGCTransferSeasonalMMRResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientPlaytestStatus]: (data: protobufs.CMsgGCToClientPlaytestStatus) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCJoinPlaytestResponse]: (data: protobufs.CMsgClientToGCJoinPlaytestResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientBattlePassRollupListRequest]: (data: protobufs.CMsgGCToClientBattlePassRollupListRequest) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientBattlePassRollupListResponse]: (data: protobufs.CMsgGCToClientBattlePassRollupListResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgDOTAClaimEventActionResponse]: (data: protobufs.CMsgDOTAClaimEventActionResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgDOTAGetPeriodicResourceResponse]: (data: protobufs.CMsgDOTAGetPeriodicResourceResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgSubmitTriviaQuestionAnswerResponse]: (data: protobufs.CMsgDOTASubmitTriviaQuestionAnswerResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgStartTriviaSessionResponse]: (data: protobufs.CMsgDOTAStartTriviaSessionResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgAnchorPhoneNumberResponse]: (data: protobufs.CMsgDOTAAnchorPhoneNumberResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgUnanchorPhoneNumberResponse]: (data: protobufs.CMsgDOTAUnanchorPhoneNumberResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCQuickStatsResponse]: (data: protobufs.CMsgDOTAClientToGCQuickStatsResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgSelectionPriorityChoiceResponse]: (data: protobufs.CMsgDOTASelectionPriorityChoiceResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGameAutographRewardResponse]: (data: protobufs.CMsgDOTAGameAutographRewardResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgDestroyLobbyResponse]: (data: protobufs.CMsgDOTADestroyLobbyResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgPurchaseItemWithEventPointsResponse]: (data: protobufs.CMsgPurchaseItemWithEventPointsResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgPurchaseHeroRandomRelicResponse]: (data: protobufs.CMsgPurchaseHeroRandomRelicResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCClaimEventActionUsingItemResponse]: (data: protobufs.CMsgClientToGCClaimEventActionUsingItemResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgPartyReadyCheckResponse]: (data: protobufs.CMsgPartyReadyCheckResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGetRecentPlayTimeFriendsResponse]: (data: protobufs.CMsgDOTAGetRecentPlayTimeFriendsResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientCommendNotification]: (data: protobufs.CMsgGCToClientCommendNotification) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgProfileResponse]: (data: protobufs.CMsgProfileResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgProfileUpdateResponse]: (data: protobufs.CMsgProfileUpdateResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgHeroGlobalDataResponse]: (data: protobufs.CMsgHeroGlobalDataResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestPlusWeeklyChallengeResultResponse]: (data: protobufs.CMsgClientToGCRequestPlusWeeklyChallengeResultResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgPrivateMetadataKeyResponse]: (data: protobufs.CMsgPrivateMetadataKeyResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientCavernCrawlMapPathCompleted]: (data: protobufs.CMsgGCToClientCavernCrawlMapPathCompleted) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlClaimRoomResponse]: (data: protobufs.CMsgClientToGCCavernCrawlClaimRoomResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlUseItemOnRoomResponse]: (data: protobufs.CMsgClientToGCCavernCrawlUseItemOnRoomResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlUseItemOnPathResponse]: (data: protobufs.CMsgClientToGCCavernCrawlUseItemOnPathResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlRequestMapStateResponse]: (data: protobufs.CMsgClientToGCCavernCrawlRequestMapStateResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCavernCrawlGetClaimedRoomCountResponse]: (data: protobufs.CMsgClientToGCCavernCrawlGetClaimedRoomCountResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientRecordContestVoteResponse]: (data: protobufs.CMsgGCToClientRecordContestVoteResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgDevGrantEventPointsResponse]: (data: protobufs.CMsgDevGrantEventPointsResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgDevGrantEventActionResponse]: (data: protobufs.CMsgDevGrantEventActionResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgDevResetEventStateResponse]: (data: protobufs.CMsgDevResetEventStateResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgConsumeEventSupportGrantItemResponse]: (data: protobufs.CMsgConsumeEventSupportGrantItemResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientClaimEventActionUsingItemCompleted]: (data: protobufs.CMsgGCToClientClaimEventActionUsingItemCompleted) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientCavernCrawlMapUpdated]: (data: protobufs.CMsgGCToClientCavernCrawlMapUpdated) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestPlayerRecentAccomplishmentsResponse]: (data: protobufs.CMsgClientToGCRequestPlayerRecentAccomplishmentsResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestPlayerHeroRecentAccomplishmentsResponse]: (data: protobufs.CMsgClientToGCRequestPlayerHeroRecentAccomplishmentsResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestContestVotesResponse]: (data: protobufs.CMsgClientToGCRequestContestVotesResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCMVPVoteTimeoutResponse]: (data: protobufs.CMsgClientToGCMVPVoteTimeoutResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitPlayerMatchSurveyResponse]: (data: protobufs.CMsgClientToGCSubmitPlayerMatchSurveyResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgDevDeleteEventActionsResponse]: (data: protobufs.CMsgDevDeleteEventActionsResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCSubmitPlayerAvoidRequestResponse]: (data: protobufs.CMsgDOTASubmitPlayerAvoidRequestResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCtoGCAssociatedExploiterAccountInfoResponse]: (data: protobufs.CMsgGCtoGCAssociatedExploiterAccountInfoResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientVACReminder]: (data: protobufs.CMsgGCToClientVACReminder) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftBuyResponse]: (data: protobufs.CMsgClientToGCUnderDraftBuyResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRerollResponse]: (data: protobufs.CMsgClientToGCUnderDraftRerollResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftSellResponse]: (data: protobufs.CMsgClientToGCUnderDraftSellResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftResponse]: (data: protobufs.CMsgClientToGCUnderDraftResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRedeemRewardResponse]: (data: protobufs.CMsgClientToGCUnderDraftRedeemRewardResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitDraftTriviaMatchAnswerResponse]: (data: protobufs.CMsgClientToGCSubmitDraftTriviaMatchAnswerResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRollBackBenchResponse]: (data: protobufs.CMsgClientToGCUnderDraftRollBackBenchResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetOWMatchDetailsResponse]: (data: protobufs.CMsgClientToGCGetOWMatchDetailsResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitOWConvictionResponse]: (data: protobufs.CMsgClientToGCSubmitOWConvictionResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRecalibrateMMRResponse]: (data: protobufs.CMsgClientToGCRecalibrateMMRResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCChinaSSAURLResponse]: (data: protobufs.CMsgClientToGCChinaSSAURLResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCChinaSSAAcceptedResponse]: (data: protobufs.CMsgClientToGCChinaSSAAcceptedResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientOverwatchCasesAvailable]: (data: protobufs.CMsgGCToClientOverwatchCasesAvailable) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetDPCFavoritesResponse]: (data: protobufs.CMsgClientToGCGetDPCFavoritesResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetDPCFavoriteStateResponse]: (data: protobufs.CMsgClientToGCSetDPCFavoriteStateResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetEventActiveSeasonIDResponse]: (data: protobufs.CMsgClientToGCSetEventActiveSeasonIDResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCreateTeamPlayerCardPackResponse]: (data: protobufs.CMsgClientToGCCreateTeamPlayerCardPackResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetStickerbookResponse]: (data: protobufs.CMsgClientToGCGetStickerbookResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCCreateStickerbookPageResponse]: (data: protobufs.CMsgClientToGCCreateStickerbookPageResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCDeleteStickerbookPageResponse]: (data: protobufs.CMsgClientToGCDeleteStickerbookPageResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPlaceStickersResponse]: (data: protobufs.CMsgClientToGCPlaceStickersResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCPlaceCollectionStickersResponse]: (data: protobufs.CMsgClientToGCPlaceCollectionStickersResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOrderStickerbookTeamPageResponse]: (data: protobufs.CMsgClientToGCOrderStickerbookTeamPageResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetHeroStickerResponse]: (data: protobufs.CMsgClientToGCSetHeroStickerResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetHeroStickersResponse]: (data: protobufs.CMsgClientToGCGetHeroStickersResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetFavoritePageResponse]: (data: protobufs.CMsgClientToGCSetFavoritePageResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientCollectorsCacheAvailableDataResponse]: (data: protobufs.CMsgGCToClientCollectorsCacheAvailableDataResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientUploadMatchClipResponse]: (data: protobufs.CMsgGCToClientUploadMatchClipResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientRankResponse]: (data: protobufs.CMsgGCToClientRankResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientRankUpdate]: (data: protobufs.CMsgGCToClientRankUpdate) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientMapStatsResponse]: (data: protobufs.CMsgGCToClientMapStatsResponse) => void;
+    [protobufs.EGCBaseClientMsg.k_EMsgGCToClientPollConvarRequest]: (data: protobufs.CMsgGCToClientPollConvarRequest) => void;
+    [protobufs.EGCBaseClientMsg.k_EMsgGCToClientPollConvarResponse]: (data: protobufs.CMsgGCToClientPollConvarResponse) => void;
+    [protobufs.EGCBaseClientMsg.k_EMsgGCToClientRequestDropped]: (data: protobufs.CMsgGCToClientRequestDropped) => void;
+    [protobufs.EGCBaseClientMsg.k_EMsgGCClientWelcome]: (data: protobufs.CMsgClientWelcome) => void;
+    [protobufs.EGCBaseClientMsg.k_EMsgGCClientConnectionStatus]: (data: protobufs.CMsgConnectionStatus) => void;
+    [protobufs.ESOMsg.k_ESOMsg_Create]: (data: protobufs.CMsgSOSingleObject) => void;
+    [protobufs.ESOMsg.k_ESOMsg_Destroy]: (data: protobufs.CMsgSOSingleObject) => void;
+    [protobufs.ESOMsg.k_ESOMsg_CacheSubscribed]: (data: protobufs.CMsgSOCacheSubscribed) => void;
+    [protobufs.ESOMsg.k_ESOMsg_CacheUnsubscribed]: (data: protobufs.CMsgSOCacheUnsubscribed) => void;
+    [protobufs.ESOMsg.k_ESOMsg_UpdateMultiple]: (data: protobufs.CMsgSOMultipleObjects) => void;
+    [protobufs.EGCBaseMsg.k_EMsgGCPartyInviteResponse]: (data: protobufs.CMsgPartyInviteResponse) => void;
+    [protobufs.EGCBaseMsg.k_EMsgGCLobbyInviteResponse]: (data: protobufs.CMsgLobbyInviteResponse) => void;
+    [protobufs.EGCBaseMsg.k_EMsgGCToClientPollFileRequest]: (data: protobufs.CMsgGCToClientPollFileRequest) => void;
+    [protobufs.EGCBaseMsg.k_EMsgGCToClientPollFileResponse]: (data: protobufs.CMsgGCToClientPollFileResponse) => void;
+    [protobufs.EGCBaseMsg.k_EMsgGCToClientApplyRemoteConVars]: (data: protobufs.CMsgGCToClientApplyRemoteConVars) => void;
+    [protobufs.EGCBaseMsg.k_EMsgGCToClientAggregateMetricsBackoff]: (data: protobufs.CMsgGCToClientAggregateMetricsBackoff) => void;
+};
+export const AllProtobufs = { ...ClientProtobufs, ...GCProtobufs };
+Object.freeze(AllProtobufs);
+export type AllProtobufsType = ClientProtobufsType & GCProtobufsType;
