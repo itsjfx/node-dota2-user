@@ -10,6 +10,7 @@ import { CSOEconItem } from "./base_gcmessages";
 import {
   CMatchClip,
   CMsgArcanaVoteMatchVotes,
+  CMsgDOTAClaimEventActionResponse,
   CMsgDOTAMatch,
   CMsgDOTASDOHeroStatsHistory,
   CMsgDOTATriviaQuestion,
@@ -29,6 +30,9 @@ import {
   EHeroRelicRarity,
   eHeroRelicRarityFromJSON,
   eHeroRelicRarityToJSON,
+  ENewBloomGiftingResponse,
+  eNewBloomGiftingResponseFromJSON,
+  eNewBloomGiftingResponseToJSON,
   EOverwatchConviction,
   eOverwatchConvictionFromJSON,
   eOverwatchConvictionToJSON,
@@ -60,6 +64,9 @@ import {
   eDPCFavoriteTypeFromJSON,
   eDPCFavoriteTypeToJSON,
   EEvent,
+  EEventActionScoreMode,
+  eEventActionScoreModeFromJSON,
+  eEventActionScoreModeToJSON,
   eEventFromJSON,
   eEventToJSON,
   ELeagueRegion,
@@ -655,6 +662,45 @@ export function eDOTADraftTriviaAnswerResultToJSON(object: EDOTADraftTriviaAnswe
   }
 }
 
+export enum CMsgClientToGCUpdateComicBookStatType {
+  CMsgClientToGCUpdateComicBookStat_Type_HighestPageRead = 1,
+  CMsgClientToGCUpdateComicBookStat_Type_SecondsSpentReading = 2,
+  CMsgClientToGCUpdateComicBookStat_Type_HighestPercentRead = 3,
+}
+
+export function cMsgClientToGCUpdateComicBookStatTypeFromJSON(object: any): CMsgClientToGCUpdateComicBookStatType {
+  switch (object) {
+    case 1:
+    case "CMsgClientToGCUpdateComicBookStat_Type_HighestPageRead":
+      return CMsgClientToGCUpdateComicBookStatType.CMsgClientToGCUpdateComicBookStat_Type_HighestPageRead;
+    case 2:
+    case "CMsgClientToGCUpdateComicBookStat_Type_SecondsSpentReading":
+      return CMsgClientToGCUpdateComicBookStatType.CMsgClientToGCUpdateComicBookStat_Type_SecondsSpentReading;
+    case 3:
+    case "CMsgClientToGCUpdateComicBookStat_Type_HighestPercentRead":
+      return CMsgClientToGCUpdateComicBookStatType.CMsgClientToGCUpdateComicBookStat_Type_HighestPercentRead;
+    default:
+      throw new globalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCUpdateComicBookStatType",
+      );
+  }
+}
+
+export function cMsgClientToGCUpdateComicBookStatTypeToJSON(object: CMsgClientToGCUpdateComicBookStatType): string {
+  switch (object) {
+    case CMsgClientToGCUpdateComicBookStatType.CMsgClientToGCUpdateComicBookStat_Type_HighestPageRead:
+      return "CMsgClientToGCUpdateComicBookStat_Type_HighestPageRead";
+    case CMsgClientToGCUpdateComicBookStatType.CMsgClientToGCUpdateComicBookStat_Type_SecondsSpentReading:
+      return "CMsgClientToGCUpdateComicBookStat_Type_SecondsSpentReading";
+    case CMsgClientToGCUpdateComicBookStatType.CMsgClientToGCUpdateComicBookStat_Type_HighestPercentRead:
+      return "CMsgClientToGCUpdateComicBookStat_Type_HighestPercentRead";
+    default:
+      throw new globalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCUpdateComicBookStatType",
+      );
+  }
+}
+
 export interface CMsgClientSuspended {
   timeEnd: number;
 }
@@ -755,6 +801,7 @@ export enum CMsgDOTAPopup_PopupID {
   CUSTOM_GAME_COOLDOWN_RESTRICTED = 76,
   CREATE_LOBBY_FAILED_TOO_MUCH_PLAYTIME = 77,
   CUSTOM_GAME_TOO_FEW_GAMES = 78,
+  COMM_SCORE_TOO_LOW = 79,
 }
 
 export function cMsgDOTAPopup_PopupIDFromJSON(object: any): CMsgDOTAPopup_PopupID {
@@ -945,6 +992,9 @@ export function cMsgDOTAPopup_PopupIDFromJSON(object: any): CMsgDOTAPopup_PopupI
     case 78:
     case "CUSTOM_GAME_TOO_FEW_GAMES":
       return CMsgDOTAPopup_PopupID.CUSTOM_GAME_TOO_FEW_GAMES;
+    case 79:
+    case "COMM_SCORE_TOO_LOW":
+      return CMsgDOTAPopup_PopupID.COMM_SCORE_TOO_LOW;
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum CMsgDOTAPopup_PopupID");
   }
@@ -1076,6 +1126,8 @@ export function cMsgDOTAPopup_PopupIDToJSON(object: CMsgDOTAPopup_PopupID): stri
       return "CREATE_LOBBY_FAILED_TOO_MUCH_PLAYTIME";
     case CMsgDOTAPopup_PopupID.CUSTOM_GAME_TOO_FEW_GAMES:
       return "CUSTOM_GAME_TOO_FEW_GAMES";
+    case CMsgDOTAPopup_PopupID.COMM_SCORE_TOO_LOW:
+      return "COMM_SCORE_TOO_LOW";
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum CMsgDOTAPopup_PopupID");
   }
@@ -1226,6 +1278,137 @@ export interface CMsgDOTASubmitPlayerAvoidRequestResponse {
   targetAccountId: number;
   result: number;
   debugMessage: string;
+}
+
+export interface CMsgDOTASubmitPlayerReportV2 {
+  targetAccountId: number;
+  reportReason: number[];
+  lobbyId: string;
+  gameTime: number;
+  debugSlot: number;
+  debugMatchId: string;
+}
+
+export interface CMsgDOTASubmitPlayerReportResponseV2 {
+  targetAccountId: number;
+  reportReason: number[];
+  debugMessage: string;
+  enumResult: CMsgDOTASubmitPlayerReportResponseV2_EResult;
+}
+
+export enum CMsgDOTASubmitPlayerReportResponseV2_EResult {
+  k_eInternalError = 0,
+  k_eSuccess = 1,
+  k_eDuplicateReport = 2,
+  k_eMixedReportFlags = 3,
+  k_eTooLate = 4,
+  k_eInvalidPregameReport = 5,
+  k_eHasntChatted = 6,
+  k_eInvalid = 7,
+  k_eOwnership = 8,
+  k_eMissingRequirements = 9,
+  k_eInvalidRoleReport = 10,
+  k_eInvalidCoachReport = 11,
+  k_eNoRemainingReports = 12,
+  k_eInvalidMember = 13,
+  k_eCannotReportPartyMember = 14,
+}
+
+export function cMsgDOTASubmitPlayerReportResponseV2_EResultFromJSON(
+  object: any,
+): CMsgDOTASubmitPlayerReportResponseV2_EResult {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eSuccess;
+    case 2:
+    case "k_eDuplicateReport":
+      return CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eDuplicateReport;
+    case 3:
+    case "k_eMixedReportFlags":
+      return CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eMixedReportFlags;
+    case 4:
+    case "k_eTooLate":
+      return CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eTooLate;
+    case 5:
+    case "k_eInvalidPregameReport":
+      return CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eInvalidPregameReport;
+    case 6:
+    case "k_eHasntChatted":
+      return CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eHasntChatted;
+    case 7:
+    case "k_eInvalid":
+      return CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eInvalid;
+    case 8:
+    case "k_eOwnership":
+      return CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eOwnership;
+    case 9:
+    case "k_eMissingRequirements":
+      return CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eMissingRequirements;
+    case 10:
+    case "k_eInvalidRoleReport":
+      return CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eInvalidRoleReport;
+    case 11:
+    case "k_eInvalidCoachReport":
+      return CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eInvalidCoachReport;
+    case 12:
+    case "k_eNoRemainingReports":
+      return CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eNoRemainingReports;
+    case 13:
+    case "k_eInvalidMember":
+      return CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eInvalidMember;
+    case 14:
+    case "k_eCannotReportPartyMember":
+      return CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eCannotReportPartyMember;
+    default:
+      throw new globalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDOTASubmitPlayerReportResponseV2_EResult",
+      );
+  }
+}
+
+export function cMsgDOTASubmitPlayerReportResponseV2_EResultToJSON(
+  object: CMsgDOTASubmitPlayerReportResponseV2_EResult,
+): string {
+  switch (object) {
+    case CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eDuplicateReport:
+      return "k_eDuplicateReport";
+    case CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eMixedReportFlags:
+      return "k_eMixedReportFlags";
+    case CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eTooLate:
+      return "k_eTooLate";
+    case CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eInvalidPregameReport:
+      return "k_eInvalidPregameReport";
+    case CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eHasntChatted:
+      return "k_eHasntChatted";
+    case CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eInvalid:
+      return "k_eInvalid";
+    case CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eOwnership:
+      return "k_eOwnership";
+    case CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eMissingRequirements:
+      return "k_eMissingRequirements";
+    case CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eInvalidRoleReport:
+      return "k_eInvalidRoleReport";
+    case CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eInvalidCoachReport:
+      return "k_eInvalidCoachReport";
+    case CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eNoRemainingReports:
+      return "k_eNoRemainingReports";
+    case CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eInvalidMember:
+      return "k_eInvalidMember";
+    case CMsgDOTASubmitPlayerReportResponseV2_EResult.k_eCannotReportPartyMember:
+      return "k_eCannotReportPartyMember";
+    default:
+      throw new globalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgDOTASubmitPlayerReportResponseV2_EResult",
+      );
+  }
 }
 
 export interface CMsgDOTASubmitLobbyMVPVote {
@@ -1498,11 +1681,6 @@ export interface CMsgGCItemEditorReleaseReservationResponse {
   released: boolean;
 }
 
-export interface CMsgDOTARewardTutorialPrizes {
-  locationId: number;
-  trackingOnly: boolean;
-}
-
 export interface CMsgFlipLobbyTeams {
 }
 
@@ -1527,147 +1705,7 @@ export interface CMsgDOTAClaimEventAction {
   actionId: number;
   quantity: number;
   data: CMsgDOTAClaimEventActionData | undefined;
-}
-
-export interface CMsgDOTAClaimEventActionResponse {
-  result: CMsgDOTAClaimEventActionResponse_ResultCode;
-  rewardResults: CMsgDOTAClaimEventActionResponse_GrantedRewardData[];
-}
-
-export enum CMsgDOTAClaimEventActionResponse_ResultCode {
-  Success = 0,
-  InvalidEvent = 1,
-  EventNotActive = 2,
-  InvalidAction = 3,
-  ServerError = 4,
-  InsufficientPoints = 5,
-  InsufficentLevel = 6,
-  AlreadyClaimed = 7,
-  SDOLockFailure = 8,
-  SDOLoadFailure = 9,
-  EventNotOwned = 10,
-  Timeout = 11,
-  RequiresPlusSubscription = 12,
-  InvalidItem = 13,
-  AsyncRewards = 14,
-}
-
-export function cMsgDOTAClaimEventActionResponse_ResultCodeFromJSON(
-  object: any,
-): CMsgDOTAClaimEventActionResponse_ResultCode {
-  switch (object) {
-    case 0:
-    case "Success":
-      return CMsgDOTAClaimEventActionResponse_ResultCode.Success;
-    case 1:
-    case "InvalidEvent":
-      return CMsgDOTAClaimEventActionResponse_ResultCode.InvalidEvent;
-    case 2:
-    case "EventNotActive":
-      return CMsgDOTAClaimEventActionResponse_ResultCode.EventNotActive;
-    case 3:
-    case "InvalidAction":
-      return CMsgDOTAClaimEventActionResponse_ResultCode.InvalidAction;
-    case 4:
-    case "ServerError":
-      return CMsgDOTAClaimEventActionResponse_ResultCode.ServerError;
-    case 5:
-    case "InsufficientPoints":
-      return CMsgDOTAClaimEventActionResponse_ResultCode.InsufficientPoints;
-    case 6:
-    case "InsufficentLevel":
-      return CMsgDOTAClaimEventActionResponse_ResultCode.InsufficentLevel;
-    case 7:
-    case "AlreadyClaimed":
-      return CMsgDOTAClaimEventActionResponse_ResultCode.AlreadyClaimed;
-    case 8:
-    case "SDOLockFailure":
-      return CMsgDOTAClaimEventActionResponse_ResultCode.SDOLockFailure;
-    case 9:
-    case "SDOLoadFailure":
-      return CMsgDOTAClaimEventActionResponse_ResultCode.SDOLoadFailure;
-    case 10:
-    case "EventNotOwned":
-      return CMsgDOTAClaimEventActionResponse_ResultCode.EventNotOwned;
-    case 11:
-    case "Timeout":
-      return CMsgDOTAClaimEventActionResponse_ResultCode.Timeout;
-    case 12:
-    case "RequiresPlusSubscription":
-      return CMsgDOTAClaimEventActionResponse_ResultCode.RequiresPlusSubscription;
-    case 13:
-    case "InvalidItem":
-      return CMsgDOTAClaimEventActionResponse_ResultCode.InvalidItem;
-    case 14:
-    case "AsyncRewards":
-      return CMsgDOTAClaimEventActionResponse_ResultCode.AsyncRewards;
-    default:
-      throw new globalThis.Error(
-        "Unrecognized enum value " + object + " for enum CMsgDOTAClaimEventActionResponse_ResultCode",
-      );
-  }
-}
-
-export function cMsgDOTAClaimEventActionResponse_ResultCodeToJSON(
-  object: CMsgDOTAClaimEventActionResponse_ResultCode,
-): string {
-  switch (object) {
-    case CMsgDOTAClaimEventActionResponse_ResultCode.Success:
-      return "Success";
-    case CMsgDOTAClaimEventActionResponse_ResultCode.InvalidEvent:
-      return "InvalidEvent";
-    case CMsgDOTAClaimEventActionResponse_ResultCode.EventNotActive:
-      return "EventNotActive";
-    case CMsgDOTAClaimEventActionResponse_ResultCode.InvalidAction:
-      return "InvalidAction";
-    case CMsgDOTAClaimEventActionResponse_ResultCode.ServerError:
-      return "ServerError";
-    case CMsgDOTAClaimEventActionResponse_ResultCode.InsufficientPoints:
-      return "InsufficientPoints";
-    case CMsgDOTAClaimEventActionResponse_ResultCode.InsufficentLevel:
-      return "InsufficentLevel";
-    case CMsgDOTAClaimEventActionResponse_ResultCode.AlreadyClaimed:
-      return "AlreadyClaimed";
-    case CMsgDOTAClaimEventActionResponse_ResultCode.SDOLockFailure:
-      return "SDOLockFailure";
-    case CMsgDOTAClaimEventActionResponse_ResultCode.SDOLoadFailure:
-      return "SDOLoadFailure";
-    case CMsgDOTAClaimEventActionResponse_ResultCode.EventNotOwned:
-      return "EventNotOwned";
-    case CMsgDOTAClaimEventActionResponse_ResultCode.Timeout:
-      return "Timeout";
-    case CMsgDOTAClaimEventActionResponse_ResultCode.RequiresPlusSubscription:
-      return "RequiresPlusSubscription";
-    case CMsgDOTAClaimEventActionResponse_ResultCode.InvalidItem:
-      return "InvalidItem";
-    case CMsgDOTAClaimEventActionResponse_ResultCode.AsyncRewards:
-      return "AsyncRewards";
-    default:
-      throw new globalThis.Error(
-        "Unrecognized enum value " + object + " for enum CMsgDOTAClaimEventActionResponse_ResultCode",
-      );
-  }
-}
-
-export interface CMsgDOTAClaimEventActionResponse_MysteryItemRewardData {
-  itemDef: number;
-  itemCategory: number;
-}
-
-export interface CMsgDOTAClaimEventActionResponse_LootListRewardData {
-  itemDef: number[];
-}
-
-export interface CMsgDOTAClaimEventActionResponse_ActionListRewardData {
-  actionId: number;
-  resultRewardData: Buffer;
-}
-
-export interface CMsgDOTAClaimEventActionResponse_GrantedRewardData {
-  grantIndex: number;
-  scoreIndex: number;
-  rewardIndex: number;
-  rewardData: Buffer;
+  scoreMode: EEventActionScoreMode;
 }
 
 export interface CMsgClientToGCClaimEventActionUsingItem {
@@ -1735,6 +1773,14 @@ export interface CMsgDOTACompendiumSelectionResponse {
   eresult: number;
 }
 
+export interface CMsgDOTACompendiumRemoveAllSelections {
+  leagueid: number;
+}
+
+export interface CMsgDOTACompendiumRemoveAllSelectionsResponse {
+  eresult: number;
+}
+
 export interface CMsgDOTACompendiumData {
   selections: CMsgDOTACompendiumSelection[];
 }
@@ -1789,6 +1835,7 @@ export interface CMsgDOTAGetPlayerMatchHistoryResponse_Match {
   teamId: number;
   teamName: string;
   ugcTeamUiLogo: string;
+  selectedFacet: number;
 }
 
 export interface CMsgGCNotificationsRequest {
@@ -3440,6 +3487,7 @@ export interface CMsgGCToClientCommendNotification {
   commenderAccountId: number;
   commenderName: string;
   flags: number;
+  commenderHeroId: number;
 }
 
 export interface CMsgDOTAClientToGCQuickStatsRequest {
@@ -5565,6 +5613,94 @@ export interface CMsgDraftTriviaVoteCount {
   direVotes: number;
 }
 
+export interface CMsgClientToGCRequestReporterUpdates {
+}
+
+export interface CMsgClientToGCRequestReporterUpdatesResponse {
+  enumResult: CMsgClientToGCRequestReporterUpdatesResponse_EResponse;
+  updates: CMsgClientToGCRequestReporterUpdatesResponse_ReporterUpdate[];
+  numReported: number;
+  numNoActionTaken: number;
+}
+
+export enum CMsgClientToGCRequestReporterUpdatesResponse_EResponse {
+  k_eInternalError = 0,
+  k_eSuccess = 1,
+  k_eTimeout = 2,
+  k_eTooBusy = 3,
+  k_eNotPermitted = 4,
+  k_eNotToSoon = 5,
+  k_eNotValid = 6,
+}
+
+export function cMsgClientToGCRequestReporterUpdatesResponse_EResponseFromJSON(
+  object: any,
+): CMsgClientToGCRequestReporterUpdatesResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgClientToGCRequestReporterUpdatesResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgClientToGCRequestReporterUpdatesResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eTimeout":
+      return CMsgClientToGCRequestReporterUpdatesResponse_EResponse.k_eTimeout;
+    case 3:
+    case "k_eTooBusy":
+      return CMsgClientToGCRequestReporterUpdatesResponse_EResponse.k_eTooBusy;
+    case 4:
+    case "k_eNotPermitted":
+      return CMsgClientToGCRequestReporterUpdatesResponse_EResponse.k_eNotPermitted;
+    case 5:
+    case "k_eNotToSoon":
+      return CMsgClientToGCRequestReporterUpdatesResponse_EResponse.k_eNotToSoon;
+    case 6:
+    case "k_eNotValid":
+      return CMsgClientToGCRequestReporterUpdatesResponse_EResponse.k_eNotValid;
+    default:
+      throw new globalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCRequestReporterUpdatesResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgClientToGCRequestReporterUpdatesResponse_EResponseToJSON(
+  object: CMsgClientToGCRequestReporterUpdatesResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgClientToGCRequestReporterUpdatesResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgClientToGCRequestReporterUpdatesResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgClientToGCRequestReporterUpdatesResponse_EResponse.k_eTimeout:
+      return "k_eTimeout";
+    case CMsgClientToGCRequestReporterUpdatesResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgClientToGCRequestReporterUpdatesResponse_EResponse.k_eNotPermitted:
+      return "k_eNotPermitted";
+    case CMsgClientToGCRequestReporterUpdatesResponse_EResponse.k_eNotToSoon:
+      return "k_eNotToSoon";
+    case CMsgClientToGCRequestReporterUpdatesResponse_EResponse.k_eNotValid:
+      return "k_eNotValid";
+    default:
+      throw new globalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCRequestReporterUpdatesResponse_EResponse",
+      );
+  }
+}
+
+export interface CMsgClientToGCRequestReporterUpdatesResponse_ReporterUpdate {
+  matchId: string;
+  heroId: number;
+  reportReason: number;
+  timestamp: number;
+}
+
+export interface CMsgClientToGCAcknowledgeReporterUpdates {
+  matchIds: string[];
+}
+
 export interface CMsgClientToGCRecalibrateMMR {
 }
 
@@ -7079,6 +7215,290 @@ export function cMsgGCToClientMapStatsResponse_EResponseToJSON(
   }
 }
 
+export interface CMsgRoadToTIAssignedQuest {
+  questId: number;
+  difficulty: number;
+  progressFlags: number;
+  halfCreditFlags: number;
+  completed: boolean;
+}
+
+export interface CMsgRoadToTIUserData {
+  quests: CMsgRoadToTIAssignedQuest[];
+}
+
+export interface CMsgClientToGCRoadToTIGetQuests {
+  eventId: number;
+}
+
+export interface CMsgClientToGCRoadToTIGetQuestsResponse {
+  response: CMsgClientToGCRoadToTIGetQuestsResponse_EResponse;
+  questData: CMsgRoadToTIUserData | undefined;
+}
+
+export enum CMsgClientToGCRoadToTIGetQuestsResponse_EResponse {
+  k_eInternalError = 0,
+  k_eSuccess = 1,
+  k_eTooBusy = 2,
+  k_eDisabled = 3,
+  k_eTimeout = 4,
+  k_eInvalidID = 5,
+}
+
+export function cMsgClientToGCRoadToTIGetQuestsResponse_EResponseFromJSON(
+  object: any,
+): CMsgClientToGCRoadToTIGetQuestsResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgClientToGCRoadToTIGetQuestsResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgClientToGCRoadToTIGetQuestsResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eTooBusy":
+      return CMsgClientToGCRoadToTIGetQuestsResponse_EResponse.k_eTooBusy;
+    case 3:
+    case "k_eDisabled":
+      return CMsgClientToGCRoadToTIGetQuestsResponse_EResponse.k_eDisabled;
+    case 4:
+    case "k_eTimeout":
+      return CMsgClientToGCRoadToTIGetQuestsResponse_EResponse.k_eTimeout;
+    case 5:
+    case "k_eInvalidID":
+      return CMsgClientToGCRoadToTIGetQuestsResponse_EResponse.k_eInvalidID;
+    default:
+      throw new globalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCRoadToTIGetQuestsResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgClientToGCRoadToTIGetQuestsResponse_EResponseToJSON(
+  object: CMsgClientToGCRoadToTIGetQuestsResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgClientToGCRoadToTIGetQuestsResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgClientToGCRoadToTIGetQuestsResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgClientToGCRoadToTIGetQuestsResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgClientToGCRoadToTIGetQuestsResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    case CMsgClientToGCRoadToTIGetQuestsResponse_EResponse.k_eTimeout:
+      return "k_eTimeout";
+    case CMsgClientToGCRoadToTIGetQuestsResponse_EResponse.k_eInvalidID:
+      return "k_eInvalidID";
+    default:
+      throw new globalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCRoadToTIGetQuestsResponse_EResponse",
+      );
+  }
+}
+
+export interface CMsgClientToGCRoadToTIGetActiveQuest {
+  eventId: number;
+}
+
+export interface CMsgClientToGCRoadToTIGetActiveQuestResponse {
+  response: CMsgClientToGCRoadToTIGetActiveQuestResponse_EResponse;
+  questData: CMsgRoadToTIAssignedQuest | undefined;
+}
+
+export enum CMsgClientToGCRoadToTIGetActiveQuestResponse_EResponse {
+  k_eInternalError = 0,
+  k_eSuccess = 1,
+  k_eNone = 2,
+  k_eTooBusy = 3,
+  k_eDisabled = 4,
+  k_eTimeout = 5,
+  k_eInvalidID = 6,
+}
+
+export function cMsgClientToGCRoadToTIGetActiveQuestResponse_EResponseFromJSON(
+  object: any,
+): CMsgClientToGCRoadToTIGetActiveQuestResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgClientToGCRoadToTIGetActiveQuestResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgClientToGCRoadToTIGetActiveQuestResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eNone":
+      return CMsgClientToGCRoadToTIGetActiveQuestResponse_EResponse.k_eNone;
+    case 3:
+    case "k_eTooBusy":
+      return CMsgClientToGCRoadToTIGetActiveQuestResponse_EResponse.k_eTooBusy;
+    case 4:
+    case "k_eDisabled":
+      return CMsgClientToGCRoadToTIGetActiveQuestResponse_EResponse.k_eDisabled;
+    case 5:
+    case "k_eTimeout":
+      return CMsgClientToGCRoadToTIGetActiveQuestResponse_EResponse.k_eTimeout;
+    case 6:
+    case "k_eInvalidID":
+      return CMsgClientToGCRoadToTIGetActiveQuestResponse_EResponse.k_eInvalidID;
+    default:
+      throw new globalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCRoadToTIGetActiveQuestResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgClientToGCRoadToTIGetActiveQuestResponse_EResponseToJSON(
+  object: CMsgClientToGCRoadToTIGetActiveQuestResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgClientToGCRoadToTIGetActiveQuestResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgClientToGCRoadToTIGetActiveQuestResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgClientToGCRoadToTIGetActiveQuestResponse_EResponse.k_eNone:
+      return "k_eNone";
+    case CMsgClientToGCRoadToTIGetActiveQuestResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgClientToGCRoadToTIGetActiveQuestResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    case CMsgClientToGCRoadToTIGetActiveQuestResponse_EResponse.k_eTimeout:
+      return "k_eTimeout";
+    case CMsgClientToGCRoadToTIGetActiveQuestResponse_EResponse.k_eInvalidID:
+      return "k_eInvalidID";
+    default:
+      throw new globalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCRoadToTIGetActiveQuestResponse_EResponse",
+      );
+  }
+}
+
+export interface CMsgGCToClientRoadToTIQuestDataUpdated {
+  eventId: number;
+  questData: CMsgRoadToTIUserData | undefined;
+}
+
+export interface CMsgClientToGCRoadToTIUseItem {
+  eventId: number;
+  itemType: number;
+  heroIndex: number;
+}
+
+export interface CMsgClientToGCRoadToTIUseItemResponse {
+  response: CMsgClientToGCRoadToTIUseItemResponse_EResponse;
+}
+
+export enum CMsgClientToGCRoadToTIUseItemResponse_EResponse {
+  k_eInternalError = 0,
+  k_eSuccess = 1,
+  k_eBadInput = 2,
+  k_eNoItem = 3,
+  k_eDisabled = 4,
+  k_eTimeout = 5,
+  k_eInvalidID = 6,
+}
+
+export function cMsgClientToGCRoadToTIUseItemResponse_EResponseFromJSON(
+  object: any,
+): CMsgClientToGCRoadToTIUseItemResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgClientToGCRoadToTIUseItemResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgClientToGCRoadToTIUseItemResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eBadInput":
+      return CMsgClientToGCRoadToTIUseItemResponse_EResponse.k_eBadInput;
+    case 3:
+    case "k_eNoItem":
+      return CMsgClientToGCRoadToTIUseItemResponse_EResponse.k_eNoItem;
+    case 4:
+    case "k_eDisabled":
+      return CMsgClientToGCRoadToTIUseItemResponse_EResponse.k_eDisabled;
+    case 5:
+    case "k_eTimeout":
+      return CMsgClientToGCRoadToTIUseItemResponse_EResponse.k_eTimeout;
+    case 6:
+    case "k_eInvalidID":
+      return CMsgClientToGCRoadToTIUseItemResponse_EResponse.k_eInvalidID;
+    default:
+      throw new globalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCRoadToTIUseItemResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgClientToGCRoadToTIUseItemResponse_EResponseToJSON(
+  object: CMsgClientToGCRoadToTIUseItemResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgClientToGCRoadToTIUseItemResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgClientToGCRoadToTIUseItemResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgClientToGCRoadToTIUseItemResponse_EResponse.k_eBadInput:
+      return "k_eBadInput";
+    case CMsgClientToGCRoadToTIUseItemResponse_EResponse.k_eNoItem:
+      return "k_eNoItem";
+    case CMsgClientToGCRoadToTIUseItemResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    case CMsgClientToGCRoadToTIUseItemResponse_EResponse.k_eTimeout:
+      return "k_eTimeout";
+    case CMsgClientToGCRoadToTIUseItemResponse_EResponse.k_eInvalidID:
+      return "k_eInvalidID";
+    default:
+      throw new globalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCRoadToTIUseItemResponse_EResponse",
+      );
+  }
+}
+
+export interface CMsgClientToGCRoadToTIDevForceQuest {
+  eventId: number;
+  forceMatchType: boolean;
+  forceId: number;
+}
+
+export interface CMsgLobbyRoadToTIMatchQuestData {
+  questData: CMsgRoadToTIAssignedQuest | undefined;
+  questPeriod: number;
+  questNumber: number;
+}
+
+export interface CMsgClientToGCNewBloomGift {
+  defindex: number;
+  lobbyId: string;
+  targetAccountIds: number[];
+}
+
+export interface CMsgClientToGCNewBloomGiftResponse {
+  result: ENewBloomGiftingResponse;
+  receivedAccountIds: number[];
+}
+
+export interface CMsgClientToGCSetBannedHeroes {
+  bannedHeroIds: number[];
+}
+
+export interface CMsgClientToGCUpdateComicBookStats {
+  comicId: number;
+  stats: CMsgClientToGCUpdateComicBookStats_SingleStat[];
+  languageStats: CMsgClientToGCUpdateComicBookStats_LanguageStats | undefined;
+}
+
+export interface CMsgClientToGCUpdateComicBookStats_SingleStat {
+  statType: CMsgClientToGCUpdateComicBookStatType;
+  statValue: number;
+}
+
+export interface CMsgClientToGCUpdateComicBookStats_LanguageStats {
+  comicId: number;
+  clientLanguage: number;
+  clientComicLanguage: number;
+}
+
 function createBaseCMsgClientSuspended(): CMsgClientSuspended {
   return { timeEnd: 0 };
 }
@@ -8256,6 +8676,284 @@ export const CMsgDOTASubmitPlayerAvoidRequestResponse: MessageFns<CMsgDOTASubmit
     message.targetAccountId = object.targetAccountId ?? 0;
     message.result = object.result ?? 0;
     message.debugMessage = object.debugMessage ?? "";
+    return message;
+  },
+};
+
+function createBaseCMsgDOTASubmitPlayerReportV2(): CMsgDOTASubmitPlayerReportV2 {
+  return { targetAccountId: 0, reportReason: [], lobbyId: "0", gameTime: 0, debugSlot: 0, debugMatchId: "0" };
+}
+
+export const CMsgDOTASubmitPlayerReportV2: MessageFns<CMsgDOTASubmitPlayerReportV2> = {
+  encode(message: CMsgDOTASubmitPlayerReportV2, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.targetAccountId !== 0) {
+      writer.uint32(8).uint32(message.targetAccountId);
+    }
+    writer.uint32(18).fork();
+    for (const v of message.reportReason) {
+      writer.uint32(v);
+    }
+    writer.join();
+    if (message.lobbyId !== "0") {
+      writer.uint32(24).uint64(message.lobbyId);
+    }
+    if (message.gameTime !== 0) {
+      writer.uint32(37).float(message.gameTime);
+    }
+    if (message.debugSlot !== 0) {
+      writer.uint32(40).uint32(message.debugSlot);
+    }
+    if (message.debugMatchId !== "0") {
+      writer.uint32(49).fixed64(message.debugMatchId);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgDOTASubmitPlayerReportV2 {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgDOTASubmitPlayerReportV2();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.targetAccountId = reader.uint32();
+          continue;
+        }
+        case 2: {
+          if (tag === 16) {
+            message.reportReason.push(reader.uint32());
+
+            continue;
+          }
+
+          if (tag === 18) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.reportReason.push(reader.uint32());
+            }
+
+            continue;
+          }
+
+          break;
+        }
+        case 3: {
+          if (tag !== 24) {
+            break;
+          }
+
+          message.lobbyId = reader.uint64().toString();
+          continue;
+        }
+        case 4: {
+          if (tag !== 37) {
+            break;
+          }
+
+          message.gameTime = reader.float();
+          continue;
+        }
+        case 5: {
+          if (tag !== 40) {
+            break;
+          }
+
+          message.debugSlot = reader.uint32();
+          continue;
+        }
+        case 6: {
+          if (tag !== 49) {
+            break;
+          }
+
+          message.debugMatchId = reader.fixed64().toString();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgDOTASubmitPlayerReportV2 {
+    return {
+      targetAccountId: isSet(object.targetAccountId) ? globalThis.Number(object.targetAccountId) : 0,
+      reportReason: globalThis.Array.isArray(object?.reportReason)
+        ? object.reportReason.map((e: any) => globalThis.Number(e))
+        : [],
+      lobbyId: isSet(object.lobbyId) ? globalThis.String(object.lobbyId) : "0",
+      gameTime: isSet(object.gameTime) ? globalThis.Number(object.gameTime) : 0,
+      debugSlot: isSet(object.debugSlot) ? globalThis.Number(object.debugSlot) : 0,
+      debugMatchId: isSet(object.debugMatchId) ? globalThis.String(object.debugMatchId) : "0",
+    };
+  },
+
+  toJSON(message: CMsgDOTASubmitPlayerReportV2): unknown {
+    const obj: any = {};
+    if (message.targetAccountId !== 0) {
+      obj.targetAccountId = Math.round(message.targetAccountId);
+    }
+    if (message.reportReason?.length) {
+      obj.reportReason = message.reportReason.map((e) => Math.round(e));
+    }
+    if (message.lobbyId !== "0") {
+      obj.lobbyId = message.lobbyId;
+    }
+    if (message.gameTime !== 0) {
+      obj.gameTime = message.gameTime;
+    }
+    if (message.debugSlot !== 0) {
+      obj.debugSlot = Math.round(message.debugSlot);
+    }
+    if (message.debugMatchId !== "0") {
+      obj.debugMatchId = message.debugMatchId;
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTASubmitPlayerReportV2>): CMsgDOTASubmitPlayerReportV2 {
+    return CMsgDOTASubmitPlayerReportV2.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgDOTASubmitPlayerReportV2>): CMsgDOTASubmitPlayerReportV2 {
+    const message = createBaseCMsgDOTASubmitPlayerReportV2();
+    message.targetAccountId = object.targetAccountId ?? 0;
+    message.reportReason = object.reportReason?.map((e) => e) || [];
+    message.lobbyId = object.lobbyId ?? "0";
+    message.gameTime = object.gameTime ?? 0;
+    message.debugSlot = object.debugSlot ?? 0;
+    message.debugMatchId = object.debugMatchId ?? "0";
+    return message;
+  },
+};
+
+function createBaseCMsgDOTASubmitPlayerReportResponseV2(): CMsgDOTASubmitPlayerReportResponseV2 {
+  return { targetAccountId: 0, reportReason: [], debugMessage: "", enumResult: 0 };
+}
+
+export const CMsgDOTASubmitPlayerReportResponseV2: MessageFns<CMsgDOTASubmitPlayerReportResponseV2> = {
+  encode(message: CMsgDOTASubmitPlayerReportResponseV2, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.targetAccountId !== 0) {
+      writer.uint32(8).uint32(message.targetAccountId);
+    }
+    writer.uint32(18).fork();
+    for (const v of message.reportReason) {
+      writer.uint32(v);
+    }
+    writer.join();
+    if (message.debugMessage !== "") {
+      writer.uint32(34).string(message.debugMessage);
+    }
+    if (message.enumResult !== 0) {
+      writer.uint32(40).int32(message.enumResult);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgDOTASubmitPlayerReportResponseV2 {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgDOTASubmitPlayerReportResponseV2();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.targetAccountId = reader.uint32();
+          continue;
+        }
+        case 2: {
+          if (tag === 16) {
+            message.reportReason.push(reader.uint32());
+
+            continue;
+          }
+
+          if (tag === 18) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.reportReason.push(reader.uint32());
+            }
+
+            continue;
+          }
+
+          break;
+        }
+        case 4: {
+          if (tag !== 34) {
+            break;
+          }
+
+          message.debugMessage = reader.string();
+          continue;
+        }
+        case 5: {
+          if (tag !== 40) {
+            break;
+          }
+
+          message.enumResult = reader.int32() as any;
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgDOTASubmitPlayerReportResponseV2 {
+    return {
+      targetAccountId: isSet(object.targetAccountId) ? globalThis.Number(object.targetAccountId) : 0,
+      reportReason: globalThis.Array.isArray(object?.reportReason)
+        ? object.reportReason.map((e: any) => globalThis.Number(e))
+        : [],
+      debugMessage: isSet(object.debugMessage) ? globalThis.String(object.debugMessage) : "",
+      enumResult: isSet(object.enumResult)
+        ? cMsgDOTASubmitPlayerReportResponseV2_EResultFromJSON(object.enumResult)
+        : 0,
+    };
+  },
+
+  toJSON(message: CMsgDOTASubmitPlayerReportResponseV2): unknown {
+    const obj: any = {};
+    if (message.targetAccountId !== 0) {
+      obj.targetAccountId = Math.round(message.targetAccountId);
+    }
+    if (message.reportReason?.length) {
+      obj.reportReason = message.reportReason.map((e) => Math.round(e));
+    }
+    if (message.debugMessage !== "") {
+      obj.debugMessage = message.debugMessage;
+    }
+    if (message.enumResult !== 0) {
+      obj.enumResult = cMsgDOTASubmitPlayerReportResponseV2_EResultToJSON(message.enumResult);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTASubmitPlayerReportResponseV2>): CMsgDOTASubmitPlayerReportResponseV2 {
+    return CMsgDOTASubmitPlayerReportResponseV2.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgDOTASubmitPlayerReportResponseV2>): CMsgDOTASubmitPlayerReportResponseV2 {
+    const message = createBaseCMsgDOTASubmitPlayerReportResponseV2();
+    message.targetAccountId = object.targetAccountId ?? 0;
+    message.reportReason = object.reportReason?.map((e) => e) || [];
+    message.debugMessage = object.debugMessage ?? "";
+    message.enumResult = object.enumResult ?? 0;
     return message;
   },
 };
@@ -9442,7 +10140,7 @@ export const CSODOTAGameHeroFavorites: MessageFns<CSODOTAGameHeroFavorites> = {
       writer.uint32(8).uint32(message.accountId);
     }
     if (message.heroId !== 0) {
-      writer.uint32(16).uint32(message.heroId);
+      writer.uint32(16).int32(message.heroId);
     }
     return writer;
   },
@@ -9467,7 +10165,7 @@ export const CSODOTAGameHeroFavorites: MessageFns<CSODOTAGameHeroFavorites> = {
             break;
           }
 
-          message.heroId = reader.uint32();
+          message.heroId = reader.int32();
           continue;
         }
       }
@@ -10735,7 +11433,7 @@ function createBaseCMsgGCGetHeroStandingsResponse_Hero(): CMsgGCGetHeroStandings
 export const CMsgGCGetHeroStandingsResponse_Hero: MessageFns<CMsgGCGetHeroStandingsResponse_Hero> = {
   encode(message: CMsgGCGetHeroStandingsResponse_Hero, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.heroId !== 0) {
-      writer.uint32(8).uint32(message.heroId);
+      writer.uint32(8).int32(message.heroId);
     }
     if (message.wins !== 0) {
       writer.uint32(16).uint32(message.wins);
@@ -10830,7 +11528,7 @@ export const CMsgGCGetHeroStandingsResponse_Hero: MessageFns<CMsgGCGetHeroStandi
             break;
           }
 
-          message.heroId = reader.uint32();
+          message.heroId = reader.int32();
           continue;
         }
         case 2: {
@@ -11743,7 +12441,7 @@ function createBaseCMsgGCGetHeroTimedStatsResponse(): CMsgGCGetHeroTimedStatsRes
 export const CMsgGCGetHeroTimedStatsResponse: MessageFns<CMsgGCGetHeroTimedStatsResponse> = {
   encode(message: CMsgGCGetHeroTimedStatsResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.heroId !== 0) {
-      writer.uint32(8).uint32(message.heroId);
+      writer.uint32(8).int32(message.heroId);
     }
     for (const v of message.rankChunkedStats) {
       CMsgGCGetHeroTimedStatsResponse_RankChunkedStats.encode(v!, writer.uint32(18).fork()).join();
@@ -11763,7 +12461,7 @@ export const CMsgGCGetHeroTimedStatsResponse: MessageFns<CMsgGCGetHeroTimedStats
             break;
           }
 
-          message.heroId = reader.uint32();
+          message.heroId = reader.int32();
           continue;
         }
         case 2: {
@@ -12582,82 +13280,6 @@ export const CMsgGCItemEditorReleaseReservationResponse: MessageFns<CMsgGCItemEd
   },
 };
 
-function createBaseCMsgDOTARewardTutorialPrizes(): CMsgDOTARewardTutorialPrizes {
-  return { locationId: 0, trackingOnly: false };
-}
-
-export const CMsgDOTARewardTutorialPrizes: MessageFns<CMsgDOTARewardTutorialPrizes> = {
-  encode(message: CMsgDOTARewardTutorialPrizes, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.locationId !== 0) {
-      writer.uint32(8).uint32(message.locationId);
-    }
-    if (message.trackingOnly !== false) {
-      writer.uint32(16).bool(message.trackingOnly);
-    }
-    return writer;
-  },
-
-  decode(input: BinaryReader | Uint8Array, length?: number): CMsgDOTARewardTutorialPrizes {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCMsgDOTARewardTutorialPrizes();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1: {
-          if (tag !== 8) {
-            break;
-          }
-
-          message.locationId = reader.uint32();
-          continue;
-        }
-        case 2: {
-          if (tag !== 16) {
-            break;
-          }
-
-          message.trackingOnly = reader.bool();
-          continue;
-        }
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skip(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): CMsgDOTARewardTutorialPrizes {
-    return {
-      locationId: isSet(object.locationId) ? globalThis.Number(object.locationId) : 0,
-      trackingOnly: isSet(object.trackingOnly) ? globalThis.Boolean(object.trackingOnly) : false,
-    };
-  },
-
-  toJSON(message: CMsgDOTARewardTutorialPrizes): unknown {
-    const obj: any = {};
-    if (message.locationId !== 0) {
-      obj.locationId = Math.round(message.locationId);
-    }
-    if (message.trackingOnly !== false) {
-      obj.trackingOnly = message.trackingOnly;
-    }
-    return obj;
-  },
-
-  create(base?: DeepPartial<CMsgDOTARewardTutorialPrizes>): CMsgDOTARewardTutorialPrizes {
-    return CMsgDOTARewardTutorialPrizes.fromPartial(base ?? {});
-  },
-  fromPartial(object: DeepPartial<CMsgDOTARewardTutorialPrizes>): CMsgDOTARewardTutorialPrizes {
-    const message = createBaseCMsgDOTARewardTutorialPrizes();
-    message.locationId = object.locationId ?? 0;
-    message.trackingOnly = object.trackingOnly ?? false;
-    return message;
-  },
-};
-
 function createBaseCMsgFlipLobbyTeams(): CMsgFlipLobbyTeams {
   return {};
 }
@@ -12959,7 +13581,7 @@ export const CMsgDOTAClaimEventActionData_GrantItemGiftData: MessageFns<
 };
 
 function createBaseCMsgDOTAClaimEventAction(): CMsgDOTAClaimEventAction {
-  return { eventId: 0, actionId: 0, quantity: 0, data: undefined };
+  return { eventId: 0, actionId: 0, quantity: 0, data: undefined, scoreMode: 0 };
 }
 
 export const CMsgDOTAClaimEventAction: MessageFns<CMsgDOTAClaimEventAction> = {
@@ -12975,6 +13597,9 @@ export const CMsgDOTAClaimEventAction: MessageFns<CMsgDOTAClaimEventAction> = {
     }
     if (message.data !== undefined) {
       CMsgDOTAClaimEventActionData.encode(message.data, writer.uint32(34).fork()).join();
+    }
+    if (message.scoreMode !== 0) {
+      writer.uint32(40).int32(message.scoreMode);
     }
     return writer;
   },
@@ -13018,6 +13643,14 @@ export const CMsgDOTAClaimEventAction: MessageFns<CMsgDOTAClaimEventAction> = {
           message.data = CMsgDOTAClaimEventActionData.decode(reader, reader.uint32());
           continue;
         }
+        case 5: {
+          if (tag !== 40) {
+            break;
+          }
+
+          message.scoreMode = reader.int32() as any;
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -13033,6 +13666,7 @@ export const CMsgDOTAClaimEventAction: MessageFns<CMsgDOTAClaimEventAction> = {
       actionId: isSet(object.actionId) ? globalThis.Number(object.actionId) : 0,
       quantity: isSet(object.quantity) ? globalThis.Number(object.quantity) : 0,
       data: isSet(object.data) ? CMsgDOTAClaimEventActionData.fromJSON(object.data) : undefined,
+      scoreMode: isSet(object.scoreMode) ? eEventActionScoreModeFromJSON(object.scoreMode) : 0,
     };
   },
 
@@ -13050,6 +13684,9 @@ export const CMsgDOTAClaimEventAction: MessageFns<CMsgDOTAClaimEventAction> = {
     if (message.data !== undefined) {
       obj.data = CMsgDOTAClaimEventActionData.toJSON(message.data);
     }
+    if (message.scoreMode !== 0) {
+      obj.scoreMode = eEventActionScoreModeToJSON(message.scoreMode);
+    }
     return obj;
   },
 
@@ -13064,459 +13701,7 @@ export const CMsgDOTAClaimEventAction: MessageFns<CMsgDOTAClaimEventAction> = {
     message.data = (object.data !== undefined && object.data !== null)
       ? CMsgDOTAClaimEventActionData.fromPartial(object.data)
       : undefined;
-    return message;
-  },
-};
-
-function createBaseCMsgDOTAClaimEventActionResponse(): CMsgDOTAClaimEventActionResponse {
-  return { result: 0, rewardResults: [] };
-}
-
-export const CMsgDOTAClaimEventActionResponse: MessageFns<CMsgDOTAClaimEventActionResponse> = {
-  encode(message: CMsgDOTAClaimEventActionResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.result !== 0) {
-      writer.uint32(8).int32(message.result);
-    }
-    for (const v of message.rewardResults) {
-      CMsgDOTAClaimEventActionResponse_GrantedRewardData.encode(v!, writer.uint32(18).fork()).join();
-    }
-    return writer;
-  },
-
-  decode(input: BinaryReader | Uint8Array, length?: number): CMsgDOTAClaimEventActionResponse {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCMsgDOTAClaimEventActionResponse();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1: {
-          if (tag !== 8) {
-            break;
-          }
-
-          message.result = reader.int32() as any;
-          continue;
-        }
-        case 2: {
-          if (tag !== 18) {
-            break;
-          }
-
-          message.rewardResults.push(
-            CMsgDOTAClaimEventActionResponse_GrantedRewardData.decode(reader, reader.uint32()),
-          );
-          continue;
-        }
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skip(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): CMsgDOTAClaimEventActionResponse {
-    return {
-      result: isSet(object.result) ? cMsgDOTAClaimEventActionResponse_ResultCodeFromJSON(object.result) : 0,
-      rewardResults: globalThis.Array.isArray(object?.rewardResults)
-        ? object.rewardResults.map((e: any) => CMsgDOTAClaimEventActionResponse_GrantedRewardData.fromJSON(e))
-        : [],
-    };
-  },
-
-  toJSON(message: CMsgDOTAClaimEventActionResponse): unknown {
-    const obj: any = {};
-    if (message.result !== 0) {
-      obj.result = cMsgDOTAClaimEventActionResponse_ResultCodeToJSON(message.result);
-    }
-    if (message.rewardResults?.length) {
-      obj.rewardResults = message.rewardResults.map((e) =>
-        CMsgDOTAClaimEventActionResponse_GrantedRewardData.toJSON(e)
-      );
-    }
-    return obj;
-  },
-
-  create(base?: DeepPartial<CMsgDOTAClaimEventActionResponse>): CMsgDOTAClaimEventActionResponse {
-    return CMsgDOTAClaimEventActionResponse.fromPartial(base ?? {});
-  },
-  fromPartial(object: DeepPartial<CMsgDOTAClaimEventActionResponse>): CMsgDOTAClaimEventActionResponse {
-    const message = createBaseCMsgDOTAClaimEventActionResponse();
-    message.result = object.result ?? 0;
-    message.rewardResults =
-      object.rewardResults?.map((e) => CMsgDOTAClaimEventActionResponse_GrantedRewardData.fromPartial(e)) || [];
-    return message;
-  },
-};
-
-function createBaseCMsgDOTAClaimEventActionResponse_MysteryItemRewardData(): CMsgDOTAClaimEventActionResponse_MysteryItemRewardData {
-  return { itemDef: 0, itemCategory: 0 };
-}
-
-export const CMsgDOTAClaimEventActionResponse_MysteryItemRewardData: MessageFns<
-  CMsgDOTAClaimEventActionResponse_MysteryItemRewardData
-> = {
-  encode(
-    message: CMsgDOTAClaimEventActionResponse_MysteryItemRewardData,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
-    if (message.itemDef !== 0) {
-      writer.uint32(8).uint32(message.itemDef);
-    }
-    if (message.itemCategory !== 0) {
-      writer.uint32(16).uint32(message.itemCategory);
-    }
-    return writer;
-  },
-
-  decode(input: BinaryReader | Uint8Array, length?: number): CMsgDOTAClaimEventActionResponse_MysteryItemRewardData {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCMsgDOTAClaimEventActionResponse_MysteryItemRewardData();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1: {
-          if (tag !== 8) {
-            break;
-          }
-
-          message.itemDef = reader.uint32();
-          continue;
-        }
-        case 2: {
-          if (tag !== 16) {
-            break;
-          }
-
-          message.itemCategory = reader.uint32();
-          continue;
-        }
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skip(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): CMsgDOTAClaimEventActionResponse_MysteryItemRewardData {
-    return {
-      itemDef: isSet(object.itemDef) ? globalThis.Number(object.itemDef) : 0,
-      itemCategory: isSet(object.itemCategory) ? globalThis.Number(object.itemCategory) : 0,
-    };
-  },
-
-  toJSON(message: CMsgDOTAClaimEventActionResponse_MysteryItemRewardData): unknown {
-    const obj: any = {};
-    if (message.itemDef !== 0) {
-      obj.itemDef = Math.round(message.itemDef);
-    }
-    if (message.itemCategory !== 0) {
-      obj.itemCategory = Math.round(message.itemCategory);
-    }
-    return obj;
-  },
-
-  create(
-    base?: DeepPartial<CMsgDOTAClaimEventActionResponse_MysteryItemRewardData>,
-  ): CMsgDOTAClaimEventActionResponse_MysteryItemRewardData {
-    return CMsgDOTAClaimEventActionResponse_MysteryItemRewardData.fromPartial(base ?? {});
-  },
-  fromPartial(
-    object: DeepPartial<CMsgDOTAClaimEventActionResponse_MysteryItemRewardData>,
-  ): CMsgDOTAClaimEventActionResponse_MysteryItemRewardData {
-    const message = createBaseCMsgDOTAClaimEventActionResponse_MysteryItemRewardData();
-    message.itemDef = object.itemDef ?? 0;
-    message.itemCategory = object.itemCategory ?? 0;
-    return message;
-  },
-};
-
-function createBaseCMsgDOTAClaimEventActionResponse_LootListRewardData(): CMsgDOTAClaimEventActionResponse_LootListRewardData {
-  return { itemDef: [] };
-}
-
-export const CMsgDOTAClaimEventActionResponse_LootListRewardData: MessageFns<
-  CMsgDOTAClaimEventActionResponse_LootListRewardData
-> = {
-  encode(
-    message: CMsgDOTAClaimEventActionResponse_LootListRewardData,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
-    writer.uint32(10).fork();
-    for (const v of message.itemDef) {
-      writer.uint32(v);
-    }
-    writer.join();
-    return writer;
-  },
-
-  decode(input: BinaryReader | Uint8Array, length?: number): CMsgDOTAClaimEventActionResponse_LootListRewardData {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCMsgDOTAClaimEventActionResponse_LootListRewardData();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1: {
-          if (tag === 8) {
-            message.itemDef.push(reader.uint32());
-
-            continue;
-          }
-
-          if (tag === 10) {
-            const end2 = reader.uint32() + reader.pos;
-            while (reader.pos < end2) {
-              message.itemDef.push(reader.uint32());
-            }
-
-            continue;
-          }
-
-          break;
-        }
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skip(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): CMsgDOTAClaimEventActionResponse_LootListRewardData {
-    return {
-      itemDef: globalThis.Array.isArray(object?.itemDef) ? object.itemDef.map((e: any) => globalThis.Number(e)) : [],
-    };
-  },
-
-  toJSON(message: CMsgDOTAClaimEventActionResponse_LootListRewardData): unknown {
-    const obj: any = {};
-    if (message.itemDef?.length) {
-      obj.itemDef = message.itemDef.map((e) => Math.round(e));
-    }
-    return obj;
-  },
-
-  create(
-    base?: DeepPartial<CMsgDOTAClaimEventActionResponse_LootListRewardData>,
-  ): CMsgDOTAClaimEventActionResponse_LootListRewardData {
-    return CMsgDOTAClaimEventActionResponse_LootListRewardData.fromPartial(base ?? {});
-  },
-  fromPartial(
-    object: DeepPartial<CMsgDOTAClaimEventActionResponse_LootListRewardData>,
-  ): CMsgDOTAClaimEventActionResponse_LootListRewardData {
-    const message = createBaseCMsgDOTAClaimEventActionResponse_LootListRewardData();
-    message.itemDef = object.itemDef?.map((e) => e) || [];
-    return message;
-  },
-};
-
-function createBaseCMsgDOTAClaimEventActionResponse_ActionListRewardData(): CMsgDOTAClaimEventActionResponse_ActionListRewardData {
-  return { actionId: 0, resultRewardData: Buffer.alloc(0) };
-}
-
-export const CMsgDOTAClaimEventActionResponse_ActionListRewardData: MessageFns<
-  CMsgDOTAClaimEventActionResponse_ActionListRewardData
-> = {
-  encode(
-    message: CMsgDOTAClaimEventActionResponse_ActionListRewardData,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
-    if (message.actionId !== 0) {
-      writer.uint32(8).uint32(message.actionId);
-    }
-    if (message.resultRewardData.length !== 0) {
-      writer.uint32(18).bytes(message.resultRewardData);
-    }
-    return writer;
-  },
-
-  decode(input: BinaryReader | Uint8Array, length?: number): CMsgDOTAClaimEventActionResponse_ActionListRewardData {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCMsgDOTAClaimEventActionResponse_ActionListRewardData();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1: {
-          if (tag !== 8) {
-            break;
-          }
-
-          message.actionId = reader.uint32();
-          continue;
-        }
-        case 2: {
-          if (tag !== 18) {
-            break;
-          }
-
-          message.resultRewardData = Buffer.from(reader.bytes());
-          continue;
-        }
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skip(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): CMsgDOTAClaimEventActionResponse_ActionListRewardData {
-    return {
-      actionId: isSet(object.actionId) ? globalThis.Number(object.actionId) : 0,
-      resultRewardData: isSet(object.resultRewardData)
-        ? Buffer.from(bytesFromBase64(object.resultRewardData))
-        : Buffer.alloc(0),
-    };
-  },
-
-  toJSON(message: CMsgDOTAClaimEventActionResponse_ActionListRewardData): unknown {
-    const obj: any = {};
-    if (message.actionId !== 0) {
-      obj.actionId = Math.round(message.actionId);
-    }
-    if (message.resultRewardData.length !== 0) {
-      obj.resultRewardData = base64FromBytes(message.resultRewardData);
-    }
-    return obj;
-  },
-
-  create(
-    base?: DeepPartial<CMsgDOTAClaimEventActionResponse_ActionListRewardData>,
-  ): CMsgDOTAClaimEventActionResponse_ActionListRewardData {
-    return CMsgDOTAClaimEventActionResponse_ActionListRewardData.fromPartial(base ?? {});
-  },
-  fromPartial(
-    object: DeepPartial<CMsgDOTAClaimEventActionResponse_ActionListRewardData>,
-  ): CMsgDOTAClaimEventActionResponse_ActionListRewardData {
-    const message = createBaseCMsgDOTAClaimEventActionResponse_ActionListRewardData();
-    message.actionId = object.actionId ?? 0;
-    message.resultRewardData = object.resultRewardData ?? Buffer.alloc(0);
-    return message;
-  },
-};
-
-function createBaseCMsgDOTAClaimEventActionResponse_GrantedRewardData(): CMsgDOTAClaimEventActionResponse_GrantedRewardData {
-  return { grantIndex: 0, scoreIndex: 0, rewardIndex: 0, rewardData: Buffer.alloc(0) };
-}
-
-export const CMsgDOTAClaimEventActionResponse_GrantedRewardData: MessageFns<
-  CMsgDOTAClaimEventActionResponse_GrantedRewardData
-> = {
-  encode(
-    message: CMsgDOTAClaimEventActionResponse_GrantedRewardData,
-    writer: BinaryWriter = new BinaryWriter(),
-  ): BinaryWriter {
-    if (message.grantIndex !== 0) {
-      writer.uint32(8).uint32(message.grantIndex);
-    }
-    if (message.scoreIndex !== 0) {
-      writer.uint32(16).uint32(message.scoreIndex);
-    }
-    if (message.rewardIndex !== 0) {
-      writer.uint32(24).uint32(message.rewardIndex);
-    }
-    if (message.rewardData.length !== 0) {
-      writer.uint32(34).bytes(message.rewardData);
-    }
-    return writer;
-  },
-
-  decode(input: BinaryReader | Uint8Array, length?: number): CMsgDOTAClaimEventActionResponse_GrantedRewardData {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCMsgDOTAClaimEventActionResponse_GrantedRewardData();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1: {
-          if (tag !== 8) {
-            break;
-          }
-
-          message.grantIndex = reader.uint32();
-          continue;
-        }
-        case 2: {
-          if (tag !== 16) {
-            break;
-          }
-
-          message.scoreIndex = reader.uint32();
-          continue;
-        }
-        case 3: {
-          if (tag !== 24) {
-            break;
-          }
-
-          message.rewardIndex = reader.uint32();
-          continue;
-        }
-        case 4: {
-          if (tag !== 34) {
-            break;
-          }
-
-          message.rewardData = Buffer.from(reader.bytes());
-          continue;
-        }
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skip(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): CMsgDOTAClaimEventActionResponse_GrantedRewardData {
-    return {
-      grantIndex: isSet(object.grantIndex) ? globalThis.Number(object.grantIndex) : 0,
-      scoreIndex: isSet(object.scoreIndex) ? globalThis.Number(object.scoreIndex) : 0,
-      rewardIndex: isSet(object.rewardIndex) ? globalThis.Number(object.rewardIndex) : 0,
-      rewardData: isSet(object.rewardData) ? Buffer.from(bytesFromBase64(object.rewardData)) : Buffer.alloc(0),
-    };
-  },
-
-  toJSON(message: CMsgDOTAClaimEventActionResponse_GrantedRewardData): unknown {
-    const obj: any = {};
-    if (message.grantIndex !== 0) {
-      obj.grantIndex = Math.round(message.grantIndex);
-    }
-    if (message.scoreIndex !== 0) {
-      obj.scoreIndex = Math.round(message.scoreIndex);
-    }
-    if (message.rewardIndex !== 0) {
-      obj.rewardIndex = Math.round(message.rewardIndex);
-    }
-    if (message.rewardData.length !== 0) {
-      obj.rewardData = base64FromBytes(message.rewardData);
-    }
-    return obj;
-  },
-
-  create(
-    base?: DeepPartial<CMsgDOTAClaimEventActionResponse_GrantedRewardData>,
-  ): CMsgDOTAClaimEventActionResponse_GrantedRewardData {
-    return CMsgDOTAClaimEventActionResponse_GrantedRewardData.fromPartial(base ?? {});
-  },
-  fromPartial(
-    object: DeepPartial<CMsgDOTAClaimEventActionResponse_GrantedRewardData>,
-  ): CMsgDOTAClaimEventActionResponse_GrantedRewardData {
-    const message = createBaseCMsgDOTAClaimEventActionResponse_GrantedRewardData();
-    message.grantIndex = object.grantIndex ?? 0;
-    message.scoreIndex = object.scoreIndex ?? 0;
-    message.rewardIndex = object.rewardIndex ?? 0;
-    message.rewardData = object.rewardData ?? Buffer.alloc(0);
+    message.scoreMode = object.scoreMode ?? 0;
     return message;
   },
 };
@@ -14564,6 +14749,130 @@ export const CMsgDOTACompendiumSelectionResponse: MessageFns<CMsgDOTACompendiumS
   },
 };
 
+function createBaseCMsgDOTACompendiumRemoveAllSelections(): CMsgDOTACompendiumRemoveAllSelections {
+  return { leagueid: 0 };
+}
+
+export const CMsgDOTACompendiumRemoveAllSelections: MessageFns<CMsgDOTACompendiumRemoveAllSelections> = {
+  encode(message: CMsgDOTACompendiumRemoveAllSelections, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.leagueid !== 0) {
+      writer.uint32(8).uint32(message.leagueid);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgDOTACompendiumRemoveAllSelections {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgDOTACompendiumRemoveAllSelections();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.leagueid = reader.uint32();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgDOTACompendiumRemoveAllSelections {
+    return { leagueid: isSet(object.leagueid) ? globalThis.Number(object.leagueid) : 0 };
+  },
+
+  toJSON(message: CMsgDOTACompendiumRemoveAllSelections): unknown {
+    const obj: any = {};
+    if (message.leagueid !== 0) {
+      obj.leagueid = Math.round(message.leagueid);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgDOTACompendiumRemoveAllSelections>): CMsgDOTACompendiumRemoveAllSelections {
+    return CMsgDOTACompendiumRemoveAllSelections.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgDOTACompendiumRemoveAllSelections>): CMsgDOTACompendiumRemoveAllSelections {
+    const message = createBaseCMsgDOTACompendiumRemoveAllSelections();
+    message.leagueid = object.leagueid ?? 0;
+    return message;
+  },
+};
+
+function createBaseCMsgDOTACompendiumRemoveAllSelectionsResponse(): CMsgDOTACompendiumRemoveAllSelectionsResponse {
+  return { eresult: 2 };
+}
+
+export const CMsgDOTACompendiumRemoveAllSelectionsResponse: MessageFns<CMsgDOTACompendiumRemoveAllSelectionsResponse> =
+  {
+    encode(
+      message: CMsgDOTACompendiumRemoveAllSelectionsResponse,
+      writer: BinaryWriter = new BinaryWriter(),
+    ): BinaryWriter {
+      if (message.eresult !== 2) {
+        writer.uint32(8).uint32(message.eresult);
+      }
+      return writer;
+    },
+
+    decode(input: BinaryReader | Uint8Array, length?: number): CMsgDOTACompendiumRemoveAllSelectionsResponse {
+      const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+      let end = length === undefined ? reader.len : reader.pos + length;
+      const message = createBaseCMsgDOTACompendiumRemoveAllSelectionsResponse();
+      while (reader.pos < end) {
+        const tag = reader.uint32();
+        switch (tag >>> 3) {
+          case 1: {
+            if (tag !== 8) {
+              break;
+            }
+
+            message.eresult = reader.uint32();
+            continue;
+          }
+        }
+        if ((tag & 7) === 4 || tag === 0) {
+          break;
+        }
+        reader.skip(tag & 7);
+      }
+      return message;
+    },
+
+    fromJSON(object: any): CMsgDOTACompendiumRemoveAllSelectionsResponse {
+      return { eresult: isSet(object.eresult) ? globalThis.Number(object.eresult) : 2 };
+    },
+
+    toJSON(message: CMsgDOTACompendiumRemoveAllSelectionsResponse): unknown {
+      const obj: any = {};
+      if (message.eresult !== 2) {
+        obj.eresult = Math.round(message.eresult);
+      }
+      return obj;
+    },
+
+    create(
+      base?: DeepPartial<CMsgDOTACompendiumRemoveAllSelectionsResponse>,
+    ): CMsgDOTACompendiumRemoveAllSelectionsResponse {
+      return CMsgDOTACompendiumRemoveAllSelectionsResponse.fromPartial(base ?? {});
+    },
+    fromPartial(
+      object: DeepPartial<CMsgDOTACompendiumRemoveAllSelectionsResponse>,
+    ): CMsgDOTACompendiumRemoveAllSelectionsResponse {
+      const message = createBaseCMsgDOTACompendiumRemoveAllSelectionsResponse();
+      message.eresult = object.eresult ?? 2;
+      return message;
+    },
+  };
+
 function createBaseCMsgDOTACompendiumData(): CMsgDOTACompendiumData {
   return { selections: [] };
 }
@@ -14837,7 +15146,7 @@ export const CMsgDOTAGetPlayerMatchHistory: MessageFns<CMsgDOTAGetPlayerMatchHis
       writer.uint32(24).uint32(message.matchesRequested);
     }
     if (message.heroId !== 0) {
-      writer.uint32(32).uint32(message.heroId);
+      writer.uint32(32).int32(message.heroId);
     }
     if (message.requestId !== 0) {
       writer.uint32(40).uint32(message.requestId);
@@ -14890,7 +15199,7 @@ export const CMsgDOTAGetPlayerMatchHistory: MessageFns<CMsgDOTAGetPlayerMatchHis
             break;
           }
 
-          message.heroId = reader.uint32();
+          message.heroId = reader.int32();
           continue;
         }
         case 5: {
@@ -15096,6 +15405,7 @@ function createBaseCMsgDOTAGetPlayerMatchHistoryResponse_Match(): CMsgDOTAGetPla
     teamId: 0,
     teamName: "",
     ugcTeamUiLogo: "0",
+    selectedFacet: 0,
   };
 }
 
@@ -15111,7 +15421,7 @@ export const CMsgDOTAGetPlayerMatchHistoryResponse_Match: MessageFns<CMsgDOTAGet
       writer.uint32(16).uint32(message.startTime);
     }
     if (message.heroId !== 0) {
-      writer.uint32(24).uint32(message.heroId);
+      writer.uint32(24).int32(message.heroId);
     }
     if (message.winner !== false) {
       writer.uint32(32).bool(message.winner);
@@ -15167,6 +15477,9 @@ export const CMsgDOTAGetPlayerMatchHistoryResponse_Match: MessageFns<CMsgDOTAGet
     if (message.ugcTeamUiLogo !== "0") {
       writer.uint32(168).uint64(message.ugcTeamUiLogo);
     }
+    if (message.selectedFacet !== 0) {
+      writer.uint32(176).uint32(message.selectedFacet);
+    }
     return writer;
   },
 
@@ -15198,7 +15511,7 @@ export const CMsgDOTAGetPlayerMatchHistoryResponse_Match: MessageFns<CMsgDOTAGet
             break;
           }
 
-          message.heroId = reader.uint32();
+          message.heroId = reader.int32();
           continue;
         }
         case 4: {
@@ -15345,6 +15658,14 @@ export const CMsgDOTAGetPlayerMatchHistoryResponse_Match: MessageFns<CMsgDOTAGet
           message.ugcTeamUiLogo = reader.uint64().toString();
           continue;
         }
+        case 22: {
+          if (tag !== 176) {
+            break;
+          }
+
+          message.selectedFacet = reader.uint32();
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -15379,6 +15700,7 @@ export const CMsgDOTAGetPlayerMatchHistoryResponse_Match: MessageFns<CMsgDOTAGet
       teamId: isSet(object.teamId) ? globalThis.Number(object.teamId) : 0,
       teamName: isSet(object.teamName) ? globalThis.String(object.teamName) : "",
       ugcTeamUiLogo: isSet(object.ugcTeamUiLogo) ? globalThis.String(object.ugcTeamUiLogo) : "0",
+      selectedFacet: isSet(object.selectedFacet) ? globalThis.Number(object.selectedFacet) : 0,
     };
   },
 
@@ -15447,6 +15769,9 @@ export const CMsgDOTAGetPlayerMatchHistoryResponse_Match: MessageFns<CMsgDOTAGet
     if (message.ugcTeamUiLogo !== "0") {
       obj.ugcTeamUiLogo = message.ugcTeamUiLogo;
     }
+    if (message.selectedFacet !== 0) {
+      obj.selectedFacet = Math.round(message.selectedFacet);
+    }
     return obj;
   },
 
@@ -15478,6 +15803,7 @@ export const CMsgDOTAGetPlayerMatchHistoryResponse_Match: MessageFns<CMsgDOTAGet
     message.teamId = object.teamId ?? 0;
     message.teamName = object.teamName ?? "";
     message.ugcTeamUiLogo = object.ugcTeamUiLogo ?? "0";
+    message.selectedFacet = object.selectedFacet ?? 0;
     return message;
   },
 };
@@ -16372,7 +16698,7 @@ export const CMsgClientToGCGetAllHeroOrderResponse: MessageFns<CMsgClientToGCGet
   encode(message: CMsgClientToGCGetAllHeroOrderResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     writer.uint32(10).fork();
     for (const v of message.heroIds) {
-      writer.uint32(v);
+      writer.int32(v);
     }
     writer.join();
     return writer;
@@ -16387,7 +16713,7 @@ export const CMsgClientToGCGetAllHeroOrderResponse: MessageFns<CMsgClientToGCGet
       switch (tag >>> 3) {
         case 1: {
           if (tag === 8) {
-            message.heroIds.push(reader.uint32());
+            message.heroIds.push(reader.int32());
 
             continue;
           }
@@ -16395,7 +16721,7 @@ export const CMsgClientToGCGetAllHeroOrderResponse: MessageFns<CMsgClientToGCGet
           if (tag === 10) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.heroIds.push(reader.uint32());
+              message.heroIds.push(reader.int32());
             }
 
             continue;
@@ -16525,7 +16851,7 @@ export const CMsgClientToGCGetAllHeroProgressResponse: MessageFns<CMsgClientToGC
       writer.uint32(8).uint32(message.accountId);
     }
     if (message.currHeroId !== 0) {
-      writer.uint32(16).uint32(message.currHeroId);
+      writer.uint32(16).int32(message.currHeroId);
     }
     if (message.lapsCompleted !== 0) {
       writer.uint32(24).uint32(message.lapsCompleted);
@@ -16552,10 +16878,10 @@ export const CMsgClientToGCGetAllHeroProgressResponse: MessageFns<CMsgClientToGC
       writer.uint32(80).uint32(message.lapHeroesRemaining);
     }
     if (message.nextHeroId !== 0) {
-      writer.uint32(88).uint32(message.nextHeroId);
+      writer.uint32(88).int32(message.nextHeroId);
     }
     if (message.prevHeroId !== 0) {
-      writer.uint32(96).uint32(message.prevHeroId);
+      writer.uint32(96).int32(message.prevHeroId);
     }
     if (message.prevHeroGames !== 0) {
       writer.uint32(104).uint32(message.prevHeroGames);
@@ -16579,7 +16905,7 @@ export const CMsgClientToGCGetAllHeroProgressResponse: MessageFns<CMsgClientToGC
       writer.uint32(154).string(message.profileName);
     }
     if (message.startHeroId !== 0) {
-      writer.uint32(160).uint32(message.startHeroId);
+      writer.uint32(160).int32(message.startHeroId);
     }
     return writer;
   },
@@ -16604,7 +16930,7 @@ export const CMsgClientToGCGetAllHeroProgressResponse: MessageFns<CMsgClientToGC
             break;
           }
 
-          message.currHeroId = reader.uint32();
+          message.currHeroId = reader.int32();
           continue;
         }
         case 3: {
@@ -16676,7 +17002,7 @@ export const CMsgClientToGCGetAllHeroProgressResponse: MessageFns<CMsgClientToGC
             break;
           }
 
-          message.nextHeroId = reader.uint32();
+          message.nextHeroId = reader.int32();
           continue;
         }
         case 12: {
@@ -16684,7 +17010,7 @@ export const CMsgClientToGCGetAllHeroProgressResponse: MessageFns<CMsgClientToGC
             break;
           }
 
-          message.prevHeroId = reader.uint32();
+          message.prevHeroId = reader.int32();
           continue;
         }
         case 13: {
@@ -16748,7 +17074,7 @@ export const CMsgClientToGCGetAllHeroProgressResponse: MessageFns<CMsgClientToGC
             break;
           }
 
-          message.startHeroId = reader.uint32();
+          message.startHeroId = reader.int32();
           continue;
         }
       }
@@ -17738,7 +18064,7 @@ export const CMsgClientToGCCreateHeroStatue: MessageFns<CMsgClientToGCCreateHero
       writer.uint32(8).uint64(message.sourceItemId);
     }
     if (message.heroId !== 0) {
-      writer.uint32(24).uint32(message.heroId);
+      writer.uint32(24).int32(message.heroId);
     }
     if (message.sequenceName !== "") {
       writer.uint32(34).string(message.sequenceName);
@@ -17788,7 +18114,7 @@ export const CMsgClientToGCCreateHeroStatue: MessageFns<CMsgClientToGCCreateHero
             break;
           }
 
-          message.heroId = reader.uint32();
+          message.heroId = reader.int32();
           continue;
         }
         case 4: {
@@ -20397,7 +20723,7 @@ export const CMsgClientToGCGetQuestProgressResponse_Challenge: MessageFns<
       writer.uint32(24).uint32(message.attempts);
     }
     if (message.heroId !== 0) {
-      writer.uint32(32).uint32(message.heroId);
+      writer.uint32(32).int32(message.heroId);
     }
     if (message.templateId !== 0) {
       writer.uint32(40).uint32(message.templateId);
@@ -20444,7 +20770,7 @@ export const CMsgClientToGCGetQuestProgressResponse_Challenge: MessageFns<
             break;
           }
 
-          message.heroId = reader.uint32();
+          message.heroId = reader.int32();
           continue;
         }
         case 5: {
@@ -20680,7 +21006,7 @@ function createBaseCMsgGCGetHeroStatsHistory(): CMsgGCGetHeroStatsHistory {
 export const CMsgGCGetHeroStatsHistory: MessageFns<CMsgGCGetHeroStatsHistory> = {
   encode(message: CMsgGCGetHeroStatsHistory, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.heroId !== 0) {
-      writer.uint32(8).uint32(message.heroId);
+      writer.uint32(8).int32(message.heroId);
     }
     return writer;
   },
@@ -20697,7 +21023,7 @@ export const CMsgGCGetHeroStatsHistory: MessageFns<CMsgGCGetHeroStatsHistory> = 
             break;
           }
 
-          message.heroId = reader.uint32();
+          message.heroId = reader.int32();
           continue;
         }
       }
@@ -20738,7 +21064,7 @@ function createBaseCMsgGCGetHeroStatsHistoryResponse(): CMsgGCGetHeroStatsHistor
 export const CMsgGCGetHeroStatsHistoryResponse: MessageFns<CMsgGCGetHeroStatsHistoryResponse> = {
   encode(message: CMsgGCGetHeroStatsHistoryResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.heroId !== 0) {
-      writer.uint32(8).uint32(message.heroId);
+      writer.uint32(8).int32(message.heroId);
     }
     for (const v of message.records) {
       CMsgDOTASDOHeroStatsHistory.encode(v!, writer.uint32(18).fork()).join();
@@ -20758,7 +21084,7 @@ export const CMsgGCGetHeroStatsHistoryResponse: MessageFns<CMsgGCGetHeroStatsHis
             break;
           }
 
-          message.heroId = reader.uint32();
+          message.heroId = reader.int32();
           continue;
         }
         case 2: {
@@ -23982,7 +24308,7 @@ export const CMsgGCToClientQuestProgressUpdated_Challenge: MessageFns<CMsgGCToCl
       writer.uint32(24).uint32(message.attempts);
     }
     if (message.heroId !== 0) {
-      writer.uint32(32).uint32(message.heroId);
+      writer.uint32(32).int32(message.heroId);
     }
     if (message.templateId !== 0) {
       writer.uint32(40).uint32(message.templateId);
@@ -24032,7 +24358,7 @@ export const CMsgGCToClientQuestProgressUpdated_Challenge: MessageFns<CMsgGCToCl
             break;
           }
 
-          message.heroId = reader.uint32();
+          message.heroId = reader.int32();
           continue;
         }
         case 5: {
@@ -31788,7 +32114,7 @@ export const CMsgDOTAUnanchorPhoneNumberResponse: MessageFns<CMsgDOTAUnanchorPho
 };
 
 function createBaseCMsgGCToClientCommendNotification(): CMsgGCToClientCommendNotification {
-  return { commenderAccountId: 0, commenderName: "", flags: 0 };
+  return { commenderAccountId: 0, commenderName: "", flags: 0, commenderHeroId: 0 };
 }
 
 export const CMsgGCToClientCommendNotification: MessageFns<CMsgGCToClientCommendNotification> = {
@@ -31801,6 +32127,9 @@ export const CMsgGCToClientCommendNotification: MessageFns<CMsgGCToClientCommend
     }
     if (message.flags !== 0) {
       writer.uint32(24).uint32(message.flags);
+    }
+    if (message.commenderHeroId !== 0) {
+      writer.uint32(32).int32(message.commenderHeroId);
     }
     return writer;
   },
@@ -31836,6 +32165,14 @@ export const CMsgGCToClientCommendNotification: MessageFns<CMsgGCToClientCommend
           message.flags = reader.uint32();
           continue;
         }
+        case 4: {
+          if (tag !== 32) {
+            break;
+          }
+
+          message.commenderHeroId = reader.int32();
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -31850,6 +32187,7 @@ export const CMsgGCToClientCommendNotification: MessageFns<CMsgGCToClientCommend
       commenderAccountId: isSet(object.commenderAccountId) ? globalThis.Number(object.commenderAccountId) : 0,
       commenderName: isSet(object.commenderName) ? globalThis.String(object.commenderName) : "",
       flags: isSet(object.flags) ? globalThis.Number(object.flags) : 0,
+      commenderHeroId: isSet(object.commenderHeroId) ? globalThis.Number(object.commenderHeroId) : 0,
     };
   },
 
@@ -31864,6 +32202,9 @@ export const CMsgGCToClientCommendNotification: MessageFns<CMsgGCToClientCommend
     if (message.flags !== 0) {
       obj.flags = Math.round(message.flags);
     }
+    if (message.commenderHeroId !== 0) {
+      obj.commenderHeroId = Math.round(message.commenderHeroId);
+    }
     return obj;
   },
 
@@ -31875,6 +32216,7 @@ export const CMsgGCToClientCommendNotification: MessageFns<CMsgGCToClientCommend
     message.commenderAccountId = object.commenderAccountId ?? 0;
     message.commenderName = object.commenderName ?? "";
     message.flags = object.flags ?? 0;
+    message.commenderHeroId = object.commenderHeroId ?? 0;
     return message;
   },
 };
@@ -31889,7 +32231,7 @@ export const CMsgDOTAClientToGCQuickStatsRequest: MessageFns<CMsgDOTAClientToGCQ
       writer.uint32(8).uint32(message.playerAccountId);
     }
     if (message.heroId !== 0) {
-      writer.uint32(16).uint32(message.heroId);
+      writer.uint32(16).int32(message.heroId);
     }
     if (message.itemId !== -1) {
       writer.uint32(24).int32(message.itemId);
@@ -31920,7 +32262,7 @@ export const CMsgDOTAClientToGCQuickStatsRequest: MessageFns<CMsgDOTAClientToGCQ
             break;
           }
 
-          message.heroId = reader.uint32();
+          message.heroId = reader.int32();
           continue;
         }
         case 3: {
@@ -32919,7 +33261,7 @@ function createBaseCMsgPurchaseHeroRandomRelic(): CMsgPurchaseHeroRandomRelic {
 export const CMsgPurchaseHeroRandomRelic: MessageFns<CMsgPurchaseHeroRandomRelic> = {
   encode(message: CMsgPurchaseHeroRandomRelic, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.heroId !== 0) {
-      writer.uint32(8).uint32(message.heroId);
+      writer.uint32(8).int32(message.heroId);
     }
     if (message.relicRarity !== -1) {
       writer.uint32(16).int32(message.relicRarity);
@@ -32939,7 +33281,7 @@ export const CMsgPurchaseHeroRandomRelic: MessageFns<CMsgPurchaseHeroRandomRelic
             break;
           }
 
-          message.heroId = reader.uint32();
+          message.heroId = reader.int32();
           continue;
         }
         case 2: {
@@ -33444,7 +33786,7 @@ function createBaseCMsgProfileResponse_FeaturedHero(): CMsgProfileResponse_Featu
 export const CMsgProfileResponse_FeaturedHero: MessageFns<CMsgProfileResponse_FeaturedHero> = {
   encode(message: CMsgProfileResponse_FeaturedHero, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.heroId !== 0) {
-      writer.uint32(8).uint32(message.heroId);
+      writer.uint32(8).int32(message.heroId);
     }
     for (const v of message.equippedEconItems) {
       CSOEconItem.encode(v!, writer.uint32(18).fork()).join();
@@ -33473,7 +33815,7 @@ export const CMsgProfileResponse_FeaturedHero: MessageFns<CMsgProfileResponse_Fe
             break;
           }
 
-          message.heroId = reader.uint32();
+          message.heroId = reader.int32();
           continue;
         }
         case 2: {
@@ -33583,7 +33925,7 @@ export const CMsgProfileResponse_MatchInfo: MessageFns<CMsgProfileResponse_Match
       writer.uint32(24).sint32(message.performanceRating);
     }
     if (message.heroId !== 0) {
-      writer.uint32(32).uint32(message.heroId);
+      writer.uint32(32).int32(message.heroId);
     }
     if (message.wonMatch !== false) {
       writer.uint32(40).bool(message.wonMatch);
@@ -33627,7 +33969,7 @@ export const CMsgProfileResponse_MatchInfo: MessageFns<CMsgProfileResponse_Match
             break;
           }
 
-          message.heroId = reader.uint32();
+          message.heroId = reader.int32();
           continue;
         }
         case 5: {
@@ -33702,7 +34044,7 @@ export const CMsgProfileUpdate: MessageFns<CMsgProfileUpdate> = {
     }
     writer.uint32(18).fork();
     for (const v of message.featuredHeroIds) {
-      writer.uint32(v);
+      writer.int32(v);
     }
     writer.join();
     return writer;
@@ -33725,7 +34067,7 @@ export const CMsgProfileUpdate: MessageFns<CMsgProfileUpdate> = {
         }
         case 2: {
           if (tag === 16) {
-            message.featuredHeroIds.push(reader.uint32());
+            message.featuredHeroIds.push(reader.int32());
 
             continue;
           }
@@ -33733,7 +34075,7 @@ export const CMsgProfileUpdate: MessageFns<CMsgProfileUpdate> = {
           if (tag === 18) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.featuredHeroIds.push(reader.uint32());
+              message.featuredHeroIds.push(reader.int32());
             }
 
             continue;
@@ -34152,7 +34494,7 @@ function createBaseCMsgHeroGlobalDataRequest(): CMsgHeroGlobalDataRequest {
 export const CMsgHeroGlobalDataRequest: MessageFns<CMsgHeroGlobalDataRequest> = {
   encode(message: CMsgHeroGlobalDataRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.heroId !== 0) {
-      writer.uint32(8).uint32(message.heroId);
+      writer.uint32(8).int32(message.heroId);
     }
     return writer;
   },
@@ -34169,7 +34511,7 @@ export const CMsgHeroGlobalDataRequest: MessageFns<CMsgHeroGlobalDataRequest> = 
             break;
           }
 
-          message.heroId = reader.uint32();
+          message.heroId = reader.int32();
           continue;
         }
       }
@@ -34210,7 +34552,7 @@ function createBaseCMsgHeroGlobalDataResponse(): CMsgHeroGlobalDataResponse {
 export const CMsgHeroGlobalDataResponse: MessageFns<CMsgHeroGlobalDataResponse> = {
   encode(message: CMsgHeroGlobalDataResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.heroId !== 0) {
-      writer.uint32(8).uint32(message.heroId);
+      writer.uint32(8).int32(message.heroId);
     }
     for (const v of message.heroDataPerChunk) {
       CMsgHeroGlobalDataResponse_HeroDataPerRankChunk.encode(v!, writer.uint32(18).fork()).join();
@@ -34230,7 +34572,7 @@ export const CMsgHeroGlobalDataResponse: MessageFns<CMsgHeroGlobalDataResponse> 
             break;
           }
 
-          message.heroId = reader.uint32();
+          message.heroId = reader.int32();
           continue;
         }
         case 2: {
@@ -34784,13 +35126,13 @@ export const CMsgHeroGlobalDataHeroesAlliesAndEnemies_HeroData: MessageFns<
     writer: BinaryWriter = new BinaryWriter(),
   ): BinaryWriter {
     if (message.heroId !== 0) {
-      writer.uint32(8).uint32(message.heroId);
+      writer.uint32(8).int32(message.heroId);
     }
     if (message.winRate !== 0) {
       writer.uint32(16).uint32(message.winRate);
     }
     if (message.firstOtherHeroId !== 0) {
-      writer.uint32(24).uint32(message.firstOtherHeroId);
+      writer.uint32(24).int32(message.firstOtherHeroId);
     }
     writer.uint32(42).fork();
     for (const v of message.allyWinRate) {
@@ -34817,7 +35159,7 @@ export const CMsgHeroGlobalDataHeroesAlliesAndEnemies_HeroData: MessageFns<
             break;
           }
 
-          message.heroId = reader.uint32();
+          message.heroId = reader.int32();
           continue;
         }
         case 2: {
@@ -34833,7 +35175,7 @@ export const CMsgHeroGlobalDataHeroesAlliesAndEnemies_HeroData: MessageFns<
             break;
           }
 
-          message.firstOtherHeroId = reader.uint32();
+          message.firstOtherHeroId = reader.int32();
           continue;
         }
         case 5: {
@@ -35205,7 +35547,7 @@ export const CMsgGCToClientCavernCrawlMapPathCompleted: MessageFns<CMsgGCToClien
       writer.uint32(8).uint32(message.eventId);
     }
     if (message.heroIdCompleted !== 0) {
-      writer.uint32(16).uint32(message.heroIdCompleted);
+      writer.uint32(16).int32(message.heroIdCompleted);
     }
     for (const v of message.completedPaths) {
       CMsgGCToClientCavernCrawlMapPathCompleted_CompletedPathInfo.encode(v!, writer.uint32(26).fork()).join();
@@ -35236,7 +35578,7 @@ export const CMsgGCToClientCavernCrawlMapPathCompleted: MessageFns<CMsgGCToClien
             break;
           }
 
-          message.heroIdCompleted = reader.uint32();
+          message.heroIdCompleted = reader.int32();
           continue;
         }
         case 3: {
@@ -41528,7 +41870,7 @@ export const CMsgClientToGCRequestPlayerHeroRecentAccomplishments: MessageFns<
       writer.uint32(8).uint32(message.accountId);
     }
     if (message.heroId !== 0) {
-      writer.uint32(16).uint32(message.heroId);
+      writer.uint32(16).int32(message.heroId);
     }
     return writer;
   },
@@ -41553,7 +41895,7 @@ export const CMsgClientToGCRequestPlayerHeroRecentAccomplishments: MessageFns<
             break;
           }
 
-          message.heroId = reader.uint32();
+          message.heroId = reader.int32();
           continue;
         }
       }
@@ -43237,6 +43579,363 @@ export const CMsgDraftTriviaVoteCount: MessageFns<CMsgDraftTriviaVoteCount> = {
   },
 };
 
+function createBaseCMsgClientToGCRequestReporterUpdates(): CMsgClientToGCRequestReporterUpdates {
+  return {};
+}
+
+export const CMsgClientToGCRequestReporterUpdates: MessageFns<CMsgClientToGCRequestReporterUpdates> = {
+  encode(_: CMsgClientToGCRequestReporterUpdates, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgClientToGCRequestReporterUpdates {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgClientToGCRequestReporterUpdates();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(_: any): CMsgClientToGCRequestReporterUpdates {
+    return {};
+  },
+
+  toJSON(_: CMsgClientToGCRequestReporterUpdates): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCRequestReporterUpdates>): CMsgClientToGCRequestReporterUpdates {
+    return CMsgClientToGCRequestReporterUpdates.fromPartial(base ?? {});
+  },
+  fromPartial(_: DeepPartial<CMsgClientToGCRequestReporterUpdates>): CMsgClientToGCRequestReporterUpdates {
+    const message = createBaseCMsgClientToGCRequestReporterUpdates();
+    return message;
+  },
+};
+
+function createBaseCMsgClientToGCRequestReporterUpdatesResponse(): CMsgClientToGCRequestReporterUpdatesResponse {
+  return { enumResult: 0, updates: [], numReported: 0, numNoActionTaken: 0 };
+}
+
+export const CMsgClientToGCRequestReporterUpdatesResponse: MessageFns<CMsgClientToGCRequestReporterUpdatesResponse> = {
+  encode(
+    message: CMsgClientToGCRequestReporterUpdatesResponse,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.enumResult !== 0) {
+      writer.uint32(8).int32(message.enumResult);
+    }
+    for (const v of message.updates) {
+      CMsgClientToGCRequestReporterUpdatesResponse_ReporterUpdate.encode(v!, writer.uint32(18).fork()).join();
+    }
+    if (message.numReported !== 0) {
+      writer.uint32(24).int32(message.numReported);
+    }
+    if (message.numNoActionTaken !== 0) {
+      writer.uint32(32).int32(message.numNoActionTaken);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgClientToGCRequestReporterUpdatesResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgClientToGCRequestReporterUpdatesResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.enumResult = reader.int32() as any;
+          continue;
+        }
+        case 2: {
+          if (tag !== 18) {
+            break;
+          }
+
+          message.updates.push(
+            CMsgClientToGCRequestReporterUpdatesResponse_ReporterUpdate.decode(reader, reader.uint32()),
+          );
+          continue;
+        }
+        case 3: {
+          if (tag !== 24) {
+            break;
+          }
+
+          message.numReported = reader.int32();
+          continue;
+        }
+        case 4: {
+          if (tag !== 32) {
+            break;
+          }
+
+          message.numNoActionTaken = reader.int32();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCRequestReporterUpdatesResponse {
+    return {
+      enumResult: isSet(object.enumResult)
+        ? cMsgClientToGCRequestReporterUpdatesResponse_EResponseFromJSON(object.enumResult)
+        : 0,
+      updates: globalThis.Array.isArray(object?.updates)
+        ? object.updates.map((e: any) => CMsgClientToGCRequestReporterUpdatesResponse_ReporterUpdate.fromJSON(e))
+        : [],
+      numReported: isSet(object.numReported) ? globalThis.Number(object.numReported) : 0,
+      numNoActionTaken: isSet(object.numNoActionTaken) ? globalThis.Number(object.numNoActionTaken) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCRequestReporterUpdatesResponse): unknown {
+    const obj: any = {};
+    if (message.enumResult !== 0) {
+      obj.enumResult = cMsgClientToGCRequestReporterUpdatesResponse_EResponseToJSON(message.enumResult);
+    }
+    if (message.updates?.length) {
+      obj.updates = message.updates.map((e) => CMsgClientToGCRequestReporterUpdatesResponse_ReporterUpdate.toJSON(e));
+    }
+    if (message.numReported !== 0) {
+      obj.numReported = Math.round(message.numReported);
+    }
+    if (message.numNoActionTaken !== 0) {
+      obj.numNoActionTaken = Math.round(message.numNoActionTaken);
+    }
+    return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCRequestReporterUpdatesResponse>,
+  ): CMsgClientToGCRequestReporterUpdatesResponse {
+    return CMsgClientToGCRequestReporterUpdatesResponse.fromPartial(base ?? {});
+  },
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCRequestReporterUpdatesResponse>,
+  ): CMsgClientToGCRequestReporterUpdatesResponse {
+    const message = createBaseCMsgClientToGCRequestReporterUpdatesResponse();
+    message.enumResult = object.enumResult ?? 0;
+    message.updates =
+      object.updates?.map((e) => CMsgClientToGCRequestReporterUpdatesResponse_ReporterUpdate.fromPartial(e)) || [];
+    message.numReported = object.numReported ?? 0;
+    message.numNoActionTaken = object.numNoActionTaken ?? 0;
+    return message;
+  },
+};
+
+function createBaseCMsgClientToGCRequestReporterUpdatesResponse_ReporterUpdate(): CMsgClientToGCRequestReporterUpdatesResponse_ReporterUpdate {
+  return { matchId: "0", heroId: 0, reportReason: 0, timestamp: 0 };
+}
+
+export const CMsgClientToGCRequestReporterUpdatesResponse_ReporterUpdate: MessageFns<
+  CMsgClientToGCRequestReporterUpdatesResponse_ReporterUpdate
+> = {
+  encode(
+    message: CMsgClientToGCRequestReporterUpdatesResponse_ReporterUpdate,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.matchId !== "0") {
+      writer.uint32(8).uint64(message.matchId);
+    }
+    if (message.heroId !== 0) {
+      writer.uint32(16).int32(message.heroId);
+    }
+    if (message.reportReason !== 0) {
+      writer.uint32(24).uint32(message.reportReason);
+    }
+    if (message.timestamp !== 0) {
+      writer.uint32(32).uint32(message.timestamp);
+    }
+    return writer;
+  },
+
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number,
+  ): CMsgClientToGCRequestReporterUpdatesResponse_ReporterUpdate {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgClientToGCRequestReporterUpdatesResponse_ReporterUpdate();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.matchId = reader.uint64().toString();
+          continue;
+        }
+        case 2: {
+          if (tag !== 16) {
+            break;
+          }
+
+          message.heroId = reader.int32();
+          continue;
+        }
+        case 3: {
+          if (tag !== 24) {
+            break;
+          }
+
+          message.reportReason = reader.uint32();
+          continue;
+        }
+        case 4: {
+          if (tag !== 32) {
+            break;
+          }
+
+          message.timestamp = reader.uint32();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCRequestReporterUpdatesResponse_ReporterUpdate {
+    return {
+      matchId: isSet(object.matchId) ? globalThis.String(object.matchId) : "0",
+      heroId: isSet(object.heroId) ? globalThis.Number(object.heroId) : 0,
+      reportReason: isSet(object.reportReason) ? globalThis.Number(object.reportReason) : 0,
+      timestamp: isSet(object.timestamp) ? globalThis.Number(object.timestamp) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCRequestReporterUpdatesResponse_ReporterUpdate): unknown {
+    const obj: any = {};
+    if (message.matchId !== "0") {
+      obj.matchId = message.matchId;
+    }
+    if (message.heroId !== 0) {
+      obj.heroId = Math.round(message.heroId);
+    }
+    if (message.reportReason !== 0) {
+      obj.reportReason = Math.round(message.reportReason);
+    }
+    if (message.timestamp !== 0) {
+      obj.timestamp = Math.round(message.timestamp);
+    }
+    return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCRequestReporterUpdatesResponse_ReporterUpdate>,
+  ): CMsgClientToGCRequestReporterUpdatesResponse_ReporterUpdate {
+    return CMsgClientToGCRequestReporterUpdatesResponse_ReporterUpdate.fromPartial(base ?? {});
+  },
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCRequestReporterUpdatesResponse_ReporterUpdate>,
+  ): CMsgClientToGCRequestReporterUpdatesResponse_ReporterUpdate {
+    const message = createBaseCMsgClientToGCRequestReporterUpdatesResponse_ReporterUpdate();
+    message.matchId = object.matchId ?? "0";
+    message.heroId = object.heroId ?? 0;
+    message.reportReason = object.reportReason ?? 0;
+    message.timestamp = object.timestamp ?? 0;
+    return message;
+  },
+};
+
+function createBaseCMsgClientToGCAcknowledgeReporterUpdates(): CMsgClientToGCAcknowledgeReporterUpdates {
+  return { matchIds: [] };
+}
+
+export const CMsgClientToGCAcknowledgeReporterUpdates: MessageFns<CMsgClientToGCAcknowledgeReporterUpdates> = {
+  encode(message: CMsgClientToGCAcknowledgeReporterUpdates, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    writer.uint32(10).fork();
+    for (const v of message.matchIds) {
+      writer.uint64(v);
+    }
+    writer.join();
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgClientToGCAcknowledgeReporterUpdates {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgClientToGCAcknowledgeReporterUpdates();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag === 8) {
+            message.matchIds.push(reader.uint64().toString());
+
+            continue;
+          }
+
+          if (tag === 10) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.matchIds.push(reader.uint64().toString());
+            }
+
+            continue;
+          }
+
+          break;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCAcknowledgeReporterUpdates {
+    return {
+      matchIds: globalThis.Array.isArray(object?.matchIds) ? object.matchIds.map((e: any) => globalThis.String(e)) : [],
+    };
+  },
+
+  toJSON(message: CMsgClientToGCAcknowledgeReporterUpdates): unknown {
+    const obj: any = {};
+    if (message.matchIds?.length) {
+      obj.matchIds = message.matchIds;
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCAcknowledgeReporterUpdates>): CMsgClientToGCAcknowledgeReporterUpdates {
+    return CMsgClientToGCAcknowledgeReporterUpdates.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgClientToGCAcknowledgeReporterUpdates>): CMsgClientToGCAcknowledgeReporterUpdates {
+    const message = createBaseCMsgClientToGCAcknowledgeReporterUpdates();
+    message.matchIds = object.matchIds?.map((e) => e) || [];
+    return message;
+  },
+};
+
 function createBaseCMsgClientToGCRecalibrateMMR(): CMsgClientToGCRecalibrateMMR {
   return {};
 }
@@ -43530,7 +44229,7 @@ export const CMsgClientToGCGetOWMatchDetailsResponse: MessageFns<CMsgClientToGCG
       writer.uint32(64).int32(message.reportReason);
     }
     if (message.targetHeroId !== 0) {
-      writer.uint32(72).uint32(message.targetHeroId);
+      writer.uint32(72).int32(message.targetHeroId);
     }
     if (message.rankTier !== 0) {
       writer.uint32(80).uint32(message.rankTier);
@@ -43617,7 +44316,7 @@ export const CMsgClientToGCGetOWMatchDetailsResponse: MessageFns<CMsgClientToGCG
             break;
           }
 
-          message.targetHeroId = reader.uint32();
+          message.targetHeroId = reader.int32();
           continue;
         }
         case 10: {
@@ -46269,7 +46968,7 @@ function createBaseCMsgClientToGCSetHeroSticker(): CMsgClientToGCSetHeroSticker 
 export const CMsgClientToGCSetHeroSticker: MessageFns<CMsgClientToGCSetHeroSticker> = {
   encode(message: CMsgClientToGCSetHeroSticker, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.heroId !== 0) {
-      writer.uint32(8).uint32(message.heroId);
+      writer.uint32(8).int32(message.heroId);
     }
     if (message.newItemId !== "0") {
       writer.uint32(16).uint64(message.newItemId);
@@ -46292,7 +46991,7 @@ export const CMsgClientToGCSetHeroSticker: MessageFns<CMsgClientToGCSetHeroStick
             break;
           }
 
-          message.heroId = reader.uint32();
+          message.heroId = reader.int32();
           continue;
         }
         case 2: {
@@ -47304,6 +48003,1442 @@ export const CMsgGCToClientMapStatsResponse: MessageFns<CMsgGCToClientMapStatsRe
     message.globalStats = (object.globalStats !== undefined && object.globalStats !== null)
       ? CMsgGlobalMapStats.fromPartial(object.globalStats)
       : undefined;
+    return message;
+  },
+};
+
+function createBaseCMsgRoadToTIAssignedQuest(): CMsgRoadToTIAssignedQuest {
+  return { questId: 0, difficulty: 0, progressFlags: 0, halfCreditFlags: 0, completed: false };
+}
+
+export const CMsgRoadToTIAssignedQuest: MessageFns<CMsgRoadToTIAssignedQuest> = {
+  encode(message: CMsgRoadToTIAssignedQuest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.questId !== 0) {
+      writer.uint32(8).uint32(message.questId);
+    }
+    if (message.difficulty !== 0) {
+      writer.uint32(16).uint32(message.difficulty);
+    }
+    if (message.progressFlags !== 0) {
+      writer.uint32(24).uint32(message.progressFlags);
+    }
+    if (message.halfCreditFlags !== 0) {
+      writer.uint32(32).uint32(message.halfCreditFlags);
+    }
+    if (message.completed !== false) {
+      writer.uint32(40).bool(message.completed);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgRoadToTIAssignedQuest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgRoadToTIAssignedQuest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.questId = reader.uint32();
+          continue;
+        }
+        case 2: {
+          if (tag !== 16) {
+            break;
+          }
+
+          message.difficulty = reader.uint32();
+          continue;
+        }
+        case 3: {
+          if (tag !== 24) {
+            break;
+          }
+
+          message.progressFlags = reader.uint32();
+          continue;
+        }
+        case 4: {
+          if (tag !== 32) {
+            break;
+          }
+
+          message.halfCreditFlags = reader.uint32();
+          continue;
+        }
+        case 5: {
+          if (tag !== 40) {
+            break;
+          }
+
+          message.completed = reader.bool();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgRoadToTIAssignedQuest {
+    return {
+      questId: isSet(object.questId) ? globalThis.Number(object.questId) : 0,
+      difficulty: isSet(object.difficulty) ? globalThis.Number(object.difficulty) : 0,
+      progressFlags: isSet(object.progressFlags) ? globalThis.Number(object.progressFlags) : 0,
+      halfCreditFlags: isSet(object.halfCreditFlags) ? globalThis.Number(object.halfCreditFlags) : 0,
+      completed: isSet(object.completed) ? globalThis.Boolean(object.completed) : false,
+    };
+  },
+
+  toJSON(message: CMsgRoadToTIAssignedQuest): unknown {
+    const obj: any = {};
+    if (message.questId !== 0) {
+      obj.questId = Math.round(message.questId);
+    }
+    if (message.difficulty !== 0) {
+      obj.difficulty = Math.round(message.difficulty);
+    }
+    if (message.progressFlags !== 0) {
+      obj.progressFlags = Math.round(message.progressFlags);
+    }
+    if (message.halfCreditFlags !== 0) {
+      obj.halfCreditFlags = Math.round(message.halfCreditFlags);
+    }
+    if (message.completed !== false) {
+      obj.completed = message.completed;
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgRoadToTIAssignedQuest>): CMsgRoadToTIAssignedQuest {
+    return CMsgRoadToTIAssignedQuest.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgRoadToTIAssignedQuest>): CMsgRoadToTIAssignedQuest {
+    const message = createBaseCMsgRoadToTIAssignedQuest();
+    message.questId = object.questId ?? 0;
+    message.difficulty = object.difficulty ?? 0;
+    message.progressFlags = object.progressFlags ?? 0;
+    message.halfCreditFlags = object.halfCreditFlags ?? 0;
+    message.completed = object.completed ?? false;
+    return message;
+  },
+};
+
+function createBaseCMsgRoadToTIUserData(): CMsgRoadToTIUserData {
+  return { quests: [] };
+}
+
+export const CMsgRoadToTIUserData: MessageFns<CMsgRoadToTIUserData> = {
+  encode(message: CMsgRoadToTIUserData, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    for (const v of message.quests) {
+      CMsgRoadToTIAssignedQuest.encode(v!, writer.uint32(10).fork()).join();
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgRoadToTIUserData {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgRoadToTIUserData();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.quests.push(CMsgRoadToTIAssignedQuest.decode(reader, reader.uint32()));
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgRoadToTIUserData {
+    return {
+      quests: globalThis.Array.isArray(object?.quests)
+        ? object.quests.map((e: any) => CMsgRoadToTIAssignedQuest.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgRoadToTIUserData): unknown {
+    const obj: any = {};
+    if (message.quests?.length) {
+      obj.quests = message.quests.map((e) => CMsgRoadToTIAssignedQuest.toJSON(e));
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgRoadToTIUserData>): CMsgRoadToTIUserData {
+    return CMsgRoadToTIUserData.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgRoadToTIUserData>): CMsgRoadToTIUserData {
+    const message = createBaseCMsgRoadToTIUserData();
+    message.quests = object.quests?.map((e) => CMsgRoadToTIAssignedQuest.fromPartial(e)) || [];
+    return message;
+  },
+};
+
+function createBaseCMsgClientToGCRoadToTIGetQuests(): CMsgClientToGCRoadToTIGetQuests {
+  return { eventId: 0 };
+}
+
+export const CMsgClientToGCRoadToTIGetQuests: MessageFns<CMsgClientToGCRoadToTIGetQuests> = {
+  encode(message: CMsgClientToGCRoadToTIGetQuests, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.eventId !== 0) {
+      writer.uint32(8).uint32(message.eventId);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgClientToGCRoadToTIGetQuests {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgClientToGCRoadToTIGetQuests();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.eventId = reader.uint32();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCRoadToTIGetQuests {
+    return { eventId: isSet(object.eventId) ? globalThis.Number(object.eventId) : 0 };
+  },
+
+  toJSON(message: CMsgClientToGCRoadToTIGetQuests): unknown {
+    const obj: any = {};
+    if (message.eventId !== 0) {
+      obj.eventId = Math.round(message.eventId);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCRoadToTIGetQuests>): CMsgClientToGCRoadToTIGetQuests {
+    return CMsgClientToGCRoadToTIGetQuests.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgClientToGCRoadToTIGetQuests>): CMsgClientToGCRoadToTIGetQuests {
+    const message = createBaseCMsgClientToGCRoadToTIGetQuests();
+    message.eventId = object.eventId ?? 0;
+    return message;
+  },
+};
+
+function createBaseCMsgClientToGCRoadToTIGetQuestsResponse(): CMsgClientToGCRoadToTIGetQuestsResponse {
+  return { response: 0, questData: undefined };
+}
+
+export const CMsgClientToGCRoadToTIGetQuestsResponse: MessageFns<CMsgClientToGCRoadToTIGetQuestsResponse> = {
+  encode(message: CMsgClientToGCRoadToTIGetQuestsResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.response !== 0) {
+      writer.uint32(8).int32(message.response);
+    }
+    if (message.questData !== undefined) {
+      CMsgRoadToTIUserData.encode(message.questData, writer.uint32(18).fork()).join();
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgClientToGCRoadToTIGetQuestsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgClientToGCRoadToTIGetQuestsResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.response = reader.int32() as any;
+          continue;
+        }
+        case 2: {
+          if (tag !== 18) {
+            break;
+          }
+
+          message.questData = CMsgRoadToTIUserData.decode(reader, reader.uint32());
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCRoadToTIGetQuestsResponse {
+    return {
+      response: isSet(object.response) ? cMsgClientToGCRoadToTIGetQuestsResponse_EResponseFromJSON(object.response) : 0,
+      questData: isSet(object.questData) ? CMsgRoadToTIUserData.fromJSON(object.questData) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCRoadToTIGetQuestsResponse): unknown {
+    const obj: any = {};
+    if (message.response !== 0) {
+      obj.response = cMsgClientToGCRoadToTIGetQuestsResponse_EResponseToJSON(message.response);
+    }
+    if (message.questData !== undefined) {
+      obj.questData = CMsgRoadToTIUserData.toJSON(message.questData);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCRoadToTIGetQuestsResponse>): CMsgClientToGCRoadToTIGetQuestsResponse {
+    return CMsgClientToGCRoadToTIGetQuestsResponse.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgClientToGCRoadToTIGetQuestsResponse>): CMsgClientToGCRoadToTIGetQuestsResponse {
+    const message = createBaseCMsgClientToGCRoadToTIGetQuestsResponse();
+    message.response = object.response ?? 0;
+    message.questData = (object.questData !== undefined && object.questData !== null)
+      ? CMsgRoadToTIUserData.fromPartial(object.questData)
+      : undefined;
+    return message;
+  },
+};
+
+function createBaseCMsgClientToGCRoadToTIGetActiveQuest(): CMsgClientToGCRoadToTIGetActiveQuest {
+  return { eventId: 0 };
+}
+
+export const CMsgClientToGCRoadToTIGetActiveQuest: MessageFns<CMsgClientToGCRoadToTIGetActiveQuest> = {
+  encode(message: CMsgClientToGCRoadToTIGetActiveQuest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.eventId !== 0) {
+      writer.uint32(8).uint32(message.eventId);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgClientToGCRoadToTIGetActiveQuest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgClientToGCRoadToTIGetActiveQuest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.eventId = reader.uint32();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCRoadToTIGetActiveQuest {
+    return { eventId: isSet(object.eventId) ? globalThis.Number(object.eventId) : 0 };
+  },
+
+  toJSON(message: CMsgClientToGCRoadToTIGetActiveQuest): unknown {
+    const obj: any = {};
+    if (message.eventId !== 0) {
+      obj.eventId = Math.round(message.eventId);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCRoadToTIGetActiveQuest>): CMsgClientToGCRoadToTIGetActiveQuest {
+    return CMsgClientToGCRoadToTIGetActiveQuest.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgClientToGCRoadToTIGetActiveQuest>): CMsgClientToGCRoadToTIGetActiveQuest {
+    const message = createBaseCMsgClientToGCRoadToTIGetActiveQuest();
+    message.eventId = object.eventId ?? 0;
+    return message;
+  },
+};
+
+function createBaseCMsgClientToGCRoadToTIGetActiveQuestResponse(): CMsgClientToGCRoadToTIGetActiveQuestResponse {
+  return { response: 0, questData: undefined };
+}
+
+export const CMsgClientToGCRoadToTIGetActiveQuestResponse: MessageFns<CMsgClientToGCRoadToTIGetActiveQuestResponse> = {
+  encode(
+    message: CMsgClientToGCRoadToTIGetActiveQuestResponse,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.response !== 0) {
+      writer.uint32(8).int32(message.response);
+    }
+    if (message.questData !== undefined) {
+      CMsgRoadToTIAssignedQuest.encode(message.questData, writer.uint32(18).fork()).join();
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgClientToGCRoadToTIGetActiveQuestResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgClientToGCRoadToTIGetActiveQuestResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.response = reader.int32() as any;
+          continue;
+        }
+        case 2: {
+          if (tag !== 18) {
+            break;
+          }
+
+          message.questData = CMsgRoadToTIAssignedQuest.decode(reader, reader.uint32());
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCRoadToTIGetActiveQuestResponse {
+    return {
+      response: isSet(object.response)
+        ? cMsgClientToGCRoadToTIGetActiveQuestResponse_EResponseFromJSON(object.response)
+        : 0,
+      questData: isSet(object.questData) ? CMsgRoadToTIAssignedQuest.fromJSON(object.questData) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCRoadToTIGetActiveQuestResponse): unknown {
+    const obj: any = {};
+    if (message.response !== 0) {
+      obj.response = cMsgClientToGCRoadToTIGetActiveQuestResponse_EResponseToJSON(message.response);
+    }
+    if (message.questData !== undefined) {
+      obj.questData = CMsgRoadToTIAssignedQuest.toJSON(message.questData);
+    }
+    return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCRoadToTIGetActiveQuestResponse>,
+  ): CMsgClientToGCRoadToTIGetActiveQuestResponse {
+    return CMsgClientToGCRoadToTIGetActiveQuestResponse.fromPartial(base ?? {});
+  },
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCRoadToTIGetActiveQuestResponse>,
+  ): CMsgClientToGCRoadToTIGetActiveQuestResponse {
+    const message = createBaseCMsgClientToGCRoadToTIGetActiveQuestResponse();
+    message.response = object.response ?? 0;
+    message.questData = (object.questData !== undefined && object.questData !== null)
+      ? CMsgRoadToTIAssignedQuest.fromPartial(object.questData)
+      : undefined;
+    return message;
+  },
+};
+
+function createBaseCMsgGCToClientRoadToTIQuestDataUpdated(): CMsgGCToClientRoadToTIQuestDataUpdated {
+  return { eventId: 0, questData: undefined };
+}
+
+export const CMsgGCToClientRoadToTIQuestDataUpdated: MessageFns<CMsgGCToClientRoadToTIQuestDataUpdated> = {
+  encode(message: CMsgGCToClientRoadToTIQuestDataUpdated, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.eventId !== 0) {
+      writer.uint32(8).uint32(message.eventId);
+    }
+    if (message.questData !== undefined) {
+      CMsgRoadToTIUserData.encode(message.questData, writer.uint32(18).fork()).join();
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgGCToClientRoadToTIQuestDataUpdated {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgGCToClientRoadToTIQuestDataUpdated();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.eventId = reader.uint32();
+          continue;
+        }
+        case 2: {
+          if (tag !== 18) {
+            break;
+          }
+
+          message.questData = CMsgRoadToTIUserData.decode(reader, reader.uint32());
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgGCToClientRoadToTIQuestDataUpdated {
+    return {
+      eventId: isSet(object.eventId) ? globalThis.Number(object.eventId) : 0,
+      questData: isSet(object.questData) ? CMsgRoadToTIUserData.fromJSON(object.questData) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgGCToClientRoadToTIQuestDataUpdated): unknown {
+    const obj: any = {};
+    if (message.eventId !== 0) {
+      obj.eventId = Math.round(message.eventId);
+    }
+    if (message.questData !== undefined) {
+      obj.questData = CMsgRoadToTIUserData.toJSON(message.questData);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToClientRoadToTIQuestDataUpdated>): CMsgGCToClientRoadToTIQuestDataUpdated {
+    return CMsgGCToClientRoadToTIQuestDataUpdated.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgGCToClientRoadToTIQuestDataUpdated>): CMsgGCToClientRoadToTIQuestDataUpdated {
+    const message = createBaseCMsgGCToClientRoadToTIQuestDataUpdated();
+    message.eventId = object.eventId ?? 0;
+    message.questData = (object.questData !== undefined && object.questData !== null)
+      ? CMsgRoadToTIUserData.fromPartial(object.questData)
+      : undefined;
+    return message;
+  },
+};
+
+function createBaseCMsgClientToGCRoadToTIUseItem(): CMsgClientToGCRoadToTIUseItem {
+  return { eventId: 0, itemType: 0, heroIndex: 0 };
+}
+
+export const CMsgClientToGCRoadToTIUseItem: MessageFns<CMsgClientToGCRoadToTIUseItem> = {
+  encode(message: CMsgClientToGCRoadToTIUseItem, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.eventId !== 0) {
+      writer.uint32(8).uint32(message.eventId);
+    }
+    if (message.itemType !== 0) {
+      writer.uint32(16).uint32(message.itemType);
+    }
+    if (message.heroIndex !== 0) {
+      writer.uint32(24).uint32(message.heroIndex);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgClientToGCRoadToTIUseItem {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgClientToGCRoadToTIUseItem();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.eventId = reader.uint32();
+          continue;
+        }
+        case 2: {
+          if (tag !== 16) {
+            break;
+          }
+
+          message.itemType = reader.uint32();
+          continue;
+        }
+        case 3: {
+          if (tag !== 24) {
+            break;
+          }
+
+          message.heroIndex = reader.uint32();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCRoadToTIUseItem {
+    return {
+      eventId: isSet(object.eventId) ? globalThis.Number(object.eventId) : 0,
+      itemType: isSet(object.itemType) ? globalThis.Number(object.itemType) : 0,
+      heroIndex: isSet(object.heroIndex) ? globalThis.Number(object.heroIndex) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCRoadToTIUseItem): unknown {
+    const obj: any = {};
+    if (message.eventId !== 0) {
+      obj.eventId = Math.round(message.eventId);
+    }
+    if (message.itemType !== 0) {
+      obj.itemType = Math.round(message.itemType);
+    }
+    if (message.heroIndex !== 0) {
+      obj.heroIndex = Math.round(message.heroIndex);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCRoadToTIUseItem>): CMsgClientToGCRoadToTIUseItem {
+    return CMsgClientToGCRoadToTIUseItem.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgClientToGCRoadToTIUseItem>): CMsgClientToGCRoadToTIUseItem {
+    const message = createBaseCMsgClientToGCRoadToTIUseItem();
+    message.eventId = object.eventId ?? 0;
+    message.itemType = object.itemType ?? 0;
+    message.heroIndex = object.heroIndex ?? 0;
+    return message;
+  },
+};
+
+function createBaseCMsgClientToGCRoadToTIUseItemResponse(): CMsgClientToGCRoadToTIUseItemResponse {
+  return { response: 0 };
+}
+
+export const CMsgClientToGCRoadToTIUseItemResponse: MessageFns<CMsgClientToGCRoadToTIUseItemResponse> = {
+  encode(message: CMsgClientToGCRoadToTIUseItemResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.response !== 0) {
+      writer.uint32(8).int32(message.response);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgClientToGCRoadToTIUseItemResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgClientToGCRoadToTIUseItemResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.response = reader.int32() as any;
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCRoadToTIUseItemResponse {
+    return {
+      response: isSet(object.response) ? cMsgClientToGCRoadToTIUseItemResponse_EResponseFromJSON(object.response) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCRoadToTIUseItemResponse): unknown {
+    const obj: any = {};
+    if (message.response !== 0) {
+      obj.response = cMsgClientToGCRoadToTIUseItemResponse_EResponseToJSON(message.response);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCRoadToTIUseItemResponse>): CMsgClientToGCRoadToTIUseItemResponse {
+    return CMsgClientToGCRoadToTIUseItemResponse.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgClientToGCRoadToTIUseItemResponse>): CMsgClientToGCRoadToTIUseItemResponse {
+    const message = createBaseCMsgClientToGCRoadToTIUseItemResponse();
+    message.response = object.response ?? 0;
+    return message;
+  },
+};
+
+function createBaseCMsgClientToGCRoadToTIDevForceQuest(): CMsgClientToGCRoadToTIDevForceQuest {
+  return { eventId: 0, forceMatchType: false, forceId: 0 };
+}
+
+export const CMsgClientToGCRoadToTIDevForceQuest: MessageFns<CMsgClientToGCRoadToTIDevForceQuest> = {
+  encode(message: CMsgClientToGCRoadToTIDevForceQuest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.eventId !== 0) {
+      writer.uint32(8).uint32(message.eventId);
+    }
+    if (message.forceMatchType !== false) {
+      writer.uint32(16).bool(message.forceMatchType);
+    }
+    if (message.forceId !== 0) {
+      writer.uint32(24).uint32(message.forceId);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgClientToGCRoadToTIDevForceQuest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgClientToGCRoadToTIDevForceQuest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.eventId = reader.uint32();
+          continue;
+        }
+        case 2: {
+          if (tag !== 16) {
+            break;
+          }
+
+          message.forceMatchType = reader.bool();
+          continue;
+        }
+        case 3: {
+          if (tag !== 24) {
+            break;
+          }
+
+          message.forceId = reader.uint32();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCRoadToTIDevForceQuest {
+    return {
+      eventId: isSet(object.eventId) ? globalThis.Number(object.eventId) : 0,
+      forceMatchType: isSet(object.forceMatchType) ? globalThis.Boolean(object.forceMatchType) : false,
+      forceId: isSet(object.forceId) ? globalThis.Number(object.forceId) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCRoadToTIDevForceQuest): unknown {
+    const obj: any = {};
+    if (message.eventId !== 0) {
+      obj.eventId = Math.round(message.eventId);
+    }
+    if (message.forceMatchType !== false) {
+      obj.forceMatchType = message.forceMatchType;
+    }
+    if (message.forceId !== 0) {
+      obj.forceId = Math.round(message.forceId);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCRoadToTIDevForceQuest>): CMsgClientToGCRoadToTIDevForceQuest {
+    return CMsgClientToGCRoadToTIDevForceQuest.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgClientToGCRoadToTIDevForceQuest>): CMsgClientToGCRoadToTIDevForceQuest {
+    const message = createBaseCMsgClientToGCRoadToTIDevForceQuest();
+    message.eventId = object.eventId ?? 0;
+    message.forceMatchType = object.forceMatchType ?? false;
+    message.forceId = object.forceId ?? 0;
+    return message;
+  },
+};
+
+function createBaseCMsgLobbyRoadToTIMatchQuestData(): CMsgLobbyRoadToTIMatchQuestData {
+  return { questData: undefined, questPeriod: 0, questNumber: 0 };
+}
+
+export const CMsgLobbyRoadToTIMatchQuestData: MessageFns<CMsgLobbyRoadToTIMatchQuestData> = {
+  encode(message: CMsgLobbyRoadToTIMatchQuestData, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.questData !== undefined) {
+      CMsgRoadToTIAssignedQuest.encode(message.questData, writer.uint32(10).fork()).join();
+    }
+    if (message.questPeriod !== 0) {
+      writer.uint32(16).uint32(message.questPeriod);
+    }
+    if (message.questNumber !== 0) {
+      writer.uint32(24).uint32(message.questNumber);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgLobbyRoadToTIMatchQuestData {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgLobbyRoadToTIMatchQuestData();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.questData = CMsgRoadToTIAssignedQuest.decode(reader, reader.uint32());
+          continue;
+        }
+        case 2: {
+          if (tag !== 16) {
+            break;
+          }
+
+          message.questPeriod = reader.uint32();
+          continue;
+        }
+        case 3: {
+          if (tag !== 24) {
+            break;
+          }
+
+          message.questNumber = reader.uint32();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgLobbyRoadToTIMatchQuestData {
+    return {
+      questData: isSet(object.questData) ? CMsgRoadToTIAssignedQuest.fromJSON(object.questData) : undefined,
+      questPeriod: isSet(object.questPeriod) ? globalThis.Number(object.questPeriod) : 0,
+      questNumber: isSet(object.questNumber) ? globalThis.Number(object.questNumber) : 0,
+    };
+  },
+
+  toJSON(message: CMsgLobbyRoadToTIMatchQuestData): unknown {
+    const obj: any = {};
+    if (message.questData !== undefined) {
+      obj.questData = CMsgRoadToTIAssignedQuest.toJSON(message.questData);
+    }
+    if (message.questPeriod !== 0) {
+      obj.questPeriod = Math.round(message.questPeriod);
+    }
+    if (message.questNumber !== 0) {
+      obj.questNumber = Math.round(message.questNumber);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgLobbyRoadToTIMatchQuestData>): CMsgLobbyRoadToTIMatchQuestData {
+    return CMsgLobbyRoadToTIMatchQuestData.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgLobbyRoadToTIMatchQuestData>): CMsgLobbyRoadToTIMatchQuestData {
+    const message = createBaseCMsgLobbyRoadToTIMatchQuestData();
+    message.questData = (object.questData !== undefined && object.questData !== null)
+      ? CMsgRoadToTIAssignedQuest.fromPartial(object.questData)
+      : undefined;
+    message.questPeriod = object.questPeriod ?? 0;
+    message.questNumber = object.questNumber ?? 0;
+    return message;
+  },
+};
+
+function createBaseCMsgClientToGCNewBloomGift(): CMsgClientToGCNewBloomGift {
+  return { defindex: 0, lobbyId: "0", targetAccountIds: [] };
+}
+
+export const CMsgClientToGCNewBloomGift: MessageFns<CMsgClientToGCNewBloomGift> = {
+  encode(message: CMsgClientToGCNewBloomGift, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.defindex !== 0) {
+      writer.uint32(8).uint32(message.defindex);
+    }
+    if (message.lobbyId !== "0") {
+      writer.uint32(16).uint64(message.lobbyId);
+    }
+    writer.uint32(26).fork();
+    for (const v of message.targetAccountIds) {
+      writer.uint32(v);
+    }
+    writer.join();
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgClientToGCNewBloomGift {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgClientToGCNewBloomGift();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.defindex = reader.uint32();
+          continue;
+        }
+        case 2: {
+          if (tag !== 16) {
+            break;
+          }
+
+          message.lobbyId = reader.uint64().toString();
+          continue;
+        }
+        case 3: {
+          if (tag === 24) {
+            message.targetAccountIds.push(reader.uint32());
+
+            continue;
+          }
+
+          if (tag === 26) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.targetAccountIds.push(reader.uint32());
+            }
+
+            continue;
+          }
+
+          break;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCNewBloomGift {
+    return {
+      defindex: isSet(object.defindex) ? globalThis.Number(object.defindex) : 0,
+      lobbyId: isSet(object.lobbyId) ? globalThis.String(object.lobbyId) : "0",
+      targetAccountIds: globalThis.Array.isArray(object?.targetAccountIds)
+        ? object.targetAccountIds.map((e: any) => globalThis.Number(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgClientToGCNewBloomGift): unknown {
+    const obj: any = {};
+    if (message.defindex !== 0) {
+      obj.defindex = Math.round(message.defindex);
+    }
+    if (message.lobbyId !== "0") {
+      obj.lobbyId = message.lobbyId;
+    }
+    if (message.targetAccountIds?.length) {
+      obj.targetAccountIds = message.targetAccountIds.map((e) => Math.round(e));
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCNewBloomGift>): CMsgClientToGCNewBloomGift {
+    return CMsgClientToGCNewBloomGift.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgClientToGCNewBloomGift>): CMsgClientToGCNewBloomGift {
+    const message = createBaseCMsgClientToGCNewBloomGift();
+    message.defindex = object.defindex ?? 0;
+    message.lobbyId = object.lobbyId ?? "0";
+    message.targetAccountIds = object.targetAccountIds?.map((e) => e) || [];
+    return message;
+  },
+};
+
+function createBaseCMsgClientToGCNewBloomGiftResponse(): CMsgClientToGCNewBloomGiftResponse {
+  return { result: 1, receivedAccountIds: [] };
+}
+
+export const CMsgClientToGCNewBloomGiftResponse: MessageFns<CMsgClientToGCNewBloomGiftResponse> = {
+  encode(message: CMsgClientToGCNewBloomGiftResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.result !== 1) {
+      writer.uint32(8).int32(message.result);
+    }
+    writer.uint32(18).fork();
+    for (const v of message.receivedAccountIds) {
+      writer.uint32(v);
+    }
+    writer.join();
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgClientToGCNewBloomGiftResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgClientToGCNewBloomGiftResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.result = reader.int32() as any;
+          continue;
+        }
+        case 2: {
+          if (tag === 16) {
+            message.receivedAccountIds.push(reader.uint32());
+
+            continue;
+          }
+
+          if (tag === 18) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.receivedAccountIds.push(reader.uint32());
+            }
+
+            continue;
+          }
+
+          break;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCNewBloomGiftResponse {
+    return {
+      result: isSet(object.result) ? eNewBloomGiftingResponseFromJSON(object.result) : 1,
+      receivedAccountIds: globalThis.Array.isArray(object?.receivedAccountIds)
+        ? object.receivedAccountIds.map((e: any) => globalThis.Number(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgClientToGCNewBloomGiftResponse): unknown {
+    const obj: any = {};
+    if (message.result !== 1) {
+      obj.result = eNewBloomGiftingResponseToJSON(message.result);
+    }
+    if (message.receivedAccountIds?.length) {
+      obj.receivedAccountIds = message.receivedAccountIds.map((e) => Math.round(e));
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCNewBloomGiftResponse>): CMsgClientToGCNewBloomGiftResponse {
+    return CMsgClientToGCNewBloomGiftResponse.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgClientToGCNewBloomGiftResponse>): CMsgClientToGCNewBloomGiftResponse {
+    const message = createBaseCMsgClientToGCNewBloomGiftResponse();
+    message.result = object.result ?? 1;
+    message.receivedAccountIds = object.receivedAccountIds?.map((e) => e) || [];
+    return message;
+  },
+};
+
+function createBaseCMsgClientToGCSetBannedHeroes(): CMsgClientToGCSetBannedHeroes {
+  return { bannedHeroIds: [] };
+}
+
+export const CMsgClientToGCSetBannedHeroes: MessageFns<CMsgClientToGCSetBannedHeroes> = {
+  encode(message: CMsgClientToGCSetBannedHeroes, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    writer.uint32(10).fork();
+    for (const v of message.bannedHeroIds) {
+      writer.int32(v);
+    }
+    writer.join();
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgClientToGCSetBannedHeroes {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgClientToGCSetBannedHeroes();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag === 8) {
+            message.bannedHeroIds.push(reader.int32());
+
+            continue;
+          }
+
+          if (tag === 10) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.bannedHeroIds.push(reader.int32());
+            }
+
+            continue;
+          }
+
+          break;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCSetBannedHeroes {
+    return {
+      bannedHeroIds: globalThis.Array.isArray(object?.bannedHeroIds)
+        ? object.bannedHeroIds.map((e: any) => globalThis.Number(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgClientToGCSetBannedHeroes): unknown {
+    const obj: any = {};
+    if (message.bannedHeroIds?.length) {
+      obj.bannedHeroIds = message.bannedHeroIds.map((e) => Math.round(e));
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCSetBannedHeroes>): CMsgClientToGCSetBannedHeroes {
+    return CMsgClientToGCSetBannedHeroes.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgClientToGCSetBannedHeroes>): CMsgClientToGCSetBannedHeroes {
+    const message = createBaseCMsgClientToGCSetBannedHeroes();
+    message.bannedHeroIds = object.bannedHeroIds?.map((e) => e) || [];
+    return message;
+  },
+};
+
+function createBaseCMsgClientToGCUpdateComicBookStats(): CMsgClientToGCUpdateComicBookStats {
+  return { comicId: 0, stats: [], languageStats: undefined };
+}
+
+export const CMsgClientToGCUpdateComicBookStats: MessageFns<CMsgClientToGCUpdateComicBookStats> = {
+  encode(message: CMsgClientToGCUpdateComicBookStats, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.comicId !== 0) {
+      writer.uint32(8).uint32(message.comicId);
+    }
+    for (const v of message.stats) {
+      CMsgClientToGCUpdateComicBookStats_SingleStat.encode(v!, writer.uint32(18).fork()).join();
+    }
+    if (message.languageStats !== undefined) {
+      CMsgClientToGCUpdateComicBookStats_LanguageStats.encode(message.languageStats, writer.uint32(26).fork()).join();
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgClientToGCUpdateComicBookStats {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgClientToGCUpdateComicBookStats();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.comicId = reader.uint32();
+          continue;
+        }
+        case 2: {
+          if (tag !== 18) {
+            break;
+          }
+
+          message.stats.push(CMsgClientToGCUpdateComicBookStats_SingleStat.decode(reader, reader.uint32()));
+          continue;
+        }
+        case 3: {
+          if (tag !== 26) {
+            break;
+          }
+
+          message.languageStats = CMsgClientToGCUpdateComicBookStats_LanguageStats.decode(reader, reader.uint32());
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCUpdateComicBookStats {
+    return {
+      comicId: isSet(object.comicId) ? globalThis.Number(object.comicId) : 0,
+      stats: globalThis.Array.isArray(object?.stats)
+        ? object.stats.map((e: any) => CMsgClientToGCUpdateComicBookStats_SingleStat.fromJSON(e))
+        : [],
+      languageStats: isSet(object.languageStats)
+        ? CMsgClientToGCUpdateComicBookStats_LanguageStats.fromJSON(object.languageStats)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCUpdateComicBookStats): unknown {
+    const obj: any = {};
+    if (message.comicId !== 0) {
+      obj.comicId = Math.round(message.comicId);
+    }
+    if (message.stats?.length) {
+      obj.stats = message.stats.map((e) => CMsgClientToGCUpdateComicBookStats_SingleStat.toJSON(e));
+    }
+    if (message.languageStats !== undefined) {
+      obj.languageStats = CMsgClientToGCUpdateComicBookStats_LanguageStats.toJSON(message.languageStats);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCUpdateComicBookStats>): CMsgClientToGCUpdateComicBookStats {
+    return CMsgClientToGCUpdateComicBookStats.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgClientToGCUpdateComicBookStats>): CMsgClientToGCUpdateComicBookStats {
+    const message = createBaseCMsgClientToGCUpdateComicBookStats();
+    message.comicId = object.comicId ?? 0;
+    message.stats = object.stats?.map((e) => CMsgClientToGCUpdateComicBookStats_SingleStat.fromPartial(e)) || [];
+    message.languageStats = (object.languageStats !== undefined && object.languageStats !== null)
+      ? CMsgClientToGCUpdateComicBookStats_LanguageStats.fromPartial(object.languageStats)
+      : undefined;
+    return message;
+  },
+};
+
+function createBaseCMsgClientToGCUpdateComicBookStats_SingleStat(): CMsgClientToGCUpdateComicBookStats_SingleStat {
+  return { statType: 1, statValue: 0 };
+}
+
+export const CMsgClientToGCUpdateComicBookStats_SingleStat: MessageFns<CMsgClientToGCUpdateComicBookStats_SingleStat> =
+  {
+    encode(
+      message: CMsgClientToGCUpdateComicBookStats_SingleStat,
+      writer: BinaryWriter = new BinaryWriter(),
+    ): BinaryWriter {
+      if (message.statType !== 1) {
+        writer.uint32(8).int32(message.statType);
+      }
+      if (message.statValue !== 0) {
+        writer.uint32(16).uint32(message.statValue);
+      }
+      return writer;
+    },
+
+    decode(input: BinaryReader | Uint8Array, length?: number): CMsgClientToGCUpdateComicBookStats_SingleStat {
+      const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+      let end = length === undefined ? reader.len : reader.pos + length;
+      const message = createBaseCMsgClientToGCUpdateComicBookStats_SingleStat();
+      while (reader.pos < end) {
+        const tag = reader.uint32();
+        switch (tag >>> 3) {
+          case 1: {
+            if (tag !== 8) {
+              break;
+            }
+
+            message.statType = reader.int32() as any;
+            continue;
+          }
+          case 2: {
+            if (tag !== 16) {
+              break;
+            }
+
+            message.statValue = reader.uint32();
+            continue;
+          }
+        }
+        if ((tag & 7) === 4 || tag === 0) {
+          break;
+        }
+        reader.skip(tag & 7);
+      }
+      return message;
+    },
+
+    fromJSON(object: any): CMsgClientToGCUpdateComicBookStats_SingleStat {
+      return {
+        statType: isSet(object.statType) ? cMsgClientToGCUpdateComicBookStatTypeFromJSON(object.statType) : 1,
+        statValue: isSet(object.statValue) ? globalThis.Number(object.statValue) : 0,
+      };
+    },
+
+    toJSON(message: CMsgClientToGCUpdateComicBookStats_SingleStat): unknown {
+      const obj: any = {};
+      if (message.statType !== 1) {
+        obj.statType = cMsgClientToGCUpdateComicBookStatTypeToJSON(message.statType);
+      }
+      if (message.statValue !== 0) {
+        obj.statValue = Math.round(message.statValue);
+      }
+      return obj;
+    },
+
+    create(
+      base?: DeepPartial<CMsgClientToGCUpdateComicBookStats_SingleStat>,
+    ): CMsgClientToGCUpdateComicBookStats_SingleStat {
+      return CMsgClientToGCUpdateComicBookStats_SingleStat.fromPartial(base ?? {});
+    },
+    fromPartial(
+      object: DeepPartial<CMsgClientToGCUpdateComicBookStats_SingleStat>,
+    ): CMsgClientToGCUpdateComicBookStats_SingleStat {
+      const message = createBaseCMsgClientToGCUpdateComicBookStats_SingleStat();
+      message.statType = object.statType ?? 1;
+      message.statValue = object.statValue ?? 0;
+      return message;
+    },
+  };
+
+function createBaseCMsgClientToGCUpdateComicBookStats_LanguageStats(): CMsgClientToGCUpdateComicBookStats_LanguageStats {
+  return { comicId: 0, clientLanguage: 0, clientComicLanguage: 0 };
+}
+
+export const CMsgClientToGCUpdateComicBookStats_LanguageStats: MessageFns<
+  CMsgClientToGCUpdateComicBookStats_LanguageStats
+> = {
+  encode(
+    message: CMsgClientToGCUpdateComicBookStats_LanguageStats,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.comicId !== 0) {
+      writer.uint32(8).uint32(message.comicId);
+    }
+    if (message.clientLanguage !== 0) {
+      writer.uint32(16).uint32(message.clientLanguage);
+    }
+    if (message.clientComicLanguage !== 0) {
+      writer.uint32(24).uint32(message.clientComicLanguage);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgClientToGCUpdateComicBookStats_LanguageStats {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgClientToGCUpdateComicBookStats_LanguageStats();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.comicId = reader.uint32();
+          continue;
+        }
+        case 2: {
+          if (tag !== 16) {
+            break;
+          }
+
+          message.clientLanguage = reader.uint32();
+          continue;
+        }
+        case 3: {
+          if (tag !== 24) {
+            break;
+          }
+
+          message.clientComicLanguage = reader.uint32();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCUpdateComicBookStats_LanguageStats {
+    return {
+      comicId: isSet(object.comicId) ? globalThis.Number(object.comicId) : 0,
+      clientLanguage: isSet(object.clientLanguage) ? globalThis.Number(object.clientLanguage) : 0,
+      clientComicLanguage: isSet(object.clientComicLanguage) ? globalThis.Number(object.clientComicLanguage) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCUpdateComicBookStats_LanguageStats): unknown {
+    const obj: any = {};
+    if (message.comicId !== 0) {
+      obj.comicId = Math.round(message.comicId);
+    }
+    if (message.clientLanguage !== 0) {
+      obj.clientLanguage = Math.round(message.clientLanguage);
+    }
+    if (message.clientComicLanguage !== 0) {
+      obj.clientComicLanguage = Math.round(message.clientComicLanguage);
+    }
+    return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCUpdateComicBookStats_LanguageStats>,
+  ): CMsgClientToGCUpdateComicBookStats_LanguageStats {
+    return CMsgClientToGCUpdateComicBookStats_LanguageStats.fromPartial(base ?? {});
+  },
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCUpdateComicBookStats_LanguageStats>,
+  ): CMsgClientToGCUpdateComicBookStats_LanguageStats {
+    const message = createBaseCMsgClientToGCUpdateComicBookStats_LanguageStats();
+    message.comicId = object.comicId ?? 0;
+    message.clientLanguage = object.clientLanguage ?? 0;
+    message.clientComicLanguage = object.clientComicLanguage ?? 0;
     return message;
   },
 };

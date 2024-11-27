@@ -6,6 +6,8 @@ export * from './generated/dota_gcmessages_client';
 export * from './generated/dota_gcmessages_common';
 export * from './generated/dota_gcmessages_common_lobby';
 export * from './generated/dota_gcmessages_common_match_management';
+export * from './generated/dota_gcmessages_common_overworld';
+export * from './generated/dota_gcmessages_common_survivors';
 export * from './generated/dota_gcmessages_msgid';
 export * from './generated/dota_gcmessages_webapi';
 export * from './generated/dota_match_metadata';

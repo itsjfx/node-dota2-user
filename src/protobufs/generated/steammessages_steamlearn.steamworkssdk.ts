@@ -307,26 +307,32 @@ export function eSteamLearnSnapshotProjectResultToJSON(object: ESteamLearnSnapsh
   }
 }
 
-export enum ESteamLearnGetHMACKeysResult {
-  STEAMLEARN_GET_HMAC_KEYS_SUCCESS = 0,
+export enum ESteamLearnGetAccessTokensResult {
+  STEAMLEARN_GET_ACCESS_TOKENS_ERROR = 0,
+  STEAMLEARN_GET_ACCESS_TOKENS_SUCCESS = 1,
 }
 
-export function eSteamLearnGetHMACKeysResultFromJSON(object: any): ESteamLearnGetHMACKeysResult {
+export function eSteamLearnGetAccessTokensResultFromJSON(object: any): ESteamLearnGetAccessTokensResult {
   switch (object) {
     case 0:
-    case "STEAMLEARN_GET_HMAC_KEYS_SUCCESS":
-      return ESteamLearnGetHMACKeysResult.STEAMLEARN_GET_HMAC_KEYS_SUCCESS;
+    case "STEAMLEARN_GET_ACCESS_TOKENS_ERROR":
+      return ESteamLearnGetAccessTokensResult.STEAMLEARN_GET_ACCESS_TOKENS_ERROR;
+    case 1:
+    case "STEAMLEARN_GET_ACCESS_TOKENS_SUCCESS":
+      return ESteamLearnGetAccessTokensResult.STEAMLEARN_GET_ACCESS_TOKENS_SUCCESS;
     default:
-      throw new globalThis.Error("Unrecognized enum value " + object + " for enum ESteamLearnGetHMACKeysResult");
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum ESteamLearnGetAccessTokensResult");
   }
 }
 
-export function eSteamLearnGetHMACKeysResultToJSON(object: ESteamLearnGetHMACKeysResult): string {
+export function eSteamLearnGetAccessTokensResultToJSON(object: ESteamLearnGetAccessTokensResult): string {
   switch (object) {
-    case ESteamLearnGetHMACKeysResult.STEAMLEARN_GET_HMAC_KEYS_SUCCESS:
-      return "STEAMLEARN_GET_HMAC_KEYS_SUCCESS";
+    case ESteamLearnGetAccessTokensResult.STEAMLEARN_GET_ACCESS_TOKENS_ERROR:
+      return "STEAMLEARN_GET_ACCESS_TOKENS_ERROR";
+    case ESteamLearnGetAccessTokensResult.STEAMLEARN_GET_ACCESS_TOKENS_SUCCESS:
+      return "STEAMLEARN_GET_ACCESS_TOKENS_SUCCESS";
     default:
-      throw new globalThis.Error("Unrecognized enum value " + object + " for enum ESteamLearnGetHMACKeysResult");
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum ESteamLearnGetAccessTokensResult");
   }
 }
 
@@ -516,15 +522,8 @@ export interface CMsgSteamLearnDataList {
   data: CMsgSteamLearnData[];
 }
 
-export interface CMsgSteamLearnAccessData {
-  publisherId: number;
-  timestamp: number;
-  randomValue: string;
-}
-
 export interface CMsgSteamLearnRegisterDataSourceRequest {
   accessToken: string;
-  accessData: CMsgSteamLearnAccessData | undefined;
   dataSource: CMsgSteamLearnDataSource | undefined;
 }
 
@@ -535,7 +534,6 @@ export interface CMsgSteamLearnRegisterDataSourceResponse {
 
 export interface CMsgSteamLearnCacheDataRequest {
   accessToken: string;
-  accessData: CMsgSteamLearnAccessData | undefined;
   data: CMsgSteamLearnData | undefined;
 }
 
@@ -545,7 +543,6 @@ export interface CMsgSteamLearnCacheDataResponse {
 
 export interface CMsgSteamLearnSnapshotProjectRequest {
   accessToken: string;
-  accessData: CMsgSteamLearnAccessData | undefined;
   projectId: number;
   publishedVersion: number;
   keys: string[];
@@ -560,43 +557,48 @@ export interface CMsgSteamLearnSnapshotProjectResponse {
 export interface CMsgSteamLearnBatchOperationRequest {
   cacheDataRequests: CMsgSteamLearnCacheDataRequest[];
   snapshotRequests: CMsgSteamLearnSnapshotProjectRequest[];
+  inferenceRequests: CMsgSteamLearnInferenceRequest[];
 }
 
 export interface CMsgSteamLearnBatchOperationResponse {
   cacheDataResponses: CMsgSteamLearnCacheDataResponse[];
   snapshotResponses: CMsgSteamLearnSnapshotProjectResponse[];
+  inferenceResponses: CMsgSteamLearnInferenceResponse[];
 }
 
-export interface CMsgSteamLearnHMACKeys {
-  registerDataSourceKey: string;
-  cacheDataKeys: CMsgSteamLearnHMACKeys_CacheDataKeys[];
-  snapshotProjectKeys: CMsgSteamLearnHMACKeys_SnapshotProjectKeys[];
+export interface CMsgSteamLearnAccessTokens {
+  registerDataSourceAccessToken: string;
+  cacheDataAccessTokens: CMsgSteamLearnAccessTokens_CacheDataAccessToken[];
+  snapshotProjectAccessTokens: CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken[];
+  inferenceAccessTokens: CMsgSteamLearnAccessTokens_InferenceAccessToken[];
 }
 
-export interface CMsgSteamLearnHMACKeys_CacheDataKeys {
+export interface CMsgSteamLearnAccessTokens_CacheDataAccessToken {
   dataSourceId: number;
-  version: number;
-  key: string;
+  accessToken: string;
 }
 
-export interface CMsgSteamLearnHMACKeys_SnapshotProjectKeys {
+export interface CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken {
   projectId: number;
-  publishedVersion: number;
-  key: string;
+  accessToken: string;
 }
 
-export interface CMsgSteamLearnGetHMACKeysRequest {
+export interface CMsgSteamLearnAccessTokens_InferenceAccessToken {
+  projectId: number;
+  accessToken: string;
+}
+
+export interface CMsgSteamLearnGetAccessTokensRequest {
   appid: number;
 }
 
-export interface CMsgSteamLearnGetHMACKeysResponse {
-  result: ESteamLearnGetHMACKeysResult;
-  keys: CMsgSteamLearnHMACKeys | undefined;
+export interface CMsgSteamLearnGetAccessTokensResponse {
+  result: ESteamLearnGetAccessTokensResult;
+  accessTokens: CMsgSteamLearnAccessTokens | undefined;
 }
 
 export interface CMsgSteamLearnInferenceRequest {
   accessToken: string;
-  accessData: CMsgSteamLearnAccessData | undefined;
   projectId: number;
   publishedVersion: number;
   overrideTrainId: number;
@@ -606,7 +608,6 @@ export interface CMsgSteamLearnInferenceRequest {
 
 export interface CMsgSteamLearnInferenceMetadataRequest {
   accessToken: string;
-  accessData: CMsgSteamLearnAccessData | undefined;
   projectId: number;
   publishedVersion: number;
   overrideTrainId: number;
@@ -623,7 +624,9 @@ export interface CMsgSteamLearnInferenceMetadataResponse {
   ranges: CMsgSteamLearnInferenceMetadataResponse_Range[];
   stdDevs: CMsgSteamLearnInferenceMetadataResponse_StdDev[];
   compactTables: CMsgSteamLearnInferenceMetadataResponse_CompactTable[];
+  sequenceTables: CMsgSteamLearnInferenceMetadataResponse_SequenceTable[];
   kmeans: CMsgSteamLearnInferenceMetadataResponse_KMeans[];
+  appInfo: CMsgSteamLearnInferenceMetadataResponse_AppInfoEntry[];
   snapshotHistogram: CMsgSteamLearnInferenceMetadataResponse_SnapshotHistogram | undefined;
 }
 
@@ -635,7 +638,7 @@ export interface CMsgSteamLearnInferenceMetadataResponse_RowRange {
 export interface CMsgSteamLearnInferenceMetadataResponse_Range {
   dataElementPath: string;
   minValue: number;
-  maxValues: number;
+  maxValue: number;
 }
 
 export interface CMsgSteamLearnInferenceMetadataResponse_StdDev {
@@ -666,6 +669,29 @@ export interface CMsgSteamLearnInferenceMetadataResponse_CompactTable_MapMapping
   value: CMsgSteamLearnInferenceMetadataResponse_CompactTable_Entry | undefined;
 }
 
+export interface CMsgSteamLearnInferenceMetadataResponse_SequenceTable {
+  name: string;
+  mapValues: CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapValuesEntry[];
+  mapMappings: CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapMappingsEntry[];
+  totalCount: string;
+}
+
+export interface CMsgSteamLearnInferenceMetadataResponse_SequenceTable_Entry {
+  values: number[];
+  crc: number;
+  count: number;
+}
+
+export interface CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapValuesEntry {
+  key: number;
+  value: CMsgSteamLearnInferenceMetadataResponse_SequenceTable_Entry | undefined;
+}
+
+export interface CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapMappingsEntry {
+  key: string;
+  value: CMsgSteamLearnInferenceMetadataResponse_SequenceTable_Entry | undefined;
+}
+
 export interface CMsgSteamLearnInferenceMetadataResponse_KMeans {
   name: string;
   clusters: CMsgSteamLearnInferenceMetadataResponse_KMeans_Cluster[];
@@ -675,7 +701,9 @@ export interface CMsgSteamLearnInferenceMetadataResponse_KMeans_Cluster {
   x: number;
   y: number;
   radius: number;
-  radius80pct: number;
+  radius75pct: number;
+  radius50pct: number;
+  radius25pct: number;
 }
 
 export interface CMsgSteamLearnInferenceMetadataResponse_SnapshotHistogram {
@@ -685,8 +713,31 @@ export interface CMsgSteamLearnInferenceMetadataResponse_SnapshotHistogram {
   bucketCounts: number[];
 }
 
+export interface CMsgSteamLearnInferenceMetadataResponse_AppInfo {
+  countryAllow: string;
+  countryDeny: string;
+  platformWin: boolean;
+  platformMac: boolean;
+  platformLinux: boolean;
+  adultViolence: boolean;
+  adultSex: boolean;
+}
+
+export interface CMsgSteamLearnInferenceMetadataResponse_AppInfoEntry {
+  key: number;
+  value: CMsgSteamLearnInferenceMetadataResponse_AppInfo | undefined;
+}
+
 export interface CMsgSteamLearnInferenceBackendResponse {
   outputs: CMsgSteamLearnInferenceBackendResponse_Output[];
+}
+
+export interface CMsgSteamLearnInferenceBackendResponse_Sequence {
+  value: number[];
+}
+
+export interface CMsgSteamLearnInferenceBackendResponse_RegressionOutput {
+  value: number;
 }
 
 export interface CMsgSteamLearnInferenceBackendResponse_BinaryCrossEntropyOutput {
@@ -696,22 +747,26 @@ export interface CMsgSteamLearnInferenceBackendResponse_BinaryCrossEntropyOutput
 export interface CMsgSteamLearnInferenceBackendResponse_MutliBinaryCrossEntropyOutput {
   weight: number[];
   value: number[];
+  valueSequence: CMsgSteamLearnInferenceBackendResponse_Sequence[];
 }
 
 export interface CMsgSteamLearnInferenceBackendResponse_CategoricalCrossEntropyOutput {
   weight: number[];
   value: number[];
+  valueSequence: CMsgSteamLearnInferenceBackendResponse_Sequence[];
 }
 
 export interface CMsgSteamLearnInferenceBackendResponse_Output {
   binaryCrossentropy?: CMsgSteamLearnInferenceBackendResponse_BinaryCrossEntropyOutput | undefined;
   categoricalCrossentropy?: CMsgSteamLearnInferenceBackendResponse_CategoricalCrossEntropyOutput | undefined;
   multiBinaryCrossentropy?: CMsgSteamLearnInferenceBackendResponse_MutliBinaryCrossEntropyOutput | undefined;
+  regression?: CMsgSteamLearnInferenceBackendResponse_RegressionOutput | undefined;
 }
 
 export interface CMsgSteamLearnInferenceResponse {
   inferenceResult: ESteamLearnInferenceResult;
   backendResponse: CMsgSteamLearnInferenceBackendResponse | undefined;
+  keys: string[];
 }
 
 function createBaseCMsgSteamLearnDataSourceDescObject(): CMsgSteamLearnDataSourceDescObject {
@@ -1466,109 +1521,14 @@ export const CMsgSteamLearnDataList: MessageFns<CMsgSteamLearnDataList> = {
   },
 };
 
-function createBaseCMsgSteamLearnAccessData(): CMsgSteamLearnAccessData {
-  return { publisherId: 0, timestamp: 0, randomValue: "0" };
-}
-
-export const CMsgSteamLearnAccessData: MessageFns<CMsgSteamLearnAccessData> = {
-  encode(message: CMsgSteamLearnAccessData, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.publisherId !== 0) {
-      writer.uint32(8).uint32(message.publisherId);
-    }
-    if (message.timestamp !== 0) {
-      writer.uint32(16).uint32(message.timestamp);
-    }
-    if (message.randomValue !== "0") {
-      writer.uint32(24).uint64(message.randomValue);
-    }
-    return writer;
-  },
-
-  decode(input: BinaryReader | Uint8Array, length?: number): CMsgSteamLearnAccessData {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCMsgSteamLearnAccessData();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1: {
-          if (tag !== 8) {
-            break;
-          }
-
-          message.publisherId = reader.uint32();
-          continue;
-        }
-        case 2: {
-          if (tag !== 16) {
-            break;
-          }
-
-          message.timestamp = reader.uint32();
-          continue;
-        }
-        case 3: {
-          if (tag !== 24) {
-            break;
-          }
-
-          message.randomValue = reader.uint64().toString();
-          continue;
-        }
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skip(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): CMsgSteamLearnAccessData {
-    return {
-      publisherId: isSet(object.publisherId) ? globalThis.Number(object.publisherId) : 0,
-      timestamp: isSet(object.timestamp) ? globalThis.Number(object.timestamp) : 0,
-      randomValue: isSet(object.randomValue) ? globalThis.String(object.randomValue) : "0",
-    };
-  },
-
-  toJSON(message: CMsgSteamLearnAccessData): unknown {
-    const obj: any = {};
-    if (message.publisherId !== 0) {
-      obj.publisherId = Math.round(message.publisherId);
-    }
-    if (message.timestamp !== 0) {
-      obj.timestamp = Math.round(message.timestamp);
-    }
-    if (message.randomValue !== "0") {
-      obj.randomValue = message.randomValue;
-    }
-    return obj;
-  },
-
-  create(base?: DeepPartial<CMsgSteamLearnAccessData>): CMsgSteamLearnAccessData {
-    return CMsgSteamLearnAccessData.fromPartial(base ?? {});
-  },
-  fromPartial(object: DeepPartial<CMsgSteamLearnAccessData>): CMsgSteamLearnAccessData {
-    const message = createBaseCMsgSteamLearnAccessData();
-    message.publisherId = object.publisherId ?? 0;
-    message.timestamp = object.timestamp ?? 0;
-    message.randomValue = object.randomValue ?? "0";
-    return message;
-  },
-};
-
 function createBaseCMsgSteamLearnRegisterDataSourceRequest(): CMsgSteamLearnRegisterDataSourceRequest {
-  return { accessToken: "", accessData: undefined, dataSource: undefined };
+  return { accessToken: "", dataSource: undefined };
 }
 
 export const CMsgSteamLearnRegisterDataSourceRequest: MessageFns<CMsgSteamLearnRegisterDataSourceRequest> = {
   encode(message: CMsgSteamLearnRegisterDataSourceRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.accessToken !== "") {
       writer.uint32(10).string(message.accessToken);
-    }
-    if (message.accessData !== undefined) {
-      CMsgSteamLearnAccessData.encode(message.accessData, writer.uint32(18).fork()).join();
     }
     if (message.dataSource !== undefined) {
       CMsgSteamLearnDataSource.encode(message.dataSource, writer.uint32(26).fork()).join();
@@ -1591,14 +1551,6 @@ export const CMsgSteamLearnRegisterDataSourceRequest: MessageFns<CMsgSteamLearnR
           message.accessToken = reader.string();
           continue;
         }
-        case 2: {
-          if (tag !== 18) {
-            break;
-          }
-
-          message.accessData = CMsgSteamLearnAccessData.decode(reader, reader.uint32());
-          continue;
-        }
         case 3: {
           if (tag !== 26) {
             break;
@@ -1619,7 +1571,6 @@ export const CMsgSteamLearnRegisterDataSourceRequest: MessageFns<CMsgSteamLearnR
   fromJSON(object: any): CMsgSteamLearnRegisterDataSourceRequest {
     return {
       accessToken: isSet(object.accessToken) ? globalThis.String(object.accessToken) : "",
-      accessData: isSet(object.accessData) ? CMsgSteamLearnAccessData.fromJSON(object.accessData) : undefined,
       dataSource: isSet(object.dataSource) ? CMsgSteamLearnDataSource.fromJSON(object.dataSource) : undefined,
     };
   },
@@ -1628,9 +1579,6 @@ export const CMsgSteamLearnRegisterDataSourceRequest: MessageFns<CMsgSteamLearnR
     const obj: any = {};
     if (message.accessToken !== "") {
       obj.accessToken = message.accessToken;
-    }
-    if (message.accessData !== undefined) {
-      obj.accessData = CMsgSteamLearnAccessData.toJSON(message.accessData);
     }
     if (message.dataSource !== undefined) {
       obj.dataSource = CMsgSteamLearnDataSource.toJSON(message.dataSource);
@@ -1644,9 +1592,6 @@ export const CMsgSteamLearnRegisterDataSourceRequest: MessageFns<CMsgSteamLearnR
   fromPartial(object: DeepPartial<CMsgSteamLearnRegisterDataSourceRequest>): CMsgSteamLearnRegisterDataSourceRequest {
     const message = createBaseCMsgSteamLearnRegisterDataSourceRequest();
     message.accessToken = object.accessToken ?? "";
-    message.accessData = (object.accessData !== undefined && object.accessData !== null)
-      ? CMsgSteamLearnAccessData.fromPartial(object.accessData)
-      : undefined;
     message.dataSource = (object.dataSource !== undefined && object.dataSource !== null)
       ? CMsgSteamLearnDataSource.fromPartial(object.dataSource)
       : undefined;
@@ -1733,16 +1678,13 @@ export const CMsgSteamLearnRegisterDataSourceResponse: MessageFns<CMsgSteamLearn
 };
 
 function createBaseCMsgSteamLearnCacheDataRequest(): CMsgSteamLearnCacheDataRequest {
-  return { accessToken: "", accessData: undefined, data: undefined };
+  return { accessToken: "", data: undefined };
 }
 
 export const CMsgSteamLearnCacheDataRequest: MessageFns<CMsgSteamLearnCacheDataRequest> = {
   encode(message: CMsgSteamLearnCacheDataRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.accessToken !== "") {
       writer.uint32(10).string(message.accessToken);
-    }
-    if (message.accessData !== undefined) {
-      CMsgSteamLearnAccessData.encode(message.accessData, writer.uint32(18).fork()).join();
     }
     if (message.data !== undefined) {
       CMsgSteamLearnData.encode(message.data, writer.uint32(26).fork()).join();
@@ -1765,14 +1707,6 @@ export const CMsgSteamLearnCacheDataRequest: MessageFns<CMsgSteamLearnCacheDataR
           message.accessToken = reader.string();
           continue;
         }
-        case 2: {
-          if (tag !== 18) {
-            break;
-          }
-
-          message.accessData = CMsgSteamLearnAccessData.decode(reader, reader.uint32());
-          continue;
-        }
         case 3: {
           if (tag !== 26) {
             break;
@@ -1793,7 +1727,6 @@ export const CMsgSteamLearnCacheDataRequest: MessageFns<CMsgSteamLearnCacheDataR
   fromJSON(object: any): CMsgSteamLearnCacheDataRequest {
     return {
       accessToken: isSet(object.accessToken) ? globalThis.String(object.accessToken) : "",
-      accessData: isSet(object.accessData) ? CMsgSteamLearnAccessData.fromJSON(object.accessData) : undefined,
       data: isSet(object.data) ? CMsgSteamLearnData.fromJSON(object.data) : undefined,
     };
   },
@@ -1802,9 +1735,6 @@ export const CMsgSteamLearnCacheDataRequest: MessageFns<CMsgSteamLearnCacheDataR
     const obj: any = {};
     if (message.accessToken !== "") {
       obj.accessToken = message.accessToken;
-    }
-    if (message.accessData !== undefined) {
-      obj.accessData = CMsgSteamLearnAccessData.toJSON(message.accessData);
     }
     if (message.data !== undefined) {
       obj.data = CMsgSteamLearnData.toJSON(message.data);
@@ -1818,9 +1748,6 @@ export const CMsgSteamLearnCacheDataRequest: MessageFns<CMsgSteamLearnCacheDataR
   fromPartial(object: DeepPartial<CMsgSteamLearnCacheDataRequest>): CMsgSteamLearnCacheDataRequest {
     const message = createBaseCMsgSteamLearnCacheDataRequest();
     message.accessToken = object.accessToken ?? "";
-    message.accessData = (object.accessData !== undefined && object.accessData !== null)
-      ? CMsgSteamLearnAccessData.fromPartial(object.accessData)
-      : undefined;
     message.data = (object.data !== undefined && object.data !== null)
       ? CMsgSteamLearnData.fromPartial(object.data)
       : undefined;
@@ -1889,24 +1816,13 @@ export const CMsgSteamLearnCacheDataResponse: MessageFns<CMsgSteamLearnCacheData
 };
 
 function createBaseCMsgSteamLearnSnapshotProjectRequest(): CMsgSteamLearnSnapshotProjectRequest {
-  return {
-    accessToken: "",
-    accessData: undefined,
-    projectId: 0,
-    publishedVersion: 0,
-    keys: [],
-    data: [],
-    pendingDataLimitSeconds: 0,
-  };
+  return { accessToken: "", projectId: 0, publishedVersion: 0, keys: [], data: [], pendingDataLimitSeconds: 0 };
 }
 
 export const CMsgSteamLearnSnapshotProjectRequest: MessageFns<CMsgSteamLearnSnapshotProjectRequest> = {
   encode(message: CMsgSteamLearnSnapshotProjectRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.accessToken !== "") {
       writer.uint32(10).string(message.accessToken);
-    }
-    if (message.accessData !== undefined) {
-      CMsgSteamLearnAccessData.encode(message.accessData, writer.uint32(18).fork()).join();
     }
     if (message.projectId !== 0) {
       writer.uint32(24).uint32(message.projectId);
@@ -1941,14 +1857,6 @@ export const CMsgSteamLearnSnapshotProjectRequest: MessageFns<CMsgSteamLearnSnap
           }
 
           message.accessToken = reader.string();
-          continue;
-        }
-        case 2: {
-          if (tag !== 18) {
-            break;
-          }
-
-          message.accessData = CMsgSteamLearnAccessData.decode(reader, reader.uint32());
           continue;
         }
         case 3: {
@@ -2013,7 +1921,6 @@ export const CMsgSteamLearnSnapshotProjectRequest: MessageFns<CMsgSteamLearnSnap
   fromJSON(object: any): CMsgSteamLearnSnapshotProjectRequest {
     return {
       accessToken: isSet(object.accessToken) ? globalThis.String(object.accessToken) : "",
-      accessData: isSet(object.accessData) ? CMsgSteamLearnAccessData.fromJSON(object.accessData) : undefined,
       projectId: isSet(object.projectId) ? globalThis.Number(object.projectId) : 0,
       publishedVersion: isSet(object.publishedVersion) ? globalThis.Number(object.publishedVersion) : 0,
       keys: globalThis.Array.isArray(object?.keys) ? object.keys.map((e: any) => globalThis.String(e)) : [],
@@ -2028,9 +1935,6 @@ export const CMsgSteamLearnSnapshotProjectRequest: MessageFns<CMsgSteamLearnSnap
     const obj: any = {};
     if (message.accessToken !== "") {
       obj.accessToken = message.accessToken;
-    }
-    if (message.accessData !== undefined) {
-      obj.accessData = CMsgSteamLearnAccessData.toJSON(message.accessData);
     }
     if (message.projectId !== 0) {
       obj.projectId = Math.round(message.projectId);
@@ -2056,9 +1960,6 @@ export const CMsgSteamLearnSnapshotProjectRequest: MessageFns<CMsgSteamLearnSnap
   fromPartial(object: DeepPartial<CMsgSteamLearnSnapshotProjectRequest>): CMsgSteamLearnSnapshotProjectRequest {
     const message = createBaseCMsgSteamLearnSnapshotProjectRequest();
     message.accessToken = object.accessToken ?? "";
-    message.accessData = (object.accessData !== undefined && object.accessData !== null)
-      ? CMsgSteamLearnAccessData.fromPartial(object.accessData)
-      : undefined;
     message.projectId = object.projectId ?? 0;
     message.publishedVersion = object.publishedVersion ?? 0;
     message.keys = object.keys?.map((e) => e) || [];
@@ -2131,7 +2032,7 @@ export const CMsgSteamLearnSnapshotProjectResponse: MessageFns<CMsgSteamLearnSna
 };
 
 function createBaseCMsgSteamLearnBatchOperationRequest(): CMsgSteamLearnBatchOperationRequest {
-  return { cacheDataRequests: [], snapshotRequests: [] };
+  return { cacheDataRequests: [], snapshotRequests: [], inferenceRequests: [] };
 }
 
 export const CMsgSteamLearnBatchOperationRequest: MessageFns<CMsgSteamLearnBatchOperationRequest> = {
@@ -2141,6 +2042,9 @@ export const CMsgSteamLearnBatchOperationRequest: MessageFns<CMsgSteamLearnBatch
     }
     for (const v of message.snapshotRequests) {
       CMsgSteamLearnSnapshotProjectRequest.encode(v!, writer.uint32(18).fork()).join();
+    }
+    for (const v of message.inferenceRequests) {
+      CMsgSteamLearnInferenceRequest.encode(v!, writer.uint32(26).fork()).join();
     }
     return writer;
   },
@@ -2168,6 +2072,14 @@ export const CMsgSteamLearnBatchOperationRequest: MessageFns<CMsgSteamLearnBatch
           message.snapshotRequests.push(CMsgSteamLearnSnapshotProjectRequest.decode(reader, reader.uint32()));
           continue;
         }
+        case 3: {
+          if (tag !== 26) {
+            break;
+          }
+
+          message.inferenceRequests.push(CMsgSteamLearnInferenceRequest.decode(reader, reader.uint32()));
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -2185,6 +2097,9 @@ export const CMsgSteamLearnBatchOperationRequest: MessageFns<CMsgSteamLearnBatch
       snapshotRequests: globalThis.Array.isArray(object?.snapshotRequests)
         ? object.snapshotRequests.map((e: any) => CMsgSteamLearnSnapshotProjectRequest.fromJSON(e))
         : [],
+      inferenceRequests: globalThis.Array.isArray(object?.inferenceRequests)
+        ? object.inferenceRequests.map((e: any) => CMsgSteamLearnInferenceRequest.fromJSON(e))
+        : [],
     };
   },
 
@@ -2195,6 +2110,9 @@ export const CMsgSteamLearnBatchOperationRequest: MessageFns<CMsgSteamLearnBatch
     }
     if (message.snapshotRequests?.length) {
       obj.snapshotRequests = message.snapshotRequests.map((e) => CMsgSteamLearnSnapshotProjectRequest.toJSON(e));
+    }
+    if (message.inferenceRequests?.length) {
+      obj.inferenceRequests = message.inferenceRequests.map((e) => CMsgSteamLearnInferenceRequest.toJSON(e));
     }
     return obj;
   },
@@ -2208,12 +2126,14 @@ export const CMsgSteamLearnBatchOperationRequest: MessageFns<CMsgSteamLearnBatch
       [];
     message.snapshotRequests =
       object.snapshotRequests?.map((e) => CMsgSteamLearnSnapshotProjectRequest.fromPartial(e)) || [];
+    message.inferenceRequests = object.inferenceRequests?.map((e) => CMsgSteamLearnInferenceRequest.fromPartial(e)) ||
+      [];
     return message;
   },
 };
 
 function createBaseCMsgSteamLearnBatchOperationResponse(): CMsgSteamLearnBatchOperationResponse {
-  return { cacheDataResponses: [], snapshotResponses: [] };
+  return { cacheDataResponses: [], snapshotResponses: [], inferenceResponses: [] };
 }
 
 export const CMsgSteamLearnBatchOperationResponse: MessageFns<CMsgSteamLearnBatchOperationResponse> = {
@@ -2223,6 +2143,9 @@ export const CMsgSteamLearnBatchOperationResponse: MessageFns<CMsgSteamLearnBatc
     }
     for (const v of message.snapshotResponses) {
       CMsgSteamLearnSnapshotProjectResponse.encode(v!, writer.uint32(18).fork()).join();
+    }
+    for (const v of message.inferenceResponses) {
+      CMsgSteamLearnInferenceResponse.encode(v!, writer.uint32(26).fork()).join();
     }
     return writer;
   },
@@ -2250,6 +2173,14 @@ export const CMsgSteamLearnBatchOperationResponse: MessageFns<CMsgSteamLearnBatc
           message.snapshotResponses.push(CMsgSteamLearnSnapshotProjectResponse.decode(reader, reader.uint32()));
           continue;
         }
+        case 3: {
+          if (tag !== 26) {
+            break;
+          }
+
+          message.inferenceResponses.push(CMsgSteamLearnInferenceResponse.decode(reader, reader.uint32()));
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -2267,6 +2198,9 @@ export const CMsgSteamLearnBatchOperationResponse: MessageFns<CMsgSteamLearnBatc
       snapshotResponses: globalThis.Array.isArray(object?.snapshotResponses)
         ? object.snapshotResponses.map((e: any) => CMsgSteamLearnSnapshotProjectResponse.fromJSON(e))
         : [],
+      inferenceResponses: globalThis.Array.isArray(object?.inferenceResponses)
+        ? object.inferenceResponses.map((e: any) => CMsgSteamLearnInferenceResponse.fromJSON(e))
+        : [],
     };
   },
 
@@ -2277,6 +2211,9 @@ export const CMsgSteamLearnBatchOperationResponse: MessageFns<CMsgSteamLearnBatc
     }
     if (message.snapshotResponses?.length) {
       obj.snapshotResponses = message.snapshotResponses.map((e) => CMsgSteamLearnSnapshotProjectResponse.toJSON(e));
+    }
+    if (message.inferenceResponses?.length) {
+      obj.inferenceResponses = message.inferenceResponses.map((e) => CMsgSteamLearnInferenceResponse.toJSON(e));
     }
     return obj;
   },
@@ -2290,32 +2227,42 @@ export const CMsgSteamLearnBatchOperationResponse: MessageFns<CMsgSteamLearnBatc
       object.cacheDataResponses?.map((e) => CMsgSteamLearnCacheDataResponse.fromPartial(e)) || [];
     message.snapshotResponses =
       object.snapshotResponses?.map((e) => CMsgSteamLearnSnapshotProjectResponse.fromPartial(e)) || [];
+    message.inferenceResponses =
+      object.inferenceResponses?.map((e) => CMsgSteamLearnInferenceResponse.fromPartial(e)) || [];
     return message;
   },
 };
 
-function createBaseCMsgSteamLearnHMACKeys(): CMsgSteamLearnHMACKeys {
-  return { registerDataSourceKey: "", cacheDataKeys: [], snapshotProjectKeys: [] };
+function createBaseCMsgSteamLearnAccessTokens(): CMsgSteamLearnAccessTokens {
+  return {
+    registerDataSourceAccessToken: "",
+    cacheDataAccessTokens: [],
+    snapshotProjectAccessTokens: [],
+    inferenceAccessTokens: [],
+  };
 }
 
-export const CMsgSteamLearnHMACKeys: MessageFns<CMsgSteamLearnHMACKeys> = {
-  encode(message: CMsgSteamLearnHMACKeys, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.registerDataSourceKey !== "") {
-      writer.uint32(10).string(message.registerDataSourceKey);
+export const CMsgSteamLearnAccessTokens: MessageFns<CMsgSteamLearnAccessTokens> = {
+  encode(message: CMsgSteamLearnAccessTokens, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.registerDataSourceAccessToken !== "") {
+      writer.uint32(10).string(message.registerDataSourceAccessToken);
     }
-    for (const v of message.cacheDataKeys) {
-      CMsgSteamLearnHMACKeys_CacheDataKeys.encode(v!, writer.uint32(18).fork()).join();
+    for (const v of message.cacheDataAccessTokens) {
+      CMsgSteamLearnAccessTokens_CacheDataAccessToken.encode(v!, writer.uint32(18).fork()).join();
     }
-    for (const v of message.snapshotProjectKeys) {
-      CMsgSteamLearnHMACKeys_SnapshotProjectKeys.encode(v!, writer.uint32(26).fork()).join();
+    for (const v of message.snapshotProjectAccessTokens) {
+      CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken.encode(v!, writer.uint32(26).fork()).join();
+    }
+    for (const v of message.inferenceAccessTokens) {
+      CMsgSteamLearnAccessTokens_InferenceAccessToken.encode(v!, writer.uint32(34).fork()).join();
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): CMsgSteamLearnHMACKeys {
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgSteamLearnAccessTokens {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCMsgSteamLearnHMACKeys();
+    const message = createBaseCMsgSteamLearnAccessTokens();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -2324,7 +2271,7 @@ export const CMsgSteamLearnHMACKeys: MessageFns<CMsgSteamLearnHMACKeys> = {
             break;
           }
 
-          message.registerDataSourceKey = reader.string();
+          message.registerDataSourceAccessToken = reader.string();
           continue;
         }
         case 2: {
@@ -2332,7 +2279,9 @@ export const CMsgSteamLearnHMACKeys: MessageFns<CMsgSteamLearnHMACKeys> = {
             break;
           }
 
-          message.cacheDataKeys.push(CMsgSteamLearnHMACKeys_CacheDataKeys.decode(reader, reader.uint32()));
+          message.cacheDataAccessTokens.push(
+            CMsgSteamLearnAccessTokens_CacheDataAccessToken.decode(reader, reader.uint32()),
+          );
           continue;
         }
         case 3: {
@@ -2340,7 +2289,19 @@ export const CMsgSteamLearnHMACKeys: MessageFns<CMsgSteamLearnHMACKeys> = {
             break;
           }
 
-          message.snapshotProjectKeys.push(CMsgSteamLearnHMACKeys_SnapshotProjectKeys.decode(reader, reader.uint32()));
+          message.snapshotProjectAccessTokens.push(
+            CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken.decode(reader, reader.uint32()),
+          );
+          continue;
+        }
+        case 4: {
+          if (tag !== 34) {
+            break;
+          }
+
+          message.inferenceAccessTokens.push(
+            CMsgSteamLearnAccessTokens_InferenceAccessToken.decode(reader, reader.uint32()),
+          );
           continue;
         }
       }
@@ -2352,69 +2313,90 @@ export const CMsgSteamLearnHMACKeys: MessageFns<CMsgSteamLearnHMACKeys> = {
     return message;
   },
 
-  fromJSON(object: any): CMsgSteamLearnHMACKeys {
+  fromJSON(object: any): CMsgSteamLearnAccessTokens {
     return {
-      registerDataSourceKey: isSet(object.registerDataSourceKey) ? globalThis.String(object.registerDataSourceKey) : "",
-      cacheDataKeys: globalThis.Array.isArray(object?.cacheDataKeys)
-        ? object.cacheDataKeys.map((e: any) => CMsgSteamLearnHMACKeys_CacheDataKeys.fromJSON(e))
+      registerDataSourceAccessToken: isSet(object.registerDataSourceAccessToken)
+        ? globalThis.String(object.registerDataSourceAccessToken)
+        : "",
+      cacheDataAccessTokens: globalThis.Array.isArray(object?.cacheDataAccessTokens)
+        ? object.cacheDataAccessTokens.map((e: any) => CMsgSteamLearnAccessTokens_CacheDataAccessToken.fromJSON(e))
         : [],
-      snapshotProjectKeys: globalThis.Array.isArray(object?.snapshotProjectKeys)
-        ? object.snapshotProjectKeys.map((e: any) => CMsgSteamLearnHMACKeys_SnapshotProjectKeys.fromJSON(e))
+      snapshotProjectAccessTokens: globalThis.Array.isArray(object?.snapshotProjectAccessTokens)
+        ? object.snapshotProjectAccessTokens.map((e: any) =>
+          CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken.fromJSON(e)
+        )
+        : [],
+      inferenceAccessTokens: globalThis.Array.isArray(object?.inferenceAccessTokens)
+        ? object.inferenceAccessTokens.map((e: any) => CMsgSteamLearnAccessTokens_InferenceAccessToken.fromJSON(e))
         : [],
     };
   },
 
-  toJSON(message: CMsgSteamLearnHMACKeys): unknown {
+  toJSON(message: CMsgSteamLearnAccessTokens): unknown {
     const obj: any = {};
-    if (message.registerDataSourceKey !== "") {
-      obj.registerDataSourceKey = message.registerDataSourceKey;
+    if (message.registerDataSourceAccessToken !== "") {
+      obj.registerDataSourceAccessToken = message.registerDataSourceAccessToken;
     }
-    if (message.cacheDataKeys?.length) {
-      obj.cacheDataKeys = message.cacheDataKeys.map((e) => CMsgSteamLearnHMACKeys_CacheDataKeys.toJSON(e));
+    if (message.cacheDataAccessTokens?.length) {
+      obj.cacheDataAccessTokens = message.cacheDataAccessTokens.map((e) =>
+        CMsgSteamLearnAccessTokens_CacheDataAccessToken.toJSON(e)
+      );
     }
-    if (message.snapshotProjectKeys?.length) {
-      obj.snapshotProjectKeys = message.snapshotProjectKeys.map((e) =>
-        CMsgSteamLearnHMACKeys_SnapshotProjectKeys.toJSON(e)
+    if (message.snapshotProjectAccessTokens?.length) {
+      obj.snapshotProjectAccessTokens = message.snapshotProjectAccessTokens.map((e) =>
+        CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken.toJSON(e)
+      );
+    }
+    if (message.inferenceAccessTokens?.length) {
+      obj.inferenceAccessTokens = message.inferenceAccessTokens.map((e) =>
+        CMsgSteamLearnAccessTokens_InferenceAccessToken.toJSON(e)
       );
     }
     return obj;
   },
 
-  create(base?: DeepPartial<CMsgSteamLearnHMACKeys>): CMsgSteamLearnHMACKeys {
-    return CMsgSteamLearnHMACKeys.fromPartial(base ?? {});
+  create(base?: DeepPartial<CMsgSteamLearnAccessTokens>): CMsgSteamLearnAccessTokens {
+    return CMsgSteamLearnAccessTokens.fromPartial(base ?? {});
   },
-  fromPartial(object: DeepPartial<CMsgSteamLearnHMACKeys>): CMsgSteamLearnHMACKeys {
-    const message = createBaseCMsgSteamLearnHMACKeys();
-    message.registerDataSourceKey = object.registerDataSourceKey ?? "";
-    message.cacheDataKeys = object.cacheDataKeys?.map((e) => CMsgSteamLearnHMACKeys_CacheDataKeys.fromPartial(e)) || [];
-    message.snapshotProjectKeys =
-      object.snapshotProjectKeys?.map((e) => CMsgSteamLearnHMACKeys_SnapshotProjectKeys.fromPartial(e)) || [];
+  fromPartial(object: DeepPartial<CMsgSteamLearnAccessTokens>): CMsgSteamLearnAccessTokens {
+    const message = createBaseCMsgSteamLearnAccessTokens();
+    message.registerDataSourceAccessToken = object.registerDataSourceAccessToken ?? "";
+    message.cacheDataAccessTokens =
+      object.cacheDataAccessTokens?.map((e) => CMsgSteamLearnAccessTokens_CacheDataAccessToken.fromPartial(e)) || [];
+    message.snapshotProjectAccessTokens =
+      object.snapshotProjectAccessTokens?.map((e) =>
+        CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken.fromPartial(e)
+      ) || [];
+    message.inferenceAccessTokens =
+      object.inferenceAccessTokens?.map((e) => CMsgSteamLearnAccessTokens_InferenceAccessToken.fromPartial(e)) || [];
     return message;
   },
 };
 
-function createBaseCMsgSteamLearnHMACKeys_CacheDataKeys(): CMsgSteamLearnHMACKeys_CacheDataKeys {
-  return { dataSourceId: 0, version: 0, key: "" };
+function createBaseCMsgSteamLearnAccessTokens_CacheDataAccessToken(): CMsgSteamLearnAccessTokens_CacheDataAccessToken {
+  return { dataSourceId: 0, accessToken: "" };
 }
 
-export const CMsgSteamLearnHMACKeys_CacheDataKeys: MessageFns<CMsgSteamLearnHMACKeys_CacheDataKeys> = {
-  encode(message: CMsgSteamLearnHMACKeys_CacheDataKeys, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+export const CMsgSteamLearnAccessTokens_CacheDataAccessToken: MessageFns<
+  CMsgSteamLearnAccessTokens_CacheDataAccessToken
+> = {
+  encode(
+    message: CMsgSteamLearnAccessTokens_CacheDataAccessToken,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     if (message.dataSourceId !== 0) {
       writer.uint32(8).uint32(message.dataSourceId);
     }
-    if (message.version !== 0) {
-      writer.uint32(24).uint32(message.version);
-    }
-    if (message.key !== "") {
-      writer.uint32(18).string(message.key);
+    if (message.accessToken !== "") {
+      writer.uint32(18).string(message.accessToken);
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): CMsgSteamLearnHMACKeys_CacheDataKeys {
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgSteamLearnAccessTokens_CacheDataAccessToken {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCMsgSteamLearnHMACKeys_CacheDataKeys();
+    const message = createBaseCMsgSteamLearnAccessTokens_CacheDataAccessToken();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -2426,20 +2408,12 @@ export const CMsgSteamLearnHMACKeys_CacheDataKeys: MessageFns<CMsgSteamLearnHMAC
           message.dataSourceId = reader.uint32();
           continue;
         }
-        case 3: {
-          if (tag !== 24) {
-            break;
-          }
-
-          message.version = reader.uint32();
-          continue;
-        }
         case 2: {
           if (tag !== 18) {
             break;
           }
 
-          message.key = reader.string();
+          message.accessToken = reader.string();
           continue;
         }
       }
@@ -2451,62 +2425,63 @@ export const CMsgSteamLearnHMACKeys_CacheDataKeys: MessageFns<CMsgSteamLearnHMAC
     return message;
   },
 
-  fromJSON(object: any): CMsgSteamLearnHMACKeys_CacheDataKeys {
+  fromJSON(object: any): CMsgSteamLearnAccessTokens_CacheDataAccessToken {
     return {
       dataSourceId: isSet(object.dataSourceId) ? globalThis.Number(object.dataSourceId) : 0,
-      version: isSet(object.version) ? globalThis.Number(object.version) : 0,
-      key: isSet(object.key) ? globalThis.String(object.key) : "",
+      accessToken: isSet(object.accessToken) ? globalThis.String(object.accessToken) : "",
     };
   },
 
-  toJSON(message: CMsgSteamLearnHMACKeys_CacheDataKeys): unknown {
+  toJSON(message: CMsgSteamLearnAccessTokens_CacheDataAccessToken): unknown {
     const obj: any = {};
     if (message.dataSourceId !== 0) {
       obj.dataSourceId = Math.round(message.dataSourceId);
     }
-    if (message.version !== 0) {
-      obj.version = Math.round(message.version);
-    }
-    if (message.key !== "") {
-      obj.key = message.key;
+    if (message.accessToken !== "") {
+      obj.accessToken = message.accessToken;
     }
     return obj;
   },
 
-  create(base?: DeepPartial<CMsgSteamLearnHMACKeys_CacheDataKeys>): CMsgSteamLearnHMACKeys_CacheDataKeys {
-    return CMsgSteamLearnHMACKeys_CacheDataKeys.fromPartial(base ?? {});
+  create(
+    base?: DeepPartial<CMsgSteamLearnAccessTokens_CacheDataAccessToken>,
+  ): CMsgSteamLearnAccessTokens_CacheDataAccessToken {
+    return CMsgSteamLearnAccessTokens_CacheDataAccessToken.fromPartial(base ?? {});
   },
-  fromPartial(object: DeepPartial<CMsgSteamLearnHMACKeys_CacheDataKeys>): CMsgSteamLearnHMACKeys_CacheDataKeys {
-    const message = createBaseCMsgSteamLearnHMACKeys_CacheDataKeys();
+  fromPartial(
+    object: DeepPartial<CMsgSteamLearnAccessTokens_CacheDataAccessToken>,
+  ): CMsgSteamLearnAccessTokens_CacheDataAccessToken {
+    const message = createBaseCMsgSteamLearnAccessTokens_CacheDataAccessToken();
     message.dataSourceId = object.dataSourceId ?? 0;
-    message.version = object.version ?? 0;
-    message.key = object.key ?? "";
+    message.accessToken = object.accessToken ?? "";
     return message;
   },
 };
 
-function createBaseCMsgSteamLearnHMACKeys_SnapshotProjectKeys(): CMsgSteamLearnHMACKeys_SnapshotProjectKeys {
-  return { projectId: 0, publishedVersion: 0, key: "" };
+function createBaseCMsgSteamLearnAccessTokens_SnapshotProjectAccessToken(): CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken {
+  return { projectId: 0, accessToken: "" };
 }
 
-export const CMsgSteamLearnHMACKeys_SnapshotProjectKeys: MessageFns<CMsgSteamLearnHMACKeys_SnapshotProjectKeys> = {
-  encode(message: CMsgSteamLearnHMACKeys_SnapshotProjectKeys, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+export const CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken: MessageFns<
+  CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken
+> = {
+  encode(
+    message: CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
     if (message.projectId !== 0) {
       writer.uint32(8).uint32(message.projectId);
     }
-    if (message.publishedVersion !== 0) {
-      writer.uint32(24).uint32(message.publishedVersion);
-    }
-    if (message.key !== "") {
-      writer.uint32(18).string(message.key);
+    if (message.accessToken !== "") {
+      writer.uint32(18).string(message.accessToken);
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): CMsgSteamLearnHMACKeys_SnapshotProjectKeys {
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCMsgSteamLearnHMACKeys_SnapshotProjectKeys();
+    const message = createBaseCMsgSteamLearnAccessTokens_SnapshotProjectAccessToken();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -2518,20 +2493,12 @@ export const CMsgSteamLearnHMACKeys_SnapshotProjectKeys: MessageFns<CMsgSteamLea
           message.projectId = reader.uint32();
           continue;
         }
-        case 3: {
-          if (tag !== 24) {
-            break;
-          }
-
-          message.publishedVersion = reader.uint32();
-          continue;
-        }
         case 2: {
           if (tag !== 18) {
             break;
           }
 
-          message.key = reader.string();
+          message.accessToken = reader.string();
           continue;
         }
       }
@@ -2543,58 +2510,140 @@ export const CMsgSteamLearnHMACKeys_SnapshotProjectKeys: MessageFns<CMsgSteamLea
     return message;
   },
 
-  fromJSON(object: any): CMsgSteamLearnHMACKeys_SnapshotProjectKeys {
+  fromJSON(object: any): CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken {
     return {
       projectId: isSet(object.projectId) ? globalThis.Number(object.projectId) : 0,
-      publishedVersion: isSet(object.publishedVersion) ? globalThis.Number(object.publishedVersion) : 0,
-      key: isSet(object.key) ? globalThis.String(object.key) : "",
+      accessToken: isSet(object.accessToken) ? globalThis.String(object.accessToken) : "",
     };
   },
 
-  toJSON(message: CMsgSteamLearnHMACKeys_SnapshotProjectKeys): unknown {
+  toJSON(message: CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken): unknown {
     const obj: any = {};
     if (message.projectId !== 0) {
       obj.projectId = Math.round(message.projectId);
     }
-    if (message.publishedVersion !== 0) {
-      obj.publishedVersion = Math.round(message.publishedVersion);
-    }
-    if (message.key !== "") {
-      obj.key = message.key;
+    if (message.accessToken !== "") {
+      obj.accessToken = message.accessToken;
     }
     return obj;
   },
 
-  create(base?: DeepPartial<CMsgSteamLearnHMACKeys_SnapshotProjectKeys>): CMsgSteamLearnHMACKeys_SnapshotProjectKeys {
-    return CMsgSteamLearnHMACKeys_SnapshotProjectKeys.fromPartial(base ?? {});
+  create(
+    base?: DeepPartial<CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken>,
+  ): CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken {
+    return CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken.fromPartial(base ?? {});
   },
   fromPartial(
-    object: DeepPartial<CMsgSteamLearnHMACKeys_SnapshotProjectKeys>,
-  ): CMsgSteamLearnHMACKeys_SnapshotProjectKeys {
-    const message = createBaseCMsgSteamLearnHMACKeys_SnapshotProjectKeys();
+    object: DeepPartial<CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken>,
+  ): CMsgSteamLearnAccessTokens_SnapshotProjectAccessToken {
+    const message = createBaseCMsgSteamLearnAccessTokens_SnapshotProjectAccessToken();
     message.projectId = object.projectId ?? 0;
-    message.publishedVersion = object.publishedVersion ?? 0;
-    message.key = object.key ?? "";
+    message.accessToken = object.accessToken ?? "";
     return message;
   },
 };
 
-function createBaseCMsgSteamLearnGetHMACKeysRequest(): CMsgSteamLearnGetHMACKeysRequest {
+function createBaseCMsgSteamLearnAccessTokens_InferenceAccessToken(): CMsgSteamLearnAccessTokens_InferenceAccessToken {
+  return { projectId: 0, accessToken: "" };
+}
+
+export const CMsgSteamLearnAccessTokens_InferenceAccessToken: MessageFns<
+  CMsgSteamLearnAccessTokens_InferenceAccessToken
+> = {
+  encode(
+    message: CMsgSteamLearnAccessTokens_InferenceAccessToken,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.projectId !== 0) {
+      writer.uint32(8).uint32(message.projectId);
+    }
+    if (message.accessToken !== "") {
+      writer.uint32(18).string(message.accessToken);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgSteamLearnAccessTokens_InferenceAccessToken {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgSteamLearnAccessTokens_InferenceAccessToken();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.projectId = reader.uint32();
+          continue;
+        }
+        case 2: {
+          if (tag !== 18) {
+            break;
+          }
+
+          message.accessToken = reader.string();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgSteamLearnAccessTokens_InferenceAccessToken {
+    return {
+      projectId: isSet(object.projectId) ? globalThis.Number(object.projectId) : 0,
+      accessToken: isSet(object.accessToken) ? globalThis.String(object.accessToken) : "",
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnAccessTokens_InferenceAccessToken): unknown {
+    const obj: any = {};
+    if (message.projectId !== 0) {
+      obj.projectId = Math.round(message.projectId);
+    }
+    if (message.accessToken !== "") {
+      obj.accessToken = message.accessToken;
+    }
+    return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamLearnAccessTokens_InferenceAccessToken>,
+  ): CMsgSteamLearnAccessTokens_InferenceAccessToken {
+    return CMsgSteamLearnAccessTokens_InferenceAccessToken.fromPartial(base ?? {});
+  },
+  fromPartial(
+    object: DeepPartial<CMsgSteamLearnAccessTokens_InferenceAccessToken>,
+  ): CMsgSteamLearnAccessTokens_InferenceAccessToken {
+    const message = createBaseCMsgSteamLearnAccessTokens_InferenceAccessToken();
+    message.projectId = object.projectId ?? 0;
+    message.accessToken = object.accessToken ?? "";
+    return message;
+  },
+};
+
+function createBaseCMsgSteamLearnGetAccessTokensRequest(): CMsgSteamLearnGetAccessTokensRequest {
   return { appid: 0 };
 }
 
-export const CMsgSteamLearnGetHMACKeysRequest: MessageFns<CMsgSteamLearnGetHMACKeysRequest> = {
-  encode(message: CMsgSteamLearnGetHMACKeysRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+export const CMsgSteamLearnGetAccessTokensRequest: MessageFns<CMsgSteamLearnGetAccessTokensRequest> = {
+  encode(message: CMsgSteamLearnGetAccessTokensRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.appid !== 0) {
       writer.uint32(8).uint32(message.appid);
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): CMsgSteamLearnGetHMACKeysRequest {
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgSteamLearnGetAccessTokensRequest {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCMsgSteamLearnGetHMACKeysRequest();
+    const message = createBaseCMsgSteamLearnGetAccessTokensRequest();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -2615,11 +2664,11 @@ export const CMsgSteamLearnGetHMACKeysRequest: MessageFns<CMsgSteamLearnGetHMACK
     return message;
   },
 
-  fromJSON(object: any): CMsgSteamLearnGetHMACKeysRequest {
+  fromJSON(object: any): CMsgSteamLearnGetAccessTokensRequest {
     return { appid: isSet(object.appid) ? globalThis.Number(object.appid) : 0 };
   },
 
-  toJSON(message: CMsgSteamLearnGetHMACKeysRequest): unknown {
+  toJSON(message: CMsgSteamLearnGetAccessTokensRequest): unknown {
     const obj: any = {};
     if (message.appid !== 0) {
       obj.appid = Math.round(message.appid);
@@ -2627,35 +2676,35 @@ export const CMsgSteamLearnGetHMACKeysRequest: MessageFns<CMsgSteamLearnGetHMACK
     return obj;
   },
 
-  create(base?: DeepPartial<CMsgSteamLearnGetHMACKeysRequest>): CMsgSteamLearnGetHMACKeysRequest {
-    return CMsgSteamLearnGetHMACKeysRequest.fromPartial(base ?? {});
+  create(base?: DeepPartial<CMsgSteamLearnGetAccessTokensRequest>): CMsgSteamLearnGetAccessTokensRequest {
+    return CMsgSteamLearnGetAccessTokensRequest.fromPartial(base ?? {});
   },
-  fromPartial(object: DeepPartial<CMsgSteamLearnGetHMACKeysRequest>): CMsgSteamLearnGetHMACKeysRequest {
-    const message = createBaseCMsgSteamLearnGetHMACKeysRequest();
+  fromPartial(object: DeepPartial<CMsgSteamLearnGetAccessTokensRequest>): CMsgSteamLearnGetAccessTokensRequest {
+    const message = createBaseCMsgSteamLearnGetAccessTokensRequest();
     message.appid = object.appid ?? 0;
     return message;
   },
 };
 
-function createBaseCMsgSteamLearnGetHMACKeysResponse(): CMsgSteamLearnGetHMACKeysResponse {
-  return { result: 0, keys: undefined };
+function createBaseCMsgSteamLearnGetAccessTokensResponse(): CMsgSteamLearnGetAccessTokensResponse {
+  return { result: 0, accessTokens: undefined };
 }
 
-export const CMsgSteamLearnGetHMACKeysResponse: MessageFns<CMsgSteamLearnGetHMACKeysResponse> = {
-  encode(message: CMsgSteamLearnGetHMACKeysResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+export const CMsgSteamLearnGetAccessTokensResponse: MessageFns<CMsgSteamLearnGetAccessTokensResponse> = {
+  encode(message: CMsgSteamLearnGetAccessTokensResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.result !== 0) {
       writer.uint32(8).int32(message.result);
     }
-    if (message.keys !== undefined) {
-      CMsgSteamLearnHMACKeys.encode(message.keys, writer.uint32(18).fork()).join();
+    if (message.accessTokens !== undefined) {
+      CMsgSteamLearnAccessTokens.encode(message.accessTokens, writer.uint32(18).fork()).join();
     }
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): CMsgSteamLearnGetHMACKeysResponse {
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgSteamLearnGetAccessTokensResponse {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCMsgSteamLearnGetHMACKeysResponse();
+    const message = createBaseCMsgSteamLearnGetAccessTokensResponse();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -2672,7 +2721,7 @@ export const CMsgSteamLearnGetHMACKeysResponse: MessageFns<CMsgSteamLearnGetHMAC
             break;
           }
 
-          message.keys = CMsgSteamLearnHMACKeys.decode(reader, reader.uint32());
+          message.accessTokens = CMsgSteamLearnAccessTokens.decode(reader, reader.uint32());
           continue;
         }
       }
@@ -2684,32 +2733,32 @@ export const CMsgSteamLearnGetHMACKeysResponse: MessageFns<CMsgSteamLearnGetHMAC
     return message;
   },
 
-  fromJSON(object: any): CMsgSteamLearnGetHMACKeysResponse {
+  fromJSON(object: any): CMsgSteamLearnGetAccessTokensResponse {
     return {
-      result: isSet(object.result) ? eSteamLearnGetHMACKeysResultFromJSON(object.result) : 0,
-      keys: isSet(object.keys) ? CMsgSteamLearnHMACKeys.fromJSON(object.keys) : undefined,
+      result: isSet(object.result) ? eSteamLearnGetAccessTokensResultFromJSON(object.result) : 0,
+      accessTokens: isSet(object.accessTokens) ? CMsgSteamLearnAccessTokens.fromJSON(object.accessTokens) : undefined,
     };
   },
 
-  toJSON(message: CMsgSteamLearnGetHMACKeysResponse): unknown {
+  toJSON(message: CMsgSteamLearnGetAccessTokensResponse): unknown {
     const obj: any = {};
     if (message.result !== 0) {
-      obj.result = eSteamLearnGetHMACKeysResultToJSON(message.result);
+      obj.result = eSteamLearnGetAccessTokensResultToJSON(message.result);
     }
-    if (message.keys !== undefined) {
-      obj.keys = CMsgSteamLearnHMACKeys.toJSON(message.keys);
+    if (message.accessTokens !== undefined) {
+      obj.accessTokens = CMsgSteamLearnAccessTokens.toJSON(message.accessTokens);
     }
     return obj;
   },
 
-  create(base?: DeepPartial<CMsgSteamLearnGetHMACKeysResponse>): CMsgSteamLearnGetHMACKeysResponse {
-    return CMsgSteamLearnGetHMACKeysResponse.fromPartial(base ?? {});
+  create(base?: DeepPartial<CMsgSteamLearnGetAccessTokensResponse>): CMsgSteamLearnGetAccessTokensResponse {
+    return CMsgSteamLearnGetAccessTokensResponse.fromPartial(base ?? {});
   },
-  fromPartial(object: DeepPartial<CMsgSteamLearnGetHMACKeysResponse>): CMsgSteamLearnGetHMACKeysResponse {
-    const message = createBaseCMsgSteamLearnGetHMACKeysResponse();
+  fromPartial(object: DeepPartial<CMsgSteamLearnGetAccessTokensResponse>): CMsgSteamLearnGetAccessTokensResponse {
+    const message = createBaseCMsgSteamLearnGetAccessTokensResponse();
     message.result = object.result ?? 0;
-    message.keys = (object.keys !== undefined && object.keys !== null)
-      ? CMsgSteamLearnHMACKeys.fromPartial(object.keys)
+    message.accessTokens = (object.accessTokens !== undefined && object.accessTokens !== null)
+      ? CMsgSteamLearnAccessTokens.fromPartial(object.accessTokens)
       : undefined;
     return message;
   },
@@ -2718,7 +2767,6 @@ export const CMsgSteamLearnGetHMACKeysResponse: MessageFns<CMsgSteamLearnGetHMAC
 function createBaseCMsgSteamLearnInferenceRequest(): CMsgSteamLearnInferenceRequest {
   return {
     accessToken: "",
-    accessData: undefined,
     projectId: 0,
     publishedVersion: 0,
     overrideTrainId: 0,
@@ -2731,9 +2779,6 @@ export const CMsgSteamLearnInferenceRequest: MessageFns<CMsgSteamLearnInferenceR
   encode(message: CMsgSteamLearnInferenceRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.accessToken !== "") {
       writer.uint32(10).string(message.accessToken);
-    }
-    if (message.accessData !== undefined) {
-      CMsgSteamLearnAccessData.encode(message.accessData, writer.uint32(18).fork()).join();
     }
     if (message.projectId !== 0) {
       writer.uint32(24).uint32(message.projectId);
@@ -2768,14 +2813,6 @@ export const CMsgSteamLearnInferenceRequest: MessageFns<CMsgSteamLearnInferenceR
           }
 
           message.accessToken = reader.string();
-          continue;
-        }
-        case 2: {
-          if (tag !== 18) {
-            break;
-          }
-
-          message.accessData = CMsgSteamLearnAccessData.decode(reader, reader.uint32());
           continue;
         }
         case 3: {
@@ -2840,7 +2877,6 @@ export const CMsgSteamLearnInferenceRequest: MessageFns<CMsgSteamLearnInferenceR
   fromJSON(object: any): CMsgSteamLearnInferenceRequest {
     return {
       accessToken: isSet(object.accessToken) ? globalThis.String(object.accessToken) : "",
-      accessData: isSet(object.accessData) ? CMsgSteamLearnAccessData.fromJSON(object.accessData) : undefined,
       projectId: isSet(object.projectId) ? globalThis.Number(object.projectId) : 0,
       publishedVersion: isSet(object.publishedVersion) ? globalThis.Number(object.publishedVersion) : 0,
       overrideTrainId: isSet(object.overrideTrainId) ? globalThis.Number(object.overrideTrainId) : 0,
@@ -2855,9 +2891,6 @@ export const CMsgSteamLearnInferenceRequest: MessageFns<CMsgSteamLearnInferenceR
     const obj: any = {};
     if (message.accessToken !== "") {
       obj.accessToken = message.accessToken;
-    }
-    if (message.accessData !== undefined) {
-      obj.accessData = CMsgSteamLearnAccessData.toJSON(message.accessData);
     }
     if (message.projectId !== 0) {
       obj.projectId = Math.round(message.projectId);
@@ -2883,9 +2916,6 @@ export const CMsgSteamLearnInferenceRequest: MessageFns<CMsgSteamLearnInferenceR
   fromPartial(object: DeepPartial<CMsgSteamLearnInferenceRequest>): CMsgSteamLearnInferenceRequest {
     const message = createBaseCMsgSteamLearnInferenceRequest();
     message.accessToken = object.accessToken ?? "";
-    message.accessData = (object.accessData !== undefined && object.accessData !== null)
-      ? CMsgSteamLearnAccessData.fromPartial(object.accessData)
-      : undefined;
     message.projectId = object.projectId ?? 0;
     message.publishedVersion = object.publishedVersion ?? 0;
     message.overrideTrainId = object.overrideTrainId ?? 0;
@@ -2898,16 +2928,13 @@ export const CMsgSteamLearnInferenceRequest: MessageFns<CMsgSteamLearnInferenceR
 };
 
 function createBaseCMsgSteamLearnInferenceMetadataRequest(): CMsgSteamLearnInferenceMetadataRequest {
-  return { accessToken: "", accessData: undefined, projectId: 0, publishedVersion: 0, overrideTrainId: 0 };
+  return { accessToken: "", projectId: 0, publishedVersion: 0, overrideTrainId: 0 };
 }
 
 export const CMsgSteamLearnInferenceMetadataRequest: MessageFns<CMsgSteamLearnInferenceMetadataRequest> = {
   encode(message: CMsgSteamLearnInferenceMetadataRequest, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.accessToken !== "") {
       writer.uint32(10).string(message.accessToken);
-    }
-    if (message.accessData !== undefined) {
-      CMsgSteamLearnAccessData.encode(message.accessData, writer.uint32(18).fork()).join();
     }
     if (message.projectId !== 0) {
       writer.uint32(24).uint32(message.projectId);
@@ -2934,14 +2961,6 @@ export const CMsgSteamLearnInferenceMetadataRequest: MessageFns<CMsgSteamLearnIn
           }
 
           message.accessToken = reader.string();
-          continue;
-        }
-        case 2: {
-          if (tag !== 18) {
-            break;
-          }
-
-          message.accessData = CMsgSteamLearnAccessData.decode(reader, reader.uint32());
           continue;
         }
         case 3: {
@@ -2980,7 +2999,6 @@ export const CMsgSteamLearnInferenceMetadataRequest: MessageFns<CMsgSteamLearnIn
   fromJSON(object: any): CMsgSteamLearnInferenceMetadataRequest {
     return {
       accessToken: isSet(object.accessToken) ? globalThis.String(object.accessToken) : "",
-      accessData: isSet(object.accessData) ? CMsgSteamLearnAccessData.fromJSON(object.accessData) : undefined,
       projectId: isSet(object.projectId) ? globalThis.Number(object.projectId) : 0,
       publishedVersion: isSet(object.publishedVersion) ? globalThis.Number(object.publishedVersion) : 0,
       overrideTrainId: isSet(object.overrideTrainId) ? globalThis.Number(object.overrideTrainId) : 0,
@@ -2991,9 +3009,6 @@ export const CMsgSteamLearnInferenceMetadataRequest: MessageFns<CMsgSteamLearnIn
     const obj: any = {};
     if (message.accessToken !== "") {
       obj.accessToken = message.accessToken;
-    }
-    if (message.accessData !== undefined) {
-      obj.accessData = CMsgSteamLearnAccessData.toJSON(message.accessData);
     }
     if (message.projectId !== 0) {
       obj.projectId = Math.round(message.projectId);
@@ -3013,9 +3028,6 @@ export const CMsgSteamLearnInferenceMetadataRequest: MessageFns<CMsgSteamLearnIn
   fromPartial(object: DeepPartial<CMsgSteamLearnInferenceMetadataRequest>): CMsgSteamLearnInferenceMetadataRequest {
     const message = createBaseCMsgSteamLearnInferenceMetadataRequest();
     message.accessToken = object.accessToken ?? "";
-    message.accessData = (object.accessData !== undefined && object.accessData !== null)
-      ? CMsgSteamLearnAccessData.fromPartial(object.accessData)
-      : undefined;
     message.projectId = object.projectId ?? 0;
     message.publishedVersion = object.publishedVersion ?? 0;
     message.overrideTrainId = object.overrideTrainId ?? 0;
@@ -3114,7 +3126,9 @@ function createBaseCMsgSteamLearnInferenceMetadataResponse(): CMsgSteamLearnInfe
     ranges: [],
     stdDevs: [],
     compactTables: [],
+    sequenceTables: [],
     kmeans: [],
+    appInfo: [],
     snapshotHistogram: undefined,
   };
 }
@@ -3136,8 +3150,14 @@ export const CMsgSteamLearnInferenceMetadataResponse: MessageFns<CMsgSteamLearnI
     for (const v of message.compactTables) {
       CMsgSteamLearnInferenceMetadataResponse_CompactTable.encode(v!, writer.uint32(42).fork()).join();
     }
+    for (const v of message.sequenceTables) {
+      CMsgSteamLearnInferenceMetadataResponse_SequenceTable.encode(v!, writer.uint32(74).fork()).join();
+    }
     for (const v of message.kmeans) {
       CMsgSteamLearnInferenceMetadataResponse_KMeans.encode(v!, writer.uint32(50).fork()).join();
+    }
+    for (const v of message.appInfo) {
+      CMsgSteamLearnInferenceMetadataResponse_AppInfoEntry.encode(v!, writer.uint32(66).fork()).join();
     }
     if (message.snapshotHistogram !== undefined) {
       CMsgSteamLearnInferenceMetadataResponse_SnapshotHistogram.encode(
@@ -3197,12 +3217,30 @@ export const CMsgSteamLearnInferenceMetadataResponse: MessageFns<CMsgSteamLearnI
           );
           continue;
         }
+        case 9: {
+          if (tag !== 74) {
+            break;
+          }
+
+          message.sequenceTables.push(
+            CMsgSteamLearnInferenceMetadataResponse_SequenceTable.decode(reader, reader.uint32()),
+          );
+          continue;
+        }
         case 6: {
           if (tag !== 50) {
             break;
           }
 
           message.kmeans.push(CMsgSteamLearnInferenceMetadataResponse_KMeans.decode(reader, reader.uint32()));
+          continue;
+        }
+        case 8: {
+          if (tag !== 66) {
+            break;
+          }
+
+          message.appInfo.push(CMsgSteamLearnInferenceMetadataResponse_AppInfoEntry.decode(reader, reader.uint32()));
           continue;
         }
         case 7: {
@@ -3242,8 +3280,14 @@ export const CMsgSteamLearnInferenceMetadataResponse: MessageFns<CMsgSteamLearnI
       compactTables: globalThis.Array.isArray(object?.compactTables)
         ? object.compactTables.map((e: any) => CMsgSteamLearnInferenceMetadataResponse_CompactTable.fromJSON(e))
         : [],
+      sequenceTables: globalThis.Array.isArray(object?.sequenceTables)
+        ? object.sequenceTables.map((e: any) => CMsgSteamLearnInferenceMetadataResponse_SequenceTable.fromJSON(e))
+        : [],
       kmeans: globalThis.Array.isArray(object?.kmeans)
         ? object.kmeans.map((e: any) => CMsgSteamLearnInferenceMetadataResponse_KMeans.fromJSON(e))
+        : [],
+      appInfo: globalThis.Array.isArray(object?.appInfo)
+        ? object.appInfo.map((e: any) => CMsgSteamLearnInferenceMetadataResponse_AppInfoEntry.fromJSON(e))
         : [],
       snapshotHistogram: isSet(object.snapshotHistogram)
         ? CMsgSteamLearnInferenceMetadataResponse_SnapshotHistogram.fromJSON(object.snapshotHistogram)
@@ -3270,8 +3314,16 @@ export const CMsgSteamLearnInferenceMetadataResponse: MessageFns<CMsgSteamLearnI
         CMsgSteamLearnInferenceMetadataResponse_CompactTable.toJSON(e)
       );
     }
+    if (message.sequenceTables?.length) {
+      obj.sequenceTables = message.sequenceTables.map((e) =>
+        CMsgSteamLearnInferenceMetadataResponse_SequenceTable.toJSON(e)
+      );
+    }
     if (message.kmeans?.length) {
       obj.kmeans = message.kmeans.map((e) => CMsgSteamLearnInferenceMetadataResponse_KMeans.toJSON(e));
+    }
+    if (message.appInfo?.length) {
+      obj.appInfo = message.appInfo.map((e) => CMsgSteamLearnInferenceMetadataResponse_AppInfoEntry.toJSON(e));
     }
     if (message.snapshotHistogram !== undefined) {
       obj.snapshotHistogram = CMsgSteamLearnInferenceMetadataResponse_SnapshotHistogram.toJSON(
@@ -3294,7 +3346,11 @@ export const CMsgSteamLearnInferenceMetadataResponse: MessageFns<CMsgSteamLearnI
     message.stdDevs = object.stdDevs?.map((e) => CMsgSteamLearnInferenceMetadataResponse_StdDev.fromPartial(e)) || [];
     message.compactTables =
       object.compactTables?.map((e) => CMsgSteamLearnInferenceMetadataResponse_CompactTable.fromPartial(e)) || [];
+    message.sequenceTables =
+      object.sequenceTables?.map((e) => CMsgSteamLearnInferenceMetadataResponse_SequenceTable.fromPartial(e)) || [];
     message.kmeans = object.kmeans?.map((e) => CMsgSteamLearnInferenceMetadataResponse_KMeans.fromPartial(e)) || [];
+    message.appInfo = object.appInfo?.map((e) => CMsgSteamLearnInferenceMetadataResponse_AppInfoEntry.fromPartial(e)) ||
+      [];
     message.snapshotHistogram = (object.snapshotHistogram !== undefined && object.snapshotHistogram !== null)
       ? CMsgSteamLearnInferenceMetadataResponse_SnapshotHistogram.fromPartial(object.snapshotHistogram)
       : undefined;
@@ -3388,7 +3444,7 @@ export const CMsgSteamLearnInferenceMetadataResponse_RowRange: MessageFns<
 };
 
 function createBaseCMsgSteamLearnInferenceMetadataResponse_Range(): CMsgSteamLearnInferenceMetadataResponse_Range {
-  return { dataElementPath: "", minValue: 0, maxValues: 0 };
+  return { dataElementPath: "", minValue: 0, maxValue: 0 };
 }
 
 export const CMsgSteamLearnInferenceMetadataResponse_Range: MessageFns<CMsgSteamLearnInferenceMetadataResponse_Range> =
@@ -3401,10 +3457,10 @@ export const CMsgSteamLearnInferenceMetadataResponse_Range: MessageFns<CMsgSteam
         writer.uint32(10).string(message.dataElementPath);
       }
       if (message.minValue !== 0) {
-        writer.uint32(16).int32(message.minValue);
+        writer.uint32(21).float(message.minValue);
       }
-      if (message.maxValues !== 0) {
-        writer.uint32(24).int32(message.maxValues);
+      if (message.maxValue !== 0) {
+        writer.uint32(29).float(message.maxValue);
       }
       return writer;
     },
@@ -3425,19 +3481,19 @@ export const CMsgSteamLearnInferenceMetadataResponse_Range: MessageFns<CMsgSteam
             continue;
           }
           case 2: {
-            if (tag !== 16) {
+            if (tag !== 21) {
               break;
             }
 
-            message.minValue = reader.int32();
+            message.minValue = reader.float();
             continue;
           }
           case 3: {
-            if (tag !== 24) {
+            if (tag !== 29) {
               break;
             }
 
-            message.maxValues = reader.int32();
+            message.maxValue = reader.float();
             continue;
           }
         }
@@ -3453,7 +3509,7 @@ export const CMsgSteamLearnInferenceMetadataResponse_Range: MessageFns<CMsgSteam
       return {
         dataElementPath: isSet(object.dataElementPath) ? globalThis.String(object.dataElementPath) : "",
         minValue: isSet(object.minValue) ? globalThis.Number(object.minValue) : 0,
-        maxValues: isSet(object.maxValues) ? globalThis.Number(object.maxValues) : 0,
+        maxValue: isSet(object.maxValue) ? globalThis.Number(object.maxValue) : 0,
       };
     },
 
@@ -3463,10 +3519,10 @@ export const CMsgSteamLearnInferenceMetadataResponse_Range: MessageFns<CMsgSteam
         obj.dataElementPath = message.dataElementPath;
       }
       if (message.minValue !== 0) {
-        obj.minValue = Math.round(message.minValue);
+        obj.minValue = message.minValue;
       }
-      if (message.maxValues !== 0) {
-        obj.maxValues = Math.round(message.maxValues);
+      if (message.maxValue !== 0) {
+        obj.maxValue = message.maxValue;
       }
       return obj;
     },
@@ -3482,7 +3538,7 @@ export const CMsgSteamLearnInferenceMetadataResponse_Range: MessageFns<CMsgSteam
       const message = createBaseCMsgSteamLearnInferenceMetadataResponse_Range();
       message.dataElementPath = object.dataElementPath ?? "";
       message.minValue = object.minValue ?? 0;
-      message.maxValues = object.maxValues ?? 0;
+      message.maxValue = object.maxValue ?? 0;
       return message;
     },
   };
@@ -3502,10 +3558,10 @@ export const CMsgSteamLearnInferenceMetadataResponse_StdDev: MessageFns<
       writer.uint32(10).string(message.dataElementPath);
     }
     if (message.mean !== 0) {
-      writer.uint32(16).int32(message.mean);
+      writer.uint32(21).float(message.mean);
     }
     if (message.stdDev !== 0) {
-      writer.uint32(24).uint32(message.stdDev);
+      writer.uint32(29).float(message.stdDev);
     }
     return writer;
   },
@@ -3526,19 +3582,19 @@ export const CMsgSteamLearnInferenceMetadataResponse_StdDev: MessageFns<
           continue;
         }
         case 2: {
-          if (tag !== 16) {
+          if (tag !== 21) {
             break;
           }
 
-          message.mean = reader.int32();
+          message.mean = reader.float();
           continue;
         }
         case 3: {
-          if (tag !== 24) {
+          if (tag !== 29) {
             break;
           }
 
-          message.stdDev = reader.uint32();
+          message.stdDev = reader.float();
           continue;
         }
       }
@@ -3564,10 +3620,10 @@ export const CMsgSteamLearnInferenceMetadataResponse_StdDev: MessageFns<
       obj.dataElementPath = message.dataElementPath;
     }
     if (message.mean !== 0) {
-      obj.mean = Math.round(message.mean);
+      obj.mean = message.mean;
     }
     if (message.stdDev !== 0) {
-      obj.stdDev = Math.round(message.stdDev);
+      obj.stdDev = message.stdDev;
     }
     return obj;
   },
@@ -3999,6 +4055,448 @@ export const CMsgSteamLearnInferenceMetadataResponse_CompactTable_MapMappingsEnt
   },
 };
 
+function createBaseCMsgSteamLearnInferenceMetadataResponse_SequenceTable(): CMsgSteamLearnInferenceMetadataResponse_SequenceTable {
+  return { name: "", mapValues: [], mapMappings: [], totalCount: "0" };
+}
+
+export const CMsgSteamLearnInferenceMetadataResponse_SequenceTable: MessageFns<
+  CMsgSteamLearnInferenceMetadataResponse_SequenceTable
+> = {
+  encode(
+    message: CMsgSteamLearnInferenceMetadataResponse_SequenceTable,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.name !== "") {
+      writer.uint32(10).string(message.name);
+    }
+    for (const v of message.mapValues) {
+      CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapValuesEntry.encode(v!, writer.uint32(18).fork()).join();
+    }
+    for (const v of message.mapMappings) {
+      CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapMappingsEntry.encode(v!, writer.uint32(26).fork())
+        .join();
+    }
+    if (message.totalCount !== "0") {
+      writer.uint32(32).uint64(message.totalCount);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgSteamLearnInferenceMetadataResponse_SequenceTable {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgSteamLearnInferenceMetadataResponse_SequenceTable();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.name = reader.string();
+          continue;
+        }
+        case 2: {
+          if (tag !== 18) {
+            break;
+          }
+
+          message.mapValues.push(
+            CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapValuesEntry.decode(reader, reader.uint32()),
+          );
+          continue;
+        }
+        case 3: {
+          if (tag !== 26) {
+            break;
+          }
+
+          message.mapMappings.push(
+            CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapMappingsEntry.decode(reader, reader.uint32()),
+          );
+          continue;
+        }
+        case 4: {
+          if (tag !== 32) {
+            break;
+          }
+
+          message.totalCount = reader.uint64().toString();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgSteamLearnInferenceMetadataResponse_SequenceTable {
+    return {
+      name: isSet(object.name) ? globalThis.String(object.name) : "",
+      mapValues: globalThis.Array.isArray(object?.mapValues)
+        ? object.mapValues.map((e: any) =>
+          CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapValuesEntry.fromJSON(e)
+        )
+        : [],
+      mapMappings: globalThis.Array.isArray(object?.mapMappings)
+        ? object.mapMappings.map((e: any) =>
+          CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapMappingsEntry.fromJSON(e)
+        )
+        : [],
+      totalCount: isSet(object.totalCount) ? globalThis.String(object.totalCount) : "0",
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnInferenceMetadataResponse_SequenceTable): unknown {
+    const obj: any = {};
+    if (message.name !== "") {
+      obj.name = message.name;
+    }
+    if (message.mapValues?.length) {
+      obj.mapValues = message.mapValues.map((e) =>
+        CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapValuesEntry.toJSON(e)
+      );
+    }
+    if (message.mapMappings?.length) {
+      obj.mapMappings = message.mapMappings.map((e) =>
+        CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapMappingsEntry.toJSON(e)
+      );
+    }
+    if (message.totalCount !== "0") {
+      obj.totalCount = message.totalCount;
+    }
+    return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_SequenceTable>,
+  ): CMsgSteamLearnInferenceMetadataResponse_SequenceTable {
+    return CMsgSteamLearnInferenceMetadataResponse_SequenceTable.fromPartial(base ?? {});
+  },
+  fromPartial(
+    object: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_SequenceTable>,
+  ): CMsgSteamLearnInferenceMetadataResponse_SequenceTable {
+    const message = createBaseCMsgSteamLearnInferenceMetadataResponse_SequenceTable();
+    message.name = object.name ?? "";
+    message.mapValues =
+      object.mapValues?.map((e) =>
+        CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapValuesEntry.fromPartial(e)
+      ) || [];
+    message.mapMappings =
+      object.mapMappings?.map((e) =>
+        CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapMappingsEntry.fromPartial(e)
+      ) || [];
+    message.totalCount = object.totalCount ?? "0";
+    return message;
+  },
+};
+
+function createBaseCMsgSteamLearnInferenceMetadataResponse_SequenceTable_Entry(): CMsgSteamLearnInferenceMetadataResponse_SequenceTable_Entry {
+  return { values: [], crc: 0, count: 0 };
+}
+
+export const CMsgSteamLearnInferenceMetadataResponse_SequenceTable_Entry: MessageFns<
+  CMsgSteamLearnInferenceMetadataResponse_SequenceTable_Entry
+> = {
+  encode(
+    message: CMsgSteamLearnInferenceMetadataResponse_SequenceTable_Entry,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    writer.uint32(10).fork();
+    for (const v of message.values) {
+      writer.uint32(v);
+    }
+    writer.join();
+    if (message.crc !== 0) {
+      writer.uint32(16).uint32(message.crc);
+    }
+    if (message.count !== 0) {
+      writer.uint32(24).uint32(message.count);
+    }
+    return writer;
+  },
+
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number,
+  ): CMsgSteamLearnInferenceMetadataResponse_SequenceTable_Entry {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgSteamLearnInferenceMetadataResponse_SequenceTable_Entry();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag === 8) {
+            message.values.push(reader.uint32());
+
+            continue;
+          }
+
+          if (tag === 10) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.values.push(reader.uint32());
+            }
+
+            continue;
+          }
+
+          break;
+        }
+        case 2: {
+          if (tag !== 16) {
+            break;
+          }
+
+          message.crc = reader.uint32();
+          continue;
+        }
+        case 3: {
+          if (tag !== 24) {
+            break;
+          }
+
+          message.count = reader.uint32();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgSteamLearnInferenceMetadataResponse_SequenceTable_Entry {
+    return {
+      values: globalThis.Array.isArray(object?.values) ? object.values.map((e: any) => globalThis.Number(e)) : [],
+      crc: isSet(object.crc) ? globalThis.Number(object.crc) : 0,
+      count: isSet(object.count) ? globalThis.Number(object.count) : 0,
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnInferenceMetadataResponse_SequenceTable_Entry): unknown {
+    const obj: any = {};
+    if (message.values?.length) {
+      obj.values = message.values.map((e) => Math.round(e));
+    }
+    if (message.crc !== 0) {
+      obj.crc = Math.round(message.crc);
+    }
+    if (message.count !== 0) {
+      obj.count = Math.round(message.count);
+    }
+    return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_SequenceTable_Entry>,
+  ): CMsgSteamLearnInferenceMetadataResponse_SequenceTable_Entry {
+    return CMsgSteamLearnInferenceMetadataResponse_SequenceTable_Entry.fromPartial(base ?? {});
+  },
+  fromPartial(
+    object: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_SequenceTable_Entry>,
+  ): CMsgSteamLearnInferenceMetadataResponse_SequenceTable_Entry {
+    const message = createBaseCMsgSteamLearnInferenceMetadataResponse_SequenceTable_Entry();
+    message.values = object.values?.map((e) => e) || [];
+    message.crc = object.crc ?? 0;
+    message.count = object.count ?? 0;
+    return message;
+  },
+};
+
+function createBaseCMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapValuesEntry(): CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapValuesEntry {
+  return { key: 0, value: undefined };
+}
+
+export const CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapValuesEntry: MessageFns<
+  CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapValuesEntry
+> = {
+  encode(
+    message: CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapValuesEntry,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.key !== 0) {
+      writer.uint32(8).uint32(message.key);
+    }
+    if (message.value !== undefined) {
+      CMsgSteamLearnInferenceMetadataResponse_SequenceTable_Entry.encode(message.value, writer.uint32(18).fork())
+        .join();
+    }
+    return writer;
+  },
+
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number,
+  ): CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapValuesEntry {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapValuesEntry();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.key = reader.uint32();
+          continue;
+        }
+        case 2: {
+          if (tag !== 18) {
+            break;
+          }
+
+          message.value = CMsgSteamLearnInferenceMetadataResponse_SequenceTable_Entry.decode(reader, reader.uint32());
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapValuesEntry {
+    return {
+      key: isSet(object.key) ? globalThis.Number(object.key) : 0,
+      value: isSet(object.value)
+        ? CMsgSteamLearnInferenceMetadataResponse_SequenceTable_Entry.fromJSON(object.value)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapValuesEntry): unknown {
+    const obj: any = {};
+    if (message.key !== 0) {
+      obj.key = Math.round(message.key);
+    }
+    if (message.value !== undefined) {
+      obj.value = CMsgSteamLearnInferenceMetadataResponse_SequenceTable_Entry.toJSON(message.value);
+    }
+    return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapValuesEntry>,
+  ): CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapValuesEntry {
+    return CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapValuesEntry.fromPartial(base ?? {});
+  },
+  fromPartial(
+    object: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapValuesEntry>,
+  ): CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapValuesEntry {
+    const message = createBaseCMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapValuesEntry();
+    message.key = object.key ?? 0;
+    message.value = (object.value !== undefined && object.value !== null)
+      ? CMsgSteamLearnInferenceMetadataResponse_SequenceTable_Entry.fromPartial(object.value)
+      : undefined;
+    return message;
+  },
+};
+
+function createBaseCMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapMappingsEntry(): CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapMappingsEntry {
+  return { key: "", value: undefined };
+}
+
+export const CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapMappingsEntry: MessageFns<
+  CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapMappingsEntry
+> = {
+  encode(
+    message: CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapMappingsEntry,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.key !== "") {
+      writer.uint32(10).string(message.key);
+    }
+    if (message.value !== undefined) {
+      CMsgSteamLearnInferenceMetadataResponse_SequenceTable_Entry.encode(message.value, writer.uint32(18).fork())
+        .join();
+    }
+    return writer;
+  },
+
+  decode(
+    input: BinaryReader | Uint8Array,
+    length?: number,
+  ): CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapMappingsEntry {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapMappingsEntry();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.key = reader.string();
+          continue;
+        }
+        case 2: {
+          if (tag !== 18) {
+            break;
+          }
+
+          message.value = CMsgSteamLearnInferenceMetadataResponse_SequenceTable_Entry.decode(reader, reader.uint32());
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapMappingsEntry {
+    return {
+      key: isSet(object.key) ? globalThis.String(object.key) : "",
+      value: isSet(object.value)
+        ? CMsgSteamLearnInferenceMetadataResponse_SequenceTable_Entry.fromJSON(object.value)
+        : undefined,
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapMappingsEntry): unknown {
+    const obj: any = {};
+    if (message.key !== "") {
+      obj.key = message.key;
+    }
+    if (message.value !== undefined) {
+      obj.value = CMsgSteamLearnInferenceMetadataResponse_SequenceTable_Entry.toJSON(message.value);
+    }
+    return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapMappingsEntry>,
+  ): CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapMappingsEntry {
+    return CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapMappingsEntry.fromPartial(base ?? {});
+  },
+  fromPartial(
+    object: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapMappingsEntry>,
+  ): CMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapMappingsEntry {
+    const message = createBaseCMsgSteamLearnInferenceMetadataResponse_SequenceTable_MapMappingsEntry();
+    message.key = object.key ?? "";
+    message.value = (object.value !== undefined && object.value !== null)
+      ? CMsgSteamLearnInferenceMetadataResponse_SequenceTable_Entry.fromPartial(object.value)
+      : undefined;
+    return message;
+  },
+};
+
 function createBaseCMsgSteamLearnInferenceMetadataResponse_KMeans(): CMsgSteamLearnInferenceMetadataResponse_KMeans {
   return { name: "", clusters: [] };
 }
@@ -4088,7 +4586,7 @@ export const CMsgSteamLearnInferenceMetadataResponse_KMeans: MessageFns<
 };
 
 function createBaseCMsgSteamLearnInferenceMetadataResponse_KMeans_Cluster(): CMsgSteamLearnInferenceMetadataResponse_KMeans_Cluster {
-  return { x: 0, y: 0, radius: 0, radius80pct: 0 };
+  return { x: 0, y: 0, radius: 0, radius75pct: 0, radius50pct: 0, radius25pct: 0 };
 }
 
 export const CMsgSteamLearnInferenceMetadataResponse_KMeans_Cluster: MessageFns<
@@ -4107,8 +4605,14 @@ export const CMsgSteamLearnInferenceMetadataResponse_KMeans_Cluster: MessageFns<
     if (message.radius !== 0) {
       writer.uint32(29).float(message.radius);
     }
-    if (message.radius80pct !== 0) {
-      writer.uint32(37).float(message.radius80pct);
+    if (message.radius75pct !== 0) {
+      writer.uint32(37).float(message.radius75pct);
+    }
+    if (message.radius50pct !== 0) {
+      writer.uint32(45).float(message.radius50pct);
+    }
+    if (message.radius25pct !== 0) {
+      writer.uint32(53).float(message.radius25pct);
     }
     return writer;
   },
@@ -4149,7 +4653,23 @@ export const CMsgSteamLearnInferenceMetadataResponse_KMeans_Cluster: MessageFns<
             break;
           }
 
-          message.radius80pct = reader.float();
+          message.radius75pct = reader.float();
+          continue;
+        }
+        case 5: {
+          if (tag !== 45) {
+            break;
+          }
+
+          message.radius50pct = reader.float();
+          continue;
+        }
+        case 6: {
+          if (tag !== 53) {
+            break;
+          }
+
+          message.radius25pct = reader.float();
           continue;
         }
       }
@@ -4166,7 +4686,9 @@ export const CMsgSteamLearnInferenceMetadataResponse_KMeans_Cluster: MessageFns<
       x: isSet(object.x) ? globalThis.Number(object.x) : 0,
       y: isSet(object.y) ? globalThis.Number(object.y) : 0,
       radius: isSet(object.radius) ? globalThis.Number(object.radius) : 0,
-      radius80pct: isSet(object.radius80pct) ? globalThis.Number(object.radius80pct) : 0,
+      radius75pct: isSet(object.radius75pct) ? globalThis.Number(object.radius75pct) : 0,
+      radius50pct: isSet(object.radius50pct) ? globalThis.Number(object.radius50pct) : 0,
+      radius25pct: isSet(object.radius25pct) ? globalThis.Number(object.radius25pct) : 0,
     };
   },
 
@@ -4181,8 +4703,14 @@ export const CMsgSteamLearnInferenceMetadataResponse_KMeans_Cluster: MessageFns<
     if (message.radius !== 0) {
       obj.radius = message.radius;
     }
-    if (message.radius80pct !== 0) {
-      obj.radius80pct = message.radius80pct;
+    if (message.radius75pct !== 0) {
+      obj.radius75pct = message.radius75pct;
+    }
+    if (message.radius50pct !== 0) {
+      obj.radius50pct = message.radius50pct;
+    }
+    if (message.radius25pct !== 0) {
+      obj.radius25pct = message.radius25pct;
     }
     return obj;
   },
@@ -4199,7 +4727,9 @@ export const CMsgSteamLearnInferenceMetadataResponse_KMeans_Cluster: MessageFns<
     message.x = object.x ?? 0;
     message.y = object.y ?? 0;
     message.radius = object.radius ?? 0;
-    message.radius80pct = object.radius80pct ?? 0;
+    message.radius75pct = object.radius75pct ?? 0;
+    message.radius50pct = object.radius50pct ?? 0;
+    message.radius25pct = object.radius25pct ?? 0;
     return message;
   },
 };
@@ -4335,6 +4865,266 @@ export const CMsgSteamLearnInferenceMetadataResponse_SnapshotHistogram: MessageF
   },
 };
 
+function createBaseCMsgSteamLearnInferenceMetadataResponse_AppInfo(): CMsgSteamLearnInferenceMetadataResponse_AppInfo {
+  return {
+    countryAllow: "",
+    countryDeny: "",
+    platformWin: false,
+    platformMac: false,
+    platformLinux: false,
+    adultViolence: false,
+    adultSex: false,
+  };
+}
+
+export const CMsgSteamLearnInferenceMetadataResponse_AppInfo: MessageFns<
+  CMsgSteamLearnInferenceMetadataResponse_AppInfo
+> = {
+  encode(
+    message: CMsgSteamLearnInferenceMetadataResponse_AppInfo,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.countryAllow !== "") {
+      writer.uint32(10).string(message.countryAllow);
+    }
+    if (message.countryDeny !== "") {
+      writer.uint32(18).string(message.countryDeny);
+    }
+    if (message.platformWin !== false) {
+      writer.uint32(24).bool(message.platformWin);
+    }
+    if (message.platformMac !== false) {
+      writer.uint32(32).bool(message.platformMac);
+    }
+    if (message.platformLinux !== false) {
+      writer.uint32(40).bool(message.platformLinux);
+    }
+    if (message.adultViolence !== false) {
+      writer.uint32(48).bool(message.adultViolence);
+    }
+    if (message.adultSex !== false) {
+      writer.uint32(56).bool(message.adultSex);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgSteamLearnInferenceMetadataResponse_AppInfo {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgSteamLearnInferenceMetadataResponse_AppInfo();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.countryAllow = reader.string();
+          continue;
+        }
+        case 2: {
+          if (tag !== 18) {
+            break;
+          }
+
+          message.countryDeny = reader.string();
+          continue;
+        }
+        case 3: {
+          if (tag !== 24) {
+            break;
+          }
+
+          message.platformWin = reader.bool();
+          continue;
+        }
+        case 4: {
+          if (tag !== 32) {
+            break;
+          }
+
+          message.platformMac = reader.bool();
+          continue;
+        }
+        case 5: {
+          if (tag !== 40) {
+            break;
+          }
+
+          message.platformLinux = reader.bool();
+          continue;
+        }
+        case 6: {
+          if (tag !== 48) {
+            break;
+          }
+
+          message.adultViolence = reader.bool();
+          continue;
+        }
+        case 7: {
+          if (tag !== 56) {
+            break;
+          }
+
+          message.adultSex = reader.bool();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgSteamLearnInferenceMetadataResponse_AppInfo {
+    return {
+      countryAllow: isSet(object.countryAllow) ? globalThis.String(object.countryAllow) : "",
+      countryDeny: isSet(object.countryDeny) ? globalThis.String(object.countryDeny) : "",
+      platformWin: isSet(object.platformWin) ? globalThis.Boolean(object.platformWin) : false,
+      platformMac: isSet(object.platformMac) ? globalThis.Boolean(object.platformMac) : false,
+      platformLinux: isSet(object.platformLinux) ? globalThis.Boolean(object.platformLinux) : false,
+      adultViolence: isSet(object.adultViolence) ? globalThis.Boolean(object.adultViolence) : false,
+      adultSex: isSet(object.adultSex) ? globalThis.Boolean(object.adultSex) : false,
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnInferenceMetadataResponse_AppInfo): unknown {
+    const obj: any = {};
+    if (message.countryAllow !== "") {
+      obj.countryAllow = message.countryAllow;
+    }
+    if (message.countryDeny !== "") {
+      obj.countryDeny = message.countryDeny;
+    }
+    if (message.platformWin !== false) {
+      obj.platformWin = message.platformWin;
+    }
+    if (message.platformMac !== false) {
+      obj.platformMac = message.platformMac;
+    }
+    if (message.platformLinux !== false) {
+      obj.platformLinux = message.platformLinux;
+    }
+    if (message.adultViolence !== false) {
+      obj.adultViolence = message.adultViolence;
+    }
+    if (message.adultSex !== false) {
+      obj.adultSex = message.adultSex;
+    }
+    return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_AppInfo>,
+  ): CMsgSteamLearnInferenceMetadataResponse_AppInfo {
+    return CMsgSteamLearnInferenceMetadataResponse_AppInfo.fromPartial(base ?? {});
+  },
+  fromPartial(
+    object: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_AppInfo>,
+  ): CMsgSteamLearnInferenceMetadataResponse_AppInfo {
+    const message = createBaseCMsgSteamLearnInferenceMetadataResponse_AppInfo();
+    message.countryAllow = object.countryAllow ?? "";
+    message.countryDeny = object.countryDeny ?? "";
+    message.platformWin = object.platformWin ?? false;
+    message.platformMac = object.platformMac ?? false;
+    message.platformLinux = object.platformLinux ?? false;
+    message.adultViolence = object.adultViolence ?? false;
+    message.adultSex = object.adultSex ?? false;
+    return message;
+  },
+};
+
+function createBaseCMsgSteamLearnInferenceMetadataResponse_AppInfoEntry(): CMsgSteamLearnInferenceMetadataResponse_AppInfoEntry {
+  return { key: 0, value: undefined };
+}
+
+export const CMsgSteamLearnInferenceMetadataResponse_AppInfoEntry: MessageFns<
+  CMsgSteamLearnInferenceMetadataResponse_AppInfoEntry
+> = {
+  encode(
+    message: CMsgSteamLearnInferenceMetadataResponse_AppInfoEntry,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.key !== 0) {
+      writer.uint32(8).uint32(message.key);
+    }
+    if (message.value !== undefined) {
+      CMsgSteamLearnInferenceMetadataResponse_AppInfo.encode(message.value, writer.uint32(18).fork()).join();
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgSteamLearnInferenceMetadataResponse_AppInfoEntry {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgSteamLearnInferenceMetadataResponse_AppInfoEntry();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.key = reader.uint32();
+          continue;
+        }
+        case 2: {
+          if (tag !== 18) {
+            break;
+          }
+
+          message.value = CMsgSteamLearnInferenceMetadataResponse_AppInfo.decode(reader, reader.uint32());
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgSteamLearnInferenceMetadataResponse_AppInfoEntry {
+    return {
+      key: isSet(object.key) ? globalThis.Number(object.key) : 0,
+      value: isSet(object.value) ? CMsgSteamLearnInferenceMetadataResponse_AppInfo.fromJSON(object.value) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnInferenceMetadataResponse_AppInfoEntry): unknown {
+    const obj: any = {};
+    if (message.key !== 0) {
+      obj.key = Math.round(message.key);
+    }
+    if (message.value !== undefined) {
+      obj.value = CMsgSteamLearnInferenceMetadataResponse_AppInfo.toJSON(message.value);
+    }
+    return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_AppInfoEntry>,
+  ): CMsgSteamLearnInferenceMetadataResponse_AppInfoEntry {
+    return CMsgSteamLearnInferenceMetadataResponse_AppInfoEntry.fromPartial(base ?? {});
+  },
+  fromPartial(
+    object: DeepPartial<CMsgSteamLearnInferenceMetadataResponse_AppInfoEntry>,
+  ): CMsgSteamLearnInferenceMetadataResponse_AppInfoEntry {
+    const message = createBaseCMsgSteamLearnInferenceMetadataResponse_AppInfoEntry();
+    message.key = object.key ?? 0;
+    message.value = (object.value !== undefined && object.value !== null)
+      ? CMsgSteamLearnInferenceMetadataResponse_AppInfo.fromPartial(object.value)
+      : undefined;
+    return message;
+  },
+};
+
 function createBaseCMsgSteamLearnInferenceBackendResponse(): CMsgSteamLearnInferenceBackendResponse {
   return { outputs: [] };
 }
@@ -4393,6 +5183,152 @@ export const CMsgSteamLearnInferenceBackendResponse: MessageFns<CMsgSteamLearnIn
   fromPartial(object: DeepPartial<CMsgSteamLearnInferenceBackendResponse>): CMsgSteamLearnInferenceBackendResponse {
     const message = createBaseCMsgSteamLearnInferenceBackendResponse();
     message.outputs = object.outputs?.map((e) => CMsgSteamLearnInferenceBackendResponse_Output.fromPartial(e)) || [];
+    return message;
+  },
+};
+
+function createBaseCMsgSteamLearnInferenceBackendResponse_Sequence(): CMsgSteamLearnInferenceBackendResponse_Sequence {
+  return { value: [] };
+}
+
+export const CMsgSteamLearnInferenceBackendResponse_Sequence: MessageFns<
+  CMsgSteamLearnInferenceBackendResponse_Sequence
+> = {
+  encode(
+    message: CMsgSteamLearnInferenceBackendResponse_Sequence,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    writer.uint32(10).fork();
+    for (const v of message.value) {
+      writer.float(v);
+    }
+    writer.join();
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgSteamLearnInferenceBackendResponse_Sequence {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgSteamLearnInferenceBackendResponse_Sequence();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag === 13) {
+            message.value.push(reader.float());
+
+            continue;
+          }
+
+          if (tag === 10) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.value.push(reader.float());
+            }
+
+            continue;
+          }
+
+          break;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgSteamLearnInferenceBackendResponse_Sequence {
+    return { value: globalThis.Array.isArray(object?.value) ? object.value.map((e: any) => globalThis.Number(e)) : [] };
+  },
+
+  toJSON(message: CMsgSteamLearnInferenceBackendResponse_Sequence): unknown {
+    const obj: any = {};
+    if (message.value?.length) {
+      obj.value = message.value;
+    }
+    return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamLearnInferenceBackendResponse_Sequence>,
+  ): CMsgSteamLearnInferenceBackendResponse_Sequence {
+    return CMsgSteamLearnInferenceBackendResponse_Sequence.fromPartial(base ?? {});
+  },
+  fromPartial(
+    object: DeepPartial<CMsgSteamLearnInferenceBackendResponse_Sequence>,
+  ): CMsgSteamLearnInferenceBackendResponse_Sequence {
+    const message = createBaseCMsgSteamLearnInferenceBackendResponse_Sequence();
+    message.value = object.value?.map((e) => e) || [];
+    return message;
+  },
+};
+
+function createBaseCMsgSteamLearnInferenceBackendResponse_RegressionOutput(): CMsgSteamLearnInferenceBackendResponse_RegressionOutput {
+  return { value: 0 };
+}
+
+export const CMsgSteamLearnInferenceBackendResponse_RegressionOutput: MessageFns<
+  CMsgSteamLearnInferenceBackendResponse_RegressionOutput
+> = {
+  encode(
+    message: CMsgSteamLearnInferenceBackendResponse_RegressionOutput,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.value !== 0) {
+      writer.uint32(13).float(message.value);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgSteamLearnInferenceBackendResponse_RegressionOutput {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgSteamLearnInferenceBackendResponse_RegressionOutput();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 13) {
+            break;
+          }
+
+          message.value = reader.float();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgSteamLearnInferenceBackendResponse_RegressionOutput {
+    return { value: isSet(object.value) ? globalThis.Number(object.value) : 0 };
+  },
+
+  toJSON(message: CMsgSteamLearnInferenceBackendResponse_RegressionOutput): unknown {
+    const obj: any = {};
+    if (message.value !== 0) {
+      obj.value = message.value;
+    }
+    return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgSteamLearnInferenceBackendResponse_RegressionOutput>,
+  ): CMsgSteamLearnInferenceBackendResponse_RegressionOutput {
+    return CMsgSteamLearnInferenceBackendResponse_RegressionOutput.fromPartial(base ?? {});
+  },
+  fromPartial(
+    object: DeepPartial<CMsgSteamLearnInferenceBackendResponse_RegressionOutput>,
+  ): CMsgSteamLearnInferenceBackendResponse_RegressionOutput {
+    const message = createBaseCMsgSteamLearnInferenceBackendResponse_RegressionOutput();
+    message.value = object.value ?? 0;
     return message;
   },
 };
@@ -4468,7 +5404,7 @@ export const CMsgSteamLearnInferenceBackendResponse_BinaryCrossEntropyOutput: Me
 };
 
 function createBaseCMsgSteamLearnInferenceBackendResponse_MutliBinaryCrossEntropyOutput(): CMsgSteamLearnInferenceBackendResponse_MutliBinaryCrossEntropyOutput {
-  return { weight: [], value: [] };
+  return { weight: [], value: [], valueSequence: [] };
 }
 
 export const CMsgSteamLearnInferenceBackendResponse_MutliBinaryCrossEntropyOutput: MessageFns<
@@ -4488,6 +5424,9 @@ export const CMsgSteamLearnInferenceBackendResponse_MutliBinaryCrossEntropyOutpu
       writer.float(v);
     }
     writer.join();
+    for (const v of message.valueSequence) {
+      CMsgSteamLearnInferenceBackendResponse_Sequence.encode(v!, writer.uint32(26).fork()).join();
+    }
     return writer;
   },
 
@@ -4537,6 +5476,14 @@ export const CMsgSteamLearnInferenceBackendResponse_MutliBinaryCrossEntropyOutpu
 
           break;
         }
+        case 3: {
+          if (tag !== 26) {
+            break;
+          }
+
+          message.valueSequence.push(CMsgSteamLearnInferenceBackendResponse_Sequence.decode(reader, reader.uint32()));
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -4550,6 +5497,9 @@ export const CMsgSteamLearnInferenceBackendResponse_MutliBinaryCrossEntropyOutpu
     return {
       weight: globalThis.Array.isArray(object?.weight) ? object.weight.map((e: any) => globalThis.Number(e)) : [],
       value: globalThis.Array.isArray(object?.value) ? object.value.map((e: any) => globalThis.Number(e)) : [],
+      valueSequence: globalThis.Array.isArray(object?.valueSequence)
+        ? object.valueSequence.map((e: any) => CMsgSteamLearnInferenceBackendResponse_Sequence.fromJSON(e))
+        : [],
     };
   },
 
@@ -4560,6 +5510,9 @@ export const CMsgSteamLearnInferenceBackendResponse_MutliBinaryCrossEntropyOutpu
     }
     if (message.value?.length) {
       obj.value = message.value;
+    }
+    if (message.valueSequence?.length) {
+      obj.valueSequence = message.valueSequence.map((e) => CMsgSteamLearnInferenceBackendResponse_Sequence.toJSON(e));
     }
     return obj;
   },
@@ -4575,12 +5528,14 @@ export const CMsgSteamLearnInferenceBackendResponse_MutliBinaryCrossEntropyOutpu
     const message = createBaseCMsgSteamLearnInferenceBackendResponse_MutliBinaryCrossEntropyOutput();
     message.weight = object.weight?.map((e) => e) || [];
     message.value = object.value?.map((e) => e) || [];
+    message.valueSequence =
+      object.valueSequence?.map((e) => CMsgSteamLearnInferenceBackendResponse_Sequence.fromPartial(e)) || [];
     return message;
   },
 };
 
 function createBaseCMsgSteamLearnInferenceBackendResponse_CategoricalCrossEntropyOutput(): CMsgSteamLearnInferenceBackendResponse_CategoricalCrossEntropyOutput {
-  return { weight: [], value: [] };
+  return { weight: [], value: [], valueSequence: [] };
 }
 
 export const CMsgSteamLearnInferenceBackendResponse_CategoricalCrossEntropyOutput: MessageFns<
@@ -4600,6 +5555,9 @@ export const CMsgSteamLearnInferenceBackendResponse_CategoricalCrossEntropyOutpu
       writer.float(v);
     }
     writer.join();
+    for (const v of message.valueSequence) {
+      CMsgSteamLearnInferenceBackendResponse_Sequence.encode(v!, writer.uint32(26).fork()).join();
+    }
     return writer;
   },
 
@@ -4649,6 +5607,14 @@ export const CMsgSteamLearnInferenceBackendResponse_CategoricalCrossEntropyOutpu
 
           break;
         }
+        case 3: {
+          if (tag !== 26) {
+            break;
+          }
+
+          message.valueSequence.push(CMsgSteamLearnInferenceBackendResponse_Sequence.decode(reader, reader.uint32()));
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -4662,6 +5628,9 @@ export const CMsgSteamLearnInferenceBackendResponse_CategoricalCrossEntropyOutpu
     return {
       weight: globalThis.Array.isArray(object?.weight) ? object.weight.map((e: any) => globalThis.Number(e)) : [],
       value: globalThis.Array.isArray(object?.value) ? object.value.map((e: any) => globalThis.Number(e)) : [],
+      valueSequence: globalThis.Array.isArray(object?.valueSequence)
+        ? object.valueSequence.map((e: any) => CMsgSteamLearnInferenceBackendResponse_Sequence.fromJSON(e))
+        : [],
     };
   },
 
@@ -4672,6 +5641,9 @@ export const CMsgSteamLearnInferenceBackendResponse_CategoricalCrossEntropyOutpu
     }
     if (message.value?.length) {
       obj.value = message.value;
+    }
+    if (message.valueSequence?.length) {
+      obj.valueSequence = message.valueSequence.map((e) => CMsgSteamLearnInferenceBackendResponse_Sequence.toJSON(e));
     }
     return obj;
   },
@@ -4687,12 +5659,19 @@ export const CMsgSteamLearnInferenceBackendResponse_CategoricalCrossEntropyOutpu
     const message = createBaseCMsgSteamLearnInferenceBackendResponse_CategoricalCrossEntropyOutput();
     message.weight = object.weight?.map((e) => e) || [];
     message.value = object.value?.map((e) => e) || [];
+    message.valueSequence =
+      object.valueSequence?.map((e) => CMsgSteamLearnInferenceBackendResponse_Sequence.fromPartial(e)) || [];
     return message;
   },
 };
 
 function createBaseCMsgSteamLearnInferenceBackendResponse_Output(): CMsgSteamLearnInferenceBackendResponse_Output {
-  return { binaryCrossentropy: undefined, categoricalCrossentropy: undefined, multiBinaryCrossentropy: undefined };
+  return {
+    binaryCrossentropy: undefined,
+    categoricalCrossentropy: undefined,
+    multiBinaryCrossentropy: undefined,
+    regression: undefined,
+  };
 }
 
 export const CMsgSteamLearnInferenceBackendResponse_Output: MessageFns<CMsgSteamLearnInferenceBackendResponse_Output> =
@@ -4718,6 +5697,10 @@ export const CMsgSteamLearnInferenceBackendResponse_Output: MessageFns<CMsgSteam
           message.multiBinaryCrossentropy,
           writer.uint32(26).fork(),
         ).join();
+      }
+      if (message.regression !== undefined) {
+        CMsgSteamLearnInferenceBackendResponse_RegressionOutput.encode(message.regression, writer.uint32(34).fork())
+          .join();
       }
       return writer;
     },
@@ -4758,6 +5741,17 @@ export const CMsgSteamLearnInferenceBackendResponse_Output: MessageFns<CMsgSteam
               .decode(reader, reader.uint32());
             continue;
           }
+          case 4: {
+            if (tag !== 34) {
+              break;
+            }
+
+            message.regression = CMsgSteamLearnInferenceBackendResponse_RegressionOutput.decode(
+              reader,
+              reader.uint32(),
+            );
+            continue;
+          }
         }
         if ((tag & 7) === 4 || tag === 0) {
           break;
@@ -4782,6 +5776,9 @@ export const CMsgSteamLearnInferenceBackendResponse_Output: MessageFns<CMsgSteam
             object.multiBinaryCrossentropy,
           )
           : undefined,
+        regression: isSet(object.regression)
+          ? CMsgSteamLearnInferenceBackendResponse_RegressionOutput.fromJSON(object.regression)
+          : undefined,
       };
     },
 
@@ -4801,6 +5798,9 @@ export const CMsgSteamLearnInferenceBackendResponse_Output: MessageFns<CMsgSteam
         obj.multiBinaryCrossentropy = CMsgSteamLearnInferenceBackendResponse_MutliBinaryCrossEntropyOutput.toJSON(
           message.multiBinaryCrossentropy,
         );
+      }
+      if (message.regression !== undefined) {
+        obj.regression = CMsgSteamLearnInferenceBackendResponse_RegressionOutput.toJSON(message.regression);
       }
       return obj;
     },
@@ -4829,12 +5829,15 @@ export const CMsgSteamLearnInferenceBackendResponse_Output: MessageFns<CMsgSteam
             object.multiBinaryCrossentropy,
           )
           : undefined;
+      message.regression = (object.regression !== undefined && object.regression !== null)
+        ? CMsgSteamLearnInferenceBackendResponse_RegressionOutput.fromPartial(object.regression)
+        : undefined;
       return message;
     },
   };
 
 function createBaseCMsgSteamLearnInferenceResponse(): CMsgSteamLearnInferenceResponse {
-  return { inferenceResult: 0, backendResponse: undefined };
+  return { inferenceResult: 0, backendResponse: undefined, keys: [] };
 }
 
 export const CMsgSteamLearnInferenceResponse: MessageFns<CMsgSteamLearnInferenceResponse> = {
@@ -4845,6 +5848,11 @@ export const CMsgSteamLearnInferenceResponse: MessageFns<CMsgSteamLearnInference
     if (message.backendResponse !== undefined) {
       CMsgSteamLearnInferenceBackendResponse.encode(message.backendResponse, writer.uint32(18).fork()).join();
     }
+    writer.uint32(26).fork();
+    for (const v of message.keys) {
+      writer.uint64(v);
+    }
+    writer.join();
     return writer;
   },
 
@@ -4871,6 +5879,24 @@ export const CMsgSteamLearnInferenceResponse: MessageFns<CMsgSteamLearnInference
           message.backendResponse = CMsgSteamLearnInferenceBackendResponse.decode(reader, reader.uint32());
           continue;
         }
+        case 3: {
+          if (tag === 24) {
+            message.keys.push(reader.uint64().toString());
+
+            continue;
+          }
+
+          if (tag === 26) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.keys.push(reader.uint64().toString());
+            }
+
+            continue;
+          }
+
+          break;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -4886,6 +5912,7 @@ export const CMsgSteamLearnInferenceResponse: MessageFns<CMsgSteamLearnInference
       backendResponse: isSet(object.backendResponse)
         ? CMsgSteamLearnInferenceBackendResponse.fromJSON(object.backendResponse)
         : undefined,
+      keys: globalThis.Array.isArray(object?.keys) ? object.keys.map((e: any) => globalThis.String(e)) : [],
     };
   },
 
@@ -4896,6 +5923,9 @@ export const CMsgSteamLearnInferenceResponse: MessageFns<CMsgSteamLearnInference
     }
     if (message.backendResponse !== undefined) {
       obj.backendResponse = CMsgSteamLearnInferenceBackendResponse.toJSON(message.backendResponse);
+    }
+    if (message.keys?.length) {
+      obj.keys = message.keys;
     }
     return obj;
   },
@@ -4909,6 +5939,7 @@ export const CMsgSteamLearnInferenceResponse: MessageFns<CMsgSteamLearnInference
     message.backendResponse = (object.backendResponse !== undefined && object.backendResponse !== null)
       ? CMsgSteamLearnInferenceBackendResponse.fromPartial(object.backendResponse)
       : undefined;
+    message.keys = object.keys?.map((e) => e) || [];
     return message;
   },
 };
@@ -4920,7 +5951,7 @@ export interface SteamLearn {
   CacheData(request: CMsgSteamLearnCacheDataRequest): Promise<CMsgSteamLearnCacheDataResponse>;
   SnapshotProject(request: CMsgSteamLearnSnapshotProjectRequest): Promise<CMsgSteamLearnSnapshotProjectResponse>;
   BatchOperation(request: CMsgSteamLearnBatchOperationRequest): Promise<CMsgSteamLearnBatchOperationResponse>;
-  GetHMACKeys(request: CMsgSteamLearnGetHMACKeysRequest): Promise<CMsgSteamLearnGetHMACKeysResponse>;
+  GetAccessTokens(request: CMsgSteamLearnGetAccessTokensRequest): Promise<CMsgSteamLearnGetAccessTokensResponse>;
   Inference(request: CMsgSteamLearnInferenceRequest): Promise<CMsgSteamLearnInferenceResponse>;
   InferenceMetadata(request: CMsgSteamLearnInferenceMetadataRequest): Promise<CMsgSteamLearnInferenceMetadataResponse>;
 }
@@ -4936,7 +5967,7 @@ export class SteamLearnClientImpl implements SteamLearn {
     this.CacheData = this.CacheData.bind(this);
     this.SnapshotProject = this.SnapshotProject.bind(this);
     this.BatchOperation = this.BatchOperation.bind(this);
-    this.GetHMACKeys = this.GetHMACKeys.bind(this);
+    this.GetAccessTokens = this.GetAccessTokens.bind(this);
     this.Inference = this.Inference.bind(this);
     this.InferenceMetadata = this.InferenceMetadata.bind(this);
   }
@@ -4966,10 +5997,10 @@ export class SteamLearnClientImpl implements SteamLearn {
     return promise.then((data) => CMsgSteamLearnBatchOperationResponse.decode(new BinaryReader(data)));
   }
 
-  GetHMACKeys(request: CMsgSteamLearnGetHMACKeysRequest): Promise<CMsgSteamLearnGetHMACKeysResponse> {
-    const data = CMsgSteamLearnGetHMACKeysRequest.encode(request).finish();
-    const promise = this.rpc.request(this.service, "GetHMACKeys", data);
-    return promise.then((data) => CMsgSteamLearnGetHMACKeysResponse.decode(new BinaryReader(data)));
+  GetAccessTokens(request: CMsgSteamLearnGetAccessTokensRequest): Promise<CMsgSteamLearnGetAccessTokensResponse> {
+    const data = CMsgSteamLearnGetAccessTokensRequest.encode(request).finish();
+    const promise = this.rpc.request(this.service, "GetAccessTokens", data);
+    return promise.then((data) => CMsgSteamLearnGetAccessTokensResponse.decode(new BinaryReader(data)));
   }
 
   Inference(request: CMsgSteamLearnInferenceRequest): Promise<CMsgSteamLearnInferenceResponse> {

@@ -7,7 +7,6 @@
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import {
-  CDOTASaveGame,
   CMsgPendingEventAward,
   DOTABotDifficulty,
   dOTABotDifficultyFromJSON,
@@ -42,10 +41,8 @@ import {
   EMatchOutcome,
   eMatchOutcomeFromJSON,
   eMatchOutcomeToJSON,
-  MatchType,
-  matchTypeFromJSON,
-  matchTypeToJSON,
 } from "./dota_shared_enums";
+import { CExtraMsgBlock } from "./gcsdk_gcmessages";
 
 export enum ELobbyMemberCoachRequestState {
   k_eLobbyMemberCoachRequestState_None = 0,
@@ -173,20 +170,20 @@ export interface CMsgLobbyPlayerPlusSubscriptionData_HeroBadge {
   heroBadgeXp: number;
 }
 
-export interface CMsgLobbyEventPoints {
-  eventId: number;
-  accountPoints: CMsgLobbyEventPoints_AccountPoints[];
+export interface CMsgEventActionData {
+  actionId: number;
+  actionScore: number;
 }
 
-export interface CMsgLobbyEventPoints_PeriodicResourceData {
+export interface CMsgPeriodicResourceData {
   periodicResourceId: number;
   remaining: number;
   max: number;
 }
 
-export interface CMsgLobbyEventPoints_NetworkedEventAction {
-  actionId: number;
-  timesGranted: number;
+export interface CMsgLobbyEventPoints {
+  eventId: number;
+  accountPoints: CMsgLobbyEventPoints_AccountPoints[];
 }
 
 export interface CMsgLobbyEventPoints_AccountPoints {
@@ -194,14 +191,16 @@ export interface CMsgLobbyEventPoints_AccountPoints {
   normalPoints: number;
   premiumPoints: number;
   owned: boolean;
+  eventLevel: number;
   activeEffectsMask: string;
   wagerStreak: number;
-  eventGameCustomActions: CMsgLobbyEventPoints_NetworkedEventAction[];
+  eventGameCustomActions: CMsgEventActionData[];
   tipAmountIndex: number;
   activeEventSeasonId: number;
   teleportFxLevel: number;
-  networkedEventActions: CMsgLobbyEventPoints_NetworkedEventAction[];
-  periodicResources: CMsgLobbyEventPoints_PeriodicResourceData[];
+  networkedEventActions: CMsgEventActionData[];
+  periodicResources: CMsgPeriodicResourceData[];
+  extraEventMessages: CExtraMsgBlock[];
 }
 
 export interface CMsgLobbyEventGameData {
@@ -229,42 +228,15 @@ export interface CSODOTALobbyMember {
   id: string;
   heroId: number;
   team: dotaGcTeam;
-  name: string;
   slot: number;
-  partyId: string;
-  metaLevel: number;
-  metaXp: number;
-  metaXpAwarded: number;
   leaverStatus: DOTALeaverStatusT;
   leaverActions: number;
-  channel: number;
-  disabledHeroId: number[];
-  enabledHeroId: number[];
   coachTeam: dotaGcTeam;
-  coachedAccountIds: number[];
-  coachRating: number;
-  pwrdCyberCafeId: number;
-  pwrdCyberCafeName: string;
-  disabledRandomHeroBits: number[];
-  rankChange: number;
-  cameraman: boolean;
   customGameProductIds: number[];
-  searchMatchType: MatchType;
-  favoriteTeamPacked: string;
-  isPlusSubscriber: boolean;
-  laneSelectionFlags: number;
-  canEarnRewards: boolean;
   liveSpectatorTeam: dotaGcTeam;
-  wasMvpLastGame: boolean;
   pendingAwards: CMsgPendingEventAward[];
   pendingAwardsOnVictory: CMsgPendingEventAward[];
-  rankMmrBoostType: EDOTAMMRBoostType;
-  queuePointAdjustment: number;
-  rankTier: number;
-  title: number;
-  guildId: number;
   reportsAvailable: number;
-  isSteamChina: boolean;
   liveSpectatorAccountId: number;
   commsReportsAvailable: number;
 }
@@ -273,9 +245,31 @@ export interface CSODOTAServerLobbyMember {
 }
 
 export interface CSODOTAStaticLobbyMember {
+  name: string;
+  partyId: string;
+  channel: number;
+  cameraman: boolean;
 }
 
 export interface CSODOTAServerStaticLobbyMember {
+  steamId: string;
+  rankTier: number;
+  leaderboardRank: number;
+  laneSelectionFlags: number;
+  rankMmrBoostType: EDOTAMMRBoostType;
+  coachRating: number;
+  coachedAccountIds: number[];
+  wasMvpLastGame: boolean;
+  canEarnRewards: boolean;
+  isPlusSubscriber: boolean;
+  favoriteTeamPacked: string;
+  isSteamChina: boolean;
+  title: number;
+  guildId: number;
+  disabledRandomHeroBits: number[];
+  disabledHeroId: number[];
+  enabledHeroId: number[];
+  bannedHeroIds: number[];
 }
 
 export interface CLobbyTeamDetails {
@@ -335,6 +329,13 @@ export interface CLobbyGuildChallenge {
   eligibleAccountIds: number[];
 }
 
+export interface CDOTALobbyMatchQualityData {
+  overallQuality: number;
+  teamBalance: number;
+  matchSkillRange: number;
+  matchBehavior: number;
+}
+
 export interface CSODOTALobby {
   lobbyId: string;
   allMembers: CSODOTALobbyMember[];
@@ -350,10 +351,8 @@ export interface CSODOTALobby {
   lobbyType: CSODOTALobby_LobbyType;
   allowCheats: boolean;
   fillWithBots: boolean;
-  introMode: boolean;
   gameName: string;
   teamDetails: CLobbyTeamDetails[];
-  tutorialLesson: number;
   tournamentId: number;
   tournamentGameId: number;
   serverRegion: number;
@@ -364,17 +363,13 @@ export interface CSODOTALobby {
   matchId: string;
   allowSpectating: boolean;
   botDifficultyRadiant: DOTABotDifficulty;
-  timedRewardDetails: CLobbyTimedRewardDetails[];
   passKey: string;
   leagueid: number;
   penaltyLevelRadiant: number;
   penaltyLevelDire: number;
-  loadGameId: number;
   seriesType: number;
   radiantSeriesWins: number;
   direSeriesWins: number;
-  lootGenerated: number;
-  lootAwarded: number;
   allchat: boolean;
   dotaTvDelay: LobbyDotaTVDelay;
   customGameMode: string;
@@ -386,7 +381,6 @@ export interface CSODOTALobby {
   seriesId: number;
   lowPriority: boolean;
   extraMessages: CSODOTALobby_CExtraMsg[];
-  saveGame: CDOTASaveGame | undefined;
   firstBloodHappened: boolean;
   matchOutcome: EMatchOutcome;
   massDisconnect: boolean;
@@ -422,18 +416,16 @@ export interface CSODOTALobby {
   leagueNodeId: number;
   matchDuration: number;
   leaguePhase: number;
-  recordDetailedStats: boolean;
   experimentalGameplayEnabled: boolean;
   guildChallenges: CLobbyGuildChallenge[];
   guildDetails: CLobbyGuildDetails[];
-  lobbyEventPoints: CMsgLobbyEventPoints[];
   requestedHeroIds: number[];
   coachFriendRequests: CMsgLobbyCoachFriendRequest[];
   isInSteamChina: boolean;
   withScenarioSave: boolean;
   lobbyCreationTime: number;
   eventGameDefinition: string;
-  extraStartupMessages: CSODOTALobby_CExtraMsg[];
+  matchQualityData: CDOTALobbyMatchQualityData | undefined;
 }
 
 export enum CSODOTALobby_State {
@@ -585,15 +577,19 @@ export interface CSODOTALobby_CExtraMsg {
 
 export interface CSODOTAServerLobby {
   allMembers: CSODOTAServerLobbyMember[];
+  extraStartupMessages: CSODOTALobby_CExtraMsg[];
 }
 
 export interface CSODOTAStaticLobby {
   allMembers: CSODOTAStaticLobbyMember[];
   isPlayerDraft: boolean;
+  isLastMatchInSeries: boolean;
 }
 
 export interface CSODOTAServerStaticLobby {
   allMembers: CSODOTAServerStaticLobbyMember[];
+  postPatchStrategyTimeBuffer: number;
+  lobbyEventPoints: CMsgLobbyEventPoints[];
 }
 
 export interface CMsgAdditionalLobbyStartupAccountData {
@@ -810,7 +806,7 @@ export const CMsgLobbyPlayerPlusSubscriptionData_HeroBadge: MessageFns<CMsgLobby
       writer: BinaryWriter = new BinaryWriter(),
     ): BinaryWriter {
       if (message.heroId !== 0) {
-        writer.uint32(8).uint32(message.heroId);
+        writer.uint32(8).int32(message.heroId);
       }
       if (message.heroBadgeXp !== 0) {
         writer.uint32(16).uint32(message.heroBadgeXp);
@@ -830,7 +826,7 @@ export const CMsgLobbyPlayerPlusSubscriptionData_HeroBadge: MessageFns<CMsgLobby
               break;
             }
 
-            message.heroId = reader.uint32();
+            message.heroId = reader.int32();
             continue;
           }
           case 2: {
@@ -882,6 +878,174 @@ export const CMsgLobbyPlayerPlusSubscriptionData_HeroBadge: MessageFns<CMsgLobby
       return message;
     },
   };
+
+function createBaseCMsgEventActionData(): CMsgEventActionData {
+  return { actionId: 0, actionScore: 0 };
+}
+
+export const CMsgEventActionData: MessageFns<CMsgEventActionData> = {
+  encode(message: CMsgEventActionData, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.actionId !== 0) {
+      writer.uint32(8).uint32(message.actionId);
+    }
+    if (message.actionScore !== 0) {
+      writer.uint32(16).uint32(message.actionScore);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgEventActionData {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgEventActionData();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.actionId = reader.uint32();
+          continue;
+        }
+        case 2: {
+          if (tag !== 16) {
+            break;
+          }
+
+          message.actionScore = reader.uint32();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgEventActionData {
+    return {
+      actionId: isSet(object.actionId) ? globalThis.Number(object.actionId) : 0,
+      actionScore: isSet(object.actionScore) ? globalThis.Number(object.actionScore) : 0,
+    };
+  },
+
+  toJSON(message: CMsgEventActionData): unknown {
+    const obj: any = {};
+    if (message.actionId !== 0) {
+      obj.actionId = Math.round(message.actionId);
+    }
+    if (message.actionScore !== 0) {
+      obj.actionScore = Math.round(message.actionScore);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgEventActionData>): CMsgEventActionData {
+    return CMsgEventActionData.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgEventActionData>): CMsgEventActionData {
+    const message = createBaseCMsgEventActionData();
+    message.actionId = object.actionId ?? 0;
+    message.actionScore = object.actionScore ?? 0;
+    return message;
+  },
+};
+
+function createBaseCMsgPeriodicResourceData(): CMsgPeriodicResourceData {
+  return { periodicResourceId: 0, remaining: 0, max: 0 };
+}
+
+export const CMsgPeriodicResourceData: MessageFns<CMsgPeriodicResourceData> = {
+  encode(message: CMsgPeriodicResourceData, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.periodicResourceId !== 0) {
+      writer.uint32(8).uint32(message.periodicResourceId);
+    }
+    if (message.remaining !== 0) {
+      writer.uint32(16).uint32(message.remaining);
+    }
+    if (message.max !== 0) {
+      writer.uint32(24).uint32(message.max);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgPeriodicResourceData {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgPeriodicResourceData();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.periodicResourceId = reader.uint32();
+          continue;
+        }
+        case 2: {
+          if (tag !== 16) {
+            break;
+          }
+
+          message.remaining = reader.uint32();
+          continue;
+        }
+        case 3: {
+          if (tag !== 24) {
+            break;
+          }
+
+          message.max = reader.uint32();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgPeriodicResourceData {
+    return {
+      periodicResourceId: isSet(object.periodicResourceId) ? globalThis.Number(object.periodicResourceId) : 0,
+      remaining: isSet(object.remaining) ? globalThis.Number(object.remaining) : 0,
+      max: isSet(object.max) ? globalThis.Number(object.max) : 0,
+    };
+  },
+
+  toJSON(message: CMsgPeriodicResourceData): unknown {
+    const obj: any = {};
+    if (message.periodicResourceId !== 0) {
+      obj.periodicResourceId = Math.round(message.periodicResourceId);
+    }
+    if (message.remaining !== 0) {
+      obj.remaining = Math.round(message.remaining);
+    }
+    if (message.max !== 0) {
+      obj.max = Math.round(message.max);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgPeriodicResourceData>): CMsgPeriodicResourceData {
+    return CMsgPeriodicResourceData.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgPeriodicResourceData>): CMsgPeriodicResourceData {
+    const message = createBaseCMsgPeriodicResourceData();
+    message.periodicResourceId = object.periodicResourceId ?? 0;
+    message.remaining = object.remaining ?? 0;
+    message.max = object.max ?? 0;
+    return message;
+  },
+};
 
 function createBaseCMsgLobbyEventPoints(): CMsgLobbyEventPoints {
   return { eventId: 0, accountPoints: [] };
@@ -961,184 +1125,13 @@ export const CMsgLobbyEventPoints: MessageFns<CMsgLobbyEventPoints> = {
   },
 };
 
-function createBaseCMsgLobbyEventPoints_PeriodicResourceData(): CMsgLobbyEventPoints_PeriodicResourceData {
-  return { periodicResourceId: 0, remaining: 0, max: 0 };
-}
-
-export const CMsgLobbyEventPoints_PeriodicResourceData: MessageFns<CMsgLobbyEventPoints_PeriodicResourceData> = {
-  encode(message: CMsgLobbyEventPoints_PeriodicResourceData, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.periodicResourceId !== 0) {
-      writer.uint32(8).uint32(message.periodicResourceId);
-    }
-    if (message.remaining !== 0) {
-      writer.uint32(16).uint32(message.remaining);
-    }
-    if (message.max !== 0) {
-      writer.uint32(24).uint32(message.max);
-    }
-    return writer;
-  },
-
-  decode(input: BinaryReader | Uint8Array, length?: number): CMsgLobbyEventPoints_PeriodicResourceData {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCMsgLobbyEventPoints_PeriodicResourceData();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1: {
-          if (tag !== 8) {
-            break;
-          }
-
-          message.periodicResourceId = reader.uint32();
-          continue;
-        }
-        case 2: {
-          if (tag !== 16) {
-            break;
-          }
-
-          message.remaining = reader.uint32();
-          continue;
-        }
-        case 3: {
-          if (tag !== 24) {
-            break;
-          }
-
-          message.max = reader.uint32();
-          continue;
-        }
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skip(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): CMsgLobbyEventPoints_PeriodicResourceData {
-    return {
-      periodicResourceId: isSet(object.periodicResourceId) ? globalThis.Number(object.periodicResourceId) : 0,
-      remaining: isSet(object.remaining) ? globalThis.Number(object.remaining) : 0,
-      max: isSet(object.max) ? globalThis.Number(object.max) : 0,
-    };
-  },
-
-  toJSON(message: CMsgLobbyEventPoints_PeriodicResourceData): unknown {
-    const obj: any = {};
-    if (message.periodicResourceId !== 0) {
-      obj.periodicResourceId = Math.round(message.periodicResourceId);
-    }
-    if (message.remaining !== 0) {
-      obj.remaining = Math.round(message.remaining);
-    }
-    if (message.max !== 0) {
-      obj.max = Math.round(message.max);
-    }
-    return obj;
-  },
-
-  create(base?: DeepPartial<CMsgLobbyEventPoints_PeriodicResourceData>): CMsgLobbyEventPoints_PeriodicResourceData {
-    return CMsgLobbyEventPoints_PeriodicResourceData.fromPartial(base ?? {});
-  },
-  fromPartial(
-    object: DeepPartial<CMsgLobbyEventPoints_PeriodicResourceData>,
-  ): CMsgLobbyEventPoints_PeriodicResourceData {
-    const message = createBaseCMsgLobbyEventPoints_PeriodicResourceData();
-    message.periodicResourceId = object.periodicResourceId ?? 0;
-    message.remaining = object.remaining ?? 0;
-    message.max = object.max ?? 0;
-    return message;
-  },
-};
-
-function createBaseCMsgLobbyEventPoints_NetworkedEventAction(): CMsgLobbyEventPoints_NetworkedEventAction {
-  return { actionId: 0, timesGranted: 0 };
-}
-
-export const CMsgLobbyEventPoints_NetworkedEventAction: MessageFns<CMsgLobbyEventPoints_NetworkedEventAction> = {
-  encode(message: CMsgLobbyEventPoints_NetworkedEventAction, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.actionId !== 0) {
-      writer.uint32(8).uint32(message.actionId);
-    }
-    if (message.timesGranted !== 0) {
-      writer.uint32(16).uint32(message.timesGranted);
-    }
-    return writer;
-  },
-
-  decode(input: BinaryReader | Uint8Array, length?: number): CMsgLobbyEventPoints_NetworkedEventAction {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCMsgLobbyEventPoints_NetworkedEventAction();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1: {
-          if (tag !== 8) {
-            break;
-          }
-
-          message.actionId = reader.uint32();
-          continue;
-        }
-        case 2: {
-          if (tag !== 16) {
-            break;
-          }
-
-          message.timesGranted = reader.uint32();
-          continue;
-        }
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skip(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): CMsgLobbyEventPoints_NetworkedEventAction {
-    return {
-      actionId: isSet(object.actionId) ? globalThis.Number(object.actionId) : 0,
-      timesGranted: isSet(object.timesGranted) ? globalThis.Number(object.timesGranted) : 0,
-    };
-  },
-
-  toJSON(message: CMsgLobbyEventPoints_NetworkedEventAction): unknown {
-    const obj: any = {};
-    if (message.actionId !== 0) {
-      obj.actionId = Math.round(message.actionId);
-    }
-    if (message.timesGranted !== 0) {
-      obj.timesGranted = Math.round(message.timesGranted);
-    }
-    return obj;
-  },
-
-  create(base?: DeepPartial<CMsgLobbyEventPoints_NetworkedEventAction>): CMsgLobbyEventPoints_NetworkedEventAction {
-    return CMsgLobbyEventPoints_NetworkedEventAction.fromPartial(base ?? {});
-  },
-  fromPartial(
-    object: DeepPartial<CMsgLobbyEventPoints_NetworkedEventAction>,
-  ): CMsgLobbyEventPoints_NetworkedEventAction {
-    const message = createBaseCMsgLobbyEventPoints_NetworkedEventAction();
-    message.actionId = object.actionId ?? 0;
-    message.timesGranted = object.timesGranted ?? 0;
-    return message;
-  },
-};
-
 function createBaseCMsgLobbyEventPoints_AccountPoints(): CMsgLobbyEventPoints_AccountPoints {
   return {
     accountId: 0,
     normalPoints: 0,
     premiumPoints: 0,
     owned: false,
+    eventLevel: 0,
     activeEffectsMask: "0",
     wagerStreak: 0,
     eventGameCustomActions: [],
@@ -1147,6 +1140,7 @@ function createBaseCMsgLobbyEventPoints_AccountPoints(): CMsgLobbyEventPoints_Ac
     teleportFxLevel: 0,
     networkedEventActions: [],
     periodicResources: [],
+    extraEventMessages: [],
   };
 }
 
@@ -1164,6 +1158,9 @@ export const CMsgLobbyEventPoints_AccountPoints: MessageFns<CMsgLobbyEventPoints
     if (message.owned !== false) {
       writer.uint32(32).bool(message.owned);
     }
+    if (message.eventLevel !== 0) {
+      writer.uint32(56).uint32(message.eventLevel);
+    }
     if (message.activeEffectsMask !== "0") {
       writer.uint32(96).uint64(message.activeEffectsMask);
     }
@@ -1171,7 +1168,7 @@ export const CMsgLobbyEventPoints_AccountPoints: MessageFns<CMsgLobbyEventPoints
       writer.uint32(184).uint32(message.wagerStreak);
     }
     for (const v of message.eventGameCustomActions) {
-      CMsgLobbyEventPoints_NetworkedEventAction.encode(v!, writer.uint32(202).fork()).join();
+      CMsgEventActionData.encode(v!, writer.uint32(202).fork()).join();
     }
     if (message.tipAmountIndex !== 0) {
       writer.uint32(208).uint32(message.tipAmountIndex);
@@ -1183,10 +1180,13 @@ export const CMsgLobbyEventPoints_AccountPoints: MessageFns<CMsgLobbyEventPoints
       writer.uint32(224).uint32(message.teleportFxLevel);
     }
     for (const v of message.networkedEventActions) {
-      CMsgLobbyEventPoints_NetworkedEventAction.encode(v!, writer.uint32(242).fork()).join();
+      CMsgEventActionData.encode(v!, writer.uint32(242).fork()).join();
     }
     for (const v of message.periodicResources) {
-      CMsgLobbyEventPoints_PeriodicResourceData.encode(v!, writer.uint32(250).fork()).join();
+      CMsgPeriodicResourceData.encode(v!, writer.uint32(250).fork()).join();
+    }
+    for (const v of message.extraEventMessages) {
+      CExtraMsgBlock.encode(v!, writer.uint32(258).fork()).join();
     }
     return writer;
   },
@@ -1230,6 +1230,14 @@ export const CMsgLobbyEventPoints_AccountPoints: MessageFns<CMsgLobbyEventPoints
           message.owned = reader.bool();
           continue;
         }
+        case 7: {
+          if (tag !== 56) {
+            break;
+          }
+
+          message.eventLevel = reader.uint32();
+          continue;
+        }
         case 12: {
           if (tag !== 96) {
             break;
@@ -1251,9 +1259,7 @@ export const CMsgLobbyEventPoints_AccountPoints: MessageFns<CMsgLobbyEventPoints
             break;
           }
 
-          message.eventGameCustomActions.push(
-            CMsgLobbyEventPoints_NetworkedEventAction.decode(reader, reader.uint32()),
-          );
+          message.eventGameCustomActions.push(CMsgEventActionData.decode(reader, reader.uint32()));
           continue;
         }
         case 26: {
@@ -1285,7 +1291,7 @@ export const CMsgLobbyEventPoints_AccountPoints: MessageFns<CMsgLobbyEventPoints
             break;
           }
 
-          message.networkedEventActions.push(CMsgLobbyEventPoints_NetworkedEventAction.decode(reader, reader.uint32()));
+          message.networkedEventActions.push(CMsgEventActionData.decode(reader, reader.uint32()));
           continue;
         }
         case 31: {
@@ -1293,7 +1299,15 @@ export const CMsgLobbyEventPoints_AccountPoints: MessageFns<CMsgLobbyEventPoints
             break;
           }
 
-          message.periodicResources.push(CMsgLobbyEventPoints_PeriodicResourceData.decode(reader, reader.uint32()));
+          message.periodicResources.push(CMsgPeriodicResourceData.decode(reader, reader.uint32()));
+          continue;
+        }
+        case 32: {
+          if (tag !== 258) {
+            break;
+          }
+
+          message.extraEventMessages.push(CExtraMsgBlock.decode(reader, reader.uint32()));
           continue;
         }
       }
@@ -1311,19 +1325,23 @@ export const CMsgLobbyEventPoints_AccountPoints: MessageFns<CMsgLobbyEventPoints
       normalPoints: isSet(object.normalPoints) ? globalThis.Number(object.normalPoints) : 0,
       premiumPoints: isSet(object.premiumPoints) ? globalThis.Number(object.premiumPoints) : 0,
       owned: isSet(object.owned) ? globalThis.Boolean(object.owned) : false,
+      eventLevel: isSet(object.eventLevel) ? globalThis.Number(object.eventLevel) : 0,
       activeEffectsMask: isSet(object.activeEffectsMask) ? globalThis.String(object.activeEffectsMask) : "0",
       wagerStreak: isSet(object.wagerStreak) ? globalThis.Number(object.wagerStreak) : 0,
       eventGameCustomActions: globalThis.Array.isArray(object?.eventGameCustomActions)
-        ? object.eventGameCustomActions.map((e: any) => CMsgLobbyEventPoints_NetworkedEventAction.fromJSON(e))
+        ? object.eventGameCustomActions.map((e: any) => CMsgEventActionData.fromJSON(e))
         : [],
       tipAmountIndex: isSet(object.tipAmountIndex) ? globalThis.Number(object.tipAmountIndex) : 0,
       activeEventSeasonId: isSet(object.activeEventSeasonId) ? globalThis.Number(object.activeEventSeasonId) : 0,
       teleportFxLevel: isSet(object.teleportFxLevel) ? globalThis.Number(object.teleportFxLevel) : 0,
       networkedEventActions: globalThis.Array.isArray(object?.networkedEventActions)
-        ? object.networkedEventActions.map((e: any) => CMsgLobbyEventPoints_NetworkedEventAction.fromJSON(e))
+        ? object.networkedEventActions.map((e: any) => CMsgEventActionData.fromJSON(e))
         : [],
       periodicResources: globalThis.Array.isArray(object?.periodicResources)
-        ? object.periodicResources.map((e: any) => CMsgLobbyEventPoints_PeriodicResourceData.fromJSON(e))
+        ? object.periodicResources.map((e: any) => CMsgPeriodicResourceData.fromJSON(e))
+        : [],
+      extraEventMessages: globalThis.Array.isArray(object?.extraEventMessages)
+        ? object.extraEventMessages.map((e: any) => CExtraMsgBlock.fromJSON(e))
         : [],
     };
   },
@@ -1342,6 +1360,9 @@ export const CMsgLobbyEventPoints_AccountPoints: MessageFns<CMsgLobbyEventPoints
     if (message.owned !== false) {
       obj.owned = message.owned;
     }
+    if (message.eventLevel !== 0) {
+      obj.eventLevel = Math.round(message.eventLevel);
+    }
     if (message.activeEffectsMask !== "0") {
       obj.activeEffectsMask = message.activeEffectsMask;
     }
@@ -1349,9 +1370,7 @@ export const CMsgLobbyEventPoints_AccountPoints: MessageFns<CMsgLobbyEventPoints
       obj.wagerStreak = Math.round(message.wagerStreak);
     }
     if (message.eventGameCustomActions?.length) {
-      obj.eventGameCustomActions = message.eventGameCustomActions.map((e) =>
-        CMsgLobbyEventPoints_NetworkedEventAction.toJSON(e)
-      );
+      obj.eventGameCustomActions = message.eventGameCustomActions.map((e) => CMsgEventActionData.toJSON(e));
     }
     if (message.tipAmountIndex !== 0) {
       obj.tipAmountIndex = Math.round(message.tipAmountIndex);
@@ -1363,12 +1382,13 @@ export const CMsgLobbyEventPoints_AccountPoints: MessageFns<CMsgLobbyEventPoints
       obj.teleportFxLevel = Math.round(message.teleportFxLevel);
     }
     if (message.networkedEventActions?.length) {
-      obj.networkedEventActions = message.networkedEventActions.map((e) =>
-        CMsgLobbyEventPoints_NetworkedEventAction.toJSON(e)
-      );
+      obj.networkedEventActions = message.networkedEventActions.map((e) => CMsgEventActionData.toJSON(e));
     }
     if (message.periodicResources?.length) {
-      obj.periodicResources = message.periodicResources.map((e) => CMsgLobbyEventPoints_PeriodicResourceData.toJSON(e));
+      obj.periodicResources = message.periodicResources.map((e) => CMsgPeriodicResourceData.toJSON(e));
+    }
+    if (message.extraEventMessages?.length) {
+      obj.extraEventMessages = message.extraEventMessages.map((e) => CExtraMsgBlock.toJSON(e));
     }
     return obj;
   },
@@ -1382,17 +1402,17 @@ export const CMsgLobbyEventPoints_AccountPoints: MessageFns<CMsgLobbyEventPoints
     message.normalPoints = object.normalPoints ?? 0;
     message.premiumPoints = object.premiumPoints ?? 0;
     message.owned = object.owned ?? false;
+    message.eventLevel = object.eventLevel ?? 0;
     message.activeEffectsMask = object.activeEffectsMask ?? "0";
     message.wagerStreak = object.wagerStreak ?? 0;
-    message.eventGameCustomActions =
-      object.eventGameCustomActions?.map((e) => CMsgLobbyEventPoints_NetworkedEventAction.fromPartial(e)) || [];
+    message.eventGameCustomActions = object.eventGameCustomActions?.map((e) => CMsgEventActionData.fromPartial(e)) ||
+      [];
     message.tipAmountIndex = object.tipAmountIndex ?? 0;
     message.activeEventSeasonId = object.activeEventSeasonId ?? 0;
     message.teleportFxLevel = object.teleportFxLevel ?? 0;
-    message.networkedEventActions =
-      object.networkedEventActions?.map((e) => CMsgLobbyEventPoints_NetworkedEventAction.fromPartial(e)) || [];
-    message.periodicResources =
-      object.periodicResources?.map((e) => CMsgLobbyEventPoints_PeriodicResourceData.fromPartial(e)) || [];
+    message.networkedEventActions = object.networkedEventActions?.map((e) => CMsgEventActionData.fromPartial(e)) || [];
+    message.periodicResources = object.periodicResources?.map((e) => CMsgPeriodicResourceData.fromPartial(e)) || [];
+    message.extraEventMessages = object.extraEventMessages?.map((e) => CExtraMsgBlock.fromPartial(e)) || [];
     return message;
   },
 };
@@ -1737,42 +1757,15 @@ function createBaseCSODOTALobbyMember(): CSODOTALobbyMember {
     id: "0",
     heroId: 0,
     team: 0,
-    name: "",
     slot: 0,
-    partyId: "0",
-    metaLevel: 0,
-    metaXp: 0,
-    metaXpAwarded: 0,
     leaverStatus: 0,
     leaverActions: 0,
-    channel: 6,
-    disabledHeroId: [],
-    enabledHeroId: [],
     coachTeam: 5,
-    coachedAccountIds: [],
-    coachRating: 0,
-    pwrdCyberCafeId: 0,
-    pwrdCyberCafeName: "",
-    disabledRandomHeroBits: [],
-    rankChange: 0,
-    cameraman: false,
     customGameProductIds: [],
-    searchMatchType: 0,
-    favoriteTeamPacked: "0",
-    isPlusSubscriber: false,
-    laneSelectionFlags: 0,
-    canEarnRewards: false,
     liveSpectatorTeam: 5,
-    wasMvpLastGame: false,
     pendingAwards: [],
     pendingAwardsOnVictory: [],
-    rankMmrBoostType: 0,
-    queuePointAdjustment: 0,
-    rankTier: 0,
-    title: 0,
-    guildId: 0,
     reportsAvailable: 0,
-    isSteamChina: false,
     liveSpectatorAccountId: 0,
     commsReportsAvailable: 0,
   };
@@ -1784,28 +1777,13 @@ export const CSODOTALobbyMember: MessageFns<CSODOTALobbyMember> = {
       writer.uint32(9).fixed64(message.id);
     }
     if (message.heroId !== 0) {
-      writer.uint32(16).uint32(message.heroId);
+      writer.uint32(16).int32(message.heroId);
     }
     if (message.team !== 0) {
       writer.uint32(24).int32(message.team);
     }
-    if (message.name !== "") {
-      writer.uint32(50).string(message.name);
-    }
     if (message.slot !== 0) {
       writer.uint32(56).uint32(message.slot);
-    }
-    if (message.partyId !== "0") {
-      writer.uint32(96).uint64(message.partyId);
-    }
-    if (message.metaLevel !== 0) {
-      writer.uint32(104).uint32(message.metaLevel);
-    }
-    if (message.metaXp !== 0) {
-      writer.uint32(112).uint32(message.metaXp);
-    }
-    if (message.metaXpAwarded !== 0) {
-      writer.uint32(120).uint32(message.metaXpAwarded);
     }
     if (message.leaverStatus !== 0) {
       writer.uint32(128).int32(message.leaverStatus);
@@ -1813,72 +1791,16 @@ export const CSODOTALobbyMember: MessageFns<CSODOTALobbyMember> = {
     if (message.leaverActions !== 0) {
       writer.uint32(224).uint32(message.leaverActions);
     }
-    if (message.channel !== 6) {
-      writer.uint32(136).uint32(message.channel);
-    }
-    writer.uint32(162).fork();
-    for (const v of message.disabledHeroId) {
-      writer.uint32(v);
-    }
-    writer.join();
-    writer.uint32(178).fork();
-    for (const v of message.enabledHeroId) {
-      writer.uint32(v);
-    }
-    writer.join();
     if (message.coachTeam !== 5) {
       writer.uint32(184).int32(message.coachTeam);
-    }
-    writer.uint32(426).fork();
-    for (const v of message.coachedAccountIds) {
-      writer.uint32(v);
-    }
-    writer.join();
-    if (message.coachRating !== 0) {
-      writer.uint32(336).uint32(message.coachRating);
-    }
-    if (message.pwrdCyberCafeId !== 0) {
-      writer.uint32(192).uint32(message.pwrdCyberCafeId);
-    }
-    if (message.pwrdCyberCafeName !== "") {
-      writer.uint32(202).string(message.pwrdCyberCafeName);
-    }
-    writer.uint32(330).fork();
-    for (const v of message.disabledRandomHeroBits) {
-      writer.fixed32(v);
-    }
-    writer.join();
-    if (message.rankChange !== 0) {
-      writer.uint32(232).sint32(message.rankChange);
-    }
-    if (message.cameraman !== false) {
-      writer.uint32(240).bool(message.cameraman);
     }
     writer.uint32(250).fork();
     for (const v of message.customGameProductIds) {
       writer.uint32(v);
     }
     writer.join();
-    if (message.searchMatchType !== 0) {
-      writer.uint32(264).int32(message.searchMatchType);
-    }
-    if (message.favoriteTeamPacked !== "0") {
-      writer.uint32(280).uint64(message.favoriteTeamPacked);
-    }
-    if (message.isPlusSubscriber !== false) {
-      writer.uint32(288).bool(message.isPlusSubscriber);
-    }
-    if (message.laneSelectionFlags !== 0) {
-      writer.uint32(304).uint32(message.laneSelectionFlags);
-    }
-    if (message.canEarnRewards !== false) {
-      writer.uint32(312).bool(message.canEarnRewards);
-    }
     if (message.liveSpectatorTeam !== 5) {
       writer.uint32(320).int32(message.liveSpectatorTeam);
-    }
-    if (message.wasMvpLastGame !== false) {
-      writer.uint32(344).bool(message.wasMvpLastGame);
     }
     for (const v of message.pendingAwards) {
       CMsgPendingEventAward.encode(v!, writer.uint32(354).fork()).join();
@@ -1886,26 +1808,8 @@ export const CSODOTALobbyMember: MessageFns<CSODOTALobbyMember> = {
     for (const v of message.pendingAwardsOnVictory) {
       CMsgPendingEventAward.encode(v!, writer.uint32(362).fork()).join();
     }
-    if (message.rankMmrBoostType !== 0) {
-      writer.uint32(368).int32(message.rankMmrBoostType);
-    }
-    if (message.queuePointAdjustment !== 0) {
-      writer.uint32(376).sint32(message.queuePointAdjustment);
-    }
-    if (message.rankTier !== 0) {
-      writer.uint32(384).int32(message.rankTier);
-    }
-    if (message.title !== 0) {
-      writer.uint32(400).uint32(message.title);
-    }
-    if (message.guildId !== 0) {
-      writer.uint32(408).uint32(message.guildId);
-    }
     if (message.reportsAvailable !== 0) {
       writer.uint32(416).uint32(message.reportsAvailable);
-    }
-    if (message.isSteamChina !== false) {
-      writer.uint32(432).bool(message.isSteamChina);
     }
     if (message.liveSpectatorAccountId !== 0) {
       writer.uint32(440).uint32(message.liveSpectatorAccountId);
@@ -1936,7 +1840,7 @@ export const CSODOTALobbyMember: MessageFns<CSODOTALobbyMember> = {
             break;
           }
 
-          message.heroId = reader.uint32();
+          message.heroId = reader.int32();
           continue;
         }
         case 3: {
@@ -1947,52 +1851,12 @@ export const CSODOTALobbyMember: MessageFns<CSODOTALobbyMember> = {
           message.team = reader.int32() as any;
           continue;
         }
-        case 6: {
-          if (tag !== 50) {
-            break;
-          }
-
-          message.name = reader.string();
-          continue;
-        }
         case 7: {
           if (tag !== 56) {
             break;
           }
 
           message.slot = reader.uint32();
-          continue;
-        }
-        case 12: {
-          if (tag !== 96) {
-            break;
-          }
-
-          message.partyId = reader.uint64().toString();
-          continue;
-        }
-        case 13: {
-          if (tag !== 104) {
-            break;
-          }
-
-          message.metaLevel = reader.uint32();
-          continue;
-        }
-        case 14: {
-          if (tag !== 112) {
-            break;
-          }
-
-          message.metaXp = reader.uint32();
-          continue;
-        }
-        case 15: {
-          if (tag !== 120) {
-            break;
-          }
-
-          message.metaXpAwarded = reader.uint32();
           continue;
         }
         case 16: {
@@ -2011,132 +1875,12 @@ export const CSODOTALobbyMember: MessageFns<CSODOTALobbyMember> = {
           message.leaverActions = reader.uint32();
           continue;
         }
-        case 17: {
-          if (tag !== 136) {
-            break;
-          }
-
-          message.channel = reader.uint32();
-          continue;
-        }
-        case 20: {
-          if (tag === 160) {
-            message.disabledHeroId.push(reader.uint32());
-
-            continue;
-          }
-
-          if (tag === 162) {
-            const end2 = reader.uint32() + reader.pos;
-            while (reader.pos < end2) {
-              message.disabledHeroId.push(reader.uint32());
-            }
-
-            continue;
-          }
-
-          break;
-        }
-        case 22: {
-          if (tag === 176) {
-            message.enabledHeroId.push(reader.uint32());
-
-            continue;
-          }
-
-          if (tag === 178) {
-            const end2 = reader.uint32() + reader.pos;
-            while (reader.pos < end2) {
-              message.enabledHeroId.push(reader.uint32());
-            }
-
-            continue;
-          }
-
-          break;
-        }
         case 23: {
           if (tag !== 184) {
             break;
           }
 
           message.coachTeam = reader.int32() as any;
-          continue;
-        }
-        case 53: {
-          if (tag === 424) {
-            message.coachedAccountIds.push(reader.uint32());
-
-            continue;
-          }
-
-          if (tag === 426) {
-            const end2 = reader.uint32() + reader.pos;
-            while (reader.pos < end2) {
-              message.coachedAccountIds.push(reader.uint32());
-            }
-
-            continue;
-          }
-
-          break;
-        }
-        case 42: {
-          if (tag !== 336) {
-            break;
-          }
-
-          message.coachRating = reader.uint32();
-          continue;
-        }
-        case 24: {
-          if (tag !== 192) {
-            break;
-          }
-
-          message.pwrdCyberCafeId = reader.uint32();
-          continue;
-        }
-        case 25: {
-          if (tag !== 202) {
-            break;
-          }
-
-          message.pwrdCyberCafeName = reader.string();
-          continue;
-        }
-        case 41: {
-          if (tag === 333) {
-            message.disabledRandomHeroBits.push(reader.fixed32());
-
-            continue;
-          }
-
-          if (tag === 330) {
-            const end2 = reader.uint32() + reader.pos;
-            while (reader.pos < end2) {
-              message.disabledRandomHeroBits.push(reader.fixed32());
-            }
-
-            continue;
-          }
-
-          break;
-        }
-        case 29: {
-          if (tag !== 232) {
-            break;
-          }
-
-          message.rankChange = reader.sint32();
-          continue;
-        }
-        case 30: {
-          if (tag !== 240) {
-            break;
-          }
-
-          message.cameraman = reader.bool();
           continue;
         }
         case 31: {
@@ -2157,60 +1901,12 @@ export const CSODOTALobbyMember: MessageFns<CSODOTALobbyMember> = {
 
           break;
         }
-        case 33: {
-          if (tag !== 264) {
-            break;
-          }
-
-          message.searchMatchType = reader.int32() as any;
-          continue;
-        }
-        case 35: {
-          if (tag !== 280) {
-            break;
-          }
-
-          message.favoriteTeamPacked = reader.uint64().toString();
-          continue;
-        }
-        case 36: {
-          if (tag !== 288) {
-            break;
-          }
-
-          message.isPlusSubscriber = reader.bool();
-          continue;
-        }
-        case 38: {
-          if (tag !== 304) {
-            break;
-          }
-
-          message.laneSelectionFlags = reader.uint32();
-          continue;
-        }
-        case 39: {
-          if (tag !== 312) {
-            break;
-          }
-
-          message.canEarnRewards = reader.bool();
-          continue;
-        }
         case 40: {
           if (tag !== 320) {
             break;
           }
 
           message.liveSpectatorTeam = reader.int32() as any;
-          continue;
-        }
-        case 43: {
-          if (tag !== 344) {
-            break;
-          }
-
-          message.wasMvpLastGame = reader.bool();
           continue;
         }
         case 44: {
@@ -2229,60 +1925,12 @@ export const CSODOTALobbyMember: MessageFns<CSODOTALobbyMember> = {
           message.pendingAwardsOnVictory.push(CMsgPendingEventAward.decode(reader, reader.uint32()));
           continue;
         }
-        case 46: {
-          if (tag !== 368) {
-            break;
-          }
-
-          message.rankMmrBoostType = reader.int32() as any;
-          continue;
-        }
-        case 47: {
-          if (tag !== 376) {
-            break;
-          }
-
-          message.queuePointAdjustment = reader.sint32();
-          continue;
-        }
-        case 48: {
-          if (tag !== 384) {
-            break;
-          }
-
-          message.rankTier = reader.int32();
-          continue;
-        }
-        case 50: {
-          if (tag !== 400) {
-            break;
-          }
-
-          message.title = reader.uint32();
-          continue;
-        }
-        case 51: {
-          if (tag !== 408) {
-            break;
-          }
-
-          message.guildId = reader.uint32();
-          continue;
-        }
         case 52: {
           if (tag !== 416) {
             break;
           }
 
           message.reportsAvailable = reader.uint32();
-          continue;
-        }
-        case 54: {
-          if (tag !== 432) {
-            break;
-          }
-
-          message.isSteamChina = reader.bool();
           continue;
         }
         case 55: {
@@ -2315,56 +1963,21 @@ export const CSODOTALobbyMember: MessageFns<CSODOTALobbyMember> = {
       id: isSet(object.id) ? globalThis.String(object.id) : "0",
       heroId: isSet(object.heroId) ? globalThis.Number(object.heroId) : 0,
       team: isSet(object.team) ? dotaGcTeamFromJSON(object.team) : 0,
-      name: isSet(object.name) ? globalThis.String(object.name) : "",
       slot: isSet(object.slot) ? globalThis.Number(object.slot) : 0,
-      partyId: isSet(object.partyId) ? globalThis.String(object.partyId) : "0",
-      metaLevel: isSet(object.metaLevel) ? globalThis.Number(object.metaLevel) : 0,
-      metaXp: isSet(object.metaXp) ? globalThis.Number(object.metaXp) : 0,
-      metaXpAwarded: isSet(object.metaXpAwarded) ? globalThis.Number(object.metaXpAwarded) : 0,
       leaverStatus: isSet(object.leaverStatus) ? dOTALeaverStatusTFromJSON(object.leaverStatus) : 0,
       leaverActions: isSet(object.leaverActions) ? globalThis.Number(object.leaverActions) : 0,
-      channel: isSet(object.channel) ? globalThis.Number(object.channel) : 6,
-      disabledHeroId: globalThis.Array.isArray(object?.disabledHeroId)
-        ? object.disabledHeroId.map((e: any) => globalThis.Number(e))
-        : [],
-      enabledHeroId: globalThis.Array.isArray(object?.enabledHeroId)
-        ? object.enabledHeroId.map((e: any) => globalThis.Number(e))
-        : [],
       coachTeam: isSet(object.coachTeam) ? dotaGcTeamFromJSON(object.coachTeam) : 5,
-      coachedAccountIds: globalThis.Array.isArray(object?.coachedAccountIds)
-        ? object.coachedAccountIds.map((e: any) => globalThis.Number(e))
-        : [],
-      coachRating: isSet(object.coachRating) ? globalThis.Number(object.coachRating) : 0,
-      pwrdCyberCafeId: isSet(object.pwrdCyberCafeId) ? globalThis.Number(object.pwrdCyberCafeId) : 0,
-      pwrdCyberCafeName: isSet(object.pwrdCyberCafeName) ? globalThis.String(object.pwrdCyberCafeName) : "",
-      disabledRandomHeroBits: globalThis.Array.isArray(object?.disabledRandomHeroBits)
-        ? object.disabledRandomHeroBits.map((e: any) => globalThis.Number(e))
-        : [],
-      rankChange: isSet(object.rankChange) ? globalThis.Number(object.rankChange) : 0,
-      cameraman: isSet(object.cameraman) ? globalThis.Boolean(object.cameraman) : false,
       customGameProductIds: globalThis.Array.isArray(object?.customGameProductIds)
         ? object.customGameProductIds.map((e: any) => globalThis.Number(e))
         : [],
-      searchMatchType: isSet(object.searchMatchType) ? matchTypeFromJSON(object.searchMatchType) : 0,
-      favoriteTeamPacked: isSet(object.favoriteTeamPacked) ? globalThis.String(object.favoriteTeamPacked) : "0",
-      isPlusSubscriber: isSet(object.isPlusSubscriber) ? globalThis.Boolean(object.isPlusSubscriber) : false,
-      laneSelectionFlags: isSet(object.laneSelectionFlags) ? globalThis.Number(object.laneSelectionFlags) : 0,
-      canEarnRewards: isSet(object.canEarnRewards) ? globalThis.Boolean(object.canEarnRewards) : false,
       liveSpectatorTeam: isSet(object.liveSpectatorTeam) ? dotaGcTeamFromJSON(object.liveSpectatorTeam) : 5,
-      wasMvpLastGame: isSet(object.wasMvpLastGame) ? globalThis.Boolean(object.wasMvpLastGame) : false,
       pendingAwards: globalThis.Array.isArray(object?.pendingAwards)
         ? object.pendingAwards.map((e: any) => CMsgPendingEventAward.fromJSON(e))
         : [],
       pendingAwardsOnVictory: globalThis.Array.isArray(object?.pendingAwardsOnVictory)
         ? object.pendingAwardsOnVictory.map((e: any) => CMsgPendingEventAward.fromJSON(e))
         : [],
-      rankMmrBoostType: isSet(object.rankMmrBoostType) ? eDOTAMMRBoostTypeFromJSON(object.rankMmrBoostType) : 0,
-      queuePointAdjustment: isSet(object.queuePointAdjustment) ? globalThis.Number(object.queuePointAdjustment) : 0,
-      rankTier: isSet(object.rankTier) ? globalThis.Number(object.rankTier) : 0,
-      title: isSet(object.title) ? globalThis.Number(object.title) : 0,
-      guildId: isSet(object.guildId) ? globalThis.Number(object.guildId) : 0,
       reportsAvailable: isSet(object.reportsAvailable) ? globalThis.Number(object.reportsAvailable) : 0,
-      isSteamChina: isSet(object.isSteamChina) ? globalThis.Boolean(object.isSteamChina) : false,
       liveSpectatorAccountId: isSet(object.liveSpectatorAccountId)
         ? globalThis.Number(object.liveSpectatorAccountId)
         : 0,
@@ -2383,23 +1996,8 @@ export const CSODOTALobbyMember: MessageFns<CSODOTALobbyMember> = {
     if (message.team !== 0) {
       obj.team = dotaGcTeamToJSON(message.team);
     }
-    if (message.name !== "") {
-      obj.name = message.name;
-    }
     if (message.slot !== 0) {
       obj.slot = Math.round(message.slot);
-    }
-    if (message.partyId !== "0") {
-      obj.partyId = message.partyId;
-    }
-    if (message.metaLevel !== 0) {
-      obj.metaLevel = Math.round(message.metaLevel);
-    }
-    if (message.metaXp !== 0) {
-      obj.metaXp = Math.round(message.metaXp);
-    }
-    if (message.metaXpAwarded !== 0) {
-      obj.metaXpAwarded = Math.round(message.metaXpAwarded);
     }
     if (message.leaverStatus !== 0) {
       obj.leaverStatus = dOTALeaverStatusTToJSON(message.leaverStatus);
@@ -2407,62 +2005,14 @@ export const CSODOTALobbyMember: MessageFns<CSODOTALobbyMember> = {
     if (message.leaverActions !== 0) {
       obj.leaverActions = Math.round(message.leaverActions);
     }
-    if (message.channel !== 6) {
-      obj.channel = Math.round(message.channel);
-    }
-    if (message.disabledHeroId?.length) {
-      obj.disabledHeroId = message.disabledHeroId.map((e) => Math.round(e));
-    }
-    if (message.enabledHeroId?.length) {
-      obj.enabledHeroId = message.enabledHeroId.map((e) => Math.round(e));
-    }
     if (message.coachTeam !== 5) {
       obj.coachTeam = dotaGcTeamToJSON(message.coachTeam);
-    }
-    if (message.coachedAccountIds?.length) {
-      obj.coachedAccountIds = message.coachedAccountIds.map((e) => Math.round(e));
-    }
-    if (message.coachRating !== 0) {
-      obj.coachRating = Math.round(message.coachRating);
-    }
-    if (message.pwrdCyberCafeId !== 0) {
-      obj.pwrdCyberCafeId = Math.round(message.pwrdCyberCafeId);
-    }
-    if (message.pwrdCyberCafeName !== "") {
-      obj.pwrdCyberCafeName = message.pwrdCyberCafeName;
-    }
-    if (message.disabledRandomHeroBits?.length) {
-      obj.disabledRandomHeroBits = message.disabledRandomHeroBits.map((e) => Math.round(e));
-    }
-    if (message.rankChange !== 0) {
-      obj.rankChange = Math.round(message.rankChange);
-    }
-    if (message.cameraman !== false) {
-      obj.cameraman = message.cameraman;
     }
     if (message.customGameProductIds?.length) {
       obj.customGameProductIds = message.customGameProductIds.map((e) => Math.round(e));
     }
-    if (message.searchMatchType !== 0) {
-      obj.searchMatchType = matchTypeToJSON(message.searchMatchType);
-    }
-    if (message.favoriteTeamPacked !== "0") {
-      obj.favoriteTeamPacked = message.favoriteTeamPacked;
-    }
-    if (message.isPlusSubscriber !== false) {
-      obj.isPlusSubscriber = message.isPlusSubscriber;
-    }
-    if (message.laneSelectionFlags !== 0) {
-      obj.laneSelectionFlags = Math.round(message.laneSelectionFlags);
-    }
-    if (message.canEarnRewards !== false) {
-      obj.canEarnRewards = message.canEarnRewards;
-    }
     if (message.liveSpectatorTeam !== 5) {
       obj.liveSpectatorTeam = dotaGcTeamToJSON(message.liveSpectatorTeam);
-    }
-    if (message.wasMvpLastGame !== false) {
-      obj.wasMvpLastGame = message.wasMvpLastGame;
     }
     if (message.pendingAwards?.length) {
       obj.pendingAwards = message.pendingAwards.map((e) => CMsgPendingEventAward.toJSON(e));
@@ -2470,26 +2020,8 @@ export const CSODOTALobbyMember: MessageFns<CSODOTALobbyMember> = {
     if (message.pendingAwardsOnVictory?.length) {
       obj.pendingAwardsOnVictory = message.pendingAwardsOnVictory.map((e) => CMsgPendingEventAward.toJSON(e));
     }
-    if (message.rankMmrBoostType !== 0) {
-      obj.rankMmrBoostType = eDOTAMMRBoostTypeToJSON(message.rankMmrBoostType);
-    }
-    if (message.queuePointAdjustment !== 0) {
-      obj.queuePointAdjustment = Math.round(message.queuePointAdjustment);
-    }
-    if (message.rankTier !== 0) {
-      obj.rankTier = Math.round(message.rankTier);
-    }
-    if (message.title !== 0) {
-      obj.title = Math.round(message.title);
-    }
-    if (message.guildId !== 0) {
-      obj.guildId = Math.round(message.guildId);
-    }
     if (message.reportsAvailable !== 0) {
       obj.reportsAvailable = Math.round(message.reportsAvailable);
-    }
-    if (message.isSteamChina !== false) {
-      obj.isSteamChina = message.isSteamChina;
     }
     if (message.liveSpectatorAccountId !== 0) {
       obj.liveSpectatorAccountId = Math.round(message.liveSpectatorAccountId);
@@ -2508,43 +2040,16 @@ export const CSODOTALobbyMember: MessageFns<CSODOTALobbyMember> = {
     message.id = object.id ?? "0";
     message.heroId = object.heroId ?? 0;
     message.team = object.team ?? 0;
-    message.name = object.name ?? "";
     message.slot = object.slot ?? 0;
-    message.partyId = object.partyId ?? "0";
-    message.metaLevel = object.metaLevel ?? 0;
-    message.metaXp = object.metaXp ?? 0;
-    message.metaXpAwarded = object.metaXpAwarded ?? 0;
     message.leaverStatus = object.leaverStatus ?? 0;
     message.leaverActions = object.leaverActions ?? 0;
-    message.channel = object.channel ?? 6;
-    message.disabledHeroId = object.disabledHeroId?.map((e) => e) || [];
-    message.enabledHeroId = object.enabledHeroId?.map((e) => e) || [];
     message.coachTeam = object.coachTeam ?? 5;
-    message.coachedAccountIds = object.coachedAccountIds?.map((e) => e) || [];
-    message.coachRating = object.coachRating ?? 0;
-    message.pwrdCyberCafeId = object.pwrdCyberCafeId ?? 0;
-    message.pwrdCyberCafeName = object.pwrdCyberCafeName ?? "";
-    message.disabledRandomHeroBits = object.disabledRandomHeroBits?.map((e) => e) || [];
-    message.rankChange = object.rankChange ?? 0;
-    message.cameraman = object.cameraman ?? false;
     message.customGameProductIds = object.customGameProductIds?.map((e) => e) || [];
-    message.searchMatchType = object.searchMatchType ?? 0;
-    message.favoriteTeamPacked = object.favoriteTeamPacked ?? "0";
-    message.isPlusSubscriber = object.isPlusSubscriber ?? false;
-    message.laneSelectionFlags = object.laneSelectionFlags ?? 0;
-    message.canEarnRewards = object.canEarnRewards ?? false;
     message.liveSpectatorTeam = object.liveSpectatorTeam ?? 5;
-    message.wasMvpLastGame = object.wasMvpLastGame ?? false;
     message.pendingAwards = object.pendingAwards?.map((e) => CMsgPendingEventAward.fromPartial(e)) || [];
     message.pendingAwardsOnVictory = object.pendingAwardsOnVictory?.map((e) => CMsgPendingEventAward.fromPartial(e)) ||
       [];
-    message.rankMmrBoostType = object.rankMmrBoostType ?? 0;
-    message.queuePointAdjustment = object.queuePointAdjustment ?? 0;
-    message.rankTier = object.rankTier ?? 0;
-    message.title = object.title ?? 0;
-    message.guildId = object.guildId ?? 0;
     message.reportsAvailable = object.reportsAvailable ?? 0;
-    message.isSteamChina = object.isSteamChina ?? false;
     message.liveSpectatorAccountId = object.liveSpectatorAccountId ?? 0;
     message.commsReportsAvailable = object.commsReportsAvailable ?? 0;
     return message;
@@ -2595,11 +2100,23 @@ export const CSODOTAServerLobbyMember: MessageFns<CSODOTAServerLobbyMember> = {
 };
 
 function createBaseCSODOTAStaticLobbyMember(): CSODOTAStaticLobbyMember {
-  return {};
+  return { name: "", partyId: "0", channel: 6, cameraman: false };
 }
 
 export const CSODOTAStaticLobbyMember: MessageFns<CSODOTAStaticLobbyMember> = {
-  encode(_: CSODOTAStaticLobbyMember, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(message: CSODOTAStaticLobbyMember, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.name !== "") {
+      writer.uint32(10).string(message.name);
+    }
+    if (message.partyId !== "0") {
+      writer.uint32(16).uint64(message.partyId);
+    }
+    if (message.channel !== 6) {
+      writer.uint32(24).uint32(message.channel);
+    }
+    if (message.cameraman !== false) {
+      writer.uint32(32).bool(message.cameraman);
+    }
     return writer;
   },
 
@@ -2610,6 +2127,38 @@ export const CSODOTAStaticLobbyMember: MessageFns<CSODOTAStaticLobbyMember> = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.name = reader.string();
+          continue;
+        }
+        case 2: {
+          if (tag !== 16) {
+            break;
+          }
+
+          message.partyId = reader.uint64().toString();
+          continue;
+        }
+        case 3: {
+          if (tag !== 24) {
+            break;
+          }
+
+          message.channel = reader.uint32();
+          continue;
+        }
+        case 4: {
+          if (tag !== 32) {
+            break;
+          }
+
+          message.cameraman = reader.bool();
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -2619,30 +2168,134 @@ export const CSODOTAStaticLobbyMember: MessageFns<CSODOTAStaticLobbyMember> = {
     return message;
   },
 
-  fromJSON(_: any): CSODOTAStaticLobbyMember {
-    return {};
+  fromJSON(object: any): CSODOTAStaticLobbyMember {
+    return {
+      name: isSet(object.name) ? globalThis.String(object.name) : "",
+      partyId: isSet(object.partyId) ? globalThis.String(object.partyId) : "0",
+      channel: isSet(object.channel) ? globalThis.Number(object.channel) : 6,
+      cameraman: isSet(object.cameraman) ? globalThis.Boolean(object.cameraman) : false,
+    };
   },
 
-  toJSON(_: CSODOTAStaticLobbyMember): unknown {
+  toJSON(message: CSODOTAStaticLobbyMember): unknown {
     const obj: any = {};
+    if (message.name !== "") {
+      obj.name = message.name;
+    }
+    if (message.partyId !== "0") {
+      obj.partyId = message.partyId;
+    }
+    if (message.channel !== 6) {
+      obj.channel = Math.round(message.channel);
+    }
+    if (message.cameraman !== false) {
+      obj.cameraman = message.cameraman;
+    }
     return obj;
   },
 
   create(base?: DeepPartial<CSODOTAStaticLobbyMember>): CSODOTAStaticLobbyMember {
     return CSODOTAStaticLobbyMember.fromPartial(base ?? {});
   },
-  fromPartial(_: DeepPartial<CSODOTAStaticLobbyMember>): CSODOTAStaticLobbyMember {
+  fromPartial(object: DeepPartial<CSODOTAStaticLobbyMember>): CSODOTAStaticLobbyMember {
     const message = createBaseCSODOTAStaticLobbyMember();
+    message.name = object.name ?? "";
+    message.partyId = object.partyId ?? "0";
+    message.channel = object.channel ?? 6;
+    message.cameraman = object.cameraman ?? false;
     return message;
   },
 };
 
 function createBaseCSODOTAServerStaticLobbyMember(): CSODOTAServerStaticLobbyMember {
-  return {};
+  return {
+    steamId: "0",
+    rankTier: 0,
+    leaderboardRank: -1,
+    laneSelectionFlags: 0,
+    rankMmrBoostType: 0,
+    coachRating: 0,
+    coachedAccountIds: [],
+    wasMvpLastGame: false,
+    canEarnRewards: false,
+    isPlusSubscriber: false,
+    favoriteTeamPacked: "0",
+    isSteamChina: false,
+    title: 0,
+    guildId: 0,
+    disabledRandomHeroBits: [],
+    disabledHeroId: [],
+    enabledHeroId: [],
+    bannedHeroIds: [],
+  };
 }
 
 export const CSODOTAServerStaticLobbyMember: MessageFns<CSODOTAServerStaticLobbyMember> = {
-  encode(_: CSODOTAServerStaticLobbyMember, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+  encode(message: CSODOTAServerStaticLobbyMember, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.steamId !== "0") {
+      writer.uint32(9).fixed64(message.steamId);
+    }
+    if (message.rankTier !== 0) {
+      writer.uint32(24).int32(message.rankTier);
+    }
+    if (message.leaderboardRank !== -1) {
+      writer.uint32(32).int32(message.leaderboardRank);
+    }
+    if (message.laneSelectionFlags !== 0) {
+      writer.uint32(40).int32(message.laneSelectionFlags);
+    }
+    if (message.rankMmrBoostType !== 0) {
+      writer.uint32(48).int32(message.rankMmrBoostType);
+    }
+    if (message.coachRating !== 0) {
+      writer.uint32(56).int32(message.coachRating);
+    }
+    writer.uint32(66).fork();
+    for (const v of message.coachedAccountIds) {
+      writer.uint32(v);
+    }
+    writer.join();
+    if (message.wasMvpLastGame !== false) {
+      writer.uint32(72).bool(message.wasMvpLastGame);
+    }
+    if (message.canEarnRewards !== false) {
+      writer.uint32(80).bool(message.canEarnRewards);
+    }
+    if (message.isPlusSubscriber !== false) {
+      writer.uint32(88).bool(message.isPlusSubscriber);
+    }
+    if (message.favoriteTeamPacked !== "0") {
+      writer.uint32(96).uint64(message.favoriteTeamPacked);
+    }
+    if (message.isSteamChina !== false) {
+      writer.uint32(104).bool(message.isSteamChina);
+    }
+    if (message.title !== 0) {
+      writer.uint32(112).uint32(message.title);
+    }
+    if (message.guildId !== 0) {
+      writer.uint32(120).uint32(message.guildId);
+    }
+    writer.uint32(130).fork();
+    for (const v of message.disabledRandomHeroBits) {
+      writer.fixed32(v);
+    }
+    writer.join();
+    writer.uint32(138).fork();
+    for (const v of message.disabledHeroId) {
+      writer.int32(v);
+    }
+    writer.join();
+    writer.uint32(146).fork();
+    for (const v of message.enabledHeroId) {
+      writer.int32(v);
+    }
+    writer.join();
+    writer.uint32(154).fork();
+    for (const v of message.bannedHeroIds) {
+      writer.int32(v);
+    }
+    writer.join();
     return writer;
   },
 
@@ -2653,6 +2306,200 @@ export const CSODOTAServerStaticLobbyMember: MessageFns<CSODOTAServerStaticLobby
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 9) {
+            break;
+          }
+
+          message.steamId = reader.fixed64().toString();
+          continue;
+        }
+        case 3: {
+          if (tag !== 24) {
+            break;
+          }
+
+          message.rankTier = reader.int32();
+          continue;
+        }
+        case 4: {
+          if (tag !== 32) {
+            break;
+          }
+
+          message.leaderboardRank = reader.int32();
+          continue;
+        }
+        case 5: {
+          if (tag !== 40) {
+            break;
+          }
+
+          message.laneSelectionFlags = reader.int32();
+          continue;
+        }
+        case 6: {
+          if (tag !== 48) {
+            break;
+          }
+
+          message.rankMmrBoostType = reader.int32() as any;
+          continue;
+        }
+        case 7: {
+          if (tag !== 56) {
+            break;
+          }
+
+          message.coachRating = reader.int32();
+          continue;
+        }
+        case 8: {
+          if (tag === 64) {
+            message.coachedAccountIds.push(reader.uint32());
+
+            continue;
+          }
+
+          if (tag === 66) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.coachedAccountIds.push(reader.uint32());
+            }
+
+            continue;
+          }
+
+          break;
+        }
+        case 9: {
+          if (tag !== 72) {
+            break;
+          }
+
+          message.wasMvpLastGame = reader.bool();
+          continue;
+        }
+        case 10: {
+          if (tag !== 80) {
+            break;
+          }
+
+          message.canEarnRewards = reader.bool();
+          continue;
+        }
+        case 11: {
+          if (tag !== 88) {
+            break;
+          }
+
+          message.isPlusSubscriber = reader.bool();
+          continue;
+        }
+        case 12: {
+          if (tag !== 96) {
+            break;
+          }
+
+          message.favoriteTeamPacked = reader.uint64().toString();
+          continue;
+        }
+        case 13: {
+          if (tag !== 104) {
+            break;
+          }
+
+          message.isSteamChina = reader.bool();
+          continue;
+        }
+        case 14: {
+          if (tag !== 112) {
+            break;
+          }
+
+          message.title = reader.uint32();
+          continue;
+        }
+        case 15: {
+          if (tag !== 120) {
+            break;
+          }
+
+          message.guildId = reader.uint32();
+          continue;
+        }
+        case 16: {
+          if (tag === 133) {
+            message.disabledRandomHeroBits.push(reader.fixed32());
+
+            continue;
+          }
+
+          if (tag === 130) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.disabledRandomHeroBits.push(reader.fixed32());
+            }
+
+            continue;
+          }
+
+          break;
+        }
+        case 17: {
+          if (tag === 136) {
+            message.disabledHeroId.push(reader.int32());
+
+            continue;
+          }
+
+          if (tag === 138) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.disabledHeroId.push(reader.int32());
+            }
+
+            continue;
+          }
+
+          break;
+        }
+        case 18: {
+          if (tag === 144) {
+            message.enabledHeroId.push(reader.int32());
+
+            continue;
+          }
+
+          if (tag === 146) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.enabledHeroId.push(reader.int32());
+            }
+
+            continue;
+          }
+
+          break;
+        }
+        case 19: {
+          if (tag === 152) {
+            message.bannedHeroIds.push(reader.int32());
+
+            continue;
+          }
+
+          if (tag === 154) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.bannedHeroIds.push(reader.int32());
+            }
+
+            continue;
+          }
+
+          break;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -2662,20 +2509,121 @@ export const CSODOTAServerStaticLobbyMember: MessageFns<CSODOTAServerStaticLobby
     return message;
   },
 
-  fromJSON(_: any): CSODOTAServerStaticLobbyMember {
-    return {};
+  fromJSON(object: any): CSODOTAServerStaticLobbyMember {
+    return {
+      steamId: isSet(object.steamId) ? globalThis.String(object.steamId) : "0",
+      rankTier: isSet(object.rankTier) ? globalThis.Number(object.rankTier) : 0,
+      leaderboardRank: isSet(object.leaderboardRank) ? globalThis.Number(object.leaderboardRank) : -1,
+      laneSelectionFlags: isSet(object.laneSelectionFlags) ? globalThis.Number(object.laneSelectionFlags) : 0,
+      rankMmrBoostType: isSet(object.rankMmrBoostType) ? eDOTAMMRBoostTypeFromJSON(object.rankMmrBoostType) : 0,
+      coachRating: isSet(object.coachRating) ? globalThis.Number(object.coachRating) : 0,
+      coachedAccountIds: globalThis.Array.isArray(object?.coachedAccountIds)
+        ? object.coachedAccountIds.map((e: any) => globalThis.Number(e))
+        : [],
+      wasMvpLastGame: isSet(object.wasMvpLastGame) ? globalThis.Boolean(object.wasMvpLastGame) : false,
+      canEarnRewards: isSet(object.canEarnRewards) ? globalThis.Boolean(object.canEarnRewards) : false,
+      isPlusSubscriber: isSet(object.isPlusSubscriber) ? globalThis.Boolean(object.isPlusSubscriber) : false,
+      favoriteTeamPacked: isSet(object.favoriteTeamPacked) ? globalThis.String(object.favoriteTeamPacked) : "0",
+      isSteamChina: isSet(object.isSteamChina) ? globalThis.Boolean(object.isSteamChina) : false,
+      title: isSet(object.title) ? globalThis.Number(object.title) : 0,
+      guildId: isSet(object.guildId) ? globalThis.Number(object.guildId) : 0,
+      disabledRandomHeroBits: globalThis.Array.isArray(object?.disabledRandomHeroBits)
+        ? object.disabledRandomHeroBits.map((e: any) => globalThis.Number(e))
+        : [],
+      disabledHeroId: globalThis.Array.isArray(object?.disabledHeroId)
+        ? object.disabledHeroId.map((e: any) => globalThis.Number(e))
+        : [],
+      enabledHeroId: globalThis.Array.isArray(object?.enabledHeroId)
+        ? object.enabledHeroId.map((e: any) => globalThis.Number(e))
+        : [],
+      bannedHeroIds: globalThis.Array.isArray(object?.bannedHeroIds)
+        ? object.bannedHeroIds.map((e: any) => globalThis.Number(e))
+        : [],
+    };
   },
 
-  toJSON(_: CSODOTAServerStaticLobbyMember): unknown {
+  toJSON(message: CSODOTAServerStaticLobbyMember): unknown {
     const obj: any = {};
+    if (message.steamId !== "0") {
+      obj.steamId = message.steamId;
+    }
+    if (message.rankTier !== 0) {
+      obj.rankTier = Math.round(message.rankTier);
+    }
+    if (message.leaderboardRank !== -1) {
+      obj.leaderboardRank = Math.round(message.leaderboardRank);
+    }
+    if (message.laneSelectionFlags !== 0) {
+      obj.laneSelectionFlags = Math.round(message.laneSelectionFlags);
+    }
+    if (message.rankMmrBoostType !== 0) {
+      obj.rankMmrBoostType = eDOTAMMRBoostTypeToJSON(message.rankMmrBoostType);
+    }
+    if (message.coachRating !== 0) {
+      obj.coachRating = Math.round(message.coachRating);
+    }
+    if (message.coachedAccountIds?.length) {
+      obj.coachedAccountIds = message.coachedAccountIds.map((e) => Math.round(e));
+    }
+    if (message.wasMvpLastGame !== false) {
+      obj.wasMvpLastGame = message.wasMvpLastGame;
+    }
+    if (message.canEarnRewards !== false) {
+      obj.canEarnRewards = message.canEarnRewards;
+    }
+    if (message.isPlusSubscriber !== false) {
+      obj.isPlusSubscriber = message.isPlusSubscriber;
+    }
+    if (message.favoriteTeamPacked !== "0") {
+      obj.favoriteTeamPacked = message.favoriteTeamPacked;
+    }
+    if (message.isSteamChina !== false) {
+      obj.isSteamChina = message.isSteamChina;
+    }
+    if (message.title !== 0) {
+      obj.title = Math.round(message.title);
+    }
+    if (message.guildId !== 0) {
+      obj.guildId = Math.round(message.guildId);
+    }
+    if (message.disabledRandomHeroBits?.length) {
+      obj.disabledRandomHeroBits = message.disabledRandomHeroBits.map((e) => Math.round(e));
+    }
+    if (message.disabledHeroId?.length) {
+      obj.disabledHeroId = message.disabledHeroId.map((e) => Math.round(e));
+    }
+    if (message.enabledHeroId?.length) {
+      obj.enabledHeroId = message.enabledHeroId.map((e) => Math.round(e));
+    }
+    if (message.bannedHeroIds?.length) {
+      obj.bannedHeroIds = message.bannedHeroIds.map((e) => Math.round(e));
+    }
     return obj;
   },
 
   create(base?: DeepPartial<CSODOTAServerStaticLobbyMember>): CSODOTAServerStaticLobbyMember {
     return CSODOTAServerStaticLobbyMember.fromPartial(base ?? {});
   },
-  fromPartial(_: DeepPartial<CSODOTAServerStaticLobbyMember>): CSODOTAServerStaticLobbyMember {
+  fromPartial(object: DeepPartial<CSODOTAServerStaticLobbyMember>): CSODOTAServerStaticLobbyMember {
     const message = createBaseCSODOTAServerStaticLobbyMember();
+    message.steamId = object.steamId ?? "0";
+    message.rankTier = object.rankTier ?? 0;
+    message.leaderboardRank = object.leaderboardRank ?? -1;
+    message.laneSelectionFlags = object.laneSelectionFlags ?? 0;
+    message.rankMmrBoostType = object.rankMmrBoostType ?? 0;
+    message.coachRating = object.coachRating ?? 0;
+    message.coachedAccountIds = object.coachedAccountIds?.map((e) => e) || [];
+    message.wasMvpLastGame = object.wasMvpLastGame ?? false;
+    message.canEarnRewards = object.canEarnRewards ?? false;
+    message.isPlusSubscriber = object.isPlusSubscriber ?? false;
+    message.favoriteTeamPacked = object.favoriteTeamPacked ?? "0";
+    message.isSteamChina = object.isSteamChina ?? false;
+    message.title = object.title ?? 0;
+    message.guildId = object.guildId ?? 0;
+    message.disabledRandomHeroBits = object.disabledRandomHeroBits?.map((e) => e) || [];
+    message.disabledHeroId = object.disabledHeroId?.map((e) => e) || [];
+    message.enabledHeroId = object.enabledHeroId?.map((e) => e) || [];
+    message.bannedHeroIds = object.bannedHeroIds?.map((e) => e) || [];
     return message;
   },
 };
@@ -3626,6 +3574,114 @@ export const CLobbyGuildChallenge: MessageFns<CLobbyGuildChallenge> = {
   },
 };
 
+function createBaseCDOTALobbyMatchQualityData(): CDOTALobbyMatchQualityData {
+  return { overallQuality: 0, teamBalance: 0, matchSkillRange: 0, matchBehavior: 0 };
+}
+
+export const CDOTALobbyMatchQualityData: MessageFns<CDOTALobbyMatchQualityData> = {
+  encode(message: CDOTALobbyMatchQualityData, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.overallQuality !== 0) {
+      writer.uint32(8).uint32(message.overallQuality);
+    }
+    if (message.teamBalance !== 0) {
+      writer.uint32(16).uint32(message.teamBalance);
+    }
+    if (message.matchSkillRange !== 0) {
+      writer.uint32(24).uint32(message.matchSkillRange);
+    }
+    if (message.matchBehavior !== 0) {
+      writer.uint32(32).uint32(message.matchBehavior);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CDOTALobbyMatchQualityData {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCDOTALobbyMatchQualityData();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.overallQuality = reader.uint32();
+          continue;
+        }
+        case 2: {
+          if (tag !== 16) {
+            break;
+          }
+
+          message.teamBalance = reader.uint32();
+          continue;
+        }
+        case 3: {
+          if (tag !== 24) {
+            break;
+          }
+
+          message.matchSkillRange = reader.uint32();
+          continue;
+        }
+        case 4: {
+          if (tag !== 32) {
+            break;
+          }
+
+          message.matchBehavior = reader.uint32();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CDOTALobbyMatchQualityData {
+    return {
+      overallQuality: isSet(object.overallQuality) ? globalThis.Number(object.overallQuality) : 0,
+      teamBalance: isSet(object.teamBalance) ? globalThis.Number(object.teamBalance) : 0,
+      matchSkillRange: isSet(object.matchSkillRange) ? globalThis.Number(object.matchSkillRange) : 0,
+      matchBehavior: isSet(object.matchBehavior) ? globalThis.Number(object.matchBehavior) : 0,
+    };
+  },
+
+  toJSON(message: CDOTALobbyMatchQualityData): unknown {
+    const obj: any = {};
+    if (message.overallQuality !== 0) {
+      obj.overallQuality = Math.round(message.overallQuality);
+    }
+    if (message.teamBalance !== 0) {
+      obj.teamBalance = Math.round(message.teamBalance);
+    }
+    if (message.matchSkillRange !== 0) {
+      obj.matchSkillRange = Math.round(message.matchSkillRange);
+    }
+    if (message.matchBehavior !== 0) {
+      obj.matchBehavior = Math.round(message.matchBehavior);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CDOTALobbyMatchQualityData>): CDOTALobbyMatchQualityData {
+    return CDOTALobbyMatchQualityData.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CDOTALobbyMatchQualityData>): CDOTALobbyMatchQualityData {
+    const message = createBaseCDOTALobbyMatchQualityData();
+    message.overallQuality = object.overallQuality ?? 0;
+    message.teamBalance = object.teamBalance ?? 0;
+    message.matchSkillRange = object.matchSkillRange ?? 0;
+    message.matchBehavior = object.matchBehavior ?? 0;
+    return message;
+  },
+};
+
 function createBaseCSODOTALobby(): CSODOTALobby {
   return {
     lobbyId: "0",
@@ -3642,10 +3698,8 @@ function createBaseCSODOTALobby(): CSODOTALobby {
     lobbyType: -1,
     allowCheats: false,
     fillWithBots: false,
-    introMode: false,
     gameName: "",
     teamDetails: [],
-    tutorialLesson: 0,
     tournamentId: 0,
     tournamentGameId: 0,
     serverRegion: 0,
@@ -3656,17 +3710,13 @@ function createBaseCSODOTALobby(): CSODOTALobby {
     matchId: "0",
     allowSpectating: true,
     botDifficultyRadiant: 3,
-    timedRewardDetails: [],
     passKey: "",
     leagueid: 0,
     penaltyLevelRadiant: 0,
     penaltyLevelDire: 0,
-    loadGameId: 0,
     seriesType: 0,
     radiantSeriesWins: 0,
     direSeriesWins: 0,
-    lootGenerated: 0,
-    lootAwarded: 0,
     allchat: false,
     dotaTvDelay: 0,
     customGameMode: "",
@@ -3678,7 +3728,6 @@ function createBaseCSODOTALobby(): CSODOTALobby {
     seriesId: 0,
     lowPriority: false,
     extraMessages: [],
-    saveGame: undefined,
     firstBloodHappened: false,
     matchOutcome: 0,
     massDisconnect: false,
@@ -3714,18 +3763,16 @@ function createBaseCSODOTALobby(): CSODOTALobby {
     leagueNodeId: 0,
     matchDuration: 0,
     leaguePhase: 0,
-    recordDetailedStats: false,
     experimentalGameplayEnabled: false,
     guildChallenges: [],
     guildDetails: [],
-    lobbyEventPoints: [],
     requestedHeroIds: [],
     coachFriendRequests: [],
     isInSteamChina: false,
     withScenarioSave: false,
     lobbyCreationTime: 0,
     eventGameDefinition: "",
-    extraStartupMessages: [],
+    matchQualityData: undefined,
   };
 }
 
@@ -3781,17 +3828,11 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
     if (message.fillWithBots !== false) {
       writer.uint32(112).bool(message.fillWithBots);
     }
-    if (message.introMode !== false) {
-      writer.uint32(120).bool(message.introMode);
-    }
     if (message.gameName !== "") {
       writer.uint32(130).string(message.gameName);
     }
     for (const v of message.teamDetails) {
       CLobbyTeamDetails.encode(v!, writer.uint32(138).fork()).join();
-    }
-    if (message.tutorialLesson !== 0) {
-      writer.uint32(144).uint32(message.tutorialLesson);
     }
     if (message.tournamentId !== 0) {
       writer.uint32(152).uint32(message.tournamentId);
@@ -3823,9 +3864,6 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
     if (message.botDifficultyRadiant !== 3) {
       writer.uint32(288).int32(message.botDifficultyRadiant);
     }
-    for (const v of message.timedRewardDetails) {
-      CLobbyTimedRewardDetails.encode(v!, writer.uint32(306).fork()).join();
-    }
     if (message.passKey !== "") {
       writer.uint32(314).string(message.passKey);
     }
@@ -3838,9 +3876,6 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
     if (message.penaltyLevelDire !== 0) {
       writer.uint32(352).uint32(message.penaltyLevelDire);
     }
-    if (message.loadGameId !== 0) {
-      writer.uint32(360).uint32(message.loadGameId);
-    }
     if (message.seriesType !== 0) {
       writer.uint32(368).uint32(message.seriesType);
     }
@@ -3849,12 +3884,6 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
     }
     if (message.direSeriesWins !== 0) {
       writer.uint32(384).uint32(message.direSeriesWins);
-    }
-    if (message.lootGenerated !== 0) {
-      writer.uint32(392).uint32(message.lootGenerated);
-    }
-    if (message.lootAwarded !== 0) {
-      writer.uint32(400).uint32(message.lootAwarded);
     }
     if (message.allchat !== false) {
       writer.uint32(408).bool(message.allchat);
@@ -3888,9 +3917,6 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
     }
     for (const v of message.extraMessages) {
       CSODOTALobby_CExtraMsg.encode(v!, writer.uint32(498).fork()).join();
-    }
-    if (message.saveGame !== undefined) {
-      CDOTASaveGame.encode(message.saveGame, writer.uint32(506).fork()).join();
     }
     if (message.firstBloodHappened !== false) {
       writer.uint32(520).bool(message.firstBloodHappened);
@@ -3982,7 +4008,7 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
     }
     writer.uint32(842).fork();
     for (const v of message.emergencyDisabledHeroIds) {
-      writer.uint32(v);
+      writer.int32(v);
     }
     writer.join();
     if (message.customGamePrivateKey !== "0") {
@@ -4003,9 +4029,6 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
     if (message.leaguePhase !== 0) {
       writer.uint32(904).uint32(message.leaguePhase);
     }
-    if (message.recordDetailedStats !== false) {
-      writer.uint32(912).bool(message.recordDetailedStats);
-    }
     if (message.experimentalGameplayEnabled !== false) {
       writer.uint32(928).bool(message.experimentalGameplayEnabled);
     }
@@ -4015,12 +4038,9 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
     for (const v of message.guildDetails) {
       CLobbyGuildDetails.encode(v!, writer.uint32(946).fork()).join();
     }
-    for (const v of message.lobbyEventPoints) {
-      CMsgLobbyEventPoints.encode(v!, writer.uint32(954).fork()).join();
-    }
     writer.uint32(994).fork();
     for (const v of message.requestedHeroIds) {
-      writer.uint32(v);
+      writer.int32(v);
     }
     writer.join();
     for (const v of message.coachFriendRequests) {
@@ -4038,8 +4058,8 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
     if (message.eventGameDefinition !== "") {
       writer.uint32(1034).string(message.eventGameDefinition);
     }
-    for (const v of message.extraStartupMessages) {
-      CSODOTALobby_CExtraMsg.encode(v!, writer.uint32(1042).fork()).join();
+    if (message.matchQualityData !== undefined) {
+      CDOTALobbyMatchQualityData.encode(message.matchQualityData, writer.uint32(1050).fork()).join();
     }
     return writer;
   },
@@ -4203,14 +4223,6 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
           message.fillWithBots = reader.bool();
           continue;
         }
-        case 15: {
-          if (tag !== 120) {
-            break;
-          }
-
-          message.introMode = reader.bool();
-          continue;
-        }
         case 16: {
           if (tag !== 130) {
             break;
@@ -4225,14 +4237,6 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
           }
 
           message.teamDetails.push(CLobbyTeamDetails.decode(reader, reader.uint32()));
-          continue;
-        }
-        case 18: {
-          if (tag !== 144) {
-            break;
-          }
-
-          message.tutorialLesson = reader.uint32();
           continue;
         }
         case 19: {
@@ -4315,14 +4319,6 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
           message.botDifficultyRadiant = reader.int32() as any;
           continue;
         }
-        case 38: {
-          if (tag !== 306) {
-            break;
-          }
-
-          message.timedRewardDetails.push(CLobbyTimedRewardDetails.decode(reader, reader.uint32()));
-          continue;
-        }
         case 39: {
           if (tag !== 314) {
             break;
@@ -4355,14 +4351,6 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
           message.penaltyLevelDire = reader.uint32();
           continue;
         }
-        case 45: {
-          if (tag !== 360) {
-            break;
-          }
-
-          message.loadGameId = reader.uint32();
-          continue;
-        }
         case 46: {
           if (tag !== 368) {
             break;
@@ -4385,22 +4373,6 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
           }
 
           message.direSeriesWins = reader.uint32();
-          continue;
-        }
-        case 49: {
-          if (tag !== 392) {
-            break;
-          }
-
-          message.lootGenerated = reader.uint32();
-          continue;
-        }
-        case 50: {
-          if (tag !== 400) {
-            break;
-          }
-
-          message.lootAwarded = reader.uint32();
           continue;
         }
         case 51: {
@@ -4489,14 +4461,6 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
           }
 
           message.extraMessages.push(CSODOTALobby_CExtraMsg.decode(reader, reader.uint32()));
-          continue;
-        }
-        case 63: {
-          if (tag !== 506) {
-            break;
-          }
-
-          message.saveGame = CDOTASaveGame.decode(reader, reader.uint32());
           continue;
         }
         case 65: {
@@ -4745,7 +4709,7 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
         }
         case 105: {
           if (tag === 840) {
-            message.emergencyDisabledHeroIds.push(reader.uint32());
+            message.emergencyDisabledHeroIds.push(reader.int32());
 
             continue;
           }
@@ -4753,7 +4717,7 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
           if (tag === 842) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.emergencyDisabledHeroIds.push(reader.uint32());
+              message.emergencyDisabledHeroIds.push(reader.int32());
             }
 
             continue;
@@ -4809,14 +4773,6 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
           message.leaguePhase = reader.uint32();
           continue;
         }
-        case 114: {
-          if (tag !== 912) {
-            break;
-          }
-
-          message.recordDetailedStats = reader.bool();
-          continue;
-        }
         case 116: {
           if (tag !== 928) {
             break;
@@ -4841,17 +4797,9 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
           message.guildDetails.push(CLobbyGuildDetails.decode(reader, reader.uint32()));
           continue;
         }
-        case 119: {
-          if (tag !== 954) {
-            break;
-          }
-
-          message.lobbyEventPoints.push(CMsgLobbyEventPoints.decode(reader, reader.uint32()));
-          continue;
-        }
         case 124: {
           if (tag === 992) {
-            message.requestedHeroIds.push(reader.uint32());
+            message.requestedHeroIds.push(reader.int32());
 
             continue;
           }
@@ -4859,7 +4807,7 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
           if (tag === 994) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
-              message.requestedHeroIds.push(reader.uint32());
+              message.requestedHeroIds.push(reader.int32());
             }
 
             continue;
@@ -4907,12 +4855,12 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
           message.eventGameDefinition = reader.string();
           continue;
         }
-        case 130: {
-          if (tag !== 1042) {
+        case 131: {
+          if (tag !== 1050) {
             break;
           }
 
-          message.extraStartupMessages.push(CSODOTALobby_CExtraMsg.decode(reader, reader.uint32()));
+          message.matchQualityData = CDOTALobbyMatchQualityData.decode(reader, reader.uint32());
           continue;
         }
       }
@@ -4950,12 +4898,10 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
       lobbyType: isSet(object.lobbyType) ? cSODOTALobby_LobbyTypeFromJSON(object.lobbyType) : -1,
       allowCheats: isSet(object.allowCheats) ? globalThis.Boolean(object.allowCheats) : false,
       fillWithBots: isSet(object.fillWithBots) ? globalThis.Boolean(object.fillWithBots) : false,
-      introMode: isSet(object.introMode) ? globalThis.Boolean(object.introMode) : false,
       gameName: isSet(object.gameName) ? globalThis.String(object.gameName) : "",
       teamDetails: globalThis.Array.isArray(object?.teamDetails)
         ? object.teamDetails.map((e: any) => CLobbyTeamDetails.fromJSON(e))
         : [],
-      tutorialLesson: isSet(object.tutorialLesson) ? globalThis.Number(object.tutorialLesson) : 0,
       tournamentId: isSet(object.tournamentId) ? globalThis.Number(object.tournamentId) : 0,
       tournamentGameId: isSet(object.tournamentGameId) ? globalThis.Number(object.tournamentGameId) : 0,
       serverRegion: isSet(object.serverRegion) ? globalThis.Number(object.serverRegion) : 0,
@@ -4968,19 +4914,13 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
       botDifficultyRadiant: isSet(object.botDifficultyRadiant)
         ? dOTABotDifficultyFromJSON(object.botDifficultyRadiant)
         : 3,
-      timedRewardDetails: globalThis.Array.isArray(object?.timedRewardDetails)
-        ? object.timedRewardDetails.map((e: any) => CLobbyTimedRewardDetails.fromJSON(e))
-        : [],
       passKey: isSet(object.passKey) ? globalThis.String(object.passKey) : "",
       leagueid: isSet(object.leagueid) ? globalThis.Number(object.leagueid) : 0,
       penaltyLevelRadiant: isSet(object.penaltyLevelRadiant) ? globalThis.Number(object.penaltyLevelRadiant) : 0,
       penaltyLevelDire: isSet(object.penaltyLevelDire) ? globalThis.Number(object.penaltyLevelDire) : 0,
-      loadGameId: isSet(object.loadGameId) ? globalThis.Number(object.loadGameId) : 0,
       seriesType: isSet(object.seriesType) ? globalThis.Number(object.seriesType) : 0,
       radiantSeriesWins: isSet(object.radiantSeriesWins) ? globalThis.Number(object.radiantSeriesWins) : 0,
       direSeriesWins: isSet(object.direSeriesWins) ? globalThis.Number(object.direSeriesWins) : 0,
-      lootGenerated: isSet(object.lootGenerated) ? globalThis.Number(object.lootGenerated) : 0,
-      lootAwarded: isSet(object.lootAwarded) ? globalThis.Number(object.lootAwarded) : 0,
       allchat: isSet(object.allchat) ? globalThis.Boolean(object.allchat) : false,
       dotaTvDelay: isSet(object.dotaTvDelay) ? lobbyDotaTVDelayFromJSON(object.dotaTvDelay) : 0,
       customGameMode: isSet(object.customGameMode) ? globalThis.String(object.customGameMode) : "",
@@ -4996,7 +4936,6 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
       extraMessages: globalThis.Array.isArray(object?.extraMessages)
         ? object.extraMessages.map((e: any) => CSODOTALobby_CExtraMsg.fromJSON(e))
         : [],
-      saveGame: isSet(object.saveGame) ? CDOTASaveGame.fromJSON(object.saveGame) : undefined,
       firstBloodHappened: isSet(object.firstBloodHappened) ? globalThis.Boolean(object.firstBloodHappened) : false,
       matchOutcome: isSet(object.matchOutcome) ? eMatchOutcomeFromJSON(object.matchOutcome) : 0,
       massDisconnect: isSet(object.massDisconnect) ? globalThis.Boolean(object.massDisconnect) : false,
@@ -5060,7 +4999,6 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
       leagueNodeId: isSet(object.leagueNodeId) ? globalThis.Number(object.leagueNodeId) : 0,
       matchDuration: isSet(object.matchDuration) ? globalThis.Number(object.matchDuration) : 0,
       leaguePhase: isSet(object.leaguePhase) ? globalThis.Number(object.leaguePhase) : 0,
-      recordDetailedStats: isSet(object.recordDetailedStats) ? globalThis.Boolean(object.recordDetailedStats) : false,
       experimentalGameplayEnabled: isSet(object.experimentalGameplayEnabled)
         ? globalThis.Boolean(object.experimentalGameplayEnabled)
         : false,
@@ -5069,9 +5007,6 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
         : [],
       guildDetails: globalThis.Array.isArray(object?.guildDetails)
         ? object.guildDetails.map((e: any) => CLobbyGuildDetails.fromJSON(e))
-        : [],
-      lobbyEventPoints: globalThis.Array.isArray(object?.lobbyEventPoints)
-        ? object.lobbyEventPoints.map((e: any) => CMsgLobbyEventPoints.fromJSON(e))
         : [],
       requestedHeroIds: globalThis.Array.isArray(object?.requestedHeroIds)
         ? object.requestedHeroIds.map((e: any) => globalThis.Number(e))
@@ -5083,9 +5018,9 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
       withScenarioSave: isSet(object.withScenarioSave) ? globalThis.Boolean(object.withScenarioSave) : false,
       lobbyCreationTime: isSet(object.lobbyCreationTime) ? globalThis.Number(object.lobbyCreationTime) : 0,
       eventGameDefinition: isSet(object.eventGameDefinition) ? globalThis.String(object.eventGameDefinition) : "",
-      extraStartupMessages: globalThis.Array.isArray(object?.extraStartupMessages)
-        ? object.extraStartupMessages.map((e: any) => CSODOTALobby_CExtraMsg.fromJSON(e))
-        : [],
+      matchQualityData: isSet(object.matchQualityData)
+        ? CDOTALobbyMatchQualityData.fromJSON(object.matchQualityData)
+        : undefined,
     };
   },
 
@@ -5133,17 +5068,11 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
     if (message.fillWithBots !== false) {
       obj.fillWithBots = message.fillWithBots;
     }
-    if (message.introMode !== false) {
-      obj.introMode = message.introMode;
-    }
     if (message.gameName !== "") {
       obj.gameName = message.gameName;
     }
     if (message.teamDetails?.length) {
       obj.teamDetails = message.teamDetails.map((e) => CLobbyTeamDetails.toJSON(e));
-    }
-    if (message.tutorialLesson !== 0) {
-      obj.tutorialLesson = Math.round(message.tutorialLesson);
     }
     if (message.tournamentId !== 0) {
       obj.tournamentId = Math.round(message.tournamentId);
@@ -5175,9 +5104,6 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
     if (message.botDifficultyRadiant !== 3) {
       obj.botDifficultyRadiant = dOTABotDifficultyToJSON(message.botDifficultyRadiant);
     }
-    if (message.timedRewardDetails?.length) {
-      obj.timedRewardDetails = message.timedRewardDetails.map((e) => CLobbyTimedRewardDetails.toJSON(e));
-    }
     if (message.passKey !== "") {
       obj.passKey = message.passKey;
     }
@@ -5190,9 +5116,6 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
     if (message.penaltyLevelDire !== 0) {
       obj.penaltyLevelDire = Math.round(message.penaltyLevelDire);
     }
-    if (message.loadGameId !== 0) {
-      obj.loadGameId = Math.round(message.loadGameId);
-    }
     if (message.seriesType !== 0) {
       obj.seriesType = Math.round(message.seriesType);
     }
@@ -5201,12 +5124,6 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
     }
     if (message.direSeriesWins !== 0) {
       obj.direSeriesWins = Math.round(message.direSeriesWins);
-    }
-    if (message.lootGenerated !== 0) {
-      obj.lootGenerated = Math.round(message.lootGenerated);
-    }
-    if (message.lootAwarded !== 0) {
-      obj.lootAwarded = Math.round(message.lootAwarded);
     }
     if (message.allchat !== false) {
       obj.allchat = message.allchat;
@@ -5240,9 +5157,6 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
     }
     if (message.extraMessages?.length) {
       obj.extraMessages = message.extraMessages.map((e) => CSODOTALobby_CExtraMsg.toJSON(e));
-    }
-    if (message.saveGame !== undefined) {
-      obj.saveGame = CDOTASaveGame.toJSON(message.saveGame);
     }
     if (message.firstBloodHappened !== false) {
       obj.firstBloodHappened = message.firstBloodHappened;
@@ -5351,9 +5265,6 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
     if (message.leaguePhase !== 0) {
       obj.leaguePhase = Math.round(message.leaguePhase);
     }
-    if (message.recordDetailedStats !== false) {
-      obj.recordDetailedStats = message.recordDetailedStats;
-    }
     if (message.experimentalGameplayEnabled !== false) {
       obj.experimentalGameplayEnabled = message.experimentalGameplayEnabled;
     }
@@ -5362,9 +5273,6 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
     }
     if (message.guildDetails?.length) {
       obj.guildDetails = message.guildDetails.map((e) => CLobbyGuildDetails.toJSON(e));
-    }
-    if (message.lobbyEventPoints?.length) {
-      obj.lobbyEventPoints = message.lobbyEventPoints.map((e) => CMsgLobbyEventPoints.toJSON(e));
     }
     if (message.requestedHeroIds?.length) {
       obj.requestedHeroIds = message.requestedHeroIds.map((e) => Math.round(e));
@@ -5384,8 +5292,8 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
     if (message.eventGameDefinition !== "") {
       obj.eventGameDefinition = message.eventGameDefinition;
     }
-    if (message.extraStartupMessages?.length) {
-      obj.extraStartupMessages = message.extraStartupMessages.map((e) => CSODOTALobby_CExtraMsg.toJSON(e));
+    if (message.matchQualityData !== undefined) {
+      obj.matchQualityData = CDOTALobbyMatchQualityData.toJSON(message.matchQualityData);
     }
     return obj;
   },
@@ -5409,10 +5317,8 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
     message.lobbyType = object.lobbyType ?? -1;
     message.allowCheats = object.allowCheats ?? false;
     message.fillWithBots = object.fillWithBots ?? false;
-    message.introMode = object.introMode ?? false;
     message.gameName = object.gameName ?? "";
     message.teamDetails = object.teamDetails?.map((e) => CLobbyTeamDetails.fromPartial(e)) || [];
-    message.tutorialLesson = object.tutorialLesson ?? 0;
     message.tournamentId = object.tournamentId ?? 0;
     message.tournamentGameId = object.tournamentGameId ?? 0;
     message.serverRegion = object.serverRegion ?? 0;
@@ -5423,17 +5329,13 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
     message.matchId = object.matchId ?? "0";
     message.allowSpectating = object.allowSpectating ?? true;
     message.botDifficultyRadiant = object.botDifficultyRadiant ?? 3;
-    message.timedRewardDetails = object.timedRewardDetails?.map((e) => CLobbyTimedRewardDetails.fromPartial(e)) || [];
     message.passKey = object.passKey ?? "";
     message.leagueid = object.leagueid ?? 0;
     message.penaltyLevelRadiant = object.penaltyLevelRadiant ?? 0;
     message.penaltyLevelDire = object.penaltyLevelDire ?? 0;
-    message.loadGameId = object.loadGameId ?? 0;
     message.seriesType = object.seriesType ?? 0;
     message.radiantSeriesWins = object.radiantSeriesWins ?? 0;
     message.direSeriesWins = object.direSeriesWins ?? 0;
-    message.lootGenerated = object.lootGenerated ?? 0;
-    message.lootAwarded = object.lootAwarded ?? 0;
     message.allchat = object.allchat ?? false;
     message.dotaTvDelay = object.dotaTvDelay ?? 0;
     message.customGameMode = object.customGameMode ?? "";
@@ -5446,9 +5348,6 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
     message.seriesId = object.seriesId ?? 0;
     message.lowPriority = object.lowPriority ?? false;
     message.extraMessages = object.extraMessages?.map((e) => CSODOTALobby_CExtraMsg.fromPartial(e)) || [];
-    message.saveGame = (object.saveGame !== undefined && object.saveGame !== null)
-      ? CDOTASaveGame.fromPartial(object.saveGame)
-      : undefined;
     message.firstBloodHappened = object.firstBloodHappened ?? false;
     message.matchOutcome = object.matchOutcome ?? 0;
     message.massDisconnect = object.massDisconnect ?? false;
@@ -5484,11 +5383,9 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
     message.leagueNodeId = object.leagueNodeId ?? 0;
     message.matchDuration = object.matchDuration ?? 0;
     message.leaguePhase = object.leaguePhase ?? 0;
-    message.recordDetailedStats = object.recordDetailedStats ?? false;
     message.experimentalGameplayEnabled = object.experimentalGameplayEnabled ?? false;
     message.guildChallenges = object.guildChallenges?.map((e) => CLobbyGuildChallenge.fromPartial(e)) || [];
     message.guildDetails = object.guildDetails?.map((e) => CLobbyGuildDetails.fromPartial(e)) || [];
-    message.lobbyEventPoints = object.lobbyEventPoints?.map((e) => CMsgLobbyEventPoints.fromPartial(e)) || [];
     message.requestedHeroIds = object.requestedHeroIds?.map((e) => e) || [];
     message.coachFriendRequests = object.coachFriendRequests?.map((e) => CMsgLobbyCoachFriendRequest.fromPartial(e)) ||
       [];
@@ -5496,7 +5393,9 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
     message.withScenarioSave = object.withScenarioSave ?? false;
     message.lobbyCreationTime = object.lobbyCreationTime ?? 0;
     message.eventGameDefinition = object.eventGameDefinition ?? "";
-    message.extraStartupMessages = object.extraStartupMessages?.map((e) => CSODOTALobby_CExtraMsg.fromPartial(e)) || [];
+    message.matchQualityData = (object.matchQualityData !== undefined && object.matchQualityData !== null)
+      ? CDOTALobbyMatchQualityData.fromPartial(object.matchQualityData)
+      : undefined;
     return message;
   },
 };
@@ -5578,13 +5477,16 @@ export const CSODOTALobby_CExtraMsg: MessageFns<CSODOTALobby_CExtraMsg> = {
 };
 
 function createBaseCSODOTAServerLobby(): CSODOTAServerLobby {
-  return { allMembers: [] };
+  return { allMembers: [], extraStartupMessages: [] };
 }
 
 export const CSODOTAServerLobby: MessageFns<CSODOTAServerLobby> = {
   encode(message: CSODOTAServerLobby, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     for (const v of message.allMembers) {
       CSODOTAServerLobbyMember.encode(v!, writer.uint32(10).fork()).join();
+    }
+    for (const v of message.extraStartupMessages) {
+      CSODOTALobby_CExtraMsg.encode(v!, writer.uint32(18).fork()).join();
     }
     return writer;
   },
@@ -5604,6 +5506,14 @@ export const CSODOTAServerLobby: MessageFns<CSODOTAServerLobby> = {
           message.allMembers.push(CSODOTAServerLobbyMember.decode(reader, reader.uint32()));
           continue;
         }
+        case 2: {
+          if (tag !== 18) {
+            break;
+          }
+
+          message.extraStartupMessages.push(CSODOTALobby_CExtraMsg.decode(reader, reader.uint32()));
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -5618,6 +5528,9 @@ export const CSODOTAServerLobby: MessageFns<CSODOTAServerLobby> = {
       allMembers: globalThis.Array.isArray(object?.allMembers)
         ? object.allMembers.map((e: any) => CSODOTAServerLobbyMember.fromJSON(e))
         : [],
+      extraStartupMessages: globalThis.Array.isArray(object?.extraStartupMessages)
+        ? object.extraStartupMessages.map((e: any) => CSODOTALobby_CExtraMsg.fromJSON(e))
+        : [],
     };
   },
 
@@ -5625,6 +5538,9 @@ export const CSODOTAServerLobby: MessageFns<CSODOTAServerLobby> = {
     const obj: any = {};
     if (message.allMembers?.length) {
       obj.allMembers = message.allMembers.map((e) => CSODOTAServerLobbyMember.toJSON(e));
+    }
+    if (message.extraStartupMessages?.length) {
+      obj.extraStartupMessages = message.extraStartupMessages.map((e) => CSODOTALobby_CExtraMsg.toJSON(e));
     }
     return obj;
   },
@@ -5635,12 +5551,13 @@ export const CSODOTAServerLobby: MessageFns<CSODOTAServerLobby> = {
   fromPartial(object: DeepPartial<CSODOTAServerLobby>): CSODOTAServerLobby {
     const message = createBaseCSODOTAServerLobby();
     message.allMembers = object.allMembers?.map((e) => CSODOTAServerLobbyMember.fromPartial(e)) || [];
+    message.extraStartupMessages = object.extraStartupMessages?.map((e) => CSODOTALobby_CExtraMsg.fromPartial(e)) || [];
     return message;
   },
 };
 
 function createBaseCSODOTAStaticLobby(): CSODOTAStaticLobby {
-  return { allMembers: [], isPlayerDraft: false };
+  return { allMembers: [], isPlayerDraft: false, isLastMatchInSeries: false };
 }
 
 export const CSODOTAStaticLobby: MessageFns<CSODOTAStaticLobby> = {
@@ -5650,6 +5567,9 @@ export const CSODOTAStaticLobby: MessageFns<CSODOTAStaticLobby> = {
     }
     if (message.isPlayerDraft !== false) {
       writer.uint32(16).bool(message.isPlayerDraft);
+    }
+    if (message.isLastMatchInSeries !== false) {
+      writer.uint32(24).bool(message.isLastMatchInSeries);
     }
     return writer;
   },
@@ -5677,6 +5597,14 @@ export const CSODOTAStaticLobby: MessageFns<CSODOTAStaticLobby> = {
           message.isPlayerDraft = reader.bool();
           continue;
         }
+        case 3: {
+          if (tag !== 24) {
+            break;
+          }
+
+          message.isLastMatchInSeries = reader.bool();
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -5692,6 +5620,7 @@ export const CSODOTAStaticLobby: MessageFns<CSODOTAStaticLobby> = {
         ? object.allMembers.map((e: any) => CSODOTAStaticLobbyMember.fromJSON(e))
         : [],
       isPlayerDraft: isSet(object.isPlayerDraft) ? globalThis.Boolean(object.isPlayerDraft) : false,
+      isLastMatchInSeries: isSet(object.isLastMatchInSeries) ? globalThis.Boolean(object.isLastMatchInSeries) : false,
     };
   },
 
@@ -5703,6 +5632,9 @@ export const CSODOTAStaticLobby: MessageFns<CSODOTAStaticLobby> = {
     if (message.isPlayerDraft !== false) {
       obj.isPlayerDraft = message.isPlayerDraft;
     }
+    if (message.isLastMatchInSeries !== false) {
+      obj.isLastMatchInSeries = message.isLastMatchInSeries;
+    }
     return obj;
   },
 
@@ -5713,18 +5645,25 @@ export const CSODOTAStaticLobby: MessageFns<CSODOTAStaticLobby> = {
     const message = createBaseCSODOTAStaticLobby();
     message.allMembers = object.allMembers?.map((e) => CSODOTAStaticLobbyMember.fromPartial(e)) || [];
     message.isPlayerDraft = object.isPlayerDraft ?? false;
+    message.isLastMatchInSeries = object.isLastMatchInSeries ?? false;
     return message;
   },
 };
 
 function createBaseCSODOTAServerStaticLobby(): CSODOTAServerStaticLobby {
-  return { allMembers: [] };
+  return { allMembers: [], postPatchStrategyTimeBuffer: 0, lobbyEventPoints: [] };
 }
 
 export const CSODOTAServerStaticLobby: MessageFns<CSODOTAServerStaticLobby> = {
   encode(message: CSODOTAServerStaticLobby, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     for (const v of message.allMembers) {
       CSODOTAServerStaticLobbyMember.encode(v!, writer.uint32(10).fork()).join();
+    }
+    if (message.postPatchStrategyTimeBuffer !== 0) {
+      writer.uint32(21).float(message.postPatchStrategyTimeBuffer);
+    }
+    for (const v of message.lobbyEventPoints) {
+      CMsgLobbyEventPoints.encode(v!, writer.uint32(26).fork()).join();
     }
     return writer;
   },
@@ -5744,6 +5683,22 @@ export const CSODOTAServerStaticLobby: MessageFns<CSODOTAServerStaticLobby> = {
           message.allMembers.push(CSODOTAServerStaticLobbyMember.decode(reader, reader.uint32()));
           continue;
         }
+        case 2: {
+          if (tag !== 21) {
+            break;
+          }
+
+          message.postPatchStrategyTimeBuffer = reader.float();
+          continue;
+        }
+        case 3: {
+          if (tag !== 26) {
+            break;
+          }
+
+          message.lobbyEventPoints.push(CMsgLobbyEventPoints.decode(reader, reader.uint32()));
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -5758,6 +5713,12 @@ export const CSODOTAServerStaticLobby: MessageFns<CSODOTAServerStaticLobby> = {
       allMembers: globalThis.Array.isArray(object?.allMembers)
         ? object.allMembers.map((e: any) => CSODOTAServerStaticLobbyMember.fromJSON(e))
         : [],
+      postPatchStrategyTimeBuffer: isSet(object.postPatchStrategyTimeBuffer)
+        ? globalThis.Number(object.postPatchStrategyTimeBuffer)
+        : 0,
+      lobbyEventPoints: globalThis.Array.isArray(object?.lobbyEventPoints)
+        ? object.lobbyEventPoints.map((e: any) => CMsgLobbyEventPoints.fromJSON(e))
+        : [],
     };
   },
 
@@ -5765,6 +5726,12 @@ export const CSODOTAServerStaticLobby: MessageFns<CSODOTAServerStaticLobby> = {
     const obj: any = {};
     if (message.allMembers?.length) {
       obj.allMembers = message.allMembers.map((e) => CSODOTAServerStaticLobbyMember.toJSON(e));
+    }
+    if (message.postPatchStrategyTimeBuffer !== 0) {
+      obj.postPatchStrategyTimeBuffer = message.postPatchStrategyTimeBuffer;
+    }
+    if (message.lobbyEventPoints?.length) {
+      obj.lobbyEventPoints = message.lobbyEventPoints.map((e) => CMsgLobbyEventPoints.toJSON(e));
     }
     return obj;
   },
@@ -5775,6 +5742,8 @@ export const CSODOTAServerStaticLobby: MessageFns<CSODOTAServerStaticLobby> = {
   fromPartial(object: DeepPartial<CSODOTAServerStaticLobby>): CSODOTAServerStaticLobby {
     const message = createBaseCSODOTAServerStaticLobby();
     message.allMembers = object.allMembers?.map((e) => CSODOTAServerStaticLobbyMember.fromPartial(e)) || [];
+    message.postPatchStrategyTimeBuffer = object.postPatchStrategyTimeBuffer ?? 0;
+    message.lobbyEventPoints = object.lobbyEventPoints?.map((e) => CMsgLobbyEventPoints.fromPartial(e)) || [];
     return message;
   },
 };

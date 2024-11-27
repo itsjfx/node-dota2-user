@@ -433,6 +433,11 @@ export enum EEvent {
   EVENT_ID_TEAM_2023_TOUR1 = 41,
   EVENT_ID_TEAM_2023_TOUR2 = 42,
   EVENT_ID_TEAM_2023_TOUR3 = 43,
+  EVENT_ID_INTERNATIONAL_2023 = 45,
+  EVENT_ID_10TH_ANNIVERSARY = 46,
+  EVENT_ID_CROWNFALL = 47,
+  EVENT_ID_FROSTIVUS_2023 = 48,
+  EVENT_ID_INTERNATIONAL_2024 = 49,
 }
 
 export function eEventFromJSON(object: any): EEvent {
@@ -569,6 +574,21 @@ export function eEventFromJSON(object: any): EEvent {
     case 43:
     case "EVENT_ID_TEAM_2023_TOUR3":
       return EEvent.EVENT_ID_TEAM_2023_TOUR3;
+    case 45:
+    case "EVENT_ID_INTERNATIONAL_2023":
+      return EEvent.EVENT_ID_INTERNATIONAL_2023;
+    case 46:
+    case "EVENT_ID_10TH_ANNIVERSARY":
+      return EEvent.EVENT_ID_10TH_ANNIVERSARY;
+    case 47:
+    case "EVENT_ID_CROWNFALL":
+      return EEvent.EVENT_ID_CROWNFALL;
+    case 48:
+    case "EVENT_ID_FROSTIVUS_2023":
+      return EEvent.EVENT_ID_FROSTIVUS_2023;
+    case 49:
+    case "EVENT_ID_INTERNATIONAL_2024":
+      return EEvent.EVENT_ID_INTERNATIONAL_2024;
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum EEvent");
   }
@@ -664,6 +684,16 @@ export function eEventToJSON(object: EEvent): string {
       return "EVENT_ID_TEAM_2023_TOUR2";
     case EEvent.EVENT_ID_TEAM_2023_TOUR3:
       return "EVENT_ID_TEAM_2023_TOUR3";
+    case EEvent.EVENT_ID_INTERNATIONAL_2023:
+      return "EVENT_ID_INTERNATIONAL_2023";
+    case EEvent.EVENT_ID_10TH_ANNIVERSARY:
+      return "EVENT_ID_10TH_ANNIVERSARY";
+    case EEvent.EVENT_ID_CROWNFALL:
+      return "EVENT_ID_CROWNFALL";
+    case EEvent.EVENT_ID_FROSTIVUS_2023:
+      return "EVENT_ID_FROSTIVUS_2023";
+    case EEvent.EVENT_ID_INTERNATIONAL_2024:
+      return "EVENT_ID_INTERNATIONAL_2024";
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum EEvent");
   }
@@ -762,6 +792,7 @@ export enum DOTALeaverStatusT {
   DOTA_LEAVER_NEVER_CONNECTED_TOO_LONG = 6,
   DOTA_LEAVER_FAILED_TO_READY_UP = 7,
   DOTA_LEAVER_DECLINED = 8,
+  DOTA_LEAVER_DECLINED_REQUEUE = 9,
 }
 
 export function dOTALeaverStatusTFromJSON(object: any): DOTALeaverStatusT {
@@ -793,6 +824,9 @@ export function dOTALeaverStatusTFromJSON(object: any): DOTALeaverStatusT {
     case 8:
     case "DOTA_LEAVER_DECLINED":
       return DOTALeaverStatusT.DOTA_LEAVER_DECLINED;
+    case 9:
+    case "DOTA_LEAVER_DECLINED_REQUEUE":
+      return DOTALeaverStatusT.DOTA_LEAVER_DECLINED_REQUEUE;
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum DOTALeaverStatusT");
   }
@@ -818,6 +852,8 @@ export function dOTALeaverStatusTToJSON(object: DOTALeaverStatusT): string {
       return "DOTA_LEAVER_FAILED_TO_READY_UP";
     case DOTALeaverStatusT.DOTA_LEAVER_DECLINED:
       return "DOTA_LEAVER_DECLINED";
+    case DOTALeaverStatusT.DOTA_LEAVER_DECLINED_REQUEUE:
+      return "DOTA_LEAVER_DECLINED_REQUEUE";
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum DOTALeaverStatusT");
   }
@@ -926,6 +962,143 @@ export function fantasyRolesToJSON(object: FantasyRoles): string {
       return "FANTASY_ROLE_MID";
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum FantasyRoles");
+  }
+}
+
+export enum FantasyScoring {
+  FANTASY_SCORING_KILLS = 0,
+  FANTASY_SCORING_DEATHS = 1,
+  FANTASY_SCORING_CS = 2,
+  FANTASY_SCORING_GPM = 3,
+  FANTASY_SCORING_TOWER_KILLS = 4,
+  FANTASY_SCORING_ROSHAN_KILLS = 5,
+  FANTASY_SCORING_TEAMFIGHT_PARTICIPATION = 6,
+  FANTASY_SCORING_WARDS_PLANTED = 7,
+  FANTASY_SCORING_CAMPS_STACKED = 8,
+  FANTASY_SCORING_RUNES_GRABBED = 9,
+  FANTASY_SCORING_FIRST_BLOOD = 10,
+  FANTASY_SCORING_STUNS = 11,
+  FANTASY_SCORING_SMOKES_USED = 12,
+  FANTASY_SCORING_NEUTRAL_TOKENS_FOUND = 13,
+  FANTASY_SCORING_WATCHERS_TAKEN = 14,
+  FANTASY_SCORING_LOTUSES_GAINED = 15,
+  FANTASY_SCORING_TORMENTOR_KILLS = 16,
+  FANTASY_SCORING_COURIER_KILLS = 17,
+  FANTASY_SCORING_TYPES = 18,
+  FANTASY_SCORING_INVALID = 19,
+}
+
+export function fantasyScoringFromJSON(object: any): FantasyScoring {
+  switch (object) {
+    case 0:
+    case "FANTASY_SCORING_KILLS":
+      return FantasyScoring.FANTASY_SCORING_KILLS;
+    case 1:
+    case "FANTASY_SCORING_DEATHS":
+      return FantasyScoring.FANTASY_SCORING_DEATHS;
+    case 2:
+    case "FANTASY_SCORING_CS":
+      return FantasyScoring.FANTASY_SCORING_CS;
+    case 3:
+    case "FANTASY_SCORING_GPM":
+      return FantasyScoring.FANTASY_SCORING_GPM;
+    case 4:
+    case "FANTASY_SCORING_TOWER_KILLS":
+      return FantasyScoring.FANTASY_SCORING_TOWER_KILLS;
+    case 5:
+    case "FANTASY_SCORING_ROSHAN_KILLS":
+      return FantasyScoring.FANTASY_SCORING_ROSHAN_KILLS;
+    case 6:
+    case "FANTASY_SCORING_TEAMFIGHT_PARTICIPATION":
+      return FantasyScoring.FANTASY_SCORING_TEAMFIGHT_PARTICIPATION;
+    case 7:
+    case "FANTASY_SCORING_WARDS_PLANTED":
+      return FantasyScoring.FANTASY_SCORING_WARDS_PLANTED;
+    case 8:
+    case "FANTASY_SCORING_CAMPS_STACKED":
+      return FantasyScoring.FANTASY_SCORING_CAMPS_STACKED;
+    case 9:
+    case "FANTASY_SCORING_RUNES_GRABBED":
+      return FantasyScoring.FANTASY_SCORING_RUNES_GRABBED;
+    case 10:
+    case "FANTASY_SCORING_FIRST_BLOOD":
+      return FantasyScoring.FANTASY_SCORING_FIRST_BLOOD;
+    case 11:
+    case "FANTASY_SCORING_STUNS":
+      return FantasyScoring.FANTASY_SCORING_STUNS;
+    case 12:
+    case "FANTASY_SCORING_SMOKES_USED":
+      return FantasyScoring.FANTASY_SCORING_SMOKES_USED;
+    case 13:
+    case "FANTASY_SCORING_NEUTRAL_TOKENS_FOUND":
+      return FantasyScoring.FANTASY_SCORING_NEUTRAL_TOKENS_FOUND;
+    case 14:
+    case "FANTASY_SCORING_WATCHERS_TAKEN":
+      return FantasyScoring.FANTASY_SCORING_WATCHERS_TAKEN;
+    case 15:
+    case "FANTASY_SCORING_LOTUSES_GAINED":
+      return FantasyScoring.FANTASY_SCORING_LOTUSES_GAINED;
+    case 16:
+    case "FANTASY_SCORING_TORMENTOR_KILLS":
+      return FantasyScoring.FANTASY_SCORING_TORMENTOR_KILLS;
+    case 17:
+    case "FANTASY_SCORING_COURIER_KILLS":
+      return FantasyScoring.FANTASY_SCORING_COURIER_KILLS;
+    case 18:
+    case "FANTASY_SCORING_TYPES":
+      return FantasyScoring.FANTASY_SCORING_TYPES;
+    case 19:
+    case "FANTASY_SCORING_INVALID":
+      return FantasyScoring.FANTASY_SCORING_INVALID;
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum FantasyScoring");
+  }
+}
+
+export function fantasyScoringToJSON(object: FantasyScoring): string {
+  switch (object) {
+    case FantasyScoring.FANTASY_SCORING_KILLS:
+      return "FANTASY_SCORING_KILLS";
+    case FantasyScoring.FANTASY_SCORING_DEATHS:
+      return "FANTASY_SCORING_DEATHS";
+    case FantasyScoring.FANTASY_SCORING_CS:
+      return "FANTASY_SCORING_CS";
+    case FantasyScoring.FANTASY_SCORING_GPM:
+      return "FANTASY_SCORING_GPM";
+    case FantasyScoring.FANTASY_SCORING_TOWER_KILLS:
+      return "FANTASY_SCORING_TOWER_KILLS";
+    case FantasyScoring.FANTASY_SCORING_ROSHAN_KILLS:
+      return "FANTASY_SCORING_ROSHAN_KILLS";
+    case FantasyScoring.FANTASY_SCORING_TEAMFIGHT_PARTICIPATION:
+      return "FANTASY_SCORING_TEAMFIGHT_PARTICIPATION";
+    case FantasyScoring.FANTASY_SCORING_WARDS_PLANTED:
+      return "FANTASY_SCORING_WARDS_PLANTED";
+    case FantasyScoring.FANTASY_SCORING_CAMPS_STACKED:
+      return "FANTASY_SCORING_CAMPS_STACKED";
+    case FantasyScoring.FANTASY_SCORING_RUNES_GRABBED:
+      return "FANTASY_SCORING_RUNES_GRABBED";
+    case FantasyScoring.FANTASY_SCORING_FIRST_BLOOD:
+      return "FANTASY_SCORING_FIRST_BLOOD";
+    case FantasyScoring.FANTASY_SCORING_STUNS:
+      return "FANTASY_SCORING_STUNS";
+    case FantasyScoring.FANTASY_SCORING_SMOKES_USED:
+      return "FANTASY_SCORING_SMOKES_USED";
+    case FantasyScoring.FANTASY_SCORING_NEUTRAL_TOKENS_FOUND:
+      return "FANTASY_SCORING_NEUTRAL_TOKENS_FOUND";
+    case FantasyScoring.FANTASY_SCORING_WATCHERS_TAKEN:
+      return "FANTASY_SCORING_WATCHERS_TAKEN";
+    case FantasyScoring.FANTASY_SCORING_LOTUSES_GAINED:
+      return "FANTASY_SCORING_LOTUSES_GAINED";
+    case FantasyScoring.FANTASY_SCORING_TORMENTOR_KILLS:
+      return "FANTASY_SCORING_TORMENTOR_KILLS";
+    case FantasyScoring.FANTASY_SCORING_COURIER_KILLS:
+      return "FANTASY_SCORING_COURIER_KILLS";
+    case FantasyScoring.FANTASY_SCORING_TYPES:
+      return "FANTASY_SCORING_TYPES";
+    case FantasyScoring.FANTASY_SCORING_INVALID:
+      return "FANTASY_SCORING_INVALID";
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum FantasyScoring");
   }
 }
 
@@ -1050,6 +1223,41 @@ export function fantasySelectionModeToJSON(object: FantasySelectionMode): string
       return "FANTASY_SELECTION_CARD_BASED";
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum FantasySelectionMode");
+  }
+}
+
+export enum FantasyGemType {
+  FANTASY_GEM_TYPE_RUBY = 0,
+  FANTASY_GEM_TYPE_SAPPHIRE = 1,
+  FANTASY_GEM_TYPE_EMERALD = 2,
+}
+
+export function fantasyGemTypeFromJSON(object: any): FantasyGemType {
+  switch (object) {
+    case 0:
+    case "FANTASY_GEM_TYPE_RUBY":
+      return FantasyGemType.FANTASY_GEM_TYPE_RUBY;
+    case 1:
+    case "FANTASY_GEM_TYPE_SAPPHIRE":
+      return FantasyGemType.FANTASY_GEM_TYPE_SAPPHIRE;
+    case 2:
+    case "FANTASY_GEM_TYPE_EMERALD":
+      return FantasyGemType.FANTASY_GEM_TYPE_EMERALD;
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum FantasyGemType");
+  }
+}
+
+export function fantasyGemTypeToJSON(object: FantasyGemType): string {
+  switch (object) {
+    case FantasyGemType.FANTASY_GEM_TYPE_RUBY:
+      return "FANTASY_GEM_TYPE_RUBY";
+    case FantasyGemType.FANTASY_GEM_TYPE_SAPPHIRE:
+      return "FANTASY_GEM_TYPE_SAPPHIRE";
+    case FantasyGemType.FANTASY_GEM_TYPE_EMERALD:
+      return "FANTASY_GEM_TYPE_EMERALD";
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum FantasyGemType");
   }
 }
 
@@ -1255,6 +1463,231 @@ export function eChatSpecialPrivilegesToJSON(object: EChatSpecialPrivileges): st
   }
 }
 
+export enum DOTACommTypeT {
+  DOTA_COMM_TYPE_NONE = 0,
+  DOTA_COMM_TYPE_PING = 1,
+  DOTA_COMM_TYPE_CHATWHEEL = 2,
+  DOTA_COMM_TYPE_TIP = 3,
+  DOTA_COMM_TYPE_TEXT = 4,
+  DOTA_COMM_TYPE_SHOWCASE = 5,
+  DOTA_COMM_TYPE_VOICE = 6,
+  DOTA_COMM_TYPE_ALLY_ABILITY = 7,
+  DOTA_COMM_TYPE_PAUSE = 8,
+  DOTA_COMM_TYPE_COACHING = 9,
+  DOTA_COMM_TYPE_NOCOOLDOWN = 10,
+  DOTA_COMM_TYPE_RANKEDMATCHMAKE = 11,
+  DOTA_COMM_TYPE_DROPS = 12,
+  DOTA_COMM_TYPE_NEWPLAYER_EXPERT = 13,
+  DOTA_COMM_TYPE_COACHED = 14,
+  DOTA_COMM_TYPE_MAPDRAWING = 15,
+}
+
+export function dOTACommTypeTFromJSON(object: any): DOTACommTypeT {
+  switch (object) {
+    case 0:
+    case "DOTA_COMM_TYPE_NONE":
+      return DOTACommTypeT.DOTA_COMM_TYPE_NONE;
+    case 1:
+    case "DOTA_COMM_TYPE_PING":
+      return DOTACommTypeT.DOTA_COMM_TYPE_PING;
+    case 2:
+    case "DOTA_COMM_TYPE_CHATWHEEL":
+      return DOTACommTypeT.DOTA_COMM_TYPE_CHATWHEEL;
+    case 3:
+    case "DOTA_COMM_TYPE_TIP":
+      return DOTACommTypeT.DOTA_COMM_TYPE_TIP;
+    case 4:
+    case "DOTA_COMM_TYPE_TEXT":
+      return DOTACommTypeT.DOTA_COMM_TYPE_TEXT;
+    case 5:
+    case "DOTA_COMM_TYPE_SHOWCASE":
+      return DOTACommTypeT.DOTA_COMM_TYPE_SHOWCASE;
+    case 6:
+    case "DOTA_COMM_TYPE_VOICE":
+      return DOTACommTypeT.DOTA_COMM_TYPE_VOICE;
+    case 7:
+    case "DOTA_COMM_TYPE_ALLY_ABILITY":
+      return DOTACommTypeT.DOTA_COMM_TYPE_ALLY_ABILITY;
+    case 8:
+    case "DOTA_COMM_TYPE_PAUSE":
+      return DOTACommTypeT.DOTA_COMM_TYPE_PAUSE;
+    case 9:
+    case "DOTA_COMM_TYPE_COACHING":
+      return DOTACommTypeT.DOTA_COMM_TYPE_COACHING;
+    case 10:
+    case "DOTA_COMM_TYPE_NOCOOLDOWN":
+      return DOTACommTypeT.DOTA_COMM_TYPE_NOCOOLDOWN;
+    case 11:
+    case "DOTA_COMM_TYPE_RANKEDMATCHMAKE":
+      return DOTACommTypeT.DOTA_COMM_TYPE_RANKEDMATCHMAKE;
+    case 12:
+    case "DOTA_COMM_TYPE_DROPS":
+      return DOTACommTypeT.DOTA_COMM_TYPE_DROPS;
+    case 13:
+    case "DOTA_COMM_TYPE_NEWPLAYER_EXPERT":
+      return DOTACommTypeT.DOTA_COMM_TYPE_NEWPLAYER_EXPERT;
+    case 14:
+    case "DOTA_COMM_TYPE_COACHED":
+      return DOTACommTypeT.DOTA_COMM_TYPE_COACHED;
+    case 15:
+    case "DOTA_COMM_TYPE_MAPDRAWING":
+      return DOTACommTypeT.DOTA_COMM_TYPE_MAPDRAWING;
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum DOTACommTypeT");
+  }
+}
+
+export function dOTACommTypeTToJSON(object: DOTACommTypeT): string {
+  switch (object) {
+    case DOTACommTypeT.DOTA_COMM_TYPE_NONE:
+      return "DOTA_COMM_TYPE_NONE";
+    case DOTACommTypeT.DOTA_COMM_TYPE_PING:
+      return "DOTA_COMM_TYPE_PING";
+    case DOTACommTypeT.DOTA_COMM_TYPE_CHATWHEEL:
+      return "DOTA_COMM_TYPE_CHATWHEEL";
+    case DOTACommTypeT.DOTA_COMM_TYPE_TIP:
+      return "DOTA_COMM_TYPE_TIP";
+    case DOTACommTypeT.DOTA_COMM_TYPE_TEXT:
+      return "DOTA_COMM_TYPE_TEXT";
+    case DOTACommTypeT.DOTA_COMM_TYPE_SHOWCASE:
+      return "DOTA_COMM_TYPE_SHOWCASE";
+    case DOTACommTypeT.DOTA_COMM_TYPE_VOICE:
+      return "DOTA_COMM_TYPE_VOICE";
+    case DOTACommTypeT.DOTA_COMM_TYPE_ALLY_ABILITY:
+      return "DOTA_COMM_TYPE_ALLY_ABILITY";
+    case DOTACommTypeT.DOTA_COMM_TYPE_PAUSE:
+      return "DOTA_COMM_TYPE_PAUSE";
+    case DOTACommTypeT.DOTA_COMM_TYPE_COACHING:
+      return "DOTA_COMM_TYPE_COACHING";
+    case DOTACommTypeT.DOTA_COMM_TYPE_NOCOOLDOWN:
+      return "DOTA_COMM_TYPE_NOCOOLDOWN";
+    case DOTACommTypeT.DOTA_COMM_TYPE_RANKEDMATCHMAKE:
+      return "DOTA_COMM_TYPE_RANKEDMATCHMAKE";
+    case DOTACommTypeT.DOTA_COMM_TYPE_DROPS:
+      return "DOTA_COMM_TYPE_DROPS";
+    case DOTACommTypeT.DOTA_COMM_TYPE_NEWPLAYER_EXPERT:
+      return "DOTA_COMM_TYPE_NEWPLAYER_EXPERT";
+    case DOTACommTypeT.DOTA_COMM_TYPE_COACHED:
+      return "DOTA_COMM_TYPE_COACHED";
+    case DOTACommTypeT.DOTA_COMM_TYPE_MAPDRAWING:
+      return "DOTA_COMM_TYPE_MAPDRAWING";
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum DOTACommTypeT");
+  }
+}
+
+export enum DOTACommLevelT {
+  DOTA_COMM_LEVEL_NONE = 0,
+  DOTA_COMM_LEVEL_COOLDOWN = 1,
+  DOTA_COMM_LEVEL_PINGS = 2,
+  DOTA_COMM_LEVEL_MAPDRAWING = 3,
+  DOTA_COMM_LEVEL_CHAT = 4,
+  DOTA_COMM_LEVEL_TIPPING = 5,
+  DOTA_COMM_LEVEL_VOICE = 6,
+  DOTA_COMM_LEVEL_ALLIED_ABILITY = 7,
+}
+
+export function dOTACommLevelTFromJSON(object: any): DOTACommLevelT {
+  switch (object) {
+    case 0:
+    case "DOTA_COMM_LEVEL_NONE":
+      return DOTACommLevelT.DOTA_COMM_LEVEL_NONE;
+    case 1:
+    case "DOTA_COMM_LEVEL_COOLDOWN":
+      return DOTACommLevelT.DOTA_COMM_LEVEL_COOLDOWN;
+    case 2:
+    case "DOTA_COMM_LEVEL_PINGS":
+      return DOTACommLevelT.DOTA_COMM_LEVEL_PINGS;
+    case 3:
+    case "DOTA_COMM_LEVEL_MAPDRAWING":
+      return DOTACommLevelT.DOTA_COMM_LEVEL_MAPDRAWING;
+    case 4:
+    case "DOTA_COMM_LEVEL_CHAT":
+      return DOTACommLevelT.DOTA_COMM_LEVEL_CHAT;
+    case 5:
+    case "DOTA_COMM_LEVEL_TIPPING":
+      return DOTACommLevelT.DOTA_COMM_LEVEL_TIPPING;
+    case 6:
+    case "DOTA_COMM_LEVEL_VOICE":
+      return DOTACommLevelT.DOTA_COMM_LEVEL_VOICE;
+    case 7:
+    case "DOTA_COMM_LEVEL_ALLIED_ABILITY":
+      return DOTACommLevelT.DOTA_COMM_LEVEL_ALLIED_ABILITY;
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum DOTACommLevelT");
+  }
+}
+
+export function dOTACommLevelTToJSON(object: DOTACommLevelT): string {
+  switch (object) {
+    case DOTACommLevelT.DOTA_COMM_LEVEL_NONE:
+      return "DOTA_COMM_LEVEL_NONE";
+    case DOTACommLevelT.DOTA_COMM_LEVEL_COOLDOWN:
+      return "DOTA_COMM_LEVEL_COOLDOWN";
+    case DOTACommLevelT.DOTA_COMM_LEVEL_PINGS:
+      return "DOTA_COMM_LEVEL_PINGS";
+    case DOTACommLevelT.DOTA_COMM_LEVEL_MAPDRAWING:
+      return "DOTA_COMM_LEVEL_MAPDRAWING";
+    case DOTACommLevelT.DOTA_COMM_LEVEL_CHAT:
+      return "DOTA_COMM_LEVEL_CHAT";
+    case DOTACommLevelT.DOTA_COMM_LEVEL_TIPPING:
+      return "DOTA_COMM_LEVEL_TIPPING";
+    case DOTACommLevelT.DOTA_COMM_LEVEL_VOICE:
+      return "DOTA_COMM_LEVEL_VOICE";
+    case DOTACommLevelT.DOTA_COMM_LEVEL_ALLIED_ABILITY:
+      return "DOTA_COMM_LEVEL_ALLIED_ABILITY";
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum DOTACommLevelT");
+  }
+}
+
+export enum DOTABehaviorLevelT {
+  DOTA_BEHAVIOR_LEVEL_NONE = 0,
+  DOTA_BEHAVIOR_LEVEL_RANKED_ALLOWED = 1,
+  DOTA_BEHAVIOR_LEVEL_PAUSING = 2,
+  DOTA_BEHAVIOR_LEVEL_DROPS = 3,
+  DOTA_BEHAVIOR_LEVEL_COACHING = 4,
+}
+
+export function dOTABehaviorLevelTFromJSON(object: any): DOTABehaviorLevelT {
+  switch (object) {
+    case 0:
+    case "DOTA_BEHAVIOR_LEVEL_NONE":
+      return DOTABehaviorLevelT.DOTA_BEHAVIOR_LEVEL_NONE;
+    case 1:
+    case "DOTA_BEHAVIOR_LEVEL_RANKED_ALLOWED":
+      return DOTABehaviorLevelT.DOTA_BEHAVIOR_LEVEL_RANKED_ALLOWED;
+    case 2:
+    case "DOTA_BEHAVIOR_LEVEL_PAUSING":
+      return DOTABehaviorLevelT.DOTA_BEHAVIOR_LEVEL_PAUSING;
+    case 3:
+    case "DOTA_BEHAVIOR_LEVEL_DROPS":
+      return DOTABehaviorLevelT.DOTA_BEHAVIOR_LEVEL_DROPS;
+    case 4:
+    case "DOTA_BEHAVIOR_LEVEL_COACHING":
+      return DOTABehaviorLevelT.DOTA_BEHAVIOR_LEVEL_COACHING;
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum DOTABehaviorLevelT");
+  }
+}
+
+export function dOTABehaviorLevelTToJSON(object: DOTABehaviorLevelT): string {
+  switch (object) {
+    case DOTABehaviorLevelT.DOTA_BEHAVIOR_LEVEL_NONE:
+      return "DOTA_BEHAVIOR_LEVEL_NONE";
+    case DOTABehaviorLevelT.DOTA_BEHAVIOR_LEVEL_RANKED_ALLOWED:
+      return "DOTA_BEHAVIOR_LEVEL_RANKED_ALLOWED";
+    case DOTABehaviorLevelT.DOTA_BEHAVIOR_LEVEL_PAUSING:
+      return "DOTA_BEHAVIOR_LEVEL_PAUSING";
+    case DOTABehaviorLevelT.DOTA_BEHAVIOR_LEVEL_DROPS:
+      return "DOTA_BEHAVIOR_LEVEL_DROPS";
+    case DOTABehaviorLevelT.DOTA_BEHAVIOR_LEVEL_COACHING:
+      return "DOTA_BEHAVIOR_LEVEL_COACHING";
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum DOTABehaviorLevelT");
+  }
+}
+
 export enum EProfileCardSlotType {
   k_EProfileCardSlotType_Empty = 0,
   k_EProfileCardSlotType_Stat = 1,
@@ -1429,6 +1862,7 @@ export enum DOTALobbyReadyState {
   DOTALobbyReadyState_UNDECLARED = 0,
   DOTALobbyReadyState_ACCEPTED = 1,
   DOTALobbyReadyState_DECLINED = 2,
+  DOTALobbyReadyState_DECLINED_REQUEUE = 3,
 }
 
 export function dOTALobbyReadyStateFromJSON(object: any): DOTALobbyReadyState {
@@ -1442,6 +1876,9 @@ export function dOTALobbyReadyStateFromJSON(object: any): DOTALobbyReadyState {
     case 2:
     case "DOTALobbyReadyState_DECLINED":
       return DOTALobbyReadyState.DOTALobbyReadyState_DECLINED;
+    case 3:
+    case "DOTALobbyReadyState_DECLINED_REQUEUE":
+      return DOTALobbyReadyState.DOTALobbyReadyState_DECLINED_REQUEUE;
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum DOTALobbyReadyState");
   }
@@ -1455,6 +1892,8 @@ export function dOTALobbyReadyStateToJSON(object: DOTALobbyReadyState): string {
       return "DOTALobbyReadyState_ACCEPTED";
     case DOTALobbyReadyState.DOTALobbyReadyState_DECLINED:
       return "DOTALobbyReadyState_DECLINED";
+    case DOTALobbyReadyState.DOTALobbyReadyState_DECLINED_REQUEUE:
+      return "DOTALobbyReadyState_DECLINED_REQUEUE";
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum DOTALobbyReadyState");
   }
@@ -2407,6 +2846,7 @@ export function eLaneTypeToJSON(object: ELaneType): string {
 }
 
 export enum EBadgeType {
+  k_EBadgeType_Invalid = 0,
   k_EBadgeType_TI7_Midweek = 1,
   k_EBadgeType_TI7_Finals = 2,
   k_EBadgeType_TI7_AllEvent = 3,
@@ -2419,10 +2859,22 @@ export enum EBadgeType {
   k_EBadgeType_TI11_PlayoffsDay3 = 10,
   k_EBadgeType_TI11_PlayoffsDay4 = 11,
   k_EBadgeType_TI11_FinalsWeekend = 12,
+  k_EBadgeType_TI12_PlayoffsDay1 = 13,
+  k_EBadgeType_TI12_PlayoffsDay2 = 14,
+  k_EBadgeType_TI12_PlayoffsDay3 = 15,
+  k_EBadgeType_TI12_FinalsWeekend = 16,
+  k_EBadgeType_TI12_Special = 17,
+  k_EBadgeType_TI13_FinalsDay1 = 18,
+  k_EBadgeType_TI13_FinalsDay2 = 19,
+  k_EBadgeType_TI13_FinalsDay3 = 20,
+  k_EBadgeType_TI13_Special = 21,
 }
 
 export function eBadgeTypeFromJSON(object: any): EBadgeType {
   switch (object) {
+    case 0:
+    case "k_EBadgeType_Invalid":
+      return EBadgeType.k_EBadgeType_Invalid;
     case 1:
     case "k_EBadgeType_TI7_Midweek":
       return EBadgeType.k_EBadgeType_TI7_Midweek;
@@ -2459,6 +2911,33 @@ export function eBadgeTypeFromJSON(object: any): EBadgeType {
     case 12:
     case "k_EBadgeType_TI11_FinalsWeekend":
       return EBadgeType.k_EBadgeType_TI11_FinalsWeekend;
+    case 13:
+    case "k_EBadgeType_TI12_PlayoffsDay1":
+      return EBadgeType.k_EBadgeType_TI12_PlayoffsDay1;
+    case 14:
+    case "k_EBadgeType_TI12_PlayoffsDay2":
+      return EBadgeType.k_EBadgeType_TI12_PlayoffsDay2;
+    case 15:
+    case "k_EBadgeType_TI12_PlayoffsDay3":
+      return EBadgeType.k_EBadgeType_TI12_PlayoffsDay3;
+    case 16:
+    case "k_EBadgeType_TI12_FinalsWeekend":
+      return EBadgeType.k_EBadgeType_TI12_FinalsWeekend;
+    case 17:
+    case "k_EBadgeType_TI12_Special":
+      return EBadgeType.k_EBadgeType_TI12_Special;
+    case 18:
+    case "k_EBadgeType_TI13_FinalsDay1":
+      return EBadgeType.k_EBadgeType_TI13_FinalsDay1;
+    case 19:
+    case "k_EBadgeType_TI13_FinalsDay2":
+      return EBadgeType.k_EBadgeType_TI13_FinalsDay2;
+    case 20:
+    case "k_EBadgeType_TI13_FinalsDay3":
+      return EBadgeType.k_EBadgeType_TI13_FinalsDay3;
+    case 21:
+    case "k_EBadgeType_TI13_Special":
+      return EBadgeType.k_EBadgeType_TI13_Special;
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum EBadgeType");
   }
@@ -2466,6 +2945,8 @@ export function eBadgeTypeFromJSON(object: any): EBadgeType {
 
 export function eBadgeTypeToJSON(object: EBadgeType): string {
   switch (object) {
+    case EBadgeType.k_EBadgeType_Invalid:
+      return "k_EBadgeType_Invalid";
     case EBadgeType.k_EBadgeType_TI7_Midweek:
       return "k_EBadgeType_TI7_Midweek";
     case EBadgeType.k_EBadgeType_TI7_Finals:
@@ -2490,6 +2971,24 @@ export function eBadgeTypeToJSON(object: EBadgeType): string {
       return "k_EBadgeType_TI11_PlayoffsDay4";
     case EBadgeType.k_EBadgeType_TI11_FinalsWeekend:
       return "k_EBadgeType_TI11_FinalsWeekend";
+    case EBadgeType.k_EBadgeType_TI12_PlayoffsDay1:
+      return "k_EBadgeType_TI12_PlayoffsDay1";
+    case EBadgeType.k_EBadgeType_TI12_PlayoffsDay2:
+      return "k_EBadgeType_TI12_PlayoffsDay2";
+    case EBadgeType.k_EBadgeType_TI12_PlayoffsDay3:
+      return "k_EBadgeType_TI12_PlayoffsDay3";
+    case EBadgeType.k_EBadgeType_TI12_FinalsWeekend:
+      return "k_EBadgeType_TI12_FinalsWeekend";
+    case EBadgeType.k_EBadgeType_TI12_Special:
+      return "k_EBadgeType_TI12_Special";
+    case EBadgeType.k_EBadgeType_TI13_FinalsDay1:
+      return "k_EBadgeType_TI13_FinalsDay1";
+    case EBadgeType.k_EBadgeType_TI13_FinalsDay2:
+      return "k_EBadgeType_TI13_FinalsDay2";
+    case EBadgeType.k_EBadgeType_TI13_FinalsDay3:
+      return "k_EBadgeType_TI13_FinalsDay3";
+    case EBadgeType.k_EBadgeType_TI13_Special:
+      return "k_EBadgeType_TI13_Special";
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum EBadgeType");
   }
@@ -3663,6 +4162,82 @@ export function eOverwatchReportReasonToJSON(object: EOverwatchReportReason): st
   }
 }
 
+export enum ECandyShopUpgrade {
+  k_ECandyShopUpgradeInvalid = -1,
+  k_ECandyShopUpgrade_InventorySize = 0,
+  k_ECandyShopUpgrade_RewardShelf = 1,
+  k_ECandyShopUpgrade_ExtraExchangeRecipe = 2,
+}
+
+export function eCandyShopUpgradeFromJSON(object: any): ECandyShopUpgrade {
+  switch (object) {
+    case -1:
+    case "k_ECandyShopUpgradeInvalid":
+      return ECandyShopUpgrade.k_ECandyShopUpgradeInvalid;
+    case 0:
+    case "k_ECandyShopUpgrade_InventorySize":
+      return ECandyShopUpgrade.k_ECandyShopUpgrade_InventorySize;
+    case 1:
+    case "k_ECandyShopUpgrade_RewardShelf":
+      return ECandyShopUpgrade.k_ECandyShopUpgrade_RewardShelf;
+    case 2:
+    case "k_ECandyShopUpgrade_ExtraExchangeRecipe":
+      return ECandyShopUpgrade.k_ECandyShopUpgrade_ExtraExchangeRecipe;
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum ECandyShopUpgrade");
+  }
+}
+
+export function eCandyShopUpgradeToJSON(object: ECandyShopUpgrade): string {
+  switch (object) {
+    case ECandyShopUpgrade.k_ECandyShopUpgradeInvalid:
+      return "k_ECandyShopUpgradeInvalid";
+    case ECandyShopUpgrade.k_ECandyShopUpgrade_InventorySize:
+      return "k_ECandyShopUpgrade_InventorySize";
+    case ECandyShopUpgrade.k_ECandyShopUpgrade_RewardShelf:
+      return "k_ECandyShopUpgrade_RewardShelf";
+    case ECandyShopUpgrade.k_ECandyShopUpgrade_ExtraExchangeRecipe:
+      return "k_ECandyShopUpgrade_ExtraExchangeRecipe";
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum ECandyShopUpgrade");
+  }
+}
+
+export enum EItemSuggestPreference {
+  k_EItemSuggestPreference_None = 0,
+  k_EItemSuggestPreference_Liked = 1,
+  k_EItemSuggestPreference_Disliked = 2,
+}
+
+export function eItemSuggestPreferenceFromJSON(object: any): EItemSuggestPreference {
+  switch (object) {
+    case 0:
+    case "k_EItemSuggestPreference_None":
+      return EItemSuggestPreference.k_EItemSuggestPreference_None;
+    case 1:
+    case "k_EItemSuggestPreference_Liked":
+      return EItemSuggestPreference.k_EItemSuggestPreference_Liked;
+    case 2:
+    case "k_EItemSuggestPreference_Disliked":
+      return EItemSuggestPreference.k_EItemSuggestPreference_Disliked;
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum EItemSuggestPreference");
+  }
+}
+
+export function eItemSuggestPreferenceToJSON(object: EItemSuggestPreference): string {
+  switch (object) {
+    case EItemSuggestPreference.k_EItemSuggestPreference_None:
+      return "k_EItemSuggestPreference_None";
+    case EItemSuggestPreference.k_EItemSuggestPreference_Liked:
+      return "k_EItemSuggestPreference_Liked";
+    case EItemSuggestPreference.k_EItemSuggestPreference_Disliked:
+      return "k_EItemSuggestPreference_Disliked";
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum EItemSuggestPreference");
+  }
+}
+
 export interface CDOTAClientHardwareSpecs {
   logicalProcessors: number;
   cpuCyclesPerSecond: string;
@@ -3670,6 +4245,7 @@ export interface CDOTAClientHardwareSpecs {
   is64BitOs: boolean;
   uploadMeasurement: string;
   preferNotHost: boolean;
+  crc: number[];
 }
 
 export interface CDOTASaveGame {
@@ -3798,6 +4374,7 @@ function createBaseCDOTAClientHardwareSpecs(): CDOTAClientHardwareSpecs {
     is64BitOs: false,
     uploadMeasurement: "0",
     preferNotHost: false,
+    crc: [],
   };
 }
 
@@ -3821,6 +4398,11 @@ export const CDOTAClientHardwareSpecs: MessageFns<CDOTAClientHardwareSpecs> = {
     if (message.preferNotHost !== false) {
       writer.uint32(48).bool(message.preferNotHost);
     }
+    writer.uint32(58).fork();
+    for (const v of message.crc) {
+      writer.uint32(v);
+    }
+    writer.join();
     return writer;
   },
 
@@ -3879,6 +4461,24 @@ export const CDOTAClientHardwareSpecs: MessageFns<CDOTAClientHardwareSpecs> = {
           message.preferNotHost = reader.bool();
           continue;
         }
+        case 7: {
+          if (tag === 56) {
+            message.crc.push(reader.uint32());
+
+            continue;
+          }
+
+          if (tag === 58) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.crc.push(reader.uint32());
+            }
+
+            continue;
+          }
+
+          break;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -3896,6 +4496,7 @@ export const CDOTAClientHardwareSpecs: MessageFns<CDOTAClientHardwareSpecs> = {
       is64BitOs: isSet(object.is64BitOs) ? globalThis.Boolean(object.is64BitOs) : false,
       uploadMeasurement: isSet(object.uploadMeasurement) ? globalThis.String(object.uploadMeasurement) : "0",
       preferNotHost: isSet(object.preferNotHost) ? globalThis.Boolean(object.preferNotHost) : false,
+      crc: globalThis.Array.isArray(object?.crc) ? object.crc.map((e: any) => globalThis.Number(e)) : [],
     };
   },
 
@@ -3919,6 +4520,9 @@ export const CDOTAClientHardwareSpecs: MessageFns<CDOTAClientHardwareSpecs> = {
     if (message.preferNotHost !== false) {
       obj.preferNotHost = message.preferNotHost;
     }
+    if (message.crc?.length) {
+      obj.crc = message.crc.map((e) => Math.round(e));
+    }
     return obj;
   },
 
@@ -3933,6 +4537,7 @@ export const CDOTAClientHardwareSpecs: MessageFns<CDOTAClientHardwareSpecs> = {
     message.is64BitOs = object.is64BitOs ?? false;
     message.uploadMeasurement = object.uploadMeasurement ?? "0";
     message.preferNotHost = object.preferNotHost ?? false;
+    message.crc = object.crc?.map((e) => e) || [];
     return message;
   },
 };

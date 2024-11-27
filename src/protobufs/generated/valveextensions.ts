@@ -6,4 +6,49 @@
 
 /* eslint-disable */
 
-export {};
+export enum EProtoDebugVisiblity {
+  k_EProtoDebugVisibility_Always = 0,
+  k_EProtoDebugVisibility_Server = 70,
+  k_EProtoDebugVisibility_ValveServer = 80,
+  k_EProtoDebugVisibility_GC = 90,
+  k_EProtoDebugVisibility_Never = 100,
+}
+
+export function eProtoDebugVisiblityFromJSON(object: any): EProtoDebugVisiblity {
+  switch (object) {
+    case 0:
+    case "k_EProtoDebugVisibility_Always":
+      return EProtoDebugVisiblity.k_EProtoDebugVisibility_Always;
+    case 70:
+    case "k_EProtoDebugVisibility_Server":
+      return EProtoDebugVisiblity.k_EProtoDebugVisibility_Server;
+    case 80:
+    case "k_EProtoDebugVisibility_ValveServer":
+      return EProtoDebugVisiblity.k_EProtoDebugVisibility_ValveServer;
+    case 90:
+    case "k_EProtoDebugVisibility_GC":
+      return EProtoDebugVisiblity.k_EProtoDebugVisibility_GC;
+    case 100:
+    case "k_EProtoDebugVisibility_Never":
+      return EProtoDebugVisiblity.k_EProtoDebugVisibility_Never;
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum EProtoDebugVisiblity");
+  }
+}
+
+export function eProtoDebugVisiblityToJSON(object: EProtoDebugVisiblity): string {
+  switch (object) {
+    case EProtoDebugVisiblity.k_EProtoDebugVisibility_Always:
+      return "k_EProtoDebugVisibility_Always";
+    case EProtoDebugVisiblity.k_EProtoDebugVisibility_Server:
+      return "k_EProtoDebugVisibility_Server";
+    case EProtoDebugVisiblity.k_EProtoDebugVisibility_ValveServer:
+      return "k_EProtoDebugVisibility_ValveServer";
+    case EProtoDebugVisiblity.k_EProtoDebugVisibility_GC:
+      return "k_EProtoDebugVisibility_GC";
+    case EProtoDebugVisiblity.k_EProtoDebugVisibility_Never:
+      return "k_EProtoDebugVisibility_Never";
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum EProtoDebugVisiblity");
+  }
+}

@@ -22,8 +22,8 @@ export enum ELaneSelection {
   k_ELaneSelection_SAFELANE = 0,
   k_ELaneSelection_OFFLANE = 1,
   k_ELaneSelection_MIDLANE = 2,
-  k_ELaneSelection_SUPPORT_SOFT = 3,
-  k_ELaneSelection_SUPPORT_HARD = 4,
+  k_ELaneSelection_SUPPORT = 3,
+  k_ELaneSelection_HARDSUPPORT = 4,
 }
 
 export function eLaneSelectionFromJSON(object: any): ELaneSelection {
@@ -38,11 +38,11 @@ export function eLaneSelectionFromJSON(object: any): ELaneSelection {
     case "k_ELaneSelection_MIDLANE":
       return ELaneSelection.k_ELaneSelection_MIDLANE;
     case 3:
-    case "k_ELaneSelection_SUPPORT_SOFT":
-      return ELaneSelection.k_ELaneSelection_SUPPORT_SOFT;
+    case "k_ELaneSelection_SUPPORT":
+      return ELaneSelection.k_ELaneSelection_SUPPORT;
     case 4:
-    case "k_ELaneSelection_SUPPORT_HARD":
-      return ELaneSelection.k_ELaneSelection_SUPPORT_HARD;
+    case "k_ELaneSelection_HARDSUPPORT":
+      return ELaneSelection.k_ELaneSelection_HARDSUPPORT;
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum ELaneSelection");
   }
@@ -56,32 +56,29 @@ export function eLaneSelectionToJSON(object: ELaneSelection): string {
       return "k_ELaneSelection_OFFLANE";
     case ELaneSelection.k_ELaneSelection_MIDLANE:
       return "k_ELaneSelection_MIDLANE";
-    case ELaneSelection.k_ELaneSelection_SUPPORT_SOFT:
-      return "k_ELaneSelection_SUPPORT_SOFT";
-    case ELaneSelection.k_ELaneSelection_SUPPORT_HARD:
-      return "k_ELaneSelection_SUPPORT_HARD";
+    case ELaneSelection.k_ELaneSelection_SUPPORT:
+      return "k_ELaneSelection_SUPPORT";
+    case ELaneSelection.k_ELaneSelection_HARDSUPPORT:
+      return "k_ELaneSelection_HARDSUPPORT";
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum ELaneSelection");
   }
 }
 
 export enum ELaneSelectionFlags {
-  k_ELaneSelectionFlags_None = 0,
   k_ELaneSelectionFlags_SAFELANE = 1,
   k_ELaneSelectionFlags_OFFLANE = 2,
   k_ELaneSelectionFlags_MIDLANE = 4,
-  k_ELaneSelectionFlags_SUPPORT_SOFT = 8,
-  k_ELaneSelectionFlags_SUPPORT_HARD = 16,
-  k_ELaneSelectionFlags_CORE = 7,
-  k_ELaneSelectionFlags_SUPPORT = 24,
-  k_ELaneSelectionFlags_ALL = 31,
+  k_ELaneSelectionFlags_SUPPORT = 8,
+  k_ELaneSelectionFlags_HARDSUPPORT = 16,
+  k_ELaneSelectionFlagGroup_None = 0,
+  k_ELaneSelectionFlagGroup_CORE = 7,
+  k_ELaneSelectionFlagGroup_SUPPORT = 24,
+  k_ELaneSelectionFlagGroup_ALL = 31,
 }
 
 export function eLaneSelectionFlagsFromJSON(object: any): ELaneSelectionFlags {
   switch (object) {
-    case 0:
-    case "k_ELaneSelectionFlags_None":
-      return ELaneSelectionFlags.k_ELaneSelectionFlags_None;
     case 1:
     case "k_ELaneSelectionFlags_SAFELANE":
       return ELaneSelectionFlags.k_ELaneSelectionFlags_SAFELANE;
@@ -92,20 +89,23 @@ export function eLaneSelectionFlagsFromJSON(object: any): ELaneSelectionFlags {
     case "k_ELaneSelectionFlags_MIDLANE":
       return ELaneSelectionFlags.k_ELaneSelectionFlags_MIDLANE;
     case 8:
-    case "k_ELaneSelectionFlags_SUPPORT_SOFT":
-      return ELaneSelectionFlags.k_ELaneSelectionFlags_SUPPORT_SOFT;
-    case 16:
-    case "k_ELaneSelectionFlags_SUPPORT_HARD":
-      return ELaneSelectionFlags.k_ELaneSelectionFlags_SUPPORT_HARD;
-    case 7:
-    case "k_ELaneSelectionFlags_CORE":
-      return ELaneSelectionFlags.k_ELaneSelectionFlags_CORE;
-    case 24:
     case "k_ELaneSelectionFlags_SUPPORT":
       return ELaneSelectionFlags.k_ELaneSelectionFlags_SUPPORT;
+    case 16:
+    case "k_ELaneSelectionFlags_HARDSUPPORT":
+      return ELaneSelectionFlags.k_ELaneSelectionFlags_HARDSUPPORT;
+    case 0:
+    case "k_ELaneSelectionFlagGroup_None":
+      return ELaneSelectionFlags.k_ELaneSelectionFlagGroup_None;
+    case 7:
+    case "k_ELaneSelectionFlagGroup_CORE":
+      return ELaneSelectionFlags.k_ELaneSelectionFlagGroup_CORE;
+    case 24:
+    case "k_ELaneSelectionFlagGroup_SUPPORT":
+      return ELaneSelectionFlags.k_ELaneSelectionFlagGroup_SUPPORT;
     case 31:
-    case "k_ELaneSelectionFlags_ALL":
-      return ELaneSelectionFlags.k_ELaneSelectionFlags_ALL;
+    case "k_ELaneSelectionFlagGroup_ALL":
+      return ELaneSelectionFlags.k_ELaneSelectionFlagGroup_ALL;
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum ELaneSelectionFlags");
   }
@@ -113,24 +113,24 @@ export function eLaneSelectionFlagsFromJSON(object: any): ELaneSelectionFlags {
 
 export function eLaneSelectionFlagsToJSON(object: ELaneSelectionFlags): string {
   switch (object) {
-    case ELaneSelectionFlags.k_ELaneSelectionFlags_None:
-      return "k_ELaneSelectionFlags_None";
     case ELaneSelectionFlags.k_ELaneSelectionFlags_SAFELANE:
       return "k_ELaneSelectionFlags_SAFELANE";
     case ELaneSelectionFlags.k_ELaneSelectionFlags_OFFLANE:
       return "k_ELaneSelectionFlags_OFFLANE";
     case ELaneSelectionFlags.k_ELaneSelectionFlags_MIDLANE:
       return "k_ELaneSelectionFlags_MIDLANE";
-    case ELaneSelectionFlags.k_ELaneSelectionFlags_SUPPORT_SOFT:
-      return "k_ELaneSelectionFlags_SUPPORT_SOFT";
-    case ELaneSelectionFlags.k_ELaneSelectionFlags_SUPPORT_HARD:
-      return "k_ELaneSelectionFlags_SUPPORT_HARD";
-    case ELaneSelectionFlags.k_ELaneSelectionFlags_CORE:
-      return "k_ELaneSelectionFlags_CORE";
     case ELaneSelectionFlags.k_ELaneSelectionFlags_SUPPORT:
       return "k_ELaneSelectionFlags_SUPPORT";
-    case ELaneSelectionFlags.k_ELaneSelectionFlags_ALL:
-      return "k_ELaneSelectionFlags_ALL";
+    case ELaneSelectionFlags.k_ELaneSelectionFlags_HARDSUPPORT:
+      return "k_ELaneSelectionFlags_HARDSUPPORT";
+    case ELaneSelectionFlags.k_ELaneSelectionFlagGroup_None:
+      return "k_ELaneSelectionFlagGroup_None";
+    case ELaneSelectionFlags.k_ELaneSelectionFlagGroup_CORE:
+      return "k_ELaneSelectionFlagGroup_CORE";
+    case ELaneSelectionFlags.k_ELaneSelectionFlagGroup_SUPPORT:
+      return "k_ELaneSelectionFlagGroup_SUPPORT";
+    case ELaneSelectionFlags.k_ELaneSelectionFlagGroup_ALL:
+      return "k_ELaneSelectionFlagGroup_ALL";
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum ELaneSelectionFlags");
   }
@@ -374,6 +374,7 @@ export interface CSODOTAPartyMember {
   hasHpResource: boolean;
   joinedFromPartyfinder: boolean;
   isSteamChina: boolean;
+  bannedHeroIds: number[];
 }
 
 export interface CSODOTAParty {
@@ -428,6 +429,10 @@ export interface CSODOTAParty {
   isSteamChina: boolean;
   botDifficultyMask: number;
   botScriptIndexMask: number;
+  restrictedFromRanked: boolean;
+  restrictedFromRankedAccountId: number;
+  rankSpreadLikertScale: number;
+  behaviorScoreLikertScale: number;
 }
 
 export enum CSODOTAParty_State {
@@ -811,6 +816,13 @@ export enum CMvpData_MvpDatum_MvpAccolade_MvpAccoladeType {
   kKillEaterEventType_Muerta_PierceTheVeilKills = 276,
   kKillEaterEventType_Muerta_MultiHeroDeadShot = 277,
   kKillEaterEventType_Muerta_DeadShotsIntoTheCalling = 278,
+  kKillEaterEventType_Ringmaster_LongRangeDaggerHits = 279,
+  kKillEaterEventType_Ringmaster_MultiHeroWhips = 280,
+  kKillEaterEventType_Ringmaster_MultiHeroMesmerizes = 281,
+  kKillEaterEventType_Kez_ParryCounterAttacks = 282,
+  kKillEaterEventType_Kez_RavensVeilKills = 283,
+  kKillEaterEventType_Kez_RaptorDanceHealing = 284,
+  kKillEaterEventType_Kez_KillsDuringFalconRush = 285,
 }
 
 export function cMvpData_MvpDatum_MvpAccolade_MvpAccoladeTypeFromJSON(
@@ -1636,6 +1648,27 @@ export function cMvpData_MvpDatum_MvpAccolade_MvpAccoladeTypeFromJSON(
     case 278:
     case "kKillEaterEventType_Muerta_DeadShotsIntoTheCalling":
       return CMvpData_MvpDatum_MvpAccolade_MvpAccoladeType.kKillEaterEventType_Muerta_DeadShotsIntoTheCalling;
+    case 279:
+    case "kKillEaterEventType_Ringmaster_LongRangeDaggerHits":
+      return CMvpData_MvpDatum_MvpAccolade_MvpAccoladeType.kKillEaterEventType_Ringmaster_LongRangeDaggerHits;
+    case 280:
+    case "kKillEaterEventType_Ringmaster_MultiHeroWhips":
+      return CMvpData_MvpDatum_MvpAccolade_MvpAccoladeType.kKillEaterEventType_Ringmaster_MultiHeroWhips;
+    case 281:
+    case "kKillEaterEventType_Ringmaster_MultiHeroMesmerizes":
+      return CMvpData_MvpDatum_MvpAccolade_MvpAccoladeType.kKillEaterEventType_Ringmaster_MultiHeroMesmerizes;
+    case 282:
+    case "kKillEaterEventType_Kez_ParryCounterAttacks":
+      return CMvpData_MvpDatum_MvpAccolade_MvpAccoladeType.kKillEaterEventType_Kez_ParryCounterAttacks;
+    case 283:
+    case "kKillEaterEventType_Kez_RavensVeilKills":
+      return CMvpData_MvpDatum_MvpAccolade_MvpAccoladeType.kKillEaterEventType_Kez_RavensVeilKills;
+    case 284:
+    case "kKillEaterEventType_Kez_RaptorDanceHealing":
+      return CMvpData_MvpDatum_MvpAccolade_MvpAccoladeType.kKillEaterEventType_Kez_RaptorDanceHealing;
+    case 285:
+    case "kKillEaterEventType_Kez_KillsDuringFalconRush":
+      return CMvpData_MvpDatum_MvpAccolade_MvpAccoladeType.kKillEaterEventType_Kez_KillsDuringFalconRush;
     default:
       throw new globalThis.Error(
         "Unrecognized enum value " + object + " for enum CMvpData_MvpDatum_MvpAccolade_MvpAccoladeType",
@@ -2191,6 +2224,20 @@ export function cMvpData_MvpDatum_MvpAccolade_MvpAccoladeTypeToJSON(
       return "kKillEaterEventType_Muerta_MultiHeroDeadShot";
     case CMvpData_MvpDatum_MvpAccolade_MvpAccoladeType.kKillEaterEventType_Muerta_DeadShotsIntoTheCalling:
       return "kKillEaterEventType_Muerta_DeadShotsIntoTheCalling";
+    case CMvpData_MvpDatum_MvpAccolade_MvpAccoladeType.kKillEaterEventType_Ringmaster_LongRangeDaggerHits:
+      return "kKillEaterEventType_Ringmaster_LongRangeDaggerHits";
+    case CMvpData_MvpDatum_MvpAccolade_MvpAccoladeType.kKillEaterEventType_Ringmaster_MultiHeroWhips:
+      return "kKillEaterEventType_Ringmaster_MultiHeroWhips";
+    case CMvpData_MvpDatum_MvpAccolade_MvpAccoladeType.kKillEaterEventType_Ringmaster_MultiHeroMesmerizes:
+      return "kKillEaterEventType_Ringmaster_MultiHeroMesmerizes";
+    case CMvpData_MvpDatum_MvpAccolade_MvpAccoladeType.kKillEaterEventType_Kez_ParryCounterAttacks:
+      return "kKillEaterEventType_Kez_ParryCounterAttacks";
+    case CMvpData_MvpDatum_MvpAccolade_MvpAccoladeType.kKillEaterEventType_Kez_RavensVeilKills:
+      return "kKillEaterEventType_Kez_RavensVeilKills";
+    case CMvpData_MvpDatum_MvpAccolade_MvpAccoladeType.kKillEaterEventType_Kez_RaptorDanceHealing:
+      return "kKillEaterEventType_Kez_RaptorDanceHealing";
+    case CMvpData_MvpDatum_MvpAccolade_MvpAccoladeType.kKillEaterEventType_Kez_KillsDuringFalconRush:
+      return "kKillEaterEventType_Kez_KillsDuringFalconRush";
     default:
       throw new globalThis.Error(
         "Unrecognized enum value " + object + " for enum CMvpData_MvpDatum_MvpAccolade_MvpAccoladeType",
@@ -2214,6 +2261,7 @@ function createBaseCSODOTAPartyMember(): CSODOTAPartyMember {
     hasHpResource: false,
     joinedFromPartyfinder: false,
     isSteamChina: false,
+    bannedHeroIds: [],
   };
 }
 
@@ -2265,6 +2313,11 @@ export const CSODOTAPartyMember: MessageFns<CSODOTAPartyMember> = {
     if (message.isSteamChina !== false) {
       writer.uint32(128).bool(message.isSteamChina);
     }
+    writer.uint32(138).fork();
+    for (const v of message.bannedHeroIds) {
+      writer.int32(v);
+    }
+    writer.join();
     return writer;
   },
 
@@ -2407,6 +2460,24 @@ export const CSODOTAPartyMember: MessageFns<CSODOTAPartyMember> = {
           message.isSteamChina = reader.bool();
           continue;
         }
+        case 17: {
+          if (tag === 136) {
+            message.bannedHeroIds.push(reader.int32());
+
+            continue;
+          }
+
+          if (tag === 138) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.bannedHeroIds.push(reader.int32());
+            }
+
+            continue;
+          }
+
+          break;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -2442,6 +2513,9 @@ export const CSODOTAPartyMember: MessageFns<CSODOTAPartyMember> = {
         ? globalThis.Boolean(object.joinedFromPartyfinder)
         : false,
       isSteamChina: isSet(object.isSteamChina) ? globalThis.Boolean(object.isSteamChina) : false,
+      bannedHeroIds: globalThis.Array.isArray(object?.bannedHeroIds)
+        ? object.bannedHeroIds.map((e: any) => globalThis.Number(e))
+        : [],
     };
   },
 
@@ -2489,6 +2563,9 @@ export const CSODOTAPartyMember: MessageFns<CSODOTAPartyMember> = {
     if (message.isSteamChina !== false) {
       obj.isSteamChina = message.isSteamChina;
     }
+    if (message.bannedHeroIds?.length) {
+      obj.bannedHeroIds = message.bannedHeroIds.map((e) => Math.round(e));
+    }
     return obj;
   },
 
@@ -2511,6 +2588,7 @@ export const CSODOTAPartyMember: MessageFns<CSODOTAPartyMember> = {
     message.hasHpResource = object.hasHpResource ?? false;
     message.joinedFromPartyfinder = object.joinedFromPartyfinder ?? false;
     message.isSteamChina = object.isSteamChina ?? false;
+    message.bannedHeroIds = object.bannedHeroIds?.map((e) => e) || [];
     return message;
   },
 };
@@ -2568,6 +2646,10 @@ function createBaseCSODOTAParty(): CSODOTAParty {
     isSteamChina: false,
     botDifficultyMask: 0,
     botScriptIndexMask: 0,
+    restrictedFromRanked: false,
+    restrictedFromRankedAccountId: 0,
+    rankSpreadLikertScale: 0,
+    behaviorScoreLikertScale: 0,
   };
 }
 
@@ -2727,6 +2809,18 @@ export const CSODOTAParty: MessageFns<CSODOTAParty> = {
     }
     if (message.botScriptIndexMask !== 0) {
       writer.uint32(584).uint32(message.botScriptIndexMask);
+    }
+    if (message.restrictedFromRanked !== false) {
+      writer.uint32(592).bool(message.restrictedFromRanked);
+    }
+    if (message.restrictedFromRankedAccountId !== 0) {
+      writer.uint32(600).uint32(message.restrictedFromRankedAccountId);
+    }
+    if (message.rankSpreadLikertScale !== 0) {
+      writer.uint32(608).uint32(message.rankSpreadLikertScale);
+    }
+    if (message.behaviorScoreLikertScale !== 0) {
+      writer.uint32(616).uint32(message.behaviorScoreLikertScale);
     }
     return writer;
   },
@@ -3156,6 +3250,38 @@ export const CSODOTAParty: MessageFns<CSODOTAParty> = {
           message.botScriptIndexMask = reader.uint32();
           continue;
         }
+        case 74: {
+          if (tag !== 592) {
+            break;
+          }
+
+          message.restrictedFromRanked = reader.bool();
+          continue;
+        }
+        case 75: {
+          if (tag !== 600) {
+            break;
+          }
+
+          message.restrictedFromRankedAccountId = reader.uint32();
+          continue;
+        }
+        case 76: {
+          if (tag !== 608) {
+            break;
+          }
+
+          message.rankSpreadLikertScale = reader.uint32();
+          continue;
+        }
+        case 77: {
+          if (tag !== 616) {
+            break;
+          }
+
+          message.behaviorScoreLikertScale = reader.uint32();
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -3256,6 +3382,16 @@ export const CSODOTAParty: MessageFns<CSODOTAParty> = {
       isSteamChina: isSet(object.isSteamChina) ? globalThis.Boolean(object.isSteamChina) : false,
       botDifficultyMask: isSet(object.botDifficultyMask) ? globalThis.Number(object.botDifficultyMask) : 0,
       botScriptIndexMask: isSet(object.botScriptIndexMask) ? globalThis.Number(object.botScriptIndexMask) : 0,
+      restrictedFromRanked: isSet(object.restrictedFromRanked)
+        ? globalThis.Boolean(object.restrictedFromRanked)
+        : false,
+      restrictedFromRankedAccountId: isSet(object.restrictedFromRankedAccountId)
+        ? globalThis.Number(object.restrictedFromRankedAccountId)
+        : 0,
+      rankSpreadLikertScale: isSet(object.rankSpreadLikertScale) ? globalThis.Number(object.rankSpreadLikertScale) : 0,
+      behaviorScoreLikertScale: isSet(object.behaviorScoreLikertScale)
+        ? globalThis.Number(object.behaviorScoreLikertScale)
+        : 0,
     };
   },
 
@@ -3414,6 +3550,18 @@ export const CSODOTAParty: MessageFns<CSODOTAParty> = {
     if (message.botScriptIndexMask !== 0) {
       obj.botScriptIndexMask = Math.round(message.botScriptIndexMask);
     }
+    if (message.restrictedFromRanked !== false) {
+      obj.restrictedFromRanked = message.restrictedFromRanked;
+    }
+    if (message.restrictedFromRankedAccountId !== 0) {
+      obj.restrictedFromRankedAccountId = Math.round(message.restrictedFromRankedAccountId);
+    }
+    if (message.rankSpreadLikertScale !== 0) {
+      obj.rankSpreadLikertScale = Math.round(message.rankSpreadLikertScale);
+    }
+    if (message.behaviorScoreLikertScale !== 0) {
+      obj.behaviorScoreLikertScale = Math.round(message.behaviorScoreLikertScale);
+    }
     return obj;
   },
 
@@ -3475,6 +3623,10 @@ export const CSODOTAParty: MessageFns<CSODOTAParty> = {
     message.isSteamChina = object.isSteamChina ?? false;
     message.botDifficultyMask = object.botDifficultyMask ?? 0;
     message.botScriptIndexMask = object.botScriptIndexMask ?? 0;
+    message.restrictedFromRanked = object.restrictedFromRanked ?? false;
+    message.restrictedFromRankedAccountId = object.restrictedFromRankedAccountId ?? 0;
+    message.rankSpreadLikertScale = object.rankSpreadLikertScale ?? 0;
+    message.behaviorScoreLikertScale = object.behaviorScoreLikertScale ?? 0;
     return message;
   },
 };

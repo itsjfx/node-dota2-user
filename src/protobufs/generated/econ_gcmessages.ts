@@ -6,12 +6,15 @@
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
+import { CSOEconItem } from "./base_gcmessages";
 import { EGCMsgResponse, eGCMsgResponseFromJSON, eGCMsgResponseToJSON } from "./econ_shared_enums";
 import { CExtraMsgBlock } from "./gcsdk_gcmessages";
 
 export enum EGCItemMsg {
   k_EMsgGCBase = 1000,
   k_EMsgGCSetItemPosition = 1001,
+  k_EMsgClientToGCPackBundle = 1002,
+  k_EMsgClientToGCPackBundleResponse = 1003,
   k_EMsgGCDelete = 1004,
   k_EMsgGCVerifyCacheSubscription = 1005,
   k_EMsgClientToGCNameItem = 1006,
@@ -46,6 +49,7 @@ export enum EGCItemMsg {
   k_EMsgGCResetStrangeGemCountResponse = 1095,
   k_EMsgGCServerUseItemRequest = 1103,
   k_EMsgGCAddGiftItem = 1104,
+  k_EMsgSQLGCToGCRevokeUntrustedGift = 1105,
   k_EMsgClientToGCRemoveItemGifterAttributes = 1109,
   k_EMsgClientToGCRemoveItemName = 1110,
   k_EMsgClientToGCRemoveItemDescription = 1111,
@@ -132,6 +136,13 @@ export enum EGCItemMsg {
   k_EMsgClientToGCGetLimitedItemPurchaseQuantity = 2609,
   k_EMsgClientToGCGetLimitedItemPurchaseQuantityResponse = 2610,
   k_EMsgGCToGCBetaDeleteItems = 2611,
+  k_EMsgClientToGCGetInFlightItemCharges = 2612,
+  k_EMsgClientToGCGetInFlightItemChargesResponse = 2613,
+  k_EMsgGCToClientInFlightChargesUpdated = 2614,
+  k_EMsgClientToGCPurchaseChargeCostItems = 2615,
+  k_EMsgClientToGCPurchaseChargeCostItemsResponse = 2616,
+  k_EMsgClientToGCCancelUnfinalizedTransactions = 2617,
+  k_EMsgClientToGCCancelUnfinalizedTransactionsResponse = 2618,
 }
 
 export function eGCItemMsgFromJSON(object: any): EGCItemMsg {
@@ -142,6 +153,12 @@ export function eGCItemMsgFromJSON(object: any): EGCItemMsg {
     case 1001:
     case "k_EMsgGCSetItemPosition":
       return EGCItemMsg.k_EMsgGCSetItemPosition;
+    case 1002:
+    case "k_EMsgClientToGCPackBundle":
+      return EGCItemMsg.k_EMsgClientToGCPackBundle;
+    case 1003:
+    case "k_EMsgClientToGCPackBundleResponse":
+      return EGCItemMsg.k_EMsgClientToGCPackBundleResponse;
     case 1004:
     case "k_EMsgGCDelete":
       return EGCItemMsg.k_EMsgGCDelete;
@@ -244,6 +261,9 @@ export function eGCItemMsgFromJSON(object: any): EGCItemMsg {
     case 1104:
     case "k_EMsgGCAddGiftItem":
       return EGCItemMsg.k_EMsgGCAddGiftItem;
+    case 1105:
+    case "k_EMsgSQLGCToGCRevokeUntrustedGift":
+      return EGCItemMsg.k_EMsgSQLGCToGCRevokeUntrustedGift;
     case 1109:
     case "k_EMsgClientToGCRemoveItemGifterAttributes":
       return EGCItemMsg.k_EMsgClientToGCRemoveItemGifterAttributes;
@@ -502,6 +522,27 @@ export function eGCItemMsgFromJSON(object: any): EGCItemMsg {
     case 2611:
     case "k_EMsgGCToGCBetaDeleteItems":
       return EGCItemMsg.k_EMsgGCToGCBetaDeleteItems;
+    case 2612:
+    case "k_EMsgClientToGCGetInFlightItemCharges":
+      return EGCItemMsg.k_EMsgClientToGCGetInFlightItemCharges;
+    case 2613:
+    case "k_EMsgClientToGCGetInFlightItemChargesResponse":
+      return EGCItemMsg.k_EMsgClientToGCGetInFlightItemChargesResponse;
+    case 2614:
+    case "k_EMsgGCToClientInFlightChargesUpdated":
+      return EGCItemMsg.k_EMsgGCToClientInFlightChargesUpdated;
+    case 2615:
+    case "k_EMsgClientToGCPurchaseChargeCostItems":
+      return EGCItemMsg.k_EMsgClientToGCPurchaseChargeCostItems;
+    case 2616:
+    case "k_EMsgClientToGCPurchaseChargeCostItemsResponse":
+      return EGCItemMsg.k_EMsgClientToGCPurchaseChargeCostItemsResponse;
+    case 2617:
+    case "k_EMsgClientToGCCancelUnfinalizedTransactions":
+      return EGCItemMsg.k_EMsgClientToGCCancelUnfinalizedTransactions;
+    case 2618:
+    case "k_EMsgClientToGCCancelUnfinalizedTransactionsResponse":
+      return EGCItemMsg.k_EMsgClientToGCCancelUnfinalizedTransactionsResponse;
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum EGCItemMsg");
   }
@@ -513,6 +554,10 @@ export function eGCItemMsgToJSON(object: EGCItemMsg): string {
       return "k_EMsgGCBase";
     case EGCItemMsg.k_EMsgGCSetItemPosition:
       return "k_EMsgGCSetItemPosition";
+    case EGCItemMsg.k_EMsgClientToGCPackBundle:
+      return "k_EMsgClientToGCPackBundle";
+    case EGCItemMsg.k_EMsgClientToGCPackBundleResponse:
+      return "k_EMsgClientToGCPackBundleResponse";
     case EGCItemMsg.k_EMsgGCDelete:
       return "k_EMsgGCDelete";
     case EGCItemMsg.k_EMsgGCVerifyCacheSubscription:
@@ -581,6 +626,8 @@ export function eGCItemMsgToJSON(object: EGCItemMsg): string {
       return "k_EMsgGCServerUseItemRequest";
     case EGCItemMsg.k_EMsgGCAddGiftItem:
       return "k_EMsgGCAddGiftItem";
+    case EGCItemMsg.k_EMsgSQLGCToGCRevokeUntrustedGift:
+      return "k_EMsgSQLGCToGCRevokeUntrustedGift";
     case EGCItemMsg.k_EMsgClientToGCRemoveItemGifterAttributes:
       return "k_EMsgClientToGCRemoveItemGifterAttributes";
     case EGCItemMsg.k_EMsgClientToGCRemoveItemName:
@@ -753,6 +800,20 @@ export function eGCItemMsgToJSON(object: EGCItemMsg): string {
       return "k_EMsgClientToGCGetLimitedItemPurchaseQuantityResponse";
     case EGCItemMsg.k_EMsgGCToGCBetaDeleteItems:
       return "k_EMsgGCToGCBetaDeleteItems";
+    case EGCItemMsg.k_EMsgClientToGCGetInFlightItemCharges:
+      return "k_EMsgClientToGCGetInFlightItemCharges";
+    case EGCItemMsg.k_EMsgClientToGCGetInFlightItemChargesResponse:
+      return "k_EMsgClientToGCGetInFlightItemChargesResponse";
+    case EGCItemMsg.k_EMsgGCToClientInFlightChargesUpdated:
+      return "k_EMsgGCToClientInFlightChargesUpdated";
+    case EGCItemMsg.k_EMsgClientToGCPurchaseChargeCostItems:
+      return "k_EMsgClientToGCPurchaseChargeCostItems";
+    case EGCItemMsg.k_EMsgClientToGCPurchaseChargeCostItemsResponse:
+      return "k_EMsgClientToGCPurchaseChargeCostItemsResponse";
+    case EGCItemMsg.k_EMsgClientToGCCancelUnfinalizedTransactions:
+      return "k_EMsgClientToGCCancelUnfinalizedTransactions";
+    case EGCItemMsg.k_EMsgClientToGCCancelUnfinalizedTransactionsResponse:
+      return "k_EMsgClientToGCCancelUnfinalizedTransactionsResponse";
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum EGCItemMsg");
   }
@@ -1019,6 +1080,7 @@ export interface CMsgRequestCrateItemsResponse {
   response: number;
   itemDefs: number[];
   peekItemDefs: number[];
+  peekItems: CSOEconItem[];
 }
 
 export enum CMsgRequestCrateItemsResponse_EResult {
@@ -1154,6 +1216,7 @@ export interface CMsgGCToGCGrantAccountRolledItems_Item {
   dynamicAttributes: CMsgGCToGCGrantAccountRolledItems_Item_DynamicAttribute[];
   additionalAuditEntries: CMsgGCToGCGrantAccountRolledItems_Item_AdditionalAuditEntry[];
   inventoryToken: number;
+  quality: number;
 }
 
 export interface CMsgGCToGCGrantAccountRolledItems_Item_DynamicAttribute {
@@ -1299,14 +1362,22 @@ export interface CMsgGCGetAccountSubscriptionItemResponse {
 }
 
 export interface CMsgGCAddGiftItem {
-  accountId: number;
-  itemId: string;
+  gifterAccountId: number;
+  receiverAccountId: number;
+  wrappedItem: CSOEconItem | undefined;
+  giftMessage: string;
+  isWalletCashTrusted: boolean;
 }
 
 export interface CMsgClientToGCWrapAndDeliverGift {
   itemId: string;
   giveToAccountId: number;
   giftMessage: string;
+}
+
+export interface CMsgSQLGCToGCRevokeUntrustedGift {
+  accountId: number;
+  sentItemId: string;
 }
 
 export interface CMsgClientToGCWrapAndDeliverGiftResponse {
@@ -1413,6 +1484,131 @@ export function cMsgClientToGCUnpackBundleResponse_EUnpackBundleToJSON(
     default:
       throw new globalThis.Error(
         "Unrecognized enum value " + object + " for enum CMsgClientToGCUnpackBundleResponse_EUnpackBundle",
+      );
+  }
+}
+
+export interface CMsgClientToGCPackBundle {
+  itemIds: string[];
+  bundleItemDefIndex: number;
+}
+
+export interface CMsgClientToGCPackBundleResponse {
+  itemId: string;
+  response: CMsgClientToGCPackBundleResponse_EPackBundle;
+}
+
+export enum CMsgClientToGCPackBundleResponse_EPackBundle {
+  k_PackBundle_Succeeded = 0,
+  k_PackBundle_Failed_InternalError = 1,
+  k_PackBundle_Failed_ItemIsNotBundle = 2,
+  k_PackBundle_Failed_SOCacheError = 3,
+  k_PackBundle_Failed_ItemIsInvalid = 4,
+  k_PackBundle_Failed_BadItemQuantity = 5,
+  k_PackBundle_Failed_UnableToDeleteItem = 6,
+  k_PackBundle_Failed_BundleCannotBePacked = 7,
+  k_PackBundle_Failed_ItemIsUntradeable = 8,
+  k_PackBundle_Failed_ItemIsEquipped = 9,
+  k_PackBundle_Failed_ItemHasGems = 10,
+  k_PackBundle_Failed_ItemMixedQuality = 11,
+  k_PackBundle_Failed_ItemInvalidQuality = 12,
+  k_PackBundle_Failed_ItemIsNonEconomy = 13,
+  k_PackBundle_Failed_Disabled = 14,
+}
+
+export function cMsgClientToGCPackBundleResponse_EPackBundleFromJSON(
+  object: any,
+): CMsgClientToGCPackBundleResponse_EPackBundle {
+  switch (object) {
+    case 0:
+    case "k_PackBundle_Succeeded":
+      return CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Succeeded;
+    case 1:
+    case "k_PackBundle_Failed_InternalError":
+      return CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Failed_InternalError;
+    case 2:
+    case "k_PackBundle_Failed_ItemIsNotBundle":
+      return CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Failed_ItemIsNotBundle;
+    case 3:
+    case "k_PackBundle_Failed_SOCacheError":
+      return CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Failed_SOCacheError;
+    case 4:
+    case "k_PackBundle_Failed_ItemIsInvalid":
+      return CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Failed_ItemIsInvalid;
+    case 5:
+    case "k_PackBundle_Failed_BadItemQuantity":
+      return CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Failed_BadItemQuantity;
+    case 6:
+    case "k_PackBundle_Failed_UnableToDeleteItem":
+      return CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Failed_UnableToDeleteItem;
+    case 7:
+    case "k_PackBundle_Failed_BundleCannotBePacked":
+      return CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Failed_BundleCannotBePacked;
+    case 8:
+    case "k_PackBundle_Failed_ItemIsUntradeable":
+      return CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Failed_ItemIsUntradeable;
+    case 9:
+    case "k_PackBundle_Failed_ItemIsEquipped":
+      return CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Failed_ItemIsEquipped;
+    case 10:
+    case "k_PackBundle_Failed_ItemHasGems":
+      return CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Failed_ItemHasGems;
+    case 11:
+    case "k_PackBundle_Failed_ItemMixedQuality":
+      return CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Failed_ItemMixedQuality;
+    case 12:
+    case "k_PackBundle_Failed_ItemInvalidQuality":
+      return CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Failed_ItemInvalidQuality;
+    case 13:
+    case "k_PackBundle_Failed_ItemIsNonEconomy":
+      return CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Failed_ItemIsNonEconomy;
+    case 14:
+    case "k_PackBundle_Failed_Disabled":
+      return CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Failed_Disabled;
+    default:
+      throw new globalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCPackBundleResponse_EPackBundle",
+      );
+  }
+}
+
+export function cMsgClientToGCPackBundleResponse_EPackBundleToJSON(
+  object: CMsgClientToGCPackBundleResponse_EPackBundle,
+): string {
+  switch (object) {
+    case CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Succeeded:
+      return "k_PackBundle_Succeeded";
+    case CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Failed_InternalError:
+      return "k_PackBundle_Failed_InternalError";
+    case CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Failed_ItemIsNotBundle:
+      return "k_PackBundle_Failed_ItemIsNotBundle";
+    case CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Failed_SOCacheError:
+      return "k_PackBundle_Failed_SOCacheError";
+    case CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Failed_ItemIsInvalid:
+      return "k_PackBundle_Failed_ItemIsInvalid";
+    case CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Failed_BadItemQuantity:
+      return "k_PackBundle_Failed_BadItemQuantity";
+    case CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Failed_UnableToDeleteItem:
+      return "k_PackBundle_Failed_UnableToDeleteItem";
+    case CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Failed_BundleCannotBePacked:
+      return "k_PackBundle_Failed_BundleCannotBePacked";
+    case CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Failed_ItemIsUntradeable:
+      return "k_PackBundle_Failed_ItemIsUntradeable";
+    case CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Failed_ItemIsEquipped:
+      return "k_PackBundle_Failed_ItemIsEquipped";
+    case CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Failed_ItemHasGems:
+      return "k_PackBundle_Failed_ItemHasGems";
+    case CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Failed_ItemMixedQuality:
+      return "k_PackBundle_Failed_ItemMixedQuality";
+    case CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Failed_ItemInvalidQuality:
+      return "k_PackBundle_Failed_ItemInvalidQuality";
+    case CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Failed_ItemIsNonEconomy:
+      return "k_PackBundle_Failed_ItemIsNonEconomy";
+    case CMsgClientToGCPackBundleResponse_EPackBundle.k_PackBundle_Failed_Disabled:
+      return "k_PackBundle_Failed_Disabled";
+    default:
+      throw new globalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCPackBundleResponse_EPackBundle",
       );
   }
 }
@@ -2007,6 +2203,7 @@ export interface CMsgProcessTransactionOrder_Item {
   parentStackIndex: number;
   defaultPrice: boolean;
   isUserFacing: boolean;
+  priceIndex: number;
 }
 
 export interface CMsgGCToGCStoreProcessCDKeyTransaction {
@@ -2032,6 +2229,7 @@ export interface CMsgGCToGCBroadcastConsoleCommand {
   reportOutput: boolean;
   sendingGc: number;
   outputInitiator: string;
+  senderSource: string;
 }
 
 export interface CMsgGCToGCConsoleOutput {
@@ -2203,6 +2401,195 @@ export function cMsgClientToGCGetLimitedItemPurchaseQuantityResponse_EResponseTo
           " for enum CMsgClientToGCGetLimitedItemPurchaseQuantityResponse_EResponse",
       );
   }
+}
+
+export interface CMsgClientToGCGetInFlightItemCharges {
+  itemDef: number;
+}
+
+export interface CMsgClientToGCGetInFlightItemChargesResponse {
+  result: CMsgClientToGCGetInFlightItemChargesResponse_EResponse;
+  chargesInFlight: number;
+}
+
+export enum CMsgClientToGCGetInFlightItemChargesResponse_EResponse {
+  k_eInternalError = 0,
+  k_eSuccess = 1,
+  k_eTooBusy = 2,
+  k_eDisabled = 3,
+  k_eTimeout = 4,
+  k_eInvalidItemDef = 5,
+}
+
+export function cMsgClientToGCGetInFlightItemChargesResponse_EResponseFromJSON(
+  object: any,
+): CMsgClientToGCGetInFlightItemChargesResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgClientToGCGetInFlightItemChargesResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgClientToGCGetInFlightItemChargesResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eTooBusy":
+      return CMsgClientToGCGetInFlightItemChargesResponse_EResponse.k_eTooBusy;
+    case 3:
+    case "k_eDisabled":
+      return CMsgClientToGCGetInFlightItemChargesResponse_EResponse.k_eDisabled;
+    case 4:
+    case "k_eTimeout":
+      return CMsgClientToGCGetInFlightItemChargesResponse_EResponse.k_eTimeout;
+    case 5:
+    case "k_eInvalidItemDef":
+      return CMsgClientToGCGetInFlightItemChargesResponse_EResponse.k_eInvalidItemDef;
+    default:
+      throw new globalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCGetInFlightItemChargesResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgClientToGCGetInFlightItemChargesResponse_EResponseToJSON(
+  object: CMsgClientToGCGetInFlightItemChargesResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgClientToGCGetInFlightItemChargesResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgClientToGCGetInFlightItemChargesResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgClientToGCGetInFlightItemChargesResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgClientToGCGetInFlightItemChargesResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    case CMsgClientToGCGetInFlightItemChargesResponse_EResponse.k_eTimeout:
+      return "k_eTimeout";
+    case CMsgClientToGCGetInFlightItemChargesResponse_EResponse.k_eInvalidItemDef:
+      return "k_eInvalidItemDef";
+    default:
+      throw new globalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCGetInFlightItemChargesResponse_EResponse",
+      );
+  }
+}
+
+export interface CMsgClientToGCPurchaseChargeCostItems {
+  items: CMsgClientToGCPurchaseChargeCostItems_Item[];
+  currency: number;
+}
+
+export interface CMsgClientToGCPurchaseChargeCostItems_Item {
+  itemDefIndex: number;
+  quantity: number;
+  sourceReferenceId: string;
+  priceIndex: number;
+}
+
+export interface CMsgClientToGCPurchaseChargeCostItemsResponse {
+  result: CMsgClientToGCPurchaseChargeCostItemsResponse_EResponse;
+  itemIds: string[];
+}
+
+export enum CMsgClientToGCPurchaseChargeCostItemsResponse_EResponse {
+  k_eInternalError = 0,
+  k_eSuccess = 1,
+  k_eTooBusy = 2,
+  k_eDisabled = 3,
+  k_eTimeout = 4,
+  k_eInvalidParam = 5,
+  k_eInvalidPrice = 6,
+  k_eInsufficientCharges = 7,
+  k_eLimitedItem = 8,
+  k_eMissingPrereq = 10,
+}
+
+export function cMsgClientToGCPurchaseChargeCostItemsResponse_EResponseFromJSON(
+  object: any,
+): CMsgClientToGCPurchaseChargeCostItemsResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgClientToGCPurchaseChargeCostItemsResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgClientToGCPurchaseChargeCostItemsResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eTooBusy":
+      return CMsgClientToGCPurchaseChargeCostItemsResponse_EResponse.k_eTooBusy;
+    case 3:
+    case "k_eDisabled":
+      return CMsgClientToGCPurchaseChargeCostItemsResponse_EResponse.k_eDisabled;
+    case 4:
+    case "k_eTimeout":
+      return CMsgClientToGCPurchaseChargeCostItemsResponse_EResponse.k_eTimeout;
+    case 5:
+    case "k_eInvalidParam":
+      return CMsgClientToGCPurchaseChargeCostItemsResponse_EResponse.k_eInvalidParam;
+    case 6:
+    case "k_eInvalidPrice":
+      return CMsgClientToGCPurchaseChargeCostItemsResponse_EResponse.k_eInvalidPrice;
+    case 7:
+    case "k_eInsufficientCharges":
+      return CMsgClientToGCPurchaseChargeCostItemsResponse_EResponse.k_eInsufficientCharges;
+    case 8:
+    case "k_eLimitedItem":
+      return CMsgClientToGCPurchaseChargeCostItemsResponse_EResponse.k_eLimitedItem;
+    case 10:
+    case "k_eMissingPrereq":
+      return CMsgClientToGCPurchaseChargeCostItemsResponse_EResponse.k_eMissingPrereq;
+    default:
+      throw new globalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCPurchaseChargeCostItemsResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgClientToGCPurchaseChargeCostItemsResponse_EResponseToJSON(
+  object: CMsgClientToGCPurchaseChargeCostItemsResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgClientToGCPurchaseChargeCostItemsResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgClientToGCPurchaseChargeCostItemsResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgClientToGCPurchaseChargeCostItemsResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgClientToGCPurchaseChargeCostItemsResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    case CMsgClientToGCPurchaseChargeCostItemsResponse_EResponse.k_eTimeout:
+      return "k_eTimeout";
+    case CMsgClientToGCPurchaseChargeCostItemsResponse_EResponse.k_eInvalidParam:
+      return "k_eInvalidParam";
+    case CMsgClientToGCPurchaseChargeCostItemsResponse_EResponse.k_eInvalidPrice:
+      return "k_eInvalidPrice";
+    case CMsgClientToGCPurchaseChargeCostItemsResponse_EResponse.k_eInsufficientCharges:
+      return "k_eInsufficientCharges";
+    case CMsgClientToGCPurchaseChargeCostItemsResponse_EResponse.k_eLimitedItem:
+      return "k_eLimitedItem";
+    case CMsgClientToGCPurchaseChargeCostItemsResponse_EResponse.k_eMissingPrereq:
+      return "k_eMissingPrereq";
+    default:
+      throw new globalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgClientToGCPurchaseChargeCostItemsResponse_EResponse",
+      );
+  }
+}
+
+export interface CMsgGCToClientInFlightChargesUpdated {
+  inFlightCharges: CMsgGCToClientInFlightChargesUpdated_ItemCharges[];
+}
+
+export interface CMsgGCToClientInFlightChargesUpdated_ItemCharges {
+  itemDef: number;
+  chargesInFlight: number;
+}
+
+export interface CMsgClientToGCCancelUnfinalizedTransactions {
+  unused: number;
+}
+
+export interface CMsgClientToGCCancelUnfinalizedTransactionsResponse {
+  result: number;
 }
 
 export interface CMsgGCToGCUpdateWelcomeMsg {
@@ -3653,7 +4040,7 @@ export const CMsgRequestCrateItems: MessageFns<CMsgRequestCrateItems> = {
 };
 
 function createBaseCMsgRequestCrateItemsResponse(): CMsgRequestCrateItemsResponse {
-  return { response: 0, itemDefs: [], peekItemDefs: [] };
+  return { response: 0, itemDefs: [], peekItemDefs: [], peekItems: [] };
 }
 
 export const CMsgRequestCrateItemsResponse: MessageFns<CMsgRequestCrateItemsResponse> = {
@@ -3671,6 +4058,9 @@ export const CMsgRequestCrateItemsResponse: MessageFns<CMsgRequestCrateItemsResp
       writer.uint32(v);
     }
     writer.join();
+    for (const v of message.peekItems) {
+      CSOEconItem.encode(v!, writer.uint32(34).fork()).join();
+    }
     return writer;
   },
 
@@ -3725,6 +4115,14 @@ export const CMsgRequestCrateItemsResponse: MessageFns<CMsgRequestCrateItemsResp
 
           break;
         }
+        case 4: {
+          if (tag !== 34) {
+            break;
+          }
+
+          message.peekItems.push(CSOEconItem.decode(reader, reader.uint32()));
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -3741,6 +4139,9 @@ export const CMsgRequestCrateItemsResponse: MessageFns<CMsgRequestCrateItemsResp
       peekItemDefs: globalThis.Array.isArray(object?.peekItemDefs)
         ? object.peekItemDefs.map((e: any) => globalThis.Number(e))
         : [],
+      peekItems: globalThis.Array.isArray(object?.peekItems)
+        ? object.peekItems.map((e: any) => CSOEconItem.fromJSON(e))
+        : [],
     };
   },
 
@@ -3755,6 +4156,9 @@ export const CMsgRequestCrateItemsResponse: MessageFns<CMsgRequestCrateItemsResp
     if (message.peekItemDefs?.length) {
       obj.peekItemDefs = message.peekItemDefs.map((e) => Math.round(e));
     }
+    if (message.peekItems?.length) {
+      obj.peekItems = message.peekItems.map((e) => CSOEconItem.toJSON(e));
+    }
     return obj;
   },
 
@@ -3766,6 +4170,7 @@ export const CMsgRequestCrateItemsResponse: MessageFns<CMsgRequestCrateItemsResp
     message.response = object.response ?? 0;
     message.itemDefs = object.itemDefs?.map((e) => e) || [];
     message.peekItemDefs = object.peekItemDefs?.map((e) => e) || [];
+    message.peekItems = object.peekItems?.map((e) => CSOEconItem.fromPartial(e)) || [];
     return message;
   },
 };
@@ -4649,6 +5054,7 @@ function createBaseCMsgGCToGCGrantAccountRolledItems_Item(): CMsgGCToGCGrantAcco
     dynamicAttributes: [],
     additionalAuditEntries: [],
     inventoryToken: 0,
+    quality: -1,
   };
 }
 
@@ -4674,6 +5080,9 @@ export const CMsgGCToGCGrantAccountRolledItems_Item: MessageFns<CMsgGCToGCGrantA
     }
     if (message.inventoryToken !== 0) {
       writer.uint32(56).uint32(message.inventoryToken);
+    }
+    if (message.quality !== -1) {
+      writer.uint32(64).int32(message.quality);
     }
     return writer;
   },
@@ -4745,6 +5154,14 @@ export const CMsgGCToGCGrantAccountRolledItems_Item: MessageFns<CMsgGCToGCGrantA
           message.inventoryToken = reader.uint32();
           continue;
         }
+        case 8: {
+          if (tag !== 64) {
+            break;
+          }
+
+          message.quality = reader.int32();
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -4771,6 +5188,7 @@ export const CMsgGCToGCGrantAccountRolledItems_Item: MessageFns<CMsgGCToGCGrantA
         )
         : [],
       inventoryToken: isSet(object.inventoryToken) ? globalThis.Number(object.inventoryToken) : 0,
+      quality: isSet(object.quality) ? globalThis.Number(object.quality) : -1,
     };
   },
 
@@ -4801,6 +5219,9 @@ export const CMsgGCToGCGrantAccountRolledItems_Item: MessageFns<CMsgGCToGCGrantA
     if (message.inventoryToken !== 0) {
       obj.inventoryToken = Math.round(message.inventoryToken);
     }
+    if (message.quality !== -1) {
+      obj.quality = Math.round(message.quality);
+    }
     return obj;
   },
 
@@ -4821,6 +5242,7 @@ export const CMsgGCToGCGrantAccountRolledItems_Item: MessageFns<CMsgGCToGCGrantA
         CMsgGCToGCGrantAccountRolledItems_Item_AdditionalAuditEntry.fromPartial(e)
       ) || [];
     message.inventoryToken = object.inventoryToken ?? 0;
+    message.quality = object.quality ?? -1;
     return message;
   },
 };
@@ -6446,16 +6868,31 @@ export const CMsgGCGetAccountSubscriptionItemResponse: MessageFns<CMsgGCGetAccou
 };
 
 function createBaseCMsgGCAddGiftItem(): CMsgGCAddGiftItem {
-  return { accountId: 0, itemId: "0" };
+  return {
+    gifterAccountId: 0,
+    receiverAccountId: 0,
+    wrappedItem: undefined,
+    giftMessage: "",
+    isWalletCashTrusted: false,
+  };
 }
 
 export const CMsgGCAddGiftItem: MessageFns<CMsgGCAddGiftItem> = {
   encode(message: CMsgGCAddGiftItem, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.accountId !== 0) {
-      writer.uint32(8).uint32(message.accountId);
+    if (message.gifterAccountId !== 0) {
+      writer.uint32(8).uint32(message.gifterAccountId);
     }
-    if (message.itemId !== "0") {
-      writer.uint32(16).uint64(message.itemId);
+    if (message.receiverAccountId !== 0) {
+      writer.uint32(16).uint32(message.receiverAccountId);
+    }
+    if (message.wrappedItem !== undefined) {
+      CSOEconItem.encode(message.wrappedItem, writer.uint32(26).fork()).join();
+    }
+    if (message.giftMessage !== "") {
+      writer.uint32(34).string(message.giftMessage);
+    }
+    if (message.isWalletCashTrusted !== false) {
+      writer.uint32(40).bool(message.isWalletCashTrusted);
     }
     return writer;
   },
@@ -6472,7 +6909,7 @@ export const CMsgGCAddGiftItem: MessageFns<CMsgGCAddGiftItem> = {
             break;
           }
 
-          message.accountId = reader.uint32();
+          message.gifterAccountId = reader.uint32();
           continue;
         }
         case 2: {
@@ -6480,7 +6917,31 @@ export const CMsgGCAddGiftItem: MessageFns<CMsgGCAddGiftItem> = {
             break;
           }
 
-          message.itemId = reader.uint64().toString();
+          message.receiverAccountId = reader.uint32();
+          continue;
+        }
+        case 3: {
+          if (tag !== 26) {
+            break;
+          }
+
+          message.wrappedItem = CSOEconItem.decode(reader, reader.uint32());
+          continue;
+        }
+        case 4: {
+          if (tag !== 34) {
+            break;
+          }
+
+          message.giftMessage = reader.string();
+          continue;
+        }
+        case 5: {
+          if (tag !== 40) {
+            break;
+          }
+
+          message.isWalletCashTrusted = reader.bool();
           continue;
         }
       }
@@ -6494,18 +6955,30 @@ export const CMsgGCAddGiftItem: MessageFns<CMsgGCAddGiftItem> = {
 
   fromJSON(object: any): CMsgGCAddGiftItem {
     return {
-      accountId: isSet(object.accountId) ? globalThis.Number(object.accountId) : 0,
-      itemId: isSet(object.itemId) ? globalThis.String(object.itemId) : "0",
+      gifterAccountId: isSet(object.gifterAccountId) ? globalThis.Number(object.gifterAccountId) : 0,
+      receiverAccountId: isSet(object.receiverAccountId) ? globalThis.Number(object.receiverAccountId) : 0,
+      wrappedItem: isSet(object.wrappedItem) ? CSOEconItem.fromJSON(object.wrappedItem) : undefined,
+      giftMessage: isSet(object.giftMessage) ? globalThis.String(object.giftMessage) : "",
+      isWalletCashTrusted: isSet(object.isWalletCashTrusted) ? globalThis.Boolean(object.isWalletCashTrusted) : false,
     };
   },
 
   toJSON(message: CMsgGCAddGiftItem): unknown {
     const obj: any = {};
-    if (message.accountId !== 0) {
-      obj.accountId = Math.round(message.accountId);
+    if (message.gifterAccountId !== 0) {
+      obj.gifterAccountId = Math.round(message.gifterAccountId);
     }
-    if (message.itemId !== "0") {
-      obj.itemId = message.itemId;
+    if (message.receiverAccountId !== 0) {
+      obj.receiverAccountId = Math.round(message.receiverAccountId);
+    }
+    if (message.wrappedItem !== undefined) {
+      obj.wrappedItem = CSOEconItem.toJSON(message.wrappedItem);
+    }
+    if (message.giftMessage !== "") {
+      obj.giftMessage = message.giftMessage;
+    }
+    if (message.isWalletCashTrusted !== false) {
+      obj.isWalletCashTrusted = message.isWalletCashTrusted;
     }
     return obj;
   },
@@ -6515,8 +6988,13 @@ export const CMsgGCAddGiftItem: MessageFns<CMsgGCAddGiftItem> = {
   },
   fromPartial(object: DeepPartial<CMsgGCAddGiftItem>): CMsgGCAddGiftItem {
     const message = createBaseCMsgGCAddGiftItem();
-    message.accountId = object.accountId ?? 0;
-    message.itemId = object.itemId ?? "0";
+    message.gifterAccountId = object.gifterAccountId ?? 0;
+    message.receiverAccountId = object.receiverAccountId ?? 0;
+    message.wrappedItem = (object.wrappedItem !== undefined && object.wrappedItem !== null)
+      ? CSOEconItem.fromPartial(object.wrappedItem)
+      : undefined;
+    message.giftMessage = object.giftMessage ?? "";
+    message.isWalletCashTrusted = object.isWalletCashTrusted ?? false;
     return message;
   },
 };
@@ -6609,6 +7087,82 @@ export const CMsgClientToGCWrapAndDeliverGift: MessageFns<CMsgClientToGCWrapAndD
     message.itemId = object.itemId ?? "0";
     message.giveToAccountId = object.giveToAccountId ?? 0;
     message.giftMessage = object.giftMessage ?? "";
+    return message;
+  },
+};
+
+function createBaseCMsgSQLGCToGCRevokeUntrustedGift(): CMsgSQLGCToGCRevokeUntrustedGift {
+  return { accountId: 0, sentItemId: "0" };
+}
+
+export const CMsgSQLGCToGCRevokeUntrustedGift: MessageFns<CMsgSQLGCToGCRevokeUntrustedGift> = {
+  encode(message: CMsgSQLGCToGCRevokeUntrustedGift, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.accountId !== 0) {
+      writer.uint32(8).uint32(message.accountId);
+    }
+    if (message.sentItemId !== "0") {
+      writer.uint32(32).uint64(message.sentItemId);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgSQLGCToGCRevokeUntrustedGift {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgSQLGCToGCRevokeUntrustedGift();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.accountId = reader.uint32();
+          continue;
+        }
+        case 4: {
+          if (tag !== 32) {
+            break;
+          }
+
+          message.sentItemId = reader.uint64().toString();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgSQLGCToGCRevokeUntrustedGift {
+    return {
+      accountId: isSet(object.accountId) ? globalThis.Number(object.accountId) : 0,
+      sentItemId: isSet(object.sentItemId) ? globalThis.String(object.sentItemId) : "0",
+    };
+  },
+
+  toJSON(message: CMsgSQLGCToGCRevokeUntrustedGift): unknown {
+    const obj: any = {};
+    if (message.accountId !== 0) {
+      obj.accountId = Math.round(message.accountId);
+    }
+    if (message.sentItemId !== "0") {
+      obj.sentItemId = message.sentItemId;
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSQLGCToGCRevokeUntrustedGift>): CMsgSQLGCToGCRevokeUntrustedGift {
+    return CMsgSQLGCToGCRevokeUntrustedGift.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgSQLGCToGCRevokeUntrustedGift>): CMsgSQLGCToGCRevokeUntrustedGift {
+    const message = createBaseCMsgSQLGCToGCRevokeUntrustedGift();
+    message.accountId = object.accountId ?? 0;
+    message.sentItemId = object.sentItemId ?? "0";
     return message;
   },
 };
@@ -7302,6 +7856,170 @@ export const CMsgClientToGCUnpackBundleResponse: MessageFns<CMsgClientToGCUnpack
     message.unpackedItemIds = object.unpackedItemIds?.map((e) => e) || [];
     message.response = object.response ?? 0;
     message.unpackedItemDefIndexes = object.unpackedItemDefIndexes?.map((e) => e) || [];
+    return message;
+  },
+};
+
+function createBaseCMsgClientToGCPackBundle(): CMsgClientToGCPackBundle {
+  return { itemIds: [], bundleItemDefIndex: 0 };
+}
+
+export const CMsgClientToGCPackBundle: MessageFns<CMsgClientToGCPackBundle> = {
+  encode(message: CMsgClientToGCPackBundle, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    writer.uint32(10).fork();
+    for (const v of message.itemIds) {
+      writer.uint64(v);
+    }
+    writer.join();
+    if (message.bundleItemDefIndex !== 0) {
+      writer.uint32(16).uint32(message.bundleItemDefIndex);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgClientToGCPackBundle {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgClientToGCPackBundle();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag === 8) {
+            message.itemIds.push(reader.uint64().toString());
+
+            continue;
+          }
+
+          if (tag === 10) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.itemIds.push(reader.uint64().toString());
+            }
+
+            continue;
+          }
+
+          break;
+        }
+        case 2: {
+          if (tag !== 16) {
+            break;
+          }
+
+          message.bundleItemDefIndex = reader.uint32();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCPackBundle {
+    return {
+      itemIds: globalThis.Array.isArray(object?.itemIds) ? object.itemIds.map((e: any) => globalThis.String(e)) : [],
+      bundleItemDefIndex: isSet(object.bundleItemDefIndex) ? globalThis.Number(object.bundleItemDefIndex) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCPackBundle): unknown {
+    const obj: any = {};
+    if (message.itemIds?.length) {
+      obj.itemIds = message.itemIds;
+    }
+    if (message.bundleItemDefIndex !== 0) {
+      obj.bundleItemDefIndex = Math.round(message.bundleItemDefIndex);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCPackBundle>): CMsgClientToGCPackBundle {
+    return CMsgClientToGCPackBundle.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgClientToGCPackBundle>): CMsgClientToGCPackBundle {
+    const message = createBaseCMsgClientToGCPackBundle();
+    message.itemIds = object.itemIds?.map((e) => e) || [];
+    message.bundleItemDefIndex = object.bundleItemDefIndex ?? 0;
+    return message;
+  },
+};
+
+function createBaseCMsgClientToGCPackBundleResponse(): CMsgClientToGCPackBundleResponse {
+  return { itemId: "0", response: 0 };
+}
+
+export const CMsgClientToGCPackBundleResponse: MessageFns<CMsgClientToGCPackBundleResponse> = {
+  encode(message: CMsgClientToGCPackBundleResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.itemId !== "0") {
+      writer.uint32(8).uint64(message.itemId);
+    }
+    if (message.response !== 0) {
+      writer.uint32(16).int32(message.response);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgClientToGCPackBundleResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgClientToGCPackBundleResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.itemId = reader.uint64().toString();
+          continue;
+        }
+        case 2: {
+          if (tag !== 16) {
+            break;
+          }
+
+          message.response = reader.int32() as any;
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCPackBundleResponse {
+    return {
+      itemId: isSet(object.itemId) ? globalThis.String(object.itemId) : "0",
+      response: isSet(object.response) ? cMsgClientToGCPackBundleResponse_EPackBundleFromJSON(object.response) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCPackBundleResponse): unknown {
+    const obj: any = {};
+    if (message.itemId !== "0") {
+      obj.itemId = message.itemId;
+    }
+    if (message.response !== 0) {
+      obj.response = cMsgClientToGCPackBundleResponse_EPackBundleToJSON(message.response);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCPackBundleResponse>): CMsgClientToGCPackBundleResponse {
+    return CMsgClientToGCPackBundleResponse.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgClientToGCPackBundleResponse>): CMsgClientToGCPackBundleResponse {
+    const message = createBaseCMsgClientToGCPackBundleResponse();
+    message.itemId = object.itemId ?? "0";
+    message.response = object.response ?? 0;
     return message;
   },
 };
@@ -11533,6 +12251,7 @@ function createBaseCMsgProcessTransactionOrder_Item(): CMsgProcessTransactionOrd
     parentStackIndex: 0,
     defaultPrice: false,
     isUserFacing: false,
+    priceIndex: 0,
   };
 }
 
@@ -11564,6 +12283,9 @@ export const CMsgProcessTransactionOrder_Item: MessageFns<CMsgProcessTransaction
     }
     if (message.isUserFacing !== false) {
       writer.uint32(72).bool(message.isUserFacing);
+    }
+    if (message.priceIndex !== 0) {
+      writer.uint32(88).int32(message.priceIndex);
     }
     return writer;
   },
@@ -11647,6 +12369,14 @@ export const CMsgProcessTransactionOrder_Item: MessageFns<CMsgProcessTransaction
           message.isUserFacing = reader.bool();
           continue;
         }
+        case 11: {
+          if (tag !== 88) {
+            break;
+          }
+
+          message.priceIndex = reader.int32();
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -11667,6 +12397,7 @@ export const CMsgProcessTransactionOrder_Item: MessageFns<CMsgProcessTransaction
       parentStackIndex: isSet(object.parentStackIndex) ? globalThis.Number(object.parentStackIndex) : 0,
       defaultPrice: isSet(object.defaultPrice) ? globalThis.Boolean(object.defaultPrice) : false,
       isUserFacing: isSet(object.isUserFacing) ? globalThis.Boolean(object.isUserFacing) : false,
+      priceIndex: isSet(object.priceIndex) ? globalThis.Number(object.priceIndex) : 0,
     };
   },
 
@@ -11699,6 +12430,9 @@ export const CMsgProcessTransactionOrder_Item: MessageFns<CMsgProcessTransaction
     if (message.isUserFacing !== false) {
       obj.isUserFacing = message.isUserFacing;
     }
+    if (message.priceIndex !== 0) {
+      obj.priceIndex = Math.round(message.priceIndex);
+    }
     return obj;
   },
 
@@ -11716,6 +12450,7 @@ export const CMsgProcessTransactionOrder_Item: MessageFns<CMsgProcessTransaction
     message.parentStackIndex = object.parentStackIndex ?? 0;
     message.defaultPrice = object.defaultPrice ?? false;
     message.isUserFacing = object.isUserFacing ?? false;
+    message.priceIndex = object.priceIndex ?? 0;
     return message;
   },
 };
@@ -12000,7 +12735,7 @@ export const CMsgGCToGCStoreProcessSettlementResponse: MessageFns<CMsgGCToGCStor
 };
 
 function createBaseCMsgGCToGCBroadcastConsoleCommand(): CMsgGCToGCBroadcastConsoleCommand {
-  return { conCommand: "", reportOutput: false, sendingGc: -1, outputInitiator: "" };
+  return { conCommand: "", reportOutput: false, sendingGc: -1, outputInitiator: "", senderSource: "" };
 }
 
 export const CMsgGCToGCBroadcastConsoleCommand: MessageFns<CMsgGCToGCBroadcastConsoleCommand> = {
@@ -12016,6 +12751,9 @@ export const CMsgGCToGCBroadcastConsoleCommand: MessageFns<CMsgGCToGCBroadcastCo
     }
     if (message.outputInitiator !== "") {
       writer.uint32(34).string(message.outputInitiator);
+    }
+    if (message.senderSource !== "") {
+      writer.uint32(42).string(message.senderSource);
     }
     return writer;
   },
@@ -12059,6 +12797,14 @@ export const CMsgGCToGCBroadcastConsoleCommand: MessageFns<CMsgGCToGCBroadcastCo
           message.outputInitiator = reader.string();
           continue;
         }
+        case 5: {
+          if (tag !== 42) {
+            break;
+          }
+
+          message.senderSource = reader.string();
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -12074,6 +12820,7 @@ export const CMsgGCToGCBroadcastConsoleCommand: MessageFns<CMsgGCToGCBroadcastCo
       reportOutput: isSet(object.reportOutput) ? globalThis.Boolean(object.reportOutput) : false,
       sendingGc: isSet(object.sendingGc) ? globalThis.Number(object.sendingGc) : -1,
       outputInitiator: isSet(object.outputInitiator) ? globalThis.String(object.outputInitiator) : "",
+      senderSource: isSet(object.senderSource) ? globalThis.String(object.senderSource) : "",
     };
   },
 
@@ -12091,6 +12838,9 @@ export const CMsgGCToGCBroadcastConsoleCommand: MessageFns<CMsgGCToGCBroadcastCo
     if (message.outputInitiator !== "") {
       obj.outputInitiator = message.outputInitiator;
     }
+    if (message.senderSource !== "") {
+      obj.senderSource = message.senderSource;
+    }
     return obj;
   },
 
@@ -12103,6 +12853,7 @@ export const CMsgGCToGCBroadcastConsoleCommand: MessageFns<CMsgGCToGCBroadcastCo
     message.reportOutput = object.reportOutput ?? false;
     message.sendingGc = object.sendingGc ?? -1;
     message.outputInitiator = object.outputInitiator ?? "";
+    message.senderSource = object.senderSource ?? "";
     return message;
   },
 };
@@ -13806,6 +14557,715 @@ export const CMsgClientToGCGetLimitedItemPurchaseQuantityResponse: MessageFns<
     const message = createBaseCMsgClientToGCGetLimitedItemPurchaseQuantityResponse();
     message.result = object.result ?? 0;
     message.quantityPurchased = object.quantityPurchased ?? 0;
+    return message;
+  },
+};
+
+function createBaseCMsgClientToGCGetInFlightItemCharges(): CMsgClientToGCGetInFlightItemCharges {
+  return { itemDef: 0 };
+}
+
+export const CMsgClientToGCGetInFlightItemCharges: MessageFns<CMsgClientToGCGetInFlightItemCharges> = {
+  encode(message: CMsgClientToGCGetInFlightItemCharges, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.itemDef !== 0) {
+      writer.uint32(8).uint32(message.itemDef);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgClientToGCGetInFlightItemCharges {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgClientToGCGetInFlightItemCharges();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.itemDef = reader.uint32();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCGetInFlightItemCharges {
+    return { itemDef: isSet(object.itemDef) ? globalThis.Number(object.itemDef) : 0 };
+  },
+
+  toJSON(message: CMsgClientToGCGetInFlightItemCharges): unknown {
+    const obj: any = {};
+    if (message.itemDef !== 0) {
+      obj.itemDef = Math.round(message.itemDef);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCGetInFlightItemCharges>): CMsgClientToGCGetInFlightItemCharges {
+    return CMsgClientToGCGetInFlightItemCharges.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgClientToGCGetInFlightItemCharges>): CMsgClientToGCGetInFlightItemCharges {
+    const message = createBaseCMsgClientToGCGetInFlightItemCharges();
+    message.itemDef = object.itemDef ?? 0;
+    return message;
+  },
+};
+
+function createBaseCMsgClientToGCGetInFlightItemChargesResponse(): CMsgClientToGCGetInFlightItemChargesResponse {
+  return { result: 0, chargesInFlight: 0 };
+}
+
+export const CMsgClientToGCGetInFlightItemChargesResponse: MessageFns<CMsgClientToGCGetInFlightItemChargesResponse> = {
+  encode(
+    message: CMsgClientToGCGetInFlightItemChargesResponse,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.result !== 0) {
+      writer.uint32(8).int32(message.result);
+    }
+    if (message.chargesInFlight !== 0) {
+      writer.uint32(16).uint32(message.chargesInFlight);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgClientToGCGetInFlightItemChargesResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgClientToGCGetInFlightItemChargesResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.result = reader.int32() as any;
+          continue;
+        }
+        case 2: {
+          if (tag !== 16) {
+            break;
+          }
+
+          message.chargesInFlight = reader.uint32();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCGetInFlightItemChargesResponse {
+    return {
+      result: isSet(object.result) ? cMsgClientToGCGetInFlightItemChargesResponse_EResponseFromJSON(object.result) : 0,
+      chargesInFlight: isSet(object.chargesInFlight) ? globalThis.Number(object.chargesInFlight) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCGetInFlightItemChargesResponse): unknown {
+    const obj: any = {};
+    if (message.result !== 0) {
+      obj.result = cMsgClientToGCGetInFlightItemChargesResponse_EResponseToJSON(message.result);
+    }
+    if (message.chargesInFlight !== 0) {
+      obj.chargesInFlight = Math.round(message.chargesInFlight);
+    }
+    return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCGetInFlightItemChargesResponse>,
+  ): CMsgClientToGCGetInFlightItemChargesResponse {
+    return CMsgClientToGCGetInFlightItemChargesResponse.fromPartial(base ?? {});
+  },
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCGetInFlightItemChargesResponse>,
+  ): CMsgClientToGCGetInFlightItemChargesResponse {
+    const message = createBaseCMsgClientToGCGetInFlightItemChargesResponse();
+    message.result = object.result ?? 0;
+    message.chargesInFlight = object.chargesInFlight ?? 0;
+    return message;
+  },
+};
+
+function createBaseCMsgClientToGCPurchaseChargeCostItems(): CMsgClientToGCPurchaseChargeCostItems {
+  return { items: [], currency: 0 };
+}
+
+export const CMsgClientToGCPurchaseChargeCostItems: MessageFns<CMsgClientToGCPurchaseChargeCostItems> = {
+  encode(message: CMsgClientToGCPurchaseChargeCostItems, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    for (const v of message.items) {
+      CMsgClientToGCPurchaseChargeCostItems_Item.encode(v!, writer.uint32(10).fork()).join();
+    }
+    if (message.currency !== 0) {
+      writer.uint32(16).uint32(message.currency);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgClientToGCPurchaseChargeCostItems {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgClientToGCPurchaseChargeCostItems();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.items.push(CMsgClientToGCPurchaseChargeCostItems_Item.decode(reader, reader.uint32()));
+          continue;
+        }
+        case 2: {
+          if (tag !== 16) {
+            break;
+          }
+
+          message.currency = reader.uint32();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCPurchaseChargeCostItems {
+    return {
+      items: globalThis.Array.isArray(object?.items)
+        ? object.items.map((e: any) => CMsgClientToGCPurchaseChargeCostItems_Item.fromJSON(e))
+        : [],
+      currency: isSet(object.currency) ? globalThis.Number(object.currency) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCPurchaseChargeCostItems): unknown {
+    const obj: any = {};
+    if (message.items?.length) {
+      obj.items = message.items.map((e) => CMsgClientToGCPurchaseChargeCostItems_Item.toJSON(e));
+    }
+    if (message.currency !== 0) {
+      obj.currency = Math.round(message.currency);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCPurchaseChargeCostItems>): CMsgClientToGCPurchaseChargeCostItems {
+    return CMsgClientToGCPurchaseChargeCostItems.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgClientToGCPurchaseChargeCostItems>): CMsgClientToGCPurchaseChargeCostItems {
+    const message = createBaseCMsgClientToGCPurchaseChargeCostItems();
+    message.items = object.items?.map((e) => CMsgClientToGCPurchaseChargeCostItems_Item.fromPartial(e)) || [];
+    message.currency = object.currency ?? 0;
+    return message;
+  },
+};
+
+function createBaseCMsgClientToGCPurchaseChargeCostItems_Item(): CMsgClientToGCPurchaseChargeCostItems_Item {
+  return { itemDefIndex: 0, quantity: 0, sourceReferenceId: "0", priceIndex: 0 };
+}
+
+export const CMsgClientToGCPurchaseChargeCostItems_Item: MessageFns<CMsgClientToGCPurchaseChargeCostItems_Item> = {
+  encode(message: CMsgClientToGCPurchaseChargeCostItems_Item, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.itemDefIndex !== 0) {
+      writer.uint32(8).uint32(message.itemDefIndex);
+    }
+    if (message.quantity !== 0) {
+      writer.uint32(16).uint32(message.quantity);
+    }
+    if (message.sourceReferenceId !== "0") {
+      writer.uint32(24).uint64(message.sourceReferenceId);
+    }
+    if (message.priceIndex !== 0) {
+      writer.uint32(32).int32(message.priceIndex);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgClientToGCPurchaseChargeCostItems_Item {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgClientToGCPurchaseChargeCostItems_Item();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.itemDefIndex = reader.uint32();
+          continue;
+        }
+        case 2: {
+          if (tag !== 16) {
+            break;
+          }
+
+          message.quantity = reader.uint32();
+          continue;
+        }
+        case 3: {
+          if (tag !== 24) {
+            break;
+          }
+
+          message.sourceReferenceId = reader.uint64().toString();
+          continue;
+        }
+        case 4: {
+          if (tag !== 32) {
+            break;
+          }
+
+          message.priceIndex = reader.int32();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCPurchaseChargeCostItems_Item {
+    return {
+      itemDefIndex: isSet(object.itemDefIndex) ? globalThis.Number(object.itemDefIndex) : 0,
+      quantity: isSet(object.quantity) ? globalThis.Number(object.quantity) : 0,
+      sourceReferenceId: isSet(object.sourceReferenceId) ? globalThis.String(object.sourceReferenceId) : "0",
+      priceIndex: isSet(object.priceIndex) ? globalThis.Number(object.priceIndex) : 0,
+    };
+  },
+
+  toJSON(message: CMsgClientToGCPurchaseChargeCostItems_Item): unknown {
+    const obj: any = {};
+    if (message.itemDefIndex !== 0) {
+      obj.itemDefIndex = Math.round(message.itemDefIndex);
+    }
+    if (message.quantity !== 0) {
+      obj.quantity = Math.round(message.quantity);
+    }
+    if (message.sourceReferenceId !== "0") {
+      obj.sourceReferenceId = message.sourceReferenceId;
+    }
+    if (message.priceIndex !== 0) {
+      obj.priceIndex = Math.round(message.priceIndex);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCPurchaseChargeCostItems_Item>): CMsgClientToGCPurchaseChargeCostItems_Item {
+    return CMsgClientToGCPurchaseChargeCostItems_Item.fromPartial(base ?? {});
+  },
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCPurchaseChargeCostItems_Item>,
+  ): CMsgClientToGCPurchaseChargeCostItems_Item {
+    const message = createBaseCMsgClientToGCPurchaseChargeCostItems_Item();
+    message.itemDefIndex = object.itemDefIndex ?? 0;
+    message.quantity = object.quantity ?? 0;
+    message.sourceReferenceId = object.sourceReferenceId ?? "0";
+    message.priceIndex = object.priceIndex ?? 0;
+    return message;
+  },
+};
+
+function createBaseCMsgClientToGCPurchaseChargeCostItemsResponse(): CMsgClientToGCPurchaseChargeCostItemsResponse {
+  return { result: 0, itemIds: [] };
+}
+
+export const CMsgClientToGCPurchaseChargeCostItemsResponse: MessageFns<CMsgClientToGCPurchaseChargeCostItemsResponse> =
+  {
+    encode(
+      message: CMsgClientToGCPurchaseChargeCostItemsResponse,
+      writer: BinaryWriter = new BinaryWriter(),
+    ): BinaryWriter {
+      if (message.result !== 0) {
+        writer.uint32(8).int32(message.result);
+      }
+      writer.uint32(18).fork();
+      for (const v of message.itemIds) {
+        writer.uint64(v);
+      }
+      writer.join();
+      return writer;
+    },
+
+    decode(input: BinaryReader | Uint8Array, length?: number): CMsgClientToGCPurchaseChargeCostItemsResponse {
+      const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+      let end = length === undefined ? reader.len : reader.pos + length;
+      const message = createBaseCMsgClientToGCPurchaseChargeCostItemsResponse();
+      while (reader.pos < end) {
+        const tag = reader.uint32();
+        switch (tag >>> 3) {
+          case 1: {
+            if (tag !== 8) {
+              break;
+            }
+
+            message.result = reader.int32() as any;
+            continue;
+          }
+          case 2: {
+            if (tag === 16) {
+              message.itemIds.push(reader.uint64().toString());
+
+              continue;
+            }
+
+            if (tag === 18) {
+              const end2 = reader.uint32() + reader.pos;
+              while (reader.pos < end2) {
+                message.itemIds.push(reader.uint64().toString());
+              }
+
+              continue;
+            }
+
+            break;
+          }
+        }
+        if ((tag & 7) === 4 || tag === 0) {
+          break;
+        }
+        reader.skip(tag & 7);
+      }
+      return message;
+    },
+
+    fromJSON(object: any): CMsgClientToGCPurchaseChargeCostItemsResponse {
+      return {
+        result: isSet(object.result)
+          ? cMsgClientToGCPurchaseChargeCostItemsResponse_EResponseFromJSON(object.result)
+          : 0,
+        itemIds: globalThis.Array.isArray(object?.itemIds) ? object.itemIds.map((e: any) => globalThis.String(e)) : [],
+      };
+    },
+
+    toJSON(message: CMsgClientToGCPurchaseChargeCostItemsResponse): unknown {
+      const obj: any = {};
+      if (message.result !== 0) {
+        obj.result = cMsgClientToGCPurchaseChargeCostItemsResponse_EResponseToJSON(message.result);
+      }
+      if (message.itemIds?.length) {
+        obj.itemIds = message.itemIds;
+      }
+      return obj;
+    },
+
+    create(
+      base?: DeepPartial<CMsgClientToGCPurchaseChargeCostItemsResponse>,
+    ): CMsgClientToGCPurchaseChargeCostItemsResponse {
+      return CMsgClientToGCPurchaseChargeCostItemsResponse.fromPartial(base ?? {});
+    },
+    fromPartial(
+      object: DeepPartial<CMsgClientToGCPurchaseChargeCostItemsResponse>,
+    ): CMsgClientToGCPurchaseChargeCostItemsResponse {
+      const message = createBaseCMsgClientToGCPurchaseChargeCostItemsResponse();
+      message.result = object.result ?? 0;
+      message.itemIds = object.itemIds?.map((e) => e) || [];
+      return message;
+    },
+  };
+
+function createBaseCMsgGCToClientInFlightChargesUpdated(): CMsgGCToClientInFlightChargesUpdated {
+  return { inFlightCharges: [] };
+}
+
+export const CMsgGCToClientInFlightChargesUpdated: MessageFns<CMsgGCToClientInFlightChargesUpdated> = {
+  encode(message: CMsgGCToClientInFlightChargesUpdated, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    for (const v of message.inFlightCharges) {
+      CMsgGCToClientInFlightChargesUpdated_ItemCharges.encode(v!, writer.uint32(18).fork()).join();
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgGCToClientInFlightChargesUpdated {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgGCToClientInFlightChargesUpdated();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 2: {
+          if (tag !== 18) {
+            break;
+          }
+
+          message.inFlightCharges.push(
+            CMsgGCToClientInFlightChargesUpdated_ItemCharges.decode(reader, reader.uint32()),
+          );
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgGCToClientInFlightChargesUpdated {
+    return {
+      inFlightCharges: globalThis.Array.isArray(object?.inFlightCharges)
+        ? object.inFlightCharges.map((e: any) => CMsgGCToClientInFlightChargesUpdated_ItemCharges.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgGCToClientInFlightChargesUpdated): unknown {
+    const obj: any = {};
+    if (message.inFlightCharges?.length) {
+      obj.inFlightCharges = message.inFlightCharges.map((e) =>
+        CMsgGCToClientInFlightChargesUpdated_ItemCharges.toJSON(e)
+      );
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToClientInFlightChargesUpdated>): CMsgGCToClientInFlightChargesUpdated {
+    return CMsgGCToClientInFlightChargesUpdated.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgGCToClientInFlightChargesUpdated>): CMsgGCToClientInFlightChargesUpdated {
+    const message = createBaseCMsgGCToClientInFlightChargesUpdated();
+    message.inFlightCharges =
+      object.inFlightCharges?.map((e) => CMsgGCToClientInFlightChargesUpdated_ItemCharges.fromPartial(e)) || [];
+    return message;
+  },
+};
+
+function createBaseCMsgGCToClientInFlightChargesUpdated_ItemCharges(): CMsgGCToClientInFlightChargesUpdated_ItemCharges {
+  return { itemDef: 0, chargesInFlight: 0 };
+}
+
+export const CMsgGCToClientInFlightChargesUpdated_ItemCharges: MessageFns<
+  CMsgGCToClientInFlightChargesUpdated_ItemCharges
+> = {
+  encode(
+    message: CMsgGCToClientInFlightChargesUpdated_ItemCharges,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.itemDef !== 0) {
+      writer.uint32(8).uint32(message.itemDef);
+    }
+    if (message.chargesInFlight !== 0) {
+      writer.uint32(16).uint32(message.chargesInFlight);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgGCToClientInFlightChargesUpdated_ItemCharges {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgGCToClientInFlightChargesUpdated_ItemCharges();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.itemDef = reader.uint32();
+          continue;
+        }
+        case 2: {
+          if (tag !== 16) {
+            break;
+          }
+
+          message.chargesInFlight = reader.uint32();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgGCToClientInFlightChargesUpdated_ItemCharges {
+    return {
+      itemDef: isSet(object.itemDef) ? globalThis.Number(object.itemDef) : 0,
+      chargesInFlight: isSet(object.chargesInFlight) ? globalThis.Number(object.chargesInFlight) : 0,
+    };
+  },
+
+  toJSON(message: CMsgGCToClientInFlightChargesUpdated_ItemCharges): unknown {
+    const obj: any = {};
+    if (message.itemDef !== 0) {
+      obj.itemDef = Math.round(message.itemDef);
+    }
+    if (message.chargesInFlight !== 0) {
+      obj.chargesInFlight = Math.round(message.chargesInFlight);
+    }
+    return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgGCToClientInFlightChargesUpdated_ItemCharges>,
+  ): CMsgGCToClientInFlightChargesUpdated_ItemCharges {
+    return CMsgGCToClientInFlightChargesUpdated_ItemCharges.fromPartial(base ?? {});
+  },
+  fromPartial(
+    object: DeepPartial<CMsgGCToClientInFlightChargesUpdated_ItemCharges>,
+  ): CMsgGCToClientInFlightChargesUpdated_ItemCharges {
+    const message = createBaseCMsgGCToClientInFlightChargesUpdated_ItemCharges();
+    message.itemDef = object.itemDef ?? 0;
+    message.chargesInFlight = object.chargesInFlight ?? 0;
+    return message;
+  },
+};
+
+function createBaseCMsgClientToGCCancelUnfinalizedTransactions(): CMsgClientToGCCancelUnfinalizedTransactions {
+  return { unused: 0 };
+}
+
+export const CMsgClientToGCCancelUnfinalizedTransactions: MessageFns<CMsgClientToGCCancelUnfinalizedTransactions> = {
+  encode(
+    message: CMsgClientToGCCancelUnfinalizedTransactions,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.unused !== 0) {
+      writer.uint32(8).uint32(message.unused);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgClientToGCCancelUnfinalizedTransactions {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgClientToGCCancelUnfinalizedTransactions();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.unused = reader.uint32();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCCancelUnfinalizedTransactions {
+    return { unused: isSet(object.unused) ? globalThis.Number(object.unused) : 0 };
+  },
+
+  toJSON(message: CMsgClientToGCCancelUnfinalizedTransactions): unknown {
+    const obj: any = {};
+    if (message.unused !== 0) {
+      obj.unused = Math.round(message.unused);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgClientToGCCancelUnfinalizedTransactions>): CMsgClientToGCCancelUnfinalizedTransactions {
+    return CMsgClientToGCCancelUnfinalizedTransactions.fromPartial(base ?? {});
+  },
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCancelUnfinalizedTransactions>,
+  ): CMsgClientToGCCancelUnfinalizedTransactions {
+    const message = createBaseCMsgClientToGCCancelUnfinalizedTransactions();
+    message.unused = object.unused ?? 0;
+    return message;
+  },
+};
+
+function createBaseCMsgClientToGCCancelUnfinalizedTransactionsResponse(): CMsgClientToGCCancelUnfinalizedTransactionsResponse {
+  return { result: 0 };
+}
+
+export const CMsgClientToGCCancelUnfinalizedTransactionsResponse: MessageFns<
+  CMsgClientToGCCancelUnfinalizedTransactionsResponse
+> = {
+  encode(
+    message: CMsgClientToGCCancelUnfinalizedTransactionsResponse,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.result !== 0) {
+      writer.uint32(8).uint32(message.result);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgClientToGCCancelUnfinalizedTransactionsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgClientToGCCancelUnfinalizedTransactionsResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.result = reader.uint32();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgClientToGCCancelUnfinalizedTransactionsResponse {
+    return { result: isSet(object.result) ? globalThis.Number(object.result) : 0 };
+  },
+
+  toJSON(message: CMsgClientToGCCancelUnfinalizedTransactionsResponse): unknown {
+    const obj: any = {};
+    if (message.result !== 0) {
+      obj.result = Math.round(message.result);
+    }
+    return obj;
+  },
+
+  create(
+    base?: DeepPartial<CMsgClientToGCCancelUnfinalizedTransactionsResponse>,
+  ): CMsgClientToGCCancelUnfinalizedTransactionsResponse {
+    return CMsgClientToGCCancelUnfinalizedTransactionsResponse.fromPartial(base ?? {});
+  },
+  fromPartial(
+    object: DeepPartial<CMsgClientToGCCancelUnfinalizedTransactionsResponse>,
+  ): CMsgClientToGCCancelUnfinalizedTransactionsResponse {
+    const message = createBaseCMsgClientToGCCancelUnfinalizedTransactionsResponse();
+    message.result = object.result ?? 0;
     return message;
   },
 };

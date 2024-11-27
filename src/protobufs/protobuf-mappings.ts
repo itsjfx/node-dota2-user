@@ -5,6 +5,8 @@ export const ClientProtobufs = {
     [protobufs.EDOTAGCMsg.k_EMsgGCKickedFromMatchmakingQueue]: protobufs.CMsgDOTAKickedFromMatchmakingQueue as MessageFns<protobufs.CMsgDOTAKickedFromMatchmakingQueue>,
     [protobufs.EDOTAGCMsg.k_EMsgGCReportsRemainingRequest]: protobufs.CMsgDOTAReportsRemainingRequest as MessageFns<protobufs.CMsgDOTAReportsRemainingRequest>,
     [protobufs.EDOTAGCMsg.k_EMsgGCSubmitPlayerReport]: protobufs.CMsgDOTASubmitPlayerReport as MessageFns<protobufs.CMsgDOTASubmitPlayerReport>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCSubmitPlayerReportV2]: protobufs.CMsgDOTASubmitPlayerReportV2 as MessageFns<protobufs.CMsgDOTASubmitPlayerReportV2>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCSubmitPlayerReportResponseV2]: protobufs.CMsgDOTASubmitPlayerReportResponseV2 as MessageFns<protobufs.CMsgDOTASubmitPlayerReportResponseV2>,
     [protobufs.EDOTAGCMsg.k_EMsgGCMatchDetailsRequest]: protobufs.CMsgGCMatchDetailsRequest as MessageFns<protobufs.CMsgGCMatchDetailsRequest>,
     [protobufs.EDOTAGCMsg.k_EMsgGCPopup]: protobufs.CMsgDOTAPopup as MessageFns<protobufs.CMsgDOTAPopup>,
     [protobufs.EDOTAGCMsg.k_EMsgGCBalancedShuffleLobby]: protobufs.CMsgBalancedShuffleLobby as MessageFns<protobufs.CMsgBalancedShuffleLobby>,
@@ -17,7 +19,6 @@ export const ClientProtobufs = {
     [protobufs.EDOTAGCMsg.k_EMsgGCItemEditorReservationsRequest]: protobufs.CMsgGCItemEditorReservationsRequest as MessageFns<protobufs.CMsgGCItemEditorReservationsRequest>,
     [protobufs.EDOTAGCMsg.k_EMsgGCItemEditorReserveItemDef]: protobufs.CMsgGCItemEditorReserveItemDef as MessageFns<protobufs.CMsgGCItemEditorReserveItemDef>,
     [protobufs.EDOTAGCMsg.k_EMsgGCItemEditorReleaseReservation]: protobufs.CMsgGCItemEditorReleaseReservation as MessageFns<protobufs.CMsgGCItemEditorReleaseReservation>,
-    [protobufs.EDOTAGCMsg.k_EMsgGCRewardTutorialPrizes]: protobufs.CMsgDOTARewardTutorialPrizes as MessageFns<protobufs.CMsgDOTARewardTutorialPrizes>,
     [protobufs.EDOTAGCMsg.k_EMsgGCFlipLobbyTeams]: protobufs.CMsgFlipLobbyTeams as MessageFns<protobufs.CMsgFlipLobbyTeams>,
     [protobufs.EDOTAGCMsg.k_EMsgGCNotifyAccountFlagsChange]: protobufs.CMsgDOTANotifyAccountFlagsChange as MessageFns<protobufs.CMsgDOTANotifyAccountFlagsChange>,
     [protobufs.EDOTAGCMsg.k_EMsgGCSetProfilePrivacy]: protobufs.CMsgDOTASetProfilePrivacy as MessageFns<protobufs.CMsgDOTASetProfilePrivacy>,
@@ -135,6 +136,8 @@ export const ClientProtobufs = {
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftSell]: protobufs.CMsgClientToGCUnderDraftSell as MessageFns<protobufs.CMsgClientToGCUnderDraftSell>,
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRequest]: protobufs.CMsgClientToGCUnderDraftRequest as MessageFns<protobufs.CMsgClientToGCUnderDraftRequest>,
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRedeemReward]: protobufs.CMsgClientToGCUnderDraftRedeemReward as MessageFns<protobufs.CMsgClientToGCUnderDraftRedeemReward>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestReporterUpdates]: protobufs.CMsgClientToGCRequestReporterUpdates as MessageFns<protobufs.CMsgClientToGCRequestReporterUpdates>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCAcknowledgeReporterUpdates]: protobufs.CMsgClientToGCAcknowledgeReporterUpdates as MessageFns<protobufs.CMsgClientToGCAcknowledgeReporterUpdates>,
     [protobufs.EDOTAGCMsg.k_EMsgLobbyFeaturedGamemodeProgress]: protobufs.CMsgLobbyFeaturedGamemodeProgress as MessageFns<protobufs.CMsgLobbyFeaturedGamemodeProgress>,
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitDraftTriviaMatchAnswer]: protobufs.CMsgClientToGCSubmitDraftTriviaMatchAnswer as MessageFns<protobufs.CMsgClientToGCSubmitDraftTriviaMatchAnswer>,
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRollBackBench]: protobufs.CMsgClientToGCUnderDraftRollBackBench as MessageFns<protobufs.CMsgClientToGCUnderDraftRollBackBench>,
@@ -164,11 +167,40 @@ export const ClientProtobufs = {
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCUploadMatchClip]: protobufs.CMsgClientToGCUploadMatchClip as MessageFns<protobufs.CMsgClientToGCUploadMatchClip>,
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCRankRequest]: protobufs.CMsgClientToGCRankRequest as MessageFns<protobufs.CMsgClientToGCRankRequest>,
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCMapStatsRequest]: protobufs.CMsgClientToGCMapStatsRequest as MessageFns<protobufs.CMsgClientToGCMapStatsRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRoadToTIGetQuests]: protobufs.CMsgClientToGCRoadToTIGetQuests as MessageFns<protobufs.CMsgClientToGCRoadToTIGetQuests>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRoadToTIGetActiveQuest]: protobufs.CMsgClientToGCRoadToTIGetActiveQuest as MessageFns<protobufs.CMsgClientToGCRoadToTIGetActiveQuest>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRoadToTIUseItem]: protobufs.CMsgClientToGCRoadToTIUseItem as MessageFns<protobufs.CMsgClientToGCRoadToTIUseItem>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRoadToTIDevForceQuest]: protobufs.CMsgClientToGCRoadToTIDevForceQuest as MessageFns<protobufs.CMsgClientToGCRoadToTIDevForceQuest>,
+    [protobufs.EDOTAGCMsg.k_EMsgLobbyRoadToTIMatchQuestData]: protobufs.CMsgLobbyRoadToTIMatchQuestData as MessageFns<protobufs.CMsgLobbyRoadToTIMatchQuestData>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldGetUserData]: protobufs.CMsgClientToGCOverworldGetUserData as MessageFns<protobufs.CMsgClientToGCOverworldGetUserData>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldCompletePath]: protobufs.CMsgClientToGCOverworldCompletePath as MessageFns<protobufs.CMsgClientToGCOverworldCompletePath>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldClaimEncounterReward]: protobufs.CMsgClientToGCOverworldClaimEncounterReward as MessageFns<protobufs.CMsgClientToGCOverworldClaimEncounterReward>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldDevResetAll]: protobufs.CMsgClientToGCOverworldDevResetAll as MessageFns<protobufs.CMsgClientToGCOverworldDevResetAll>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldDevResetNode]: protobufs.CMsgClientToGCOverworldDevResetNode as MessageFns<protobufs.CMsgClientToGCOverworldDevResetNode>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldDevGrantTokens]: protobufs.CMsgClientToGCOverworldDevGrantTokens as MessageFns<protobufs.CMsgClientToGCOverworldDevGrantTokens>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldDevClearInventory]: protobufs.CMsgClientToGCOverworldDevClearInventory as MessageFns<protobufs.CMsgClientToGCOverworldDevClearInventory>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldMoveToNode]: protobufs.CMsgClientToGCOverworldMoveToNode as MessageFns<protobufs.CMsgClientToGCOverworldMoveToNode>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCNewBloomGift]: protobufs.CMsgClientToGCNewBloomGift as MessageFns<protobufs.CMsgClientToGCNewBloomGift>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetBannedHeroes]: protobufs.CMsgClientToGCSetBannedHeroes as MessageFns<protobufs.CMsgClientToGCSetBannedHeroes>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldTradeTokens]: protobufs.CMsgClientToGCOverworldTradeTokens as MessageFns<protobufs.CMsgClientToGCOverworldTradeTokens>,
+    [protobufs.EDOTAGCMsg.k_EMsgOverworldEncounterTokenTreasureData]: protobufs.CMsgOverworldEncounterTokenTreasureData as MessageFns<protobufs.CMsgOverworldEncounterTokenTreasureData>,
+    [protobufs.EDOTAGCMsg.k_EMsgOverworldEncounterTokenQuestData]: protobufs.CMsgOverworldEncounterTokenQuestData as MessageFns<protobufs.CMsgOverworldEncounterTokenQuestData>,
+    [protobufs.EDOTAGCMsg.k_EMsgOverworldEncounterChooseHeroData]: protobufs.CMsgOverworldEncounterChooseHeroData as MessageFns<protobufs.CMsgOverworldEncounterChooseHeroData>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUpdateComicBookStats]: protobufs.CMsgClientToGCUpdateComicBookStats as MessageFns<protobufs.CMsgClientToGCUpdateComicBookStats>,
+    [protobufs.EDOTAGCMsg.k_EMsgOverworldEncounterProgressData]: protobufs.CMsgOverworldEncounterProgressData as MessageFns<protobufs.CMsgOverworldEncounterProgressData>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldFeedback]: protobufs.CMsgClientToGCOverworldFeedback as MessageFns<protobufs.CMsgClientToGCOverworldFeedback>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldVisitEncounter]: protobufs.CMsgClientToGCOverworldVisitEncounter as MessageFns<protobufs.CMsgClientToGCOverworldVisitEncounter>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldGiftTokens]: protobufs.CMsgClientToGCOverworldGiftTokens as MessageFns<protobufs.CMsgClientToGCOverworldGiftTokens>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCDotaLabsFeedback]: protobufs.CMsgClientToGCDotaLabsFeedback as MessageFns<protobufs.CMsgClientToGCDotaLabsFeedback>,
+    [protobufs.EDOTAGCMsg.k_EMsgOverworldEncounterPitFighterRewardData]: protobufs.CMsgOverworldEncounterPitFighterRewardData as MessageFns<protobufs.CMsgOverworldEncounterPitFighterRewardData>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldGetDynamicImage]: protobufs.CMsgClientToGCOverworldGetDynamicImage as MessageFns<protobufs.CMsgClientToGCOverworldGetDynamicImage>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCCompendiumRemoveAllSelections]: protobufs.CMsgDOTACompendiumRemoveAllSelections as MessageFns<protobufs.CMsgDOTACompendiumRemoveAllSelections>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldMinigameAction]: protobufs.CMsgClientToGCOverworldMinigameAction as MessageFns<protobufs.CMsgClientToGCOverworldMinigameAction>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldRequestTokensNeededByFriend]: protobufs.CMsgClientToGCOverworldRequestTokensNeededByFriend as MessageFns<protobufs.CMsgClientToGCOverworldRequestTokensNeededByFriend>,
     [protobufs.EGCBaseClientMsg.k_EMsgGCClientHello]: protobufs.CMsgClientHello as MessageFns<protobufs.CMsgClientHello>,
     [protobufs.EGCBaseClientMsg.k_EMsgGCServerConnectionStatus]: protobufs.CMsgConnectionStatus as MessageFns<protobufs.CMsgConnectionStatus>,
     [protobufs.ESOMsg.k_ESOMsg_CacheSubscriptionRefresh]: protobufs.CMsgSOCacheSubscriptionRefresh as MessageFns<protobufs.CMsgSOCacheSubscriptionRefresh>,
     [protobufs.ESOMsg.k_ESOMsg_CacheSubscribedUpToDate]: protobufs.CMsgSOCacheSubscribedUpToDate as MessageFns<protobufs.CMsgSOCacheSubscribedUpToDate>,
-    [protobufs.EGCBaseMsg.k_EMsgGCReplicateConVars]: protobufs.CMsgReplicateConVars as MessageFns<protobufs.CMsgReplicateConVars>,
     [protobufs.EGCBaseMsg.k_EMsgGCInviteToParty]: protobufs.CMsgInviteToParty as MessageFns<protobufs.CMsgInviteToParty>,
     [protobufs.EGCBaseMsg.k_EMsgGCInvitationCreated]: protobufs.CMsgInvitationCreated as MessageFns<protobufs.CMsgInvitationCreated>,
     [protobufs.EGCBaseMsg.k_EMsgGCKickFromParty]: protobufs.CMsgKickFromParty as MessageFns<protobufs.CMsgKickFromParty>,
@@ -186,6 +218,8 @@ export type ClientProtobufsType = {
     [protobufs.EDOTAGCMsg.k_EMsgGCKickedFromMatchmakingQueue]: protobufs.CMsgDOTAKickedFromMatchmakingQueue;
     [protobufs.EDOTAGCMsg.k_EMsgGCReportsRemainingRequest]: protobufs.CMsgDOTAReportsRemainingRequest;
     [protobufs.EDOTAGCMsg.k_EMsgGCSubmitPlayerReport]: protobufs.CMsgDOTASubmitPlayerReport;
+    [protobufs.EDOTAGCMsg.k_EMsgGCSubmitPlayerReportV2]: protobufs.CMsgDOTASubmitPlayerReportV2;
+    [protobufs.EDOTAGCMsg.k_EMsgGCSubmitPlayerReportResponseV2]: protobufs.CMsgDOTASubmitPlayerReportResponseV2;
     [protobufs.EDOTAGCMsg.k_EMsgGCMatchDetailsRequest]: protobufs.CMsgGCMatchDetailsRequest;
     [protobufs.EDOTAGCMsg.k_EMsgGCPopup]: protobufs.CMsgDOTAPopup;
     [protobufs.EDOTAGCMsg.k_EMsgGCBalancedShuffleLobby]: protobufs.CMsgBalancedShuffleLobby;
@@ -198,7 +232,6 @@ export type ClientProtobufsType = {
     [protobufs.EDOTAGCMsg.k_EMsgGCItemEditorReservationsRequest]: protobufs.CMsgGCItemEditorReservationsRequest;
     [protobufs.EDOTAGCMsg.k_EMsgGCItemEditorReserveItemDef]: protobufs.CMsgGCItemEditorReserveItemDef;
     [protobufs.EDOTAGCMsg.k_EMsgGCItemEditorReleaseReservation]: protobufs.CMsgGCItemEditorReleaseReservation;
-    [protobufs.EDOTAGCMsg.k_EMsgGCRewardTutorialPrizes]: protobufs.CMsgDOTARewardTutorialPrizes;
     [protobufs.EDOTAGCMsg.k_EMsgGCFlipLobbyTeams]: protobufs.CMsgFlipLobbyTeams;
     [protobufs.EDOTAGCMsg.k_EMsgGCNotifyAccountFlagsChange]: protobufs.CMsgDOTANotifyAccountFlagsChange;
     [protobufs.EDOTAGCMsg.k_EMsgGCSetProfilePrivacy]: protobufs.CMsgDOTASetProfilePrivacy;
@@ -316,6 +349,8 @@ export type ClientProtobufsType = {
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftSell]: protobufs.CMsgClientToGCUnderDraftSell;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRequest]: protobufs.CMsgClientToGCUnderDraftRequest;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRedeemReward]: protobufs.CMsgClientToGCUnderDraftRedeemReward;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestReporterUpdates]: protobufs.CMsgClientToGCRequestReporterUpdates;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCAcknowledgeReporterUpdates]: protobufs.CMsgClientToGCAcknowledgeReporterUpdates;
     [protobufs.EDOTAGCMsg.k_EMsgLobbyFeaturedGamemodeProgress]: protobufs.CMsgLobbyFeaturedGamemodeProgress;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitDraftTriviaMatchAnswer]: protobufs.CMsgClientToGCSubmitDraftTriviaMatchAnswer;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRollBackBench]: protobufs.CMsgClientToGCUnderDraftRollBackBench;
@@ -345,11 +380,40 @@ export type ClientProtobufsType = {
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCUploadMatchClip]: protobufs.CMsgClientToGCUploadMatchClip;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCRankRequest]: protobufs.CMsgClientToGCRankRequest;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCMapStatsRequest]: protobufs.CMsgClientToGCMapStatsRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRoadToTIGetQuests]: protobufs.CMsgClientToGCRoadToTIGetQuests;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRoadToTIGetActiveQuest]: protobufs.CMsgClientToGCRoadToTIGetActiveQuest;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRoadToTIUseItem]: protobufs.CMsgClientToGCRoadToTIUseItem;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRoadToTIDevForceQuest]: protobufs.CMsgClientToGCRoadToTIDevForceQuest;
+    [protobufs.EDOTAGCMsg.k_EMsgLobbyRoadToTIMatchQuestData]: protobufs.CMsgLobbyRoadToTIMatchQuestData;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldGetUserData]: protobufs.CMsgClientToGCOverworldGetUserData;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldCompletePath]: protobufs.CMsgClientToGCOverworldCompletePath;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldClaimEncounterReward]: protobufs.CMsgClientToGCOverworldClaimEncounterReward;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldDevResetAll]: protobufs.CMsgClientToGCOverworldDevResetAll;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldDevResetNode]: protobufs.CMsgClientToGCOverworldDevResetNode;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldDevGrantTokens]: protobufs.CMsgClientToGCOverworldDevGrantTokens;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldDevClearInventory]: protobufs.CMsgClientToGCOverworldDevClearInventory;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldMoveToNode]: protobufs.CMsgClientToGCOverworldMoveToNode;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCNewBloomGift]: protobufs.CMsgClientToGCNewBloomGift;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCSetBannedHeroes]: protobufs.CMsgClientToGCSetBannedHeroes;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldTradeTokens]: protobufs.CMsgClientToGCOverworldTradeTokens;
+    [protobufs.EDOTAGCMsg.k_EMsgOverworldEncounterTokenTreasureData]: protobufs.CMsgOverworldEncounterTokenTreasureData;
+    [protobufs.EDOTAGCMsg.k_EMsgOverworldEncounterTokenQuestData]: protobufs.CMsgOverworldEncounterTokenQuestData;
+    [protobufs.EDOTAGCMsg.k_EMsgOverworldEncounterChooseHeroData]: protobufs.CMsgOverworldEncounterChooseHeroData;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCUpdateComicBookStats]: protobufs.CMsgClientToGCUpdateComicBookStats;
+    [protobufs.EDOTAGCMsg.k_EMsgOverworldEncounterProgressData]: protobufs.CMsgOverworldEncounterProgressData;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldFeedback]: protobufs.CMsgClientToGCOverworldFeedback;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldVisitEncounter]: protobufs.CMsgClientToGCOverworldVisitEncounter;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldGiftTokens]: protobufs.CMsgClientToGCOverworldGiftTokens;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCDotaLabsFeedback]: protobufs.CMsgClientToGCDotaLabsFeedback;
+    [protobufs.EDOTAGCMsg.k_EMsgOverworldEncounterPitFighterRewardData]: protobufs.CMsgOverworldEncounterPitFighterRewardData;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldGetDynamicImage]: protobufs.CMsgClientToGCOverworldGetDynamicImage;
+    [protobufs.EDOTAGCMsg.k_EMsgGCCompendiumRemoveAllSelections]: protobufs.CMsgDOTACompendiumRemoveAllSelections;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldMinigameAction]: protobufs.CMsgClientToGCOverworldMinigameAction;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldRequestTokensNeededByFriend]: protobufs.CMsgClientToGCOverworldRequestTokensNeededByFriend;
     [protobufs.EGCBaseClientMsg.k_EMsgGCClientHello]: protobufs.CMsgClientHello;
     [protobufs.EGCBaseClientMsg.k_EMsgGCServerConnectionStatus]: protobufs.CMsgConnectionStatus;
     [protobufs.ESOMsg.k_ESOMsg_CacheSubscriptionRefresh]: protobufs.CMsgSOCacheSubscriptionRefresh;
     [protobufs.ESOMsg.k_ESOMsg_CacheSubscribedUpToDate]: protobufs.CMsgSOCacheSubscribedUpToDate;
-    [protobufs.EGCBaseMsg.k_EMsgGCReplicateConVars]: protobufs.CMsgReplicateConVars;
     [protobufs.EGCBaseMsg.k_EMsgGCInviteToParty]: protobufs.CMsgInviteToParty;
     [protobufs.EGCBaseMsg.k_EMsgGCInvitationCreated]: protobufs.CMsgInvitationCreated;
     [protobufs.EGCBaseMsg.k_EMsgGCKickFromParty]: protobufs.CMsgKickFromParty;
@@ -485,6 +549,7 @@ export const GCProtobufs = {
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftSellResponse]: protobufs.CMsgClientToGCUnderDraftSellResponse as MessageFns<protobufs.CMsgClientToGCUnderDraftSellResponse>,
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftResponse]: protobufs.CMsgClientToGCUnderDraftResponse as MessageFns<protobufs.CMsgClientToGCUnderDraftResponse>,
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRedeemRewardResponse]: protobufs.CMsgClientToGCUnderDraftRedeemRewardResponse as MessageFns<protobufs.CMsgClientToGCUnderDraftRedeemRewardResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestReporterUpdatesResponse]: protobufs.CMsgClientToGCRequestReporterUpdatesResponse as MessageFns<protobufs.CMsgClientToGCRequestReporterUpdatesResponse>,
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitDraftTriviaMatchAnswerResponse]: protobufs.CMsgClientToGCSubmitDraftTriviaMatchAnswerResponse as MessageFns<protobufs.CMsgClientToGCSubmitDraftTriviaMatchAnswerResponse>,
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRollBackBenchResponse]: protobufs.CMsgClientToGCUnderDraftRollBackBenchResponse as MessageFns<protobufs.CMsgClientToGCUnderDraftRollBackBenchResponse>,
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetOWMatchDetailsResponse]: protobufs.CMsgClientToGCGetOWMatchDetailsResponse as MessageFns<protobufs.CMsgClientToGCGetOWMatchDetailsResponse>,
@@ -511,6 +576,29 @@ export const GCProtobufs = {
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientRankResponse]: protobufs.CMsgGCToClientRankResponse as MessageFns<protobufs.CMsgGCToClientRankResponse>,
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientRankUpdate]: protobufs.CMsgGCToClientRankUpdate as MessageFns<protobufs.CMsgGCToClientRankUpdate>,
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientMapStatsResponse]: protobufs.CMsgGCToClientMapStatsResponse as MessageFns<protobufs.CMsgGCToClientMapStatsResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRoadToTIGetQuestsResponse]: protobufs.CMsgClientToGCRoadToTIGetQuestsResponse as MessageFns<protobufs.CMsgClientToGCRoadToTIGetQuestsResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRoadToTIGetActiveQuestResponse]: protobufs.CMsgClientToGCRoadToTIGetActiveQuestResponse as MessageFns<protobufs.CMsgClientToGCRoadToTIGetActiveQuestResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientRoadToTIQuestDataUpdated]: protobufs.CMsgGCToClientRoadToTIQuestDataUpdated as MessageFns<protobufs.CMsgGCToClientRoadToTIQuestDataUpdated>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRoadToTIUseItemResponse]: protobufs.CMsgClientToGCRoadToTIUseItemResponse as MessageFns<protobufs.CMsgClientToGCRoadToTIUseItemResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldGetUserDataResponse]: protobufs.CMsgClientToGCOverworldGetUserDataResponse as MessageFns<protobufs.CMsgClientToGCOverworldGetUserDataResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldCompletePathResponse]: protobufs.CMsgClientToGCOverworldCompletePathResponse as MessageFns<protobufs.CMsgClientToGCOverworldCompletePathResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldClaimEncounterRewardResponse]: protobufs.CMsgClientToGCOverworldClaimEncounterRewardResponse as MessageFns<protobufs.CMsgClientToGCOverworldClaimEncounterRewardResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldDevResetAllResponse]: protobufs.CMsgClientToGCOverworldDevResetAllResponse as MessageFns<protobufs.CMsgClientToGCOverworldDevResetAllResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldDevResetNodeResponse]: protobufs.CMsgClientToGCOverworldDevResetNodeResponse as MessageFns<protobufs.CMsgClientToGCOverworldDevResetNodeResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldDevGrantTokensResponse]: protobufs.CMsgClientToGCOverworldDevGrantTokensResponse as MessageFns<protobufs.CMsgClientToGCOverworldDevGrantTokensResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldDevClearInventoryResponse]: protobufs.CMsgClientToGCOverworldDevClearInventoryResponse as MessageFns<protobufs.CMsgClientToGCOverworldDevClearInventoryResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientOverworldUserDataUpdated]: protobufs.CMsgGCToClientOverworldUserDataUpdated as MessageFns<protobufs.CMsgGCToClientOverworldUserDataUpdated>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldMoveToNodeResponse]: protobufs.CMsgClientToGCOverworldMoveToNodeResponse as MessageFns<protobufs.CMsgClientToGCOverworldMoveToNodeResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCNewBloomGiftResponse]: protobufs.CMsgClientToGCNewBloomGiftResponse as MessageFns<protobufs.CMsgClientToGCNewBloomGiftResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldTradeTokensResponse]: protobufs.CMsgClientToGCOverworldTradeTokensResponse as MessageFns<protobufs.CMsgClientToGCOverworldTradeTokensResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldFeedbackResponse]: protobufs.CMsgClientToGCOverworldFeedbackResponse as MessageFns<protobufs.CMsgClientToGCOverworldFeedbackResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldVisitEncounterResponse]: protobufs.CMsgClientToGCOverworldVisitEncounterResponse as MessageFns<protobufs.CMsgClientToGCOverworldVisitEncounterResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldGiftTokensResponse]: protobufs.CMsgClientToGCOverworldGiftTokensResponse as MessageFns<protobufs.CMsgClientToGCOverworldGiftTokensResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCDotaLabsFeedbackResponse]: protobufs.CMsgClientToGCDotaLabsFeedbackResponse as MessageFns<protobufs.CMsgClientToGCDotaLabsFeedbackResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldGetDynamicImageResponse]: protobufs.CMsgClientToGCOverworldGetDynamicImageResponse as MessageFns<protobufs.CMsgClientToGCOverworldGetDynamicImageResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCCompendiumRemoveAllSelectionsResponse]: protobufs.CMsgDOTACompendiumRemoveAllSelectionsResponse as MessageFns<protobufs.CMsgDOTACompendiumRemoveAllSelectionsResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldMinigameActionResponse]: protobufs.CMsgClientToGCOverworldMinigameActionResponse as MessageFns<protobufs.CMsgClientToGCOverworldMinigameActionResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldRequestTokensNeededByFriendResponse]: protobufs.CMsgClientToGCOverworldRequestTokensNeededByFriendResponse as MessageFns<protobufs.CMsgClientToGCOverworldRequestTokensNeededByFriendResponse>,
     [protobufs.EGCBaseClientMsg.k_EMsgGCToClientPollConvarRequest]: protobufs.CMsgGCToClientPollConvarRequest as MessageFns<protobufs.CMsgGCToClientPollConvarRequest>,
     [protobufs.EGCBaseClientMsg.k_EMsgGCToClientPollConvarResponse]: protobufs.CMsgGCToClientPollConvarResponse as MessageFns<protobufs.CMsgGCToClientPollConvarResponse>,
     [protobufs.EGCBaseClientMsg.k_EMsgGCToClientRequestDropped]: protobufs.CMsgGCToClientRequestDropped as MessageFns<protobufs.CMsgGCToClientRequestDropped>,
@@ -653,6 +741,7 @@ export type GCProtobufsType = {
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftSellResponse]: protobufs.CMsgClientToGCUnderDraftSellResponse;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftResponse]: protobufs.CMsgClientToGCUnderDraftResponse;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRedeemRewardResponse]: protobufs.CMsgClientToGCUnderDraftRedeemRewardResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestReporterUpdatesResponse]: protobufs.CMsgClientToGCRequestReporterUpdatesResponse;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitDraftTriviaMatchAnswerResponse]: protobufs.CMsgClientToGCSubmitDraftTriviaMatchAnswerResponse;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRollBackBenchResponse]: protobufs.CMsgClientToGCUnderDraftRollBackBenchResponse;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetOWMatchDetailsResponse]: protobufs.CMsgClientToGCGetOWMatchDetailsResponse;
@@ -679,6 +768,29 @@ export type GCProtobufsType = {
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientRankResponse]: protobufs.CMsgGCToClientRankResponse;
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientRankUpdate]: protobufs.CMsgGCToClientRankUpdate;
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientMapStatsResponse]: protobufs.CMsgGCToClientMapStatsResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRoadToTIGetQuestsResponse]: protobufs.CMsgClientToGCRoadToTIGetQuestsResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRoadToTIGetActiveQuestResponse]: protobufs.CMsgClientToGCRoadToTIGetActiveQuestResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientRoadToTIQuestDataUpdated]: protobufs.CMsgGCToClientRoadToTIQuestDataUpdated;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRoadToTIUseItemResponse]: protobufs.CMsgClientToGCRoadToTIUseItemResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldGetUserDataResponse]: protobufs.CMsgClientToGCOverworldGetUserDataResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldCompletePathResponse]: protobufs.CMsgClientToGCOverworldCompletePathResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldClaimEncounterRewardResponse]: protobufs.CMsgClientToGCOverworldClaimEncounterRewardResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldDevResetAllResponse]: protobufs.CMsgClientToGCOverworldDevResetAllResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldDevResetNodeResponse]: protobufs.CMsgClientToGCOverworldDevResetNodeResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldDevGrantTokensResponse]: protobufs.CMsgClientToGCOverworldDevGrantTokensResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldDevClearInventoryResponse]: protobufs.CMsgClientToGCOverworldDevClearInventoryResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientOverworldUserDataUpdated]: protobufs.CMsgGCToClientOverworldUserDataUpdated;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldMoveToNodeResponse]: protobufs.CMsgClientToGCOverworldMoveToNodeResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCNewBloomGiftResponse]: protobufs.CMsgClientToGCNewBloomGiftResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldTradeTokensResponse]: protobufs.CMsgClientToGCOverworldTradeTokensResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldFeedbackResponse]: protobufs.CMsgClientToGCOverworldFeedbackResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldVisitEncounterResponse]: protobufs.CMsgClientToGCOverworldVisitEncounterResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldGiftTokensResponse]: protobufs.CMsgClientToGCOverworldGiftTokensResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCDotaLabsFeedbackResponse]: protobufs.CMsgClientToGCDotaLabsFeedbackResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldGetDynamicImageResponse]: protobufs.CMsgClientToGCOverworldGetDynamicImageResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCCompendiumRemoveAllSelectionsResponse]: protobufs.CMsgDOTACompendiumRemoveAllSelectionsResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldMinigameActionResponse]: protobufs.CMsgClientToGCOverworldMinigameActionResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldRequestTokensNeededByFriendResponse]: protobufs.CMsgClientToGCOverworldRequestTokensNeededByFriendResponse;
     [protobufs.EGCBaseClientMsg.k_EMsgGCToClientPollConvarRequest]: protobufs.CMsgGCToClientPollConvarRequest;
     [protobufs.EGCBaseClientMsg.k_EMsgGCToClientPollConvarResponse]: protobufs.CMsgGCToClientPollConvarResponse;
     [protobufs.EGCBaseClientMsg.k_EMsgGCToClientRequestDropped]: protobufs.CMsgGCToClientRequestDropped;
@@ -820,6 +932,7 @@ export type GCEvents = {
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftSellResponse]: (data: protobufs.CMsgClientToGCUnderDraftSellResponse) => void;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftResponse]: (data: protobufs.CMsgClientToGCUnderDraftResponse) => void;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRedeemRewardResponse]: (data: protobufs.CMsgClientToGCUnderDraftRedeemRewardResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRequestReporterUpdatesResponse]: (data: protobufs.CMsgClientToGCRequestReporterUpdatesResponse) => void;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCSubmitDraftTriviaMatchAnswerResponse]: (data: protobufs.CMsgClientToGCSubmitDraftTriviaMatchAnswerResponse) => void;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCUnderDraftRollBackBenchResponse]: (data: protobufs.CMsgClientToGCUnderDraftRollBackBenchResponse) => void;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetOWMatchDetailsResponse]: (data: protobufs.CMsgClientToGCGetOWMatchDetailsResponse) => void;
@@ -846,6 +959,29 @@ export type GCEvents = {
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientRankResponse]: (data: protobufs.CMsgGCToClientRankResponse) => void;
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientRankUpdate]: (data: protobufs.CMsgGCToClientRankUpdate) => void;
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientMapStatsResponse]: (data: protobufs.CMsgGCToClientMapStatsResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRoadToTIGetQuestsResponse]: (data: protobufs.CMsgClientToGCRoadToTIGetQuestsResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRoadToTIGetActiveQuestResponse]: (data: protobufs.CMsgClientToGCRoadToTIGetActiveQuestResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientRoadToTIQuestDataUpdated]: (data: protobufs.CMsgGCToClientRoadToTIQuestDataUpdated) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCRoadToTIUseItemResponse]: (data: protobufs.CMsgClientToGCRoadToTIUseItemResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldGetUserDataResponse]: (data: protobufs.CMsgClientToGCOverworldGetUserDataResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldCompletePathResponse]: (data: protobufs.CMsgClientToGCOverworldCompletePathResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldClaimEncounterRewardResponse]: (data: protobufs.CMsgClientToGCOverworldClaimEncounterRewardResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldDevResetAllResponse]: (data: protobufs.CMsgClientToGCOverworldDevResetAllResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldDevResetNodeResponse]: (data: protobufs.CMsgClientToGCOverworldDevResetNodeResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldDevGrantTokensResponse]: (data: protobufs.CMsgClientToGCOverworldDevGrantTokensResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldDevClearInventoryResponse]: (data: protobufs.CMsgClientToGCOverworldDevClearInventoryResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCToClientOverworldUserDataUpdated]: (data: protobufs.CMsgGCToClientOverworldUserDataUpdated) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldMoveToNodeResponse]: (data: protobufs.CMsgClientToGCOverworldMoveToNodeResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCNewBloomGiftResponse]: (data: protobufs.CMsgClientToGCNewBloomGiftResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldTradeTokensResponse]: (data: protobufs.CMsgClientToGCOverworldTradeTokensResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldFeedbackResponse]: (data: protobufs.CMsgClientToGCOverworldFeedbackResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldVisitEncounterResponse]: (data: protobufs.CMsgClientToGCOverworldVisitEncounterResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldGiftTokensResponse]: (data: protobufs.CMsgClientToGCOverworldGiftTokensResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCDotaLabsFeedbackResponse]: (data: protobufs.CMsgClientToGCDotaLabsFeedbackResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldGetDynamicImageResponse]: (data: protobufs.CMsgClientToGCOverworldGetDynamicImageResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCCompendiumRemoveAllSelectionsResponse]: (data: protobufs.CMsgDOTACompendiumRemoveAllSelectionsResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldMinigameActionResponse]: (data: protobufs.CMsgClientToGCOverworldMinigameActionResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCOverworldRequestTokensNeededByFriendResponse]: (data: protobufs.CMsgClientToGCOverworldRequestTokensNeededByFriendResponse) => void;
     [protobufs.EGCBaseClientMsg.k_EMsgGCToClientPollConvarRequest]: (data: protobufs.CMsgGCToClientPollConvarRequest) => void;
     [protobufs.EGCBaseClientMsg.k_EMsgGCToClientPollConvarResponse]: (data: protobufs.CMsgGCToClientPollConvarResponse) => void;
     [protobufs.EGCBaseClientMsg.k_EMsgGCToClientRequestDropped]: (data: protobufs.CMsgGCToClientRequestDropped) => void;

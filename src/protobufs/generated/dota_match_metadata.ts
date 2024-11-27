@@ -7,7 +7,9 @@
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { CSOEconItemAttribute, CSOEconItemEquipped } from "./base_gcmessages";
+import { CMsgTrackedStat } from "./dota_gcmessages_common";
 import { CMsgMatchMatchmakingStats, CMvpData } from "./dota_gcmessages_common_match_management";
+import { CMsgOverworldTokenQuantity } from "./dota_gcmessages_common_overworld";
 import {
   dotaGcTeam,
   dotaGcTeamFromJSON,
@@ -19,6 +21,7 @@ import {
   eEventFromJSON,
   eEventToJSON,
 } from "./dota_shared_enums";
+import { CExtraMsgBlock } from "./gcsdk_gcmessages";
 
 export interface CDOTAMatchMetadataFile {
   version: number;
@@ -38,6 +41,7 @@ export interface CDOTAMatchMetadata {
   guildChallengeProgress: CDOTAMatchMetadata_GuildChallengeProgress[];
   customPostGameTable: Buffer;
   matchTips: CDOTAMatchMetadata_Tip[];
+  matchTrackedStats: CMsgTrackedStat[];
 }
 
 export interface CDOTAMatchMetadata_EconItem {
@@ -57,6 +61,7 @@ export interface CDOTAMatchMetadata_Team {
   cmFirstPick: boolean;
   cmCaptainPlayerId: number;
   cmPenalty: number;
+  teamTrackedStats: CMsgTrackedStat[];
 }
 
 export interface CDOTAMatchMetadata_Team_PlayerKill {
@@ -118,7 +123,6 @@ export interface CDOTAMatchMetadata_Team_ActionGrant {
   actionId: number;
   quantity: number;
   audit: number;
-  requiresWin: boolean;
   auditData: string;
 }
 
@@ -159,6 +163,7 @@ export interface CDOTAMatchMetadata_Team_EventData {
   activeSeasonId: number;
   cavernCrawlHalfCredit: boolean;
   periodicResources: CDOTAMatchMetadata_Team_PeriodicResourceData[];
+  extraEventMessages: CExtraMsgBlock[];
 }
 
 export interface CDOTAMatchMetadata_Team_FeaturedGamemodeProgress {
@@ -220,6 +225,8 @@ export interface CDOTAMatchMetadata_Team_Player {
   featuredHeroStickerQuality: number;
   equippedEconItems: CDOTAMatchMetadata_EconItem[];
   gamePlayerId: number;
+  playerTrackedStats: CMsgTrackedStat[];
+  overworldRewards: CDOTAMatchMetadata_Team_Player_OverworldRewards | undefined;
 }
 
 export interface CDOTAMatchMetadata_Team_Player_ContractProgress {
@@ -230,6 +237,11 @@ export interface CDOTAMatchMetadata_Team_Player_ContractProgress {
   contractStars: number;
   contractSlot: number;
   completed: boolean;
+}
+
+export interface CDOTAMatchMetadata_Team_Player_OverworldRewards {
+  overworldId: number;
+  tokens: CMsgOverworldTokenQuantity | undefined;
 }
 
 export interface CDOTAMatchMetadata_GuildChallengeProgress {
@@ -347,6 +359,7 @@ export interface CDOTAMatchPrivateMetadata_Team_Player_XPReceived {
   tomeOfKnowledge: number;
   outpost: number;
   other: number;
+  abilities: number;
 }
 
 export interface CDOTAMatchPrivateMetadata_Team_Building {
@@ -480,6 +493,7 @@ function createBaseCDOTAMatchMetadata(): CDOTAMatchMetadata {
     guildChallengeProgress: [],
     customPostGameTable: Buffer.alloc(0),
     matchTips: [],
+    matchTrackedStats: [],
   };
 }
 
@@ -514,6 +528,9 @@ export const CDOTAMatchMetadata: MessageFns<CDOTAMatchMetadata> = {
     }
     for (const v of message.matchTips) {
       CDOTAMatchMetadata_Tip.encode(v!, writer.uint32(98).fork()).join();
+    }
+    for (const v of message.matchTrackedStats) {
+      CMsgTrackedStat.encode(v!, writer.uint32(106).fork()).join();
     }
     return writer;
   },
@@ -607,6 +624,14 @@ export const CDOTAMatchMetadata: MessageFns<CDOTAMatchMetadata> = {
           message.matchTips.push(CDOTAMatchMetadata_Tip.decode(reader, reader.uint32()));
           continue;
         }
+        case 13: {
+          if (tag !== 106) {
+            break;
+          }
+
+          message.matchTrackedStats.push(CMsgTrackedStat.decode(reader, reader.uint32()));
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -639,6 +664,9 @@ export const CDOTAMatchMetadata: MessageFns<CDOTAMatchMetadata> = {
         : Buffer.alloc(0),
       matchTips: globalThis.Array.isArray(object?.matchTips)
         ? object.matchTips.map((e: any) => CDOTAMatchMetadata_Tip.fromJSON(e))
+        : [],
+      matchTrackedStats: globalThis.Array.isArray(object?.matchTrackedStats)
+        ? object.matchTrackedStats.map((e: any) => CMsgTrackedStat.fromJSON(e))
         : [],
     };
   },
@@ -677,6 +705,9 @@ export const CDOTAMatchMetadata: MessageFns<CDOTAMatchMetadata> = {
     if (message.matchTips?.length) {
       obj.matchTips = message.matchTips.map((e) => CDOTAMatchMetadata_Tip.toJSON(e));
     }
+    if (message.matchTrackedStats?.length) {
+      obj.matchTrackedStats = message.matchTrackedStats.map((e) => CMsgTrackedStat.toJSON(e));
+    }
     return obj;
   },
 
@@ -700,6 +731,7 @@ export const CDOTAMatchMetadata: MessageFns<CDOTAMatchMetadata> = {
       object.guildChallengeProgress?.map((e) => CDOTAMatchMetadata_GuildChallengeProgress.fromPartial(e)) || [];
     message.customPostGameTable = object.customPostGameTable ?? Buffer.alloc(0);
     message.matchTips = object.matchTips?.map((e) => CDOTAMatchMetadata_Tip.fromPartial(e)) || [];
+    message.matchTrackedStats = object.matchTrackedStats?.map((e) => CMsgTrackedStat.fromPartial(e)) || [];
     return message;
   },
 };
@@ -842,6 +874,7 @@ function createBaseCDOTAMatchMetadata_Team(): CDOTAMatchMetadata_Team {
     cmFirstPick: false,
     cmCaptainPlayerId: -1,
     cmPenalty: 0,
+    teamTrackedStats: [],
   };
 }
 
@@ -876,6 +909,9 @@ export const CDOTAMatchMetadata_Team: MessageFns<CDOTAMatchMetadata_Team> = {
     }
     if (message.cmPenalty !== 0) {
       writer.uint32(80).uint32(message.cmPenalty);
+    }
+    for (const v of message.teamTrackedStats) {
+      CMsgTrackedStat.encode(v!, writer.uint32(90).fork()).join();
     }
     return writer;
   },
@@ -981,6 +1017,14 @@ export const CDOTAMatchMetadata_Team: MessageFns<CDOTAMatchMetadata_Team> = {
           message.cmPenalty = reader.uint32();
           continue;
         }
+        case 11: {
+          if (tag !== 90) {
+            break;
+          }
+
+          message.teamTrackedStats.push(CMsgTrackedStat.decode(reader, reader.uint32()));
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -1008,6 +1052,9 @@ export const CDOTAMatchMetadata_Team: MessageFns<CDOTAMatchMetadata_Team> = {
       cmFirstPick: isSet(object.cmFirstPick) ? globalThis.Boolean(object.cmFirstPick) : false,
       cmCaptainPlayerId: isSet(object.cmCaptainPlayerId) ? globalThis.Number(object.cmCaptainPlayerId) : -1,
       cmPenalty: isSet(object.cmPenalty) ? globalThis.Number(object.cmPenalty) : 0,
+      teamTrackedStats: globalThis.Array.isArray(object?.teamTrackedStats)
+        ? object.teamTrackedStats.map((e: any) => CMsgTrackedStat.fromJSON(e))
+        : [],
     };
   },
 
@@ -1037,6 +1084,9 @@ export const CDOTAMatchMetadata_Team: MessageFns<CDOTAMatchMetadata_Team> = {
     if (message.cmPenalty !== 0) {
       obj.cmPenalty = Math.round(message.cmPenalty);
     }
+    if (message.teamTrackedStats?.length) {
+      obj.teamTrackedStats = message.teamTrackedStats.map((e) => CMsgTrackedStat.toJSON(e));
+    }
     return obj;
   },
 
@@ -1053,6 +1103,7 @@ export const CDOTAMatchMetadata_Team: MessageFns<CDOTAMatchMetadata_Team> = {
     message.cmFirstPick = object.cmFirstPick ?? false;
     message.cmCaptainPlayerId = object.cmCaptainPlayerId ?? -1;
     message.cmPenalty = object.cmPenalty ?? 0;
+    message.teamTrackedStats = object.teamTrackedStats?.map((e) => CMsgTrackedStat.fromPartial(e)) || [];
     return message;
   },
 };
@@ -1508,7 +1559,7 @@ export const CDOTAMatchMetadata_Team_StrangeGemProgress: MessageFns<CDOTAMatchMe
       writer.uint32(16).uint32(message.gemItemDefIndex);
     }
     if (message.requiredHeroId !== 0) {
-      writer.uint32(24).uint32(message.requiredHeroId);
+      writer.uint32(24).int32(message.requiredHeroId);
     }
     if (message.startingValue !== 0) {
       writer.uint32(32).uint32(message.startingValue);
@@ -1553,7 +1604,7 @@ export const CDOTAMatchMetadata_Team_StrangeGemProgress: MessageFns<CDOTAMatchMe
             break;
           }
 
-          message.requiredHeroId = reader.uint32();
+          message.requiredHeroId = reader.int32();
           continue;
         }
         case 4: {
@@ -1956,7 +2007,7 @@ export const CDOTAMatchMetadata_Team_CavernChallengeResult: MessageFns<CDOTAMatc
   };
 
 function createBaseCDOTAMatchMetadata_Team_ActionGrant(): CDOTAMatchMetadata_Team_ActionGrant {
-  return { actionId: 0, quantity: 0, audit: 0, requiresWin: false, auditData: "0" };
+  return { actionId: 0, quantity: 0, audit: 0, auditData: "0" };
 }
 
 export const CDOTAMatchMetadata_Team_ActionGrant: MessageFns<CDOTAMatchMetadata_Team_ActionGrant> = {
@@ -1969,9 +2020,6 @@ export const CDOTAMatchMetadata_Team_ActionGrant: MessageFns<CDOTAMatchMetadata_
     }
     if (message.audit !== 0) {
       writer.uint32(24).uint32(message.audit);
-    }
-    if (message.requiresWin !== false) {
-      writer.uint32(32).bool(message.requiresWin);
     }
     if (message.auditData !== "0") {
       writer.uint32(40).uint64(message.auditData);
@@ -2010,14 +2058,6 @@ export const CDOTAMatchMetadata_Team_ActionGrant: MessageFns<CDOTAMatchMetadata_
           message.audit = reader.uint32();
           continue;
         }
-        case 4: {
-          if (tag !== 32) {
-            break;
-          }
-
-          message.requiresWin = reader.bool();
-          continue;
-        }
         case 5: {
           if (tag !== 40) {
             break;
@@ -2040,7 +2080,6 @@ export const CDOTAMatchMetadata_Team_ActionGrant: MessageFns<CDOTAMatchMetadata_
       actionId: isSet(object.actionId) ? globalThis.Number(object.actionId) : 0,
       quantity: isSet(object.quantity) ? globalThis.Number(object.quantity) : 0,
       audit: isSet(object.audit) ? globalThis.Number(object.audit) : 0,
-      requiresWin: isSet(object.requiresWin) ? globalThis.Boolean(object.requiresWin) : false,
       auditData: isSet(object.auditData) ? globalThis.String(object.auditData) : "0",
     };
   },
@@ -2056,9 +2095,6 @@ export const CDOTAMatchMetadata_Team_ActionGrant: MessageFns<CDOTAMatchMetadata_
     if (message.audit !== 0) {
       obj.audit = Math.round(message.audit);
     }
-    if (message.requiresWin !== false) {
-      obj.requiresWin = message.requiresWin;
-    }
     if (message.auditData !== "0") {
       obj.auditData = message.auditData;
     }
@@ -2073,7 +2109,6 @@ export const CDOTAMatchMetadata_Team_ActionGrant: MessageFns<CDOTAMatchMetadata_
     message.actionId = object.actionId ?? 0;
     message.quantity = object.quantity ?? 0;
     message.audit = object.audit ?? 0;
-    message.requiresWin = object.requiresWin ?? false;
     message.auditData = object.auditData ?? "0";
     return message;
   },
@@ -2281,6 +2316,7 @@ function createBaseCDOTAMatchMetadata_Team_EventData(): CDOTAMatchMetadata_Team_
     activeSeasonId: 0,
     cavernCrawlHalfCredit: false,
     periodicResources: [],
+    extraEventMessages: [],
   };
 }
 
@@ -2360,6 +2396,9 @@ export const CDOTAMatchMetadata_Team_EventData: MessageFns<CDOTAMatchMetadata_Te
     }
     for (const v of message.periodicResources) {
       CDOTAMatchMetadata_Team_PeriodicResourceData.encode(v!, writer.uint32(210).fork()).join();
+    }
+    for (const v of message.extraEventMessages) {
+      CExtraMsgBlock.encode(v!, writer.uint32(218).fork()).join();
     }
     return writer;
   },
@@ -2573,6 +2612,14 @@ export const CDOTAMatchMetadata_Team_EventData: MessageFns<CDOTAMatchMetadata_Te
           message.periodicResources.push(CDOTAMatchMetadata_Team_PeriodicResourceData.decode(reader, reader.uint32()));
           continue;
         }
+        case 27: {
+          if (tag !== 218) {
+            break;
+          }
+
+          message.extraEventMessages.push(CExtraMsgBlock.decode(reader, reader.uint32()));
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -2636,6 +2683,9 @@ export const CDOTAMatchMetadata_Team_EventData: MessageFns<CDOTAMatchMetadata_Te
         : false,
       periodicResources: globalThis.Array.isArray(object?.periodicResources)
         ? object.periodicResources.map((e: any) => CDOTAMatchMetadata_Team_PeriodicResourceData.fromJSON(e))
+        : [],
+      extraEventMessages: globalThis.Array.isArray(object?.extraEventMessages)
+        ? object.extraEventMessages.map((e: any) => CExtraMsgBlock.fromJSON(e))
         : [],
     };
   },
@@ -2723,6 +2773,9 @@ export const CDOTAMatchMetadata_Team_EventData: MessageFns<CDOTAMatchMetadata_Te
         CDOTAMatchMetadata_Team_PeriodicResourceData.toJSON(e)
       );
     }
+    if (message.extraEventMessages?.length) {
+      obj.extraEventMessages = message.extraEventMessages.map((e) => CExtraMsgBlock.toJSON(e));
+    }
     return obj;
   },
 
@@ -2761,6 +2814,7 @@ export const CDOTAMatchMetadata_Team_EventData: MessageFns<CDOTAMatchMetadata_Te
     message.cavernCrawlHalfCredit = object.cavernCrawlHalfCredit ?? false;
     message.periodicResources =
       object.periodicResources?.map((e) => CDOTAMatchMetadata_Team_PeriodicResourceData.fromPartial(e)) || [];
+    message.extraEventMessages = object.extraEventMessages?.map((e) => CExtraMsgBlock.fromPartial(e)) || [];
     return message;
   },
 };
@@ -2920,6 +2974,8 @@ function createBaseCDOTAMatchMetadata_Team_Player(): CDOTAMatchMetadata_Team_Pla
     featuredHeroStickerQuality: 0,
     equippedEconItems: [],
     gamePlayerId: -1,
+    playerTrackedStats: [],
+    overworldRewards: undefined,
   };
 }
 
@@ -3093,6 +3149,13 @@ export const CDOTAMatchMetadata_Team_Player: MessageFns<CDOTAMatchMetadata_Team_
     }
     if (message.gamePlayerId !== -1) {
       writer.uint32(456).int32(message.gamePlayerId);
+    }
+    for (const v of message.playerTrackedStats) {
+      CMsgTrackedStat.encode(v!, writer.uint32(466).fork()).join();
+    }
+    if (message.overworldRewards !== undefined) {
+      CDOTAMatchMetadata_Team_Player_OverworldRewards.encode(message.overworldRewards, writer.uint32(474).fork())
+        .join();
     }
     return writer;
   },
@@ -3575,6 +3638,22 @@ export const CDOTAMatchMetadata_Team_Player: MessageFns<CDOTAMatchMetadata_Team_
           message.gamePlayerId = reader.int32();
           continue;
         }
+        case 58: {
+          if (tag !== 466) {
+            break;
+          }
+
+          message.playerTrackedStats.push(CMsgTrackedStat.decode(reader, reader.uint32()));
+          continue;
+        }
+        case 59: {
+          if (tag !== 474) {
+            break;
+          }
+
+          message.overworldRewards = CDOTAMatchMetadata_Team_Player_OverworldRewards.decode(reader, reader.uint32());
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -3651,9 +3730,7 @@ export const CDOTAMatchMetadata_Team_Player: MessageFns<CDOTAMatchMetadata_Team_
       contractProgress: globalThis.Array.isArray(object?.contractProgress)
         ? object.contractProgress.map((e: any) => CDOTAMatchMetadata_Team_Player_ContractProgress.fromJSON(e))
         : [],
-      guildIds: globalThis.Array.isArray(object?.guildIds)
-        ? object.guildIds.map((e: any) => globalThis.Number(e))
-        : [],
+      guildIds: globalThis.Array.isArray(object?.guildIds) ? object.guildIds.map((e: any) => globalThis.Number(e)) : [],
       graphHeroDamage: globalThis.Array.isArray(object?.graphHeroDamage)
         ? object.graphHeroDamage.map((e: any) => globalThis.Number(e))
         : [],
@@ -3672,6 +3749,12 @@ export const CDOTAMatchMetadata_Team_Player: MessageFns<CDOTAMatchMetadata_Team_
         ? object.equippedEconItems.map((e: any) => CDOTAMatchMetadata_EconItem.fromJSON(e))
         : [],
       gamePlayerId: isSet(object.gamePlayerId) ? globalThis.Number(object.gamePlayerId) : -1,
+      playerTrackedStats: globalThis.Array.isArray(object?.playerTrackedStats)
+        ? object.playerTrackedStats.map((e: any) => CMsgTrackedStat.fromJSON(e))
+        : [],
+      overworldRewards: isSet(object.overworldRewards)
+        ? CDOTAMatchMetadata_Team_Player_OverworldRewards.fromJSON(object.overworldRewards)
+        : undefined,
     };
   },
 
@@ -3839,6 +3922,12 @@ export const CDOTAMatchMetadata_Team_Player: MessageFns<CDOTAMatchMetadata_Team_
     if (message.gamePlayerId !== -1) {
       obj.gamePlayerId = Math.round(message.gamePlayerId);
     }
+    if (message.playerTrackedStats?.length) {
+      obj.playerTrackedStats = message.playerTrackedStats.map((e) => CMsgTrackedStat.toJSON(e));
+    }
+    if (message.overworldRewards !== undefined) {
+      obj.overworldRewards = CDOTAMatchMetadata_Team_Player_OverworldRewards.toJSON(message.overworldRewards);
+    }
     return obj;
   },
 
@@ -3907,6 +3996,10 @@ export const CDOTAMatchMetadata_Team_Player: MessageFns<CDOTAMatchMetadata_Team_
     message.featuredHeroStickerQuality = object.featuredHeroStickerQuality ?? 0;
     message.equippedEconItems = object.equippedEconItems?.map((e) => CDOTAMatchMetadata_EconItem.fromPartial(e)) || [];
     message.gamePlayerId = object.gamePlayerId ?? -1;
+    message.playerTrackedStats = object.playerTrackedStats?.map((e) => CMsgTrackedStat.fromPartial(e)) || [];
+    message.overworldRewards = (object.overworldRewards !== undefined && object.overworldRewards !== null)
+      ? CDOTAMatchMetadata_Team_Player_OverworldRewards.fromPartial(object.overworldRewards)
+      : undefined;
     return message;
   },
 };
@@ -4080,6 +4173,93 @@ export const CDOTAMatchMetadata_Team_Player_ContractProgress: MessageFns<
     message.contractStars = object.contractStars ?? 0;
     message.contractSlot = object.contractSlot ?? 0;
     message.completed = object.completed ?? false;
+    return message;
+  },
+};
+
+function createBaseCDOTAMatchMetadata_Team_Player_OverworldRewards(): CDOTAMatchMetadata_Team_Player_OverworldRewards {
+  return { overworldId: 0, tokens: undefined };
+}
+
+export const CDOTAMatchMetadata_Team_Player_OverworldRewards: MessageFns<
+  CDOTAMatchMetadata_Team_Player_OverworldRewards
+> = {
+  encode(
+    message: CDOTAMatchMetadata_Team_Player_OverworldRewards,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.overworldId !== 0) {
+      writer.uint32(8).uint32(message.overworldId);
+    }
+    if (message.tokens !== undefined) {
+      CMsgOverworldTokenQuantity.encode(message.tokens, writer.uint32(18).fork()).join();
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CDOTAMatchMetadata_Team_Player_OverworldRewards {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCDOTAMatchMetadata_Team_Player_OverworldRewards();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.overworldId = reader.uint32();
+          continue;
+        }
+        case 2: {
+          if (tag !== 18) {
+            break;
+          }
+
+          message.tokens = CMsgOverworldTokenQuantity.decode(reader, reader.uint32());
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CDOTAMatchMetadata_Team_Player_OverworldRewards {
+    return {
+      overworldId: isSet(object.overworldId) ? globalThis.Number(object.overworldId) : 0,
+      tokens: isSet(object.tokens) ? CMsgOverworldTokenQuantity.fromJSON(object.tokens) : undefined,
+    };
+  },
+
+  toJSON(message: CDOTAMatchMetadata_Team_Player_OverworldRewards): unknown {
+    const obj: any = {};
+    if (message.overworldId !== 0) {
+      obj.overworldId = Math.round(message.overworldId);
+    }
+    if (message.tokens !== undefined) {
+      obj.tokens = CMsgOverworldTokenQuantity.toJSON(message.tokens);
+    }
+    return obj;
+  },
+
+  create(
+    base?: DeepPartial<CDOTAMatchMetadata_Team_Player_OverworldRewards>,
+  ): CDOTAMatchMetadata_Team_Player_OverworldRewards {
+    return CDOTAMatchMetadata_Team_Player_OverworldRewards.fromPartial(base ?? {});
+  },
+  fromPartial(
+    object: DeepPartial<CDOTAMatchMetadata_Team_Player_OverworldRewards>,
+  ): CDOTAMatchMetadata_Team_Player_OverworldRewards {
+    const message = createBaseCDOTAMatchMetadata_Team_Player_OverworldRewards();
+    message.overworldId = object.overworldId ?? 0;
+    message.tokens = (object.tokens !== undefined && object.tokens !== null)
+      ? CMsgOverworldTokenQuantity.fromPartial(object.tokens)
+      : undefined;
     return message;
   },
 };
@@ -5391,7 +5571,7 @@ export const CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility
     writer: BinaryWriter = new BinaryWriter(),
   ): BinaryWriter {
     if (message.heroId !== 0) {
-      writer.uint32(8).uint32(message.heroId);
+      writer.uint32(8).int32(message.heroId);
     }
     if (message.damage !== 0) {
       writer.uint32(16).uint32(message.damage);
@@ -5414,7 +5594,7 @@ export const CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_DamageByAbility
             break;
           }
 
-          message.heroId = reader.uint32();
+          message.heroId = reader.int32();
           continue;
         }
         case 2: {
@@ -5600,7 +5780,7 @@ export const CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbilit
     writer: BinaryWriter = new BinaryWriter(),
   ): BinaryWriter {
     if (message.heroId !== 0) {
-      writer.uint32(8).uint32(message.heroId);
+      writer.uint32(8).int32(message.heroId);
     }
     if (message.healing !== 0) {
       writer.uint32(16).uint32(message.healing);
@@ -5623,7 +5803,7 @@ export const CDOTAMatchPrivateMetadata_Team_Player_CombatSegment_HealingByAbilit
             break;
           }
 
-          message.heroId = reader.uint32();
+          message.heroId = reader.int32();
           continue;
         }
         case 2: {
@@ -5799,7 +5979,7 @@ export const CDOTAMatchPrivateMetadata_Team_Player_BuffRecord_ByHeroTarget: Mess
     writer: BinaryWriter = new BinaryWriter(),
   ): BinaryWriter {
     if (message.heroId !== 0) {
-      writer.uint32(8).uint32(message.heroId);
+      writer.uint32(8).int32(message.heroId);
     }
     if (message.elapsedDuration !== 0) {
       writer.uint32(21).float(message.elapsedDuration);
@@ -5825,7 +6005,7 @@ export const CDOTAMatchPrivateMetadata_Team_Player_BuffRecord_ByHeroTarget: Mess
             break;
           }
 
-          message.heroId = reader.uint32();
+          message.heroId = reader.int32();
           continue;
         }
         case 2: {
@@ -6073,7 +6253,7 @@ export const CDOTAMatchPrivateMetadata_Team_Player_GoldReceived: MessageFns<
 };
 
 function createBaseCDOTAMatchPrivateMetadata_Team_Player_XPReceived(): CDOTAMatchPrivateMetadata_Team_Player_XPReceived {
-  return { creep: 0, heroes: 0, roshan: 0, tomeOfKnowledge: 0, outpost: 0, other: 0 };
+  return { creep: 0, heroes: 0, roshan: 0, tomeOfKnowledge: 0, outpost: 0, other: 0, abilities: 0 };
 }
 
 export const CDOTAMatchPrivateMetadata_Team_Player_XPReceived: MessageFns<
@@ -6100,6 +6280,9 @@ export const CDOTAMatchPrivateMetadata_Team_Player_XPReceived: MessageFns<
     }
     if (message.other !== 0) {
       writer.uint32(48).uint32(message.other);
+    }
+    if (message.abilities !== 0) {
+      writer.uint32(56).uint32(message.abilities);
     }
     return writer;
   },
@@ -6159,6 +6342,14 @@ export const CDOTAMatchPrivateMetadata_Team_Player_XPReceived: MessageFns<
           message.other = reader.uint32();
           continue;
         }
+        case 7: {
+          if (tag !== 56) {
+            break;
+          }
+
+          message.abilities = reader.uint32();
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -6176,6 +6367,7 @@ export const CDOTAMatchPrivateMetadata_Team_Player_XPReceived: MessageFns<
       tomeOfKnowledge: isSet(object.tomeOfKnowledge) ? globalThis.Number(object.tomeOfKnowledge) : 0,
       outpost: isSet(object.outpost) ? globalThis.Number(object.outpost) : 0,
       other: isSet(object.other) ? globalThis.Number(object.other) : 0,
+      abilities: isSet(object.abilities) ? globalThis.Number(object.abilities) : 0,
     };
   },
 
@@ -6199,6 +6391,9 @@ export const CDOTAMatchPrivateMetadata_Team_Player_XPReceived: MessageFns<
     if (message.other !== 0) {
       obj.other = Math.round(message.other);
     }
+    if (message.abilities !== 0) {
+      obj.abilities = Math.round(message.abilities);
+    }
     return obj;
   },
 
@@ -6217,6 +6412,7 @@ export const CDOTAMatchPrivateMetadata_Team_Player_XPReceived: MessageFns<
     message.tomeOfKnowledge = object.tomeOfKnowledge ?? 0;
     message.outpost = object.outpost ?? 0;
     message.other = object.other ?? 0;
+    message.abilities = object.abilities ?? 0;
     return message;
   },
 };

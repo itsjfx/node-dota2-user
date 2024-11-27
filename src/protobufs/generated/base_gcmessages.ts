@@ -8,10 +8,9 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { CExtraMsgBlock } from "./gcsdk_gcmessages";
 import { EGCPlatform, eGCPlatformFromJSON, eGCPlatformToJSON } from "./steammessages";
+import { CMsgSteamLearnAccessTokens } from "./steammessages_steamlearn.steamworkssdk";
 
 export enum EGCBaseMsg {
-  k_EMsgGCReplicateConVars = 4002,
-  k_EMsgGCConVarUpdated = 4003,
   k_EMsgGCInviteToParty = 4501,
   k_EMsgGCInvitationCreated = 4502,
   k_EMsgGCPartyInviteResponse = 4503,
@@ -34,16 +33,12 @@ export enum EGCBaseMsg {
   k_EMsgClientToGCIntegrityStatus = 4522,
   k_EMsgClientToGCAggregateMetrics = 4523,
   k_EMsgGCToClientAggregateMetricsBackoff = 4524,
+  k_EMsgGCToServerSteamLearnAccessTokensChanged = 4525,
+  k_EMsgGCToServerSteamLearnUseHTTP = 4526,
 }
 
 export function eGCBaseMsgFromJSON(object: any): EGCBaseMsg {
   switch (object) {
-    case 4002:
-    case "k_EMsgGCReplicateConVars":
-      return EGCBaseMsg.k_EMsgGCReplicateConVars;
-    case 4003:
-    case "k_EMsgGCConVarUpdated":
-      return EGCBaseMsg.k_EMsgGCConVarUpdated;
     case 4501:
     case "k_EMsgGCInviteToParty":
       return EGCBaseMsg.k_EMsgGCInviteToParty;
@@ -110,6 +105,12 @@ export function eGCBaseMsgFromJSON(object: any): EGCBaseMsg {
     case 4524:
     case "k_EMsgGCToClientAggregateMetricsBackoff":
       return EGCBaseMsg.k_EMsgGCToClientAggregateMetricsBackoff;
+    case 4525:
+    case "k_EMsgGCToServerSteamLearnAccessTokensChanged":
+      return EGCBaseMsg.k_EMsgGCToServerSteamLearnAccessTokensChanged;
+    case 4526:
+    case "k_EMsgGCToServerSteamLearnUseHTTP":
+      return EGCBaseMsg.k_EMsgGCToServerSteamLearnUseHTTP;
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum EGCBaseMsg");
   }
@@ -117,10 +118,6 @@ export function eGCBaseMsgFromJSON(object: any): EGCBaseMsg {
 
 export function eGCBaseMsgToJSON(object: EGCBaseMsg): string {
   switch (object) {
-    case EGCBaseMsg.k_EMsgGCReplicateConVars:
-      return "k_EMsgGCReplicateConVars";
-    case EGCBaseMsg.k_EMsgGCConVarUpdated:
-      return "k_EMsgGCConVarUpdated";
     case EGCBaseMsg.k_EMsgGCInviteToParty:
       return "k_EMsgGCInviteToParty";
     case EGCBaseMsg.k_EMsgGCInvitationCreated:
@@ -165,6 +162,10 @@ export function eGCBaseMsgToJSON(object: EGCBaseMsg): string {
       return "k_EMsgClientToGCAggregateMetrics";
     case EGCBaseMsg.k_EMsgGCToClientAggregateMetricsBackoff:
       return "k_EMsgGCToClientAggregateMetricsBackoff";
+    case EGCBaseMsg.k_EMsgGCToServerSteamLearnAccessTokensChanged:
+      return "k_EMsgGCToServerSteamLearnAccessTokensChanged";
+    case EGCBaseMsg.k_EMsgGCToServerSteamLearnUseHTTP:
+      return "k_EMsgGCToServerSteamLearnUseHTTP";
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum EGCBaseMsg");
   }
@@ -253,6 +254,7 @@ export interface CGCStorePurchaseInitLineItem {
   costInLocalCurrency: number;
   purchaseType: number;
   sourceReferenceId: string;
+  priceIndex: number;
 }
 
 export interface CMsgGCStorePurchaseInit {
@@ -386,15 +388,6 @@ export interface CSOEconItem {
 
 export interface CMsgSortItems {
   sortType: number;
-}
-
-export interface CMsgConVarValue {
-  name: string;
-  value: string;
-}
-
-export interface CMsgReplicateConVars {
-  convars: CMsgConVarValue[];
 }
 
 export interface CMsgItemAcknowledged {
@@ -794,8 +787,16 @@ export interface CMsgGCToClientAggregateMetricsBackoff {
   uploadRateModifier: number;
 }
 
+export interface CMsgGCToServerSteamLearnAccessTokensChanged {
+  accessTokens: CMsgSteamLearnAccessTokens | undefined;
+}
+
+export interface CMsgGCToServerSteamLearnUseHTTP {
+  useHttp: boolean;
+}
+
 function createBaseCGCStorePurchaseInitLineItem(): CGCStorePurchaseInitLineItem {
-  return { itemDefId: 0, quantity: 0, costInLocalCurrency: 0, purchaseType: 0, sourceReferenceId: "0" };
+  return { itemDefId: 0, quantity: 0, costInLocalCurrency: 0, purchaseType: 0, sourceReferenceId: "0", priceIndex: 0 };
 }
 
 export const CGCStorePurchaseInitLineItem: MessageFns<CGCStorePurchaseInitLineItem> = {
@@ -814,6 +815,9 @@ export const CGCStorePurchaseInitLineItem: MessageFns<CGCStorePurchaseInitLineIt
     }
     if (message.sourceReferenceId !== "0") {
       writer.uint32(40).uint64(message.sourceReferenceId);
+    }
+    if (message.priceIndex !== 0) {
+      writer.uint32(48).int32(message.priceIndex);
     }
     return writer;
   },
@@ -865,6 +869,14 @@ export const CGCStorePurchaseInitLineItem: MessageFns<CGCStorePurchaseInitLineIt
           message.sourceReferenceId = reader.uint64().toString();
           continue;
         }
+        case 6: {
+          if (tag !== 48) {
+            break;
+          }
+
+          message.priceIndex = reader.int32();
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -881,6 +893,7 @@ export const CGCStorePurchaseInitLineItem: MessageFns<CGCStorePurchaseInitLineIt
       costInLocalCurrency: isSet(object.costInLocalCurrency) ? globalThis.Number(object.costInLocalCurrency) : 0,
       purchaseType: isSet(object.purchaseType) ? globalThis.Number(object.purchaseType) : 0,
       sourceReferenceId: isSet(object.sourceReferenceId) ? globalThis.String(object.sourceReferenceId) : "0",
+      priceIndex: isSet(object.priceIndex) ? globalThis.Number(object.priceIndex) : 0,
     };
   },
 
@@ -901,6 +914,9 @@ export const CGCStorePurchaseInitLineItem: MessageFns<CGCStorePurchaseInitLineIt
     if (message.sourceReferenceId !== "0") {
       obj.sourceReferenceId = message.sourceReferenceId;
     }
+    if (message.priceIndex !== 0) {
+      obj.priceIndex = Math.round(message.priceIndex);
+    }
     return obj;
   },
 
@@ -914,6 +930,7 @@ export const CGCStorePurchaseInitLineItem: MessageFns<CGCStorePurchaseInitLineIt
     message.costInLocalCurrency = object.costInLocalCurrency ?? 0;
     message.purchaseType = object.purchaseType ?? 0;
     message.sourceReferenceId = object.sourceReferenceId ?? "0";
+    message.priceIndex = object.priceIndex ?? 0;
     return message;
   },
 };
@@ -3058,144 +3075,6 @@ export const CMsgSortItems: MessageFns<CMsgSortItems> = {
   fromPartial(object: DeepPartial<CMsgSortItems>): CMsgSortItems {
     const message = createBaseCMsgSortItems();
     message.sortType = object.sortType ?? 0;
-    return message;
-  },
-};
-
-function createBaseCMsgConVarValue(): CMsgConVarValue {
-  return { name: "", value: "" };
-}
-
-export const CMsgConVarValue: MessageFns<CMsgConVarValue> = {
-  encode(message: CMsgConVarValue, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.name !== "") {
-      writer.uint32(10).string(message.name);
-    }
-    if (message.value !== "") {
-      writer.uint32(18).string(message.value);
-    }
-    return writer;
-  },
-
-  decode(input: BinaryReader | Uint8Array, length?: number): CMsgConVarValue {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCMsgConVarValue();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1: {
-          if (tag !== 10) {
-            break;
-          }
-
-          message.name = reader.string();
-          continue;
-        }
-        case 2: {
-          if (tag !== 18) {
-            break;
-          }
-
-          message.value = reader.string();
-          continue;
-        }
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skip(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): CMsgConVarValue {
-    return {
-      name: isSet(object.name) ? globalThis.String(object.name) : "",
-      value: isSet(object.value) ? globalThis.String(object.value) : "",
-    };
-  },
-
-  toJSON(message: CMsgConVarValue): unknown {
-    const obj: any = {};
-    if (message.name !== "") {
-      obj.name = message.name;
-    }
-    if (message.value !== "") {
-      obj.value = message.value;
-    }
-    return obj;
-  },
-
-  create(base?: DeepPartial<CMsgConVarValue>): CMsgConVarValue {
-    return CMsgConVarValue.fromPartial(base ?? {});
-  },
-  fromPartial(object: DeepPartial<CMsgConVarValue>): CMsgConVarValue {
-    const message = createBaseCMsgConVarValue();
-    message.name = object.name ?? "";
-    message.value = object.value ?? "";
-    return message;
-  },
-};
-
-function createBaseCMsgReplicateConVars(): CMsgReplicateConVars {
-  return { convars: [] };
-}
-
-export const CMsgReplicateConVars: MessageFns<CMsgReplicateConVars> = {
-  encode(message: CMsgReplicateConVars, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    for (const v of message.convars) {
-      CMsgConVarValue.encode(v!, writer.uint32(10).fork()).join();
-    }
-    return writer;
-  },
-
-  decode(input: BinaryReader | Uint8Array, length?: number): CMsgReplicateConVars {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCMsgReplicateConVars();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1: {
-          if (tag !== 10) {
-            break;
-          }
-
-          message.convars.push(CMsgConVarValue.decode(reader, reader.uint32()));
-          continue;
-        }
-      }
-      if ((tag & 7) === 4 || tag === 0) {
-        break;
-      }
-      reader.skip(tag & 7);
-    }
-    return message;
-  },
-
-  fromJSON(object: any): CMsgReplicateConVars {
-    return {
-      convars: globalThis.Array.isArray(object?.convars)
-        ? object.convars.map((e: any) => CMsgConVarValue.fromJSON(e))
-        : [],
-    };
-  },
-
-  toJSON(message: CMsgReplicateConVars): unknown {
-    const obj: any = {};
-    if (message.convars?.length) {
-      obj.convars = message.convars.map((e) => CMsgConVarValue.toJSON(e));
-    }
-    return obj;
-  },
-
-  create(base?: DeepPartial<CMsgReplicateConVars>): CMsgReplicateConVars {
-    return CMsgReplicateConVars.fromPartial(base ?? {});
-  },
-  fromPartial(object: DeepPartial<CMsgReplicateConVars>): CMsgReplicateConVars {
-    const message = createBaseCMsgReplicateConVars();
-    message.convars = object.convars?.map((e) => CMsgConVarValue.fromPartial(e)) || [];
     return message;
   },
 };
@@ -6042,6 +5921,131 @@ export const CMsgGCToClientAggregateMetricsBackoff: MessageFns<CMsgGCToClientAgg
   fromPartial(object: DeepPartial<CMsgGCToClientAggregateMetricsBackoff>): CMsgGCToClientAggregateMetricsBackoff {
     const message = createBaseCMsgGCToClientAggregateMetricsBackoff();
     message.uploadRateModifier = object.uploadRateModifier ?? 0;
+    return message;
+  },
+};
+
+function createBaseCMsgGCToServerSteamLearnAccessTokensChanged(): CMsgGCToServerSteamLearnAccessTokensChanged {
+  return { accessTokens: undefined };
+}
+
+export const CMsgGCToServerSteamLearnAccessTokensChanged: MessageFns<CMsgGCToServerSteamLearnAccessTokensChanged> = {
+  encode(
+    message: CMsgGCToServerSteamLearnAccessTokensChanged,
+    writer: BinaryWriter = new BinaryWriter(),
+  ): BinaryWriter {
+    if (message.accessTokens !== undefined) {
+      CMsgSteamLearnAccessTokens.encode(message.accessTokens, writer.uint32(10).fork()).join();
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgGCToServerSteamLearnAccessTokensChanged {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgGCToServerSteamLearnAccessTokensChanged();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.accessTokens = CMsgSteamLearnAccessTokens.decode(reader, reader.uint32());
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgGCToServerSteamLearnAccessTokensChanged {
+    return {
+      accessTokens: isSet(object.accessTokens) ? CMsgSteamLearnAccessTokens.fromJSON(object.accessTokens) : undefined,
+    };
+  },
+
+  toJSON(message: CMsgGCToServerSteamLearnAccessTokensChanged): unknown {
+    const obj: any = {};
+    if (message.accessTokens !== undefined) {
+      obj.accessTokens = CMsgSteamLearnAccessTokens.toJSON(message.accessTokens);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToServerSteamLearnAccessTokensChanged>): CMsgGCToServerSteamLearnAccessTokensChanged {
+    return CMsgGCToServerSteamLearnAccessTokensChanged.fromPartial(base ?? {});
+  },
+  fromPartial(
+    object: DeepPartial<CMsgGCToServerSteamLearnAccessTokensChanged>,
+  ): CMsgGCToServerSteamLearnAccessTokensChanged {
+    const message = createBaseCMsgGCToServerSteamLearnAccessTokensChanged();
+    message.accessTokens = (object.accessTokens !== undefined && object.accessTokens !== null)
+      ? CMsgSteamLearnAccessTokens.fromPartial(object.accessTokens)
+      : undefined;
+    return message;
+  },
+};
+
+function createBaseCMsgGCToServerSteamLearnUseHTTP(): CMsgGCToServerSteamLearnUseHTTP {
+  return { useHttp: false };
+}
+
+export const CMsgGCToServerSteamLearnUseHTTP: MessageFns<CMsgGCToServerSteamLearnUseHTTP> = {
+  encode(message: CMsgGCToServerSteamLearnUseHTTP, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.useHttp !== false) {
+      writer.uint32(8).bool(message.useHttp);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgGCToServerSteamLearnUseHTTP {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgGCToServerSteamLearnUseHTTP();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.useHttp = reader.bool();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgGCToServerSteamLearnUseHTTP {
+    return { useHttp: isSet(object.useHttp) ? globalThis.Boolean(object.useHttp) : false };
+  },
+
+  toJSON(message: CMsgGCToServerSteamLearnUseHTTP): unknown {
+    const obj: any = {};
+    if (message.useHttp !== false) {
+      obj.useHttp = message.useHttp;
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCToServerSteamLearnUseHTTP>): CMsgGCToServerSteamLearnUseHTTP {
+    return CMsgGCToServerSteamLearnUseHTTP.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgGCToServerSteamLearnUseHTTP>): CMsgGCToServerSteamLearnUseHTTP {
+    const message = createBaseCMsgGCToServerSteamLearnUseHTTP();
+    message.useHttp = object.useHttp ?? false;
     return message;
   },
 };

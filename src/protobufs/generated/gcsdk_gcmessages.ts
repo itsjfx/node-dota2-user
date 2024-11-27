@@ -7,7 +7,7 @@
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { CGCSystemMsgGetAccountDetailsResponse } from "./steammessages";
-import { CMsgSteamLearnHMACKeys } from "./steammessages_steamlearn.steamworkssdk";
+import { CMsgSteamLearnAccessTokens } from "./steammessages_steamlearn.steamworkssdk";
 
 export enum ESourceEngine {
   k_ESE_Source1 = 0,
@@ -140,10 +140,16 @@ export interface CExtraMsgBlock {
 }
 
 export interface CMsgSteamLearnServerInfo {
-  enableDataSubmission: boolean;
-  enableInferencing: boolean;
-  hmacKeys: CMsgSteamLearnHMACKeys | undefined;
-  enableTestInferencing: boolean;
+  accessTokens: CMsgSteamLearnAccessTokens | undefined;
+  projectInfos: CMsgSteamLearnServerInfo_ProjectInfo[];
+}
+
+export interface CMsgSteamLearnServerInfo_ProjectInfo {
+  projectId: number;
+  snapshotPublishedVersion: number;
+  inferencePublishedVersion: number;
+  snapshotPercentage: number;
+  snapshotEnabled: boolean;
 }
 
 export interface CMsgGCAssertJobData {
@@ -348,7 +354,6 @@ export interface CMsgClientWelcome {
   outofdateSubscribedCaches: CMsgSOCacheSubscribed[];
   uptodateSubscribedCaches: CMsgSOCacheSubscriptionCheck[];
   location: CMsgClientWelcome_Location | undefined;
-  saveGameKey: Buffer;
   gcSocacheFileVersion: number;
   txnCountryCode: string;
   gameData2: Buffer;
@@ -704,22 +709,16 @@ export const CExtraMsgBlock: MessageFns<CExtraMsgBlock> = {
 };
 
 function createBaseCMsgSteamLearnServerInfo(): CMsgSteamLearnServerInfo {
-  return { enableDataSubmission: false, enableInferencing: false, hmacKeys: undefined, enableTestInferencing: false };
+  return { accessTokens: undefined, projectInfos: [] };
 }
 
 export const CMsgSteamLearnServerInfo: MessageFns<CMsgSteamLearnServerInfo> = {
   encode(message: CMsgSteamLearnServerInfo, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    if (message.enableDataSubmission !== false) {
-      writer.uint32(8).bool(message.enableDataSubmission);
+    if (message.accessTokens !== undefined) {
+      CMsgSteamLearnAccessTokens.encode(message.accessTokens, writer.uint32(34).fork()).join();
     }
-    if (message.enableInferencing !== false) {
-      writer.uint32(16).bool(message.enableInferencing);
-    }
-    if (message.hmacKeys !== undefined) {
-      CMsgSteamLearnHMACKeys.encode(message.hmacKeys, writer.uint32(26).fork()).join();
-    }
-    if (message.enableTestInferencing !== false) {
-      writer.uint32(32).bool(message.enableTestInferencing);
+    for (const v of message.projectInfos) {
+      CMsgSteamLearnServerInfo_ProjectInfo.encode(v!, writer.uint32(42).fork()).join();
     }
     return writer;
   },
@@ -731,36 +730,20 @@ export const CMsgSteamLearnServerInfo: MessageFns<CMsgSteamLearnServerInfo> = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
-        case 1: {
-          if (tag !== 8) {
-            break;
-          }
-
-          message.enableDataSubmission = reader.bool();
-          continue;
-        }
-        case 2: {
-          if (tag !== 16) {
-            break;
-          }
-
-          message.enableInferencing = reader.bool();
-          continue;
-        }
-        case 3: {
-          if (tag !== 26) {
-            break;
-          }
-
-          message.hmacKeys = CMsgSteamLearnHMACKeys.decode(reader, reader.uint32());
-          continue;
-        }
         case 4: {
-          if (tag !== 32) {
+          if (tag !== 34) {
             break;
           }
 
-          message.enableTestInferencing = reader.bool();
+          message.accessTokens = CMsgSteamLearnAccessTokens.decode(reader, reader.uint32());
+          continue;
+        }
+        case 5: {
+          if (tag !== 42) {
+            break;
+          }
+
+          message.projectInfos.push(CMsgSteamLearnServerInfo_ProjectInfo.decode(reader, reader.uint32()));
           continue;
         }
       }
@@ -774,30 +757,20 @@ export const CMsgSteamLearnServerInfo: MessageFns<CMsgSteamLearnServerInfo> = {
 
   fromJSON(object: any): CMsgSteamLearnServerInfo {
     return {
-      enableDataSubmission: isSet(object.enableDataSubmission)
-        ? globalThis.Boolean(object.enableDataSubmission)
-        : false,
-      enableInferencing: isSet(object.enableInferencing) ? globalThis.Boolean(object.enableInferencing) : false,
-      hmacKeys: isSet(object.hmacKeys) ? CMsgSteamLearnHMACKeys.fromJSON(object.hmacKeys) : undefined,
-      enableTestInferencing: isSet(object.enableTestInferencing)
-        ? globalThis.Boolean(object.enableTestInferencing)
-        : false,
+      accessTokens: isSet(object.accessTokens) ? CMsgSteamLearnAccessTokens.fromJSON(object.accessTokens) : undefined,
+      projectInfos: globalThis.Array.isArray(object?.projectInfos)
+        ? object.projectInfos.map((e: any) => CMsgSteamLearnServerInfo_ProjectInfo.fromJSON(e))
+        : [],
     };
   },
 
   toJSON(message: CMsgSteamLearnServerInfo): unknown {
     const obj: any = {};
-    if (message.enableDataSubmission !== false) {
-      obj.enableDataSubmission = message.enableDataSubmission;
+    if (message.accessTokens !== undefined) {
+      obj.accessTokens = CMsgSteamLearnAccessTokens.toJSON(message.accessTokens);
     }
-    if (message.enableInferencing !== false) {
-      obj.enableInferencing = message.enableInferencing;
-    }
-    if (message.hmacKeys !== undefined) {
-      obj.hmacKeys = CMsgSteamLearnHMACKeys.toJSON(message.hmacKeys);
-    }
-    if (message.enableTestInferencing !== false) {
-      obj.enableTestInferencing = message.enableTestInferencing;
+    if (message.projectInfos?.length) {
+      obj.projectInfos = message.projectInfos.map((e) => CMsgSteamLearnServerInfo_ProjectInfo.toJSON(e));
     }
     return obj;
   },
@@ -807,12 +780,144 @@ export const CMsgSteamLearnServerInfo: MessageFns<CMsgSteamLearnServerInfo> = {
   },
   fromPartial(object: DeepPartial<CMsgSteamLearnServerInfo>): CMsgSteamLearnServerInfo {
     const message = createBaseCMsgSteamLearnServerInfo();
-    message.enableDataSubmission = object.enableDataSubmission ?? false;
-    message.enableInferencing = object.enableInferencing ?? false;
-    message.hmacKeys = (object.hmacKeys !== undefined && object.hmacKeys !== null)
-      ? CMsgSteamLearnHMACKeys.fromPartial(object.hmacKeys)
+    message.accessTokens = (object.accessTokens !== undefined && object.accessTokens !== null)
+      ? CMsgSteamLearnAccessTokens.fromPartial(object.accessTokens)
       : undefined;
-    message.enableTestInferencing = object.enableTestInferencing ?? false;
+    message.projectInfos = object.projectInfos?.map((e) => CMsgSteamLearnServerInfo_ProjectInfo.fromPartial(e)) || [];
+    return message;
+  },
+};
+
+function createBaseCMsgSteamLearnServerInfo_ProjectInfo(): CMsgSteamLearnServerInfo_ProjectInfo {
+  return {
+    projectId: 0,
+    snapshotPublishedVersion: 0,
+    inferencePublishedVersion: 0,
+    snapshotPercentage: 0,
+    snapshotEnabled: false,
+  };
+}
+
+export const CMsgSteamLearnServerInfo_ProjectInfo: MessageFns<CMsgSteamLearnServerInfo_ProjectInfo> = {
+  encode(message: CMsgSteamLearnServerInfo_ProjectInfo, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.projectId !== 0) {
+      writer.uint32(8).uint32(message.projectId);
+    }
+    if (message.snapshotPublishedVersion !== 0) {
+      writer.uint32(16).uint32(message.snapshotPublishedVersion);
+    }
+    if (message.inferencePublishedVersion !== 0) {
+      writer.uint32(24).uint32(message.inferencePublishedVersion);
+    }
+    if (message.snapshotPercentage !== 0) {
+      writer.uint32(48).uint32(message.snapshotPercentage);
+    }
+    if (message.snapshotEnabled !== false) {
+      writer.uint32(56).bool(message.snapshotEnabled);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgSteamLearnServerInfo_ProjectInfo {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgSteamLearnServerInfo_ProjectInfo();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.projectId = reader.uint32();
+          continue;
+        }
+        case 2: {
+          if (tag !== 16) {
+            break;
+          }
+
+          message.snapshotPublishedVersion = reader.uint32();
+          continue;
+        }
+        case 3: {
+          if (tag !== 24) {
+            break;
+          }
+
+          message.inferencePublishedVersion = reader.uint32();
+          continue;
+        }
+        case 6: {
+          if (tag !== 48) {
+            break;
+          }
+
+          message.snapshotPercentage = reader.uint32();
+          continue;
+        }
+        case 7: {
+          if (tag !== 56) {
+            break;
+          }
+
+          message.snapshotEnabled = reader.bool();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgSteamLearnServerInfo_ProjectInfo {
+    return {
+      projectId: isSet(object.projectId) ? globalThis.Number(object.projectId) : 0,
+      snapshotPublishedVersion: isSet(object.snapshotPublishedVersion)
+        ? globalThis.Number(object.snapshotPublishedVersion)
+        : 0,
+      inferencePublishedVersion: isSet(object.inferencePublishedVersion)
+        ? globalThis.Number(object.inferencePublishedVersion)
+        : 0,
+      snapshotPercentage: isSet(object.snapshotPercentage) ? globalThis.Number(object.snapshotPercentage) : 0,
+      snapshotEnabled: isSet(object.snapshotEnabled) ? globalThis.Boolean(object.snapshotEnabled) : false,
+    };
+  },
+
+  toJSON(message: CMsgSteamLearnServerInfo_ProjectInfo): unknown {
+    const obj: any = {};
+    if (message.projectId !== 0) {
+      obj.projectId = Math.round(message.projectId);
+    }
+    if (message.snapshotPublishedVersion !== 0) {
+      obj.snapshotPublishedVersion = Math.round(message.snapshotPublishedVersion);
+    }
+    if (message.inferencePublishedVersion !== 0) {
+      obj.inferencePublishedVersion = Math.round(message.inferencePublishedVersion);
+    }
+    if (message.snapshotPercentage !== 0) {
+      obj.snapshotPercentage = Math.round(message.snapshotPercentage);
+    }
+    if (message.snapshotEnabled !== false) {
+      obj.snapshotEnabled = message.snapshotEnabled;
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSteamLearnServerInfo_ProjectInfo>): CMsgSteamLearnServerInfo_ProjectInfo {
+    return CMsgSteamLearnServerInfo_ProjectInfo.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgSteamLearnServerInfo_ProjectInfo>): CMsgSteamLearnServerInfo_ProjectInfo {
+    const message = createBaseCMsgSteamLearnServerInfo_ProjectInfo();
+    message.projectId = object.projectId ?? 0;
+    message.snapshotPublishedVersion = object.snapshotPublishedVersion ?? 0;
+    message.inferencePublishedVersion = object.inferencePublishedVersion ?? 0;
+    message.snapshotPercentage = object.snapshotPercentage ?? 0;
+    message.snapshotEnabled = object.snapshotEnabled ?? false;
     return message;
   },
 };
@@ -3964,7 +4069,6 @@ function createBaseCMsgClientWelcome(): CMsgClientWelcome {
     outofdateSubscribedCaches: [],
     uptodateSubscribedCaches: [],
     location: undefined,
-    saveGameKey: Buffer.alloc(0),
     gcSocacheFileVersion: 0,
     txnCountryCode: "",
     gameData2: Buffer.alloc(0),
@@ -3995,9 +4099,6 @@ export const CMsgClientWelcome: MessageFns<CMsgClientWelcome> = {
     }
     if (message.location !== undefined) {
       CMsgClientWelcome_Location.encode(message.location, writer.uint32(42).fork()).join();
-    }
-    if (message.saveGameKey.length !== 0) {
-      writer.uint32(50).bytes(message.saveGameKey);
     }
     if (message.gcSocacheFileVersion !== 0) {
       writer.uint32(72).uint32(message.gcSocacheFileVersion);
@@ -4080,14 +4181,6 @@ export const CMsgClientWelcome: MessageFns<CMsgClientWelcome> = {
           }
 
           message.location = CMsgClientWelcome_Location.decode(reader, reader.uint32());
-          continue;
-        }
-        case 6: {
-          if (tag !== 50) {
-            break;
-          }
-
-          message.saveGameKey = Buffer.from(reader.bytes());
           continue;
         }
         case 9: {
@@ -4198,7 +4291,6 @@ export const CMsgClientWelcome: MessageFns<CMsgClientWelcome> = {
         ? object.uptodateSubscribedCaches.map((e: any) => CMsgSOCacheSubscriptionCheck.fromJSON(e))
         : [],
       location: isSet(object.location) ? CMsgClientWelcome_Location.fromJSON(object.location) : undefined,
-      saveGameKey: isSet(object.saveGameKey) ? Buffer.from(bytesFromBase64(object.saveGameKey)) : Buffer.alloc(0),
       gcSocacheFileVersion: isSet(object.gcSocacheFileVersion) ? globalThis.Number(object.gcSocacheFileVersion) : 0,
       txnCountryCode: isSet(object.txnCountryCode) ? globalThis.String(object.txnCountryCode) : "",
       gameData2: isSet(object.gameData2) ? Buffer.from(bytesFromBase64(object.gameData2)) : Buffer.alloc(0),
@@ -4237,9 +4329,6 @@ export const CMsgClientWelcome: MessageFns<CMsgClientWelcome> = {
     }
     if (message.location !== undefined) {
       obj.location = CMsgClientWelcome_Location.toJSON(message.location);
-    }
-    if (message.saveGameKey.length !== 0) {
-      obj.saveGameKey = base64FromBytes(message.saveGameKey);
     }
     if (message.gcSocacheFileVersion !== 0) {
       obj.gcSocacheFileVersion = Math.round(message.gcSocacheFileVersion);
@@ -4291,7 +4380,6 @@ export const CMsgClientWelcome: MessageFns<CMsgClientWelcome> = {
     message.location = (object.location !== undefined && object.location !== null)
       ? CMsgClientWelcome_Location.fromPartial(object.location)
       : undefined;
-    message.saveGameKey = object.saveGameKey ?? Buffer.alloc(0);
     message.gcSocacheFileVersion = object.gcSocacheFileVersion ?? 0;
     message.txnCountryCode = object.txnCountryCode ?? "";
     message.gameData2 = object.gameData2 ?? Buffer.alloc(0);

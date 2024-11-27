@@ -158,6 +158,111 @@ export function eTeamFanContentAssetStatusToJSON(object: ETeamFanContentAssetSta
   }
 }
 
+export enum ETalentContentStatus {
+  TALENT_CONTENT_STATUS_INVALID = 0,
+  TALENT_CONTENT_STATUS_PENDING = 1,
+  TALENT_CONTENT_STATUS_EVALUATED = 2,
+}
+
+export function eTalentContentStatusFromJSON(object: any): ETalentContentStatus {
+  switch (object) {
+    case 0:
+    case "TALENT_CONTENT_STATUS_INVALID":
+      return ETalentContentStatus.TALENT_CONTENT_STATUS_INVALID;
+    case 1:
+    case "TALENT_CONTENT_STATUS_PENDING":
+      return ETalentContentStatus.TALENT_CONTENT_STATUS_PENDING;
+    case 2:
+    case "TALENT_CONTENT_STATUS_EVALUATED":
+      return ETalentContentStatus.TALENT_CONTENT_STATUS_EVALUATED;
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum ETalentContentStatus");
+  }
+}
+
+export function eTalentContentStatusToJSON(object: ETalentContentStatus): string {
+  switch (object) {
+    case ETalentContentStatus.TALENT_CONTENT_STATUS_INVALID:
+      return "TALENT_CONTENT_STATUS_INVALID";
+    case ETalentContentStatus.TALENT_CONTENT_STATUS_PENDING:
+      return "TALENT_CONTENT_STATUS_PENDING";
+    case ETalentContentStatus.TALENT_CONTENT_STATUS_EVALUATED:
+      return "TALENT_CONTENT_STATUS_EVALUATED";
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum ETalentContentStatus");
+  }
+}
+
+export enum ETalentContentAssetType {
+  k_eTalentContentAssetType_Photo = 1,
+  k_eTalentContentAssetType_Autograph = 2,
+  k_eTalentContentAssetType_Voicelines = 3,
+}
+
+export function eTalentContentAssetTypeFromJSON(object: any): ETalentContentAssetType {
+  switch (object) {
+    case 1:
+    case "k_eTalentContentAssetType_Photo":
+      return ETalentContentAssetType.k_eTalentContentAssetType_Photo;
+    case 2:
+    case "k_eTalentContentAssetType_Autograph":
+      return ETalentContentAssetType.k_eTalentContentAssetType_Autograph;
+    case 3:
+    case "k_eTalentContentAssetType_Voicelines":
+      return ETalentContentAssetType.k_eTalentContentAssetType_Voicelines;
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum ETalentContentAssetType");
+  }
+}
+
+export function eTalentContentAssetTypeToJSON(object: ETalentContentAssetType): string {
+  switch (object) {
+    case ETalentContentAssetType.k_eTalentContentAssetType_Photo:
+      return "k_eTalentContentAssetType_Photo";
+    case ETalentContentAssetType.k_eTalentContentAssetType_Autograph:
+      return "k_eTalentContentAssetType_Autograph";
+    case ETalentContentAssetType.k_eTalentContentAssetType_Voicelines:
+      return "k_eTalentContentAssetType_Voicelines";
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum ETalentContentAssetType");
+  }
+}
+
+export enum ETalentContentAssetStatus {
+  k_eTalentContentAssetStatus_None = 0,
+  k_eTalentContentAssetStatus_Approved = 1,
+  k_eTalentContentAssetStatus_Rejected = 2,
+}
+
+export function eTalentContentAssetStatusFromJSON(object: any): ETalentContentAssetStatus {
+  switch (object) {
+    case 0:
+    case "k_eTalentContentAssetStatus_None":
+      return ETalentContentAssetStatus.k_eTalentContentAssetStatus_None;
+    case 1:
+    case "k_eTalentContentAssetStatus_Approved":
+      return ETalentContentAssetStatus.k_eTalentContentAssetStatus_Approved;
+    case 2:
+    case "k_eTalentContentAssetStatus_Rejected":
+      return ETalentContentAssetStatus.k_eTalentContentAssetStatus_Rejected;
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum ETalentContentAssetStatus");
+  }
+}
+
+export function eTalentContentAssetStatusToJSON(object: ETalentContentAssetStatus): string {
+  switch (object) {
+    case ETalentContentAssetStatus.k_eTalentContentAssetStatus_None:
+      return "k_eTalentContentAssetStatus_None";
+    case ETalentContentAssetStatus.k_eTalentContentAssetStatus_Approved:
+      return "k_eTalentContentAssetStatus_Approved";
+    case ETalentContentAssetStatus.k_eTalentContentAssetStatus_Rejected:
+      return "k_eTalentContentAssetStatus_Rejected";
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum ETalentContentAssetStatus");
+  }
+}
+
 export interface CMsgArcanaVotes {
   matches: CMsgArcanaVotes_Match[];
   roundTimeRemaining: number;
@@ -464,6 +569,64 @@ export interface CMsgTeamFanContentAutographStatus_TeamStatus {
   workshopAccountId: number;
 }
 
+export interface CMsgTalentContentAssetStatus {
+  assetType: ETalentContentAssetType;
+  assetIndex: number;
+  assetStatus: ETalentContentAssetStatus;
+}
+
+export interface CMsgTalentContentStatus {
+  talentStatus: CMsgTalentContentStatus_TalentDetails[];
+}
+
+export interface CMsgTalentContentStatus_TalentDetails {
+  accountId: number;
+  fullName: string;
+  nickname: string;
+  workshopItemId: number;
+  zipFile: string;
+  status: ETalentContentStatus;
+  assetStatus: CMsgTalentContentAssetStatus[];
+  broadcastLanguage: number;
+}
+
+export interface CMsgSetTalentContentResponse {
+  result: CMsgSetTalentContentResponse_EResult;
+}
+
+export enum CMsgSetTalentContentResponse_EResult {
+  k_eSuccess = 0,
+  k_eInternalError = 1,
+}
+
+export function cMsgSetTalentContentResponse_EResultFromJSON(object: any): CMsgSetTalentContentResponse_EResult {
+  switch (object) {
+    case 0:
+    case "k_eSuccess":
+      return CMsgSetTalentContentResponse_EResult.k_eSuccess;
+    case 1:
+    case "k_eInternalError":
+      return CMsgSetTalentContentResponse_EResult.k_eInternalError;
+    default:
+      throw new globalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgSetTalentContentResponse_EResult",
+      );
+  }
+}
+
+export function cMsgSetTalentContentResponse_EResultToJSON(object: CMsgSetTalentContentResponse_EResult): string {
+  switch (object) {
+    case CMsgSetTalentContentResponse_EResult.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgSetTalentContentResponse_EResult.k_eInternalError:
+      return "k_eInternalError";
+    default:
+      throw new globalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgSetTalentContentResponse_EResult",
+      );
+  }
+}
+
 export interface CMsgDPCEvent {
   event: CMsgDPCEvent_ELeagueEvent;
   eventType: CMsgDPCEvent_ELeagueEventType;
@@ -505,6 +668,7 @@ export enum CMsgDPCEvent_ELeagueEvent {
   SUMMER_2023_LEAGUE = 19,
   SUMMER_2023_MAJOR = 20,
   INTERNATIONAL_2023 = 21,
+  INTERNATIONAL_2024 = 23,
 }
 
 export function cMsgDPCEvent_ELeagueEventFromJSON(object: any): CMsgDPCEvent_ELeagueEvent {
@@ -575,6 +739,9 @@ export function cMsgDPCEvent_ELeagueEventFromJSON(object: any): CMsgDPCEvent_ELe
     case 21:
     case "INTERNATIONAL_2023":
       return CMsgDPCEvent_ELeagueEvent.INTERNATIONAL_2023;
+    case 23:
+    case "INTERNATIONAL_2024":
+      return CMsgDPCEvent_ELeagueEvent.INTERNATIONAL_2024;
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum CMsgDPCEvent_ELeagueEvent");
   }
@@ -626,6 +793,8 @@ export function cMsgDPCEvent_ELeagueEventToJSON(object: CMsgDPCEvent_ELeagueEven
       return "SUMMER_2023_MAJOR";
     case CMsgDPCEvent_ELeagueEvent.INTERNATIONAL_2023:
       return "INTERNATIONAL_2023";
+    case CMsgDPCEvent_ELeagueEvent.INTERNATIONAL_2024:
+      return "INTERNATIONAL_2024";
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum CMsgDPCEvent_ELeagueEvent");
   }
@@ -640,6 +809,10 @@ export enum CMsgDPCEvent_ELeagueEventPhase {
   OVERALL = 5,
   PLAYOFF = 6,
   RESULTS = 7,
+  DPC_POINT_STANDINGS = 8,
+  GROUP_C = 9,
+  GROUP_D = 10,
+  PLACEMENT = 11,
 }
 
 export function cMsgDPCEvent_ELeagueEventPhaseFromJSON(object: any): CMsgDPCEvent_ELeagueEventPhase {
@@ -668,6 +841,18 @@ export function cMsgDPCEvent_ELeagueEventPhaseFromJSON(object: any): CMsgDPCEven
     case 7:
     case "RESULTS":
       return CMsgDPCEvent_ELeagueEventPhase.RESULTS;
+    case 8:
+    case "DPC_POINT_STANDINGS":
+      return CMsgDPCEvent_ELeagueEventPhase.DPC_POINT_STANDINGS;
+    case 9:
+    case "GROUP_C":
+      return CMsgDPCEvent_ELeagueEventPhase.GROUP_C;
+    case 10:
+    case "GROUP_D":
+      return CMsgDPCEvent_ELeagueEventPhase.GROUP_D;
+    case 11:
+    case "PLACEMENT":
+      return CMsgDPCEvent_ELeagueEventPhase.PLACEMENT;
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum CMsgDPCEvent_ELeagueEventPhase");
   }
@@ -691,6 +876,14 @@ export function cMsgDPCEvent_ELeagueEventPhaseToJSON(object: CMsgDPCEvent_ELeagu
       return "PLAYOFF";
     case CMsgDPCEvent_ELeagueEventPhase.RESULTS:
       return "RESULTS";
+    case CMsgDPCEvent_ELeagueEventPhase.DPC_POINT_STANDINGS:
+      return "DPC_POINT_STANDINGS";
+    case CMsgDPCEvent_ELeagueEventPhase.GROUP_C:
+      return "GROUP_C";
+    case CMsgDPCEvent_ELeagueEventPhase.GROUP_D:
+      return "GROUP_D";
+    case CMsgDPCEvent_ELeagueEventPhase.PLACEMENT:
+      return "PLACEMENT";
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum CMsgDPCEvent_ELeagueEventPhase");
   }
@@ -703,6 +896,7 @@ export enum CMsgDPCEvent_ELeagueEventType {
   INTERNATIONAL_QUALIFIERS = 3,
   INTERNATIONAL = 4,
   LEAGUE_FINALS = 5,
+  EXTERNAL = 6,
 }
 
 export function cMsgDPCEvent_ELeagueEventTypeFromJSON(object: any): CMsgDPCEvent_ELeagueEventType {
@@ -725,6 +919,9 @@ export function cMsgDPCEvent_ELeagueEventTypeFromJSON(object: any): CMsgDPCEvent
     case 5:
     case "LEAGUE_FINALS":
       return CMsgDPCEvent_ELeagueEventType.LEAGUE_FINALS;
+    case 6:
+    case "EXTERNAL":
+      return CMsgDPCEvent_ELeagueEventType.EXTERNAL;
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum CMsgDPCEvent_ELeagueEventType");
   }
@@ -744,6 +941,8 @@ export function cMsgDPCEvent_ELeagueEventTypeToJSON(object: CMsgDPCEvent_ELeague
       return "INTERNATIONAL";
     case CMsgDPCEvent_ELeagueEventType.LEAGUE_FINALS:
       return "LEAGUE_FINALS";
+    case CMsgDPCEvent_ELeagueEventType.EXTERNAL:
+      return "EXTERNAL";
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum CMsgDPCEvent_ELeagueEventType");
   }
@@ -1109,10 +1308,10 @@ export const CMsgArcanaVotes_Match: MessageFns<CMsgArcanaVotes_Match> = {
       writer.uint32(8).uint32(message.matchId);
     }
     if (message.heroId0 !== 0) {
-      writer.uint32(16).uint32(message.heroId0);
+      writer.uint32(16).int32(message.heroId0);
     }
     if (message.heroId1 !== 0) {
-      writer.uint32(24).uint32(message.heroId1);
+      writer.uint32(24).int32(message.heroId1);
     }
     if (message.heroSeeding0 !== 0) {
       writer.uint32(32).uint32(message.heroSeeding0);
@@ -1161,7 +1360,7 @@ export const CMsgArcanaVotes_Match: MessageFns<CMsgArcanaVotes_Match> = {
             break;
           }
 
-          message.heroId0 = reader.uint32();
+          message.heroId0 = reader.int32();
           continue;
         }
         case 3: {
@@ -1169,7 +1368,7 @@ export const CMsgArcanaVotes_Match: MessageFns<CMsgArcanaVotes_Match> = {
             break;
           }
 
-          message.heroId1 = reader.uint32();
+          message.heroId1 = reader.int32();
           continue;
         }
         case 4: {
@@ -1905,7 +2104,7 @@ function createBaseCMsgDraftTrivia_DraftTriviaHeroInfo(): CMsgDraftTrivia_DraftT
 export const CMsgDraftTrivia_DraftTriviaHeroInfo: MessageFns<CMsgDraftTrivia_DraftTriviaHeroInfo> = {
   encode(message: CMsgDraftTrivia_DraftTriviaHeroInfo, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.heroId !== 0) {
-      writer.uint32(8).uint32(message.heroId);
+      writer.uint32(8).int32(message.heroId);
     }
     if (message.role !== 0) {
       writer.uint32(16).uint32(message.role);
@@ -1925,7 +2124,7 @@ export const CMsgDraftTrivia_DraftTriviaHeroInfo: MessageFns<CMsgDraftTrivia_Dra
             break;
           }
 
-          message.heroId = reader.uint32();
+          message.heroId = reader.int32();
           continue;
         }
         case 2: {
@@ -3081,6 +3280,401 @@ export const CMsgTeamFanContentAutographStatus_TeamStatus: MessageFns<CMsgTeamFa
     message.autographs =
       object.autographs?.map((e) => CMsgTeamFanContentAutographStatus_AutographStatus.fromPartial(e)) || [];
     message.workshopAccountId = object.workshopAccountId ?? 0;
+    return message;
+  },
+};
+
+function createBaseCMsgTalentContentAssetStatus(): CMsgTalentContentAssetStatus {
+  return { assetType: 1, assetIndex: 0, assetStatus: 0 };
+}
+
+export const CMsgTalentContentAssetStatus: MessageFns<CMsgTalentContentAssetStatus> = {
+  encode(message: CMsgTalentContentAssetStatus, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.assetType !== 1) {
+      writer.uint32(8).int32(message.assetType);
+    }
+    if (message.assetIndex !== 0) {
+      writer.uint32(16).uint32(message.assetIndex);
+    }
+    if (message.assetStatus !== 0) {
+      writer.uint32(24).int32(message.assetStatus);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgTalentContentAssetStatus {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgTalentContentAssetStatus();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.assetType = reader.int32() as any;
+          continue;
+        }
+        case 2: {
+          if (tag !== 16) {
+            break;
+          }
+
+          message.assetIndex = reader.uint32();
+          continue;
+        }
+        case 3: {
+          if (tag !== 24) {
+            break;
+          }
+
+          message.assetStatus = reader.int32() as any;
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgTalentContentAssetStatus {
+    return {
+      assetType: isSet(object.assetType) ? eTalentContentAssetTypeFromJSON(object.assetType) : 1,
+      assetIndex: isSet(object.assetIndex) ? globalThis.Number(object.assetIndex) : 0,
+      assetStatus: isSet(object.assetStatus) ? eTalentContentAssetStatusFromJSON(object.assetStatus) : 0,
+    };
+  },
+
+  toJSON(message: CMsgTalentContentAssetStatus): unknown {
+    const obj: any = {};
+    if (message.assetType !== 1) {
+      obj.assetType = eTalentContentAssetTypeToJSON(message.assetType);
+    }
+    if (message.assetIndex !== 0) {
+      obj.assetIndex = Math.round(message.assetIndex);
+    }
+    if (message.assetStatus !== 0) {
+      obj.assetStatus = eTalentContentAssetStatusToJSON(message.assetStatus);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgTalentContentAssetStatus>): CMsgTalentContentAssetStatus {
+    return CMsgTalentContentAssetStatus.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgTalentContentAssetStatus>): CMsgTalentContentAssetStatus {
+    const message = createBaseCMsgTalentContentAssetStatus();
+    message.assetType = object.assetType ?? 1;
+    message.assetIndex = object.assetIndex ?? 0;
+    message.assetStatus = object.assetStatus ?? 0;
+    return message;
+  },
+};
+
+function createBaseCMsgTalentContentStatus(): CMsgTalentContentStatus {
+  return { talentStatus: [] };
+}
+
+export const CMsgTalentContentStatus: MessageFns<CMsgTalentContentStatus> = {
+  encode(message: CMsgTalentContentStatus, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    for (const v of message.talentStatus) {
+      CMsgTalentContentStatus_TalentDetails.encode(v!, writer.uint32(10).fork()).join();
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgTalentContentStatus {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgTalentContentStatus();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.talentStatus.push(CMsgTalentContentStatus_TalentDetails.decode(reader, reader.uint32()));
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgTalentContentStatus {
+    return {
+      talentStatus: globalThis.Array.isArray(object?.talentStatus)
+        ? object.talentStatus.map((e: any) => CMsgTalentContentStatus_TalentDetails.fromJSON(e))
+        : [],
+    };
+  },
+
+  toJSON(message: CMsgTalentContentStatus): unknown {
+    const obj: any = {};
+    if (message.talentStatus?.length) {
+      obj.talentStatus = message.talentStatus.map((e) => CMsgTalentContentStatus_TalentDetails.toJSON(e));
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgTalentContentStatus>): CMsgTalentContentStatus {
+    return CMsgTalentContentStatus.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgTalentContentStatus>): CMsgTalentContentStatus {
+    const message = createBaseCMsgTalentContentStatus();
+    message.talentStatus = object.talentStatus?.map((e) => CMsgTalentContentStatus_TalentDetails.fromPartial(e)) || [];
+    return message;
+  },
+};
+
+function createBaseCMsgTalentContentStatus_TalentDetails(): CMsgTalentContentStatus_TalentDetails {
+  return {
+    accountId: 0,
+    fullName: "",
+    nickname: "",
+    workshopItemId: 0,
+    zipFile: "",
+    status: 0,
+    assetStatus: [],
+    broadcastLanguage: 0,
+  };
+}
+
+export const CMsgTalentContentStatus_TalentDetails: MessageFns<CMsgTalentContentStatus_TalentDetails> = {
+  encode(message: CMsgTalentContentStatus_TalentDetails, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.accountId !== 0) {
+      writer.uint32(8).uint32(message.accountId);
+    }
+    if (message.fullName !== "") {
+      writer.uint32(18).string(message.fullName);
+    }
+    if (message.nickname !== "") {
+      writer.uint32(26).string(message.nickname);
+    }
+    if (message.workshopItemId !== 0) {
+      writer.uint32(32).uint32(message.workshopItemId);
+    }
+    if (message.zipFile !== "") {
+      writer.uint32(42).string(message.zipFile);
+    }
+    if (message.status !== 0) {
+      writer.uint32(48).int32(message.status);
+    }
+    for (const v of message.assetStatus) {
+      CMsgTalentContentAssetStatus.encode(v!, writer.uint32(58).fork()).join();
+    }
+    if (message.broadcastLanguage !== 0) {
+      writer.uint32(64).uint32(message.broadcastLanguage);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgTalentContentStatus_TalentDetails {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgTalentContentStatus_TalentDetails();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.accountId = reader.uint32();
+          continue;
+        }
+        case 2: {
+          if (tag !== 18) {
+            break;
+          }
+
+          message.fullName = reader.string();
+          continue;
+        }
+        case 3: {
+          if (tag !== 26) {
+            break;
+          }
+
+          message.nickname = reader.string();
+          continue;
+        }
+        case 4: {
+          if (tag !== 32) {
+            break;
+          }
+
+          message.workshopItemId = reader.uint32();
+          continue;
+        }
+        case 5: {
+          if (tag !== 42) {
+            break;
+          }
+
+          message.zipFile = reader.string();
+          continue;
+        }
+        case 6: {
+          if (tag !== 48) {
+            break;
+          }
+
+          message.status = reader.int32() as any;
+          continue;
+        }
+        case 7: {
+          if (tag !== 58) {
+            break;
+          }
+
+          message.assetStatus.push(CMsgTalentContentAssetStatus.decode(reader, reader.uint32()));
+          continue;
+        }
+        case 8: {
+          if (tag !== 64) {
+            break;
+          }
+
+          message.broadcastLanguage = reader.uint32();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgTalentContentStatus_TalentDetails {
+    return {
+      accountId: isSet(object.accountId) ? globalThis.Number(object.accountId) : 0,
+      fullName: isSet(object.fullName) ? globalThis.String(object.fullName) : "",
+      nickname: isSet(object.nickname) ? globalThis.String(object.nickname) : "",
+      workshopItemId: isSet(object.workshopItemId) ? globalThis.Number(object.workshopItemId) : 0,
+      zipFile: isSet(object.zipFile) ? globalThis.String(object.zipFile) : "",
+      status: isSet(object.status) ? eTalentContentStatusFromJSON(object.status) : 0,
+      assetStatus: globalThis.Array.isArray(object?.assetStatus)
+        ? object.assetStatus.map((e: any) => CMsgTalentContentAssetStatus.fromJSON(e))
+        : [],
+      broadcastLanguage: isSet(object.broadcastLanguage) ? globalThis.Number(object.broadcastLanguage) : 0,
+    };
+  },
+
+  toJSON(message: CMsgTalentContentStatus_TalentDetails): unknown {
+    const obj: any = {};
+    if (message.accountId !== 0) {
+      obj.accountId = Math.round(message.accountId);
+    }
+    if (message.fullName !== "") {
+      obj.fullName = message.fullName;
+    }
+    if (message.nickname !== "") {
+      obj.nickname = message.nickname;
+    }
+    if (message.workshopItemId !== 0) {
+      obj.workshopItemId = Math.round(message.workshopItemId);
+    }
+    if (message.zipFile !== "") {
+      obj.zipFile = message.zipFile;
+    }
+    if (message.status !== 0) {
+      obj.status = eTalentContentStatusToJSON(message.status);
+    }
+    if (message.assetStatus?.length) {
+      obj.assetStatus = message.assetStatus.map((e) => CMsgTalentContentAssetStatus.toJSON(e));
+    }
+    if (message.broadcastLanguage !== 0) {
+      obj.broadcastLanguage = Math.round(message.broadcastLanguage);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgTalentContentStatus_TalentDetails>): CMsgTalentContentStatus_TalentDetails {
+    return CMsgTalentContentStatus_TalentDetails.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgTalentContentStatus_TalentDetails>): CMsgTalentContentStatus_TalentDetails {
+    const message = createBaseCMsgTalentContentStatus_TalentDetails();
+    message.accountId = object.accountId ?? 0;
+    message.fullName = object.fullName ?? "";
+    message.nickname = object.nickname ?? "";
+    message.workshopItemId = object.workshopItemId ?? 0;
+    message.zipFile = object.zipFile ?? "";
+    message.status = object.status ?? 0;
+    message.assetStatus = object.assetStatus?.map((e) => CMsgTalentContentAssetStatus.fromPartial(e)) || [];
+    message.broadcastLanguage = object.broadcastLanguage ?? 0;
+    return message;
+  },
+};
+
+function createBaseCMsgSetTalentContentResponse(): CMsgSetTalentContentResponse {
+  return { result: 0 };
+}
+
+export const CMsgSetTalentContentResponse: MessageFns<CMsgSetTalentContentResponse> = {
+  encode(message: CMsgSetTalentContentResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.result !== 0) {
+      writer.uint32(8).int32(message.result);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgSetTalentContentResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgSetTalentContentResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.result = reader.int32() as any;
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgSetTalentContentResponse {
+    return { result: isSet(object.result) ? cMsgSetTalentContentResponse_EResultFromJSON(object.result) : 0 };
+  },
+
+  toJSON(message: CMsgSetTalentContentResponse): unknown {
+    const obj: any = {};
+    if (message.result !== 0) {
+      obj.result = cMsgSetTalentContentResponse_EResultToJSON(message.result);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgSetTalentContentResponse>): CMsgSetTalentContentResponse {
+    return CMsgSetTalentContentResponse.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgSetTalentContentResponse>): CMsgSetTalentContentResponse {
+    const message = createBaseCMsgSetTalentContentResponse();
+    message.result = object.result ?? 0;
     return message;
   },
 };
