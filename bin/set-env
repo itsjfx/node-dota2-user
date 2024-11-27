@@ -6,13 +6,11 @@
 
 set -eu -o pipefail
 
-cd "$(dirname "$0")/../"
-
 yaml2json() {
     python3 -c 'import sys, yaml, json; [json.dump(doc, sys.stdout) for doc in yaml.safe_load_all(sys.stdin)]'
 }
 
-data="$(cat ../config.yaml | yaml2json)"
+data="$(cat "$(dirname "$0")/../../config.yaml" | yaml2json)"
 read account_name password shared_secret <<<"$(<<<"$data" jq -r '. | [.account_name, .password, .shared_secret] | @tsv')"
 code="$(<<<"$shared_secret" node -e 'const totp = require("steam-totp"); const fs = require("fs"); process.stdout.write(totp.getAuthCode(fs.readFileSync(process.stdin.fd, "utf-8").toString()));')"
 
