@@ -1,4 +1,5 @@
 import { EventEmitter } from 'node:events';
+import { clearTimeout } from 'node:timers';
 
 import ByteBuffer from 'bytebuffer';
 import SteamUser from 'steam-user';
@@ -21,8 +22,7 @@ export class Dota2User extends EventEmitter {
     // State
     _haveGCSession = false;
     _inDota2 = false;
-    // TODO
-    _helloTimer: NodeJS.Timer | undefined | null;
+    _helloTimer: NodeJS.Timeout | undefined | null;
     _helloTimerMs?: number | undefined;
 
     constructor(steam: SteamUser) {
