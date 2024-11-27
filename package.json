@@ -1,6 +1,6 @@
 {
   "name": "dota2-user",
-  "version": "2.0.1-beta.0",
+  "version": "2.0.1",
   "description": "Exposes a simple API for interacting with the Dota 2 game coordinator",
   "main": "index.js",
   "scripts": {
@@ -11,6 +11,7 @@
     "lint": "./bin/lint",
     "lint:fix": "./bin/lint --fix",
     "pull-protos": "./bin/pull-protos",
+    "set-env": "./bin/set-env",
     "test": "./bin/test",
     "update-protos": "./bin/update-protos",
     "watch": "./bin/watch"
@@ -37,18 +38,18 @@
   "dependencies": {
     "bytebuffer": "^5.0.1",
     "debug": "^4.3.4",
-    "ts-proto": "^1.146.0",
+    "ts-proto": "^2.4.1",
     "tslib": "^2.6.0"
   },
   "peerDependencies": {
-    "steam-user": ">=4.2.0 < 5"
+    "steam-user": ">=4.2.0 < 6"
   },
   "devDependencies": {
     "@tsconfig/node14": "^14.1.0",
     "@types/debug": "^4.1.7",
     "@types/jest": "^29.5.2",
-    "@types/node": "^18.15.11",
-    "@types/steam-user": "^4.26.1",
+    "@types/node": "^22.10.0",
+    "@types/steam-user": "^5.0.3",
     "@typescript-eslint/eslint-plugin": "^5.59.2",
     "@typescript-eslint/parser": "^5.59.2",
     "eslint": "^8.40.0",
