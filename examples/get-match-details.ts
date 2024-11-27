@@ -13,10 +13,11 @@ const logOnOptions = {
     twoFactorCode: process.env.STEAM_TWO_FACTOR_CODE!, // SteamTotp.getAuthCode('...'), // e.g. use steam-totp
 };
 
+console.log('Logging in to Steam');
 client.logOn(logOnOptions);
 
 client.on('loggedOn', () => {
-    console.log('Logged into Steam');
+    console.log('Logged in to Steam');
     // launch app
     client.gamesPlayed(Dota2User.STEAM_APPID);
 
