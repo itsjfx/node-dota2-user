@@ -30,12 +30,11 @@ export class Dota2User extends EventEmitter {
             throw new Dota2UserError('dota2-user v2 only supports steam-user v4.2.0 or later.');
         } else {
             const [major, minor] = steam.packageVersion.split('.');
-            if (+major < 4 || +minor < 2) {
+            if (+major < 4 || (+major === 4 && +minor < 2)) {
                 throw new Dota2UserError(`dota2-user v2 only supports steam-user v4.2.0 or later. ${steam.constructor.name} v${steam.packageVersion} given.`);
             }
         }
 
-        // TODO: EventEmitter args
         super();
         this._steam = steam;
 
