@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# this scripts runs all the scripts
+
 set -eu -o pipefail
 
 cd "$(dirname "$0")/../"
@@ -17,4 +19,6 @@ npm run test
 # https://stackoverflow.com/a/48460033
 cp package.json package-lock.json LICENSE README.md dist/
 cd dist
-npm publish "$@"
+if [[ "${1-}" == --publish ]]; then
+    npm publish "$@"
+fi
