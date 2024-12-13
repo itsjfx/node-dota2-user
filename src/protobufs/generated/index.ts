@@ -23,5 +23,6 @@ export * from "./dota_gcmessages_webapi";
 export * from "./econ_shared_enums";
 export * from "./econ_gcmessages";
 export * from "./dota_gcmessages_client";
+export * from "./dota_gcmessages_client_watch";
 export * from "./dota_gcmessages_msgid";
 export * from "./gcsystemmsgs";

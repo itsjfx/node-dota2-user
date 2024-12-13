@@ -49,6 +49,7 @@ log 'Generating TS for main protos'
 run_protoc \
     --ts_proto_opt=outputIndex=true \
     "$PROTOS_PATH"/dota_gcmessages_client.proto \
+    "$PROTOS_PATH"/dota_gcmessages_client_watch.proto \
     "$PROTOS_PATH"/dota_gcmessages_msgid.proto \
     "$PROTOS_PATH"/gcsystemmsgs.proto \
     "$PROTOS_PATH"/base_gcmessages.proto
