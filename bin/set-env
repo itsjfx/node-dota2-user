@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# usage: set-env npx ts-node examples/...ts
-# or set-env node examples/...js
+# usage: set-env ./examples/...ts
+# or set-env ./examples/...js
 # i use this to run the examples/ scripts
 # relies on a config.yaml existing a folder out of the directory
 
