@@ -145,7 +145,7 @@ export class Dota2User extends EventEmitter {
         if (!protobuf) {
             throw new Dota2UserError(`Unable to find protobuf for message: ${messageId}`);
         }
-        const buffer = Buffer.from(protobuf.encode(body).finish());
+        const buffer = Buffer.from(protobuf.encode(body as any).finish());
         this.sendRawBuffer(messageId, buffer);
     }
 
@@ -155,7 +155,7 @@ export class Dota2User extends EventEmitter {
         if (!protobuf) {
             throw new Dota2UserError(`Unable to find protobuf for message: ${messageId}`);
         }
-        const buffer = Buffer.from(protobuf.encode(protobuf.fromPartial(body)).finish());
+        const buffer = Buffer.from(protobuf.encode(protobuf.fromPartial(body) as any).finish());
         this.sendRawBuffer(messageId, buffer);
     }
 
@@ -170,7 +170,7 @@ export class Dota2User extends EventEmitter {
         }
 
         // Encode the message
-        const messageBuffer = Buffer.from(protobuf.encode(protobuf.fromPartial(body)).finish());
+        const messageBuffer = Buffer.from(protobuf.encode(protobuf.fromPartial(body) as any).finish());
 
         // Create a header with job_id
         const headerBuffer = Buffer.alloc(18);
