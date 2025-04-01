@@ -35,30 +35,16 @@ interface Overrides {
 // TODO check if key is valid ?
 // https://github.com/paralin/go-dota2/blob/99aa20c303eaee83526aa2cedff8b1a47273125b/client.go#L83
 const OVERRIDES: Overrides = {
-    'ESOMsg.k_ESOMsg_Create': {
-        CMsg: 'CMsgSOSingleObject',
-        sender: MessageSender.GC,
-    },
-    'ESOMsg.k_ESOMsg_Destroy': {
-        CMsg: 'CMsgSOSingleObject',
-        sender: MessageSender.GC,
-    },
-    'ESOMsg.k_ESOMsg_UpdateMultiple': {
-        CMsg: 'CMsgSOMultipleObjects',
-        sender: MessageSender.GC,
-    },
+    'ESOMsg.k_ESOMsg_Create': { CMsg: 'CMsgSOSingleObject', sender: MessageSender.GC },
+    'ESOMsg.k_ESOMsg_Destroy': { CMsg: 'CMsgSOSingleObject', sender: MessageSender.GC },
+    'ESOMsg.k_ESOMsg_UpdateMultiple': { CMsg: 'CMsgSOMultipleObjects', sender: MessageSender.GC },
     'ESOMsg.k_ESOMsg_CacheSubscribed': { sender: MessageSender.GC },
     'ESOMsg.k_ESOMsg_CacheUnsubscribed': { sender: MessageSender.GC },
     'EDOTAGCMsg.k_EMsgGCPracticeLobbyResponse': { CMsg: 'CMsgGenericResult' },
     // TODO, probably scrap long term
-    'EGCBaseClientMsg.k_EMsgGCClientConnectionStatus': {
-        sender: MessageSender.GC,
-    },
+    'EGCBaseClientMsg.k_EMsgGCClientConnectionStatus': { sender: MessageSender.GC },
     'EGCBaseClientMsg.k_EMsgGCClientWelcome': { sender: MessageSender.GC },
-    'EDOTAGCMsg.k_EMsgClientToGCGetProfileCardResponse': {
-        CMsg: 'CMsgDOTAProfileCard',
-        sender: MessageSender.GC,
-    },
+    'EDOTAGCMsg.k_EMsgClientToGCGetProfileCardResponse': { CMsg: 'CMsgDOTAProfileCard', sender: MessageSender.GC },
 };
 
 type MatchingProtobuf = {
@@ -196,11 +182,7 @@ export const findMatchingProtos = function* (enums: string[]): Generator<Matchin
                 debug('No CMsg found for: %s', messageName);
             } else {
                 debug('Found CMsg: %s for: %s', CMsg.CMsgName, messageName);
-                yield {
-                    kMsg: enumName + '.' + messageName,
-                    CMsg: CMsg.CMsgName,
-                    sender: CMsg.sender,
-                };
+                yield { kMsg: enumName + '.' + messageName, CMsg: CMsg.CMsgName, sender: CMsg.sender };
             }
         }
     }
