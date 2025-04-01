@@ -45,6 +45,7 @@
     "steam-user": ">=4.2.0 < 6"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@tsconfig/node14": "^14.1.0",
     "@types/debug": "^4.1.7",
     "@types/jest": "^29.5.2",

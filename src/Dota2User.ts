@@ -17,9 +17,9 @@ const EXPONENTIAL_HELLO_BACKOFF_MAX = 60000;
 
 // Extend the Router's events interface
 declare module './router' {
-	interface GCEvents {
-		job: (jobId: number, payload: Buffer) => void;
-	}
+    interface GCEvents {
+        job: (jobId: number, payload: Buffer) => void;
+    }
 }
 
 export class Dota2User extends EventEmitter {
@@ -36,14 +36,8 @@ export class Dota2User extends EventEmitter {
     _jobs = new Map<number, (payload: Buffer) => void>();
 
     constructor(steam: SteamUser) {
-        if (
-            steam.packageName !== 'steam-user' ||
-			!('packageVersion' in steam) ||
-			!steam.constructor
-        ) {
-            throw new Dota2UserError(
-                'dota2-user v2 only supports steam-user v4.2.0 or later.',
-            );
+        if (steam.packageName !== 'steam-user' || !('packageVersion' in steam) || !steam.constructor) {
+            throw new Dota2UserError('dota2-user v2 only supports steam-user v4.2.0 or later.');
         } else {
             const [major, minor] = steam.packageVersion.split('.');
             if (+major < 4 || (+major === 4 && +minor < 2)) {
@@ -83,15 +77,8 @@ export class Dota2User extends EventEmitter {
         });
 
         this.router.on(EGCBaseClientMsg.k_EMsgGCClientConnectionStatus, (data) => {
-            if (
-                data.status !== GCConnectionStatus.GCConnectionStatus_HAVE_SESSION &&
-				this.haveGCSession
-            ) {
-                debug(
-                    'Connection status: %s; have session: %s',
-                    data.status,
-                    this.haveGCSession,
-                );
+            if (data.status !== GCConnectionStatus.GCConnectionStatus_HAVE_SESSION && this.haveGCSession) {
+                debug('Connection status: %s; have session: %s', data.status, this.haveGCSession);
                 this.emit('disconnectedFromGC', data.status);
                 this._haveGCSession = false;
                 this._connect(); // Try to reconnect
@@ -158,34 +145,22 @@ export class Dota2User extends EventEmitter {
         });
     }
 
-    send<T extends keyof ClientProtobufsType>(
-        messageId: T,
-        body: ClientProtobufsType[T],
-    ): void {
+    send<T extends keyof ClientProtobufsType>(messageId: T, body: ClientProtobufsType[T]): void {
         const protobuf = getProtobufForMessage(messageId);
         if (!protobuf) {
-            throw new Dota2UserError(
-                `Unable to find protobuf for message: ${messageId}`,
-            );
+            throw new Dota2UserError(`Unable to find protobuf for message: ${messageId}`);
         }
         const buffer = Buffer.from(protobuf.encode(body).finish());
         this.sendRawBuffer(messageId, buffer);
     }
 
     // send a partial message, where all payload properties are optional, and missing values are filled in best effort
-    sendPartial<T extends keyof ClientProtobufsType>(
-        messageId: T,
-        body: DeepPartial<ClientProtobufsType[T]>,
-    ): void {
+    sendPartial<T extends keyof ClientProtobufsType>(messageId: T, body: DeepPartial<ClientProtobufsType[T]>): void {
         const protobuf = getProtobufForMessage(messageId);
         if (!protobuf) {
-            throw new Dota2UserError(
-                `Unable to find protobuf for message: ${messageId}`,
-            );
+            throw new Dota2UserError(`Unable to find protobuf for message: ${messageId}`);
         }
-        const buffer = Buffer.from(
-            protobuf.encode(protobuf.fromPartial(body)).finish(),
-        );
+        const buffer = Buffer.from(protobuf.encode(protobuf.fromPartial(body)).finish());
         this.sendRawBuffer(messageId, buffer);
     }
 
@@ -200,15 +175,11 @@ export class Dota2User extends EventEmitter {
         // Create a buffer and set the job_id in the header
         const protobuf = getProtobufForMessage(messageId);
         if (!protobuf) {
-            throw new Dota2UserError(
-                `Unable to find protobuf for message: ${messageId}`,
-            );
+            throw new Dota2UserError(`Unable to find protobuf for message: ${messageId}`);
         }
 
         // Encode the message
-        const messageBuffer = Buffer.from(
-            protobuf.encode(protobuf.fromPartial(body)).finish(),
-        );
+        const messageBuffer = Buffer.from(protobuf.encode(protobuf.fromPartial(body)).finish());
 
         // Create a header with job_id
         const headerBuffer = Buffer.alloc(18);
@@ -223,9 +194,7 @@ export class Dota2User extends EventEmitter {
 
     sendRawBuffer(messageId: number, body: Buffer | ByteBuffer): void {
         if (!this._steam.steamID) {
-            throw new Dota2UserError(
-                'Cannot send GC message, not logged into Steam Client',
-            );
+            throw new Dota2UserError('Cannot send GC message, not logged into Steam Client');
         }
         debug('Sending GC message %s', messageId);
         // Convert ByteBuffer to Buffer
@@ -239,18 +208,14 @@ export class Dota2User extends EventEmitter {
 
     _connect(): void {
         if (!this.inDota2 || this._helloTimer) {
-            debug(
-                'Not trying to connect due to ' +
-					(!this.inDota2 ? 'not in Dota 2' : 'has helloTimer'),
-            );
+            debug('Not trying to connect due to ' + (!this.inDota2 ? 'not in Dota 2' : 'has helloTimer'));
             return; // We're not in Dota 2 or we're already trying to connect
         }
 
         const sendHello = () => {
             if (!this.inDota2 || this.haveGCSession) {
                 debug(
-                    'Not sending hello because ' +
-						(!this.inDota2 ? "we're no longer in Dota 2" : 'we have a session'),
+                    'Not sending hello because ' + (!this.inDota2 ? "we're no longer in Dota 2" : 'we have a session'),
                 );
                 this._clearHelloTimer();
                 return;
@@ -262,10 +227,7 @@ export class Dota2User extends EventEmitter {
                 (this._helloTimerMs || DEFAULT_HELLO_DELAY) * 2,
             );
             this._helloTimer = setTimeout(() => sendHello(), this._helloTimerMs);
-            debug(
-                'Sending hello, setting timer for next attempt to %s ms',
-                this._helloTimerMs,
-            );
+            debug('Sending hello, setting timer for next attempt to %s ms', this._helloTimerMs);
         };
 
         this._helloTimer = setTimeout(() => sendHello(), INITIAL_HELLO_DELAY);
@@ -275,10 +237,7 @@ export class Dota2User extends EventEmitter {
         this._clearHelloTimer();
 
         if (this.haveGCSession && emitDisconnectEvent) {
-            this.emit(
-                'disconnectedFromGC',
-                GCConnectionStatus.GCConnectionStatus_NO_SESSION,
-            );
+            this.emit('disconnectedFromGC', GCConnectionStatus.GCConnectionStatus_NO_SESSION);
         }
 
         this._inDota2 = false;
