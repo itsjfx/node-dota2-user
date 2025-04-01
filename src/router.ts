@@ -1,7 +1,12 @@
 const debug = require('debug')('dota2-user:router');
 
 import { ExtendedEventEmitter, TypedEmitter, getProtobufForMessage } from './utils';
-import { GCEvents, GCProtobufs } from './protobufs/protobuf-mappings';
+import { GCEvents as BaseGCEvents, GCProtobufs } from './protobufs/protobuf-mappings';
+
+// Extend the base interface to add the job event
+export interface GCEvents extends BaseGCEvents {
+    job: (jobId: number, payload: Buffer) => void;
+}
 
 export class Router extends (ExtendedEventEmitter as new () => TypedEmitter<GCEvents>) {
     route(messageId: number, body: Buffer): void {

@@ -1,7 +1,8 @@
 import { EventEmitter } from 'node:events';
 import { clearTimeout } from 'node:timers';
 
-import type ByteBuffer from 'bytebuffer';
+// Use import for ByteBuffer instead of type import
+import ByteBuffer from 'bytebuffer';
 import type SteamUser from 'steam-user';
 const debug = require('debug')('dota2-user');
 
@@ -15,12 +16,8 @@ const INITIAL_HELLO_DELAY = 500;
 const DEFAULT_HELLO_DELAY = 1000;
 const EXPONENTIAL_HELLO_BACKOFF_MAX = 60000;
 
-// Extend the Router's events interface
-declare module './router' {
-    interface GCEvents {
-        job: (jobId: number, payload: Buffer) => void;
-    }
-}
+// The Router's events interface is already extended in router.ts
+// No need for declare module here
 
 export class Dota2User extends EventEmitter {
     static readonly STEAM_APPID = 570;
