@@ -469,6 +469,7 @@ export const GCProtobufs = {
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAllHeroProgressResponse]: protobufs.CMsgClientToGCGetAllHeroProgressResponse as MessageFns<protobufs.CMsgClientToGCGetAllHeroProgressResponse>,
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetTrophyListResponse]: protobufs.CMsgClientToGCGetTrophyListResponse as MessageFns<protobufs.CMsgClientToGCGetTrophyListResponse>,
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientTrophyAwarded]: protobufs.CMsgGCToClientTrophyAwarded as MessageFns<protobufs.CMsgGCToClientTrophyAwarded>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetProfileCardResponse]: protobufs.CMsgDOTAProfileCard as MessageFns<protobufs.CMsgDOTAProfileCard>,
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientHeroStatueCreateResult]: protobufs.CMsgGCToClientHeroStatueCreateResult as MessageFns<protobufs.CMsgGCToClientHeroStatueCreateResult>,
     [protobufs.EDOTAGCMsg.k_EMsgGCRerollPlayerChallengeResponse]: protobufs.CMsgGCRerollPlayerChallengeResponse as MessageFns<protobufs.CMsgGCRerollPlayerChallengeResponse>,
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAllHeroOrderResponse]: protobufs.CMsgClientToGCGetAllHeroOrderResponse as MessageFns<protobufs.CMsgClientToGCGetAllHeroOrderResponse>,
@@ -667,6 +668,7 @@ export type GCProtobufsType = {
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAllHeroProgressResponse]: protobufs.CMsgClientToGCGetAllHeroProgressResponse;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetTrophyListResponse]: protobufs.CMsgClientToGCGetTrophyListResponse;
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientTrophyAwarded]: protobufs.CMsgGCToClientTrophyAwarded;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetProfileCardResponse]: protobufs.CMsgDOTAProfileCard;
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientHeroStatueCreateResult]: protobufs.CMsgGCToClientHeroStatueCreateResult;
     [protobufs.EDOTAGCMsg.k_EMsgGCRerollPlayerChallengeResponse]: protobufs.CMsgGCRerollPlayerChallengeResponse;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAllHeroOrderResponse]: protobufs.CMsgClientToGCGetAllHeroOrderResponse;
@@ -864,6 +866,7 @@ export type GCEvents = {
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAllHeroProgressResponse]: (data: protobufs.CMsgClientToGCGetAllHeroProgressResponse) => void;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetTrophyListResponse]: (data: protobufs.CMsgClientToGCGetTrophyListResponse) => void;
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientTrophyAwarded]: (data: protobufs.CMsgGCToClientTrophyAwarded) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetProfileCardResponse]: (data: protobufs.CMsgDOTAProfileCard) => void;
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientHeroStatueCreateResult]: (data: protobufs.CMsgGCToClientHeroStatueCreateResult) => void;
     [protobufs.EDOTAGCMsg.k_EMsgGCRerollPlayerChallengeResponse]: (data: protobufs.CMsgGCRerollPlayerChallengeResponse) => void;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAllHeroOrderResponse]: (data: protobufs.CMsgClientToGCGetAllHeroOrderResponse) => void;

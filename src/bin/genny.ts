@@ -14,19 +14,24 @@ const TAB = '    ';
 // EGCBaseClientMsg: client hello and welcome
 // ESOMsg: caches
 // EGCBaseMsg: for party and lobby messages
-const ENUMS_TO_SEARCH = ['EDOTAGCMsg', 'EGCBaseClientMsg', 'ESOMsg', 'EGCBaseMsg'];
+const ENUMS_TO_SEARCH = [
+    'EDOTAGCMsg',
+    'EGCBaseClientMsg',
+    'ESOMsg',
+    'EGCBaseMsg',
+];
 
 enum MessageSender {
-    UNSUPPORTED,
-    CLIENT,
-    GC,
+	UNSUPPORTED = 0,
+	CLIENT = 1,
+	GC = 2,
 }
 
 interface Overrides {
-    [key: string]: {
-        CMsg?: string;
-        sender?: MessageSender;
-    };
+	[key: string]: {
+		CMsg?: string;
+		sender?: MessageSender;
+	};
 }
 // we may set overrides as some pairings are difficult to match
 //
@@ -35,21 +40,36 @@ interface Overrides {
 // TODO check if key is valid ?
 // https://github.com/paralin/go-dota2/blob/99aa20c303eaee83526aa2cedff8b1a47273125b/client.go#L83
 const OVERRIDES: Overrides = {
-    'ESOMsg.k_ESOMsg_Create': { CMsg: 'CMsgSOSingleObject', sender: MessageSender.GC },
-    'ESOMsg.k_ESOMsg_Destroy': { CMsg: 'CMsgSOSingleObject', sender: MessageSender.GC },
-    'ESOMsg.k_ESOMsg_UpdateMultiple': { CMsg: 'CMsgSOMultipleObjects', sender: MessageSender.GC },
+    'ESOMsg.k_ESOMsg_Create': {
+        CMsg: 'CMsgSOSingleObject',
+        sender: MessageSender.GC,
+    },
+    'ESOMsg.k_ESOMsg_Destroy': {
+        CMsg: 'CMsgSOSingleObject',
+        sender: MessageSender.GC,
+    },
+    'ESOMsg.k_ESOMsg_UpdateMultiple': {
+        CMsg: 'CMsgSOMultipleObjects',
+        sender: MessageSender.GC,
+    },
     'ESOMsg.k_ESOMsg_CacheSubscribed': { sender: MessageSender.GC },
     'ESOMsg.k_ESOMsg_CacheUnsubscribed': { sender: MessageSender.GC },
     'EDOTAGCMsg.k_EMsgGCPracticeLobbyResponse': { CMsg: 'CMsgGenericResult' },
     // TODO, probably scrap long term
-    'EGCBaseClientMsg.k_EMsgGCClientConnectionStatus': { sender: MessageSender.GC },
+    'EGCBaseClientMsg.k_EMsgGCClientConnectionStatus': {
+        sender: MessageSender.GC,
+    },
     'EGCBaseClientMsg.k_EMsgGCClientWelcome': { sender: MessageSender.GC },
+    'EDOTAGCMsg.k_EMsgClientToGCGetProfileCardResponse': {
+        CMsg: 'CMsgDOTAProfileCard',
+        sender: MessageSender.GC,
+    },
 };
 
 type MatchingProtobuf = {
-    kMsg: string;
-    CMsg: string;
-    sender: MessageSender;
+	kMsg: string;
+	CMsg: string;
+	sender: MessageSender;
 };
 
 // https://github.com/paralin/go-dota2/blob/master/apigen/msg_overrides.go
@@ -67,7 +87,11 @@ export const getMessageSender = (messageName: string) => {
         }
         return MessageSender.CLIENT;
     }
-    if (/GCResponseTo|GCRequestTo|GCToGC|^Server|^Gameserver|ServerToGC|GCToServer|GC_GameServer/.test(name)) {
+    if (
+        /GCResponseTo|GCRequestTo|GCToGC|^Server|^Gameserver|ServerToGC|GCToServer|GC_GameServer/.test(
+            name,
+        )
+    ) {
         return MessageSender.UNSUPPORTED;
     }
     if (name.includes('GCToClient')) {
@@ -142,7 +166,9 @@ export const findCMsg = (enumName: string, messageName: string) => {
             sender = override.sender;
         }
         if (override.CMsg && !CMsg) {
-            throw new Error(`Invalid override for message: ${messageName}. ${override.CMsg} does not exist`);
+            throw new Error(
+                `Invalid override for message: ${messageName}. ${override.CMsg} does not exist`,
+            );
         }
     }
     if (!sender) {
@@ -168,7 +194,9 @@ export const findCMsg = (enumName: string, messageName: string) => {
 };
 
 // generates each kMsg + CMSg combination, if any, for the enums given
-export const findMatchingProtos = function* (enums: string[]): Generator<MatchingProtobuf> {
+export const findMatchingProtos = function* (
+    enums: string[],
+): Generator<MatchingProtobuf> {
     for (const enumName of enums) {
         // @ts-ignore
         const _enum = protobufs[enumName];
@@ -181,7 +209,11 @@ export const findMatchingProtos = function* (enums: string[]): Generator<Matchin
                 debug('No CMsg found for: %s', messageName);
             } else {
                 debug('Found CMsg: %s for: %s', CMsg.CMsgName, messageName);
-                yield { kMsg: enumName + '.' + messageName, CMsg: CMsg.CMsgName, sender: CMsg.sender };
+                yield {
+                    kMsg: enumName + '.' + messageName,
+                    CMsg: CMsg.CMsgName,
+                    sender: CMsg.sender,
+                };
             }
         }
     }
@@ -197,13 +229,20 @@ const outputGCEventsType = (protos: MatchingProtobuf[]) => {
         if (proto.sender !== MessageSender.GC) {
             continue;
         }
-        console.log(TAB + `[protobufs.${proto.kMsg}]: (data: protobufs.${proto.CMsg}) => void;`);
+        console.log(
+            TAB +
+			`[protobufs.${proto.kMsg}]: (data: protobufs.${proto.CMsg}) => void;`,
+        );
     }
     console.log('};');
 };
 
 // spit out our strictly typed objects
-const outputObject = (protos: MatchingProtobuf[], objectName: string, sender: MessageSender) => {
+const outputObject = (
+    protos: MatchingProtobuf[],
+    objectName: string,
+    sender: MessageSender,
+) => {
     console.log(`export const ${objectName} = {`);
     for (const proto of protos) {
         if (proto.sender !== sender) {
@@ -214,7 +253,10 @@ const outputObject = (protos: MatchingProtobuf[], objectName: string, sender: Me
         // we lose context of the MessageFns type
         // which also causes issues when we want to run tsc with declarations
         // so we can cast the type explictly
-        console.log(TAB + `[protobufs.${proto.kMsg}]: protobufs.${proto.CMsg} as MessageFns<protobufs.${proto.CMsg}>,`);
+        console.log(
+            TAB +
+			`[protobufs.${proto.kMsg}]: protobufs.${proto.CMsg} as MessageFns<protobufs.${proto.CMsg}>,`,
+        );
     }
     console.log('};');
     console.log(`Object.freeze(${objectName});`);
@@ -244,9 +286,13 @@ const main = async () => {
     outputObject(protos, 'ClientProtobufs', MessageSender.CLIENT);
     outputObject(protos, 'GCProtobufs', MessageSender.GC);
     outputGCEventsType(protos);
-    console.log('export const AllProtobufs = { ...ClientProtobufs, ...GCProtobufs };');
+    console.log(
+        'export const AllProtobufs = { ...ClientProtobufs, ...GCProtobufs };',
+    );
     console.log('Object.freeze(AllProtobufs);');
-    console.log('export type AllProtobufsType = ClientProtobufsType & GCProtobufsType;');
+    console.log(
+        'export type AllProtobufsType = ClientProtobufsType & GCProtobufsType;',
+    );
 };
 
 if (require.main === module) {
