@@ -13,6 +13,7 @@
     "pull-protos": "./bin/pull-protos",
     "set-env": "./bin/set-env",
     "test": "./bin/test",
+    "test:bun": "bun test",
     "update-protos": "./bin/update-protos",
     "watch": "./bin/watch"
   },
