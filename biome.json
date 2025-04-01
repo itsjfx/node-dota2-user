@@ -5,7 +5,7 @@
   "formatter": {
     "enabled": true,
     "indentWidth": 4,
-    "lineWidth": 120,
+    "lineWidth": 180,
     "indentStyle": "space"
   },
   "organizeImports": { "enabled": true },

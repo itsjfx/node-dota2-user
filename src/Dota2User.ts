@@ -41,9 +41,7 @@ export class Dota2User extends EventEmitter {
         } else {
             const [major, minor] = steam.packageVersion.split('.');
             if (+major < 4 || (+major === 4 && +minor < 2)) {
-                throw new Dota2UserError(
-                    `dota2-user v2 only supports steam-user v4.2.0 or later. ${steam.constructor.name} v${steam.packageVersion} given.`,
-                );
+                throw new Dota2UserError(`dota2-user v2 only supports steam-user v4.2.0 or later. ${steam.constructor.name} v${steam.packageVersion} given.`);
             }
         }
 
@@ -164,11 +162,7 @@ export class Dota2User extends EventEmitter {
         this.sendRawBuffer(messageId, buffer);
     }
 
-    sendWithCallback<T extends keyof ClientProtobufsType, R = Buffer>(
-        messageId: T,
-        body: DeepPartial<ClientProtobufsType[T]>,
-        responseCallback: (response: R) => void,
-    ): void {
+    sendWithCallback<T extends keyof ClientProtobufsType, R = Buffer>(messageId: T, body: DeepPartial<ClientProtobufsType[T]>, responseCallback: (response: R) => void): void {
         const jobId = this._getNextJobId();
         this._jobs.set(jobId, responseCallback as (payload: Buffer) => void);
 
@@ -214,18 +208,13 @@ export class Dota2User extends EventEmitter {
 
         const sendHello = () => {
             if (!this.inDota2 || this.haveGCSession) {
-                debug(
-                    'Not sending hello because ' + (!this.inDota2 ? "we're no longer in Dota 2" : 'we have a session'),
-                );
+                debug('Not sending hello because ' + (!this.inDota2 ? "we're no longer in Dota 2" : 'we have a session'));
                 this._clearHelloTimer();
                 return;
             }
 
             this.sendPartial(EGCBaseClientMsg.k_EMsgGCClientHello, {});
-            this._helloTimerMs = Math.min(
-                EXPONENTIAL_HELLO_BACKOFF_MAX,
-                (this._helloTimerMs || DEFAULT_HELLO_DELAY) * 2,
-            );
+            this._helloTimerMs = Math.min(EXPONENTIAL_HELLO_BACKOFF_MAX, (this._helloTimerMs || DEFAULT_HELLO_DELAY) * 2);
             this._helloTimer = setTimeout(() => sendHello(), this._helloTimerMs);
             debug('Sending hello, setting timer for next attempt to %s ms', this._helloTimerMs);
         };
