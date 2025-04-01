@@ -16,9 +16,6 @@ const INITIAL_HELLO_DELAY = 500;
 const DEFAULT_HELLO_DELAY = 1000;
 const EXPONENTIAL_HELLO_BACKOFF_MAX = 60000;
 
-// The Router's events interface is already extended in router.ts
-// No need for declare module here
-
 export class Dota2User extends EventEmitter {
     static readonly STEAM_APPID = 570;
     router: Router = new Router();
