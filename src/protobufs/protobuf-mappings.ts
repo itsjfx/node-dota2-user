@@ -469,6 +469,7 @@ export const GCProtobufs = {
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAllHeroProgressResponse]: protobufs.CMsgClientToGCGetAllHeroProgressResponse as MessageFns<protobufs.CMsgClientToGCGetAllHeroProgressResponse>,
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetTrophyListResponse]: protobufs.CMsgClientToGCGetTrophyListResponse as MessageFns<protobufs.CMsgClientToGCGetTrophyListResponse>,
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientTrophyAwarded]: protobufs.CMsgGCToClientTrophyAwarded as MessageFns<protobufs.CMsgGCToClientTrophyAwarded>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetProfileCardResponse]: protobufs.CMsgDOTAProfileCard as MessageFns<protobufs.CMsgDOTAProfileCard>,
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientHeroStatueCreateResult]: protobufs.CMsgGCToClientHeroStatueCreateResult as MessageFns<protobufs.CMsgGCToClientHeroStatueCreateResult>,
     [protobufs.EDOTAGCMsg.k_EMsgGCRerollPlayerChallengeResponse]: protobufs.CMsgGCRerollPlayerChallengeResponse as MessageFns<protobufs.CMsgGCRerollPlayerChallengeResponse>,
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAllHeroOrderResponse]: protobufs.CMsgClientToGCGetAllHeroOrderResponse as MessageFns<protobufs.CMsgClientToGCGetAllHeroOrderResponse>,
@@ -496,6 +497,7 @@ export const GCProtobufs = {
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientTopLeagueMatchesResponse]: protobufs.CMsgGCToClientTopLeagueMatchesResponse as MessageFns<protobufs.CMsgGCToClientTopLeagueMatchesResponse>,
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientTopFriendMatchesResponse]: protobufs.CMsgGCToClientTopFriendMatchesResponse as MessageFns<protobufs.CMsgGCToClientTopFriendMatchesResponse>,
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCMatchesMinimalResponse]: protobufs.CMsgClientToGCMatchesMinimalResponse as MessageFns<protobufs.CMsgClientToGCMatchesMinimalResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetProfileTicketsResponse]: protobufs.CMsgDOTAProfileTickets as MessageFns<protobufs.CMsgDOTAProfileTickets>,
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientMatchGroupsVersion]: protobufs.CMsgGCToClientMatchGroupsVersion as MessageFns<protobufs.CMsgGCToClientMatchGroupsVersion>,
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetQuestProgressResponse]: protobufs.CMsgClientToGCGetQuestProgressResponse as MessageFns<protobufs.CMsgClientToGCGetQuestProgressResponse>,
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientMatchSignedOut]: protobufs.CMsgGCToClientMatchSignedOut as MessageFns<protobufs.CMsgGCToClientMatchSignedOut>,
@@ -667,6 +669,7 @@ export type GCProtobufsType = {
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAllHeroProgressResponse]: protobufs.CMsgClientToGCGetAllHeroProgressResponse;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetTrophyListResponse]: protobufs.CMsgClientToGCGetTrophyListResponse;
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientTrophyAwarded]: protobufs.CMsgGCToClientTrophyAwarded;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetProfileCardResponse]: protobufs.CMsgDOTAProfileCard;
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientHeroStatueCreateResult]: protobufs.CMsgGCToClientHeroStatueCreateResult;
     [protobufs.EDOTAGCMsg.k_EMsgGCRerollPlayerChallengeResponse]: protobufs.CMsgGCRerollPlayerChallengeResponse;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAllHeroOrderResponse]: protobufs.CMsgClientToGCGetAllHeroOrderResponse;
@@ -694,6 +697,7 @@ export type GCProtobufsType = {
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientTopLeagueMatchesResponse]: protobufs.CMsgGCToClientTopLeagueMatchesResponse;
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientTopFriendMatchesResponse]: protobufs.CMsgGCToClientTopFriendMatchesResponse;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCMatchesMinimalResponse]: protobufs.CMsgClientToGCMatchesMinimalResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetProfileTicketsResponse]: protobufs.CMsgDOTAProfileTickets;
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientMatchGroupsVersion]: protobufs.CMsgGCToClientMatchGroupsVersion;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetQuestProgressResponse]: protobufs.CMsgClientToGCGetQuestProgressResponse;
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientMatchSignedOut]: protobufs.CMsgGCToClientMatchSignedOut;
@@ -864,6 +868,7 @@ export type GCEvents = {
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAllHeroProgressResponse]: (data: protobufs.CMsgClientToGCGetAllHeroProgressResponse) => void;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetTrophyListResponse]: (data: protobufs.CMsgClientToGCGetTrophyListResponse) => void;
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientTrophyAwarded]: (data: protobufs.CMsgGCToClientTrophyAwarded) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetProfileCardResponse]: (data: protobufs.CMsgDOTAProfileCard) => void;
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientHeroStatueCreateResult]: (data: protobufs.CMsgGCToClientHeroStatueCreateResult) => void;
     [protobufs.EDOTAGCMsg.k_EMsgGCRerollPlayerChallengeResponse]: (data: protobufs.CMsgGCRerollPlayerChallengeResponse) => void;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetAllHeroOrderResponse]: (data: protobufs.CMsgClientToGCGetAllHeroOrderResponse) => void;
@@ -891,6 +896,7 @@ export type GCEvents = {
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientTopLeagueMatchesResponse]: (data: protobufs.CMsgGCToClientTopLeagueMatchesResponse) => void;
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientTopFriendMatchesResponse]: (data: protobufs.CMsgGCToClientTopFriendMatchesResponse) => void;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCMatchesMinimalResponse]: (data: protobufs.CMsgClientToGCMatchesMinimalResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetProfileTicketsResponse]: (data: protobufs.CMsgDOTAProfileTickets) => void;
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientMatchGroupsVersion]: (data: protobufs.CMsgGCToClientMatchGroupsVersion) => void;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCGetQuestProgressResponse]: (data: protobufs.CMsgClientToGCGetQuestProgressResponse) => void;
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientMatchSignedOut]: (data: protobufs.CMsgGCToClientMatchSignedOut) => void;
