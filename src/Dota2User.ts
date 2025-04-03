@@ -14,6 +14,7 @@ import { Dota2UserError, getProtobufForMessage } from './utils';
 const INITIAL_HELLO_DELAY = 500;
 const DEFAULT_HELLO_DELAY = 1000;
 const EXPONENTIAL_HELLO_BACKOFF_MAX = 60000;
+const JOB_TIMEOUT = 10000;
 
 export class Dota2User extends EventEmitter {
     static readonly STEAM_APPID = 570;
@@ -110,6 +111,30 @@ export class Dota2User extends EventEmitter {
         });
     }
 
+    // TODO
+    // do more battle testing on this - figure out which messages return jobs
+    // and add a return type if the protobuf always matches
+    // and add a partial version
+    async sendJob<T extends keyof ClientProtobufsType>(messageId: T, body: ClientProtobufsType[T]): Promise<unknown> {
+        const fn = new Promise((resolve, reject) => {
+            const protobuf = getProtobufForMessage(messageId);
+            if (!protobuf) {
+                throw new Dota2UserError(`Unable to find protobuf for message: ${messageId}`);
+            }
+            const buffer = Buffer.from(protobuf.encode(body as any).finish());
+            this.sendRawBuffer(messageId, buffer, (appid, messageId, payload) => {
+                const protobuf = getProtobufForMessage(messageId);
+                if (!protobuf) {
+                    debug('No protobuf available for GC message: %s', messageId);
+                    return;
+                }
+                resolve(protobuf.decode(payload));
+            });
+        });
+        const timeout = new Promise((_, reject) => setTimeout(() => reject(new Error('Job reached timeout')), JOB_TIMEOUT));
+        return Promise.race([fn, timeout]);
+    }
+
     send<T extends keyof ClientProtobufsType>(messageId: T, body: ClientProtobufsType[T]): void {
         const protobuf = getProtobufForMessage(messageId);
         if (!protobuf) {
@@ -129,7 +154,11 @@ export class Dota2User extends EventEmitter {
         return this.sendRawBuffer(messageId, buffer);
     }
 
-    sendRawBuffer(messageId: number, body: Buffer|ByteBuffer): void {
+    sendRawBuffer(
+        messageId: number,
+        body: Buffer|ByteBuffer,
+        callback?: (appid: number, msgType: number, payload: Buffer) => void,
+    ): void {
         if (!this._steam.steamID) {
             throw new Dota2UserError('Cannot send GC message, not logged into Steam Client');
         }
@@ -138,8 +167,7 @@ export class Dota2User extends EventEmitter {
         if (body instanceof ByteBuffer) {
             body = body.flip().toBuffer();
         }
-        // TODO: not setting a callback, not sure how it functions
-        this._steam.sendToGC(Dota2User.STEAM_APPID, messageId, {}, body);
+        this._steam.sendToGC(Dota2User.STEAM_APPID, messageId, {}, body, callback);
     }
 
     _connect(): void {
