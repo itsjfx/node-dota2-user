@@ -2,7 +2,7 @@ import { EventEmitter } from 'node:events';
 import { clearTimeout } from 'node:timers';
 
 import ByteBuffer from 'bytebuffer';
-import SteamUser from 'steam-user';
+import type SteamUser from 'steam-user';
 const debug = require('debug')('dota2-user');
 
 import { Router } from './router';
