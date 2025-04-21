@@ -531,6 +531,7 @@ export interface CMsgMatchMatchmakingStats {
 
 export interface CMvpData {
   mvps: CMvpData_MvpDatum[];
+  eventMvps: CMvpData_MvpDatum[];
 }
 
 export interface CMvpData_MvpDatum {
@@ -823,6 +824,8 @@ export enum CMvpData_MvpDatum_MvpAccolade_MvpAccoladeType {
   kKillEaterEventType_Kez_RavensVeilKills = 283,
   kKillEaterEventType_Kez_RaptorDanceHealing = 284,
   kKillEaterEventType_Kez_KillsDuringFalconRush = 285,
+  kKillEaterEventType_Seasonal_PartyHatsStolen = 286,
+  kKillEaterEventType_Seasonal_TallestHat = 287,
 }
 
 export function cMvpData_MvpDatum_MvpAccolade_MvpAccoladeTypeFromJSON(
@@ -1669,6 +1672,12 @@ export function cMvpData_MvpDatum_MvpAccolade_MvpAccoladeTypeFromJSON(
     case 285:
     case "kKillEaterEventType_Kez_KillsDuringFalconRush":
       return CMvpData_MvpDatum_MvpAccolade_MvpAccoladeType.kKillEaterEventType_Kez_KillsDuringFalconRush;
+    case 286:
+    case "kKillEaterEventType_Seasonal_PartyHatsStolen":
+      return CMvpData_MvpDatum_MvpAccolade_MvpAccoladeType.kKillEaterEventType_Seasonal_PartyHatsStolen;
+    case 287:
+    case "kKillEaterEventType_Seasonal_TallestHat":
+      return CMvpData_MvpDatum_MvpAccolade_MvpAccoladeType.kKillEaterEventType_Seasonal_TallestHat;
     default:
       throw new globalThis.Error(
         "Unrecognized enum value " + object + " for enum CMvpData_MvpDatum_MvpAccolade_MvpAccoladeType",
@@ -2238,6 +2247,10 @@ export function cMvpData_MvpDatum_MvpAccolade_MvpAccoladeTypeToJSON(
       return "kKillEaterEventType_Kez_RaptorDanceHealing";
     case CMvpData_MvpDatum_MvpAccolade_MvpAccoladeType.kKillEaterEventType_Kez_KillsDuringFalconRush:
       return "kKillEaterEventType_Kez_KillsDuringFalconRush";
+    case CMvpData_MvpDatum_MvpAccolade_MvpAccoladeType.kKillEaterEventType_Seasonal_PartyHatsStolen:
+      return "kKillEaterEventType_Seasonal_PartyHatsStolen";
+    case CMvpData_MvpDatum_MvpAccolade_MvpAccoladeType.kKillEaterEventType_Seasonal_TallestHat:
+      return "kKillEaterEventType_Seasonal_TallestHat";
     default:
       throw new globalThis.Error(
         "Unrecognized enum value " + object + " for enum CMvpData_MvpDatum_MvpAccolade_MvpAccoladeType",
@@ -4551,13 +4564,16 @@ export const CMsgMatchMatchmakingStats: MessageFns<CMsgMatchMatchmakingStats> = 
 };
 
 function createBaseCMvpData(): CMvpData {
-  return { mvps: [] };
+  return { mvps: [], eventMvps: [] };
 }
 
 export const CMvpData: MessageFns<CMvpData> = {
   encode(message: CMvpData, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     for (const v of message.mvps) {
       CMvpData_MvpDatum.encode(v!, writer.uint32(10).fork()).join();
+    }
+    for (const v of message.eventMvps) {
+      CMvpData_MvpDatum.encode(v!, writer.uint32(18).fork()).join();
     }
     return writer;
   },
@@ -4577,6 +4593,14 @@ export const CMvpData: MessageFns<CMvpData> = {
           message.mvps.push(CMvpData_MvpDatum.decode(reader, reader.uint32()));
           continue;
         }
+        case 2: {
+          if (tag !== 18) {
+            break;
+          }
+
+          message.eventMvps.push(CMvpData_MvpDatum.decode(reader, reader.uint32()));
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -4589,6 +4613,9 @@ export const CMvpData: MessageFns<CMvpData> = {
   fromJSON(object: any): CMvpData {
     return {
       mvps: globalThis.Array.isArray(object?.mvps) ? object.mvps.map((e: any) => CMvpData_MvpDatum.fromJSON(e)) : [],
+      eventMvps: globalThis.Array.isArray(object?.eventMvps)
+        ? object.eventMvps.map((e: any) => CMvpData_MvpDatum.fromJSON(e))
+        : [],
     };
   },
 
@@ -4596,6 +4623,9 @@ export const CMvpData: MessageFns<CMvpData> = {
     const obj: any = {};
     if (message.mvps?.length) {
       obj.mvps = message.mvps.map((e) => CMvpData_MvpDatum.toJSON(e));
+    }
+    if (message.eventMvps?.length) {
+      obj.eventMvps = message.eventMvps.map((e) => CMvpData_MvpDatum.toJSON(e));
     }
     return obj;
   },
@@ -4606,6 +4636,7 @@ export const CMvpData: MessageFns<CMvpData> = {
   fromPartial(object: DeepPartial<CMvpData>): CMvpData {
     const message = createBaseCMvpData();
     message.mvps = object.mvps?.map((e) => CMvpData_MvpDatum.fromPartial(e)) || [];
+    message.eventMvps = object.eventMvps?.map((e) => CMvpData_MvpDatum.fromPartial(e)) || [];
     return message;
   },
 };

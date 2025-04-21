@@ -2279,6 +2279,56 @@ export interface CMsgGCGetHeroStatsHistory {
 export interface CMsgGCGetHeroStatsHistoryResponse {
   heroId: number;
   records: CMsgDOTASDOHeroStatsHistory[];
+  result: CMsgGCGetHeroStatsHistoryResponse_EResponse;
+}
+
+export enum CMsgGCGetHeroStatsHistoryResponse_EResponse {
+  k_eInternalError = 0,
+  k_eSuccess = 1,
+  k_eTooBusy = 2,
+  k_eDisabled = 3,
+}
+
+export function cMsgGCGetHeroStatsHistoryResponse_EResponseFromJSON(
+  object: any,
+): CMsgGCGetHeroStatsHistoryResponse_EResponse {
+  switch (object) {
+    case 0:
+    case "k_eInternalError":
+      return CMsgGCGetHeroStatsHistoryResponse_EResponse.k_eInternalError;
+    case 1:
+    case "k_eSuccess":
+      return CMsgGCGetHeroStatsHistoryResponse_EResponse.k_eSuccess;
+    case 2:
+    case "k_eTooBusy":
+      return CMsgGCGetHeroStatsHistoryResponse_EResponse.k_eTooBusy;
+    case 3:
+    case "k_eDisabled":
+      return CMsgGCGetHeroStatsHistoryResponse_EResponse.k_eDisabled;
+    default:
+      throw new globalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgGCGetHeroStatsHistoryResponse_EResponse",
+      );
+  }
+}
+
+export function cMsgGCGetHeroStatsHistoryResponse_EResponseToJSON(
+  object: CMsgGCGetHeroStatsHistoryResponse_EResponse,
+): string {
+  switch (object) {
+    case CMsgGCGetHeroStatsHistoryResponse_EResponse.k_eInternalError:
+      return "k_eInternalError";
+    case CMsgGCGetHeroStatsHistoryResponse_EResponse.k_eSuccess:
+      return "k_eSuccess";
+    case CMsgGCGetHeroStatsHistoryResponse_EResponse.k_eTooBusy:
+      return "k_eTooBusy";
+    case CMsgGCGetHeroStatsHistoryResponse_EResponse.k_eDisabled:
+      return "k_eDisabled";
+    default:
+      throw new globalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgGCGetHeroStatsHistoryResponse_EResponse",
+      );
+  }
 }
 
 export interface CMsgPlayerConductScorecardRequest {
@@ -7497,6 +7547,51 @@ export interface CMsgClientToGCUpdateComicBookStats_LanguageStats {
   comicId: number;
   clientLanguage: number;
   clientComicLanguage: number;
+}
+
+export interface CMsgGCRankedPlayerInfoSubmit {
+  name: string;
+}
+
+export interface CMsgGCRankedPlayerInfoSubmitResponse {
+  result: CMsgGCRankedPlayerInfoSubmitResponse_EResult;
+}
+
+export enum CMsgGCRankedPlayerInfoSubmitResponse_EResult {
+  SUCCESS = 0,
+  ERROR_UNSPECIFIED = 1,
+}
+
+export function cMsgGCRankedPlayerInfoSubmitResponse_EResultFromJSON(
+  object: any,
+): CMsgGCRankedPlayerInfoSubmitResponse_EResult {
+  switch (object) {
+    case 0:
+    case "SUCCESS":
+      return CMsgGCRankedPlayerInfoSubmitResponse_EResult.SUCCESS;
+    case 1:
+    case "ERROR_UNSPECIFIED":
+      return CMsgGCRankedPlayerInfoSubmitResponse_EResult.ERROR_UNSPECIFIED;
+    default:
+      throw new globalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgGCRankedPlayerInfoSubmitResponse_EResult",
+      );
+  }
+}
+
+export function cMsgGCRankedPlayerInfoSubmitResponse_EResultToJSON(
+  object: CMsgGCRankedPlayerInfoSubmitResponse_EResult,
+): string {
+  switch (object) {
+    case CMsgGCRankedPlayerInfoSubmitResponse_EResult.SUCCESS:
+      return "SUCCESS";
+    case CMsgGCRankedPlayerInfoSubmitResponse_EResult.ERROR_UNSPECIFIED:
+      return "ERROR_UNSPECIFIED";
+    default:
+      throw new globalThis.Error(
+        "Unrecognized enum value " + object + " for enum CMsgGCRankedPlayerInfoSubmitResponse_EResult",
+      );
+  }
 }
 
 function createBaseCMsgClientSuspended(): CMsgClientSuspended {
@@ -21058,7 +21153,7 @@ export const CMsgGCGetHeroStatsHistory: MessageFns<CMsgGCGetHeroStatsHistory> = 
 };
 
 function createBaseCMsgGCGetHeroStatsHistoryResponse(): CMsgGCGetHeroStatsHistoryResponse {
-  return { heroId: 0, records: [] };
+  return { heroId: 0, records: [], result: 0 };
 }
 
 export const CMsgGCGetHeroStatsHistoryResponse: MessageFns<CMsgGCGetHeroStatsHistoryResponse> = {
@@ -21068,6 +21163,9 @@ export const CMsgGCGetHeroStatsHistoryResponse: MessageFns<CMsgGCGetHeroStatsHis
     }
     for (const v of message.records) {
       CMsgDOTASDOHeroStatsHistory.encode(v!, writer.uint32(18).fork()).join();
+    }
+    if (message.result !== 0) {
+      writer.uint32(24).int32(message.result);
     }
     return writer;
   },
@@ -21095,6 +21193,14 @@ export const CMsgGCGetHeroStatsHistoryResponse: MessageFns<CMsgGCGetHeroStatsHis
           message.records.push(CMsgDOTASDOHeroStatsHistory.decode(reader, reader.uint32()));
           continue;
         }
+        case 3: {
+          if (tag !== 24) {
+            break;
+          }
+
+          message.result = reader.int32() as any;
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -21110,6 +21216,7 @@ export const CMsgGCGetHeroStatsHistoryResponse: MessageFns<CMsgGCGetHeroStatsHis
       records: globalThis.Array.isArray(object?.records)
         ? object.records.map((e: any) => CMsgDOTASDOHeroStatsHistory.fromJSON(e))
         : [],
+      result: isSet(object.result) ? cMsgGCGetHeroStatsHistoryResponse_EResponseFromJSON(object.result) : 0,
     };
   },
 
@@ -21121,6 +21228,9 @@ export const CMsgGCGetHeroStatsHistoryResponse: MessageFns<CMsgGCGetHeroStatsHis
     if (message.records?.length) {
       obj.records = message.records.map((e) => CMsgDOTASDOHeroStatsHistory.toJSON(e));
     }
+    if (message.result !== 0) {
+      obj.result = cMsgGCGetHeroStatsHistoryResponse_EResponseToJSON(message.result);
+    }
     return obj;
   },
 
@@ -21131,6 +21241,7 @@ export const CMsgGCGetHeroStatsHistoryResponse: MessageFns<CMsgGCGetHeroStatsHis
     const message = createBaseCMsgGCGetHeroStatsHistoryResponse();
     message.heroId = object.heroId ?? 0;
     message.records = object.records?.map((e) => CMsgDOTASDOHeroStatsHistory.fromPartial(e)) || [];
+    message.result = object.result ?? 0;
     return message;
   },
 };
@@ -49439,6 +49550,122 @@ export const CMsgClientToGCUpdateComicBookStats_LanguageStats: MessageFns<
     message.comicId = object.comicId ?? 0;
     message.clientLanguage = object.clientLanguage ?? 0;
     message.clientComicLanguage = object.clientComicLanguage ?? 0;
+    return message;
+  },
+};
+
+function createBaseCMsgGCRankedPlayerInfoSubmit(): CMsgGCRankedPlayerInfoSubmit {
+  return { name: "" };
+}
+
+export const CMsgGCRankedPlayerInfoSubmit: MessageFns<CMsgGCRankedPlayerInfoSubmit> = {
+  encode(message: CMsgGCRankedPlayerInfoSubmit, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.name !== "") {
+      writer.uint32(10).string(message.name);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgGCRankedPlayerInfoSubmit {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgGCRankedPlayerInfoSubmit();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.name = reader.string();
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgGCRankedPlayerInfoSubmit {
+    return { name: isSet(object.name) ? globalThis.String(object.name) : "" };
+  },
+
+  toJSON(message: CMsgGCRankedPlayerInfoSubmit): unknown {
+    const obj: any = {};
+    if (message.name !== "") {
+      obj.name = message.name;
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCRankedPlayerInfoSubmit>): CMsgGCRankedPlayerInfoSubmit {
+    return CMsgGCRankedPlayerInfoSubmit.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgGCRankedPlayerInfoSubmit>): CMsgGCRankedPlayerInfoSubmit {
+    const message = createBaseCMsgGCRankedPlayerInfoSubmit();
+    message.name = object.name ?? "";
+    return message;
+  },
+};
+
+function createBaseCMsgGCRankedPlayerInfoSubmitResponse(): CMsgGCRankedPlayerInfoSubmitResponse {
+  return { result: 0 };
+}
+
+export const CMsgGCRankedPlayerInfoSubmitResponse: MessageFns<CMsgGCRankedPlayerInfoSubmitResponse> = {
+  encode(message: CMsgGCRankedPlayerInfoSubmitResponse, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.result !== 0) {
+      writer.uint32(8).int32(message.result);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): CMsgGCRankedPlayerInfoSubmitResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseCMsgGCRankedPlayerInfoSubmitResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 8) {
+            break;
+          }
+
+          message.result = reader.int32() as any;
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): CMsgGCRankedPlayerInfoSubmitResponse {
+    return { result: isSet(object.result) ? cMsgGCRankedPlayerInfoSubmitResponse_EResultFromJSON(object.result) : 0 };
+  },
+
+  toJSON(message: CMsgGCRankedPlayerInfoSubmitResponse): unknown {
+    const obj: any = {};
+    if (message.result !== 0) {
+      obj.result = cMsgGCRankedPlayerInfoSubmitResponse_EResultToJSON(message.result);
+    }
+    return obj;
+  },
+
+  create(base?: DeepPartial<CMsgGCRankedPlayerInfoSubmitResponse>): CMsgGCRankedPlayerInfoSubmitResponse {
+    return CMsgGCRankedPlayerInfoSubmitResponse.fromPartial(base ?? {});
+  },
+  fromPartial(object: DeepPartial<CMsgGCRankedPlayerInfoSubmitResponse>): CMsgGCRankedPlayerInfoSubmitResponse {
+    const message = createBaseCMsgGCRankedPlayerInfoSubmitResponse();
+    message.result = object.result ?? 0;
     return message;
   },
 };

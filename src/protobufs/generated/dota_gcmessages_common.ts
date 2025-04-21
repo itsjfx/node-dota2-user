@@ -1364,6 +1364,7 @@ export interface CMsgDOTARealtimeGameStats_MatchDetails {
   cheersPeak: number;
   lobbyType: number;
   startTimestamp: number;
+  isPlayerDraft: boolean;
 }
 
 export interface CMsgDOTARealtimeGameStats_GraphData {
@@ -1564,6 +1565,7 @@ export interface CMsgDOTARealtimeGameStatsTerse_MatchDetails {
   bans: CMsgDOTARealtimeGameStatsTerse_PickBanDetails[];
   lobbyType: number;
   startTimestamp: number;
+  isPlayerDraft: boolean;
 }
 
 export interface CMsgDOTARealtimeGameStatsTerse_GraphData {
@@ -2141,6 +2143,8 @@ export interface CMsgDOTAMatch_Player {
   item7: number;
   item8: number;
   item9: number;
+  item10: number;
+  item10Lvl: number;
   expectedTeamContribution: number;
   scaledMetric: number;
   previousRank: number;
@@ -2791,6 +2795,7 @@ export interface CMsgGameDataHero_Facet {
   name: string;
   icon: string;
   gradientId: number;
+  index: number;
 }
 
 export interface CMsgGameDataAbilities {
@@ -10998,6 +11003,7 @@ function createBaseCMsgDOTARealtimeGameStats_MatchDetails(): CMsgDOTARealtimeGam
     cheersPeak: 0,
     lobbyType: 0,
     startTimestamp: 0,
+    isPlayerDraft: false,
   };
 }
 
@@ -11062,6 +11068,9 @@ export const CMsgDOTARealtimeGameStats_MatchDetails: MessageFns<CMsgDOTARealtime
     }
     if (message.startTimestamp !== 0) {
       writer.uint32(168).uint32(message.startTimestamp);
+    }
+    if (message.isPlayerDraft !== false) {
+      writer.uint32(176).bool(message.isPlayerDraft);
     }
     return writer;
   },
@@ -11233,6 +11242,14 @@ export const CMsgDOTARealtimeGameStats_MatchDetails: MessageFns<CMsgDOTARealtime
           message.startTimestamp = reader.uint32();
           continue;
         }
+        case 22: {
+          if (tag !== 176) {
+            break;
+          }
+
+          message.isPlayerDraft = reader.bool();
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -11272,6 +11289,7 @@ export const CMsgDOTARealtimeGameStats_MatchDetails: MessageFns<CMsgDOTARealtime
       cheersPeak: isSet(object.cheersPeak) ? globalThis.Number(object.cheersPeak) : 0,
       lobbyType: isSet(object.lobbyType) ? globalThis.Number(object.lobbyType) : 0,
       startTimestamp: isSet(object.startTimestamp) ? globalThis.Number(object.startTimestamp) : 0,
+      isPlayerDraft: isSet(object.isPlayerDraft) ? globalThis.Boolean(object.isPlayerDraft) : false,
     };
   },
 
@@ -11337,6 +11355,9 @@ export const CMsgDOTARealtimeGameStats_MatchDetails: MessageFns<CMsgDOTARealtime
     if (message.startTimestamp !== 0) {
       obj.startTimestamp = Math.round(message.startTimestamp);
     }
+    if (message.isPlayerDraft !== false) {
+      obj.isPlayerDraft = message.isPlayerDraft;
+    }
     return obj;
   },
 
@@ -11366,6 +11387,7 @@ export const CMsgDOTARealtimeGameStats_MatchDetails: MessageFns<CMsgDOTARealtime
     message.cheersPeak = object.cheersPeak ?? 0;
     message.lobbyType = object.lobbyType ?? 0;
     message.startTimestamp = object.startTimestamp ?? 0;
+    message.isPlayerDraft = object.isPlayerDraft ?? false;
     return message;
   },
 };
@@ -12735,6 +12757,7 @@ function createBaseCMsgDOTARealtimeGameStatsTerse_MatchDetails(): CMsgDOTARealti
     bans: [],
     lobbyType: 0,
     startTimestamp: 0,
+    isPlayerDraft: false,
   };
 }
 
@@ -12783,6 +12806,9 @@ export const CMsgDOTARealtimeGameStatsTerse_MatchDetails: MessageFns<CMsgDOTARea
     }
     if (message.startTimestamp !== 0) {
       writer.uint32(112).uint32(message.startTimestamp);
+    }
+    if (message.isPlayerDraft !== false) {
+      writer.uint32(120).bool(message.isPlayerDraft);
     }
     return writer;
   },
@@ -12908,6 +12934,14 @@ export const CMsgDOTARealtimeGameStatsTerse_MatchDetails: MessageFns<CMsgDOTARea
           message.startTimestamp = reader.uint32();
           continue;
         }
+        case 15: {
+          if (tag !== 120) {
+            break;
+          }
+
+          message.isPlayerDraft = reader.bool();
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -12938,6 +12972,7 @@ export const CMsgDOTARealtimeGameStatsTerse_MatchDetails: MessageFns<CMsgDOTARea
         : [],
       lobbyType: isSet(object.lobbyType) ? globalThis.Number(object.lobbyType) : 0,
       startTimestamp: isSet(object.startTimestamp) ? globalThis.Number(object.startTimestamp) : 0,
+      isPlayerDraft: isSet(object.isPlayerDraft) ? globalThis.Boolean(object.isPlayerDraft) : false,
     };
   },
 
@@ -12982,6 +13017,9 @@ export const CMsgDOTARealtimeGameStatsTerse_MatchDetails: MessageFns<CMsgDOTARea
     if (message.startTimestamp !== 0) {
       obj.startTimestamp = Math.round(message.startTimestamp);
     }
+    if (message.isPlayerDraft !== false) {
+      obj.isPlayerDraft = message.isPlayerDraft;
+    }
     return obj;
   },
 
@@ -13005,6 +13043,7 @@ export const CMsgDOTARealtimeGameStatsTerse_MatchDetails: MessageFns<CMsgDOTARea
     message.bans = object.bans?.map((e) => CMsgDOTARealtimeGameStatsTerse_PickBanDetails.fromPartial(e)) || [];
     message.lobbyType = object.lobbyType ?? 0;
     message.startTimestamp = object.startTimestamp ?? 0;
+    message.isPlayerDraft = object.isPlayerDraft ?? false;
     return message;
   },
 };
@@ -15799,6 +15838,8 @@ function createBaseCMsgDOTAMatch_Player(): CMsgDOTAMatch_Player {
     item7: -1,
     item8: -1,
     item9: -1,
+    item10: -1,
+    item10Lvl: 0,
     expectedTeamContribution: 0,
     scaledMetric: 0,
     previousRank: 0,
@@ -15903,6 +15944,12 @@ export const CMsgDOTAMatch_Player: MessageFns<CMsgDOTAMatch_Player> = {
     }
     if (message.item9 !== -1) {
       writer.uint32(608).int32(message.item9);
+    }
+    if (message.item10 !== -1) {
+      writer.uint32(664).int32(message.item10);
+    }
+    if (message.item10Lvl !== 0) {
+      writer.uint32(672).int32(message.item10Lvl);
     }
     if (message.expectedTeamContribution !== 0) {
       writer.uint32(85).float(message.expectedTeamContribution);
@@ -16199,6 +16246,22 @@ export const CMsgDOTAMatch_Player: MessageFns<CMsgDOTAMatch_Player> = {
           }
 
           message.item9 = reader.int32();
+          continue;
+        }
+        case 83: {
+          if (tag !== 664) {
+            break;
+          }
+
+          message.item10 = reader.int32();
+          continue;
+        }
+        case 84: {
+          if (tag !== 672) {
+            break;
+          }
+
+          message.item10Lvl = reader.int32();
           continue;
         }
         case 10: {
@@ -16713,6 +16776,8 @@ export const CMsgDOTAMatch_Player: MessageFns<CMsgDOTAMatch_Player> = {
       item7: isSet(object.item7) ? globalThis.Number(object.item7) : -1,
       item8: isSet(object.item8) ? globalThis.Number(object.item8) : -1,
       item9: isSet(object.item9) ? globalThis.Number(object.item9) : -1,
+      item10: isSet(object.item10) ? globalThis.Number(object.item10) : -1,
+      item10Lvl: isSet(object.item10Lvl) ? globalThis.Number(object.item10Lvl) : 0,
       expectedTeamContribution: isSet(object.expectedTeamContribution)
         ? globalThis.Number(object.expectedTeamContribution)
         : 0,
@@ -16835,6 +16900,12 @@ export const CMsgDOTAMatch_Player: MessageFns<CMsgDOTAMatch_Player> = {
     }
     if (message.item9 !== -1) {
       obj.item9 = Math.round(message.item9);
+    }
+    if (message.item10 !== -1) {
+      obj.item10 = Math.round(message.item10);
+    }
+    if (message.item10Lvl !== 0) {
+      obj.item10Lvl = Math.round(message.item10Lvl);
     }
     if (message.expectedTeamContribution !== 0) {
       obj.expectedTeamContribution = message.expectedTeamContribution;
@@ -17042,6 +17113,8 @@ export const CMsgDOTAMatch_Player: MessageFns<CMsgDOTAMatch_Player> = {
     message.item7 = object.item7 ?? -1;
     message.item8 = object.item8 ?? -1;
     message.item9 = object.item9 ?? -1;
+    message.item10 = object.item10 ?? -1;
+    message.item10Lvl = object.item10Lvl ?? 0;
     message.expectedTeamContribution = object.expectedTeamContribution ?? 0;
     message.scaledMetric = object.scaledMetric ?? 0;
     message.previousRank = object.previousRank ?? 0;
@@ -25435,7 +25508,7 @@ export const CMsgGameDataHero: MessageFns<CMsgGameDataHero> = {
 };
 
 function createBaseCMsgGameDataHero_Facet(): CMsgGameDataHero_Facet {
-  return { color: 0, titleLoc: "", descriptionLoc: "", name: "", icon: "", gradientId: 0 };
+  return { color: 0, titleLoc: "", descriptionLoc: "", name: "", icon: "", gradientId: 0, index: 0 };
 }
 
 export const CMsgGameDataHero_Facet: MessageFns<CMsgGameDataHero_Facet> = {
@@ -25457,6 +25530,9 @@ export const CMsgGameDataHero_Facet: MessageFns<CMsgGameDataHero_Facet> = {
     }
     if (message.gradientId !== 0) {
       writer.uint32(48).int32(message.gradientId);
+    }
+    if (message.index !== 0) {
+      writer.uint32(56).uint32(message.index);
     }
     return writer;
   },
@@ -25516,6 +25592,14 @@ export const CMsgGameDataHero_Facet: MessageFns<CMsgGameDataHero_Facet> = {
           message.gradientId = reader.int32();
           continue;
         }
+        case 7: {
+          if (tag !== 56) {
+            break;
+          }
+
+          message.index = reader.uint32();
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -25533,6 +25617,7 @@ export const CMsgGameDataHero_Facet: MessageFns<CMsgGameDataHero_Facet> = {
       name: isSet(object.name) ? globalThis.String(object.name) : "",
       icon: isSet(object.icon) ? globalThis.String(object.icon) : "",
       gradientId: isSet(object.gradientId) ? globalThis.Number(object.gradientId) : 0,
+      index: isSet(object.index) ? globalThis.Number(object.index) : 0,
     };
   },
 
@@ -25556,6 +25641,9 @@ export const CMsgGameDataHero_Facet: MessageFns<CMsgGameDataHero_Facet> = {
     if (message.gradientId !== 0) {
       obj.gradientId = Math.round(message.gradientId);
     }
+    if (message.index !== 0) {
+      obj.index = Math.round(message.index);
+    }
     return obj;
   },
 
@@ -25570,6 +25658,7 @@ export const CMsgGameDataHero_Facet: MessageFns<CMsgGameDataHero_Facet> = {
     message.name = object.name ?? "";
     message.icon = object.icon ?? "";
     message.gradientId = object.gradientId ?? 0;
+    message.index = object.index ?? 0;
     return message;
   },
 };

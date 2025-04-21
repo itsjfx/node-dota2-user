@@ -40,6 +40,7 @@ export interface CSourceTVGameSmall {
   weekendTourneySkillLevel: number;
   weekendTourneyBracketRound: number;
   customGameDifficulty: number;
+  isPlayerDraft: boolean;
 }
 
 export interface CSourceTVGameSmall_Player {
@@ -400,6 +401,7 @@ function createBaseCSourceTVGameSmall(): CSourceTVGameSmall {
     weekendTourneySkillLevel: 0,
     weekendTourneyBracketRound: 0,
     customGameDifficulty: 0,
+    isPlayerDraft: false,
   };
 }
 
@@ -497,6 +499,9 @@ export const CSourceTVGameSmall: MessageFns<CSourceTVGameSmall> = {
     }
     if (message.customGameDifficulty !== 0) {
       writer.uint32(256).uint32(message.customGameDifficulty);
+    }
+    if (message.isPlayerDraft !== false) {
+      writer.uint32(264).bool(message.isPlayerDraft);
     }
     return writer;
   },
@@ -756,6 +761,14 @@ export const CSourceTVGameSmall: MessageFns<CSourceTVGameSmall> = {
           message.customGameDifficulty = reader.uint32();
           continue;
         }
+        case 33: {
+          if (tag !== 264) {
+            break;
+          }
+
+          message.isPlayerDraft = reader.bool();
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -808,6 +821,7 @@ export const CSourceTVGameSmall: MessageFns<CSourceTVGameSmall> = {
         ? globalThis.Number(object.weekendTourneyBracketRound)
         : 0,
       customGameDifficulty: isSet(object.customGameDifficulty) ? globalThis.Number(object.customGameDifficulty) : 0,
+      isPlayerDraft: isSet(object.isPlayerDraft) ? globalThis.Boolean(object.isPlayerDraft) : false,
     };
   },
 
@@ -906,6 +920,9 @@ export const CSourceTVGameSmall: MessageFns<CSourceTVGameSmall> = {
     if (message.customGameDifficulty !== 0) {
       obj.customGameDifficulty = Math.round(message.customGameDifficulty);
     }
+    if (message.isPlayerDraft !== false) {
+      obj.isPlayerDraft = message.isPlayerDraft;
+    }
     return obj;
   },
 
@@ -945,6 +962,7 @@ export const CSourceTVGameSmall: MessageFns<CSourceTVGameSmall> = {
     message.weekendTourneySkillLevel = object.weekendTourneySkillLevel ?? 0;
     message.weekendTourneyBracketRound = object.weekendTourneyBracketRound ?? 0;
     message.customGameDifficulty = object.customGameDifficulty ?? 0;
+    message.isPlayerDraft = object.isPlayerDraft ?? false;
     return message;
   },
 };

@@ -426,6 +426,7 @@ export interface CSODOTALobby {
   lobbyCreationTime: number;
   eventGameDefinition: string;
   matchQualityData: CDOTALobbyMatchQualityData | undefined;
+  requestedHeroTeams: number[];
 }
 
 export enum CSODOTALobby_State {
@@ -3773,6 +3774,7 @@ function createBaseCSODOTALobby(): CSODOTALobby {
     lobbyCreationTime: 0,
     eventGameDefinition: "",
     matchQualityData: undefined,
+    requestedHeroTeams: [],
   };
 }
 
@@ -4061,6 +4063,11 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
     if (message.matchQualityData !== undefined) {
       CDOTALobbyMatchQualityData.encode(message.matchQualityData, writer.uint32(1050).fork()).join();
     }
+    writer.uint32(1058).fork();
+    for (const v of message.requestedHeroTeams) {
+      writer.int32(v);
+    }
+    writer.join();
     return writer;
   },
 
@@ -4863,6 +4870,24 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
           message.matchQualityData = CDOTALobbyMatchQualityData.decode(reader, reader.uint32());
           continue;
         }
+        case 132: {
+          if (tag === 1056) {
+            message.requestedHeroTeams.push(reader.int32());
+
+            continue;
+          }
+
+          if (tag === 1058) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.requestedHeroTeams.push(reader.int32());
+            }
+
+            continue;
+          }
+
+          break;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -5021,6 +5046,9 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
       matchQualityData: isSet(object.matchQualityData)
         ? CDOTALobbyMatchQualityData.fromJSON(object.matchQualityData)
         : undefined,
+      requestedHeroTeams: globalThis.Array.isArray(object?.requestedHeroTeams)
+        ? object.requestedHeroTeams.map((e: any) => globalThis.Number(e))
+        : [],
     };
   },
 
@@ -5295,6 +5323,9 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
     if (message.matchQualityData !== undefined) {
       obj.matchQualityData = CDOTALobbyMatchQualityData.toJSON(message.matchQualityData);
     }
+    if (message.requestedHeroTeams?.length) {
+      obj.requestedHeroTeams = message.requestedHeroTeams.map((e) => Math.round(e));
+    }
     return obj;
   },
 
@@ -5396,6 +5427,7 @@ export const CSODOTALobby: MessageFns<CSODOTALobby> = {
     message.matchQualityData = (object.matchQualityData !== undefined && object.matchQualityData !== null)
       ? CDOTALobbyMatchQualityData.fromPartial(object.matchQualityData)
       : undefined;
+    message.requestedHeroTeams = object.requestedHeroTeams?.map((e) => e) || [];
     return message;
   },
 };

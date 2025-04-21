@@ -5,6 +5,7 @@ export * from './generated/base_gcmessages';
 export * from './generated/dota_gcmessages_client';
 export * from './generated/dota_gcmessages_client_watch';
 export * from './generated/dota_gcmessages_common';
+export * from './generated/dota_gcmessages_common_craftworks';
 export * from './generated/dota_gcmessages_common_lobby';
 export * from './generated/dota_gcmessages_common_match_management';
 export * from './generated/dota_gcmessages_common_overworld';

@@ -18,6 +18,7 @@ export * from "./dota_gcmessages_common_match_management";
 export * from "./dota_gcmessages_common_lobby";
 export * from "./dota_gcmessages_common_survivors";
 export * from "./dota_gcmessages_common_overworld";
+export * from "./dota_gcmessages_common_craftworks";
 export * from "./dota_match_metadata";
 export * from "./dota_gcmessages_webapi";
 export * from "./econ_shared_enums";

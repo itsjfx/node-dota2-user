@@ -535,6 +535,7 @@ export interface CMsgClientToGCOverworldClaimEncounterReward {
   extraRewardData: CMsgOverworldEncounterData | undefined;
   leaderboardData: number;
   leaderboardIndex: number;
+  shouldClaimReward: boolean;
 }
 
 export interface CMsgClientToGCOverworldClaimEncounterRewardResponse {
@@ -3692,6 +3693,7 @@ function createBaseCMsgClientToGCOverworldClaimEncounterReward(): CMsgClientToGC
     extraRewardData: undefined,
     leaderboardData: 0,
     leaderboardIndex: 0,
+    shouldClaimReward: false,
   };
 }
 
@@ -3720,6 +3722,9 @@ export const CMsgClientToGCOverworldClaimEncounterReward: MessageFns<CMsgClientT
     }
     if (message.leaderboardIndex !== 0) {
       writer.uint32(56).uint32(message.leaderboardIndex);
+    }
+    if (message.shouldClaimReward !== false) {
+      writer.uint32(64).bool(message.shouldClaimReward);
     }
     return writer;
   },
@@ -3787,6 +3792,14 @@ export const CMsgClientToGCOverworldClaimEncounterReward: MessageFns<CMsgClientT
           message.leaderboardIndex = reader.uint32();
           continue;
         }
+        case 8: {
+          if (tag !== 64) {
+            break;
+          }
+
+          message.shouldClaimReward = reader.bool();
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -3807,6 +3820,7 @@ export const CMsgClientToGCOverworldClaimEncounterReward: MessageFns<CMsgClientT
         : undefined,
       leaderboardData: isSet(object.leaderboardData) ? globalThis.Number(object.leaderboardData) : 0,
       leaderboardIndex: isSet(object.leaderboardIndex) ? globalThis.Number(object.leaderboardIndex) : 0,
+      shouldClaimReward: isSet(object.shouldClaimReward) ? globalThis.Boolean(object.shouldClaimReward) : false,
     };
   },
 
@@ -3833,6 +3847,9 @@ export const CMsgClientToGCOverworldClaimEncounterReward: MessageFns<CMsgClientT
     if (message.leaderboardIndex !== 0) {
       obj.leaderboardIndex = Math.round(message.leaderboardIndex);
     }
+    if (message.shouldClaimReward !== false) {
+      obj.shouldClaimReward = message.shouldClaimReward;
+    }
     return obj;
   },
 
@@ -3852,6 +3869,7 @@ export const CMsgClientToGCOverworldClaimEncounterReward: MessageFns<CMsgClientT
       : undefined;
     message.leaderboardData = object.leaderboardData ?? 0;
     message.leaderboardIndex = object.leaderboardIndex ?? 0;
+    message.shouldClaimReward = object.shouldClaimReward ?? false;
     return message;
   },
 };

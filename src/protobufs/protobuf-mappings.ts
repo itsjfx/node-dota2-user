@@ -34,6 +34,7 @@ export const ClientProtobufs = {
     [protobufs.EDOTAGCMsg.k_EMsgGCNotificationsRequest]: protobufs.CMsgGCNotificationsRequest as MessageFns<protobufs.CMsgGCNotificationsRequest>,
     [protobufs.EDOTAGCMsg.k_EMsgGCLeagueAdminList]: protobufs.CMsgLeagueAdminList as MessageFns<protobufs.CMsgLeagueAdminList>,
     [protobufs.EDOTAGCMsg.k_EMsgGCNotificationsMarkReadRequest]: protobufs.CMsgGCNotificationsMarkReadRequest as MessageFns<protobufs.CMsgGCNotificationsMarkReadRequest>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCRankedPlayerInfoSubmit]: protobufs.CMsgGCRankedPlayerInfoSubmit as MessageFns<protobufs.CMsgGCRankedPlayerInfoSubmit>,
     [protobufs.EDOTAGCMsg.k_EMsgGCPlayerInfoSubmit]: protobufs.CMsgGCPlayerInfoSubmit as MessageFns<protobufs.CMsgGCPlayerInfoSubmit>,
     [protobufs.EDOTAGCMsg.k_EMsgGCHasItemQuery]: protobufs.CMsgDOTAHasItemQuery as MessageFns<protobufs.CMsgDOTAHasItemQuery>,
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCEmoticonDataRequest]: protobufs.CMsgClientToGCEmoticonDataRequest as MessageFns<protobufs.CMsgClientToGCEmoticonDataRequest>,
@@ -255,6 +256,7 @@ export type ClientProtobufsType = {
     [protobufs.EDOTAGCMsg.k_EMsgGCNotificationsRequest]: protobufs.CMsgGCNotificationsRequest;
     [protobufs.EDOTAGCMsg.k_EMsgGCLeagueAdminList]: protobufs.CMsgLeagueAdminList;
     [protobufs.EDOTAGCMsg.k_EMsgGCNotificationsMarkReadRequest]: protobufs.CMsgGCNotificationsMarkReadRequest;
+    [protobufs.EDOTAGCMsg.k_EMsgGCRankedPlayerInfoSubmit]: protobufs.CMsgGCRankedPlayerInfoSubmit;
     [protobufs.EDOTAGCMsg.k_EMsgGCPlayerInfoSubmit]: protobufs.CMsgGCPlayerInfoSubmit;
     [protobufs.EDOTAGCMsg.k_EMsgGCHasItemQuery]: protobufs.CMsgDOTAHasItemQuery;
     [protobufs.EDOTAGCMsg.k_EMsgClientToGCEmoticonDataRequest]: protobufs.CMsgClientToGCEmoticonDataRequest;
@@ -461,6 +463,7 @@ export const GCProtobufs = {
     [protobufs.EDOTAGCMsg.k_EMsgGCCompendiumDataResponse]: protobufs.CMsgDOTACompendiumDataResponse as MessageFns<protobufs.CMsgDOTACompendiumDataResponse>,
     [protobufs.EDOTAGCMsg.k_EMsgDOTAGetPlayerMatchHistoryResponse]: protobufs.CMsgDOTAGetPlayerMatchHistoryResponse as MessageFns<protobufs.CMsgDOTAGetPlayerMatchHistoryResponse>,
     [protobufs.EDOTAGCMsg.k_EMsgGCNotificationsResponse]: protobufs.CMsgGCNotificationsResponse as MessageFns<protobufs.CMsgGCNotificationsResponse>,
+    [protobufs.EDOTAGCMsg.k_EMsgGCRankedPlayerInfoSubmitResponse]: protobufs.CMsgGCRankedPlayerInfoSubmitResponse as MessageFns<protobufs.CMsgGCRankedPlayerInfoSubmitResponse>,
     [protobufs.EDOTAGCMsg.k_EMsgGCPlayerInfoSubmitResponse]: protobufs.CMsgGCPlayerInfoSubmitResponse as MessageFns<protobufs.CMsgGCPlayerInfoSubmitResponse>,
     [protobufs.EDOTAGCMsg.k_EMsgGCHasItemResponse]: protobufs.CMsgDOTAHasItemResponse as MessageFns<protobufs.CMsgDOTAHasItemResponse>,
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientTournamentItemDrop]: protobufs.CMsgGCToClientTournamentItemDrop as MessageFns<protobufs.CMsgGCToClientTournamentItemDrop>,
@@ -661,6 +664,7 @@ export type GCProtobufsType = {
     [protobufs.EDOTAGCMsg.k_EMsgGCCompendiumDataResponse]: protobufs.CMsgDOTACompendiumDataResponse;
     [protobufs.EDOTAGCMsg.k_EMsgDOTAGetPlayerMatchHistoryResponse]: protobufs.CMsgDOTAGetPlayerMatchHistoryResponse;
     [protobufs.EDOTAGCMsg.k_EMsgGCNotificationsResponse]: protobufs.CMsgGCNotificationsResponse;
+    [protobufs.EDOTAGCMsg.k_EMsgGCRankedPlayerInfoSubmitResponse]: protobufs.CMsgGCRankedPlayerInfoSubmitResponse;
     [protobufs.EDOTAGCMsg.k_EMsgGCPlayerInfoSubmitResponse]: protobufs.CMsgGCPlayerInfoSubmitResponse;
     [protobufs.EDOTAGCMsg.k_EMsgGCHasItemResponse]: protobufs.CMsgDOTAHasItemResponse;
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientTournamentItemDrop]: protobufs.CMsgGCToClientTournamentItemDrop;
@@ -860,6 +864,7 @@ export type GCEvents = {
     [protobufs.EDOTAGCMsg.k_EMsgGCCompendiumDataResponse]: (data: protobufs.CMsgDOTACompendiumDataResponse) => void;
     [protobufs.EDOTAGCMsg.k_EMsgDOTAGetPlayerMatchHistoryResponse]: (data: protobufs.CMsgDOTAGetPlayerMatchHistoryResponse) => void;
     [protobufs.EDOTAGCMsg.k_EMsgGCNotificationsResponse]: (data: protobufs.CMsgGCNotificationsResponse) => void;
+    [protobufs.EDOTAGCMsg.k_EMsgGCRankedPlayerInfoSubmitResponse]: (data: protobufs.CMsgGCRankedPlayerInfoSubmitResponse) => void;
     [protobufs.EDOTAGCMsg.k_EMsgGCPlayerInfoSubmitResponse]: (data: protobufs.CMsgGCPlayerInfoSubmitResponse) => void;
     [protobufs.EDOTAGCMsg.k_EMsgGCHasItemResponse]: (data: protobufs.CMsgDOTAHasItemResponse) => void;
     [protobufs.EDOTAGCMsg.k_EMsgGCToClientTournamentItemDrop]: (data: protobufs.CMsgGCToClientTournamentItemDrop) => void;

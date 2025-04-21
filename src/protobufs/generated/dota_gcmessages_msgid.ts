@@ -174,6 +174,8 @@ export enum EDOTAGCMsg {
   k_EMsgServerToGCRequestBatchPlayerResources = 7450,
   k_EMsgServerToGCRequestBatchPlayerResourcesResponse = 7451,
   k_EMsgGCCompendiumSetSelectionResponse = 7453,
+  k_EMsgGCRankedPlayerInfoSubmit = 7454,
+  k_EMsgGCRankedPlayerInfoSubmitResponse = 7455,
   k_EMsgGCPlayerInfoSubmit = 7456,
   k_EMsgGCPlayerInfoSubmitResponse = 7457,
   k_EMsgGCToGCGetAccountLevel = 7458,
@@ -956,6 +958,14 @@ export enum EDOTAGCMsg {
   k_EMsgClientToGCSurvivorsTelemetryResponse = 9012,
   k_EMsgClientToGCOverworldRequestTokensNeededByFriend = 9013,
   k_EMsgClientToGCOverworldRequestTokensNeededByFriendResponse = 9014,
+  k_EMsgClientToGCCraftworksGetUserData = 9015,
+  k_EMsgClientToGCCraftworksGetUserDataResponse = 9016,
+  k_EMsgGCToClientCraftworksUserDataUpdated = 9017,
+  k_EMsgClientToGCCraftworksCraftRecipe = 9018,
+  k_EMsgClientToGCCraftworksCraftRecipeResponse = 9019,
+  k_EMsgClientToGCCraftworksDevModifyComponents = 9020,
+  k_EMsgClientToGCCraftworksDevModifyComponentsResponse = 9021,
+  k_EMsgSignOutCraftworks = 9022,
 }
 
 export function eDOTAGCMsgFromJSON(object: any): EDOTAGCMsg {
@@ -1461,6 +1471,12 @@ export function eDOTAGCMsgFromJSON(object: any): EDOTAGCMsg {
     case 7453:
     case "k_EMsgGCCompendiumSetSelectionResponse":
       return EDOTAGCMsg.k_EMsgGCCompendiumSetSelectionResponse;
+    case 7454:
+    case "k_EMsgGCRankedPlayerInfoSubmit":
+      return EDOTAGCMsg.k_EMsgGCRankedPlayerInfoSubmit;
+    case 7455:
+    case "k_EMsgGCRankedPlayerInfoSubmitResponse":
+      return EDOTAGCMsg.k_EMsgGCRankedPlayerInfoSubmitResponse;
     case 7456:
     case "k_EMsgGCPlayerInfoSubmit":
       return EDOTAGCMsg.k_EMsgGCPlayerInfoSubmit;
@@ -3807,6 +3823,30 @@ export function eDOTAGCMsgFromJSON(object: any): EDOTAGCMsg {
     case 9014:
     case "k_EMsgClientToGCOverworldRequestTokensNeededByFriendResponse":
       return EDOTAGCMsg.k_EMsgClientToGCOverworldRequestTokensNeededByFriendResponse;
+    case 9015:
+    case "k_EMsgClientToGCCraftworksGetUserData":
+      return EDOTAGCMsg.k_EMsgClientToGCCraftworksGetUserData;
+    case 9016:
+    case "k_EMsgClientToGCCraftworksGetUserDataResponse":
+      return EDOTAGCMsg.k_EMsgClientToGCCraftworksGetUserDataResponse;
+    case 9017:
+    case "k_EMsgGCToClientCraftworksUserDataUpdated":
+      return EDOTAGCMsg.k_EMsgGCToClientCraftworksUserDataUpdated;
+    case 9018:
+    case "k_EMsgClientToGCCraftworksCraftRecipe":
+      return EDOTAGCMsg.k_EMsgClientToGCCraftworksCraftRecipe;
+    case 9019:
+    case "k_EMsgClientToGCCraftworksCraftRecipeResponse":
+      return EDOTAGCMsg.k_EMsgClientToGCCraftworksCraftRecipeResponse;
+    case 9020:
+    case "k_EMsgClientToGCCraftworksDevModifyComponents":
+      return EDOTAGCMsg.k_EMsgClientToGCCraftworksDevModifyComponents;
+    case 9021:
+    case "k_EMsgClientToGCCraftworksDevModifyComponentsResponse":
+      return EDOTAGCMsg.k_EMsgClientToGCCraftworksDevModifyComponentsResponse;
+    case 9022:
+    case "k_EMsgSignOutCraftworks":
+      return EDOTAGCMsg.k_EMsgSignOutCraftworks;
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum EDOTAGCMsg");
   }
@@ -4148,6 +4188,10 @@ export function eDOTAGCMsgToJSON(object: EDOTAGCMsg): string {
       return "k_EMsgServerToGCRequestBatchPlayerResourcesResponse";
     case EDOTAGCMsg.k_EMsgGCCompendiumSetSelectionResponse:
       return "k_EMsgGCCompendiumSetSelectionResponse";
+    case EDOTAGCMsg.k_EMsgGCRankedPlayerInfoSubmit:
+      return "k_EMsgGCRankedPlayerInfoSubmit";
+    case EDOTAGCMsg.k_EMsgGCRankedPlayerInfoSubmitResponse:
+      return "k_EMsgGCRankedPlayerInfoSubmitResponse";
     case EDOTAGCMsg.k_EMsgGCPlayerInfoSubmit:
       return "k_EMsgGCPlayerInfoSubmit";
     case EDOTAGCMsg.k_EMsgGCPlayerInfoSubmitResponse:
@@ -5712,6 +5756,22 @@ export function eDOTAGCMsgToJSON(object: EDOTAGCMsg): string {
       return "k_EMsgClientToGCOverworldRequestTokensNeededByFriend";
     case EDOTAGCMsg.k_EMsgClientToGCOverworldRequestTokensNeededByFriendResponse:
       return "k_EMsgClientToGCOverworldRequestTokensNeededByFriendResponse";
+    case EDOTAGCMsg.k_EMsgClientToGCCraftworksGetUserData:
+      return "k_EMsgClientToGCCraftworksGetUserData";
+    case EDOTAGCMsg.k_EMsgClientToGCCraftworksGetUserDataResponse:
+      return "k_EMsgClientToGCCraftworksGetUserDataResponse";
+    case EDOTAGCMsg.k_EMsgGCToClientCraftworksUserDataUpdated:
+      return "k_EMsgGCToClientCraftworksUserDataUpdated";
+    case EDOTAGCMsg.k_EMsgClientToGCCraftworksCraftRecipe:
+      return "k_EMsgClientToGCCraftworksCraftRecipe";
+    case EDOTAGCMsg.k_EMsgClientToGCCraftworksCraftRecipeResponse:
+      return "k_EMsgClientToGCCraftworksCraftRecipeResponse";
+    case EDOTAGCMsg.k_EMsgClientToGCCraftworksDevModifyComponents:
+      return "k_EMsgClientToGCCraftworksDevModifyComponents";
+    case EDOTAGCMsg.k_EMsgClientToGCCraftworksDevModifyComponentsResponse:
+      return "k_EMsgClientToGCCraftworksDevModifyComponentsResponse";
+    case EDOTAGCMsg.k_EMsgSignOutCraftworks:
+      return "k_EMsgSignOutCraftworks";
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum EDOTAGCMsg");
   }

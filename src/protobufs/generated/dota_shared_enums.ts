@@ -438,6 +438,7 @@ export enum EEvent {
   EVENT_ID_CROWNFALL = 47,
   EVENT_ID_FROSTIVUS_2023 = 48,
   EVENT_ID_INTERNATIONAL_2024 = 49,
+  EVENT_ID_FROSTIVUS_2024 = 50,
 }
 
 export function eEventFromJSON(object: any): EEvent {
@@ -589,6 +590,9 @@ export function eEventFromJSON(object: any): EEvent {
     case 49:
     case "EVENT_ID_INTERNATIONAL_2024":
       return EEvent.EVENT_ID_INTERNATIONAL_2024;
+    case 50:
+    case "EVENT_ID_FROSTIVUS_2024":
+      return EEvent.EVENT_ID_FROSTIVUS_2024;
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum EEvent");
   }
@@ -694,6 +698,8 @@ export function eEventToJSON(object: EEvent): string {
       return "EVENT_ID_FROSTIVUS_2023";
     case EEvent.EVENT_ID_INTERNATIONAL_2024:
       return "EVENT_ID_INTERNATIONAL_2024";
+    case EEvent.EVENT_ID_FROSTIVUS_2024:
+      return "EVENT_ID_FROSTIVUS_2024";
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum EEvent");
   }
@@ -3662,6 +3668,7 @@ export enum dotaCombatlogTypes {
   DOTA_COMBATLOG_UNIT_TELEPORTED = 41,
   DOTA_COMBATLOG_KILL_EATER_EVENT = 42,
   DOTA_COMBATLOG_NEUTRAL_ITEM_EARNED = 43,
+  DOTA_COMBATLOG_STAT_TRACKER_PLAYER = 44,
 }
 
 export function dotaCombatlogTypesFromJSON(object: any): dotaCombatlogTypes {
@@ -3801,6 +3808,9 @@ export function dotaCombatlogTypesFromJSON(object: any): dotaCombatlogTypes {
     case 43:
     case "DOTA_COMBATLOG_NEUTRAL_ITEM_EARNED":
       return dotaCombatlogTypes.DOTA_COMBATLOG_NEUTRAL_ITEM_EARNED;
+    case 44:
+    case "DOTA_COMBATLOG_STAT_TRACKER_PLAYER":
+      return dotaCombatlogTypes.DOTA_COMBATLOG_STAT_TRACKER_PLAYER;
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum dotaCombatlogTypes");
   }
@@ -3898,6 +3908,8 @@ export function dotaCombatlogTypesToJSON(object: dotaCombatlogTypes): string {
       return "DOTA_COMBATLOG_KILL_EATER_EVENT";
     case dotaCombatlogTypes.DOTA_COMBATLOG_NEUTRAL_ITEM_EARNED:
       return "DOTA_COMBATLOG_NEUTRAL_ITEM_EARNED";
+    case dotaCombatlogTypes.DOTA_COMBATLOG_STAT_TRACKER_PLAYER:
+      return "DOTA_COMBATLOG_STAT_TRACKER_PLAYER";
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum dotaCombatlogTypes");
   }
@@ -4238,6 +4250,53 @@ export function eItemSuggestPreferenceToJSON(object: EItemSuggestPreference): st
   }
 }
 
+export enum ETimerAlertType {
+  k_TimerAlertType_PowerRune = 1,
+  k_TimerAlertType_BountyRune = 2,
+  k_TimerAlertType_WisdomShrine = 3,
+  k_TimerAlertType_JungleCamps = 4,
+  k_TimerAlertType_LotusPool = 5,
+}
+
+export function eTimerAlertTypeFromJSON(object: any): ETimerAlertType {
+  switch (object) {
+    case 1:
+    case "k_TimerAlertType_PowerRune":
+      return ETimerAlertType.k_TimerAlertType_PowerRune;
+    case 2:
+    case "k_TimerAlertType_BountyRune":
+      return ETimerAlertType.k_TimerAlertType_BountyRune;
+    case 3:
+    case "k_TimerAlertType_WisdomShrine":
+      return ETimerAlertType.k_TimerAlertType_WisdomShrine;
+    case 4:
+    case "k_TimerAlertType_JungleCamps":
+      return ETimerAlertType.k_TimerAlertType_JungleCamps;
+    case 5:
+    case "k_TimerAlertType_LotusPool":
+      return ETimerAlertType.k_TimerAlertType_LotusPool;
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum ETimerAlertType");
+  }
+}
+
+export function eTimerAlertTypeToJSON(object: ETimerAlertType): string {
+  switch (object) {
+    case ETimerAlertType.k_TimerAlertType_PowerRune:
+      return "k_TimerAlertType_PowerRune";
+    case ETimerAlertType.k_TimerAlertType_BountyRune:
+      return "k_TimerAlertType_BountyRune";
+    case ETimerAlertType.k_TimerAlertType_WisdomShrine:
+      return "k_TimerAlertType_WisdomShrine";
+    case ETimerAlertType.k_TimerAlertType_JungleCamps:
+      return "k_TimerAlertType_JungleCamps";
+    case ETimerAlertType.k_TimerAlertType_LotusPool:
+      return "k_TimerAlertType_LotusPool";
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum ETimerAlertType");
+  }
+}
+
 export interface CDOTAClientHardwareSpecs {
   logicalProcessors: number;
   cpuCyclesPerSecond: string;
@@ -4355,6 +4414,7 @@ export interface CMsgDOTACombatLogEntry {
   regeneratedHealth: number;
   willReincarnate: boolean;
   usesCharges: boolean;
+  trackedStatId: number;
 }
 
 export interface CMsgPendingEventAward {
@@ -5048,6 +5108,7 @@ function createBaseCMsgDOTACombatLogEntry(): CMsgDOTACombatLogEntry {
     regeneratedHealth: 0,
     willReincarnate: false,
     usesCharges: false,
+    trackedStatId: 0,
   };
 }
 
@@ -5291,6 +5352,9 @@ export const CMsgDOTACombatLogEntry: MessageFns<CMsgDOTACombatLogEntry> = {
     }
     if (message.usesCharges !== false) {
       writer.uint32(632).bool(message.usesCharges);
+    }
+    if (message.trackedStatId !== 0) {
+      writer.uint32(640).uint32(message.trackedStatId);
     }
     return writer;
   },
@@ -5944,6 +6008,14 @@ export const CMsgDOTACombatLogEntry: MessageFns<CMsgDOTACombatLogEntry> = {
           message.usesCharges = reader.bool();
           continue;
         }
+        case 80: {
+          if (tag !== 640) {
+            break;
+          }
+
+          message.trackedStatId = reader.uint32();
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -6048,6 +6120,7 @@ export const CMsgDOTACombatLogEntry: MessageFns<CMsgDOTACombatLogEntry> = {
       regeneratedHealth: isSet(object.regeneratedHealth) ? globalThis.Number(object.regeneratedHealth) : 0,
       willReincarnate: isSet(object.willReincarnate) ? globalThis.Boolean(object.willReincarnate) : false,
       usesCharges: isSet(object.usesCharges) ? globalThis.Boolean(object.usesCharges) : false,
+      trackedStatId: isSet(object.trackedStatId) ? globalThis.Number(object.trackedStatId) : 0,
     };
   },
 
@@ -6290,6 +6363,9 @@ export const CMsgDOTACombatLogEntry: MessageFns<CMsgDOTACombatLogEntry> = {
     if (message.usesCharges !== false) {
       obj.usesCharges = message.usesCharges;
     }
+    if (message.trackedStatId !== 0) {
+      obj.trackedStatId = Math.round(message.trackedStatId);
+    }
     return obj;
   },
 
@@ -6377,6 +6453,7 @@ export const CMsgDOTACombatLogEntry: MessageFns<CMsgDOTACombatLogEntry> = {
     message.regeneratedHealth = object.regeneratedHealth ?? 0;
     message.willReincarnate = object.willReincarnate ?? false;
     message.usesCharges = object.usesCharges ?? false;
+    message.trackedStatId = object.trackedStatId ?? 0;
     return message;
   },
 };

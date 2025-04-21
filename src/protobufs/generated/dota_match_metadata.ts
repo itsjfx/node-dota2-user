@@ -8,6 +8,7 @@
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 import { CSOEconItemAttribute, CSOEconItemEquipped } from "./base_gcmessages";
 import { CMsgTrackedStat } from "./dota_gcmessages_common";
+import { CMsgCraftworksQuestReward } from "./dota_gcmessages_common_craftworks";
 import { CMsgMatchMatchmakingStats, CMvpData } from "./dota_gcmessages_common_match_management";
 import { CMsgOverworldTokenQuantity } from "./dota_gcmessages_common_overworld";
 import {
@@ -83,6 +84,7 @@ export interface CDOTAMatchMetadata_Team_InventorySnapshot {
   level: number;
   backpackItemId: number[];
   neutralItemId: number;
+  neutralEnhancementId: number;
 }
 
 export interface CDOTAMatchMetadata_Team_AutoStyleCriteria {
@@ -227,6 +229,7 @@ export interface CDOTAMatchMetadata_Team_Player {
   gamePlayerId: number;
   playerTrackedStats: CMsgTrackedStat[];
   overworldRewards: CDOTAMatchMetadata_Team_Player_OverworldRewards | undefined;
+  craftworksQuestRewards: CMsgCraftworksQuestReward[];
 }
 
 export interface CDOTAMatchMetadata_Team_Player_ContractProgress {
@@ -1261,7 +1264,17 @@ export const CDOTAMatchMetadata_Team_ItemPurchase: MessageFns<CDOTAMatchMetadata
 };
 
 function createBaseCDOTAMatchMetadata_Team_InventorySnapshot(): CDOTAMatchMetadata_Team_InventorySnapshot {
-  return { itemId: [], gameTime: 0, kills: 0, deaths: 0, assists: 0, level: 0, backpackItemId: [], neutralItemId: -1 };
+  return {
+    itemId: [],
+    gameTime: 0,
+    kills: 0,
+    deaths: 0,
+    assists: 0,
+    level: 0,
+    backpackItemId: [],
+    neutralItemId: -1,
+    neutralEnhancementId: -1,
+  };
 }
 
 export const CDOTAMatchMetadata_Team_InventorySnapshot: MessageFns<CDOTAMatchMetadata_Team_InventorySnapshot> = {
@@ -1293,6 +1306,9 @@ export const CDOTAMatchMetadata_Team_InventorySnapshot: MessageFns<CDOTAMatchMet
     writer.join();
     if (message.neutralItemId !== -1) {
       writer.uint32(64).int32(message.neutralItemId);
+    }
+    if (message.neutralEnhancementId !== -1) {
+      writer.uint32(72).int32(message.neutralEnhancementId);
     }
     return writer;
   },
@@ -1388,6 +1404,14 @@ export const CDOTAMatchMetadata_Team_InventorySnapshot: MessageFns<CDOTAMatchMet
           message.neutralItemId = reader.int32();
           continue;
         }
+        case 9: {
+          if (tag !== 72) {
+            break;
+          }
+
+          message.neutralEnhancementId = reader.int32();
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -1409,6 +1433,7 @@ export const CDOTAMatchMetadata_Team_InventorySnapshot: MessageFns<CDOTAMatchMet
         ? object.backpackItemId.map((e: any) => globalThis.Number(e))
         : [],
       neutralItemId: isSet(object.neutralItemId) ? globalThis.Number(object.neutralItemId) : -1,
+      neutralEnhancementId: isSet(object.neutralEnhancementId) ? globalThis.Number(object.neutralEnhancementId) : -1,
     };
   },
 
@@ -1438,6 +1463,9 @@ export const CDOTAMatchMetadata_Team_InventorySnapshot: MessageFns<CDOTAMatchMet
     if (message.neutralItemId !== -1) {
       obj.neutralItemId = Math.round(message.neutralItemId);
     }
+    if (message.neutralEnhancementId !== -1) {
+      obj.neutralEnhancementId = Math.round(message.neutralEnhancementId);
+    }
     return obj;
   },
 
@@ -1456,6 +1484,7 @@ export const CDOTAMatchMetadata_Team_InventorySnapshot: MessageFns<CDOTAMatchMet
     message.level = object.level ?? 0;
     message.backpackItemId = object.backpackItemId?.map((e) => e) || [];
     message.neutralItemId = object.neutralItemId ?? -1;
+    message.neutralEnhancementId = object.neutralEnhancementId ?? -1;
     return message;
   },
 };
@@ -2976,6 +3005,7 @@ function createBaseCDOTAMatchMetadata_Team_Player(): CDOTAMatchMetadata_Team_Pla
     gamePlayerId: -1,
     playerTrackedStats: [],
     overworldRewards: undefined,
+    craftworksQuestRewards: [],
   };
 }
 
@@ -3156,6 +3186,9 @@ export const CDOTAMatchMetadata_Team_Player: MessageFns<CDOTAMatchMetadata_Team_
     if (message.overworldRewards !== undefined) {
       CDOTAMatchMetadata_Team_Player_OverworldRewards.encode(message.overworldRewards, writer.uint32(474).fork())
         .join();
+    }
+    for (const v of message.craftworksQuestRewards) {
+      CMsgCraftworksQuestReward.encode(v!, writer.uint32(482).fork()).join();
     }
     return writer;
   },
@@ -3654,6 +3687,14 @@ export const CDOTAMatchMetadata_Team_Player: MessageFns<CDOTAMatchMetadata_Team_
           message.overworldRewards = CDOTAMatchMetadata_Team_Player_OverworldRewards.decode(reader, reader.uint32());
           continue;
         }
+        case 60: {
+          if (tag !== 482) {
+            break;
+          }
+
+          message.craftworksQuestRewards.push(CMsgCraftworksQuestReward.decode(reader, reader.uint32()));
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -3755,6 +3796,9 @@ export const CDOTAMatchMetadata_Team_Player: MessageFns<CDOTAMatchMetadata_Team_
       overworldRewards: isSet(object.overworldRewards)
         ? CDOTAMatchMetadata_Team_Player_OverworldRewards.fromJSON(object.overworldRewards)
         : undefined,
+      craftworksQuestRewards: globalThis.Array.isArray(object?.craftworksQuestRewards)
+        ? object.craftworksQuestRewards.map((e: any) => CMsgCraftworksQuestReward.fromJSON(e))
+        : [],
     };
   },
 
@@ -3928,6 +3972,9 @@ export const CDOTAMatchMetadata_Team_Player: MessageFns<CDOTAMatchMetadata_Team_
     if (message.overworldRewards !== undefined) {
       obj.overworldRewards = CDOTAMatchMetadata_Team_Player_OverworldRewards.toJSON(message.overworldRewards);
     }
+    if (message.craftworksQuestRewards?.length) {
+      obj.craftworksQuestRewards = message.craftworksQuestRewards.map((e) => CMsgCraftworksQuestReward.toJSON(e));
+    }
     return obj;
   },
 
@@ -4000,6 +4047,8 @@ export const CDOTAMatchMetadata_Team_Player: MessageFns<CDOTAMatchMetadata_Team_
     message.overworldRewards = (object.overworldRewards !== undefined && object.overworldRewards !== null)
       ? CDOTAMatchMetadata_Team_Player_OverworldRewards.fromPartial(object.overworldRewards)
       : undefined;
+    message.craftworksQuestRewards =
+      object.craftworksQuestRewards?.map((e) => CMsgCraftworksQuestReward.fromPartial(e)) || [];
     return message;
   },
 };
