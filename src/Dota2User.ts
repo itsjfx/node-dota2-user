@@ -116,7 +116,7 @@ export class Dota2User extends EventEmitter {
     // and add a return type if the protobuf always matches
     // and add a partial version
     async sendJob<T extends keyof ClientProtobufsType>(messageId: T, body: ClientProtobufsType[T]): Promise<unknown> {
-        const fn = new Promise((resolve, reject) => {
+        const fn = new Promise((resolve) => {
             const protobuf = getProtobufForMessage(messageId);
             if (!protobuf) {
                 throw new Dota2UserError(`Unable to find protobuf for message: ${messageId}`);

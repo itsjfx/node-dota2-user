@@ -2,7 +2,7 @@
 
 import SteamUser from 'steam-user';
 import { Dota2User } from '../src'; // replace with 'dota2-user' outside of the module
-import { EDOTAGCMsg, EMatchOutcome } from '../src/protobufs';
+import { EDOTAGCMsg } from '../src/protobufs';
 
 const client = new SteamUser();
 const dota2 = new Dota2User(client);
