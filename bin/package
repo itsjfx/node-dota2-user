@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -eu -o pipefail
+cd "$(dirname "$0")/../"
+
+# https://stackoverflow.com/a/48460033
+cp package.json LICENSE README.md dist/
+# do not publish genny but keep the built stuff in dist/ cause why not
+echo '*' > dist/bin/.npmignore

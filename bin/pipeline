@@ -15,10 +15,12 @@ npm run build
 npm run lint
 npm run test
 
+npm run package
 
-# https://stackoverflow.com/a/48460033
-cp package.json package-lock.json LICENSE README.md dist/
 cd dist
-if [[ "${1-}" == --publish ]]; then
-    npm publish "$@"
-fi
+echo 'Publish to npm? ' >&2
+read -r answer
+case "$answer" in
+  [yY])  npm publish "$@" ;;
+  *) echo 'WARNING: Not publishing to npm' >&2 ;;
+esac
