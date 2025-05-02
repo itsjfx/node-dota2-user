@@ -10,12 +10,14 @@
     "genny": "./bin/genny",
     "lint": "./bin/lint",
     "lint:fix": "./bin/lint --fix",
+    "package": "./bin/package",
     "pull-protos": "./bin/pull-protos",
     "set-env": "./bin/set-env",
     "test": "./bin/test",
     "update-protos": "./bin/update-protos",
     "watch": "./bin/watch"
   },
+  "files": ["**/*.js", "**/*.d.ts", "**/*.d.ts.map"],
   "engines": {
     "node": ">=14.0.0"
   },
